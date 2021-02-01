@@ -1,4 +1,3 @@
-# security conferences
 - title: CCS
   year: 2020
   id: ccs20
@@ -10,4 +9,5 @@
   place: Orlando, USA
   sub: SC
   rank: A
+  dblp: ccs
   note: '2 review cycles'

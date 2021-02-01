@@ -22,7 +22,7 @@
       <el-table-column>
         <template slot-scope="scope">
           <div :class="{ 'conf-fin': scope.row.status === 'FIN' }">
-            <el-row class="conf-title"><a href="/">{{scope.row.title}}</a> {{scope.row.year}}</el-row>
+            <el-row class="conf-title"><a :href="generateDBLP(scope.row.dblp)">{{scope.row.title}}</a> {{scope.row.year}}</el-row>
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
             <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.note"><b>NOTE:</b> {{scope.row.note}}</span></el-row>
@@ -56,7 +56,7 @@
     <el-row style="padding-top: 8px">
       <div style="float: left; color: #666666;font-size: 12px;">
         <div>ccf-deadlines is maintained by <a href="https://github.com/jacklightChen">@jacklightChen</a> and <a href="https://github.com/0x4f5da2">@0x4f5da2</a>.</div>
-        <div style="padding-top: 3px">If you find it useful, find <a href="https://github.com/0x4f5da2">him</a> a girlfriend.</div>
+        <div style="padding-top: 3px">If you find it useful, try find <a href="https://github.com/0x4f5da2">him</a> a girlfriend.</div>
       </div>
       <div style="float: right">
         <el-pagination
@@ -209,6 +209,9 @@ export default {
       console.log(page)
       this.showconf(this.typesList, this.rankList, page)
     },
+    generateDBLP(name){
+      return 'https://dblp.uni-trier.de/db/conf/' + name
+    }
   },
   mounted () {
     this.loadUTCMap()

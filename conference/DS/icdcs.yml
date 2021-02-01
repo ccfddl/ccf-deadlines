@@ -1,4 +1,3 @@
-# distributed systems
 - title: ICDCS
   year: 2020
   id: icdcs20
@@ -11,3 +10,4 @@
   place: Singapore
   sub: DS
   rank: B
+  dblp: icdcs
