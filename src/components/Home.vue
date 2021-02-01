@@ -2,7 +2,7 @@
   <section>
     <Header></Header>
     <el-checkbox-group style="padding-top: 10px" v-model="checkList" @change="handleCheckedChange">
-      <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub"><span style="color: #666666">{{item.name}}</span></el-checkbox>
+      <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub">{{formatSubName(item)}}</el-checkbox>
     </el-checkbox-group>
     <el-row class="timezone">
       <div style="float: left">
@@ -75,6 +75,9 @@
 
 <script>
 import Header from './Header'
+const yaml = require('js-yaml')
+const moment = require('moment-timezone')
+const tz = moment.tz.guess()
 export default {
   name: "Home",
   components: {
@@ -99,11 +102,7 @@ export default {
   },
   methods: {
     loadFile () {
-      let yaml = require('js-yaml')
-      let moment = require('moment-timezone')
-      let tz = moment.tz.guess()
       this.timeZone = tz
-
       this.$http.get(this.publicPath + 'conference/types.yml').then(response => {
         const doc = yaml.load(response.body)
         this.subList = doc
@@ -112,10 +111,12 @@ export default {
           this.typesList.push(this.subList[i].sub)
           this.typeMap.set(this.subList[i].sub, this.subList[i].name)
         }
+        this.getAllConf()
       }, () => {
         alert('sorry your network is not stable!')
       })
-
+    },
+    getAllConf() {
       // get all conf
       this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
         const doc = yaml.load(response.body)
@@ -145,12 +146,12 @@ export default {
           }
           this.allconfList.push(doc[i])
         }
-        this.showconf(null, null, 1)
+        this.showConf(null, null, 1)
       }, () => {
         alert('sorry your network is not stable!')
       })
     },
-    showconf (types, rank, page) {
+    showConf (types, rank, page) {
       let filterList = this.allconfList
 
       if (types != null){
@@ -199,18 +200,29 @@ export default {
     },
     handleCheckedChange(types) {
       this.typesList = types
-      this.showconf(this.typesList, this.rankList, 1)
+      this.showConf(this.typesList, this.rankList, 1)
     },
     handleRankChange(rank) {
       this.rankList = rank
-      this.showconf(this.typesList, this.rankList, 1)
+      this.showConf(this.typesList, this.rankList, 1)
     },
     handleCurrentChange(page) {
       console.log(page)
-      this.showconf(this.typesList, this.rankList, page)
+      this.showConf(this.typesList, this.rankList, page)
     },
     generateDBLP(name){
       return 'https://dblp.uni-trier.de/db/conf/' + name
+    },
+    _isMobile() {
+      let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+      return flag;
+    },
+    formatSubName(item){
+      if(this._isMobile()) {
+        return item.sub
+      }else {
+        return item.name
+      }
     }
   },
   mounted () {
@@ -222,7 +234,6 @@ export default {
 
 <style scoped>
 /*/deep/ .el-table tbody tr { pointer-events:; }*/
-
 /deep/ .el-checkbox__inner {
   height: 20px;
   width: 20px;

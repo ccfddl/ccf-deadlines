@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 .title{
-  font-size: 30px;
+  font-size: 29px;
   color: #2c3e50;
 }
 .subtitle{
