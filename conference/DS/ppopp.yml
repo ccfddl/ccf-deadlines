@@ -3,8 +3,8 @@
   id: ppopp21
   description: The 26th ACM SIGPLAN Symposium on Principles & Practice of Parallel Programming
   link: https://ppopp21.sigplan.org/
-  deadline: '2020-08-13 23:59:59'
   abstract_deadline: '2020-08-06 23:59:59'
+  deadline: '2020-08-13 23:59:59'
   timezone: AoE
   date: Feb 27-Mar 3, 2021
   place: Virtual

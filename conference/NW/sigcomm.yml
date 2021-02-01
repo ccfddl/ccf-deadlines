@@ -3,8 +3,8 @@
   id: sigcomm21
   description: ACM International Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication
   link: http://conferences.sigcomm.org/sigcomm/2021/
-  deadline: '2021-01-20 16:59:59'
   abstract_deadline: '2021-01-27 16:59:59'
+  deadline: '2021-01-20 16:59:59'
   timezone: UTC-5
   date: Aug 23-27, 2021
   place: Virtual

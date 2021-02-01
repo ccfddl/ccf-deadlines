@@ -1,0 +1,12 @@
+- title: STOC
+  year: 2021
+  id: stoc21
+  description: ACM Symposium on the Theory of Computing
+  link: http://acm-stoc.org/stoc2021/
+  deadline: '2020-11-06 11:59:59'
+  timezone: UTC-5
+  date: Jun 21-25, 2021
+  place: Virtual
+  sub: CT
+  rank: A
+  dblp: stoc
