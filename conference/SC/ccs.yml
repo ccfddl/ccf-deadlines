@@ -1,0 +1,13 @@
+# security conferences
+- title: CCS
+  year: 2020
+  id: ccs20
+  description: ACM Conference on Computer and Communications Security
+  link: https://www.sigsac.org/ccs/CCS2020/
+  deadline: "2020-01-20 23:59:59"
+  timezone: UTC-12
+  date: "Nov 9 - Nov 13, 2020"
+  place: Orlando, USA
+  sub: SC
+  rank: A
+  note: '2 review cycles'
