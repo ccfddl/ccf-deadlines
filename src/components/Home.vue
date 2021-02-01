@@ -84,7 +84,7 @@ export default {
       let tz = moment.tz.guess()
       this.timeZone = tz
 
-      this.$http.get(this.publicPath + 'static/conferences/types.yml').then(response => {
+      this.$http.get(this.publicPath + 'conference/types.yml').then(response => {
         const doc = yaml.load(response.body)
         this.subList = doc
         for (let i = 0; i < this.subList.length; i++) {
@@ -96,7 +96,7 @@ export default {
       })
 
       // get all conf
-      this.$http.get(this.publicPath + 'static/conferences/allconf.yml').then(response => {
+      this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
         const doc = yaml.load(response.body)
         let curTime = moment.tz(new Date(), tz)
         for (let i = 0; i < doc.length; i++) {
