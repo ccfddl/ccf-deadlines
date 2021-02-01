@@ -1,0 +1,82 @@
+# distributed systems
+
+- title: ICDCS
+  year: 2020
+  id: icdcs20
+  description: The 40th IEEE International Conference on Distributed Computing Systems
+  link: https://icdcs2020.sg/
+  deadline: '2020-01-13 23:59:59'
+  abstract_deadline: '2020-01-06 23:59:59'
+  timezone: UTC-7
+  date: July 8-10, 2020
+  place: Singapore
+  sub: DS
+  rank: B
+
+- title: ICDCS
+  year: 2021
+  id: icdcs20
+  description: The 40th IEEE International Conference on Distributed Computing Systems
+  link: https://icdcs2020.sg/
+  deadline: '2021-02-13 23:59:59'
+  abstract_deadline: '2020-01-06 23:59:59'
+  timezone: UTC-7
+  date: July 8-10, 2020
+  place: Singapore
+  sub: DS
+  rank: B
+
+
+# security conferences
+
+- title: CCS
+  year: 2020
+  id: ccs20
+  description: ACM Conference on Computer and Communications Security
+  link: https://www.sigsac.org/ccs/CCS2020/
+  deadline: "2020-01-20 23:59:59"
+  timezone: UTC-12
+  date: "Nov 9 - Nov 13, 2020"
+  place: Orlando, USA
+  sub: SC
+  rank: A
+  note: '2 review cycles'
+
+- title: ICDCS
+  year: 2020
+  id: icdcs20
+  description: The 40th IEEE International Conference on Distributed Computing Systems
+  link: https://icdcs2020.sg/
+  deadline: '2020-01-13 23:59:59'
+  abstract_deadline: '2020-01-06 23:59:59'
+  timezone: UTC-7
+  date: July 8-10, 2020
+  place: Singapore
+  sub: DS
+  rank: B
+
+- title: ICDCS
+  year: 2020
+  id: icdcs20
+  description: The 40th IEEE International Conference on Distributed Computing Systems
+  link: https://icdcs2020.sg/
+  deadline: '2020-01-13 23:59:59'
+  abstract_deadline: '2020-01-06 23:59:59'
+  timezone: UTC-7
+  date: July 8-10, 2020
+  place: Singapore
+  sub: DS
+  rank: B
+
+- title: ICDCS
+  year: 2020
+  id: icdcs20
+  description: The 40th IEEE International Conference on Distributed Computing Systems
+  link: https://icdcs2020.sg/
+  deadline: 'TBD'
+  abstract_deadline: '2020-01-06 23:59:59'
+  timezone: UTC-7
+  date: July 8-10, 2020
+  place: Singapore
+  sub: DS
+  rank: B

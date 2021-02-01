@@ -1,0 +1,21 @@
+---
+- name: 计算机体系结构/并行与分布计算/存储系统
+  sub: DS
+- name: 计算机网络
+  sub: NW
+- name: 网络与信息安全
+  sub: SC
+- name: 软件工程/系统软件/程序设计语言
+  sub: SE
+- name: 数据库/数据挖掘/内容检索
+  sub: DB
+- name: 计算机科学理论
+  sub: CT
+- name: 计算机图形学与多媒体
+  sub: CG
+- name: 人工智能
+  sub: AI
+- name: 人机交互与普适计算
+  sub: HI
+- name: 交叉/综合/新兴
+  sub: MX
