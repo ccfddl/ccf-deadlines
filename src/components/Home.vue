@@ -65,7 +65,7 @@ export default {
   },
   data() {
     return {
-      publicPath: 'https://ccfddl.github.io/',
+      publicPath: '/',
       checkList: [],
       subList: [],
       allconfList: [],
