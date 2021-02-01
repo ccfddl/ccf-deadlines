@@ -53,6 +53,23 @@
         </template>
       </el-table-column>
     </el-table>
+    <el-row style="padding-top: 8px">
+      <div style="float: left; color: #666666;font-size: 12px;">
+        <div>ccf-deadlines is maintained by <a href="https://github.com/jacklightChen">@jacklightChen</a> and <a href="https://github.com/0x4f5da2">@0x4f5da2</a>.</div>
+        <div style="padding-top: 3px">If you find it useful, find <a href="https://github.com/0x4f5da2">him</a> a girlfriend.</div>
+      </div>
+      <div style="float: right">
+        <el-pagination
+            background
+            small
+            layout="prev, pager, next"
+            :page-size="5"
+            @current-change="handleCurrentChange"
+            :total=allconfList.length>
+        </el-pagination>
+      </div>
+    </el-row>
+
   </section>
 </template>
 
@@ -66,6 +83,7 @@ export default {
   data() {
     return {
       publicPath: '/',
+      pageSize: 5,
       checkList: [],
       subList: [],
       allconfList: [],
@@ -74,7 +92,9 @@ export default {
       timeZone: '',
       utcMap: new Map(),
       rankoptions: ['A', 'B', 'C'],
-      rankGroup: ['A', 'B', 'C']
+      rankGroup: ['A', 'B', 'C'],
+      typesList: [],
+      rankList: ['A','B','C']
     }
   },
   methods: {
@@ -89,6 +109,7 @@ export default {
         this.subList = doc
         for (let i = 0; i < this.subList.length; i++) {
           this.checkList.push(this.subList[i].sub)
+          this.typesList.push(this.subList[i].sub)
           this.typeMap.set(this.subList[i].sub, this.subList[i].name)
         }
       }, () => {
@@ -124,21 +145,20 @@ export default {
           }
           this.allconfList.push(doc[i])
         }
-        this.showconf(null, null)
+        this.showconf(null, null, 1)
       }, () => {
         alert('sorry your network is not stable!')
       })
     },
-    showconf (types, rank) {
-      let filterList = []
+    showconf (types, rank, page) {
+      let filterList = this.allconfList
+
       if (types != null){
-        filterList = this.allconfList.filter(function (item){return types.indexOf(item.sub.toUpperCase()) >= 0})
-      }else {
-        filterList = this.allconfList
+        filterList = filterList.filter(function (item){return types.indexOf(item.sub.toUpperCase()) >= 0})
       }
 
       if (rank != null){
-        filterList = this.allconfList.filter(function (item){return rank.indexOf(item.rank) >= 0})
+        filterList = filterList.filter(function (item){return rank.indexOf(item.rank) >= 0})
       }
 
       let runList = filterList.filter(function (item){ return item.status === 'RUN'})
@@ -147,10 +167,12 @@ export default {
 
       runList.sort((a, b) => (b.remain === a.remain ? 0 : a.remain < b.remain ? -1 : 1))
       finList.sort((a, b) => (b.year === a.year ? 0 : a.year > b.year ? -1 : 1))
+
       this.showList = []
       this.showList.push.apply(this.showList, runList);
       this.showList.push.apply(this.showList, tbdList);
       this.showList.push.apply(this.showList, finList);
+      this.showList = this.showList.slice(this.pageSize*(page-1), this.pageSize*page)
     },
     transform (props) {
       Object.entries(props).forEach(([key, value]) => {
@@ -176,11 +198,17 @@ export default {
       }
     },
     handleCheckedChange(types) {
-      this.showconf(types, null)
+      this.typesList = types
+      this.showconf(this.typesList, this.rankList, 1)
     },
     handleRankChange(rank) {
-      this.showconf(null, rank)
-    }
+      this.rankList = rank
+      this.showconf(this.typesList, this.rankList, 1)
+    },
+    handleCurrentChange(page) {
+      console.log(page)
+      this.showconf(this.typesList, this.rankList, page)
+    },
   },
   mounted () {
     this.loadUTCMap()
