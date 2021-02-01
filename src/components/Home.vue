@@ -2,7 +2,7 @@
   <section>
     <Header></Header>
     <el-checkbox-group style="padding-top: 10px" v-model="checkList" @change="handleCheckedChange">
-      <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub">{{formatSubName(item)}}</el-checkbox>
+      <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub"><span style="color: #666666">{{formatSubName(item)}}</span></el-checkbox>
     </el-checkbox-group>
     <el-row class="timezone">
       <div style="float: left">
