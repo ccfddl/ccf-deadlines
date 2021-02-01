@@ -184,7 +184,6 @@ export default {
   },
   mounted () {
     this.loadUTCMap()
-    console.log(this.utcMap)
     this.loadFile()
   }
 }
