@@ -126,7 +126,7 @@ export default {
             doc[i].remain = 0
             doc[i].status = 'TBD'
           } else {
-            if (doc[i].timezone === 'AOE') {
+            if (doc[i].timezone === 'AoE') {
               doc[i].timezone = 'UTC-12'
             }
 

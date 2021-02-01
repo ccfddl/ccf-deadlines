@@ -1,0 +1,12 @@
+- title: SIGMOD
+  year: 2021
+  id: sigmod21
+  description: ACM Conference on Management of Data
+  link: http://2021.sigmod.org/
+  deadline: '2020-09-22 17:00:00'
+  timezone: UTC-8
+  date: Jun 20-25, 2021
+  place: Xi'an, Shaanxi, China
+  sub: DB
+  rank: A
+  dblp: sigmod

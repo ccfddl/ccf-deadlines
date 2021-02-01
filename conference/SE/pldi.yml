@@ -1,0 +1,12 @@
+- title: PLDI
+  year: 2021
+  id: pldi21
+  description: ACM SIGPLAN Conference on Programming Language Design & Implementation
+  link: https://pldi21.sigplan.org/
+  deadline: "2020-11-20 23:59:59"
+  timezone: AoE
+  date: Jun 23-25, 2020
+  place: Virtual
+  sub: SE
+  rank: A
+  dblp: pldi
