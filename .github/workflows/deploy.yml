@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.4
+    - name: Setup Node.js environment
+      uses: actions/setup-node@main
+      with: 
+        node-version: '15.x'
+    - name: Assemble yml files
+      run: |
+        mkdir -p public/conference && cd public/conference
+        cat `find ../../conference -name '*.yml' -not -path '**/types.yml'` > allconf.yml
+        cp ../../conference/types.yml .
+        cd ../..
+    - name: Install dependency and build
+      run: |
+        yarn install
+        yarn build
+    - name: Config Git
+      run: |
+        git config --global user.email "me@4f5da2.com"
+        git config --global user.name "0x4f5da2"
+    - name: Deploy
+      run: |
+        cd dist
+        git init
+        git add --all
+        git commit -m "Site Update:`TZ=':Asia/Shanghai' date +' %Y-%m-%d %H:%m:%S'`"
+        git push --force https://${{ secrets.ACCESS_TOKEN }}@github.com/ccfddl/ccfddl.github.io.git master:page
