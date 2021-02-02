@@ -10,7 +10,7 @@ Maintained by [@jacklightChen](https://github.com/jacklightChen) and [@0x4f5da2]
 
 Inspired by [ai-deadlines](https://aideadlin.es/?sub=ML,RO,CV).
 ## Add/Update a conference
-Contributions are welcomed and greatly appreciated! For further contribution and waterblowing, email [chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn) through your edu email address with wechatid to join the [CCFDDL](https://ccfddl.github.io/) organization.
+Contributions are welcomed and greatly appreciated! For further contribution and waterblowing, email [chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn) through your edu email address with wechatid to join the [CCFDDL](https://github.com/ccfddl) organization.
 
 To add or update information:
 - Fork the repo
