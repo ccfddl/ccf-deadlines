@@ -1,0 +1,13 @@
+- title: ICCV # conference name (uppercase)
+  year: 2021 # year
+  id: iccv21 # conference name & year lowercase
+  description: The 18th IEEE International Conference on Computer Vision # description, better to add the session
+  link: http://iccv2021.thecvf.com/home # website url
+  abstract_deadline: '2021-03-17 23:59:59' # optional
+  deadline: '2021-03-17 23:59:59' # required and you can fill TBD if not decided
+  timezone: UTC-7 # timezone support UTC-12 ~ UTC+12 & AoE
+  date: October 10-17, 2021 # main conference date
+  place: Montreal # conference place
+  sub: AI # belonging types in types.yml
+  rank: A # rank in CCF recommendation
+  dblp: iccv # https://dblp.uni-trier.de/db/conf/iccv suffix in dblp url
