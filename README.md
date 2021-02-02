@@ -42,7 +42,7 @@ Description of the fields:
 | `title`\*           | Short conference name, without year, uppercase                                                                                 |
 | `year`\*            | Year the conference is happening                                                                                      |
 | `id`\*              | conference name & year, lowercase                                                                                          |
-| `description`\*     | Description, or long name, better to add the session, i.e., The 15th                                                                                            |
+| `description`\*     | Description, or long name, better to add the session, i.e., The 15th XXX                                                                                           |
 | `link`\*            | URL to the conference home page                                                                                       |
 | `deadline`\*        | Deadline, in the format of `yyyy-mm-dd hh:mm:ss`                                                                      |
 | `abstract_deadline` | Abstract deadline if applicable, optional                                                                                     |
