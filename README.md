@@ -4,18 +4,18 @@
 
 Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-Preview: [CCF-Deadlines](https://ccfddl.github.io/) **(No More Time Zone Conversion on Your Own!)**
+Preview: [CCF-Deadlines](https://ccfddl.github.io/) **(No More Time Zone Conversion on Your Own!)**.
 
 Maintained by [@jacklightChen](https://github.com/jacklightChen) and [@0x4f5da2](https://github.com/0x4f5da2).
 
 Inspired by [ai-deadlines](https://aideadlin.es/?sub=ML,RO,CV).
 ## Add/Update a conference
-Contributions are welcomed and greatly appreciated!
+Contributions are welcomed and greatly appreciated! For further contribution and waterblowing, email [chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn) through your edu email address with wechatid to join the [CCFDDL](https://ccfddl.github.io/) organization.
 
 To add or update information:
 - Fork the repo
 - Add/Update the yml file of conference/conf_type/conf_name.yml
-- Send a pull request
+- Send a [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
 ## Conference Entry File
 Example file: conference/DB/sigmod.yml
@@ -40,8 +40,8 @@ Description of the fields:
 | ------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `title`\*           | Short conference name, without year, uppercase                                                                                 |
 | `year`\*            | Year the conference is happening                                                                                      |
-| `description`\*     | Description, or long name                                                                                             |
 | `id`\*              | conference name & year, lowercase                                                                                          |
+| `description`\*     | Description, or long name                                                                                             |
 | `link`\*            | URL to the conference home page                                                                                       |
 | `deadline`\*        | Deadline, in the format of `yyyy-mm-dd hh:mm:ss`                                                                      |
 | `abstract_deadline` | Abstract deadline if applicable, optional                                                                                     |
@@ -50,6 +50,7 @@ Description of the fields:
 | `place`\*           | Where the main conference is happening                                                                                     |
 | `sub`\*             | The category that the conference is labeled by CCF. See the matching table below |
 | `rank`\*            | The level that the conference is ranked by CCF, i.e., `A`, `B`, `C`              |
+| `dblp`\*            | The suffix in dblp url, i.e., https://dblp.uni-trier.de/db/conf/`dblp`               |
 | `note`              | Some comments on the conference, optional                                                                                       |
 
 Fields marked with asterisk (*) are required.
