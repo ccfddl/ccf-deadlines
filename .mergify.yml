@@ -1,7 +1,7 @@
 pull_request_rules:
   - name: say hi on new contribution
     conditions:
-      - base=master
+      - base=main
     actions:
         comment:
           message: |
@@ -16,7 +16,7 @@ pull_request_rules:
     conditions:
       - "#approved-reviews-by>=1"
       - check-success=Travis CI - Pull Request
-      - base=master
+      - base=main
     actions:
       merge:
         method: merge
