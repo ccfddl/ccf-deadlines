@@ -4,7 +4,7 @@
 
 Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-**(no more Time Zone Conversion on your own!)**
+Preview: [CCF-Deadlines](https://ccfddl.github.io/) **(No More Time Zone Conversion on Your Own!)**
 
 Maintained by [@jacklightChen](https://github.com/jacklightChen) and [@0x4f5da2](https://github.com/0x4f5da2).
 
@@ -14,11 +14,11 @@ Contributions are welcomed and greatly appreciated!
 
 To add or update information:
 - Fork the repo
-- Add/Update the yml file of conference/conftype/confname.yml
+- Add/Update the yml file of conference/conf_type/conf_name.yml
 - Send a pull request
 
 ## Conference Entry File
-Example file: sigmod.yml
+Example file: conference/DB/sigmod.yml
 
 ```
 - title: SIGMOD
@@ -45,18 +45,18 @@ Description of the fields:
 | `link`\*            | URL to the conference home page                                                                                       |
 | `deadline`\*        | Deadline, in the format of `yyyy-mm-dd hh:mm:ss`                                                                      |
 | `abstract_deadline` | Abstract deadline if applicable, optional                                                                                     |
-| `timezone`\*        | Timezone of deadline, currently support UTC-12 ~ UTC+12 & AoE                                                        |
+| `timezone`\*        | Timezone of deadline, currently support `UTC-12` ~ `UTC+12` & `AoE`                                                        |
 | `date`\*            | When the main conference is happening                                                                                      |
 | `place`\*           | Where the main conference is happening                                                                                     |
-| `sub`\*             | The category that the conference is labeled by [CCF](https://www.ccf.org.cn/). See the matching table below |
-| `rank`\*            | The level that the conference is ranked by [CCF](https://www.ccf.org.cn/), i.e., `A`, `B`, `C`              |
+| `sub`\*             | The category that the conference is labeled by CCF. See the matching table below |
+| `rank`\*            | The level that the conference is ranked by CCF, i.e., `A`, `B`, `C`              |
 | `note`              | Some comments on the conference, optional                                                                                       |
 
 Fields marked with asterisk (*) are required.
 
 The matching table:
 
-| `sub` field | Category name |
+| `sub` | Category name |
 | ----------- | --------------------------------------------------------- |
 | `DS`        | 计算机体系结构/并行与分布计算/存储系统                    |
 | `NW`        | 计算机网络                                                |
