@@ -6,7 +6,7 @@ pull_request_rules:
         comment:
           message: |
               Welcome to ccf-deadlines!
-              We're delighted to have you onboard
+              We're delighted to have you onboard (p≧w≦q)
         request_reviews:
           teams:
             - "@ccfddl/review team"
