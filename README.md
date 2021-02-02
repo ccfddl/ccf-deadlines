@@ -5,7 +5,7 @@
 
 Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-Preview: [CCF-Deadlines](https://ccfddl.github.io/) **(No More Time Zone Conversion on Your Own!)**.
+Preview: [CCF-Deadlines](https://ccfddl.github.io/) **(No More Finding and Time Conversion on Your Own!)**.
 
 Maintained by [@jacklightChen](https://github.com/jacklightChen) and [@0x4f5da2](https://github.com/0x4f5da2).
 
@@ -42,7 +42,7 @@ Description of the fields:
 | `title`\*           | Short conference name, without year, uppercase                                                                                 |
 | `year`\*            | Year the conference is happening                                                                                      |
 | `id`\*              | conference name & year, lowercase                                                                                          |
-| `description`\*     | Description, or long name                                                                                             |
+| `description`\*     | Description, or long name, better to add the session, i.e., The 15th                                                                                            |
 | `link`\*            | URL to the conference home page                                                                                       |
 | `deadline`\*        | Deadline, in the format of `yyyy-mm-dd hh:mm:ss`                                                                      |
 | `abstract_deadline` | Abstract deadline if applicable, optional                                                                                     |
