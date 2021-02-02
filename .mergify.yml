@@ -1,0 +1,24 @@
+pull_request_rules:
+  - name: say hi on new contribution
+    conditions:
+      - base=master
+    actions:
+        comment:
+          message: |
+              Welcome to ccf-deadlines!
+              We're delighted to have you onboard <3
+        request_reviews:
+          teams:
+            - "@ccfddl/review-team"
+        label:
+          add: ['updateconf']
+  - name: automatic merge for master when CI passes and 1 reviews
+    conditions:
+      - "#approved-reviews-by>=1"
+      - check-success=Travis CI - Pull Request
+      - base=master
+    actions:
+      merge:
+        method: merge
+      label:
+        add: ['status/LGT1']
