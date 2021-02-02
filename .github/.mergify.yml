@@ -8,9 +8,8 @@ pull_request_rules:
               Welcome to ccf-deadlines!
               We're delighted to have you onboard (p≧w≦q)
         request_reviews:
-          users:
-            - jacklightChen
-            - 0x4f5da2
+          teams:
+            - "@ccfddl/review-team"
         label:
           add: ['updateconf']
   - name: automatic merge for master when CI passes and 1 reviews
