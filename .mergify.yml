@@ -6,16 +6,16 @@ pull_request_rules:
         comment:
           message: |
               Welcome to ccf-deadlines!
-              We're delighted to have you onboard <3
+              We're delighted to have you onboard
         request_reviews:
           teams:
-            - "@ccfddl/review-team"
+            - "@ccfddl/review team"
         label:
           add: ['updateconf']
   - name: automatic merge for master when CI passes and 1 reviews
     conditions:
       - "#approved-reviews-by>=1"
-      - check-success=Travis CI - Pull Request
+      - check-success=MergeCheck / build (pull_request)
       - base=main
     actions:
       merge:
