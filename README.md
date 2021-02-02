@@ -1,9 +1,12 @@
 # CCF-Deadlines
 
 [![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)
-[![Build Status](https://img.shields.io/github/workflow/status/ccfddl/ccf-deadlines/Deploy)](https://github.com/ccfddl/ccf-deadlines/commits/main)()
+[![Build Status](https://img.shields.io/github/workflow/status/ccfddl/ccf-deadlines/Deploy)](https://github.com/ccfddl/ccf-deadlines/commits/main)
+
 Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/). **(no more Time Zone Conversion on your own!)**
+
 Maintained by [@jacklightChen](https://github.com/jacklightChen) and [@0x4f5da2](https://github.com/0x4f5da2).
+
 Inspired by [ai-deadlines](https://aideadlin.es/?sub=ML,RO,CV).
 
 ## Add/Update a conference
