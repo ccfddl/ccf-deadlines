@@ -51,7 +51,7 @@ Description of the fields:
 | `place`\*           | Where the main conference is happening                                                                                     |
 | `sub`\*             | The category that the conference is labeled by CCF. See the matching table below |
 | `rank`\*            | The level that the conference is ranked by CCF, i.e., `A`, `B`, `C`              |
-| `dblp`\*            | The suffix in dblp url, i.e., https://dblp.uni-trier.de/db/conf/`dblp`               |
+| `dblp`\*            | The suffix in dblp url, e.g., `iccv` in https://dblp.uni-trier.de/db/conf/iccv               |
 | `note`              | Some comments on the conference, optional                                                                                       |
 
 Fields marked with asterisk (*) are required.
