@@ -10,6 +10,7 @@ pull_request_rules:
         request_reviews:
           users:
             - jacklightChen
+            - 0x4f5da2
         label:
           add: ['updateconf']
   - name: automatic merge for master when CI passes and 1 reviews
