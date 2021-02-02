@@ -7,11 +7,11 @@ pull_request_rules:
           message: |
               Welcome to ccf-deadlines!
               We're delighted to have you onboard (p≧w≦q)
-        request_reviews:
-          teams:
-            - "@CCFDDL/review-team"
         label:
           add: ['updateconf']
+        request_reviews:
+          teams:
+            - "@ccfddl/review-team"
   - name: automatic merge for master when CI passes and 1 reviews
     conditions:
       - "#approved-reviews-by>=1"
