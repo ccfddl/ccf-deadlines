@@ -9,7 +9,7 @@ pull_request_rules:
               We're delighted to have you onboard (p≧w≦q)
         request_reviews:
           teams:
-            - "@ccfddl/review-team"
+            - "review-team"
         label:
           add: ['updateconf']
   - name: automatic merge for master when CI passes and 1 reviews
