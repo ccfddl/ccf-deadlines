@@ -1,9 +1,13 @@
 # CCF-Deadlines
 [![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)
 [![Build Status](https://img.shields.io/github/workflow/status/ccfddl/ccf-deadlines/Deploy)](https://github.com/ccfddl/ccf-deadlines/commits/main)
+
 Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
+
 **(no more Time Zone Conversion on your own!)**
+
 Maintained by [@jacklightChen](https://github.com/jacklightChen) and [@0x4f5da2](https://github.com/0x4f5da2).
+
 Inspired by [ai-deadlines](https://aideadlin.es/?sub=ML,RO,CV).
 ## Add/Update a conference
 Contributions are welcomed and greatly appreciated!
@@ -11,8 +15,6 @@ Contributions are welcomed and greatly appreciated!
 To add or update information:
 - Fork the repo
 - Add/Update the yml file of conference/conftype/confname.yml
-- Make sure it has the title, year, id, link, deadline, timezone, date, place, sub, rank, dblp attributes
-- Optionally add a note and abstract_deadline in case the conference has a separate mandatory abstract deadline
 - Send a pull request
 
 ## Conference Entry File
