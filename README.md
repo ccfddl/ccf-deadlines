@@ -1,2 +1,2 @@
-# ccf-deadlines
+# ccf-deadlines[![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)[![Build Status](https://img.shields.io/github/workflow/status/ccfddl/ccf-deadlines/Deploy)]()
 ⏰ ccf recommendation conference Deadline Countdowns
