@@ -11,7 +11,7 @@ pull_request_rules:
           add: ['updateconf']
         request_reviews:
           teams:
-            - "@ccfddl/approvers"
+            - "ccfddl/approvers"
   - name: automatic merge for master when CI passes and 1 reviews
     conditions:
       - "#approved-reviews-by>=1"
