@@ -3,15 +3,19 @@ pull_request_rules:
     conditions:
       - base=main
     actions:
-        comment:
-          message: |
-              Welcome to ccf-deadlines!
-              We're delighted to have you onboard (p≧w≦q)
-        label:
-          add: ['updateconf']
-        request_reviews:
-          teams:
-            - "@ccfddl/approvers"
+      comment:
+        message: |
+          Welcome to ccf-deadlines!
+          We're delighted to have you onboard (p≧w≦q)
+      label:
+        add: ['updateconf']
+  - name: ask the maintainer team to review PR
+    conditions:
+      - label!=invalid
+    actions:
+      request_reviews:
+        teams:
+          - "@ccfddl/maintainers"
   - name: automatic merge for master when CI passes and 1 reviews
     conditions:
       - "#approved-reviews-by>=1"
@@ -25,3 +29,4 @@ pull_request_rules:
       comment:
         message: |
           Great job!
+          Thank you @{{author}} for your contribution!
