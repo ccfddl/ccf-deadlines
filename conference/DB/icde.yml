@@ -1,0 +1,12 @@
+- title: ICDE
+  year: 2021
+  id: icde21
+  description: The 37th IEEE International Conference on Data Engineering
+  link: https://icde2021.gr/
+  deadline: '2020-10-14 23:59:59'
+  timezone: AoE
+  date: Apr 19-22, 2021
+  place: Virtual
+  sub: DB
+  rank: A
+  dblp: icde

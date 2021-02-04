@@ -1,0 +1,12 @@
+- title: VLDB
+  year: 2021
+  id: vldb21
+  description: The 47th International Conference on Very Large Data Bases
+  link: http://www.vldb.org/2021/
+  deadline: '2021-03-01 17:00:00'
+  timezone: UTC-7
+  date: Aug 16-20, 2021
+  place: Copenhagen, Denmark
+  sub: DB
+  rank: A
+  dblp: vldb

@@ -1,0 +1,13 @@
+- title: INFOCOM
+  year: 2021
+  id: infocom21
+  description: The 40th IEEE International Conference on Computer Communications
+  link: https://infocom2021.ieee-infocom.org/
+  abstract_deadline: '2020-08-08 23:59:59'
+  deadline: '2020-08-15 23:59:59'
+  timezone: UTC-4
+  date: May 10-13, 2021
+  place: Virtual
+  sub: NW
+  rank: A
+  dblp: infocom
