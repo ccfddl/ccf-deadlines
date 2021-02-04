@@ -1,6 +1,7 @@
 - title: ICML
   year: 2021
   id: icml21
+  description: The 38th International Conference on Machine Learning
   link: https://icml.cc/Conferences/2021
   deadline: '2021-02-04 23:59:00'
   abstract_deadline: '2021-01-28 23:59:00'

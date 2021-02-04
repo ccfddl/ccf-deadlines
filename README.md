@@ -48,7 +48,7 @@ Description of the fields:
 | `abstract_deadline` | Abstract deadline if applicable, optional                                                                                     |
 | `timezone`\*        | Timezone of deadline, currently support `UTC-12` ~ `UTC+12` & `AoE`                                                        |
 | `date`\*            | When the main conference is happening, e.g., Jun 20-25, 2021                                                                                     |
-| `place`\*           | Where the main conference is happening, e.g., `city`, `country`                                                                                    |
+| `place`\*           | Where the main conference is happening, e.g., `city, country`                                                                                    |
 | `sub`\*             | The category that the conference is labeled by CCF. See the matching table below |
 | `rank`\*            | The level that the conference is ranked by CCF, e.g., `A`, `B`, `C`              |
 | `dblp`\*            | The suffix in dblp url, e.g., `iccv` in https://dblp.uni-trier.de/db/conf/iccv               |

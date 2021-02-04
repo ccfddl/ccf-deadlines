@@ -1,7 +1,7 @@
 - title: CCS
   year: 2020
   id: ccs20
-  description: ACM Conference on Computer and Communications Security
+  description: The 27th ACM Conference on Computer and Communications Security
   link: https://www.sigsac.org/ccs/CCS2020/
   deadline: "2020-01-20 23:59:59"
   timezone: UTC-12
