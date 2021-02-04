@@ -1,0 +1,12 @@
+- title: ICPP
+  year: 2021
+  id: icpp21
+  description: The 50th International Conference on Parallel Processing
+  link: https://oaciss.uoregon.edu/icpp21/index.php
+  abstract_deadline: '2021-04-16 23:59:59'
+  timezone: AoE
+  date: Aug 9-12, 2021
+  place: Chicago, USA
+  sub: DS
+  rank: B
+  dblp: icpp

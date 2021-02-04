@@ -26,7 +26,7 @@
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
             <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.note"><b>NOTE:</b> {{scope.row.note}}</span></el-row>
-            <el-row><span class="conf-sub">{{scope.row.subname}}</span></el-row>
+            <el-row style="padding-top: 5px"><span class="conf-sub">{{scope.row.subname}}</span></el-row>
             </div>
         </template>
       </el-table-column>
