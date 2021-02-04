@@ -44,7 +44,7 @@ Description of the fields:
 | `id`\*              | conference name & year, lowercase                                                                                          |
 | `description`\*     | Description, or long name, better to add the session, e.g., The 15th XXX                                                                                           |
 | `link`\*            | URL to the conference home page                                                                                       |
-| `deadline`\*        | Deadline, in the format of `yyyy-mm-dd hh:mm:ss`                                                                      |
+| `deadline`\*        | Deadline, in the format of `yyyy-mm-dd hh:mm:ss` or `TBD`                                                                     |
 | `abstract_deadline` | Abstract deadline if applicable, optional                                                                                     |
 | `timezone`\*        | Timezone of deadline, currently support `UTC-12` ~ `UTC+12` & `AoE`                                                        |
 | `date`\*            | When the main conference is happening, e.g., Jun 20-25, 2021                                                                                     |

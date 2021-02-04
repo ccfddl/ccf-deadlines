@@ -134,6 +134,12 @@ export default {
             let ddlTime = moment(doc[i].deadline + this.utcMap.get(doc[i].timezone))
             doc[i].localDDL = ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z')
             doc[i].originDDL = doc[i].deadline + ' ' + doc[i].timezone
+            if(doc[i].abstract_deadline) {
+              let absTime = moment(doc[i].abstract_deadline + this.utcMap.get(doc[i].timezone))
+              if(!doc[i].note) {
+                doc[i].note = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')
+              }
+            }
             // alert(ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z'))
             let diffTime = ddlTime.diff(curTime)
             if (diffTime <= 0) {
@@ -207,7 +213,6 @@ export default {
       this.showConf(this.typesList, this.rankList, 1)
     },
     handleCurrentChange(page) {
-      console.log(page)
       this.showConf(this.typesList, this.rankList, page)
     },
     generateDBLP(name){
