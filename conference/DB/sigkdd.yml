@@ -1,0 +1,12 @@
+- title: SIGKDD
+  year: 2021
+  id: sigkdd21
+  description: The 27th ACM Knowledge Discovery and Data Mining
+  link: https://www.kdd.org/kdd2021/
+  deadline: '2021-02-08 23:59:59'
+  timezone: AoE
+  date: Aug 14-18, 2021
+  place: Singapore
+  sub: DB
+  rank: A
+  dblp: kdd
