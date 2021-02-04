@@ -1,7 +1,8 @@
 <template>
   <section>
     <Header></Header>
-    <el-checkbox-group style="padding-top: 10px" v-model="checkList" @change="handleCheckedChange">
+    <el-checkbox style="padding-top: 10px;width: 33%" :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><span style="color: #666666">全选</span></el-checkbox>
+    <el-checkbox-group v-model="checkList" @change="handleCheckedChange">
       <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub"><span style="color: #666666">{{formatSubName(item)}}</span></el-checkbox>
     </el-checkbox-group>
     <el-row class="timezone">
@@ -9,9 +10,9 @@
         Deadlines are shown in {{ timeZone }} time.
       </div>
       <div style="float: right">
-        <el-checkbox-group v-model="rankGroup" size="mini" @change="handleRankChange">
-          <el-checkbox-button v-for="rank in rankoptions" :label="rank" :key="rank">CCF {{rank}}</el-checkbox-button>
-        </el-checkbox-group>
+          <el-checkbox-group v-model="rankGroup" size="mini" @change="handleRankChange">
+            <el-checkbox-button v-for="rank in rankoptions" :label="rank" :key="rank">CCF {{rank}}</el-checkbox-button>
+          </el-checkbox-group>
       </div>
     </el-row>
     <el-row class="zonedivider"></el-row>
@@ -65,7 +66,7 @@
             layout="prev, pager, next"
             :page-size="5"
             @current-change="handleCurrentChange"
-            :total=allconfList.length>
+            :total=showNumber>
         </el-pagination>
       </div>
     </el-row>
@@ -86,18 +87,22 @@ export default {
   data() {
     return {
       publicPath: '/',
+      checkAll: true,
+      isIndeterminate: false,
       pageSize: 5,
       checkList: [],
       subList: [],
       allconfList: [],
       showList: [],
+      showNumber: 0,
       typeMap: new Map(),
       timeZone: '',
       utcMap: new Map(),
       rankoptions: ['A', 'B', 'C'],
       rankGroup: ['A', 'B', 'C'],
       typesList: [],
-      rankList: ['A','B','C']
+      rankList: ['A','B','C'],
+      input: ''
     }
   },
   methods: {
@@ -176,9 +181,10 @@ export default {
       finList.sort((a, b) => (b.year === a.year ? 0 : a.year > b.year ? -1 : 1))
 
       this.showList = []
-      this.showList.push.apply(this.showList, runList);
-      this.showList.push.apply(this.showList, tbdList);
-      this.showList.push.apply(this.showList, finList);
+      this.showList.push.apply(this.showList, runList)
+      this.showList.push.apply(this.showList, tbdList)
+      this.showList.push.apply(this.showList, finList)
+      this.showNumber = this.showList.length
       this.showList = this.showList.slice(this.pageSize*(page-1), this.pageSize*page)
     },
     transform (props) {
@@ -206,6 +212,9 @@ export default {
     },
     handleCheckedChange(types) {
       this.typesList = types
+      let checkedCount = types.length;
+      this.checkAll = checkedCount === this.subList.length;
+      this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length;
       this.showConf(this.typesList, this.rankList, 1)
     },
     handleRankChange(rank) {
@@ -214,6 +223,12 @@ export default {
     },
     handleCurrentChange(page) {
       this.showConf(this.typesList, this.rankList, page)
+    },
+    handleCheckAllChange() {
+      this.typesList = (this.checkList.length === this.subList.length) ? [] : this.subList.map((obj) => {return obj.sub}).join(",").split(',');
+      this.checkList = this.typesList
+      this.isIndeterminate = false
+      this.showConf(this.typesList, this.rankList, 1)
     },
     generateDBLP(name){
       return 'https://dblp.uni-trier.de/db/conf/' + name
@@ -270,6 +285,11 @@ export default {
   -webkit-transform-origin: center;
   transform-origin: center;
 }
+/deep/ .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
+  height: 6px;
+  top: 6px;
+}
+
 .boxes{
   width: 33%;
   margin-right: 0px;

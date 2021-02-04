@@ -3,8 +3,8 @@
   id: eurosys2021
   description: European Conference on Computer Systems
   link: https://2021.eurosys.org/
-  deadline: '2020-10-1 23:59:59'
-  abstract_deadline: '2020-10-9 23:59:59'
+  deadline: '2020-10-01 23:59:59'
+  abstract_deadline: '2020-10-09 23:59:59'
   timezone: AoE
   date: Apr 26–29, 2021
   place: Edinburgh, UK
