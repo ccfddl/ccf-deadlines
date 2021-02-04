@@ -5,11 +5,9 @@
 
 Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-Preview: [CCF-Deadlines](https://ccfddl.github.io/) **(No More Finding and Time Conversion on Your Own!)**.
+Preview: [CCF-Deadlines](https://ccfddl.github.io/)
+**No More Finding and Time Conversion on Your Own!**.
 
-Maintained by [@jacklightChen](https://github.com/jacklightChen) and [@0x4f5da2](https://github.com/0x4f5da2).
-
-Inspired by [ai-deadlines](https://aideadlin.es/?sub=ML,RO,CV).
 ## Add/Update a conference
 Contributions are welcomed and greatly appreciated! For further contribution and waterblowing, email [chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn) through your edu email address with wechatid to join the [CCFDDL](https://github.com/ccfddl) organization.
 
@@ -70,6 +68,11 @@ The matching table:
 | `AI`        | 人工智能                                                  |
 | `HI`        | 人机交互与普适计算                                        |
 | `MX`       | 交叉/综合/新兴                                            |
+
+## Contribution
+Maintained by [@jacklightChen](https://github.com/jacklightChen) and [@0x4f5da2](https://github.com/0x4f5da2).
+
+Inspired by [ai-deadlines](https://aideadlin.es/?sub=ML,RO,CV).
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines?ref=badge_large)
