@@ -30,7 +30,7 @@ Example file: conference/DB/sigmod.yml
   deadline: '2020-09-22 17:00:00'
   timezone: UTC-8
   date: Jun 20-25, 2021
-  place: Xi'an, Shaanxi, China
+  place: Xi'an, China
   sub: DB
   rank: A
   dblp: sigmod
@@ -42,15 +42,15 @@ Description of the fields:
 | `title`\*           | Short conference name, without year, uppercase                                                                                 |
 | `year`\*            | Year the conference is happening                                                                                      |
 | `id`\*              | conference name & year, lowercase                                                                                          |
-| `description`\*     | Description, or long name, better to add the session, i.e., The 15th XXX                                                                                           |
+| `description`\*     | Description, or long name, better to add the session, e.g., The 15th XXX                                                                                           |
 | `link`\*            | URL to the conference home page                                                                                       |
 | `deadline`\*        | Deadline, in the format of `yyyy-mm-dd hh:mm:ss`                                                                      |
 | `abstract_deadline` | Abstract deadline if applicable, optional                                                                                     |
 | `timezone`\*        | Timezone of deadline, currently support `UTC-12` ~ `UTC+12` & `AoE`                                                        |
-| `date`\*            | When the main conference is happening                                                                                      |
-| `place`\*           | Where the main conference is happening                                                                                     |
+| `date`\*            | When the main conference is happening, e.g., Jun 20-25, 2021                                                                                     |
+| `place`\*           | Where the main conference is happening, e.g., `city`, `country`                                                                                    |
 | `sub`\*             | The category that the conference is labeled by CCF. See the matching table below |
-| `rank`\*            | The level that the conference is ranked by CCF, i.e., `A`, `B`, `C`              |
+| `rank`\*            | The level that the conference is ranked by CCF, e.g., `A`, `B`, `C`              |
 | `dblp`\*            | The suffix in dblp url, e.g., `iccv` in https://dblp.uni-trier.de/db/conf/iccv               |
 | `note`              | Some comments on the conference, optional                                                                                       |
 
