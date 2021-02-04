@@ -1,0 +1,12 @@
+- title: ASPLOS
+  year: 2021
+  id: asplos21
+  description: International Conference on Architectural Support for Programming Languages and Operating Systems
+  link: https://asplos-conference.org/
+  deadline: '2020-08-21 23:59:59'
+  timezone: AoE
+  date: Apr 19–23, 2021
+  place: Virtual
+  sub: DS
+  rank: A
+  dblp: asplos

@@ -1,0 +1,12 @@
+- title: FAST
+  year: 2021
+  id: fast21
+  description: The 19th USENIX Conference on File and Storage Technologies
+  link: https://www.usenix.org/conference/fast21
+  deadline: '2020-09-24 23:59:59'
+  timezone: UTC-7
+  date: Feb 23–25, 2021
+  place: Virtual
+  sub: DS
+  rank: A
+  dblp: fast

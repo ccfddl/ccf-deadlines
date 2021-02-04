@@ -137,7 +137,7 @@ export default {
             if(doc[i].abstract_deadline) {
               let absTime = moment(doc[i].abstract_deadline + this.utcMap.get(doc[i].timezone))
               if(!doc[i].note) {
-                doc[i].note = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')
+                doc[i].note = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')+'.'
               }
             }
             // alert(ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z'))
