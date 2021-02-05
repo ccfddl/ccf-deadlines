@@ -68,7 +68,7 @@
             background
             small
             layout="prev, pager, next"
-            :page-size="5"
+            :page-size=pageSize
             @current-change="handleCurrentChange"
             :total=showNumber>
         </el-pagination>
@@ -93,7 +93,7 @@ export default {
       publicPath: '/',
       checkAll: true,
       isIndeterminate: false,
-      pageSize: 5,
+      pageSize: 10,
       checkList: [],
       subList: [],
       allconfList: [],
