@@ -23,7 +23,11 @@
       <el-table-column>
         <template slot-scope="scope">
           <div :class="{ 'conf-fin': scope.row.status === 'FIN' }">
-            <el-row class="conf-title"><a :href="generateDBLP(scope.row.dblp)">{{scope.row.title}}</a> {{scope.row.year}}</el-row>
+            <el-row class="conf-title">
+              <a :href="generateDBLP(scope.row.dblp)">{{scope.row.title}}</a> {{scope.row.year}}
+              <i v-if="scope.row.isLike===true" class="el-icon-star-on" style="color: #FBCA04" @click="handleClickIcon(scope.row, true)"/>
+              <i v-else class="el-icon-star-off" @click="handleClickIcon(scope.row, false)"/>
+            </el-row>
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
             <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.note"><b>NOTE:</b> {{scope.row.note}}</span></el-row>
@@ -102,7 +106,7 @@ export default {
       rankGroup: ['A', 'B', 'C'],
       typesList: [],
       rankList: ['A','B','C'],
-      input: ''
+      cachedLikes: [],
     }
   },
   methods: {
@@ -127,35 +131,42 @@ export default {
         const doc = yaml.load(response.body)
         let curTime = moment.tz(new Date(), tz)
         for (let i = 0; i < doc.length; i++) {
-          doc[i].subname = this.typeMap.get(doc[i].sub)
-          if (doc[i].deadline === 'TBD') {
-            doc[i].remain = 0
-            doc[i].status = 'TBD'
+          let curDoc = doc[i]
+          curDoc.subname = this.typeMap.get(curDoc.sub)
+          if (curDoc.deadline === 'TBD') {
+            curDoc.remain = 0
+            curDoc.status = 'TBD'
           } else {
-            if (doc[i].timezone === 'AoE') {
-              doc[i].timezone = 'UTC-12'
+            if (curDoc.timezone === 'AoE') {
+              curDoc.timezone = 'UTC-12'
             }
 
-            let ddlTime = moment(doc[i].deadline + this.utcMap.get(doc[i].timezone))
-            doc[i].localDDL = ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z')
-            doc[i].originDDL = doc[i].deadline + ' ' + doc[i].timezone
-            if(doc[i].abstract_deadline) {
-              let absTime = moment(doc[i].abstract_deadline + this.utcMap.get(doc[i].timezone))
-              if(!doc[i].note) {
-                doc[i].note = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')+'.'
+            let ddlTime = moment(curDoc.deadline + this.utcMap.get(curDoc.timezone))
+            curDoc.localDDL = ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z')
+            curDoc.originDDL = curDoc.deadline + ' ' + curDoc.timezone
+            if(curDoc.abstract_deadline) {
+              let absTime = moment(curDoc.abstract_deadline + this.utcMap.get(curDoc.timezone))
+              if(!curDoc.note) {
+                curDoc.note = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')+'.'
               }
             }
             // alert(ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z'))
             let diffTime = ddlTime.diff(curTime)
             if (diffTime <= 0) {
-              doc[i].remain = 0
-              doc[i].status = 'FIN'
+              curDoc.remain = 0
+              curDoc.status = 'FIN'
             } else {
-              doc[i].remain = diffTime
-              doc[i].status = 'RUN'
+              curDoc.remain = diffTime
+              curDoc.status = 'RUN'
+            }
+            // check cachedLikes
+            if(this.cachedLikes&&this.cachedLikes.indexOf(curDoc.id) >= 0) {
+              curDoc.isLike = true
+            }else {
+              curDoc.isLike = false
             }
           }
-          this.allconfList.push(doc[i])
+          this.allconfList.push(curDoc)
         }
         this.showConf(null, null, 1)
       }, () => {
@@ -181,9 +192,22 @@ export default {
       finList.sort((a, b) => (b.year === a.year ? 0 : a.year > b.year ? -1 : 1))
 
       this.showList = []
-      this.showList.push.apply(this.showList, runList)
-      this.showList.push.apply(this.showList, tbdList)
-      this.showList.push.apply(this.showList, finList)
+      let allList = []
+      let likesList = []
+      allList.push.apply(allList, runList)
+      allList.push.apply(allList, tbdList)
+      allList.push.apply(allList, finList)
+
+      for(let i=allList.length-1;i>=0;i--){
+        let curDoc = allList[i]
+        if(curDoc.isLike===true){
+          likesList.push(curDoc)
+          allList.splice(i,1)
+        }
+      }
+      likesList.reverse()
+      likesList.push.apply(likesList, allList)
+      this.showList = likesList
       this.showNumber = this.showList.length
       this.showList = this.showList.slice(this.pageSize*(page-1), this.pageSize*page)
     },
@@ -230,6 +254,20 @@ export default {
       this.isIndeterminate = false
       this.showConf(this.typesList, this.rankList, 1)
     },
+    handleClickIcon(record, judge) {
+      console.log(record)
+      if(judge === true) {
+        record.isLike = false
+        let index = this.cachedLikes.indexOf(record.id)
+        if(index > -1) this.cachedLikes.splice(index,1)
+        this.$ls.set('likes', Array.from(new Set(this.cachedLikes)))
+      }else {
+        record.isLike = true
+        this.cachedLikes.push(record.id)
+        this.$ls.set('likes', Array.from(new Set(this.cachedLikes)))
+      }
+      console.log(this.cachedLikes)
+    },
     generateDBLP(name){
       return 'https://dblp.uni-trier.de/db/conf/' + name
     },
@@ -243,9 +281,14 @@ export default {
       }else {
         return item.name
       }
+    },
+    loadCachedLikes() {
+      this.cachedLikes = this.$ls.get('likes')
+      if(!this.cachedLikes) this.cachedLikes = []
     }
   },
   mounted () {
+    this.loadCachedLikes()
     this.loadUTCMap()
     this.loadFile()
   }

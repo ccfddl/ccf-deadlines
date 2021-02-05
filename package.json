@@ -15,6 +15,7 @@
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.32",
     "vue": "^2.6.11",
+    "vue-ls": "^3.2.2",
     "vue-resource": "^1.5.1"
   },
   "devDependencies": {

@@ -7,6 +7,13 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 import VueCountdown from '@chenfengyuan/vue-countdown'
 Vue.component(VueCountdown.name, VueCountdown)
+import Storage from 'vue-ls'
+const options = {
+  namespace: 'vuejs__', // key prefix
+  name: 'ls', // name variable Vue.[ls] or this.[$ls],
+  storage: 'local', // storage name session, local, memory
+}
+Vue.use(Storage, options)
 Vue.config.productionTip = false
 
 new Vue({

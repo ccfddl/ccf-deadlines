@@ -5977,6 +5977,11 @@ open@^6.3.0:
   dependencies:
     is-wsl "^1.1.0"
 
+opencollective-postinstall@^2.0.2:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.3.tgz#7a0fff978f6dbfa4d006238fbac98ed4198c3259"
+  integrity sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==
+
 opener@^1.5.1:
   version "1.5.2"
   resolved "https://registry.npm.taobao.org/opener/download/opener-1.5.2.tgz#5d37e1f35077b9dcac4301372271afdeb2a13598"
@@ -8359,6 +8364,13 @@ vue-loader@^15.9.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-ls@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/vue-ls/-/vue-ls-3.2.2.tgz#c0178a027913e20e238bac8b9fa2ade2d69cce66"
+  integrity sha512-xros9Zheckv+8x9PerHvWe5SMYud0+ZlPAMrKWKNtDN/usMOKRoluj6kBZyQo6BxwpmiBL8/EjKMYjxmCNXOMg==
+  dependencies:
+    opencollective-postinstall "^2.0.2"
 
 vue-resource@^1.5.1:
   version "1.5.1"
