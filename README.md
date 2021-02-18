@@ -3,11 +3,11 @@
 [![Build Status](https://img.shields.io/github/workflow/status/ccfddl/ccf-deadlines/Deploy)](https://github.com/ccfddl/ccf-deadlines/commits/main)
 [![Open PRs](https://img.shields.io/github/issues-pr/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-Help researchers keep track of deadlines of [conferences recommended](.readme_assets/ccf_recommended.pdf) by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
+Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-Preview: 
+Preview: [Demo](https://ccfddl.github.io/)
 
-[![](.readme_assets/screenshot.png)](https://ccfddl.github.io/)
+[![](.readme_assets/screenshot.png)]()
 
 **No More Finding and Time Conversion on Your Own!**.
 
@@ -19,6 +19,7 @@ To add or update information:
 - Add/Update the yml file of conference/conf_type/conf_name.yml
 - Send a [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
+Tips: check [conferences recommended](.readme_assets/ccf_recommended.pdf) and review [statistics](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
 ## Conference Entry File
 Example file: conference/DB/sigmod.yml
 
