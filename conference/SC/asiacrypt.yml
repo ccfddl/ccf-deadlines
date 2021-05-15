@@ -1,0 +1,13 @@
+- title: ASIACRYPT
+  year: 2021
+  id: asiacrypt21
+  description: The Annual International Conference on the Theory and
+Application of Cryptology and Information Security 2021
+  link: https://asiacrypt.iacr.org/2021/
+  deadline: "2021-05-27 11:59:59"
+  timezone: UTC-12
+  date: December 5-9, 2021
+  place: Singapore
+  sub: SC
+  rank: B
+  dblp: asiacrypt

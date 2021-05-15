@@ -1,0 +1,12 @@
+- title: CRYPTO
+  year: 2021
+  id: crypto21
+  description: The International Cryptology Conference 2021
+  link: https://crypto.iacr.org/2021/
+  deadline: "2021-02-24 21:00:00"
+  timezone: UTC-12
+  date: August 15-19 2021
+  place: Virtual
+  sub: SC
+  rank: A
+  dblp: crypto
