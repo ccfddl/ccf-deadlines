@@ -10,3 +10,16 @@
   sub: DB
   rank: A
   dblp: vldb
+
+- title: VLDB
+  year: 2022
+  id: vldb22
+  description: The 48th International Conference on Very Large Data Bases
+  link: http://www.vldb.org/2022/
+  deadline: '2021-06-01 17:00:00'
+  timezone: UTC-7
+  date: September 05-09, 2022
+  place: Sydney, Australia
+  sub: DB
+  rank: A
+  dblp: vldb
