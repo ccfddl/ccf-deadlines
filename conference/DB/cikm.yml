@@ -10,3 +10,16 @@
   sub: DB
   rank: B
   dblp: cikm
+
+- title: CIKM
+  year: 2021
+  id: cikm21
+  description: The 30th ACM International Conference on Information and Knowledge Management
+  link: https://www.cikm2021.org/
+  deadline: '2020-05-26 23:59:59'
+  timezone: AoE
+  date: November 01-05, 2021
+  place: Queensland, Australia
+  sub: DB
+  rank: B
+  dblp: cikm
