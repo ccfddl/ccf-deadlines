@@ -1,0 +1,12 @@
+- title: ICDM
+  year: 2021
+  id: icdm21
+  description: The 21st IEEE International Conference on Data Mining
+  link: https://icdm2021.auckland.ac.nz/
+  deadline: '2021-06-12 14:59:00'
+  timezone: UTC+8
+  date: December 7-10, 2021
+  place: Auckland, New Zealand
+  sub: DB
+  rank: B
+  dblp: icdm
