@@ -1,12 +1,12 @@
 - title: BMVC
   year: 2021
   id: acml21
-  description: The British Machine Vision Conference
+  description: The 32th British Machine Vision Conference
   link: https://britishmachinevisionassociation.github.io/bmvc
   deadline: '2021-06-25 23:59:59'
   timezone: UTC-8
   date: November 22-25, 2021
-  place: Online
+  place: Virtual
   sub: AI
   rank: C
   dblp: bmvc
