@@ -1,7 +1,7 @@
 - title: NDSS
   year: 2022
   id: ndss22
-  description: The Network and Distributed System Security (NDSS) Symposium 202
+  description: The 29th Network and Distributed System Security (NDSS) Symposium
   link: https://www.ndss-symposium.org/ndss2022/
   deadline: "2021-05-21 23:59:59"
   timezone: UTC-12
