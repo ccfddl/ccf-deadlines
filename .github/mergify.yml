@@ -18,7 +18,6 @@ pull_request_rules:
       request_reviews:
         teams:
           - "maintainers"
-        random_count: 2
   - name: automatic merge for master when CI passes and 1 reviews
     conditions:
       - "#approved-reviews-by>=1"
