@@ -2,6 +2,7 @@ pull_request_rules:
   - name: say hi on new contribution
     conditions:
       - base=main
+      - label!=updateconf
     actions:
       comment:
         message: |
