@@ -11,7 +11,7 @@
 
 [![](.readme_assets/screenshot.png)]()
 
-**对麻烦的查找会议和转换时间说拜拜!**.
+**对麻烦的查找会议和转换时间说拜拜!**
 
 ## 增加/更新 会议
 欢迎一起帮忙维护会议的相关信息! 如想要进一步做贡献或吹水，可通过发送邮件给[chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn)，请使用edu邮箱并附上wechatid，加入 [CCFDDL](https://github.com/ccfddl) 组织。
@@ -76,9 +76,9 @@
 | `MX`       | 交叉/综合/新兴                                            |
 
 ## 贡献
-本项目由 [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl) 共同维护.
+本项目由 [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl) 共同维护。
 
-灵感来自于 [ai-deadlines](https://aideadlin.es/).
+灵感来自于 [ai-deadlines](https://aideadlin.es/)。
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines?ref=badge_large)

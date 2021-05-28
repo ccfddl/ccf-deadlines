@@ -11,7 +11,7 @@ Preview: [Demo](https://ccfddl.github.io/)
 
 [![](.readme_assets/screenshot.png)]()
 
-**No More Finding and Time Conversion on Your Own!**.
+**No More Finding and Time Conversion on Your Own!**
 
 ## Add/Update a conference
 Contributions are welcomed and greatly appreciated! For further contribution and waterblowing, email [chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn) through your edu email address with wechatid to join the [CCFDDL](https://github.com/ccfddl) organization.
