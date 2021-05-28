@@ -4,6 +4,7 @@
 [![Open PRs](https://img.shields.io/github/issues-pr/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/pulls)
 
 English | [简体中文](./README.zh-CN.md)
+
 Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
 Preview: [Demo](https://ccfddl.github.io/)
