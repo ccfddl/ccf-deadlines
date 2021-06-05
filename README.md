@@ -3,13 +3,15 @@
 [![Build Status](https://img.shields.io/github/workflow/status/ccfddl/ccf-deadlines/Deploy)](https://github.com/ccfddl/ccf-deadlines/commits/main)
 [![Open PRs](https://img.shields.io/github/issues-pr/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/pulls)
 
+English | [简体中文](./README.zh-CN.md)
+
 Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
 Preview: [Demo](https://ccfddl.github.io/)
 
 [![](.readme_assets/screenshot.png)]()
 
-**No More Finding and Time Conversion on Your Own!**.
+**No More Finding and Time Conversion on Your Own!**
 
 ## Add/Update a conference
 Contributions are welcomed and greatly appreciated! For further contribution and waterblowing, email [chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn) through your edu email address with wechatid to join the [CCFDDL](https://github.com/ccfddl) organization.
@@ -62,21 +64,21 @@ The matching table:
 
 | `sub` | Category name |
 | ----------- | --------------------------------------------------------- |
-| `DS`        | 计算机体系结构/并行与分布计算/存储系统                    |
-| `NW`        | 计算机网络                                                |
-| `SC`        | 网络与信息安全                                            |
-| `SE`        | 软件工程/系统软件/程序设计语言                            |
-| `DB`        | 数据库/数据挖掘/内容检索                                  |
-| `CT`        | 计算机科学理论                                            |
-| `CG`        | 计算机图形学与多媒体                                      |
-| `AI`        | 人工智能                                                  |
-| `HI`        | 人机交互与普适计算                                        |
-| `MX`       | 交叉/综合/新兴                                            |
+| `DS`        | Computer Architecture/Parallel Programming/Storage Technology                   |
+| `NW`        | Network System                                              |
+| `SC`        | Network and System Security                                           |
+| `SE`        | Software Engineering/Operating System/Programming Language Design                            |
+| `DB`        | Database/Data Mining/Information Retrieval                                  |
+| `CT`        | Computing Theory                                    |
+| `CG`        | Graphics                                      |
+| `AI`        | Artificial Intelligence                                                  |
+| `HI`        | Computer-Human Interaction                                       |
+| `MX`       | Interdiscipline/Mixture/Emerging                                            |
 
 ## Contribution
 Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl).
 
-Inspired by [ai-deadlines](https://aideadlin.es/?sub=ML,RO,CV).
+Inspired by [ai-deadlines](https://aideadlin.es/).
 
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines?ref=badge_large)

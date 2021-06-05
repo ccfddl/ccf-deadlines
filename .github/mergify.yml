@@ -2,6 +2,7 @@ pull_request_rules:
   - name: say hi on new contribution
     conditions:
       - base=main
+      - label!=updateconf
     actions:
       comment:
         message: |
@@ -12,6 +13,7 @@ pull_request_rules:
   - name: ask the maintainer team to review PR
     conditions:
       - label!=invalid
+      - "#approved-reviews-by<1"
     actions:
       request_reviews:
         teams:
@@ -23,9 +25,9 @@ pull_request_rules:
       - base=main
     actions:
       merge:
-        method: merge
+        method: squash
       label:
-        add: ['status/LGT1']
+        add: ['ready-to-merge']
       comment:
         message: |
           Great job!

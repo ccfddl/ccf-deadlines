@@ -10,3 +10,16 @@
   sub: DB
   rank: A
   dblp: icde
+
+- title: ICDE
+  year: 2022
+  id: icde22
+  description: The 38th IEEE International Conference on Data Engineering
+  link: https://icde2022.ieeecomputer.my/important-dates/
+  deadline: '2021-07-21 23:59:59'
+  timezone: UTC-8
+  date: May 9-12, 2022
+  place: Kuala Lumpur, Malaysia
+  sub: DB
+  rank: A
+  dblp: icde
