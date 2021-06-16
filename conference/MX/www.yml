@@ -1,4 +1,18 @@
 - title: WWW
+  year: 2021
+  id: www21
+  description: The 30th International World Wide Web Conferences
+  link: https://www2021.thewebconf.org/
+  abstract_deadline: '2020-10-12 23:59:59'
+  deadline: '2020-10-19 23:59:59'
+  timezone: AoE
+  date: April 19-23, 2021
+  place: Ljubljana, Slovenia
+  sub: MX
+  rank: A
+  dblp: www
+  
+- title: WWW
   year: 2022
   id: www22
   description: The 31st International World Wide Web Conference
