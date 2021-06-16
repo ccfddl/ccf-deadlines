@@ -10,3 +10,16 @@
   sub: DB
   rank: A
   dblp: sigmod
+
+- title: SIGMOD
+  year: 2022
+  id: sigmod22
+  description: ACM Conference on Management of Data
+  link: http://2022.sigmod.org/
+  deadline: '2021-07-02 17:00:00'
+  timezone: UTC-8
+  date: June 12-17, 2022
+  place: Philadelphia, PA, USA
+  sub: DB
+  rank: A
+  dblp: sigmod
