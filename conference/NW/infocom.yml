@@ -11,3 +11,17 @@
   sub: NW
   rank: A
   dblp: infocom
+
+- title: INFOCOM
+  year: 2022
+  id: infocom22
+  description: The 41th IEEE International Conference on Computer Communications
+  link: https://infocom2022.ieee-infocom.org/
+  abstract_deadline: '2021-07-24 23:59:59'
+  deadline: '2021-07-31 23:59:59'
+  timezone: UTC-4
+  date: May 2-5, 2022
+  place: Virtual
+  sub: NW
+  rank: A
+  dblp: infocom
