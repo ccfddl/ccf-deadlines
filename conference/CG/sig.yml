@@ -1,0 +1,13 @@
+- title: ACM SIGGRAPH
+  year: 2021
+  id: sig21
+  description: THE 48TH INTERNATIONAL CONFERENCE & EXHIBITION ON COMPUTER GRAPHICS & INTERACTIVE TECHNIQUES
+  link: https://s2021.siggraph.org/
+  deadline: '2021-01-28 22:00:00'
+  abstract_deadline: '2021-01-27 22:00:00'
+  timezone: UTC+0
+  date: AUGUST 9-13, 2021
+  place: VIRTUAL
+  sub: CG
+  rank: A
+  dblp: siggraph
