@@ -11,3 +11,17 @@
   rank: B
   dblp: ndss
   note: '2 review cycles'
+
+- title: NDSS
+  year: 2022
+  id: ndss22fall
+  description: The 29th Network and Distributed System Security (NDSS) Symposium
+  link: https://www.ndss-symposium.org/ndss2022/
+  deadline: "2021-07-23 23:59:59"
+  timezone: UTC-12
+  date: 27 February – 3 March, 2022
+  place: San Diego, California
+  sub: SC
+  rank: B
+  dblp: ndss
+  note: '2 review cycles'
