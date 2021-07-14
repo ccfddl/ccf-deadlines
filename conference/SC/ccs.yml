@@ -11,3 +11,31 @@
   rank: A
   dblp: ccs
   note: '2 review cycles'
+
+- title: CCS
+  year: 2021
+  id: ccs21
+  description: The 28th ACM Conference on Computer and Communications Security
+  link: https://www.sigsac.org/ccs/CCS2021/
+  deadline: "2021-01-20 23:59:59"
+  timezone: UTC-12
+  date: November 15-19, 2021
+  place: Seoul, South Korea
+  sub: SC
+  rank: A
+  dblp: ccs
+  note: '2 review cycles'
+
+- title: CCS
+  year: 2021
+  id: ccs21spring
+  description: The 28th ACM Conference on Computer and Communications Security
+  link: https://www.sigsac.org/ccs/CCS2021/
+  deadline: "2021-05-06 23:59:59"
+  timezone: UTC-12
+  date: November 15-19, 2021
+  place: Seoul, South Korea
+  sub: SC
+  rank: A
+  dblp: ccs
+  note: '2 review cycles'
