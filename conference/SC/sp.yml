@@ -1,12 +1,12 @@
 - title: S&P
   year: 2022
-  id: sp22fall
+  id: sp22
   description: The 43rd IEEE Symposium on Security and Privacy
   link: https://www.ieee-security.org/TC/SP2022/
   deadline: "2021-08-19 23:59:59"
   timezone: UTC-12
   date: May 22-26, 2022
-  place: San Francisco, California
+  place: None
   sub: SC
   rank: A
   dblp: sp
@@ -20,7 +20,7 @@
   deadline: "2021-12-02 23:59:59"
   timezone: UTC-12
   date: May 22-26, 2022
-  place: San Francisco, California
+  place: None
   sub: SC
   rank: A
   dblp: sp
