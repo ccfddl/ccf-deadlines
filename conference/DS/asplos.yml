@@ -12,12 +12,11 @@
       timezone: AoE
       date: April 19–23, 2021
       place: Virtual
-
     - year: 2022
-        id: asplos22
-        link: https://asplos-conference.org/
-        timeline:
-          - deadline: '2021-08-06 23:59:59'
-        timezone: AoE
-        date: Feb 28-March 4, 2022
-        place: Virtual
+      id: asplos22
+      link: https://asplos-conference.org/
+      timeline:
+        - deadline: '2021-08-06 23:59:59'
+      timezone: AoE
+      date: Feb 28-March 4, 2022
+      place: Virtual

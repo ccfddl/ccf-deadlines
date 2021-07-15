@@ -13,7 +13,6 @@
       timezone: UTC-8
       date: June 20-25, 2021
       place: Xi'an, China
-
     - year: 2022
       id: sigmod22
       link: http://2022.sigmod.org/

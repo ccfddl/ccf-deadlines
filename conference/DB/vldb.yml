@@ -23,23 +23,22 @@
       timezone: UTC-7
       date: August 16-20, 2021
       place: Copenhagen, Denmark
-
     - year: 2022
-        id: vldb22
-        link: http://www.vldb.org/2022/
-        timeline:
-          - deadline: '2021-04-01 17:00:00'
-          - deadline: '2021-05-01 17:00:00'
-          - deadline: '2021-06-01 17:00:00'
-          - deadline: '2021-07-01 17:00:00'
-          - deadline: '2021-08-01 17:00:00'
-          - deadline: '2021-09-01 17:00:00'
-          - deadline: '2021-10-01 17:00:00'
-          - deadline: '2021-11-01 17:00:00'
-          - deadline: '2021-12-01 17:00:00'
-          - deadline: '2022-01-01 17:00:00'
-          - deadline: '2022-02-01 17:00:00'
-          - deadline: '2022-03-01 17:00:00'
-        timezone: UTC-7
-        date: September 05-09, 2022
-        place: Sydney, Australia
+      id: vldb22
+      link: http://www.vldb.org/2022/
+      timeline:
+        - deadline: '2021-04-01 17:00:00'
+        - deadline: '2021-05-01 17:00:00'
+        - deadline: '2021-06-01 17:00:00'
+        - deadline: '2021-07-01 17:00:00'
+        - deadline: '2021-08-01 17:00:00'
+        - deadline: '2021-09-01 17:00:00'
+        - deadline: '2021-10-01 17:00:00'
+        - deadline: '2021-11-01 17:00:00'
+        - deadline: '2021-12-01 17:00:00'
+        - deadline: '2022-01-01 17:00:00'
+        - deadline: '2022-02-01 17:00:00'
+        - deadline: '2022-03-01 17:00:00'
+      timezone: UTC-7
+      date: September 05-09, 2022
+      place: Sydney, Australia

@@ -15,11 +15,11 @@
       place: Ljubljana, Slovenia
 
     - year: 2022
-        id: www22
-        link: https://www2022.thewebconf.org/
-        timeline:
-          - abstract_deadline: '2021-10-14 23:59:59'
-            deadline: '2021-10-21 23:59:59'
-        timezone: AoE
-        date: April 25-29, 2022
-        place: Lyon, France
+      id: www22
+      link: https://www2022.thewebconf.org/
+      timeline:
+        - abstract_deadline: '2021-10-14 23:59:59'
+          deadline: '2021-10-21 23:59:59'
+      timezone: AoE
+      date: April 25-29, 2022
+      place: Lyon, France

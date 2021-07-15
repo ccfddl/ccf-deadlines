@@ -13,13 +13,12 @@
       timezone: UTC-4
       date: May 10-13, 2021
       place: Virtual
-
     - year: 2022
-        id: infocom22
-        link: https://infocom2022.ieee-infocom.org/
-        timeline:
-          - abstract_deadline: '2021-07-24 23:59:59'
-            deadline: '2021-07-31 23:59:59'
-        timezone: UTC-4
-        date: May 2-5, 2022
-        place: Virtual
+      id: infocom22
+      link: https://infocom2022.ieee-infocom.org/
+      timeline:
+        - abstract_deadline: '2021-07-24 23:59:59'
+          deadline: '2021-07-31 23:59:59'
+      timezone: UTC-4
+      date: May 2-5, 2022
+      place: Virtual

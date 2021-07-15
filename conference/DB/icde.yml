@@ -12,15 +12,14 @@
       timezone: AoE
       date: April 19-22, 2021
       place: Virtual
-
     - year: 2022
-        id: icde22
-        link: https://icde2022.ieeecomputer.my/important-dates/
-        timeline:
-          - deadline: '2021-07-21 23:59:59'
-            comment: 'first round'
-          - deadline: '2021-11-17 23:59:59'
-            comment: 'second round'
-        timezone: UTC-8
-        date: May 9-12, 2022
-        place: Kuala Lumpur, Malaysia
+      id: icde22
+      link: https://icde2022.ieeecomputer.my/important-dates/
+      timeline:
+        - deadline: '2021-07-21 23:59:59'
+          comment: 'first round'
+        - deadline: '2021-11-17 23:59:59'
+          comment: 'second round'
+      timezone: UTC-8
+      date: May 9-12, 2022
+      place: Kuala Lumpur, Malaysia
