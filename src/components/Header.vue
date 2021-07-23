@@ -3,6 +3,7 @@
     <el-row>
       <a href="/" class="title">CCF Conference Deadlines</a>
       <github-button style="padding-left: 5px"></github-button>
+      <span v-if="showLatestConf" style="color:#fd3c95;font-weight: bold;">Latest: {{this.showStr}} !!!</span>
     </el-row>
     <el-row class="subtitle">
       Countdowns to CCF conference deadlines. To add/edit a conference, <a style="color: #666666" href="https://github.com/ccfddl/ccf-deadlines/pulls">send a pull request.</a>
@@ -14,7 +15,28 @@
 import GithubButton from './GithubButton'
 export default {
   name: 'Header',
-  components: {GithubButton}
+  components: {GithubButton},
+  data() {
+    return {
+      showLatestConf: false,
+      showStr: ''
+    }
+  },
+  mounted() {
+    this.$http.get('https://api.github.com/repos/ccfddl/ccf-deadlines/commits?page=1&per_page=10').then(response => {
+      let len = response.body.length
+
+      for(let i = 0; i < len; i++) {
+        let str = response.body[i].commit.message
+        let strArr = str.split(' ')
+        if(strArr[0] === 'Update'){
+          this.showStr = strArr[0] + " " + strArr[1] + " " + strArr[2]
+          this.showLatestConf = true
+          break;
+        }
+      }
+    })
+  },
 }
 </script>
 

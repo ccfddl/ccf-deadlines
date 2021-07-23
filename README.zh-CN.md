@@ -27,36 +27,89 @@
 
 ```
 - title: SIGMOD
-  year: 2021
-  id: sigmod21
   description: ACM Conference on Management of Data
-  link: http://2021.sigmod.org/
-  deadline: '2020-09-22 17:00:00'
-  timezone: UTC-8
-  date: Jun 20-25, 2021
-  place: Xi'an, China
   sub: DB
   rank: A
   dblp: sigmod
+  confs:
+    - year: 2022
+      id: sigmod22
+      link: http://2022.sigmod.org/
+      timeline:
+        - deadline: '2020-07-02 17:00:00'
+          comment: 'first round'
+        - deadline: '2020-09-22 17:00:00'
+          comment: 'second round'
+      timezone: UTC-8
+      date: June 12-17, 2022
+      place: Philadelphia, PA, USA
 ```
 字段描述:
 
-| 字段名         | 描述                                                                                                           |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `title`\*           | 缩写的会议名称, 不需要年份, 大写                                                                             |
-| `year`\*            | 会议的年份                                                                                      |
-| `id`\*              | 会议名字和年份, 小写                                                                                          |
-| `description`\*     | 介绍, 或全称, 可以的话加上第几届, 示例, The 15th XXX                                                                                           |
-| `link`\*            | 会议首页的URL                                                                                       |
-| `deadline`\*        | 截稿日期, 格式为 `yyyy-mm-dd hh:mm:ss` or `TBD`                                                                     |
-| `abstract_deadline` | Abstract的截稿日期, 可选填                                                                                   |
-| `timezone`\*        | 截稿日期的时区, 目前支持 `UTC-12` ~ `UTC+12` & `AoE`                                                        |
-| `date`\*            | 会议举办的日期, 示例, Mar 12-16, 2021                                                                                     |
-| `place`\*           | 会议举办的地点, 示例, `city, country`                                                                                    |
-| `sub`\*             | 会议在CCF中被标注的类别, 可参考下面的辅助文档 |
-| `rank`\*            | 会议在CCF中被标注的登记, 示例, `A`, `B`, `C`              |
-| `dblp`\*            | 会议在dblp的URL的后缀, 示例, `iccv` in https://dblp.uni-trier.de/db/conf/iccv               |
-| `note`              | 额外的一些辅助信息, 可选填                                                                                     |
+<table>
+   <tr>
+      <th colspan="3">字段名</th>
+      <th>描述</th>
+   </tr>
+   <tr>
+      <td colspan="3"><code>title</code>*</td>
+      <td>缩写的会议名称, 不需要年份, 大写</td>
+   </tr>
+   <tr>
+      <td colspan="3"><code>description</code>*</td>
+      <td>介绍, 或全称, 无需第几届</td>
+   </tr>
+   <tr>
+      <td colspan="3"><code>sub</code>*</td>
+      <td>会议在CCF中被标注的类别, 可参考下面的辅助文档</td>
+   </tr>
+   <tr>
+      <td colspan="3"><code>rank</code>*</td>
+      <td>会议在CCF中被标注的等级, 示例, <code>A</code>, <code>B</code>, <code>C</code></td>
+   </tr>
+   <tr>
+      <td colspan="3"><code>dblp</code>*</td>
+      <td>会议在dblp的URL的后缀, 示例, <code>iccv</code> in https://dblp.uni-trier.de/db/conf/iccv</td>
+   </tr>
+   <tr>
+      <td rowspan="9"><code>confs</code></td>
+      <td colspan="2"><code>year</code>*</td>
+      <td>会议的年份</td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>id</code>*</td>
+      <td>会议名字和年份, 小写</td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>link</code>*</td>
+      <td>会议首页的URL</td>
+   </tr>
+   <tr>
+      <td rowspan="3"><code>timeline</code>*</td>
+      <td><code>abstract_deadline</code></td>
+      <td>Abstract的截稿日期, 可选填</td>
+   </tr>
+   <tr>
+      <td><code>deadline</code>*</td>
+      <td>截稿日期, 格式为 <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
+   </tr>
+   <tr>
+      <td><code>comment</code></td>
+      <td>额外的一些辅助信息, 可选填</td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>timezone</code>*</td>
+      <td>截稿日期的时区, 目前支持 <code>UTC-12</code> ~ <code>UTC+12</code> & <code>AoE</code></td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>date</code>*</td>
+      <td>会议举办的日期, 示例, Mar 12-16, 2021</td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>place</code>*</td>
+      <td>会议举办的地点, 示例, <code>city, country</code></td>
+   </tr>
+</table>
 
 带星标(*)的字段是必填项。
 
