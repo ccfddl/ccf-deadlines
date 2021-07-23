@@ -1,12 +1,14 @@
 - title: ACML
-  year: 2021
-  id: acml21
-  description: The 13th Asian Conference on Machine Learning
-  link: http://www.acml-conf.org/2021/
-  deadline: '2021-06-25 23:59:00'
-  timezone: UTC-7
-  date: November 17-19, 2021
-  place: Virtual
+  description: Asian Conference on Machine Learning
   sub: AI
   rank: C
   dblp: acml
+  confs:
+    - year: 2021
+      id: acml21
+      link: http://www.acml-conf.org/2021/
+      timeline:
+        - deadline: '2021-06-25 23:59:59'
+      timezone: UTC-7
+      date: November 17-19, 2021
+      place: Virtual

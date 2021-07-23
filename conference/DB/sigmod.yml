@@ -1,25 +1,26 @@
 - title: SIGMOD
-  year: 2021
-  id: sigmod21
   description: ACM Conference on Management of Data
-  link: http://2021.sigmod.org/
-  deadline: '2020-09-22 17:00:00'
-  timezone: UTC-8
-  date: June 20-25, 2021
-  place: Xi'an, China
   sub: DB
   rank: A
   dblp: sigmod
-
-- title: SIGMOD
-  year: 2022
-  id: sigmod22
-  description: ACM Conference on Management of Data
-  link: http://2022.sigmod.org/
-  deadline: '2021-09-15 17:00:00'
-  timezone: UTC-8
-  date: June 12-17, 2022
-  place: Philadelphia, PA, USA
-  sub: DB
-  rank: A
-  dblp: sigmod
+  confs:
+    - year: 2021
+      id: sigmod21
+      link: http://2021.sigmod.org/
+      timeline:
+        - deadline: '2020-09-22 17:00:00'
+          comment: 'second round'
+      timezone: UTC-8
+      date: June 20-25, 2021
+      place: Xi'an, China
+    - year: 2022
+      id: sigmod22
+      link: http://2022.sigmod.org/
+      timeline:
+        - deadline: '2020-07-02 17:00:00'
+          comment: 'first round'
+        - deadline: '2020-09-22 17:00:00'
+          comment: 'second round'
+      timezone: UTC-8
+      date: June 12-17, 2022
+      place: Philadelphia, PA, USA

@@ -1,12 +1,14 @@
 - title: ICTAI
-  year: 2021
-  id: ictai21
-  description: 33rd International Conference on Tools with Artificial Intellignce
-  link: https://ictai.computer.org/
-  deadline: '2021-06-20 23:59:00'
-  timezone: UTC-7
-  date: November 01-03, 2021
-  place: Washington DC, USA
+  description: International Conference on Tools with Artificial Intellignce
   sub: AI
   rank: C
   dblp: ictai
+  confs:
+    - year: 2021
+      id: ictai21
+      link: https://ictai.computer.org/
+      timeline:
+        - deadline: '2021-06-20 23:59:00'
+      timezone: UTC-7
+      date: November 01-03, 2021
+      place: Washington DC, USA

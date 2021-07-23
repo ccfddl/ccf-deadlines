@@ -1,12 +1,14 @@
 - title: ICRA
-  year: 2022
-  id: icra22
   description: IEEE International Conference on Robotics and Automation
-  link: https://www.icra2022.org/
-  deadline: '2021-09-15 02:59:00'
-  timezone: UTC-8
-  date: May 23-27, 2022
-  place: Philadelphia (PA), USA
   sub: AI
   rank: B
   dblp: icra
+  confs:
+    - year: 2022
+      id: icra22
+      link: https://www.icra2022.org/
+      timeline:
+        - deadline: '2021-09-15 02:59:00'
+      timezone: UTC-8
+      date: May 23-27, 2022
+      place: Philadelphia (PA), USA
