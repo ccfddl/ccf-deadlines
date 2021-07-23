@@ -1,0 +1,15 @@
+- title: ICSE
+  description: 44th International Conference on Software Engineering
+  sub: SE
+  rank: A
+  dblp: icse
+  confs:
+    - year: 2022
+      id: icse22
+      link: https://conf.researchr.org/home/icse-2022
+      timeline:
+        - abstract_deadline: '2021-08-27 23:59:59'
+          deadline: '2021-9-3 23:59:59'
+      timezone: AoE
+      date: June 23-25, 2020
+      place: Pittsburgh, PA, USA
