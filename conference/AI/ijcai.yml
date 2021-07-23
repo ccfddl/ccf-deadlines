@@ -1,0 +1,19 @@
+- title: IJCAI # conference name (uppercase)
+  description: International Joint Conference on Artificial Intelligence # description, no session
+  sub: AI # belonging types in types.yml
+  rank: A # rank in CCF recommendation
+  dblp: ijcai # https://dblp.uni-trier.de/db/conf/ijcai suffix in dblp url
+  confs: 
+    - year: 2021 # year
+      id: ijcai21 # conference name & year lowercase
+      link: https://ijcai-21.org/ # website url
+      timeline: # support multiple rounds
+        - abstract_deadline: '2021-01-13 23:59:59' # optional
+          deadline: '2021-01-20 23:59:59' # required and you can fill TBD if not decided
+          comment: 'first round' # optional
+        - abstract_deadline: '2021-01-13 23:59:59' # multiple rounds example
+          deadline: '2021-01-20 23:59:59'
+          comment: 'second round'
+      timezone: UTC-12 # timezone support UTC-12 ~ UTC+12 & AoE
+      date: August 19-26, 2021 # main conference date
+      place: Virtual # conference place
