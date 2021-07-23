@@ -8,7 +8,7 @@
       id: acml21
       link: http://www.acml-conf.org/2021/
       timeline:
-        - deadline: '2021-06-25 23:59:00'
+        - deadline: '2021-06-25 23:59:59'
       timezone: UTC-7
       date: November 17-19, 2021
       place: Virtual
