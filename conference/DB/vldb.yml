@@ -1,25 +1,45 @@
 - title: VLDB
-  year: 2021
-  id: vldb21
-  description: The 47th International Conference on Very Large Data Bases
-  link: http://www.vldb.org/2021/
-  deadline: '2021-03-01 17:00:00'
-  timezone: UTC-7
-  date: August 16-20, 2021
-  place: Copenhagen, Denmark
+  description: International Conference on Very Large Data Bases
   sub: DB
   rank: A
   dblp: vldb
+  confs:
+    - year: 2021
+      id: vldb21
+      link: http://www.vldb.org/2021/
+      timeline:
+        - deadline: '2020-04-01 17:00:00'
+        - deadline: '2020-05-01 17:00:00'
+        - deadline: '2020-06-01 17:00:00'
+        - deadline: '2020-07-01 17:00:00'
+        - deadline: '2020-08-01 17:00:00'
+        - deadline: '2020-09-01 17:00:00'
+        - deadline: '2020-10-01 17:00:00'
+        - deadline: '2020-11-01 17:00:00'
+        - deadline: '2020-12-01 17:00:00'
+        - deadline: '2021-01-01 17:00:00'
+        - deadline: '2021-02-01 17:00:00'
+        - deadline: '2021-03-01 17:00:00'
+      timezone: UTC-7
+      date: August 16-20, 2021
+      place: Copenhagen, Denmark
 
-- title: VLDB
-  year: 2022
-  id: vldb22
-  description: The 48th International Conference on Very Large Data Bases
-  link: http://www.vldb.org/2022/
-  deadline: '2021-08-01 17:00:00'
-  timezone: UTC-7
-  date: September 05-09, 2022
-  place: Sydney, Australia
-  sub: DB
-  rank: A
-  dblp: vldb
+    - year: 2022
+        id: vldb22
+        link: http://www.vldb.org/2022/
+        timeline:
+          - deadline: '2021-04-01 17:00:00'
+          - deadline: '2021-05-01 17:00:00'
+          - deadline: '2021-06-01 17:00:00'
+          - deadline: '2021-07-01 17:00:00'
+          - deadline: '2021-08-01 17:00:00'
+          - deadline: '2021-09-01 17:00:00'
+          - deadline: '2021-10-01 17:00:00'
+          - deadline: '2021-11-01 17:00:00'
+          - deadline: '2021-12-01 17:00:00'
+          - deadline: '2022-01-01 17:00:00'
+          - deadline: '2022-02-01 17:00:00'
+          - deadline: '2022-03-01 17:00:00'
+        timezone: UTC-7
+        date: September 05-09, 2022
+        place: Sydney, Australia

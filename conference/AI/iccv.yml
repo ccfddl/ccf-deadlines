@@ -1,12 +1,14 @@
 - title: ICCV
-  year: 2021
-  id: iccv21
-  description: The 18th IEEE International Conference on Computer Vision
-  link: http://iccv2021.thecvf.com/home/
-  deadline: '2021-03-17 23:59:59'
-  timezone: UTC-7
-  date: October 10-17, 2021
-  place: Montreal
+  description: IEEE International Conference on Computer Vision
   sub: AI
   rank: A
   dblp: iccv
+  confs:
+    - year: 2021
+      id: iccv21
+      link: http://iccv2021.thecvf.com/home/
+      timeline:
+        - deadline: '2021-03-17 23:59:59'
+      timezone: UTC-7
+      date: October 10-17, 2021
+      place: Montreal

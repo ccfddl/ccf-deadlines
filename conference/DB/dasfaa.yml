@@ -1,12 +1,14 @@
 - title: DASFAA
-  year: 2021
-  id: dasfaa21
-  description: The 26th Database Systems for Advanced Applications
-  link: http://dm.iis.sinica.edu.tw/DASFAA2021/
-  deadline: '2020-10-28 23:59:59'
-  timezone: UTC-7
-  date: April 11-14, 2021
-  place: Taipei, China
+  description: Database Systems for Advanced Applications
   sub: DB
   rank: B
   dblp: dasfaa
+  confs:
+    - year: 2021
+      id: dasfaa21
+      link: http://dm.iis.sinica.edu.tw/DASFAA2021/
+      timeline:
+        - deadline: '2020-10-28 23:59:59'
+      timezone: UTC-7
+      date: April 11-14, 2021
+      place: Taipei, China

@@ -1,12 +1,14 @@
 - title: EDBT
-  year: 2022
-  id: edbt22
-  description: The 25th International Conference on Extending Database Technology
-  link: https://conferences.inf.ed.ac.uk/edbticdt2022/
-  deadline: '2021-10-01 23:59:59'
-  timezone: AoE
-  date: Mar 29-April 01, 2022
-  place: Edinburgh, UK
+  description: International Conference on Extending Database Technology
   sub: DB
   rank: B
   dblp: edbt
+  confs:
+    - year: 2022
+      id: edbt22
+      link: https://conferences.inf.ed.ac.uk/edbticdt2022/
+      timeline:
+        - deadline: '2021-10-01 23:59:59'
+      timezone: AoE
+      date: Mar 29-April 01, 2022
+      place: Edinburgh, UK

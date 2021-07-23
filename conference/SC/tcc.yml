@@ -1,12 +1,14 @@
 - title: TCC
-  year: 2021
-  id: tcc21
-  description: The 19th Theory of Cryptography Conference
-  link: https://tcc.iacr.org/2021/
-  deadline: "2021-05-25 21:00:00"
-  timezone: UTC-12
-  date: Nov 8 , 2021
-  place: Raleigh, United States 
+  description: Theory of Cryptography Conference
   sub: SC
   rank: B
   dblp: tcc
+  confs:
+    - year: 2021
+      id: tcc21
+      link: https://tcc.iacr.org/2021/
+      timeline:
+        - deadline: '2021-05-25 21:00:00'
+      timezone: UTC-12
+      date: Nov 8, 2021
+      place: Raleigh, United States

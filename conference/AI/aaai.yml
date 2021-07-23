@@ -1,13 +1,15 @@
 - title: AAAI
-  year: 2022
-  id: aaai22
-  description: The 36th AAAI Conference on Artificial Intelligence (AAAI-22)
-  link: https://aaai.org/Conferences/AAAI-22/
-  abstract_deadline: '2021-08-30 23:59'
-  deadline: '2021-09-08 23:59'
-  timezone: UTC-12
-  date: February 22 - March 1, 2022
-  place: Vancouver, British Columbia, Canada
+  description: AAAI Conference on Artificial Intelligence
   sub: AI
   rank: A
   dblp: aaai
+  confs:
+    - year: 2022
+      id: aaai22
+      link: https://aaai.org/Conferences/AAAI-22/
+      timeline:
+        - abstract_deadline: '2021-08-30 23:59'
+          deadline: '2021-09-08 23:59'
+      timezone: UTC-12
+      date: February 22 - March 1, 2022
+      place: Vancouver, British Columbia, Canada

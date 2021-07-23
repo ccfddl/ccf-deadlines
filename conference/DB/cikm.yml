@@ -1,25 +1,23 @@
 - title: CIKM
-  year: 2020
-  id: cikm20
-  description: The 29th ACM International Conference on Information and Knowledge Management
-  link: https://www.cikm2020.org/
-  deadline: '2020-05-01 23:59:59'
-  timezone: UTC-12
-  date: October 19-23, 2021
-  place: Galway, Ireland
+  description: ACM International Conference on Information and Knowledge Management
   sub: DB
   rank: B
   dblp: cikm
+  confs:
+    - year: 2020
+      id: cikm20
+      link: https://www.cikm2020.org/
+      timeline:
+        - deadline: '2020-05-01 23:59:59'
+      timezone: UTC-12
+      date: October 19-23, 2021
+      place: Galway, Ireland
 
-- title: CIKM
-  year: 2021
-  id: cikm21
-  description: The 30th ACM International Conference on Information and Knowledge Management
-  link: https://www.cikm2021.org/
-  deadline: '2021-05-26 23:59:59'
-  timezone: AoE
-  date: November 01-05, 2021
-  place: Queensland, Australia
-  sub: DB
-  rank: B
-  dblp: cikm
+    - year: 2021
+      id: cikm21
+      link: https://www.cikm2021.org/
+      timeline:
+        - deadline: '2021-05-26 23:59:59'
+      timezone: AoE
+      date: November 01-05, 2021
+      place: Queensland, Australia

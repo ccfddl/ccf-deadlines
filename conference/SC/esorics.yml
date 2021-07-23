@@ -1,13 +1,15 @@
 - title: ESORICS
-  year: 2021
-  id: esorics21
-  description: The 26th European Symposium on Research in Computer Security 
-  link: https://esorics2021.athene-center.de/
-  deadline: "2021-05-12 23:59:59"
-  timezone: UTC+1
-  date: October 04 – 08, 2021
-  place: Darmstadt, Germany 
+  description: European Symposium on Research in Computer Security
   sub: SC
   rank: B
   dblp: esorics
-  note: 'Abstract deadline on May 05'
+  confs:
+    - year: 2021
+      id: esorics21
+      link: https://esorics2021.athene-center.de/
+      timeline:
+        - deadline: '2021-05-12 23:59:59'
+          comment: 'Abstract deadline on May 05'
+      timezone: UTC+1
+      date: October 04 – 08, 2021
+      place: Darmstadt, Germany

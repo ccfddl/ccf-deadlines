@@ -30,7 +30,7 @@
             </el-row>
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
-            <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.note"><b>NOTE:</b> {{scope.row.note}}</span></el-row>
+            <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
             <el-row style="padding-top: 5px"><span class="conf-sub">{{scope.row.subname}}</span></el-row>
             </div>
         </template>
@@ -128,7 +128,38 @@ export default {
     getAllConf() {
       // get all conf
       this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
-        const doc = yaml.load(response.body)
+        const allconf = yaml.load(response.body)
+        // preprocess
+        let doc = []
+        let tmpTime = moment.tz(new Date(), tz)
+        for (let i = 0; i < allconf.length; i++) {
+          let curConf = allconf[i]
+          for(let j = 0; j < curConf.confs.length; j++){
+            let curItem = curConf.confs[j]
+            curItem.title = curConf.title
+            curItem.description = curConf.description
+            curItem.sub = curConf.sub
+            curItem.rank = curConf.rank
+            curItem.dblp = curConf.dblp
+            let len = curItem.timeline.length
+            curItem.deadline = curItem.timeline[len-1].deadline
+            curItem.abstract_deadline = curItem.timeline[len-1].abstract_deadline
+            curItem.comment = curItem.timeline[len-1].comment
+            for(let k = 0; k < len; k++) {
+              let ddlTime = moment(curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone))
+              let diffTime = ddlTime.diff(tmpTime)
+
+              if (diffTime >= 0) {
+                curItem.deadline = curItem.timeline[k].deadline
+                curItem.abstract_deadline = curItem.timeline[k].abstract_deadline
+                curItem.comment = curItem.timeline[k].comment
+                break;
+              }
+            }
+            doc.push(curItem)
+          }
+        }
+
         let curTime = moment.tz(new Date(), tz)
         for (let i = 0; i < doc.length; i++) {
           let curDoc = doc[i]
@@ -146,8 +177,8 @@ export default {
             curDoc.originDDL = curDoc.deadline + ' ' + curDoc.timezone
             if(curDoc.abstract_deadline) {
               let absTime = moment(curDoc.abstract_deadline + this.utcMap.get(curDoc.timezone))
-              if(!curDoc.note) {
-                curDoc.note = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')+'.'
+              if(!curDoc.comment) {
+                curDoc.comment = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')+'.'
               }
             }
             // alert(ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z'))

@@ -1,13 +1,15 @@
 - title: ECML-PKDD
-  year: 2021
-  id: ecmlpkdd21
-  description: The 32nd European Conference on Machine Learning and 25th Principles and Practice of Knowledge Discovery in Databases
-  link: https://2021.ecmlpkdd.org/
-  deadline: '2021-04-02 23:59:59'
-  abstract_deadline: '2021-03-26 23:59:59'
-  timezone: AoE
-  date: September 13-17, 2021
-  place: Virtual
+  description: European Conference on Machine Learning and 25th Principles and Practice of Knowledge Discovery in Databases
   sub: DB
   rank: B
   dblp: pkdd
+  confs:
+    - year: 2021
+      id: ecmlpkdd21
+      link: https://2021.ecmlpkdd.org/
+      timeline:
+        - abstract_deadline: '2021-03-26 23:59:59'
+          deadline: '2021-04-02 23:59:59'
+      timezone: AoE
+      date: September 13-17, 2021
+      place: Virtual

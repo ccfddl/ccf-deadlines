@@ -1,27 +1,25 @@
 - title: INFOCOM
-  year: 2021
-  id: infocom21
-  description: The 40th IEEE International Conference on Computer Communications
-  link: https://infocom2021.ieee-infocom.org/
-  abstract_deadline: '2020-08-08 23:59:59'
-  deadline: '2020-08-15 23:59:59'
-  timezone: UTC-4
-  date: May 10-13, 2021
-  place: Virtual
+  description: IEEE International Conference on Computer Communications
   sub: NW
   rank: A
   dblp: infocom
+  confs:
+    - year: 2021
+      id: infocom21
+      link: https://infocom2021.ieee-infocom.org/
+      timeline:
+        - abstract_deadline: '2020-08-08 23:59:59'
+          deadline: '2020-08-15 23:59:59'
+      timezone: UTC-4
+      date: May 10-13, 2021
+      place: Virtual
 
-- title: INFOCOM
-  year: 2022
-  id: infocom22
-  description: The 41th IEEE International Conference on Computer Communications
-  link: https://infocom2022.ieee-infocom.org/
-  abstract_deadline: '2021-07-24 23:59:59'
-  deadline: '2021-07-31 23:59:59'
-  timezone: UTC-4
-  date: May 2-5, 2022
-  place: Virtual
-  sub: NW
-  rank: A
-  dblp: infocom
+    - year: 2022
+        id: infocom22
+        link: https://infocom2022.ieee-infocom.org/
+        timeline:
+          - abstract_deadline: '2021-07-24 23:59:59'
+            deadline: '2021-07-31 23:59:59'
+        timezone: UTC-4
+        date: May 2-5, 2022
+        place: Virtual
