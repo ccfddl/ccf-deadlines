@@ -1,6 +1,4 @@
 - title: SOSP
-<<<<<<< HEAD
-<<<<<<< HEAD
   description: ACM Symposium on Operating Systems Principles
   sub: SE
   rank: A
@@ -14,31 +12,3 @@
       timezone: UTC-8
       date: October 25-28, 2021
       place: Virtual
-=======
-  year: 2021
-  id: sosp21
-  description: The 28nd ACM Symposium on Operating Systems Principles
-  link: https://sosp2021.mpi-sws.org/
-  deadline: "2021-05-07 14:59:59"
-  timezone: PST
-  date: October 25-28, 2021
-  place: Virtual
-  sub: SE
-  rank: A
-  dblp: sosp
->>>>>>> cdcb6e0... update sosp.yml (#40)
-=======
-  description: ACM Symposium on Operating Systems Principles
-  sub: SE
-  rank: A
-  dblp: sosp
-  confs:
-    - year: 2021
-      id: sosp21
-      link: https://sosp2021.mpi-sws.org/
-      timeline:
-        - deadline: '2021-05-07 14:59:59'
-      timezone: UTC-8
-      date: October 25-28, 2021
-      place: Virtual
->>>>>>> eb69c84... reformat confs yml
