@@ -1,0 +1,17 @@
+- title: ISBI
+  description:  IEEE International Symposium on Biomedical Imaging 
+  sub: MX
+  rank: A
+  dblp: isbi
+  confs:
+    - year: 2022
+      id: isbi22
+      link: https://biomedicalimaging.org/2022/
+      timeline:
+        - deadline: '2021-10-06 17:00'
+          comment: 4-PAGE PAPERS Submission Deadline
+        - deadline: '2022-01-03 17:00'
+          comment: 1-PAGE ABSTRACTS Submission Deadline
+      timezone: UTC-7
+      date: Mar 28-31, 2022
+      place: Kolkata, India
