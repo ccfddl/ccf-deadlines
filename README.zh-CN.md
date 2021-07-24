@@ -36,9 +36,9 @@
       id: sigmod22
       link: http://2022.sigmod.org/
       timeline:
-        - deadline: '2020-07-02 17:00:00'
+        - deadline: '2021-07-02 17:00:00'
           comment: 'first round'
-        - deadline: '2020-09-22 17:00:00'
+        - deadline: '2021-09-15 17:00:00'
           comment: 'second round'
       timezone: UTC-8
       date: June 12-17, 2022
