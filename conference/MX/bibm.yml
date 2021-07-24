@@ -1,0 +1,15 @@
+- title: BIBM
+  description: IEEE International Conference on Bioinformatics and Biomedicine 
+  sub: MX
+  rank: B
+  dblp: bibm
+  confs:
+    - year: 2021
+      id: bibm21
+      link: https://ieeebibm.org/BIBM2021/
+      timeline:
+        - deadline: '2021-08-28 17:00:00'
+          comment: Electronic submission of full papers
+      timezone: UTC-5
+      date: Dec 9-12, 2021
+      place: Online
