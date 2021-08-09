@@ -120,6 +120,7 @@ export default {
           this.typesList.push(this.subList[i].sub)
           this.typeMap.set(this.subList[i].sub, this.subList[i].name)
         }
+        this.loadCachedTypes()
         this.getAllConf()
       }, () => {
         alert('sorry your network is not stable!')
@@ -199,7 +200,7 @@ export default {
           }
           this.allconfList.push(curDoc)
         }
-        this.showConf(null, null, 1)
+        this.showConf(this.typesList, null, 1)
       }, () => {
         alert('sorry your network is not stable!')
       })
@@ -267,9 +268,10 @@ export default {
     },
     handleCheckedChange(types) {
       this.typesList = types
-      let checkedCount = types.length;
-      this.checkAll = checkedCount === this.subList.length;
-      this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length;
+      let checkedCount = types.length
+      this.checkAll = checkedCount === this.subList.length
+      this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length
+      this.$ls.set('types', Array.from(this.typesList))
       this.showConf(this.typesList, this.rankList, 1)
     },
     handleRankChange(rank) {
@@ -283,10 +285,10 @@ export default {
       this.typesList = (this.checkList.length === this.subList.length) ? [] : this.subList.map((obj) => {return obj.sub}).join(",").split(',');
       this.checkList = this.typesList
       this.isIndeterminate = false
+      this.$ls.set('types', Array.from(this.typesList))
       this.showConf(this.typesList, this.rankList, 1)
     },
     handleClickIcon(record, judge) {
-      console.log(record)
       if(judge === true) {
         record.isLike = false
         let index = this.cachedLikes.indexOf(record.id)
@@ -297,7 +299,6 @@ export default {
         this.cachedLikes.push(record.id)
         this.$ls.set('likes', Array.from(new Set(this.cachedLikes)))
       }
-      console.log(this.cachedLikes)
     },
     generateDBLP(name){
       return 'https://dblp.uni-trier.de/db/conf/' + name
@@ -313,12 +314,23 @@ export default {
         return item.name
       }
     },
+    loadCachedTypes() {
+      let tmpList = this.$ls.get('types')
+      if(tmpList) {
+        this.typesList = tmpList
+        this.checkList = this.typesList
+        let checkedCount = this.checkList.length
+        this.checkAll = checkedCount === this.subList.length
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length
+      }
+    },
     loadCachedLikes() {
       this.cachedLikes = this.$ls.get('likes')
       if(!this.cachedLikes) this.cachedLikes = []
     }
   },
   mounted () {
+    // this.loadCachedTypes()
     this.loadCachedLikes()
     this.loadUTCMap()
     this.loadFile()
