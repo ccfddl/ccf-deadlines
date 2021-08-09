@@ -315,12 +315,14 @@ export default {
       }
     },
     loadCachedTypes() {
-      this.typesList = this.$ls.get('types')
-      if(!this.typesList) this.typesList = []
-      this.checkList = this.typesList
-      let checkedCount = this.checkList.length
-      this.checkAll = checkedCount === this.subList.length
-      this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length
+      let tmpList = this.$ls.get('types')
+      if(tmpList) {
+        this.typesList = tmpList
+        this.checkList = this.typesList
+        let checkedCount = this.checkList.length
+        this.checkAll = checkedCount === this.subList.length
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length
+      }
     },
     loadCachedLikes() {
       this.cachedLikes = this.$ls.get('likes')
