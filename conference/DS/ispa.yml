@@ -1,0 +1,14 @@
+- title: ISPA
+  description: IEEE International Symposium on Parallel and Distributed Processing with Applications
+  sub: DS
+  rank: C
+  dblp: ispa
+  confs:
+    - year: 2021
+      id: ispa21
+      link: http://www.cloud-conf.net/ispa2021/
+      timeline:
+        - deadline: '2021-07-09 23:59:59'
+      timezone: AoE
+      date: September 30-October 3, 2021
+      place: New York, USA
