@@ -1,0 +1,25 @@
+- title: FSE
+  description: Fast Software Encryption
+  sub: SC
+  rank: B
+  dblp: fse
+  confs:
+    - year: 2022
+      id: fse22
+      link: https://2022.esec-fse.org/
+      timeline:
+        - deadline: '2022-03-11 23:59:59'
+          comment: 'Paper registration'
+        - deadline: '2022-03-18 23:59:59'
+          comment: 'Full paper submission'
+        - deadline: '2022-05-20 23:59:59'
+          comment: '1st Rebuttal period (all papers)'
+        - deadline: '2022-05-31 23:59:59'
+          comment: '2nd Additional short response period (selected papers)'
+        - deadline: '2022-06-08 23:59:59'
+          comment: 'Author notification'
+        - deadline: '2022-09-16 23:59:59'
+          comment: 'Camera ready'
+      timezone: UTC-12
+      date: November 14-18, 2022
+      place: Singapore
