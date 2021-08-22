@@ -1,0 +1,19 @@
+- title: DSN
+  description: International Conference on Dependable Systems and Networks
+  sub: SC
+  rank: B
+  dblp: dsn
+  confs:
+    - year: 2022
+      id: dsn22
+      link: https://dsn2022.github.io/
+      timeline:
+        - deadline: '2021-12-03 23:59:59'
+          comment: 'Abstract submission deadline'
+        - deadline: '2021-12-10 23:59:59'
+          comment: 'Paper submission deadline'
+        - deadline: '2022-03-14 23:59:59'
+          comment: 'Notification to authors'
+      timezone: AoE
+      date: June 27-30, 2022
+      place: Baltimore, Maryland, USA

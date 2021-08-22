@@ -1,0 +1,17 @@
+- title: SRDS
+  description: IEEE International Symposium on Reliable Distributed Systems
+  sub: SC
+  rank: B
+  dblp: srds
+  confs:
+    - year: 2021
+      id: srds21
+      link: https://srds-conference.org/
+      timeline:
+        - deadline: '2021-04-16 23:59:59'
+          comment: 'ABSTRACT'
+        - deadline: '2021-04-23 23:59:59'
+          comment: 'FULL PAPER'
+      timezone: AoE
+      date: September 20-23, 2021
+      place: Virtual

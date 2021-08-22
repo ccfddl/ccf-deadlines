@@ -1,0 +1,17 @@
+- title: AsiaCCS
+  description: Asia Conference on Computer and Communications Security
+  sub: SC
+  rank: C
+  dblp: ccs
+  confs:
+    - year: 2022
+      id: asiaccs22
+      link: https://asiaccs2022.conferenceservice.jp/
+      timeline:
+        - deadline: '2021-07-30 23:59:59'
+          comment: '1st round Deadline'
+        - deadline: '2021-11-19 23:59:59'
+          comment: '2nd round Deadline'
+      timezone: AoE
+      date: May 30-June 3, 2022
+      place: Nagasaki, Japan

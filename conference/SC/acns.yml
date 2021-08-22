@@ -1,0 +1,21 @@
+- title: ACNS
+  description: Applied Cryptography and Network Security
+  sub: SC
+  rank: C
+  dblp: acns
+  confs:
+    - year: 2022
+      id: acns22
+      link: https://sites.google.com/di.uniroma1.it/acns2022
+      timeline:
+        - deadline: '2021-09-03 23:59:59'
+          comment: 'First submission deadline'
+        - deadline: '2021-11-08 23:59:59'
+          comment: 'Workshop proposal submission deadline'
+        - deadline: '2022-01-14 23:59:59'
+          comment: 'Second submission deadline'
+        - deadline: '2022-03-21 23:59:59'
+          comment: 'Poster proposal submission deadline'
+      timezone: AoE
+      date: June 20-23, 2022
+      place: Rome, Italy
