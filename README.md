@@ -9,7 +9,7 @@ Help researchers keep track of deadlines of conferences recommended by [China Co
 
 Preview: [Demo](https://ccfddl.github.io/)
 
-[![](.readme_assets/screenshot.png)]()
+[![Demo Preview](.readme_assets/screenshot.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot.png)
 
 **No More Finding and Time Conversion on Your Own!**
 
