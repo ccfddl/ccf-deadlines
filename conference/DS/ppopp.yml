@@ -13,3 +13,12 @@
       timezone: AoE
       date: Feburary 27-Mar 3, 2021
       place: Virtual
+    - year: 2022
+      id: ppopp22
+      link: https://ppopp22.sigplan.org/
+      timeline:
+        - abstract_deadline: '2021-08-09 23:59:59'
+          deadline: '2021-08-13 23:59:59'
+      timezone: AoE
+      date: Feburary 12-16, 2022
+      place: Seoul, S. Korea
