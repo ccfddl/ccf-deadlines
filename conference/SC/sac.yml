@@ -1,0 +1,17 @@
+- title: SAC
+  description: Selected Areas in Cryptography
+  sub: SC
+  rank: C
+  dblp: sacrypt
+  confs:
+    - year: 2021
+      id: sac21
+      link: https://www.sac2021.ca/
+      timeline:
+        - deadline: '2021-07-07 23:59:59'
+          comment: 'Abstract submission'
+        - deadline: '2021-07-12 23:59:59'
+          comment: 'final paper submission'
+      timezone: UTC+1
+      date: September 29 - October 01, 2021
+      place: Virtual

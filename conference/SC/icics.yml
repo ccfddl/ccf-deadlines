@@ -1,0 +1,15 @@
+- title: ICICS
+  description: International Conference on Information and Communications Security
+  sub: SC
+  rank: C
+  dblp: icics
+  confs:
+    - year: 2021
+      id: icics'21
+      link: https://icics.cn/
+      timeline:
+        - deadline: '2021-05-22 23:59:59'
+          comment: 'Paper Submission deadline'
+      timezone: AoE
+      date: September 17-19, 2021
+      place: Chongqing, China

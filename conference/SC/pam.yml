@@ -1,0 +1,17 @@
+- title: PAM
+  description: Passive and Active Measurement Conference
+  sub: SC
+  rank: C
+  dblp: pam
+  confs:
+    - year: 2021
+      id: pam'21
+      link: https://www.pam2021.b-tu.de/
+      timeline:
+        - deadline: '2020-10-16 23:59:59'
+          comment: 'Paper registration (with abstract)'
+        - deadline: '2020-10-23 23:59:59'
+          comment: 'Paper submission'
+      timezone: UTC-4
+      date: March 29-31, 2021
+      place: Virtual
