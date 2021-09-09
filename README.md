@@ -5,7 +5,7 @@
 
 English | [简体中文](./README.zh-CN.md)
 
-Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
+Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
 Preview: [Demo](https://ccfddl.github.io/)
 

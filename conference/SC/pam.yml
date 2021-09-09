@@ -5,7 +5,7 @@
   dblp: pam
   confs:
     - year: 2021
-      id: pam'21
+      id: pam21
       link: https://www.pam2021.b-tu.de/
       timeline:
         - deadline: '2020-10-16 23:59:59'

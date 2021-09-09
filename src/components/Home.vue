@@ -205,7 +205,7 @@ export default {
               curDoc.status = 'RUN'
             }
             // check cachedLikes
-            if(this.cachedLikes&&this.cachedLikes.indexOf(curDoc.id) >= 0) {
+            if(this.cachedLikes&&this.cachedLikes.indexOf(curDoc.title + curDoc.id) >= 0) {
               curDoc.isLike = true
             }else {
               curDoc.isLike = false
@@ -312,12 +312,12 @@ export default {
     handleClickIcon(record, judge) {
       if(judge === true) {
         record.isLike = false
-        let index = this.cachedLikes.indexOf(record.id)
+        let index = this.cachedLikes.indexOf(record.title + record.id)
         if(index > -1) this.cachedLikes.splice(index,1)
         this.$ls.set('likes', Array.from(new Set(this.cachedLikes)))
       }else {
         record.isLike = true
-        this.cachedLikes.push(record.id)
+        this.cachedLikes.push(record.title + record.id)
         this.$ls.set('likes', Array.from(new Set(this.cachedLikes)))
       }
     },

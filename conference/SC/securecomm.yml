@@ -5,7 +5,7 @@
   dblp: securecomm
   confs:
     - year: 2021
-      id: securecomm'21
+      id: securecomm21
       link: https://securecomm.eai-conferences.org/2021/
       timeline:
         - deadline: '2021-03-31 23:59:59'

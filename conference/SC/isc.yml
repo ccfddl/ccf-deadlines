@@ -5,7 +5,7 @@
   dblp: isw
   confs:
     - year: 2021
-      id: isc'21
+      id: isc21
       link: https://isc2021.petra.ac.id/
       timeline:
         - deadline: '2021-07-23 23:59:59'

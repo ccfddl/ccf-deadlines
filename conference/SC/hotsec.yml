@@ -5,7 +5,7 @@
   dblp: events
   confs:
     - year: 2021
-      id: hotsec'21
+      id: hotsec21
       link: https://www.usenix.org/conferences/byname/158
       timeline:
         - deadline: '2021-10-12 23:59:59'

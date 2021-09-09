@@ -8,7 +8,7 @@
             <div class="can_line" ref="canLine"></div>
             <!-- 参考点 -->
             <div class="reference" v-for="(dateTip,dt) in dateTips" :key="'tips-'+dt" :style="setLeft(dateTip)">
-              <em v-if="!((dt===0&&isSingle)||(_isMobile()&&dateTips.length>6&&(dt%3===1||dt%3===2)))" v-text="formatter(dateTip,1)" ></em>
+              <em v-if="!((dt===0&&isSingle)||(_isMobile()&&dateTips.length>6&&(dt%3===1||dt%3===2)))" v-text="formatter(dateTip,1, dt)" ></em>
             </div>
             <!-- 备份点 -->
             <div class="dot dot_all" v-for="(incre,i) in incre_dates" :key="i" :style="setLeft(incre,i)">
@@ -60,8 +60,17 @@ export default {
       return flag;
     },
     //时间显示格式
-    formatter(value,day) {
-      if(day)return `${moment(value*1000).format('MM/DD')}`;
+    formatter(value,day,index) {
+      if(day) {
+        if(index>0){
+          let cur = this.dateTips[index]
+          let pre = this.dateTips[index-1]
+          if((cur-this.start_date)/(this.end_date-this.start_date)*100-
+              (pre-this.start_date)/(this.end_date-this.start_date)*100
+              <10) return ``;
+        }
+        return `${moment(value*1000).format('MM/DD')}`;
+      }
       return `${moment(value*1000).format('YYYY/MM/DD HH:mm:ss')}`;
     },
     //获取时间轴数据
