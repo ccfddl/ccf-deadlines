@@ -1,0 +1,15 @@
+- title: ISCA
+  description: International Symposium on Computer Architecture
+  sub: DS
+  rank: A
+  dblp: isca
+  confs:
+    - year: 2022
+      id: isca22
+      link: https://www.iscaconf.org/isca2022/
+      timeline:
+        - abstract deadline: '2021-11-17 05:59:59'
+        - full paper deadline: '2021-11-24 05:59:59'
+      timezone: AoE
+      date: June 11–15, 2022
+      place: New York City, USA
