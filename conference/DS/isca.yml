@@ -8,8 +8,10 @@
       id: isca22
       link: https://www.iscaconf.org/isca2022/
       timeline:
-        - abstract deadline: '2021-11-16 23:59:59'
-        - full paper deadline: '2021-11-23 23:59:59'
+        - deadline: '2021-11-16 23:59:59'
+          comment: 'abstract deadline'
+        - deadline: '2021-11-23 23:59:59'
+          comment: 'full paper deadline'
       timezone: AoE
       date: June 11–15, 2022
       place: New York City, USA
