@@ -67,7 +67,7 @@ export default {
           let pre = this.dateTips[index-1]
           if((cur-this.start_date)/(this.end_date-this.start_date)*100-
               (pre-this.start_date)/(this.end_date-this.start_date)*100
-              <10) return ``;
+              <8) return ``;
         }
         return `${moment(value*1000).format('MM/DD')}`;
       }
