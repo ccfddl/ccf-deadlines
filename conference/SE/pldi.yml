@@ -4,11 +4,19 @@
   rank: A
   dblp: pldi
   confs:
+    - year: 2021
+      id: pldi21
+      link: https://pldi21.sigplan.org/
+      timeline:
+        - deadline: '2020-11-20 23:59:59'
+      timezone: AoE
+      date: June 23-25, 2021
+      place: Virtual
     - year: 2022
       id: pldi22
       link: https://pldi22.sigplan.org/
       timeline:
-        - deadline: '2020-11-19 23:59:59'
+        - deadline: '2021-11-19 23:59:59'
       timezone: AoE
-      date: June 20-24, 2020
+      date: June 20-24, 2022
       place: San Diego, California, United States
