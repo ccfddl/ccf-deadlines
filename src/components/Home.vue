@@ -224,6 +224,7 @@ export default {
       if (types != null){
         filterList = filterList.filter(function (item){return types.indexOf(item.sub.toUpperCase()) >= 0})
       }
+
       if (rank != null && rank.length > 0){
         filterList = filterList.filter(function (item){return rank.indexOf(item.rank) >= 0})
       }
