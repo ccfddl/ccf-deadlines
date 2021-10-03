@@ -62,7 +62,7 @@ export default {
     //时间显示格式
     formatter(value,day,index) {
       if(day) {
-        if(index>0){
+        if(this.ddls.length>1&&index>0){
           let cur = this.dateTips[index]
           let pre = this.dateTips[index-1]
           if((cur-this.start_date)/(this.end_date-this.start_date)*100-
