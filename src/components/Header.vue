@@ -29,8 +29,12 @@ export default {
       for(let i = 0; i < len; i++) {
         let str = response.body[i].commit.message
         let strArr = str.split(' ')
+        let idx=str.indexOf('(');
         if(strArr[0] === 'Update'){
-          this.showStr = strArr[0] + " " + strArr[1] + " " + strArr[2]
+          if(idx !== -1){
+            str = str.substr(0, idx)
+          }
+          this.showStr = str
           this.showLatestConf = true
           break;
         }
