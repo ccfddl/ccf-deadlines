@@ -1,0 +1,15 @@
+- title: DAC
+  description: Design Automation Conference
+  sub: DS
+  rank: A
+  dblp: dac
+  confs:
+    - year: 2022
+      id: dac22
+      link: https://www.dac.com/DAC-2022
+      timeline:
+        - abstract_deadline: '2021-11-15 17:00:00'
+          deadline: '2021-11-22 17:00:00'
+      timezone: UTC-8
+      date: July 10-14, 2022
+      place: San Francisco, CA
