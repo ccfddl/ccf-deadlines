@@ -15,3 +15,15 @@
       timezone: UTC-4
       date: March 29-31, 2021
       place: Virtual
+
+    - year: 2022
+      id: pam22
+      link: https://pam2022.nl/
+      timeline:
+        - deadline: '2021-10-20 23:59:59'
+          comment: 'Paper registration (with abstract)'
+        - deadline: '2021-10-27 23:59:59'
+          comment: 'Paper submission'
+      timezone: AoE
+      date: March 28-30, 2022
+      place: Virtual
