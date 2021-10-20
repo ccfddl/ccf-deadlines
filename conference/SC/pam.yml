@@ -4,14 +4,14 @@
   rank: C
   dblp: pam
   confs:
-    - year: 2021
-      id: pam21
-      link: https://www.pam2021.b-tu.de/
+    - year: 2022
+      id: pam22
+      link: https://pam2022.nl/
       timeline:
-        - deadline: '2020-10-16 23:59:59'
+        - deadline: '2021-10-20 23:59:59'
           comment: 'Paper registration (with abstract)'
-        - deadline: '2020-10-23 23:59:59'
+        - deadline: '2021-10-27 23:59:59'
           comment: 'Paper submission'
       timezone: UTC-4
-      date: March 29-31, 2021
+      date: March 28-30, 2022
       place: Virtual
