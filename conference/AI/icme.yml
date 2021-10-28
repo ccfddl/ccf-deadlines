@@ -1,0 +1,14 @@
+- title: ICME
+  description: The IEEE International Conference on Multimedia & Expo
+  sub: AI
+  rank: B
+  dblp: icme
+  confs:
+    - year: 2022
+      id: icme22
+      link: http://2022.ieeeicme.org/paper.html
+      timeline:
+        - deadline: '2021-12-12 23:59:59'
+      timezone: UTC-8
+      date: July 18-22, 2022
+      place: Taipei, Taiwan, China
