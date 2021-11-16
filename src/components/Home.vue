@@ -50,6 +50,18 @@
               <countdown style="color: black" v-else :time="scope.row.remain" :transform="transform">
                 <template slot-scope="props">{{ props.days }} {{ props.hours }} {{ props.minutes }} {{ props.seconds }}</template>
               </countdown>
+              <el-popover
+                  placement="right"
+                  trigger="click">
+                <el-row>
+                  <img src="//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png#" srcset="//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png 2x ,//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png# 1x" alt="" aria-hidden="true" style="width:20px;height:20px;vertical-align: middle">
+                  <span  style="padding-left: 5px">
+                    <a :href="formatGoogleCalendar(scope.row)"
+                       target="_blank" rel="nofollow">Google Calendar</a>
+                  </span>
+                </el-row>
+                <i class="el-icon-date icon" style="padding-left: 5px" slot="reference"></i>
+              </el-popover>
             </el-row>
             <el-row>
               <div v-if="scope.row.status === 'TBD'">
@@ -224,6 +236,7 @@ export default {
       if (types != null){
         filterList = filterList.filter(function (item){return types.indexOf(item.sub.toUpperCase()) >= 0})
       }
+
       if (rank != null && rank.length > 0){
         filterList = filterList.filter(function (item){return rank.indexOf(item.rank) >= 0})
       }
@@ -324,6 +337,15 @@ export default {
     generateDBLP(name){
       return 'https://dblp.uni-trier.de/db/conf/' + name
     },
+    formatGoogleCalendar(row){
+      return "https://www.google.com/calendar/render?action=TEMPLATE" +
+          "&text="+row.title+"+"+row.year+
+          "&dates="+moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"")+"/"+ moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"") +
+          "&details=" + row.comment +
+          "&location=Online" +
+          "&ctz=" + this.timeZone +
+          "&sf=true&output=xml"
+    },
     _isMobile() {
       let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
       return flag;
@@ -414,6 +436,10 @@ export default {
 /deep/ .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
   height: 6px;
   top: 6px;
+}
+
+.icon:hover{
+  color:rgb(64, 158, 255);
 }
 
 .rankbox {

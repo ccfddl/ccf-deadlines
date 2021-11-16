@@ -1,0 +1,17 @@
+- title: HPCA
+  description: IEEE International Symposium on High-Performance Computer Architecture
+  sub: DS
+  rank: A
+  dblp: hpca
+  confs:
+    - year: 2022
+      id: hpca22
+      link: https://hpca-conf.org/2022/
+      timeline:
+        - deadline: '2021-07-23 23:59:59'
+          comment: 'abstract deadline'
+        - deadline: '2021-07-30 23:59:59'
+          comment: 'full paper deadline'
+      timezone: UTC+0
+      date: Feb 12-16, 2022
+      place: Seoul, South Korea
