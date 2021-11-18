@@ -1,0 +1,15 @@
+- title: MobiHoc
+  description: International Symposium on Mobile Ad Hoc Networking and Computing
+  sub: NW
+  rank: B
+  dblp: mobihoc
+  confs:
+    - year: 2022
+      id: mobihoc22
+      link: https://www.sigmobile.org/mobihoc/2022/
+      timeline:
+        - abstract_deadline: '2022-02-25 23:59:59'
+          deadline: '2021-03-04 23:59:59'
+      timezone: UTC-12
+      date: October 17-22, 2022
+      place: Seoul, South Korea

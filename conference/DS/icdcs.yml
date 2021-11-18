@@ -13,3 +13,21 @@
       timezone: UTC-7
       date: July 8-10, 2020
       place: Singapore
+    - year: 2021
+      id: icdcs21
+      link: https://icdcs2021.us/
+      timeline:
+        - abstract_deadline: '2021-01-06 23:59:59'
+          deadline: '2021-01-13 23:59:59'
+      timezone: UTC-5
+      date: July 7-10, 2021
+      place: Virtual
+    - year: 2022
+      id: icdcs22
+      link: https://icdcs2022.icdcs.org/
+      timeline:
+        - abstract_deadline: '2022-01-17 23:59:59'
+          deadline: '2022-01-24 23:59:59'
+      timezone: UTC-5
+      date: July 10-13, 2022
+      place: Bologna, Italy
