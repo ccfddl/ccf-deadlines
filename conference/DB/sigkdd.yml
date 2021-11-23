@@ -4,6 +4,14 @@
   rank: A
   dblp: kdd
   confs:
+    - year: 2021
+      id: sigkdd21
+      link: https://www.kdd.org/kdd2021/
+      timeline:
+        - deadline: '2021-02-08 23:59:59'
+      timezone: AoE
+      date: August 14-18, 2021
+      place: Singapore
     - year: 2022
       id: sigkdd22
       link: https://www.kdd.org/kdd2022/
