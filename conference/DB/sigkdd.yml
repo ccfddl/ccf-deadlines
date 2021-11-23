@@ -12,3 +12,11 @@
       timezone: AoE
       date: August 14-18, 2021
       place: Singapore
+    - year: 2022
+      id: sigkdd22
+      link: https://www.kdd.org/kdd2022/
+      timeline:
+        - deadline: '2022-02-10 23:59:59'
+      timezone: AoE
+      date: August 14-18, 2022
+      place: Washington DC Convention Center, USA

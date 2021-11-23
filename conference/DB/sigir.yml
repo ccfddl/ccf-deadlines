@@ -13,3 +13,12 @@
       timezone: AoE
       date: July 11-15, 2021
       place: Virtual
+    - year: 2022
+      id: sigir22
+      link: https://sigir.org/sigir2022/
+      timeline:
+        - abstract_deadline: '2022-01-21 23:59:59'
+          deadline: '2022-01-28 23:59:59'
+      timezone: AoE
+      date: July 11-15, 2022
+      place: Madrid
