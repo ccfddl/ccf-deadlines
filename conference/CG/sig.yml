@@ -1,9 +1,18 @@
-- title: SIGGRAPH
+- title: ACM SIGGRAPH
   description: ACM SIGGRAPH Annual Conference
   sub: CG
   rank: A
   dblp: siggraph
   confs:
+    - year: 2022
+      id: siggraph22
+      link: https://s2022.siggraph.org/
+      timeline:
+        - abstract_deadline: '2022-01-26 22:00:00'
+          deadline: '2022-01-27 22:00:00'
+      timezone: UTC+0
+      date: August 7-11, 2022
+      place: Vancouver
     - year: 2021
       id: siggraph21
       link: https://s2021.siggraph.org/
@@ -13,12 +22,4 @@
       timezone: UTC+0
       date: August 9-13, 2021
       place: Virtual
-    - year: 2022
-      id: siggraph22
-      link: https://s2022.siggraph.org/
-      timeline:
-        - abstract_deadline: '2022-01-26 22:00:00'
-          deadline: '2021-01-27 22:00:00'
-      timezone: UTC+0
-      date: August 7-11, 2022
-      place: Vancouver
+
