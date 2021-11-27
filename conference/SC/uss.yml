@@ -1,13 +1,19 @@
 - title: USENIX Security
-  year: 2022
-  id: uss22
-  description: The 31st USENIX Security Symposium
-  link: https://www.usenix.org/conference/usenixsecurity22
-  deadline: "2021-06-08 23:59:59"
-  timezone: UTC-12
-  date: AUGUST 10–12, 2022
-  place: BOSTON, MA, USA
+  description: USENIX Security Symposium
   sub: SC
   rank: A
   dblp: uss
-  note: '3 review cycles'
+  confs:
+    - year: 2022
+      id: uss22
+      link: https://www.usenix.org/conference/usenixsecurity22
+      timeline:
+        - deadline: '2021-06-08 23:59:59'
+          comment: '3 review cycles'
+        - deadline: '2021-10-12 23:59:59'
+          comment: '3 review cycles'
+        - deadline: '2022-02-01 23:59:59'
+          comment: '3 review cycles'
+      timezone: UTC-12
+      date: August 10–12, 2022
+      place: BOSTON, MA, USA

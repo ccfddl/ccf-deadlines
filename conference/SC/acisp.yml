@@ -1,0 +1,15 @@
+- title: ACISP
+  description: Australasia Conference on Information Security and Privacy
+  sub: SC
+  rank: C
+  dblp: acisp
+  confs:
+    - year: 2021
+      id: acisp21
+      link: https://data61dsslab.github.io/acisp2021/
+      timeline:
+        - deadline: '2021-02-25 23:59:59'
+          comment: 'Paper submission Deadline'
+      timezone: AoE
+      date: December 1-3, 2021
+      place: Perth, Australia

@@ -1,0 +1,15 @@
+- title: CT-RSA
+  description: Cryptographer's Track at RSA Conference
+  sub: SC
+  rank: C
+  dblp: ctrsa
+  confs:
+    - year: 2022
+      id: ct-rsa22
+      link: https://ct-rsa-2022.auckland.ac.nz/
+      timeline:
+        - deadline: '2021-09-13 23:59:59'
+          comment: 'Submission deadline'
+      timezone: UTC-12
+      date: February 07-10 , 2022
+      place: San Francisco, CA, USA

@@ -1,12 +1,14 @@
 - title: EUROCRYPT
-  year: 2021
-  id: eurocrypt21
-  description: The 40th European Cryptology Conference
-  link: https://eurocrypt.iacr.org/2021
-  deadline: "2020-10-08 21:00:00"
-  timezone: UTC-12
-  date: October 17-21, 2021
-  place: Zagreb, Croatia
+  description: European Cryptology Conference
   sub: SC
   rank: A
   dblp: eurocrypt
+  confs:
+    - year: 2021
+      id: eurocrypt21
+      link: https://eurocrypt.iacr.org/2021
+      timeline:
+        - deadline: '2020-10-08 21:00:00'
+      timezone: UTC-12
+      date: October 17-21, 2021
+      place: Zagreb, Croatia

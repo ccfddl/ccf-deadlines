@@ -1,0 +1,14 @@
+- title: SOSP
+  description: ACM Symposium on Operating Systems Principles
+  sub: SE
+  rank: A
+  dblp: sosp
+  confs:
+    - year: 2021
+      id: sosp21
+      link: https://sosp2021.mpi-sws.org/
+      timeline:
+        - deadline: '2021-05-07 14:59:59'
+      timezone: UTC-8
+      date: October 25-28, 2021
+      place: Virtual

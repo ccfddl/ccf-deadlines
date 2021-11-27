@@ -1,12 +1,22 @@
 - title: PLDI
-  year: 2021
-  id: pldi21
-  description: The 42nd ACM SIGPLAN Conference on Programming Language Design & Implementation
-  link: https://pldi21.sigplan.org/
-  deadline: "2020-11-20 23:59:59"
-  timezone: AoE
-  date: June 23-25, 2020
-  place: Virtual
+  description: ACM SIGPLAN Conference on Programming Language Design & Implementation
   sub: SE
   rank: A
   dblp: pldi
+  confs:
+    - year: 2021
+      id: pldi21
+      link: https://pldi21.sigplan.org/
+      timeline:
+        - deadline: '2020-11-20 23:59:59'
+      timezone: AoE
+      date: June 23-25, 2021
+      place: Virtual
+    - year: 2022
+      id: pldi22
+      link: https://pldi22.sigplan.org/
+      timeline:
+        - deadline: '2021-11-19 23:59:59'
+      timezone: AoE
+      date: June 20-24, 2022
+      place: San Diego, California, United States

@@ -1,25 +1,25 @@
 - title: ICDE
-  year: 2021
-  id: icde21
-  description: The 37th IEEE International Conference on Data Engineering
-  link: https://icde2021.gr/
-  deadline: '2020-10-14 23:59:59'
-  timezone: AoE
-  date: April 19-22, 2021
-  place: Virtual
+  description: IEEE International Conference on Data Engineering
   sub: DB
   rank: A
   dblp: icde
-
-- title: ICDE
-  year: 2022
-  id: icde22
-  description: The 38th IEEE International Conference on Data Engineering
-  link: https://icde2022.ieeecomputer.my/important-dates/
-  deadline: '2021-07-21 23:59:59'
-  timezone: UTC-8
-  date: May 9-12, 2022
-  place: Kuala Lumpur, Malaysia
-  sub: DB
-  rank: A
-  dblp: icde
+  confs:
+    - year: 2021
+      id: icde21
+      link: https://icde2021.gr/
+      timeline:
+        - deadline: '2020-10-01 23:59:59'
+      timezone: AoE
+      date: April 19-22, 2021
+      place: Virtual
+    - year: 2022
+      id: icde22
+      link: https://icde2022.ieeecomputer.my/important-dates/
+      timeline:
+        - deadline: '2021-07-21 23:59:59'
+          comment: 'first round'
+        - deadline: '2021-11-17 23:59:59'
+          comment: 'second round'
+      timezone: UTC-8
+      date: May 9-12, 2022
+      place: Kuala Lumpur, Malaysia

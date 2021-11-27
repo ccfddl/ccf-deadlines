@@ -1,0 +1,15 @@
+- title: RAID
+  description: International Symposium on Recent Advances in Intrusion Detection
+  sub: SC
+  rank: B
+  dblp: raid
+  confs:
+    - year: 2021
+      id: raid21
+      link: https://raid2021.org/
+      timeline:
+        - deadline: '2021-08-01 23:59:59'
+          comment: 'Paper Submission Deadline'
+      timezone: AoE
+      date: October 6-8, 2021
+      place: Donostia / San Sebastian, Spain

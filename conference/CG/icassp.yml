@@ -1,0 +1,14 @@
+- title: ICASSP
+  description: IEEE International Conference on Acoustics, Speech, and Signal Processing
+  sub: CG
+  rank: B
+  dblp: icassp
+  confs:
+    - year: 2022
+      id: icassp22
+      link: https://2022.ieeeicassp.org
+      timeline:
+        - deadline: '2021-10-06 23:59:59'
+      timezone: UTC+0
+      date: May 22-27, 2022
+      place: Singapore

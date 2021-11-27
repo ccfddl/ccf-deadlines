@@ -1,0 +1,17 @@
+- title: DIMVA
+  description: Detection of Intrusions and Malware & Vulnerability Assessment
+  sub: SC
+  rank: C
+  dblp: dimva
+  confs:
+    - year: 2021
+      id: dimva21
+      link: https://dimva2021.campus.ciencias.ulisboa.pt/
+      timeline:
+        - deadline: '2021-03-01 23:59:59'
+          comment: 'Paper submission deadline'
+        - deadline: '2021-05-14 23:59:59'
+          comment: 'Final paper submission deadline'
+      timezone: AoE
+      date: July 14-16 , 2022
+      place: Virtual

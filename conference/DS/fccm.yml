@@ -1,0 +1,17 @@
+- title: FCCM
+  description: IEEE Symposium on Field-Programmable Custom Computing Machines
+  sub: DS
+  rank: C
+  dblp: fccm
+  confs:
+    - year: 2022
+      id: fccm22
+      link: https://www.fccm.org/
+      timeline:
+        - deadline: '2022-01-03 23:59:59'
+          comment: 'abstract deadline'
+        - deadline: '2022-01-10 23:59:59'
+          comment: 'full paper deadline'
+      timezone: AoE
+      date: May 15–18, 2022
+      place: New York City, USA

@@ -1,25 +1,22 @@
 - title: FAST
-  year: 2021
-  id: fast21
-  description: The 19th USENIX Conference on File and Storage Technologies
-  link: https://www.usenix.org/conference/fast21/
-  deadline: '2020-09-24 23:59:59'
-  timezone: UTC-7
-  date: Feburary 23–25, 2021
-  place: Virtual
+  description: USENIX Conference on File and Storage Technologies
   sub: DS
   rank: A
   dblp: fast
-
-- title: FAST
-  year: 2022
-  id: fast22
-  description: The 20th USENIX Conference on File and Storage Technologies
-  link: https://www.usenix.org/conference/fast22/
-  deadline: '2021-09-23 23:59:59'
-  timezone: UTC-7
-  date: Feburary 21–24, 2021
-  place: SANTA CLARA, CA, USA
-  sub: DS
-  rank: A
-  dblp: fast
+  confs:
+    - year: 2021
+      id: fast21
+      link: https://www.usenix.org/conference/fast21/
+      timeline:
+        - deadline: '2020-09-24 23:59:59'
+      timezone: UTC-7
+      date: Feburary 23–25, 2021
+      place: Virtual
+    - year: 2022
+      id: fast22
+      link: https://www.usenix.org/conference/fast22/
+      timeline:
+        - deadline: '2021-09-23 23:59:59'
+      timezone: UTC-7
+      date: Feburary 21–24, 2022
+      place: SANTA CLARA, CA, USA

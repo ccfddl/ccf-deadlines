@@ -1,0 +1,14 @@
+- title: OSDI
+  description: USENIX Symposium on Operating Systems Design and Implementation
+  sub: SE
+  rank: A
+  dblp: osdi
+  confs:
+    - year: 2022
+      id: osdi2022
+      link: https://www.usenix.org/conference/osdi22
+      timeline:
+        - deadline: '2021-12-14 23:59:59'
+      timezone: AoE
+      date: July 11–13, 2022
+      place: Omni La Costa Resort & Spa in Carlsbad, CA, USA

@@ -1,14 +1,16 @@
 - title: ICML
-  year: 2021
-  id: icml21
-  description: The 38th International Conference on Machine Learning
-  link: https://icml.cc/Conferences/2021/
-  deadline: '2021-02-04 23:59:59'
-  abstract_deadline: '2021-01-28 23:59:59'
-  timezone: UTC-12
-  date: July 18-24, 2021
-  place: Vienna, Austria
+  description: International Conference on Machine Learning
   sub: AI
   rank: A
-  note: 'Mandatory abstract deadline on Jan 28, 2021.'
   dblp: icml
+  confs:
+    - year: 2022
+      id: icml22
+      link: https://icml.cc/Conferences/2022
+      timeline:
+        - abstract_deadline: '2022-01-20 23:59:00'
+          deadline: '2022-01-27 23:59:00'
+          comment: 'Mandatory abstract deadline on Jan 20, 2022.'
+      timezone: UTC-12
+      date: July 17-23, 2022
+      place: Baltimore, Maryland USA

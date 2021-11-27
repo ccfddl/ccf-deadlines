@@ -1,0 +1,17 @@
+- title: NSPW
+  description: New Security Paradigms Workshop
+  sub: SC
+  rank: C
+  dblp: nspw
+  confs:
+    - year: 2021
+      id: nspw21
+      link: https://www.nspw.org/2021
+      timeline:
+        - deadline: '2021-06-04 23:59:59'
+          comment: 'Submission deadline'
+        - deadline: '2021-11-24 23:59:59'
+          comment: 'Final version'
+      timezone: UTC-11
+      date: October 25-28, 2021
+      place: Virtual

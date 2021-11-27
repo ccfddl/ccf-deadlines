@@ -1,0 +1,17 @@
+- title: ACL
+  description: Annual Meeting of the Association for Computational Linguistics
+  sub: AI
+  rank: A
+  dblp: acl
+  confs:
+    - year: 2022
+      id: acl22
+      link: https://www.2022.aclweb.org/
+      timeline:
+        - deadline: '2021-09-15 23:59:59'
+        - deadline: '2021-10-15 23:59:59'
+        - deadline: '2021-11-15 23:59:59'
+          comment: 'final submission deadline'
+      timezone: UTC-12
+      date: May 22-27, 2022
+      place: Dublin, Ireland

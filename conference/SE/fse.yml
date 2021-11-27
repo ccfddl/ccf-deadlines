@@ -1,0 +1,17 @@
+- title: ESEC/FSE
+  description:  ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering
+  sub: SE
+  rank: A
+  dblp: sigsoft
+  confs:
+    - year: 2022
+      id: fse22
+      link: https://2022.esec-fse.org/
+      timeline:
+        - deadline: '2022-03-10 23:59:59'
+          comment: 'paper registration deadline'
+        - deadline: '2022-03-17 23:59:59'
+          comment: 'full paper submission deadline'
+      timezone: AoE
+      date: November 14-18, 2022
+      place: Singapore

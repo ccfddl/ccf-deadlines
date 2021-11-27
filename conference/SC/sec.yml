@@ -1,0 +1,17 @@
+- title: SEC
+  description: IFIP International Information Security Conference
+  sub: SC
+  rank: C
+  dblp: sec
+  confs:
+    - year: 2021
+      id: sec21
+      link: https://ifipsec.org/2021/
+      timeline:
+        - deadline: '2021-02-15 23:59:59'
+          comment: 'Submission Deadline'
+        - deadline: '2021-04-15 23:59:59'
+          comment: 'Submission of the camera-ready papers'
+      timezone: AoE
+      date: June 22-24, 2021
+      place: Oslo, Norway

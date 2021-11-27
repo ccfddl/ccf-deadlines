@@ -9,10 +9,17 @@
       <div style="float: left">
         Deadlines are shown in {{ timeZone }} time.
       </div>
+      <div style="float: left; width: 150px">
+        <el-input prefix-icon="el-icon-search" size="mini"
+                  v-model="input" placeholder="search conference"
+                  @change="handleInputChange"
+                >
+        </el-input>
+      </div>
       <div style="float: right">
-          <el-checkbox-group v-model="rankGroup" size="mini" @change="handleRankChange">
-            <el-checkbox-button v-for="rank in rankoptions" :label="rank" :key="rank">CCF {{rank}}</el-checkbox-button>
-          </el-checkbox-group>
+        <el-checkbox-group v-model="rankList" size="mini" @change="handleRankChange" class="rankbox">
+          <el-checkbox-button v-for="rank in rankoptions" :label="rank" :key="rank">CCF {{rank}}</el-checkbox-button>
+        </el-checkbox-group>
       </div>
     </el-row>
     <el-row class="zonedivider"></el-row>
@@ -30,7 +37,7 @@
             </el-row>
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
-            <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.note"><b>NOTE:</b> {{scope.row.note}}</span></el-row>
+            <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
             <el-row style="padding-top: 5px"><span class="conf-sub">{{scope.row.subname}}</span></el-row>
             </div>
         </template>
@@ -43,6 +50,18 @@
               <countdown style="color: black" v-else :time="scope.row.remain" :transform="transform">
                 <template slot-scope="props">{{ props.days }} {{ props.hours }} {{ props.minutes }} {{ props.seconds }}</template>
               </countdown>
+              <el-popover
+                  placement="right"
+                  trigger="click">
+                <el-row>
+                  <img src="//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png#" srcset="//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png 2x ,//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png# 1x" alt="" aria-hidden="true" style="width:20px;height:20px;vertical-align: middle">
+                  <span  style="padding-left: 5px">
+                    <a :href="formatGoogleCalendar(scope.row)"
+                       target="_blank" rel="nofollow">Google Calendar</a>
+                  </span>
+                </el-row>
+                <i class="el-icon-date icon" style="padding-left: 5px" slot="reference"></i>
+              </el-popover>
             </el-row>
             <el-row>
               <div v-if="scope.row.status === 'TBD'">
@@ -54,6 +73,7 @@
             </el-row>
             <el-row>website: <a :href="scope.row.link">{{ scope.row.link }}</a> </el-row>
   <!--          <el-row>subscribe</el-row>-->
+            <TimeLine v-if="scope.row.status === 'RUN'" :ddls="scope.row.ddls"></TimeLine>
           </div>
         </template>
       </el-table-column>
@@ -80,13 +100,15 @@
 
 <script>
 import Header from './Header'
+import TimeLine from "./TimeLine";
 const yaml = require('js-yaml')
 const moment = require('moment-timezone')
 const tz = moment.tz.guess()
 export default {
   name: "Home",
   components: {
-    Header
+    Header,
+    TimeLine
   },
   data() {
     return {
@@ -103,10 +125,11 @@ export default {
       timeZone: '',
       utcMap: new Map(),
       rankoptions: ['A', 'B', 'C'],
-      rankGroup: ['A', 'B', 'C'],
       typesList: [],
-      rankList: ['A','B','C'],
+      rankList: [],
       cachedLikes: [],
+      cachedRanks: [],
+      input: ''
     }
   },
   methods: {
@@ -120,6 +143,7 @@ export default {
           this.typesList.push(this.subList[i].sub)
           this.typeMap.set(this.subList[i].sub, this.subList[i].name)
         }
+        this.loadCachedTypes()
         this.getAllConf()
       }, () => {
         alert('sorry your network is not stable!')
@@ -128,7 +152,40 @@ export default {
     getAllConf() {
       // get all conf
       this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
-        const doc = yaml.load(response.body)
+        const allconf = yaml.load(response.body)
+        // preprocess
+        let doc = []
+        let tmpTime = moment.tz(new Date(), tz)
+        for (let i = 0; i < allconf.length; i++) {
+          let curConf = allconf[i]
+          for(let j = 0; j < curConf.confs.length; j++){
+            let curItem = curConf.confs[j]
+            curItem.title = curConf.title
+            curItem.description = curConf.description
+            curItem.sub = curConf.sub
+            curItem.rank = curConf.rank
+            curItem.dblp = curConf.dblp
+            let len = curItem.timeline.length
+            curItem.deadline = curItem.timeline[len-1].deadline
+            curItem.abstract_deadline = curItem.timeline[len-1].abstract_deadline
+            curItem.comment = curItem.timeline[len-1].comment
+            curItem.ddls = []
+            let flag = false;
+            for(let k = 0; k < len; k++) {
+              let ddlTime = moment(curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone))
+              let diffTime = ddlTime.diff(tmpTime)
+              curItem.ddls.push(curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone))
+              if (!flag && diffTime >= 0) {
+                curItem.deadline = curItem.timeline[k].deadline
+                curItem.abstract_deadline = curItem.timeline[k].abstract_deadline
+                curItem.comment = curItem.timeline[k].comment
+                flag = true;
+              }
+            }
+            doc.push(curItem)
+          }
+        }
+
         let curTime = moment.tz(new Date(), tz)
         for (let i = 0; i < doc.length; i++) {
           let curDoc = doc[i]
@@ -146,8 +203,8 @@ export default {
             curDoc.originDDL = curDoc.deadline + ' ' + curDoc.timezone
             if(curDoc.abstract_deadline) {
               let absTime = moment(curDoc.abstract_deadline + this.utcMap.get(curDoc.timezone))
-              if(!curDoc.note) {
-                curDoc.note = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')+'.'
+              if(!curDoc.comment) {
+                curDoc.comment = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')+'.'
               }
             }
             // alert(ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z'))
@@ -160,7 +217,7 @@ export default {
               curDoc.status = 'RUN'
             }
             // check cachedLikes
-            if(this.cachedLikes&&this.cachedLikes.indexOf(curDoc.id) >= 0) {
+            if(this.cachedLikes&&this.cachedLikes.indexOf(curDoc.title + curDoc.id) >= 0) {
               curDoc.isLike = true
             }else {
               curDoc.isLike = false
@@ -168,20 +225,24 @@ export default {
           }
           this.allconfList.push(curDoc)
         }
-        this.showConf(null, null, 1)
+        this.showConf(this.typesList, this.rankList, this.input, 1)
       }, () => {
         alert('sorry your network is not stable!')
       })
     },
-    showConf (types, rank, page) {
+    showConf (types, rank, input, page) {
       let filterList = this.allconfList
 
       if (types != null){
         filterList = filterList.filter(function (item){return types.indexOf(item.sub.toUpperCase()) >= 0})
       }
 
-      if (rank != null){
+      if (rank != null && rank.length > 0){
         filterList = filterList.filter(function (item){return rank.indexOf(item.rank) >= 0})
+      }
+
+      if (input != null && input.length > 0){
+        filterList = filterList.filter(function (item){return item.id.toLowerCase().indexOf(input.toLowerCase()) >= 0})
       }
 
       let runList = filterList.filter(function (item){ return item.status === 'RUN'})
@@ -233,43 +294,57 @@ export default {
           this.utcMap.set('UTC' + i, '-' + (Array(2).join(0) + i * -1).slice(-2) + '00')
         }
       }
+      this.utcMap.set('AoE', '-1200')
     },
     handleCheckedChange(types) {
       this.typesList = types
-      let checkedCount = types.length;
-      this.checkAll = checkedCount === this.subList.length;
-      this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length;
-      this.showConf(this.typesList, this.rankList, 1)
+      let checkedCount = types.length
+      this.checkAll = checkedCount === this.subList.length
+      this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length
+      this.$ls.set('types', Array.from(this.typesList))
+      this.showConf(this.typesList, this.rankList, this.input, 1)
+    },
+    handleInputChange(){
+      this.showConf(this.typesList, this.rankList, this.input,1)
     },
     handleRankChange(rank) {
       this.rankList = rank
-      this.showConf(this.typesList, this.rankList, 1)
+      this.$ls.set('ranks', Array.from(this.rankList))
+      this.showConf(this.typesList, this.rankList, this.input,1)
     },
     handleCurrentChange(page) {
-      this.showConf(this.typesList, this.rankList, page)
+      this.showConf(this.typesList, this.rankList, this.input, page)
     },
     handleCheckAllChange() {
       this.typesList = (this.checkList.length === this.subList.length) ? [] : this.subList.map((obj) => {return obj.sub}).join(",").split(',');
       this.checkList = this.typesList
       this.isIndeterminate = false
-      this.showConf(this.typesList, this.rankList, 1)
+      this.$ls.set('types', Array.from(this.typesList))
+      this.showConf(this.typesList, this.rankList, this.input,1)
     },
     handleClickIcon(record, judge) {
-      console.log(record)
       if(judge === true) {
         record.isLike = false
-        let index = this.cachedLikes.indexOf(record.id)
+        let index = this.cachedLikes.indexOf(record.title + record.id)
         if(index > -1) this.cachedLikes.splice(index,1)
         this.$ls.set('likes', Array.from(new Set(this.cachedLikes)))
       }else {
         record.isLike = true
-        this.cachedLikes.push(record.id)
+        this.cachedLikes.push(record.title + record.id)
         this.$ls.set('likes', Array.from(new Set(this.cachedLikes)))
       }
-      console.log(this.cachedLikes)
     },
     generateDBLP(name){
       return 'https://dblp.uni-trier.de/db/conf/' + name
+    },
+    formatGoogleCalendar(row){
+      return "https://www.google.com/calendar/render?action=TEMPLATE" +
+          "&text="+row.title+"+"+row.year+
+          "&dates="+moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"")+"/"+ moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"") +
+          "&details=" + row.comment +
+          "&location=Online" +
+          "&ctz=" + this.timeZone +
+          "&sf=true&output=xml"
     },
     _isMobile() {
       let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
@@ -282,12 +357,29 @@ export default {
         return item.name
       }
     },
+    loadCachedTypes() {
+      let tmpList = this.$ls.get('types')
+      if(tmpList) {
+        this.typesList = tmpList
+        this.checkList = this.typesList
+        let checkedCount = this.checkList.length
+        this.checkAll = checkedCount === this.subList.length
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.subList.length
+      }
+    },
     loadCachedLikes() {
       this.cachedLikes = this.$ls.get('likes')
       if(!this.cachedLikes) this.cachedLikes = []
-    }
+    },
+    loadCachedRanks() {
+      this.cachedRanks = this.$ls.get('ranks')
+      if(!this.cachedRanks) this.cachedRanks = []
+      this.rankList = this.cachedRanks
+    },
   },
   mounted () {
+    // this.loadCachedTypes()
+    this.loadCachedRanks()
     this.loadCachedLikes()
     this.loadUTCMap()
     this.loadFile()
@@ -297,17 +389,29 @@ export default {
 
 <style scoped>
 /*/deep/ .el-table tbody tr { pointer-events:; }*/
+/deep/ .el-input--mini .el-input__inner {
+  height: 20px;
+  line-height: 20px;
+}
+
+/deep/ .el-input--mini .el-input__icon {
+  line-height: 20px;
+}
+
 /deep/ .el-checkbox__inner {
   height: 20px;
   width: 20px;
 }
+
 /deep/ .el-button {
   height: 20px;
   padding: 0px 5px;
 }
+
 /deep/ .el-checkbox-button--mini .el-checkbox-button__inner {
   padding: 3px 10px;
 }
+
 /deep/ .el-checkbox__inner::after {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -328,9 +432,18 @@ export default {
   -webkit-transform-origin: center;
   transform-origin: center;
 }
+
 /deep/ .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
   height: 6px;
   top: 6px;
+}
+
+.icon:hover{
+  color:rgb(64, 158, 255);
+}
+
+.rankbox {
+  padding-top: 1px;
 }
 
 .boxes{

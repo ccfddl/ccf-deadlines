@@ -1,13 +1,26 @@
 - title: CCS
-  year: 2020
-  id: ccs20
-  description: The 27th ACM Conference on Computer and Communications Security
-  link: https://www.sigsac.org/ccs/CCS2020/
-  deadline: "2020-01-20 23:59:59"
-  timezone: UTC-12
-  date: November 9-13, 2020
-  place: Orlando, USA
+  description: ACM Conference on Computer and Communications Security
   sub: SC
   rank: A
   dblp: ccs
-  note: '2 review cycles'
+  confs:
+    - year: 2020
+      id: ccs20
+      link: https://www.sigsac.org/ccs/CCS2020/
+      timeline:
+        - deadline: '2020-01-20 23:59:59'
+          comment: '2 review cycles'
+      timezone: UTC-12
+      date: November 9-13, 2020
+      place: Orlando, USA
+    - year: 2021
+      id: ccs21
+      link: https://www.sigsac.org/ccs/CCS2021/
+      timeline:
+        - deadline: '2021-01-20 23:59:59'
+          comment: '2 review cycles'
+        - deadline: '2021-05-06 23:59:59'
+          comment: 'spring'
+      timezone: UTC-12
+      date: November 15-19, 2021
+      place: Seoul, South Korea

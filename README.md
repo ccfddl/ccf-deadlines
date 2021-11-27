@@ -5,11 +5,11 @@
 
 English | [简体中文](./README.zh-CN.md)
 
-Help researchers keep track of deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
+Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
 Preview: [Demo](https://ccfddl.github.io/)
 
-[![](.readme_assets/screenshot.png)]()
+[![Demo Preview](.readme_assets/screenshot.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot.png)
 
 **No More Finding and Time Conversion on Your Own!**
 
@@ -27,36 +27,88 @@ Example file: conference/DB/sigmod.yml
 
 ```
 - title: SIGMOD
-  year: 2021
-  id: sigmod21
   description: ACM Conference on Management of Data
-  link: http://2021.sigmod.org/
-  deadline: '2020-09-22 17:00:00'
-  timezone: UTC-8
-  date: Jun 20-25, 2021
-  place: Xi'an, China
   sub: DB
   rank: A
   dblp: sigmod
+  confs:
+    - year: 2022
+      id: sigmod22
+      link: http://2022.sigmod.org/
+      timeline:
+        - deadline: '2021-07-02 17:00:00'
+          comment: 'first round'
+        - deadline: '2021-09-15 17:00:00'
+          comment: 'second round'
+      timezone: UTC-8
+      date: June 12-17, 2022
+      place: Philadelphia, PA, USA
 ```
 Description of the fields:
-
-| Field name          | Description                                                                                                           |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `title`\*           | Short conference name, without year, uppercase                                                                                 |
-| `year`\*            | Year the conference is happening                                                                                      |
-| `id`\*              | conference name & year, lowercase                                                                                          |
-| `description`\*     | Description, or long name, better to add the session, e.g., The 15th XXX                                                                                           |
-| `link`\*            | URL to the conference home page                                                                                       |
-| `deadline`\*        | Deadline, in the format of `yyyy-mm-dd hh:mm:ss` or `TBD`                                                                     |
-| `abstract_deadline` | Abstract deadline if applicable, optional                                                                                     |
-| `timezone`\*        | Timezone of deadline, currently support `UTC-12` ~ `UTC+12` & `AoE`                                                        |
-| `date`\*            | When the main conference is happening, e.g., Mar 12-16, 2021                                                                                     |
-| `place`\*           | Where the main conference is happening, e.g., `city, country`                                                                                    |
-| `sub`\*             | The category that the conference is labeled by CCF. See the matching table below |
-| `rank`\*            | The level that the conference is ranked by CCF, e.g., `A`, `B`, `C`              |
-| `dblp`\*            | The suffix in dblp url, e.g., `iccv` in https://dblp.uni-trier.de/db/conf/iccv               |
-| `note`              | Some comments on the conference, optional                                                                                       |
+<table>
+   <tr>
+      <th colspan="3">Field name</th>
+      <th>Description</th>
+   </tr>
+   <tr>
+      <td colspan="3"><code>title</code>*</td>
+      <td>Short conference name, without year, uppercase</td>
+   </tr>
+   <tr>
+      <td colspan="3"><code>description</code>*</td>
+      <td>Description, or long name, with no session</td>
+   </tr>
+   <tr>
+      <td colspan="3"><code>sub</code>*</td>
+      <td>The category that the conference is labeled by CCF. See the matching table below</td>
+   </tr>
+   <tr>
+      <td colspan="3"><code>rank</code>*</td>
+      <td>The level that the conference is ranked by CCF, e.g., <code>A</code>, <code>B</code>, <code>C</code></td>
+   </tr>
+   <tr>
+      <td colspan="3"><code>dblp</code>*</td>
+      <td>The suffix in dblp url, e.g., <code>iccv</code> in https://dblp.uni-trier.de/db/conf/iccv</td>
+   </tr>
+   <tr>
+      <td rowspan="9"><code>confs</code></td>
+      <td colspan="2"><code>year</code>*</td>
+      <td>Year the conference is happening</td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>id</code>*</td>
+      <td>conference name & year, lowercase</td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>link</code>*</td>
+      <td>URL to the conference home page</td>
+   </tr>
+   <tr>
+      <td rowspan="3"><code>timeline</code>*</td>
+      <td><code>abstract_deadline</code></td>
+      <td>Abstract deadline if applicable, optional</td>
+   </tr>
+   <tr>
+      <td><code>deadline</code>*</td>
+      <td>Deadline, in the format of <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
+   </tr>
+   <tr>
+      <td><code>comment</code></td>
+      <td>Some comments on the conference, optional</td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>timezone</code>*</td>
+      <td>Timezone of deadline, currently support <code>UTC-12</code> ~ <code>UTC+12</code> & <code>AoE</code></td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>date</code>*</td>
+      <td>When the main conference is happening, e.g., Mar 12-16, 2021</td>
+   </tr>
+   <tr>
+      <td colspan="2"><code>place</code>*</td>
+      <td>Where the main conference is happening, e.g., <code>city, country</code></td>
+   </tr>
+</table>
 
 Fields marked with asterisk (*) are required.
 

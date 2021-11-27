@@ -1,0 +1,21 @@
+- title: PETS
+  description: Privacy Enhancing Technologies Symposium
+  sub: SC
+  rank: C
+  dblp: pet
+  confs:
+    - year: 2022
+      id: pets22
+      link: https://petsymposium.org/cfp22.php
+      timeline:
+        - deadline: '2021-05-31 23:59:59'
+          comment: 'Issue 1 Paper Submission Deadline'
+        - deadline: '2021-08-31 23:59:59'
+          comment: 'Issue 2 Paper Submission Deadline'
+        - deadline: '2021-11-30 23:59:59'
+          comment: 'Issue 3 Paper Submission Deadline'
+        - deadline: '2022-02-28 23:59:59'
+          comment: 'Issue 4 Paper Submission Deadline'
+      timezone: AoE
+      date: July 18–23, 2022
+      place: Sydney, Australia

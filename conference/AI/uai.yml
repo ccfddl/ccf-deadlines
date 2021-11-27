@@ -1,12 +1,14 @@
 - title: UAI
-  year: 2021
-  id: uai21
-  description: The 37th Conference on Uncertainty in Artificial Intelligence
-  link: http://auai.org/uai2021/
-  deadline: '2021-02-19 23:59:59'
-  timezone: UTC+0
-  date: July 27-29, 2021
-  place: Virtual
+  description: Conference on Uncertainty in Artificial Intelligence
   sub: AI
   rank: B
   dblp: uai
+  confs:
+    - year: 2021
+      id: uai21
+      link: http://auai.org/uai2021/
+      timeline:
+        - deadline: '2021-02-19 23:59:59'
+      timezone: UTC+0
+      date: July 27-29, 2021
+      place: Virtual
