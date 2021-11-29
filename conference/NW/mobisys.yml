@@ -1,0 +1,15 @@
+- title: MobiSys
+  description: ACM International Conference on Mobile Systems, Applications, and Services
+  sub: NW
+  rank: B
+  dblp: mobisys
+  confs:
+    - year: 2022
+      id: mobisys22
+      link: https://www.sigmobile.org/mobisys/2022/
+      timeline:
+        - abstract_deadline: '2021-12-13 23:59:59'
+          deadline: '2021-12-20 23:59:59'
+      timezone: UTC-12
+      date: TBD
+      place: TBD
