@@ -295,6 +295,7 @@ export default {
         }
       }
       this.utcMap.set('AoE', '-1200')
+      this.utcMap.set('UTC', '+0000')
     },
     handleCheckedChange(types) {
       this.typesList = types
