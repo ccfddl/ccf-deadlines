@@ -1,0 +1,17 @@
+- title: LCTES
+  description:  International Conference on Languages, Compilers and Tools for Embedded Systems
+  sub: SE
+  rank: B
+  dblp: lctrts
+  confs:
+    - year: 2021
+      id: LCTES21
+      link: https://pldi21.sigplan.org/home/LCTES-2021
+      timeline:
+        - deadline: '2021-03-08 23:59:59'
+          comment: 'Submission Deadline'
+        - deadline: '2021-05-05 23:59:59'
+          comment: 'Final Copy Deadline'
+      timezone: AoE
+      date: June 20-26, 2021
+      place: Virtual
