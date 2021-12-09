@@ -1,0 +1,17 @@
+- title: ECOOP
+  description:  European Conference on Object-Oriented Programming
+  sub: SE
+  rank: B
+  dblp: ecoop
+  confs:
+    - year: 2022
+      id: ECOOP22
+      link: https://2022.ecoop.org/
+      timeline:
+        - deadline: '2021-12-01 23:59:59'
+          comment: 'Submission R1'
+        - deadline: '2022-03-01 23:59:59'
+          comment: 'Submission R2'
+      timezone: AoE
+      date: June 6-10, 2022
+      place: Berlin, Germany
