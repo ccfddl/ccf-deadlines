@@ -1,8 +1,8 @@
-- title: CVPR
-  description: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+- title: ECCV
+  description: European Conference on Computer Vision
   sub: AI
-  rank: A
-  dblp: cvpr
+  rank: B
+  dblp: ECCV
   confs:
     - year: 2022
       id: cvpr22
