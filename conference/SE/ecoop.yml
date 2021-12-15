@@ -5,7 +5,7 @@
   dblp: ecoop
   confs:
     - year: 2022
-      id: ECOOP22
+      id: ecoop22
       link: https://2022.ecoop.org/
       timeline:
         - deadline: '2021-12-01 23:59:59'

@@ -5,7 +5,7 @@
   dblp: etaps
   confs:
     - year: 2022
-      id: ETAPS22
+      id: etaps22
       link: https://etaps.org/2022/
       timeline:
         - deadline: '2021-10-14 23:59:59'
