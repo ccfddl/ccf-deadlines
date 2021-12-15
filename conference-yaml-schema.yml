@@ -75,14 +75,13 @@ items:
                 abstract_deadline:
                   description: Abstract deadline if applicable, optional
                   type: string
-                  anyOf:
-                    - format: date-time
-                    - enum: [ TBD ]
+                  format: date-time
+                  pattern: ^(\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}|TBD)$
                 deadline:
                   description: Deadline, in the format of yyyy-mm-dd hh:mm:ss or TBD
-                  anyOf:
-                    - format: date-time
-                    - enum: [ TBD ]
+                  type: string
+                  format: date-time
+                  pattern: ^(\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}|TBD)$
                 comment:
                   description: Some comments on the conference, optional
                   type: string
