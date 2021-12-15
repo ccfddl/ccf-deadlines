@@ -5,7 +5,7 @@
   dblp: lctrts
   confs:
     - year: 2021
-      id: LCTES21
+      id: lctes21
       link: https://pldi21.sigplan.org/home/LCTES-2021
       timeline:
         - deadline: '2021-03-08 23:59:59'
