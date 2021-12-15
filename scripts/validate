@@ -37,11 +37,11 @@ class ConferenceTest(TestCase):
                             try:
                                 conference_yml = yaml.load(conference_yml_file.read(), Loader=yaml.SafeLoader)
                             except Exception:
-                                self.fail(msg=f'Conference "\033[1;31m{conf}\033[m contains invalid YAML')
+                                self.fail(msg=f'Conference \033[1;31m{conf}\033[m contains invalid YAML')
                             try:
                                 jsonschema.validate(conference_yml, YAML_SCHEMA)
                             except jsonschema.exceptions.ValidationError:
-                                self.fail(msg=f'Conference "\033[1;31m{conf}\033[m contains invalid YAML')
+                                self.fail(msg=f'Conference \033[1;31m{conf}\033[m contains invalid properties')
 
 
 def run_test(testcase, msg):
@@ -58,4 +58,4 @@ def run_test(testcase, msg):
 if __name__ == '__main__':
     load_conference_yaml_schema()
     run_test(ConferenceTest,
-             msg=('\033[1;31mThere are {0} error(s) inside repo. Please fix the errors and commit again\033[m'))
+             msg=('\033[1;31mThere are {0} error(s) inside repo. Please fix the errors and commit again\033[m.'))
