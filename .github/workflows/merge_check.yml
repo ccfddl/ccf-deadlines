@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m install PyYAML jsonschema
+        python -m pip install PyYAML jsonschema
     - name: Validate yml files
       run: |
         python ./scripts/validate
