@@ -1,11 +1,19 @@
 #!/usr/bin/env python
 
+"""
+pre-commit hook to check conference yml files
+
+To use it normally as git pre-commit hook,
+make a symlink and install dependencies:
+$ ln -s ../../scripts/validate .git/hooks/pre-commit
+$ pip install PyYAML jsonschema
+"""
+
 import os
 import sys
 
 from io import StringIO
 from unittest import TestCase, TestLoader, TextTestRunner
-
 
 import jsonschema
 import jsonschema.exceptions
@@ -55,7 +63,16 @@ def run_test(testcase, msg):
         sys.exit(1)
 
 
+def usage():
+    print(__doc__)
+
+
 if __name__ == '__main__':
+
+    if '-h' in sys.argv or '--help' in sys.argv:
+        usage()
+        sys.exit(0)
+
     load_conference_yaml_schema()
     run_test(ConferenceTest,
-             msg=('\033[1;31mThere are {0} error(s) inside repo. Please fix the errors and commit again\033[m.'))
+             msg=('\033[1;31mThere are {0} error(s) inside repo. Please fix the errors and commit again.\033[m'))
