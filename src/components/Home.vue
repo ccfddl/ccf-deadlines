@@ -196,6 +196,8 @@ export default {
           } else {
             if (curDoc.timezone === 'AoE') {
               curDoc.timezone = 'UTC-12'
+            } else if (curDoc.timezone === 'UTC') {
+              curDoc.timezone = 'UTC+0'
             }
 
             let ddlTime = moment(curDoc.deadline + this.utcMap.get(curDoc.timezone))
