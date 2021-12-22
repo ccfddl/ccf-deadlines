@@ -12,3 +12,11 @@
       timezone: AoE
       date: TBD
       place: Virtual
+    - year: 2022
+      id: cscw22
+      link: https://cscw.acm.org/2022/
+      timeline:
+        - deadline: '2022-01-15 23:59:59'
+      timezone: AoE
+      date: January 1, 2022
+      place: Taiwan
