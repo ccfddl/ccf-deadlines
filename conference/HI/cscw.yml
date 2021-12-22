@@ -4,11 +4,11 @@
   rank: A
   dblp: cscw
   confs:
-    - year: 2021
-      id: cscw21
-      link: https://cscw.acm.org/2021/
+    - year: 2022
+      id: cscw22
+      link: https://cscw.acm.org/2022/
       timeline:
-        - deadline: '2021-04-15 23:59:59'
+        - deadline: '2022-01-15 23:59:59'
       timezone: AoE
       date: TBD
       place: Virtual
