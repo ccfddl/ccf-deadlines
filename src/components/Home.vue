@@ -90,6 +90,7 @@
             layout="prev, pager, next"
             :page-size=pageSize
             @current-change="handleCurrentChange"
+            :current-page="page"
             :total=showNumber>
         </el-pagination>
       </div>
@@ -116,6 +117,7 @@ export default {
       checkAll: true,
       isIndeterminate: false,
       pageSize: 10,
+      page: 1,
       checkList: [],
       subList: [],
       allconfList: [],
@@ -273,6 +275,7 @@ export default {
       this.showList = likesList
       this.showNumber = this.showList.length
       this.showList = this.showList.slice(this.pageSize*(page-1), this.pageSize*page)
+      this.page = page
     },
     transform (props) {
       Object.entries(props).forEach(([key, value]) => {
