@@ -9,7 +9,7 @@
       <div style="float: left">
         Deadlines are shown in {{ timeZone }} time.
       </div>
-      <div style="float: left; width: 150px">
+      <div style="float: left; width: 155px">
         <el-input prefix-icon="el-icon-search" size="mini"
                   v-model="input" placeholder="search conference"
                   @change="handleInputChange"
