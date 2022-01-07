@@ -12,3 +12,11 @@
       timezone: AoE
       date: Mar 29-April 01, 2022
       place: Edinburgh, UK
+    - year: 2023
+      id: edbt23
+      link: TBD
+      timeline:
+        - deadline: '2022-02-01 23:59:59'
+      timezone: AoE
+      date: TBD
+      place: TBD

@@ -237,7 +237,7 @@ export default {
     showConf (types, rank, input, page) {
       let filterList = this.allconfList
 
-      if (types != null){
+      if (types != null && types.length != 0){
         filterList = filterList.filter(function (item){return types.indexOf(item.sub.toUpperCase()) >= 0})
       }
 
