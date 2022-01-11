@@ -1,0 +1,14 @@
+- title: COLT
+  description: Annual Conference on Learning Theory
+  sub: AI
+  rank: B
+  dblp: colt
+  confs:
+    - year: 2022
+      id: colt22
+      link: https://learningtheory.org/colt2022/index.html
+      timeline:
+        - deadline: '2022-02-09 15:59:59'
+      timezone: UTC-8
+      date: July 2-5, 2022
+      place: London, UK
