@@ -4,14 +4,25 @@
   rank: A
   dblp: nsdi
   confs:
+    - year: 2022
+      id: nsdi22
+      link: https://www.usenix.org/conference/nsdi22/
+      timeline:
+        - abstract_deadline: '2021-03-04 20:59:59'
+          deadline: '2021-03-10 20:59:59'
+        - abstract_deadline: '2021-09-09 20:59:59'
+          deadline: '2021-09-15 20:59:59'
+      timezone: UTC-8
+      date: April 4-6, 2022
+      place: RENTON, USA
     - year: 2023
       id: nsdi23
       link: https://www.usenix.org/conference/nsdi23/
       timeline:
-        - abstract_deadline: '2022-04-13'
-          deadline: '2021-04-20'
-        - abstract_deadline: '2021-09-13'
-          deadline: '2021-09-20'
-      timezone: UTC-8
+        - abstract_deadline: '2022-04-13 23:59:59'
+          deadline: '2021-04-20 23:59:59'
+        - abstract_deadline: '2021-09-13 23:59:59'
+          deadline: '2021-09-20 23:59:59'
+      timezone: UTC-5
       date: April 17–19, 2023
       place: BOSTON, USA
