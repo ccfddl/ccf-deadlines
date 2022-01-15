@@ -2,10 +2,10 @@
   description:  IEEE International Conference on Program Comprehension
   sub: SE
   rank: B
-  dblp: iwpc
+  dblp: icpc
   confs:
     - year: 2022
-      id: ICPC22
+      id: icpc22
       link: https://conf.researchr.org/home/icpc-2022
       timeline:
         - deadline: '2022-01-13 23:59:59'
