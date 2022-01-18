@@ -12,7 +12,6 @@
           comment: 'Papers Due'
         - deadline: '2021-08-15 17:00:00'
           comment: 'Notification of Acceptance'
-      timezone: UTC-8
+      timezone: UTC+9
       date: June 12-17, 2022
       place: Gyeongju, Republic of Korea
-      
