@@ -26,8 +26,8 @@
       id: icdcs22
       link: https://icdcs2022.icdcs.org/
       timeline:
-        - abstract_deadline: '2022-01-17 23:59:59'
-          deadline: '2022-01-24 23:59:59'
+        - abstract_deadline: '2022-01-24 23:59:59'
+          deadline: '2022-01-31 23:59:59'
       timezone: UTC-5
       date: July 10-13, 2022
       place: Bologna, Italy
