@@ -6,6 +6,15 @@
   confs:
     - year: 2021
       id: mm21
+      link: https://2021.acmmm.org/
+      timeline:
+        - abstract_deadline: '2021-04-10 23:59:59'
+          deadline: '2021-04-17 23:59:59'
+      timezone: AoE
+      date: October 21-24, 2021
+      place: Chengdu, China
+    - year: 2022
+      id: mm22
       link: https://2022.acmmm.org/
       timeline:
         - abstract_deadline: '2022-03-31 23:59:59'
