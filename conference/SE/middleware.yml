@@ -1,0 +1,17 @@
+- title: Middleware
+  description:  International Middleware Conference
+  sub: SE
+  rank: B
+  dblp: middleware
+  confs:
+    - year: 2022
+      id: middleware22
+      link: https://middleware-conf.github.io/2022/
+      timeline:
+        - deadline: '2021-11-20 23:59:59'
+          comment: 'Submission R1'
+        - deadline: '2022-03-15 23:59:59'
+          comment: 'Submission R2'
+      timezone: AoE
+      date: November 7–11, 2022
+      place: Fairmont Le Château Frontenac, Québec City, Québec, Canada
