@@ -10,7 +10,7 @@
       timeline:
         - deadline: '2021-05-01 23:59:59'
           comment: 'Abstract submission'
-        - deadline: '2022-05-07 23:59:59'
+        - deadline: '2021-05-07 23:59:59'
           comment: 'Full paper submission'
       timezone: AoE
       date: October 25-28, 2021
