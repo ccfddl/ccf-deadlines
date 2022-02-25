@@ -22,3 +22,12 @@
       timezone: AoE
       date: April 5–8, 2022
       place: Rennes, France
+    - year: 2023
+      id: eurosys2023
+      link: http://www.eurosys.org/ # Temporary missing
+      timeline:
+        - abstract_deadline: '2022-05-10 23:59:59'
+          deadline: '2022-05-17 23:59:59'
+      timezone: AoE
+      date: May 9–12, 2023
+      place: Rome, Italy
