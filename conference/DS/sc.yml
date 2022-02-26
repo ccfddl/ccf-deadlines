@@ -1,0 +1,14 @@
+- title: SC
+  description: International Conference for High Performance Computing, Networking, Storage, and Analysis
+  sub: DS
+  rank: A
+  dblp: sc
+  confs:
+    - year: 2022
+      id: sc22
+      link: https://sc22.supercomputing.org/
+      timeline:
+        - deadline: '2022-04-01 23:59:00'
+      timezone: AoE
+      date: November 13–18, 2022
+      place: Dallas, Texas, USA
