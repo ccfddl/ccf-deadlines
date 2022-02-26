@@ -13,3 +13,12 @@
       timezone: UTC+0
       date: December 5-14, 2021
       place: Virtual
+    - year: 2022
+      id: nips22
+      link: https://neurips.cc/Conferences/2022
+      timeline:
+        - abstract_deadline: '2022-05-16 21:00:00'
+          deadline: '2022-05-19 21:00:00'
+      timezone: UTC+0
+      date: November 28-December 9, 2022
+      place: New Orleans, Louisiana, USA
