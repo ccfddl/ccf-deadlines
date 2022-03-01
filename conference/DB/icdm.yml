@@ -4,7 +4,7 @@
   rank: B
   dblp: icdm
   confs:
-     - year: 2021
+    - year: 2021
       id: icdm21
       link: https://icdm2021.auckland.ac.nz/
       timeline:
