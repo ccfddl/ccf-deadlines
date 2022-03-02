@@ -42,3 +42,22 @@
       timezone: UTC-7
       date: September 05-09, 2022
       place: Sydney, Australia
+    - year: 2023
+      id: vldb23
+      link: http://www.vldb.org/2023/
+      timeline:
+        - deadline: '2022-04-01 17:00:00'
+        - deadline: '2022-05-01 17:00:00'
+        - deadline: '2022-06-01 17:00:00'
+        - deadline: '2022-07-01 17:00:00'
+        - deadline: '2022-08-01 17:00:00'
+        - deadline: '2022-09-01 17:00:00'
+        - deadline: '2022-10-01 17:00:00'
+        - deadline: '2022-11-01 17:00:00'
+        - deadline: '2022-12-01 17:00:00'
+        - deadline: '2023-01-01 17:00:00'
+        - deadline: '2023-02-01 17:00:00'
+        - deadline: '2023-03-01 17:00:00'
+      timezone: UTC-7
+      date: TBD
+      place: TBD
