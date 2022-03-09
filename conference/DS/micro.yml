@@ -4,14 +4,14 @@
   rank: A
   dblp: micro
   confs:
-    - year: 2021
-      id: hpca21
-      link: https://www.microarch.org/micro54/
+    - year: 2022
+      id: micro22
+      link: https://www.microarch.org/micro55/
       timeline:
-        - deadline: '2021-04-09 23:59:59'
-          comment: 'abstract deadline'
-        - deadline: '2021-04-16 23:59:59'
-          comment: 'full paper deadline'
+        - deadline: '2022-04-14 11:59:59'
+          comment: 'Abstract Deadline'
+        - deadline: '2022-04-21 11:59:59'
+          comment: 'Full Paper Deadline'
       timezone: UTC-7
-      date: Oct 18-22, 2021
-      place: Athens, Greece
+      date: Oct, 2022
+      place: Chicago, Illinois, USA
