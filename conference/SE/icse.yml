@@ -13,3 +13,11 @@
       timezone: AoE
       date: May 21-29, 2022
       place: Pittsburgh, PA, USA
+    - year: 2023
+      id: icse23
+      link: https://conf.researchr.org/home/icse-2023
+      timeline:
+        - deadline: '2022-09-01 23:59:59'
+      timezone: AoE
+      date: May 14-20, 2023
+      place: Melbourne, Australia

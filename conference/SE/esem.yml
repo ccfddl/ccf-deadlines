@@ -1,0 +1,17 @@
+- title: ESEM
+  description:  International Symposium on Empirical Software Engineering and Measurement
+  sub: SE
+  rank: B
+  dblp: esem
+  confs:
+    - year: 2022
+      id: esem22
+      link: https://conf.researchr.org/home/esem-2022
+      timeline:
+        - deadline: '2022-04-25 23:59:59'
+          comment: 'Abstract'
+        - deadline: '2022-05-02 23:59:59'
+          comment: 'Submission'
+      timezone: AoE
+      date: September 19–23, 2022
+      place: Helsinki, Finland

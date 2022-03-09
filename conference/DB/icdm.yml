@@ -12,3 +12,11 @@
       timezone: UTC+8
       date: December 7-10, 2021
       place: Auckland, New Zealand
+    - year: 2022
+      id: icdm22
+      link: https://icdm22.cse.usf.edu/key-dates.html
+      timeline:
+        - deadline: '2022-06-10 23:59:00'
+      timezone: UTC-7
+      date: November 30 - December 3
+      place: Orlando, FL, USA

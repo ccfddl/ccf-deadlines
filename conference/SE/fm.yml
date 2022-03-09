@@ -1,0 +1,17 @@
+- title: FM
+  description:  International Symposium on Formal Methods
+  sub: SE
+  rank: B
+  dblp: fm
+  confs:
+    - year: 2021
+      id: fm21
+      link: http://lcs.ios.ac.cn/fm2021/
+      timeline:
+        - deadline: '2021-04-30 23:59:59'
+          comment: 'Abstract submission'
+        - deadline: '2021-05-06 23:59:59'
+          comment: 'Full paper submission'
+      timezone: AoE
+      date: November 20-26, 2021
+      place: Beijng, China

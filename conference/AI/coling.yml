@@ -1,0 +1,17 @@
+- title: COLING
+  description: INTERNATIONNAL CONFERENCE ON COMPUTATIONAL LINGUISTICS
+  sub: AI
+  rank: B
+  dblp: coling
+  confs:
+    - year: 2022
+      id: coling22
+      link: https://coling2022.org/
+      timeline:
+        - deadline: '2022-05-17 17:00:00'
+          comment: 'Papers Due'
+        - deadline: '2022-08-15 17:00:00'
+          comment: 'Notification of Acceptance'
+      timezone: UTC+9
+      date: June 12-17, 2022
+      place: Gyeongju, Republic of Korea

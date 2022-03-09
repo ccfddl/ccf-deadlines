@@ -1,0 +1,14 @@
+- title: InterSpeech
+  description: Conference of the International Speech Communication Association
+  sub: CG
+  rank: C
+  dblp: interspeech
+  confs:
+    - year: 2022
+      id: interspeech22
+      link: https://www.interspeech2022.org/
+      timeline:
+        - deadline: '2022-03-21 23:59:59'
+      timezone: UTC+9
+      date: September 18-22, 2022
+      place: Incheon, South Korea

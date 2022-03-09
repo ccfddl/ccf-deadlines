@@ -9,7 +9,7 @@
       <div style="float: left">
         Deadlines are shown in {{ timeZone }} time.
       </div>
-      <div style="float: left; width: 150px">
+      <div style="float: left; width: 155px">
         <el-input prefix-icon="el-icon-search" size="mini"
                   v-model="input" placeholder="search conference"
                   @change="handleInputChange"
@@ -81,7 +81,7 @@
     <el-row style="padding-top: 8px">
       <div style="float: left; color: #666666;font-size: 12px;">
         <div>ccf-deadlines is maintained by <a href="https://github.com/jacklightChen">@jacklightChen</a> and <a href="https://github.com/0x4f5da2">@0x4f5da2</a>.</div>
-        <div style="padding-top: 3px">If you find it useful, try find <a href="https://github.com/0x4f5da2">him</a> a girlfriend.</div>
+        <div style="padding-top: 3px">If you find it useful, try find <a href="https://github.com/0x4f5da2">him</a> a girlfriend or follow <a href="https://www.researchgate.net/profile/Zhihao_Chen23">him</a> on ResearchGate.</div>
       </div>
       <div style="float: right">
         <el-pagination
@@ -90,6 +90,7 @@
             layout="prev, pager, next"
             :page-size=pageSize
             @current-change="handleCurrentChange"
+            :current-page="page"
             :total=showNumber>
         </el-pagination>
       </div>
@@ -116,6 +117,7 @@ export default {
       checkAll: true,
       isIndeterminate: false,
       pageSize: 10,
+      page: 1,
       checkList: [],
       subList: [],
       allconfList: [],
@@ -196,6 +198,8 @@ export default {
           } else {
             if (curDoc.timezone === 'AoE') {
               curDoc.timezone = 'UTC-12'
+            } else if (curDoc.timezone === 'UTC') {
+              curDoc.timezone = 'UTC+0'
             }
 
             let ddlTime = moment(curDoc.deadline + this.utcMap.get(curDoc.timezone))
@@ -233,7 +237,7 @@ export default {
     showConf (types, rank, input, page) {
       let filterList = this.allconfList
 
-      if (types != null){
+      if (types != null && types.length != 0){
         filterList = filterList.filter(function (item){return types.indexOf(item.sub.toUpperCase()) >= 0})
       }
 
@@ -271,6 +275,7 @@ export default {
       this.showList = likesList
       this.showNumber = this.showList.length
       this.showList = this.showList.slice(this.pageSize*(page-1), this.pageSize*page)
+      this.page = page
     },
     transform (props) {
       Object.entries(props).forEach(([key, value]) => {
@@ -295,6 +300,7 @@ export default {
         }
       }
       this.utcMap.set('AoE', '-1200')
+      this.utcMap.set('UTC', '+0000')
     },
     handleCheckedChange(types) {
       this.typesList = types
