@@ -6,7 +6,7 @@
   confs:
     - year: 2022
       id: fse22
-      link: https://2022.esec-fse.org/
+      link: https://fse.iacr.org/2022/
       timeline:
         - deadline: '2022-03-11 23:59:59'
           comment: 'Paper registration'
