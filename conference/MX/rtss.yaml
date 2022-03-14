@@ -1,0 +1,24 @@
+- title: RTSS
+  description: The IEEE Real-Time Systems Symposium 
+  sub: MX
+  rank: A
+  dblp: RTSS
+  confs:
+    - year: 2022
+      id:RTSS22
+      link: http://2022.rtss.org/
+      timeline:
+        - deadline: '2022-5-26 23:59:59'
+      timezone: AoE
+      date: April 19-23, 2021
+      place: Ljubljana, Slovenia
+
+    - year: 2022
+      id: www22
+      link: https://www2022.thewebconf.org/
+      timeline:
+        - abstract_deadline: '2021-10-14 23:59:59'
+          deadline: '2021-10-21 23:59:59'
+      timezone: AoE
+      date: December 5-8, 2022
+      place: Houston, USA
