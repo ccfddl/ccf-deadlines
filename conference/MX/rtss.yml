@@ -2,7 +2,7 @@
   description: The IEEE Real-Time Systems Symposium 
   sub: MX
   rank: A
-  dblp: RTSS
+  dblp: rtss
   confs:
     - year: 2022
       id: rtss22
@@ -10,5 +10,5 @@
       timeline:
         - deadline: '2022-5-26 23:59:59'
       timezone: AoE
-      date: Dcember 5–8, 2022
+      date: Dcember 5-8, 2022
       place: Houston, USA
