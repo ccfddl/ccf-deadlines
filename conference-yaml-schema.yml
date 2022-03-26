@@ -118,6 +118,7 @@ items:
           date:
             description: When the main conference is happening, e.g., Mar 12-16, 2021
             type: string
+            pattern: ^[ -~]+$
           place:
             description: Where the main conference is happening, e.g., city, country
             type: string
