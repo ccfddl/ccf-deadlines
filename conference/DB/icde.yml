@@ -27,11 +27,11 @@
       id: icde23
       link: https://icde2023.ics.uci.edu/
       timeline:
-        - deadline: '2021-04-25 23:59:59'
+        - deadline: '2022-04-25 23:59:59'
           comment: 'first round'
-        - deadline: '2021-07-08 23:59:59'
+        - deadline: '2022-07-08 23:59:59'
           comment: 'second round'
-        - deadline: '2021-10-08 23:59:59'
+        - deadline: '2022-10-08 23:59:59'
           comment: 'third round'
       timezone: UTC-8
       date: April 3-7, 2023
