@@ -1,0 +1,15 @@
+- title: CLUSTER
+  description: IEEE International Conference on Cluster Computing
+  sub: DS
+  rank: B
+  dblp: cluster
+  confs:
+    - year: 2022
+      id: cluster22
+      link: https://clustercomp.org/2022
+      timeline:
+        - deadline: '2022-05-14 20:00:00'
+          comment: 'Full Paper Deadline'
+      timezone: UTC-8
+      date: September 6-9, 2022
+      place: Heidelberg, Germany
