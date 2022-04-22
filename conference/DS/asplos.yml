@@ -36,6 +36,6 @@
           comment: 'Fall Registration Deadline'
         - deadline: '2022-10-20 17:59:59'
           comment: 'Fall Submission Deadline'
-      timezone: EDT
+      timezone: UTC-4
       date: 
       place: 
