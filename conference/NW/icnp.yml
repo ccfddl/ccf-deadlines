@@ -1,0 +1,15 @@
+- title: ICNP
+  description: IEEE International Conference on Network Protocols
+  sub: NW
+  rank: B
+  dblp: icnp
+  confs:
+    - year: 2022
+      id: icnp22
+      link: https://icnp22.cs.ucr.edu/index.html
+      timeline:
+        - abstract_deadline: '2022-05-19 20:00:00'
+          deadline: '2022-05-26 20:00:00'
+      timezone: UTC-4
+      date: October 30-November 2, 2022
+      place: Lexington, Kentucky, USA
