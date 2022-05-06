@@ -15,3 +15,14 @@
       timezone: UTC-12
       date: February 27 - March 3, 2022
       place: San Diego, California
+    - year: 2023
+      id: ndss23
+      link: https://www.ndss-symposium.org/ndss2023/
+      timeline:
+        - deadline: '2022-05-13 23:59:59'
+          comment: 'Summer'
+        - deadline: '2022-07-29 23:59:59'
+          comment: 'Fall'
+      timezone: UTC-12
+      date: TBD
+      place: San Diego, California
