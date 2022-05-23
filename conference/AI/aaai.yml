@@ -13,3 +13,12 @@
       timezone: UTC-12
       date: February 22 - March 1, 2022
       place: Vancouver, British Columbia, Canada
+    - year: 2023
+      id: aaai23
+      link: https://www.aaai.org/Conferences/AAAI-23/
+      timeline:
+        - abstract_deadline: '2022-08-08 23:59:59'
+          deadline: '2022-08-15 23:59:59'
+      timezone: UTC-12
+      date: February 7 - February 14, 2023
+      place: Washington, DC, USA
