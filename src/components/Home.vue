@@ -126,7 +126,7 @@ export default {
       typeMap: new Map(),
       timeZone: '',
       utcMap: new Map(),
-      rankoptions: ['A', 'B', 'C'],
+      rankoptions: ['A', 'B', 'C', 'N'],
       typesList: [],
       rankList: [],
       cachedLikes: [],
