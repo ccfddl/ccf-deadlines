@@ -18,7 +18,7 @@
       </div>
       <div style="float: right">
         <el-checkbox-group v-model="rankList" size="mini" @change="handleRankChange" class="rankbox">
-          <el-checkbox-button v-for="rank in rankoptions" :label="rank" :key="rank">CCF {{rank}}</el-checkbox-button>
+          <el-checkbox-button v-for="rank in rankoptions" :label="rank" :key="rank">{{rank}}</el-checkbox-button>
         </el-checkbox-group>
       </div>
     </el-row>
@@ -37,7 +37,7 @@
             </el-row>
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
-            <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
+            <el-row><el-tag size="mini" type="" effect="plain">{{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
             <el-row style="padding-top: 5px"><span class="conf-sub">{{scope.row.subname}}</span></el-row>
             </div>
         </template>
@@ -126,7 +126,7 @@ export default {
       typeMap: new Map(),
       timeZone: '',
       utcMap: new Map(),
-      rankoptions: ['A', 'B', 'C', 'N'],
+      rankoptions: ['CCF A', 'CCF B', 'CCF C', 'Non-CCF'],
       typesList: [],
       rankList: [],
       cachedLikes: [],
