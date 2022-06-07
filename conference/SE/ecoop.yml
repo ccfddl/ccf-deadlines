@@ -1,7 +1,7 @@
 - title: ECOOP
   description:  European Conference on Object-Oriented Programming
   sub: SE
-  rank: B
+  rank: CCF B
   dblp: ecoop
   confs:
     - year: 2022

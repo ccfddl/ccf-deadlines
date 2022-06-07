@@ -1,7 +1,7 @@
 - title: UAI
   description: Conference on Uncertainty in Artificial Intelligence
   sub: AI
-  rank: B
+  rank: CCF B
   dblp: uai
   confs:
     - year: 2021

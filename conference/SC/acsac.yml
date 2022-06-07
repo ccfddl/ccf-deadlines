@@ -1,7 +1,7 @@
 - title: ACSAC
   description: Annual Computer Security Applications Conference
   sub: SC
-  rank: B
+  rank: CCF B
   dblp: acsac
   confs:
     - year: 2021

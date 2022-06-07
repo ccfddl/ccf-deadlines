@@ -1,7 +1,7 @@
 - title: IPDPS
   description: IEEE International Parallel and Distributed Processing Symposium
   sub: DS
-  rank: B
+  rank: CCF B
   dblp: ipps
   confs:
     - year: 2022

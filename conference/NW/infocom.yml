@@ -1,7 +1,7 @@
 - title: INFOCOM
   description: IEEE International Conference on Computer Communications
   sub: NW
-  rank: A
+  rank: CCF A
   dblp: infocom
   confs:
     - year: 2021

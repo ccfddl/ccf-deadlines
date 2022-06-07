@@ -1,7 +1,7 @@
 - title: ICSME
   description:  International Conference on Software Maintenance and Evolution
   sub: SE
-  rank: B
+  rank: CCF B
   dblp: icsm
   confs:
     - year: 2022

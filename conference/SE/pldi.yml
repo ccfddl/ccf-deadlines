@@ -1,7 +1,7 @@
 - title: PLDI
   description: ACM SIGPLAN Conference on Programming Language Design & Implementation
   sub: SE
-  rank: A
+  rank: CCF A
   dblp: pldi
   confs:
     - year: 2021

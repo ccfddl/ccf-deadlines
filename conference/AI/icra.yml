@@ -1,7 +1,7 @@
 - title: ICRA
   description: IEEE International Conference on Robotics and Automation
   sub: AI
-  rank: B
+  rank: CCF B
   dblp: icra
   confs:
     - year: 2022

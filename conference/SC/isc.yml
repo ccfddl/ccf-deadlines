@@ -1,7 +1,7 @@
 - title: ISC
   description: Information Security Conference
   sub: SC
-  rank: C
+  rank: CCF C
   dblp: isw
   confs:
     - year: 2021

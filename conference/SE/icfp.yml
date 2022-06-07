@@ -1,7 +1,7 @@
 - title: ICFP
   description:  International Conference on Function Programming
   sub: SE
-  rank: B
+  rank: CCF B
   dblp: icfp
   confs:
     - year: 2022

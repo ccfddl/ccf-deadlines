@@ -1,7 +1,7 @@
 - title: ISPA
   description: IEEE International Symposium on Parallel and Distributed Processing with Applications
   sub: DS
-  rank: C
+  rank: CCF C
   dblp: ispa
   confs:
     - year: 2021

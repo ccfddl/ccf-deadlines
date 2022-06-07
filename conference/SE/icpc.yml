@@ -1,7 +1,7 @@
 - title: ICPC
   description:  IEEE International Conference on Program Comprehension
   sub: SE
-  rank: B
+  rank: CCF B
   dblp: icpc
   confs:
     - year: 2022

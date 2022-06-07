@@ -1,7 +1,7 @@
 - title: ICNP
   description: IEEE International Conference on Network Protocols
   sub: NW
-  rank: B
+  rank: CCF B
   dblp: icnp
   confs:
     - year: 2022

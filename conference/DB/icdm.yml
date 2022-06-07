@@ -1,7 +1,7 @@
 - title: ICDM
   description: IEEE International Conference on Data Mining
   sub: DB
-  rank: B
+  rank: CCF B
   dblp: icdm
   confs:
     - year: 2021

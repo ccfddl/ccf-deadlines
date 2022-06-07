@@ -1,7 +1,7 @@
 - title: ETAPS
   description:  European Joint Conferences on Theory and Practice of Software
   sub: SE
-  rank: B
+  rank: CCF B
   dblp: etaps
   confs:
     - year: 2022

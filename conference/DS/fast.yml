@@ -1,7 +1,7 @@
 - title: FAST
   description: USENIX Conference on File and Storage Technologies
   sub: DS
-  rank: A
+  rank: CCF A
   dblp: fast
   confs:
     - year: 2021

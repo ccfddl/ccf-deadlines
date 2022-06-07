@@ -1,7 +1,7 @@
 - title: BMVC
   description: British Machine Vision Conference
   sub: AI
-  rank: C
+  rank: CCF C
   dblp: bmvc
   confs:
     - year: 2021

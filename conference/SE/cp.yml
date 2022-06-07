@@ -1,7 +1,7 @@
 - title: CP
   description:  International Conference on Principles and Practice of Constraint Programming
   sub: SE
-  rank: B
+  rank: CCF B
   dblp: cp
   confs:
     - year: 2022

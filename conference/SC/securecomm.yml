@@ -1,7 +1,7 @@
 - title: SecureComm
   description: International Conference on Security and Privacy in Communication Networks
   sub: SC
-  rank: C
+  rank: CCF C
   dblp: securecomm
   confs:
     - year: 2021

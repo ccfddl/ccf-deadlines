@@ -1,7 +1,7 @@
 - title: SC
   description: International Conference for High Performance Computing, Networking, Storage, and Analysis
   sub: DS
-  rank: A
+  rank: CCF A
   dblp: sc
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: NSDI
   description: USENIX Symposium on Networked Systems Design and Implementation
   sub: NW
-  rank: A
+  rank: CCF A
   dblp: nsdi
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: InterSpeech
   description: Conference of the International Speech Communication Association
   sub: CG
-  rank: C
+  rank: CCF C
   dblp: interspeech
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: ICDCS
   description: IEEE International Conference on Distributed Computing Systems
   sub: DS
-  rank: B
+  rank: CCF B
   dblp: icdcs
   confs:
     - year: 2020

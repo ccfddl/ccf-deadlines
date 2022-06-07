@@ -1,7 +1,7 @@
 - title: EMNLP
   description: The annual Conference on Empirical Methods in Natural Language Processing
   sub: AI
-  rank: B
+  rank: CCF B
   dblp: emnlp
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: ICICS
   description: International Conference on Information and Communications Security
   sub: SC
-  rank: C
+  rank: CCF C
   dblp: icics
   confs:
     - year: 2021

@@ -1,7 +1,7 @@
 - title: WiSec
   description: ACM Conference on Security and Privacy in Wireless and Mobile Networks
   sub: SC
-  rank: C
+  rank: CCF C
   dblp: wisec
   confs:
     - year: 2021

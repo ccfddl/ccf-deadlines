@@ -1,7 +1,7 @@
 - title: ACML
   description: Asian Conference on Machine Learning
   sub: AI
-  rank: C
+  rank: CCF C
   dblp: acml
   confs:
     - year: 2021

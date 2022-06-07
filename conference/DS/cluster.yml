@@ -1,7 +1,7 @@
 - title: CLUSTER
   description: IEEE International Conference on Cluster Computing
   sub: DS
-  rank: B
+  rank: CCF B
   dblp: cluster
   confs:
     - year: 2022

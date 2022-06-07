@@ -1,7 +1,7 @@
 - title: HotOS
   description:  USENIX Workshop on Hot Topics in Operating Systems
   sub: SE
-  rank: B
+  rank: CCF B
   dblp: hotos
   confs:
     - year: 2021

@@ -1,7 +1,7 @@
 - title: OSDI
   description: USENIX Symposium on Operating Systems Design and Implementation
   sub: SE
-  rank: A
+  rank: CCF A
   dblp: osdi
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: CIKM
   description: ACM International Conference on Information and Knowledge Management
   sub: DB
-  rank: B
+  rank: CCF B
   dblp: cikm
   confs:
     - year: 2020

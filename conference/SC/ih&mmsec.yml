@@ -1,7 +1,7 @@
 - title: IH&MMSec
   description: ACM Workshop on Information Hiding and Multimedia Security
   sub: SC
-  rank: C
+  rank: CCF C
   dblp: ih
   confs:
     - year: 2021

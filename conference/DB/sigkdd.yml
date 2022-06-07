@@ -1,7 +1,7 @@
 - title: SIGKDD
   description: ACM Knowledge Discovery and Data Mining
   sub: DB
-  rank: A
+  rank: CCF A
   dblp: kdd
   confs:
     - year: 2021

@@ -1,7 +1,7 @@
 - title: S&P
   description: IEEE Symposium on Security and Privacy
   sub: SC
-  rank: A
+  rank: CCF A
   dblp: sp
   confs:
     - year: 2022

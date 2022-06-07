@@ -1,7 +1,7 @@
 - title: TCC
   description: Theory of Cryptography Conference
   sub: SC
-  rank: B
+  rank: CCF B
   dblp: tcc
   confs:
     - year: 2021

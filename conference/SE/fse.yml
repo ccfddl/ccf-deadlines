@@ -1,7 +1,7 @@
 - title: ESEC/FSE
   description:  ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering
   sub: SE
-  rank: A
+  rank: CCF A
   dblp: sigsoft
   confs:
     - year: 2022

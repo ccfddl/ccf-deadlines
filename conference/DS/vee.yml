@@ -1,7 +1,7 @@
 - title: VEE 
   description: Virtual Execution Environments
   sub: DS
-  rank: B
+  rank: CCF B
   dblp: vee 
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: ICCV
   description: IEEE International Conference on Computer Vision
   sub: AI
-  rank: A
+  rank: CCF A
   dblp: iccv
   confs:
     - year: 2021

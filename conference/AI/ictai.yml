@@ -1,7 +1,7 @@
 - title: ICTAI
   description: International Conference on Tools with Artificial Intellignce
   sub: AI
-  rank: C
+  rank: CCF C
   dblp: ictai
   confs:
     - year: 2021

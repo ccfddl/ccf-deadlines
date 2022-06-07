@@ -1,7 +1,7 @@
 - title: ISSTA
   description: ACM SIGSOFT International Symposium on Software Testing and Analysis
   sub: SE
-  rank: A
+  rank: CCF A
   dblp: sigsoft
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: HPCA
   description: IEEE International Symposium on High-Performance Computer Architecture
   sub: DS
-  rank: A
+  rank: CCF A
   dblp: hpca
   confs:
     - year: 2022
