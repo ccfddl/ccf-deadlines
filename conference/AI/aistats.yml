@@ -1,7 +1,7 @@
 - title: AISTATS
   description: International Conference on Artificial Intelligence and Statistics
   sub: AI
-  rank: CCF C
+  rank: C
   dblp: aistats
   confs:
     - year: 2022

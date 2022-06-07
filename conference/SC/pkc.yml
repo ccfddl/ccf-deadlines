@@ -1,7 +1,7 @@
 - title: PKC
   description: International Conference on Practice and Theory of Public-Key Cryptography
   sub: SC
-  rank: CCF B
+  rank: B
   dblp: pkc
   confs:
     - year: 2021

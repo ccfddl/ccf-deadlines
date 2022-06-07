@@ -29,7 +29,7 @@ Example file: conference/DB/sigmod.yml
 - title: SIGMOD
   description: ACM Conference on Management of Data
   sub: DB
-  rank: CCF A
+  rank: A
   dblp: sigmod
   confs:
     - year: 2022

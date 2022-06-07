@@ -1,7 +1,7 @@
 - title: COLING
   description: INTERNATIONNAL CONFERENCE ON COMPUTATIONAL LINGUISTICS
   sub: AI
-  rank: CCF B
+  rank: B
   dblp: coling
   confs:
     - year: 2022

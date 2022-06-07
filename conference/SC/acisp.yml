@@ -1,7 +1,7 @@
 - title: ACISP
   description: Australasia Conference on Information Security and Privacy
   sub: SC
-  rank: CCF C
+  rank: C
   dblp: acisp
   confs:
     - year: 2021

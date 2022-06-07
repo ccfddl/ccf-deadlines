@@ -1,7 +1,7 @@
 - title: POPL
   description:  ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages
   sub: SE
-  rank: CCF A
+  rank: A
   dblp: popl
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: ASPLOS
   description: International Conference on Architectural Support for Programming Languages and Operating Systems
   sub: DS
-  rank: CCF A
+  rank: A
   dblp: asplos
   confs:
     - year: 2021

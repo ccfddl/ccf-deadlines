@@ -1,7 +1,7 @@
 - title: ICLR
   description: International Conference on Learning Representations
   sub: AI
-  rank: Non-CCF
+  rank: N
   dblp: iclr
   confs:
     - year: 2022

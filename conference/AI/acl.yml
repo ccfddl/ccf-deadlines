@@ -1,7 +1,7 @@
 - title: ACL
   description: Annual Meeting of the Association for Computational Linguistics
   sub: AI
-  rank: CCF A
+  rank: A
   dblp: acl
   confs:
     - year: 2022

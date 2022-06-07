@@ -1,7 +1,7 @@
 - title: ESEM
   description:  International Symposium on Empirical Software Engineering and Measurement
   sub: SE
-  rank: CCF B
+  rank: B
   dblp: esem
   confs:
     - year: 2022

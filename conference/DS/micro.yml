@@ -1,7 +1,7 @@
 - title: MICRO
   description: IEEE/ACM International Symposium on Microarchitecture
   sub: DS
-  rank: CCF A
+  rank: A
   dblp: micro
   confs:
     - year: 2021

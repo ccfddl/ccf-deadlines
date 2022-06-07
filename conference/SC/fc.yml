@@ -1,7 +1,7 @@
 - title: FC
   description: Financial Cryptography and Data Security
   sub: SC
-  rank: CCF C
+  rank: C
   dblp: fc
   confs:
     - year: 2022

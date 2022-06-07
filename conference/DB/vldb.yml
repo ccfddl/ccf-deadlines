@@ -1,7 +1,7 @@
 - title: VLDB
   description: International Conference on Very Large Data Bases
   sub: DB
-  rank: CCF A
+  rank: A
   dblp: vldb
   confs:
     - year: 2021

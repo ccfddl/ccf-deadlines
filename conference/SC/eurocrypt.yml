@@ -1,7 +1,7 @@
 - title: EUROCRYPT
   description: European Cryptology Conference
   sub: SC
-  rank: CCF A
+  rank: A
   dblp: eurocrypt
   confs:
     - year: 2021

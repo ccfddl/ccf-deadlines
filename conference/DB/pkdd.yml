@@ -1,7 +1,7 @@
 - title: ECML-PKDD
   description: European Conference on Machine Learning and 25th Principles and Practice of Knowledge Discovery in Databases
   sub: DB
-  rank: CCF B
+  rank: B
   dblp: pkdd
   confs:
     - year: 2021

@@ -1,7 +1,7 @@
 - title: ICASSP
   description: IEEE International Conference on Acoustics, Speech, and Signal Processing
   sub: CG
-  rank: CCF B
+  rank: B
   dblp: icassp
   confs:
     - year: 2022

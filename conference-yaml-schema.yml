@@ -35,10 +35,10 @@ items:
       description: The level that the conference is ranked by CCF, e.g., A, B, C
       type: string
       enum:
-        - CCF A
-        - CCF B
-        - CCF C
-        - Non-CCF
+        - A
+        - B
+        - C
+        - N
     dblp:
       description: The suffix in dblp url, e.g., iccv in dblp.uni-trier.de/db/conf/iccv
       type: string

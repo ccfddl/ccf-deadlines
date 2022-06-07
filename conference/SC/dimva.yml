@@ -1,7 +1,7 @@
 - title: DIMVA
   description: Detection of Intrusions and Malware & Vulnerability Assessment
   sub: SC
-  rank: CCF C
+  rank: C
   dblp: dimva
   confs:
     - year: 2021

@@ -1,7 +1,7 @@
 - title: SAC
   description: Selected Areas in Cryptography
   sub: SC
-  rank: CCF C
+  rank: C
   dblp: sacrypt
   confs:
     - year: 2021

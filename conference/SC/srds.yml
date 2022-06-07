@@ -1,7 +1,7 @@
 - title: SRDS
   description: IEEE International Symposium on Reliable Distributed Systems
   sub: SC
-  rank: CCF B
+  rank: B
   dblp: srds
   confs:
     - year: 2021

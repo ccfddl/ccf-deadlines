@@ -1,7 +1,7 @@
 - title: ICSE
   description: International Conference on Software Engineering
   sub: SE
-  rank: CCF A
+  rank: A
   dblp: icse
   confs:
     - year: 2022

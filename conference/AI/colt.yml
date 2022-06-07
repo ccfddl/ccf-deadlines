@@ -1,7 +1,7 @@
 - title: COLT
   description: Annual Conference on Learning Theory
   sub: AI
-  rank: CCF B
+  rank: B
   dblp: colt
   confs:
     - year: 2022

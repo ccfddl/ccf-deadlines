@@ -1,7 +1,7 @@
 - title: ICDT
   description: International Conference on Database Theory
   sub: DB
-  rank: CCF B
+  rank: B
   dblp: icdt
   confs:
     - year: 2022

@@ -1,7 +1,7 @@
 - title: RAID
   description: International Symposium on Recent Advances in Intrusion Detection
   sub: SC
-  rank: CCF B
+  rank: B
   dblp: raid
   confs:
     - year: 2021

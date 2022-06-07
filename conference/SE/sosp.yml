@@ -1,7 +1,7 @@
 - title: SOSP
   description: ACM Symposium on Operating Systems Principles
   sub: SE
-  rank: CCF A
+  rank: A
   dblp: sosp
   confs:
     - year: 2021

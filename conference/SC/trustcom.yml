@@ -1,7 +1,7 @@
 - title: TrustCom
   description: IEEE International Conference on Trust, Security and Privacy in Computing and Communications
   sub: SC
-  rank: CCF C
+  rank: C
   dblp: trustcom
   confs:
     - year: 2021

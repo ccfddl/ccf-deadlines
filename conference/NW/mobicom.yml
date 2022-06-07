@@ -1,7 +1,7 @@
 - title: MobiCom
   description: ACM Annual International Conference On Mobile Computing And Networking
   sub: NW
-  rank: CCF A
+  rank: A
   dblp: mobicom
   confs:
     - year: 2022

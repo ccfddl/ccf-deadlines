@@ -1,7 +1,7 @@
 - title: SIGCOMM
   description: ACM International Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication
   sub: NW
-  rank: CCF A
+  rank: A
   dblp: sigcomm
   confs:
     - year: 2021

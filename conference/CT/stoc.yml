@@ -1,7 +1,7 @@
 - title: STOC
   description: ACM Symposium on the Theory of Computing
   sub: CT
-  rank: CCF A
+  rank: A
   dblp: stoc
   confs:
     - year: 2021

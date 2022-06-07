@@ -1,7 +1,7 @@
 - title: ISSRE
   description:  International Symposium on Software Reliability Engineering
   sub: SE
-  rank: CCF B
+  rank: B
   dblp: issre
   confs:
     - year: 2021

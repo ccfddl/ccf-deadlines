@@ -1,7 +1,7 @@
 - title: CAV
   description: International Conference on Computer-Aided Verification
   sub: CT
-  rank: CCF A
+  rank: A
   dblp: cav
   confs:
     - year: 2022

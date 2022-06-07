@@ -1,7 +1,7 @@
 - title: CHES
   description: International Conference on Cryptographic Hardware and Embedded Systems
   sub: SC
-  rank: CCF B
+  rank: B
   dblp: ches
   confs:
     - year: 2022

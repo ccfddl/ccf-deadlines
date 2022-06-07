@@ -1,7 +1,7 @@
 - title: CVPR
   description: IEEE/CVF Conference on Computer Vision and Pattern Recognition
   sub: AI
-  rank: CCF A
+  rank: A
   dblp: cvpr
   confs:
     - year: 2022

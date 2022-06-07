@@ -1,7 +1,7 @@
 - title: ISWC
   description: International Semantic Web Conference
   sub: DB
-  rank: CCF B
+  rank: B
   dblp: semweb
   confs:
     - year: 2022

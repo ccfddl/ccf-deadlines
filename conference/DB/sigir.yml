@@ -1,7 +1,7 @@
 - title: SIGIR
   description: International Conference on Research on Development in Information Retrieval
   sub: DB
-  rank: CCF A
+  rank: A
   dblp: sigir
   confs:
     - year: 2021

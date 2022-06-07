@@ -1,7 +1,7 @@
 - title: ICCD
   description: International Conference on Computer Design
   sub: DS
-  rank: CCF B
+  rank: B
   dblp: iccd
   confs:
     - year: 2023

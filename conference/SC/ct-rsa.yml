@@ -1,7 +1,7 @@
 - title: CT-RSA
   description: Cryptographer's Track at RSA Conference
   sub: SC
-  rank: CCF C
+  rank: C
   dblp: ctrsa
   confs:
     - year: 2022
