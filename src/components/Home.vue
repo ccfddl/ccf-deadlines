@@ -56,7 +56,8 @@
                 <el-row>
                   <img src="//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png#" srcset="//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png 2x ,//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png# 1x" alt="" aria-hidden="true" style="width:20px;height:20px;vertical-align: middle">
                   <span  style="padding-left: 5px">
-                    <a :href="formatGoogleCalendar(scope.row)"
+                  <a v-if="scope.row.status === 'TBD'">Not Available</a>
+                  <a v-else :href="formatGoogleCalendar(scope.row)"
                        target="_blank" rel="nofollow">Google Calendar</a>
                   </span>
                 </el-row>

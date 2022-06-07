@@ -77,12 +77,12 @@ items:
                   description: Abstract deadline if applicable, optional
                   type: string
                   format: date-time
-                  pattern: ^(\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}|TBD)$
+                  pattern: ^([1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d|TBD)$
                 deadline:
                   description: Deadline, in the format of yyyy-mm-dd hh:mm:ss or TBD
                   type: string
                   format: date-time
-                  pattern: ^(\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}|TBD)$
+                  pattern: ^([1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d|TBD)$
                 comment:
                   description: Some comments on the conference, optional
                   type: string
