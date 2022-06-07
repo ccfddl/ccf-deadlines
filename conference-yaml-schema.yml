@@ -38,6 +38,7 @@ items:
         - A
         - B
         - C
+        - N
     dblp:
       description: The suffix in dblp url, e.g., iccv in dblp.uni-trier.de/db/conf/iccv
       type: string
