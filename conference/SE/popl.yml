@@ -13,3 +13,12 @@
       timezone: AoE
       date: January 16-22, 2022
       place: Westin Philadelphia
+    - year: 2023
+      id: popl23
+      link: https://popl23.sigplan.org/
+      timeline:
+        - deadline: '2022-07-07 23:59:59'
+          comment: 'Submission Deadline'
+      timezone: AoE
+      date: January 15-21, 2023
+      place: Boston, Massachusetts, United States
