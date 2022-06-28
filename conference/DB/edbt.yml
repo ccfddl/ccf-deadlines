@@ -14,9 +14,11 @@
       place: Edinburgh, UK
     - year: 2023
       id: edbt23
-      link: TBD
+      link: http://edbticdt2023.cs.uoi.gr/
       timeline:
-        - deadline: '2022-02-01 23:59:59'
+        - deadline: '2022-02-15 23:59:59'
+        - deadline: '2022-06-01 23:59:59'
+        - deadline: '2022-09-30 23:59:59'
       timezone: AoE
-      date: TBD
-      place: TBD
+      date: March 28-31, 2023
+      place: Ioannina, Greece
