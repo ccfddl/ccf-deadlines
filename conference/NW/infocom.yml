@@ -22,3 +22,12 @@
       timezone: UTC-4
       date: May 2-5, 2022
       place: Virtual
+    - year: 2023
+      id: infocom23
+      link: https://infocom2023.ieee-infocom.org/
+      timeline:
+        - abstract_deadline: '2022-07-25 23:59:59'
+          deadline: '2022-08-01 23:59:59'
+      timezone: UTC-4
+      date: May 17-20, 2023
+      place: New York, USA
