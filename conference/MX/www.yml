@@ -28,8 +28,8 @@
       id: www23
       link: https://www2023.thewebconf.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2022-10-06 23:59:59'
+          deadline: '2022-10-13 23:59:59'
       timezone: AoE
       date: May 1-5, 2023
       place: Austin, Texas, USA
