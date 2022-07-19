@@ -13,3 +13,12 @@
       timezone: AoE
       date: May 30-June 3, 2022
       place: Lyon, France
+    - year: 2023
+      id: ipdps23
+      link: https://www.ipdps.org/ipdps2023/
+      timeline:
+        - abstract_deadline: '2022-09-29 23:59:59'
+          deadline: '2022-10-06 23:59:59'
+      timezone: AoE
+      date: May 15-19, 2023
+      place: St. Petersburg, Florida USA
