@@ -1,0 +1,17 @@
+- title: FPGA
+  description: ACM/SIGDA International Symposium on Field-Programmable Gate Arrays
+  sub: DS
+  rank: B
+  dblp: fpga
+  confs:
+    - year: 2023
+      id: fpga2023
+      link: https://www.isfpga.org/
+      timeline:
+        - deadline: '2022-09-16 23:59:59'
+          comment: 'Abstracts Due'
+        - deadline: '2022-09-23 23:59:59'
+          comment: 'Submissions Due'
+      timezone: UTC-7
+      date: February 12 - February 14, 2023
+      place: Monterey, California, USA
