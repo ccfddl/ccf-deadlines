@@ -1,0 +1,17 @@
+- title: DATE
+  description: Design, Automation & Test in Europe
+  sub: DS
+  rank: B
+  dblp: date
+  confs:
+    - year: 2023
+      id: date2023
+      link: https://www.date-conference.com/
+      timeline:
+        - deadline: '2022-09-18 23:59:59'
+          comment: 'abstract deadline'
+        - deadline: '2022-09-25 23:59:59'
+          comment: 'full paper deadline'
+      timezone: UTC+1
+      date: April 17-19, 2023
+      place: Antwerp, BE
