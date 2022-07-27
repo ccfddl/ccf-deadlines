@@ -5,7 +5,7 @@
   dblp: date
   confs:
     - year: 2023
-      id: DATE 2023
+      id: date2023
       link: https://www.date-conference.com/
       timeline:
         - deadline: '2022-09-18 23:59:59'
