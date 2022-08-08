@@ -20,3 +20,12 @@
       timezone: AoE
       date: November 01-05, 2021
       place: Queensland, Australia
+    - year: 2022
+      id: cikm22
+      link: https://www.cikm2022.org/
+      timeline:
+        - abstract_deadline: '2022-05-12 23:59:59'
+          deadline: '2022-05-19 23:59:59'
+      timezone: AoE
+      date: October 17-22, 2022
+      place: Atlanta, Georgia, USA
