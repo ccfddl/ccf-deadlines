@@ -14,3 +14,13 @@
       timezone: UTC-12
       date: April 25-29, 2022
       place: Virtual conference
+    - year: 2023
+      id: iclr23
+      link: https://iclr.cc/Conferences/2023
+      timeline:
+        - abstract_deadline: '2022-09-21 23:59:59'
+          deadline: '2022-09-28 23:59:59'
+          comment: 'Mandatory abstract deadline on Sep. 11, 2022.'
+      timezone: UTC-12
+      date: May 01-05, 2023
+      place: Kigali, Rwanda
