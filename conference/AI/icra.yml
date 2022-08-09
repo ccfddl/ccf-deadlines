@@ -4,11 +4,11 @@
   rank: B
   dblp: icra
   confs:
-    - year: 2022
-      id: icra22
-      link: https://www.icra2022.org/
+    - year: 2023
+      id: icra23
+      link: https://www.icra2023.org/
       timeline:
-        - deadline: '2021-09-15 02:59:00'
+        - deadline: '2022-09-15 23:59:59'
       timezone: UTC-8
-      date: May 23-27, 2022
-      place: Philadelphia (PA), USA
+      date: May 29- June 2, 2023
+      place: ExCeL London, UK
