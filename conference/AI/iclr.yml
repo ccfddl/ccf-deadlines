@@ -4,6 +4,16 @@
   rank: N
   dblp: iclr
   confs:
+    - year: 2022
+      id: iclr22
+      link: https://iclr.cc/Conferences/2022
+      timeline:
+        - abstract_deadline: '2021-09-29 12:00:00'
+          deadline: '2021-10-21 12:00:00'
+          comment: 'Mandatory abstract deadline on Sep 29, 2021.'
+      timezone: UTC-12
+      date: April 25-29, 2022
+      place: Virtual conference
     - year: 2023
       id: iclr23
       link: https://iclr.cc/Conferences/2023
