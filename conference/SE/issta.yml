@@ -15,3 +15,14 @@
       timezone: AoE
       date: July 18-22, 2022
       place: Daejeon, South Korea
+    - year: 2023
+      id: issta23
+      link: https://conf.researchr.org/home/issta-2023
+      timeline:
+        - deadline: '2022-11-10 23:59:59'
+          comment: 'Technical Papers First round submission deadline'
+        - deadline: '2023-02-16 23:59:59'
+          comment: 'Technical Papers Second round submission deadline'
+      timezone: AoE
+      date: July 17-21, 2023
+      place: Seattle, United States
