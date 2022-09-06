@@ -21,7 +21,7 @@
       timeline:
         - deadline: '2022-11-10 23:59:59'
           comment: 'Technical Papers First round submission deadline'
-        - deadline: '2022-02-16 23:59:59'
+        - deadline: '2023-02-16 23:59:59'
           comment: 'Technical Papers Second round submission deadline'
       timezone: AoE
       date: July 17-21, 2023
