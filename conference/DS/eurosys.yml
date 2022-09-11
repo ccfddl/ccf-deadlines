@@ -28,6 +28,10 @@
       timeline:
         - abstract_deadline: '2022-05-10 23:59:59'
           deadline: '2022-05-17 23:59:59'
+          comment: 'Spring Submission Deadline'
+        - abstract_deadline: '2022-10-11 23:59:59'
+          deadline: '2022-10-18 23:59:59'
+          comment: 'Fall Submission Deadline'
       timezone: AoE
       date: May 9-12, 2023
       place: Rome, Italy
