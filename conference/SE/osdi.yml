@@ -16,7 +16,7 @@
       id: osdi2023
       link: https://www.usenix.org/conference/osdi23
       timeline:
-        - deadline: '2022-12-6 22:59:59'
+        - deadline: '2022-12-06 22:59:59'
           comment: 'Abstract Registerations'
         - deadline: '2022-12-13 22:59:59'
           comment: 'Complete Paper Submissions'
