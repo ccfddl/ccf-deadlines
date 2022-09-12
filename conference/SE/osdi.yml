@@ -12,3 +12,14 @@
       timezone: AoE
       date: July 11-13, 2022
       place: Omni La Costa Resort & Spa in Carlsbad, CA, USA
+    - year: 2023
+      id: osdi2023
+      link: https://www.usenix.org/conference/osdi23
+      timeline:
+        - deadline: '2022-12-06 22:59:59'
+          comment: 'Abstract Registerations'
+        - deadline: '2022-12-13 22:59:59'
+          comment: 'Complete Paper Submissions'
+      timezone: UTC
+      date: July 10-12, 2023
+      place: Boston, MA, USA
