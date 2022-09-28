@@ -12,3 +12,11 @@
       timezone: UTC-8
       date: May 23-27, 2022
       place: Philadelphia (PA), USA
+    - year: 2023
+      id: icra23
+      link: https://www.icra2023.org/
+      timeline:
+        - deadline: '2022-09-15 23:59:59'
+      timezone: UTC-8
+      date: May 29- June 2, 2023
+      place: ExCeL London, UK

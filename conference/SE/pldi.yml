@@ -20,3 +20,11 @@
       timezone: AoE
       date: June 20-24, 2022
       place: San Diego, California, United States
+    - year: 2023
+      id: pldi23
+      link: https://pldi23.sigplan.org/
+      timeline:
+        - deadline: '2022-11-10 23:59:59'
+      timezone: AoE
+      date: June 19-21, 2023
+      place: Orlando, Florida, United States
