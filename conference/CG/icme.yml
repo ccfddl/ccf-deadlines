@@ -12,3 +12,11 @@
       timezone: UTC-8
       date: July 18-22, 2022
       place: Taipei, Taiwan, China
+    - year: 2023
+      id: icme23
+      link: https://www.2023.ieeeicme.org/
+      timeline:
+        - deadline: '2021-12-11 23:59:59'
+      timezone: UTC+0
+      date: July 10-14, 2023
+      place: Brisbane, Australia
