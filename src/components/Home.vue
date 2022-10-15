@@ -61,6 +61,13 @@
                        target="_blank" rel="nofollow">Google Calendar</a>
                   </span>
                 </el-row>
+                <el-row>
+                  <img src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png" alt="" aria-hidden="true" style="width:20px;height:20px;vertical-align: middle">
+                  <span  style="padding-left: 5px">
+                  <a v-if="scope.row.status === 'TBD'">Not Available</a>
+                  <a v-else :href="formatiCloudCalendar(scope.row)" rel="nofollow">iCloud Calendar</a>
+                  </span>
+                </el-row>
                 <i class="el-icon-date icon" style="padding-left: 5px" slot="reference"></i>
               </el-popover>
             </el-row>
@@ -353,6 +360,23 @@ export default {
           "&location=Online" +
           "&ctz=" + this.timeZone +
           "&sf=true&output=xml"
+    },
+    formatiCloudCalendar(row){
+      return "data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0A" +
+          "URL:https://ccfddl.github.io/%0A" +
+          "DTSTART:" + moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"") + "%0A" +
+          "DTEND:" + moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"") + "%0A" +
+          "SUMMARY:" + row.title + " " + row.year + " Deadline %0A" +
+          "DESCRIPTION:" + row.comment + "%0A" +
+          "LOCATION:%0A" +
+          "END:VEVENT%0AEND:VCALENDAR"
+      // return "https://www.google.com/calendar/render?action=TEMPLATE" +
+      //     "&text="+row.title+"+"+row.year+
+      //     "&dates="+moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"")+"/"+ moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"") +
+      //     "&details=" + row.comment +
+      //     "&location=Online" +
+      //     "&ctz=" + this.timeZone +
+      //     "&sf=true&output=xml"
     },
     _isMobile() {
       let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)

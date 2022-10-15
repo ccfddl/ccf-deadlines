@@ -1,0 +1,22 @@
+- title: CSCWD
+  description: International Conference on Computer Supported Cooperative Work in Design
+  sub: HI
+  rank: C
+  dblp: cscwd
+  confs:
+    - year: 2022
+      id: cscwd22
+      link: http://8.131.80.51/cscwd2022/index.html
+      timeline:
+        - deadline: '2021-11-30 23:59:59'
+      timezone: AoE
+      date: May 4-6, 2022
+      place: Hangzhou, China
+    - year: 2023
+      id: cscwd23
+      link: http://2023.cscwd.org
+      timeline:
+        - deadline: '2022-10-31 23:59:59'
+      timezone: AoE
+      date: May 24-26, 2023
+      place: Rio de Janeiro, Brazil
