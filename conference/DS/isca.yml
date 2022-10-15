@@ -15,3 +15,14 @@
       timezone: AoE
       date: June 11-15, 2022
       place: New York City, USA
+    - year: 2023
+      id: isca23
+      link: https://www.iscaconf.org/isca2023/
+      timeline:
+        - deadline: '2022-11-14 23:59:59'
+          comment: 'abstract deadline'
+        - deadline: '2022-11-21 23:59:59'
+          comment: 'full paper deadline'
+      timezone: AoE
+      date: June 17-23, 2023
+      place: Orlando, FL, USA
