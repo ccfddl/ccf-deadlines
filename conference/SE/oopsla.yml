@@ -4,7 +4,7 @@
   rank: A
   dblp: oopsla
   confs:
-   - year: 2022
+    - year: 2022
       id: oopsla22
       link: https://2022.splashcon.org/track/splash-2022-oopsla
       timeline:
