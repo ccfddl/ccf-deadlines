@@ -4,6 +4,21 @@
   rank: A
   dblp: oopsla
   confs:
+   - year: 2022
+       id: oopsla22
+       link: https://2022.splashcon.org/track/splash-2022-oopsla
+       timeline:
+         - deadline: '2021-10-12 23:59:59'
+           comment: 'Submission Deadline Round 1'
+         - deadline: '2022-02-11 23:59:59'
+           comment: 'Submission of Revisions Round 1'
+         - deadline: '2022-04-15 23:59:59'
+           comment: 'Submission Deadline Round 2'
+         - deadline: '2022-08-15 23:59:59'
+           comment: 'Submission of Revisions Round 2'
+       timezone: AoE
+       date: November 14-19, 2022
+       place: Auckland, New Zealand
     - year: 2023
       id: oopsla23
       link: https://2023.splashcon.org/track/splash-2023-oopsla
