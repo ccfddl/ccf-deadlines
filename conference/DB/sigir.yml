@@ -22,7 +22,7 @@
       timezone: AoE
       date: July 11-15, 2022
       place: Madrid
-     - year: 2023
+    - year: 2023
       id: sigir23
       link: https://sigir.org/sigir2023/
       timeline:
@@ -31,4 +31,3 @@
       timezone: AoE
       date: July 23-27, 2023
       place: Taipei, Taiwan
-
