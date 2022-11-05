@@ -4,11 +4,11 @@
   rank: A
   dblp: ijcai
   confs:
-    - year: 2022
-      id: ijcai22
-      link: https://ijcai-22.org
+    - year: 2023
+      id: ijcai23
+      link: https://ijcai-23.org
       timeline:
-        - deadline: '2022-01-14 23:59:59'
-      timezone: UTC+1
-      date: July 23-29, 2022
-      place: Vienna, Austria.
+        - deadline: '2023-01-18 23:59:59'
+      timezone: UTC-12
+      date: August 19-25, 2023
+      place: Cape Town, South Africa.
