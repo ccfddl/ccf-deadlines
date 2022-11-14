@@ -12,3 +12,12 @@
       timezone: AoE
       date: August 9-12, 2021
       place: Chicago, USA
+    - year: 2022
+      id: icpp22
+      link: https://icpp22.gitlabpages.inria.fr/
+      timeline:
+         - abstract_deadline: '2022-04-08 23:59:59'
+           deadline: '2022-04-14 23:59:59'
+      timezone: AoE
+      date: August 29-Sept 12, 2022
+      place: Bordeaux, France

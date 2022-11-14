@@ -24,3 +24,16 @@
       timezone: UTC-8
       date: June 12-17, 2022
       place: Philadelphia, PA, USA
+    - year: 2023
+      id: sigmod23
+      link: http://2023.sigmod.org/
+      timeline:
+        - deadline: '2022-04-15 23:59:00'
+          comment: 'first round'
+        - deadline: '2022-07-15 23:59:00'
+          comment: 'second round'
+        - deadline: '2022-10-15 23:59:00'
+          comment: 'third round'
+      timezone: UTC-8
+      date: June 18-23, 2022
+      place: Seattle, WA, USA

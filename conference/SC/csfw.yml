@@ -15,3 +15,16 @@
       timezone: UTC-12
       date: August, 2022
       place: Haifa, Israel
+    - year: 2023
+      id: csfw23
+      link: https://www.ieee-security.org/TC/CSF2023/
+      timeline:
+        - deadline: '2022-05-13 23:59:59'
+          comment: 'spring'
+        - deadline: '2022-09-30 23:59:59'
+          comment: 'fall'
+        - deadline: '2023-02-03 23:59:59'
+          comment: 'winter'
+      timezone: UTC-12
+      date: July, 2023
+      place: Dubrovnik, Croatia

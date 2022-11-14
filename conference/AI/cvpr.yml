@@ -13,3 +13,11 @@
       timezone: UTC-8
       date: June 19 - June 24, 2022
       place: New Orleans, Louisiana
+    - year: 2023
+      id: cvpr23
+      link: http://cvpr2023.thecvf.com/
+      timeline:
+          - deadline: '2022-11-11 23:59:59'
+      timezone: UTC-8
+      date: June 17-23, 2023
+      place: Vancouver, Canada

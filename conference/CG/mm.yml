@@ -13,3 +13,12 @@
       timezone: AoE
       date: October 21-24, 2021
       place: Chengdu, China
+    - year: 2022
+      id: mm22
+      link: https://2022.acmmm.org/
+      timeline:
+        - abstract_deadline: '2022-03-31 23:59:59'
+          deadline: '2022-04-07 23:59:59'
+      timezone: UTC-12
+      date: October 10-14, 2022
+      place: Lisbon, Portugal

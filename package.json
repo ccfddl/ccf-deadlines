@@ -45,5 +45,8 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "gitHooks": {
+    "pre-commit": "scripts/pre-commit"
+  }
 }

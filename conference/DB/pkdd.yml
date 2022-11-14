@@ -13,3 +13,12 @@
       timezone: AoE
       date: September 13-17, 2021
       place: Virtual
+    - year: 2022
+      id: ecmlpkdd22
+      link: https://2022.ecmlpkdd.org/index.php/key-dates-deadlines/
+      timeline:
+        - abstract_deadline: '2022-03-30 23:59:59'
+          deadline: '2022-04-06 23:59:59'
+      timezone: AoE
+      date: September 19-23, 2022
+      place: Grenoble, France

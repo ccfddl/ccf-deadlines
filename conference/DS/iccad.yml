@@ -1,0 +1,17 @@
+- title: ICCAD
+  description: IEEE/ACM International Conference on Computer-Aided Design
+  sub: DS
+  rank: B
+  dblp: iccad
+  confs:
+    - year: 2022
+      id: iccad22
+      link: https://iccad.com/
+      timeline:
+        - deadline: '2022-05-16 23:59:59'
+          comment: 'Abstract Deadline'
+        - deadline: '2022-05-23 23:59:59'
+          comment: 'Full Paper Deadline'
+      timezone: UTC-12
+      date: Oct 29 - Nov 3, 2022
+      place: San Diego, CA, USA

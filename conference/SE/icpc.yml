@@ -1,0 +1,17 @@
+- title: ICPC
+  description:  IEEE International Conference on Program Comprehension
+  sub: SE
+  rank: B
+  dblp: icpc
+  confs:
+    - year: 2022
+      id: icpc22
+      link: https://conf.researchr.org/home/icpc-2022
+      timeline:
+        - deadline: '2022-01-13 23:59:59'
+          comment: 'Abstract Submission'
+        - deadline: '2022-01-18 23:59:59'
+          comment: 'Paper Submission'
+      timezone: AoE
+      date: May 21-22, 2022
+      place: Pittsburgh, Pennsylvania, United States

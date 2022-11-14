@@ -1,0 +1,15 @@
+- title: ICCD
+  description: International Conference on Computer Design
+  sub: DS
+  rank: B
+  dblp: iccd
+  confs:
+    - year: 2023
+      id: iccd23
+      link: https://waset.org/computer-design-conference-in-january-2023-in-zurich
+      timeline:
+        - deadline: '2022-09-29 23:59:59'
+          comment: 'abstract and full paper deadline'
+      timezone: AoE
+      date: January 16-17, 2023
+      place: Zurich, Switzerland

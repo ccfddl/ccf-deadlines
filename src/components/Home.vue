@@ -9,7 +9,7 @@
       <div style="float: left">
         Deadlines are shown in {{ timeZone }} time.
       </div>
-      <div style="float: left; width: 150px">
+      <div style="float: left; width: 155px">
         <el-input prefix-icon="el-icon-search" size="mini"
                   v-model="input" placeholder="search conference"
                   @change="handleInputChange"
@@ -18,7 +18,7 @@
       </div>
       <div style="float: right">
         <el-checkbox-group v-model="rankList" size="mini" @change="handleRankChange" class="rankbox">
-          <el-checkbox-button v-for="rank in rankoptions" :label="rank" :key="rank">CCF {{rank}}</el-checkbox-button>
+          <el-checkbox-button v-for="(rank, index) in rankoptions" :label="index" :key="index">{{rank}}</el-checkbox-button>
         </el-checkbox-group>
       </div>
     </el-row>
@@ -37,7 +37,7 @@
             </el-row>
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
-            <el-row><el-tag size="mini" type="" effect="plain">CCF {{scope.row.rank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
+            <el-row><el-tag size="mini" type="" effect="plain">{{scope.row.displayrank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
             <el-row style="padding-top: 5px"><span class="conf-sub">{{scope.row.subname}}</span></el-row>
             </div>
         </template>
@@ -56,8 +56,16 @@
                 <el-row>
                   <img src="//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png#" srcset="//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png 2x ,//ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_3_2x.png# 1x" alt="" aria-hidden="true" style="width:20px;height:20px;vertical-align: middle">
                   <span  style="padding-left: 5px">
-                    <a :href="formatGoogleCalendar(scope.row)"
+                  <a v-if="scope.row.status === 'TBD'">Not Available</a>
+                  <a v-else :href="formatGoogleCalendar(scope.row)"
                        target="_blank" rel="nofollow">Google Calendar</a>
+                  </span>
+                </el-row>
+                <el-row>
+                  <img src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png" alt="" aria-hidden="true" style="width:20px;height:20px;vertical-align: middle">
+                  <span  style="padding-left: 5px">
+                  <a v-if="scope.row.status === 'TBD'">Not Available</a>
+                  <a v-else :href="formatiCloudCalendar(scope.row)" rel="nofollow">iCloud Calendar</a>
                   </span>
                 </el-row>
                 <i class="el-icon-date icon" style="padding-left: 5px" slot="reference"></i>
@@ -81,7 +89,7 @@
     <el-row style="padding-top: 8px">
       <div style="float: left; color: #666666;font-size: 12px;">
         <div>ccf-deadlines is maintained by <a href="https://github.com/jacklightChen">@jacklightChen</a> and <a href="https://github.com/0x4f5da2">@0x4f5da2</a>.</div>
-        <div style="padding-top: 3px">If you find it useful, try find <a href="https://github.com/0x4f5da2">him</a> a girlfriend.</div>
+        <div style="padding-top: 3px">If you find it useful, try find <a href="https://github.com/0x4f5da2">him</a> a girlfriend or follow <a href="https://www.researchgate.net/profile/Zhihao_Chen23">him</a> on ResearchGate.</div>
       </div>
       <div style="float: right">
         <el-pagination
@@ -90,6 +98,7 @@
             layout="prev, pager, next"
             :page-size=pageSize
             @current-change="handleCurrentChange"
+            :current-page="page"
             :total=showNumber>
         </el-pagination>
       </div>
@@ -116,6 +125,7 @@ export default {
       checkAll: true,
       isIndeterminate: false,
       pageSize: 10,
+      page: 1,
       checkList: [],
       subList: [],
       allconfList: [],
@@ -124,7 +134,7 @@ export default {
       typeMap: new Map(),
       timeZone: '',
       utcMap: new Map(),
-      rankoptions: ['A', 'B', 'C'],
+      rankoptions: {'A': 'CCF A', 'B': 'CCF B', 'C': 'CCF C', 'N': 'Non-CCF'},
       typesList: [],
       rankList: [],
       cachedLikes: [],
@@ -164,6 +174,7 @@ export default {
             curItem.description = curConf.description
             curItem.sub = curConf.sub
             curItem.rank = curConf.rank
+            curItem.displayrank = this.rankoptions[curItem.rank]
             curItem.dblp = curConf.dblp
             let len = curItem.timeline.length
             curItem.deadline = curItem.timeline[len-1].deadline
@@ -196,6 +207,8 @@ export default {
           } else {
             if (curDoc.timezone === 'AoE') {
               curDoc.timezone = 'UTC-12'
+            } else if (curDoc.timezone === 'UTC') {
+              curDoc.timezone = 'UTC+0'
             }
 
             let ddlTime = moment(curDoc.deadline + this.utcMap.get(curDoc.timezone))
@@ -233,7 +246,7 @@ export default {
     showConf (types, rank, input, page) {
       let filterList = this.allconfList
 
-      if (types != null){
+      if (types != null && types.length != 0){
         filterList = filterList.filter(function (item){return types.indexOf(item.sub.toUpperCase()) >= 0})
       }
 
@@ -271,6 +284,7 @@ export default {
       this.showList = likesList
       this.showNumber = this.showList.length
       this.showList = this.showList.slice(this.pageSize*(page-1), this.pageSize*page)
+      this.page = page
     },
     transform (props) {
       Object.entries(props).forEach(([key, value]) => {
@@ -295,6 +309,7 @@ export default {
         }
       }
       this.utcMap.set('AoE', '-1200')
+      this.utcMap.set('UTC', '+0000')
     },
     handleCheckedChange(types) {
       this.typesList = types
@@ -345,6 +360,23 @@ export default {
           "&location=Online" +
           "&ctz=" + this.timeZone +
           "&sf=true&output=xml"
+    },
+    formatiCloudCalendar(row){
+      return "data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0A" +
+          "URL:https://ccfddl.github.io/%0A" +
+          "DTSTART:" + moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"") + "%0A" +
+          "DTEND:" + moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"") + "%0A" +
+          "SUMMARY:" + row.title + " " + row.year + " Deadline %0A" +
+          "DESCRIPTION:" + row.comment + "%0A" +
+          "LOCATION:%0A" +
+          "END:VEVENT%0AEND:VCALENDAR"
+      // return "https://www.google.com/calendar/render?action=TEMPLATE" +
+      //     "&text="+row.title+"+"+row.year+
+      //     "&dates="+moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"")+"/"+ moment(row.deadline + this.utcMap.get(row.timezone)).toISOString().replace(/-|:|\.\d\d\d/g,"") +
+      //     "&details=" + row.comment +
+      //     "&location=Online" +
+      //     "&ctz=" + this.timeZone +
+      //     "&sf=true&output=xml"
     },
     _isMobile() {
       let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)

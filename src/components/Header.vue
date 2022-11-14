@@ -30,7 +30,7 @@ export default {
         let str = response.body[i].commit.message
         let strArr = str.split(' ')
         let idx=str.indexOf('(');
-        if(strArr[0] === 'Update'){
+        if(strArr[0].toLowerCase() === 'update' || strArr[0].toLowerCase() === 'add'){
           if(idx !== -1){
             str = str.substr(0, idx)
           }
