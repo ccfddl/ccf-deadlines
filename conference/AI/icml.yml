@@ -18,8 +18,8 @@
       id: icml23
       link: https://icml.cc/Conferences/2023
       timeline:
-        - abstract_deadline: '2023-01-09 7:59:59'
-          deadline: '2023-01-26 7:59:59'
+        - abstract_deadline: '2023-01-09 07:59:59'
+          deadline: '2023-01-26 07:59:59'
           comment: 'Paper Submissions Open on OpenReview Jan 09 2023 02:00 PM UTC'
       timezone: UTC-12
       date: July 23-29, 2023
