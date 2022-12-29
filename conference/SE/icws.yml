@@ -4,6 +4,15 @@
   rank: B
   dblp: icws
   confs:
+    - year: 2022
+      id: icws22
+      link: https://www.servicessociety.org/icws
+      timeline:
+        - deadline: TBD
+          comment: 'Submission deadline'
+      timezone: AoE
+      date: December 10-14, 2022
+      place: TBD
     - year: 2023
       id: icws23
       link: https://conferences.computer.org/icws/2023/
