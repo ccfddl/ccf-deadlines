@@ -4,6 +4,15 @@
   rank: B
   dblp: iwqos
   confs:
+    - year: 2022
+      id: iwqos22
+      link: https://iwqos2022.ieee-iwqos.org/
+      timeline:
+        - abstract_deadline: '2022-02-01 23:59:59'
+          deadline: '2022-02-07 23:59:59'
+      timezone: UTC-12
+      date: June 10-12, 2022
+      place: Virtual
     - year: 2023
       id: iwqos23
       link: https://iwqos2023.ieee-iwqos.org/
