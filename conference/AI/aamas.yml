@@ -9,9 +9,7 @@
       link: https://aamas2023.soton.ac.uk/
       timeline:
         - abstract_deadline: '2022-10-21 00:00:00'
-          comment: 'abstract_deadline'
-        - deadline: '2022-10-28 00:00:00'
-          comment: 'paper submission deadline'
+          deadline: '2022-10-28 00:00:00'
       timezone: UTC-8
       date: 29 May-2 June 2023
       place: London, UK
