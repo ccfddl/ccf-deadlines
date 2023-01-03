@@ -9,9 +9,7 @@
       link: https://kr.org/KR2023/
       timeline:
         - abstract_deadline: '2023-03-03 00:00:00'
-          comment: 'submission of title and abstract'
-        - deadline: '2023-03-14 00:00:00'
-          comment: 'paper submission'
+          deadline: '2023-03-14 00:00:00'
       timezone: UTC-8
       date: Sep 2-8, 2023
       place: Rhodes, Greece
