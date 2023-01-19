@@ -7,16 +7,16 @@
             <!-- 可以滑动的线 -->
             <div class="can_line" ref="canLine"></div>
             <!-- 参考点 -->
-            <div class="reference" v-for="(dateTip,dt) in dateTips" :key="'tips-'+dt" :style="setLeft(dateTip)">
-              <em v-if="!((dt===0&&isSingle)||(_isMobile()&&dateTips.length>6&&(dt%3===1||dt%3===2)))" v-text="formatter(dateTip,1, dt)" ></em>
+            <div class="reference" v-for="(dateTip,dt) in dateTips" :key="'tips-'+dt" :style="setLeft(dateTip['timepoint'])">
+              <em v-if="!((dt===0&&isSingle)||(_isMobile()&&dateTips.length>6&&(dt%3===1||dt%3===2)))" v-text="formatter(dateTip['timepoint'],1, dt)" ></em>
             </div>
             <!-- 备份点 -->
-            <div class="dot dot_all" v-for="(incre,i) in incre_dates" :key="i" :style="setLeft(incre,i)">
-              <em v-text="formatter(incre)" :style="setText(i)"></em>
+            <div :class="formatClass(incre['type'])" v-for="(incre,i) in incre_dates" :key="i" :style="setLeft(incre['timepoint'],i)">
+              <em v-text="formatType(incre['type']) + ' ' +formatter(incre['timepoint'])" :style="setText(i)"></em>
             </div>
             <!-- 可滑动点 -->
             <div class="dot sel_dot" ref="selDot">
-                <em>{{selTime}}</em>
+                <em>Now: {{selTime}}</em>
             </div>
           </div>
         </div>
@@ -73,6 +73,24 @@ export default {
       }
       return `${moment(value*1000).format('YYYY/MM/DD HH:mm:ss')}`;
     },
+    formatType(type) {
+      if(type === 0){
+        return 'Registration:'
+      }else if(type === 1) {
+        return 'Submission:'
+      }else {
+        return ''
+      }
+    },
+    formatClass(type){
+      if(type === 0){
+        return 'square square_all'
+      }else if(type === 1) {
+        return 'dot dot_all'
+      }else {
+        return ''
+      }
+    },
     //获取时间轴数据
     getBackupTimeline(){
       this.fullDate = null
@@ -92,17 +110,17 @@ export default {
 
       let orilen = this.ddls.length
       if(orilen===1){
-        this.deadlines.push(nowDate/1000)
+        this.deadlines.push({'timepoint': nowDate/1000, 'type': 1})
         this.isSingle = true
       }
       for(let i=0;i<orilen;i++){
-        let tmp = moment(this.ddls[i]).valueOf()/1000
+        let tmp = {'timepoint': moment(this.ddls[i]['timepoint']).valueOf()/1000, 'type': this.ddls[i]['type']}
         this.deadlines.push(tmp)
       }
 
       let len = this.deadlines.length
       for(let i=0;i<len;i++) {
-        let tmp = this.deadlines[i]
+        let tmp = this.deadlines[i]['timepoint']
         if(nowDate>=tmp*1000){
           this.expireIndex = i
         }else {
@@ -110,16 +128,16 @@ export default {
         }
       }
 
-      if(nowDate<this.deadlines[0]*1000){
+      if(nowDate<this.deadlines[0]['timepoint']*1000){
         this.start_date = moment(nowDate).subtract(7, 'd').startOf('day').format("X")*1;
       }else{
-        this.start_date = moment(this.deadlines[0]*1000).subtract(7, 'd').startOf('day').format("X")*1;
+        this.start_date = moment(this.deadlines[0]['timepoint']*1000).subtract(7, 'd').startOf('day').format("X")*1;
       }
-      this.end_date = moment(this.deadlines[len-1]*1000).add(7,'d').endOf('day').format("X")*1;
+      this.end_date = moment(this.deadlines[len-1]['timepoint']*1000).add(7,'d').endOf('day').format("X")*1;
 
 
       this.fullDate = nowDate/1000;
-      this.binlogDate = this.deadlines[len-1];
+      this.binlogDate = this.deadlines[len-1]['timepoint'];
 
       //设置binlog
       let canLine = this.$refs.canLine;
@@ -142,11 +160,14 @@ export default {
       //设置备份时间点数组
       let dates = this.deadlines
       this.incre_dates = dates;
-      this.allIncre = dates.concat([this.binlogDate,this.fullDate]);//备份时间点加上binlog结束时间点和fullDate
+      this.allIncre = dates.concat([
+        {'timepoint': this.binlogDate, 'type': 1},
+        {'timepoint': this.fullDate, 'type': 1}
+      ]);//备份时间点加上binlog结束时间点和fullDate
 
       this.clickDot(this.fullDate);//设置默认选择点
 
-      this.timeline = dates[dates.length-1];
+      this.timeline = dates[dates.length-1]['timepoint'];
 
       //添加提示时间点---0点提示
       this.dateTips=[];
@@ -335,6 +356,33 @@ export default {
   top: -4px;
 }
 .line_time .dot_all:hover em {
+  display: inline-block;
+}
+.line_time .square {
+  width: 8px;
+  height: 8px;
+  border-radius: 0%;
+  border: 2px solid #4a9eff;
+  background: white;
+  position: absolute;
+  top: -3px;
+  white-space: nowrap;
+  margin-left: -4px;
+}
+.line_time .square_all em {
+  display: none;
+  color: #409eff;
+  transform: translateX(-50%);
+  position: absolute;
+  top: -25px;
+}
+.line_time .square_all:hover {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #409eff;
+  top: -4px;
+}
+.line_time .square_all:hover em {
   display: inline-block;
 }
 .line_time .sel_dot {

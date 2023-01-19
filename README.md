@@ -129,7 +129,7 @@ The matching table:
 
 ## Contribution
 Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [
-@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@liborui](https://github.com/liborui), [@RyunMi](https://github.com/RyunMi).
+@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi).
 
 Inspired by [ai-deadlines](https://aideadlin.es/).
 
