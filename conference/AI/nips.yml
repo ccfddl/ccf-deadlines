@@ -22,3 +22,12 @@
       timezone: UTC+0
       date: November 28-December 9, 2022
       place: New Orleans, Louisiana, USA
+    - year: 2023
+      id: nips23
+      link: https://neurips.cc/Conferences/2023
+      timeline:
+        - abstract_deadline: '2023-05-11 20:00:00'
+          deadline: '2023-05-17 20:00:00'
+      timezone: UTC+0
+      date: November 28-December 9, 2023
+      place: New Orleans, Louisiana, USA
