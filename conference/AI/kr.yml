@@ -1,0 +1,15 @@
+- title: KR
+  description: International Conference on Principles of Knowledge Representation and Reasoning
+  sub: AI
+  rank: B
+  dblp: kr
+  confs:
+    - year: 2023
+      id: krd23
+      link: https://kr.org/KR2023/
+      timeline:
+        - abstract_deadline: '2023-03-03 00:00:00'
+          deadline: '2023-03-14 00:00:00'
+      timezone: UTC-8
+      date: Sep 2-8, 2023
+      place: Rhodes, Greece
