@@ -11,6 +11,12 @@ Preview: [Demo](https://ccfddl.github.io/)
 
 [![Demo Preview](.readme_assets/screenshot.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot.png)
 
+Another preview in tabular form: [https://ccfddl.top/](https://ccfddl.top/)
+
+
+<img width="1000" align="middle" alt="5817b4bfeaa5728ee8160ec8b9f057f" src="https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png">
+
+
 **No More Finding and Time Conversion on Your Own!**
 
 ## Add/Update a conference
