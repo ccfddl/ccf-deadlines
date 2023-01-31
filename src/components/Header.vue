@@ -8,6 +8,9 @@
     <el-row class="subtitle">
       Countdowns to CCF conference deadlines. To add/edit a conference, <a style="color: #666666" href="https://github.com/ccfddl/ccf-deadlines/pulls">send a pull request.</a>
     </el-row>
+    <el-row class="subtitle">
+      Another demo in tabular form: <a style="color: #666666" href="https://ccfddl.top/">https://ccfddl.top/</a>
+    </el-row>
   </section>
 </template>
 
