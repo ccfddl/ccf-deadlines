@@ -11,10 +11,9 @@ Preview: [Demo](https://ccfddl.github.io/)
 
 [![Demo Preview](.readme_assets/screenshot.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot.png)
 
-Another preview in tabular form: [https://ccfddl.top/](https://ccfddl.top/)
+Another preview in tabular form: [Tabular Demo](https://ccfddl.top/)
 
-<img width="1000" align="middle" alt="5817b4bfeaa5728ee8160ec8b9f057f" src="https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png">
-
+[![Tabular Demo Preview](https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png)](https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png)
 
 **No More Finding and Time Conversion on Your Own!**
 
@@ -134,7 +133,7 @@ The matching table:
 
 ## Contribution
 Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [
-@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi).
+@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123).
 
 Inspired by [ai-deadlines](https://aideadlin.es/).
 

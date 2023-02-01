@@ -11,9 +11,9 @@
 
 [![](.readme_assets/screenshot.png)]()
 
-表格形式的另一个预览: [https://ccfddl.top/](https://ccfddl.top/)
+表格形式的另一个预览: [表格演示页面](https://ccfddl.top/)
 
-<img width="1000" align="middle" alt="5817b4bfeaa5728ee8160ec8b9f057f" src="https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png">
+[![Tabular Demo Preview](https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png)](https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png)
 
 **对麻烦的查找会议和转换时间说拜拜!**
 
@@ -133,7 +133,7 @@
 | `MX`       | 交叉/综合/新兴                                            |
 
 ## 贡献
-本项目由 [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi)共同维护。
+本项目由 [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123)共同维护。
 
 灵感来自于 [ai-deadlines](https://aideadlin.es/)。
 
