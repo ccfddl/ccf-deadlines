@@ -13,3 +13,12 @@
       timezone: UTC-12
       date: September 6-9, 2022
       place: Heidelberg, Germany
+    - year: 2023
+      id: cluster23
+      link: https://clustercomp.org/2023
+      timeline:
+        - deadline: '2023-05-11 23:59:59'
+          comment: 'Full Paper Deadline'
+      timezone: AoE
+      date: October 31-November 3, 2023
+      place: Santa Fe, New Mexico, USA
