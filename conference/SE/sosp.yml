@@ -16,7 +16,6 @@
       id: sosp23
       link: https://sosp2023.mpi-sws.org/
       timeline:
-        - Abstracts
         - deadline: '2023-04-10 23:59:59'
           comment: 'Deadline to Register Abstracts'
         - deadline: '2023-04-17 23:59:59'
