@@ -9,11 +9,11 @@ Help researchers track deadlines of conferences recommended by [China Computer F
 
 Preview: [Demo](https://ccfddl.github.io/)
 
-[![Demo Preview](.readme_assets/screenshot.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot.png)
+[![Demo Preview](.readme_assets/screenshot_1.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot_1.png)
 
 Another preview in tabular form: [Tabular Demo](https://ccfddl.top/)
 
-[![Tabular Demo Preview](https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png)](https://user-images.githubusercontent.com/38984189/215824478-4ccc227f-0cd6-40f6-bdd9-4dd7949f7b28.png)
+[![Tabular Demo Preview](.readme_assets/screenshot_2.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot_1.png)
 
 **No More Finding and Time Conversion on Your Own!**
 
