@@ -1,15 +1,15 @@
-- title: Internetware # conference name (uppercase)
-  description: Asia-Pacific Symposium on Internetware # description, no session
-  sub: SE # belonging types in types.yml
-  rank: C # rank in CCF recommendation
-  dblp: internetware # https://dblp.uni-trier.de/db/conf/ijcai suffix in dblp url
+- title: Internetware
+  description: Asia-Pacific Symposium on Internetware
+  sub: SE
+  rank: C
+  dblp: internetware
   confs: 
-    - year: 2023 # year
-      id: internetware23 # conference name & year lowercase
-      link: https://conf.researchr.org/home/internetware-2023 # website url
-      timeline: # support multiple rounds
-        - abstract_deadline: '2023-04-10 23:59:59' # optional
-          deadline: '2023-04-15 23:59:59' # required and you can fill TBD if not decided
-      timezone: UTC-12 # timezone support UTC-12 ~ UTC+12 & AoE
-      date: August 4-6, 2023 # main conference date
-      place: Hangzhou, China  # conference place
+    - year: 2023
+      id: internetware23
+      link: https://conf.researchr.org/home/internetware-2023
+      timeline:
+        - abstract_deadline: '2023-04-10 23:59:59'
+          deadline: '2023-04-15 23:59:59'
+      timezone: UTC-12
+      date: August 4-6, 2023
+      place: Hangzhou, China
