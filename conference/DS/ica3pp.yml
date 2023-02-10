@@ -21,8 +21,6 @@
       timeline:
         - deadline: '2023-05-30 23:59:00'
           comment: 'Paper Submission Due'
-        - deadline: '2023-07-30 23:59:00'
-          comment: 'Author Notification'
       timezone: UTC-8
       date: October 20-22, 2022
       place: Tianjin, China
