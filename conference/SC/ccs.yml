@@ -40,9 +40,9 @@
       link: https://www.sigsac.org/ccs/CCS2023/
       timeline:
         - deadline: '2023-01-19 23:59:59'
-          comment: 'First Review Cycle'
-        - deadline: '2022-05-04 23:59:59'
-          comment: 'Second Review Cycle'
+          comment: 'First Round Submission'
+        - deadline: '2023-05-04 23:59:59'
+          comment: 'Second Round Submission'
       timezone: UTC-12
       date: November 26-30, 2023
-      place: Copenhagen, Denmark    
+      place: Copenhagen, Denmark
