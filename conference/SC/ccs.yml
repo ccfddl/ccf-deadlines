@@ -34,7 +34,7 @@
           comment: 'the second review cycle'
       timezone: UTC-12
       date: November 14-19, 2022
-      place: Los Angeles, U.S.A.    
+      place: Los Angeles, U.S.A.
     - year: 2023
       id: ccs23
       link: https://www.sigsac.org/ccs/CCS2023/
@@ -45,4 +45,4 @@
           comment: 'Second Round Submission'
       timezone: UTC-12
       date: November 26-30, 2023
-      place: Copenhagen, Denmark  
+      place: Copenhagen, Denmark

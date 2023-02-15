@@ -1,0 +1,14 @@
+- title: IROS
+  description: IEEE\RSJ International Conference on Intelligent Robots and Systems
+  sub: AI
+  rank: C
+  dblp: iros
+  confs:
+    - year: 2023
+      id: iros23
+      link: https://ieee-iros.org/
+      timeline:
+        - deadline: '2023-03-01 23:59:59'
+      timezone: UTC-8
+      date: October 1-5, 2023
+      place: Detroit, Michigan, USA

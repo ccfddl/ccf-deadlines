@@ -12,3 +12,12 @@
       timezone: UTC+1
       date: July 23-29, 2022
       place: Vienna, Austria.
+    - year: 2023
+      id: ijcai23
+      link: https://ijcai-23.org
+      timeline:
+        - abstract_deadline: '2023-01-11 23:59:59'
+          deadline: '2023-01-18 23:59:59'
+      timezone: UTC-12
+      date: August 19-25, 2023
+      place: Cape Town, South Africa.

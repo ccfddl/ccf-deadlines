@@ -8,8 +8,8 @@
       id: iccd23
       link: https://waset.org/computer-design-conference-in-january-2023-in-zurich
       timeline:
-         - abstract_deadline: '2022-06-01 23:59:59'
-           deadline: '2022-06-01 23:59:59'
+        - deadline: '2022-09-29 23:59:59'
+          comment: 'abstract and full paper deadline'
       timezone: AoE
-      date: January 14-15, 2023
+      date: January 16-17, 2023
       place: Zurich, Switzerland
