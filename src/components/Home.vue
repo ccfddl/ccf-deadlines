@@ -185,7 +185,11 @@ export default {
             for(let k = 0; k < len; k++) {
               let ddlTime = moment(curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone))
               let diffTime = ddlTime.diff(tmpTime)
-              curItem.ddls.push(curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone))
+              // abstract type:0 submission type:1
+              if(curItem.timeline[k].abstract_deadline){
+                curItem.ddls.push({'timepoint': curItem.timeline[k].abstract_deadline + this.utcMap.get(curItem.timezone), 'type':0})
+              }
+              curItem.ddls.push({'timepoint': curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone), 'type':1})
               if (!flag && diffTime >= 0) {
                 curItem.deadline = curItem.timeline[k].deadline
                 curItem.abstract_deadline = curItem.timeline[k].abstract_deadline

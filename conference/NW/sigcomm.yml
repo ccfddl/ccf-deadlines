@@ -22,3 +22,12 @@
       timezone: UTC
       date: August 22-26, 2022
       place: Amsterdam, Netherlands
+    - year: 2023
+      id: sigcomm23
+      link: https://conferences.sigcomm.org/sigcomm/2023/
+      timeline:
+        - abstract_deadline: '2023-02-08 23:59:59'
+          deadline: '2023-02-15 23:59:59'
+      timezone: UTC
+      date: September 10-14, 2023
+      place: New York City, US
