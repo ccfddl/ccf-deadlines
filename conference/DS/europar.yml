@@ -1,0 +1,15 @@
+- title: Euro-Par
+  description: European Conference on Parallel and Distributed Computing
+  sub: DS
+  rank: B
+  dblp: europar
+  confs:
+    - year: 2023
+      id: euro-par23
+      link: https://2023.euro-par.org
+      timeline:
+        - abstract_deadline: '2023-02-17 23:59:59'
+          deadline: '2023-02-24 23:59:59'
+      timezone: AoE
+      date: August 28-September 1, 2023
+      place: Limassol, Cyprus

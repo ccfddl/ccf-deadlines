@@ -22,3 +22,12 @@
       timezone: AoE
       date: July 11-15, 2022
       place: Madrid
+    - year: 2023
+      id: sigir23
+      link: https://sigir.org/sigir2023/
+      timeline:
+        - abstract_deadline: '2023-01-24 23:59:59'
+          deadline: '2023-01-31 23:59:59'
+      timezone: AoE
+      date: July 23-27, 2023
+      place: Taipei, Taiwan

@@ -1,0 +1,26 @@
+- title: ICA3PP
+  description: International Conference on Algorithms and Architectures for Parallel Processing
+  sub: DS
+  rank: C
+  dblp: ica3pp
+  confs:
+    - year: 2022
+      id: ica3pp
+      link: https://ica3pp2022.compute.dtu.dk/
+      timeline:
+        - deadline: '2021-05-30 17:00:00'
+          comment: 'first round'
+        - deadline: '2021-06-30 17:00:00'
+          comment: 'second round'
+      timezone: UTC-8
+      date: October 10-12, 2022
+      place: Copenhagen, Denmark
+    - year: 2023
+      id: ica3pp
+      link: http://tjutanklab.com/ica3pp2023/
+      timeline:
+        - deadline: '2023-05-30 23:59:00'
+          comment: 'Paper Submission Due'
+      timezone: UTC-8
+      date: October 20-22, 2022
+      place: Tianjin, China

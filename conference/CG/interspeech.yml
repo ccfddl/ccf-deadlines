@@ -12,3 +12,11 @@
       timezone: UTC+9
       date: September 18-22, 2022
       place: Incheon, South Korea
+    - year: 2023
+      id: interspeech23
+      link: https://www.interspeech2023.org/
+      timeline:
+        - deadline: '2023-03-08 23:59:59'
+      timezone: UTC+0
+      date: August 20-24, 2023
+      place: Dublin, Ireland
