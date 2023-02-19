@@ -13,7 +13,11 @@ Preview: [Demo](https://ccfddl.github.io/)
 
 Another preview in tabular form: [Tabular Demo](https://ccfddl.top/)
 
-[![Tabular Demo Preview](.readme_assets/screenshot_2.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot_1.png)
+[![Tabular Demo Preview](.readme_assets/screenshot_2.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot_2.png)
+
+Another preview in cli: [CLI Demo](https://github.com/ccfddl/ccf-deadlines/tree/main/cli)
+
+[![CLI Demo Preview](.readme_assets/screenshot_3.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot_3.png)
 
 **No More Finding and Time Conversion on Your Own!**
 
