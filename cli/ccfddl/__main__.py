@@ -20,13 +20,9 @@ def parse_tz(tz):
 
 def parse_args():
     parser = ArgumentParser(description="cli for ccfddl")
-
     parser.add_argument("--conf", type=str)
-
     parser.add_argument("--sub", type=str)
-
     parser.add_argument("--rank", type=str)
-
     return parser.parse_args()
 
 
@@ -48,7 +44,6 @@ def main():
             tz = parse_tz(c["timezone"])
             for d in c["timeline"]:
                 try:
-
                     cur_d = datetime.strptime(
                         d["deadline"] + " {}".format(tz), '%Y-%m-%d %H:%M:%S %z')
                     if time_obj is None or cur_d > time_obj:
@@ -73,7 +68,7 @@ def main():
             skip = True
         if not skip:
             table.append([x["title"], x["sub"], x["rank"],
-                         str(x["time_obj"] - now), x["link"]])
+                          str(x["time_obj"] - now), x["link"]])
 
     print(tabulate(table, headers='firstrow', tablefmt='fancy_grid'))
 

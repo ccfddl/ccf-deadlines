@@ -2,13 +2,14 @@
 
 WIP
 
-## install 
+## install
+
 ```
 pip install -r req.txt
 python setup.py install
 ```
 
-## usage 
+## usage
 
 ```
 python -m ccfddl
