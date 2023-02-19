@@ -46,7 +46,9 @@ def main():
                 try:
                     cur_d = datetime.strptime(
                         d["deadline"] + " {}".format(tz), '%Y-%m-%d %H:%M:%S %z')
-                    if time_obj is None or cur_d > time_obj:
+                    if cur_d < now:
+                        continue
+                    if time_obj is None or cur_d < time_obj:
                         time_obj = cur_d
                 except Exception as e:
                     pass
