@@ -1,0 +1,14 @@
+- title: SEKE
+  description:  International Conference on Software Engineering and Knowledge Engineering
+  sub: SE
+  rank: C
+  dblp: seke
+  confs:
+    - year: 2023
+      id: seke23
+      link: https://ksiresearch.org/seke/seke23.html
+      timeline:
+        - deadline: '2023-03-01 23:59:59'
+      timezone: UTC-5
+      date: July 1-10, 2023
+      place: San Francisco Bay, USA and KSIR Virtual Conference Center, USA

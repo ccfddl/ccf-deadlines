@@ -37,3 +37,18 @@
       timezone: UTC-8
       date: June 18-23, 2022
       place: Seattle, WA, USA
+    - year: 2024
+      id: sigmod24
+      link: http://2024.sigmod.org/
+      timeline:
+        - deadline: '2023-01-15 23:59:00'
+          comment: 'round 1'
+        - deadline: '2023-04-15 23:59:00'
+          comment: 'round 2'
+        - deadline: '2023-07-15 23:59:00'
+          comment: 'round 3'
+        - deadline: '2023-10-15 23:59:00'
+          comment: 'round 4'
+      timezone: UTC-7
+      date: June 11-16, 2024
+      place: Santiago, Chile
