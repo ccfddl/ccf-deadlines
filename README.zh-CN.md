@@ -7,7 +7,7 @@
 
 帮助计算机类科研人员追踪[中国计算机学会 (CCF)](https://www.ccf.org.cn/)推荐国际学术会议的截稿日期。
 
-| <div style="width:333px">[网站预览 (主页)](https://ccfddl.github.io/)</div> | <div style="width:333px">[表格预览](https://ccfddl.top/)</div> | <div style="width:333px">[客户端预览](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress]</div> |
+| <div style="width:333px">[网站预览 (主页)](https://ccfddl.github.io/)</div> | <div style="width:333px">[表格预览](https://ccfddl.top/) <br> [无需科学上网]</div> | <div style="width:333px">[客户端预览](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress]</div> |
 | :----: | :----: | :----: |
 | <img src=".readme_assets/screenshot_1.png" width=300px/> | <img src=".readme_assets/screenshot_2.png" width=300px/> | <img src=".readme_assets/screenshot_3.png" width=300px/> |
 
