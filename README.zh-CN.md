@@ -7,13 +7,13 @@
 
 帮助计算机类科研人员追踪[中国计算机学会 (CCF)](https://www.ccf.org.cn/)推荐国际学术会议的截稿日期。
 
-| <div style="width:330px">[网站预览 (主页)](https://ccfddl.github.io/)</div> | <div style="width:330px">[Tabular Preview](https://ccfddl.top/) <br> [无需科学上网]</div> | <div style="width:330px">[微信小程序](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
+| <div style="width:330px">[网站预览 (主页)](https://ccfddl.github.io/)</div> | <div style="width:330px">[表格预览](https://ccfddl.top/) <br> [无需科学上网]</div> | <div style="width:330px">[客户端预览](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress] </div> |
 | :----: | :----: | :----: |
-| <img src=".readme_assets/screenshot_website.png" width="275px" height="190px"/> | <img src=".readme_assets/screenshot_tabular.png" height="190px"/> | <img src=".readme_assets/applet_qrcode.jpg" height="190px"/> |
+| <img src=".readme_assets/screenshot_website.png" width="300px"/> | <img src=".readme_assets/screenshot_tabular.png" width="300px"/> | <img src=".readme_assets/screenshot_pycli.png" width="300px"/> |
 
-| <div style="width:330px">[客户端预览](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress]</div> |
+| <div style="width:330px">[微信小程序](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
 | :----: |
-| <img src=".readme_assets/screenshot_pycli.png" width="275px" height="190px"/> |
+| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> |
 
 **对麻烦的查找会议和转换时间说拜拜!**
 

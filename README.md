@@ -7,13 +7,13 @@ English | [简体中文](./README.zh-CN.md)
 
 Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-| <div style="width:330px">[Website Preview (Main Site)](https://ccfddl.github.io/)</div> | <div style="width:330px">[Tabular Preview](https://ccfddl.top/) <br> [No Ladder Required]</div> | <div style="width:330px">[Wechat Applet](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
+| <div style="width:330px">[Website Preview (Main Site)](https://ccfddl.github.io/)</div> | <div style="width:330px">[Tabular Preview](https://ccfddl.top/) <br> [No Ladder Required]</div> | <div style="width:330px">[PyCli Preview](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress] </div> |
 | :----: | :----: | :----: |
-| <img src=".readme_assets/screenshot_website.png" width="275px" height="190px"/> | <img src=".readme_assets/screenshot_tabular.png" height="190px"/> | <img src=".readme_assets/applet_qrcode.jpg" height="190px"/> |
+| <img src=".readme_assets/screenshot_website.png" width="300px"/> | <img src=".readme_assets/screenshot_tabular.png" width="300px"/> | <img src=".readme_assets/screenshot_pycli.png" width="300px"/> |
 
-| <div style="width:330px">[PyCli Preview](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress]</div> |
+| <div style="width:330px">[Wechat Applet](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
 | :----: |
-| <img src=".readme_assets/screenshot_pycli.png" width="275px" height="190px"/> |
+| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> |
 
 **No More Finding and Time Conversion on Your Own!**
 
