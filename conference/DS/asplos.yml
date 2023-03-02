@@ -39,3 +39,22 @@
       timezone: UTC-4
       date: March 25-March 29, 2023
       place: Vancouver, Canada
+    - year: 2024
+      id: asplos24
+      link: https://asplos-conference.org/asplos-2024-call-for-papers/
+      timeline:
+        - deadline: '2023-04-14 02:59:59'
+          comment: 'Spring Registration Deadline'
+        - deadline: '2023-04-21 02:59:59'
+          comment: 'Spring Submission Deadline'
+        - deadline: '2023-08-04 02:59:59'
+          comment: 'Summber Registration Deadline'
+        - deadline: '2023-08-11 02:59:59'
+          comment: 'Summer Submission Deadline'
+        - deadline: '2023-11-24 02:59:59'
+          comment: 'Fall Registration Deadline'
+        - deadline: '2023-12-01 02:59:59'
+          comment: 'Fall Submission Deadline'
+      timezone: UTC+8
+      date: April, 2024
+      place: California, U.S.A.
