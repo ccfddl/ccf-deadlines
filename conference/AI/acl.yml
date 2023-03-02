@@ -15,3 +15,12 @@
       timezone: UTC-12
       date: May 22-27, 2022
       place: Dublin, Ireland
+    - year: 2023
+      id: acl23
+      link: https://2023.aclweb.org/
+      timeline:
+        - abstract_deadline: '2023-01-13 23:59:59'
+          deadline: '2023-01-20 23:59:59'
+      timezone: UTC-12
+      date: July 9-14, 2023
+      place: Toronto, Canada

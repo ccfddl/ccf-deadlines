@@ -1,0 +1,17 @@
+- title: PACT
+  description: International Conference on Parallel Architectures and Compilation Techniques
+  sub: DS
+  rank: B
+  dblp: pact
+  confs:
+    - year: 2023
+      id: pact23
+      link: https://pact2023.github.io/
+      timeline:
+        - deadline: '2023-03-25 23:59:59'
+          comment: 'Abstract submission deadline'
+        - deadline: '2023-04-01 23:59:59'
+          comment: 'Paper submission deadline'
+      timezone: AoE
+      date: October 21-October 25, 2023
+      place: Vienna, Austria

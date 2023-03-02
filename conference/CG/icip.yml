@@ -1,0 +1,14 @@
+- title: ICIP
+  description: The IEEE International Conference on Image Processing
+  sub: CG
+  rank: C
+  dblp: ICIP
+  confs:
+    - year: 2023
+      id: icip23
+      link: https://2023.ieeeicip.org/
+      timeline:
+        - deadline: '2023-02-15 23:59:59'
+      timezone: UTC+0
+      date: Oct 8-11, 2023
+      place: Kuala Lumpur, Malaysia

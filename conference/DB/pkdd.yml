@@ -22,3 +22,12 @@
       timezone: AoE
       date: September 19-23, 2022
       place: Grenoble, France
+    - year: 2023
+      id: ecmlpkdd23
+      link: https://2023.ecmlpkdd.org/submissions/key-dates-deadlines/
+      timeline:
+        - abstract_deadline: '2023-03-26 23:59:59'
+          deadline: '2023-04-02 23:59:59'
+      timezone: AoE
+      date: September 18-22, 2023
+      place: Turin, Italy

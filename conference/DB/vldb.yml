@@ -59,5 +59,24 @@
         - deadline: '2023-02-01 17:00:00'
         - deadline: '2023-03-01 17:00:00'
       timezone: UTC-7
-      date: TBD
-      place: TBD
+      date: August 28 - September 01, 2023
+      place: Vancouver, Canada
+    - year: 2024
+      id: vldb24
+      link: http://www.vldb.org/2024/
+      timeline:
+        - deadline: '2023-04-01 17:00:00'
+        - deadline: '2023-05-01 17:00:00'
+        - deadline: '2023-06-01 17:00:00'
+        - deadline: '2023-07-01 17:00:00'
+        - deadline: '2023-08-01 17:00:00'
+        - deadline: '2023-09-01 17:00:00'
+        - deadline: '2023-10-01 17:00:00'
+        - deadline: '2023-11-01 17:00:00'
+        - deadline: '2023-12-01 17:00:00'
+        - deadline: '2024-01-01 17:00:00'
+        - deadline: '2024-02-01 17:00:00'
+        - deadline: '2024-03-01 17:00:00'
+      timezone: UTC-7
+      date: August 25-29, 2024
+      place: Guangzhou, China (and hybrid)
