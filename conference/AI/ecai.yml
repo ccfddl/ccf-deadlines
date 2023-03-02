@@ -1,0 +1,15 @@
+- title: ECAI
+  description: European Conference on Artificial Intelligence
+  sub: AI
+  rank: B
+  dblp: ecai
+  confs:
+    - year: 2023
+      id: ecai23
+      link: https://ecai2023.eu/
+      timeline:
+        - abstract_deadline: '2023-05-02 23:59:59'
+          deadline: '2023-05-08 23:59:59'
+      timezone: UTC-12
+      date: October 2-5, 2023
+      place: Kraków, Poland
