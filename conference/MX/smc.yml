@@ -1,0 +1,14 @@
+- title: SMC
+  description: IEEE International Conference on Systems, Man, and Cybernetics
+  sub: MX
+  rank: C
+  dblp: smc
+  confs:
+    - year: 2023
+      id: smc23
+      link: https://ieeesmc2023.org/
+      timeline:
+        - deadline: '2023-03-30 23:59:59'
+      timezone: UTC-8
+      date: October 1-4, 2023
+      place: HYATT MAUI, HAWAII, USA
