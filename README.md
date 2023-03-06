@@ -25,7 +25,7 @@ To add or update information:
 - Add/Update the yml file of conference/conf_type/conf_name.yml
 - Send a [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-Tips: check [conferences recommended](.readme_assets/ccf_recommended.pdf) and review [statistics](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
+Tips: check [conferences recommended](.readme_assets/ccf_recommended.pdf)/[evaluated version](https://www.ccf.org.cn/Academic_Evaluation/By_category/) and review [statistics](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
 ## Conference Entry File
 Example file: conference/DB/sigmod.yml
 
@@ -139,7 +139,7 @@ The matching table:
 
 ## Contribution
 Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [
-@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123).
+@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123), [@oliverck](https://github.com/oliverck).
 
 Inspired by [ai-deadlines](https://aideadlin.es/).
 
