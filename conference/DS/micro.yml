@@ -32,7 +32,7 @@
       timeline:
         - deadline: '2023-04-21 11:59:59'
           comment: 'Abstract Deadline'
-        - deadline: '2022-04-28 11:59:59'
+        - deadline: '2023-04-28 11:59:59'
           comment: 'Full Paper Deadline'
       timezone: UTC-7
       date: Oct, 2023
