@@ -1,0 +1,15 @@
+- title: ADMA
+  description: The International Conference on Advanced Data Mining and Applications
+  sub: DB
+  rank: C
+  dblp: adma
+  confs:
+    - year: 2023
+      id: adma23
+      link: https://adma2023.uqcloud.net/index.html
+      timeline:
+        - abstract_deadline: '2023-04-08 23:59:59'
+          deadline: '2023-04-15 23:59:59'
+      timezone: UTC-7
+      date: August 21 - 23, 2023
+      place: Shenyang, China
