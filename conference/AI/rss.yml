@@ -1,0 +1,14 @@
+- title: RSS
+  description: Robotics Science and Systems
+  sub: AI
+  rank: N
+  dblp: rss
+  confs:
+    - year: 2023
+      id: rss23
+      link: https://roboticsconference.org/
+      timeline:
+        - deadline: '2023-02-03 23:59:59'
+      timezone: AoE
+      date: July 10-14, 2023
+      place: Daegu, Republic of Korea

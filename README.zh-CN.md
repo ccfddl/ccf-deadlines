@@ -1,15 +1,19 @@
 # CCF-Deadlines
 [![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)
-[![Build Status](https://img.shields.io/github/workflow/status/ccfddl/ccf-deadlines/Deploy)](https://github.com/ccfddl/ccf-deadlines/commits/main)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/ccfddl/ccf-deadlines/.github/workflows/deploy.yml?branch=main)](https://github.com/ccfddl/ccf-deadlines/commits/main)
 [![Open PRs](https://img.shields.io/github/issues-pr/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/pulls)
 
 简体中文 | [English](./README.md)
 
 帮助计算机类科研人员追踪[中国计算机学会 (CCF)](https://www.ccf.org.cn/)推荐国际学术会议的截稿日期。
 
-在线预览: [演示页面](https://ccfddl.github.io/)
+| <div style="width:330px">[网站预览 (主页)](https://ccfddl.github.io/)</div> | <div style="width:330px">[表格预览](https://ccfddl.top/) <br> [无需科学上网]</div> | <div style="width:330px">[客户端预览](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress] </div> |
+| :----: | :----: | :----: |
+| <img src=".readme_assets/screenshot_website.png" width="300px"/> | <img src=".readme_assets/screenshot_tabular.png" width="300px"/> | <img src=".readme_assets/screenshot_pycli.png" width="300px"/> |
 
-[![](.readme_assets/screenshot.png)]()
+| <div style="width:330px">[微信小程序](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
+| :----: |
+| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> |
 
 **对麻烦的查找会议和转换时间说拜拜!**
 
@@ -21,7 +25,7 @@
 - 增加/更新yml文件 conference/conf_type/conf_name.yml
 - 提交 [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-提示: 可检查 [会议推荐目录](.readme_assets/ccf_recommended.pdf) 和 [统计表格](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
+提示: 可检查 [会议推荐目录](.readme_assets/ccf_recommended.pdf)/[调整版本](https://www.ccf.org.cn/Academic_Evaluation/By_category/) 和 [统计表格](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
 ## 会议录入文件
 示例文件: conference/DB/sigmod.yml
 
@@ -128,8 +132,14 @@
 | `HI`        | 人机交互与普适计算                                        |
 | `MX`       | 交叉/综合/新兴                                            |
 
+## 社区动态 [![Time period](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_badge.svg)](https://repography.com)
+[![Timeline graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_timeline.svg)](https://github.com/ccfddl/ccf-deadlines/commits)
+[![Issue status graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_issues.svg)](https://github.com/ccfddl/ccf-deadlines/issues)
+[![Pull request status graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_prs.svg)](https://github.com/ccfddl/ccf-deadlines/pulls)
+[![Top contributors](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_users.svg)](https://github.com/ccfddl/ccf-deadlines/graphs/contributors)
+
 ## 贡献
-本项目由 [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue)共同维护。
+本项目由 [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123), [@oliverck](https://github.com/oliverck)共同维护。
 
 灵感来自于 [ai-deadlines](https://aideadlin.es/)。
 

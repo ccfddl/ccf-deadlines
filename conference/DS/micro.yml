@@ -26,3 +26,14 @@
       timezone: UTC-7
       date: Oct, 2022
       place: Chicago, Illinois, USA
+    - year: 2023
+      id: micro23
+      link: https://www.microarch.org/micro56/
+      timeline:
+        - deadline: '2023-04-21 11:59:59'
+          comment: 'Abstract Deadline'
+        - deadline: '2023-04-28 11:59:59'
+          comment: 'Full Paper Deadline'
+      timezone: UTC-7
+      date: Oct, 2023
+      place: Toronto, Canada

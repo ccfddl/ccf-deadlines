@@ -1,15 +1,19 @@
 # CCF-Deadlines
 [![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)
-[![Build Status](https://img.shields.io/github/workflow/status/ccfddl/ccf-deadlines/Deploy)](https://github.com/ccfddl/ccf-deadlines/commits/main)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/ccfddl/ccf-deadlines/.github/workflows/deploy.yml?branch=main)](https://github.com/ccfddl/ccf-deadlines/commits/main)
 [![Open PRs](https://img.shields.io/github/issues-pr/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/pulls)
 
 English | [简体中文](./README.zh-CN.md)
 
 Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-Preview: [Demo](https://ccfddl.github.io/)
+| <div style="width:330px">[Website Preview (Main Site)](https://ccfddl.github.io/)</div> | <div style="width:330px">[Tabular Preview](https://ccfddl.top/) <br> [No Ladder Required]</div> | <div style="width:330px">[PyCli Preview](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress] </div> |
+| :----: | :----: | :----: |
+| <img src=".readme_assets/screenshot_website.png" width="300px"/> | <img src=".readme_assets/screenshot_tabular.png" width="300px"/> | <img src=".readme_assets/screenshot_pycli.png" width="300px"/> |
 
-[![Demo Preview](.readme_assets/screenshot.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot.png)
+| <div style="width:330px">[Wechat Applet](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
+| :----: |
+| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> |
 
 **No More Finding and Time Conversion on Your Own!**
 
@@ -21,7 +25,7 @@ To add or update information:
 - Add/Update the yml file of conference/conf_type/conf_name.yml
 - Send a [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-Tips: check [conferences recommended](.readme_assets/ccf_recommended.pdf) and review [statistics](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
+Tips: check [conferences recommended](.readme_assets/ccf_recommended.pdf)/[evaluated version](https://www.ccf.org.cn/Academic_Evaluation/By_category/) and review [statistics](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
 ## Conference Entry File
 Example file: conference/DB/sigmod.yml
 
@@ -127,9 +131,15 @@ The matching table:
 | `HI`        | Computer-Human Interaction                                       |
 | `MX`       | Interdiscipline/Mixture/Emerging                                            |
 
+## Community activity [![Time period](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_badge.svg)](https://repography.com)
+[![Timeline graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_timeline.svg)](https://github.com/ccfddl/ccf-deadlines/commits)
+[![Issue status graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_issues.svg)](https://github.com/ccfddl/ccf-deadlines/issues)
+[![Pull request status graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_prs.svg)](https://github.com/ccfddl/ccf-deadlines/pulls)
+[![Top contributors](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_users.svg)](https://github.com/ccfddl/ccf-deadlines/graphs/contributors)
+
 ## Contribution
 Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [
-@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue).
+@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123), [@oliverck](https://github.com/oliverck).
 
 Inspired by [ai-deadlines](https://aideadlin.es/).
 

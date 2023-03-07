@@ -12,3 +12,11 @@
       timezone: AoE
       date: November 13-18, 2022
       place: Dallas, Texas, USA
+    - year: 2023
+      id: sc23
+      link: https://sc23.supercomputing.org/
+      timeline:
+        - deadline: '2023-04-06 23:59:00'
+      timezone: AoE
+      date: November 12-17, 2023
+      place: DENVER, CO, USA
