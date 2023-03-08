@@ -1,0 +1,15 @@
+- title: PG
+  description: Pacific Graphics, The Pacific Conference on Computer Graphics and Applications
+  sub: CG
+  rank: B
+  dblp: pg
+  confs:
+    - year: 2023
+      id: pg23
+      link: https://pg2023.org/
+      timeline:
+        - abstract_deadline: '2023-06-01 23:59:59'
+          deadline: '2023-06-06 23:59:59'
+      timezone: AoE
+      date: October 10-13, 2023
+      place: Daejeon, South Korea
