@@ -25,7 +25,7 @@
 - 增加/更新yml文件 conference/conf_type/conf_name.yml
 - 提交 [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-提示: 可检查 [会议推荐目录](.readme_assets/ccf_recommended.pdf)/[调整版本](https://www.ccf.org.cn/Academic_Evaluation/By_category/) 和 [统计表格](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
+提示: 可检查 [会议推荐目录](.readme_assets/ccf_recommended_2022.pdf) 和 [统计表格](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
 ## 会议录入文件
 示例文件: conference/DB/sigmod.yml
 
