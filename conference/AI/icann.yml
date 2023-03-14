@@ -1,0 +1,15 @@
+- title: ICANN
+  description: International Conference on Artificial Neural Networks
+  sub: AI
+  rank: C
+  dblp: icann
+  confs:
+    - year: 2023
+      id: icann2023
+      link: https://e-nns.org/icann2023/
+      timeline:
+        - abstract_deadline: '2023-04-09 23:59:59'
+          deadline: '2023-04-09 23:59:59'
+      timezone: UTC-12
+      date: Sept 26-29, 2023
+      place: Crete, Greece
