@@ -26,3 +26,14 @@
       timezone: UTC-12
       date: TBD
       place: San Diego, California
+    - year: 2024
+      id: ndss24
+      link: https://www.ndss-symposium.org/ndss2024/
+      timeline:
+        - deadline: '2022-04-19 23:59:59'
+          comment: 'Summer'
+        - deadline: '2022-06-28 23:59:59'
+          comment: 'Fall'
+      timezone: UTC-12
+      date: February 26 - March 1 2024
+      place: San Diego, California
