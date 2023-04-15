@@ -4,6 +4,15 @@
   rank: A
   dblp: siggrapha
   confs:
+    - year: 2023
+      id: siggrapha23
+      link: https://asia.siggraph.org/2023/
+      timeline:
+        - abstract_deadline: '2023-05-16 23:59:00'
+          deadline: '2023-05-23 23:59:00'
+      timezone: UTC-12
+      date: December 12-15, 2023
+      place: Sydney, Australia
     - year: 2021
       id: siggrapha21
       link: https://sa2021.siggraph.org/
