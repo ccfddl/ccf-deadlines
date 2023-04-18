@@ -13,3 +13,12 @@
       timezone: UTC-12
       date: December 7 - 11, 2022
       place: Abu Dhabi
+    - year: 2023
+      id: emnlp23
+      link: https://2023.emnlp.org
+      timeline:
+        - abstract_deadline: '2023-06-16 23:59:59'
+          deadline: '2023-06-23 23:59:59'
+      timezone: UTC-12
+      date: December 6 - 10, 2023
+      place: Singapore
