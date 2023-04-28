@@ -20,7 +20,7 @@
       id: ase23
       link: https://conf.researchr.org/home/ase-2023
       timeline:
-        - deadline: '2023-04-28 23:59:59'
+        - abstract_deadline: '2023-04-28 23:59:59'
           comment: 'Abstract Submission'
         - deadline: '2023-05-05 23:59:59'
           comment: 'Paper Submission'
