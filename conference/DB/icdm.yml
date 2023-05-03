@@ -20,3 +20,11 @@
       timezone: UTC-7
       date: November 30 - December 3
       place: Orlando, FL, USA
+    - year: 2023
+      id: icdm23
+      link: http://cloud-conf.net/icdm2023/index.html
+      timeline:
+        - deadline: '2023-07-01 23:59:59'
+      timezone: UTC+8
+      date: December 1-4, 2023
+      place: Shanghai, China

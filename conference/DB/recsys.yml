@@ -1,0 +1,15 @@
+- title: RecSys
+  description: ACM Conference on Recommender Systems
+  sub: DB
+  rank: B
+  dblp: recsys
+  confs:
+    - year: 2023
+      id: recsys23
+      link: https://recsys.acm.org/recsys23
+      timeline:
+        - abstract_deadline: '2023-04-14 23:59:59'
+          deadline: '2023-04-21 23:59:59'
+      timezone: AoE
+      date: September 18-22, 2023
+      place: Singapore

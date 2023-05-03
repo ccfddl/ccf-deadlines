@@ -1,0 +1,14 @@
+- title: CIDR
+  description: International Conference on Innovative Data Systems Research
+  sub: DB
+  rank: B
+  dblp: cidr
+  confs:
+    - year: 2024
+      id: cidr24
+      link: https://www.cidrdb.org/cidr2024/
+      timeline:
+        - deadline: '2023-07-27 23:59:59'
+      timezone: UTC-8
+      date: Jan 14 - Jan 17, 2024
+      place: Chaminade, USA

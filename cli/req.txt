@@ -1,0 +1,4 @@
+tabulate
+yaml
+pyyaml
+requests

@@ -7,13 +7,13 @@ English | [简体中文](./README.zh-CN.md)
 
 Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-Preview: [Demo](https://ccfddl.github.io/)
+| <div style="width:330px">[Website Preview (Main Site)](https://ccfddl.github.io/)</div> | <div style="width:330px">[Tabular Preview](https://ccfddl.top/) <br> [No Ladder Required]</div> | <div style="width:330px">[PyCli Preview](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress] </div> |
+| :----: | :----: | :----: |
+| <img src=".readme_assets/screenshot_website.png" width="300px"/> | <img src=".readme_assets/screenshot_tabular.png" width="300px"/> | <img src=".readme_assets/screenshot_pycli.png" width="300px"/> |
 
-[![Demo Preview](.readme_assets/screenshot_1.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot_1.png)
-
-Another preview in tabular form: [Tabular Demo](https://ccfddl.top/)
-
-[![Tabular Demo Preview](.readme_assets/screenshot_2.png)](https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/screenshot_1.png)
+| <div style="width:330px">[Wechat Applet](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
+| :----: |
+| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> |
 
 **No More Finding and Time Conversion on Your Own!**
 
@@ -25,7 +25,7 @@ To add or update information:
 - Add/Update the yml file of conference/conf_type/conf_name.yml
 - Send a [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-Tips: check [conferences recommended](.readme_assets/ccf_recommended.pdf) and review [statistics](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
+Tips: check [conferences recommended](.readme_assets/ccf_recommended_2022.pdf) and review [statistics](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
 ## Conference Entry File
 Example file: conference/DB/sigmod.yml
 
@@ -139,7 +139,7 @@ The matching table:
 
 ## Contribution
 Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [
-@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123).
+@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123), [@oliverck](https://github.com/oliverck).
 
 Inspired by [ai-deadlines](https://aideadlin.es/).
 

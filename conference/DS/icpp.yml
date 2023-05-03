@@ -21,3 +21,14 @@
       timezone: AoE
       date: August 29-Sept 12, 2022
       place: Bordeaux, France
+    - year: 2023
+      id: icpp23
+      link: https://icpp23.sci.utah.edu/
+      timeline:
+        - deadline: '2023-04-14 23:59:59'
+          comment: 'Abstract Submission'
+        - deadline: '2023-04-22 23:59:59'
+          comment: 'Paper Submission'
+      timezone: AoE
+      date: August 7-August 10, 2023
+      place: Salt Lake City, UTAH, USA

@@ -4,14 +4,14 @@
   rank: B
   dblp: issre
   confs:
-    - year: 2021
-      id: issre21
-      link: https://issre.net/
+    - year: 2023
+      id: issre23
+      link: https://issre.github.io/2023/index.html
       timeline:
-        - deadline: '2021-05-01 23:59:59'
+        - deadline: '2023-05-22 23:59:59'
           comment: 'Abstract submission'
-        - deadline: '2021-05-07 23:59:59'
+        - deadline: '2021-06-01 23:59:59'
           comment: 'Full paper submission'
       timezone: AoE
-      date: October 25-28, 2021
-      place:  Wuhan, China
+      date: October 9-12, 2023
+      place:  Florence, Italy
