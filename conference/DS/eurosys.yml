@@ -39,7 +39,7 @@
       id: eurosys2024
       link: https://www.eurosys.org/news/eurosys-2024
       timeline:
-        - deadline: '2023-05-24 00:00:00'
+        - deadline: '2023-05-18 00:00:00'
           comment: 'Spring Submission Deadline'
         - deadline: '2023-10-19 23:59:59'
           comment: 'Fall Submission Deadline'
