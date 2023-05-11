@@ -15,3 +15,12 @@
       timezone: UTC+1
       date: April 17-19, 2023
       place: Antwerp, BE
+    - year: 2024
+      id: date2024
+      link: https://www.date-conference.com/
+      timeline:
+        - abstract_deadline: '2023-09-10 23:59:59'
+          deadline: '2023-09-17 23:59:59'
+      timezone: AoE
+      date: March 25-27, 2024
+      place: Valencia, Spain
