@@ -1,7 +1,7 @@
 - title: EuroSys
   description: European Conference on Computer Systems
   sub: DS
-  rank: B
+  rank: A
   dblp: eurosys
   confs:
     - year: 2021
@@ -35,3 +35,14 @@
       timezone: AoE
       date: May 9-12, 2023
       place: Rome, Italy
+    - year: 2024
+      id: eurosys2024
+      link: https://www.eurosys.org/news/eurosys-2024
+      timeline:
+        - deadline: '2023-05-18 00:00:00'
+          comment: 'Spring Submission Deadline'
+        - deadline: '2023-10-19 23:59:59'
+          comment: 'Fall Submission Deadline'
+      timezone: UTC
+      date: April 23-26, 2024
+      place: Athens, Greece

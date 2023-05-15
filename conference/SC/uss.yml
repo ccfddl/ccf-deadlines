@@ -30,3 +30,16 @@
       timezone: UTC-12
       date: August 9-11, 2023
       place: ANAHEIM, CA, USA
+    - year: 2024
+      id: uss24
+      link: https://www.usenix.org/conference/usenixsecurity24
+      timeline:
+        - deadline: '2023-06-06 23:59:59'
+          comment: 'Summer Deadline'
+        - deadline: '2023-10-17 23:59:59'
+          comment: 'Fall Deadline'
+        - deadline: '2024-02-08 23:59:59'
+          comment: 'Winter Deadline'
+      timezone: UTC-12
+      date: August 14-16, 2024
+      place: PHILADELPHIA, PA, USA

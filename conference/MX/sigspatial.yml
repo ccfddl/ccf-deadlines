@@ -1,0 +1,15 @@
+- title: SIGSPATIAL
+  description: ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems
+  sub: MX
+  rank: C
+  dblp: sigspatial
+  confs:
+    - year: 2023
+      id: sigspatial23
+      link: http://sigspatial2023.sigspatial.org/
+      timeline:
+        - abstract_deadline: '2023-06-09 23:59:59'
+          deadline: '2023-06-16 23:59:59'
+      timezone: UTC-7
+      date: November 13-16, 2023
+      place: Hamburg, Germany

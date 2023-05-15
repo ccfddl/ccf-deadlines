@@ -1,0 +1,14 @@
+- title: KSEM
+  description: International Conference on Knowledge Science, Engineering and Management
+  sub: AI
+  rank: C
+  dblp: ksem
+  confs:
+    - year: 2023
+      id: ksem23
+      link: https://www.ksem2023.conferences.academy/
+      timeline:
+        - deadline: '2023-04-28 23:59:00'
+      timezone: UTC-8
+      date: Aug 16-18, 2023
+      place: Guangzhou, China
