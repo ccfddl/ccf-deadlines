@@ -22,3 +22,12 @@
       timezone: AoE
       date: January 15-21, 2023
       place: Boston, Massachusetts, United States
+    - year: 2024
+      id: popl24
+      link: https://popl24.sigplan.org/
+      timeline:
+        - deadline: '2023-07-11 23:59:59'
+          comment: 'Submission Deadline'
+      timezone: AoE
+      date: January 17-19, 2024
+      place:  London, United Kingdom
