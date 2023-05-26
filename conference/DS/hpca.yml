@@ -30,9 +30,9 @@
       id: hpca24
       link: https://hpca-conf.org/2024/
       timeline:
-        - deadline: '2022-07-28 23:59:59'
+        - deadline: '2023-07-28 23:59:59'
           comment: 'abstract deadline'
-        - deadline: '2022-08-04 23:59:59'
+        - deadline: '2023-08-04 23:59:59'
           comment: 'full paper deadline'
       timezone: UTC-7
       date: March 2-6, 2024
