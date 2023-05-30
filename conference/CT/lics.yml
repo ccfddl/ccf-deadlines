@@ -1,0 +1,14 @@
+- title: LICS
+  description: IEEE Symposium on Logic in Computer Science
+  sub: CT
+  rank: A
+  dblp: lics
+  confs:
+    - year: 2023
+      id: lics
+      link: https://lics.siglog.org/lics23/
+      timeline:
+        - deadline: '2023-01-23 23:59:59'
+      timezone: AoE
+      date: June 26-29, 2023
+      place: Boston University, USA
