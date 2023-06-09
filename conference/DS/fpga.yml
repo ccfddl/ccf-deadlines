@@ -19,7 +19,7 @@
       id: fpga2024
       link: https://www.isfpga.org/
       timeline:
-        - deadline: '2023-10-6 23:59:59'
+        - deadline: '2023-10-06 23:59:59'
           comment: 'Abstracts Due'
         - deadline: '2023-10-13 23:59:59'
           comment: 'Submissions Due'
