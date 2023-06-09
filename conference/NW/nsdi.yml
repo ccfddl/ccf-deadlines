@@ -26,3 +26,14 @@
       timezone: UTC-5
       date: April 17-19, 2023
       place: BOSTON, USA
+    - year: 2024
+      id: nsdi24
+      link: https://www.usenix.org/conference/nsdi24/
+      timeline:
+        - abstract_deadline: '2023-04-27 20:59:59'
+          deadline: '2023-05-04 20:59:59'
+        - abstract_deadline: '2023-09-07 20:59:59'
+          deadline: '2023-09-14 20:59:59'
+      timezone: UTC-7
+      date: April 16-18, 2024
+      place: Santa Clara, CA, USA

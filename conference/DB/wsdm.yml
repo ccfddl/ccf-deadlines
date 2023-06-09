@@ -20,3 +20,11 @@
       timezone: UTC-12
       date: February 27 - March 3, 2023
       place: Singapore
+    - year: 2024
+      id: wsdm24
+      link: https://www.wsdm-conference.org/2024/
+      timeline:
+        - deadline: '2023-08-10 23:59:59'
+      timezone: UTC-12
+      date: March 4 - March 8, 2024
+      place: Mérida, México

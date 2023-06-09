@@ -33,3 +33,13 @@
       timezone: AoE
       date: May 1-5, 2023
       place: Austin, Texas, USA
+
+    - year: 2024
+      id: www24
+      link: https://www2024.thewebconf.org/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+      timezone: AoE
+      date: May 13-17, 2024
+      place: Singapore

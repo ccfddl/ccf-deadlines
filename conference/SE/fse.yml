@@ -25,4 +25,15 @@
           comment: 'full paper submission deadline'
       timezone: AoE
       date: November 11-17, 2023
-      place: United States
+      place: United States    
+    - year: 2024
+      id: fse24
+      link: https://2024.esec-fse.org/
+      timeline:
+        - deadline: '2023-09-21 23:59:59'
+          comment: 'paper registration deadline'
+        - deadline: '2023-09-28 23:59:59'
+          comment: 'full paper submission deadline'
+      timezone: AoE
+      date: July 15-19, 2024
+      place: Porto de Galinas, Brazil

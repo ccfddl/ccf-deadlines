@@ -31,3 +31,12 @@
       timezone: UTC-4
       date: May 17-20, 2023
       place: New York, USA
+    - year: 2024
+      id: infocom24
+      link: https://infocom2024.ieee-infocom.org/
+      timeline:
+        - abstract_deadline: '2023-07-24 23:59:59'
+          deadline: '2023-07-31 23:59:59'
+      timezone: AoE
+      date: May 20-23, 2024
+      place: Vancouver, Canada
