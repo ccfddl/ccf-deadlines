@@ -38,8 +38,8 @@
       id: www24
       link: https://www2024.thewebconf.org/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
+        - abstract_deadline: '2023-10-05 23:59:59'
+          deadline: '2023-10-12 23:59:59'
       timezone: AoE
       date: May 13-17, 2024
       place: Singapore
