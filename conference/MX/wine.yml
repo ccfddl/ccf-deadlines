@@ -1,0 +1,14 @@
+- title: WINE
+  description: Conference on Web and Internet Economics
+  sub: MX
+  rank: A
+  dblp: wine
+  confs:
+    - year: 2023
+      id: wine2023
+      link: https://wine2023.shanghaitech.edu.cn/
+      timeline:
+        - deadline: '2023-07-07 23:59:59'
+      timezone: AoE
+      date: Dec 04-08, 2023
+      place: Shanghai, China
