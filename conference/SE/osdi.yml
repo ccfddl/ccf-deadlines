@@ -23,3 +23,14 @@
       timezone: UTC
       date: July 10-12, 2023
       place: Boston, MA, USA
+    - year: 2024
+      id: osdi2024
+      link: https://www.usenix.org/conference/osdi24
+      timeline:
+        - deadline: '2023-09-30 22:59:59'
+          comment: 'Abstract Registerations'
+        - deadline: '2023-12-07 22:59:59'
+          comment: 'Complete Paper Submissions'
+      timezone: UTC
+      date: July 10-12, 2024
+      place: Santa Clara, CA, USA
