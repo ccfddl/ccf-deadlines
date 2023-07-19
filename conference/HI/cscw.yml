@@ -20,3 +20,11 @@
       timezone: AoE
       date: January 1, 2022
       place: Taiwan
+    - year: 2023
+      id: cscw23
+      link: https://cscw.acm.org/2023/
+      timeline:
+        - deadline: '2023-06-01 23:59:59'
+      timezone: AoE
+      date: October 14-18, 2023
+      place: Minneapolis, MN, USA

@@ -26,3 +26,14 @@
       timezone: UTC
       date: Feb 25-Mar 01, 2023
       place: Montreal, QC, Canada
+    - year: 2024
+      id: hpca24
+      link: https://hpca-conf.org/2024/
+      timeline:
+        - deadline: '2023-07-28 23:59:59'
+          comment: 'abstract deadline'
+        - deadline: '2023-08-04 23:59:59'
+          comment: 'full paper deadline'
+      timezone: UTC-7
+      date: March 2-6, 2024
+      place: Edinburgh, Scotland, UK

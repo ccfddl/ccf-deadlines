@@ -12,3 +12,11 @@
       timezone: UTC-8
       date: October 1-5, 2023
       place: Detroit, Michigan, USA
+    - year: 2024
+      id: iros24
+      link: http://iros2024-abudhabi.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC-8
+      date: October 13-17, 2024
+      place: Abu Dhabi, UAE

@@ -22,3 +22,12 @@
       timezone: UTC-5
       date: Dec 6-9, 2022
       place: Las Vegas, NV, USA
+    - year: 2023
+      id: bibm23
+      link: https://bidma.cpsc.ucalgary.ca/IEEE-BIBM-2023/
+      timeline:
+        - deadline: '2023-08-15 17:00:00'
+          comment: Electronic submission of full papers
+      timezone: UTC-5
+      date: Dec 5-8, 2023
+      place: Istanbul, Turkey
