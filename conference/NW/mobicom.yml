@@ -24,3 +24,12 @@
       timezone: UTC-7
       date: Oct 2-6, 2023
       place: Madrid, Spain
+    - year: 2024
+      id: mobicom24
+      link: https://www.sigmobile.org/mobicom/2024/
+      timeline: 
+        - abstract_deadline: '2023-08-18 23:59:59'
+          deadline: '2023-08-25 23:59:59'
+      timezone: UTC-12
+      date: October 2024
+      place: Washington, D.C., USA
