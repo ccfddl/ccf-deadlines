@@ -1,0 +1,14 @@
+- title: CogSci
+  description: Annual Meeting of the Cognitive Science Society
+  sub: MX
+  rank: B
+  dblp: cogsci
+  confs:
+    - year: 2023
+      id: cogsci23
+      link: https://cognitivesciencesociety.org/cogsci-2023/
+      timeline:
+        - deadline: '2023-02-01 17:00:00'
+      timezone: UTC+10
+      date: July 26-29, 2023
+      place: Sydney, Australia
