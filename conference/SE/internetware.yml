@@ -1,0 +1,15 @@
+- title: Internetware
+  description: Asia-Pacific Symposium on Internetware
+  sub: SE
+  rank: C
+  dblp: internetware
+  confs: 
+    - year: 2023
+      id: internetware23
+      link: https://conf.researchr.org/home/internetware-2023
+      timeline:
+        - abstract_deadline: '2023-04-17 23:59:59'
+          deadline: '2023-04-22 23:59:59'
+      timezone: UTC-12
+      date: August 4-6, 2023
+      place: Hangzhou, China

@@ -13,3 +13,11 @@
       timezone: AoE
       date: September 17-19, 2021
       place: Chongqing, China
+    - year: 2023
+      id: icics23
+      link: https://icics23.nankai.edu.cn/
+      timeline:
+        - deadline: '2023-03-30 23:59:59'
+      timezone: AoE
+      date: November 18-20, 2023
+      place: Nankai University, Tianjin, China

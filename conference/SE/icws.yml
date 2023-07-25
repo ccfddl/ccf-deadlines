@@ -1,5 +1,5 @@
 - title: ICWS
-  description:  International Conference on Web Services （Research Track）
+  description:  IEEE International Conference on Web Services (Research Track)
   sub: SE
   rank: B
   dblp: icws
@@ -13,3 +13,11 @@
       timezone: AoE
       date: December 10-14, 2022
       place: TBD
+    - year: 2023
+      id: icws23
+      link: https://conferences.computer.org/icws/2023/
+      timeline:
+        - deadline: '2023-03-25 23:59:59'
+      timezone: AoE
+      date: July 2-8, 2023
+      place: CHICAGO, ILLINOIS USA

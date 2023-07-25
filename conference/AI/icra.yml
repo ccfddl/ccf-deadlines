@@ -20,3 +20,11 @@
       timezone: UTC-8
       date: May 29- June 2, 2023
       place: ExCeL London, UK
+    - year: 2024
+      id: icra24
+      link: http://ieee-icra.org/
+      timeline:
+        - deadline: '2023-09-15 23:59:00'
+      timezone: UTC-8
+      date: May 13-17, 2024
+      place: Yokohama, Japan

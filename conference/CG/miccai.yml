@@ -1,0 +1,14 @@
+- title: MICCAI
+  description: International Conference on Medical Image Computing and Computer Assisted Intervention
+  sub: CG
+  rank: B
+  dblp: miccai
+  confs:
+    - year: 2023
+      id: miccai2023
+      link: https://conferences.miccai.org/2023/en/
+      timeline:
+        - deadline: '2023-02-23 23:59:59'
+      timezone: UTC+0
+      date: Oct 8-12, 2023
+      place: Vancouver, Canada

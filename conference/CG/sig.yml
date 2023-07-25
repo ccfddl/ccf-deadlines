@@ -4,6 +4,15 @@
   rank: A
   dblp: siggraph
   confs:
+    - year: 2023
+      id: siggraph23
+      link: https://s2023.siggraph.org/
+      timeline:
+        - abstract_deadline: '2023-01-24 22:00:00'
+          deadline: '2023-01-25 22:00:00'
+      timezone: UTC+0
+      date: August 6-10, 2023
+      place: Los Angeles
     - year: 2022
       id: siggraph22
       link: https://s2022.siggraph.org/

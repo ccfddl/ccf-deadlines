@@ -1,0 +1,14 @@
+- title: ISMAR
+  description: International Symposium on Mixed and Augmented Reality
+  sub: CG
+  rank: B
+  dblp: ismar
+  confs:
+    - year: 2023
+      id: ismar2023
+      link: https://ismar23.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: Oct 16-20, 2023
+      place: Sydney, Australia

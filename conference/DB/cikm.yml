@@ -29,3 +29,12 @@
       timezone: AoE
       date: October 17-22, 2022
       place: Atlanta, Georgia, USA
+    - year: 2023
+      id: cikm23
+      link: https://uobevents.eventsair.com/cikm2023/
+      timeline:
+        - abstract_deadline: '2023-05-26 23:59:59'
+          deadline: '2023-06-02 23:59:59'
+      timezone: AoE
+      date: October 21-25, 2023
+      place: Birmingham, UK

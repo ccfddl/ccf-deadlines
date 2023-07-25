@@ -1,0 +1,14 @@
+- title: PRCV
+  description: Chinese Conference on Pattern Recognition and Computer Vision
+  sub: CG
+  rank: C
+  dblp: prcv
+  confs:
+    - year: 2023
+      id: prcv23
+      link: https://prcv2023.xmu.edu.cn/
+      timeline:
+        - deadline: '2023-06-20 23:59:59'
+      timezone: UTC+8
+      date: Oct 13-15, 2023
+      place: Xiamen, China

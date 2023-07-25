@@ -13,3 +13,12 @@
       timezone: UTC-4
       date: October 30-November 2, 2022
       place: Lexington, Kentucky, USA
+    - year: 2023
+      id: icnp23
+      link: https://icnp23.cs.ucr.edu/index.html
+      timeline:
+        - abstract_deadline: '2023-05-24 20:00:00'
+          deadline: '2023-05-31 20:00:00'
+      timezone: UTC-4
+      date: October 10-13, 2023
+      place: Reykjavik, Iceland

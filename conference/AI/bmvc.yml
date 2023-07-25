@@ -12,3 +12,11 @@
       timezone: UTC-8
       date: November 22-25, 2021
       place: Virtual
+    - year: 2023
+      id: bmvc23
+      link: https://www.bmvc2023.org/
+      timeline:
+        - deadline: '2023-05-12 23:59:59'
+      timezone: UTC
+      date: November 20-24, 2023
+      place: Aberdeen, UK

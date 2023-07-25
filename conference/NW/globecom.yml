@@ -1,0 +1,14 @@
+- title: GLOBECOM
+  description: IEEE Global Communications Conference
+  sub: NW
+  rank: C
+  dblp: globecom
+  confs:
+    - year: 2023
+      id: globecom23
+      link: https://globecom2023.ieee-globecom.org/
+      timeline:
+        - deadline: '2023-04-15 23:59:59'
+      timezone: UTC-4
+      date: December 4-8, 2023
+      place: Kuala Lumpur, Malaysia
