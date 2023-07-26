@@ -12,3 +12,11 @@
       timezone: UTC-12
       date: October 17-21, 2021
       place: Zagreb, Croatia
+    - year: 2024
+      id: eurocrypt24
+      link: https://eurocrypt.iacr.org/2024
+      timeline:
+        - deadline: '2023-10-06 23:59:59'
+      timezone: AoE
+      date: May 26-30, 2024
+      place: Zurich, Switzerland
