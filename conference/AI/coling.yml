@@ -13,3 +13,12 @@
       timezone: AoE
       date: June 12-17, 2022
       place: Gyeongju, Republic of Korea
+    - year: 2024
+      id: coling24
+      link: https://lrec-coling-2024.lrec-conf.org/
+      timeline:
+        - deadline: '2023-10-13 23:59:59'
+          comment: 'Long, short and position papers due'
+      timezone: UTC-12
+      date: May 20 - May 25, 2024
+      place: Torino, Italy

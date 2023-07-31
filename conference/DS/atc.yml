@@ -29,3 +29,12 @@
       timezone: UTC+0
       date: July 10-12, 2023
       place: BOSTON, MA, USA
+    - year: 2024
+      id: atc2024
+      link: https://www.usenix.org/conference/atc24/
+      timeline:
+        - abstract_deadline: '2024-01-09 23:59:59'
+          deadline: '2024-01-16 23:59:59'
+      timezone: UTC+0
+      date: July 10-12, 2024
+      place: Santa Clara, CA, USA
