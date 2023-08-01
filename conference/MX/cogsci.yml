@@ -8,7 +8,15 @@
       id: cogsci23
       link: https://cognitivesciencesociety.org/cogsci-2023/
       timeline:
-        - deadline: '2023-02-01 17:00:00'
-      timezone: UTC+10
+        - deadline: '2023-02-01 23:59:59'
+      timezone: UTC+8
       date: July 26-29, 2023
       place: Sydney, Australia
+    - year: 2024
+      id: cogsci24
+      link: https://cognitivesciencesociety.org/cogsci-2024/
+      timeline:
+        - deadline: '2024-02-01 23:59:59'
+      timezone: UTC+8
+      date: July 24-27, 2024
+      place: Rotterdam, Netherlands
