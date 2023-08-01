@@ -1,0 +1,14 @@
+- title: 3DV
+  description: International Conference on 3D Vision
+  sub: CG
+  rank: C
+  dblp: 3dim
+  confs:
+    - year: 2024
+      id: 3dv2024
+      link: https://3dvconf.github.io/2024/
+      timeline:
+        - deadline: '2023-08-07 23:59:59'
+      timezone: UTC-7
+      date: March 18-21, 2024
+      place: Davos, Switzerland
