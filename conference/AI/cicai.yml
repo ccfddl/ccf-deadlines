@@ -1,0 +1,14 @@
+- title: CICAI
+  description: CAAI International Conference on Artificial Intelligence
+  sub: AI
+  rank: N
+  dblp: cicai
+  confs:
+    - year: 2023
+      id: cicai23
+      link: https://cicai.caai.cn/
+      timeline:
+        - deadline: '2023-06-30 23:59:59'
+      timezone: UTC+8
+      date: July 22-23, 2023
+      place: Fuzhou, China

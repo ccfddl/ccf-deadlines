@@ -20,3 +20,11 @@
       timezone: UTC-12
       date: June 4-9, 2023
       place: Rhodes Island, Greece
+    - year: 2024
+      id: icassp24
+      link: https://2024.ieeeicassp.org/
+      timeline:
+        - deadline: '2023-09-06 23:59:59'
+      timezone: UTC-12
+      date: April 14-19, 2024
+      place: COEX, Seoul, Korea
