@@ -32,8 +32,8 @@
       timeline:
         - abstract_deadline: '2023-04-27 20:59:59'
           deadline: '2023-05-04 20:59:59'
-        - abstract_deadline: '2023-09-07 20:59:59'
-          deadline: '2023-09-14 20:59:59'
+        - abstract_deadline: '2023-09-14 20:59:59'
+          deadline: '2023-09-21 20:59:59'
       timezone: UTC-7
       date: April 16-18, 2024
       place: Santa Clara, CA, USA
