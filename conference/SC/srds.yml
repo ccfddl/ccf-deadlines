@@ -19,7 +19,7 @@
       id: srds23
       link: https://srds-conference.org/
       timeline:
-        - abstract_deadline: '2023-04-16 00:59:59'
+        - deadline: '2023-04-16 00:59:59'
           comment: 'ABSTRACT'
         - deadline: '2023-04-23 00:59:59'
           comment: 'FULL PAPER'
