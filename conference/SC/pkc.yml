@@ -12,3 +12,12 @@
       timezone: UTC-12
       date: May 10, 2021
       place: Virtual
+     - year: 2022
+      id: pkc22
+      link: https://pkc.iacr.org/2022/
+      timeline:
+        - deadline: '2021-09-16 21:00:00'
+      timezone: UTC-12
+      date: May 8, 2022
+      place: Virtual
+
