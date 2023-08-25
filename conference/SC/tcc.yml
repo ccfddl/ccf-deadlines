@@ -12,11 +12,3 @@
       timezone: UTC-12
       date: Nov 8, 2021
       place: Raleigh, United States
-    - year: 2022
-      id: tcc22
-      link: https://tcc.iacr.org/2022/
-      timeline:
-        - deadline: '2022-05-24 21:59:59'
-      timezone: UTC-12
-      date: Nov 7-10, 2022
-      place: Chicago, United States
