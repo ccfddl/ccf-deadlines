@@ -1,0 +1,14 @@
+- title: INDOCRYPZT
+  description: International Conference on Cryptology in India
+  sub: SC
+  rank: C
+  dblp: indocrypt
+  confs:
+    - year: 2023
+      id: indocrypt23
+      link: https://crsind.in/indocrypt2023/
+      timeline:
+        - deadline: '2023-09-01 23:59:59'
+      timezone: UTC-12
+      date: December 10-13, 2023
+      place: BITS Pilani Goa, India
