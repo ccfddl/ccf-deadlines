@@ -20,6 +20,7 @@
         - deadline: '2023-11-06 23:59:59'
           comment: '1st round Deadline'
         - deadline: '2024-02-19 23:59:59'
-          comment: '2nd round Deadline'      timezone: AoE
+          comment: '2nd round Deadline'
+      timezone: AoE
       date: July 15-17, 2024
       place: Australia

@@ -22,6 +22,7 @@
     - year: 2024
       id: acns24
       link: https://wp.nyu.edu/acns2024/
+      timeline:
         - deadline: '2023-07-20 23:59:59'
           comment: 'First submission deadline'
         - deadline: '2023-10-20 23:59:59'
