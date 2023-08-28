@@ -34,3 +34,18 @@
       timezone: AoE
       date: September 10-14, 2023
       place: Prague, Czech Republic
+    - year: 2024
+      id: ches24
+      link: https://ches.iacr.org/2024/
+      timeline:
+        - deadline: '2023-07-15 23:59:59'
+          comment: 'Schedule for TCHES Volume 2023/1'
+        - deadline: '2023-10-15 23:59:59'
+          comment: 'Schedule for TCHES Volume 2023/2'
+        - deadline: '2024-01-15 23:59:59'
+          comment: 'Schedule for TCHES Volume 2023/3'
+        - deadline: '2024-04-15 23:59:59'
+          comment: 'Schedule for TCHES Volume 2023/4'
+      timezone: AoE
+      date: September, 2024
+      place: Halifax, Canada
