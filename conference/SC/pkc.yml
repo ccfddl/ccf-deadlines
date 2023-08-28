@@ -9,6 +9,9 @@
       link: https://pkc.iacr.org/2021/
       timeline:
         - deadline: '2020-11-13 23:59:59'
+      timezone: UTC-12
+      date: May 10, 2021
+      place: Virtual
     - year: 2024
       id: pkc24
       link: https://pkc.iacr.org/2024/
