@@ -12,3 +12,11 @@
       timezone: UTC-12
       date: August 15-19 2021
       place: Virtual
+    - year: 2023
+      id: crypto23
+      link: https://crypto.iacr.org/2023/
+      timeline:
+        - deadline: '2023-02-16 18:00:00'
+      timezone: UTC-5
+      date: August 19-24 2023
+      place: Santa Barbara, USA
