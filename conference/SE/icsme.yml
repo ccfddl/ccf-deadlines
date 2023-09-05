@@ -8,10 +8,8 @@
       id: icsme22
       link: https://cyprusconferences.org/icsme2022/
       timeline:
-        - deadline: '2022-03-25 23:59:59'
-          comment: 'Abstract Submission'
-        - deadline: '2022-04-01 23:59:59'
-          comment: 'Paper Submission'
+        - abstract_deadline: '2022-03-25 23:59:59'
+          deadline: '2022-04-01 23:59:59'
       timezone: AoE
       date: October 03-07, 2022
       place: Limassol, Cyprus
@@ -19,10 +17,8 @@
       id: icsme23
       link: https://conf.researchr.org/home/icsme-2023
       timeline:
-        - deadline: '2023-04-20 23:59:59'
-          comment: 'Abstract Submission'
-        - deadline: '2022-04-27 23:59:59'
-          comment: 'Paper Submission'
+        - abstract_deadline: '2023-04-20 23:59:59'
+          deadline: '2023-04-27 23:59:59'
       timezone: AoE
       date: October 01-06, 2023
       place: Bogota, Colombia
@@ -30,10 +26,8 @@
       id: icsme24
       link: https://conf.researchr.org/home/icsme-2024
       timeline:
-        - deadline: '2024-04-04 23:59:59'
-          comment: 'Abstract Submission'
-        - deadline: '2024-04-11 23:59:59'
-          comment: 'Paper Submission'
+        - abstract_deadline: '2024-04-04 23:59:59'
+          deadline: '2024-04-11 23:59:59'
       timezone: AoE
       date: October 06-11, 2024
       place: Flagstaff, Arizona, USA

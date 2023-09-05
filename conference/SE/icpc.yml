@@ -8,10 +8,8 @@
       id: icpc22
       link: https://conf.researchr.org/home/icpc-2022
       timeline:
-        - deadline: '2022-01-13 23:59:59'
-          comment: 'Abstract Submission'
-        - deadline: '2022-01-18 23:59:59'
-          comment: 'Paper Submission'
+        - abstract_deadline: '2022-01-13 23:59:59'
+          deadline: '2022-01-18 23:59:59'
       timezone: AoE
       date: May 21-22, 2022
       place: Pittsburgh, Pennsylvania, United States
@@ -19,10 +17,8 @@
       id: icpc24
       link: https://conf.researchr.org/home/icpc-2024
       timeline:
-        - deadline: '2023-10-30 23:59:59'
-          comment: 'Abstract Submission'
-        - deadline: '2023-11-03 23:59:59'
-          comment: 'Paper Submission'
+        - abstract_deadline: '2023-10-30 23:59:59'
+          deadline: '2023-11-03 23:59:59'
       timezone: AoE
       date: April 14-20, 2024
       place: Lisbon, Portugal
