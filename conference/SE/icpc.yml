@@ -15,3 +15,14 @@
       timezone: AoE
       date: May 21-22, 2022
       place: Pittsburgh, Pennsylvania, United States
+    - year: 2024
+      id: icpc24
+      link: https://conf.researchr.org/home/icpc-2024
+      timeline:
+        - deadline: '2023-20-30 23:59:59'
+          comment: 'Abstract Submission'
+        - deadline: '2023-11-03 23:59:59'
+          comment: 'Paper Submission'
+      timezone: AoE
+      date: April 14-20, 2024
+      place: Lisbon, Portugal
