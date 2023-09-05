@@ -19,7 +19,7 @@
       id: icpc24
       link: https://conf.researchr.org/home/icpc-2024
       timeline:
-        - deadline: '2023-20-30 23:59:59'
+        - deadline: '2023-10-30 23:59:59'
           comment: 'Abstract Submission'
         - deadline: '2023-11-03 23:59:59'
           comment: 'Paper Submission'
