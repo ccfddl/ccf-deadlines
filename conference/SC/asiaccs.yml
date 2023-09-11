@@ -15,3 +15,14 @@
       timezone: AoE
       date: May 30-June 3, 2022
       place: Nagasaki, Japan
+    - year: 2024
+      id: asiaccs24
+      link: https://asiaccs2024.sutd.edu.sg/
+      timeline:
+        - deadline: '2023-08-21 23:59:59'
+          comment: '1st round Deadline'
+        - deadline: '2023-12-07 23:59:59'
+          comment: '2nd round Deadline'
+      timezone: AoE
+      date: July 1-5, 2024
+      place: Singapore

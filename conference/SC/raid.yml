@@ -13,3 +13,11 @@
       timezone: AoE
       date: October 6-8, 2021
       place: Donostia / San Sebastian, Spain
+    - year: 2023
+      id: raid23
+      link: https://raid2023.org/
+      timeline:
+        - deadline: '2023-03-29 23:59:59'
+      timezone: AoE
+      date: October 16-18, 2023
+      place: Hong Kong Polytechnic University, Hong Kong, China

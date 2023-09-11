@@ -30,3 +30,11 @@
       timezone: AoE
       date: Feburary 25-Mar 1, 2023
       place: Montreal, Canada
+    - year: 2024
+      id: ppopp24
+      link: https://conf.researchr.org/home/ppopp-2024
+      timeline:
+        - deadline: '2023-08-04 23:59:59'
+      timezone: AoE
+      date: Mar 2-Mar 6, 2024
+      place: Edinburgh, United Kingdom
