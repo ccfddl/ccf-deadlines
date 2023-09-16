@@ -2,4 +2,4 @@ tabulate
 yaml
 pyyaml
 requests
-humanize
+termcolor

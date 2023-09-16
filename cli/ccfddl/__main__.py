@@ -1,7 +1,7 @@
 import string
 import requests
 import yaml
-import humanize
+from termcolor import colored
 from argparse import ArgumentParser
 from copy import deepcopy
 from datetime import datetime
@@ -35,6 +35,26 @@ def parse_args():
         if arg_value:
             setattr(args, arg_name, [arg.lower() for arg in arg_value])
     return args
+
+
+def format_duraton(ddl_time: datetime, now: datetime) -> str:
+        duration = ddl_time - now
+        months, days= duration.days // 30, duration.days
+        hours, remainder= divmod(duration.seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+
+        day_word_str = "days" if days > 1 else "day "
+        # for alignment
+        months_str, days_str, = str(months).zfill(2), str(days).zfill(2)
+        hours_str, minutes_str = str(hours).zfill(2), str(minutes).zfill(2)
+
+        if days < 1:
+            return colored(f'{hours_str}:{minutes_str}:{seconds}', "red")
+        if days < 30:
+            return colored(f'{days_str} {day_word_str}, {hours_str}:{minutes_str}', "yellow")
+        if days < 100:
+            return colored(f"{days_str} {day_word_str}", "blue")
+        return colored(f"{months_str} months", "green")
 
 
 def main():
@@ -72,27 +92,28 @@ def main():
     # This is not an elegant solution. 
     # The purpose is to keep the above logic untouched, 
     # return alpha id(conf name) without digits(year)
-    def alpha_id(with_digits:string) -> string:
+    def alpha_id(with_digits: string) -> string:
         return ''.join(char for char in with_digits.lower() if char.isalpha())
-
-    table = [["title", "sub", "rank", "ddl", "link"]]
+    
+    table = [["Title", "Sub", "Rank", "DDL", "Link"]]
     # Filter intersection by args
     for x in all_conf_ext:
         skip = False
         if args.conf and alpha_id(x["id"]) not in args.conf:
             skip = True
-        if args.sub and x["sub"] not in args.sub:
+        if args.sub and alpha_id(x["sub"]) not in args.sub:
             skip = True
-        if args.rank and x["rank"] not in args.rank:
+        if args.rank and alpha_id(x["rank"]) not in args.rank:
             skip = True
-        if not skip:
-            table.append(
-                [x["title"], 
-                 x["sub"], 
-                 x["rank"],
-                 humanize.naturaldelta(x["time_obj"] - now),
-                 x["link"]]
-                )
+        if skip:
+            continue
+        table.append(
+            [x["title"], 
+                x["sub"], 
+                x["rank"],
+                format_duraton(x["time_obj"], now),
+                x["link"]]
+            )
 
     print(tabulate(table, headers='firstrow', tablefmt='fancy_grid'))
 
