@@ -13,3 +13,13 @@
       timezone: UTC-12
       date: February 07-10 , 2022
       place: San Francisco, CA, USA
+    - year: 2024
+      id: ct-rsa24
+      link: https://ct-rsa-2024.aau.at/
+      timeline:
+        - deadline: '2023-10-02 23:59:59'
+          comment: 'Submission deadline'
+      timezone: UTC-12
+      date: May 06–09 , 2024
+      place: San Francisco, CA, USA
+      
