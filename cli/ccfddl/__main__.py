@@ -1,6 +1,7 @@
 import string
 import requests
 import yaml
+import humanize
 from argparse import ArgumentParser
 from copy import deepcopy
 from datetime import datetime
@@ -89,7 +90,7 @@ def main():
                 [x["title"], 
                  x["sub"], 
                  x["rank"],
-                 str(x["time_obj"] - now), 
+                 humanize.naturaldelta(x["time_obj"] - now),
                  x["link"]]
                 )
 
