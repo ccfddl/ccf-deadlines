@@ -13,3 +13,13 @@
       timezone: UTC-8
       date: October 24 - October 28, 2022
       place: Tel-Aviv, israel
+    - year: 2024
+      id: eccv24
+      link: https://eccv2024.ecva.net/
+      timeline:
+        - abstract_deadline: '2024-02-29 23:59:59'
+          deadline: '2024-03-07 23:59:59'
+          comment: 'No time zone specified, default AoE'
+      timezone: AoE
+      date: September 29 - October 4, 2024
+      place:  MiCo Milano, Italy
