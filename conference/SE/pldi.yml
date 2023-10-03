@@ -28,3 +28,11 @@
       timezone: AoE
       date: June 19-21, 2023
       place: Orlando, Florida, United States
+    - year: 2024
+      id: pldi24
+      link: https://pldi24.sigplan.org/
+      timeline:
+        - deadline: '2022-11-16 23:59:59'
+      timezone: AoE
+      date: June 24-28, 2024
+      place: Copenhagen, Denmark 
