@@ -142,5 +142,15 @@ Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](ht
 
 Inspired by [ai-deadlines](https://aideadlin.es/).
 
+### Best Practice
+
+We recommend branch-based workflow, which is a common practice in open source projects.
+As shown in the figure below, The basic idea is to create a new branch for each feature or bug fix. Then this new branch can be pushed to forked repository.
+All changes will be merged into upstream main branch through pull requests.
+
+<!-- make it smaller -->
+<!-- ![Branch-based Workflow](.readme_assets/branch_based_workflow.png) -->
+<img src=".readme_assets/branch_based_workflow.png" width="500px"/>
+
 ## License
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines?ref=badge_large)
