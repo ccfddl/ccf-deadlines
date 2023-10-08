@@ -19,3 +19,18 @@
       timezone: AoE
       date: July 18-23, 2022
       place: Sydney, Australia
+    - year: 2024
+      id: pets24
+      link: https://www.petsymposium.org/cfp24.php
+      timeline:
+        - deadline: '2023-05-31 23:59:59'
+          comment: 'Issue 1 Paper Submission Deadline'
+        - deadline: '2023-08-31 23:59:59'
+          comment: 'Issue 2 Paper Submission Deadline'
+        - deadline: '2023-11-30 23:59:59'
+          comment: 'Issue 3 Paper Submission Deadline'
+        - deadline: '2024-02-29 23:59:59'
+          comment: 'Issue 4 Paper Submission Deadline'
+      timezone: AoE
+      date: July 15-20, 2024
+      place: Bristol, UK and Online
