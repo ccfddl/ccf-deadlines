@@ -19,9 +19,8 @@
       id: saner2024
       link: https://conf.researchr.org/home/saner-2024
       timeline:
-        - deadline: '2023-10-13 23:59:59'
-          comment: 'Research Papers Abstract Submission'
-        - deadline: '2023-10-29 23:59:59'
+        - abstract_deadline: '2023-10-13 23:59:59'
+          deadline: '2023-10-29 23:59:59'
           comment: 'Research Papers Paper Submission'
       timezone: AoE
       date: March 12-15, 2024
