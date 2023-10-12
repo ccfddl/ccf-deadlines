@@ -22,3 +22,13 @@
       timezone: AoE
       date: March 28-31, 2023
       place: Ioannina, Greece
+    - year: 2024
+      id: edbt24
+      link: https://dastlab.github.io/edbticdt2024/
+      timeline:
+        - deadline: '2023-02-15 23:59:59'
+        - deadline: '2023-06-01 23:59:59'
+        - deadline: '2023-10-03 23:59:59'
+      timezone: AoE
+      date: March 25-28, 2024
+      place: Paestum, Italy
