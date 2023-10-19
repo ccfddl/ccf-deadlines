@@ -21,3 +21,12 @@
       timezone: UTC-12
       date: August 19-25, 2023
       place: Cape Town, South Africa.
+    - year: 2024
+      id: ijcai24
+      link: https://ijcai24.org/
+      timeline:
+        - abstract_deadline: '2024-01-10 23:59:59'
+          deadline: '2024-01-17 23:59:59'
+      timezone: UTC-12
+      date: August 3-9, 2024
+      place: Jeju Island, South Korea.
