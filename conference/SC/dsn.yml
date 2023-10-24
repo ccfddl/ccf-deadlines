@@ -17,3 +17,20 @@
       timezone: AoE
       date: June 27-30, 2022
       place: Baltimore, Maryland, USA
+- title: DSN
+  description: International Conference on Dependable Systems and Networks
+  sub: SC
+  rank: B
+  dblp: dsn
+  confs:
+    - year: 2024
+      id: dsn24
+      link: https://dsn2024uq.github.io
+      timeline:
+        - deadline: '2023-11-29 23:59:59'
+          comment: 'Abstract submission deadline'
+        - deadline: '2023-12-06 23:59:59'
+          comment: 'Paper submission deadline'
+      timezone: AoE
+      date: June 24-27, 2024
+      place: Brisbane, Australia
