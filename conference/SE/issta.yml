@@ -26,3 +26,14 @@
       timezone: AoE
       date: July 17-21, 2023
       place: Seattle, United States
+    - year: 2024
+      id: issta24
+      link: https://conf.researchr.org/home/issta-2024
+      timeline:
+        - deadline: '2023-12-15 23:59:59'
+          comment: 'Technical Papers Submission deadline (Round 1)'
+        - deadline: '2024-04-12 23:59:59'
+          comment: 'Technical Papers Submission deadline (Round 2)'
+      timezone: AoE
+      date: September 16-20, 2024
+      place: Vienna, Austria

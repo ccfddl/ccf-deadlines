@@ -19,3 +19,18 @@
       timezone: UTC+0
       date: March 20-24, 2023
       place: Beijing, China
+    - year: 2024
+      id: fse24
+      link: https://fse.iacr.org/2024/
+      timeline:
+        - deadline: '2023-03-01 11:59:59'
+          comment: 'Submission deadline'
+        - deadline: '2023-06-01 11:59:59'
+          comment: 'Submission deadline'
+        - deadline: '2023-09-01 11:59:59'
+          comment: 'Submission deadline'
+        - deadline: '2023-11-23 11:59:59'
+          comment: 'Submission deadline'
+      timezone: UTC+0
+      date: March 25-29, 2024
+      place: Leuven, Belgium

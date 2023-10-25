@@ -8,9 +8,9 @@
       id: aspdac24
       link: https://www.aspdac.com/aspdac2024/
       timeline:
-        - deadline: '2023-07-23 17:00:00'
-          comment: 'abstract deadline'
         - deadline: '2023-07-28 17:00:00'
+          comment: 'abstract deadline'
+        - deadline: '2023-08-04 19:00:00'
           comment: 'full paper deadline'
       timezone: AoE
       date: Jan 22-25, 2024

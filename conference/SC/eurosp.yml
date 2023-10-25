@@ -1,0 +1,14 @@
+- title: EuroS&P
+  description: IEEE European Symposium on Security and Privacy
+  sub: SC
+  rank: C
+  dblp: eurosp
+  confs:
+    - year: 2024
+      id: eurosp24
+      link: https://eurosp2024.ieee-security.org/
+      timeline:
+        - deadline: '2023-11-02 23:59:59'
+      timezone: UTC-12
+      date: July 8-12, 2024
+      place: Vienna, Austria

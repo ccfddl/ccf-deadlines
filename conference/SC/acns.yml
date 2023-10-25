@@ -10,12 +10,19 @@
       timeline:
         - deadline: '2021-09-03 23:59:59'
           comment: 'First submission deadline'
-        - deadline: '2021-11-08 23:59:59'
-          comment: 'Workshop proposal submission deadline'
         - deadline: '2022-01-14 23:59:59'
           comment: 'Second submission deadline'
-        - deadline: '2022-03-21 23:59:59'
-          comment: 'Poster proposal submission deadline'
       timezone: AoE
       date: June 20-23, 2022
       place: Rome, Italy
+    - year: 2024
+      id: acns24
+      link: https://wp.nyu.edu/acns2024/
+      timeline:
+        - deadline: '2023-07-20 23:59:59'
+          comment: 'First submission deadline'
+        - deadline: '2023-10-20 23:59:59'
+          comment: 'Second submission deadline'
+      timezone: AoE
+      date: March 5-8, 2024
+      place: Abu Dhabi, UAE

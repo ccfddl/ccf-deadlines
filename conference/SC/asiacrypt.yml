@@ -12,3 +12,11 @@
       timezone: UTC-12
       date: December 5-9, 2021
       place: Singapore
+    - year: 2023
+      id: asiacrypt23
+      link: https://asiacrypt.iacr.org/2023/
+      timeline:
+        - deadline: '2023-05-26 11:59:00'
+      timezone: UTC-12
+      date: December 4-8, 2023
+      place: Guangzhou, China
