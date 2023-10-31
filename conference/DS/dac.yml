@@ -30,10 +30,8 @@
       id: dac24
       link: https://www.dac.com/Conference/2024-Call-for-Contributions
       timeline:
-        - deadline: '2023-11-13 17:00:00'
-          comment: 'abstract deadline'
-        - deadline: '2023-11-20 17:00:00'
-          comment: 'full paper deadline'
+        - abstract_deadline: '2023-11-13 17:00:00'
+          deadline: '2023-11-20 17:00:00'
       timezone: UTC-8
       date: June 23-27, 2024
       place: San Francisco, CA
