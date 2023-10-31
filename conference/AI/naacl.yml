@@ -12,3 +12,11 @@
       timezone: UTC-12
       date: July 10-15, 2022
       place: Washington DC, USA
+    - year: 2024
+      id: naacl24
+      link: https://2024.naacl.org/
+      timeline:
+        - deadline: '2023-12-15 23:59:59'
+      timezone: UTC-12
+      date: June 16-21, 2024
+      place: Mexico City, Mexico
