@@ -12,3 +12,12 @@
       timezone: UTC+0
       date: Oct 8-12, 2023
       place: Vancouver, Canada
+    - year: 2024
+      id: miccai2024
+      link: https://conferences.miccai.org/2024/en
+      timeline:
+        - deadline: '2023-03-07 23:59:59'
+      timezone: UTC+0
+      date: Oct 6-10, 2023
+      place: MARRAKESH , MOROCCO
+    
