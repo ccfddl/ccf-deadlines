@@ -28,7 +28,7 @@ To add or update information:
 - Add/Update the yml file of conference/conf_type/conf_name.yml
 - Send a [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-Tips: check [conferences recommended](.readme_assets/ccf_recommended_2022.pdf) and review [statistics](https://docs.qq.com/sheet/DR3F1Tm1jcnlzVFJ2)
+Tips: check [conferences recommended](https://www.ccf.org.cn/Academic_Evaluation/By_category/) or review [pdf](.readme_assets/ccf_recommended_2022.pdf)
 ## Conference Entry File
 Example file: conference/DB/sigmod.yml
 

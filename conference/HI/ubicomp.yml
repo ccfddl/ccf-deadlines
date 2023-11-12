@@ -16,7 +16,7 @@
           comment: 'third round'
         - deadline: '2023-11-15 23:59:59'
           comment: 'fourth round'
-      timezone: AoE
+      timezone: UTC-5
       date: October 8-12, 2023
       place: Cancún, Mexico
     
