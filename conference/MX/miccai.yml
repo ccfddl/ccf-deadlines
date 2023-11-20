@@ -1,24 +1,24 @@
 - title: MICCAI
-  description: INTERNATIONAL CONFERENCE ON MEDICAL IMAGE COMPUTING AND COMPUTER ASSISTED INTERVENTION
+  description: International Conference on Medical Image Computing and Computer Assisted Intervention
   sub: MX
   rank: B
   dblp: miccai
   confs:
     - year: 2023
       id: miccai23
-      link: https://bidma.cpsc.ucalgary.ca/IEEE-BIBM-2023/
+      link: https://conferences.miccai.org/2023/en/
       timeline:
-        - deadline: '2023-08-15 17:00:00'
-          comment: Main Conference Papers
+        - deadline: '2023-03-09 23:59:59'
+          comment: Paper submission deadline
       timezone: UTC+0
-      date: Dec 5-8, 2023
-      place: Istanbul, Turkey
+      date: Oct 8-12, 2023
+      place: Vancouver, Canada
     - year: 2024
       id: miccai24
-      link: https://conferences.miccai.org/2024/en/default.asp
+      link: https://conferences.miccai.org/2024/en/
       timeline:
-        - deadline: '2024-03-07 00:00:00'
-          comment: Main Conference Papers
+        - deadline: '2024-03-07 23:59:59'
+          comment: Main conference papers
       timezone: UTC+0
-      date: Dec 5-8, 2023
-      place: Istanbul, Turkey
+      date: Oct 6-10, 2024
+      place: Marrakesh, Morocco
