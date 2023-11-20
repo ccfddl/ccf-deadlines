@@ -31,4 +31,13 @@
       timezone: UTC-12
       date: October 29-November 02, 2023
       place: Ottawa, Ontario, Canada
+    - year: 2024
+      id: mm24
+      link: https://2024.acmmm.org/
+      timeline:
+        - abstract_deadline: '2024-04-08 23:59:59'
+          deadline: '2024-04-12 23:59:59'
+      timezone: UTC-12
+      date: October 28-November 01, 2024
+      place: Melbourne, Australia
 
