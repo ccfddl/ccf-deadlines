@@ -17,3 +17,12 @@
       timezone: AoE
       date: June 27-30, 2022
       place: Baltimore, Maryland, USA
+    - year: 2024
+      id: dsn24
+      link: https://dsn2024uq.github.io
+      timeline:
+        - abstract_deadline: '2023-11-29 23:59:59'
+          deadline: '2023-12-06 23:59:59'
+      timezone: AoE
+      date: June 24-27, 2024
+      place: Brisbane, Australia

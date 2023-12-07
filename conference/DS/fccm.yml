@@ -15,3 +15,14 @@
       timezone: AoE
       date: May 15-18, 2022
       place: New York City, USA
+    - year: 2024
+      id: fccm24
+      link: https://www.fccm.org/
+      timeline:
+        - deadline: '2024-01-09 23:59:59'
+          comment: 'abstract deadline'
+        - deadline: '2024-01-15 23:59:59'
+          comment: 'full paper deadline'
+      timezone: AoE
+      date: May 5-8, 2024
+      place: Orlando, USA

@@ -42,7 +42,7 @@
       timeline:
         - deadline: '2023-07-28 23:59:59'
           comment: 'first round'
-        - deadline: '2023-11-24 23:59:59'
+        - deadline: '2023-12-03 23:59:59'
           comment: 'second round'
       timezone: AoE
       date: April 16-19, 2024
