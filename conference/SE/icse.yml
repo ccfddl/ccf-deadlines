@@ -32,3 +32,16 @@
       timezone: AoE
       date: April 12-21, 2024
       place: Lisbon, Portugal
+    - year: 2025
+      id: icse25
+      link: https://conf.researchr.org/home/icse-2025
+      timeline:
+        - abstract_deadline: '2024-03-15 23:59:59'
+          deadline: '2024-03-22 23:59:59'
+          comment: 'First Cycle: Submission'
+        - abstract_deadline: '2024-07-26 23:59:59'
+          deadline: '2024-08-02 23:59:59'
+          comment: 'Second Cycle: Submission'
+      timezone: AoE
+      date: April 26- May 04, 2025
+      place: Ottawa, Ontario, Canada
