@@ -65,8 +65,8 @@ export default {
         if(this.ddls.length>1&&index>0){
           let cur = this.dateTips[index]
           let pre = this.dateTips[index-1]
-          if((cur-this.start_date)/(this.end_date-this.start_date)*100-
-              (pre-this.start_date)/(this.end_date-this.start_date)*100
+          if((cur.timepoint-this.start_date)/(this.end_date-this.start_date)*100-
+              (pre.timepoint-this.start_date)/(this.end_date-this.start_date)*100
               <8) return ``;
         }
         return `${moment(value*1000).format('MM/DD')}`;
