@@ -1,7 +1,7 @@
 - title: IJCNN
   description: International Joint Conference on Neural Networks
   sub: AI
-  rank: c
+  rank: C
   dblp: ijcnn
   confs:
     - year: 2024
