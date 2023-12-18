@@ -62,11 +62,11 @@ export default {
     //时间显示格式
     formatter(value,day,index) {
       if(day) {
-        if(this.ddls.length>1&&index>0){
+        if(this.ddls.length>1&&index<this.ddls.length-1){
           let cur = this.dateTips[index]
-          let pre = this.dateTips[index-1]
-          if((cur-this.start_date)/(this.end_date-this.start_date)*100-
-              (pre-this.start_date)/(this.end_date-this.start_date)*100
+          let aft = this.dateTips[index+1]
+          if((aft.timepoint-this.start_date)/(this.end_date-this.start_date)*100-
+              (cur.timepoint-this.start_date)/(this.end_date-this.start_date)*100
               <8) return ``;
         }
         return `${moment(value*1000).format('MM/DD')}`;
