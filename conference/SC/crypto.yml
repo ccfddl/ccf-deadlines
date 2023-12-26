@@ -20,3 +20,11 @@
       timezone: UTC-5
       date: August 19-24 2023
       place: Santa Barbara, USA
+    - year: 2024
+      id: crypto24
+      link: https://crypto.iacr.org/2024/
+      timeline:
+        - deadline: '2024-02-13 23:59:59'
+      timezone: UTC-12
+      date: August 18-22 2024
+      place: Santa Barbara, USA
