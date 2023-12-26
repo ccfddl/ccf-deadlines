@@ -1,0 +1,17 @@
+- title: ISPASS
+  description:  International Symposium on Performance Analysis of Systems and Software
+  sub: SE
+  rank: C
+  dblp: ispass
+  confs:
+    - year: 2024
+      id: ispass24
+      link: https://ispass.org/ispass2024/
+      timeline:
+        - deadline: '2023-12-08 23:59:59'
+          comment: 'Abstract submission'
+        - deadline: '2023-12-15 23:59:59'
+          comment: 'Full paper submission'
+      timezone: AoE
+      date: May 5-7, 2024
+      place:  Indianapolis, Indiana

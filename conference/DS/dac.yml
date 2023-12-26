@@ -26,3 +26,12 @@
       timezone: UTC-8
       date: July 9-13, 2023
       place: San Francisco, CA
+    - year: 2024
+      id: dac24
+      link: https://www.dac.com/Conference/2024-Call-for-Contributions
+      timeline:
+        - abstract_deadline: '2023-11-13 17:00:00'
+          deadline: '2023-11-20 17:00:00'
+      timezone: UTC-8
+      date: June 23-27, 2024
+      place: San Francisco, CA

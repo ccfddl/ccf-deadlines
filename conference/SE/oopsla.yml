@@ -32,5 +32,16 @@
         - deadline: '2023-08-18 23:59:59'
           comment: 'Submission of Revisions Round 2'
       timezone: AoE
-      date: TBD
+      date: October 22-27, 2023
       place: Lisbon, Portugal
+    - year: 2024
+      id: oopsla24
+      link: https://2024.splashcon.org/track/splash-2024-oopsla
+      timeline:
+        - deadline: '2023-10-21 07:59:59'
+          comment: 'Submission Deadline Round 1'
+        - deadline: '2024-04-06 07:59:59'
+          comment: 'Submission Deadline Round 2'
+      timezone: UTC-4
+      date: October 20-25, 2024
+      place: Pasadena, United States
