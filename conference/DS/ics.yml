@@ -1,0 +1,16 @@
+- title: ICS
+  description: ACM International Conference on Supercomputing
+  sub: DS
+  rank: B
+  dblp: ics
+  confs:
+    - year: 2024
+      id: ics24
+      link: https://ics2024.github.io/
+      timeline:
+        - abstract_deadline: '2024-01-12 19:59:59'
+          deadline: '2024-01-19 19:59:59'
+          comment: 'Registration deadline: Friday Jan 12, 2024, 11:59:59 AM UTC'
+      timezone: UTC+8
+      date: June 4-7, 2024
+      place: Kyoto University, Kyoto, Japan
