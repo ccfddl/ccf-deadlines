@@ -2,7 +2,7 @@
   description: International Conference on Pattern Recognition
   sub: AI
   rank: C
-  dblp: iclr
+  dblp: icpr
   confs:
     - year: 2024
       id: icpr24

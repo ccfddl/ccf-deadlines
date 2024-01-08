@@ -2,7 +2,7 @@
   description: European Conference on Computer Vision
   sub: AI
   rank: B
-  dblp: ECCV
+  dblp: eccv
   confs:
     - year: 2022
       id: eccv22
