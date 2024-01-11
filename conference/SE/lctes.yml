@@ -23,3 +23,14 @@
       timezone: AoE
       date: June 17-21, 2023
       place: Orlando, Florida, United States
+    - year: 2024
+      id: lctes24
+      link: https://pldi24.sigplan.org/home/LCTES-2024
+      timeline:
+        - deadline: '2024-02-16 23:59:59'
+          comment: 'Abstract submission'
+        - deadline: '2024-02-23 23:59:59'
+          comment: 'Paper submission'
+      timezone: AoE
+      date: June 24, 2024
+      place: Copenhagen, Denmark
