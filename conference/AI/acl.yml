@@ -28,8 +28,7 @@
       id: acl24
       link: https://2024.aclweb.org/
       timeline:
-        - abstract_deadline: '2023-01-13 23:59:59'
-          deadline: '2023-01-20 23:59:59'
+        - deadline: '2024-02-15 23:59:59'
       timezone: UTC-12
-      date: July 9-14, 2023
-      place: Toronto, Canada
+      date: August 11-16, 2024
+      place: Bangkok, Thailand
