@@ -1,0 +1,14 @@
+- title: ICMR
+  description: ACM SIGMM International Conference on Multimedia Retrieval
+  sub: CG
+  rank: B
+  dblp: mir
+  confs:
+    - year: 2024
+      id: icmr24
+      link: https://icmr2024.org/index.html
+      timeline:
+        - deadline: '2024-02-01 23:59:59'
+      timezone: UTC-12
+      date: June 11-13, 2024
+      place: Phuket, Thailand
