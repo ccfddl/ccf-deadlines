@@ -15,3 +15,14 @@
       timezone: AoE
       date: July 14-16 , 2022
       place: Virtual
+    - year: 2024
+      id: dimva24
+      link: https://dimva.org/dimva2024/
+      timeline:
+        - deadline: '2023-12-19 23:59:59'
+          comment: 'Paper submission deadline'
+        - deadline: '2024-02-14 23:59:59'
+          comment: 'Final paper submission deadline'
+      timezone: AoE
+      date: July 17-19, 2024
+      place: Lausanne, Switzerland
