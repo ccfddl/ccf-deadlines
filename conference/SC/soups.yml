@@ -15,3 +15,14 @@
       timezone: AoE
       date: AUGUST 8-10, 2021
       place: Co-located withUSENIX Security '21
+    - year: 2024
+      id: soups24
+      link: https://www.usenix.org/conference/soups2024
+      timeline:
+        - deadline: '2024-02-08 23:59:59'
+          comment: 'Mandatory Paper Registration Deadline'
+        - deadline: '2024-02-15 23:59:59'
+          comment: 'Paper Submission Deadline'
+      timezone: AoE
+      date: AUGUST 11-13, 2024
+      place: Philadelphia, USA
