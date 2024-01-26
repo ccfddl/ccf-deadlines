@@ -22,3 +22,12 @@
       timezone: UTC-4
       date: October 10-13, 2023
       place: Reykjavik, Iceland
+    - year: 2024
+      id: icnp24
+      link: https://icnp24.cs.ucr.edu/index.html
+      timeline:
+        - abstract_deadline: '2024-05-17 20:00:00'
+          deadline: '2024-05-24 20:00:00'
+      timezone: AoE
+      date: October 28-31, 2024
+      place: Charleroi, Belgium
