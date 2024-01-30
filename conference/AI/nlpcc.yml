@@ -1,0 +1,14 @@
+- title: NLPCC
+  description: CCF International Conference on Natural Language Processing and Chinese Computing
+  sub: AI
+  rank: C
+  dblp: nlpcc
+  confs:
+    - year: 2023
+      id: naacl23
+      link: http://tcci.ccf.org.cn/conference/2023/
+      timeline:
+        - deadline: '2023-05-18 23:59:59'
+      timezone: UTC+8
+      date: October 14-15, 2023
+      place: Foshan, China
