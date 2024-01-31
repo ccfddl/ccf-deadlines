@@ -1,0 +1,14 @@
+- title: CGI
+  description: Computer Graphics International
+  sub: CG
+  rank: C
+  dblp: cgi
+  confs:
+    - year: 2024
+      id: cgi24
+      link: https://www.cgs-network.org/cgi24/
+      timeline:
+        - deadline: '2024-02-10 23:59:00'
+      timezone: UTC
+      date: July 1-5, 2024
+      place: Geneva, Switzerland
