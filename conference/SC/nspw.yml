@@ -15,3 +15,11 @@
       timezone: UTC-11
       date: October 25-28, 2021
       place: Virtual
+    - year: 2024
+      id: nspw24
+      link: https://www.nspw.org/2024/cfp
+      timeline:
+        - deadline: '2024-04-12 23:59:00'
+      timezone: UTC-11
+      date: September 16-18, 2024
+      place: Bedford, PA USA
