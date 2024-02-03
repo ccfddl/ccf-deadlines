@@ -58,3 +58,19 @@
       timezone: UTC+8
       date: April, 2024
       place: California, U.S.A.
+    - year: 2025
+      id: asplos25
+      link: https://www.asplos-conference.org/asplos-2025-call-for-papers/
+      timeline:
+        - abstract_deadline: '2024-02-23 23:59:59'
+          deadline: '2024-03-01 23:59:59'
+          comment: 'Spring Submission Deadline'
+        - abstract_deadline: '2024-06-17 23:59:59'
+          deadline: '2024-06-24 23:59:59'
+          comment: 'Summer Submission Deadline'
+        - abstract_deadline: '2024-10-11 23:59:59'
+          deadline: '2024-10-18 23:59:59'
+          comment: 'Fall Submission Deadline'
+      timezone: AoE
+      date: March-April, 2025
+      place: Rotterdam, Netherland.
