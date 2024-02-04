@@ -21,6 +21,8 @@
       timeline:
         - deadline: '2024-02-07 23:59:59'
           comment: '1st round Deadline'
+        - deadline: '2024-05-07 23:59:59'
+          comment: '2nd round Deadline'
       timezone: AoE
       date: August 28 - 30, 2024
       place: Montreal, Canada
