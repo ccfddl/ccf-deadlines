@@ -23,3 +23,11 @@
       timezone: AoE
       date: October 19-21, 2023
       place: Hong Kong SAR, Hong Kong
+    - year: 2024
+      id: securecomm24
+      link: https://securecomm.eai-conferences.org/2024/
+      timeline:
+        - deadline: '2024-05-10 23:59:59'
+      timezone: AoE
+      date: October 28-30, 2024
+      place: Dubai, United Arab Emirates

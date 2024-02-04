@@ -13,3 +13,11 @@
       timezone: UTC-12
       date: Sept 26-29, 2023
       place: Crete, Greece
+    - year: 2024
+      id: icann2024
+      link: https://e-nns.org/icann2024/
+      timeline:
+        - deadline: '2024-03-15 23:59:59'
+      timezone: AoE
+      date: Sept 17-20, 2024
+      place: Lugano-Viganello, Switzerland

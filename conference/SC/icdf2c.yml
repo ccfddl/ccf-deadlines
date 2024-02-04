@@ -15,3 +15,12 @@
       timezone: UTC-12
       date: December 7-9, 2021
       place: Singapore, Singapore
+    - year: 2024
+      id: icdf2c24
+      link: https://icdf2c.eai-conferences.org/2024/
+      timeline:
+        - deadline: '2024-04-30 23:59:59'
+          comment: 'Full Paper Submission deadline'
+      timezone: UTC-12
+      date: October 9-10, 2024
+      place: Dubrovnik, Croatia
