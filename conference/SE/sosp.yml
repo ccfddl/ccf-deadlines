@@ -23,3 +23,12 @@
       timezone: UTC-4
       date: October 23 - 26, 2023
       place: Koblenz, Germany
+    - year: 2024
+      id: sosp24
+      link: https://sigops.org/s/conferences/sosp/2024/index.html
+      timeline:
+        - abstract_deadline: '2024-04-12 23:59:59'
+          deadline: '2024-04-19 23:59:59'
+      timezone: UTC-8
+      date: November 4 - 6, 2024
+      place: Hilton Austin, Texas, USA
