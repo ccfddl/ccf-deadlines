@@ -27,10 +27,8 @@
       id: sosp24
       link: https://sigops.org/s/conferences/sosp/2024/index.html
       timeline:
-        - deadline: '2024-04-12 23:59:59'
-          comment: 'Deadline to Register Abstracts'
-        - deadline: '2024-04-19 23:59:59'
-          comment: 'Submission Deadline (no extensions)'
+        - abstract_deadline: '2024-04-12 23:59:59'
+          deadline: '2024-04-19 23:59:59'
       timezone: UTC-8
       date: November 4 - 6, 2024
       place: Hilton Austin, Texas, USA
