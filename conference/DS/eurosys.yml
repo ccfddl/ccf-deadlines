@@ -50,8 +50,8 @@
       id: eurosys2025
       link: https://www.eurosys.org/news/eurosys-2025
       timeline:
-        - abstract_deadline: '2024-03-14 23:59:59'
-          deadline: '2024-03-21 23:59:59'
+        - abstract_deadline: '2024-05-14 23:59:59'
+          deadline: '2024-05-21 23:59:59'
           comment: 'Spring Submission Deadline'
         - abstract_deadline: '2024-10-15 23:59:59'
           deadline: '2024-10-22 23:59:59'
