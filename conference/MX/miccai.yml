@@ -19,6 +19,6 @@
       timeline:
         - deadline: '2024-03-07 23:59:59'
           comment: Main conference papers
-      timezone: UTC+0
+      timezone: UTC-8
       date: Oct 6-10, 2024
       place: Marrakesh, Morocco
