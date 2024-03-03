@@ -31,3 +31,11 @@
       timezone: UTC+0
       date: November 28-December 9, 2023
       place: New Orleans, Louisiana, USA
+    - year: 2024
+      id: nips24
+      link: https://neurips.cc/Conferences/2024
+      timeline:
+        - deadline: '2024-05-22 20:00:00'
+      timezone: UTC+0
+      date: December 9-December 15, 2024
+      place: Vancouver, Canada
