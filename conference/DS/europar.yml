@@ -17,8 +17,8 @@
       id: euro-par24
       link: https://2024.euro-par.org
       timeline:
-        - abstract_deadline: '2024-03-05 23:59:59'
-          deadline: '2024-03-15 23:59:59'
+        - abstract_deadline: '2024-03-15 23:59:59'
+          deadline: '2024-03-25 23:59:59'
       timezone: AoE
-      date: August 26-30, 2023
+      date: August 28-30, 2023
       place: Madrid, Spain
