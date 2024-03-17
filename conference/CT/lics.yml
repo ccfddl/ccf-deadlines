@@ -4,11 +4,17 @@
   rank: A
   dblp: lics
   confs:
-    - year: 2023
-      id: lics
-      link: https://lics.siglog.org/lics23/
-      timeline:
-        - deadline: '2023-01-23 23:59:59'
-      timezone: AoE
-      date: June 26-29, 2023
-      place: Boston University, USA
+  - year: 2023
+    id: lics
+    link: https://lics.siglog.org/lics23/
+    timeline:
+    - deadline: '2023-01-23 23:59:59'
+    timezone: AoE
+    date: June 26-29, 2023
+    place: Boston University, USA
+  accept_rate:
+  - year: 2022
+    submitted: 181
+    accepted: 63
+    str: 34.8%(63/181 22')
+    rate: 0.348066298342541

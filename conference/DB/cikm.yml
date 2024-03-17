@@ -4,37 +4,43 @@
   rank: B
   dblp: cikm
   confs:
-    - year: 2020
-      id: cikm20
-      link: https://www.cikm2020.org/
-      timeline:
-        - deadline: '2020-05-01 23:59:59'
-      timezone: UTC-12
-      date: October 19-23, 2021
-      place: Galway, Ireland
-    - year: 2021
-      id: cikm21
-      link: https://www.cikm2021.org/
-      timeline:
-        - deadline: '2021-05-26 23:59:59'
-      timezone: AoE
-      date: November 01-05, 2021
-      place: Queensland, Australia
-    - year: 2022
-      id: cikm22
-      link: https://www.cikm2022.org/
-      timeline:
-        - abstract_deadline: '2022-05-12 23:59:59'
-          deadline: '2022-05-19 23:59:59'
-      timezone: AoE
-      date: October 17-22, 2022
-      place: Atlanta, Georgia, USA
-    - year: 2023
-      id: cikm23
-      link: https://uobevents.eventsair.com/cikm2023/
-      timeline:
-        - abstract_deadline: '2023-05-26 23:59:59'
-          deadline: '2023-06-02 23:59:59'
-      timezone: AoE
-      date: October 21-25, 2023
-      place: Birmingham, UK
+  - year: 2020
+    id: cikm20
+    link: https://www.cikm2020.org/
+    timeline:
+    - deadline: '2020-05-01 23:59:59'
+    timezone: UTC-12
+    date: October 19-23, 2021
+    place: Galway, Ireland
+  - year: 2021
+    id: cikm21
+    link: https://www.cikm2021.org/
+    timeline:
+    - deadline: '2021-05-26 23:59:59'
+    timezone: AoE
+    date: November 01-05, 2021
+    place: Queensland, Australia
+  - year: 2022
+    id: cikm22
+    link: https://www.cikm2022.org/
+    timeline:
+    - abstract_deadline: '2022-05-12 23:59:59'
+      deadline: '2022-05-19 23:59:59'
+    timezone: AoE
+    date: October 17-22, 2022
+    place: Atlanta, Georgia, USA
+  - year: 2023
+    id: cikm23
+    link: https://uobevents.eventsair.com/cikm2023/
+    timeline:
+    - abstract_deadline: '2023-05-26 23:59:59'
+      deadline: '2023-06-02 23:59:59'
+    timezone: AoE
+    date: October 21-25, 2023
+    place: Birmingham, UK
+  accept_rate:
+  - year: 2023
+    submitted: 1472
+    accepted: 354
+    str: 24.0%(354/1472 23')
+    rate: 0.240489130434783

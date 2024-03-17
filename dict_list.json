@@ -1,0 +1,695 @@
+[
+    {
+        "conference": "AAAI",
+        "year": 2024,
+        "Accepted": 2342,
+        "Submitted": 9862,
+        "acceptance_rates": 0.237477185155141,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "23.7%(2342/9862 24')"
+    },
+    {
+        "conference": "ACL",
+        "year": 2023,
+        "Accepted": 910,
+        "Submitted": 3872,
+        "acceptance_rates": 0.235020661157025,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "23.5%(910/3872 23')"
+    },
+    {
+        "conference": "ACM MM",
+        "year": 2023,
+        "Accepted": 902,
+        "Submitted": 3669,
+        "acceptance_rates": 0.245843554101935,
+        "source": "https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3581783",
+        "str": "24.6%(902/3669 23')"
+    },
+    {
+        "conference": "AISTATS",
+        "year": 2024,
+        "Accepted": 546,
+        "Submitted": 1980,
+        "acceptance_rates": 0.275757575757576,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "27.6%(546/1980 24')"
+    },
+    {
+        "conference": "ASE",
+        "year": 2022,
+        "Accepted": 116,
+        "Submitted": 531,
+        "acceptance_rates": 0.218455743879473,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "21.8%(116/531 22')"
+    },
+    {
+        "conference": "ASPLOS",
+        "year": 2023,
+        "Accepted": 151,
+        "Submitted": 598,
+        "acceptance_rates": 0.252508361204013,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "25.3%(151/598 23')"
+    },
+    {
+        "conference": "CAV",
+        "year": 2022,
+        "Accepted": 40,
+        "Submitted": 209,
+        "acceptance_rates": 0.191387559808612,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "19.1%(40/209 22')"
+    },
+    {
+        "conference": "CC",
+        "year": 2023,
+        "Accepted": 21,
+        "Submitted": 53,
+        "acceptance_rates": 0.39622641509434,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "39.6%(21/53 23')"
+    },
+    {
+        "conference": "CCS",
+        "year": 2021,
+        "Accepted": 196,
+        "Submitted": 880,
+        "acceptance_rates": 0.222727272727273,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "22.3%(196/880 21')"
+    },
+    {
+        "conference": "CGO",
+        "year": 2023,
+        "Accepted": 20,
+        "Submitted": 55,
+        "acceptance_rates": 0.363636363636364,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "36.4%(20/55 23')"
+    },
+    {
+        "conference": "CHI",
+        "year": 2022,
+        "Accepted": 637,
+        "Submitted": 2579,
+        "acceptance_rates": 0.246994959286545,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "24.7%(637/2579 22')"
+    },
+    {
+        "conference": "CIKM",
+        "year": 2023,
+        "Accepted": 354,
+        "Submitted": 1472,
+        "acceptance_rates": 0.240489130434783,
+        "source": "https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3583780",
+        "str": "24.0%(354/1472 23')"
+    },
+    {
+        "conference": "COLING",
+        "year": 2022,
+        "Accepted": 522,
+        "Submitted": 1563,
+        "acceptance_rates": 0.333973128598848,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "33.4%(522/1563 22')"
+    },
+    {
+        "conference": "COLT",
+        "year": 2020,
+        "Accepted": 120,
+        "Submitted": 388,
+        "acceptance_rates": 0.309278350515464,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "30.9%(120/388 20')"
+    },
+    {
+        "conference": "CRYPTO",
+        "year": 2022,
+        "Accepted": 99,
+        "Submitted": 455,
+        "acceptance_rates": 0.217582417582418,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "21.8%(99/455 22')"
+    },
+    {
+        "conference": "CVPR",
+        "year": 2023,
+        "Accepted": 2360,
+        "Submitted": 9155,
+        "acceptance_rates": 0.257782632441289,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "25.8%(2360/9155 23')"
+    },
+    {
+        "conference": "EC",
+        "year": 2022,
+        "Accepted": 150,
+        "Submitted": 549,
+        "acceptance_rates": 0.273224043715847,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "27.3%(150/549 22')"
+    },
+    {
+        "conference": "ECCV",
+        "year": 2022,
+        "Accepted": 1645,
+        "Submitted": 5804,
+        "acceptance_rates": 0.28342522398346,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "28.3%(1645/5804 22')"
+    },
+    {
+        "conference": "ECOOP",
+        "year": 2023,
+        "Accepted": 44,
+        "Submitted": 97,
+        "acceptance_rates": 0.45360824742268,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "45.4%(44/97 23')"
+    },
+    {
+        "conference": "EMNLP",
+        "year": 2022,
+        "Accepted": 715,
+        "Submitted": 3242,
+        "acceptance_rates": 0.220542874768661,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "22.1%(715/3242 22')"
+    },
+    {
+        "conference": "EUROCRYPT",
+        "year": 2022,
+        "Accepted": 85,
+        "Submitted": 372,
+        "acceptance_rates": 0.228494623655914,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "22.8%(85/372 22')"
+    },
+    {
+        "conference": "EuroSys",
+        "year": 2022,
+        "Accepted": 45,
+        "Submitted": 161,
+        "acceptance_rates": 0.279503105590062,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "28.0%(45/161 22')"
+    },
+    {
+        "conference": "FAST",
+        "year": 2022,
+        "Accepted": 28,
+        "Submitted": 130,
+        "acceptance_rates": 0.215384615384615,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "21.5%(28/130 22')"
+    },
+    {
+        "conference": "FOCS",
+        "year": 2022,
+        "Accepted": 110,
+        "Submitted": 296,
+        "acceptance_rates": 0.371621621621622,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "37.2%(110/296 22')"
+    },
+    {
+        "conference": "FSE",
+        "year": 2021,
+        "Accepted": 97,
+        "Submitted": 407,
+        "acceptance_rates": 0.238329238329238,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "23.8%(97/407 21')"
+    },
+    {
+        "conference": "HPCA",
+        "year": 2023,
+        "Accepted": 91,
+        "Submitted": 360,
+        "acceptance_rates": 0.252777777777778,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "25.3%(91/360 23')"
+    },
+    {
+        "conference": "ICASSP",
+        "year": 2024,
+        "Accepted": 2812,
+        "Submitted": 5796,
+        "acceptance_rates": 0.485162180814355,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "48.5%(2812/5796 24')"
+    },
+    {
+        "conference": "ICCV",
+        "year": 2023,
+        "Accepted": 2160,
+        "Submitted": 8260,
+        "acceptance_rates": 0.261501210653753,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "26.2%(2160/8260 23')"
+    },
+    {
+        "conference": "ICDE",
+        "year": 2022,
+        "Accepted": 211,
+        "Submitted": 780,
+        "acceptance_rates": 0.27051282051282,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "27.1%(211/780 22')"
+    },
+    {
+        "conference": "ICDM",
+        "year": 2021,
+        "Accepted": 98,
+        "Submitted": 990,
+        "acceptance_rates": 0.098989898989899,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "9.9%(98/990 21')"
+    },
+    {
+        "conference": "ICFP",
+        "year": 2023,
+        "Accepted": 33,
+        "Submitted": 90,
+        "acceptance_rates": 0.366666666666667,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "36.7%(33/90 23')"
+    },
+    {
+        "conference": "ICIP",
+        "year": 2023,
+        "Accepted": 732,
+        "Submitted": 1647,
+        "acceptance_rates": 0.444444444444444,
+        "source": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10222530",
+        "str": "44.4%(732/1647 23')"
+    },
+    {
+        "conference": "ICLR",
+        "year": 2024,
+        "Accepted": 2250,
+        "Submitted": 7304,
+        "acceptance_rates": 0.308050383351588,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "30.8%(2250/7304 24')"
+    },
+    {
+        "conference": "ICME",
+        "year": 2023,
+        "Accepted": 488,
+        "Submitted": 1415,
+        "acceptance_rates": 0.344876325088339,
+        "source": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10219647",
+        "str": "34.5%(488/1415 23')"
+    },
+    {
+        "conference": "ICML",
+        "year": 2023,
+        "Accepted": 1827,
+        "Submitted": 6538,
+        "acceptance_rates": 0.279443254817987,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "27.9%(1827/6538 23')"
+    },
+    {
+        "conference": "ICRA",
+        "year": 2022,
+        "Accepted": 1428,
+        "Submitted": 3313,
+        "acceptance_rates": 0.431029278599457,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "43.1%(1428/3313 22')"
+    },
+    {
+        "conference": "ICSE",
+        "year": 2022,
+        "Accepted": 197,
+        "Submitted": 691,
+        "acceptance_rates": 0.285094066570188,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "28.5%(197/691 22')"
+    },
+    {
+        "conference": "IJCAI",
+        "year": 2022,
+        "Accepted": 679,
+        "Submitted": 4537,
+        "acceptance_rates": 0.149658364558078,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "15.0%(679/4537 22')"
+    },
+    {
+        "conference": "IJCNN",
+        "year": 2023,
+        "Accepted": 1034,
+        "Submitted": 1888,
+        "acceptance_rates": 0.547669491525424,
+        "source": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10191349",
+        "str": "54.8%(1034/1888 23')"
+    },
+    {
+        "conference": "IMC",
+        "year": 2022,
+        "Accepted": 38,
+        "Submitted": 143,
+        "acceptance_rates": 0.265734265734266,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "26.6%(38/143 22')"
+    },
+    {
+        "conference": "InterSpeech",
+        "year": 2021,
+        "Accepted": 963,
+        "Submitted": 1990,
+        "acceptance_rates": 0.48391959798995,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "48.4%(963/1990 21')"
+    },
+    {
+        "conference": "IROS",
+        "year": 2022,
+        "Accepted": 1716,
+        "Submitted": 3579,
+        "acceptance_rates": 0.479463537300922,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "47.9%(1716/3579 22')"
+    },
+    {
+        "conference": "ISCA",
+        "year": 2023,
+        "Accepted": 79,
+        "Submitted": 372,
+        "acceptance_rates": 0.212365591397849,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "21.2%(79/372 23')"
+    },
+    {
+        "conference": "ISMM",
+        "year": 2023,
+        "Accepted": 10,
+        "Submitted": 19,
+        "acceptance_rates": 0.526315789473684,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "52.6%(10/19 23')"
+    },
+    {
+        "conference": "ISSTA",
+        "year": 2022,
+        "Accepted": 61,
+        "Submitted": 250,
+        "acceptance_rates": 0.244,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "24.4%(61/250 22')"
+    },
+    {
+        "conference": "SIGKDD",
+        "year": 2023,
+        "Accepted": 313,
+        "Submitted": 1416,
+        "acceptance_rates": 0.221045197740113,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "22.1%(313/1416 23')"
+    },
+    {
+        "conference": "LICS",
+        "year": 2022,
+        "Accepted": 63,
+        "Submitted": 181,
+        "acceptance_rates": 0.348066298342541,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "34.8%(63/181 22')"
+    },
+    {
+        "conference": "MICRO",
+        "year": 2022,
+        "Accepted": 83,
+        "Submitted": 348,
+        "acceptance_rates": 0.238505747126437,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "23.9%(83/348 22')"
+    },
+    {
+        "conference": "MobiCom",
+        "year": 2019,
+        "Accepted": 55,
+        "Submitted": 290,
+        "acceptance_rates": 0.189655172413793,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "19.0%(55/290 19')"
+    },
+    {
+        "conference": "NDSS",
+        "year": 2022,
+        "Accepted": 83,
+        "Submitted": 513,
+        "acceptance_rates": 0.161793372319688,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "16.2%(83/513 22')"
+    },
+    {
+        "conference": "NeurIPS",
+        "year": 2023,
+        "Accepted": 3218,
+        "Submitted": 12343,
+        "acceptance_rates": 0.260714575062789,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "26.1%(3218/12343 23')"
+    },
+    {
+        "conference": "NSDI",
+        "year": 2022,
+        "Accepted": 78,
+        "Submitted": 402,
+        "acceptance_rates": 0.194029850746269,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "19.4%(78/402 22')"
+    },
+    {
+        "conference": "Oakland",
+        "year": 2022,
+        "Accepted": 147,
+        "Submitted": 1006,
+        "acceptance_rates": 0.146123260437376,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "14.6%(147/1006 22')"
+    },
+    {
+        "conference": "OOPSLA",
+        "year": 2023,
+        "Accepted": 110,
+        "Submitted": 304,
+        "acceptance_rates": 0.361842105263158,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "36.2%(110/304 23')"
+    },
+    {
+        "conference": "OSDI",
+        "year": 2023,
+        "Accepted": 50,
+        "Submitted": 255,
+        "acceptance_rates": 0.196078431372549,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "19.6%(50/255 23')"
+    },
+    {
+        "conference": "PLDI",
+        "year": 2023,
+        "Accepted": 83,
+        "Submitted": 281,
+        "acceptance_rates": 0.295373665480427,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "29.5%(83/281 23')"
+    },
+    {
+        "conference": "PODS",
+        "year": 2022,
+        "Accepted": 33,
+        "Submitted": 100,
+        "acceptance_rates": 0.33,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "33.0%(33/100 22')"
+    },
+    {
+        "conference": "POPL",
+        "year": 2023,
+        "Accepted": 74,
+        "Submitted": 275,
+        "acceptance_rates": 0.269090909090909,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "26.9%(74/275 23')"
+    },
+    {
+        "conference": "PPoPP",
+        "year": 2023,
+        "Accepted": 31,
+        "Submitted": 131,
+        "acceptance_rates": 0.236641221374046,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "23.7%(31/131 23')"
+    },
+    {
+        "conference": "RecSys",
+        "year": 2020,
+        "Accepted": 39,
+        "Submitted": 218,
+        "acceptance_rates": 0.178899082568807,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "17.9%(39/218 20')"
+    },
+    {
+        "conference": "RTAS",
+        "year": 2022,
+        "Accepted": 22,
+        "Submitted": 91,
+        "acceptance_rates": 0.241758241758242,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "24.2%(22/91 22')"
+    },
+    {
+        "conference": "RTSS",
+        "year": 2022,
+        "Accepted": 37,
+        "Submitted": 128,
+        "acceptance_rates": 0.2890625,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "28.9%(37/128 22')"
+    },
+    {
+        "conference": "SIGCOMM",
+        "year": 2022,
+        "Accepted": 55,
+        "Submitted": 279,
+        "acceptance_rates": 0.197132616487455,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "19.7%(55/279 22')"
+    },
+    {
+        "conference": "ACM SIGGRAPH",
+        "year": 2022,
+        "Accepted": 133,
+        "Submitted": 610,
+        "acceptance_rates": 0.218032786885246,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "21.8%(133/610 22')"
+    },
+    {
+        "conference": "SIGIR",
+        "year": 2023,
+        "Accepted": 165,
+        "Submitted": 822,
+        "acceptance_rates": 0.200729927007299,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "20.1%(165/822 23')"
+    },
+    {
+        "conference": "SIGMETRICS",
+        "year": 2022,
+        "Accepted": 59,
+        "Submitted": 303,
+        "acceptance_rates": 0.194719471947195,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "19.5%(59/303 22')"
+    },
+    {
+        "conference": "SIGMOD",
+        "year": 2023,
+        "Accepted": 186,
+        "Submitted": 660,
+        "acceptance_rates": 0.281818181818182,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "28.2%(186/660 23')"
+    },
+    {
+        "conference": "SODA",
+        "year": 2021,
+        "Accepted": 180,
+        "Submitted": 637,
+        "acceptance_rates": 0.282574568288854,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "28.3%(180/637 21')"
+    },
+    {
+        "conference": "SOSP",
+        "year": 2021,
+        "Accepted": 54,
+        "Submitted": 348,
+        "acceptance_rates": 0.155172413793103,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "15.5%(54/348 21')"
+    },
+    {
+        "conference": "STOC",
+        "year": 2023,
+        "Accepted": 155,
+        "Submitted": 480,
+        "acceptance_rates": 0.322916666666667,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "32.3%(155/480 23')"
+    },
+    {
+        "conference": "UAI",
+        "year": 2023,
+        "Accepted": 243,
+        "Submitted": 778,
+        "acceptance_rates": 0.312339331619537,
+        "source": "https://github.com/lixin4ever/Conference-Acceptance-Rate",
+        "str": "31.2%(243/778 23')"
+    },
+    {
+        "conference": "UIST",
+        "year": 2022,
+        "Accepted": 98,
+        "Submitted": 372,
+        "acceptance_rates": 0.263440860215054,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "26.3%(98/372 22')"
+    },
+    {
+        "conference": "USENIX ATC",
+        "year": 2021,
+        "Accepted": 64,
+        "Submitted": 341,
+        "acceptance_rates": 0.187683284457478,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "18.8%(64/341 21')"
+    },
+    {
+        "conference": "USENIX Security",
+        "year": 2022,
+        "Accepted": 256,
+        "Submitted": 1414,
+        "acceptance_rates": 0.181046676096181,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "18.1%(256/1414 22')"
+    },
+    {
+        "conference": "VLDB",
+        "year": 2023,
+        "Accepted": 266,
+        "Submitted": 1074,
+        "acceptance_rates": 0.247672253258845,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "24.8%(266/1074 23')"
+    },
+    {
+        "conference": "WSDM",
+        "year": 2023,
+        "Accepted": 123,
+        "Submitted": 690,
+        "acceptance_rates": 0.178260869565217,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "17.8%(123/690 23')"
+    },
+    {
+        "conference": "WWW",
+        "year": 2023,
+        "Accepted": 365,
+        "Submitted": 1900,
+        "acceptance_rates": 0.192105263157895,
+        "source": "https://github.com/emeryberger/csconferences",
+        "str": "19.2%(365/1900 23')"
+    }
+]

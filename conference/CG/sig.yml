@@ -4,40 +4,46 @@
   rank: A
   dblp: siggraph
   confs:
-    - year: 2024
-      id: siggraph24
-      link: https://s2024.siggraph.org/
-      timeline:
-        - abstract_deadline: '2024-01-23 22:00:00'
-          deadline: '2024-01-24 22:00:00'
-      timezone: UTC+0
-      date: July 28 - August 1, 2024
-      place: Denver
-    - year: 2023
-      id: siggraph23
-      link: https://s2023.siggraph.org/
-      timeline:
-        - abstract_deadline: '2023-01-24 22:00:00'
-          deadline: '2023-01-25 22:00:00'
-      timezone: UTC+0
-      date: August 6-10, 2023
-      place: Los Angeles
-    - year: 2022
-      id: siggraph22
-      link: https://s2022.siggraph.org/
-      timeline:
-        - abstract_deadline: '2022-01-26 22:00:00'
-          deadline: '2022-01-27 22:00:00'
-      timezone: UTC+0
-      date: August 7-11, 2022
-      place: Vancouver
-    - year: 2021
-      id: siggraph21
-      link: https://s2021.siggraph.org/
-      timeline:
-        - abstract_deadline: '2021-01-27 22:00:00'
-          deadline: '2021-01-28 22:00:00'
-      timezone: UTC+0
-      date: August 9-13, 2021
-      place: Virtual
+  - year: 2024
+    id: siggraph24
+    link: https://s2024.siggraph.org/
+    timeline:
+    - abstract_deadline: '2024-01-23 22:00:00'
+      deadline: '2024-01-24 22:00:00'
+    timezone: UTC+0
+    date: July 28 - August 1, 2024
+    place: Denver
+  - year: 2023
+    id: siggraph23
+    link: https://s2023.siggraph.org/
+    timeline:
+    - abstract_deadline: '2023-01-24 22:00:00'
+      deadline: '2023-01-25 22:00:00'
+    timezone: UTC+0
+    date: August 6-10, 2023
+    place: Los Angeles
+  - year: 2022
+    id: siggraph22
+    link: https://s2022.siggraph.org/
+    timeline:
+    - abstract_deadline: '2022-01-26 22:00:00'
+      deadline: '2022-01-27 22:00:00'
+    timezone: UTC+0
+    date: August 7-11, 2022
+    place: Vancouver
+  - year: 2021
+    id: siggraph21
+    link: https://s2021.siggraph.org/
+    timeline:
+    - abstract_deadline: '2021-01-27 22:00:00'
+      deadline: '2021-01-28 22:00:00'
+    timezone: UTC+0
+    date: August 9-13, 2021
+    place: Virtual
 
+  accept_rate:
+  - year: 2022
+    submitted: 610
+    accepted: 133
+    str: 21.8%(133/610 22')
+    rate: 0.218032786885246

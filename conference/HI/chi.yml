@@ -4,12 +4,18 @@
   rank: A
   dblp: chi
   confs:
-    - year: 2024
-      id: chi24
-      link: http://chi2024.acm.org/
-      timeline:
-        - abstract_deadline: '2023-09-07 23:59:59'
-          deadline: '2023-09-14 23:59:59'
-      timezone: AoE
-      date: May 11 - May 16, 2024
-      place: Honolulu, Hawaii, USA
+  - year: 2024
+    id: chi24
+    link: http://chi2024.acm.org/
+    timeline:
+    - abstract_deadline: '2023-09-07 23:59:59'
+      deadline: '2023-09-14 23:59:59'
+    timezone: AoE
+    date: May 11 - May 16, 2024
+    place: Honolulu, Hawaii, USA
+  accept_rate:
+  - year: 2022
+    submitted: 2579
+    accepted: 637
+    str: 24.7%(637/2579 22')
+    rate: 0.246994959286545

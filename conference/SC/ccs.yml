@@ -4,56 +4,62 @@
   rank: A
   dblp: ccs
   confs:
-    - year: 2020
-      id: ccs20
-      link: https://www.sigsac.org/ccs/CCS2020/
-      timeline:
-        - deadline: '2020-01-20 23:59:59'
-          comment: '2 review cycles'
-      timezone: UTC-12
-      date: November 9-13, 2020
-      place: Orlando, USA
-    - year: 2021
-      id: ccs21
-      link: https://www.sigsac.org/ccs/CCS2021/
-      timeline:
-        - deadline: '2021-01-20 23:59:59'
-          comment: '2 review cycles'
-        - deadline: '2021-05-06 23:59:59'
-          comment: 'spring'
-      timezone: UTC-12
-      date: November 15-19, 2021
-      place: Seoul, South Korea
-    - year: 2022
-      id: ccs22
-      link: https://www.sigsac.org/ccs/CCS2022/
-      timeline:
-        - deadline: '2022-01-14 23:59:59'
-          comment: '2 review cycles'
-        - deadline: '2022-05-02 23:59:59'
-          comment: 'the second review cycle'
-      timezone: UTC-12
-      date: November 14-19, 2022
-      place: Los Angeles, U.S.A.
-    - year: 2023
-      id: ccs23
-      link: https://www.sigsac.org/ccs/CCS2023/
-      timeline:
-        - deadline: '2023-01-19 23:59:59'
-          comment: 'First Round Submission'
-        - deadline: '2023-05-04 23:59:59'
-          comment: 'Second Round Submission'
-      timezone: UTC-12
-      date: November 26-30, 2023
-      place: Copenhagen, Denmark
-    - year: 2024
-      id: ccs24
-      link: https://www.sigsac.org/ccs/CCS2024/
-      timeline:
-        - deadline: '2024-01-28 23:59:59'
-          comment: 'First Round Submission'
-        - deadline: '2024-04-29 23:59:59'
-          comment: 'Second Round Submission (tentative)'
-      timezone: UTC-12
-      date: October 14-18, 2024
-      place: Salt Lake City, U.S.A
+  - year: 2020
+    id: ccs20
+    link: https://www.sigsac.org/ccs/CCS2020/
+    timeline:
+    - deadline: '2020-01-20 23:59:59'
+      comment: 2 review cycles
+    timezone: UTC-12
+    date: November 9-13, 2020
+    place: Orlando, USA
+  - year: 2021
+    id: ccs21
+    link: https://www.sigsac.org/ccs/CCS2021/
+    timeline:
+    - deadline: '2021-01-20 23:59:59'
+      comment: 2 review cycles
+    - deadline: '2021-05-06 23:59:59'
+      comment: spring
+    timezone: UTC-12
+    date: November 15-19, 2021
+    place: Seoul, South Korea
+  - year: 2022
+    id: ccs22
+    link: https://www.sigsac.org/ccs/CCS2022/
+    timeline:
+    - deadline: '2022-01-14 23:59:59'
+      comment: 2 review cycles
+    - deadline: '2022-05-02 23:59:59'
+      comment: the second review cycle
+    timezone: UTC-12
+    date: November 14-19, 2022
+    place: Los Angeles, U.S.A.
+  - year: 2023
+    id: ccs23
+    link: https://www.sigsac.org/ccs/CCS2023/
+    timeline:
+    - deadline: '2023-01-19 23:59:59'
+      comment: First Round Submission
+    - deadline: '2023-05-04 23:59:59'
+      comment: Second Round Submission
+    timezone: UTC-12
+    date: November 26-30, 2023
+    place: Copenhagen, Denmark
+  - year: 2024
+    id: ccs24
+    link: https://www.sigsac.org/ccs/CCS2024/
+    timeline:
+    - deadline: '2024-01-28 23:59:59'
+      comment: First Round Submission
+    - deadline: '2024-04-29 23:59:59'
+      comment: Second Round Submission (tentative)
+    timezone: UTC-12
+    date: October 14-18, 2024
+    place: Salt Lake City, U.S.A
+  accept_rate:
+  - year: 2021
+    submitted: 880
+    accepted: 196
+    str: 22.3%(196/880 21')
+    rate: 0.222727272727273

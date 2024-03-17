@@ -4,11 +4,17 @@
   rank: A
   dblp: cav
   confs:
-    - year: 2022
-      id: cav22
-      link: http://i-cav.org/2022/
-      timeline:
-        - deadline: '2022-01-21 23:59:59'
-      timezone: AoE
-      date: Aug 7-10, 2022
-      place: Technion, Haifa, Israel
+  - year: 2022
+    id: cav22
+    link: http://i-cav.org/2022/
+    timeline:
+    - deadline: '2022-01-21 23:59:59'
+    timezone: AoE
+    date: Aug 7-10, 2022
+    place: Technion, Haifa, Israel
+  accept_rate:
+  - year: 2022
+    submitted: 209
+    accepted: 40
+    str: 19.1%(40/209 22')
+    rate: 0.191387559808612

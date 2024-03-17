@@ -4,21 +4,27 @@
   rank: B
   dblp: recsys
   confs:
-    - year: 2023
-      id: recsys23
-      link: https://recsys.acm.org/recsys23
-      timeline:
-        - abstract_deadline: '2023-04-14 23:59:59'
-          deadline: '2023-04-21 23:59:59'
-      timezone: AoE
-      date: September 18-22, 2023
-      place: Singapore
-    - year: 2024
-      id: recsys24
-      link: https://recsys.acm.org/recsys24
-      timeline:
-      - abstract_deadline: '2024-04-22 23:59:59'
-        deadline: '2024-04-29 23:59:59'
-      timezone: AoE
-      date: October 14-18, 2024
-      place: Bari, Italy
+  - year: 2023
+    id: recsys23
+    link: https://recsys.acm.org/recsys23
+    timeline:
+    - abstract_deadline: '2023-04-14 23:59:59'
+      deadline: '2023-04-21 23:59:59'
+    timezone: AoE
+    date: September 18-22, 2023
+    place: Singapore
+  - year: 2024
+    id: recsys24
+    link: https://recsys.acm.org/recsys24
+    timeline:
+    - abstract_deadline: '2024-04-22 23:59:59'
+      deadline: '2024-04-29 23:59:59'
+    timezone: AoE
+    date: October 14-18, 2024
+    place: Bari, Italy
+  accept_rate:
+  - year: 2020
+    submitted: 218
+    accepted: 39
+    str: 17.9%(39/218 20')
+    rate: 0.178899082568807

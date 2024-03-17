@@ -4,47 +4,53 @@
   rank: A
   dblp: micro
   confs:
-    - year: 2021
-      id: micro21
-      link: https://www.microarch.org/micro54/
-      timeline:
-        - deadline: '2021-04-09 23:59:59'
-          comment: 'abstract deadline'
-        - deadline: '2021-04-16 23:59:59'
-          comment: 'full paper deadline'
-      timezone: UTC-7
-      date: Oct 18-22, 2021
-      place: Athens, Greece
-    - year: 2022
-      id: micro22
-      link: https://www.microarch.org/micro55/
-      timeline:
-        - deadline: '2022-04-14 11:59:59'
-          comment: 'Abstract Deadline'
-        - deadline: '2022-04-21 11:59:59'
-          comment: 'Full Paper Deadline'
-      timezone: UTC-7
-      date: Oct, 2022
-      place: Chicago, Illinois, USA
-    - year: 2023
-      id: micro23
-      link: https://www.microarch.org/micro56/
-      timeline:
-        - deadline: '2023-04-21 11:59:59'
-          comment: 'Abstract Deadline'
-        - deadline: '2023-04-28 11:59:59'
-          comment: 'Full Paper Deadline'
-      timezone: UTC-7
-      date: Oct, 2023
-      place: Toronto, Canada
-    - year: 2024
-      id: micro24
-      link: https://microarch.org/micro57/
-      timeline:
-        - deadline: '2024-04-11 11:59:59'
-          comment: 'Abstract Deadline'
-        - deadline: '2024-04-18 11:59:59'
-          comment: 'Full Paper Deadline'
-      timezone: UTC-5
-      date: November 2-6, 2024
-      place: Austin, Texas, USA
+  - year: 2021
+    id: micro21
+    link: https://www.microarch.org/micro54/
+    timeline:
+    - deadline: '2021-04-09 23:59:59'
+      comment: abstract deadline
+    - deadline: '2021-04-16 23:59:59'
+      comment: full paper deadline
+    timezone: UTC-7
+    date: Oct 18-22, 2021
+    place: Athens, Greece
+  - year: 2022
+    id: micro22
+    link: https://www.microarch.org/micro55/
+    timeline:
+    - deadline: '2022-04-14 11:59:59'
+      comment: Abstract Deadline
+    - deadline: '2022-04-21 11:59:59'
+      comment: Full Paper Deadline
+    timezone: UTC-7
+    date: Oct, 2022
+    place: Chicago, Illinois, USA
+  - year: 2023
+    id: micro23
+    link: https://www.microarch.org/micro56/
+    timeline:
+    - deadline: '2023-04-21 11:59:59'
+      comment: Abstract Deadline
+    - deadline: '2023-04-28 11:59:59'
+      comment: Full Paper Deadline
+    timezone: UTC-7
+    date: Oct, 2023
+    place: Toronto, Canada
+  - year: 2024
+    id: micro24
+    link: https://microarch.org/micro57/
+    timeline:
+    - deadline: '2024-04-11 11:59:59'
+      comment: Abstract Deadline
+    - deadline: '2024-04-18 11:59:59'
+      comment: Full Paper Deadline
+    timezone: UTC-5
+    date: November 2-6, 2024
+    place: Austin, Texas, USA
+  accept_rate:
+  - year: 2022
+    submitted: 348
+    accepted: 83
+    str: 23.9%(83/348 22')
+    rate: 0.238505747126437

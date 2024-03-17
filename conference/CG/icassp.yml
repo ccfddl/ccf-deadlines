@@ -4,27 +4,33 @@
   rank: B
   dblp: icassp
   confs:
-    - year: 2022
-      id: icassp22
-      link: https://2022.ieeeicassp.org
-      timeline:
-        - deadline: '2021-10-06 23:59:59'
-      timezone: UTC+0
-      date: May 22-27, 2022
-      place: Singapore
-    - year: 2023
-      id: icassp23
-      link: https://2023.ieeeicassp.org
-      timeline:
-        - deadline: '2022-10-26 23:59:59'
-      timezone: UTC-12
-      date: June 4-9, 2023
-      place: Rhodes Island, Greece
-    - year: 2024
-      id: icassp24
-      link: https://2024.ieeeicassp.org/
-      timeline:
-        - deadline: '2023-09-06 23:59:59'
-      timezone: UTC-12
-      date: April 14-19, 2024
-      place: COEX, Seoul, Korea
+  - year: 2022
+    id: icassp22
+    link: https://2022.ieeeicassp.org
+    timeline:
+    - deadline: '2021-10-06 23:59:59'
+    timezone: UTC+0
+    date: May 22-27, 2022
+    place: Singapore
+  - year: 2023
+    id: icassp23
+    link: https://2023.ieeeicassp.org
+    timeline:
+    - deadline: '2022-10-26 23:59:59'
+    timezone: UTC-12
+    date: June 4-9, 2023
+    place: Rhodes Island, Greece
+  - year: 2024
+    id: icassp24
+    link: https://2024.ieeeicassp.org/
+    timeline:
+    - deadline: '2023-09-06 23:59:59'
+    timezone: UTC-12
+    date: April 14-19, 2024
+    place: COEX, Seoul, Korea
+  accept_rate:
+  - year: 2024
+    submitted: 5796
+    accepted: 2812
+    str: 48.5%(2812/5796 24')
+    rate: 0.485162180814355

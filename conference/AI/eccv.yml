@@ -4,21 +4,27 @@
   rank: B
   dblp: eccv
   confs:
-    - year: 2022
-      id: eccv22
-      link: https://eccv2022.ecva.net/
-      timeline:
+  - year: 2022
+    id: eccv22
+    link: https://eccv2022.ecva.net/
+    timeline:
         # - abstract_deadline: '2021-11-09 23:59:00'
-          - deadline: '2022-03-07 11:59:00'
-      timezone: UTC-8
-      date: October 24 - October 28, 2022
-      place: Tel-Aviv, Israel
-    - year: 2024
-      id: eccv24
-      link: https://eccv2024.ecva.net/
-      timeline:
-        - abstract_deadline: '2024-02-29 13:00:00'
-          deadline: '2024-03-07 13:00:00'
-      timezone: UTC-8
-      date: September 29 - October 4, 2024
-      place: MiCo Milano, Italy
+    - deadline: '2022-03-07 11:59:00'
+    timezone: UTC-8
+    date: October 24 - October 28, 2022
+    place: Tel-Aviv, Israel
+  - year: 2024
+    id: eccv24
+    link: https://eccv2024.ecva.net/
+    timeline:
+    - abstract_deadline: '2024-02-29 13:00:00'
+      deadline: '2024-03-07 13:00:00'
+    timezone: UTC-8
+    date: September 29 - October 4, 2024
+    place: MiCo Milano, Italy
+  accept_rate:
+  - year: 2022
+    submitted: 5804
+    accepted: 1645
+    str: 28.3%(1645/5804 22')
+    rate: 0.28342522398346

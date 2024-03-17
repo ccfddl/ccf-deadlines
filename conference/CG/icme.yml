@@ -4,27 +4,33 @@
   rank: B
   dblp: icme
   confs:
-    - year: 2022
-      id: icme22
-      link: http://2022.ieeeicme.org/paper.html
-      timeline:
-        - deadline: '2021-12-12 23:59:59'
-      timezone: UTC-8
-      date: July 18-22, 2022
-      place: Taipei, Taiwan, China
-    - year: 2023
-      id: icme23
-      link: https://www.2023.ieeeicme.org/
-      timeline:
-        - deadline: '2022-12-22 23:59:59'
-      timezone: UTC+0
-      date: July 10-14, 2023
-      place: Brisbane, Australia
-    - year: 2024
-      id: icme24
-      link: https://2024.ieeeicme.org/
-      timeline:
-        - deadline: '2023-12-30 23:59:59'
-      timezone: UTC+0
-      date: July 15-19, 2024
-      place: Niagra Falls, Canada
+  - year: 2022
+    id: icme22
+    link: http://2022.ieeeicme.org/paper.html
+    timeline:
+    - deadline: '2021-12-12 23:59:59'
+    timezone: UTC-8
+    date: July 18-22, 2022
+    place: Taipei, Taiwan, China
+  - year: 2023
+    id: icme23
+    link: https://www.2023.ieeeicme.org/
+    timeline:
+    - deadline: '2022-12-22 23:59:59'
+    timezone: UTC+0
+    date: July 10-14, 2023
+    place: Brisbane, Australia
+  - year: 2024
+    id: icme24
+    link: https://2024.ieeeicme.org/
+    timeline:
+    - deadline: '2023-12-30 23:59:59'
+    timezone: UTC+0
+    date: July 15-19, 2024
+    place: Niagra Falls, Canada
+  accept_rate:
+  - year: 2023
+    submitted: 1415
+    accepted: 488
+    str: 34.5%(488/1415 23')
+    rate: 0.344876325088339

@@ -4,11 +4,17 @@
   rank: A
   dblp: stoc
   confs:
-    - year: 2021
-      id: stoc21
-      link: http://acm-stoc.org/stoc2021/
-      timeline:
-        - deadline: '2020-11-06 11:59:59'
-      timezone: UTC-5
-      date: June 21-25, 2021
-      place: Virtual
+  - year: 2021
+    id: stoc21
+    link: http://acm-stoc.org/stoc2021/
+    timeline:
+    - deadline: '2020-11-06 11:59:59'
+    timezone: UTC-5
+    date: June 21-25, 2021
+    place: Virtual
+  accept_rate:
+  - year: 2023
+    submitted: 480
+    accepted: 155
+    str: 32.3%(155/480 23')
+    rate: 0.322916666666667

@@ -4,36 +4,42 @@
   rank: A
   dblp: sigsoft
   confs:
-    - year: 2022
-      id: issta22
-      link: https://conf.researchr.org/home/issta-2022
-      timeline:
-        - deadline: '2022-01-28 23:59:59'
-          comment: 'Technical Papers due'
-        - deadline: '2022-01-31 23:59:59'
-          comment: 'Workshops Submission Deadline'
-      timezone: AoE
-      date: July 18-22, 2022
-      place: Daejeon, South Korea
-    - year: 2023
-      id: issta23
-      link: https://conf.researchr.org/home/issta-2023
-      timeline:
-        - deadline: '2022-11-10 23:59:59'
-          comment: 'Technical Papers First round submission deadline'
-        - deadline: '2023-02-16 23:59:59'
-          comment: 'Technical Papers Second round submission deadline'
-      timezone: AoE
-      date: July 17-21, 2023
-      place: Seattle, United States
-    - year: 2024
-      id: issta24
-      link: https://conf.researchr.org/home/issta-2024
-      timeline:
-        - deadline: '2023-12-15 23:59:59'
-          comment: 'Technical Papers Submission deadline (Round 1)'
-        - deadline: '2024-04-12 23:59:59'
-          comment: 'Technical Papers Submission deadline (Round 2)'
-      timezone: AoE
-      date: September 16-20, 2024
-      place: Vienna, Austria
+  - year: 2022
+    id: issta22
+    link: https://conf.researchr.org/home/issta-2022
+    timeline:
+    - deadline: '2022-01-28 23:59:59'
+      comment: Technical Papers due
+    - deadline: '2022-01-31 23:59:59'
+      comment: Workshops Submission Deadline
+    timezone: AoE
+    date: July 18-22, 2022
+    place: Daejeon, South Korea
+  - year: 2023
+    id: issta23
+    link: https://conf.researchr.org/home/issta-2023
+    timeline:
+    - deadline: '2022-11-10 23:59:59'
+      comment: Technical Papers First round submission deadline
+    - deadline: '2023-02-16 23:59:59'
+      comment: Technical Papers Second round submission deadline
+    timezone: AoE
+    date: July 17-21, 2023
+    place: Seattle, United States
+  - year: 2024
+    id: issta24
+    link: https://conf.researchr.org/home/issta-2024
+    timeline:
+    - deadline: '2023-12-15 23:59:59'
+      comment: Technical Papers Submission deadline (Round 1)
+    - deadline: '2024-04-12 23:59:59'
+      comment: Technical Papers Submission deadline (Round 2)
+    timezone: AoE
+    date: September 16-20, 2024
+    place: Vienna, Austria
+  accept_rate:
+  - year: 2022
+    submitted: 250
+    accepted: 61
+    str: 24.4%(61/250 22')
+    rate: 0.244

@@ -4,12 +4,18 @@
   rank: B
   dblp: imc
   confs:
-    - year: 2024
-      id: imc24
-      link: https://conferences.sigcomm.org/imc/2024/
-      timeline:
-        - abstract_deadline: '2024-05-08 23:59:59'
-          deadline: '2024-05-15 23:59:59'
-      timezone: AoE
-      date: Nov 4-6, 2024
-      place: Madrid, Spain
+  - year: 2024
+    id: imc24
+    link: https://conferences.sigcomm.org/imc/2024/
+    timeline:
+    - abstract_deadline: '2024-05-08 23:59:59'
+      deadline: '2024-05-15 23:59:59'
+    timezone: AoE
+    date: Nov 4-6, 2024
+    place: Madrid, Spain
+  accept_rate:
+  - year: 2022
+    submitted: 143
+    accepted: 38
+    str: 26.6%(38/143 22')
+    rate: 0.265734265734266

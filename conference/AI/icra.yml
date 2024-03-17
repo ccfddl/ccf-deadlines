@@ -4,27 +4,33 @@
   rank: B
   dblp: icra
   confs:
-    - year: 2022
-      id: icra22
-      link: https://www.icra2022.org/
-      timeline:
-        - deadline: '2021-09-15 02:59:00'
-      timezone: UTC-8
-      date: May 23-27, 2022
-      place: Philadelphia (PA), USA
-    - year: 2023
-      id: icra23
-      link: https://www.icra2023.org/
-      timeline:
-        - deadline: '2022-09-15 23:59:59'
-      timezone: UTC-8
-      date: May 29- June 2, 2023
-      place: ExCeL London, UK
-    - year: 2024
-      id: icra24
-      link: http://ieee-icra.org/
-      timeline:
-        - deadline: '2023-09-15 23:59:00'
-      timezone: UTC-8
-      date: May 13-17, 2024
-      place: Yokohama, Japan
+  - year: 2022
+    id: icra22
+    link: https://www.icra2022.org/
+    timeline:
+    - deadline: '2021-09-15 02:59:00'
+    timezone: UTC-8
+    date: May 23-27, 2022
+    place: Philadelphia (PA), USA
+  - year: 2023
+    id: icra23
+    link: https://www.icra2023.org/
+    timeline:
+    - deadline: '2022-09-15 23:59:59'
+    timezone: UTC-8
+    date: May 29- June 2, 2023
+    place: ExCeL London, UK
+  - year: 2024
+    id: icra24
+    link: http://ieee-icra.org/
+    timeline:
+    - deadline: '2023-09-15 23:59:00'
+    timezone: UTC-8
+    date: May 13-17, 2024
+    place: Yokohama, Japan
+  accept_rate:
+  - year: 2022
+    submitted: 3313
+    accepted: 1428
+    str: 43.1%(1428/3313 22')
+    rate: 0.431029278599457

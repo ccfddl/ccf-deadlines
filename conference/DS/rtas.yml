@@ -4,12 +4,18 @@
   rank: B
   dblp: rtas
   confs:
-    - year: 2024
-      id: rtas2024
-      link: https://2024.rtas.org/
-      timeline:
-        - deadline: '2023-10-31 11:59:59'
-          comment: 'Submission Deadline (firm)'
-      timezone: AoE
-      date: May 13-16, 2024
-      place: Hong Kong, China
+  - year: 2024
+    id: rtas2024
+    link: https://2024.rtas.org/
+    timeline:
+    - deadline: '2023-10-31 11:59:59'
+      comment: Submission Deadline (firm)
+    timezone: AoE
+    date: May 13-16, 2024
+    place: Hong Kong, China
+  accept_rate:
+  - year: 2022
+    submitted: 91
+    accepted: 22
+    str: 24.2%(22/91 22')
+    rate: 0.241758241758242

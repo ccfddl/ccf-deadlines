@@ -4,19 +4,25 @@
   rank: C
   dblp: iros
   confs:
-    - year: 2023
-      id: iros23
-      link: https://ieee-iros.org/
-      timeline:
-        - deadline: '2023-03-01 23:59:59'
-      timezone: UTC-8
-      date: October 1-5, 2023
-      place: Detroit, Michigan, USA
-    - year: 2024
-      id: iros24
-      link: http://iros2024-abudhabi.org/
-      timeline:
-        - deadline: '2024-03-15 23:59:59'
-      timezone: UTC-8
-      date: October 13-17, 2024
-      place: Abu Dhabi, UAE
+  - year: 2023
+    id: iros23
+    link: https://ieee-iros.org/
+    timeline:
+    - deadline: '2023-03-01 23:59:59'
+    timezone: UTC-8
+    date: October 1-5, 2023
+    place: Detroit, Michigan, USA
+  - year: 2024
+    id: iros24
+    link: http://iros2024-abudhabi.org/
+    timeline:
+    - deadline: '2024-03-15 23:59:59'
+    timezone: UTC-8
+    date: October 13-17, 2024
+    place: Abu Dhabi, UAE
+  accept_rate:
+  - year: 2022
+    submitted: 3579
+    accepted: 1716
+    str: 47.9%(1716/3579 22')
+    rate: 0.479463537300922

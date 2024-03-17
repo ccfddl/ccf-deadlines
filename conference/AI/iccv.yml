@@ -4,19 +4,25 @@
   rank: A
   dblp: iccv
   confs:
-    - year: 2021
-      id: iccv21
-      link: http://iccv2021.thecvf.com/home/
-      timeline:
-        - deadline: '2021-03-17 23:59:59'
-      timezone: UTC-7
-      date: October 10-17, 2021
-      place: Montreal
-    - year: 2023
-      id: iccv23
-      link: http://iccv2023.thecvf.com/home/
-      timeline:
-        - deadline: '2023-03-08 23:59:59'
-      timezone: UTC+0
-      date: October 2-6, 2023
-      place: Paris
+  - year: 2021
+    id: iccv21
+    link: http://iccv2021.thecvf.com/home/
+    timeline:
+    - deadline: '2021-03-17 23:59:59'
+    timezone: UTC-7
+    date: October 10-17, 2021
+    place: Montreal
+  - year: 2023
+    id: iccv23
+    link: http://iccv2023.thecvf.com/home/
+    timeline:
+    - deadline: '2023-03-08 23:59:59'
+    timezone: UTC+0
+    date: October 2-6, 2023
+    place: Paris
+  accept_rate:
+  - year: 2023
+    submitted: 8260
+    accepted: 2160
+    str: 26.2%(2160/8260 23')
+    rate: 0.261501210653753

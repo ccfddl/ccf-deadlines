@@ -4,27 +4,33 @@
   rank: B
   dblp: wsdm
   confs:
-    - year: 2022
-      id: wsdm22
-      link: https://www.wsdm-conference.org/2022/
-      timeline:
-        - deadline: '2021-08-09 23:59:59'
-      timezone: UTC-12
-      date: February 21-25, 2022
-      place: Phoenix, Arizona, USA
-    - year: 2023
-      id: wsdm23
-      link: https://www.wsdm-conference.org/2023/
-      timeline:
-        - deadline: '2022-08-12 23:59:59'
-      timezone: UTC-12
-      date: February 27 - March 3, 2023
-      place: Singapore
-    - year: 2024
-      id: wsdm24
-      link: https://www.wsdm-conference.org/2024/
-      timeline:
-        - deadline: '2023-08-10 23:59:59'
-      timezone: UTC-12
-      date: March 4 - March 8, 2024
-      place: MÃ©rida, MÃ©xico
+  - year: 2022
+    id: wsdm22
+    link: https://www.wsdm-conference.org/2022/
+    timeline:
+    - deadline: '2021-08-09 23:59:59'
+    timezone: UTC-12
+    date: February 21-25, 2022
+    place: Phoenix, Arizona, USA
+  - year: 2023
+    id: wsdm23
+    link: https://www.wsdm-conference.org/2023/
+    timeline:
+    - deadline: '2022-08-12 23:59:59'
+    timezone: UTC-12
+    date: February 27 - March 3, 2023
+    place: Singapore
+  - year: 2024
+    id: wsdm24
+    link: https://www.wsdm-conference.org/2024/
+    timeline:
+    - deadline: '2023-08-10 23:59:59'
+    timezone: UTC-12
+    date: March 4 - March 8, 2024
+    place: M¨¦rida, M¨¦xico
+  accept_rate:
+  - year: 2023
+    submitted: 690
+    accepted: 123
+    str: 17.8%(123/690 23')
+    rate: 0.178260869565217

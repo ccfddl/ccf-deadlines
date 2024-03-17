@@ -4,27 +4,33 @@
   rank: A
   dblp: crypto
   confs:
-    - year: 2021
-      id: crypto21
-      link: https://crypto.iacr.org/2021/
-      timeline:
-        - deadline: '2021-02-24 21:00:00'
-      timezone: UTC-12
-      date: August 15-19, 2021
-      place: Virtual
-    - year: 2023
-      id: crypto23
-      link: https://crypto.iacr.org/2023/
-      timeline:
-        - deadline: '2023-02-16 18:00:00'
-      timezone: UTC-5
-      date: August 19-24, 2023
-      place: Santa Barbara, USA
-    - year: 2024
-      id: crypto24
-      link: https://crypto.iacr.org/2024/
-      timeline:
-        - deadline: '2024-02-13 23:59:59'
-      timezone: UTC-12
-      date: August 18-22, 2024
-      place: Santa Barbara, USA
+  - year: 2021
+    id: crypto21
+    link: https://crypto.iacr.org/2021/
+    timeline:
+    - deadline: '2021-02-24 21:00:00'
+    timezone: UTC-12
+    date: August 15-19, 2021
+    place: Virtual
+  - year: 2023
+    id: crypto23
+    link: https://crypto.iacr.org/2023/
+    timeline:
+    - deadline: '2023-02-16 18:00:00'
+    timezone: UTC-5
+    date: August 19-24, 2023
+    place: Santa Barbara, USA
+  - year: 2024
+    id: crypto24
+    link: https://crypto.iacr.org/2024/
+    timeline:
+    - deadline: '2024-02-13 23:59:59'
+    timezone: UTC-12
+    date: August 18-22, 2024
+    place: Santa Barbara, USA
+  accept_rate:
+  - year: 2022
+    submitted: 455
+    accepted: 99
+    str: 21.8%(99/455 22')
+    rate: 0.217582417582418

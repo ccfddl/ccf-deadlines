@@ -4,21 +4,27 @@
   rank: B
   dblp: coling
   confs:
-    - year: 2022
-      id: coling22
-      link: https://coling2022.org/
-      timeline:
-        - deadline: '2022-05-17 23:59:00'
-          comment: 'Papers Due'
-      timezone: AoE
-      date: June 12-17, 2022
-      place: Gyeongju, Republic of Korea
-    - year: 2024
-      id: coling24
-      link: https://lrec-coling-2024.lrec-conf.org/
-      timeline:
-        - deadline: '2023-10-21 23:59:59'
-          comment: 'Long, short and position papers due'
-      timezone: UTC-12
-      date: May 20 - May 25, 2024
-      place: Torino, Italy
+  - year: 2022
+    id: coling22
+    link: https://coling2022.org/
+    timeline:
+    - deadline: '2022-05-17 23:59:00'
+      comment: Papers Due
+    timezone: AoE
+    date: June 12-17, 2022
+    place: Gyeongju, Republic of Korea
+  - year: 2024
+    id: coling24
+    link: https://lrec-coling-2024.lrec-conf.org/
+    timeline:
+    - deadline: '2023-10-21 23:59:59'
+      comment: Long, short and position papers due
+    timezone: UTC-12
+    date: May 20 - May 25, 2024
+    place: Torino, Italy
+  accept_rate:
+  - year: 2022
+    submitted: 1563
+    accepted: 522
+    str: 33.4%(522/1563 22')
+    rate: 0.333973128598848
