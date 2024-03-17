@@ -1,0 +1,8 @@
+- title: IMC
+  accept_rates:
+  - year: 2022
+    submitted: 143
+    accepted: 38
+    str: 26.6%(38/143 22')
+    rate: 0.265734265734266
+    source: https://github.com/emeryberger/csconferences

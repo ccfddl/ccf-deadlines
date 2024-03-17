@@ -1,0 +1,8 @@
+- title: ICDM
+  accept_rates:
+  - year: 2021
+    submitted: 990
+    accepted: 98
+    str: 9.9%(98/990 21')
+    rate: 0.098989898989899
+    source: https://github.com/lixin4ever/Conference-Acceptance-Rate

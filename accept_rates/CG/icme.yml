@@ -1,0 +1,8 @@
+- title: ICME
+  accept_rates:
+  - year: 2023
+    submitted: 1415
+    accepted: 488
+    str: 34.5%(488/1415 23')
+    rate: 0.344876325088339
+    source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10219647

@@ -1,0 +1,8 @@
+- title: IJCAI
+  accept_rates:
+  - year: 2022
+    submitted: 4537
+    accepted: 679
+    str: 15.0%(679/4537 22')
+    rate: 0.149658364558078
+    source: https://github.com/emeryberger/csconferences
