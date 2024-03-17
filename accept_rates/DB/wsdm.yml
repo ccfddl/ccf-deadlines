@@ -1,6 +1,8 @@
-- year: 2023
-  submitted: 690
-  accepted: 123
-  str: 17.8%(123/690 23')
-  rate: 0.178260869565217
-  source: https://github.com/emeryberger/csconferences
+- title: WSDM
+  accept_rates:
+  - year: 2023
+    submitted: 690
+    accepted: 123
+    str: 17.8%(123/690 23')
+    rate: 0.178260869565217
+    source: https://github.com/emeryberger/csconferences

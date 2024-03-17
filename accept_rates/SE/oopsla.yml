@@ -1,6 +1,8 @@
-- year: 2023
-  submitted: 304
-  accepted: 110
-  str: 36.2%(110/304 23')
-  rate: 0.361842105263158
-  source: https://github.com/emeryberger/csconferences
+- title: OOPSLA
+  accept_rates:
+  - year: 2023
+    submitted: 304
+    accepted: 110
+    str: 36.2%(110/304 23')
+    rate: 0.361842105263158
+    source: https://github.com/emeryberger/csconferences

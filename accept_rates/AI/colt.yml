@@ -1,6 +1,8 @@
-- year: 2020
-  submitted: 388
-  accepted: 120
-  str: 30.9%(120/388 20')
-  rate: 0.309278350515464
-  source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+- title: COLT
+  accept_rates:
+  - year: 2020
+    submitted: 388
+    accepted: 120
+    str: 30.9%(120/388 20')
+    rate: 0.309278350515464
+    source: https://github.com/lixin4ever/Conference-Acceptance-Rate

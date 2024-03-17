@@ -1,6 +1,8 @@
-- year: 2022
-  submitted: 2579
-  accepted: 637
-  str: 24.7%(637/2579 22')
-  rate: 0.246994959286545
-  source: https://github.com/emeryberger/csconferences
+- title: CHI
+  accept_rates:
+  - year: 2022
+    submitted: 2579
+    accepted: 637
+    str: 24.7%(637/2579 22')
+    rate: 0.246994959286545
+    source: https://github.com/emeryberger/csconferences

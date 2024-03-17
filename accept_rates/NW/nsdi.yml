@@ -1,6 +1,8 @@
-- year: 2022
-  submitted: 402
-  accepted: 78
-  str: 19.4%(78/402 22')
-  rate: 0.194029850746269
-  source: https://github.com/emeryberger/csconferences
+- title: NSDI
+  accept_rates:
+  - year: 2022
+    submitted: 402
+    accepted: 78
+    str: 19.4%(78/402 22')
+    rate: 0.194029850746269
+    source: https://github.com/emeryberger/csconferences

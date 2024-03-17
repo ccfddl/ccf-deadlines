@@ -1,6 +1,8 @@
-- year: 2023
-  submitted: 372
-  accepted: 79
-  str: 21.2%(79/372 23')
-  rate: 0.212365591397849
-  source: https://github.com/emeryberger/csconferences
+- title: ISCA
+  accept_rates:
+  - year: 2023
+    submitted: 372
+    accepted: 79
+    str: 21.2%(79/372 23')
+    rate: 0.212365591397849
+    source: https://github.com/emeryberger/csconferences

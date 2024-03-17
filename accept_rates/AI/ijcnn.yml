@@ -1,6 +1,8 @@
-- year: 2023
-  submitted: 1888
-  accepted: 1034
-  str: 54.8%(1034/1888 23')
-  rate: 0.547669491525424
-  source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10191349
+- title: IJCNN
+  accept_rates:
+  - year: 2023
+    submitted: 1888
+    accepted: 1034
+    str: 54.8%(1034/1888 23')
+    rate: 0.547669491525424
+    source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10191349

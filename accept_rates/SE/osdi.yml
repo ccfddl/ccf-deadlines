@@ -1,6 +1,8 @@
-- year: 2023
-  submitted: 255
-  accepted: 50
-  str: 19.6%(50/255 23')
-  rate: 0.196078431372549
-  source: https://github.com/emeryberger/csconferences
+- title: OSDI
+  accept_rates:
+  - year: 2023
+    submitted: 255
+    accepted: 50
+    str: 19.6%(50/255 23')
+    rate: 0.196078431372549
+    source: https://github.com/emeryberger/csconferences

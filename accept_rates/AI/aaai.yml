@@ -1,6 +1,8 @@
-- year: 2024
-  submitted: 9862
-  accepted: 2342
-  str: 23.7%(2342/9862 24')
-  rate: 0.237477185155141
-  source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+- title: AAAI
+  accept_rates:
+  - year: 2024
+    submitted: 9862
+    accepted: 2342
+    str: 23.7%(2342/9862 24')
+    rate: 0.237477185155141
+    source: https://github.com/lixin4ever/Conference-Acceptance-Rate

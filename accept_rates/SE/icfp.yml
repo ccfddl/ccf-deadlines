@@ -1,6 +1,8 @@
-- year: 2023
-  submitted: 90
-  accepted: 33
-  str: 36.7%(33/90 23')
-  rate: 0.366666666666667
-  source: https://github.com/emeryberger/csconferences
+- title: ICFP
+  accept_rates:
+  - year: 2023
+    submitted: 90
+    accepted: 33
+    str: 36.7%(33/90 23')
+    rate: 0.366666666666667
+    source: https://github.com/emeryberger/csconferences

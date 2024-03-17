@@ -1,6 +1,8 @@
-- year: 2024
-  submitted: 1980
-  accepted: 546
-  str: 27.6%(546/1980 24')
-  rate: 0.275757575757576
-  source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+- title: AISTATS
+  accept_rates:
+  - year: 2024
+    submitted: 1980
+    accepted: 546
+    str: 27.6%(546/1980 24')
+    rate: 0.275757575757576
+    source: https://github.com/lixin4ever/Conference-Acceptance-Rate

@@ -1,6 +1,8 @@
-- year: 2022
-  submitted: 1414
-  accepted: 256
-  str: 18.1%(256/1414 22')
-  rate: 0.181046676096181
-  source: https://github.com/emeryberger/csconferences
+- title: USENIX Security
+  accept_rates:
+  - year: 2022
+    submitted: 1414
+    accepted: 256
+    str: 18.1%(256/1414 22')
+    rate: 0.181046676096181
+    source: https://github.com/emeryberger/csconferences

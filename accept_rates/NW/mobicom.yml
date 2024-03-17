@@ -1,6 +1,8 @@
-- year: 2019
-  submitted: 290
-  accepted: 55
-  str: 19.0%(55/290 19')
-  rate: 0.189655172413793
-  source: https://github.com/emeryberger/csconferences
+- title: MobiCom
+  accept_rates:
+  - year: 2019
+    submitted: 290
+    accepted: 55
+    str: 19.0%(55/290 19')
+    rate: 0.189655172413793
+    source: https://github.com/emeryberger/csconferences

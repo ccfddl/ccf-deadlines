@@ -1,6 +1,8 @@
-- year: 2022
-  submitted: 455
-  accepted: 99
-  str: 21.8%(99/455 22')
-  rate: 0.217582417582418
-  source: https://github.com/emeryberger/csconferences
+- title: CRYPTO
+  accept_rates:
+  - year: 2022
+    submitted: 455
+    accepted: 99
+    str: 21.8%(99/455 22')
+    rate: 0.217582417582418
+    source: https://github.com/emeryberger/csconferences

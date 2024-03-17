@@ -1,6 +1,8 @@
-- year: 2022
-  submitted: 372
-  accepted: 98
-  str: 26.3%(98/372 22')
-  rate: 0.263440860215054
-  source: https://github.com/emeryberger/csconferences
+- title: UIST
+  accept_rates:
+  - year: 2022
+    submitted: 372
+    accepted: 98
+    str: 26.3%(98/372 22')
+    rate: 0.263440860215054
+    source: https://github.com/emeryberger/csconferences

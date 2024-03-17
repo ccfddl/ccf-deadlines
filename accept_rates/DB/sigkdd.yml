@@ -1,6 +1,8 @@
-- year: 2023
-  submitted: 1416
-  accepted: 313
-  str: 22.1%(313/1416 23')
-  rate: 0.221045197740113
-  source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+- title: SIGKDD
+  accept_rates:
+  - year: 2023
+    submitted: 1416
+    accepted: 313
+    str: 22.1%(313/1416 23')
+    rate: 0.221045197740113
+    source: https://github.com/lixin4ever/Conference-Acceptance-Rate

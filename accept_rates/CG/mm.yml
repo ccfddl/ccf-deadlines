@@ -1,6 +1,8 @@
-- year: 2023
-  submitted: 3669
-  accepted: 902
-  str: 24.6%(902/3669 23')
-  rate: 0.245843554101935
-  source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3581783
+- title: ACM MM
+  accept_rates:
+  - year: 2023
+    submitted: 3669
+    accepted: 902
+    str: 24.6%(902/3669 23')
+    rate: 0.245843554101935
+    source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3581783
