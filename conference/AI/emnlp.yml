@@ -22,3 +22,12 @@
       timezone: UTC-12
       date: December 6 - 10, 2023
       place: Singapore
+    - year: 2024
+      id: emnlp24
+      link: https://2024.emnlp.org
+      timeline:
+        - deadline: '2024-06-15 23:59:59'
+      timezone: UTC-12
+      date: November 12 - 16, 2024
+      place: Miami, Florida, USA
+      
