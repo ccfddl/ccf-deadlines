@@ -43,3 +43,14 @@
       timezone: UTC-12
       date: MAY 20-23, 2024
       place: SAN FRANCISCO, CA
+    - year: 2025
+      id: sp25
+      link: https://www.ieee-security.org/TC/SP2025/
+      timeline:
+        - deadline: '2023-06-06 23:59:59'
+          comment: 'First Paper submission deadline'
+        - deadline: '2023-11-14 23:59:59'
+          comment: 'Second Paper submission deadline'
+      timezone: UTC-12
+      date: TBD
+      place: TBD
