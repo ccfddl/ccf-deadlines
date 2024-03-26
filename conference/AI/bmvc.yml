@@ -2,21 +2,16 @@
   description: British Machine Vision Conference
   sub: AI
   rank: C
-  dblp: bmvc
+  dblp: http://dblp.uni-trier.de/db/conf/bmvc/
   confs:
-    - year: 2021
-      id: bmvc21
-      link: https://britishmachinevisionassociation.github.io/bmvc
+    - year: 2024
+      id: bmvc24
+      link: https://bmvc2024.org/
       timeline:
-        - deadline: '2021-06-25 23:59:59'
+        - deadline: '2024-04-27 7:59:59'
+          comment: 'Abstract Submission Deadline'
+        - deadline: '2024-05-11 7:59:59'
+          comment: 'Paper Submission Deadline'
       timezone: UTC-8
-      date: November 22-25, 2021
-      place: Virtual
-    - year: 2023
-      id: bmvc23
-      link: https://www.bmvc2023.org/
-      timeline:
-        - deadline: '2023-05-12 23:59:59'
-      timezone: UTC
-      date: November 20-24, 2023
-      place: Aberdeen, UK
+      date: November 25-28, 2024
+      place: Glasgow, UK
