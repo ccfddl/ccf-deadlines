@@ -1,0 +1,8 @@
+- title: NDSS
+  accept_rates:
+  - year: 2022
+    submitted: 513
+    accepted: 83
+    str: 16.2%(83/513 22')
+    rate: 0.161793372319688
+    source: https://github.com/emeryberger/csconferences

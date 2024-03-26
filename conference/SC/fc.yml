@@ -15,3 +15,12 @@
       timezone: UTC-12
       date: February 14-18, 2022
       place: Radisson Grenada Beach Resort Grenada
+    - year: 2024
+      id: fc24
+      link: https://fc24.ifca.ai/
+      timeline:
+        - deadline: '2023-09-18 23:59:59'
+          comment: 'Submission deadline'
+      timezone: UTC-12
+      date: March 4-8, 2024
+      place: Willemstad, Curaçao

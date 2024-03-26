@@ -12,3 +12,11 @@
       timezone: UTC-5
       date: July 1-10, 2023
       place: San Francisco Bay, USA and KSIR Virtual Conference Center, USA
+    - year: 2024
+      id: seke24
+      link: https://ksiresearch.org/seke/seke24.html
+      timeline:
+        - deadline: '2024-06-10 23:59:59'
+      timezone: UTC-5
+      date: October 28-November 5, 2024
+      place: Amalfi, Italy / Virtual venue

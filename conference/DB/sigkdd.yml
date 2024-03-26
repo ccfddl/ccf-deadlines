@@ -30,14 +30,26 @@
       place: Long Beach Convention & Entertainment Center, USA
     - year: 2024
       id: sigkdd24
-      link: https://kdd.org/kdd2024/
+      link: https://kdd2024.kdd.org/research-track-call-for-papers/
       timeline:
         - abstract_deadline: '2024-02-01 23:59:59'
           deadline: '2024-02-08 23:59:59'
-          comment: '1st deadline'
-        - abstract_deadline: '2024-07-25 23:59:59'
-          deadline: '2024-08-01 23:59:59'
-          comment: '1st deadline'
+          # comment: '1st deadline'
       timezone: AoE
-      date: August 18-22, 2023 
+      date: August 25-29, 2024
       place: Barcelona, Spain
+    - year: 2025
+      id: sigkdd25
+      link: https://kdd2024.kdd.org/research-track-call-for-papers/
+      timeline:
+        - abstract_deadline: '2024-08-01 23:59:59'
+          deadline: '2024-08-08 23:59:59'
+          comment: '1st round of 2 total rounds'
+        - abstract_deadline: '2025-02-01 23:59:59'
+          deadline: '2025-02-08 23:59:59'
+          comment: '2st round of 2 total rounds'
+      timezone: AoE
+      date: TBD, 2025
+      place: TBD
+
+      

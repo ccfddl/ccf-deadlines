@@ -1,0 +1,15 @@
+- title: APNet
+  description: Asia-Pacific Workshop on Networking
+  sub: NW
+  rank: C
+  dblp: apnet
+  confs:
+    - year: 2024
+      id: apnet24
+      link: https://conferences.sigcomm.org/events/apnet2024/
+      timeline:
+        - abstract_deadline: '2024-03-08 23:59:59'
+          deadline: '2024-03-15 23:59:59'
+      timezone: UTC-12
+      date: August 3-4, 2024
+      place: Sydney, Australia, co-located with SIGCOMM'24
