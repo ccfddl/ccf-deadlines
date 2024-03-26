@@ -1,0 +1,8 @@
+- title: RTSS
+  accept_rates:
+  - year: 2022
+    submitted: 128
+    accepted: 37
+    str: 28.9%(37/128 22')
+    rate: 0.2890625
+    source: https://github.com/emeryberger/csconferences

@@ -1,0 +1,8 @@
+- title: ASE
+  accept_rates:
+  - year: 2022
+    submitted: 531
+    accepted: 116
+    str: 21.8%(116/531 22')
+    rate: 0.218455743879473
+    source: https://github.com/emeryberger/csconferences

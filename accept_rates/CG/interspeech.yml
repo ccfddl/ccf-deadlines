@@ -1,0 +1,8 @@
+- title: InterSpeech
+  accept_rates:
+  - year: 2021
+    submitted: 1990
+    accepted: 963
+    str: 48.4%(963/1990 21')
+    rate: 0.48391959798995
+    source: https://github.com/emeryberger/csconferences
