@@ -24,10 +24,8 @@
       id: bmvc24
       link: https://bmvc2024.org/
       timeline:
-        - deadline: '2024-04-27 7:59:59'
-          comment: 'Abstract Submission Deadline'
-        - deadline: '2024-05-11 7:59:59'
-          comment: 'Paper Submission Deadline'
+        - abstract_deadline: '2024-04-27 07:59:59'
+          deadline: '2024-05-11 07:59:59'
       timezone: UTC+8
       date: November 25-28, 2024
       place: Glasgow, UK
