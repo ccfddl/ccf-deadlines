@@ -20,3 +20,12 @@
       timezone: UTC
       date: November 20-24, 2023
       place: Aberdeen, UK
+    - year: 2024
+      id: bmvc24
+      link: https://bmvc2024.org/
+      timeline:
+        - abstract_deadline: '2024-04-27 07:59:59'
+          deadline: '2024-05-11 07:59:59'
+      timezone: UTC+8
+      date: November 25-28, 2024
+      place: Glasgow, UK
