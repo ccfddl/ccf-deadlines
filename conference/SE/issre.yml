@@ -19,10 +19,8 @@
       id: issre24
       link: https://issre.github.io/2024/index.html
       timeline:
-        - deadline: '2024-05-03 23:59:59'
-          comment: 'Abstract submission'
-        - deadline: '2021-05-10 23:59:59'
-          comment: 'Full paper submission'
+        - abstract_deadline: '2024-05-03 23:59:59'
+          deadline: '2024-05-10 23:59:59'
       timezone: AoE
-      date: October 28-31, 2023
-      place:  Tsukuba, Japan
+      date: October 28-31, 2024
+      place: Tsukuba, Japan
