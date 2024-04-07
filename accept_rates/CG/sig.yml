@@ -1,0 +1,8 @@
+- title: ACM SIGGRAPH
+  accept_rates:
+  - year: 2022
+    submitted: 610
+    accepted: 133
+    str: 21.8%(133/610 22')
+    rate: 0.218032786885246
+    source: https://github.com/emeryberger/csconferences

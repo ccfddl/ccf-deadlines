@@ -1,0 +1,8 @@
+- title: ECCV
+  accept_rates:
+  - year: 2022
+    submitted: 5804
+    accepted: 1645
+    str: 28.3%(1645/5804 22')
+    rate: 0.28342522398346
+    source: https://github.com/emeryberger/csconferences

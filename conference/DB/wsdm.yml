@@ -28,3 +28,11 @@
       timezone: UTC-12
       date: March 4 - March 8, 2024
       place: Mérida, México
+    - year: 2025
+      id: wsdm25
+      link: https://www.wsdm-conference.org/2025/
+      timeline:
+        - deadline: '2024-08-14 23:59:59'
+      timezone: UTC-12
+      date: March 10 - March 14, 2025
+      place: Hannover, Germany
