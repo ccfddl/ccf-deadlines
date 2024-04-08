@@ -1,0 +1,8 @@
+- title: ECAI
+  accept_rates:
+  - year: 2023
+    submitted: 1631 
+    accepted: 391
+    str: 24.0%(391/1631 23')
+    rate: 0.23973022685469
+    source: https://github.com/tranhungnghiep/AI-Conference-Info
