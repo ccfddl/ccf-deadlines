@@ -25,7 +25,10 @@
       id: icics24
       link: http://icics2024.aegean.gr/
       timeline:
-        - deadline: '2024-02-02 23:59:59'
+        - deadline: '2024-02-16 23:59:59'
+          comment: 'First Cycle'
+        - deadline: '2024-04-19 23:59:59'
+          comment: 'Second Cycle'
       timezone: AoE
       date: August 26-28, 2024
       place: Mytilene, Greece
