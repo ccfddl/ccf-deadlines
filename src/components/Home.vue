@@ -162,117 +162,129 @@ export default {
     },
     getAllConf() {
       // get all conf
-      let promise1 = this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
-        const allconf = yaml.load(response.body)
-        // preprocess
-        let doc = []
-        let tmpTime = moment.tz(new Date(), tz)
-        for (let i = 0; i < allconf.length; i++) {
-          let curConf = allconf[i]
-          for(let j = 0; j < curConf.confs.length; j++){
-            let curItem = curConf.confs[j]
-            curItem.title = curConf.title
-            curItem.description = curConf.description
-            curItem.sub = curConf.sub
-            curItem.rank = curConf.rank
-            curItem.displayrank = this.rankoptions[curItem.rank]
-            curItem.dblp = curConf.dblp
-            let len = curItem.timeline.length
-            curItem.deadline = curItem.timeline[len-1].deadline
-            curItem.abstract_deadline = curItem.timeline[len-1].abstract_deadline
-            curItem.comment = curItem.timeline[len-1].comment
-            curItem.ddls = []
-            let flag = false;
-            for(let k = 0; k < len; k++) {
-              let ddlTime = moment(curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone))
-              let diffTime = ddlTime.diff(tmpTime)
-              // abstract type:0 submission type:1
-              if(curItem.timeline[k].abstract_deadline){
-                curItem.ddls.push({'timepoint': curItem.timeline[k].abstract_deadline + this.utcMap.get(curItem.timezone), 'type':0})
+      let promise1 = new Promise((resolve)=> {
+        this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
+          const allconf = yaml.load(response.body)
+          // preprocess
+          let doc = []
+          let tmpTime = moment.tz(new Date(), tz)
+          for (let i = 0; i < allconf.length; i++) {
+            let curConf = allconf[i]
+            for (let j = 0; j < curConf.confs.length; j++) {
+              let curItem = curConf.confs[j]
+              curItem.title = curConf.title
+              curItem.description = curConf.description
+              curItem.sub = curConf.sub
+              curItem.rank = curConf.rank
+              curItem.displayrank = this.rankoptions[curItem.rank]
+              curItem.dblp = curConf.dblp
+              let len = curItem.timeline.length
+              curItem.deadline = curItem.timeline[len - 1].deadline
+              curItem.abstract_deadline = curItem.timeline[len - 1].abstract_deadline
+              curItem.comment = curItem.timeline[len - 1].comment
+              curItem.ddls = []
+              let flag = false;
+              for (let k = 0; k < len; k++) {
+                let ddlTime = moment(curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone))
+                let diffTime = ddlTime.diff(tmpTime)
+                // abstract type:0 submission type:1
+                if (curItem.timeline[k].abstract_deadline) {
+                  curItem.ddls.push({
+                    'timepoint': curItem.timeline[k].abstract_deadline + this.utcMap.get(curItem.timezone),
+                    'type': 0
+                  })
+                }
+                curItem.ddls.push({
+                  'timepoint': curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone),
+                  'type': 1
+                })
+                if (!flag && diffTime >= 0) {
+                  curItem.deadline = curItem.timeline[k].deadline
+                  curItem.abstract_deadline = curItem.timeline[k].abstract_deadline
+                  curItem.comment = curItem.timeline[k].comment
+                  flag = true;
+                }
               }
-              curItem.ddls.push({'timepoint': curItem.timeline[k].deadline + this.utcMap.get(curItem.timezone), 'type':1})
-              if (!flag && diffTime >= 0) {
-                curItem.deadline = curItem.timeline[k].deadline
-                curItem.abstract_deadline = curItem.timeline[k].abstract_deadline
-                curItem.comment = curItem.timeline[k].comment
-                flag = true;
-              }
+              doc.push(curItem)
             }
-            doc.push(curItem)
           }
-        }
 
-        let curTime = moment.tz(new Date(), tz)
-        for (let i = 0; i < doc.length; i++) {
-          let curDoc = doc[i]
-          curDoc.subname = this.typeMap.get(curDoc.sub)
-          if (curDoc.deadline === 'TBD') {
-            curDoc.remain = 0
-            curDoc.status = 'TBD'
-          } else {
-            if (curDoc.timezone === 'AoE') {
-              curDoc.timezone = 'UTC-12'
-            } else if (curDoc.timezone === 'UTC') {
-              curDoc.timezone = 'UTC+0'
-            }
-
-            let ddlTime = moment(curDoc.deadline + this.utcMap.get(curDoc.timezone))
-            curDoc.localDDL = ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z')
-            curDoc.originDDL = curDoc.deadline + ' ' + curDoc.timezone
-            if(curDoc.abstract_deadline) {
-              let absTime = moment(curDoc.abstract_deadline + this.utcMap.get(curDoc.timezone))
-              if(!curDoc.comment) {
-                curDoc.comment = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY')+'.'
-              }
-            }
-            // alert(ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z'))
-            let diffTime = ddlTime.diff(curTime)
-            if (diffTime <= 0) {
+          let curTime = moment.tz(new Date(), tz)
+          for (let i = 0; i < doc.length; i++) {
+            let curDoc = doc[i]
+            curDoc.subname = this.typeMap.get(curDoc.sub)
+            if (curDoc.deadline === 'TBD') {
               curDoc.remain = 0
-              curDoc.status = 'FIN'
+              curDoc.status = 'TBD'
             } else {
-              curDoc.remain = diffTime
-              curDoc.status = 'RUN'
+              if (curDoc.timezone === 'AoE') {
+                curDoc.timezone = 'UTC-12'
+              } else if (curDoc.timezone === 'UTC') {
+                curDoc.timezone = 'UTC+0'
+              }
+
+              let ddlTime = moment(curDoc.deadline + this.utcMap.get(curDoc.timezone))
+              curDoc.localDDL = ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z')
+              curDoc.originDDL = curDoc.deadline + ' ' + curDoc.timezone
+              if (curDoc.abstract_deadline) {
+                let absTime = moment(curDoc.abstract_deadline + this.utcMap.get(curDoc.timezone))
+                if (!curDoc.comment) {
+                  curDoc.comment = 'abstract deadline on ' + absTime.tz(this.timeZone).format('MMM D, YYYY') + '.'
+                }
+              }
+              // alert(ddlTime.tz(this.timeZone).format('ddd MMM Do YYYY HH:mm:ss z'))
+              let diffTime = ddlTime.diff(curTime)
+              if (diffTime <= 0) {
+                curDoc.remain = 0
+                curDoc.status = 'FIN'
+              } else {
+                curDoc.remain = diffTime
+                curDoc.status = 'RUN'
+              }
+              // check cachedLikes
+              if (this.cachedLikes && this.cachedLikes.indexOf(curDoc.title + curDoc.id) >= 0) {
+                curDoc.isLike = true
+              } else {
+                curDoc.isLike = false
+              }
             }
-            // check cachedLikes
-            if(this.cachedLikes&&this.cachedLikes.indexOf(curDoc.title + curDoc.id) >= 0) {
-              curDoc.isLike = true
-            }else {
-              curDoc.isLike = false
-            }
+            this.allconfList.push(curDoc)
+            this.allconfMap.set(curDoc.title + curDoc.year, curDoc)
+            resolve('request1')
           }
-          this.allconfList.push(curDoc)
-          this.allconfMap.set(curDoc.title + curDoc.year, curDoc)
-        }
-      }, () => {
-        alert('sorry your network is not stable!')
+        }, () => {
+          alert('sorry your network is not stable!')
+        })
       })
 
-      let promise2 = this.$http.get(this.publicPath + 'conference/allacc.yml').then(response => {
-        const allacc = yaml.load(response.body)
-        for (let i = 0; i < allacc.length; ++i) {
-          let cur_item = allacc[i].accept_rates
+      let promise2 = new Promise((resolve)=> {
+        this.$http.get(this.publicPath + 'conference/allacc.yml').then(response => {
+          const allacc = yaml.load(response.body)
+          for (let i = 0; i < allacc.length; ++i) {
+            let cur_item = allacc[i].accept_rates
 
-          for (let j = 0; j < cur_item.length; ++j) {
-            let cur_acc = cur_item[j];
-            for(let y = 1; y <= 3; ++ y) {
-              if(this.allconfMap.has(allacc[i].title + (cur_acc.year + y))){
-                this.allconfMap.get(allacc[i].title + (cur_acc.year + y)).acc = cur_acc.str
-                // break;
+            for (let j = 0; j < cur_item.length; ++j) {
+              let cur_acc = cur_item[j];
+              for (let y = 1; y <= 3; ++y) {
+                if (this.allconfMap.has(allacc[i].title + (cur_acc.year + y))) {
+                  this.allconfMap.get(allacc[i].title + (cur_acc.year + y)).acc = cur_acc.str
+                  // break;
+                }
               }
             }
           }
-        }
-      }, () => {
-        alert('sorry your network is not stable!')
+          resolve('request2')
+        }, () => {
+          alert('sorry your network is not stable!')
+        })
       })
 
-      Promise.all([promise1, promise2]).then(() => {
-            this.showConf(this.typesList, this.rankList, this.input, 1)
-          }
-      ).catch(error => {
-        console.error('Error occurred:', error);
-      })
+        Promise.all([promise1, promise2]).then(() => {
+              this.showConf(this.typesList, this.rankList, this.input, 1)
+            }
+        ).catch(error => {
+          console.error('Error occurred:', error);
+        })
     },
     showConf (types, rank, input, page) {
       let filterList = this.allconfList
