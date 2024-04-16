@@ -16,7 +16,8 @@
       id: prcv24
       link: http://www.prcv.cn/
       timeline:
-        - deadline: '2024-04-15 23:59:59'
+        - abstract deadline: '2024-04-18 23:59:59'
+          deadline: '2024-04-28 23:59:59'
       timezone: UTC+8
       date: Oct 18-20, 2024
       place: Urumchi, China
