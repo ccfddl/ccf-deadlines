@@ -38,7 +38,7 @@
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
             <el-row><el-tag size="mini" type="" effect="plain">{{scope.row.displayrank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
-            <el-row style="padding-top: 5px"><span class="conf-sub">{{scope.row.subname}}</span></el-row>
+            <el-row style="padding-top: 5px"><span v-if="typeof scope.row.acc === 'string'">Acc. Rate: {{scope.row.acc}} </span><span class="conf-sub">{{scope.row.subname}}</span></el-row>
             </div>
         </template>
       </el-table-column>
@@ -129,6 +129,7 @@ export default {
       checkList: [],
       subList: [],
       allconfList: [],
+      allconfMap: new Map(),
       showList: [],
       showNumber: 0,
       typeMap: new Map(),
@@ -161,7 +162,7 @@ export default {
     },
     getAllConf() {
       // get all conf
-      this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
+      let promise1 = this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
         const allconf = yaml.load(response.body)
         // preprocess
         let doc = []
@@ -241,10 +242,36 @@ export default {
             }
           }
           this.allconfList.push(curDoc)
+          this.allconfMap.set(curDoc.title + curDoc.year, curDoc)
         }
-        this.showConf(this.typesList, this.rankList, this.input, 1)
       }, () => {
         alert('sorry your network is not stable!')
+      })
+
+      let promise2 = this.$http.get(this.publicPath + 'conference/allacc.yml').then(response => {
+        const allacc = yaml.load(response.body)
+        for (let i = 0; i < allacc.length; ++i) {
+          let cur_item = allacc[i].accept_rates
+
+          for (let j = 0; j < cur_item.length; ++j) {
+            let cur_acc = cur_item[j];
+            for(let y = 1; y <= 3; ++ y) {
+              if(this.allconfMap.has(allacc[i].title + (cur_acc.year + y))){
+                this.allconfMap.get(allacc[i].title + (cur_acc.year + y)).acc = cur_acc.str
+                // break;
+              }
+            }
+          }
+        }
+      }, () => {
+        alert('sorry your network is not stable!')
+      })
+
+      Promise.all([promise1, promise2]).then(() => {
+            this.showConf(this.typesList, this.rankList, this.input, 1)
+          }
+      ).catch(error => {
+        console.error('Error occurred:', error);
       })
     },
     showConf (types, rank, input, page) {
