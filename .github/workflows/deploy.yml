@@ -30,6 +30,7 @@ jobs:
       run: |
         mkdir -p public/conference && cd public/conference
         awk 1 `find ../../conference -name '*.yml' -not -path '**/types.yml'` > allconf.yml
+        awk 1 `find ../../accept_rates -name '*.yml'` > allacc.yml
         cp ../../conference/types.yml .
         cd ../..
     - name: Get yarn cache directory path
