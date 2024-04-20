@@ -10,10 +10,6 @@
       timeline:
         - deadline: '2024-04-22 23:59:59'
           comment: 'Submission deadline (papers and posters)'
-        - deadline: '2021-07-07 23:59:59'
-          comment: 'Revised version deadline'
-        - deadline: '2021-07-25 23:59:59'
-          comment: 'Camera-ready deadline'
       timezone: UTC-0
       date: August 21-23, 2022
       place: McGill University, Montreal, Canada
