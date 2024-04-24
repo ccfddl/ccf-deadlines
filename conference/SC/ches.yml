@@ -17,7 +17,7 @@
         - deadline: '2022-04-15 23:59:59'
           comment: 'Schedule for TCHES Volume 2022/4'
       timezone: AoE
-      date: September , 2022
+      date: September 18-21, 2022
       place: Beijing, China
     - year: 2023
       id: ches23
@@ -47,5 +47,5 @@
         - deadline: '2024-04-15 23:59:59'
           comment: 'Schedule for TCHES Volume 2023/4'
       timezone: AoE
-      date: September, 2024
+      date: September 4-7, 2024
       place: Halifax, Canada
