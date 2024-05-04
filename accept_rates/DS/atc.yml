@@ -1,0 +1,8 @@
+- title: USENIX ATC
+  accept_rates:
+  - year: 2021
+    submitted: 341
+    accepted: 64
+    str: 18.8%(64/341 21')
+    rate: 0.187683284457478
+    source: https://github.com/emeryberger/csconferences

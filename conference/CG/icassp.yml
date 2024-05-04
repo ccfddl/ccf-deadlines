@@ -28,3 +28,11 @@
       timezone: UTC-12
       date: April 14-19, 2024
       place: COEX, Seoul, Korea
+    - year: 2025
+      id: icassp25
+      link: https://2025.ieeeicassp.org/
+      timeline:
+        - deadline: '2024-08-28 23:59:59'
+      timezone: UTC-12
+      date: April 6-11, 2025
+      place: Hyderabad, India

@@ -80,3 +80,22 @@
       timezone: UTC-7
       date: August 25-29, 2024
       place: Guangzhou, China (and hybrid)
+    - year: 2025
+      id: vldb25
+      link: http://www.vldb.org/2025/
+      timeline:
+        - deadline: '2024-04-01 17:00:00'
+        - deadline: '2024-05-01 17:00:00'
+        - deadline: '2024-06-01 17:00:00'
+        - deadline: '2024-07-01 17:00:00'
+        - deadline: '2024-08-01 17:00:00'
+        - deadline: '2024-09-01 17:00:00'
+        - deadline: '2024-10-01 17:00:00'
+        - deadline: '2024-11-01 17:00:00'
+        - deadline: '2024-12-01 17:00:00'
+        - deadline: '2025-01-01 17:00:00'
+        - deadline: '2025-02-01 17:00:00'
+        - deadline: '2025-03-01 17:00:00'
+      timezone: UTC-7
+      date: TBD
+      place: London, United Kingdom

@@ -1,0 +1,8 @@
+- title: ICASSP
+  accept_rates:
+  - year: 2024
+    submitted: 5796
+    accepted: 2812
+    str: 48.5%(2812/5796 24')
+    rate: 0.485162180814355
+    source: https://github.com/lixin4ever/Conference-Acceptance-Rate

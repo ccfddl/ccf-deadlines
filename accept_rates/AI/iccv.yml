@@ -1,0 +1,8 @@
+- title: ICCV
+  accept_rates:
+  - year: 2023
+    submitted: 8260
+    accepted: 2160
+    str: 26.2%(2160/8260 23')
+    rate: 0.261501210653753
+    source: https://github.com/emeryberger/csconferences

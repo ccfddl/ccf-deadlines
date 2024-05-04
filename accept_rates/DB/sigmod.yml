@@ -1,0 +1,8 @@
+- title: SIGMOD
+  accept_rates:
+  - year: 2023
+    submitted: 660
+    accepted: 186
+    str: 28.2%(186/660 23')
+    rate: 0.281818181818182
+    source: https://github.com/emeryberger/csconferences

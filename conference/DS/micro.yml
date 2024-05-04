@@ -37,3 +37,14 @@
       timezone: UTC-7
       date: Oct, 2023
       place: Toronto, Canada
+    - year: 2024
+      id: micro24
+      link: https://microarch.org/micro57/
+      timeline:
+        - deadline: '2024-04-11 11:59:59'
+          comment: 'Abstract Deadline'
+        - deadline: '2024-04-18 11:59:59'
+          comment: 'Full Paper Deadline'
+      timezone: UTC-5
+      date: November 2-6, 2024
+      place: Austin, Texas, USA

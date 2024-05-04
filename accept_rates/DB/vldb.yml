@@ -1,0 +1,8 @@
+- title: VLDB
+  accept_rates:
+  - year: 2023
+    submitted: 1074
+    accepted: 266
+    str: 24.8%(266/1074 23')
+    rate: 0.247672253258845
+    source: https://github.com/emeryberger/csconferences
