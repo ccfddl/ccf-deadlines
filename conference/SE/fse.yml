@@ -35,3 +35,12 @@
       timezone: AoE
       date: July 15-19, 2024
       place: Porto de Galinas, Brazil
+    - year: 2025
+      id: fse25
+      link: https://conf.researchr.org/home/fse-2025
+      timeline:
+        - abstract_deadline: '2024-09-05 23:59:59'
+          deadline: '2024-09-12 23:59:59'
+      timezone: AoE
+      date: June 23-27, 2025
+      place: Trondheim, Norway
