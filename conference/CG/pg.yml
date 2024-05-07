@@ -4,6 +4,14 @@
   rank: B
   dblp: pg
   confs:
+    - year: 2024
+      id: pg24
+      link: http://pg2024.hsu.edu.cn/
+      timeline:
+        - deadline: '2024-06-07 23:59:59'
+      timezone: AoE
+      date: October 13-16, 2024
+      place: Huangshan, China
     - year: 2023
       id: pg23
       link: https://pg2023.org/
