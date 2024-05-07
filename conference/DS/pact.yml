@@ -15,3 +15,14 @@
       timezone: AoE
       date: October 21-October 25, 2023
       place: Vienna, Austria
+    - year: 2024
+      id: pact24
+      link: https://pact2024.github.io/
+      timeline:
+        - deadline: '2024-03-25 23:59:59'
+          comment: 'Abstract submission deadline'
+        - deadline: '2024-04-01 23:59:59'
+          comment: 'Paper submission deadline'
+      timezone: AoE
+      date: October 13–16, 2024
+      place: Long Beach, California, USA
