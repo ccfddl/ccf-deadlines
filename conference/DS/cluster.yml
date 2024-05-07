@@ -22,3 +22,12 @@
       timezone: AoE
       date: October 31-November 3, 2023
       place: Santa Fe, New Mexico, USA
+    - year: 2024
+      id: cluster24
+      link: https://clustercomp.org/2024
+      timeline:
+        - deadline: '2024-05-09 23:59:59'
+          comment: 'Full Paper Deadline'
+      timezone: AoE
+      date: September 24-27, 2024
+      place: Kobe, Japan
