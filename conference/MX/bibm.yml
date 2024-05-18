@@ -31,3 +31,14 @@
       timezone: UTC-5
       date: Dec 5-8, 2023
       place: Istanbul, Turkey
+    - year: 2024
+      id: bibm24
+      link: https://ieeebibm.org/BIBM2024/
+      timeline:
+        - deadline: '2024-06-20 17:00:00'
+          comment: First Round, papers submitted by the June 20 deadline will be reviewed and notified by Aug 15
+        - deadline: '2024-08-16 17:00:00'
+          comment: Second Round, papers submitted by the Aug 16, 2024 deadline, will be reviewed and notified by the Oct 16, 2024
+      timezone: UTC-5
+      date: Dec 3-6, 2024
+      place: Lisbon, Portugal
