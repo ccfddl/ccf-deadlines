@@ -30,9 +30,9 @@
       place: Shanghai, China
     - year: 2024
       id: icdm2024
-      link: http://18.133.154.107/dates/
+      link: https://icdm2024.org/dates/
       timeline:
-        - deadline: '2024-07-01 23:59:59'
+        - deadline: '2024-06-14 23:59:59'
       timezone: AoE
       date: December 9-12, 2024
-      place: Abu Dhabi,UAE
+      place: Abu Dhabi, UAE
