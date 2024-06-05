@@ -31,3 +31,12 @@
       timezone: UTC-12
       date: February 20 - February 27, 2024
       place: Vancouver, British Columbia, Canada
+    - year: 2025
+      id: aaai25
+      link: https://aaai.org/aaai-conference/save-the-date-aaai-25/
+      timeline:
+        - abstract_deadline: '2024-08-07 23:59:59'
+          deadline: '2024-08-15 23:59:59'
+      timezone: UTC-12
+      date: February 25 - March 4, 2025
+      place: PHILADELPHIA, PENNSYLVANIA, USA

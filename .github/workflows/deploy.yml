@@ -45,6 +45,7 @@ jobs:
           ${{ runner.os }}-yarn-
     - name: Install dependency and build
       run: |
+        yarn config set strict-ssl false 
         yarn install
         yarn build
     - name: Config Git
