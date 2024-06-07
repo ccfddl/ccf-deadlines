@@ -1,0 +1,27 @@
+-title: ICFEM
+  description: International Conference on Formal Engineering Methods
+  sub: SE
+  rank: C
+  dblp: icfem
+  confs:
+    - year: 2024
+      id: icfem24
+      link: https://icfem2024.info/
+      timeline:
+        - deadline: '2024-06-24 23:59:59'
+          comment: 'Paper Submission'
+      timezone: AoE
+      date: December 02 - December 06, 2024
+      place: Hiroshima, Japan
+    - year: 2023
+      id: icfem23
+      link: https://formal-analysis.com/icfem/2023/
+      timeline:
+        - deadline: '2023-05-21 23:59:59'
+          comment: 'Abstract Submission'
+        - deafline: '2023-05-28 23:59:59'
+          comment: 'Full Paper Submission'
+      timezone: AoE
+      date: November 21 - November 24, 2023
+      place: Brisbane, Australia
+
