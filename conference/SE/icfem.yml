@@ -19,7 +19,7 @@
       timeline:
         - deadline: '2023-05-21 23:59:59'
           comment: 'Abstract Submission'
-        - deafline: '2023-05-28 23:59:59'
+        - deadline: '2023-05-28 23:59:59'
           comment: 'Full Paper Submission'
       timezone: AoE
       date: November 21 - November 24, 2023
