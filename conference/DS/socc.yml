@@ -4,12 +4,14 @@
   rank: B
   dblp: socc
   confs:
-    - year: 2023
-      id: socc23
-      link: https://acmsocc.org/2023/
+    - year: 2024
+      id: socc24
+      link: https://acmsocc.org/2024/
       timeline:
-        - deadline: '2023-06-09 13:59:00'
-          comment: 'abstract and full paper deadline'
-      timezone: UTC-7
-      date: October 30 - November 1, 2023
-      place: California, USA
+        - abstract_deadline: '2024-07-08 17:00:00'
+          comment: 'abstract deadline'
+        - deadline: '2024-07-15 17:00:00'
+          comment: 'full paper deadline'
+      timezone: UTC-4
+      date: November 20 - November 22, 2024
+      place: Redmond, USA
