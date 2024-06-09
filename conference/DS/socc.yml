@@ -18,9 +18,7 @@
       link: https://acmsocc.org/2024/
       timeline:
         - abstract_deadline: '2024-07-08 17:00:00'
-          comment: 'abstract deadline'
-        - deadline: '2024-07-15 17:00:00'
-          comment: 'full paper deadline'
+          deadline: '2024-07-15 17:00:00'
       timezone: UTC-4
       date: November 20-22, 2024
       place: Redmond, USA
