@@ -34,3 +34,11 @@
       timezone: UTC-12
       date: May 07-11, 2024
       place: Vienna, Austria
+    - year: 2025
+      id: iclr25
+      link: https://iclr.cc
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC+8
+      date: April 24-28, 2025
+      place: Singapore
