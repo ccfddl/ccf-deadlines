@@ -18,4 +18,15 @@
           comment: 'Spring Cycle Full Paper Submission'
       timezone: UTC+1
       date: September 26-30, 2022
-      place: Copenhagen, Denmark 
+      place: Copenhagen, Denmark
+    - year: 2024
+      id: esorics24
+      link: https://esorics2024.org/
+      timeline:
+        - deadline: '2024-01-08 23:59:59'
+          comment: 'First Submission deadline'
+        - deadline: '2024-04-19 23:59:59'
+          comment: 'Second Submission deadline'
+      timezone: AoE
+      date: September 16-20, 2024
+      place: Bydgoszcz, Poland

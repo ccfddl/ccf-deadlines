@@ -1,0 +1,8 @@
+- title: CAV
+  accept_rates:
+  - year: 2022
+    submitted: 209
+    accepted: 40
+    str: 19.1%(40/209 22')
+    rate: 0.191387559808612
+    source: https://github.com/emeryberger/csconferences

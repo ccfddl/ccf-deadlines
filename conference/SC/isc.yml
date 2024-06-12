@@ -13,3 +13,12 @@
       timezone: UTC-12
       date: November 9 - 13, 2021
       place: Bali, Indonesia
+    - year: 2024
+      id: isc24
+      link: https://isc24.cs.gmu.edu/
+      timeline:
+        - deadline: '2024-06-13 23:59:59'
+          comment: 'Submission Deadline'
+      timezone: AoE
+      date: Oct 23 - 25, 2024
+      place: VA, USA

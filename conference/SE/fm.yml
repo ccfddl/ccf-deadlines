@@ -1,7 +1,7 @@
 - title: FM
-  description:  International Symposium on Formal Methods
+  description: International Symposium on Formal Methods
   sub: SE
-  rank: B
+  rank: A
   dblp: fm
   confs:
     - year: 2021
@@ -15,3 +15,18 @@
       timezone: AoE
       date: November 20-26, 2021
       place: Beijng, China
+    - year: 2024
+      id: fm24
+      link: https://www.fm24.polimi.it/
+      timeline:
+        - deadline: '2024-04-15 23:59:00'
+          comment: 'Abstract Submission'
+        - deadline: '2024-04-19 23:59:00'
+          comment: 'Full Paper Submission'
+        - deadline: '2024-06-10 23:59:00'
+          comment: 'Paper Notification'
+        - deadline: '2024-07-01 23:59:00'
+          comment: 'Final Version'
+      timezone: AoE
+      date: September 09-13, 2024
+      place: Milan, Italy

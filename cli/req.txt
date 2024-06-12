@@ -2,3 +2,4 @@ tabulate
 yaml
 pyyaml
 requests
+termcolor

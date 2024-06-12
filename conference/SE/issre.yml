@@ -15,3 +15,12 @@
       timezone: AoE
       date: October 9-12, 2023
       place:  Florence, Italy
+    - year: 2024
+      id: issre24
+      link: https://issre.github.io/2024/index.html
+      timeline:
+        - deadline: '2024-05-15 23:59:59'
+          comment: 'Research Track Paper submission deadline'
+      timezone: AoE
+      date: October 28-31, 2024
+      place: Tsukuba, Japan

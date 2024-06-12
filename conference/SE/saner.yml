@@ -15,3 +15,23 @@
       timezone: AoE
       date: March 15-18, 2022
       place: University of Hawaii in Honolulu, Hawaii
+    - year: 2024
+      id: saner2024
+      link: https://conf.researchr.org/home/saner-2024
+      timeline:
+        - abstract_deadline: '2023-10-13 23:59:59'
+          deadline: '2023-10-29 23:59:59'
+          comment: 'Research Papers Paper Submission'
+      timezone: AoE
+      date: March 12-15, 2024
+      place: Rovaniemi, Finland
+    - year: 2025
+      id: saner2025
+      link: https://conf.researchr.org/home/saner-2025
+      timeline:
+        - abstract_deadline: '2024-10-04 23:59:59'
+          deadline: '2024-10-11 23:59:59'
+          comment: 'Research Papers Paper Submission'
+      timezone: AoE
+      date: March 4-7, 2025
+      place: Montréal, Québec, Canada

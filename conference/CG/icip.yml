@@ -12,3 +12,11 @@
       timezone: UTC+0
       date: Oct 8-11, 2023
       place: Kuala Lumpur, Malaysia
+    - year: 2024
+      id: icip24
+      link: https://2024.ieeeicip.org/
+      timeline:
+        - deadline: '2024-01-31 23:59:59'
+      timezone: UTC+0
+      date: Oct 27-30, 2024
+      place: Abu Dhabi, United Arab Emirates

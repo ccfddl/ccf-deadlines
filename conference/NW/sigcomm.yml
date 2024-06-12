@@ -31,3 +31,12 @@
       timezone: UTC
       date: September 10-14, 2023
       place: New York City, US
+    - year: 2024
+      id: sigcomm24
+      link: https://conferences.sigcomm.org/sigcomm/2024/
+      timeline:
+        - abstract_deadline: '2024-01-26 23:59:59'
+          deadline: '2024-02-02 23:59:59'
+      timezone: UTC
+      date: August 4 - 8, 2024
+      place: Sydney, Australia

@@ -24,3 +24,11 @@
       timezone: UTC-12
       date: July 9-14, 2023
       place: Toronto, Canada
+    - year: 2024
+      id: acl24
+      link: https://2024.aclweb.org/
+      timeline:
+        - deadline: '2024-02-15 23:59:59'
+      timezone: UTC-12
+      date: August 11-16, 2024
+      place: Bangkok, Thailand

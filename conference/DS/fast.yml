@@ -28,3 +28,19 @@
       timezone: UTC-7
       date: FEBRUARY 20-23, 2023
       place: SANTA CLARA, CA, USA
+    - year: 2024
+      id: fast24
+      link: https://www.usenix.org/conference/fast24
+      timeline:
+        - deadline: '2023-09-21 23:59:59'
+      timezone: UTC-7
+      date: FEBRUARY 27-29, 2024
+      place: SANTA CLARA, CA, USA
+    - year: 2025
+      id: fast25
+      link: https://www.usenix.org/conference/fast25
+      timeline:
+        - deadline: '2024-09-17 23:59:59'
+      timezone: UTC-7
+      date: FEBRUARY 25-27, 2025
+      place: SANTA CLARA, CA, USA

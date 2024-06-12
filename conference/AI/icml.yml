@@ -24,3 +24,12 @@
       timezone: UTC-12
       date: July 23-29, 2023
       place: Hawaii Convention Center,Hawaii, USA
+    - year: 2024
+      id: icml24
+      link: https://icml.cc/Conferences/2024
+      timeline:
+        - deadline: '2024-02-01 23:59:59'
+          comment: 'Paper Submissions Open on OpenReview Jan 09 2024 02:00 PM UTC'
+      timezone: UTC-12
+      date: July 21-27, 2024
+      place: Messe Wien Exhibition Congress Center, Vienna, Austria

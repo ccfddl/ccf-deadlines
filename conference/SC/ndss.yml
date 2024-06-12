@@ -35,5 +35,16 @@
         - deadline: '2023-06-28 23:59:59'
           comment: 'Fall'
       timezone: UTC-12
-      date: February 26 - March 1 2024
+      date: February 26 - March 1, 2024
+      place: San Diego, California
+    - year: 2025
+      id: ndss25
+      link: https://www.ndss-symposium.org/ndss2025/
+      timeline:
+        - deadline: '2024-04-17 23:59:59'
+          comment: 'Summer'
+        - deadline: '2024-07-10 23:59:59'
+          comment: 'Fall'
+      timezone: UTC-12
+      date: February 23 - February 28, 2025
       place: San Diego, California

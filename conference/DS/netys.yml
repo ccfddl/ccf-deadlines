@@ -1,0 +1,15 @@
+- title: NETYS
+  description: The International Conference on Networked Systems
+  sub: DS
+  rank: N
+  dblp: netys
+  confs:
+    - year: 2024
+      id: netys2024
+      link: https://netys.net/
+      timeline:
+        - abstract_deadline: '2024-02-29 23:59:00'
+          deadline: '2024-03-07 23:59:00'
+      timezone: AoE
+      date: May 29-31, 2024
+      place: Rabat, Morocco

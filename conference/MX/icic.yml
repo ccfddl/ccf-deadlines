@@ -1,0 +1,14 @@
+- title: ICIC
+  description: International Conference on Intelligent Computing
+  sub: MX
+  rank: C
+  dblp: icic
+  confs:
+    - year: 2024
+      id: icic24
+      link: http://www.ic-icc.cn/2024/index.htm
+      timeline:
+        - deadline: '2024-04-11 12:00:00'
+      timezone: UTC+8
+      date: August 5-8, 2024
+      place: Tianjin, China

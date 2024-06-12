@@ -1,0 +1,14 @@
+- title: ICPR
+  description: International Conference on Pattern Recognition
+  sub: AI
+  rank: C
+  dblp: icpr
+  confs:
+    - year: 2024
+      id: icpr24
+      link: https://icpr2024.org/
+      timeline:
+        - deadline: '2024-04-10 23:59:59'
+      timezone: UTC-7
+      date: Dec 01-05, 2024
+      place: Kolkata, India

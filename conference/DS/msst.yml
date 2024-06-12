@@ -1,0 +1,14 @@
+- title: MSST
+  description: International Conference on Massive Storage Systems and Technology
+  sub: DS
+  rank: B
+  dblp: mss
+  confs:
+    - year: 2024
+      id: msst2024
+      link: https://storageconference.us/index.html
+      timeline:
+        - deadline: '2024-01-07 04:59:59'
+      timezone: UTC
+      date: June 3-7, 2024
+      place: Santa Clara, CA

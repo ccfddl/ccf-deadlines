@@ -26,3 +26,12 @@
       timezone: UTC-12
       date: Oct 29 - Nov 2, 2023
       place: San Diego, CA, USA
+    - year: 2024
+      id: iccad24
+      link: https://2024.iccad.com/
+      timeline:
+        - abstract_deadline: '2024-04-28 23:59:59'
+          deadline: '2024-05-05 23:59:59'
+      timezone: UTC-12
+      date: October 27 - 31, 2024
+      place: New Jersey, USA

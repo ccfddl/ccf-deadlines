@@ -28,3 +28,16 @@
       timezone: UTC-12
       date: July, 2023
       place: Dubrovnik, Croatia
+    - year: 2024
+      id: csfw24
+      link: https://www.ieee-security.org/TC/CSF2024/
+      timeline:
+        - deadline: '2023-05-15 23:59:59'
+          comment: 'spring'
+        - deadline: '2023-09-30 23:59:59'
+          comment: 'fall'
+        - deadline: '2024-02-03 23:59:59'
+          comment: 'winter'
+      timezone: UTC-12
+      date: July 8-12, 2024
+      place: Enschede, The Netherlands

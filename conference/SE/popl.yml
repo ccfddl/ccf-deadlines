@@ -31,3 +31,12 @@
       timezone: AoE
       date: January 17-19, 2024
       place:  London, United Kingdom
+    - year: 2025
+      id: popl25
+      link: https://conf.researchr.org/home/POPL-2025
+      timeline:
+        - deadline: '2024-07-11 23:59:59'
+          comment: 'Submission Deadline'
+      timezone: AoE
+      date: January 19-25, 2025
+      place:  Denver, Colorado, United States
