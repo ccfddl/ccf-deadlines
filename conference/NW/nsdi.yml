@@ -45,6 +45,6 @@
           deadline: '2024-05-07 23:59:59'
         - abstract_deadline: '2024-09-12 23:59:59'
           deadline: '2024-09-19 23:59:59'
-      timezone: UTC-5
+      timezone: UTC-4
       date: April 28-30, 2025
       place: Philadelphia, PA, USA
