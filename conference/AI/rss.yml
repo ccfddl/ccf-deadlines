@@ -4,7 +4,7 @@
     rank:
       ccf: N
       core: A*
-      th-cpl: N
+      thcpl: N
     dblp: rss
     confs:
       - year: 2023

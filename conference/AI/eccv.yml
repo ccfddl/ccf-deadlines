@@ -4,7 +4,7 @@
     rank:
       ccf: B
       core: A*
-      th-cpl: A
+      thcpl: A
     dblp: eccv
     confs:
       - year: 2022

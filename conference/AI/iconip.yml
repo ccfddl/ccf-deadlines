@@ -4,7 +4,7 @@
     rank:
       ccf: C
       core: B
-      th-cpl: N
+      thcpl: N
     dblp: iconip
     confs:
       - year: 2023

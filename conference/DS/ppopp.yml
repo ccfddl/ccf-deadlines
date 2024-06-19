@@ -4,7 +4,7 @@
     rank:
       ccf: A
       core: B
-      th-cpl: A
+      thcpl: A
     dblp: ppopp
     confs:
       - year: 2021

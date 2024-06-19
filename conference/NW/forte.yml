@@ -5,7 +5,7 @@
     rank:
       ccf: C
       core: C
-      th-cpl: N
+      thcpl: N
     dblp: forte
     confs:
       - year: 2024

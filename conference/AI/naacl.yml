@@ -5,7 +5,7 @@
     rank:
       ccf: B
       core: A
-      th-cpl: B
+      thcpl: B
     dblp: naacl
     confs:
       - year: 2022

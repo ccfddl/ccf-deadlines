@@ -4,7 +4,7 @@
     rank:
       ccf: B
       core: B
-      th-cpl: B
+      thcpl: B
     dblp: eurographics
     confs:
       - year: 2024

@@ -5,7 +5,7 @@
     rank:
       ccf: B
       core: B
-      th-cpl: B
+      thcpl: B
     dblp: pact
     confs:
       - year: 2023

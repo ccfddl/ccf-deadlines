@@ -80,7 +80,7 @@ Description of the fields:
    <td>The level that the conference is ranked by CORE, e.g., <code>A*</code>, <code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
    </tr>
    <tr>
-   <td colspan="2"><code>th-cpl</code></td>
+   <td colspan="2"><code>thcpl</code></td>
    <td>The level that the conference is ranked by TH-CPL, e.g., <code>A</code>, <code>B</code>, <code>N</code></td>
    </tr>
    <tr>

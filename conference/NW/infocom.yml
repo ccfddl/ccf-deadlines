@@ -4,7 +4,7 @@
     rank:
       ccf: A
       core: A*
-      th-cpl: A
+      thcpl: A
     dblp: infocom
     confs:
       - year: 2021

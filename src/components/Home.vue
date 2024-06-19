@@ -176,7 +176,7 @@ export default {
             curItem.sub = curConf.sub
             curItem.rank = curConf.rank.ccf
             curItem.corerank = curConf.rank.core
-            curItem.thcplrank = curConf.rank['th-cpl']
+            curItem.thcplrank = curConf.rank.thcpl
             curItem.displayrank = this.rankoptions[curItem.rank]
             curItem.dblp = curConf.dblp
             let len = curItem.timeline.length
