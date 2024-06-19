@@ -4,7 +4,7 @@
     rank:
       ccf: B
       core: N
-      th-cpl: A
+      thcpl: A
     dblp: fpga
     confs:
       - year: 2023

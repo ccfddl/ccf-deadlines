@@ -5,7 +5,7 @@
     rank:
       ccf: C
       core: A
-      th-cpl: N
+      thcpl: N
     dblp: sigspatial
     confs:
       - year: 2023

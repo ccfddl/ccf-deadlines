@@ -4,7 +4,7 @@
     rank:
       ccf: C
       core: N
-      th-cpl: N
+      thcpl: N
     dblp: icdf2c
     confs:
       - year: 2021

@@ -4,7 +4,7 @@
     rank:
       ccf: N
       core: N
-      th-cpl: N
+      thcpl: N
     dblp: apsys
     confs:
       - year: 2024

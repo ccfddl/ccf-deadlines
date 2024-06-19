@@ -4,7 +4,7 @@
     rank:
       ccf: N
       core: N
-      th-cpl: N
+      thcpl: N
     dblp: iiswc
     confs:
       - year: 2024
