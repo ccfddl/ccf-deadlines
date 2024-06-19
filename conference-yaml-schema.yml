@@ -53,7 +53,7 @@ items:
             - B
             - C
             - N
-        th-cpl:
+        thcpl:
           description: The level that the conference is ranked by Tsinghua, e.g., A, B, C
           type: string
           enum:

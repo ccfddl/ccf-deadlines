@@ -4,7 +4,7 @@
     rank:
       ccf: C
       core: N
-      th-cpl: N
+      thcpl: N
     dblp: internetware
     confs:
       - year: 2023

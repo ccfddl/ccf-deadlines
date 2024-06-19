@@ -5,7 +5,7 @@
     rank:
       ccf: B
       core: A
-      th-cpl: A
+      thcpl: A
     dblp: mobisys
     confs:
       - year: 2022

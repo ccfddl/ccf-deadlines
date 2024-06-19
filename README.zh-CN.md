@@ -82,7 +82,7 @@
    <td>会议在CORE中被标注的等级, 示例, <code>A*</code>,<code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
    </tr>
    <tr>
-   <td colspan="2"><code>th-cpl</code></td>
+   <td colspan="2"><code>thcpl</code></td>
    <td>会议在TH-CPL中被标注的等级, 示例, <code>A</code>, <code>B</code>, <code>N</code></td>
    </tr>
    <tr>

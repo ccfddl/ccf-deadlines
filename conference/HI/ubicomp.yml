@@ -4,7 +4,7 @@
     rank:
       ccf: A
       core: N
-      th-cpl: A
+      thcpl: A
     dblp: huc
     confs:
       - year: 2024

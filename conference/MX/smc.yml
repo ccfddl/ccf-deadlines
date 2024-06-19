@@ -4,7 +4,7 @@
     rank:
       ccf: C
       core: B
-      th-cpl: N
+      thcpl: N
     dblp: smc
     confs:
       - year: 2023
