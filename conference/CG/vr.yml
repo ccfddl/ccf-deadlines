@@ -1,15 +1,18 @@
-- title: IEEE VR
-  description: IEEE Virtual Reality
-  sub: CG
-  rank: A
-  dblp: vr
-  confs:
-    - year: 2024
-      id: vr24
-      link: http://ieeevr.org/2024/
-      timeline:
-        - abstract_deadline: '2023-09-27 23:59:59'
-          deadline: '2023-10-04 23:59:59'
-      timezone: AoE
-      date: March 16-20, 2024
-      place: Orlando, Florida USA
+  - title: IEEE VR
+    description: IEEE Virtual Reality
+    sub: CG
+    rank:
+      ccf: A
+      core: A*
+      th-cpl: A
+    dblp: vr
+    confs:
+      - year: 2024
+        id: vr24
+        link: http://ieeevr.org/2024/
+        timeline:
+          - abstract_deadline: '2023-09-27 23:59:59'
+            deadline: '2023-10-04 23:59:59'
+        timezone: AoE
+        date: March 16-20, 2024
+        place: Orlando, Florida USA

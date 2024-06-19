@@ -1,28 +1,31 @@
-- title: DSN
-  description: International Conference on Dependable Systems and Networks
-  sub: SC
-  rank: B
-  dblp: dsn
-  confs:
-    - year: 2022
-      id: dsn22
-      link: https://dsn2022.github.io/
-      timeline:
-        - deadline: '2021-12-03 23:59:59'
-          comment: 'Abstract submission deadline'
-        - deadline: '2021-12-10 23:59:59'
-          comment: 'Paper submission deadline'
-        - deadline: '2022-03-14 23:59:59'
-          comment: 'Notification to authors'
-      timezone: AoE
-      date: June 27-30, 2022
-      place: Baltimore, Maryland, USA
-    - year: 2024
-      id: dsn24
-      link: https://dsn2024uq.github.io
-      timeline:
-        - abstract_deadline: '2023-11-29 23:59:59'
-          deadline: '2023-12-06 23:59:59'
-      timezone: AoE
-      date: June 24-27, 2024
-      place: Brisbane, Australia
+  - title: DSN
+    description: International Conference on Dependable Systems and Networks
+    sub: SC
+    rank:
+      ccf: B
+      core: A
+      th-cpl: B
+    dblp: dsn
+    confs:
+      - year: 2022
+        id: dsn22
+        link: https://dsn2022.github.io/
+        timeline:
+          - deadline: '2021-12-03 23:59:59'
+            comment: Abstract submission deadline
+          - deadline: '2021-12-10 23:59:59'
+            comment: Paper submission deadline
+          - deadline: '2022-03-14 23:59:59'
+            comment: Notification to authors
+        timezone: AoE
+        date: June 27-30, 2022
+        place: Baltimore, Maryland, USA
+      - year: 2024
+        id: dsn24
+        link: https://dsn2024uq.github.io
+        timeline:
+          - abstract_deadline: '2023-11-29 23:59:59'
+            deadline: '2023-12-06 23:59:59'
+        timezone: AoE
+        date: June 24-27, 2024
+        place: Brisbane, Australia

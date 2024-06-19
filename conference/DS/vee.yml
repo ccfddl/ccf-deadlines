@@ -1,14 +1,17 @@
-- title: VEE 
-  description: Virtual Execution Environments
-  sub: DS
-  rank: B
-  dblp: vee 
-  confs:
-    - year: 2022
-      id: vee2022
-      link: https://conf.researchr.org/home/vee-2022
-      timeline:
-        - deadline: '2021-12-03 23:59:59'
-      timezone: AoE
-      date: Feb 28-March 4, 2022
-      place: Virtual
+  - title: VEE
+    description: Virtual Execution Environments
+    sub: DS
+    rank:
+      ccf: B
+      core: B
+      th-cpl: B
+    dblp: vee
+    confs:
+      - year: 2022
+        id: vee2022
+        link: https://conf.researchr.org/home/vee-2022
+        timeline:
+          - deadline: '2021-12-03 23:59:59'
+        timezone: AoE
+        date: Feb 28-March 4, 2022
+        place: Virtual

@@ -1,17 +1,20 @@
-- title: ISWC
-  description: International Semantic Web Conference
-  sub: DB
-  rank: B
-  dblp: semweb
-  confs:
-    - year: 2022
-      id: iswc22
-      link: https://iswc2022.semanticweb.org/
-      timeline:
-        - deadline: '2022-04-28 23:59:59'
-          comment: 'Abstracts Due'
-        - deadline: '2022-05-05 23:59:59'
-          comment: 'Full Papers Due'
-      timezone: AoE
-      date: October 23-27, 2022
-      place: Hangzhou, China
+  - title: ISWC
+    description: International Semantic Web Conference
+    sub: DB
+    rank:
+      ccf: B
+      core: A
+      th-cpl: B
+    dblp: semweb
+    confs:
+      - year: 2022
+        id: iswc22
+        link: https://iswc2022.semanticweb.org/
+        timeline:
+          - deadline: '2022-04-28 23:59:59'
+            comment: Abstracts Due
+          - deadline: '2022-05-05 23:59:59'
+            comment: Full Papers Due
+        timezone: AoE
+        date: October 23-27, 2022
+        place: Hangzhou, China

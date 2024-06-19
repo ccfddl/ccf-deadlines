@@ -1,15 +1,18 @@
-- title: IISWC
-  description: IEEE International Symposium on Workload Characterization
-  sub: DS
-  rank: N
-  dblp: iiswc
-  confs:
-    - year: 2024
-      id: iiswc2024
-      link: https://iiswc.org/iiswc2024/
-      timeline:
-        - deadline: '2024-06-03 00:00:00'
-          comment: 'Submissions Due: 2024-06-03'
-      timezone: UTC
-      date: September 15-17, 2024
-      place: Vancouver BC Canada
+  - title: IISWC
+    description: IEEE International Symposium on Workload Characterization
+    sub: DS
+    rank:
+      ccf: N
+      core: N
+      th-cpl: N
+    dblp: iiswc
+    confs:
+      - year: 2024
+        id: iiswc2024
+        link: https://iiswc.org/iiswc2024/
+        timeline:
+          - deadline: '2024-06-03 00:00:00'
+            comment: 'Submissions Due: 2024-06-03'
+        timezone: UTC
+        date: September 15-17, 2024
+        place: Vancouver BC Canada

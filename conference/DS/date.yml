@@ -1,35 +1,38 @@
-- title: DATE
-  description: Design, Automation & Test in Europe
-  sub: DS
-  rank: B
-  dblp: date
-  confs:
-    - year: 2023
-      id: date2023
-      link: https://www.date-conference.com/
-      timeline:
-        - deadline: '2022-09-18 23:59:59'
-          comment: 'abstract deadline'
-        - deadline: '2022-09-25 23:59:59'
-          comment: 'full paper deadline'
-      timezone: UTC+1
-      date: April 17-19, 2023
-      place: Antwerp, BE
-    - year: 2024
-      id: date2024
-      link: https://www.date-conference.com/
-      timeline:
-        - abstract_deadline: '2023-09-10 23:59:59'
-          deadline: '2023-09-17 23:59:59'
-      timezone: AoE
-      date: March 25-27, 2024
-      place: Valencia, Spain
-    - year: 2025
-      id: date2025
-      link: https://www.date-conference.com/date-2025-call-papers
-      timeline:
-        - abstract_deadline: '2024-09-15 23:59:59'
-          deadline: '2024-09-22 23:59:59'
-      timezone: AoE
-      date:  March 31- April 2, 2025
-      place: Palais des congrès de Lyon, Lyon, France
+  - title: DATE
+    description: Design, Automation & Test in Europe
+    sub: DS
+    rank:
+      ccf: B
+      core: B
+      th-cpl: B
+    dblp: date
+    confs:
+      - year: 2023
+        id: date2023
+        link: https://www.date-conference.com/
+        timeline:
+          - deadline: '2022-09-18 23:59:59'
+            comment: abstract deadline
+          - deadline: '2022-09-25 23:59:59'
+            comment: full paper deadline
+        timezone: UTC+1
+        date: April 17-19, 2023
+        place: Antwerp, BE
+      - year: 2024
+        id: date2024
+        link: https://www.date-conference.com/
+        timeline:
+          - abstract_deadline: '2023-09-10 23:59:59'
+            deadline: '2023-09-17 23:59:59'
+        timezone: AoE
+        date: March 25-27, 2024
+        place: Valencia, Spain
+      - year: 2025
+        id: date2025
+        link: https://www.date-conference.com/date-2025-call-papers
+        timeline:
+          - abstract_deadline: '2024-09-15 23:59:59'
+            deadline: '2024-09-22 23:59:59'
+        timezone: AoE
+        date: March 31- April 2, 2025
+        place: Palais des congrès de Lyon, Lyon, France

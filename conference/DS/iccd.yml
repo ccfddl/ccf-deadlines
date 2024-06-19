@@ -1,26 +1,29 @@
-- title: ICCD
-  description: International Conference on Computer Design
-  sub: DS
-  rank: B
-  dblp: iccd
-  confs:
-    - year: 2023
-      id: iccd23
-      link: https://www.iccd-conf.com/Call_for_papers.html
-      timeline:
-        - abstract_deadline: '2023-06-09 23:59:00'
-          deadline: '2023-06-16 23:59:00'
-          comment: 'abstract and full paper deadline'
-      timezone: AoE
-      date: November 6-8, 2023
-      place: Washington DC, USA
-    - year: 2024
-      id: iccd24
-      link: https://www.iccd-conf.com/Call_for_papers.html
-      timeline:
-        - abstract_deadline: '2024-05-20 23:59:00'
-          deadline: '2024-05-20 23:59:00'
-          comment: 'abstract and full paper deadline'
-      timezone: AoE
-      date: November, 2024
-      place: Milan, Italy
+  - title: ICCD
+    description: International Conference on Computer Design
+    sub: DS
+    rank:
+      ccf: B
+      core: N
+      th-cpl: B
+    dblp: iccd
+    confs:
+      - year: 2023
+        id: iccd23
+        link: https://www.iccd-conf.com/Call_for_papers.html
+        timeline:
+          - abstract_deadline: '2023-06-09 23:59:00'
+            deadline: '2023-06-16 23:59:00'
+            comment: abstract and full paper deadline
+        timezone: AoE
+        date: November 6-8, 2023
+        place: Washington DC, USA
+      - year: 2024
+        id: iccd24
+        link: https://www.iccd-conf.com/Call_for_papers.html
+        timeline:
+          - abstract_deadline: '2024-05-20 23:59:00'
+            deadline: '2024-05-20 23:59:00'
+            comment: abstract and full paper deadline
+        timezone: AoE
+        date: November, 2024
+        place: Milan, Italy

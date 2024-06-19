@@ -1,36 +1,40 @@
-- title: LCTES
-  description:  International Conference on Languages, Compilers and Tools for Embedded Systems
-  sub: SE
-  rank: B
-  dblp: lctrts
-  confs:
-    - year: 2021
-      id: lctes21
-      link: https://pldi21.sigplan.org/home/LCTES-2021
-      timeline:
-        - deadline: '2021-03-08 23:59:59'
-          comment: 'Submission Deadline'
-        - deadline: '2021-05-05 23:59:59'
-          comment: 'Final Copy Deadline'
-      timezone: AoE
-      date: June 20-26, 2021
-      place: Virtual
-    - year: 2023
-      id: lctes23
-      link: https://pldi23.sigplan.org/home/LCTES-2023
-      timeline:
-        - deadline: '2023-03-16 23:59:59'
-      timezone: AoE
-      date: June 17-21, 2023
-      place: Orlando, Florida, United States
-    - year: 2024
-      id: lctes24
-      link: https://pldi24.sigplan.org/home/LCTES-2024
-      timeline:
-        - deadline: '2024-02-16 23:59:59'
-          comment: 'Abstract submission'
-        - deadline: '2024-02-23 23:59:59'
-          comment: 'Paper submission'
-      timezone: AoE
-      date: June 24, 2024
-      place: Copenhagen, Denmark
+  - title: LCTES
+    description: International Conference on Languages, Compilers and Tools for Embedded
+      Systems
+    sub: SE
+    rank:
+      ccf: B
+      core: B
+      th-cpl: N
+    dblp: lctrts
+    confs:
+      - year: 2021
+        id: lctes21
+        link: https://pldi21.sigplan.org/home/LCTES-2021
+        timeline:
+          - deadline: '2021-03-08 23:59:59'
+            comment: Submission Deadline
+          - deadline: '2021-05-05 23:59:59'
+            comment: Final Copy Deadline
+        timezone: AoE
+        date: June 20-26, 2021
+        place: Virtual
+      - year: 2023
+        id: lctes23
+        link: https://pldi23.sigplan.org/home/LCTES-2023
+        timeline:
+          - deadline: '2023-03-16 23:59:59'
+        timezone: AoE
+        date: June 17-21, 2023
+        place: Orlando, Florida, United States
+      - year: 2024
+        id: lctes24
+        link: https://pldi24.sigplan.org/home/LCTES-2024
+        timeline:
+          - deadline: '2024-02-16 23:59:59'
+            comment: Abstract submission
+          - deadline: '2024-02-23 23:59:59'
+            comment: Paper submission
+        timezone: AoE
+        date: June 24, 2024
+        place: Copenhagen, Denmark

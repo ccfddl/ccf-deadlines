@@ -1,73 +1,76 @@
-- title: SIGMOD
-  description: ACM Conference on Management of Data
-  sub: DB
-  rank: A
-  dblp: sigmod
-  confs:
-    - year: 2021
-      id: sigmod21
-      link: http://2021.sigmod.org/
-      timeline:
-        - deadline: '2020-09-22 17:00:00'
-          comment: 'second round'
-      timezone: UTC-8
-      date: June 20-25, 2021
-      place: Xi'an, China
-    - year: 2022
-      id: sigmod22
-      link: http://2022.sigmod.org/
-      timeline:
-        - deadline: '2021-07-02 17:00:00'
-          comment: 'first round'
-        - deadline: '2021-09-15 17:00:00'
-          comment: 'second round'
-      timezone: UTC-8
-      date: June 12-17, 2022
-      place: Philadelphia, PA, USA
-    - year: 2023
-      id: sigmod23
-      link: http://2023.sigmod.org/
-      timeline:
-        - deadline: '2022-04-15 23:59:00'
-          comment: 'first round'
-        - deadline: '2022-07-15 23:59:00'
-          comment: 'second round'
-        - deadline: '2022-10-15 23:59:00'
-          comment: 'third round'
-      timezone: UTC-8
-      date: June 18-23, 2022
-      place: Seattle, WA, USA
-    - year: 2024
-      id: sigmod24
-      link: http://2024.sigmod.org/
-      timeline:
-        - deadline: '2023-01-15 23:59:00'
-          comment: 'round 1'
-        - deadline: '2023-04-15 23:59:00'
-          comment: 'round 2'
-        - deadline: '2023-07-15 23:59:00'
-          comment: 'round 3'
-        - deadline: '2023-10-15 23:59:00'
-          comment: 'round 4'
-      timezone: UTC-7
-      date: June 11-16, 2024
-      place: Santiago, Chile
-    - year: 2025
-      id: sigmod25
-      link: https://2025.sigmod.org/
-      timeline:
-        - abstract_deadline: '2024-01-10 23:59:00'
-          deadline: '2024-01-17 23:59:00'
-          comment: 'round 1'
-        - abstract_deadline: '2024-04-10 23:59:00'
-          deadline: '2024-04-17 23:59:00'
-          comment: 'round 2'
-        - abstract_deadline: '2024-07-10 23:59:00'
-          deadline: '2024-07-17 23:59:00'
-          comment: 'round 3'
-        - abstract_deadline: '2024-10-10 23:59:00'
-          deadline: '2024-10-17 23:59:00'
-          comment: 'round 4'
-      timezone: AoE
-      date: unknown, 2025
-      place: Berlin, Germany
+  - title: SIGMOD
+    description: ACM Conference on Management of Data
+    sub: DB
+    rank:
+      ccf: A
+      core: A*
+      th-cpl: A
+    dblp: sigmod
+    confs:
+      - year: 2021
+        id: sigmod21
+        link: http://2021.sigmod.org/
+        timeline:
+          - deadline: '2020-09-22 17:00:00'
+            comment: second round
+        timezone: UTC-8
+        date: June 20-25, 2021
+        place: Xi'an, China
+      - year: 2022
+        id: sigmod22
+        link: http://2022.sigmod.org/
+        timeline:
+          - deadline: '2021-07-02 17:00:00'
+            comment: first round
+          - deadline: '2021-09-15 17:00:00'
+            comment: second round
+        timezone: UTC-8
+        date: June 12-17, 2022
+        place: Philadelphia, PA, USA
+      - year: 2023
+        id: sigmod23
+        link: http://2023.sigmod.org/
+        timeline:
+          - deadline: '2022-04-15 23:59:00'
+            comment: first round
+          - deadline: '2022-07-15 23:59:00'
+            comment: second round
+          - deadline: '2022-10-15 23:59:00'
+            comment: third round
+        timezone: UTC-8
+        date: June 18-23, 2022
+        place: Seattle, WA, USA
+      - year: 2024
+        id: sigmod24
+        link: http://2024.sigmod.org/
+        timeline:
+          - deadline: '2023-01-15 23:59:00'
+            comment: round 1
+          - deadline: '2023-04-15 23:59:00'
+            comment: round 2
+          - deadline: '2023-07-15 23:59:00'
+            comment: round 3
+          - deadline: '2023-10-15 23:59:00'
+            comment: round 4
+        timezone: UTC-7
+        date: June 11-16, 2024
+        place: Santiago, Chile
+      - year: 2025
+        id: sigmod25
+        link: https://2025.sigmod.org/
+        timeline:
+          - abstract_deadline: '2024-01-10 23:59:00'
+            deadline: '2024-01-17 23:59:00'
+            comment: round 1
+          - abstract_deadline: '2024-04-10 23:59:00'
+            deadline: '2024-04-17 23:59:00'
+            comment: round 2
+          - abstract_deadline: '2024-07-10 23:59:00'
+            deadline: '2024-07-17 23:59:00'
+            comment: round 3
+          - abstract_deadline: '2024-10-10 23:59:00'
+            deadline: '2024-10-17 23:59:00'
+            comment: round 4
+        timezone: AoE
+        date: unknown, 2025
+        place: Berlin, Germany

@@ -1,26 +1,29 @@
-- title: RE
-  description:  IEEE International Requirements Engineering Conference
-  sub: SE
-  rank: B
-  dblp: re
-  confs:
-    - year: 2022
-      id: re22
-      link: https://conf.researchr.org/home/RE-2022
-      timeline:
-        - deadline: '2022-02-17 23:59:59'
-          comment: 'Abstract Submission Deadline'
-        - deadline: '2022-02-24 23:59:59'
-          comment: 'Paper Submission Deadline'
-      timezone: AoE
-      date: August 15-19, 2022
-      place: Melbourne, Australia
-    - year: 2023
-      id: re23
-      link: https://conf.researchr.org/dates/RE-2023
-      timeline:
-        - abstract_deadline: '2023-03-10 23:59:59'
-          deadline: '2023-03-17 23:59:59'
-      timezone: AoE
-      date: September 4-8, 2023
-      place: Hannover, Germany
+  - title: RE
+    description: IEEE International Requirements Engineering Conference
+    sub: SE
+    rank:
+      ccf: B
+      core: A
+      th-cpl: N
+    dblp: re
+    confs:
+      - year: 2022
+        id: re22
+        link: https://conf.researchr.org/home/RE-2022
+        timeline:
+          - deadline: '2022-02-17 23:59:59'
+            comment: Abstract Submission Deadline
+          - deadline: '2022-02-24 23:59:59'
+            comment: Paper Submission Deadline
+        timezone: AoE
+        date: August 15-19, 2022
+        place: Melbourne, Australia
+      - year: 2023
+        id: re23
+        link: https://conf.researchr.org/dates/RE-2023
+        timeline:
+          - abstract_deadline: '2023-03-10 23:59:59'
+            deadline: '2023-03-17 23:59:59'
+        timezone: AoE
+        date: September 4-8, 2023
+        place: Hannover, Germany

@@ -1,15 +1,18 @@
-- title: HotOS
-  description:  USENIX Workshop on Hot Topics in Operating Systems
-  sub: SE
-  rank: B
-  dblp: hotos
-  confs:
-    - year: 2021
-      id: hotos21
-      link: https://www.usenix.org/conference/hotos15
-      timeline:
-        - deadline: '2021-02-03 23:59:59'
-          comment: 'Submission Deadline'
-      timezone: AoE
-      date: May 31-Jun 02, 2021
-      place:  Virtual
+  - title: HotOS
+    description: USENIX Workshop on Hot Topics in Operating Systems
+    sub: SE
+    rank:
+      ccf: B
+      core: A
+      th-cpl: B
+    dblp: hotos
+    confs:
+      - year: 2021
+        id: hotos21
+        link: https://www.usenix.org/conference/hotos15
+        timeline:
+          - deadline: '2021-02-03 23:59:59'
+            comment: Submission Deadline
+        timezone: AoE
+        date: May 31-Jun 02, 2021
+        place: Virtual

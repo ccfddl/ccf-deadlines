@@ -1,26 +1,29 @@
-- title: ICDF2C
-  description: International Conference on Digital Forensics & Cyber Crime
-  sub: SC
-  rank: C
-  dblp: icdf2c
-  confs:
-    - year: 2021
-      id: icdf2c21
-      link: https://icdf2c.eai-conferences.org/2021/
-      timeline:
-        - deadline: '2021-06-16 23:59:59'
-          comment: 'Main Track Full Paper Submission deadline'
-        - deadline: '2021-07-26 23:59:59'
-          comment: 'Late Track Full Paper Submission deadline'
-      timezone: UTC-12
-      date: December 7-9, 2021
-      place: Singapore, Singapore
-    - year: 2024
-      id: icdf2c24
-      link: https://icdf2c.eai-conferences.org/2024/
-      timeline:
-        - deadline: '2024-04-30 23:59:59'
-          comment: 'Full Paper Submission deadline'
-      timezone: UTC-12
-      date: October 9-10, 2024
-      place: Dubrovnik, Croatia
+  - title: ICDF2C
+    description: International Conference on Digital Forensics & Cyber Crime
+    sub: SC
+    rank:
+      ccf: C
+      core: N
+      th-cpl: N
+    dblp: icdf2c
+    confs:
+      - year: 2021
+        id: icdf2c21
+        link: https://icdf2c.eai-conferences.org/2021/
+        timeline:
+          - deadline: '2021-06-16 23:59:59'
+            comment: Main Track Full Paper Submission deadline
+          - deadline: '2021-07-26 23:59:59'
+            comment: Late Track Full Paper Submission deadline
+        timezone: UTC-12
+        date: December 7-9, 2021
+        place: Singapore, Singapore
+      - year: 2024
+        id: icdf2c24
+        link: https://icdf2c.eai-conferences.org/2024/
+        timeline:
+          - deadline: '2024-04-30 23:59:59'
+            comment: Full Paper Submission deadline
+        timezone: UTC-12
+        date: October 9-10, 2024
+        place: Dubrovnik, Croatia

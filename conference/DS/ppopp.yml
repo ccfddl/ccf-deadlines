@@ -1,40 +1,43 @@
-- title: PPoPP
-  description: ACM SIGPLAN Symposium on Principles & Practice of Parallel Programming
-  sub: DS
-  rank: A
-  dblp: ppopp
-  confs:
-    - year: 2021
-      id: ppopp21
-      link: https://ppopp21.sigplan.org/
-      timeline:
-        - abstract_deadline: '2020-08-06 23:59:59'
-          deadline: '2020-08-13 23:59:59'
-      timezone: AoE
-      date: Feburary 27-Mar 3, 2021
-      place: Virtual
-    - year: 2022
-      id: ppopp22
-      link: https://ppopp22.sigplan.org/
-      timeline:
-        - abstract_deadline: '2021-08-09 23:59:59'
-          deadline: '2021-08-13 23:59:59'
-      timezone: AoE
-      date: Feburary 12-16, 2022
-      place: Seoul, S. Korea
-    - year: 2023
-      id: ppopp23
-      link: https://ppopp23.sigplan.org/
-      timeline:
-        - deadline: '2022-08-17 23:59:59'
-      timezone: AoE
-      date: Feburary 25-Mar 1, 2023
-      place: Montreal, Canada
-    - year: 2024
-      id: ppopp24
-      link: https://conf.researchr.org/home/ppopp-2024
-      timeline:
-        - deadline: '2023-08-04 23:59:59'
-      timezone: AoE
-      date: Mar 2-Mar 6, 2024
-      place: Edinburgh, United Kingdom
+  - title: PPoPP
+    description: ACM SIGPLAN Symposium on Principles & Practice of Parallel Programming
+    sub: DS
+    rank:
+      ccf: A
+      core: B
+      th-cpl: A
+    dblp: ppopp
+    confs:
+      - year: 2021
+        id: ppopp21
+        link: https://ppopp21.sigplan.org/
+        timeline:
+          - abstract_deadline: '2020-08-06 23:59:59'
+            deadline: '2020-08-13 23:59:59'
+        timezone: AoE
+        date: Feburary 27-Mar 3, 2021
+        place: Virtual
+      - year: 2022
+        id: ppopp22
+        link: https://ppopp22.sigplan.org/
+        timeline:
+          - abstract_deadline: '2021-08-09 23:59:59'
+            deadline: '2021-08-13 23:59:59'
+        timezone: AoE
+        date: Feburary 12-16, 2022
+        place: Seoul, S. Korea
+      - year: 2023
+        id: ppopp23
+        link: https://ppopp23.sigplan.org/
+        timeline:
+          - deadline: '2022-08-17 23:59:59'
+        timezone: AoE
+        date: Feburary 25-Mar 1, 2023
+        place: Montreal, Canada
+      - year: 2024
+        id: ppopp24
+        link: https://conf.researchr.org/home/ppopp-2024
+        timeline:
+          - deadline: '2023-08-04 23:59:59'
+        timezone: AoE
+        date: Mar 2-Mar 6, 2024
+        place: Edinburgh, United Kingdom

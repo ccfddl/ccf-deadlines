@@ -1,28 +1,31 @@
-- title: ASP-DAC
-  description: Asia and South Pacific Design Automation Conference
-  sub: DS
-  rank: C
-  dblp: aspdac
-  confs:
-    - year: 2024
-      id: aspdac24
-      link: https://www.aspdac.com/aspdac2024/
-      timeline:
-        - deadline: '2023-07-28 17:00:00'
-          comment: 'abstract deadline'
-        - deadline: '2023-08-04 19:00:00'
-          comment: 'full paper deadline'
-      timezone: AoE
-      date: Jan 22-25, 2024
-      place: Sondo Convensia, Incheon, Korea
-    - year: 2025
-      id: aspdac25
-      link: https://www.aspdac.com/aspdac2025/
-      timeline:
-        - deadline: '2024-07-05 17:00:00'
-          comment: 'abstract deadline' 
-        - deadline: '2024-07-12 17:00:00'
-          comment: 'full paper deadline'
-      timezone: AoE
-      date: Jan 20-23, 2025
-      place: Tokyo Odaiba Miraikan, Japan
+  - title: ASP-DAC
+    description: Asia and South Pacific Design Automation Conference
+    sub: DS
+    rank:
+      ccf: C
+      core: C
+      th-cpl: B
+    dblp: aspdac
+    confs:
+      - year: 2024
+        id: aspdac24
+        link: https://www.aspdac.com/aspdac2024/
+        timeline:
+          - deadline: '2023-07-28 17:00:00'
+            comment: abstract deadline
+          - deadline: '2023-08-04 19:00:00'
+            comment: full paper deadline
+        timezone: AoE
+        date: Jan 22-25, 2024
+        place: Sondo Convensia, Incheon, Korea
+      - year: 2025
+        id: aspdac25
+        link: https://www.aspdac.com/aspdac2025/
+        timeline:
+          - deadline: '2024-07-05 17:00:00'
+            comment: abstract deadline
+          - deadline: '2024-07-12 17:00:00'
+            comment: full paper deadline
+        timezone: AoE
+        date: Jan 20-23, 2025
+        place: Tokyo Odaiba Miraikan, Japan
