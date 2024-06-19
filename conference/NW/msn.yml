@@ -1,14 +1,17 @@
-- title: MSN
-  description: International Conference on Mobility, Sensing and Networking
-  sub: NW
-  rank: C
-  dblp: msn
-  confs:
-    - year: 2024
-      id: msn24
-      link: https://ieee-msn.org/2024/
-      timeline:
-        - deadline: '2024-07-20 23:59:59'
-      timezone: UTC-12
-      date: December 20-22, 2024
-      place: Harbin, China
+  - title: MSN
+    description: International Conference on Mobility, Sensing and Networking
+    sub: NW
+    rank:
+      ccf: C
+      core: N
+      th-cpl: N
+    dblp: msn
+    confs:
+      - year: 2024
+        id: msn24
+        link: https://ieee-msn.org/2024/
+        timeline:
+          - deadline: '2024-07-20 23:59:59'
+        timezone: UTC-12
+        date: December 20-22, 2024
+        place: Harbin, China

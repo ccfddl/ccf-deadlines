@@ -1,38 +1,42 @@
-- title: CSCW
-  description: ACM Conference on Computer Supported Cooperative Work and Social Computing
-  sub: HI
-  rank: A
-  dblp: cscw
-  confs:
-    - year: 2021
-      id: cscw21
-      link: https://cscw.acm.org/2021/
-      timeline:
-        - deadline: '2021-04-15 23:59:59'
-      timezone: AoE
-      date: TBD
-      place: Virtual
-    - year: 2022
-      id: cscw22
-      link: https://cscw.acm.org/2022/
-      timeline:
-        - deadline: '2022-01-15 23:59:59'
-      timezone: AoE
-      date: January 1, 2022
-      place: Taiwan
-    - year: 2023
-      id: cscw23
-      link: https://cscw.acm.org/2023/
-      timeline:
-        - deadline: '2023-06-01 23:59:59'
-      timezone: AoE
-      date: October 14-18, 2023
-      place: Minneapolis, MN, USA
-    - year: 2024
-      id: cscw24
-      link: https://cscw.acm.org/2024/
-      timeline:
-        - deadline: '2024-01-16 23:59:59'
-      timezone: AoE
-      date: November 9-13, 2024
-      place: San José, Costa Rica
+  - title: CSCW
+    description: ACM Conference on Computer Supported Cooperative Work and Social
+      Computing
+    sub: HI
+    rank:
+      ccf: A
+      core: A
+      th-cpl: A
+    dblp: cscw
+    confs:
+      - year: 2021
+        id: cscw21
+        link: https://cscw.acm.org/2021/
+        timeline:
+          - deadline: '2021-04-15 23:59:59'
+        timezone: AoE
+        date: TBD
+        place: Virtual
+      - year: 2022
+        id: cscw22
+        link: https://cscw.acm.org/2022/
+        timeline:
+          - deadline: '2022-01-15 23:59:59'
+        timezone: AoE
+        date: January 1, 2022
+        place: Taiwan
+      - year: 2023
+        id: cscw23
+        link: https://cscw.acm.org/2023/
+        timeline:
+          - deadline: '2023-06-01 23:59:59'
+        timezone: AoE
+        date: October 14-18, 2023
+        place: Minneapolis, MN, USA
+      - year: 2024
+        id: cscw24
+        link: https://cscw.acm.org/2024/
+        timeline:
+          - deadline: '2024-01-16 23:59:59'
+        timezone: AoE
+        date: November 9-13, 2024
+        place: San José, Costa Rica

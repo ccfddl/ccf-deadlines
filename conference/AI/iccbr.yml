@@ -1,17 +1,20 @@
-- title: ICCBR
-  description: International Conference on Case-Based Reasoning 
-  sub: AI
-  rank: B
-  dblp: iccbr
-  confs:
-    - year: 2024
-      id: iccbr2024
-      link: https://www.iccbr2024.org/
-      timeline:
-        - deadline: '2024-02-26 00:00:00'
-          comment: 'Early Submission'
-        - deadline: '2024-04-02 00:00:00'
-          comment: 'Late Submission'
-      timezone: UTC-6
-      date: June 1-4, 2024
-      place: Merida, Yucatan, Mexico
+  - title: ICCBR
+    description: International Conference on Case-Based Reasoning
+    sub: AI
+    rank:
+      ccf: B
+      core: C
+      th-cpl: N
+    dblp: iccbr
+    confs:
+      - year: 2024
+        id: iccbr2024
+        link: https://www.iccbr2024.org/
+        timeline:
+          - deadline: '2024-02-26 00:00:00'
+            comment: Early Submission
+          - deadline: '2024-04-02 00:00:00'
+            comment: Late Submission
+        timezone: UTC-6
+        date: June 1-4, 2024
+        place: Merida, Yucatan, Mexico

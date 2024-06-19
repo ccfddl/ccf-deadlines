@@ -32,13 +32,34 @@ items:
         - HI
         - MX
     rank:
-      description: The level that the conference is ranked by CCF, e.g., A, B, C
-      type: string
-      enum:
-        - A
-        - B
-        - C
-        - N
+      type: object
+      required: 
+        - ccf
+      properties:
+        ccf:
+          description: The level that the conference is ranked by CCF, e.g., A, B, C
+          type: string
+          enum:
+            - A
+            - B
+            - C
+            - N
+        core:
+          description: The level that the conference is ranked by CORE, e.g., A, B, C
+          type: string
+          enum:
+            - A*
+            - A
+            - B
+            - C
+            - N
+        th-cpl:
+          description: The level that the conference is ranked by Tsinghua, e.g., A, B, C
+          type: string
+          enum:
+            - A
+            - B
+            - N
     dblp:
       description: The suffix in dblp url, e.g., iccv in dblp.uni-trier.de/db/conf/iccv
       type: string

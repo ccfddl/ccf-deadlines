@@ -1,44 +1,47 @@
-- title: ICLR
-  description: International Conference on Learning Representations
-  sub: AI
-  rank: N
-  dblp: iclr
-  confs:
-    - year: 2022
-      id: iclr22
-      link: https://iclr.cc/Conferences/2022
-      timeline:
-        - abstract_deadline: '2021-09-29 12:00:00'
-          deadline: '2021-10-21 12:00:00'
-          comment: 'Mandatory abstract deadline on Sep 29, 2021.'
-      timezone: UTC-12
-      date: April 25-29, 2022
-      place: Virtual conference
-    - year: 2023
-      id: iclr23
-      link: https://iclr.cc/Conferences/2023
-      timeline:
-        - abstract_deadline: '2022-09-21 23:59:59'
-          deadline: '2022-09-28 23:59:59'
-          comment: 'Mandatory abstract deadline on Sep. 11, 2022.'
-      timezone: UTC-12
-      date: May 01-05, 2023
-      place: Kigali, Rwanda
-    - year: 2024
-      id: iclr24
-      link: https://iclr.cc/Conferences/2024
-      timeline:
-        - abstract_deadline: '2023-09-21 23:59:59'
-          deadline: '2023-09-28 23:59:59'
-          comment: 'Mandatory abstract deadline on Sep. 21, 2023.'
-      timezone: UTC-12
-      date: May 07-11, 2024
-      place: Vienna, Austria
-    - year: 2025
-      id: iclr25
-      link: https://iclr.cc
-      timeline:
-        - deadline: 'TBD'
-      timezone: UTC+8
-      date: April 24-28, 2025
-      place: Singapore
+  - title: ICLR
+    description: International Conference on Learning Representations
+    sub: AI
+    rank:
+      ccf: N
+      core: A*
+      th-cpl: A
+    dblp: iclr
+    confs:
+      - year: 2022
+        id: iclr22
+        link: https://iclr.cc/Conferences/2022
+        timeline:
+          - abstract_deadline: '2021-09-29 12:00:00'
+            deadline: '2021-10-21 12:00:00'
+            comment: Mandatory abstract deadline on Sep 29, 2021.
+        timezone: UTC-12
+        date: April 25-29, 2022
+        place: Virtual conference
+      - year: 2023
+        id: iclr23
+        link: https://iclr.cc/Conferences/2023
+        timeline:
+          - abstract_deadline: '2022-09-21 23:59:59'
+            deadline: '2022-09-28 23:59:59'
+            comment: Mandatory abstract deadline on Sep. 11, 2022.
+        timezone: UTC-12
+        date: May 01-05, 2023
+        place: Kigali, Rwanda
+      - year: 2024
+        id: iclr24
+        link: https://iclr.cc/Conferences/2024
+        timeline:
+          - abstract_deadline: '2023-09-21 23:59:59'
+            deadline: '2023-09-28 23:59:59'
+            comment: Mandatory abstract deadline on Sep. 21, 2023.
+        timezone: UTC-12
+        date: May 07-11, 2024
+        place: Vienna, Austria
+      - year: 2025
+        id: iclr25
+        link: https://iclr.cc
+        timeline:
+          - deadline: TBD
+        timezone: UTC+8
+        date: April 24-28, 2025
+        place: Singapore

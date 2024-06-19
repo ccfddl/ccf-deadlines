@@ -1,15 +1,18 @@
-- title: ETS
-  description: IEEE European Test Symposium
-  sub: DS
-  rank: C
-  dblp: ets
-  confs:
-    - year: 2024
-      id: ets2024
-      link: https://ets24.ewi.tudelft.nl/
-      timeline:
-        - abstract_deadline: '2023-12-08 23:59:59'
-          deadline: '2023-12-16 23:59:59'
-      timezone: AoE
-      date: May 20-24, 2024
-      place: The Hague, Netherlands
+  - title: ETS
+    description: IEEE European Test Symposium
+    sub: DS
+    rank:
+      ccf: C
+      core: N
+      th-cpl: N
+    dblp: ets
+    confs:
+      - year: 2024
+        id: ets2024
+        link: https://ets24.ewi.tudelft.nl/
+        timeline:
+          - abstract_deadline: '2023-12-08 23:59:59'
+            deadline: '2023-12-16 23:59:59'
+        timezone: AoE
+        date: May 20-24, 2024
+        place: The Hague, Netherlands

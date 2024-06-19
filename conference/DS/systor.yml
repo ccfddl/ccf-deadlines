@@ -1,20 +1,22 @@
-- title: SYSTOR
-  description: The ACM International Systems and Storage Conference
-  sub: DS
-  rank: C
-  dblp: systor
-  confs:
-    - year: 2024
-      id: systor24
-      link: https://www.systor.org/2024/
-      timeline:
-        - deadline: '2024-03-13 23:59:59'
-          comment: 'Full and Short Papers Track'
-        - deadline: '2024-04-03 23:59:59'
-          comment: 'Highlight Papers Track'
-        - deadline: '2024-04-11 22:59:59'
-          comment: 'Posters with Extended Abstract
-          Track'
-      timezone: UTC+1
-      date: June 17-19, 2024
-      place: Tel Aviv, Israel
+  - title: SYSTOR
+    description: The ACM International Systems and Storage Conference
+    sub: DS
+    rank:
+      ccf: C
+      core: N
+      th-cpl: N
+    dblp: systor
+    confs:
+      - year: 2024
+        id: systor24
+        link: https://www.systor.org/2024/
+        timeline:
+          - deadline: '2024-03-13 23:59:59'
+            comment: Full and Short Papers Track
+          - deadline: '2024-04-03 23:59:59'
+            comment: Highlight Papers Track
+          - deadline: '2024-04-11 22:59:59'
+            comment: Posters with Extended Abstract Track
+        timezone: UTC+1
+        date: June 17-19, 2024
+        place: Tel Aviv, Israel

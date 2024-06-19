@@ -1,33 +1,36 @@
-- title: IPDPS
-  description: IEEE International Parallel and Distributed Processing Symposium
-  sub: DS
-  rank: B
-  dblp: ipps
-  confs:
-    - year: 2022
-      id: ipdps22
-      link: https://www.ipdps.org/ipdps2022/
-      timeline:
-        - abstract_deadline: '2021-10-01 23:59:59'
-          deadline: '2021-10-08 23:59:59'
-      timezone: AoE
-      date: May 30-June 3, 2022
-      place: Lyon, France
-    - year: 2023
-      id: ipdps23
-      link: https://www.ipdps.org/ipdps2023/
-      timeline:
-        - abstract_deadline: '2022-09-29 23:59:59'
-          deadline: '2022-10-06 23:59:59'
-      timezone: AoE
-      date: May 15-19, 2023
-      place: St. Petersburg, Florida USA
-    - year: 2024
-      id: ipdps24
-      link: https://www.ipdps.org/
-      timeline:
-        - abstract_deadline: '2023-09-28 23:59:59'
-          deadline: '2023-10-05 23:59:59'
-      timezone: AoE
-      date: May 27-31, 2024
-      place: San Francisco, California USA
+  - title: IPDPS
+    description: IEEE International Parallel and Distributed Processing Symposium
+    sub: DS
+    rank:
+      ccf: B
+      core: A
+      th-cpl: B
+    dblp: ipps
+    confs:
+      - year: 2022
+        id: ipdps22
+        link: https://www.ipdps.org/ipdps2022/
+        timeline:
+          - abstract_deadline: '2021-10-01 23:59:59'
+            deadline: '2021-10-08 23:59:59'
+        timezone: AoE
+        date: May 30-June 3, 2022
+        place: Lyon, France
+      - year: 2023
+        id: ipdps23
+        link: https://www.ipdps.org/ipdps2023/
+        timeline:
+          - abstract_deadline: '2022-09-29 23:59:59'
+            deadline: '2022-10-06 23:59:59'
+        timezone: AoE
+        date: May 15-19, 2023
+        place: St. Petersburg, Florida USA
+      - year: 2024
+        id: ipdps24
+        link: https://www.ipdps.org/
+        timeline:
+          - abstract_deadline: '2023-09-28 23:59:59'
+            deadline: '2023-10-05 23:59:59'
+        timezone: AoE
+        date: May 27-31, 2024
+        place: San Francisco, California USA

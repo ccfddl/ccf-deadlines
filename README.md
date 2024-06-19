@@ -71,8 +71,17 @@ Description of the fields:
       <td>The category that the conference is labeled by CCF. See the matching table below</td>
    </tr>
    <tr>
-      <td colspan="3"><code>rank</code>*</td>
-      <td>The level that the conference is ranked by CCF, e.g., <code>A</code>, <code>B</code>, <code>C</code></td>
+      <td rowspan="3"><code>rank</code>*</td>
+      <td colspan="2"><code>ccf</code>*</td>
+      <td>The level that the conference is ranked by CCF, e.g., <code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
+   </tr>
+   <tr>
+   <td colspan="2"><code>core</code></td>
+   <td>The level that the conference is ranked by CORE, e.g., <code>A*</code>, <code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
+   </tr>
+   <tr>
+   <td colspan="2"><code>th-cpl</code></td>
+   <td>The level that the conference is ranked by TH-CPL, e.g., <code>A</code>, <code>B</code>, <code>N</code></td>
    </tr>
    <tr>
       <td colspan="3"><code>dblp</code>*</td>

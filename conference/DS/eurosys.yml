@@ -1,61 +1,64 @@
-- title: EuroSys
-  description: European Conference on Computer Systems
-  sub: DS
-  rank: A
-  dblp: eurosys
-  confs:
-    - year: 2021
-      id: eurosys2021
-      link: https://2021.eurosys.org/
-      timeline:
-        - abstract_deadline: '2020-10-01 23:59:59'
-          deadline: '2020-10-09 23:59:59'
-      timezone: AoE
-      date: April 26-29, 2021
-      place: Edinburgh, UK
-    - year: 2022
-      id: eurosys2022
-      link: https://2022.eurosys.org/
-      timeline:
-        - abstract_deadline: '2021-10-01 23:59:59'
-          deadline: '2021-10-09 23:59:59'
-      timezone: AoE
-      date: April 5-8, 2022
-      place: Rennes, France
-    - year: 2023
-      id: eurosys2023
-      link: https://2023.eurosys.org/
-      timeline:
-        - abstract_deadline: '2022-05-10 23:59:59'
-          deadline: '2022-05-17 23:59:59'
-          comment: 'Spring Submission Deadline'
-        - abstract_deadline: '2022-10-11 23:59:59'
-          deadline: '2022-10-18 23:59:59'
-          comment: 'Fall Submission Deadline'
-      timezone: AoE
-      date: May 9-12, 2023
-      place: Rome, Italy
-    - year: 2024
-      id: eurosys2024
-      link: https://www.eurosys.org/news/eurosys-2024
-      timeline:
-        - deadline: '2023-05-18 00:00:00'
-          comment: 'Spring Submission Deadline'
-        - deadline: '2023-10-19 23:59:59'
-          comment: 'Fall Submission Deadline'
-      timezone: UTC
-      date: April 23-26, 2024
-      place: Athens, Greece
-    - year: 2025
-      id: eurosys2025
-      link: https://www.eurosys.org/news/eurosys-2025
-      timeline:
-        - abstract_deadline: '2024-05-14 23:59:59'
-          deadline: '2024-05-21 23:59:59'
-          comment: 'Spring Submission Deadline'
-        - abstract_deadline: '2024-10-15 23:59:59'
-          deadline: '2024-10-22 23:59:59'
-          comment: 'Fall Submission Deadline'
-      timezone: AoE
-      date: March-April, 2025
-      place: Rotterdam, The Netherlands.
+  - title: EuroSys
+    description: European Conference on Computer Systems
+    sub: DS
+    rank:
+      ccf: A
+      core: A
+      th-cpl: A
+    dblp: eurosys
+    confs:
+      - year: 2021
+        id: eurosys2021
+        link: https://2021.eurosys.org/
+        timeline:
+          - abstract_deadline: '2020-10-01 23:59:59'
+            deadline: '2020-10-09 23:59:59'
+        timezone: AoE
+        date: April 26-29, 2021
+        place: Edinburgh, UK
+      - year: 2022
+        id: eurosys2022
+        link: https://2022.eurosys.org/
+        timeline:
+          - abstract_deadline: '2021-10-01 23:59:59'
+            deadline: '2021-10-09 23:59:59'
+        timezone: AoE
+        date: April 5-8, 2022
+        place: Rennes, France
+      - year: 2023
+        id: eurosys2023
+        link: https://2023.eurosys.org/
+        timeline:
+          - abstract_deadline: '2022-05-10 23:59:59'
+            deadline: '2022-05-17 23:59:59'
+            comment: Spring Submission Deadline
+          - abstract_deadline: '2022-10-11 23:59:59'
+            deadline: '2022-10-18 23:59:59'
+            comment: Fall Submission Deadline
+        timezone: AoE
+        date: May 9-12, 2023
+        place: Rome, Italy
+      - year: 2024
+        id: eurosys2024
+        link: https://www.eurosys.org/news/eurosys-2024
+        timeline:
+          - deadline: '2023-05-18 00:00:00'
+            comment: Spring Submission Deadline
+          - deadline: '2023-10-19 23:59:59'
+            comment: Fall Submission Deadline
+        timezone: UTC
+        date: April 23-26, 2024
+        place: Athens, Greece
+      - year: 2025
+        id: eurosys2025
+        link: https://www.eurosys.org/news/eurosys-2025
+        timeline:
+          - abstract_deadline: '2024-05-14 23:59:59'
+            deadline: '2024-05-21 23:59:59'
+            comment: Spring Submission Deadline
+          - abstract_deadline: '2024-10-15 23:59:59'
+            deadline: '2024-10-22 23:59:59'
+            comment: Fall Submission Deadline
+        timezone: AoE
+        date: March-April, 2025
+        place: Rotterdam, The Netherlands.

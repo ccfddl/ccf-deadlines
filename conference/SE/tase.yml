@@ -1,15 +1,18 @@
-- title: TASE
-  description: Theoretical Aspects of Software Engineering
-  sub: SE
-  rank: C
-  dblp: tase
-  confs:
-    - year: 2024
-      id: tase24
-      link: https://tase2024.github.io/index.html
-      timeline:
-        - abstract_deadline: '2024-02-17 23:59:59'
-          deadline: '2024-02-24 23:59:59'
-      timezone: AoE
-      date: July 29-August 1, 2024
-      place: Guiyang, China
+  - title: TASE
+    description: Theoretical Aspects of Software Engineering
+    sub: SE
+    rank:
+      ccf: C
+      core: N
+      th-cpl: N
+    dblp: tase
+    confs:
+      - year: 2024
+        id: tase24
+        link: https://tase2024.github.io/index.html
+        timeline:
+          - abstract_deadline: '2024-02-17 23:59:59'
+            deadline: '2024-02-24 23:59:59'
+        timezone: AoE
+        date: July 29-August 1, 2024
+        place: Guiyang, China

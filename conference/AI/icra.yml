@@ -1,49 +1,52 @@
-- title: ICRA
-  description: IEEE International Conference on Robotics and Automation
-  sub: AI
-  rank: B
-  dblp: icra
-  confs:
-    - year: 2022
-      id: icra22
-      link: https://www.icra2022.org/
-      timeline:
-        - deadline: '2021-09-15 02:59:00'
-      timezone: UTC-8
-      date: May 23-27, 2022
-      place: Philadelphia (PA), USA
-    - year: 2023
-      id: icra23
-      link: https://www.icra2023.org/
-      timeline:
-        - deadline: '2022-09-15 23:59:59'
-      timezone: UTC-8
-      date: May 29- June 2, 2023
-      place: ExCeL London, UK
-    - year: 2024
-      id: icra24
-      link: https://2024.ieee-icra.org
-      timeline:
-        - deadline: '2023-09-15 23:59:00'
-      timezone: UTC-8
-      date: May 13-17, 2024
-      place: Yokohama, Japan
-    - year: 2025
-      id: icra25
-      link: https://2025.ieee-icra.org
-      timeline:
-        - deadline: '2024-07-15 12:00:00'
-          comment: 'submission open'
-        - deadline: 'TBD'
-          comment: 'submission close'
-      timezone: UTC-5
-      date: May 19-23, 2025
-      place: Atlanta (GA), USA
-    - year: 2026
-      id: icra26
-      link: https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra
-      timeline:
-        - deadline: 'TBD'
-      timezone: UTC+1
-      date: Jun 1-5, 2026
-      place: Vienna, Austria
+  - title: ICRA
+    description: IEEE International Conference on Robotics and Automation
+    sub: AI
+    rank:
+      ccf: B
+      core: A*
+      th-cpl: A
+    dblp: icra
+    confs:
+      - year: 2022
+        id: icra22
+        link: https://www.icra2022.org/
+        timeline:
+          - deadline: '2021-09-15 02:59:00'
+        timezone: UTC-8
+        date: May 23-27, 2022
+        place: Philadelphia (PA), USA
+      - year: 2023
+        id: icra23
+        link: https://www.icra2023.org/
+        timeline:
+          - deadline: '2022-09-15 23:59:59'
+        timezone: UTC-8
+        date: May 29- June 2, 2023
+        place: ExCeL London, UK
+      - year: 2024
+        id: icra24
+        link: https://2024.ieee-icra.org
+        timeline:
+          - deadline: '2023-09-15 23:59:00'
+        timezone: UTC-8
+        date: May 13-17, 2024
+        place: Yokohama, Japan
+      - year: 2025
+        id: icra25
+        link: https://2025.ieee-icra.org
+        timeline:
+          - deadline: '2024-07-15 12:00:00'
+            comment: submission open
+          - deadline: TBD
+            comment: submission close
+        timezone: UTC-5
+        date: May 19-23, 2025
+        place: Atlanta (GA), USA
+      - year: 2026
+        id: icra26
+        link: https://www.ieee-ras.org/conferences-workshops/fully-sponsored/icra
+        timeline:
+          - deadline: TBD
+        timezone: UTC+1
+        date: Jun 1-5, 2026
+        place: Vienna, Austria

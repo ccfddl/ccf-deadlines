@@ -1,37 +1,40 @@
-- title: ICCAD
-  description: IEEE/ACM International Conference on Computer-Aided Design
-  sub: DS
-  rank: B
-  dblp: iccad
-  confs:
-    - year: 2022
-      id: iccad22
-      link: https://iccad.com/
-      timeline:
-        - deadline: '2022-05-16 23:59:59'
-          comment: 'Abstract Deadline'
-        - deadline: '2022-05-23 23:59:59'
-          comment: 'Full Paper Deadline'
-      timezone: UTC-12
-      date: Oct 29 - Nov 3, 2022
-      place: San Diego, CA, USA
-    - year: 2023
-      id: iccad23
-      link: https://iccad.com/
-      timeline:
-        - deadline: '2023-05-15 23:59:59'
-          comment: 'Abstract Deadline'
-        - deadline: '2023-05-22 23:59:59'
-          comment: 'Full Paper Deadline'
-      timezone: UTC-12
-      date: Oct 29 - Nov 2, 2023
-      place: San Diego, CA, USA
-    - year: 2024
-      id: iccad24
-      link: https://2024.iccad.com/
-      timeline:
-        - abstract_deadline: '2024-04-28 23:59:59'
-          deadline: '2024-05-05 23:59:59'
-      timezone: UTC-12
-      date: October 27 - 31, 2024
-      place: New Jersey, USA
+  - title: ICCAD
+    description: IEEE/ACM International Conference on Computer-Aided Design
+    sub: DS
+    rank:
+      ccf: B
+      core: A
+      th-cpl: B
+    dblp: iccad
+    confs:
+      - year: 2022
+        id: iccad22
+        link: https://iccad.com/
+        timeline:
+          - deadline: '2022-05-16 23:59:59'
+            comment: Abstract Deadline
+          - deadline: '2022-05-23 23:59:59'
+            comment: Full Paper Deadline
+        timezone: UTC-12
+        date: Oct 29 - Nov 3, 2022
+        place: San Diego, CA, USA
+      - year: 2023
+        id: iccad23
+        link: https://iccad.com/
+        timeline:
+          - deadline: '2023-05-15 23:59:59'
+            comment: Abstract Deadline
+          - deadline: '2023-05-22 23:59:59'
+            comment: Full Paper Deadline
+        timezone: UTC-12
+        date: Oct 29 - Nov 2, 2023
+        place: San Diego, CA, USA
+      - year: 2024
+        id: iccad24
+        link: https://2024.iccad.com/
+        timeline:
+          - abstract_deadline: '2024-04-28 23:59:59'
+            deadline: '2024-05-05 23:59:59'
+        timezone: UTC-12
+        date: October 27 - 31, 2024
+        place: New Jersey, USA

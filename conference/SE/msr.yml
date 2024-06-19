@@ -1,15 +1,18 @@
-- title: MSR
-  description:  International Conference on Mining Software Repositories
-  sub: SE
-  rank: C
-  dblp: msr
-  confs:
-    - year: 2024
-      id: msr24
-      link: https://conf.researchr.org/home/msr-2024
-      timeline:
-        - abstract_deadline: '2023-11-14 23:59:59'
-          deadline: '2023-11-17 23:59:59'
-      timezone: AoE
-      date: April 15-16, 2024
-      place: Lisbon, Portugal
+  - title: MSR
+    description: International Conference on Mining Software Repositories
+    sub: SE
+    rank:
+      ccf: C
+      core: A
+      th-cpl: B
+    dblp: msr
+    confs:
+      - year: 2024
+        id: msr24
+        link: https://conf.researchr.org/home/msr-2024
+        timeline:
+          - abstract_deadline: '2023-11-14 23:59:59'
+            deadline: '2023-11-17 23:59:59'
+        timezone: AoE
+        date: April 15-16, 2024
+        place: Lisbon, Portugal

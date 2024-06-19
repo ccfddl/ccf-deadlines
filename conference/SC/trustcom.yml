@@ -1,15 +1,19 @@
-- title: TrustCom
-  description: IEEE International Conference on Trust, Security and Privacy in Computing and Communications
-  sub: SC
-  rank: C
-  dblp: trustcom
-  confs:
-    - year: 2021
-      id: trustcom21
-      link: https://trustcom2021.sau.edu.cn/
-      timeline:
-        - deadline: '2021-04-30 23:59:59'
-          comment: 'Paper Submission Deadline'
-      timezone: UTC+8
-      date: To be announced
-      place: Shenyang, China
+  - title: TrustCom
+    description: IEEE International Conference on Trust, Security and Privacy in Computing
+      and Communications
+    sub: SC
+    rank:
+      ccf: C
+      core: B
+      th-cpl: N
+    dblp: trustcom
+    confs:
+      - year: 2021
+        id: trustcom21
+        link: https://trustcom2021.sau.edu.cn/
+        timeline:
+          - deadline: '2021-04-30 23:59:59'
+            comment: Paper Submission Deadline
+        timezone: UTC+8
+        date: To be announced
+        place: Shenyang, China

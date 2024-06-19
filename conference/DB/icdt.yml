@@ -1,15 +1,18 @@
-- title: ICDT
-  description: International Conference on Database Theory
-  sub: DB
-  rank: B
-  dblp: icdt
-  confs:
-    - year: 2022
-      id: icdt22
-      link: https://conferences.inf.ed.ac.uk/edbticdt2022/
-      timeline:
-        - abstract_deadline: '2021-09-06 23:59:59'
-          deadline: '2021-09-13 23:59:59'
-      timezone: AoE
-      date: Mar 29-April 01, 2022
-      place: Edinburgh, UK
+  - title: ICDT
+    description: International Conference on Database Theory
+    sub: DB
+    rank:
+      ccf: B
+      core: A
+      th-cpl: B
+    dblp: icdt
+    confs:
+      - year: 2022
+        id: icdt22
+        link: https://conferences.inf.ed.ac.uk/edbticdt2022/
+        timeline:
+          - abstract_deadline: '2021-09-06 23:59:59'
+            deadline: '2021-09-13 23:59:59'
+        timezone: AoE
+        date: Mar 29-April 01, 2022
+        place: Edinburgh, UK

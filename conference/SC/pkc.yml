@@ -1,22 +1,25 @@
-- title: PKC
-  description: International Conference on Practice and Theory of Public-Key Cryptography
-  sub: SC
-  rank: B
-  dblp: pkc
-  confs:
-    - year: 2021
-      id: pkc21
-      link: https://pkc.iacr.org/2021/
-      timeline:
-        - deadline: '2020-11-13 23:59:59'
-      timezone: UTC-12
-      date: May 10, 2021
-      place: Virtual
-    - year: 2024
-      id: pkc24
-      link: https://pkc.iacr.org/2024/
-      timeline:
-        - deadline: '2023-10-01 23:59:59'
-      timezone: UTC-12
-      date: April 15-17, 2024
-      place: Sydney, Australia
+  - title: PKC
+    description: International Conference on Practice and Theory of Public-Key Cryptography
+    sub: SC
+    rank:
+      ccf: B
+      core: B
+      th-cpl: B
+    dblp: pkc
+    confs:
+      - year: 2021
+        id: pkc21
+        link: https://pkc.iacr.org/2021/
+        timeline:
+          - deadline: '2020-11-13 23:59:59'
+        timezone: UTC-12
+        date: May 10, 2021
+        place: Virtual
+      - year: 2024
+        id: pkc24
+        link: https://pkc.iacr.org/2024/
+        timeline:
+          - deadline: '2023-10-01 23:59:59'
+        timezone: UTC-12
+        date: April 15-17, 2024
+        place: Sydney, Australia

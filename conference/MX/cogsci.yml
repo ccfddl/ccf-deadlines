@@ -1,22 +1,25 @@
-- title: CogSci
-  description: Annual Meeting of the Cognitive Science Society
-  sub: MX
-  rank: B
-  dblp: cogsci
-  confs:
-    - year: 2023
-      id: cogsci23
-      link: https://cognitivesciencesociety.org/cogsci-2023/
-      timeline:
-        - deadline: '2023-02-01 23:59:59'
-      timezone: UTC+8
-      date: July 26-29, 2023
-      place: Sydney, Australia
-    - year: 2024
-      id: cogsci24
-      link: https://cognitivesciencesociety.org/cogsci-2024/
-      timeline:
-        - deadline: '2024-02-01 23:59:59'
-      timezone: UTC+8
-      date: July 24-27, 2024
-      place: Rotterdam, Netherlands
+  - title: CogSci
+    description: Annual Meeting of the Cognitive Science Society
+    sub: MX
+    rank:
+      ccf: B
+      core: B
+      th-cpl: N
+    dblp: cogsci
+    confs:
+      - year: 2023
+        id: cogsci23
+        link: https://cognitivesciencesociety.org/cogsci-2023/
+        timeline:
+          - deadline: '2023-02-01 23:59:59'
+        timezone: UTC+8
+        date: July 26-29, 2023
+        place: Sydney, Australia
+      - year: 2024
+        id: cogsci24
+        link: https://cognitivesciencesociety.org/cogsci-2024/
+        timeline:
+          - deadline: '2024-02-01 23:59:59'
+        timezone: UTC+8
+        date: July 24-27, 2024
+        place: Rotterdam, Netherlands

@@ -1,42 +1,46 @@
-- title: SIGCOMM
-  description: ACM International Conference on Applications, Technologies, Architectures, and Protocols for Computer Communication
-  sub: NW
-  rank: A
-  dblp: sigcomm
-  confs:
-    - year: 2021
-      id: sigcomm21
-      link: http://conferences.sigcomm.org/sigcomm/2021/
-      timeline:
-        - abstract_deadline: '2021-01-20 16:59:59'
-          deadline: '2021-01-27 16:59:59'
-      timezone: UTC-5
-      date: August 23-27, 2021
-      place: Virtual
-    - year: 2022
-      id: sigcomm22
-      link: https://conferences.sigcomm.org/sigcomm/2022/
-      timeline:
-        - abstract_deadline: '2022-01-26 23:59:59'
-          deadline: '2022-02-02 23:59:59'
-      timezone: UTC
-      date: August 22-26, 2022
-      place: Amsterdam, Netherlands
-    - year: 2023
-      id: sigcomm23
-      link: https://conferences.sigcomm.org/sigcomm/2023/
-      timeline:
-        - abstract_deadline: '2023-02-08 23:59:59'
-          deadline: '2023-02-15 23:59:59'
-      timezone: UTC
-      date: September 10-14, 2023
-      place: New York City, US
-    - year: 2024
-      id: sigcomm24
-      link: https://conferences.sigcomm.org/sigcomm/2024/
-      timeline:
-        - abstract_deadline: '2024-01-26 23:59:59'
-          deadline: '2024-02-02 23:59:59'
-      timezone: UTC
-      date: August 4 - 8, 2024
-      place: Sydney, Australia
+  - title: SIGCOMM
+    description: ACM International Conference on Applications, Technologies, Architectures,
+      and Protocols for Computer Communication
+    sub: NW
+    rank:
+      ccf: A
+      core: A*
+      th-cpl: A
+    dblp: sigcomm
+    confs:
+      - year: 2021
+        id: sigcomm21
+        link: http://conferences.sigcomm.org/sigcomm/2021/
+        timeline:
+          - abstract_deadline: '2021-01-20 16:59:59'
+            deadline: '2021-01-27 16:59:59'
+        timezone: UTC-5
+        date: August 23-27, 2021
+        place: Virtual
+      - year: 2022
+        id: sigcomm22
+        link: https://conferences.sigcomm.org/sigcomm/2022/
+        timeline:
+          - abstract_deadline: '2022-01-26 23:59:59'
+            deadline: '2022-02-02 23:59:59'
+        timezone: UTC
+        date: August 22-26, 2022
+        place: Amsterdam, Netherlands
+      - year: 2023
+        id: sigcomm23
+        link: https://conferences.sigcomm.org/sigcomm/2023/
+        timeline:
+          - abstract_deadline: '2023-02-08 23:59:59'
+            deadline: '2023-02-15 23:59:59'
+        timezone: UTC
+        date: September 10-14, 2023
+        place: New York City, US
+      - year: 2024
+        id: sigcomm24
+        link: https://conferences.sigcomm.org/sigcomm/2024/
+        timeline:
+          - abstract_deadline: '2024-01-26 23:59:59'
+            deadline: '2024-02-02 23:59:59'
+        timezone: UTC
+        date: August 4 - 8, 2024
+        place: Sydney, Australia

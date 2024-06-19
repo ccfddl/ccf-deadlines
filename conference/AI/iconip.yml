@@ -1,22 +1,25 @@
-- title: ICONIP
-  description: International Conference on Neural Information Processing
-  sub: AI
-  rank: C
-  dblp: iconip
-  confs:
-    - year: 2023
-      id: iconip2023
-      link: http://iconip2023.org/
-      timeline:
-        - deadline: '2023-06-30 11:59:00'
-      timezone: UTC-8
-      date: Nov 20-23, 2023
-      place: Changsha, China
-    - year: 2024
-      id: iconip2024
-      link: http://iconip2024.org/
-      timeline:
-        - deadline: '2024-06-30 23:59:59'
-      timezone: UTC-12
-      date: December 2-6, 2024
-      place: Auckland, New Zealand
+  - title: ICONIP
+    description: International Conference on Neural Information Processing
+    sub: AI
+    rank:
+      ccf: C
+      core: B
+      th-cpl: N
+    dblp: iconip
+    confs:
+      - year: 2023
+        id: iconip2023
+        link: http://iconip2023.org/
+        timeline:
+          - deadline: '2023-06-30 11:59:00'
+        timezone: UTC-8
+        date: Nov 20-23, 2023
+        place: Changsha, China
+      - year: 2024
+        id: iconip2024
+        link: http://iconip2024.org/
+        timeline:
+          - deadline: '2024-06-30 23:59:59'
+        timezone: UTC-12
+        date: December 2-6, 2024
+        place: Auckland, New Zealand

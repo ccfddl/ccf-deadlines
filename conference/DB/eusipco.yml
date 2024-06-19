@@ -1,0 +1,18 @@
+  - title: EUSIPCO
+    description: IEEE Conference on Signal Processing
+    sub: SE
+    rank:
+      ccf: B
+      core: N
+      th-cpl: N
+    dblp: eusipcolyon
+    confs:
+      - year: 2024
+        id: eusipco2024
+        link: https://eusipcolyon.sciencesconf.org/
+        timeline:
+          - deadline: '2024-03-14 18:00:00'
+            comment: first round
+        timezone: UTC-8
+        date: August 26-30, 2024
+        place: LYON, FRANCE

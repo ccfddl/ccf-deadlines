@@ -1,14 +1,17 @@
-- title: PRICAI
-  description: Pacific Rim International Conference on Artificial Intelligence
-  sub: AI
-  rank: C
-  dblp: pricai
-  confs:
-    - year: 2024
-      id: pricai2024
-      link: https://www.pricai.org/2024/
-      timeline:
-        - deadline: '2024-06-26 23:59:59'
-      timezone: UTC-12
-      date: Nov 18-24, 2024
-      place: Kyoto, Japan
+  - title: PRICAI
+    description: Pacific Rim International Conference on Artificial Intelligence
+    sub: AI
+    rank:
+      ccf: C
+      core: B
+      th-cpl: N
+    dblp: pricai
+    confs:
+      - year: 2024
+        id: pricai2024
+        link: https://www.pricai.org/2024/
+        timeline:
+          - deadline: '2024-06-26 23:59:59'
+        timezone: UTC-12
+        date: Nov 18-24, 2024
+        place: Kyoto, Japan

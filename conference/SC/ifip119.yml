@@ -1,15 +1,18 @@
-- title: IFIP WG 11.9
-  description: IFIP WG 11.9 International Conference on Digital Forensics
-  sub: SC
-  rank: C
-  dblp: NO DBLP
-  confs:
-    - year: 2022
-      id: ifip119'22
-      link: http://www.ifip119.org/Conferences/
-      timeline:
-        - deadline: '2021-10-15 23:59:59'
-          comment: 'Submission Deadline'
-      timezone: AoE
-      date: January 3 - 5, 2022
-      place: New Delhi, India
+  - title: IFIP WG 11.9
+    description: IFIP WG 11.9 International Conference on Digital Forensics
+    sub: SC
+    rank:
+      ccf: C
+      core: N
+      th-cpl: N
+    dblp: NO DBLP
+    confs:
+      - year: 2022
+        id: ifip119'22
+        link: http://www.ifip119.org/Conferences/
+        timeline:
+          - deadline: '2021-10-15 23:59:59'
+            comment: Submission Deadline
+        timezone: AoE
+        date: January 3 - 5, 2022
+        place: New Delhi, India

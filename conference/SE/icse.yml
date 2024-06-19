@@ -1,47 +1,50 @@
-- title: ICSE
-  description: International Conference on Software Engineering
-  sub: SE
-  rank: A
-  dblp: icse
-  confs:
-    - year: 2022
-      id: icse22
-      link: https://conf.researchr.org/home/icse-2022
-      timeline:
-        - abstract_deadline: '2021-08-27 23:59:59'
-          deadline: '2021-09-03 23:59:59'
-      timezone: AoE
-      date: May 21-29, 2022
-      place: Pittsburgh, PA, USA
-    - year: 2023
-      id: icse23
-      link: https://conf.researchr.org/home/icse-2023
-      timeline:
-        - deadline: '2022-09-01 23:59:59'
-      timezone: AoE
-      date: May 14-20, 2023
-      place: Melbourne, Australia
-    - year: 2024
-      id: icse24
-      link: https://conf.researchr.org/home/icse-2024
-      timeline:
-        - deadline: '2023-03-29 23:59:59'
-          comment: 'Technical Papers First round submission deadline'
-        - deadline: '2023-08-01 23:59:59'
-          comment: 'Technical Papers Second round submission deadline'
-      timezone: AoE
-      date: April 12-21, 2024
-      place: Lisbon, Portugal
-    - year: 2025
-      id: icse25
-      link: https://conf.researchr.org/home/icse-2025
-      timeline:
-        - abstract_deadline: '2024-03-15 23:59:59'
-          deadline: '2024-03-22 23:59:59'
-          comment: 'First Cycle: Submission'
-        - abstract_deadline: '2024-07-26 23:59:59'
-          deadline: '2024-08-02 23:59:59'
-          comment: 'Second Cycle: Submission'
-      timezone: AoE
-      date: April 26- May 04, 2025
-      place: Ottawa, Ontario, Canada
+  - title: ICSE
+    description: International Conference on Software Engineering
+    sub: SE
+    rank:
+      ccf: A
+      core: A*
+      th-cpl: A
+    dblp: icse
+    confs:
+      - year: 2022
+        id: icse22
+        link: https://conf.researchr.org/home/icse-2022
+        timeline:
+          - abstract_deadline: '2021-08-27 23:59:59'
+            deadline: '2021-09-03 23:59:59'
+        timezone: AoE
+        date: May 21-29, 2022
+        place: Pittsburgh, PA, USA
+      - year: 2023
+        id: icse23
+        link: https://conf.researchr.org/home/icse-2023
+        timeline:
+          - deadline: '2022-09-01 23:59:59'
+        timezone: AoE
+        date: May 14-20, 2023
+        place: Melbourne, Australia
+      - year: 2024
+        id: icse24
+        link: https://conf.researchr.org/home/icse-2024
+        timeline:
+          - deadline: '2023-03-29 23:59:59'
+            comment: Technical Papers First round submission deadline
+          - deadline: '2023-08-01 23:59:59'
+            comment: Technical Papers Second round submission deadline
+        timezone: AoE
+        date: April 12-21, 2024
+        place: Lisbon, Portugal
+      - year: 2025
+        id: icse25
+        link: https://conf.researchr.org/home/icse-2025
+        timeline:
+          - abstract_deadline: '2024-03-15 23:59:59'
+            deadline: '2024-03-22 23:59:59'
+            comment: 'First Cycle: Submission'
+          - abstract_deadline: '2024-07-26 23:59:59'
+            deadline: '2024-08-02 23:59:59'
+            comment: 'Second Cycle: Submission'
+        timezone: AoE
+        date: April 26- May 04, 2025
+        place: Ottawa, Ontario, Canada

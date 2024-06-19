@@ -1,14 +1,17 @@
-- title: CASA
-  description: International Conference on Computer Animation and Social Agents
-  sub: CG
-  rank: C
-  dblp: ca
-  confs:
-    - year: 2024
-      id: casa2024
-      link: https://casa2024.wtu.edu.cn/index.htm
-      timeline:
-        - deadline: '2024-03-05 23:59:59'
-      timezone: AoE
-      date: June 5-7, 2024
-      place: Wuhan, China
+  - title: CASA
+    description: International Conference on Computer Animation and Social Agents
+    sub: CG
+    rank:
+      ccf: C
+      core: N
+      th-cpl: N
+    dblp: ca
+    confs:
+      - year: 2024
+        id: casa2024
+        link: https://casa2024.wtu.edu.cn/index.htm
+        timeline:
+          - deadline: '2024-03-05 23:59:59'
+        timezone: AoE
+        date: June 5-7, 2024
+        place: Wuhan, China
