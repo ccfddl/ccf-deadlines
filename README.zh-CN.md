@@ -37,7 +37,10 @@
 - title: SIGMOD
   description: ACM Conference on Management of Data
   sub: DB
-  rank: A
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
   dblp: sigmod
   confs:
     - year: 2022
