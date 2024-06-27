@@ -50,3 +50,14 @@
         timezone: AoE
         date: April 16-19, 2024
         place: Utrecht, Netherlands
+      - year: 2025
+        id: icde25
+        link: https://icde2025.github.io/
+        timeline:
+          - deadline: '2024-08-02 23:59:59'
+            comment: first round
+          - deadline: '2024-11-28 23:59:59'
+            comment: second round
+        timezone: AoE
+        date: May 19-23, 2025
+        place: Hong Kong, China
