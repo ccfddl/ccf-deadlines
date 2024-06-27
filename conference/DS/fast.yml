@@ -1,30 +1,49 @@
-- title: FAST
-  description: USENIX Conference on File and Storage Technologies
-  sub: DS
-  rank: A
-  dblp: fast
-  confs:
-    - year: 2021
-      id: fast21
-      link: https://www.usenix.org/conference/fast21/
-      timeline:
-        - deadline: '2020-09-24 23:59:59'
-      timezone: UTC-7
-      date: Feburary 23-25, 2021
-      place: Virtual
-    - year: 2022
-      id: fast22
-      link: https://www.usenix.org/conference/fast22/
-      timeline:
-        - deadline: '2021-09-23 23:59:59'
-      timezone: UTC-7
-      date: Feburary 21-24, 2022
-      place: SANTA CLARA, CA, USA
-    - year: 2023
-      id: fast23
-      link: https://www.usenix.org/conference/fast23
-      timeline:
-        - deadline: '2022-09-22 23:59:59'
-      timezone: UTC-7
-      date: FEBRUARY 20-23, 2023
-      place: SANTA CLARA, CA, USA
+  - title: FAST
+    description: USENIX Conference on File and Storage Technologies
+    sub: DS
+    rank:
+      ccf: A
+      core: A
+      thcpl: A
+    dblp: fast
+    confs:
+      - year: 2021
+        id: fast21
+        link: https://www.usenix.org/conference/fast21/
+        timeline:
+          - deadline: '2020-09-24 23:59:59'
+        timezone: UTC-7
+        date: Feburary 23-25, 2021
+        place: Virtual
+      - year: 2022
+        id: fast22
+        link: https://www.usenix.org/conference/fast22/
+        timeline:
+          - deadline: '2021-09-23 23:59:59'
+        timezone: UTC-7
+        date: Feburary 21-24, 2022
+        place: SANTA CLARA, CA, USA
+      - year: 2023
+        id: fast23
+        link: https://www.usenix.org/conference/fast23
+        timeline:
+          - deadline: '2022-09-22 23:59:59'
+        timezone: UTC-7
+        date: FEBRUARY 20-23, 2023
+        place: SANTA CLARA, CA, USA
+      - year: 2024
+        id: fast24
+        link: https://www.usenix.org/conference/fast24
+        timeline:
+          - deadline: '2023-09-21 23:59:59'
+        timezone: UTC-7
+        date: FEBRUARY 27-29, 2024
+        place: SANTA CLARA, CA, USA
+      - year: 2025
+        id: fast25
+        link: https://www.usenix.org/conference/fast25
+        timeline:
+          - deadline: '2024-09-17 23:59:59'
+        timezone: UTC-7
+        date: FEBRUARY 25-27, 2025
+        place: SANTA CLARA, CA, USA

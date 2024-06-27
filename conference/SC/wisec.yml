@@ -1,15 +1,27 @@
-- title: WiSec
-  description: ACM Conference on Security and Privacy in Wireless and Mobile Networks
-  sub: SC
-  rank: C
-  dblp: wisec
-  confs:
-    - year: 2021
-      id: wisec21
-      link: https://sites.nyuad.nyu.edu/wisec21/
-      timeline:
-        - deadline: '2021-03-25 23:59:59'
-          comment: 'Paper Submission Deadline'
-      timezone: AoE
-      date: June 28 - July 2, 2021
-      place: Abu Dhabi, UAE
+  - title: WiSec
+    description: ACM Conference on Security and Privacy in Wireless and Mobile Networks
+    sub: SC
+    rank:
+      ccf: C
+      core: B
+      thcpl: B
+    dblp: wisec
+    confs:
+      - year: 2021
+        id: wisec21
+        link: https://sites.nyuad.nyu.edu/wisec21/
+        timeline:
+          - deadline: '2021-03-25 23:59:59'
+            comment: Paper Submission Deadline
+        timezone: AoE
+        date: June 28 - July 2, 2021
+        place: Abu Dhabi, UAE
+      - year: 2024
+        id: wisec24
+        link: https://wisec2024.kaist.ac.kr/
+        timeline:
+          - deadline: '2024-02-08 23:59:59'
+            comment: Paper Submission Deadline
+        timezone: AoE
+        date: May 27 - 30, 2024
+        place: Seoul, Korea

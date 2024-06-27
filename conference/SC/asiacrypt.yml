@@ -1,14 +1,34 @@
-- title: ASIACRYPT
-  description: International Conference on the Theory and Application of Cryptology and Information Security
-  sub: SC
-  rank: B
-  dblp: asiacrypt
-  confs:
-    - year: 2021
-      id: asiacrypt21
-      link: https://asiacrypt.iacr.org/2021/
-      timeline:
-        - deadline: '2021-05-27 11:59:59'
-      timezone: UTC-12
-      date: December 5-9, 2021
-      place: Singapore
+  - title: ASIACRYPT
+    description: International Conference on the Theory and Application of Cryptology
+      and Information Security
+    sub: SC
+    rank:
+      ccf: B
+      core: A
+      thcpl: A
+    dblp: asiacrypt
+    confs:
+      - year: 2021
+        id: asiacrypt21
+        link: https://asiacrypt.iacr.org/2021/
+        timeline:
+          - deadline: '2021-05-27 11:59:59'
+        timezone: UTC
+        date: December 5-9, 2021
+        place: Singapore
+      - year: 2023
+        id: asiacrypt23
+        link: https://asiacrypt.iacr.org/2023/
+        timeline:
+          - deadline: '2023-05-26 11:59:00'
+        timezone: UTC
+        date: December 4-8, 2023
+        place: Guangzhou, China
+      - year: 2024
+        id: asiacrypt24
+        link: https://asiacrypt.iacr.org/2024/
+        timeline:
+          - deadline: '2024-05-26 11:59:00'
+        timezone: UTC
+        date: December 9-13, 2024
+        place: Kolkata, India

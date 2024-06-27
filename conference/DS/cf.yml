@@ -1,0 +1,17 @@
+  - title: CF
+    description: ACM International Conference on Computing Frontiers
+    sub: DS
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: cf
+    confs:
+      - year: 2024
+        id: cf2024
+        link: https://www.computingfrontiers.org/2024/
+        timeline:
+          - deadline: '2024-01-08 23:59:59'
+        timezone: AoE
+        date: May 7-9, 2024
+        place: Ischia, Italy

@@ -11,6 +11,9 @@
     <el-row class="subtitle">
       Preview tabular demo: <a style="color: #666666" href="https://ccfddl.top/">https://ccfddl.top/</a>, or scan to try <a style="color: #666666" href="https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/applet_qrcode.jpg">wechat applet</a>.
     </el-row>
+    <el-row class="subtitle">
+     *Disclaimer: The data provided by ccfddl is manually collected and for reference purposes only.
+    </el-row>
   </section>
 </template>
 

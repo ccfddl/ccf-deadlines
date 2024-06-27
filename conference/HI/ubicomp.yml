@@ -1,22 +1,39 @@
-- title: UbiComp/ISWC
-  description: ACM International Joint Conference on Pervasive and Ubiquitous Computing
-  sub: HI
-  rank: A
-  dblp: huc
-  confs:
-    - year: 2023
-      id: huc23
-      link: https://www.ubicomp.org/ubicomp-iswc-2023
-      timeline:
-        - deadline: '2023-02-15 23:59:59'
-          comment: 'first round'
-        - deadline: '2023-05-15 23:59:59'
-          comment: 'second round'
-        - deadline: '2023-08-15 23:59:59'
-          comment: 'third round'
-        - deadline: '2023-11-15 23:59:59'
-          comment: 'fourth round'
-      timezone: AoE
-      date: October 8-12, 2023
-      place: Cancún, Mexico
-    
+  - title: UbiComp/ISWC
+    description: ACM International Joint Conference on Pervasive and Ubiquitous Computing
+    sub: HI
+    rank:
+      ccf: A
+      core: N
+      thcpl: A
+    dblp: huc
+    confs:
+      - year: 2024
+        id: huc24
+        link: https://www.ubicomp.org/ubicomp-iswc-2024
+        timeline:
+          - deadline: '2024-02-01 23:59:59'
+            comment: first round
+          - deadline: '2024-05-01 23:59:59'
+            comment: second round
+          - deadline: '2024-08-01 23:59:59'
+            comment: third round (only for revised paper)
+          - deadline: '2024-11-01 23:59:59'
+            comment: fourth round
+        timezone: AoE
+        date: October 5-9, 2024
+        place: Melbourne, Australia
+      - year: 2023
+        id: huc23
+        link: https://www.ubicomp.org/ubicomp-iswc-2023
+        timeline:
+          - deadline: '2023-02-15 23:59:59'
+            comment: first round
+          - deadline: '2023-05-15 23:59:59'
+            comment: second round
+          - deadline: '2023-08-15 23:59:59'
+            comment: third round
+          - deadline: '2023-11-15 23:59:59'
+            comment: fourth round
+        timezone: UTC-5
+        date: October 8-12, 2023
+        place: Cancún, Mexico

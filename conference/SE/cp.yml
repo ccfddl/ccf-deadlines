@@ -1,15 +1,19 @@
-- title: CP
-  description:  International Conference on Principles and Practice of Constraint Programming
-  sub: SE
-  rank: B
-  dblp: cp
-  confs:
-    - year: 2022
-      id: cp22
-      link: https://cp2022.a4cp.org/
-      timeline:
-        - deadline: '2022-02-25 23:59:59'
-          comment: 'Full Paper Submission'
-      timezone: AoE
-      date: July 31-August 8, 2022
-      place: HAIFA, ISRAEL
+  - title: CP
+    description: International Conference on Principles and Practice of Constraint
+      Programming
+    sub: SE
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: cp
+    confs:
+      - year: 2022
+        id: cp22
+        link: https://cp2022.a4cp.org/
+        timeline:
+          - deadline: '2022-02-25 23:59:59'
+            comment: Full Paper Submission
+        timezone: AoE
+        date: July 31-August 8, 2022
+        place: HAIFA, ISRAEL

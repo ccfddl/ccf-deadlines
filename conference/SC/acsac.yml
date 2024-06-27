@@ -1,14 +1,25 @@
-- title: ACSAC
-  description: Annual Computer Security Applications Conference
-  sub: SC
-  rank: B
-  dblp: acsac
-  confs:
-    - year: 2021
-      id: acsac21
-      link: https://www.acsac.org/
-      timeline:
-        - deadline: '2021-09-14 23:59:59'
-      timezone: UTC-12
-      date: December 6-10, 2021
-      place: Online
+  - title: ACSAC
+    description: Annual Computer Security Applications Conference
+    sub: SC
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: acsac
+    confs:
+      - year: 2021
+        id: acsac21
+        link: https://www.acsac.org/
+        timeline:
+          - deadline: '2021-09-14 23:59:59'
+        timezone: UTC-12
+        date: December 6-10, 2021
+        place: Online
+      - year: 2023
+        id: acsac23
+        link: https://www.acsac.org/
+        timeline:
+          - deadline: '2023-05-26 23:59:59'
+        timezone: UTC-12
+        date: December 4-8, 2023
+        place: Austin, Texas, USA

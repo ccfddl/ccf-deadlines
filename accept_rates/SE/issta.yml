@@ -1,0 +1,8 @@
+- title: ISSTA
+  accept_rates:
+  - year: 2022
+    submitted: 250
+    accepted: 61
+    str: 24.4%(61/250 22')
+    rate: 0.244
+    source: https://github.com/emeryberger/csconferences

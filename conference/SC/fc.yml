@@ -1,17 +1,29 @@
-- title: FC
-  description: Financial Cryptography and Data Security
-  sub: SC
-  rank: C
-  dblp: fc
-  confs:
-    - year: 2022
-      id: fc22
-      link: https://fc22.ifca.ai/
-      timeline:
-        - deadline: '2021-09-02 23:59:59'
-          comment: 'Paper registration'
-        - deadline: '2021-09-09 23:59:59'
-          comment: 'Paper submission'
-      timezone: UTC-12
-      date: February 14-18, 2022
-      place: Radisson Grenada Beach Resort Grenada
+  - title: FC
+    description: Financial Cryptography and Data Security
+    sub: SC
+    rank:
+      ccf: C
+      core: A
+      thcpl: B
+    dblp: fc
+    confs:
+      - year: 2022
+        id: fc22
+        link: https://fc22.ifca.ai/
+        timeline:
+          - deadline: '2021-09-02 23:59:59'
+            comment: Paper registration
+          - deadline: '2021-09-09 23:59:59'
+            comment: Paper submission
+        timezone: UTC-12
+        date: February 14-18, 2022
+        place: Radisson Grenada Beach Resort Grenada
+      - year: 2024
+        id: fc24
+        link: https://fc24.ifca.ai/
+        timeline:
+          - deadline: '2023-09-18 23:59:59'
+            comment: Submission deadline
+        timezone: UTC-12
+        date: March 4-8, 2024
+        place: Willemstad, Curaçao

@@ -1,0 +1,17 @@
+  - title: SODA
+    description: ACM-SIAM Symposium on Discrete Algorithms
+    sub: CT
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: soda
+    confs:
+      - year: 2025
+        id: soda25
+        link: https://www.siam.org/conferences/cm/conference/soda25
+        timeline:
+          - deadline: '2024-07-05 23:59:59'
+        timezone: UTC-12
+        date: January 12-15, 2025
+        place: New Orleans, Louisiana, USA

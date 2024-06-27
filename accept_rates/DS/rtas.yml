@@ -1,0 +1,8 @@
+- title: RTAS
+  accept_rates:
+  - year: 2022
+    submitted: 91
+    accepted: 22
+    str: 24.2%(22/91 22')
+    rate: 0.241758241758242
+    source: https://github.com/emeryberger/csconferences

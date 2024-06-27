@@ -1,0 +1,20 @@
+  - title: ICECCS
+    description: International Conference on Engineering of Complex Computer Systems
+    sub: SE
+    rank:
+      ccf: C
+      core: B
+      thcpl: N
+    dblp: iceccs
+    confs:
+      - year: 2024
+        id: iceccs24
+        link: https://cyprusconferences.org/iceccs2024/
+        timeline:
+          - deadline: '2023-12-29 23:59:59'
+            comment: Abstract submission
+          - deadline: '2024-01-05 23:59:59'
+            comment: Full paper submission
+        timezone: AoE
+        date: June 19-21, 2024
+        place: Limassol, Cyprus

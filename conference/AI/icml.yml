@@ -1,26 +1,38 @@
-- title: ICML
-  description: International Conference on Machine Learning
-  sub: AI
-  rank: A
-  dblp: icml
-  confs:
-    - year: 2022
-      id: icml22
-      link: https://icml.cc/Conferences/2022
-      timeline:
-        - abstract_deadline: '2022-01-20 23:59:00'
-          deadline: '2022-01-27 23:59:00'
-          comment: 'Mandatory abstract deadline on Jan 20, 2022.'
-      timezone: UTC-12
-      date: July 17-23, 2022
-      place: Baltimore, Maryland USA
-    - year: 2023
-      id: icml23
-      link: https://icml.cc/Conferences/2023
-      timeline:
-        - abstract_deadline: '2023-01-09 07:59:59'
-          deadline: '2023-01-26 07:59:59'
-          comment: 'Paper Submissions Open on OpenReview Jan 09 2023 02:00 PM UTC'
-      timezone: UTC-12
-      date: July 23-29, 2023
-      place: Hawaii Convention Center,Hawaii, USA
+  - title: ICML
+    description: International Conference on Machine Learning
+    sub: AI
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: icml
+    confs:
+      - year: 2022
+        id: icml22
+        link: https://icml.cc/Conferences/2022
+        timeline:
+          - abstract_deadline: '2022-01-20 23:59:00'
+            deadline: '2022-01-27 23:59:00'
+            comment: Mandatory abstract deadline on Jan 20, 2022.
+        timezone: UTC-12
+        date: July 17-23, 2022
+        place: Baltimore, Maryland USA
+      - year: 2023
+        id: icml23
+        link: https://icml.cc/Conferences/2023
+        timeline:
+          - abstract_deadline: '2023-01-09 07:59:59'
+            deadline: '2023-01-26 07:59:59'
+            comment: Paper Submissions Open on OpenReview Jan 09 2023 02:00 PM UTC
+        timezone: UTC-12
+        date: July 23-29, 2023
+        place: Hawaii Convention Center,Hawaii, USA
+      - year: 2024
+        id: icml24
+        link: https://icml.cc/Conferences/2024
+        timeline:
+          - deadline: '2024-02-01 23:59:59'
+            comment: Paper Submissions Open on OpenReview Jan 09 2024 02:00 PM UTC
+        timezone: UTC-12
+        date: July 21-27, 2024
+        place: Messe Wien Exhibition Congress Center, Vienna, Austria

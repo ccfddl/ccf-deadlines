@@ -1,0 +1,8 @@
+- title: ICLR
+  accept_rates:
+  - year: 2024
+    submitted: 7304
+    accepted: 2250
+    str: 30.8%(2250/7304 24')
+    rate: 0.308050383351588
+    source: https://github.com/lixin4ever/Conference-Acceptance-Rate

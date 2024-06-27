@@ -1,33 +1,46 @@
-- title: SIGIR
-  description: International Conference on Research on Development in Information Retrieval
-  sub: DB
-  rank: A
-  dblp: sigir
-  confs:
-    - year: 2021
-      id: sigir21
-      link: http://sigir.org/sigir2021/
-      timeline:
-        - abstract_deadline: '2021-02-02 23:59:59'
-          deadline: '2021-02-09 23:59:59'
-      timezone: AoE
-      date: July 11-15, 2021
-      place: Virtual
-    - year: 2022
-      id: sigir22
-      link: https://sigir.org/sigir2022/
-      timeline:
-        - abstract_deadline: '2022-01-21 23:59:59'
-          deadline: '2022-01-28 23:59:59'
-      timezone: AoE
-      date: July 11-15, 2022
-      place: Madrid
-    - year: 2023
-      id: sigir23
-      link: https://sigir.org/sigir2023/
-      timeline:
-        - abstract_deadline: '2023-01-24 23:59:59'
-          deadline: '2023-01-31 23:59:59'
-      timezone: AoE
-      date: July 23-27, 2023
-      place: Taipei, Taiwan
+  - title: SIGIR
+    description: International Conference on Research on Development in Information
+      Retrieval
+    sub: DB
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: sigir
+    confs:
+      - year: 2021
+        id: sigir21
+        link: http://sigir.org/sigir2021/
+        timeline:
+          - abstract_deadline: '2021-02-02 23:59:59'
+            deadline: '2021-02-09 23:59:59'
+        timezone: AoE
+        date: July 11-15, 2021
+        place: Virtual
+      - year: 2022
+        id: sigir22
+        link: https://sigir.org/sigir2022/
+        timeline:
+          - abstract_deadline: '2022-01-21 23:59:59'
+            deadline: '2022-01-28 23:59:59'
+        timezone: AoE
+        date: July 11-15, 2022
+        place: Madrid
+      - year: 2023
+        id: sigir23
+        link: https://sigir.org/sigir2023/
+        timeline:
+          - abstract_deadline: '2023-01-24 23:59:59'
+            deadline: '2023-01-31 23:59:59'
+        timezone: AoE
+        date: July 23-27, 2023
+        place: Taipei, Taiwan
+      - year: 2024
+        id: sigir24
+        link: https://sigir-2024.github.io/index.html
+        timeline:
+          - abstract_deadline: '2024-01-19 23:59:59'
+            deadline: '2024-01-25 23:59:59'
+        timezone: AoE
+        date: July 14-18, 2024
+        place: Washington D.C., USA

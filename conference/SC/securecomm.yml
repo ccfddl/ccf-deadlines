@@ -1,25 +1,37 @@
-- title: SecureComm
-  description: International Conference on Security and Privacy in Communication Networks
-  sub: SC
-  rank: C
-  dblp: securecomm
-  confs:
-    - year: 2021
-      id: securecomm21
-      link: https://securecomm.eai-conferences.org/2021/
-      timeline:
-        - deadline: '2021-03-31 23:59:59'
-          comment: 'Main Track Full Paper Submission deadline'
-        - deadline: '2021-05-04 23:59:59'
-          comment: 'Late Track Full Paper Submission deadline'
-      timezone: AoE
-      date: September 6-9, 2021
-      place: Canterbury, Great Britain(online)
-    - year: 2023
-      id: securecomm23
-      link: https://securecomm.eai-conferences.org/2023/
-      timeline:
-        - deadline: '2023-05-06 23:59:59'
-      timezone: AoE
-      date: October 19-21, 2023
-      place: Hong Kong SAR, Hong Kong
+  - title: SecureComm
+    description: International Conference on Security and Privacy in Communication
+      Networks
+    sub: SC
+    rank:
+      ccf: C
+      core: C
+      thcpl: N
+    dblp: securecomm
+    confs:
+      - year: 2021
+        id: securecomm21
+        link: https://securecomm.eai-conferences.org/2021/
+        timeline:
+          - deadline: '2021-03-31 23:59:59'
+            comment: Main Track Full Paper Submission deadline
+          - deadline: '2021-05-04 23:59:59'
+            comment: Late Track Full Paper Submission deadline
+        timezone: AoE
+        date: September 6-9, 2021
+        place: Canterbury, Great Britain(online)
+      - year: 2023
+        id: securecomm23
+        link: https://securecomm.eai-conferences.org/2023/
+        timeline:
+          - deadline: '2023-05-06 23:59:59'
+        timezone: AoE
+        date: October 19-21, 2023
+        place: Hong Kong SAR, Hong Kong
+      - year: 2024
+        id: securecomm24
+        link: https://securecomm.eai-conferences.org/2024/
+        timeline:
+          - deadline: '2024-05-10 23:59:59'
+        timezone: AoE
+        date: October 28-30, 2024
+        place: Dubai, United Arab Emirates

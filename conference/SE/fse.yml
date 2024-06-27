@@ -1,39 +1,50 @@
-- title: ESEC/FSE
-  description:  ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering
-  sub: SE
-  rank: A
-  dblp: sigsoft
-  confs:
-    - year: 2022
-      id: fse22
-      link: https://2022.esec-fse.org/
-      timeline:
-        - deadline: '2022-03-10 23:59:59'
-          comment: 'paper registration deadline'
-        - deadline: '2022-03-17 23:59:59'
-          comment: 'full paper submission deadline'
-      timezone: AoE
-      date: November 14-18, 2022
-      place: Singapore
-    - year: 2023
-      id: fse23
-      link: https://2023.esec-fse.org/
-      timeline:
-        - deadline: '2023-01-26 23:59:59'
-          comment: 'paper registration deadline'
-        - deadline: '2023-02-02 23:59:59'
-          comment: 'full paper submission deadline'
-      timezone: AoE
-      date: November 11-17, 2023
-      place: United States    
-    - year: 2024
-      id: fse24
-      link: https://2024.esec-fse.org/
-      timeline:
-        - deadline: '2023-09-21 23:59:59'
-          comment: 'paper registration deadline'
-        - deadline: '2023-09-28 23:59:59'
-          comment: 'full paper submission deadline'
-      timezone: AoE
-      date: July 15-19, 2024
-      place: Porto de Galinas, Brazil
+  - title: ESEC/FSE
+    description: ACM Joint European Software Engineering Conference and Symposium
+      on the Foundations of Software Engineering
+    sub: SE
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: sigsoft
+    confs:
+      - year: 2022
+        id: fse22
+        link: https://2022.esec-fse.org/
+        timeline:
+          - deadline: '2022-03-10 23:59:59'
+            comment: paper registration deadline
+          - deadline: '2022-03-17 23:59:59'
+            comment: full paper submission deadline
+        timezone: AoE
+        date: November 14-18, 2022
+        place: Singapore
+      - year: 2023
+        id: fse23
+        link: https://2023.esec-fse.org/
+        timeline:
+          - deadline: '2023-01-26 23:59:59'
+            comment: paper registration deadline
+          - deadline: '2023-02-02 23:59:59'
+            comment: full paper submission deadline
+        timezone: AoE
+        date: November 11-17, 2023
+        place: United States
+      - year: 2024
+        id: fse24
+        link: https://2024.esec-fse.org/
+        timeline:
+          - abstract_deadline: '2023-09-21 23:59:59'
+            deadline: '2023-09-28 23:59:59'
+        timezone: AoE
+        date: July 15-19, 2024
+        place: Porto de Galinas, Brazil
+      - year: 2025
+        id: fse25
+        link: https://conf.researchr.org/home/fse-2025
+        timeline:
+          - abstract_deadline: '2024-09-05 23:59:59'
+            deadline: '2024-09-12 23:59:59'
+        timezone: AoE
+        date: June 23-27, 2025
+        place: Trondheim, Norway

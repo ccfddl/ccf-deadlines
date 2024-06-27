@@ -1,0 +1,18 @@
+  - title: SPAA
+    description: ACM Symposium on Parallelism in Algorithms and Architectures
+    sub: DS
+    rank:
+      ccf: B
+      core: B
+      thcpl: B
+    dblp: spaa
+    confs:
+      - year: 2024
+        id: spaa24
+        link: https://spaa.acm.org/
+        timeline:
+          - abstract_deadline: '2024-01-19 23:59:00'
+            deadline: '2024-01-24 23:59:00'
+        timezone: AoE
+        date: June 17-21, 2024
+        place: Nantes, France

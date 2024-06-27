@@ -1,15 +1,19 @@
-- title: VMCAI
-  description:  International Conference on Verification, Model Checking, and Abstract Interpretation
-  sub: SE
-  rank: B
-  dblp: vmcai
-  confs:
-    - year: 2022
-      id: vmcai22
-      link: https://popl22.sigplan.org/home/VMCAI-2022
-      timeline:
-        - deadline: '2021-09-09 23:59:59'
-          comment: 'Submission deadline'
-      timezone: AoE
-      date: January 16-28, 2022
-      place: Philadelphia, Pennsylvania, United States
+  - title: VMCAI
+    description: International Conference on Verification, Model Checking, and Abstract
+      Interpretation
+    sub: SE
+    rank:
+      ccf: B
+      core: B
+      thcpl: B
+    dblp: vmcai
+    confs:
+      - year: 2022
+        id: vmcai22
+        link: https://popl22.sigplan.org/home/VMCAI-2022
+        timeline:
+          - deadline: '2021-09-09 23:59:59'
+            comment: Submission deadline
+        timezone: AoE
+        date: January 16-28, 2022
+        place: Philadelphia, Pennsylvania, United States

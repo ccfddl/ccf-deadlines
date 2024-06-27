@@ -1,31 +1,34 @@
-- title: CVPR
-  description: IEEE/CVF Conference on Computer Vision and Pattern Recognition
-  sub: AI
-  rank: A
-  dblp: cvpr
-  confs:
-    - year: 2022
-      id: cvpr22
-      link: http://cvpr2022.thecvf.com/
-      timeline:
-        - abstract_deadline: '2021-11-09 23:59:00'
-          deadline: '2021-11-16 23:59:00'
-      timezone: UTC-8
-      date: June 19 - June 24, 2022
-      place: New Orleans, Louisiana
-    - year: 2023
-      id: cvpr23
-      link: http://cvpr2023.thecvf.com/
-      timeline:
+  - title: CVPR
+    description: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+    sub: AI
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: cvpr
+    confs:
+      - year: 2022
+        id: cvpr22
+        link: http://cvpr2022.thecvf.com/
+        timeline:
+          - abstract_deadline: '2021-11-09 23:59:00'
+            deadline: '2021-11-16 23:59:00'
+        timezone: UTC-8
+        date: June 19 - June 24, 2022
+        place: New Orleans, Louisiana
+      - year: 2023
+        id: cvpr23
+        link: http://cvpr2023.thecvf.com/
+        timeline:
           - deadline: '2022-11-11 23:59:59'
-      timezone: UTC-8
-      date: June 17-23, 2023
-      place: Vancouver, Canada
-    - year: 2024
-      id: cvpr24
-      link: https://cvpr.thecvf.com/Conferences/2024
-      timeline:
-          - deadline: '2023-11-10 23:59:59'
-      timezone: UTC-8
-      date: June 17-21, 2024
-      place: Seattle, USA
+        timezone: UTC-8
+        date: June 17-23, 2023
+        place: Vancouver, Canada
+      - year: 2024
+        id: cvpr24
+        link: https://cvpr.thecvf.com/Conferences/2024
+        timeline:
+          - deadline: '2023-11-17 23:59:59'
+        timezone: UTC-8
+        date: June 17-21, 2024
+        place: Seattle, USA

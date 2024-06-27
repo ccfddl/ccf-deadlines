@@ -1,42 +1,54 @@
-- title: ICDCS
-  description: IEEE International Conference on Distributed Computing Systems
-  sub: DS
-  rank: B
-  dblp: icdcs
-  confs:
-    - year: 2020
-      id: icdcs20
-      link: https://icdcs2020.sg/
-      timeline:
-        - abstract_deadline: '2020-01-06 23:59:59'
-          deadline: '2020-01-13 23:59:59'
-      timezone: UTC-7
-      date: July 8-10, 2020
-      place: Singapore
-    - year: 2021
-      id: icdcs21
-      link: https://icdcs2021.us/
-      timeline:
-        - abstract_deadline: '2021-01-06 23:59:59'
-          deadline: '2021-01-13 23:59:59'
-      timezone: UTC-5
-      date: July 7-10, 2021
-      place: Virtual
-    - year: 2022
-      id: icdcs22
-      link: https://icdcs2022.icdcs.org/
-      timeline:
-        - abstract_deadline: '2022-01-24 23:59:59'
-          deadline: '2022-01-31 23:59:59'
-      timezone: UTC-5
-      date: July 10-13, 2022
-      place: Bologna, Italy
-    - year: 2023
-      id: icdcs23
-      link: https://icdcs2023.icdcs.org/
-      timeline:
-        - abstract_deadline: '2023-01-14 23:59:59'
-          deadline: '2023-01-21 23:59:59'
-      timezone: UTC-5
-      date: July 18-21, 2023
-      place: Hong Kong, China
+  - title: ICDCS
+    description: IEEE International Conference on Distributed Computing Systems
+    sub: DS
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: icdcs
+    confs:
+      - year: 2020
+        id: icdcs20
+        link: https://icdcs2020.sg/
+        timeline:
+          - abstract_deadline: '2020-01-06 23:59:59'
+            deadline: '2020-01-13 23:59:59'
+        timezone: UTC-7
+        date: July 8-10, 2020
+        place: Singapore
+      - year: 2021
+        id: icdcs21
+        link: https://icdcs2021.us/
+        timeline:
+          - abstract_deadline: '2021-01-06 23:59:59'
+            deadline: '2021-01-13 23:59:59'
+        timezone: UTC-5
+        date: July 7-10, 2021
+        place: Virtual
+      - year: 2022
+        id: icdcs22
+        link: https://icdcs2022.icdcs.org/
+        timeline:
+          - abstract_deadline: '2022-01-24 23:59:59'
+            deadline: '2022-01-31 23:59:59'
+        timezone: UTC-5
+        date: July 10-13, 2022
+        place: Bologna, Italy
+      - year: 2023
+        id: icdcs23
+        link: https://icdcs2023.icdcs.org/
+        timeline:
+          - abstract_deadline: '2023-01-14 23:59:59'
+            deadline: '2023-01-21 23:59:59'
+        timezone: UTC-5
+        date: July 18-21, 2023
+        place: Hong Kong, China
+      - year: 2024
+        id: icdcs24
+        link: https://icdcs2024.icdcs.org/
+        timeline:
+          - abstract_deadline: '2024-01-12 23:59:59'
+            deadline: '2024-01-19 23:59:59'
+        timezone: UTC-12
+        date: July 16-19, 2024
+        place: New Jersey, USA

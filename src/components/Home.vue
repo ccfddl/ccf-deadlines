@@ -37,8 +37,8 @@
             </el-row>
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
-            <el-row><el-tag size="mini" type="" effect="plain">{{scope.row.displayrank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
-            <el-row style="padding-top: 5px"><span class="conf-sub">{{scope.row.subname}}</span></el-row>
+            <el-row><el-tag size="mini" type="" effect="plain">{{scope.row.displayrank}}</el-tag> <el-tag v-if="scope.row.corerank!=='N'" size="mini" type="" effect="plain">CORE {{scope.row.corerank}}</el-tag> <el-tag v-if="scope.row.thcplrank!=='N'" size="mini" type="" effect="plain">THCPL {{scope.row.thcplrank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
+            <el-row style="padding-top: 5px"><span v-if="typeof scope.row.acc === 'string'">Acc. Rate: {{scope.row.acc}} </span><span class="conf-sub">{{scope.row.subname}}</span></el-row>
             </div>
         </template>
       </el-table-column>
@@ -129,6 +129,7 @@ export default {
       checkList: [],
       subList: [],
       allconfList: [],
+      allconfMap: new Map(),
       showList: [],
       showNumber: 0,
       typeMap: new Map(),
@@ -161,7 +162,7 @@ export default {
     },
     getAllConf() {
       // get all conf
-      this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
+      let promise1 = this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
         const allconf = yaml.load(response.body)
         // preprocess
         let doc = []
@@ -173,7 +174,9 @@ export default {
             curItem.title = curConf.title
             curItem.description = curConf.description
             curItem.sub = curConf.sub
-            curItem.rank = curConf.rank
+            curItem.rank = curConf.rank.ccf
+            curItem.corerank = curConf.rank.core
+            curItem.thcplrank = curConf.rank.thcpl
             curItem.displayrank = this.rankoptions[curItem.rank]
             curItem.dblp = curConf.dblp
             let len = curItem.timeline.length
@@ -241,10 +244,37 @@ export default {
             }
           }
           this.allconfList.push(curDoc)
+          this.allconfMap.set(curDoc.title + curDoc.year, curDoc)
         }
-        this.showConf(this.typesList, this.rankList, this.input, 1)
       }, () => {
         alert('sorry your network is not stable!')
+      })
+
+      let allacc = {}
+      let promise2 = this.$http.get(this.publicPath + 'conference/allacc.yml').then(response => {
+        allacc = yaml.load(response.body)
+      }, () => {
+        alert('sorry your network is not stable!')
+      })
+
+      Promise.all([promise1, promise2]).then(() => {
+          for (let i = 0; i < allacc.length; ++i) {
+            let cur_item = allacc[i].accept_rates
+
+            for (let j = 0; j < cur_item.length; ++j) {
+              let cur_acc = cur_item[j];
+              for(let y = 1; y <= 3; ++ y) {
+                if(this.allconfMap.has(allacc[i].title + (cur_acc.year + y))){
+                  this.allconfMap.get(allacc[i].title + (cur_acc.year + y)).acc = cur_acc.str
+                  // break;
+                }
+              }
+            }
+          }
+          this.showConf(this.typesList, this.rankList, this.input, 1)
+        }
+      ).catch(error => {
+        console.error('Error occurred:', error);
       })
     },
     showConf (types, rank, input, page) {

@@ -1,0 +1,20 @@
+  - title: UIST
+    description: ACM Symposium on User Interface Software and Technology
+    sub: HI
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: uist
+    confs:
+      - year: 2024
+        id: uist2024
+        link: https://uist.acm.org/2024
+        timeline:
+          - deadline: '2024-03-27 17:00:00'
+            comment: abstract deadline
+          - deadline: '2024-04-03 17:00:00'
+            comment: paper deadline
+        timezone: UTC-8
+        date: October 13-16, 2024
+        place: Pittsburgh, Pennsylvania, USA

@@ -1,24 +1,36 @@
-- title: ACM SIGGRAPH ASIA
-  description: ACM SIGGRAPH Annual Conference in Asia
-  sub: CG
-  rank: A
-  dblp: siggrapha
-  confs:
-    - year: 2023
-      id: siggrapha23
-      link: https://asia.siggraph.org/2023/
-      timeline:
-        - abstract_deadline: '2023-05-16 23:59:00'
-          deadline: '2023-05-23 23:59:00'
-      timezone: UTC-12
-      date: December 12-15, 2023
-      place: Sydney, Australia
-    - year: 2021
-      id: siggrapha21
-      link: https://sa2021.siggraph.org/
-      timeline:
-        - abstract_deadline: '2021-05-20 22:00:00'
-          deadline: '2021-05-21 22:00:00'
-      timezone: UTC+0
-      date: December 14-17, 2021
-      place: Tokyo, Japan
+  - title: ACM SIGGRAPH ASIA
+    description: ACM SIGGRAPH Annual Conference in Asia
+    sub: CG
+    rank:
+      ccf: A
+      core: N
+      thcpl: N
+    dblp: siggrapha
+    confs:
+      - year: 2024
+        id: siggrapha24
+        link: https://asia.siggraph.org/2024/
+        timeline:
+          - abstract_deadline: '2024-05-12 23:59:00'
+            deadline: '2024-05-19 23:59:00'
+        timezone: UTC-12
+        date: December 3-6, 2024
+        place: Tokyo, Japan
+      - year: 2023
+        id: siggrapha23
+        link: https://asia.siggraph.org/2023/
+        timeline:
+          - abstract_deadline: '2023-05-16 23:59:00'
+            deadline: '2023-05-23 23:59:00'
+        timezone: UTC-12
+        date: December 12-15, 2023
+        place: Sydney, Australia
+      - year: 2021
+        id: siggrapha21
+        link: https://sa2021.siggraph.org/
+        timeline:
+          - abstract_deadline: '2021-05-20 22:00:00'
+            deadline: '2021-05-21 22:00:00'
+        timezone: UTC+0
+        date: December 14-17, 2021
+        place: Tokyo, Japan

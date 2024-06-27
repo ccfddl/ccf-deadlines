@@ -1,0 +1,21 @@
+  - title: CoNEXT
+    description: ACM International Conference on Emerging Networking Experiments and
+      Technologies
+    sub: NW
+    rank:
+      ccf: B
+      core: A
+      thcpl: A
+    dblp: conext
+    confs:
+      - year: 2024
+        id: conext24
+        link: https://conferences.sigcomm.org/co-next/2024/#!/home
+        timeline:
+          - abstract_deadline: '2023-11-27 23:59:59'
+            deadline: '2023-12-04 23:59:59'
+          - abstract_deadline: '2024-06-20 23:59:59'
+            deadline: '2024-06-27 23:59:59'
+        timezone: AoE
+        date: TBD
+        place: TBD

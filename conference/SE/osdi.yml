@@ -1,36 +1,37 @@
-- title: OSDI
-  description: USENIX Symposium on Operating Systems Design and Implementation
-  sub: SE
-  rank: A
-  dblp: osdi
-  confs:
-    - year: 2022
-      id: osdi2022
-      link: https://www.usenix.org/conference/osdi22
-      timeline:
-        - deadline: '2021-12-14 23:59:59'
-      timezone: AoE
-      date: July 11-13, 2022
-      place: Omni La Costa Resort & Spa in Carlsbad, CA, USA
-    - year: 2023
-      id: osdi2023
-      link: https://www.usenix.org/conference/osdi23
-      timeline:
-        - deadline: '2022-12-06 22:59:59'
-          comment: 'Abstract Registerations'
-        - deadline: '2022-12-13 22:59:59'
-          comment: 'Complete Paper Submissions'
-      timezone: UTC
-      date: July 10-12, 2023
-      place: Boston, MA, USA
-    - year: 2024
-      id: osdi2024
-      link: https://www.usenix.org/conference/osdi24
-      timeline:
-        - deadline: '2023-09-30 22:59:59'
-          comment: 'Abstract Registerations'
-        - deadline: '2023-12-07 22:59:59'
-          comment: 'Complete Paper Submissions'
-      timezone: UTC
-      date: July 10-12, 2024
-      place: Santa Clara, CA, USA
+  - title: OSDI
+    description: USENIX Symposium on Operating Systems Design and Implementation
+    sub: SE
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: osdi
+    confs:
+      - year: 2022
+        id: osdi2022
+        link: https://www.usenix.org/conference/osdi22
+        timeline:
+          - deadline: '2021-12-14 23:59:59'
+        timezone: AoE
+        date: July 11-13, 2022
+        place: Omni La Costa Resort & Spa in Carlsbad, CA, USA
+      - year: 2023
+        id: osdi2023
+        link: https://www.usenix.org/conference/osdi23
+        timeline:
+          - deadline: '2022-12-06 22:59:59'
+            comment: Abstract Registerations
+          - deadline: '2022-12-13 22:59:59'
+            comment: Complete Paper Submissions
+        timezone: UTC
+        date: July 10-12, 2023
+        place: Boston, MA, USA
+      - year: 2024
+        id: osdi2024
+        link: https://www.usenix.org/conference/osdi24
+        timeline:
+          - abstract_deadline: '2023-11-30 22:59:59'
+            deadline: '2023-12-07 22:59:59'
+        timezone: UTC
+        date: July 10-12, 2024
+        place: Santa Clara, CA, USA

@@ -1,14 +1,25 @@
-- title: AISTATS
-  description: International Conference on Artificial Intelligence and Statistics
-  sub: AI
-  rank: C
-  dblp: aistats
-  confs:
-    - year: 2022
-      id: aistats22
-      link: https://aistats.org/aistats2022/
-      timeline:
-        - deadline: '2021-10-15 11:59:00'
-      timezone: UTC+0
-      date: March 30 - April 1, 2022
-      place: Valencia, Spain
+  - title: AISTATS
+    description: International Conference on Artificial Intelligence and Statistics
+    sub: AI
+    rank:
+      ccf: C
+      core: A
+      thcpl: B
+    dblp: aistats
+    confs:
+      - year: 2022
+        id: aistats22
+        link: https://aistats.org/aistats2022/
+        timeline:
+          - deadline: '2021-10-15 11:59:00'
+        timezone: UTC+0
+        date: March 30 - April 1, 2022
+        place: Valencia, Spain
+      - year: 2024
+        id: aistats24
+        link: https://aistats.org/aistats2024/
+        timeline:
+          - deadline: '2023-10-16 23:59:59'
+        timezone: UTC-12
+        date: May 2-4, 2024
+        place: Valencia, Spain

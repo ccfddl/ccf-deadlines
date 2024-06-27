@@ -1,0 +1,21 @@
+  - title: APWeb-WAIM
+    description: The 8th APWeb-WAIM joint international conference on Web and Big
+      Data
+    sub: DB
+    rank:
+      ccf: C
+      core: C
+      thcpl: N
+    dblp: APWeb
+    confs:
+      - year: 2024
+        id: apweb24
+        link: https://apweb2024.zjnu.edu.cn/
+        timeline:
+          - deadline: '2024-03-20 23:59:59'
+            comment: first round
+          - deadline: '2024-05-23 23:59:59'
+            comment: second round
+        timezone: UTC-12
+        date: August 30 - Septemper 1, 2024.
+        place: Jinhua, China
