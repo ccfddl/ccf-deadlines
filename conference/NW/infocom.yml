@@ -43,3 +43,12 @@
         timezone: AoE
         date: May 20-23, 2024
         place: Vancouver, Canada
+      - year: 2025
+        id: infocom25
+        link: https://infocom2025.ieee-infocom.org/
+        timeline:
+          - abstract_deadline: '2024-07-24 23:59:59'
+            deadline: '2024-07-31 23:59:59'
+        timezone: UTC-7
+        date: May 19-22, 2025
+        place: London, United Kindom
