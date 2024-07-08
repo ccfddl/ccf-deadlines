@@ -35,11 +35,11 @@
         id: icra25
         link: https://2025.ieee-icra.org
         timeline:
-          - deadline: '2024-09-15 12:00:00'
+          - deadline: '2024-07-15 12:00:00'
             comment: submission open
-          - deadline: TBD
+          - deadline: '2024-09-15 00:00:00'
             comment: submission close
-        timezone: UTC-5
+        timezone: UTC-4
         date: May 19-23, 2025
         place: Atlanta (GA), USA
       - year: 2026
