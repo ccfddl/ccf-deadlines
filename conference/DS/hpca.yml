@@ -41,8 +41,8 @@
         date: March 2-6, 2024
         place: Edinburgh, Scotland, UK
       - year: 2025
-        id: hpca24
-        link: https://hpca-conf.org/2024/
+        id: hpca25
+        link: https://hpca-conf.org/2025/
         timeline:
           - deadline: '2023-07-26 23:59:59'
             comment: abstract deadline
