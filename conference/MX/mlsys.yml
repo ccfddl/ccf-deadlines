@@ -42,3 +42,12 @@
         timezone: AoE
         date: May 12-16, 2024
         place: Santa Clara, USA
+
+      - year: 2025
+        id: mlsys25
+        link: https://mlsys.org/
+        timeline:
+          - deadline: '2024-10-24 20:00:00'
+        timezone: AoE
+        date: TBD, 2025
+        place: TBD
