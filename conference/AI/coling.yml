@@ -25,3 +25,12 @@
         timezone: UTC-12
         date: May 20 - May 25, 2024
         place: Torino, Italy
+      - year: 2025
+        id: coling25
+        link: https://coling2025.org/
+        timeline:
+          - deadline: '2024-09-16 23:59:59'
+            comment: First Call for Main Conference Papers
+        timezone: UTC-12
+        date: Jan 19 - Jan 24, 2025
+        place: Abu Dhabi, UAE
