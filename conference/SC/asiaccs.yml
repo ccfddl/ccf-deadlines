@@ -29,3 +29,15 @@
         timezone: AoE
         date: July 1-5, 2024
         place: Singapore
+        
+      - year: 2025
+        id: asiaccs25
+        link: https://asiaccs2025.hust.edu.vn/
+        timeline:
+          - deadline: '2024-09-20 23:59:59'
+            comment: 1st round Deadline
+          - deadline: '2025-01-20 23:59:59'
+            comment: 2nd round Deadline
+        timezone: AoE
+        date: August 25-29, 2025
+        place: Hanoi, Vietnam

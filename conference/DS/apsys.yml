@@ -1,6 +1,6 @@
   - title: APSys
     description: ACM SIGOPS Asia-Pacific Workshop on Systems
-    sub: SE
+    sub: DS
     rank:
       ccf: N
       core: N
@@ -13,6 +13,7 @@
         timeline:
           - abstract_deadline: '2024-04-25 23:59:00'
             deadline: '2024-05-02 23:59:00'
+            comment: call for papers
         timezone: AoE
         date: September 4-5, 2024
         place: Kyoto, Japan
