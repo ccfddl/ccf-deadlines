@@ -41,3 +41,12 @@
         timezone: UTC+0
         date: July 10-12, 2024
         place: Santa Clara, CA, USA
+      - year: 2025
+        id: atc2025
+        link: https://www.usenix.org/conference/atc25
+        timeline:
+          - abstract_deadline: '2025-01-07 23:59:59'
+            deadline: '2025-01-14 23:59:59'
+        timezone: UTC+0
+        date: July 7-9, 2025
+        place: Boston, MA, USA
