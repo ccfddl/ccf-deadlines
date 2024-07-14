@@ -13,7 +13,7 @@
         timeline:
           - deadline: '2020-09-24 23:59:59'
         timezone: UTC-7
-        date: Feburary 23-25, 2021
+        date: February 23-25, 2021
         place: Virtual
       - year: 2022
         id: fast22
@@ -21,7 +21,7 @@
         timeline:
           - deadline: '2021-09-23 23:59:59'
         timezone: UTC-7
-        date: Feburary 21-24, 2022
+        date: February 21-24, 2022
         place: SANTA CLARA, CA, USA
       - year: 2023
         id: fast23
