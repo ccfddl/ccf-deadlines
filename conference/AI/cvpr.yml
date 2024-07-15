@@ -32,3 +32,11 @@
         timezone: UTC-8
         date: June 17-21, 2024
         place: Seattle, USA
+      - year: 2025
+        id: cvpr25
+        link: https://openreview.net/group?id=thecvf.com/CVPR/2025
+        timeline:
+          - deadline: '2024-11-15 06:59:59'
+        timezone: UTC+0
+        date: June 10-17, 2025
+        place: Nashville, Tennessee, USA
