@@ -51,8 +51,8 @@
         id: www25
         link: https://www2025.thewebconf.org/
         timeline:
-          - abstract_deadline: '2024-10-03 23:59:59'
-            deadline: '2024-10-10 23:59:59'
+          - abstract_deadline: '2024-10-07 23:59:59'
+            deadline: '2024-10-14 23:59:59'
         timezone: AoE
         date: April 28 - May 2, 2025
         place: Sydney, Australia
