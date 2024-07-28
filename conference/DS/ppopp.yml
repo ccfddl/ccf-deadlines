@@ -41,3 +41,11 @@
         timezone: AoE
         date: Mar 2-Mar 6, 2024
         place: Edinburgh, United Kingdom
+      - year: 2025
+        id: ppopp25
+        link: https://ppopp25.sigplan.org/
+        timeline:
+          - deadline: '2024-08-16 23:59:59'
+        timezone: AoE
+        date: Mar 1-5, 2025
+        place: Las Vegas, Nevada, USA
