@@ -32,4 +32,12 @@
         timezone: UTC+0
         date: September 1-5, 2024
         place: Greece
-
+    - year: 2025
+        id: interspeech25
+        link: https://www.interspeech2025.org/133382
+        timeline:
+          - abstract_deadline: 'TBD'
+            deadline: 'TBD'
+        timezone: UTC+0
+        date: August 17-22, 2025
+        place: Rotterdam, Netherlands
