@@ -32,7 +32,7 @@
         timezone: UTC+0
         date: September 1-5, 2024
         place: Greece
-    - year: 2025
+      - year: 2025
         id: interspeech25
         link: https://www.interspeech2025.org/133382
         timeline:
