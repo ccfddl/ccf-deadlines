@@ -39,9 +39,10 @@
         place: Vienna, Austria
       - year: 2025
         id: iclr25
-        link: https://iclr.cc
+        link: https://iclr.cc/Conferences/2025
         timeline:
-          - deadline: TBD
-        timezone: UTC+8
+          - abstract_deadline: '2024-09-27 23:59:59'
+            deadline: '2024-10-02 23:59:59'
+        timezone: UTC+0
         date: April 24-28, 2025
         place: Singapore
