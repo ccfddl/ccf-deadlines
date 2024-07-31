@@ -1,35 +1,38 @@
-- title: MobiCom
-  description: ACM Annual International Conference On Mobile Computing And Networking
-  sub: NW
-  rank: A
-  dblp: mobicom
-  confs:
-    - year: 2022
-      id: mobicom22
-      link: https://www.sigmobile.org/mobicom/2022/
-      timeline:
-        - abstract_deadline: '2021-08-13 23:59:59'
-          deadline: '2021-08-20 23:59:59'
-        - abstract_deadline: '2022-03-18 23:59:59'
-          deadline: '2022-03-25 23:59:59'
-      timezone: UTC-7
-      date: TBD
-      place: TBD
-    - year: 2023
-      id: mobicom23
-      link: https://www.sigmobile.org/mobicom/2023/
-      timeline:
-        - abstract_deadline: '2023-03-10 23:59:59'
-          deadline: '2023-03-17 23:59:59'
-      timezone: UTC-7
-      date: Oct 2-6, 2023
-      place: Madrid, Spain
-    - year: 2024
-      id: mobicom24
-      link: https://www.sigmobile.org/mobicom/2024/
-      timeline: 
-        - abstract_deadline: '2023-08-18 23:59:59'
-          deadline: '2023-08-25 23:59:59'
-      timezone: UTC-12
-      date: October, 2024
-      place: Washington, D.C., USA
+  - title: MobiCom
+    description: ACM Annual International Conference On Mobile Computing And Networking
+    sub: NW
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: mobicom
+    confs:
+      - year: 2022
+        id: mobicom22
+        link: https://www.sigmobile.org/mobicom/2022/
+        timeline:
+          - abstract_deadline: '2021-08-13 23:59:59'
+            deadline: '2021-08-20 23:59:59'
+          - abstract_deadline: '2022-03-18 23:59:59'
+            deadline: '2022-03-25 23:59:59'
+        timezone: UTC-7
+        date: TBD
+        place: TBD
+      - year: 2023
+        id: mobicom23
+        link: https://www.sigmobile.org/mobicom/2023/
+        timeline:
+          - abstract_deadline: '2023-03-10 23:59:59'
+            deadline: '2023-03-17 23:59:59'
+        timezone: UTC-7
+        date: Oct 2-6, 2023
+        place: Madrid, Spain
+      - year: 2024
+        id: mobicom24
+        link: https://www.sigmobile.org/mobicom/2024/
+        timeline:
+          - abstract_deadline: '2023-08-18 23:59:59'
+            deadline: '2023-08-25 23:59:59'
+        timezone: UTC-12
+        date: October, 2024
+        place: Washington, D.C., USA

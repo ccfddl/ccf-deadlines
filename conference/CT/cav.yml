@@ -1,14 +1,17 @@
-- title: CAV
-  description: International Conference on Computer-Aided Verification
-  sub: CT
-  rank: A
-  dblp: cav
-  confs:
-    - year: 2022
-      id: cav22
-      link: http://i-cav.org/2022/
-      timeline:
-        - deadline: '2022-01-21 23:59:59'
-      timezone: AoE
-      date: Aug 7-10, 2022
-      place: Technion, Haifa, Israel
+  - title: CAV
+    description: International Conference on Computer-Aided Verification
+    sub: CT
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: cav
+    confs:
+      - year: 2022
+        id: cav22
+        link: http://i-cav.org/2022/
+        timeline:
+          - deadline: '2022-01-21 23:59:59'
+        timezone: AoE
+        date: Aug 7-10, 2022
+        place: Technion, Haifa, Israel

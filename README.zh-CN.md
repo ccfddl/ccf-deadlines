@@ -37,7 +37,10 @@
 - title: SIGMOD
   description: ACM Conference on Management of Data
   sub: DB
-  rank: A
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
   dblp: sigmod
   confs:
     - year: 2022
@@ -73,8 +76,17 @@
       <td>会议在CCF中被标注的类别, 可参考下面的辅助文档</td>
    </tr>
    <tr>
-      <td colspan="3"><code>rank</code>*</td>
-      <td>会议在CCF中被标注的等级, 示例, <code>A</code>, <code>B</code>, <code>C</code></td>
+      <td rowspan="3"><code>rank</code>*</td>
+      <td colspan="2"><code>ccf</code>*</td>
+      <td>会议在CCF中被标注的等级, 示例, <code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
+   </tr>
+   <tr>
+   <td colspan="2"><code>core</code></td>
+   <td>会议在CORE中被标注的等级, 示例, <code>A*</code>,<code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
+   </tr>
+   <tr>
+   <td colspan="2"><code>thcpl</code></td>
+   <td>会议在TH-CPL中被标注的等级, 示例, <code>A</code>, <code>B</code>, <code>N</code></td>
    </tr>
    <tr>
       <td colspan="3"><code>dblp</code>*</td>

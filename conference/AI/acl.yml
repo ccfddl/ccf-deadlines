@@ -1,34 +1,37 @@
-- title: ACL
-  description: Annual Meeting of the Association for Computational Linguistics
-  sub: AI
-  rank: A
-  dblp: acl
-  confs:
-    - year: 2022
-      id: acl22
-      link: https://www.2022.aclweb.org/
-      timeline:
-        - deadline: '2021-09-15 23:59:59'
-        - deadline: '2021-10-15 23:59:59'
-        - deadline: '2021-11-15 23:59:59'
-          comment: 'final submission deadline'
-      timezone: UTC-12
-      date: May 22-27, 2022
-      place: Dublin, Ireland
-    - year: 2023
-      id: acl23
-      link: https://2023.aclweb.org/
-      timeline:
-        - abstract_deadline: '2023-01-13 23:59:59'
-          deadline: '2023-01-20 23:59:59'
-      timezone: UTC-12
-      date: July 9-14, 2023
-      place: Toronto, Canada
-    - year: 2024
-      id: acl24
-      link: https://2024.aclweb.org/
-      timeline:
-        - deadline: '2024-02-15 23:59:59'
-      timezone: UTC-12
-      date: August 11-16, 2024
-      place: Bangkok, Thailand
+  - title: ACL
+    description: Annual Meeting of the Association for Computational Linguistics
+    sub: AI
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: acl
+    confs:
+      - year: 2022
+        id: acl22
+        link: https://www.2022.aclweb.org/
+        timeline:
+          - deadline: '2021-09-15 23:59:59'
+          - deadline: '2021-10-15 23:59:59'
+          - deadline: '2021-11-15 23:59:59'
+            comment: final submission deadline
+        timezone: UTC-12
+        date: May 22-27, 2022
+        place: Dublin, Ireland
+      - year: 2023
+        id: acl23
+        link: https://2023.aclweb.org/
+        timeline:
+          - abstract_deadline: '2023-01-13 23:59:59'
+            deadline: '2023-01-20 23:59:59'
+        timezone: UTC-12
+        date: July 9-14, 2023
+        place: Toronto, Canada
+      - year: 2024
+        id: acl24
+        link: https://2024.aclweb.org/
+        timeline:
+          - deadline: '2024-02-15 23:59:59'
+        timezone: UTC-12
+        date: August 11-16, 2024
+        place: Bangkok, Thailand

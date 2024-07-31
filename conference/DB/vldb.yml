@@ -1,101 +1,104 @@
-- title: VLDB
-  description: International Conference on Very Large Data Bases
-  sub: DB
-  rank: A
-  dblp: vldb
-  confs:
-    - year: 2021
-      id: vldb21
-      link: http://www.vldb.org/2021/
-      timeline:
-        - deadline: '2020-04-01 17:00:00'
-        - deadline: '2020-05-01 17:00:00'
-        - deadline: '2020-06-01 17:00:00'
-        - deadline: '2020-07-01 17:00:00'
-        - deadline: '2020-08-01 17:00:00'
-        - deadline: '2020-09-01 17:00:00'
-        - deadline: '2020-10-01 17:00:00'
-        - deadline: '2020-11-01 17:00:00'
-        - deadline: '2020-12-01 17:00:00'
-        - deadline: '2021-01-01 17:00:00'
-        - deadline: '2021-02-01 17:00:00'
-        - deadline: '2021-03-01 17:00:00'
-      timezone: UTC-7
-      date: August 16-20, 2021
-      place: Copenhagen, Denmark
-    - year: 2022
-      id: vldb22
-      link: http://www.vldb.org/2022/
-      timeline:
-        - deadline: '2021-04-01 17:00:00'
-        - deadline: '2021-05-01 17:00:00'
-        - deadline: '2021-06-01 17:00:00'
-        - deadline: '2021-07-01 17:00:00'
-        - deadline: '2021-08-01 17:00:00'
-        - deadline: '2021-09-01 17:00:00'
-        - deadline: '2021-10-01 17:00:00'
-        - deadline: '2021-11-01 17:00:00'
-        - deadline: '2021-12-01 17:00:00'
-        - deadline: '2022-01-01 17:00:00'
-        - deadline: '2022-02-01 17:00:00'
-        - deadline: '2022-03-01 17:00:00'
-      timezone: UTC-7
-      date: September 05-09, 2022
-      place: Sydney, Australia
-    - year: 2023
-      id: vldb23
-      link: http://www.vldb.org/2023/
-      timeline:
-        - deadline: '2022-04-01 17:00:00'
-        - deadline: '2022-05-01 17:00:00'
-        - deadline: '2022-06-01 17:00:00'
-        - deadline: '2022-07-01 17:00:00'
-        - deadline: '2022-08-01 17:00:00'
-        - deadline: '2022-09-01 17:00:00'
-        - deadline: '2022-10-01 17:00:00'
-        - deadline: '2022-11-01 17:00:00'
-        - deadline: '2022-12-01 17:00:00'
-        - deadline: '2023-01-01 17:00:00'
-        - deadline: '2023-02-01 17:00:00'
-        - deadline: '2023-03-01 17:00:00'
-      timezone: UTC-7
-      date: August 28 - September 01, 2023
-      place: Vancouver, Canada
-    - year: 2024
-      id: vldb24
-      link: http://www.vldb.org/2024/
-      timeline:
-        - deadline: '2023-04-01 17:00:00'
-        - deadline: '2023-05-01 17:00:00'
-        - deadline: '2023-06-01 17:00:00'
-        - deadline: '2023-07-01 17:00:00'
-        - deadline: '2023-08-01 17:00:00'
-        - deadline: '2023-09-01 17:00:00'
-        - deadline: '2023-10-01 17:00:00'
-        - deadline: '2023-11-01 17:00:00'
-        - deadline: '2023-12-01 17:00:00'
-        - deadline: '2024-01-01 17:00:00'
-        - deadline: '2024-02-01 17:00:00'
-        - deadline: '2024-03-01 17:00:00'
-      timezone: UTC-7
-      date: August 25-29, 2024
-      place: Guangzhou, China (and hybrid)
-    - year: 2025
-      id: vldb25
-      link: http://www.vldb.org/2025/
-      timeline:
-        - deadline: '2024-04-01 17:00:00'
-        - deadline: '2024-05-01 17:00:00'
-        - deadline: '2024-06-01 17:00:00'
-        - deadline: '2024-07-01 17:00:00'
-        - deadline: '2024-08-01 17:00:00'
-        - deadline: '2024-09-01 17:00:00'
-        - deadline: '2024-10-01 17:00:00'
-        - deadline: '2024-11-01 17:00:00'
-        - deadline: '2024-12-01 17:00:00'
-        - deadline: '2025-01-01 17:00:00'
-        - deadline: '2025-02-01 17:00:00'
-        - deadline: '2025-03-01 17:00:00'
-      timezone: UTC-7
-      date: TBD
-      place: London, United Kingdom
+  - title: VLDB
+    description: International Conference on Very Large Data Bases
+    sub: DB
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: vldb
+    confs:
+      - year: 2021
+        id: vldb21
+        link: http://www.vldb.org/2021/
+        timeline:
+          - deadline: '2020-04-01 17:00:00'
+          - deadline: '2020-05-01 17:00:00'
+          - deadline: '2020-06-01 17:00:00'
+          - deadline: '2020-07-01 17:00:00'
+          - deadline: '2020-08-01 17:00:00'
+          - deadline: '2020-09-01 17:00:00'
+          - deadline: '2020-10-01 17:00:00'
+          - deadline: '2020-11-01 17:00:00'
+          - deadline: '2020-12-01 17:00:00'
+          - deadline: '2021-01-01 17:00:00'
+          - deadline: '2021-02-01 17:00:00'
+          - deadline: '2021-03-01 17:00:00'
+        timezone: UTC-7
+        date: August 16-20, 2021
+        place: Copenhagen, Denmark
+      - year: 2022
+        id: vldb22
+        link: http://www.vldb.org/2022/
+        timeline:
+          - deadline: '2021-04-01 17:00:00'
+          - deadline: '2021-05-01 17:00:00'
+          - deadline: '2021-06-01 17:00:00'
+          - deadline: '2021-07-01 17:00:00'
+          - deadline: '2021-08-01 17:00:00'
+          - deadline: '2021-09-01 17:00:00'
+          - deadline: '2021-10-01 17:00:00'
+          - deadline: '2021-11-01 17:00:00'
+          - deadline: '2021-12-01 17:00:00'
+          - deadline: '2022-01-01 17:00:00'
+          - deadline: '2022-02-01 17:00:00'
+          - deadline: '2022-03-01 17:00:00'
+        timezone: UTC-7
+        date: September 05-09, 2022
+        place: Sydney, Australia
+      - year: 2023
+        id: vldb23
+        link: http://www.vldb.org/2023/
+        timeline:
+          - deadline: '2022-04-01 17:00:00'
+          - deadline: '2022-05-01 17:00:00'
+          - deadline: '2022-06-01 17:00:00'
+          - deadline: '2022-07-01 17:00:00'
+          - deadline: '2022-08-01 17:00:00'
+          - deadline: '2022-09-01 17:00:00'
+          - deadline: '2022-10-01 17:00:00'
+          - deadline: '2022-11-01 17:00:00'
+          - deadline: '2022-12-01 17:00:00'
+          - deadline: '2023-01-01 17:00:00'
+          - deadline: '2023-02-01 17:00:00'
+          - deadline: '2023-03-01 17:00:00'
+        timezone: UTC-7
+        date: August 28 - September 01, 2023
+        place: Vancouver, Canada
+      - year: 2024
+        id: vldb24
+        link: http://www.vldb.org/2024/
+        timeline:
+          - deadline: '2023-04-01 17:00:00'
+          - deadline: '2023-05-01 17:00:00'
+          - deadline: '2023-06-01 17:00:00'
+          - deadline: '2023-07-01 17:00:00'
+          - deadline: '2023-08-01 17:00:00'
+          - deadline: '2023-09-01 17:00:00'
+          - deadline: '2023-10-01 17:00:00'
+          - deadline: '2023-11-01 17:00:00'
+          - deadline: '2023-12-01 17:00:00'
+          - deadline: '2024-01-01 17:00:00'
+          - deadline: '2024-02-01 17:00:00'
+          - deadline: '2024-03-01 17:00:00'
+        timezone: UTC-7
+        date: August 25-29, 2024
+        place: Guangzhou, China (and hybrid)
+      - year: 2025
+        id: vldb25
+        link: http://www.vldb.org/2025/
+        timeline:
+          - deadline: '2024-04-01 17:00:00'
+          - deadline: '2024-05-01 17:00:00'
+          - deadline: '2024-06-01 17:00:00'
+          - deadline: '2024-07-01 17:00:00'
+          - deadline: '2024-08-01 17:00:00'
+          - deadline: '2024-09-01 17:00:00'
+          - deadline: '2024-10-01 17:00:00'
+          - deadline: '2024-11-01 17:00:00'
+          - deadline: '2024-12-01 17:00:00'
+          - deadline: '2025-01-01 17:00:00'
+          - deadline: '2025-02-01 17:00:00'
+          - deadline: '2025-03-01 17:00:00'
+        timezone: UTC-7
+        date: TBD
+        place: London, United Kingdom

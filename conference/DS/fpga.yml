@@ -1,28 +1,31 @@
-- title: FPGA
-  description: ACM/SIGDA International Symposium on Field-Programmable Gate Arrays
-  sub: DS
-  rank: B
-  dblp: fpga
-  confs:
-    - year: 2023
-      id: fpga2023
-      link: https://www.isfpga.org/
-      timeline:
-        - deadline: '2022-09-16 23:59:59'
-          comment: 'Abstracts Due'
-        - deadline: '2022-09-23 23:59:59'
-          comment: 'Submissions Due'
-      timezone: UTC-7
-      date: February 12 - February 14, 2023
-      place: Monterey, California, USA
-    - year: 2024
-      id: fpga2024
-      link: https://www.isfpga.org/
-      timeline:
-        - deadline: '2023-10-06 23:59:59'
-          comment: 'Abstracts Due'
-        - deadline: '2023-10-13 23:59:59'
-          comment: 'Submissions Due'
-      timezone: UTC-7
-      date: March 3 - March 5, 2024
-      place: Monterey, California, USA
+  - title: FPGA
+    description: ACM/SIGDA International Symposium on Field-Programmable Gate Arrays
+    sub: DS
+    rank:
+      ccf: B
+      core: N
+      thcpl: A
+    dblp: fpga
+    confs:
+      - year: 2023
+        id: fpga2023
+        link: https://www.isfpga.org/
+        timeline:
+          - deadline: '2022-09-16 23:59:59'
+            comment: Abstracts Due
+          - deadline: '2022-09-23 23:59:59'
+            comment: Submissions Due
+        timezone: UTC-7
+        date: February 12 - February 14, 2023
+        place: Monterey, California, USA
+      - year: 2024
+        id: fpga2024
+        link: https://www.isfpga.org/
+        timeline:
+          - deadline: '2023-10-06 23:59:59'
+            comment: Abstracts Due
+          - deadline: '2023-10-13 23:59:59'
+            comment: Submissions Due
+        timezone: UTC-7
+        date: March 3 - March 5, 2024
+        place: Monterey, California, USA

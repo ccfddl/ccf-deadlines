@@ -1,22 +1,26 @@
-- title: NAACL
-  description: The Annual Conference of the North American Chapter of the Association for Computational Linguistics
-  sub: AI
-  rank: B
-  dblp: naacl
-  confs:
-    - year: 2022
-      id: naacl22
-      link: https://2022.naacl.org/
-      timeline:
-        - deadline: '2022-01-15 23:59:59'
-      timezone: UTC-12
-      date: July 10-15, 2022
-      place: Washington DC, USA
-    - year: 2024
-      id: naacl24
-      link: https://2024.naacl.org/
-      timeline:
-        - deadline: '2023-12-15 23:59:59'
-      timezone: UTC-12
-      date: June 16-21, 2024
-      place: Mexico City, Mexico
+  - title: NAACL
+    description: The Annual Conference of the North American Chapter of the Association
+      for Computational Linguistics
+    sub: AI
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: naacl
+    confs:
+      - year: 2022
+        id: naacl22
+        link: https://2022.naacl.org/
+        timeline:
+          - deadline: '2022-01-15 23:59:59'
+        timezone: UTC-12
+        date: July 10-15, 2022
+        place: Washington DC, USA
+      - year: 2024
+        id: naacl24
+        link: https://2024.naacl.org/
+        timeline:
+          - deadline: '2023-12-15 23:59:59'
+        timezone: UTC-12
+        date: June 16-21, 2024
+        place: Mexico City, Mexico

@@ -1,33 +1,36 @@
-- title: ICNP
-  description: IEEE International Conference on Network Protocols
-  sub: NW
-  rank: B
-  dblp: icnp
-  confs:
-    - year: 2022
-      id: icnp22
-      link: https://icnp22.cs.ucr.edu/index.html
-      timeline:
-        - abstract_deadline: '2022-05-19 20:00:00'
-          deadline: '2022-05-26 20:00:00'
-      timezone: UTC-4
-      date: October 30-November 2, 2022
-      place: Lexington, Kentucky, USA
-    - year: 2023
-      id: icnp23
-      link: https://icnp23.cs.ucr.edu/index.html
-      timeline:
-        - abstract_deadline: '2023-05-24 20:00:00'
-          deadline: '2023-05-31 20:00:00'
-      timezone: UTC-4
-      date: October 10-13, 2023
-      place: Reykjavik, Iceland
-    - year: 2024
-      id: icnp24
-      link: https://icnp24.cs.ucr.edu/index.html
-      timeline:
-        - abstract_deadline: '2024-05-17 23:59:59'
-          deadline: '2024-05-24 23:59:59'
-      timezone: AoE
-      date: October 28-31, 2024
-      place: Charleroi, Belgium
+  - title: ICNP
+    description: IEEE International Conference on Network Protocols
+    sub: NW
+    rank:
+      ccf: B
+      core: B
+      thcpl: A
+    dblp: icnp
+    confs:
+      - year: 2022
+        id: icnp22
+        link: https://icnp22.cs.ucr.edu/index.html
+        timeline:
+          - abstract_deadline: '2022-05-19 20:00:00'
+            deadline: '2022-05-26 20:00:00'
+        timezone: UTC-4
+        date: October 30-November 2, 2022
+        place: Lexington, Kentucky, USA
+      - year: 2023
+        id: icnp23
+        link: https://icnp23.cs.ucr.edu/index.html
+        timeline:
+          - abstract_deadline: '2023-05-24 20:00:00'
+            deadline: '2023-05-31 20:00:00'
+        timezone: UTC-4
+        date: October 10-13, 2023
+        place: Reykjavik, Iceland
+      - year: 2024
+        id: icnp24
+        link: https://icnp24.cs.ucr.edu/index.html
+        timeline:
+          - abstract_deadline: '2024-05-17 23:59:59'
+            deadline: '2024-05-24 23:59:59'
+        timezone: AoE
+        date: October 28-31, 2024
+        place: Charleroi, Belgium

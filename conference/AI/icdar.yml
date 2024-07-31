@@ -1,0 +1,18 @@
+  - title: ICDAR
+    description: International Conference on Document Analysis and Recognition
+    sub: AI
+    rank:
+      ccf: C
+      core: A
+      thcpl: B
+    dblp: icdar
+    confs:
+      - year: 2025
+        id: icdar2025
+        link: https://www.icdar2025.com/home
+        timeline:
+          - abstract_deadline: '2025-02-07 23:59:59'
+            deadline: '2025-02-21 23:59:59'
+        timezone: UTC+0
+        date: September 17-21, 2025
+        place: Wuhan, China

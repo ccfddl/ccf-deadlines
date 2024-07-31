@@ -1,17 +1,20 @@
-- title: GMP
-  description: International Conference on Geometric Modeling and Processing
-  sub: CG
-  rank: C
-  dblp: gmp
-  confs:
-    - year: 2024
-      id: gmp2024
-      link: https://irc.cs.sdu.edu.cn/gmp2024/index.html
-      timeline:
-        - deadline: '2023-12-11 23:59:59'
-          comment: 'Abstract submission'
-        - deadline: '2023-12-18 23:59:59'
-          comment: 'Full paper submission'
-      timezone: UTC
-      date: June 5-7, 2024
-      place: Qingdao, China
+  - title: GMP
+    description: International Conference on Geometric Modeling and Processing
+    sub: CG
+    rank:
+      ccf: C
+      core: C
+      thcpl: N
+    dblp: gmp
+    confs:
+      - year: 2024
+        id: gmp2024
+        link: https://irc.cs.sdu.edu.cn/gmp2024/index.html
+        timeline:
+          - deadline: '2023-12-11 23:59:59'
+            comment: Abstract submission
+          - deadline: '2023-12-18 23:59:59'
+            comment: Full paper submission
+        timezone: UTC
+        date: June 5-7, 2024
+        place: Qingdao, China
