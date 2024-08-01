@@ -52,3 +52,12 @@
         timezone: UTC-12
         date: July 16-19, 2024
         place: New Jersey, USA
+      - year: 2025
+        id: icdcs25
+        link: https://www.icdcs2025.com
+        timeline:
+          - abstract_deadline: '2024-12-4 23:59:59'
+            deadline: '2024-12-11 23:59:59'
+        timezone: UTC-12
+        date: July 21-23, 2025
+        place: Glasgow, Scotland, UK
