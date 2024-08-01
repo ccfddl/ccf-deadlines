@@ -1,0 +1,17 @@
+  - title: CPAL
+    description: The Conference on Parsimony and Learning
+    sub: AI
+    rank:
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: cpal
+    confs:
+      - year: 2025
+        id: cpal25
+        link: https://cpal.cc/
+        timeline:
+          - deadline: '2024-11-25 23:59:59'
+        timezone: AoE
+        date: March 24 – 27, 2025
+        place: California, USA
