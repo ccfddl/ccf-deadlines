@@ -16,3 +16,12 @@
         timezone: AoE
         date: March 16-20, 2024
         place: Orlando, Florida USA
+      - year: 2025
+        id: vr25
+        link: https://ieeevr.org/2025/
+        timeline:
+          - abstract_deadline: '2024-09-11 23:59:59'
+            deadline: '2024-09-18 23:59:59'
+        timezone: AoE
+        date: March 8-12, 2025
+        place: Saint-Malo, France
