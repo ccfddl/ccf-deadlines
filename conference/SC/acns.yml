@@ -29,3 +29,14 @@
         timezone: AoE
         date: March 5-8, 2024
         place: Abu Dhabi, UAE
+      - year: 2025
+        id: acns25
+        link: http://acns2025.fordaysec.de/
+        timeline:
+          - deadline: '2024-09-09 23:59:59'
+            comment: First submission deadline
+          - deadline: '2025-01-13 23:59:59'
+            comment: Second submission deadline
+        timezone: AoE
+        date: June 23–26, 2025
+        place: Munich, Germany
