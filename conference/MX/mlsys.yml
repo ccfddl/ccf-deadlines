@@ -1,4 +1,4 @@
-  - title: mlsys
+  - title: MLSys
     description: Conference on Machine Learning and Systems
     sub: MX
     rank:
@@ -49,5 +49,5 @@
         timeline:
           - deadline: '2024-10-24 20:00:00'
         timezone: AoE
-        date: TBD, 2025
-        place: TBD
+        date: May 13-16, 2025
+        place: Santa Clara, USA
