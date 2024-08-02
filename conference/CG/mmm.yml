@@ -1,0 +1,17 @@
+  - title: MMM
+    description: International Conference on Multimedia Modeling
+    sub: CG
+    rank:
+      ccf: C
+      core: B
+      thcpl: N
+    dblp: mmm
+    confs:
+      - year: 2025
+        id: mmm25
+        link: https://mmm2025.net/
+        timeline:
+          - deadline: '2024-08-19 23:59:59'
+        timezone: AoE
+        date: January 7-10, 2025
+        place: Nara, Japan
