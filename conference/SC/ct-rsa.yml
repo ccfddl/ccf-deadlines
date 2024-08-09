@@ -25,4 +25,12 @@
         timezone: UTC-12
         date: May 06-09 , 2024
         place: San Francisco, CA, USA
-
+      - year: 2025
+        id: ct-rsa25
+        link: https://ct-rsa-2025.csa.iisc.ac.in/
+        timeline:
+          - deadline: '2024-10-15 23:59:59'
+            comment: Paper submission deadline
+        timezone: UTC-12
+        date: April 28-May 1, 2025
+        place: San Francisco, California, USA
