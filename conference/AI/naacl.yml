@@ -24,3 +24,11 @@
         timezone: UTC-12
         date: June 16-21, 2024
         place: Mexico City, Mexico
+      - year: 2025
+        id: naacl25
+        link: https://2025.naacl.org/
+        timeline:
+          - deadline: 'TBD'
+        timezone: UTC-12
+        date: April 29 – May 2, 2025
+        place: Albuquerque, New Mexico, USA
