@@ -1,14 +1,25 @@
-- title: IJCNN
-  description: International Joint Conference on Neural Networks
-  sub: AI
-  rank: C
-  dblp: ijcnn
-  confs:
-    - year: 2024
-      id: ijcnn2024
-      link: https://2024.ieeewcci.org/
-      timeline:
-        - deadline: '2024-01-29 23:59:59'
-      timezone: UTC-12
-      date: June 30 - July 5, 2024
-      place: Yokohama, Japan
+  - title: IJCNN
+    description: International Joint Conference on Neural Networks
+    sub: AI
+    rank:
+      ccf: C
+      core: B
+      thcpl: B
+    dblp: ijcnn
+    confs:
+      - year: 2024
+        id: ijcnn2024
+        link: https://2024.ieeewcci.org/
+        timeline:
+          - deadline: '2024-01-29 23:59:59'
+        timezone: UTC-12
+        date: June 30 - July 5, 2024
+        place: Yokohama, Japan
+      - year: 2025
+        id: ijcnn2025
+        link: https://2025.ijcnn.org/
+        timeline:
+          - deadline: '2024-12-15 23:59:59'
+        timezone: UTC-12
+        date: June 30 - July 5, 2025
+        place: Rome, Italy

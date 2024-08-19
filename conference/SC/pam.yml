@@ -1,29 +1,61 @@
-- title: PAM
-  description: Passive and Active Measurement Conference
-  sub: SC
-  rank: C
-  dblp: pam
-  confs:
-    - year: 2021
-      id: pam21
-      link: https://www.pam2021.b-tu.de/
-      timeline:
-        - deadline: '2020-10-16 23:59:59'
-          comment: 'Paper registration (with abstract)'
-        - deadline: '2020-10-23 23:59:59'
-          comment: 'Paper submission'
-      timezone: UTC-4
-      date: March 29-31, 2021
-      place: Virtual
+  - title: PAM
+    description: Passive and Active Measurement Conference
+    sub: SC
+    rank:
+      ccf: C
+      core: B
+      thcpl: B
+    dblp: pam
+    confs:
+      - year: 2021
+        id: pam21
+        link: https://www.pam2021.b-tu.de/
+        timeline:
+          - deadline: '2020-10-16 23:59:59'
+            comment: Paper registration (with abstract)
+          - deadline: '2020-10-23 23:59:59'
+            comment: Paper submission
+        timezone: UTC-4
+        date: March 29-31, 2021
+        place: Virtual
 
-    - year: 2022
-      id: pam22
-      link: https://pam2022.nl/
-      timeline:
-        - deadline: '2021-10-20 23:59:59'
-          comment: 'Paper registration (with abstract)'
-        - deadline: '2021-10-27 23:59:59'
-          comment: 'Paper submission'
-      timezone: AoE
-      date: March 28-30, 2022
-      place: Virtual
+      - year: 2022
+        id: pam22
+        link: https://pam2022.nl/
+        timeline:
+          - deadline: '2021-10-20 23:59:59'
+            comment: Paper registration (with abstract)
+          - deadline: '2021-10-27 23:59:59'
+            comment: Paper submission
+        timezone: AoE
+        date: March 28-30, 2022
+        place: Virtual
+
+      - year: 2023
+        id: pam23
+        link: https://pam2023.networks.imdea.org/
+        timeline:
+          - deadline: '2022-11-01 23:59:59'
+        timezone: AoE
+        date: March 21-23, 2023
+        place: Virtual
+
+      - year: 2024
+        id: pam24
+        link: https://pam2024.cs.northwestern.edu/
+        timeline:
+          - abstract_deadline: '2023-10-28 23:59:59'
+            deadline: '2023-11-02 23:59:59'
+        timezone: AoE
+        date: March 11-13, 2024
+        place: Virtual
+
+      - year: 2025
+        id: pam25
+        link: https://udesa.edu.ar/pam25
+        timeline:
+          - abstract_deadline: '2024-10-01 23:59:59'
+            deadline: '2024-10-08 23:59:59'
+        timezone: AoE
+        date: March 10-12, 2025
+        place: Virtual

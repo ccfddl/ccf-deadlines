@@ -1,43 +1,46 @@
-- title: CSFW
-  description: IEEE Computer Security Foundations Workshop
-  sub: SC
-  rank: B
-  dblp: cgisfw
-  confs:
-    - year: 2022
-      id: csfw22
-      link: https://www.ieee-security.org/TC/CSF2022/
-      timeline:
-        - deadline: '2021-05-14 23:59:59'
-          comment: 'spring'
-        - deadline: '2021-10-01 23:59:59'
-          comment: 'fall'
-      timezone: UTC-12
-      date: August, 2022
-      place: Haifa, Israel
-    - year: 2023
-      id: csfw23
-      link: https://www.ieee-security.org/TC/CSF2023/
-      timeline:
-        - deadline: '2022-05-13 23:59:59'
-          comment: 'spring'
-        - deadline: '2022-09-30 23:59:59'
-          comment: 'fall'
-        - deadline: '2023-02-03 23:59:59'
-          comment: 'winter'
-      timezone: UTC-12
-      date: July, 2023
-      place: Dubrovnik, Croatia
-    - year: 2024
-      id: csfw24
-      link: https://www.ieee-security.org/TC/CSF2024/
-      timeline:
-        - deadline: '2023-05-15 23:59:59'
-          comment: 'spring'
-        - deadline: '2023-09-30 23:59:59'
-          comment: 'fall'
-        - deadline: '2024-02-03 23:59:59'
-          comment: 'winter'
-      timezone: UTC-12
-      date: July 8-12, 2024
-      place: Enschede, The Netherlands
+  - title: CSFW
+    description: IEEE Computer Security Foundations Workshop
+    sub: SC
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: cgisfw
+    confs:
+      - year: 2022
+        id: csfw22
+        link: https://www.ieee-security.org/TC/CSF2022/
+        timeline:
+          - deadline: '2021-05-14 23:59:59'
+            comment: spring
+          - deadline: '2021-10-01 23:59:59'
+            comment: fall
+        timezone: UTC-12
+        date: August, 2022
+        place: Haifa, Israel
+      - year: 2023
+        id: csfw23
+        link: https://www.ieee-security.org/TC/CSF2023/
+        timeline:
+          - deadline: '2022-05-13 23:59:59'
+            comment: spring
+          - deadline: '2022-09-30 23:59:59'
+            comment: fall
+          - deadline: '2023-02-03 23:59:59'
+            comment: winter
+        timezone: UTC-12
+        date: July, 2023
+        place: Dubrovnik, Croatia
+      - year: 2024
+        id: csfw24
+        link: https://www.ieee-security.org/TC/CSF2024/
+        timeline:
+          - deadline: '2023-05-15 23:59:59'
+            comment: spring
+          - deadline: '2023-09-30 23:59:59'
+            comment: fall
+          - deadline: '2024-02-03 23:59:59'
+            comment: winter
+        timezone: UTC-12
+        date: July 8-12, 2024
+        place: Enschede, The Netherlands

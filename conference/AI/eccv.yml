@@ -1,24 +1,27 @@
-- title: ECCV
-  description: European Conference on Computer Vision
-  sub: AI
-  rank: B
-  dblp: eccv
-  confs:
-    - year: 2022
-      id: eccv22
-      link: https://eccv2022.ecva.net/
-      timeline:
+  - title: ECCV
+    description: European Conference on Computer Vision
+    sub: AI
+    rank:
+      ccf: B
+      core: A*
+      thcpl: A
+    dblp: eccv
+    confs:
+      - year: 2022
+        id: eccv22
+        link: https://eccv2022.ecva.net/
+        timeline:
         # - abstract_deadline: '2021-11-09 23:59:00'
           - deadline: '2022-03-07 11:59:00'
-      timezone: UTC-8
-      date: October 24 - October 28, 2022
-      place: Tel-Aviv, Israel
-    - year: 2024
-      id: eccv24
-      link: https://eccv2024.ecva.net/
-      timeline:
-        - abstract_deadline: '2024-02-29 13:00:00'
-          deadline: '2024-03-07 13:00:00'
-      timezone: UTC-8
-      date: September 29 - October 4, 2024
-      place: MiCo Milano, Italy
+        timezone: UTC-8
+        date: October 24 - October 28, 2022
+        place: Tel-Aviv, Israel
+      - year: 2024
+        id: eccv24
+        link: https://eccv2024.ecva.net/
+        timeline:
+          - abstract_deadline: '2024-02-29 13:00:00'
+            deadline: '2024-03-07 13:00:00'
+        timezone: UTC-8
+        date: September 29 - October 4, 2024
+        place: MiCo Milano, Italy

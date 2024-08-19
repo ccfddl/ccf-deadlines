@@ -1,43 +1,46 @@
-- title: ACM MM
-  description: ACM International Conference on Multimedia
-  sub: CG
-  rank: A
-  dblp: mm
-  confs:
-    - year: 2021
-      id: mm21
-      link: https://2021.acmmm.org/
-      timeline:
-        - abstract_deadline: '2021-04-10 23:59:59'
-          deadline: '2021-04-17 23:59:59'
-      timezone: AoE
-      date: October 21-24, 2021
-      place: Chengdu, China
-    - year: 2022
-      id: mm22
-      link: https://2022.acmmm.org/
-      timeline:
-        - abstract_deadline: '2022-03-31 23:59:59'
-          deadline: '2022-04-07 23:59:59'
-      timezone: UTC-12
-      date: October 10-14, 2022
-      place: Lisbon, Portugal
-    - year: 2023
-      id: mm23
-      link: https://www.acmmm2023.org/
-      timeline:
-        - abstract_deadline: '2023-04-23 23:59:59'
-          deadline: '2023-05-04 23:59:59'
-      timezone: UTC-12
-      date: October 29-November 02, 2023
-      place: Ottawa, Ontario, Canada
-    - year: 2024
-      id: mm24
-      link: https://2024.acmmm.org/
-      timeline:
-        - abstract_deadline: '2024-04-08 23:59:59'
-          deadline: '2024-04-12 23:59:59'
-      timezone: UTC-12
-      date: October 28-November 01, 2024
-      place: Melbourne, Australia
+  - title: ACM MM
+    description: ACM International Conference on Multimedia
+    sub: CG
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: mm
+    confs:
+      - year: 2021
+        id: mm21
+        link: https://2021.acmmm.org/
+        timeline:
+          - abstract_deadline: '2021-04-10 23:59:59'
+            deadline: '2021-04-17 23:59:59'
+        timezone: AoE
+        date: October 21-24, 2021
+        place: Chengdu, China
+      - year: 2022
+        id: mm22
+        link: https://2022.acmmm.org/
+        timeline:
+          - abstract_deadline: '2022-03-31 23:59:59'
+            deadline: '2022-04-07 23:59:59'
+        timezone: UTC-12
+        date: October 10-14, 2022
+        place: Lisbon, Portugal
+      - year: 2023
+        id: mm23
+        link: https://www.acmmm2023.org/
+        timeline:
+          - abstract_deadline: '2023-04-23 23:59:59'
+            deadline: '2023-05-04 23:59:59'
+        timezone: UTC-12
+        date: October 29-November 02, 2023
+        place: Ottawa, Ontario, Canada
+      - year: 2024
+        id: mm24
+        link: https://2024.acmmm.org/
+        timeline:
+          - abstract_deadline: '2024-04-08 23:59:59'
+            deadline: '2024-04-12 23:59:59'
+        timezone: UTC-12
+        date: October 28-November 01, 2024
+        place: Melbourne, Australia
 

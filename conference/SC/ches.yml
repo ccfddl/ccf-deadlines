@@ -1,51 +1,54 @@
-- title: CHES
-  description: International Conference on Cryptographic Hardware and Embedded Systems
-  sub: SC
-  rank: B
-  dblp: ches
-  confs:
-    - year: 2022
-      id: ches22
-      link: https://ches.iacr.org/2022/
-      timeline:
-        - deadline: '2021-07-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2022/1'
-        - deadline: '2021-10-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2022/2'
-        - deadline: '2022-01-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2022/3'
-        - deadline: '2022-04-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2022/4'
-      timezone: AoE
-      date: September , 2022
-      place: Beijing, China
-    - year: 2023
-      id: ches23
-      link: https://ches.iacr.org/2023/
-      timeline:
-        - deadline: '2022-07-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2023/1'
-        - deadline: '2022-10-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2023/2'
-        - deadline: '2023-01-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2023/3'
-        - deadline: '2023-04-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2023/4'
-      timezone: AoE
-      date: September 10-14, 2023
-      place: Prague, Czech Republic
-    - year: 2024
-      id: ches24
-      link: https://ches.iacr.org/2024/
-      timeline:
-        - deadline: '2023-07-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2023/1'
-        - deadline: '2023-10-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2023/2'
-        - deadline: '2024-01-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2023/3'
-        - deadline: '2024-04-15 23:59:59'
-          comment: 'Schedule for TCHES Volume 2023/4'
-      timezone: AoE
-      date: September, 2024
-      place: Halifax, Canada
+  - title: CHES
+    description: International Conference on Cryptographic Hardware and Embedded Systems
+    sub: SC
+    rank:
+      ccf: B
+      core: A
+      thcpl: A
+    dblp: ches
+    confs:
+      - year: 2022
+        id: ches22
+        link: https://ches.iacr.org/2022/
+        timeline:
+          - deadline: '2021-07-15 23:59:59'
+            comment: Schedule for TCHES Volume 2022/1
+          - deadline: '2021-10-15 23:59:59'
+            comment: Schedule for TCHES Volume 2022/2
+          - deadline: '2022-01-15 23:59:59'
+            comment: Schedule for TCHES Volume 2022/3
+          - deadline: '2022-04-15 23:59:59'
+            comment: Schedule for TCHES Volume 2022/4
+        timezone: AoE
+        date: September , 2022
+        place: Beijing, China
+      - year: 2023
+        id: ches23
+        link: https://ches.iacr.org/2023/
+        timeline:
+          - deadline: '2022-07-15 23:59:59'
+            comment: Schedule for TCHES Volume 2023/1
+          - deadline: '2022-10-15 23:59:59'
+            comment: Schedule for TCHES Volume 2023/2
+          - deadline: '2023-01-15 23:59:59'
+            comment: Schedule for TCHES Volume 2023/3
+          - deadline: '2023-04-15 23:59:59'
+            comment: Schedule for TCHES Volume 2023/4
+        timezone: AoE
+        date: September 10-14, 2023
+        place: Prague, Czech Republic
+      - year: 2024
+        id: ches24
+        link: https://ches.iacr.org/2024/
+        timeline:
+          - deadline: '2023-07-15 23:59:59'
+            comment: Schedule for TCHES Volume 2023/1
+          - deadline: '2023-10-15 23:59:59'
+            comment: Schedule for TCHES Volume 2023/2
+          - deadline: '2024-01-15 23:59:59'
+            comment: Schedule for TCHES Volume 2023/3
+          - deadline: '2024-04-15 23:59:59'
+            comment: Schedule for TCHES Volume 2023/4
+        timezone: AoE
+        date: September, 2024
+        place: Halifax, Canada

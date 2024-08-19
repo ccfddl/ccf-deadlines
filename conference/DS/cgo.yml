@@ -1,22 +1,25 @@
-- title: IEEE/ACM CGO
-  description: The International Symposium on Code Generation and Optimization
-  sub: DS
-  rank: B
-  dblp: cgo
-  confs:
-    - year: 2025
-      id: cgo2025
-      link: https://conf.researchr.org/home/cgo-2025
-      timeline:
-        - deadline: '2024-05-30 23:59:59'
-      timezone: AoE
-      date: TBD
-      place: TBD
-    - year: 2024
-      id: cgo2024
-      link: https://conf.researchr.org/home/cgo-2024
-      timeline:
-        - deadline: '2023-05-19 23:59:59'
-      timezone: AoE
-      date: March 2-6, 2024
-      place: Edinburgh, United Kingdom
+  - title: IEEE/ACM CGO
+    description: The International Symposium on Code Generation and Optimization
+    sub: DS
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: cgo
+    confs:
+      - year: 2025
+        id: cgo2025
+        link: https://conf.researchr.org/home/cgo-2025
+        timeline:
+          - deadline: '2024-05-30 23:59:59'
+        timezone: AoE
+        date: TBD
+        place: TBD
+      - year: 2024
+        id: cgo2024
+        link: https://conf.researchr.org/home/cgo-2024
+        timeline:
+          - deadline: '2023-05-19 23:59:59'
+        timezone: AoE
+        date: March 2-6, 2024
+        place: Edinburgh, United Kingdom

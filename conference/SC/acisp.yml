@@ -1,26 +1,29 @@
-- title: ACISP
-  description: Australasia Conference on Information Security and Privacy
-  sub: SC
-  rank: C
-  dblp: acisp
-  confs:
-    - year: 2021
-      id: acisp21
-      link: https://data61dsslab.github.io/acisp2021/
-      timeline:
-        - deadline: '2021-02-25 23:59:59'
-          comment: 'Paper submission Deadline'
-      timezone: AoE
-      date: December 1-3, 2021
-      place: Perth, Australia
-    - year: 2024
-      id: acisp24
-      link: https://www.acisp24.com/
-      timeline:
-        - deadline: '2023-11-06 23:59:59'
-          comment: '1st round Deadline'
-        - deadline: '2024-02-19 23:59:59'
-          comment: '2nd round Deadline'
-      timezone: AoE
-      date: July 15-17, 2024
-      place: Australia
+  - title: ACISP
+    description: Australasia Conference on Information Security and Privacy
+    sub: SC
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: acisp
+    confs:
+      - year: 2021
+        id: acisp21
+        link: https://data61dsslab.github.io/acisp2021/
+        timeline:
+          - deadline: '2021-02-25 23:59:59'
+            comment: Paper submission Deadline
+        timezone: AoE
+        date: December 1-3, 2021
+        place: Perth, Australia
+      - year: 2024
+        id: acisp24
+        link: https://www.acisp24.com/
+        timeline:
+          - deadline: '2023-11-06 23:59:59'
+            comment: 1st round Deadline
+          - deadline: '2024-02-19 23:59:59'
+            comment: 2nd round Deadline
+        timezone: AoE
+        date: July 15-17, 2024
+        place: Australia

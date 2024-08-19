@@ -1,17 +1,20 @@
-- title: ICFP
-  description:  International Conference on Function Programming
-  sub: SE
-  rank: B
-  dblp: icfp
-  confs:
-    - year: 2022
-      id: icfp22
-      link: https://icfp22.sigplan.org/
-      timeline:
-        - deadline: '2021-03-02 23:59:59'
-          comment: 'Submission Deadline'
-        - deadline: '2021-06-16 23:59:59'
-          comment: 'Submission of revised papers'
-      timezone: AoE
-      date: September 11-16, 2022
-      place: Ljubljana, Slovenia
+  - title: ICFP
+    description: International Conference on Function Programming
+    sub: SE
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: icfp
+    confs:
+      - year: 2022
+        id: icfp22
+        link: https://icfp22.sigplan.org/
+        timeline:
+          - deadline: '2021-03-02 23:59:59'
+            comment: Submission Deadline
+          - deadline: '2021-06-16 23:59:59'
+            comment: Submission of revised papers
+        timezone: AoE
+        date: September 11-16, 2022
+        place: Ljubljana, Slovenia

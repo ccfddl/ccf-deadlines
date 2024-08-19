@@ -1,39 +1,42 @@
-- title: SRDS
-  description: IEEE International Symposium on Reliable Distributed Systems
-  sub: SC
-  rank: B
-  dblp: srds
-  confs:
-    - year: 2021
-      id: srds21
-      link: https://srds-conference.org/
-      timeline:
-        - deadline: '2021-04-16 23:59:59'
-          comment: 'ABSTRACT'
-        - deadline: '2021-04-23 23:59:59'
-          comment: 'FULL PAPER'
-      timezone: AoE
-      date: September 20-23, 2021
-      place: Virtual
-    - year: 2023
-      id: srds23
-      link: https://srds-conference.org/
-      timeline:
-        - deadline: '2023-04-15 23:59:59'
-          comment: 'ABSTRACT'
-        - deadline: '2023-04-22 23:59:59'
-          comment: 'FULL PAPER'
-      timezone: UTC+1
-      date: September 27-29, 2023
-      place: Marrakech, Morocco
-    - year: 2024
-      id: srds24
-      link: https://srds-conference.org/
-      timeline:
-        - deadline: '2024-04-26 23:59:59'
-          comment: 'ABSTRACT'
-        - deadline: '2024-05-03 23:59:59'
-          comment: 'FULL PAPER'
-      timezone: AoE
-      date: September 30-October 4, 2024
-      place: Charlotte, USA
+  - title: SRDS
+    description: IEEE International Symposium on Reliable Distributed Systems
+    sub: SC
+    rank:
+      ccf: B
+      core: B
+      thcpl: N
+    dblp: srds
+    confs:
+      - year: 2021
+        id: srds21
+        link: https://srds-conference.org/
+        timeline:
+          - deadline: '2021-04-16 23:59:59'
+            comment: ABSTRACT
+          - deadline: '2021-04-23 23:59:59'
+            comment: FULL PAPER
+        timezone: AoE
+        date: September 20-23, 2021
+        place: Virtual
+      - year: 2023
+        id: srds23
+        link: https://srds-conference.org/
+        timeline:
+          - deadline: '2023-04-15 23:59:59'
+            comment: ABSTRACT
+          - deadline: '2023-04-22 23:59:59'
+            comment: FULL PAPER
+        timezone: UTC+1
+        date: September 27-29, 2023
+        place: Marrakech, Morocco
+      - year: 2024
+        id: srds24
+        link: https://srds-conference.org/
+        timeline:
+          - deadline: '2024-04-26 23:59:59'
+            comment: ABSTRACT
+          - deadline: '2024-05-03 23:59:59'
+            comment: FULL PAPER
+        timezone: AoE
+        date: September 30-October 4, 2024
+        place: Charlotte, USA

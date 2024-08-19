@@ -1,24 +1,36 @@
-- title: AAMAS
-  description: International Conference on Autonomous Agents and Multiagent Systems
-  sub: AI
-  rank: B
-  dblp: atal
-  confs:
-    - year: 2023
-      id: aamas23
-      link: https://aamas2023.soton.ac.uk/
-      timeline:
-        - abstract_deadline: '2022-10-21 00:00:00'
-          deadline: '2022-10-28 00:00:00'
-      timezone: UTC-8
-      date: May 29 - June 2, 2023
-      place: London, UK
-    - year: 2024
-      id: aamas24
-      link: https://www.aamas2024-conference.auckland.ac.nz/
-      timeline:
-        - abstract_deadline: '2023-10-02 23:59:59'
-          deadline: '2023-10-09 23:59:59'
-      timezone: UTC-12
-      date: May 6-10, 2024
-      place: Auckland, New Zealand
+  - title: AAMAS
+    description: International Conference on Autonomous Agents and Multiagent Systems
+    sub: AI
+    rank:
+      ccf: B
+      core: A*
+      thcpl: B
+    dblp: atal
+    confs:
+      - year: 2023
+        id: aamas23
+        link: https://aamas2023.soton.ac.uk/
+        timeline:
+          - abstract_deadline: '2022-10-21 00:00:00'
+            deadline: '2022-10-28 00:00:00'
+        timezone: UTC-8
+        date: May 29 - June 2, 2023
+        place: London, UK
+      - year: 2024
+        id: aamas24
+        link: https://www.aamas2024-conference.auckland.ac.nz/
+        timeline:
+          - abstract_deadline: '2023-10-02 23:59:59'
+            deadline: '2023-10-09 23:59:59'
+        timezone: UTC-12
+        date: May 6-10, 2024
+        place: Auckland, New Zealand
+      - year: 2025
+        id: aamas25
+        link: https://aamas2025.org/
+        timeline:
+          - abstract_deadline: '2024-10-09 23:59:59'
+            deadline: '2024-10-16 23:59:59'
+        timezone: UTC-12
+        date: May 19-23, 2025
+        place: Detroit, Michigan, USA

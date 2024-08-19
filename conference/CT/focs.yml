@@ -1,14 +1,17 @@
-- title: FOCS
-  description: IEEE Symposium on Foundations of Computer Science
-  sub: CT
-  rank: A
-  dblp: focs
-  confs:
-    - year: 2024
-      id: focs24
-      link: https://focs.computer.org/2024/
-      timeline:
-        - deadline: '2024-04-04 20:00:00'
-      timezone: UTC-5
-      date: October 27-30, 2024
-      place: Chicago, IL, USA
+  - title: FOCS
+    description: IEEE Symposium on Foundations of Computer Science
+    sub: CT
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: focs
+    confs:
+      - year: 2024
+        id: focs24
+        link: https://focs.computer.org/2024/
+        timeline:
+          - deadline: '2024-04-04 20:00:00'
+        timezone: UTC-5
+        date: October 27-30, 2024
+        place: Chicago, IL, USA

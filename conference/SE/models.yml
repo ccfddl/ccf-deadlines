@@ -1,14 +1,18 @@
-- title: MoDELS
-  description:  International Conference on Model Driven Engineering Languages and Systems
-  sub: SE
-  rank: B
-  dblp: models
-  confs:
-    - year: 2022
-      id: models22
-      link: https://conf.researchr.org/home/models-2022
-      timeline:
-        - deadline: '2022-05-18 23:59:59'
-      timezone: AoE
-      date: October 23-28, 2022
-      place: Montréal, Canada
+  - title: MoDELS
+    description: International Conference on Model Driven Engineering Languages and
+      Systems
+    sub: SE
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: models
+    confs:
+      - year: 2022
+        id: models22
+        link: https://conf.researchr.org/home/models-2022
+        timeline:
+          - deadline: '2022-05-18 23:59:59'
+        timezone: AoE
+        date: October 23-28, 2022
+        place: Montréal, Canada

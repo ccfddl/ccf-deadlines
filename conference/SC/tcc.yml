@@ -1,22 +1,25 @@
-- title: TCC
-  description: Theory of Cryptography Conference
-  sub: SC
-  rank: B
-  dblp: tcc
-  confs:
-    - year: 2021
-      id: tcc21
-      link: https://tcc.iacr.org/2021/
-      timeline:
-        - deadline: '2021-05-25 21:00:00'
-      timezone: UTC-12
-      date: Nov 8, 2021
-      place: Raleigh, United States
-    - year: 2023
-      id: tcc23
-      link: https://tcc.iacr.org/2023/
-      timeline:
-        - deadline: '2023-06-01 15:00:00'
-      timezone: UTC-4
-      date: Nov 29 - Dec 12, 2023
-      place: Taipei, China
+  - title: TCC
+    description: Theory of Cryptography Conference
+    sub: SC
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: tcc
+    confs:
+      - year: 2021
+        id: tcc21
+        link: https://tcc.iacr.org/2021/
+        timeline:
+          - deadline: '2021-05-25 21:00:00'
+        timezone: UTC-12
+        date: Nov 8, 2021
+        place: Raleigh, United States
+      - year: 2023
+        id: tcc23
+        link: https://tcc.iacr.org/2023/
+        timeline:
+          - deadline: '2023-06-01 15:00:00'
+        timezone: UTC-4
+        date: Nov 29 - Dec 12, 2023
+        place: Taipei, China

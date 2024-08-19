@@ -1,24 +1,27 @@
-- title: ISC
-  description: Information Security Conference
-  sub: SC
-  rank: C
-  dblp: isw
-  confs:
-    - year: 2021
-      id: isc21
-      link: https://isc2021.petra.ac.id/
-      timeline:
-        - deadline: '2021-07-23 23:59:59'
-          comment: 'Submission Deadline'
-      timezone: UTC-12
-      date: November 9 - 13, 2021
-      place: Bali, Indonesia
-    - year: 2024
-      id: isc24
-      link: https://isc24.cs.gmu.edu/
-      timeline:
-        - deadline: '2024-06-13 23:59:59'
-          comment: 'Submission Deadline'
-      timezone: AoE
-      date: Oct 23 - 25, 2024
-      place: VA, USA
+  - title: ISC
+    description: Information Security Conference
+    sub: SC
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: isw
+    confs:
+      - year: 2021
+        id: isc21
+        link: https://isc2021.petra.ac.id/
+        timeline:
+          - deadline: '2021-07-23 23:59:59'
+            comment: Submission Deadline
+        timezone: UTC-12
+        date: November 9 - 13, 2021
+        place: Bali, Indonesia
+      - year: 2024
+        id: isc24
+        link: https://isc24.cs.gmu.edu/
+        timeline:
+          - deadline: '2024-06-13 23:59:59'
+            comment: Submission Deadline
+        timezone: AoE
+        date: Oct 23 - 25, 2024
+        place: VA, USA

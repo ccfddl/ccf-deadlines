@@ -1,14 +1,17 @@
-- title: SDM
-  description: SIAM International Conference on Data Mining
-  sub: DB
-  rank: B
-  dblp: sdm
-  confs:
-    - year: 2024
-      id: sdm2024
-      link: https://www.siam.org/conferences/cm/conference/sdm24
-      timeline:
-        - deadline: '2023-09-16 15:00:00'
-      timezone: UTC-8
-      date: April 18-20, 2024
-      place: Houston, TX, USA
+  - title: SDM
+    description: SIAM International Conference on Data Mining
+    sub: DB
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: sdm
+    confs:
+      - year: 2024
+        id: sdm2024
+        link: https://www.siam.org/conferences/cm/conference/sdm24
+        timeline:
+          - deadline: '2023-09-16 15:00:00'
+        timezone: UTC-8
+        date: April 18-20, 2024
+        place: Houston, TX, USA

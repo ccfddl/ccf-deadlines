@@ -1,38 +1,41 @@
-- title: ICASSP
-  description: IEEE International Conference on Acoustics, Speech, and Signal Processing
-  sub: CG
-  rank: B
-  dblp: icassp
-  confs:
-    - year: 2022
-      id: icassp22
-      link: https://2022.ieeeicassp.org
-      timeline:
-        - deadline: '2021-10-06 23:59:59'
-      timezone: UTC+0
-      date: May 22-27, 2022
-      place: Singapore
-    - year: 2023
-      id: icassp23
-      link: https://2023.ieeeicassp.org
-      timeline:
-        - deadline: '2022-10-26 23:59:59'
-      timezone: UTC-12
-      date: June 4-9, 2023
-      place: Rhodes Island, Greece
-    - year: 2024
-      id: icassp24
-      link: https://2024.ieeeicassp.org/
-      timeline:
-        - deadline: '2023-09-06 23:59:59'
-      timezone: UTC-12
-      date: April 14-19, 2024
-      place: COEX, Seoul, Korea
-    - year: 2025
-      id: icassp25
-      link: https://2025.ieeeicassp.org/
-      timeline:
-        - deadline: '2024-09-09 23:59:59'
-      timezone: UTC-12
-      date: April 6-11, 2025
-      place: Hyderabad, India
+  - title: ICASSP
+    description: IEEE International Conference on Acoustics, Speech, and Signal Processing
+    sub: CG
+    rank:
+      ccf: B
+      core: N
+      thcpl: B
+    dblp: icassp
+    confs:
+      - year: 2022
+        id: icassp22
+        link: https://2022.ieeeicassp.org
+        timeline:
+          - deadline: '2021-10-06 23:59:59'
+        timezone: UTC+0
+        date: May 22-27, 2022
+        place: Singapore
+      - year: 2023
+        id: icassp23
+        link: https://2023.ieeeicassp.org
+        timeline:
+          - deadline: '2022-10-26 23:59:59'
+        timezone: UTC-12
+        date: June 4-9, 2023
+        place: Rhodes Island, Greece
+      - year: 2024
+        id: icassp24
+        link: https://2024.ieeeicassp.org/
+        timeline:
+          - deadline: '2023-09-06 23:59:59'
+        timezone: UTC-12
+        date: April 14-19, 2024
+        place: COEX, Seoul, Korea
+      - year: 2025
+        id: icassp25
+        link: https://2025.ieeeicassp.org/
+        timeline:
+          - deadline: '2024-09-09 23:59:59'
+        timezone: UTC-8
+        date: April 6-11, 2025
+        place: Hyderabad, India

@@ -37,7 +37,7 @@
             </el-row>
             <el-row>{{scope.row.date+' '+scope.row.place}}</el-row>
             <el-row class="conf-des">{{scope.row.description}}</el-row>
-            <el-row><el-tag size="mini" type="" effect="plain">{{scope.row.displayrank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
+            <el-row><el-tag size="mini" type="" effect="plain">{{scope.row.displayrank}}</el-tag> <el-tag v-if="scope.row.corerank!=='N'" size="mini" type="" effect="plain">CORE {{scope.row.corerank}}</el-tag> <el-tag v-if="scope.row.thcplrank!=='N'" size="mini" type="" effect="plain">THCPL {{scope.row.thcplrank}}</el-tag> <span style="color: #409eff" v-show="scope.row.comment"><b>NOTE:</b> {{scope.row.comment}}</span></el-row>
             <el-row style="padding-top: 5px"><span v-if="typeof scope.row.acc === 'string'">Acc. Rate: {{scope.row.acc}} </span><span class="conf-sub">{{scope.row.subname}}</span></el-row>
             </div>
         </template>
@@ -174,7 +174,9 @@ export default {
             curItem.title = curConf.title
             curItem.description = curConf.description
             curItem.sub = curConf.sub
-            curItem.rank = curConf.rank
+            curItem.rank = curConf.rank.ccf
+            curItem.corerank = curConf.rank.core
+            curItem.thcplrank = curConf.rank.thcpl
             curItem.displayrank = this.rankoptions[curItem.rank]
             curItem.dblp = curConf.dblp
             let len = curItem.timeline.length

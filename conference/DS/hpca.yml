@@ -1,39 +1,51 @@
-- title: HPCA
-  description: IEEE International Symposium on High-Performance Computer Architecture
-  sub: DS
-  rank: A
-  dblp: hpca
-  confs:
-    - year: 2022
-      id: hpca22
-      link: https://hpca-conf.org/2022/
-      timeline:
-        - deadline: '2021-07-23 23:59:59'
-          comment: 'abstract deadline'
-        - deadline: '2021-07-30 23:59:59'
-          comment: 'full paper deadline'
-      timezone: UTC+0
-      date: Feb 12-16, 2022
-      place: Seoul, South Korea
-    - year: 2023
-      id: hpca23
-      link: https://hpca-conf.org/2023/
-      timeline:
-        - deadline: '2022-07-25 23:59:59'
-          comment: 'abstract deadline'
-        - deadline: '2022-08-01 23:59:59'
-          comment: 'full paper deadline'
-      timezone: UTC
-      date: Feb 25-Mar 01, 2023
-      place: Montreal, QC, Canada
-    - year: 2024
-      id: hpca24
-      link: https://hpca-conf.org/2024/
-      timeline:
-        - deadline: '2023-07-28 23:59:59'
-          comment: 'abstract deadline'
-        - deadline: '2023-08-04 23:59:59'
-          comment: 'full paper deadline'
-      timezone: UTC-7
-      date: March 2-6, 2024
-      place: Edinburgh, Scotland, UK
+  - title: HPCA
+    description: IEEE International Symposium on High-Performance Computer Architecture
+    sub: DS
+    rank:
+      ccf: A
+      core: A*
+      thcpl: A
+    dblp: hpca
+    confs:
+      - year: 2022
+        id: hpca22
+        link: https://hpca-conf.org/2022/
+        timeline:
+          - deadline: '2021-07-23 23:59:59'
+            comment: abstract deadline
+          - deadline: '2021-07-30 23:59:59'
+            comment: full paper deadline
+        timezone: UTC+0
+        date: Feb 12-16, 2022
+        place: Seoul, South Korea
+      - year: 2023
+        id: hpca23
+        link: https://hpca-conf.org/2023/
+        timeline:
+          - deadline: '2022-07-25 23:59:59'
+            comment: abstract deadline
+          - deadline: '2022-08-01 23:59:59'
+            comment: full paper deadline
+        timezone: UTC
+        date: Feb 25-Mar 01, 2023
+        place: Montreal, QC, Canada
+      - year: 2024
+        id: hpca24
+        link: https://hpca-conf.org/2024/
+        timeline:
+          - deadline: '2023-07-28 23:59:59'
+            comment: abstract deadline
+          - deadline: '2023-08-04 23:59:59'
+            comment: full paper deadline
+        timezone: UTC-7
+        date: March 2-6, 2024
+        place: Edinburgh, Scotland, UK
+      - year: 2025
+        id: hpca25
+        link: https://hpca-conf.org/2025/
+        timeline:
+          - abstract_deadline: '2024-07-26 23:59:59'
+            deadline: '2024-08-03 06:59:59'
+        timezone: UTC
+        date: March 1-5, 2025
+        place: Las Vegas, USA.

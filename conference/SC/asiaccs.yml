@@ -1,28 +1,43 @@
-- title: AsiaCCS
-  description: Asia Conference on Computer and Communications Security
-  sub: SC
-  rank: C
-  dblp: ccs
-  confs:
-    - year: 2022
-      id: asiaccs22
-      link: https://asiaccs2022.conferenceservice.jp/
-      timeline:
-        - deadline: '2021-07-30 23:59:59'
-          comment: '1st round Deadline'
-        - deadline: '2021-11-19 23:59:59'
-          comment: '2nd round Deadline'
-      timezone: AoE
-      date: May 30-June 3, 2022
-      place: Nagasaki, Japan
-    - year: 2024
-      id: asiaccs24
-      link: https://asiaccs2024.sutd.edu.sg/
-      timeline:
-        - deadline: '2023-08-21 23:59:59'
-          comment: '1st round Deadline'
-        - deadline: '2023-12-07 23:59:59'
-          comment: '2nd round Deadline'
-      timezone: AoE
-      date: July 1-5, 2024
-      place: Singapore
+  - title: AsiaCCS
+    description: Asia Conference on Computer and Communications Security
+    sub: SC
+    rank:
+      ccf: C
+      core: A
+      thcpl: B
+    dblp: ccs
+    confs:
+      - year: 2022
+        id: asiaccs22
+        link: https://asiaccs2022.conferenceservice.jp/
+        timeline:
+          - deadline: '2021-07-30 23:59:59'
+            comment: 1st round Deadline
+          - deadline: '2021-11-19 23:59:59'
+            comment: 2nd round Deadline
+        timezone: AoE
+        date: May 30-June 3, 2022
+        place: Nagasaki, Japan
+      - year: 2024
+        id: asiaccs24
+        link: https://asiaccs2024.sutd.edu.sg/
+        timeline:
+          - deadline: '2023-08-21 23:59:59'
+            comment: 1st round Deadline
+          - deadline: '2023-12-07 23:59:59'
+            comment: 2nd round Deadline
+        timezone: AoE
+        date: July 1-5, 2024
+        place: Singapore
+        
+      - year: 2025
+        id: asiaccs25
+        link: https://asiaccs2025.hust.edu.vn/
+        timeline:
+          - deadline: '2024-09-20 23:59:59'
+            comment: 1st round Deadline
+          - deadline: '2025-01-20 23:59:59'
+            comment: 2nd round Deadline
+        timezone: AoE
+        date: August 25-29, 2025
+        place: Hanoi, Vietnam
