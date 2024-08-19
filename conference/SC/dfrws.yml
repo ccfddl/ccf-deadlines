@@ -16,3 +16,12 @@
         timezone: AoE
         date: March 28-31 , 2022
         place: Online and Physical (Location TBC)
+      - year: 2025
+        id: dfrws25
+        link: https://dfrws.org/conferences/dfrws-eu-2025/
+        timeline:
+          - abstract_deadline: '2024-09-20 23:59:59'
+            deadline: '2024-09-27 23:59:59'
+        timezone: AoE
+        date: April 1-4, 2025
+        place: Brno, Czech Republic
