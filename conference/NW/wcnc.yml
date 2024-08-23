@@ -11,7 +11,8 @@
         id: wcnc25
         link: https://wcnc2025.ieee-wcnc.org/
         timeline:
-            deadline: '2024-09-02 23:59:59'
+          - deadline: '2024-09-02 23:59:59'
         timezone: UTC-12
         date: March 24-27, 2025
         place: Milan, Italy
+
