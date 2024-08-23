@@ -1,0 +1,17 @@
+  - title: WCNC
+    description: Wireless Communications and Networking Conference
+    sub: NW
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: wcnc
+    confs:
+      - year: 2025
+        id: wcnc25
+        link: https://wcnc2025.ieee-wcnc.org/
+        timeline:
+            deadline: '2024-09-02 23:59:59'
+        timezone: UTC-12
+        date: March 24-27, 2025
+        place: Milan, Italy
