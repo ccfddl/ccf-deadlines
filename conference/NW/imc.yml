@@ -16,3 +16,17 @@
         timezone: AoE
         date: Nov 4-6, 2024
         place: Madrid, Spain
+
+      - year: 2025
+        id: imc25
+        link: https://conferences.sigcomm.org/imc/2025/
+        timeline: 
+          - abstract_deadline: '2024-11-14 23:59:59'
+            deadline: '2024-11-21 23:59:59'
+            comment: 'Fall deadline'
+          - abstract_deadline: '2025-05-08 23:59:59'
+            deadline: '2025-05-15 23:59:59'
+            comment: 'Spring deadline'
+        timezone: AoE
+        date: Oct 28-31, 2025
+        place: Madison, Wisconsin, USA
