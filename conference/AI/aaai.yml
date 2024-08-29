@@ -1,7 +1,9 @@
   - title: AAAI
     description: AAAI Conference on Artificial Intelligence
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A
