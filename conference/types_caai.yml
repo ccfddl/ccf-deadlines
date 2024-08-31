@@ -1,0 +1,25 @@
+---
+- name: 人工智能基础与综合
+  sub: AIFC
+- name: 人工智能交叉与应用
+  sub: AIA
+- name: 脑认知与类脑智能
+  sub: BCI
+- name: 机器学习
+  sub: ML
+- name: 模式识别与计算机视觉
+  sub: PRCV
+- name: 语言与语音处理
+  sub: LSP
+- name: 知识工程与数据挖掘
+  sub: KEDM
+- name: 跨媒体智能与人机交互
+  sub: MII
+- name: 智能机器人与系统
+  sub: IRS
+- name: 智能芯片与计算系统
+  sub: ICCS
+- name: 人工智能伦理、安全与治理
+  sub: AIEG
+
+
