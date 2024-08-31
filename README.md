@@ -1,70 +1,49 @@
-# CCF-Deadlines（添加CAAI目录版）
+# 维护 MMAI会议DDL项目说明文档（github协作）
 
-[原项目](https://github.com/ccfddl/ccf-deadline)
+## 1. 任务
 
-修改conference/XX文件夹下的yml文件，具体操作流程为：
-
-1. 查看 https://www.caai.cn/index.php?s=/home/article/detail/id/4024.html 
-   中国人工智能学会（CAAI）推荐国际学术会议图片上的分类（人工智能基础与综合类、人工交叉与应用类……）
-2. 根据图片上每一个会议，找到对应 conference/XX/xxxx.yml 文件：
-   - 在sub属性下面添加一个同级属性subCAAI，值为该会议**CAAI分类**的字母代号，字母代号在 conference/types_caai.yml 里有对应
-   - 在rank属性下面添加一个子属性caai，值为该会议的**CAAI等级**（A类、B类、C类）
-   - 若没有该会议的yml文件，则新建一个，搜索该会议的信息，格式仿照其他的
-
-例如：AAAI在CAAI中被分为人工智能基础与综合类-A类会议，那么它的yml文件为
+1. 修改（或增加）自己对应的CAAI会议yml文件后在仓库进行提交
+2. 维护不同年度的截稿日期
 
 
-示例文件: conference/AI/CAAI.yml
 
-```yaml
-  - title: AAAI
-    description: AAAI Conference on Artificial Intelligence
-    sub: AI
-    subCAAI: AIFC
-    rank:
-      ccf: A
-      caai: A
-      core: A*
-      thcpl: A
-    dblp: aaai
-    confs:
-      - year: 2022
-        id: aaai22
-        link: https://aaai.org/Conferences/AAAI-22/
-        timeline:
-          - abstract_deadline: '2021-08-30 23:59:59'
-            deadline: '2021-09-08 23:59:59'
-        timezone: UTC-12
-        date: February 22 - March 1, 2022
-        place: Vancouver, British Columbia, Canada
-      - year: 2023
-        id: aaai23
-        link: https://www.aaai.org/Conferences/AAAI-23/
-        timeline:
-          - abstract_deadline: '2022-08-08 23:59:59'
-            deadline: '2022-08-15 23:59:59'
-        timezone: UTC-12
-        date: February 7 - February 14, 2023
-        place: Washington, DC, USA
-      - year: 2024
-        id: aaai24
-        link: https://www.aaai.org/aaai-conference/
-        timeline:
-          - abstract_deadline: '2023-08-08 23:59:59'
-            deadline: '2023-08-15 23:59:59'
-        timezone: UTC-12
-        date: February 20 - February 27, 2024
-        place: Vancouver, British Columbia, Canada
-      - year: 2025
-        id: aaai25
-        link: https://aaai.org/conference/aaai/aaai-25/
-        timeline:
-          - abstract_deadline: '2024-08-07 23:59:59'
-            deadline: '2024-08-15 23:59:59'
-        timezone: UTC-12
-        date: February 25 - March 4, 2025
-        place: PHILADELPHIA, PENNSYLVANIA, USA
-```
+
+
+## 2. 任务执行流程
+
+1. Fork项目：https://github.com/ChinaJeng/ccfddl-addCAAI
+
+2. 获取自己的仓库链接：https://github.com/Volta-lemon/ccfddl-addCAAI
+
+3. 查看https://www.caai.cn/index.php?s=/home/article/detail/id/4024.html，按页码完成对应工作，根据图片上每一个会议，找到对应 conference/XX/xxxx.yml 文件：
+
+      - 在sub属性下面添加一个同级属性sub_caai，值为该会议**CAAI分类**的字母代号，字母代号在 conference/types_caai.yml 里有对应
+      - 在rank属性下面添加一个子属性caai，值为该会议的**CAAI等级**（A类、B类、C类）
+      - 若没有该会议的yml文件，则新建一个，搜索该会议的信息，格式仿照其他的
+
+4. 使用vscode打开本地仓库,搜索需要修改的期刊会议名称
+
+   ![1](./flow/1.png)
+
+5. 如果在conference中包含，那么直接修改对应的yml文件，按照pdf以及type_caai.yml对应修改
+
+   ![image-20240829212837484](./flow/2.png)
+
+   ![image-20240829212315470](./flow/3.png)
+
+6. 如果在conference中不包含，新建对应类别文件夹，新增yml文件，根据网址获得相应信息，如果搜索不到相关信息，只填写基本信息即可。
+
+7. 更新完成后进行提交，提交信息为"pdf-页码范围"
+
+![image-20240829214313273](./flow/4.png)
+
+7. 创建pr等待合并，title设为finish pdf页码范围
+
+![image-20240829214346418](./flow/5.png)
+
+![image-20240829214457011](./flow/6.png)
+
+## 3. 字段与匹配表
 
 字段描述:
 
@@ -86,7 +65,7 @@
       <td>会议在CCF中被标注的类别, 可参考下面的辅助文档</td>
    </tr>
     <tr>
-      <td colspan="3"><code>subCAAI</code></td>
+      <td colspan="3"><code>sub_caai</code></td>
       <td>会议在CAAI中被标注的类别, 可参考下面的辅助文档</td>
    </tr>
    <tr>
@@ -152,9 +131,7 @@
 
 带星标(*)的字段是必填项。
 
-
-
-CAII类别匹配表:
+CAAII类别匹配表:
 
 | `sub`  | 类别名称                 |
 | ------ | ------------------------ |
@@ -168,5 +145,5 @@ CAII类别匹配表:
 | `MII`  | 跨媒体智能与人机交互     |
 | `IRS`  | 智能机器人与系统         |
 | `ICCS` | 智能芯片与计算系统       |
-| `AIEG`  | 人工智能伦理、安全与治理 |
+| `AIEG` | 人工智能伦理、安全与治理 |
 
