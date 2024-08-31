@@ -1,5 +1,11 @@
 # 维护 MMAI会议DDL项目说明文档（github协作）
 
+
+## CCF-Deadlines（添加CAAI目录版）
+
+[原项目](https://github.com/ccfddl/ccf-deadline)
+
+
 ## 1. 任务
 
 1. 修改（或增加）自己对应的CAAI会议yml文件后在仓库进行提交
@@ -13,7 +19,7 @@
 
 1. Fork项目：https://github.com/ChinaJeng/ccfddl-addCAAI
 
-2. 获取自己的仓库链接：https://github.com/Volta-lemon/ccfddl-addCAAI
+2. 获取自己的仓库链接：https://github.com/xxxxx/ccfddl-addCAAI
 
 3. 查看https://www.caai.cn/index.php?s=/home/article/detail/id/4024.html，按页码完成对应工作，根据图片上每一个会议，找到对应 conference/XX/xxxx.yml 文件：
 
