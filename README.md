@@ -1,175 +1,172 @@
-# CCF-Deadlines
+# CCF-Deadlines（添加CAAI目录版）
 
-[![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/ccfddl/ccf-deadlines/.github/workflows/deploy.yml?branch=main)](https://github.com/ccfddl/ccf-deadlines/commits/main)
-[![Open PRs](https://img.shields.io/github/issues-pr/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/pulls)
+[原项目](https://github.com/ccfddl/ccf-deadline)
 
-English | [简体中文](./README.zh-CN.md)
+修改conference/XX文件夹下的yml文件，具体操作流程为：
 
-Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
+1. 查看 https://www.caai.cn/index.php?s=/home/article/detail/id/4024.html 
+   中国人工智能学会（CAAI）推荐国际学术会议图片上的分类（人工智能基础与综合类、人工交叉与应用类……）
+2. 根据图片上每一个会议，找到对应 conference/XX/xxxx.yml 文件：
+   - 在sub属性下面添加一个同级属性subCAAI，值为该会议**CAAI分类**的字母代号，字母代号在 conference/types_caai.yml 里有对应
+   - 在rank属性下面添加一个子属性caai，值为该会议的**CAAI等级**（A类、B类、C类）
+   - 若没有该会议的yml文件，则新建一个，搜索该会议的信息，格式仿照其他的
 
-| <div style="width:330px">[Website Preview (Main Site)](https://ccfddl.github.io/)</div> | <div style="width:330px">[Tabular Preview](https://ccfddl.top/) <br> [No Ladder Required]</div> | <div style="width:330px">[PyCli Preview](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress] </div> |
-| :----: | :----: | :----: |
-| <img src=".readme_assets/screenshot_website.png" width="300px"/> | <img src=".readme_assets/screenshot_tabular.png" width="300px"/> | <img src=".readme_assets/screenshot_pycli.png" width="300px"/> |
+例如：AAAI在CAAI中被分为人工智能基础与综合类-A类会议，那么它的yml文件为
 
-| <div style="width:330px">[Wechat Applet](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
-| :----: |
-| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> |
 
-**No More Finding and Time Conversion on Your Own!**
-
-## Add/Update a conference
-
-Contributions are welcomed and greatly appreciated! For further contribution and waterblowing, email [chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn) through your edu email address with wechatid to join the [CCFDDL](https://github.com/ccfddl) organization.
-
-To add or update information:
-
-- Fork the repo
-- Add/Update the yml file of conference/conf_type/conf_name.yml
-- Send a [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
-
-Tips: check [conferences recommended](https://www.ccf.org.cn/Academic_Evaluation/By_category/) or review [pdf](.readme_assets/ccf_recommended_2022.pdf)
-## Conference Entry File
-Example file: conference/DB/sigmod.yml
+示例文件: conference/AI/CAAI.yml
 
 ```yaml
-- title: SIGMOD
-  description: ACM Conference on Management of Data
-  sub: DB
-  rank:
-    ccf: A
-    core: A*
-    thcpl: A
-  dblp: sigmod
-  confs:
-    - year: 2022
-      id: sigmod22
-      link: http://2022.sigmod.org/
-      timeline:
-        - deadline: '2021-07-02 17:00:00'
-          comment: 'first round'
-        - deadline: '2021-09-15 17:00:00'
-          comment: 'second round'
-      timezone: UTC-8
-      date: June 12-17, 2022
-      place: Philadelphia, PA, USA
+  - title: AAAI
+    description: AAAI Conference on Artificial Intelligence
+    sub: AI
+    subCAAI: AIFC
+    rank:
+      ccf: A
+      caai: A
+      core: A*
+      thcpl: A
+    dblp: aaai
+    confs:
+      - year: 2022
+        id: aaai22
+        link: https://aaai.org/Conferences/AAAI-22/
+        timeline:
+          - abstract_deadline: '2021-08-30 23:59:59'
+            deadline: '2021-09-08 23:59:59'
+        timezone: UTC-12
+        date: February 22 - March 1, 2022
+        place: Vancouver, British Columbia, Canada
+      - year: 2023
+        id: aaai23
+        link: https://www.aaai.org/Conferences/AAAI-23/
+        timeline:
+          - abstract_deadline: '2022-08-08 23:59:59'
+            deadline: '2022-08-15 23:59:59'
+        timezone: UTC-12
+        date: February 7 - February 14, 2023
+        place: Washington, DC, USA
+      - year: 2024
+        id: aaai24
+        link: https://www.aaai.org/aaai-conference/
+        timeline:
+          - abstract_deadline: '2023-08-08 23:59:59'
+            deadline: '2023-08-15 23:59:59'
+        timezone: UTC-12
+        date: February 20 - February 27, 2024
+        place: Vancouver, British Columbia, Canada
+      - year: 2025
+        id: aaai25
+        link: https://aaai.org/conference/aaai/aaai-25/
+        timeline:
+          - abstract_deadline: '2024-08-07 23:59:59'
+            deadline: '2024-08-15 23:59:59'
+        timezone: UTC-12
+        date: February 25 - March 4, 2025
+        place: PHILADELPHIA, PENNSYLVANIA, USA
 ```
 
-Description of the fields:
+字段描述:
+
 <table>
    <tr>
-      <th colspan="3">Field name</th>
-      <th>Description</th>
+      <th colspan="3">字段名</th>
+      <th>描述</th>
    </tr>
    <tr>
       <td colspan="3"><code>title</code>*</td>
-      <td>Short conference name, without year, uppercase</td>
+      <td>缩写的会议名称, 不需要年份, 大写</td>
    </tr>
    <tr>
       <td colspan="3"><code>description</code>*</td>
-      <td>Description, or long name, with no session</td>
+      <td>介绍, 或全称, 无需第几届</td>
    </tr>
    <tr>
       <td colspan="3"><code>sub</code>*</td>
-      <td>The category that the conference is labeled by CCF. See the matching table below</td>
+      <td>会议在CCF中被标注的类别, 可参考下面的辅助文档</td>
+   </tr>
+    <tr>
+      <td colspan="3"><code>subCAAI</code></td>
+      <td>会议在CAAI中被标注的类别, 可参考下面的辅助文档</td>
    </tr>
    <tr>
-      <td rowspan="3"><code>rank</code>*</td>
+      <td rowspan="4"><code>rank</code>*</td>
       <td colspan="2"><code>ccf</code>*</td>
-      <td>The level that the conference is ranked by CCF, e.g., <code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
+      <td>会议在CCF中被标注的等级, 示例, <code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
    </tr>
+    <tr>
+        <td colspan="2"><code>caai</code></td>
+      <td>会议在CAAI中被标注的等级, 示例, <code>A</code>, <code>B</code>, <code>C</code></td>
+    </tr>
    <tr>
    <td colspan="2"><code>core</code></td>
-   <td>The level that the conference is ranked by CORE, e.g., <code>A*</code>, <code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
+   <td>会议在CORE中被标注的等级, 示例, <code>A*</code>,<code>A</code>, <code>B</code>, <code>C</code>, <code>N</code></td>
    </tr>
    <tr>
    <td colspan="2"><code>thcpl</code></td>
-   <td>The level that the conference is ranked by TH-CPL, e.g., <code>A</code>, <code>B</code>, <code>N</code></td>
+   <td>会议在TH-CPL中被标注的等级, 示例, <code>A</code>, <code>B</code>, <code>N</code></td>
    </tr>
    <tr>
       <td colspan="3"><code>dblp</code>*</td>
-      <td>The suffix in dblp url, e.g., <code>iccv</code> in https://dblp.uni-trier.de/db/conf/iccv</td>
+      <td>会议在dblp的URL的后缀, 示例, <code>iccv</code> in https://dblp.uni-trier.de/db/conf/iccv</td>
    </tr>
    <tr>
       <td rowspan="9"><code>confs</code></td>
       <td colspan="2"><code>year</code>*</td>
-      <td>Year the conference is happening</td>
+      <td>会议的年份</td>
    </tr>
    <tr>
       <td colspan="2"><code>id</code>*</td>
-      <td>conference name & year, lowercase</td>
+      <td>会议名字和年份, 小写</td>
    </tr>
    <tr>
       <td colspan="2"><code>link</code>*</td>
-      <td>URL to the conference home page</td>
+      <td>会议首页的URL</td>
    </tr>
    <tr>
       <td rowspan="3"><code>timeline</code>*</td>
       <td><code>abstract_deadline</code></td>
-      <td>Abstract deadline if applicable, optional</td>
+      <td>Abstract的截稿日期, 可选填</td>
    </tr>
    <tr>
       <td><code>deadline</code>*</td>
-      <td>Deadline, in the format of <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
+      <td>截稿日期, 格式为 <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
    </tr>
    <tr>
       <td><code>comment</code></td>
-      <td>Some comments on the conference, optional</td>
+      <td>额外的一些辅助信息, 可选填</td>
    </tr>
    <tr>
       <td colspan="2"><code>timezone</code>*</td>
-      <td>Timezone of deadline, currently support <code>UTC-12</code> ~ <code>UTC+12</code> & <code>AoE</code></td>
+      <td>截稿日期的时区, 目前支持 <code>UTC-12</code> ~ <code>UTC+12</code> & <code>AoE</code></td>
    </tr>
    <tr>
       <td colspan="2"><code>date</code>*</td>
-      <td>When the main conference is happening, e.g., Mar 12-16, 2021</td>
+      <td>会议举办的日期, 示例, Mar 12-16, 2021</td>
    </tr>
    <tr>
       <td colspan="2"><code>place</code>*</td>
-      <td>Where the main conference is happening, e.g., <code>city, country</code></td>
+      <td>会议举办的地点, 示例, <code>city, country</code></td>
    </tr>
 </table>
 
-Fields marked with asterisk (*) are required.
+带星标(*)的字段是必填项。
 
-The matching table:
 
-| `sub` | Category name |
-| ----------- | --------------------------------------------------------- |
-| `DS`        | Computer Architecture/Parallel Programming/Storage Technology                   |
-| `NW`        | Network System                                              |
-| `SC`        | Network and System Security                                           |
-| `SE`        | Software Engineering/Operating System/Programming Language Design                            |
-| `DB`        | Database/Data Mining/Information Retrieval                                  |
-| `CT`        | Computing Theory                                    |
-| `CG`        | Graphics                                      |
-| `AI`        | Artificial Intelligence                                                  |
-| `HI`        | Computer-Human Interaction                                       |
-| `MX`       | Interdiscipline/Mixture/Emerging                                            |
 
-## Community activity [![Time period](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_badge.svg)](https://repography.com)
+CAAII类别匹配表:
 
-[![Timeline graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_timeline.svg)](https://github.com/ccfddl/ccf-deadlines/commits)
-[![Issue status graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_issues.svg)](https://github.com/ccfddl/ccf-deadlines/issues)
-[![Pull request status graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_prs.svg)](https://github.com/ccfddl/ccf-deadlines/pulls)
-[![Top contributors](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_users.svg)](https://github.com/ccfddl/ccf-deadlines/graphs/contributors)
+| `sub`  | 类别名称                 |
+| ------ | ------------------------ |
+| `AIFC` | 人工智能基础与综合       |
+| `AIA`  | 人工智能交叉与应用       |
+| `BCI`  | 脑认知与类脑智能         |
+| `ML`   | 机器学习                 |
+| `PRCV` | 模式识别与计算机视觉     |
+| `LSP`  | 语言与语音处理           |
+| `KEDM` | 知识工程与数据挖掘       |
+| `MII`  | 跨媒体智能与人机交互     |
+| `IRS`  | 智能机器人与系统         |
+| `ICCS` | 智能芯片与计算系统       |
+| `AIEG`  | 人工智能伦理、安全与治理 |
 
-## Contribution
-
-Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123), [@oliverck](https://github.com/oliverck), [@fffmath](https://github.com/fffmath), [@Allenpandas](https://github.com/Allenpandas), [@yuang-chen](https://github.com/yuang-chen), [@hepengfei5709](https://github.com/hepengfei5709), [@ViGeng](https://github.com/ViGeng), [@QianpengLi577](https://github.com/QianpengLi577).
-
-Inspired by [ai-deadlines](https://aideadlin.es/).
-
-### Best Practice
-
-We recommend branch-based workflow, which is a common practice in open source projects.
-As shown in the figure below, The basic idea is to create a new branch for each feature or bug fix. Then this new branch can be pushed to forked repository.
-All changes will be merged into upstream main branch through pull requests.
-
-<!-- make it smaller -->
-<!-- ![Branch-based Workflow](.readme_assets/branch_based_workflow.png) -->
-<img src=".readme_assets/branch_based_workflow.png" width="500px"/>
-
-## License
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines?ref=badge_large)
