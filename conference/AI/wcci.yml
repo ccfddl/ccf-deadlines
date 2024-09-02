@@ -10,7 +10,7 @@
     dblp: wcci
     confs:
       - year: 2024
-        id: IEEE WCCI 2024
+        id: wcci2024
         link: https://2024.ieeewcci.org/
         timeline:
           - deadline: '2024-01-29 23:59:59'

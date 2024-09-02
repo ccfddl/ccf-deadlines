@@ -10,7 +10,7 @@
     dblp: er
     confs:
       - year: 2024
-        id: ER2024
+        id: er2024
         link: https://resources.sei.cmu.edu/news-events/events/er2024/
         timeline:
           - deadline: '2024-05-26 23:59:59'

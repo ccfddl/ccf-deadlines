@@ -10,7 +10,7 @@
     dblp: cec
     confs:
       - year: 2024
-        id: IEEE WCCI2024
+        id: cec2024
         link: https://2024.ieeewcci.org/
         timeline:
           - deadline: '2024-01-15 23:59:59'

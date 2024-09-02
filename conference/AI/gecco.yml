@@ -5,8 +5,8 @@
     rank:
       caai: C
       ccf: C
-      core: a
-      thcpl: a
+      core: A
+      thcpl: A
     dblp: gecco
     confs:
       - year: 2024

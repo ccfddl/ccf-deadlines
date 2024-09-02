@@ -10,7 +10,7 @@
     dblp: embc
     confs:
       - year: 2024
-        id: IEEE EMBC2024
+        id: embc2024
         link: https://embc.embs.org/2024/
         timeline:
           - deadline: '2024-02-02 23:59:59'

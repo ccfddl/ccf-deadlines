@@ -10,7 +10,7 @@
     dblp: icisci
     confs:
       - year: 2024
-        id: IS'24
+        id: icisci24
         link: https://www.ieee-is.org/
         timeline:
           - deadline: '2024-06-30 23:59:59'

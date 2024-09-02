@@ -10,7 +10,7 @@
     dblp: aied
     confs:
       - year: 2024
-        id: AIED2024
+        id: aied2024
         link: https://aied2024.cesar.school/
         timeline:
           - deadline: '2024-02-05 23:59:59'

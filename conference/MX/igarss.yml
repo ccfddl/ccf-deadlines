@@ -10,7 +10,7 @@
     dblp: igarss
     confs:
       - year: 2024
-        id: IGARSS2024
+        id: igarss2024
         link: https://2024.ieeeigarss.org/
         timeline:
           - deadline: '2024-01-12 23:59:59'

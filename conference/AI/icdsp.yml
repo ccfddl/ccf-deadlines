@@ -10,7 +10,7 @@
     dblp: icdsp
     confs:
       - year: 2025
-        id: ICDSP2025
+        id: icdsp2025
         link: https://www.icdsp.org/
         timeline:
           - deadline: '2024-09-30 23:59:59'
