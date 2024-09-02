@@ -1,7 +1,9 @@
   - title: ECCV
     description: European Conference on Computer Vision
     sub: AI
+    sub_caai: PRCV
     rank:
+      caai: A
       ccf: B
       core: A*
       thcpl: A

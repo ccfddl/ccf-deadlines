@@ -1,7 +1,9 @@
   - title: UAI
     description: Conference on Uncertainty in Artificial Intelligence
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: A
       ccf: B
       core: A
       thcpl: B

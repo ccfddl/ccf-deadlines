@@ -1,0 +1,19 @@
+  - title: AIED
+    description: International Conference on Artificial Intelligence in Education
+    sub: MX
+    sub_caai: AIA
+    rank:
+      caai: B
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: aied
+    confs:
+      - year: 2024
+        id: AIED2024
+        link: https://aied2024.cesar.school/
+        timeline:
+          - deadline: '2024-02-05 23:59:59'
+        timezone: UTC+8
+        date: July 8-12, 2024
+        place: Recife, Brazil

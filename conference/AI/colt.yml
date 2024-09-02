@@ -1,7 +1,9 @@
   - title: COLT
     description: Annual Conference on Learning Theory
     sub: AI
+    sub_caai: ML
     rank:
+      caai: A
       ccf: B
       core: A*
       thcpl: A

@@ -1,7 +1,9 @@
   - title: ICANN
     description: International Conference on Artificial Neural Networks
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: C
       ccf: C
       core: C
       thcpl: N

@@ -1,7 +1,9 @@
   - title: CogSci
     description: Annual Meeting of the Cognitive Science Society
     sub: MX
+    sub_caai: BCI
     rank:
+      caai: B
       ccf: B
       core: B
       thcpl: N

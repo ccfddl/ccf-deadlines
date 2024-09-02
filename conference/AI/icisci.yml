@@ -1,0 +1,19 @@
+  - title: ICISCI
+    description: IEEE International Conference on Intelligent Systems and Computational Intelligence
+    sub: AI
+    sub_caai: AIFC
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: icisci
+    confs:
+      - year: 2024
+        id: IS'24
+        link: https://www.ieee-is.org/
+        timeline:
+          - deadline: '2024-06-30 23:59:59'
+        timezone: UTC+8
+        date: August 29-23, 2024
+        place: Varna, Bulgaria

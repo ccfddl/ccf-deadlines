@@ -1,9 +1,11 @@
   - title: PPSN
-    description: International Conference on Parallel Problem Solving From Nature
+    description: Parallel Problem Solving from Nature
     sub: AI
+    sub_caai: AIA
     rank:
+      caai: B
       ccf: B
-      core: A
+      core: N
       thcpl: N
     dblp: ppsn
     confs:

@@ -1,7 +1,9 @@
   - title: ICLR
     description: International Conference on Learning Representations
     sub: AI
+    sub_caai: ML
     rank:
+      caai: A
       ccf: N
       core: A*
       thcpl: A

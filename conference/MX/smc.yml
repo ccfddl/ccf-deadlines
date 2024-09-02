@@ -1,7 +1,9 @@
   - title: SMC
     description: IEEE International Conference on Systems, Man, and Cybernetics
     sub: MX
+    sub_caai: AIA
     rank:
+      caai: C
       ccf: C
       core: B
       thcpl: N

@@ -1,7 +1,9 @@
   - title: ACML
     description: Asian Conference on Machine Learning
     sub: AI
+    sub_caai: ML
     rank:
+      caai: C
       ccf: C
       core: N
       thcpl: N

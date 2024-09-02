@@ -1,7 +1,9 @@
   - title: ALT
     description: International Conference on Algorithmic Learning Theory
     sub: AI
+    sub_caai: ML
     rank:
+      caai: C
       ccf: C
       core: B
       thcpl: B

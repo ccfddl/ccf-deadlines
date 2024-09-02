@@ -1,0 +1,19 @@
+  - title: ER
+    description: International Conference on Conceptual Modeling
+    sub: MX
+    sub_caai: AIA
+    rank:
+      caai: C
+      ccf: B
+      core: N
+      thcpl: N
+    dblp: er
+    confs:
+      - year: 2024
+        id: ER2024
+        link: https://resources.sei.cmu.edu/news-events/events/er2024/
+        timeline:
+          - deadline: '2024-05-26 23:59:59'
+        timezone: UTC+8
+        date: October 28-31, 2024
+        place: PITTSBURGH, USA
