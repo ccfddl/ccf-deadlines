@@ -25,3 +25,12 @@
         timezone: AoE
         date: April 14-20, 2024
         place: Lisbon, Portugal
+      - year: 2025
+        id: icpc25
+        link: https://conf.researchr.org/home/icpc-2025
+        timeline:
+          - abstract_deadline: '2024-11-06 23:59:59'
+            deadline: '2024-11-09 23:59:59'
+        timezone: AoE
+        date: April 27-28, 2025
+        place: Ottawa, Canada

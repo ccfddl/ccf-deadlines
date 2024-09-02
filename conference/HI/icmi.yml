@@ -1,0 +1,18 @@
+  - title: ICMI
+    description: ACM International Conference on Multimodal Interaction
+    sub: HI
+    rank:
+      ccf: C
+      core: B
+      thcpl: B
+    dblp: icmi
+    confs:
+      - year: 2024
+        id: icmi24
+        link: https://icmi.acm.org/2024/
+        timeline:
+          - abstract_deadline: '2024-04-26 23:59:59'
+            deadline: '2024-05-10 23:59:59'
+        timezone: UTC+7
+        date: Nov 4 - 8, 2024
+        place: San José, Costa Rica

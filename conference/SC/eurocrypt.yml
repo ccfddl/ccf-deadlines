@@ -23,3 +23,12 @@
         timezone: AoE
         date: May 26-30, 2024
         place: Zurich, Switzerland
+      - year: 2025
+        id: eurocrypt25
+        link: https://eurocrypt.iacr.org/2025/
+        timeline:
+          - deadline: '2024-10-02 23:59:59'
+        timezone: AoE
+        date: May 4-8, 2025
+        place: Madrid, Spain
+

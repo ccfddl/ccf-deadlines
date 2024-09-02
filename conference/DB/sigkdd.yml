@@ -43,16 +43,16 @@
         place: Barcelona, Spain
       - year: 2025
         id: sigkdd25
-        link: https://kdd2024.kdd.org/research-track-call-for-papers/
+        link: https://kdd2025.kdd.org/
         timeline:
           - abstract_deadline: '2024-08-01 23:59:59'
             deadline: '2024-08-08 23:59:59'
             comment: 1st round of 2 total rounds
           - abstract_deadline: '2025-02-01 23:59:59'
             deadline: '2025-02-08 23:59:59'
-            comment: 2st round of 2 total rounds
+            comment: 2nd round of 2 total rounds
         timezone: AoE
-        date: TBD, 2025
-        place: TBD
+        date: August 3-7, 2025
+        place: Toronto, ON, Canada
 
 

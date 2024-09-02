@@ -23,3 +23,11 @@
         timezone: UTC+0
         date: October 2-6, 2023
         place: Paris
+      - year: 2025
+        id: iccv25
+        link: http://iccv2025.thecvf.com/home/
+        timeline:
+          - deadline: TBD
+        timezone: AoE
+        date: October 19-25, 2025
+        place: Honolulu, Hawaii

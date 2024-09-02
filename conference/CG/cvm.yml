@@ -1,0 +1,17 @@
+  - title: CVM
+    description: The international conference on Computational Visual Media
+    sub: CG
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: cvm
+    confs:
+      - year: 2025
+        id: cvm25
+        link: http://iccvm.org/2025/
+        timeline:
+          - deadline: '2024-10-09 23:59:59'
+        timezone: UTC+0
+        date: April 19-21, 2025
+        place: Hong Kong, China

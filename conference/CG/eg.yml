@@ -16,3 +16,12 @@
         timezone: UTC
         date: April 22-26, 2024
         place: Limassol, Cyprus
+      - year: 2025
+        id: eg25
+        link: https://eg25.cs.ucl.ac.uk/main/home.html
+        timeline:
+          - abstract_deadline: '2024-10-01 23:59:59'
+            deadline: '2024-10-03 23:59:59'
+        timezone: UTC
+        date: May 12-16, 2025
+        place: London, UK

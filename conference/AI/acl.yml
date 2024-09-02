@@ -35,3 +35,11 @@
         timezone: UTC-12
         date: August 11-16, 2024
         place: Bangkok, Thailand
+      - year: 2025
+        id: acl25
+        link: https://2025.aclweb.org/
+        timeline:
+          - deadline: 'TBD'
+        timezone: UTC-12
+        date: July 27 - August 1, 2025
+        place: Vienna, Austria
