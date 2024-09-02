@@ -1,0 +1,19 @@
+  - title: EMBC
+    description: Annual International Conference of the IEEE Engineering in Medicine and Biology Society
+    sub: MX
+    sub_caai: AIA
+    rank:
+      caai: B
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: embc
+    confs:
+      - year: 2024
+        id: IEEE EMBC2024
+        link: https://embc.embs.org/2024/
+        timeline:
+          - deadline: '2024-02-02 23:59:59'
+        timezone: UTC+8
+        date: July 15-19, 2024
+        place: Orlando, USA

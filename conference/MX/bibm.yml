@@ -1,7 +1,9 @@
   - title: BIBM
     description: IEEE International Conference on Bioinformatics and Biomedicine
     sub: MX
+    sub_caai: AIA
     rank:
+      caai: B
       ccf: B
       core: N
       thcpl: N

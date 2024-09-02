@@ -1,7 +1,9 @@
   - title: AISTATS
     description: International Conference on Artificial Intelligence and Statistics
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: B
       ccf: C
       core: A
       thcpl: B

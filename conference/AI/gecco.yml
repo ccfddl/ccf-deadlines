@@ -1,0 +1,19 @@
+  - title: GECCO
+    description: Genetic and Evolutionary Computation Conference
+    sub: AI
+    sub_caai: AIFC
+    rank:
+      caai: C
+      ccf: C
+      core: a
+      thcpl: a
+    dblp: gecco
+    confs:
+      - year: 2024
+        id: gecco24
+        link: https://gecco-2024.sigevo.org/HomePage
+        timeline:
+          - deadline: '2024-01-25 23:59:59'
+        timezone: UTC+8
+        date: July 14-18, 2024
+        place: Melbourne, Australia

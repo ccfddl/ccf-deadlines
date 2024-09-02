@@ -1,7 +1,9 @@
   - title: PRICAI
     description: Pacific Rim International Conference on Artificial Intelligence
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: C
       ccf: C
       core: B
       thcpl: N

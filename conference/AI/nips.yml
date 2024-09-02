@@ -1,7 +1,9 @@
   - title: NeurIPS
     description: Conference on Neural Information Processing Systems
     sub: AI
+    sub_caai: ML
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A

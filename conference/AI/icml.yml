@@ -1,7 +1,9 @@
   - title: ICML
     description: International Conference on Machine Learning
     sub: AI
+    sub_caai: ML
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A

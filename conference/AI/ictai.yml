@@ -1,7 +1,9 @@
   - title: ICTAI
     description: International Conference on Tools with Artificial Intellignce
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: C
       ccf: C
       core: B
       thcpl: N

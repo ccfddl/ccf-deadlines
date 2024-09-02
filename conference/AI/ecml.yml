@@ -1,0 +1,21 @@
+  - title: ECML
+    description: European Conference on Machine Learning
+    sub: AI
+    sub_caai: ML
+    rank:
+      caai: B
+      ccf: N
+      core: A*
+      thcpl: A
+    dblp: ecml
+    confs:
+      - year: 2024
+        id: ecml pkdd24
+        link: https://ecmlpkdd.org/2024/
+        timeline:
+          - abstract_deadline: '2024-03-15 24:00:00'
+            deadline: '2024-03-22 24:00:00'
+        timezone: UTC-12
+        date: September 9-13, 2024
+        place: VILNIUS, LITHUANIA
+

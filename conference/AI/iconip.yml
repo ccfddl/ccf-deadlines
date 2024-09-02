@@ -1,7 +1,9 @@
   - title: ICONIP
     description: International Conference on Neural Information Processing
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: C
       ccf: C
       core: B
       thcpl: N

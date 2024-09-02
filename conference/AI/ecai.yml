@@ -1,7 +1,9 @@
   - title: ECAI
     description: European Conference on Artificial Intelligence
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: B
       ccf: B
       core: A
       thcpl: N

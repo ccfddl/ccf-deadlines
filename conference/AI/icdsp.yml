@@ -1,0 +1,19 @@
+  - title: ICDSP
+    description: International Conference on Digital Signal Processing
+    sub: AI
+    sub_caai: AIFC
+    rank:
+      caai: C
+      ccf: C
+      core: A
+      thcpl: B
+    dblp: icdsp
+    confs:
+      - year: 2025
+        id: ICDSP2025
+        link: https://www.icdsp.org/
+        timeline:
+          - deadline: '2024-09-30 23:59:59'
+        timezone: UTC+8
+        date: February 21-23, 2025
+        place: Chengdu, China

@@ -1,7 +1,9 @@
   - title: IJCNN
     description: International Joint Conference on Neural Networks
     sub: AI
+    sub_caai: AIFC
     rank:
+      caai: C
       ccf: C
       core: B
       thcpl: B
