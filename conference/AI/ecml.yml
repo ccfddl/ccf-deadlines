@@ -10,7 +10,7 @@
     dblp: ecml
     confs:
       - year: 2024
-        id: ecml pkdd24
+        id: ecml2024
         link: https://ecmlpkdd.org/2024/
         timeline:
           - abstract_deadline: '2024-03-15 24:00:00'
