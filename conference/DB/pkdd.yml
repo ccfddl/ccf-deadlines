@@ -44,3 +44,13 @@
         timezone: AoE
         date: September 9-13, 2024
         place: Vilnius, Lithuania
+      - year: 2025
+        id: ecmlpkdd2025
+        link: https://ecmlpkdd.org/2025/
+        timeline:
+          - deadline: '2024-10-11 23:59:59'
+          - deadline: '2024-12-13 23:59:59'
+          - deadline: '2025-02-14 23:59:59'
+        timezone: AoE
+        date: September 15-19, 2024
+        place: Porto, Portugal
