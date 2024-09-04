@@ -35,3 +35,12 @@
         timezone: UTC
         date: July 10-12, 2024
         place: Santa Clara, CA, USA
+      - year: 2025
+        id: osdi2025
+        link: https://www.usenix.org/conference/osdi25
+        timeline:
+          - abstract_deadline: '2024-12-3 22:59:59'
+            deadline: '2024-12-10 22:59:59'
+        timezone: UTC
+        date: July 7-9, 2025
+        place: Boston, MA, USA
