@@ -35,3 +35,13 @@
         timezone: AoE
         date: March 25-28, 2024
         place: Paestum, Italy
+      - year: 2025 
+        id: edbt25 
+        link: https://edbticdt2025.upc.edu/ 
+        timeline: 
+          - deadline: '2024-02-07 23:59:59' 
+          - deadline: '2024-06-05 23:59:59' 
+          - deadline: '2024-10-09 23:59:59' 
+        timezone: AoE 
+        date: March 25-28, 2025 
+        place: Barcelona, Spain 
