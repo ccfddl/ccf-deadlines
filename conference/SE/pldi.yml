@@ -39,3 +39,11 @@
         timezone: AoE
         date: June 24-28, 2024
         place: Copenhagen, Denmark
+      - year: 2025
+        id: pldi25
+        link: https://pldi25.sigplan.org/
+        timeline:
+          - deadline: '2024-11-14 23:59:59'
+        timezone: AoE
+        date: June 16-20, 2025
+        place: Seoul, South Korea
