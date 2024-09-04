@@ -36,3 +36,12 @@
         timezone: UTC-12
         date: October, 2024
         place: Washington, D.C., USA
+      - year: 2025
+        id: mobicom25
+        link: https://sigmobile.org/mobicom/2025/
+        timeline:
+          - abstract_deadline: '2024-08-29 23:59:59'
+            deadline: '2024-09-05 23:59:59'
+        timezone: UTC-12
+        date: November, 2025
+        place: Hong Kong, China
