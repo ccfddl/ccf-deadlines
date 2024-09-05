@@ -49,3 +49,16 @@
         timezone: UTC-4
         date: October 20-25, 2024
         place: Pasadena, United States
+      - year: 2025
+        id: oopsla25
+        link: https://2025.splashcon.org/track/OOPSLA
+        timeline:
+          - deadline: '2024-10-15 07:59:59'
+            comment: Submission Deadline Round 1
+          - deadline: '2025-02-04 07:59:59'
+            comment: Submission Deadline Revision R1
+          - deadline: '2025-03-25 07:59:59'
+            comment: Submission Deadline Round 2
+        timezone: UTC-4
+        date: to be announced
+        place: to be announced
