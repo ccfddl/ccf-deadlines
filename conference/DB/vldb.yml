@@ -1,7 +1,9 @@
   - title: VLDB
     description: International Conference on Very Large Data Bases
     sub: DB
+    sub_caai: KEDM
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A

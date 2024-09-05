@@ -1,7 +1,9 @@
   - title: WWW
     description: International World Wide Web Conferences
     sub: MX
+    sub_caai: KEDM
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A

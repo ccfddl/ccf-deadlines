@@ -2,7 +2,9 @@
     description: International Conference on Research on Development in Information
       Retrieval
     sub: DB
+    sub_caai: KEDM
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A

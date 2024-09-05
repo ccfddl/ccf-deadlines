@@ -1,7 +1,9 @@
   - title: RecSys
     description: ACM Conference on Recommender Systems
     sub: DB
+    sub_caai: KEDM
     rank:
+      caai: B
       ccf: B
       core: A
       thcpl: B

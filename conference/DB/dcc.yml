@@ -1,0 +1,21 @@
+  - title: DCC
+    description: Data Compression Conference
+    sub: DB
+    sub_caai: KEDM
+    rank:
+      caai: B
+      ccf: B
+      core: B
+      thcpl: A
+    dblp: dcc
+    confs:
+      - year: 2025
+        id: dcc25
+        link: https://datacompressionconference.org/
+        place: The Cliff Lodge convention center, Snowbird & Alta Ski areas, Utah, U.S.
+        date: March 18-21, 2025
+        - timeline:
+          paper_submission_deadline: '2024-10-04 23:59:59'
+          paper_acceptance_notification: '2024-11-24 23:59:59'
+          author_registration_deadline: '2024-12-11 23:59:59'
+          final_paper_submission_deadline: '2024-12-11 23:59:59'

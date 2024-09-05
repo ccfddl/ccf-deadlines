@@ -1,7 +1,9 @@
   - title: ICDE
     description: IEEE International Conference on Data Engineering
     sub: DB
+    sub_caai: KEDM
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A
