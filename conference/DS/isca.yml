@@ -1,7 +1,9 @@
   - title: ISCA
     description: International Symposium on Computer Architecture
     sub: DS
+    sub_caai: ICCS
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A

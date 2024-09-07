@@ -1,0 +1,19 @@
+  - title: CYBER
+    description: IEEE International Conference on CYBER Technology in Automation, Control and Intelligent Systems
+    sub: 
+    sub_caai: IRS
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: cyber
+    confs:
+      - year: 2025
+        # id: rss23
+        # link: https://ieee-cyber.org/2024/
+        # timeline:
+        #   - deadline: '2023-02-03 23:59:59'
+        # timezone: AoE
+        # date: July 10-14, 2023
+        # place: Daegu, Republic of Korea

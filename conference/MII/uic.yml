@@ -1,0 +1,21 @@
+  - title: UIC
+    description: IEEE International Conference on Ubiquitous Intelligence and Computing
+    sub: 
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: uic
+    confs:
+      - year: 2025
+        # id: 
+        # link: https://www.ieee-smart-world.org/2024/uic/
+        # timeline:
+        #   - deadline: '2024-02-05 23:59:59'
+        # timezone: UTC+8
+        # date: July 8-12, 2024
+        # place: Recife, Brazil
+
+        # 2025还没更新

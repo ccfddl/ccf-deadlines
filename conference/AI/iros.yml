@@ -1,7 +1,9 @@
   - title: IROS
     description: IEEE\RSJ International Conference on Intelligent Robots and Systems
     sub: AI
+    sub_caai: IRS
     rank:
+      caai: B
       ccf: C
       core: A
       thcpl: B

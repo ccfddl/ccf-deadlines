@@ -1,7 +1,9 @@
   - title: RSS
     description: Robotics Science and Systems
     sub: AI
+    sub_caai: IRS
     rank:
+      caai: A
       ccf: N
       core: A*
       thcpl: N
