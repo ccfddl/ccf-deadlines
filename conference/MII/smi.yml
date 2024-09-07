@@ -1,10 +1,10 @@
   - title: SMI
     description: Shape Modeling International Conference
-    sub: 
+    sub: N
     sub_caai: MII
     rank:
       caai: C
-      ccf: 
+      ccf: N
       core: N
       thcpl: N
     dblp: smi
