@@ -46,7 +46,7 @@ jobs:
     - name: Install dependency and build
       run: |
         yarn config set strict-ssl false 
-        yarn install --no-lockfile
+        yarn install
         yarn build
     - name: Config Git
       run: |
