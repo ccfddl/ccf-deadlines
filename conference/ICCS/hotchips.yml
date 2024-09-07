@@ -8,15 +8,15 @@
       core: N
       thcpl: N
     dblp: hotchips
-    confs:
-      # - year: 2021
-      #   id: micro21
-      #   link: https://hotchips.org/
-      #   timeline:
-      #     - deadline: '2021-04-09 23:59:59'
-      #       comment: abstract deadline
-      #     - deadline: '2021-04-16 23:59:59'
-      #       comment: full paper deadline
-      #   timezone: UTC-7
-      #   date: Oct 18-22, 2021
-      #   place: Athens, Greece
+    # confs:
+    #   # - year: 2021
+    #   #   id: micro21
+    #   #   link: https://hotchips.org/
+    #   #   timeline:
+    #   #     - deadline: '2021-04-09 23:59:59'
+    #   #       comment: abstract deadline
+    #   #     - deadline: '2021-04-16 23:59:59'
+    #   #       comment: full paper deadline
+    #   #   timezone: UTC-7
+    #   #   date: Oct 18-22, 2021
+    #   #   place: Athens, Greece
