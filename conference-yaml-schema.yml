@@ -21,6 +21,7 @@ items:
       description: The category that the conference is labeled by CCF.
       type: string
       enum:
+        - N
         - DS
         - NW
         - SC
