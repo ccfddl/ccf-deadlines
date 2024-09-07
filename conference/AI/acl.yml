@@ -1,7 +1,9 @@
   - title: ACL
     description: Annual Meeting of the Association for Computational Linguistics
     sub: AI
+    sub_caai: LSP
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A

@@ -1,7 +1,9 @@
   - title: ICASSP
     description: IEEE International Conference on Acoustics, Speech, and Signal Processing
     sub: CG
+    sub_caai: LSP
     rank:
+      caai: B
       ccf: B
       core: N
       thcpl: B

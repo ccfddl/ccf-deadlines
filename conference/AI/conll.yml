@@ -1,0 +1,27 @@
+  - title: CoNLL
+    description: Conference on Computational Natural Language Learning
+    sub: AI
+    sub_caai: LSP
+    rank:
+      caai: C
+      ccf: C
+      core: B
+      thcpl: N
+    dblp: conll
+    confs:
+      - year: 2023
+        id: conll2022
+        link: https://conll.org/2023
+        timeline:
+            deadline: Friday June 30, 2023
+        timezone: UTC-12
+        date: December 6–7, 2023
+        place: Singapore, Singapore
+      - year: 2024
+        id: conll2024
+        link: https://conll.org/2024
+        timeline:
+          - deadline: Sunday, July 7, 2024
+        timezone: UTC-12
+        date: August 11-16, 2024
+        place: Miami, United States
