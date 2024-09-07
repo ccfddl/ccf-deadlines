@@ -1,0 +1,21 @@
+  - title: SMI
+    description: Shape Modeling International Conference
+    sub: 
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: 
+      core: N
+      thcpl: N
+    dblp: smi
+    confs:
+      - year: 2025
+        # id: 
+        # link: https://smiconf.github.io/2024/
+        # timeline:
+        #   - deadline: '2024-02-05 23:59:59'
+        # timezone: UTC+8
+        # date: July 8-12, 2024
+        # place: Recife, Brazil
+
+        # 2025还没更新

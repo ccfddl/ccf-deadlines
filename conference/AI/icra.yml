@@ -1,7 +1,9 @@
   - title: ICRA
     description: IEEE International Conference on Robotics and Automation
     sub: AI
+    sub_caai: IRS
     rank:
+      caai: A
       ccf: B
       core: A*
       thcpl: A

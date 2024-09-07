@@ -1,7 +1,9 @@
   - title: AAMAS
     description: International Conference on Autonomous Agents and Multiagent Systems
     sub: AI
+    sub_caai: IRS
     rank:
+      caai: B
       ccf: B
       core: A*
       thcpl: B

@@ -1,0 +1,19 @@
+  - title: CoRL
+    description: Conference on Robot Learning
+    sub: 
+    sub_caai: IRS
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: corl
+    confs:
+      - year: 2025
+        # id: rss23
+        # link: https://www.corl.org/
+        # timeline:
+        #   - deadline: '2023-02-03 23:59:59'
+        # timezone: AoE
+        # date: July 10-14, 2023
+        # place: Daegu, Republic of Korea
