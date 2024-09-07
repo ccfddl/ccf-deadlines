@@ -1,7 +1,9 @@
   - title: GMP
     description: International Conference on Geometric Modeling and Processing
     sub: CG
+    sub_caai: MII
     rank:
+      caai: C
       ccf: C
       core: C
       thcpl: N

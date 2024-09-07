@@ -1,0 +1,19 @@
+  - title:  CAD/Graphics
+    description: International Conference on Computer-Aided Design and Computer Graphics
+    sub: N
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: cadgraphics
+    confs:
+      - year: 2023
+        id: cadgraphics2023
+        link: https://dmcv.sjtu.edu.cn/cadgraphics2023/
+        timeline:
+          - deadline: '2023-05-12 23:59:59'
+        timezone: UTC
+        date: August 19-21, 2023
+        place: Shanghai, China

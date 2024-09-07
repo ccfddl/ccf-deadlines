@@ -1,0 +1,19 @@
+  - title: ASSETS
+    description: International ACM SIGACCESS Conference on Computers and Accessibility
+    sub: N
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: assets
+    confs:
+      - year: 2024
+        id: assets24
+        link: https://assets24.sigaccess.org/
+        timeline:
+          - deadline: '2024-04-24 23:59:59'
+        timezone: AoE
+        date: October 28-30, 2024
+        place: Newfoundland and Labrador, Canada

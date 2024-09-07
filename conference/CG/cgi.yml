@@ -1,7 +1,9 @@
   - title: CGI
     description: Computer Graphics International
     sub: CG
+    sub_caai: MII
     rank:
+      caai: C
       ccf: C
       core: C
       thcpl: N
