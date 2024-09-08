@@ -1,0 +1,27 @@
+  - title:  PacificVis
+    description:  IEEE Pacific Visualization Symposium
+    sub: N
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: pacificvis
+    confs:
+      - year: 2025
+        id: pacificvis25
+        link: https://pacificvis2025.github.io/
+        timeline:
+          - deadline: '2024-11-20 23:59:59'
+        timezone: AoE
+        date: April 22-25, 2025
+        place: Taipei, Taiwan
+      - year: 2024
+        id: pacificvis24
+        link: https://pacificvis.github.io/pvis2024/
+        timeline:
+          - deadline: '2023-11-22 23:59:59'
+        timezone: AoE
+        date: April 23-26, 2024
+        place: Tokyo, Japan

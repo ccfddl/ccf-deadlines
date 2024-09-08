@@ -1,7 +1,9 @@
   - title: CVM
     description: The international conference on Computational Visual Media
     sub: CG
+    sub_caai: MII
     rank:
+      caai: C
       ccf: C
       core: N
       thcpl: N

@@ -1,0 +1,19 @@
+  - title: ICVRV
+    description: International Conference on Virtual Reality and Visualization
+    sub: N
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: N
+    confs:
+      - year: 2024
+        id: icvrv24
+        link: https://icvrv2024.aconf.org/
+        timeline:
+          - deadline: '2024-09-08 23:59:59'
+        timezone: UTC+8
+        date: December 27-29, 2024
+        place: Macau SAR, China

@@ -1,0 +1,19 @@
+  - title: VRST
+    description: ACM Symposium on Virtual Reality Software and Technology
+    sub: N
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: vrst
+    confs:
+      - year: 2024
+        id: vrst24
+        link: https://vrst.acm.org/vrst2024/
+        timeline:
+          - deadline: '2024-06-10 23:59:59'
+        timezone: AoE
+        date: October 9-11, 2024
+        place: Trier, Germany

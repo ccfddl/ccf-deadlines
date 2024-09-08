@@ -1,0 +1,19 @@
+  - title: AVI
+    description: International Working Conference on Advanced Visual Interfaces
+    sub: N
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: avi
+    confs:
+      - year: 2024
+        id: avi24
+        link: https://avi2024.dibris.unige.it/
+        timeline:
+          - deadline: '2024-01-24 23:59:59'
+        timezone: AoE
+        date: June 3-7, 2024
+        place: Genoa, Italy

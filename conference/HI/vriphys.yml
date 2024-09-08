@@ -1,0 +1,10 @@
+  - title: VRIPHYS
+    description: Virtual Reality Interactions and Physical Simulations
+    sub: N
+    sub_caai: MII
+    rank:
+      caai: C
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: vriphys

@@ -1,7 +1,9 @@
   - title: CASA
     description: International Conference on Computer Animation and Social Agents
     sub: CG
+    sub_caai: MII
     rank:
+      caai: C
       ccf: C
       core: N
       thcpl: N
