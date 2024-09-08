@@ -1,7 +1,9 @@
   - title: EMNLP
     description: The annual Conference on Empirical Methods in Natural Language Processing
     sub: AI
+    sub_caai: LSP
     rank:
+      caai: A
       ccf: B
       core: A*
       thcpl: A

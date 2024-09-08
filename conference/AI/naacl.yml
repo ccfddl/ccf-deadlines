@@ -2,7 +2,9 @@
     description: The Annual Conference of the North American Chapter of the Association
       for Computational Linguistics
     sub: AI
+    sub_caai: LSP
     rank:
+      caai: B
       ccf: B
       core: A
       thcpl: B

@@ -1,0 +1,35 @@
+  - title: NLPCC
+    description: CCF International Conference on Natural Language Processing and Chinese Computing
+    sub: AI
+    sub_caai: LSP
+    rank:
+      caai: C
+      ccf: C
+      core: C
+      thcpl: N
+    dblp: nlpcc
+    confs:
+      - year: 2022
+        id: nlpcc2022
+        link: http://tcci.ccf.org.cn/conference/2022/
+        timeline:
+          - deadline: May 13, 2022
+        timezone: UTC+8
+        date: September 24-25, 2022
+        place: Guilin, China
+      - year: 2023
+        id: nlpcc2023
+        link: http://tcci.ccf.org.cn/conference/2023/
+        timeline:
+          - deadline: May 18, 2023
+        timezone: UTC+8
+        date: October 14-15, 2023
+        place: Foshan, China
+      - year: 2024
+        id: nlpcc2024
+        link: http://tcci.ccf.org.cn/conference/2024/
+        timeline:
+          - deadline: June 11, 2024
+        timezone: UTC+8
+        date: November 2-3, 2024
+        place: Zhejiang, China

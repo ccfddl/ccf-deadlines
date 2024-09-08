@@ -1,7 +1,9 @@
   - title: COLING
     description: INTERNATIONNAL CONFERENCE ON COMPUTATIONAL LINGUISTICS
     sub: AI
+    sub_caai: LSP
     rank:
+      caai: B
       ccf: B
       core: B
       thcpl: B

@@ -1,7 +1,9 @@
   - title: InterSpeech
     description: Conference of the International Speech Communication Association
     sub: CG
+    sub_caai: LSP
     rank:
+      caai: B
       ccf: C
       core: A
       thcpl: N

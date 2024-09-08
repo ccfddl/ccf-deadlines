@@ -1,7 +1,9 @@
   - title: SIGKDD
     description: ACM Knowledge Discovery and Data Mining
     sub: DB
+    sub_caai: KEDM
     rank:
+      caai: A
       ccf: A
       core: A*
       thcpl: A
