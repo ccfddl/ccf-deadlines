@@ -1,7 +1,9 @@
   - title: CIDR
     description: International Conference on Innovative Data Systems Research
     sub: DB
+    sub_caai: KEDM
     rank:
+      caai: B
       ccf: B
       core: A
       thcpl: N

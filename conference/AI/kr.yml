@@ -2,7 +2,9 @@
     description: International Conference on Principles of Knowledge Representation
       and Reasoning
     sub: AI
+    sub_caai: KEDM
     rank:
+      ccai: B
       ccf: B
       core: A*
       thcpl: N

@@ -1,7 +1,9 @@
   - title: ISWC
     description: International Semantic Web Conference
     sub: DB
+    sub_caai: KEDM
     rank:
+      caai: B
       ccf: B
       core: A
       thcpl: B

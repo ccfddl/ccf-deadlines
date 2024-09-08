@@ -1,7 +1,9 @@
   - title: CIKM
     description: ACM International Conference on Information and Knowledge Management
     sub: DB
+    sub_caai: KEDM
     rank:
+      caai: KEDM
       ccf: B
       core: A
       thcpl: B
