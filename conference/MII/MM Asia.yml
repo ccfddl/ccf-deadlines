@@ -1,0 +1,21 @@
+  - title: MM Asia
+    description: Eurographics Symposium on Geometry Processing
+    sub: CG
+    sub_caai: MII
+    rank:
+      caai: c
+      ccf: c
+      core: N
+      thcpl: N
+    dblp: mm asia
+    confs:
+     - year: 2024
+       id: mmasia2024
+       link: https://mmasia2024.org/
+       timeline:
+          deadline: '2024-8-9 23:59:59'
+       timezone: UTC+8
+       date: December 3 - 6, 2024.
+       place: Auckland, New Zealand
+
+        # 2025还没更新

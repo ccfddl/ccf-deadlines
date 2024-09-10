@@ -1,0 +1,21 @@
+  - title: ICMI
+    description: ACM International Conference on Multimodal Interaction
+    sub: CG
+    sub_caai: HI
+    rank:
+      caai: c
+      ccf: c
+      core: N
+      thcpl: N
+    dblp: sgp
+    confs:
+     - year: 2024
+       id: sgp2024
+       link: https://icmi.acm.org/2024/
+       timeline:
+          deadline: '2024-5-27 23:59:59'
+       timezone: UTC+8
+       date: 4-8 Nov 2024.
+       place: San José, Costa Rica
+
+        # 2025还没更新

@@ -1,0 +1,21 @@
+  - title: SGP
+    description: Eurographics Symposium on Geometry Processing
+    sub: CG
+    sub_caai: MII
+    rank:
+      caai: b
+      ccf: b
+      core: N
+      thcpl: N
+    dblp: sgp
+    confs:
+     - year: 2024
+       id: sgp2024
+       link: https://eg2024.cyens.org.cy/
+       timeline:
+          deadline: '2023-10-6 23:59:59'
+       timezone: UTC+8
+       date: April 22nd-26th, 2024.
+       place: Limassol, Cyprus
+
+        # 2025还没更新

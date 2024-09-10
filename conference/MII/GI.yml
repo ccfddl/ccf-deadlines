@@ -1,0 +1,21 @@
+  - title: GI
+    description: Graphics Interface
+    sub: CG
+    sub_caai: MII
+    rank:
+      caai: c
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: gi
+    confs:
+     - year: 2024
+       id: gi2024
+       link: https://graphicsinterface.org/conference/2024/
+       timeline:
+          deadline: '2023-12-15 23:59:59'
+       timezone: UTC+8
+       date: June 3rd , 2024.
+       place: Halifax, Nova Scotia
+
+        # 2025还没更新

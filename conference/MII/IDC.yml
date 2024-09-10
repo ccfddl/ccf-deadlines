@@ -1,0 +1,21 @@
+  - title: IDC
+    description: ACM Interaction Design and Children
+    sub: CG
+    sub_caai: HI
+    rank:
+      caai: c
+      ccf: c
+      core: N
+      thcpl: N
+    dblp: idc
+    confs:
+     - year: 2024
+       id: idc2024
+       link: https://idc.acm.org/2024/
+       timeline:
+          deadline: '2024-1-24 23:59:59'
+       timezone: UTC+8
+       date: June 17-20, 2024
+       place: Delft University of Technology,Netherlands
+
+        # 2025还没更新

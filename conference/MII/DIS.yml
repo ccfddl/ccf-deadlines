@@ -1,0 +1,21 @@
+  - title: DIS
+    description: ACM Designing Interactive Systems
+    sub:
+    sub_caai: MII
+    rank:
+      caai: c
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: dis
+    confs:
+     - year: 2024
+       id: sgp2024
+       link: https://dis.acm.org/2024/
+       timeline:
+          deadline: '2024-2-8 23:59:59'
+       timezone: UTC+8
+       date: 1st-5th July 2024
+       place: IT University, Copenhagen-DK
+
+        # 2025还没更新

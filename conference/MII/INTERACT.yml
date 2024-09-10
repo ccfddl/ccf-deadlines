@@ -1,0 +1,21 @@
+  - title: interact
+    description: IFIP TC13 Conference on Human-Computer Interaction
+    sub: CG
+    sub_caai: MII
+    rank:
+      caai: c
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: interact
+    confs:
+     - year: 2025
+       id: interact2025
+       link: https://ifip-tc13.org/interact2025/
+       timeline:
+          deadline: '2024-10-6 23:59:59'
+       timezone: UTC+8
+       date: 8 to 12 September 2025
+       place: Belo Horizonte, Minas Gerais, Brazil
+
+        # 2025还没更新

@@ -1,0 +1,21 @@
+  - title: SPM
+    description: Eurographics Symposium on Geometry Processing
+    sub: CG
+    sub_caai: MII
+    rank:
+      caai: b
+      ccf: b
+      core: N
+      thcpl: N
+    dblp: spm
+    confs:
+     - year: 2024
+       id: spm2024
+       link: https://spmconf.github.io/SPM2024/CfP.html
+       timeline:
+          deadline: '2024-2-17 23:59:59'
+       timezone: UTC+8
+       date: July 8 - 10, 2024
+       place: Montreal, QC, Canada
+
+        # 2025还没更新

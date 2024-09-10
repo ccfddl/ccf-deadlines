@@ -1,0 +1,21 @@
+  - title: EuroVis
+    description: Eurographics Conference on Visualization
+    sub: CG
+    sub_caai: MII
+    rank:
+      caai: b
+      ccf: b
+      core: N
+      thcpl: N
+    dblp: eurovis
+    confs:
+     - year: 2024
+       id: eurovis2024
+       link: https://www.eg.org/wp/event/eurovis-2024/
+       timeline:
+          deadline: '2024-03-15 23:59:59'
+       timezone: UTC+8
+       date: May 27 - May 31, 2024
+       place: Odense, Denmark
+
+        # 2025还没更新

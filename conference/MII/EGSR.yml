@@ -1,0 +1,21 @@
+  - title: EGSR
+    description: Eurographics Symposium on Rendering
+    sub: CG
+    sub_caai: MII
+    rank:
+      caai: b
+      ccf: b
+      core: N
+      thcpl: N
+    dblp: egsr
+    confs:
+     - year: 2024
+       id: egsr2024
+       link: https://www.egsr2024.uk/
+       timeline:
+          deadline: '2024-4-15 23:59:59'
+       timezone: UTC+8
+       date: 3rd July - 5th July 2024
+       place: London, UK
+
+        # 2025还没更新

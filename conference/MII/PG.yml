@@ -1,0 +1,21 @@
+  - title: PG
+    description: Pacific Conference onComputer Graphics and Applications
+    sub: CG
+    sub_caai: MII
+    rank:
+      caai: b
+      ccf: b
+      core: N
+      thcpl: N
+    dblp: pg
+    confs:
+     - year: 2024
+       id: pg2024
+       link: https://pg2024.hsu.edu.cn/index.html#/
+       timeline:
+          deadline: '2024-6-7 23:59:59'
+       timezone: UTC+8
+       date: October 13, 2024.
+       place: Huangshan (Yellow Mountain), China.
+
+        # 2025还没更新
