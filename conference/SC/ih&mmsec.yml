@@ -16,3 +16,12 @@
         timezone: AoE
         date: June 22-25, 2021
         place: Virtual
+      - year: 2024
+        id: ih&mmsec24
+        link: https://www.ihmmsec.org/
+        timeline:
+          - deadline: '2024-02-29 23:59:59'
+            comment: Paper Submission Deadline
+        timezone: AoE
+        date: June 24-26, 2024
+        place: Baiona, Spain
