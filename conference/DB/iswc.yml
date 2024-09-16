@@ -18,3 +18,12 @@
         timezone: AoE
         date: October 23-27, 2022
         place: Hangzhou, China
+      - year: 2024
+        id: iswc24
+        link: https://iswc2024.semanticweb.org/
+        timeline:
+          - abstract_deadline: '2024-04-10 23:59:59'
+            deadline: '2024-04-17 23:59:59'
+        timezone: AoE
+        date: November 11-15, 2024
+        place: Baltimore, USA

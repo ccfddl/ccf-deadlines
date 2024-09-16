@@ -13,5 +13,13 @@
         timeline:
           - deadline: '2023-07-27 23:59:59'
         timezone: UTC-8
-        date: Jan 14 - Jan 17, 2024
+        date: Jan 14-17, 2024
         place: Chaminade, USA
+      - year: 2025
+        id: cidr25
+        link: https://www.cidrdb.org/cidr2025/
+        timeline:
+          - deadline: '2024-08-02 23:59:59'
+        timezone: UTC-7
+        date: Jan 19-22, 2025
+        place: Amsterdam, The Netherlands

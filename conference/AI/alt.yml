@@ -16,3 +16,11 @@
         timezone: UTC+8
         date: February 25-28, 2024
         place: San Diego, California
+      - year: 2025
+        id: alt2025
+        link: https://algorithmiclearningtheory.org/alt2025/
+        timeline:
+          - deadline: '2024-10-01 09:59:59'
+        timezone: UTC+0
+        date: February 24-27, 2025
+        place: Milan, Italy

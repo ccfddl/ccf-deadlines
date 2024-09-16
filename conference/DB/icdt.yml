@@ -16,3 +16,14 @@
         timezone: AoE
         date: Mar 29-April 01, 2022
         place: Edinburgh, UK
+      - year: 2025
+        id: icdt25
+        link: https://edbticdt2025.upc.edu/
+        timeline:
+          - abstract_deadline: '2024-03-11 23:59:59'
+            deadline: '2024-03-18 23:59:59'
+          - abstract_deadline: '2024-09-12 23:59:59'
+            deadline: '2024-09-19 23:59:59'
+        timezone: AoE
+        date: March 25-28, 2025
+        place: Barcelona, Spain
