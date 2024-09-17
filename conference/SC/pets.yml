@@ -37,3 +37,18 @@
         timezone: AoE
         date: July 15-20, 2024
         place: Bristol, UK and Online
+      - year: 2025
+        id: pets25
+        link: https://petsymposium.org/cfp25.php
+        timeline:
+          - deadline: '2024-05-31 23:59:59'
+            comment: Issue 1 Paper Submission Deadline
+          - deadline: '2024-08-31 23:59:59'
+            comment: Issue 2 Paper Submission Deadline
+          - deadline: '2024-11-30 23:59:59'
+            comment: Issue 3 Paper Submission Deadline
+          - deadline: '2025-02-28 23:59:59'
+            comment: Issue 4 Paper Submission Deadline
+        timezone: AoE
+        date: July 14-19, 2025
+        place: Washington, DC and Online
