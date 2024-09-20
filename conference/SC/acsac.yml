@@ -23,3 +23,11 @@
         timezone: UTC-12
         date: December 4-8, 2023
         place: Austin, Texas, USA
+      - year: 2024
+        id: acsac24
+        link: https://www.acsac.org/
+        timeline:
+          - deadline: '2024-05-28 23:59:59'
+        timezone: UTC-12
+        date: December 9-13, 2024
+        place: Waikiki, Hawaii, USA
