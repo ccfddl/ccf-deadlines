@@ -29,3 +29,14 @@
         timezone: UTC-7
         date: March 3 - March 5, 2024
         place: Monterey, California, USA
+      - year: 2025
+        id: fpga2025
+        link: https://www.isfpga.org/
+        timeline:
+          - deadline: '2024-10-01 23:59:59'
+            comment: Abstracts Due
+          - deadline: '2024-10-08 23:59:59'
+            comment: Submissions Due
+        timezone: UTC-12
+        date: February 27 - March 01, 2025
+        place: Monterey, California, USA
