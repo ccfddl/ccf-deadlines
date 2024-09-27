@@ -6,3 +6,9 @@
     str: 24.8%(266/1074 23')
     rate: 0.247672253258845
     source: https://github.com/emeryberger/csconferences
+  - year: 2024
+    submitted: 1437
+    accepted: 280
+    str: 19.4%(280/1437 24')
+    rate: 0.1949
+    source: https://vldb.org/pvldb/volumes/17/
