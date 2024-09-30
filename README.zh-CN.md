@@ -20,7 +20,7 @@
 
 ## 增加/更新 会议
 
-欢迎一起帮忙维护会议的相关信息! 如想要进一步做贡献或吹水，可通过发送邮件给[chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn)，请使用edu邮箱并附上wechatid，加入 [CCFDDL](https://github.com/ccfddl) 组织。
+欢迎一起帮忙维护会议的相关信息!
 
 增加或删除会议信息:
 - Fork 这个仓库
