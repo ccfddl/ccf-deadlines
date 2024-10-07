@@ -5,7 +5,7 @@
       ccf: A
       core: A
       thcpl: A
-    dblp: sigsoft
+    dblp: issta
     confs:
       - year: 2022
         id: issta22
