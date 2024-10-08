@@ -34,10 +34,9 @@
         place: Greece
       - year: 2025
         id: interspeech25
-        link: https://www.interspeech2025.org/133382
+        link: https://www.interspeech2025.org/home
         timeline:
-          - abstract_deadline: 'TBD'
-            deadline: 'TBD'
+          - deadline: '2025-02-12 23:59:59'
         timezone: UTC+0
         date: August 17-22, 2025
         place: Rotterdam, Netherlands
