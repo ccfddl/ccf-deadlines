@@ -39,7 +39,7 @@
         id: acl25
         link: https://2025.aclweb.org/
         timeline:
-          - deadline: 'TBD'
+          - deadline: '2025-02-15 23:59:59'
         timezone: UTC-12
         date: July 27 - August 1, 2025
         place: Vienna, Austria
