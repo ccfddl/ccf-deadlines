@@ -1,0 +1,17 @@
+  - title: DCC
+    description: Data Compression Conference
+    sub: DS
+    rank:
+      ccf: B
+      core: a*
+      thcpl: B
+    dblp: dcc
+    confs:
+      - year: 2025
+        id: dcc2025
+        link: https://datacompressionconference.org/
+        timeline:
+          - deadline: '2024-10-11 23:59:59'
+        timezone: PST
+        date: March 18-21, 2025
+        place: Snowbird, Utah, U.S.
