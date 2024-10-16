@@ -1,0 +1,19 @@
+- title: SOCG
+  description: International Symposium on Computational Geometry
+  sub: CT
+  rank:
+    ccf: B
+    core: A
+  dblp: compgeom
+  confs:
+    - year: 2025
+      id: socg25
+      link: https://socg25.github.io/
+      timeline:
+        - abstract_deadline: '2024-11-06 23:59:00'
+          comment: 'Abstracts and paper registration due'
+        - deadline: '2024-12-03 23:59:00'
+          comment: 'Papers due'
+      timezone: AoE 
+      date: June 23–27, 2025
+      place: Kanazawa, Japan
