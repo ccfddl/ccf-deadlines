@@ -28,7 +28,7 @@
         link: https://roboticsconference.org
         timeline:
           - abstract_deadline: '2025-01-17 23:59:00'
-          - deadline: '2025-01-24 23:59:00'
+            deadline: '2025-01-24 23:59:00'
         timezone: AoE
         date: June 21-25, 2025
         place: Los Angeles, California, USA
