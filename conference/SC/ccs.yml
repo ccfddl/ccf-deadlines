@@ -60,3 +60,14 @@
         timezone: UTC-12
         date: October 14-18, 2024
         place: Salt Lake City, U.S.A
+      - year: 2025
+        id: ccs25
+        link: https://www.sigsac.org/ccs/CCS2025/
+        timeline:
+          - deadline: '2025-01-09 23:59:59'
+            comment: First Review Cycle
+          - deadline: '2025-04-14 23:59:59'
+            comment: Second Review Cycle
+        timezone: UTC-12
+        date: October 13-17, 2025
+        place: TICC, Taipei, Taiwan
