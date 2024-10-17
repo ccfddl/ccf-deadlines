@@ -7,6 +7,15 @@
       thcpl: A
     dblp: siggraph
     confs:
+      - year: 2025
+        id: siggraph25
+        link: https://s2025.siggraph.org/
+        timeline:
+          - abstract_deadline: '2025-01-16 22:00:00'
+            deadline: '2025-01-23 22:00:00'
+        timezone: UTC+0
+        date: August 10 - 14, 2025
+        place: Vancouver, BC, Canada
       - year: 2024
         id: siggraph24
         link: https://s2024.siggraph.org/
