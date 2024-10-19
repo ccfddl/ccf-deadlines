@@ -37,7 +37,7 @@
         link: https://cvpr.thecvf.com/Conferences/2025/CallForPapers
         timeline:
           - abstract_deadline: '2024-11-07 23:59:00'
-          - deadline: '2024-11-14 23:59:00'
+            deadline: '2024-11-14 23:59:00'
         timezone: UTC-8
         date: June 10-17, 2025
         place: Nashville, Tennessee, USA
