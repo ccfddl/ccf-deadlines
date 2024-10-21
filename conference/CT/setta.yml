@@ -1,0 +1,19 @@
+  - title: SETTA
+    description: 'Symposium on Dependable Software Engineering: Theories, Tools and Applications'
+    sub: CT
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: setta
+    confs:
+      - year: 2024
+        id: setta24
+        link: https://setta2024.cs.cityu.edu.hk
+        timeline:
+          - abstract_deadline: '2024-08-16 23:59:59'
+            deadline: '2024-08-28 23:59:59'
+            comment: 'deadline is extended from Aug. 23'
+        timezone: AoE
+        date: Nov 26-28, 2024
+        place: Hong Kong, China
