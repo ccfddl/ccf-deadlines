@@ -18,3 +18,16 @@
         timezone: UTC-8
         date: October 13-16, 2024
         place: Pittsburgh, Pennsylvania, USA
+      - year: 2025
+        id: uist2025
+        link: https://uist.acm.org/2025
+        timeline:
+          - deadline: '2025-04-2 17:00:00'
+            comment: abstract deadline (tentative)
+          - deadline: '2024-04-09 17:00:00'
+            comment: paper deadline (tentative)
+        timezone: UTC-8
+        date: September 28 - October 1, 2025
+        place: Busan, Korea
+
+
