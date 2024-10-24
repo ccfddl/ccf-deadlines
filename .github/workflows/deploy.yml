@@ -55,6 +55,7 @@ jobs:
     - name: Deploy
       run: |
         cd dist
+        echo 'ccfddl.com' > CNAME
         git init
         git add --all
         git commit -m "Site Update:`TZ=':Asia/Shanghai' date +' %Y-%m-%d %H:%m:%S'`"
