@@ -5,7 +5,7 @@
       ccf: B
       core: N
       thcpl: B
-    dblp: socc
+    dblp: cloud
     confs:
       - year: 2023
         id: socc23
