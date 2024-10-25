@@ -11,7 +11,7 @@
         id: uist2024
         link: https://uist.acm.org/2024
         timeline:
-          - deadline: '2024-03-27 17:00:00'
+          - abstract_deadline: '2024-03-27 17:00:00'
             comment: abstract deadline
           - deadline: '2024-04-03 17:00:00'
             comment: paper deadline
@@ -22,7 +22,7 @@
         id: uist2025
         link: https://uist.acm.org/2025
         timeline:
-          - deadline: '2025-04-02 17:00:00'
+          - abstract_deadline: '2025-04-02 17:00:00'
             comment: abstract deadline (tentative)
           - deadline: '2025-04-09 17:00:00'
             comment: paper deadline (tentative)
