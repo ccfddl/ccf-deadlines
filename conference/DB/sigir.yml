@@ -44,3 +44,13 @@
         timezone: AoE
         date: July 14-18, 2024
         place: Washington D.C., USA
+      - year: 2025
+        id: sigir25
+        link: https://sigir2025.dei.unipd.it/
+        timeline:
+          - abstract_deadline: '2025-01-16 23:59:59'
+            deadline: '2025-01-23 23:59:59'
+        timezone: AoE
+        date: July 13-18, 2025
+        place: Padova, Italy
+

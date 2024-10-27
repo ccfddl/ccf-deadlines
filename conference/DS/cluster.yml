@@ -34,3 +34,12 @@
         timezone: AoE
         date: September 24-27, 2024
         place: Kobe, Japan
+      - year: 2025
+        id: cluster25
+        link: https://clustercomp.org/2025
+        timeline:
+          - deadline: '2025-04-05 23:59:59'
+            comment: Full Paper Deadline
+        timezone: AoE
+        date: September 2-5, 2025
+        place: Edinburgh, United Kingdom

@@ -33,3 +33,12 @@
         timezone: UTC-12
         date: August 3-9, 2024
         place: Jeju Island, South Korea.
+      - year: 2025
+        id: ijcai25
+        link: https://2025.ijcai.org/
+        timeline:
+          - abstract_deadline: '2025-01-16 23:59:59'
+            deadline: '2025-01-23 23:59:59'
+        timezone: UTC-12
+        date: August 16-22, 2024
+        place: Montreal, Canada
