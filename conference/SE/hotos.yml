@@ -16,3 +16,12 @@
         timezone: AoE
         date: May 31-Jun 02, 2021
         place: Virtual
+      - year: 2025
+        id: hotos25
+        link: https://sigops.org/s/conferences/hotos/2025/
+        timeline:
+          - deadline: '2025-01-15 23:59:59'
+            comment: Submission Deadline
+        timezone: AoE
+        date: May 14-16, 2025
+        place: Banff, Alberta, Canada

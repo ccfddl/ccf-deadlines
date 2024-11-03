@@ -1,0 +1,17 @@
+  - title: CEC
+    description: IEEE Congress on Evolutionary Computation
+    sub: AI
+    rank:
+      ccf: N
+      core: B
+      thcpl: N
+    dblp: cec
+    confs:
+      - year: 2025
+        id: cec2025
+        link: https://www.cec2025.org/
+        timeline:
+          - deadline: '2025-01-15 23:59:59'
+        timezone: UTC-12
+        date: June 8-12, 2025
+        place: Hangzhou, China

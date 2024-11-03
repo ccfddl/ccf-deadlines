@@ -20,7 +20,7 @@ Help researchers track deadlines of conferences recommended by [China Computer F
 
 ## Add/Update a conference
 
-Contributions are welcomed and greatly appreciated! For further contribution and waterblowing, email [chenzh@stu.ecnu.edu.cn](chenzh@stu.ecnu.edu.cn) through your edu email address with wechatid to join the [CCFDDL](https://github.com/ccfddl) organization.
+Contributions are welcomed and greatly appreciated!
 
 To add or update information:
 
