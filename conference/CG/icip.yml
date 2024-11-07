@@ -23,3 +23,12 @@
         timezone: UTC+0
         date: Oct 27-30, 2024
         place: Abu Dhabi, United Arab Emirates
+      - year: 2025
+        id: icip25
+        link: https://2025.ieeeicip.org/
+        timeline:
+          - deadline: '2025-01-22 23:59:59'
+        timezone: UTC+0
+        date: Sep 14-17, 2025
+        place: 美国阿拉斯加州安克拉治
+
