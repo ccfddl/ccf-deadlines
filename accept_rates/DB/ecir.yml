@@ -1,0 +1,8 @@
+- title: ECIR
+  accept_rates:
+  - year: 2024
+    submitted: 230
+    accepted: 57
+    str: 24.8%(57/230 24')
+    rate: 0.2478261
+    source: https://csconfstats.xoveexu.com/

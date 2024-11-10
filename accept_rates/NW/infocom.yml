@@ -1,0 +1,8 @@
+- title: INFOCOM
+  accept_rates:
+  - year: 2024
+    submitted: 1307
+    accepted: 256
+    str: 19.6%(256/1307 24')
+    rate: 0.1958684
+    source: https://csconfstats.xoveexu.com/
