@@ -1,0 +1,8 @@
+- title: CSCW
+  accept_rates:
+  - year: 2018
+    submitted: 1107
+    accepted: 289
+    str: 26.1%(289/1107 18')
+    rate: 0.2610659
+    source: https://csconfstats.xoveexu.com/

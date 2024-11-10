@@ -6,3 +6,9 @@
     str: 27.9%(1827/6538 23')
     rate: 0.279443254817987
     source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+  - year: 2024
+    submitted: 9473
+    accepted: 2609
+    str: 27.5%(2609/9473 24')
+    rate: 0.2754143
+    source: https://csconfstats.xoveexu.com/
