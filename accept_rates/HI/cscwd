@@ -1,0 +1,8 @@
+- title: CSCWD
+  accept_rates:
+  - year: 2023
+    submitted: 380
+    accepted: 321
+    str: 84.5%(321/380 23')
+    rate: 0.844736842
+    source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10152776
