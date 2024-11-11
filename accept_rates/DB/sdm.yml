@@ -1,0 +1,8 @@
+- title: SDM
+  accept_rates:
+  - year: 2024
+    submitted: 335
+    accepted: 98
+    str: 29.3%(98/335 24')
+    rate: 0.2925373
+    source: https://csconfstats.xoveexu.com/
