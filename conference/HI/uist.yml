@@ -12,9 +12,7 @@
         link: https://uist.acm.org/2024
         timeline:
           - abstract_deadline: '2024-03-27 17:00:00'
-            comment: abstract deadline
-          - deadline: '2024-04-03 17:00:00'
-            comment: paper deadline
+            deadline: '2024-04-03 17:00:00'
         timezone: UTC-8
         date: October 13-16, 2024
         place: Pittsburgh, Pennsylvania, USA
@@ -23,8 +21,7 @@
         link: https://uist.acm.org/2025
         timeline:
           - abstract_deadline: '2025-04-02 17:00:00'
-            comment: abstract deadline (tentative)
-          - deadline: '2025-04-09 17:00:00'
+            deadline: '2025-04-09 17:00:00'
             comment: paper deadline (tentative)
         timezone: UTC-8
         date: September 28 - October 1, 2025
