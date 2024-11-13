@@ -27,3 +27,14 @@
         timezone: AoE
         date: July 15-17, 2024
         place: Australia
+      - year: 2025
+        id: acisp25
+        link: https://uow-ic2.github.io/acisp2025/
+        timeline:
+          - deadline: '2024-11-06 23:59:59'
+            comment: 1st round Deadline
+          - deadline: '2025-02-19 23:59:59'
+            comment: 2nd round Deadline
+        timezone: AoE
+        date: July 14-16, 2025
+        place: Wollongong, Australia
