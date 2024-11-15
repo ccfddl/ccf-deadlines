@@ -44,3 +44,16 @@
         timezone: UTC-12
         date: July 8-12, 2024
         place: Enschede, The Netherlands
+      - year: 2025
+        id: csfw25
+        link: https://csf2025.ieee-security.org/
+        timeline:
+          - deadline: '2024-05-28 23:59:59'
+            comment: spring
+          - deadline: '2024-10-01 23:59:59'
+            comment: fall
+          - deadline: '2025-02-04 23:59:59'
+            comment: winter
+        timezone: UTC-12
+        date: June 16-20, 2025
+        place: Santa Cruz, CA, USA
