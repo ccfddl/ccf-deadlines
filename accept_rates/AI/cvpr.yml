@@ -6,3 +6,9 @@
     str: 25.8%(2360/9155 23')
     rate: 0.257782632441289
     source: https://github.com/emeryberger/csconferences
+  - year: 2024
+    submitted: 11532
+    accepted: 2719
+    str: 23.6%(2719/11532 24')
+    rate: 0.2357787
+    source: https://csconfstats.xoveexu.com/

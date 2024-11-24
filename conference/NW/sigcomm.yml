@@ -44,3 +44,12 @@
         timezone: UTC
         date: August 4 - 8, 2024
         place: Sydney, Australia
+      - year: 2025
+        id: sigcomm25
+        link: https://conferences.sigcomm.org/sigcomm/2025/
+        timeline:
+          - abstract_deadline: '2025-01-24 23:59:59'
+            deadline: '2025-01-31 23:59:59'
+        timezone: UTC
+        date: September 8-11, 2025
+        place: Coimbra, Portugal
