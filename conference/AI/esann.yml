@@ -2,9 +2,9 @@
   description: European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning
   sub: AI
   rank:
-    ccf: 
+    ccf: N
     core: B
-    thcpl: 
+    thcpl: N
   dblp: esann
   confs:
     - year: 2025
