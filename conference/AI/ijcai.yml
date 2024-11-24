@@ -37,8 +37,8 @@
         id: ijcai25
         link: https://2025.ijcai.org/
         timeline:
-          - abstract_deadline: '2025-01-10 23:59:59' #not announced yet
-            deadline: '2025-01-17 23:59:59'  #not announced yet
+          - abstract_deadline: '2025-01-16 23:59:59'
+            deadline: '2025-01-23 23:59:59'
         timezone: UTC-12
         date: August 16-22, 2025
         place: Montreal, Canada.
