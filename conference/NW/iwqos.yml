@@ -25,3 +25,12 @@
         timezone: UTC-12
         date: June 19-21, 2023
         place: Orlando, FL, USA
+      - year: 2025
+        id: iwqos25
+        link: https://iwqos2025.ieee-iwqos.org/
+        timeline:
+          - abstract_deadline: '2025-02-09 23:59:59'
+            deadline: '2025-02-16 23:59:59'
+        timezone: AoE
+        date: July 02-04, 2025
+        place: Gold Coast, Australia
