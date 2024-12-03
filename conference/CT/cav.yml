@@ -7,11 +7,11 @@
       thcpl: A
     dblp: cav
     confs:
-      - year: 2022
-        id: cav22
-        link: http://i-cav.org/2022/
+      - year: 2025
+        id: cav25
+        link: https://conferences.i-cav.org/2025/
         timeline:
-          - deadline: '2022-01-21 23:59:59'
+          - deadline: '2025-01-31 23:59:59'
         timezone: AoE
-        date: Aug 7-10, 2022
-        place: Technion, Haifa, Israel
+        date: July 21-25, 2025
+        place: Zagreb, Croatia
