@@ -17,3 +17,14 @@
         timezone: AoE
         date: Nov 26-28, 2024
         place: Hong Kong, China
+      - year: 2025
+        id: setta25
+        link: https://www.setta2025.uk
+        timeline:
+          - deadline: '2025-02-16 23:59:59'
+            comment: 'Round 1(Winter) Paper Submission'
+          - deadline: '2025-06-15 23:59:59'
+            comment: 'Round 2(Summer) Paper Submission'
+        timezone: AoE
+        date: Dec, 2025
+        place: Oxford, UK
