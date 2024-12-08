@@ -16,3 +16,13 @@
         timezone: AoE
         date: June 4-7, 2024
         place: Kyoto University, Kyoto, Japan
+  
+      - year: 2025
+        id: ics25
+        link: https://hpcrl.github.io/ICS2025-webpage/
+        timeline:
+          - abstract_deadline: '2025-01-13 23:59:59'
+            deadline: '2025-01-16 23:59:59'
+        timezone: AoE
+        date: June 9-11, 2025
+        place: Salt Lake City, U.S.A.
