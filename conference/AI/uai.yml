@@ -31,4 +31,13 @@
         timezone: AoE
         date: July 15-19, 2024
         place: Barcelona, Spain
+      - year: 2025
+        id: uai25
+        link: https://www.auai.org/uai2025/
+        timeline:
+          - deadline: '2025-02-10 23:59:59'
+        timezone: AoE
+        date: July 21-25, 2025
+        place: Rio de Janeiro, Brazil
+        
 
