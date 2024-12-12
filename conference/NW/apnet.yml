@@ -16,3 +16,12 @@
         timezone: UTC-12
         date: August 3-4, 2024
         place: Sydney, Australia, co-located with SIGCOMM'24
+      - year: 2025
+        id: apnet25
+        link: https://conferences.sigcomm.org/events/apnet2025/
+        timeline:
+          - abstract_deadline: '2025-03-06 23:59:59'
+            deadline: '2025-03-13 23:59:59'
+        timezone: AoE
+        date: August 7-8, 2025
+        place: Shanghai, China
