@@ -25,9 +25,9 @@
         place: Abu Dhabi, UAE
       - year: 2025
         id: iros25
-        link: http://irmv.sjtu.edu.cn/iros2025/
+        link: http://www.iros25.org/
         timeline:
-          - deadline: TBD
+          - deadline: '2025-03-01 23:59:59'
         timezone: UTC-8
         date: October 19-25, 2025
         place: Hangzhou, China

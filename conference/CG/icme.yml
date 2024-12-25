@@ -31,12 +31,11 @@
         timezone: UTC+0
         date: July 15-19, 2024
         place: Niagra Falls, Canada
-        
       - year: 2025
         id: icme25
         link: https://2025.ieeeicme.org/
         timeline:
-          - deadline: '2024-12-13 23:59:59'
+          - deadline: '2024-12-23 23:59:59'
         timezone: UTC+0
         date: June 30 - July 4, 2025
         place: Nantes, France

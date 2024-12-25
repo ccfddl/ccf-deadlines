@@ -15,3 +15,11 @@
         timezone: AoE
         date: Aug 7-10, 2022
         place: Technion, Haifa, Israel
+      - year: 2025
+        id: cav25
+        link: https://conferences.i-cav.org/2025/
+        timeline:
+          - deadline: '2025-01-31 23:59:59'
+        timezone: AoE
+        date: July 21-25, 2025
+        place: Zagreb, Croatia

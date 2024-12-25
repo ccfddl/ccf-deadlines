@@ -74,3 +74,22 @@
         timezone: AoE
         date: June 22-27, 2025
         place: Berlin, Germany
+      - year: 2026
+        id: sigmod26
+        link: https://2026.sigmod.org/
+        timeline:
+          - abstract_deadline: '2025-01-10 23:59:00'
+            deadline: '2025-01-17 23:59:00'
+            comment: round 1
+          - abstract_deadline: '2025-04-10 23:59:00'
+            deadline: '2025-04-17 23:59:00'
+            comment: round 2
+          - abstract_deadline: '2025-07-10 23:59:00'
+            deadline: '2025-07-17 23:59:00'
+            comment: round 3
+          - abstract_deadline: '2025-10-10 23:59:00'
+            deadline: '2025-10-17 23:59:00'
+            comment: round 4
+        timezone: UTC-7
+        date: May 31-June 5, 2026
+        place: Bangalore, India

@@ -19,3 +19,16 @@
         timezone: AoE
         date: TBD
         place: TBD
+      - year: 2025
+        id: conext25
+        link: https://conferences.sigcomm.org/co-next/2025/#!/home
+        timeline:
+          - abstract_deadline: '2024-11-28 23:59:59'
+            deadline: '2024-12-05 23:59:59'
+            comment: 'Winter submission'
+          - abstract_deadline: TBD
+            deadline: TBD
+            comment: 'Summer submission'
+        timezone: AoE
+        date: Dec 1-4, 2025
+        place: HKUST, Hong Kong
