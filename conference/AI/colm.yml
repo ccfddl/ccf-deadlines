@@ -16,3 +16,12 @@
         timezone: AoE
         date: October 7-9, 2024
         place: TBD
+      - year: 2025
+        id: colm25
+        link: https://colmweb.org/cfp.html
+        timeline:
+          - abstract_deadline: '2025-03-20 23:59:59'
+            deadline: '2025-03-27 23:59:59'
+        timezone: AoE
+        date: October 7-9, 2025
+        place: Palais des Congrès Montreal, Canada
