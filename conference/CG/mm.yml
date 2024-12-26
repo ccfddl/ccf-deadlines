@@ -43,4 +43,13 @@
         timezone: UTC-12
         date: October 28-November 01, 2024
         place: Melbourne, Australia
+      - year: 2025
+        id: mm25
+        link: https://2025.acmmm.org/
+        timeline:
+          - abstract_deadline: '2025-04-04 23:59:59'
+            deadline: '2025-04-11 23:59:59'
+        timezone: UTC-12
+        date: October 27-31, 2025
+        place: Dublin, Ireland
 
