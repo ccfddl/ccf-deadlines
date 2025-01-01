@@ -48,8 +48,8 @@
           - abstract_deadline: '2024-08-01 23:59:59'
             deadline: '2024-08-08 23:59:59'
             comment: 1st round of 2 total rounds
-          - abstract_deadline: '2025-02-01 23:59:59'
-            deadline: '2025-02-08 23:59:59'
+          - abstract_deadline: '2025-02-03 23:59:59'
+            deadline: '2025-02-10 23:59:59'
             comment: 2nd round of 2 total rounds
         timezone: AoE
         date: August 3-7, 2025
