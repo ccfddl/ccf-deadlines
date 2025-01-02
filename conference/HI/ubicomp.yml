@@ -16,7 +16,7 @@
           - deadline: '2025-05-01 23:59:59'
             comment: second round
           - deadline: '2025-08-01 23:59:59'
-            comment: third round (only for revised paper)
+            comment: third round (only for resubmissions after major revisions)
           - deadline: '2025-11-01 23:59:59'
             comment: fourth round
         timezone: AoE
