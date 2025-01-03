@@ -47,3 +47,11 @@
         timezone: UTC-5
         date: Dec 3-6, 2024
         place: Lisbon, Portugal
+      - year: 2025
+        id: bibm25
+        link: https://ieeebibm.org/BIBM2025/
+        timeline:
+          - deadline: '2025-08-03 17:00:00'
+        timezone: UTC-5
+        date: Dec 15-18, 2025
+        place: Wuhan, China
