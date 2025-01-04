@@ -7,6 +7,14 @@
       thcpl: N
     dblp: internetware
     confs:
+      - year: 2025
+        id: internetware25
+        link: https://conf.researchr.org/home/internetware-2025
+        timeline:
+          - deadline: '2025-02-14 23:59:59'
+        timezone: UTC-12
+        date: June 20-22, 2025
+        place: Trondheim, Norway
       - year: 2023
         id: internetware23
         link: https://conf.researchr.org/home/internetware-2023
