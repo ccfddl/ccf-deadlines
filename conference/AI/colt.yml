@@ -23,3 +23,11 @@
         timezone: UTC-5
         date: June 30 - July 3, 2024
         place: Edmonton, Canada
+      - year: 2025
+        id: colt25
+        link: https://learningtheory.org/colt2025/
+        timeline:
+          - deadline: '2025-02-06 16:59:59'
+        timezone: UTC-5
+        date: June 30 - July 4, 2025
+        place: Lyon, France
