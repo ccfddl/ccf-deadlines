@@ -29,3 +29,14 @@
         timezone: AoE
         date: July 17-19, 2024
         place: Lausanne, Switzerland
+      - year: 2025
+        id: dimva25
+        link: https://www.dimva.org/dimva2025/
+        timeline:
+          - deadline: '2024-12-10 23:59:59'
+            comment: Paper submission deadline
+          - deadline: '2025-02-12 23:59:59'
+            comment: Final paper submission deadline
+        timezone: AoE
+        date: July 9-11, 2025
+        place: Graz University of Technology, Graz, Austria
