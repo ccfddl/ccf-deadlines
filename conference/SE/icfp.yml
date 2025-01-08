@@ -18,3 +18,14 @@
         timezone: AoE
         date: September 11-16, 2022
         place: Ljubljana, Slovenia
+      - year: 2025
+        id: icfp25
+        link: https://icfp25.sigplan.org/
+        timeline:
+          - deadline: '2025-02-27 23:59:59'
+            comment: Submission Deadline
+          - deadline: '2025-06-12 23:59:59'
+            comment: Submission of revised papers
+        timezone: AoE
+        date: October 12-18, 2025
+        place: Singapore
