@@ -29,3 +29,12 @@
         timezone: AoE
         date: May 5-8, 2024
         place: Orlando, USA
+      - year: 2025
+        id: fccm25
+        link: https://www.fccm.org/
+        timeline:
+          - abstract_deadline: '2025-01-10 23:59:59'
+            deadline: '2025-01-17 23:59:59'
+        timezone: AoE
+        date: May 4-7, 2025
+        place: Fayetteville, Arkansas, USA
