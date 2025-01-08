@@ -23,3 +23,11 @@
         timezone: UTC+8
         date: July 24-27, 2024
         place: Rotterdam, Netherlands
+       - year: 2025
+        id: cogsci25
+        link: https://cognitivesciencesociety.org/cogsci-2025/
+        timeline:
+          - deadline: '2025-02-01 23:59:59'
+        timezone: UTC+8
+        date: July 30-August 2, 2025
+        place: Marriott Marquis, San Francisco
