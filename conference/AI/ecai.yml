@@ -25,3 +25,12 @@
         timezone: UTC-12
         date: October 19-24, 2024
         place: Santiago de Compostela
+      - year: 2025
+        id: ecai25
+        link: https://ecai2025.org/deadlines/
+        timeline:
+          - abstract_deadline: '2025-04-29 23:59:59'
+            deadline: '2025-05-06 23:59:59'
+        timezone: UTC-12
+        date: October 25-30, 2025
+        place: Bologna, ITALY
