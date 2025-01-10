@@ -38,3 +38,12 @@
         timezone: UTC-12
         date: October 27 - 31, 2024
         place: New Jersey, USA
+      - year: 2025
+        id: iccad25
+        link: https://2025.iccad.com
+        timeline:
+          - abstract_deadline: '2025-04-14 23:59:59'
+            deadline: '2025-04-21 23:59:59'
+        timezone: UTC-12
+        date: October 26 - 30, 2025
+        place: MUNICH, GERMANY
