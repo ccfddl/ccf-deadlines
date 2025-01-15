@@ -48,3 +48,16 @@
         timezone: AoE
         date: April 26- May 04, 2025
         place: Ottawa, Ontario, Canada
+      - year: 2026
+        id: icse26
+        link: https://conf.researchr.org/home/icse-2026
+        timeline:
+          - abstract_deadline: '2025-03-07 23:59:59'
+            deadline: '2025-03-14 23:59:59'
+            comment: 'First Cycle: Submission'
+          - abstract_deadline: '2025-07-11 23:59:59'
+            deadline: '2025-07-18 23:59:59'
+            comment: 'Second Cycle: Submission'
+        timezone: AoE
+        date: April 12-18, 2026
+        place: Rio De Janeiro, Brazil
