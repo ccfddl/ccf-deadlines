@@ -29,7 +29,8 @@
         id: euro-par25
         link: https://2025.euro-par.org/
         timeline:
-          - deadline: 'TBD'
+          - abstract_deadline: '2025-02-24 23:59:59'
+            deadline: '2025-03-09 23:59:59'
         timezone: AoE
         date: August 25-29, 2025
         place: Dresden, Germany
