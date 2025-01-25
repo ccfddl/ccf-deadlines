@@ -17,5 +17,16 @@
           - deadline: '2024-05-23 23:59:59'
             comment: second round
         timezone: UTC-12
-        date: August 30 - Septemper 1, 2024.
+        date: August 30 - Septemper 1, 2024
         place: Jinhua, China
+      - year: 2025
+        id: apweb25
+        link: https://apweb2025.sau.edu.cn/
+        timeline:
+          - deadline: '2025-03-02 23:59:59'
+            comment: first round
+          - deadline: '2025-05-04 23:59:59'
+            comment: second round
+        timezone: UTC-8
+        date: August 28-30, 2025
+        place: Shenyang, China
