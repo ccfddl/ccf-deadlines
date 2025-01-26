@@ -1,4 +1,4 @@
-- title: GLSVLSI
+  - title: GLSVLSI
     description: Great Lakes Symposium on VLSI
     sub: DS
     rank:
@@ -12,7 +12,6 @@
         link: https://www.glsvlsi.org/
         timeline:
           - deadline: '2024-02-21 23:59:00'
-            comment: call for papers
         timezone: UTC-5
         date: June 30 - July 2, 2024
         place: New Orleans, LA, USA
