@@ -40,7 +40,8 @@
         id: icml25
         link: https://icml.cc/Conferences/2025
         timeline:
-          - deadline: '2025-01-30 23:59:59'
+          - abstract_deadline: '2025-01-23 23:59:59'
+            deadline: '2025-01-30 23:59:59'         
             comment: Paper Submissions Open on OpenReview Jan 08 2025 11:59 PM UTC
         timezone: UTC-12
         date: July 11-19, 2025

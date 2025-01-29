@@ -90,6 +90,6 @@
           - abstract_deadline: '2025-10-10 23:59:00'
             deadline: '2025-10-17 23:59:00'
             comment: round 4
-        timezone: UTC-7
+        timezone: AoE
         date: May 31-June 5, 2026
         place: Bangalore, India

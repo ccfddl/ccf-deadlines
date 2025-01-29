@@ -1,0 +1,17 @@
+  - title: COCOON
+    description: International Computing and Combinatorics Conference
+    sub: CT
+    rank:
+      ccf: B
+      core: N
+      thcpl: N
+    dblp: cocoon
+    confs:
+      - year: 2025
+        id: cocoon25
+        link: https://tcsuestc.com/cocoon2025
+        timeline:
+          - deadline: '2025-03-05 23:59:59'
+        timezone: AoE
+        date: August 15-17, 2025
+        place: Chengdu, China

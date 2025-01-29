@@ -16,3 +16,12 @@
         timezone: AoE
         date: December 5-7, 2022
         place: Auckland, New Zealand
+      - year: 2025
+        id: sas25
+        link: https://2025.splashcon.org/home/sas-2025
+        timeline:
+          - deadline: '2025-05-04 23:59:59'
+            comment: Paper Submission
+        timezone: AoE
+        date: October 12-18, 2025
+        place: Singapore
