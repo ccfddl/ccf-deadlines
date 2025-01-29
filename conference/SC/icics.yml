@@ -43,6 +43,6 @@
             comment: First round
           - deadline: '2025-05-23 23:59:59'
             comment: Second round
-        timezone: AoE
+        timezone: UTC+8
         date: October 29-31, 2025
         place: Nanjing, China
