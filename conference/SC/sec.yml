@@ -18,3 +18,12 @@
         timezone: AoE
         date: June 22-24, 2021
         place: Oslo, Norway
+      - year: 2025
+        id: sec25
+        link: https://sec2025.um.si/
+        timeline:
+          - deadline: '2025-01-20 23:59:59'
+            comment: Submission deadline
+        timezone: AoE
+        date: May 21-23, 2025
+        place: Hotel City, Maribor, Slovenia

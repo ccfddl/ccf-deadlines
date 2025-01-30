@@ -19,7 +19,7 @@
         id: eurosp25
         link: https://eurosp2025.ieee-security.org/
         timeline:
-          - deadline: 'TBD'
+          - deadline: '2024-10-24 23:59:59'
         timezone: UTC-12
         date: June 30-July 4, 2025
         place: Venice, Italy
