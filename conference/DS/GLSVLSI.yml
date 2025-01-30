@@ -8,7 +8,7 @@
     dblp: glvlsi
     confs:
       - year: 2025
-        id: apsys2025
+        id: glsvlsi2025
         link: https://www.glsvlsi.org/
         timeline:
           - deadline: '2024-02-21 23:59:00'
