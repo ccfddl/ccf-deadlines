@@ -1,0 +1,18 @@
+  - title: SESAME
+    description: Workshop on SErverless Systems, Applications and MEthodologies (SESAME)
+    sub: DS
+    rank:
+      ccf: N
+      core: N
+      thcpl: N
+    dblp: 'sesame'
+    confs:
+      - year: 2025
+        id: sesame25
+        link: https://sesame25.github.io/
+        timeline:
+          - deadline: '2025-02-07 00:00:00'
+            comment: 'Submissions Due: 2025-02-07'
+        timezone: AoE
+        date: March 30, 2025
+        place: Rotterdam, The Netherlands
