@@ -1,0 +1,18 @@
+- title: AUTOMLCONF
+  description: International Conference on Automated Machine Learning 
+  sub: AI
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: automl
+  confs:
+    - year: 2025
+      id: automl25
+      link: https://2025.automl.cc/
+      timeline:
+        - abstract_deadline: '2025-03-19 23:59:59'
+          deadline: '2025-03-24 23:59:59'
+      timezone: UTC-12
+      date: September 8-11, 2025
+      place: New York City, USA
