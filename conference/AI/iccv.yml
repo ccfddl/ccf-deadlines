@@ -25,7 +25,7 @@
         place: Paris
       - year: 2025
         id: iccv25
-        link: https://iccv2025.thecvf.com/
+        link: https://iccv.thecvf.com/Conferences/2025
         timeline:
           - deadline: '2025-03-07 07:59:59'
         timezone: UTC+0
