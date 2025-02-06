@@ -34,3 +34,12 @@
         timezone: AoE
         date: October 28-31, 2024
         place: Charleroi, Belgium
+      - year: 2025
+        id: icnp25
+        link: https://ieeeicnp2025.pages.dev/
+        timeline:
+          - abstract_deadline: '2025-05-09 23:59:59'
+            deadline: '2025-05-16 23:59:59'
+        timezone: AoE
+        date: September 22-25, 2025
+        place: Seoul, South Korea
