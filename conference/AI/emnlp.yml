@@ -33,4 +33,12 @@
         timezone: UTC-12
         date: November 12 - 16, 2024
         place: Miami, Florida, USA
+      - year: 2025
+        id: emnlp25
+        link: https://2025.emnlp.org/
+        timeline:
+          - deadline: 'TBD'
+        timezone: UTC-12
+        date: November 5 - 9, 2025
+        place: Suzhou, China
 
