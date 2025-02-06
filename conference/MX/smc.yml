@@ -23,3 +23,11 @@
         timezone: UTC+8
         date: October 7-10, 2024
         place: Borneo Convention Centre Kuching, Sarawak, Malaysia
+      - year: 2025
+        id: smc25
+        link: https://www.ieeesmc2025.org/
+        timeline:
+          - deadline: '2025-04-04 23:59:59'
+        timezone: UTC+8
+        date: October 5-8, 2025
+        place: Vienna, Austria
