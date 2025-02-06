@@ -37,7 +37,7 @@
         id: emnlp25
         link: https://2025.emnlp.org/
         timeline:
-          - deadline: 'TBD'
+          - deadline: '2025-05-19 23:59:59'
         timezone: UTC-12
         date: November 5 - 9, 2025
         place: Suzhou, China
