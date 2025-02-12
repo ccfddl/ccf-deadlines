@@ -27,3 +27,12 @@
         timezone: UTC-12
         date: October 9-10, 2024
         place: Dubrovnik, Croatia
+      - year: 2025
+        id: icdf2c25
+        link: https://icdf2c.eai-conferences.org/2025/
+        timeline:
+          - deadline: '2025-05-31 23:59:59'
+            comment: Full Paper Submission deadline
+        timezone: UTC-12
+        date: November 17-19, 2025
+        place: Miami, Florida, USA
