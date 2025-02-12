@@ -51,3 +51,14 @@
         timezone: UTC-5
         date: November 2-6, 2024
         place: Austin, Texas, USA
+      - year: 2025
+        id: micro25
+        link: https://microarch.org/micro58/
+        timeline:
+          - deadline: '2024-04-04 11:59:59'
+            comment: Abstract Deadline
+          - deadline: '2024-04-11 11:59:59'
+            comment: Full Paper Deadline
+        timezone: UTC-5
+        date: October 18-22, 2025
+        place: Seoul, Korea
