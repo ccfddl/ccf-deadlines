@@ -28,8 +28,7 @@
         id: adma25
         link: https://adma2025.github.io
         timeline:
-          - deadline: 'TBD'
-            comment: 'April, 2025'
+          - deadline: '2025-05-08 23:59:59'
         timezone: AoE
         date: October 22 - 24, 2025
         place: Kyoto, Japan
