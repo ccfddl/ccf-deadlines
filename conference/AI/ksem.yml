@@ -23,3 +23,11 @@
         timezone: UTC+0
         date: Aug 16-18, 2024
         place: Birmingham
+      - year: 2025
+        id: ksem25
+        link: https://ksem2025.scimeeting.cn/
+        timeline:
+          - deadline: '2025-03-04 23:59:59'
+        timezone: UTC+0
+        date: August 4-6, 2025
+        place: Macao SAR, China
