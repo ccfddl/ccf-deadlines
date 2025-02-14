@@ -55,10 +55,8 @@
         id: micro25
         link: https://microarch.org/micro58/
         timeline:
-          - deadline: '2024-04-04 11:59:59'
-            comment: Abstract Deadline
-          - deadline: '2024-04-11 11:59:59'
-            comment: Full Paper Deadline
-        timezone: UTC-5
+          - abstract_deadline: '2025-04-04 23:59:59'
+            deadline: '2025-04-11 23:59:59'
+        timezone: UTC-4
         date: October 18-22, 2025
         place: Seoul, Korea
