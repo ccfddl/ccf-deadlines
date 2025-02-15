@@ -19,7 +19,7 @@
         id: icmr25
         link: https://www.icmr-2025.org/
         timeline:
-          - deadline: '2025-02-16 23:59:59'
+          - deadline: '2025-02-23 23:59:59'
         timezone: UTC-12
         date: June 30 - July 3, 2025
         place: Chicago, USA
