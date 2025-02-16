@@ -35,3 +35,12 @@
         timezone: AoE
         date: October 28-30, 2024
         place: Dubai, United Arab Emirates
+      - year: 2025
+        id: securecomm25
+        link: https://securecomm.eai-conferences.org/2025/
+        timeline:
+          - deadline: '2025-03-01 23:59:59'
+            comment: Full Paper Submission deadline
+        timezone: AoE
+        date: July 4-6, 2025
+        place: Xiangtan, China
