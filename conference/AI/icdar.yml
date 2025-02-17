@@ -11,8 +11,8 @@
         id: icdar2025
         link: https://www.icdar2025.com/home
         timeline:
-          - abstract_deadline: '2025-02-07 23:59:59'
-            deadline: '2025-02-21 23:59:59'
+          - abstract_deadline: '2025-02-28 23:59:59'
+            deadline: '2025-03-07 23:59:59'
         timezone: UTC+0
         date: September 17-21, 2025
         place: Wuhan, China
