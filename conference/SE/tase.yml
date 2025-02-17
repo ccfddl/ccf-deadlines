@@ -16,3 +16,12 @@
         timezone: AoE
         date: July 29-August 1, 2024
         place: Guiyang, China
+      - year: 2025
+        id: tase25
+        link: https://cyprusconferences.org/tase2025/
+        timeline:
+          - abstract_deadline: '2025-02-15 23:59:59'
+            deadline: '2025-02-21 23:59:59'
+        timezone: AoE
+        date: July 14-16, 2025
+        place: Limassol, Cyprus
