@@ -34,3 +34,12 @@
         timezone: AoE
         date: October 06-11, 2024
         place: Flagstaff, Arizona, USA
+      - year: 2025
+        id: icsme25
+        link: https://conf.researchr.org/home/icsme-2025
+        timeline:
+          - abstract_deadline: '2025-03-06 23:59:59'
+            deadline: '2025-03-13 23:59:59'
+        timezone: AoE
+        date: September 07-12, 2025
+        place: Auckland, New Zealand
