@@ -25,3 +25,12 @@
         timezone: AoE
         date: Oct 21-25, 2024
         place: Greater Seattle Area, USA
+      - year: 2025
+        id: ismar2025
+        link: https://www.ieeeismar.net/2025/
+        timeline:
+          - abstract_deadline: '2025-04-04 23:59:59'
+            deadline: '2025-04-11 23:59:59'
+        timezone: AoE
+        date: Oct 8-12, 2025
+        place: Daejeon, South Korea
