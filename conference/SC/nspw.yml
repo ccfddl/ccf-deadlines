@@ -26,3 +26,11 @@
         timezone: UTC-11
         date: September 16-18, 2024
         place: Bedford, PA USA
+      - year: 2025
+        id: nspw25
+        link: https://www.nspw.org/2025
+        timeline:
+          - deadline: '2025-04-11 23:59:59'
+        timezone: AoE
+        date: August 24-27, 2025
+        place: Aerzen, Germany
