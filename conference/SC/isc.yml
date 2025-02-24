@@ -25,3 +25,12 @@
         timezone: AoE
         date: Oct 23 - 25, 2024
         place: VA, USA
+      - year: 2025
+        id: isc25
+        link: https://isc25.skku.edu/
+        timeline:
+          - deadline: '2025-06-04 23:59:59'
+            comment: Submission Deadline
+        timezone: AoE
+        date: October 20-22, 2025
+        place: Seoul, South Korea
