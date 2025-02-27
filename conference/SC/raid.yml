@@ -32,3 +32,11 @@
         timezone: AoE
         date: September 30 - October 2, 2024
         place: Palazzo della Salute, Padua, Italy
+      - year: 2025
+        id: raid25
+        link: https://raid2025.github.io/
+        timeline:
+          - deadline: '2025-04-17 23:59:59'
+        timezone: AoE
+        date: October 19-22, 2025
+        place: Gold Coast, Australia
