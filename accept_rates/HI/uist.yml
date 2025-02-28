@@ -12,3 +12,9 @@
     str: 25.1%(121/483 23')
     rate: 0.2505176
     source: https://csconfstats.xoveexu.com/
+  - year: 2024
+    submitted: 608
+    accepted: 146
+    str: 24.01%(146/608 24')
+    rate: 0.2401315789473684
+    source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3654777
