@@ -42,3 +42,12 @@
         timezone: UTC+0
         date: December 9-December 15, 2024
         place: Vancouver, Canada
+      - year: 2025
+        id: nips25
+        link: https://neurips.cc/Conferences/2025
+        timeline:
+          - abstract_deadline: '2025-05-11 23:59:59'
+            deadline: '2025-05-15 23:59:59'
+        timezone: AoE
+        date: December 2-7, 2025
+        place: San Diego Convention Center, USA
