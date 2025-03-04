@@ -36,7 +36,7 @@
         id: interspeech25
         link: https://www.interspeech2025.org/home
         timeline:
-          - deadline: '2025-02-12 23:59:59'
+          - deadline: '2025-02-19 23:59:59'
         timezone: UTC+0
         date: August 17-22, 2025
         place: Rotterdam, Netherlands

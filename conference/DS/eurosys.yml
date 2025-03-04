@@ -62,3 +62,16 @@
         timezone: AoE
         date: March-April, 2025
         place: Rotterdam, The Netherlands.
+      - year: 2026
+        id: eurosys2026
+        link: https://2026.eurosys.org/
+        timeline:
+          - abstract_deadline: '2025-05-08 23:59:59'
+            deadline: '2025-05-15 23:59:59'
+            comment: Spring Submission Deadline
+          - abstract_deadline: '2025-09-18 23:59:59'
+            deadline: '2025-09-25 23:59:59'
+            comment: Fall Submission Deadline
+        timezone: AoE
+        date: April 13-16, 2026
+        place: Edinburgh, UK

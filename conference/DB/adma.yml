@@ -24,3 +24,11 @@
         timezone: AoE
         date: December 3 - 5, 2024
         place: Sydney, Australia
+      - year: 2025
+        id: adma25
+        link: https://adma2025.github.io
+        timeline:
+          - deadline: '2025-05-08 23:59:59'
+        timezone: AoE
+        date: October 22 - 24, 2025
+        place: Kyoto, Japan

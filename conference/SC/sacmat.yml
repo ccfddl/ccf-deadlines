@@ -16,3 +16,12 @@
         timezone: AoE
         date: June 16-18, 2021
         place: Virtual
+      - year: 2025
+        id: sacmat25
+        link: https://www.sacmat.org/2025/index.php
+        timeline:
+          - deadline: '2025-03-24 23:59:59'
+            comment: Paper Submission Deadline
+        timezone: AoE
+        date: July 8-10, 2025
+        place: Stony Brook, NY, USA

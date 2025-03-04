@@ -33,3 +33,13 @@
         timezone: AoE
         date: November 17-22, 2024
         place: ATLANTA, GA, USA
+      - year: 2025
+        id: sc25
+        link: https://sc25.supercomputing.org/
+        timeline:
+          - abstract_deadline: '2025-04-07 23:59:59'
+            deadline: '2025-04-14 23:59:00'
+        timezone: AoE
+        date: November 16-21, 2025
+        place: St. louis, Missouri, USA
+

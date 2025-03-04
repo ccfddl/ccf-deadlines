@@ -50,3 +50,12 @@
         timezone: AoE
         date: October 21-25, 2024
         place: Boise, Idaho, USA
+      - year: 2025
+        id: cikm25
+        link: https://cikm2025.org
+        timeline:
+          - abstract_deadline: TBD
+            deadline: TBD
+        timezone: AoE
+        date: November 10-14, 2025
+        place: Coex, Seoul, Korea

@@ -15,3 +15,11 @@
         timezone: AoE
         date: June 5-7, 2024
         place: Wuhan, China
+      - year: 2025
+        id: casa2025
+        link: https://casa2025.sciencesconf.org/
+        timeline:
+          - deadline: '2025-03-08 23:59:59'
+        timezone: AoE
+        date: June 2-5, 2025
+        place: Strasbourg, France

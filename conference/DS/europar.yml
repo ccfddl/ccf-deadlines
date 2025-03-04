@@ -25,3 +25,12 @@
         timezone: AoE
         date: August 28-30, 2023
         place: Madrid, Spain
+      - year: 2025
+        id: euro-par25
+        link: https://2025.euro-par.org/
+        timeline:
+          - abstract_deadline: '2025-03-03 23:59:59'
+            deadline: '2025-03-17 23:59:59'
+        timezone: AoE
+        date: August 25-29, 2025
+        place: Dresden, Germany

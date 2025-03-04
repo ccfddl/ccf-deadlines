@@ -6,3 +6,15 @@
     str: 21.8%(133/610 22')
     rate: 0.218032786885246
     source: https://github.com/emeryberger/csconferences
+  - year: 2023
+    submitted: 611
+    accepted: 212
+    str: 34.7%(212/611 23', 126 journal papers, 86 conference papers)
+    rate: 0.3469721767594108
+    source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3588432
+  - year: 2024
+    submitted: 844
+    accepted: 252
+    str: 29.9%(252/844 24', 118 journal papers, 134 conference papers)
+    rate: 0.2985781990521327
+    source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3641519

@@ -36,3 +36,11 @@
         timezone: AoE
         date: October 27- November 01, 2024
         place: Sacramento, California, United States
+      - year: 2025
+        id: ase25
+        link: https://conf.researchr.org/home/ase-2025
+        timeline:
+          - deadline: '2025-05-30 23:59:59'
+        timezone: AoE
+        date: November 16 - November 20, 2025
+        place: Seoul, South Korea

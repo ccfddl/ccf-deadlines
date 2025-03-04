@@ -16,3 +16,12 @@
         timezone: AoE
         date: June 17-21, 2024
         place: Nantes, France
+      - year: 2025
+        id: spaa25
+        link: https://spaa.acm.org/call-for-papers/
+        timeline:
+          - abstract_deadline: '2025-02-21 23:59:59'
+            deadline: '2025-02-28 23:59:59'
+        timezone: AoE
+        date: July 28 - August 1, 2025
+        place: Portland, Oregon
