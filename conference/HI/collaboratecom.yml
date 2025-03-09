@@ -1,0 +1,17 @@
+- title: CollaborateCom2025
+  description: International Conference on Collaborative Computing: Networking, Applications and Worksharing
+  sub: HI
+  rank:
+    ccf: C
+    core: C
+    thcpl: N
+  dblp: colcom
+  confs:
+    - year: 2025
+      id: collaboratecom25
+      link: https://collaboratecom.eai-conferences.org/2025/
+      timeline:
+        - deadline: '2025-05-01 23:59:59'
+      timezone: UTC-8
+      date: November 15-16, 2025
+      place: Shanghai, China
