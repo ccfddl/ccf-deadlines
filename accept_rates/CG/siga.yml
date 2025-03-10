@@ -1,0 +1,8 @@
+- title: ACM SIGGRAPH ASIA
+  accept_rates:
+  - year: 2024
+    submitted: 899
+    accepted: 265
+    str: 29.5%(265/899 24', 119 journal papers, 146 conference papers)
+    rate: 0.2947719688542825
+    source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3680528

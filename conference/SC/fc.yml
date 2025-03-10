@@ -27,3 +27,12 @@
         timezone: UTC-12
         date: March 4-8, 2024
         place: Willemstad, Curaçao
+      - year: 2025
+        id: fc25
+        link: https://fc25.ifca.ai/
+        timeline:
+          - deadline: '2024-10-11 23:59:59'
+            comment: Submission deadline
+        timezone: UTC-12
+        date: April 14-18, 2025
+        place: Miyakojima, Japan

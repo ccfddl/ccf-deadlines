@@ -37,3 +37,18 @@
         timezone: UTC+0
         date: March 25-29, 2024
         place: Leuven, Belgium
+      - year: 2025
+        id: fse25
+        link: https://fse.iacr.org/2025/
+        timeline:
+          - deadline: '2024-03-01 23:59:59'
+            comment: ToSC, Volume 2024, Issue 2 Submission deadline
+          - deadline: '2024-06-01 23:59:59'
+            comment: ToSC, Volume 2024, Issue 3 Submission deadline
+          - deadline: '2024-09-01 23:59:59'
+            comment: ToSC, Volume 2024, Issue 4 Submission deadline
+          - deadline: '2024-11-22 23:59:59'
+            comment: ToSC, Volume 2025, Issue 1 Submission deadline
+        timezone: UTC-12
+        date: March 17-21, 2025
+        place: Rome, Italy

@@ -23,3 +23,11 @@
         timezone: UTC-12
         date: April 15-17, 2024
         place: Sydney, Australia
+      - year: 2025
+        id: pkc25
+        link: https://pkc.iacr.org/2025/
+        timeline:
+          - deadline: '2024-10-16 23:59:59'
+        timezone: UTC-12
+        date: May 12-15, 2025
+        place: Røros, Norway

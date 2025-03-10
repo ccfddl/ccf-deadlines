@@ -24,3 +24,11 @@
         timezone: AoE
         date: Sept 17-20, 2024
         place: Lugano-Viganello, Switzerland
+      - year: 2025
+        id: icann2025
+        link: https://e-nns.org/icann2025/
+        timeline:
+          - deadline: '2025-03-15 23:59:59'
+        timezone: AoE
+        date: Sept 9-12, 2025
+        place: Kaunas, Lithuania

@@ -24,3 +24,12 @@
         timezone: AoE
         date: July 2-8, 2023
         place: CHICAGO, ILLINOIS USA
+      - year: 2025
+        id: icws25
+        link: https://services.conferences.computer.org/2025/icws-2025/
+        timeline:
+          - abstract_deadline: '2025-02-24 23:59:59'
+            deadline: '2025-03-03 23:59:59'
+        timezone: AoE
+        date: July 7-12, 2025
+        place: Helsinki, Finland

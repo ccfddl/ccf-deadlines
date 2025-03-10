@@ -10,7 +10,7 @@
         id: icalp25
         link: https://conferences.au.dk/icalp2025
         timeline:
-          - deadline: '2025-02-08 00:00:00'
+          - deadline: '2025-02-08 23:59:59'
             comment: 'Submissions'
         timezone: AoE
         date: July 8-11, 2025

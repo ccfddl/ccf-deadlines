@@ -35,3 +35,14 @@
         timezone: AoE
         date: August 26-28, 2024
         place: Mytilene, Greece
+      - year: 2025
+        id: icics25
+        link: https://www.icics2025.org/
+        timeline:
+          - deadline: '2025-02-28 23:59:59'
+            comment: First round
+          - deadline: '2025-05-23 23:59:59'
+            comment: Second round
+        timezone: UTC+8
+        date: October 29-31, 2025
+        place: Nanjing, China

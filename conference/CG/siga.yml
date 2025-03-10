@@ -7,6 +7,15 @@
       thcpl: N
     dblp: siggrapha
     confs:
+      - year: 2025
+        id: siggrapha25
+        link: https://asia.siggraph.org/2025/
+        timeline:
+          - abstract_deadline: '2025-05-16 23:59:00'
+            deadline: '2025-05-23 23:59:00'
+        timezone: UTC-12
+        date: December 15-18, 2025
+        place: Hong Kong, China
       - year: 2024
         id: siggrapha24
         link: https://asia.siggraph.org/2024/

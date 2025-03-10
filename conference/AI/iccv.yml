@@ -25,9 +25,10 @@
         place: Paris
       - year: 2025
         id: iccv25
-        link: https://iccv2025.thecvf.com/
+        link: https://iccv.thecvf.com/Conferences/2025
         timeline:
-          - deadline: '2025-03-07 07:59:59'
+          - abstract_deadline: '2025-03-04 09:59:59'
+            deadline: '2025-03-08 09:59:59'
         timezone: UTC+0
         date: October 19-25, 2025
         place: Honolulu, Hawaii

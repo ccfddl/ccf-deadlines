@@ -8,10 +8,10 @@
     dblp: glvlsi
     confs:
       - year: 2025
-        id: apsys2025
+        id: glsvlsi2025
         link: https://www.glsvlsi.org/
         timeline:
-          - deadline: '2024-02-21 23:59:00'
+          - deadline: '2025-03-17 23:59:00'
         timezone: UTC-5
-        date: June 30-July 2, 2024
+        date: June 30-July 2, 2025
         place: New Orleans, LA, USA

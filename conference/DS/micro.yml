@@ -51,3 +51,12 @@
         timezone: UTC-5
         date: November 2-6, 2024
         place: Austin, Texas, USA
+      - year: 2025
+        id: micro25
+        link: https://microarch.org/micro58/
+        timeline:
+          - abstract_deadline: '2025-04-04 23:59:59'
+            deadline: '2025-04-11 23:59:59'
+        timezone: UTC-4
+        date: October 18-22, 2025
+        place: Seoul, Korea

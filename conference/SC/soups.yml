@@ -29,3 +29,14 @@
         timezone: AoE
         date: AUGUST 11-13, 2024
         place: Philadelphia, USA
+      - year: 2025
+        id: soups25
+        link: https://www.usenix.org/conference/soups2025
+        timeline:
+          - deadline: '2025-02-06 23:59:59'
+            comment: Mandatory Paper Registration Deadline
+          - deadline: '2025-02-13 23:59:59'
+            comment: Paper Submission Deadline
+        timezone: AoE
+        date: August 10-12, 2025
+        place: Seattle, WA, USA
