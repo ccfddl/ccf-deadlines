@@ -50,6 +50,6 @@
         timeline:
           - abstract_deadline: '2025-03-07 23:59:59'
             deadline: '2025-03-14 23:59:59'
-        timezone: UTC-8
+        timezone: AoE
         date: September 15-19, 2025
         place: Porto, Portugal
