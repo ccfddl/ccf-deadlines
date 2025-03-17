@@ -39,6 +39,9 @@ Help researchers track deadlines of conferences recommended by [China Computer F
 - English: `https://ccfddl.com/conference/deadlines_en.ics`
 - 简体中文: `https://ccfddl.com/conference/deadlines_zh.ics`
 
+<img src=".readme_assets/screenshot_iCal.jpg" width="500px"/>
+
+
 ## Add/Update a conference
 
 Contributions are welcomed and greatly appreciated!
