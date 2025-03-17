@@ -34,6 +34,11 @@ Help researchers track deadlines of conferences recommended by [China Computer F
 
 **No More Finding and Time Conversion on Your Own!**
 
+## iCal Subscription:
+
+- English: `https://ccfddl.com/conference/deadlines_en.ics`
+- 简体中文: `https://ccfddl.com/conference/deadlines_zh.ics`
+
 ## Add/Update a conference
 
 Contributions are welcomed and greatly appreciated!
