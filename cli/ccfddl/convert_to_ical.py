@@ -186,32 +186,25 @@ def convert_to_ical(file_paths: list[str], output_path: str, lang: str='en', SUB
 def reverse_index(file_paths: list[str], subs: list[str]):
     index = defaultdict(list)
 
-    result = []
-    # 遍历所有可能的选择数量，从 1 到总数量
-    for r in range(1, len(subs)):
-        # 生成所有长度为 r 的组合
-        combos = combinations(subs, r)
-        for combo in combos:
-            # 将组合转换为字符串并添加到结果列表中
-            result.append('_'.join(combo))
-    # 10 个类别共有 1022 种组合（去掉空集和全集）
-
     for file_path in file_paths:
         with open(file_path, 'r') as f:
             conferences = yaml.safe_load(f)
 
         for conf_data in conferences:
-            title = conf_data['title']
+            # title = conf_data['title']
             sub = conf_data['sub']
             rank = conf_data['rank']
 
             # index[title].append(file_path)
-            index['ccf_' + rank.get('ccf', 'N')].append(file_path)
-            index['core_' + rank.get('core', 'N')].append(file_path)
-            index['thcpl_' + rank.get('thcpl', 'N')].append(file_path)
-            for name in result:
-                if sub in name:
-                    index['sub_' + name].append(file_path)
+            rank_keys = [
+                'ccf_' + rank.get('ccf', 'N'),
+                'core_' + rank.get('core', 'N'),
+                'thcpl_' + rank.get('thcpl', 'N'),
+            ]
+            for key in rank_keys:
+                index[key].append(file_path)
+                index[key + '_' + sub].append(file_path)
+            index[sub].append(file_path)
 
     return index
 
@@ -220,10 +213,9 @@ if __name__ == '__main__':
     from xlin import ls, element_mapping
     SUB_MAPPING = load_mapping("conference/types.yml")
     paths = ls("conference", filter=lambda f: f.name != "types.yml")
-    convert_to_ical(paths, 'deadlines_zh.ics', 'zh', SUB_MAPPING)
-    convert_to_ical(paths, 'deadlines_en.ics', 'en', SUB_MAPPING)
     index = reverse_index(paths, list(SUB_MAPPING.keys()))
     for lang in ['zh', 'en']:
-        f = lambda key: (True, convert_to_ical(index[key], f'deadlines_{lang}_{key}.ics', lang, SUB_MAPPING))
-        element_mapping(index.keys(), f)
+        convert_to_ical(paths, f'deadlines_{lang}.ics', lang, SUB_MAPPING)
+        f = lambda key: (len(index[key]) > 0, convert_to_ical(index[key], f'deadlines_{lang}_{key}.ics', lang, SUB_MAPPING))
+        element_mapping(index.keys(), f, thread_pool_size=8)
     print("转换完成")
