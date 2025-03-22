@@ -44,3 +44,11 @@
         timezone: AoE
         date: August 12-15, 2024
         place: Gotland, Sweden
+      - year: 2025
+        id: icpp25
+        link: https://icpp2025.sdsc.edu
+        timeline:
+          - deadline: '2025-04-21 23:59:59'
+        timezone: AoE
+        date: September 8-11, 2025
+        place: San Diego, CA, USA
