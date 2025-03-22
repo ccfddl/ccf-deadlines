@@ -1,8 +1,10 @@
 import yaml
-from icalendar import Calendar, Event, Timezone, TimezoneStandard
 import re
-from datetime import datetime, timedelta, timezone
 import uuid
+from collections import defaultdict
+from itertools import combinations
+from datetime import datetime, timedelta, timezone
+from icalendar import Calendar, Event, Timezone, TimezoneStandard
 
 # 中英类别映射表
 def load_mapping(path: str="conference/types.yml"):
@@ -180,9 +182,40 @@ def convert_to_ical(file_paths: list[str], output_path: str, lang: str='en', SUB
     with open(output_path, 'wb') as f:
         f.write(cal.to_ical())
 
+
+def reverse_index(file_paths: list[str], subs: list[str]):
+    index = defaultdict(list)
+
+    for file_path in file_paths:
+        with open(file_path, 'r') as f:
+            conferences = yaml.safe_load(f)
+
+        for conf_data in conferences:
+            # title = conf_data['title']
+            sub = conf_data['sub']
+            rank = conf_data['rank']
+
+            # index[title].append(file_path)
+            rank_keys = [
+                'ccf_' + rank.get('ccf', 'N'),
+                'core_' + rank.get('core', 'N'),
+                'thcpl_' + rank.get('thcpl', 'N'),
+            ]
+            for key in rank_keys:
+                index[key].append(file_path)
+                index[key + '_' + sub].append(file_path)
+            index[sub].append(file_path)
+
+    return index
+
+
 if __name__ == '__main__':
-    from xlin.util import ls
+    from xlin import ls, element_mapping
     SUB_MAPPING = load_mapping("conference/types.yml")
     paths = ls("conference", filter=lambda f: f.name != "types.yml")
-    convert_to_ical(paths, 'deadlines_zh.ics', 'zh', SUB_MAPPING)
-    convert_to_ical(paths, 'deadlines_en.ics', 'en', SUB_MAPPING)
+    index = reverse_index(paths, list(SUB_MAPPING.keys()))
+    for lang in ['zh', 'en']:
+        convert_to_ical(paths, f'deadlines_{lang}.ics', lang, SUB_MAPPING)
+        f = lambda key: (len(index[key]) > 0, convert_to_ical(index[key], f'deadlines_{lang}_{key}.ics', lang, SUB_MAPPING))
+        element_mapping(index.keys(), f, thread_pool_size=8)
+    print("转换完成")

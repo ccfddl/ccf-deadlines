@@ -40,3 +40,14 @@
         timezone: AoE
         date: September 30-October 4, 2024
         place: Charlotte, USA
+      - year: 2025
+        id: srds25
+        link: https://srds-conference.org/
+        timeline:
+          - deadline: '2025-04-25 23:59:59'
+            comment: Abstract Submission
+          - deadline: '2025-05-02 23:59:59'
+            comment: Full Paper Submission
+        timezone: AoE
+        date: September 29-October 2, 2025
+        place: Porto, Portugal
