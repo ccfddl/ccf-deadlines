@@ -1,0 +1,17 @@
+  - title: NLPCC
+    description: CCF International Conference on Natural Language Processing and Chinese Computing
+    sub: AI
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: nlpcc
+    confs:
+      - year: 2025
+        id: nlpcc2025
+        link: http://tcci.ccf.org.cn/conference/2025/index.php
+        timeline:
+          - deadline: '2025-04-06 23:59:59'
+        timezone: UTC+8
+        date: August 8-10, 2025
+        place: Urumqi, China
