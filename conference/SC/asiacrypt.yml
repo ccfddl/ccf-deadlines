@@ -32,3 +32,11 @@
         timezone: UTC
         date: December 9-13, 2024
         place: Kolkata, India
+      - year: 2025
+        id: asiacrypt25
+        link: https://asiacrypt.iacr.org/2025/
+        timeline:
+          - deadline: '2025-05-16 11:59:59'
+        timezone: UTC
+        date: December 8-12, 2025
+        place: Melbourne, Australia
