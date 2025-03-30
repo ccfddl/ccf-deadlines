@@ -57,8 +57,8 @@
             comment: Submission Deadline Round 1
           - deadline: '2025-02-04 07:59:59'
             comment: Submission Deadline Revision R1
-          - deadline: '2025-03-25 07:59:59'
+          - deadline: '2025-03-25 23:59:59'
             comment: Submission Deadline Round 2
-        timezone: UTC-4
+        timezone: UTC-12
         date: October 12-18, 2025
         place: Singapore
