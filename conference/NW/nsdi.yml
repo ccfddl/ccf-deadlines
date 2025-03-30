@@ -59,6 +59,6 @@
             deadline: '2025-04-25 23:59:59'
           - abstract_deadline: '2025-09-11 23:59:59'
             deadline: '2025-09-18 23:59:59'
-        timezone: UTC-4
+        timezone: UTC-7
         date: May 4-6, 2026
         place: Renton, WA, USA
