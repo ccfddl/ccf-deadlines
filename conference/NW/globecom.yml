@@ -19,7 +19,7 @@
         id: globecom25
         link: https://globecom2025.ieee-globecom.org/
         timeline:
-          - deadline: '2025-04-01 23:59:59'
+          - deadline: '2025-04-15 23:59:59'
         timezone: UTC-4
         date: December 8-12, 2025
         place: Taipei, Taiwan
