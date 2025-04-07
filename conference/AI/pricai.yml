@@ -15,3 +15,11 @@
         timezone: UTC-12
         date: Nov 18-24, 2024
         place: Kyoto, Japan
+      - year: 2025
+        id: pricai2025
+        link: https://www.pricai.org/2025/
+        timeline:
+          - deadline: '2025-06-13 23:59:59'
+        timezone: UTC-12
+        date: Nov 17-21, 2025
+        place: Wellington, New Zealand
