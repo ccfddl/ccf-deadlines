@@ -15,7 +15,6 @@
         timezone: UTC-7
         date: March 18-21, 2024
         place: Davos, Switzerland
-
       - year: 2025
         id: 3dv2025
         link: https://3dvconf.github.io/2025/
@@ -24,3 +23,11 @@
         timezone: UTC-7
         date: March 25-28, 2025
         place: Singapore
+      - year: 2026
+        id: 3dv2026
+        link: https://3dvconf.github.io/2026/
+        timeline:
+          - deadline: 'TBD'
+        timezone: UTC-7
+        date: TBD
+        place: Vancouver
