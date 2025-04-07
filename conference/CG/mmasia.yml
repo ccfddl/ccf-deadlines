@@ -15,3 +15,12 @@
         timezone: AoE
         date: December 06-08, 2023
         place: Tainan, Taiwan
+      - year: 2025
+        id: mmasia25
+        link: https://mmasia2025.org/
+        timeline:
+          - deadline: '2025-08-02 23:59:59'
+        timezone: AoE
+        date: December 9-12, 2025
+        place: Grand Millenium Hotel, Kuala Lumpur, Malaysia
+
