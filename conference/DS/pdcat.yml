@@ -12,6 +12,6 @@
         link: https://www.pd-cat.org/
         timeline:
           - deadline: '2025-06-30 23:59:00'
-        timezone: AEST
+        timezone: UTC+10
         date: November 14-November 16, 2025
         place: Gold Coast, Australia
