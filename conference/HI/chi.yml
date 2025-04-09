@@ -25,3 +25,12 @@
         timezone: AoE
         date: April 26 - May 1, 2025
         place: Yokohama, Japan
+      - year: 2026
+        id: chi26
+        link: https://chi2026.acm.org/
+        timeline:
+          - abstract_deadline: 'TBD'
+            deadline: 'TBD'
+        timezone: AoE
+        date: April 13 - 17, 2026
+        place: Centre de Convencions Internacional de Barcelona, Barcelona, Spain
