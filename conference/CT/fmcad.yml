@@ -1,0 +1,17 @@
+  - title: FMCAD
+    description: 'Formal Methods in Computer-Aided Design'
+    sub: CT
+    rank:
+      ccf: C
+      core: B
+    dblp: fmcad
+    confs:
+      - year: 2025
+        id: fmcad25
+        link: https://fmcad.forsyte.at/FMCAD25/
+        timeline:
+          - deadline: '2025-04-27 23:59:00'
+            abstract_deadline: "2025-04-20 23:59:00"
+        timezone: AoE
+        date: Oct. 6-10, 2025
+        place: Menlo Park, USA

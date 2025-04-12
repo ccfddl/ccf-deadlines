@@ -16,3 +16,14 @@
         timezone: UTC
         date: August 21-23, 2024
         place: McGill University, Montreal, Canada
+      - year: 2025
+        id: sca25
+        link: https://computeranimation.org/
+        timeline:
+          - deadline: '2025-04-07 23:59:59'
+            comment: Submission deadline (papers)
+          - deadline: '2025-06-15 23:59:59'
+            comment: Submission deadline (posters)
+        timezone: AoE
+        date: August 8-10, 2025
+        place: Vancouver, Canada

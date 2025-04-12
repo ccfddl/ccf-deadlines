@@ -15,3 +15,11 @@
         timezone: UTC-7
         date: Dec 01-05, 2024
         place: Kolkata, India
+      - year: 2026
+        id: icpr26
+        link: https://icpr2026.org/
+        timeline:
+          - deadline: 'TBD'
+        timezone: AoE
+        date: August 17-21, 2026
+        place: Lyon, France

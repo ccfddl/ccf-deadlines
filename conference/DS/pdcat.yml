@@ -1,0 +1,17 @@
+  - title: PDCAT
+    description: 26th International Conference on Parallel and Distributed Computing, Applications and Technologies
+    sub: DS
+    rank:
+      ccf: N
+      core: C
+      thcpl: N
+    dblp: pdcat
+    confs:
+      - year: 2025
+        id: pdcat2025
+        link: https://www.pd-cat.org/
+        timeline:
+          - deadline: '2025-07-06 23:59:00'
+        timezone: UTC+10
+        date: November 14-November 16, 2025
+        place: Gold Coast, Australia
