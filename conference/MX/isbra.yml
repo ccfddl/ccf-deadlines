@@ -1,0 +1,17 @@
+  - title: ISBRA
+    description: International Symposium on Bioinformatics Research and Applications
+    sub: MX
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: isbra
+    confs:
+      - year: 2025
+        id: isbra25
+        link: https://www.helsinki.fi/en/conferences/isbra2025
+        timeline:
+          - deadline: '2025-04-01 23:59:59'
+        timezone: AoE
+        date: August 3-5, 2025
+        place: Helsinki, Finland
