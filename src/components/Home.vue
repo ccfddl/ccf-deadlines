@@ -10,12 +10,16 @@
       ></el-switch>
     </el-row>
     <el-checkbox style="padding-top: 10px;width: 33%" :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><span style="color: #666666">{{ useEnglish ? 'Select All' : '全选' }}</span></el-checkbox>
-    <el-checkbox-group v-model="checkList" @change="handleCheckedChange">
-      <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub"><span style="color: #666666">{{formatSubName(item)}}</span></el-checkbox>
-    </el-checkbox-group>
-    <el-checkbox-group v-model="checkList" @change="handleCheckedChange">
-      <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub"><span style="color: #666666">{{formatSubName(item)}}</span></el-checkbox>
-    </el-checkbox-group>
+    <el-checkbox-group v-model="checkList" @change="handleCheckedChange" class="checkbox-container">
+  <el-checkbox 
+    :class="useEnglish ? 'boxes-en' : 'boxes'" 
+    size="medium" 
+    v-for="item in subList" 
+    :label="item.sub" 
+    :key="item.sub">
+    <span style="color: #666666">{{formatSubName(item)}}</span>
+  </el-checkbox>
+</el-checkbox-group>   
     <el-row class="timezone">
       <div style="float: left">
         Deadlines are shown in {{ timeZone }} time.
@@ -169,7 +173,7 @@ export default {
 
     loadFile () {
       this.timeZone = tz
-      this.$http.get(this.publicPath + 'conference/types.yml').then(response => {
+      this.$http.get('https://raw.githubusercontent.com/bokveizen/ccf-deadlines/refs/heads/main/conference/types.yml').then(response => {
         const doc = yaml.load(response.body)
         this.subList = doc
         for (let i = 0; i < this.subList.length; i++) {
@@ -556,10 +560,26 @@ export default {
   padding-top: 1px;
 }
 
-.boxes{
-  width: 33%;
+/* Add a container for the checkbox group */
+.checkbox-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Modify the boxes class */
+.boxes {
+  flex: 0 0 33%; /* For Chinese */
   margin-right: 0px;
   padding-top: 10px;
+  box-sizing: border-box;
+}
+
+/* Add a new class for when English is used */
+.boxes-en {
+  flex: 0 0 50%; /* For English */
+  margin-right: 0px;
+  padding-top: 10px;
+  box-sizing: border-box;
 }
 
 .timezone{
