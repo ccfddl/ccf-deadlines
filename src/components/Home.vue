@@ -173,7 +173,7 @@ export default {
 
     loadFile () {
       this.timeZone = tz
-      this.$http.get('https://raw.githubusercontent.com/bokveizen/ccf-deadlines/refs/heads/main/conference/types.yml').then(response => {
+      this.$http.get(this.publicPath + 'conference/types.yml').then(response => {
         const doc = yaml.load(response.body)
         this.subList = doc
         for (let i = 0; i < this.subList.length; i++) {
