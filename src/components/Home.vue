@@ -1,7 +1,18 @@
 <template>
   <section>
     <Header></Header>
-    <el-checkbox style="padding-top: 10px;width: 33%" :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><span style="color: #666666">全选</span></el-checkbox>
+    <el-row style="margin-bottom: 10px">
+      <el-switch
+        v-model="useEnglish"
+        active-text="English"
+        inactive-text="中文"
+        @change="handleLanguageChange"
+      ></el-switch>
+    </el-row>
+    <el-checkbox style="padding-top: 10px;width: 33%" :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><span style="color: #666666">{{ useEnglish ? 'Select All' : '全选' }}</span></el-checkbox>
+    <el-checkbox-group v-model="checkList" @change="handleCheckedChange">
+      <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub"><span style="color: #666666">{{formatSubName(item)}}</span></el-checkbox>
+    </el-checkbox-group>
     <el-checkbox-group v-model="checkList" @change="handleCheckedChange">
       <el-checkbox class="boxes" size="medium" v-for="item in subList" :label="item.sub" :key="item.sub"><span style="color: #666666">{{formatSubName(item)}}</span></el-checkbox>
     </el-checkbox-group>
@@ -121,6 +132,7 @@ export default {
   },
   data() {
     return {
+      useEnglish: false,
       publicPath: '/',
       checkAll: true,
       isIndeterminate: false,
@@ -144,6 +156,17 @@ export default {
     }
   },
   methods: {
+    handleLanguageChange() {
+      // Store the language preference
+      this.$ls.set('useEnglish', this.useEnglish)
+      
+      // Update the subnames in the conference list
+      this.updateSubnames()
+      
+      // Refresh the display
+      this.showConf(this.typesList, this.rankList, this.input, this.page)
+    },
+
     loadFile () {
       this.timeZone = tz
       this.$http.get(this.publicPath + 'conference/types.yml').then(response => {
@@ -153,13 +176,32 @@ export default {
           this.checkList.push(this.subList[i].sub)
           this.typesList.push(this.subList[i].sub)
           this.typeMap.set(this.subList[i].sub, this.subList[i].name)
+          this.typeMapEn.set(this.subList[i].sub, this.subList[i].name_en)
         }
         this.loadCachedTypes()
+        this.loadLanguagePreference()
         this.getAllConf()
       }, () => {
         alert('sorry your network is not stable!')
       })
     },
+
+    loadLanguagePreference() {
+      const savedUseEnglish = this.$ls.get('useEnglish')
+      if (savedUseEnglish !== null) {
+        this.useEnglish = savedUseEnglish
+      }
+    },
+
+    updateSubnames() {
+      for (let i = 0; i < this.allconfList.length; i++) {
+        const curDoc = this.allconfList[i]
+        curDoc.subname = this.useEnglish ? 
+          this.typeMapEn.get(curDoc.sub) : 
+          this.typeMap.get(curDoc.sub)
+      }
+    },
+
     getAllConf() {
       // get all conf
       let promise1 = this.$http.get(this.publicPath + 'conference/allconf.yml').then(response => {
@@ -207,7 +249,9 @@ export default {
         let curTime = moment.tz(new Date(), tz)
         for (let i = 0; i < doc.length; i++) {
           let curDoc = doc[i]
-          curDoc.subname = this.typeMap.get(curDoc.sub)
+          curDoc.subname = this.useEnglish ? 
+            this.typeMapEn.get(curDoc.sub) : 
+            this.typeMap.get(curDoc.sub)
           if (curDoc.deadline === 'TBD') {
             curDoc.remain = 0
             curDoc.status = 'TBD'
@@ -417,10 +461,10 @@ export default {
       return flag;
     },
     formatSubName(item){
-      if(this._isMobile()) {
+      if (this._isMobile()) {
         return item.sub
-      }else {
-        return item.name
+      } else {
+        return this.useEnglish ? item.name_en : item.name
       }
     },
     loadCachedTypes() {
@@ -560,5 +604,10 @@ a{
 
 .conf-fin{
   opacity: 0.4;
+}
+
+.el-switch {
+  margin-top: 10px;
+  margin-left: 10px;
 }
 </style>
