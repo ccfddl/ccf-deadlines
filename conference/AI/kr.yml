@@ -26,3 +26,12 @@
         timezone: UTC-12
         date: November 2-8, 2024
         place: Hanoi, Vietnam
+      - year: 2025
+        id: krd25
+        link: https://kr.org/KR2025/
+        timeline:
+          - abstract_deadline: '2025-05-07 23:59:59'
+            deadline: '2025-05-12 23:59:59'
+        timezone: UTC-12
+        date: November 11-17, 2025
+        place: Melbourne, Australia
