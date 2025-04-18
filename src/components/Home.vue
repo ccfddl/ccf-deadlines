@@ -149,6 +149,7 @@ export default {
       showList: [],
       showNumber: 0,
       typeMap: new Map(),
+      typeMapEn: new Map(),
       timeZone: '',
       utcMap: new Map(),
       rankoptions: {'A': 'CCF A', 'B': 'CCF B', 'C': 'CCF C', 'N': 'Non-CCF'},
