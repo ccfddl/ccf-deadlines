@@ -33,3 +33,13 @@
         timezone: AoE
         date: September 09-13, 2024
         place: Milan, Italy
+      - year: 2026
+        id: fm26
+        link: https://conf.researchr.org/home/fm-2026
+        timeline:
+          - abstract_deadline: '2025-11-25 23:59:00'
+            deadline: '2025-12-02 23:59:00'
+        timezone: AoE
+        date: May 18-22, 2026
+        place: Tokyo, Japan
+
