@@ -15,3 +15,11 @@
         timezone: AoE
         date: January 7-10, 2025
         place: Nara, Japan
+      - year: 2026
+        id: mmm26
+        link: https://mmm2026.cz/
+        timeline:
+          - deadline: '2025-08-19 23:59:59'
+        timezone: AoE
+        date: January 29-31, 2026
+        place: Prague, Czech Republic
