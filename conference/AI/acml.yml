@@ -31,3 +31,14 @@
         timezone: UTC-12
         date: December 5-7, 2024
         place: Hanoi, Vietnam
+      - year: 2025
+        id: acml25
+        link: https://www.acml-conf.org/2025/
+        timeline:
+          - deadline: '2025-05-30 23:59:59'
+            comment: 'Journal Track'
+            deadline: '2025-06-16 23:59:59'
+            comment: 'Conference Track'
+        timezone: AoE
+        date: December 9-12, 2025
+        place: Taipei, Taiwan
