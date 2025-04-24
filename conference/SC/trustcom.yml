@@ -1,6 +1,5 @@
   - title: TrustCom
-    description: IEEE International Conference on Trust, Security and Privacy in Computing
-      and Communications
+    description: IEEE International Conference on Trust, Security and Privacy in Computing and Communications
     sub: SC
     rank:
       ccf: C
@@ -17,3 +16,11 @@
         timezone: UTC+8
         date: To be announced
         place: Shenyang, China
+      - year: 2025
+        id: trustcom25
+        link: https://ieee-aiplus-2025.org/
+        timeline:
+          - deadline: '2025-08-01 23:59:59'
+        timezone: UTC+8
+        date: November 14 - 17, 2025
+        place: Guiyang, China
