@@ -28,3 +28,12 @@
         timezone: UTC-8
         date: October 20-22, 2022
         place: Tianjin, China
+      - year: 2025
+        id: ica3pp
+        link: https://ieee-cybermatics.org/2025/ica3pp/
+        timeline:
+          - deadline: '2025-06-30 23:59:00'
+            comment: Paper Submission Due
+        timezone: UTC-8
+        date: October 30- November 2, 2025
+        place: Zhengzhou, Henan, China
