@@ -27,3 +27,14 @@
         timezone: AoE
         date: October 28-31, 2024
         place: Tsukuba, Japan
+      - year: 2025
+        id: issre25
+        link: https://issre.github.io/2025/index.html
+        timeline:
+          - deadline: '2025-04-28 23:59:59'
+            comment: Abstract submission - Research Track
+          - deadline: '2025-05-05 23:59:59'
+            comment: Paper submission - Research Track
+        timezone: AoE
+        date: October 21st-24th, 2025
+        place: São Paulo, Brazil

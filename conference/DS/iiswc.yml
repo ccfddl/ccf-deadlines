@@ -16,3 +16,12 @@
         timezone: UTC
         date: September 15-17, 2024
         place: Vancouver BC Canada
+      - year: 2025
+        id: iiswc2025
+        link: https://iiswc.org/iiswc2025/
+        timeline:
+          - deadline: '2025-06-21 00:00:00'
+            comment: 'Submissions Due: 2025-06-21'
+        timezone: UTC
+        date: October 12-14, 2025
+        place: Irvine, USA

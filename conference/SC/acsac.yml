@@ -31,3 +31,11 @@
         timezone: UTC-12
         date: December 9-13, 2024
         place: Waikiki, Hawaii, USA
+      - year: 2025
+        id: acsac25
+        link: https://www.acsac.org/
+        timeline:
+          - deadline: '2025-05-30 23:59:59'
+        timezone: UTC-12
+        date: December 9-13, 2025
+        place: Honolulu, Hawaii, USA
