@@ -1,17 +1,18 @@
- - title: Hot Chips
-   description: "Hot Chips: A Symposium on High Performance Chips"
-   sub: DS
-   rank:
-     ccf: B
-     core: C
-     thcpl: B
-   dblp: hotchips
-   confs:
-     - year: 2025
-       id: hcs2025
-       link: https://www.hotchips.org/
-       timeline:
-         - deadline: '2025-04-16 23:59:59'
-       timezone: AoE
-       date: August 24-26, 2025
-       place: Memorial Auditorium, Stanford, Palo Alto, CA
+  - title: Hot Chips
+    description: "Hot Chips: A Symposium on High Performance Chips"
+    sub: DS
+    rank:
+      ccf: B
+      core: C
+      thcpl: B
+    dblp: hotchips
+    confs:
+      - year: 2025
+        id: hcs2025
+        link: https://www.hotchips.org/
+        timeline:
+          - deadline: '2025-04-16 23:59:59'
+        timezone: AoE
+        date: August 24-26, 2025
+        place: Memorial Auditorium, Stanford, Palo Alto, CA
+        
