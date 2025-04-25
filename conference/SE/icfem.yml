@@ -27,4 +27,13 @@
         timezone: AoE
         date: November 21 - November 24, 2023
         place: Brisbane, Australia
+      - year: 2025
+        id: icfem25
+        link: https://icfem2025.github.io/
+        timeline:
+          - abstract_deadline: '2025-05-25 23:59:59'
+            deadline: '2025-06-01 23:59:59'
+        timezone: AoE
+        date: November 10 - 13, 2025
+        place: Hangzhou, China
 

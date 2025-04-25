@@ -30,3 +30,14 @@
         timezone: AoE
         date: October 13-16, 2024
         place: Long Beach, California, USA
+      - year: 2025
+        id: pact25
+        link: https://pact2025.github.io/
+        timeline:
+          - deadline: '2025-04-11 23:59:59'
+            comment: Abstract submission deadline
+          - deadline: '2025-04-18 23:59:59'
+            comment: Paper submission deadline
+        timezone: AoE
+        date: November 3-6, 2025
+        place: Irvine, California, USA

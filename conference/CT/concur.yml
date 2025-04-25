@@ -1,0 +1,18 @@
+  - title: CONCUR
+    description: 'International Conference on Concurrency Theory'
+    sub: CT
+    rank:
+      ccf: B
+      core: A
+      thcpl: B
+    dblp: concur
+    confs:
+      - year: 2025
+        id: concur25
+        link: https://conferences.au.dk/confest2025/concur
+        timeline:
+          - deadline: '2025-04-09 23:59:59'
+            abstract_deadline: "2025-04-03 23:59:59"
+        timezone: AoE
+        date: Aug 26-29, 2025
+        place: Aarhus, Denmark

@@ -15,3 +15,11 @@
         timezone: UTC-5
         date: October 27-30, 2024
         place: Chicago, IL, USA
+      - year: 2025
+        id: focs25
+        link: https://focs.computer.org/2025/
+        timeline:
+          - deadline: '2025-04-03 20:00:00'
+        timezone: UTC-5
+        date: December 14-17, 2025
+        place: Sydney, Australia

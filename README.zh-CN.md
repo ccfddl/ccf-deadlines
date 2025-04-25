@@ -18,6 +18,13 @@
 
 **对麻烦的查找会议和转换时间说拜拜!**
 
+## iCal 订阅：
+
+- English：`https://ccfddl.com/conference/deadlines_en.ics`
+- 简体中文：`https://ccfddl.com/conference/deadlines_zh.ics`
+
+<img src=".readme_assets/screenshot_iCal.jpg" width="500px"/>
+
 ## 增加/更新 会议
 
 欢迎一起帮忙维护会议的相关信息!

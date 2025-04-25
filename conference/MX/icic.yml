@@ -17,9 +17,9 @@
         place: Tianjin, China
       - year: 2025
         id: icic25
-        link: http://www.ic-icc.cn/2025/index.htm
+        link: http://www.ic-icc.cn/2025/index.php
         timeline:
-          - deadline: '2025-03-25 23:59:59'
+          - deadline: '2025-04-10 11:59:59'
         timezone: UTC+8
         date: July 26-29, 2025
         place: Ningbo, China

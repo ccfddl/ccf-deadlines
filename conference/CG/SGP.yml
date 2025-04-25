@@ -1,0 +1,22 @@
+  - title: SGP
+    description: Eurographics Symposium on Geometry Processing
+    sub: CG
+    rank:
+      ccf: B
+      core: B
+      thcpl: B
+    dblp: sgp
+    confs:
+      - year: 2025
+        id: sgp25
+        link: https://sgp2025.my.canva.site/
+        timeline:
+          - abstract_deadline: '2025-02-04 23:59:59'
+            deadline: '2025-02-07 23:59:59'
+            comment: 'First (visa-friendly) round'
+          - abstract_deadline: '2025-04-08 23:59:59'
+            deadline: '2025-04-11 23:59:59'
+            comment: 'Second (traditional) round'
+        timezone: AoE
+        date: June 30 - July 4, 2025
+        place: BILBAO, SPAIN

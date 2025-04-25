@@ -8,15 +8,47 @@ English | [简体中文](./README.zh-CN.md)
 
 Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
-| <div style="width:330px">[Website Preview (Main Site)](https://ccfddl.github.io/)</div> | <div style="width:330px">[Tabular Preview](https://ccfddl.top/) <br> [No Ladder Required]</div> | <div style="width:330px">[PyCli Preview](https://github.com/ccfddl/ccf-deadlines/tree/main/cli) <br> [Work In Progress] </div> |
-| :----: | :----: | :----: |
-| <img src=".readme_assets/screenshot_website.png" width="300px"/> | <img src=".readme_assets/screenshot_tabular.png" width="300px"/> | <img src=".readme_assets/screenshot_pycli.png" width="300px"/> |
+<table>
+  <tr>
+    <td align="center"><b><a href="https://ccfddl.github.io/">Website Preview<br>(Main Site)</a></b></td>
+    <td align="center"><b><a href="https://ccfddl.top/">Tabular Preview</a><br>No Ladder Required</b></td>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/cli">PyCli Preview</a><br>Work In Progress</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src=".readme_assets/screenshot_website.png" width="280px"/></td>
+    <td align="center"><img src=".readme_assets/screenshot_tabular.png" width="280px"/></td>
+    <td align="center"><img src=".readme_assets/screenshot_pycli.png" width="280px"/></td>
+  </tr>
+</table>
 
-| <div style="width:330px">[Wechat Applet](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
-| :----: |
-| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> |
+<table>
+  <tr>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg">Wechat Applet</a><br>Work In Progress</b></td>
+    <td align="center"><b><a href="https://www.raycast.com/ViGeng/ccfddl?via=ViGeng">Raycast Extension</a><br>Available Now</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src=".readme_assets/applet_qrcode.jpg" width="220px"/></td>
+    <td align="center"><img src=".readme_assets/screenshot_raycast.png" width="280px"/></td>
+  </tr>
+</table>
 
 **No More Finding and Time Conversion on Your Own!**
+
+## iCal Subscription:
+
+- English: `https://ccfddl.com/conference/deadlines_en.ics`
+- 简体中文: `https://ccfddl.com/conference/deadlines_zh.ics`
+
+<img src=".readme_assets/screenshot_iCal.jpg" width="500px"/>
+
+The filter is mapped to the name of iCal file in the following rules:
+
+- one filter: `deadlines_en.ics` and `deadlines_zh.ics`
+- two filters: `deadlines_{lang}_{rank}.ics` and `deadlines_{lang}_{sub}.ics`
+- common filters: `deadlines_{lang}_{rank}_{sub}.ics`
+
+For example, given filter: lang=zh, sub=AI,CG, ccf=A,thcpl=A, then it will refer to `deadlines_zh_ccf_A_AI.ics`, `deadlines_zh_ccf_A_CG.ics`, `deadlines_zh_thcpl_A_AI.ics` and `deadlines_zh_thcpl_A_CG.ics`.
+
 
 ## Add/Update a conference
 
@@ -134,18 +166,18 @@ Fields marked with asterisk (*) are required.
 
 The matching table:
 
-| `sub` | Category name |
-| ----------- | --------------------------------------------------------- |
-| `DS`        | Computer Architecture/Parallel Programming/Storage Technology                   |
-| `NW`        | Network System                                              |
-| `SC`        | Network and System Security                                           |
-| `SE`        | Software Engineering/Operating System/Programming Language Design                            |
-| `DB`        | Database/Data Mining/Information Retrieval                                  |
-| `CT`        | Computing Theory                                    |
-| `CG`        | Graphics                                      |
-| `AI`        | Artificial Intelligence                                                  |
-| `HI`        | Computer-Human Interaction                                       |
-| `MX`       | Interdiscipline/Mixture/Emerging                                            |
+| `sub` | Category name                                                     |
+| ----- | ----------------------------------------------------------------- |
+| `DS`  | Computer Architecture/Parallel Programming/Storage Technology     |
+| `NW`  | Network System                                                    |
+| `SC`  | Network and System Security                                       |
+| `SE`  | Software Engineering/Operating System/Programming Language Design |
+| `DB`  | Database/Data Mining/Information Retrieval                        |
+| `CT`  | Computing Theory                                                  |
+| `CG`  | Graphics                                                          |
+| `AI`  | Artificial Intelligence                                           |
+| `HI`  | Computer-Human Interaction                                        |
+| `MX`  | Interdiscipline/Mixture/Emerging                                  |
 
 ## Community activity [![Time period](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_badge.svg)](https://repography.com)
 

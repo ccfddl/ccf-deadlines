@@ -17,4 +17,13 @@
         timezone: AoE
         date: September 4-5, 2024
         place: Kyoto, Japan
+      - year: 2025
+        id: apsys2025
+        link: https://apsys2025.github.io/
+        timeline:
+          - abstract_deadline: '2025-05-29 23:59:00'
+            deadline: '2025-06-05 23:59:00'
+        timezone: AoE
+        date: October 12-13, 2025
+        place: Seoul, South Korea
 
