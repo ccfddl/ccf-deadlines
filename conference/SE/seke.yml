@@ -23,3 +23,11 @@
         timezone: UTC-5
         date: October 28-November 5, 2024
         place: Amalfi, Italy / Virtual venue
+      - year: 2025
+        id: seke25
+        link: https://ksiresearch.org/seke/seke25.html
+        timeline:
+          - deadline: '2025-05-01 23:59:00'
+        timezone: UTC-5
+        date: Sept 29 - Oct 6, 2025
+        place: Pompeii, Italy & Virtual

@@ -31,3 +31,11 @@
         timezone: UTC+2
         date: Dec 2 - 6, 2024
         place: Milan, Italy
+      - year: 2025
+        id: tcc25
+        link: https://tcc.iacr.org/2025/
+        timeline:
+          - deadline: '2025-05-27 23:59:59'
+        timezone: AoE
+        date: December 2-5, 2025
+        place: Aarhus, Denmark

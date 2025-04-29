@@ -16,3 +16,11 @@
         timezone: UTC-8
         date: August 26-30, 2024
         place: LYON, FRANCE
+      - year: 2025
+        id: eusipco2025
+        link: https://eusipco2025.org/
+        timeline:
+          - deadline: '2025-03-13 23:59:59'
+        timezone: AoE
+        date: September 8-12, 2025
+        place: Isola delle Femmine, Palermo, Italy

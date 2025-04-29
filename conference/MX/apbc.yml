@@ -1,0 +1,17 @@
+  - title: APBC
+    description: Asia Pacific Bioinformatics Conference
+    sub: MX
+    rank:
+      ccf: C
+      core: B
+      thcpl: N
+    dblp: apbc
+    confs:
+      - year: 2025
+        id: apbc25
+        link: https://bioinfo.nuaa.edu.cn/apbc2025/main.psp
+        timeline:
+          - deadline: '2025-06-15 23:59:59'
+        timezone: UTC+0
+        date: September 19-22, 2025
+        place: Nanjing， China

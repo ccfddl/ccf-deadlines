@@ -45,7 +45,7 @@
         place: Melbourne, Australia
       - year: 2025
         id: mm25
-        link: https://2025.acmmm.org/
+        link: https://acmmm2025.org/
         timeline:
           - abstract_deadline: '2025-04-04 23:59:59'
             deadline: '2025-04-11 23:59:59'
