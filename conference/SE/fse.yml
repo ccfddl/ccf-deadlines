@@ -48,3 +48,12 @@
         timezone: AoE
         date: June 23-27, 2025
         place: Trondheim, Norway
+      - year: 2026
+        id: fse26
+        link: https://conf.researchr.org/home/fse-2026
+        timeline:
+          - abstract_deadline: '2025-09-04 23:59:59'
+            deadline: '2025-09-11 23:59:59'
+        timezone: AoE
+        date: July 6-10, 2026
+        place: Montréal, Canada
