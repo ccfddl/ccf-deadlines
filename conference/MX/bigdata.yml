@@ -1,0 +1,17 @@
+  - title: BigData
+    description: IEEE International Conference on Big Data
+    sub: MX
+    rank:
+      ccf: C
+      core: B
+      thcpl: N
+    dblp: bigdataconf
+    confs:
+      - year: 2025
+        id: bigdata25
+        link: https://conferences.cis.um.edu.mo/ieeebigdata2025/
+        timeline:
+          - deadline: '2025-08-29 23:59:59'
+        timezone: UTC+0
+        date: December 8-11, 2025
+        place: Macau SAR, China
