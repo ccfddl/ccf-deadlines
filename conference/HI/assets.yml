@@ -1,0 +1,17 @@
+  - title: ASSETS
+    description: ACM SIGACCESS Conference on Computers and Accessibility
+    sub: HI
+    rank:
+      ccf: C
+      core: A
+      thcpl: B
+    dblp: assets
+    confs:
+      - year: 2025
+        id: assets25
+        link: https://assets25.sigaccess.org/
+        timeline:
+          - deadline: '2025-04-16 23:59:59'
+        timezone: AoE
+        date: Oct 26 - 29, 2025
+        place: Denver, Colorado
