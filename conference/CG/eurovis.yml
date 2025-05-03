@@ -1,0 +1,18 @@
+  - title: EuroVis
+    description: Eurographics Conference on Visualization
+    sub: CG
+    rank:
+      ccf: B
+      core: B
+      thcpl: B
+    dblp: vissym
+    confs:
+      - year: 2025
+        id: eurovis2025
+        link: https://www.eurovis2025.lu/
+        timeline:
+          - abstract_deadline: '2024-11-27 23:59:59'
+            deadline: '2024-12-04 23:59:59'
+        timezone: AoE
+        date: June 2-6, 2025
+        place: Luxembourg City, Luxembourg 
