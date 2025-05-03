@@ -1,0 +1,17 @@
+  - title: APLAS
+    description: Asian Symposium on Programming Languages and Systems
+    sub: SE
+    rank:
+      ccf: C
+      core: B
+      thcpl: N
+    dblp: aplas
+    confs:
+      - year: 2025
+        id: aplas25
+        link: https://conf.researchr.org/home/aplas-2025
+        timeline:
+          - deadline: '2025-05-31 23:59:59'
+        timezone: AoE
+        date: October 27-30, 2025
+        place: Bengaluru, India
