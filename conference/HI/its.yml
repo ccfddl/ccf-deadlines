@@ -12,9 +12,9 @@
         link: https://iss.acm.org/2025/
         timeline:
           - deadline: '2025-03-14 23:59:59'
-            commet: 'First round 2025 	'
+            comment: 'First round 2025 	'
             deadline: '2025-07-25 23:59:59'
-            commet: 'Second round 2025'
+            comment: 'Second round 2025'
         timezone: AoE
         date: TBD
         place: TBD
