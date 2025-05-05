@@ -14,7 +14,7 @@
           - abstract_deadline: '2024-05-31 17:00:00'
             deadline: '2024-06-07 17:00:00'
             comment: 'FIRST SUBMISSION CYCLE'
-            abstract_deadline: '2024-12-02 17:00:00'
+          - abstract_deadline: '2024-12-02 17:00:00'
             deadline: '2024-12-09 17:00:00'
             comment: 'SECOND SUBMISSION CYCLE'
         timezone: UTC-7
