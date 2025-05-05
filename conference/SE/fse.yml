@@ -1,6 +1,5 @@
-  - title: ESEC/FSE
-    description: ACM Joint European Software Engineering Conference and Symposium
-      on the Foundations of Software Engineering
+  - title: FSE
+    description: ACM International Conference on the Foundations of Software Engineering
     sub: SE
     rank:
       ccf: A
