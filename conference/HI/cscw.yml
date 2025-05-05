@@ -46,7 +46,7 @@
         timeline:
           - deadline: '2024-07-02 23:59:59'
             comment: 'JULY 2024 CYCLE'
-            deadline: '2024-10-29 23:59:59'
+          - deadline: '2024-10-29 23:59:59'
             comment: 'OCTOBER 2024 CYCLE'
         timezone: AoE
         date: October 18-22, 2025
