@@ -13,10 +13,10 @@
         timeline:
           - abstract_deadline: '2025-01-24 23:59:59'
             deadline: '2025-01-31 23:59:59'
-            commmet: 'Research Papers'
-            abstract_deadline: '2025-03-09 23:59:59'
+            comment: 'Research Papers'
+          - abstract_deadline: '2025-03-09 23:59:59'
             deadline: '2025-03-16 23:59:59'
-            commmet: 'Short Papers, Emerging Results'
+            comment: 'Short Papers, Emerging Results'
         timezone: AoE
         date: June 17 - 20, 2025
         place: Istanbul, Turkey
