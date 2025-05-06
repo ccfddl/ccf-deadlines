@@ -1,0 +1,18 @@
+  - title: EMSOFT
+    description: International Conference on Embedded Software
+    sub: MX
+    rank:
+      ccf: B
+      core: N
+      thcpl: B
+    dblp: emsoft
+    confs:
+      - year: 2025
+        id: emsoft25
+        link: https://esweek.org/emsoft/
+        timeline:
+          - abstract_deadline: '2025-03-23 23:59:59'
+            deadline: '2025-03-30 23:59:59'
+        timezone: AoE
+        date: September 28 - October 3, 2025
+        place: TAIPEI, TAIWAN

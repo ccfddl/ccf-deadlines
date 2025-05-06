@@ -18,3 +18,12 @@
         timezone: AoE
         date: September 19-23, 2022
         place: Helsinki, Finland
+      - year: 2025
+        id: esem25
+        link: https://conf.researchr.org/home/esem-2025
+        timeline:
+          - abstract_deadline: '2025-04-18 23:59:59'
+            deadline: '2025-04-25 23:59:59'
+        timezone: AoE
+        date: September 29 - October 3, 2025
+        place: Honolulu, Hawai, USA

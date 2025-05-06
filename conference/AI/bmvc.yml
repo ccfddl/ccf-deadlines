@@ -32,3 +32,12 @@
         timezone: UTC+8
         date: November 25-28, 2024
         place: Glasgow, UK
+      - year: 2025
+        id: bmvc25
+        link: https://bmvc2025.bmva.org/
+        timeline:
+          - abstract_deadline: '2025-05-09 07:59:59'
+            deadline: '2025-05-16 07:59:59'
+        timezone: UTC+0
+        date: November 24-27, 2025
+        place: Sheffield, UK

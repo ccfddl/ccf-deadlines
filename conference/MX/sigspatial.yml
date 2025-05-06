@@ -17,3 +17,12 @@
         timezone: UTC-7
         date: November 13-16, 2023
         place: Hamburg, Germany
+      - year: 2025
+        id: sigspatial25
+        link: https://sigspatial2025.sigspatial.org/
+        timeline:
+          - abstract_deadline: '2025-05-23 23:59:59'
+            deadline: '2025-05-30 23:59:59'
+        timezone: UTC-7
+        date: November 3-6, 2025
+        place: Minneapolis, MN, USA

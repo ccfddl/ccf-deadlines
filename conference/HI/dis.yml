@@ -1,0 +1,18 @@
+  - title: DIS
+    description: ACM Conference on Designing Interactive Systems
+    sub: HI
+    rank:
+      ccf: C
+      core: A
+      thcpl: B
+    dblp: ACMdis
+    confs:
+      - year: 2025
+        id: dis25
+        link: https://dis.acm.org/2025/
+        timeline:
+          - abstract_deadline: '2025-01-13 23:59:59'
+            deadline: '2025-01-20 23:59:59'
+        timezone: AoE
+        date: July 5 - 9, 2025
+        place: Funchal, Madeira, Portugal

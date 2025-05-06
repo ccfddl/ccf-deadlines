@@ -16,3 +16,12 @@
         timezone: UTC+7
         date: Nov 4 - 8, 2024
         place: San José, Costa Rica
+      - year: 2025
+        id: icmi25
+        link: https://icmi.acm.org/2025/
+        timeline:
+          - abstract_deadline: '2025-04-25 23:59:59'
+            deadline: '2025-05-02 23:59:59'
+        timezone: UTC+7
+        date: Oct 13 - 17, 2025
+        place: Canberra, Australia

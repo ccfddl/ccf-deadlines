@@ -25,3 +25,12 @@
         timezone: AoE
         date: March 24 - March 27, 2025
         place: Cagliari, Italy
+      - year: 2026
+        id: iui26
+        link: https://iui.hosting.acm.org/2026/
+        timeline:
+          - abstract_deadline: 'TBD'
+            deadline: 'TBD'
+        timezone: AoE
+        date: March 23 - March 26, 2026
+        place: Paphos, Cyprus
