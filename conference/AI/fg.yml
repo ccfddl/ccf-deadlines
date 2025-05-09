@@ -13,7 +13,7 @@
         timeline:
           - deadline: '2024-09-30 23:59:59'
             comment: 'Round 1'
-            deadline: '2025-01-31 23:59:59'
+          - deadline: '2025-01-31 23:59:59'
             comment: 'Round 2'
         timezone: UTC-8
         date: May 26-30, 2025
