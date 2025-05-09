@@ -1,0 +1,17 @@
+  - title: FG
+    description: International Conference on Automatic Face and Gesture Recognition
+    sub: AI
+    rank:
+      ccf: C
+      core: B
+      thcpl: 
+    dblp: 
+    confs:
+      - year: 2025
+        id: fg2025
+        link: https://fg2025.ieee-biometrics.org/
+        timeline:
+          - deadline: '2025-01-31 23:59:59'
+        timezone: UTC-8
+        date: May 26-30, 2025
+        place: Clearwater, USA
