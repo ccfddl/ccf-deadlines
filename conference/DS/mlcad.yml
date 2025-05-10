@@ -1,0 +1,20 @@
+- title: MLCAD
+  description: ACM/IEEE International Symposium on Machine Learning for CAD
+  sub: DS
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: mlcad
+  confs:
+    - year: 2025
+      id: mlcad2025
+      link: https://mlcad.org/symposium/2025/
+      timeline:
+        - deadline: '2025-05-16 23:59:59'
+          comment: Research paper abstract deadline
+        - deadline: '2025-05-23 23:59:59'
+          comment: Full manuscript deadline
+      timezone: UTC-12
+      date: September 8-10, 2025
+      place: Chaminade Resort, Santa Cruz, California, USA
