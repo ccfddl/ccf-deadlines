@@ -57,4 +57,17 @@
         timezone: UTC-12
         date: August 13-15, 2025
         place: SEATTLE, WA, USA
+      - year: 2026
+        id: uss26
+        link: https://www.usenix.org/conference/usenixsecurity26
+        timeline:
+          - abstract_deadline: '2025-08-19 23:59:59'
+            deadline: '2025-08-26 23:59:59'
+            comment: Cycle 1 Deadline
+          - abstract_deadline: '2026-01-29 23:59:59'
+            deadline: '2026-02-05 23:59:59'
+            comment: Cycle 2 Deadline
+        timezone: UTC-12
+        date: August 12-14, 2026
+        place: Baltimore, MD, USA
 
