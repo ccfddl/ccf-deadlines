@@ -9,9 +9,9 @@
     confs:
       - year: 2025
         id: rv25
-        link: https://rv25.conf.tuwien.ac.at/
+        link: https://rv25.isec.tugraz.at/
         timeline:
-          - deadline: 'TBD'
+          - deadline: '2025-05-30 23:59:59'
         timezone: AoE
         date: September 15-19, 2025
-        place: Vienna, Austria
+        place: Graz, Austria
