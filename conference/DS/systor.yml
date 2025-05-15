@@ -20,3 +20,14 @@
         timezone: UTC+1
         date: June 17-19, 2024
         place: Tel Aviv, Israel
+      - year: 2025
+        id: systor25
+        link: https://www.systor.org/2025/
+        timeline:
+          - deadline: '2025-05-22 23:59:59'
+            comment: Full and Short Papers Track
+          - deadline: '2025-07-03 22:59:59'
+            comment: Posters with Extended Abstract Track
+        timezone: AoE
+        date: September 8-9, 2025
+        place: IBM Haifa, Israel

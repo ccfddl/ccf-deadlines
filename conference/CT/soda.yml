@@ -15,3 +15,12 @@
         timezone: UTC-12
         date: January 12-15, 2025
         place: New Orleans, Louisiana, USA
+      - year: 2026
+        id: soda26
+        link: https://www.siam.org/conferences-events/siam-conferences/soda26/
+        timeline:
+          - deadline: '2025-07-14 23:59:59'
+        timezone: UTC-12
+        date: January 11-14, 2026
+        place: Hyatt Regency Vancouver, Vancouver, Canada 
+

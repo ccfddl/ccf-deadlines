@@ -65,7 +65,7 @@
         id: icde26
         link: https://icde2026.github.io/
         timeline:
-          - deadline: '2025-06-11 23:59:59'
+          - deadline: '2025-06-18 23:59:59'
             comment: first round
           - deadline: '2025-10-27 23:59:59'
             comment: second round

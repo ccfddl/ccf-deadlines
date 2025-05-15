@@ -1,0 +1,17 @@
+  - title: SSE
+    description: IEEE International Conference on Software Services Engineering
+    sub: SE
+    rank:
+      ccf: C
+      core: B
+      thcpl: B
+    dblp: IEEEscc
+    confs:
+      - year: 2025
+        id: sse25
+        link: https://services.conferences.computer.org/2025/sse/
+        timeline:
+          - deadline: '2025-03-10 23:00:00'
+        timezone: AoE
+        date: July 7-12, 2025
+        place: Helsinki, Finland
