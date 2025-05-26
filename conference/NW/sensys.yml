@@ -7,12 +7,12 @@
       thcpl: A
     dblp: sensys
     confs:
-      - year: 2025
-        id: sensys25
-        link: https://sensys.acm.org/2025/
+      - year: 2026
+        id: sensys26
+        link: https://sensys.acm.org/2026/
         timeline:
-          - abstract_deadline: '2024-11-14 23:59:59'
-            deadline: '2024-11-14 23:59:59'
+          - abstract_deadline: '2025-06-24 23:59:00'
+            deadline: '2025-07-01 23:59:00'
         timezone: AoE
-        date: May 6-9, 2025
-        place: Irvine, USA
+        date: May 11-14, 2026
+        place: Saint-Malo, France
