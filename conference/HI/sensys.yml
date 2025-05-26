@@ -1,0 +1,18 @@
+- title: SenSys
+  description: ACM/IEEE Conference on Embedded Artificial Intelligence and Sensing Systems
+  sub: HI
+  rank:
+    ccf: B
+    core: A*
+    thcpl: A
+  dblp: SenSys
+  confs:
+    - year: 2026
+      id: SenSys22
+      link: https://sensys.acm.org/2026/
+      timeline:
+        - deadline: '2025-07-01 23:59:00'
+          comment: 'first round'
+      timezone: AoE
+      date: May 11-14, 2026
+      place: Saint-Malo, France
