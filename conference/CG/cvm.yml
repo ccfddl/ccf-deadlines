@@ -16,3 +16,13 @@
         timezone: UTC+0
         date: April 19-21, 2025
         place: Hong Kong, China
+      - year: 2026
+        id: cvm26
+        link: http://iccvm.org/2026/
+        timeline:
+          - abstract_deadline: '2025-10-10 23:59:59'
+            deadline: '2025-10-13 23:59:59'
+        timezone: UTC+0
+        date: April 10-12, 2026
+        place: Seoul, Korea
+
