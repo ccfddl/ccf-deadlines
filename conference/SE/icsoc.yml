@@ -19,3 +19,17 @@
         timezone: AoE
         date: May 26-27, 2022
         place: Barcelona, Spain
+      - year: 2025
+        id: icsoc25
+        link: https://icsoc2025.hit.edu.cn/main.htm
+        timeline:
+          - deadline: '2025-05-09 23:59:59'
+            comment: Early paper submissions
+          - deadline: '2025-07-07 23:59:59'
+            comment: Regular paper abstract submissions
+          - deadline: '2025-07-14 23:59:59'
+            comment: Regular paper submissions
+        timezone: AoE
+        date: December 1-4, 2025
+        place: Shenzhen, China
+
