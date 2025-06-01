@@ -41,3 +41,14 @@
         timezone: AoE
         date: August 25-29, 2025
         place: Hanoi, Vietnam
+      - year: 2026
+        id: asiaccs26
+        link: https://asiaccs2026.cse.iitkgp.ac.in/
+        timeline:
+          - deadline: '2025-08-25 23:59:59'
+            comment: 1st round Deadline
+          - deadline: '2025-12-12 23:59:59'
+            comment: 2nd round Deadline
+        timezone: AoE
+        date: June 1-6, 2026
+        place: Bangalore, India
