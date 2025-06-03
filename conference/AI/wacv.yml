@@ -18,3 +18,16 @@
         timezone: UTC-7
         date: February 28 - March 4, 2025
         place: Tucson, Arizona, USA
+      - year: 2026
+        id: wacv26
+        link: https://wacv.thecvf.com/
+        timeline:
+          - abstract_deadline: '2025-07-11 23:59:00'
+            deadline: '2025-07-18 23:59:59'
+            comment: First round
+          - abstract_deadline: '2025-09-12 23:59:00'
+            deadline: '2025-09-19 23:59:59'
+            comment: Second round
+        timezone: AoE
+        date: Mar 6 - 10, 2026
+        place: Tucson, Arizona, USA

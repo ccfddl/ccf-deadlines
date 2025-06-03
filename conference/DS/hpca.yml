@@ -49,3 +49,12 @@
         timezone: UTC
         date: March 1-5, 2025
         place: Las Vegas, USA.
+      - year: 2026
+        id: hpca26
+        link: https://hpca-conf.org/2026/
+        timeline:
+          - abstract_deadline: '2025-07-25 23:59:59'
+            deadline: '2025-08-01 23:59:59'
+        timezone: UTC
+        date: Feb 25-Mar 1, 2026
+        place: Sydney, NSW, Australia

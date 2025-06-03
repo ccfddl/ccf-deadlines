@@ -1,0 +1,28 @@
+  - title: PerCom
+    description: IEEE International Conference on Pervasive Computing and Communications
+    sub: HI
+    rank:
+      ccf: B
+      core: A*
+      thcpl: B
+    dblp: percom
+    confs:
+      - year: 2025
+        id: percom25
+        link: https://percom.org/
+        timeline:
+          - abstract_deadline: '2024-09-29 23:59:00'
+            deadline: '2024-10-04 23:59:00'
+        timezone: AoE
+        date: March 17 - 21, 2025
+        place: Walter E. Washington Convention Center, Washington DC, USA
+      - year: 2026
+        id: percom26
+        link: https://percom.org/
+        timeline:
+          - abstract_deadline: '2025-09-12 23:59:00'
+            deadline: '2025-09-19 23:59:00'
+        timezone: AoE
+        date: March 16 - 20, 2026
+        place: Pisa, Italy
+     

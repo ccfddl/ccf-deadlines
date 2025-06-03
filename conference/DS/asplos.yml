@@ -45,7 +45,7 @@
         place: Vancouver, Canada
       - year: 2024
         id: asplos24
-        link: https://asplos-conference.org/asplos-2024-call-for-papers/
+        link: https://www.asplos-conference.org/asplos2024/cfp/
         timeline:
           - deadline: '2023-04-14 02:59:59'
             comment: Spring Registration Deadline
@@ -64,7 +64,7 @@
         place: California, U.S.A.
       - year: 2025
         id: asplos25
-        link: https://www.asplos-conference.org/asplos-2025-call-for-papers/
+        link: https://www.asplos-conference.org/asplos2025/cfp/
         timeline:
           - abstract_deadline: '2024-02-23 23:59:59'
             deadline: '2024-03-01 23:59:59'
@@ -78,3 +78,16 @@
         timezone: AoE
         date: March-April, 2025
         place: Rotterdam, Netherland.
+      - year: 2026
+        id: asplos26
+        link: https://www.asplos-conference.org/asplos2026/cfp/
+        timeline:
+          - abstract_deadline: '2025-03-05 23:59:59'
+            deadline: '2025-03-12 23:59:59'
+            comment: Spring Submission Deadline
+          - abstract_deadline: '2025-08-13 23:59:59'
+            deadline: '2025-08-20 23:59:59'
+            comment: Summer Submission Deadline
+        timezone: UTC-4
+        date: March 22-26, 2026
+        place: Pittsburgh, PA, USA

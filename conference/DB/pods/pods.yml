@@ -1,0 +1,22 @@
+  - title: PODS
+    description: ACM Symposium on Principles of Database Systems
+    sub: DB
+    rank:
+      ccf: B
+      core: A* 
+      thcpl: A
+    dblp: pods
+    confs:
+      - year: 2025
+        id: pods25
+        link: https://2025.sigmod.org/
+        timeline:
+          - abstract_deadline: '2024-05-31 17:00:00'
+            deadline: '2024-06-07 17:00:00'
+            comment: 'FIRST SUBMISSION CYCLE'
+          - abstract_deadline: '2024-12-02 17:00:00'
+            deadline: '2024-12-09 17:00:00'
+            comment: 'SECOND SUBMISSION CYCLE'
+        timezone: UTC-7
+        date: June 22-27, 2025
+        place: Berlin, Germany

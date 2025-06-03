@@ -29,3 +29,13 @@
         timezone: AoE
         date: Jan 20-23, 2025
         place: Tokyo Odaiba Miraikan, Japan
+      - year: 2026
+        id: aspdac26
+        link: https://www.aspdac.com/aspdac2026/
+        timeline:
+          - abstract_deadline: '2025-07-04 17:00:00'
+            deadline: '2025-07-11 17:00:00'
+        timezone: AoE
+        date: Jan 19-22, 2026
+        place: Hong Kong Disneyland
+

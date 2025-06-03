@@ -51,3 +51,12 @@
         timezone: AoE
         date: May 13-16, 2025
         place: Santa Clara, USA
+
+      - year: 2026
+        id: mlsys26
+        link: https://mlsys.org/
+        timeline:
+          - deadline: 'TBD'
+        timezone: AoE
+        date: May 17-22, 2025
+        place: Bellevue, Washington, USA

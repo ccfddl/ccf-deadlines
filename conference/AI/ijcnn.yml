@@ -23,3 +23,11 @@
         timezone: UTC-12
         date: June 30 - July 5, 2025
         place: Rome, Italy
+      - year: 2026
+        id: ijcnn2026
+        link: https://attend.ieee.org/wcci-2026/
+        timeline:
+          - deadline: '2026-01-31 23:59:59'
+        timezone: UTC-12
+        date: June 21 - 26, 2026
+        place: Maastricht Exhibition & Congress Center, Maastricht, The Netherlands
