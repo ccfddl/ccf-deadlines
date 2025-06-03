@@ -28,7 +28,7 @@
         id: prcv25
         link: http://2025.prcv.cn/
         timeline:
-          - deadline: '2025-06-03 23:59:59'
+          - deadline: '2025-06-30 23:59:59'
         timezone: UTC+8
         date: Oct 16-19, 2025
         place: Shanghai, China
