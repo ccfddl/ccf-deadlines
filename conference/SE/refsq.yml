@@ -1,0 +1,27 @@
+  - title: REFSQ
+    description: "Requirements Engineering: Foundation for Software Quality"
+    sub: SE
+    rank:
+      ccf: C
+      core: B
+      thcpl: N
+    dblp: refsq
+    confs:
+      - year: 2025
+        id: refsq25
+        link: https://2025.refsq.org/
+        timeline:
+          - abstract_deadline: '2024-11-01 23:59:59'
+            deadline: '2024-11-08 23:59:59'
+        timezone: AoE
+        date: April 7-10, 2025
+        place: Barcelona, Spain
+      - year: 2026
+        id: refsq26
+        link: https://2026.refsq.org/
+        timeline:
+          - abstract_deadline: 'TBD'
+            deadline: 'TBD'
+        timezone: AoE
+        date: March 23-26, 2026
+        place: Poznań, Poland
