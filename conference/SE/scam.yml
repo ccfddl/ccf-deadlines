@@ -1,0 +1,19 @@
+  - title: SCAM
+    description: IEEE International Working Conference on Source Code Analysis and Manipulation
+    sub: SE
+    rank:
+      ccf: C
+      core: C
+      thcpl: N
+    dblp: scam
+    confs:
+      - year: 2025
+        id: scam25
+        link: https://conf.researchr.org/home/scam-2025
+        timeline:
+          - abstract_deadline: '2025-06-05 23:59:59'
+            deadline: '2025-06-09 23:59:59'
+            comment: 'co-located with ICSME 2025'
+        timezone: AoE
+        date: September 7-12, 2025
+        place: Auckland, New Zealand
