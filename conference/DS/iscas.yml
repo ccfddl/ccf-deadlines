@@ -15,3 +15,11 @@
         timezone: AoE
         date: May 25-28, 2025
         place: London, UK
+      - year: 2026
+        id: iscas26
+        link: https://2026.ieee-iscas.org/
+        timeline:
+          - deadline: '2025-10-12 23:59:59'
+        timezone: AoE
+        date: May 24-27, 2026
+        place: SHANGHAI, CHINA
