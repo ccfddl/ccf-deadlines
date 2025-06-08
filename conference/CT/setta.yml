@@ -21,10 +21,10 @@
         id: setta25
         link: https://www.setta2025.uk
         timeline:
-          - deadline: '2025-02-16 23:59:59'
-            comment: 'Round 1(Winter) Paper Submission'
-          - deadline: '2025-06-15 23:59:59'
-            comment: 'Round 2(Summer) Paper Submission'
+          - deadline: '2025-04-30 23:59:59'
+            comment: 'Round 1 Paper Submission'
+          - deadline: '2025-08-20 23:59:59'
+            comment: 'Round 2 Paper Submission'
         timezone: AoE
         date: Dec, 2025
         place: Oxford, UK
