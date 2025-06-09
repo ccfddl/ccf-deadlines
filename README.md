@@ -25,10 +25,12 @@ Help researchers track deadlines of conferences recommended by [China Computer F
   <tr>
     <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg">Wechat Applet</a><br>Work In Progress</b></td>
     <td align="center"><b><a href="https://www.raycast.com/ViGeng/ccfddl?via=ViGeng">Raycast Extension</a><br>Available Now</b></td>
+    <td align="center"><b><a href="https://github.com/superpung/swiftbar-ccfddl/">SwiftBar Plugin</a><br>Available Now</b></td>
   </tr>
   <tr>
     <td align="center"><img src=".readme_assets/applet_qrcode.jpg" width="220px"/></td>
     <td align="center"><img src=".readme_assets/screenshot_raycast.png" width="280px"/></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/superpung/swiftbar-ccfddl/refs/heads/main/docs/preview.png" width="280px"/></td>
   </tr>
 </table>
 

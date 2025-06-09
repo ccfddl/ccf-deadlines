@@ -12,9 +12,9 @@
 | :----: | :----: | :----: |
 | <img src=".readme_assets/screenshot_website.png" width="300px"/> | <img src=".readme_assets/screenshot_tabular.png" width="300px"/> | <img src=".readme_assets/screenshot_pycli.png" width="300px"/> |
 
-| <div style="width:330px">[微信小程序](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> |
-| :----: |
-| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> |
+| <div style="width:330px">[微信小程序](https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg) <br> [Work In Progress]</div> | <div style="width:330px">[macOS 菜单栏组件](https://github.com/superpung/swiftbar-ccfddl/) <br> [SwiftBar 插件]</div> |
+| :----: | :----: |
+| <img src=".readme_assets/applet_qrcode.jpg" width="200px"/> | <img src="https://github.com/superpung/swiftbar-ccfddl/blob/main/docs/preview.png" width="200px"/> |
 
 **对麻烦的查找会议和转换时间说拜拜!**
 
