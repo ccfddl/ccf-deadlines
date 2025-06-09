@@ -15,3 +15,11 @@
         timezone: UTC-12
         date: December 10-13, 2023
         place: BITS Pilani Goa, India
+      - year: 2025
+        id: indocrypt25
+        link: https://www.indocrypt2025.in/
+        timeline:
+          - deadline: '2025-09-01 23:59:59'
+        timezone: UTC-12
+        date: December 14-17, 2025
+        place: IIIT Bhubaneswar, Odisha, India
