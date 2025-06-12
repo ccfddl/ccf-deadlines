@@ -37,7 +37,7 @@
         timeline:
           - deadline: '2025-05-30 23:59:59'
             comment: 'Journal Track'
-          - deadline: '2025-06-16 23:59:59'
+          - deadline: '2025-06-26 23:59:59'
             comment: 'Conference Track'
         timezone: AoE
         date: December 9-12, 2025
