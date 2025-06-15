@@ -1,18 +1,18 @@
-- title: UIC
-  description: IEEE International Conference on Ubiquitous Intelligence and Computing
-  sub: HI
-  rank:
-    ccf: C  
-    core: B
-    thcpl: N
-  dblp: uic  
-  confs:
-    - year: 2025
-      id: uic25
-      link: https://www.ieee-smart-world.org/2025/
-      timeline:
-        - deadline: '2025-05-01 23:59:59'
-          comment: 'Conference Papers'
-      timezone: UTC-4  
-      date: Aug 18 - 22, 2025
-      place: Calgary, Alberta, Canada
+  - title: UIC
+    description: IEEE International Conference on Ubiquitous Intelligence and Computing
+    sub: HI
+    rank:
+      ccf: C  
+      core: B
+      thcpl: N
+    dblp: uic  
+    confs:
+      - year: 2025
+        id: uic25
+        link: https://www.ieee-smart-world.org/2025/
+        timeline:
+          - deadline: '2025-05-01 23:59:59'
+            comment: 'Conference Papers'
+        timezone: UTC-4  
+        date: Aug 18 - 22, 2025
+        place: Calgary, Alberta, Canada
