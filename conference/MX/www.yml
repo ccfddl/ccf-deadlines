@@ -46,7 +46,6 @@
         timezone: AoE
         date: May 13-17, 2024
         place: Singapore
-
       - year: 2025
         id: www25
         link: https://www2025.thewebconf.org/
@@ -56,3 +55,21 @@
         timezone: AoE
         date: April 28 - May 2, 2025
         place: Sydney, Australia
+      - year: 2026
+        id: www26
+        link: https://www2026.thewebconf.org/
+        timeline:
+          - abstract_deadline: 'TBD'
+            deadline: 'TBD'
+        timezone: AoE
+        date: April 13 - 17, 2026
+        place: Dubaï, UAE
+      - year: 2027
+        id: www27
+        link: https://www2027.thewebconf.org/
+        timeline:
+          - abstract_deadline: 'TBD'
+            deadline: 'TBD'
+        timezone: AoE
+        date: TBD
+        place: Dublin, Ireland
