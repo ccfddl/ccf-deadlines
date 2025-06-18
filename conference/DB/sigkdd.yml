@@ -54,5 +54,14 @@
         timezone: AoE
         date: August 3-7, 2025
         place: Toronto, ON, Canada
-
+      - year: 2026
+        id: sigkdd26
+        link: https://kdd2026.kdd.org/
+        timeline:
+          - abstract_deadline: '2025-07-24 23:59:59'
+            deadline: '2025-07-31 23:59:59'
+            comment: 1st round of 2 total rounds
+        timezone: AoE
+        date: TBD
+        place: TBD, Korea
 
