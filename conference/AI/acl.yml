@@ -43,3 +43,11 @@
         timezone: UTC-12
         date: July 27 - August 1, 2025
         place: Vienna, Austria
+      - year: 2026
+        id: acl26
+        link: https://2026.aclweb.org/
+        timeline:
+          - deadline: 'TBD'
+        timezone: UTC-12
+        date: July 2 - 7, 2026
+        place: San Diego, California, United States
