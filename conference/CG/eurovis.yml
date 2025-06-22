@@ -15,4 +15,13 @@
             deadline: '2024-12-04 23:59:59'
         timezone: AoE
         date: June 2-6, 2025
-        place: Luxembourg City, Luxembourg 
+        place: Luxembourg City, Luxembourg
+      - year: 2026
+        id: eurovis2026
+        link: https://www.eurovis.org.uk/
+        timeline:
+          - abstract_deadline: 'TBD'
+            deadline: 'TBD'
+        timezone: AoE
+        date: June 8-12, 2026
+        place: Nottingham, United Kingdom
