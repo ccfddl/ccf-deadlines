@@ -52,3 +52,12 @@
         timezone: UTC-7
         date: May 19-22, 2025
         place: London, United Kindom
+      - year: 2026
+        id: infocom26
+        link: https://infocom2026.ieee-infocom.org/
+        timeline:
+          - abstract_deadline: '2025-07-24 23:59:59'
+            deadline: '2025-07-31 23:59:59'
+        timezone: AoE
+        date: May 18 - 21, 2026
+        place: Tokyo, Japan
