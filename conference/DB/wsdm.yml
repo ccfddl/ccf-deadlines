@@ -39,3 +39,12 @@
         timezone: UTC-12
         date: March 10 - March 14, 2025
         place: Hannover, Germany
+      - year: 2026
+        id: wsdm26
+        link: https://wsdm-conference.org/2026/
+        timeline:
+          - abstract_deadline: '2025-08-07 23:59:59'
+            deadline: '2025-08-14 23:59:59'
+        timezone: UTC-12
+        date: February 22 - 26, 2026
+        place: Boise, Idaho, USA
