@@ -25,3 +25,12 @@
         timezone: AoE
         date: March 8-12, 2025
         place: Saint-Malo, France
+      - year: 2026
+        id: vr26
+        link: https://ieeevr.org/2026/
+        timeline:
+          - abstract_deadline: 'TBD'
+            deadline: 'TBD'
+        timezone: AoE
+        date: March 21 - 25, 2026
+        place: Daegu, Korea
