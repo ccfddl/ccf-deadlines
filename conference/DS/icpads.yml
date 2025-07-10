@@ -1,17 +1,17 @@
-- title: ICPADS
-  description: IEEE International Conference on Parallel and Distributed Systems
-  sub: DS
-  rank:
-    ccf: C
-    core: N
-    thcpl: N
-  dblp: icpads
-  confs:
-    - year: 2025
-      id: icpads25
-      link: http://ieee-icpads.org.cn/
-      timeline:
-        - deadline: '2025-08-15 18:00:00'
-      timezone: UTC+8
-      date: December 14-18, 2025
-      place: Hefei, China
+  - title: ICPADS
+    description: IEEE International Conference on Parallel and Distributed Systems
+    sub: DS
+    rank:
+      ccf: C
+      core: N
+      thcpl: N
+    dblp: icpads
+    confs:
+      - year: 2025
+        id: icpads25
+        link: http://ieee-icpads.org.cn/
+        timeline:
+          - deadline: '2025-08-15 18:00:00'
+        timezone: UTC+8
+        date: December 14-18, 2025
+        place: Hefei, China
