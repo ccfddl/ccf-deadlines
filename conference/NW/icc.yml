@@ -15,3 +15,11 @@
         timezone: AoE
         date: June 8-12, 2025
         place: Palais des congrès de Montréal in Montreal, Quebec, Canada
+      - year: 2026
+        id: icc26
+        link: https://icc2026.ieee-icc.org
+        timeline:
+            - deadline: '2025-09-29 23:59:59'
+        timezone: UTC-4
+        date: May 24-28, 2026
+        place: Glasgow, Scotland
