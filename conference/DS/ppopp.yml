@@ -49,3 +49,11 @@
         timezone: AoE
         date: Mar 1-5, 2025
         place: Las Vegas, Nevada, USA
+      - year: 2026
+        id: ppopp26
+        link: https://ppopp26.sigplan.org/
+        timeline:
+          - deadline: '2025-09-01 23:59:59'
+        timezone: AoE
+        date: Jan 31-Feb 4, 2026
+        place: Sydney, Australia
