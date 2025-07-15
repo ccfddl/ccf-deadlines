@@ -44,3 +44,12 @@
         timezone: UTC
         date: July 7-9, 2025
         place: Boston, MA, USA
+      - year: 2026
+        id: osdi2026
+        link: https://www.usenix.org/conference/osdi26
+        timeline:
+          - abstract_deadline: '2025-12-04 22:59:59'
+            deadline: '2025-12-11 22:59:59'
+        timezone: UTC
+        date: July 13-15, 2026
+        place: Seattle, WA, USA
