@@ -29,8 +29,8 @@
         id: vr26
         link: https://ieeevr.org/2026/
         timeline:
-          - abstract_deadline: 'TBD'
-            deadline: 'TBD'
+          - abstract_deadline: '2025-09-05 23:59:59'
+            deadline: '2025-09-12 23:59:59'
         timezone: AoE
         date: March 21 - 25, 2026
         place: Daegu, Korea
