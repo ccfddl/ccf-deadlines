@@ -1,0 +1,9 @@
+repos:
+    - repo: local
+      hooks:
+          - id: validate
+            name: Validate Conference yaml files
+            entry: python scripts/validate.py
+            language: python
+            additional_dependencies: ["PyYAML", "jsonschema"]
+            types: [python]
