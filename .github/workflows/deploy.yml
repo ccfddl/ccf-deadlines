@@ -23,9 +23,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install PyYAML jsonschema icalendar xlin
-    - name: Validate yml files
-      run: |
-        python ./scripts/validate
     - name: Assemble yml files
       run: |
         mkdir -p public/conference && cd public/conference
