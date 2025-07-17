@@ -1,23 +1,22 @@
-  - title: ICWSM
-    description: The International AAAI Conference on Web and Social Media
-    sub: HI
-    rank:
-      ccf: B
-      core: A
-      thcpl: N
-    dblp: icwsm
-    confs:
-      - year: 2025
-        id: icwsm2025
-        link: https://www.icwsm.org/2025/index.html
-        timeline:
-          - deadline: '2024-05-15 23:59:59'
-            comment: 1st Full-paper Deadline
-          - deadline: '2024-09-15 23:59:59'
-            comment: 2nd Full-paper Deadline
-          - deadline: '2025-01-15 23:59:59'
-            comment: 3rd Full-paper Deadline
-        timezone: AoE
-        date: June 23 - 26, 2025
-        place: Copenhagen, Denmark
-        
+- title: ICWSM
+  description: The International AAAI Conference on Web and Social Media
+  sub: HI
+  rank:
+    ccf: B
+    core: A
+    thcpl: N
+  dblp: icwsm
+  confs:
+    - year: 2025
+      id: icwsm2025
+      link: https://www.icwsm.org/2025/index.html
+      timeline:
+        - deadline: '2024-05-15 23:59:59'
+          comment: 1st Full-paper Deadline
+        - deadline: '2024-09-15 23:59:59'
+          comment: 2nd Full-paper Deadline
+        - deadline: '2025-01-15 23:59:59'
+          comment: 3rd Full-paper Deadline
+      timezone: AoE
+      date: June 23 - 26, 2025
+      place: Copenhagen, Denmark

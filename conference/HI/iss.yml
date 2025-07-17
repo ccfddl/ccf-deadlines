@@ -1,20 +1,20 @@
-  - title: ISS
-    description: ACM International Conference on Interactive Surfaces and Spaces
-    sub: HI
-    rank:
-      ccf: B
-      core: N
-      thcpl: N
-    dblp: tabletop
-    confs:
-      - year: 2025
-        id: iss25
-        link: https://iss.acm.org/2025/
-        timeline:
-          - deadline: '2025-03-14 23:59:59'
-            commet: 'First round 2025 	'
-          - deadline: '2025-07-25 23:59:59'
-            commet: 'Second round 2025'
-        timezone: AoE
-        date: TBD
-        place: TBD
+- title: ISS
+  description: ACM International Conference on Interactive Surfaces and Spaces
+  sub: HI
+  rank:
+    ccf: B
+    core: N
+    thcpl: N
+  dblp: tabletop
+  confs:
+    - year: 2025
+      id: iss25
+      link: https://iss.acm.org/2025/
+      timeline:
+        - deadline: '2025-03-14 23:59:59'
+          commet: "First round 2025 \t"
+        - deadline: '2025-07-25 23:59:59'
+          commet: 'Second round 2025'
+      timezone: AoE
+      date: TBD
+      place: TBD

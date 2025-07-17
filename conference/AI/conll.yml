@@ -1,17 +1,17 @@
-  - title: CoNLL
-    description: Conference on Computational Natural Language Learning
-    sub: AI
-    rank:
-      ccf: C
-      core: B
-      thcpl: N
-    dblp: conll
-    confs:
-      - year: 2025
-        id: conll25
-        link: https://www.conll.org/
-        timeline:
-          - deadline: '2025-03-14 23:59:59'
-        timezone: UTC-12
-        date: July 31 - August 1, 2025
-        place: Vienna, Austria
+- title: CoNLL
+  description: Conference on Computational Natural Language Learning
+  sub: AI
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: conll
+  confs:
+    - year: 2025
+      id: conll25
+      link: https://www.conll.org/
+      timeline:
+        - deadline: '2025-03-14 23:59:59'
+      timezone: UTC-12
+      date: July 31 - August 1, 2025
+      place: Vienna, Austria

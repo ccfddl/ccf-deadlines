@@ -1,36 +1,36 @@
-  - title: Euro-Par
-    description: European Conference on Parallel and Distributed Computing
-    sub: DS
-    rank:
-      ccf: B
-      core: B
-      thcpl: N
-    dblp: europar
-    confs:
-      - year: 2023
-        id: euro-par23
-        link: https://2023.euro-par.org
-        timeline:
-          - abstract_deadline: '2023-02-17 23:59:59'
-            deadline: '2023-02-24 23:59:59'
-        timezone: AoE
-        date: August 28-September 1, 2023
-        place: Limassol, Cyprus
-      - year: 2024
-        id: euro-par24
-        link: https://2024.euro-par.org
-        timeline:
-          - abstract_deadline: '2024-03-15 23:59:59'
-            deadline: '2024-03-25 23:59:59'
-        timezone: AoE
-        date: August 28-30, 2023
-        place: Madrid, Spain
-      - year: 2025
-        id: euro-par25
-        link: https://2025.euro-par.org/
-        timeline:
-          - abstract_deadline: '2025-03-03 23:59:59'
-            deadline: '2025-03-17 23:59:59'
-        timezone: AoE
-        date: August 25-29, 2025
-        place: Dresden, Germany
+- title: Euro-Par
+  description: European Conference on Parallel and Distributed Computing
+  sub: DS
+  rank:
+    ccf: B
+    core: B
+    thcpl: N
+  dblp: europar
+  confs:
+    - year: 2023
+      id: euro-par23
+      link: https://2023.euro-par.org
+      timeline:
+        - abstract_deadline: '2023-02-17 23:59:59'
+          deadline: '2023-02-24 23:59:59'
+      timezone: AoE
+      date: August 28-September 1, 2023
+      place: Limassol, Cyprus
+    - year: 2024
+      id: euro-par24
+      link: https://2024.euro-par.org
+      timeline:
+        - abstract_deadline: '2024-03-15 23:59:59'
+          deadline: '2024-03-25 23:59:59'
+      timezone: AoE
+      date: August 28-30, 2023
+      place: Madrid, Spain
+    - year: 2025
+      id: euro-par25
+      link: https://2025.euro-par.org/
+      timeline:
+        - abstract_deadline: '2025-03-03 23:59:59'
+          deadline: '2025-03-17 23:59:59'
+      timezone: AoE
+      date: August 25-29, 2025
+      place: Dresden, Germany

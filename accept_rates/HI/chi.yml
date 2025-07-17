@@ -1,14 +1,14 @@
 - title: CHI
   accept_rates:
-  - year: 2022
-    submitted: 2579
-    accepted: 637
-    str: 24.7%(637/2579 22')
-    rate: 0.246994959286545
-    source: https://github.com/emeryberger/csconferences
-  - year: 2023
-    submitted: 3180
-    accepted: 879
-    str: 27.6%(879/3180 23')
-    rate: 0.2764151
-    source: https://csconfstats.xoveexu.com/
+    - year: 2022
+      submitted: 2579
+      accepted: 637
+      str: 24.7%(637/2579 22')
+      rate: 0.246994959286545
+      source: https://github.com/emeryberger/csconferences
+    - year: 2023
+      submitted: 3180
+      accepted: 879
+      str: 27.6%(879/3180 23')
+      rate: 0.2764151
+      source: https://csconfstats.xoveexu.com/

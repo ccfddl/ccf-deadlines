@@ -1,50 +1,50 @@
-  - title: WSDM
-    description: International Conference on Web Search and Data Mining
-    sub: DB
-    rank:
-      ccf: B
-      core: A
-      thcpl: A
-    dblp: wsdm
-    confs:
-      - year: 2022
-        id: wsdm22
-        link: https://www.wsdm-conference.org/2022/
-        timeline:
-          - deadline: '2021-08-09 23:59:59'
-        timezone: UTC-12
-        date: February 21-25, 2022
-        place: Phoenix, Arizona, USA
-      - year: 2023
-        id: wsdm23
-        link: https://www.wsdm-conference.org/2023/
-        timeline:
-          - deadline: '2022-08-12 23:59:59'
-        timezone: UTC-12
-        date: February 27 - March 3, 2023
-        place: Singapore
-      - year: 2024
-        id: wsdm24
-        link: https://www.wsdm-conference.org/2024/
-        timeline:
-          - deadline: '2023-08-10 23:59:59'
-        timezone: UTC-12
-        date: March 4 - March 8, 2024
-        place: Mérida, México
-      - year: 2025
-        id: wsdm25
-        link: https://www.wsdm-conference.org/2025/
-        timeline:
-          - deadline: '2024-08-14 23:59:59'
-        timezone: UTC-12
-        date: March 10 - March 14, 2025
-        place: Hannover, Germany
-      - year: 2026
-        id: wsdm26
-        link: https://wsdm-conference.org/2026/
-        timeline:
-          - abstract_deadline: '2025-08-07 23:59:59'
-            deadline: '2025-08-14 23:59:59'
-        timezone: UTC-12
-        date: February 22 - 26, 2026
-        place: Boise, Idaho, USA
+- title: WSDM
+  description: International Conference on Web Search and Data Mining
+  sub: DB
+  rank:
+    ccf: B
+    core: A
+    thcpl: A
+  dblp: wsdm
+  confs:
+    - year: 2022
+      id: wsdm22
+      link: https://www.wsdm-conference.org/2022/
+      timeline:
+        - deadline: '2021-08-09 23:59:59'
+      timezone: UTC-12
+      date: February 21-25, 2022
+      place: Phoenix, Arizona, USA
+    - year: 2023
+      id: wsdm23
+      link: https://www.wsdm-conference.org/2023/
+      timeline:
+        - deadline: '2022-08-12 23:59:59'
+      timezone: UTC-12
+      date: February 27 - March 3, 2023
+      place: Singapore
+    - year: 2024
+      id: wsdm24
+      link: https://www.wsdm-conference.org/2024/
+      timeline:
+        - deadline: '2023-08-10 23:59:59'
+      timezone: UTC-12
+      date: March 4 - March 8, 2024
+      place: Mérida, México
+    - year: 2025
+      id: wsdm25
+      link: https://www.wsdm-conference.org/2025/
+      timeline:
+        - deadline: '2024-08-14 23:59:59'
+      timezone: UTC-12
+      date: March 10 - March 14, 2025
+      place: Hannover, Germany
+    - year: 2026
+      id: wsdm26
+      link: https://wsdm-conference.org/2026/
+      timeline:
+        - abstract_deadline: '2025-08-07 23:59:59'
+          deadline: '2025-08-14 23:59:59'
+      timezone: UTC-12
+      date: February 22 - 26, 2026
+      place: Boise, Idaho, USA

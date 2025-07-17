@@ -1,27 +1,27 @@
-  - title: COLM
-    description: Conference on Language Modeling
-    sub: AI
-    rank:
-      ccf: N
-      core: N
-      thcpl: N
-    dblp: colm
-    confs:
-      - year: 2024
-        id: colm24
-        link: https://colmweb.org/cfp.html
-        timeline:
-          - abstract_deadline: '2024-03-22 23:59:59'
-            deadline: '2024-03-29 23:59:59'
-        timezone: AoE
-        date: October 7-9, 2024
-        place: Philadelphia, Pennsylvania, United States
-      - year: 2025
-        id: colm25
-        link: https://colmweb.org/cfp.html
-        timeline:
-          - abstract_deadline: '2025-03-22 23:59:59'
-            deadline: '2025-03-28 23:59:59'
-        timezone: AoE
-        date: October 7-9, 2025
-        place: Palais des Congrès Montreal, Canada
+- title: COLM
+  description: Conference on Language Modeling
+  sub: AI
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: colm
+  confs:
+    - year: 2024
+      id: colm24
+      link: https://colmweb.org/cfp.html
+      timeline:
+        - abstract_deadline: '2024-03-22 23:59:59'
+          deadline: '2024-03-29 23:59:59'
+      timezone: AoE
+      date: October 7-9, 2024
+      place: Philadelphia, Pennsylvania, United States
+    - year: 2025
+      id: colm25
+      link: https://colmweb.org/cfp.html
+      timeline:
+        - abstract_deadline: '2025-03-22 23:59:59'
+          deadline: '2025-03-28 23:59:59'
+      timezone: AoE
+      date: October 7-9, 2025
+      place: Palais des Congrès Montreal, Canada

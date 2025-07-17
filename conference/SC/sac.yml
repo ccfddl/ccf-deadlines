@@ -1,42 +1,42 @@
-  - title: SAC
-    description: Selected Areas in Cryptography
-    sub: SC
-    rank:
-      ccf: C
-      core: B
-      thcpl: B
-    dblp: sacrypt
-    confs:
-      - year: 2021
-        id: sac21
-        link: https://www.sac2021.ca/
-        timeline:
-          - deadline: '2021-07-07 23:59:59'
-            comment: Abstract submission
-          - deadline: '2021-07-12 23:59:59'
-            comment: final paper submission
-        timezone: UTC+1
-        date: September 29 - October 01, 2021
-        place: Virtual
-      - year: 2024
-        id: sac24
-        link: https://sacworkshop.org/SAC24/
-        timeline:
-          - deadline: '2024-02-07 23:59:59'
-            comment: 1st round Deadline
-          - deadline: '2024-05-07 23:59:59'
-            comment: 2nd round Deadline
-        timezone: AoE
-        date: August 28 - 30, 2024
-        place: Montreal, Canada
-      - year: 2025
-        id: sac25
-        link: https://sacworkshop.org/SAC25/
-        timeline:
-          - deadline: '2025-01-27 23:59:59'
-            comment: Paper submission deadline (cycle 1)
-          - deadline: '2025-05-07 23:59:59'
-            comment: Paper submission deadline (cycle 2)
-        timezone: AoE
-        date: August 13-15, 2025
-        place: Toronto, Ontario, Canada
+- title: SAC
+  description: Selected Areas in Cryptography
+  sub: SC
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: sacrypt
+  confs:
+    - year: 2021
+      id: sac21
+      link: https://www.sac2021.ca/
+      timeline:
+        - deadline: '2021-07-07 23:59:59'
+          comment: Abstract submission
+        - deadline: '2021-07-12 23:59:59'
+          comment: final paper submission
+      timezone: UTC+1
+      date: September 29 - October 01, 2021
+      place: Virtual
+    - year: 2024
+      id: sac24
+      link: https://sacworkshop.org/SAC24/
+      timeline:
+        - deadline: '2024-02-07 23:59:59'
+          comment: 1st round Deadline
+        - deadline: '2024-05-07 23:59:59'
+          comment: 2nd round Deadline
+      timezone: AoE
+      date: August 28 - 30, 2024
+      place: Montreal, Canada
+    - year: 2025
+      id: sac25
+      link: https://sacworkshop.org/SAC25/
+      timeline:
+        - deadline: '2025-01-27 23:59:59'
+          comment: Paper submission deadline (cycle 1)
+        - deadline: '2025-05-07 23:59:59'
+          comment: Paper submission deadline (cycle 2)
+      timezone: AoE
+      date: August 13-15, 2025
+      place: Toronto, Ontario, Canada

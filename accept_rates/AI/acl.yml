@@ -1,14 +1,14 @@
 - title: ACL
   accept_rates:
-  - year: 2023
-    submitted: 3872
-    accepted: 910
-    str: 23.5%(910/3872 23')
-    rate: 0.235020661157025
-    source: https://github.com/lixin4ever/Conference-Acceptance-Rate
-  - year: 2024
-    submitted: 4407
-    accepted: 943
-    str: 21.4%(943/4407 24')
-    rate: 0.2139778
-    source: https://csconfstats.xoveexu.com/
+    - year: 2023
+      submitted: 3872
+      accepted: 910
+      str: 23.5%(910/3872 23')
+      rate: 0.235020661157025
+      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2024
+      submitted: 4407
+      accepted: 943
+      str: 21.4%(943/4407 24')
+      rate: 0.2139778
+      source: https://csconfstats.xoveexu.com/

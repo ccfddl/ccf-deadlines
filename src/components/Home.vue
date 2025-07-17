@@ -11,15 +11,15 @@
     </el-row>
     <el-checkbox style="padding-top: 10px;width: 33%" :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange"><span style="color: #666666">{{ useEnglish ? 'Select All' : '全选' }}</span></el-checkbox>
     <el-checkbox-group v-model="checkList" @change="handleCheckedChange" class="checkbox-container">
-  <el-checkbox 
-    :class="useEnglish ? 'boxes-en' : 'boxes'" 
-    size="medium" 
-    v-for="item in subList" 
-    :label="item.sub" 
+  <el-checkbox
+    :class="useEnglish ? 'boxes-en' : 'boxes'"
+    size="medium"
+    v-for="item in subList"
+    :label="item.sub"
     :key="item.sub">
     <span style="color: #666666">{{formatSubName(item)}}</span>
   </el-checkbox>
-</el-checkbox-group>   
+</el-checkbox-group>
     <el-row class="timezone">
       <div style="float: left">
         Deadlines are shown in {{ timeZone }} time.
@@ -164,10 +164,10 @@ export default {
     handleLanguageChange() {
       // Store the language preference
       this.$ls.set('useEnglish', this.useEnglish)
-      
+
       // Update the subnames in the conference list
       this.updateSubnames()
-      
+
       // Refresh the display
       this.showConf(this.typesList, this.rankList, this.input, this.page)
     },
@@ -201,8 +201,8 @@ export default {
     updateSubnames() {
       for (let i = 0; i < this.allconfList.length; i++) {
         const curDoc = this.allconfList[i]
-        curDoc.subname = this.useEnglish ? 
-          this.typeMapEn.get(curDoc.sub) : 
+        curDoc.subname = this.useEnglish ?
+          this.typeMapEn.get(curDoc.sub) :
           this.typeMap.get(curDoc.sub)
       }
     },
@@ -254,8 +254,8 @@ export default {
         let curTime = moment.tz(new Date(), tz)
         for (let i = 0; i < doc.length; i++) {
           let curDoc = doc[i]
-          curDoc.subname = this.useEnglish ? 
-            this.typeMapEn.get(curDoc.sub) : 
+          curDoc.subname = this.useEnglish ?
+            this.typeMapEn.get(curDoc.sub) :
             this.typeMap.get(curDoc.sub)
           if (curDoc.deadline === 'TBD') {
             curDoc.remain = 0

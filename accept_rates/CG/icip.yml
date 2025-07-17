@@ -1,8 +1,8 @@
 - title: ICIP
   accept_rates:
-  - year: 2023
-    submitted: 1647
-    accepted: 732
-    str: 44.4%(732/1647 23')
-    rate: 0.444444444444444
-    source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10222530
+    - year: 2023
+      submitted: 1647
+      accepted: 732
+      str: 44.4%(732/1647 23')
+      rate: 0.444444444444444
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10222530

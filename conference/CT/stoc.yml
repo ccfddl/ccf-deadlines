@@ -1,25 +1,25 @@
-  - title: STOC
-    description: ACM Symposium on the Theory of Computing
-    sub: CT
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: stoc
-    confs:
-      - year: 2021
-        id: stoc21
-        link: http://acm-stoc.org/stoc2021/
-        timeline:
-          - deadline: '2020-11-06 11:59:59'
-        timezone: UTC-5
-        date: June 21-25, 2021
-        place: Virtual
-      - year: 2025
-        id: stoc25
-        link: http://acm-stoc.org/stoc2025/
-        timeline:
-          - deadline: '2024-11-04 19:59:59'
-        timezone: UTC-5
-        date: June 23-27, 2025
-        place: Prague, Czech Republic
+- title: STOC
+  description: ACM Symposium on the Theory of Computing
+  sub: CT
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: stoc
+  confs:
+    - year: 2021
+      id: stoc21
+      link: http://acm-stoc.org/stoc2021/
+      timeline:
+        - deadline: '2020-11-06 11:59:59'
+      timezone: UTC-5
+      date: June 21-25, 2021
+      place: Virtual
+    - year: 2025
+      id: stoc25
+      link: http://acm-stoc.org/stoc2025/
+      timeline:
+        - deadline: '2024-11-04 19:59:59'
+      timezone: UTC-5
+      date: June 23-27, 2025
+      place: Prague, Czech Republic

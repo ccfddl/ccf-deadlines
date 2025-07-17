@@ -1,40 +1,40 @@
-  - title: ICDT
-    description: International Conference on Database Theory
-    sub: DB
-    rank:
-      ccf: B
-      core: A
-      thcpl: B
-    dblp: icdt
-    confs:
-      - year: 2022
-        id: icdt22
-        link: https://conferences.inf.ed.ac.uk/edbticdt2022/
-        timeline:
-          - abstract_deadline: '2021-09-06 23:59:59'
-            deadline: '2021-09-13 23:59:59'
-        timezone: AoE
-        date: Mar 29-April 01, 2022
-        place: Edinburgh, UK
-      - year: 2025
-        id: icdt25
-        link: https://edbticdt2025.upc.edu/
-        timeline:
-          - abstract_deadline: '2024-03-11 23:59:59'
-            deadline: '2024-03-18 23:59:59'
-          - abstract_deadline: '2024-09-12 23:59:59'
-            deadline: '2024-09-19 23:59:59'
-        timezone: AoE
-        date: March 25-28, 2025
-        place: Barcelona, Spain
-      - year: 2026
-        id: icdt26
-        link: https://edbticdt2026.github.io/
-        timeline:
-          - abstract_deadline: '2025-03-13 23:59:59'
-            deadline: '2025-03-20 23:59:59'
-          - abstract_deadline: '2025-09-03 23:59:59'
-            deadline: '2025-09-10 23:59:59'
-        timezone: AoE
-        date: March 24-27, 2026
-        place: Tampere, Finland
+- title: ICDT
+  description: International Conference on Database Theory
+  sub: DB
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: icdt
+  confs:
+    - year: 2022
+      id: icdt22
+      link: https://conferences.inf.ed.ac.uk/edbticdt2022/
+      timeline:
+        - abstract_deadline: '2021-09-06 23:59:59'
+          deadline: '2021-09-13 23:59:59'
+      timezone: AoE
+      date: Mar 29-April 01, 2022
+      place: Edinburgh, UK
+    - year: 2025
+      id: icdt25
+      link: https://edbticdt2025.upc.edu/
+      timeline:
+        - abstract_deadline: '2024-03-11 23:59:59'
+          deadline: '2024-03-18 23:59:59'
+        - abstract_deadline: '2024-09-12 23:59:59'
+          deadline: '2024-09-19 23:59:59'
+      timezone: AoE
+      date: March 25-28, 2025
+      place: Barcelona, Spain
+    - year: 2026
+      id: icdt26
+      link: https://edbticdt2026.github.io/
+      timeline:
+        - abstract_deadline: '2025-03-13 23:59:59'
+          deadline: '2025-03-20 23:59:59'
+        - abstract_deadline: '2025-09-03 23:59:59'
+          deadline: '2025-09-10 23:59:59'
+      timezone: AoE
+      date: March 24-27, 2026
+      place: Tampere, Finland

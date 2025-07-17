@@ -1,17 +1,17 @@
-  - title: WoWMoM
-    description: IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks
-    sub: NW
-    rank:
-      ccf: C
-      core: B
-      thcpl: B
-    dblp: wowmom
-    confs:
-      - year: 2025
-        id: wowmom25
-        link: https://wowmomconference.uta.edu/index.html
-        timeline:
-          - deadline: '2024-11-22 23:59:59'
-        timezone: AoE
-        date: May 27-30, 2025
-        place: Fort Worth, Texas, USA
+- title: WoWMoM
+  description: IEEE International Symposium on a World of Wireless, Mobile and Multimedia Networks
+  sub: NW
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: wowmom
+  confs:
+    - year: 2025
+      id: wowmom25
+      link: https://wowmomconference.uta.edu/index.html
+      timeline:
+        - deadline: '2024-11-22 23:59:59'
+      timezone: AoE
+      date: May 27-30, 2025
+      place: Fort Worth, Texas, USA

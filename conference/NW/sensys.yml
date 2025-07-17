@@ -1,18 +1,18 @@
-  - title: SenSys
-    description: ACM Conference on Embedded Networked Sensor Systems
-    sub: NW
-    rank:
-      ccf: B
-      core: A* 
-      thcpl: A
-    dblp: sensys
-    confs:
-      - year: 2026
-        id: sensys26
-        link: https://sensys.acm.org/2026/
-        timeline:
-          - abstract_deadline: '2025-06-24 23:59:00'
-            deadline: '2025-07-01 23:59:00'
-        timezone: AoE
-        date: May 11-14, 2026
-        place: Saint-Malo, France
+- title: SenSys
+  description: ACM Conference on Embedded Networked Sensor Systems
+  sub: NW
+  rank:
+    ccf: B
+    core: A*
+    thcpl: A
+  dblp: sensys
+  confs:
+    - year: 2026
+      id: sensys26
+      link: https://sensys.acm.org/2026/
+      timeline:
+        - abstract_deadline: '2025-06-24 23:59:00'
+          deadline: '2025-07-01 23:59:00'
+      timezone: AoE
+      date: May 11-14, 2026
+      place: Saint-Malo, France

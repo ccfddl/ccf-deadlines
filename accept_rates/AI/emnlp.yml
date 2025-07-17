@@ -1,14 +1,14 @@
 - title: EMNLP
   accept_rates:
-  - year: 2022
-    submitted: 3242
-    accepted: 715
-    str: 22.1%(715/3242 22')
-    rate: 0.220542874768661
-    source: https://github.com/lixin4ever/Conference-Acceptance-Rate
-  - year: 2023
-    submitted: 4909
-    accepted: 1047
-    str: 21.3%(1047/4909 23')
-    rate: 0.2132817
-    source: https://csconfstats.xoveexu.com/
+    - year: 2022
+      submitted: 3242
+      accepted: 715
+      str: 22.1%(715/3242 22')
+      rate: 0.220542874768661
+      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2023
+      submitted: 4909
+      accepted: 1047
+      str: 21.3%(1047/4909 23')
+      rate: 0.2132817
+      source: https://csconfstats.xoveexu.com/

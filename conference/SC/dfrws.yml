@@ -1,27 +1,27 @@
-  - title: DFRWS
-    description: Digital Forensic Research Workshop
-    sub: SC
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: dfrws
-    confs:
-      - year: 2022
-        id: dfrws22
-        link: https://dfrws.org/conferences/dfrws-eu-2022/
-        timeline:
-          - deadline: '2021-10-03 23:59:59'
-            comment: Paper submission deadline
-        timezone: AoE
-        date: March 28-31 , 2022
-        place: Online and Physical (Location TBC)
-      - year: 2025
-        id: dfrws25
-        link: https://dfrws.org/conferences/dfrws-eu-2025/
-        timeline:
-          - abstract_deadline: '2024-09-20 23:59:59'
-            deadline: '2024-09-27 23:59:59'
-        timezone: AoE
-        date: April 1-4, 2025
-        place: Brno, Czech Republic
+- title: DFRWS
+  description: Digital Forensic Research Workshop
+  sub: SC
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: dfrws
+  confs:
+    - year: 2022
+      id: dfrws22
+      link: https://dfrws.org/conferences/dfrws-eu-2022/
+      timeline:
+        - deadline: '2021-10-03 23:59:59'
+          comment: Paper submission deadline
+      timezone: AoE
+      date: March 28-31 , 2022
+      place: Online and Physical (Location TBC)
+    - year: 2025
+      id: dfrws25
+      link: https://dfrws.org/conferences/dfrws-eu-2025/
+      timeline:
+        - abstract_deadline: '2024-09-20 23:59:59'
+          deadline: '2024-09-27 23:59:59'
+      timezone: AoE
+      date: April 1-4, 2025
+      place: Brno, Czech Republic

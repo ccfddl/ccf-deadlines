@@ -1,8 +1,8 @@
 - title: FAST
   accept_rates:
-  - year: 2022
-    submitted: 130
-    accepted: 28
-    str: 21.5%(28/130 22')
-    rate: 0.215384615384615
-    source: https://github.com/emeryberger/csconferences
+    - year: 2022
+      submitted: 130
+      accepted: 28
+      str: 21.5%(28/130 22')
+      rate: 0.215384615384615
+      source: https://github.com/emeryberger/csconferences

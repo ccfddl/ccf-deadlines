@@ -1,31 +1,31 @@
-  - title: GROUP
-    description: ACM International Conference on Supporting Group Work
-    sub: HI
-    rank:
-      ccf: B
-      core: B
-      thcpl: N
-    dblp: group
-    confs:
-      - year: 2025
-        id: group25
-        link: https://group.acm.org/conferences/group25
-        timeline:
-          - deadline: '2023-06-07 23:59:59'
-            comment: 'Full Paper First Wave Submissions'
-          - abstract_deadline: '2024-05-01 23:59:59'
-            deadline: '2024-05-08 23:59:59'
-            comment: 'Full Paper Second Wave Submissions'
-        timezone: AoE
-        date: January 12-15, 2025
-        place: Omni Hilton Head Oceanfront Resort, Hilton Head Island, South Carolina, USA
-      - year: 2027
-        id: group27
-        link: https://group.acm.org/conferences/group27/
-        timeline:
-          - abstract_deadline: '2025-07-08 23:59:59'
-            deadline: '2025-07-15 23:59:59'
-            comment: 'Full Paper First Wave Submissions'
-        timezone: AoE
-        date: TBD
-        place: TBD
+- title: GROUP
+  description: ACM International Conference on Supporting Group Work
+  sub: HI
+  rank:
+    ccf: B
+    core: B
+    thcpl: N
+  dblp: group
+  confs:
+    - year: 2025
+      id: group25
+      link: https://group.acm.org/conferences/group25
+      timeline:
+        - deadline: '2023-06-07 23:59:59'
+          comment: 'Full Paper First Wave Submissions'
+        - abstract_deadline: '2024-05-01 23:59:59'
+          deadline: '2024-05-08 23:59:59'
+          comment: 'Full Paper Second Wave Submissions'
+      timezone: AoE
+      date: January 12-15, 2025
+      place: Omni Hilton Head Oceanfront Resort, Hilton Head Island, South Carolina, USA
+    - year: 2027
+      id: group27
+      link: https://group.acm.org/conferences/group27/
+      timeline:
+        - abstract_deadline: '2025-07-08 23:59:59'
+          deadline: '2025-07-15 23:59:59'
+          comment: 'Full Paper First Wave Submissions'
+      timezone: AoE
+      date: TBD
+      place: TBD

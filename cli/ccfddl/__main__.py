@@ -22,11 +22,11 @@ def parse_tz(tz):
 
 def parse_args():
     parser = ArgumentParser(description="cli for ccfddl")
-    parser.add_argument("--conf", type=str, nargs='+', 
+    parser.add_argument("--conf", type=str, nargs='+',
                         help="A list of conference ids you want to filter, e.g.: '--conf CVPR ICML'")
-    parser.add_argument("--sub", type=str, nargs='+', 
+    parser.add_argument("--sub", type=str, nargs='+',
                         help="A list of subcategories ids you want to filter, e.g.: '--sub AI CG'")
-    parser.add_argument("--rank", type=str, nargs='+', 
+    parser.add_argument("--rank", type=str, nargs='+',
                         help="A list of ranks you want to filter, e.g.: '--rank C N'")
     args = parser.parse_args()
     # Convert all arguments to lowercase
@@ -89,12 +89,12 @@ def main():
 
     all_conf_ext = sorted(all_conf_ext, key=lambda x: x['time_obj'])
 
-    # This is not an elegant solution. 
-    # The purpose is to keep the above logic untouched, 
+    # This is not an elegant solution.
+    # The purpose is to keep the above logic untouched,
     # return alpha id(conf name) without digits(year)
     def alpha_id(with_digits: string) -> string:
         return ''.join(char for char in with_digits.lower() if char.isalpha())
-    
+
     table = [["Title", "Sub", "Rank", "DDL", "Link"]]
     # Filter intersection by args
     for x in all_conf_ext:
@@ -108,8 +108,8 @@ def main():
         if skip:
             continue
         table.append(
-            [x["title"], 
-                x["sub"], 
+            [x["title"],
+                x["sub"],
                 x["rank"],
                 format_duraton(x["time_obj"], now),
                 x["link"]]

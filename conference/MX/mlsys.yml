@@ -1,62 +1,57 @@
-  - title: MLSys
-    description: Conference on Machine Learning and Systems
-    sub: MX
-    rank:
-      ccf: N
-      core: N
-      thcpl: N
-    dblp: mlsys
-    confs:
-      - year: 2021
-        id: mlsys21
-        link: https://mlsys.org/Conferences/2021
-        timeline:
-          - deadline: '2020-10-11 23:59:59'
-        timezone: AoE
-        date: April 5-9, 2021
-        place: virtual
-
-      - year: 2022
-        id: mlsys22
-        link: https://mlsys.org/Conferences/2022
-        timeline:
-          - deadline: '2021-10-15 20:00:00'
-        timezone: AoE
-        date: August 29-September 1, 2022
-        place: Santa Clara, USA
-
-      - year: 2023
-        id: mlsys23
-        link: https://mlsys.org/Conferences/2023
-        timeline:
-          - deadline: '2022-10-28 20:00:00'
-        timezone: AoE
-        date: June 5-8, 2023
-        place: Miami, USA
-
-      - year: 2024
-        id: mlsys24
-        link: https://mlsys.org/Conferences/2024
-        timeline:
-          - deadline: '2023-10-27 04:00:00'
-        timezone: AoE
-        date: May 12-16, 2024
-        place: Santa Clara, USA
-
-      - year: 2025
-        id: mlsys25
-        link: https://mlsys.org/
-        timeline:
-          - deadline: '2024-10-24 20:00:00'
-        timezone: AoE
-        date: May 13-16, 2025
-        place: Santa Clara, USA
-
-      - year: 2026
-        id: mlsys26
-        link: https://mlsys.org/
-        timeline:
-          - deadline: 'TBD'
-        timezone: AoE
-        date: May 17-22, 2025
-        place: Bellevue, Washington, USA
+- title: MLSys
+  description: Conference on Machine Learning and Systems
+  sub: MX
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: mlsys
+  confs:
+    - year: 2021
+      id: mlsys21
+      link: https://mlsys.org/Conferences/2021
+      timeline:
+        - deadline: '2020-10-11 23:59:59'
+      timezone: AoE
+      date: April 5-9, 2021
+      place: virtual
+    - year: 2022
+      id: mlsys22
+      link: https://mlsys.org/Conferences/2022
+      timeline:
+        - deadline: '2021-10-15 20:00:00'
+      timezone: AoE
+      date: August 29-September 1, 2022
+      place: Santa Clara, USA
+    - year: 2023
+      id: mlsys23
+      link: https://mlsys.org/Conferences/2023
+      timeline:
+        - deadline: '2022-10-28 20:00:00'
+      timezone: AoE
+      date: June 5-8, 2023
+      place: Miami, USA
+    - year: 2024
+      id: mlsys24
+      link: https://mlsys.org/Conferences/2024
+      timeline:
+        - deadline: '2023-10-27 04:00:00'
+      timezone: AoE
+      date: May 12-16, 2024
+      place: Santa Clara, USA
+    - year: 2025
+      id: mlsys25
+      link: https://mlsys.org/
+      timeline:
+        - deadline: '2024-10-24 20:00:00'
+      timezone: AoE
+      date: May 13-16, 2025
+      place: Santa Clara, USA
+    - year: 2026
+      id: mlsys26
+      link: https://mlsys.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: May 17-22, 2025
+      place: Bellevue, Washington, USA

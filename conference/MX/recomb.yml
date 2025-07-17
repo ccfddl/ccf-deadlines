@@ -1,18 +1,18 @@
-  - title: RECOMB
-    description: International Conference on Research inComputational Molecular Biology
-    sub: MX
-    rank:
-      ccf: B
-      core: B
-      thcpl: A
-    dblp: recomb
-    confs:
-      - year: 2025
-        id: recomb25
-        link: https://recomb.org/recomb2025/index.html
-        timeline:
-          - abstract_deadline: '2024-10-16 23:59:59'
-            deadline: '2024-10-25 23:59:59'
-        timezone: AoE
-        date: April 26-29, 2025
-        place: Seoul, Korea
+- title: RECOMB
+  description: International Conference on Research inComputational Molecular Biology
+  sub: MX
+  rank:
+    ccf: B
+    core: B
+    thcpl: A
+  dblp: recomb
+  confs:
+    - year: 2025
+      id: recomb25
+      link: https://recomb.org/recomb2025/index.html
+      timeline:
+        - abstract_deadline: '2024-10-16 23:59:59'
+          deadline: '2024-10-25 23:59:59'
+      timezone: AoE
+      date: April 26-29, 2025
+      place: Seoul, Korea

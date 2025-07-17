@@ -3,7 +3,7 @@ description: Validation schema for CCFDDL Conference Specification 3.0.X.
 type: array
 items:
   type: object
-  required: 
+  required:
     - title
     - description
     - sub
@@ -33,7 +33,7 @@ items:
         - MX
     rank:
       type: object
-      required: 
+      required:
         - ccf
       properties:
         ccf:
@@ -109,7 +109,7 @@ items:
                   type: string
           timezone:
             type: string
-            enum: 
+            enum:
               - UTC-12
               - UTC-11
               - UTC-10

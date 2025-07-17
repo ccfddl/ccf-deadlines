@@ -1,17 +1,17 @@
-  - title: CADE
-    description: The Conference on Automated Deduction (CADE)
-    sub: CT
-    rank:
-      ccf: B
-      core: A
-    dblp: cade
-    confs:
-      - year: 2025
-        id: cade25
-        link: https://www.dhbw-stuttgart.de/cade-30/
-        timeline:
-          - abstract_deadline: '2025-02-17 23:59:59'
-            deadline: '2025-02-24 23:59:59'
-        timezone: AoE
-        date: July 28-31, 2025
-        place: DHBW Stuttgart, Stuttgart, Germany
+- title: CADE
+  description: The Conference on Automated Deduction (CADE)
+  sub: CT
+  rank:
+    ccf: B
+    core: A
+  dblp: cade
+  confs:
+    - year: 2025
+      id: cade25
+      link: https://www.dhbw-stuttgart.de/cade-30/
+      timeline:
+        - abstract_deadline: '2025-02-17 23:59:59'
+          deadline: '2025-02-24 23:59:59'
+      timezone: AoE
+      date: July 28-31, 2025
+      place: DHBW Stuttgart, Stuttgart, Germany

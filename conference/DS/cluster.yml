@@ -1,45 +1,45 @@
-  - title: CLUSTER
-    description: IEEE International Conference on Cluster Computing
-    sub: DS
-    rank:
-      ccf: B
-      core: B
-      thcpl: B
-    dblp: cluster
-    confs:
-      - year: 2022
-        id: cluster22
-        link: https://clustercomp.org/2022
-        timeline:
-          - deadline: '2022-05-13 23:59:59'
-            comment: Full Paper Deadline
-        timezone: UTC-12
-        date: September 6-9, 2022
-        place: Heidelberg, Germany
-      - year: 2023
-        id: cluster23
-        link: https://clustercomp.org/2023
-        timeline:
-          - deadline: '2023-05-11 23:59:59'
-            comment: Full Paper Deadline
-        timezone: AoE
-        date: October 31-November 3, 2023
-        place: Santa Fe, New Mexico, USA
-      - year: 2024
-        id: cluster24
-        link: https://clustercomp.org/2024
-        timeline:
-          - deadline: '2024-05-09 23:59:59'
-            comment: Full Paper Deadline
-        timezone: AoE
-        date: September 24-27, 2024
-        place: Kobe, Japan
-      - year: 2025
-        id: cluster25
-        link: https://clustercomp.org/2025
-        timeline:
-          - deadline: '2025-05-02 23:59:59'
-            comment: Full Paper Deadline
-        timezone: AoE
-        date: September 2-5, 2025
-        place: Edinburgh, United Kingdom
+- title: CLUSTER
+  description: IEEE International Conference on Cluster Computing
+  sub: DS
+  rank:
+    ccf: B
+    core: B
+    thcpl: B
+  dblp: cluster
+  confs:
+    - year: 2022
+      id: cluster22
+      link: https://clustercomp.org/2022
+      timeline:
+        - deadline: '2022-05-13 23:59:59'
+          comment: Full Paper Deadline
+      timezone: UTC-12
+      date: September 6-9, 2022
+      place: Heidelberg, Germany
+    - year: 2023
+      id: cluster23
+      link: https://clustercomp.org/2023
+      timeline:
+        - deadline: '2023-05-11 23:59:59'
+          comment: Full Paper Deadline
+      timezone: AoE
+      date: October 31-November 3, 2023
+      place: Santa Fe, New Mexico, USA
+    - year: 2024
+      id: cluster24
+      link: https://clustercomp.org/2024
+      timeline:
+        - deadline: '2024-05-09 23:59:59'
+          comment: Full Paper Deadline
+      timezone: AoE
+      date: September 24-27, 2024
+      place: Kobe, Japan
+    - year: 2025
+      id: cluster25
+      link: https://clustercomp.org/2025
+      timeline:
+        - deadline: '2025-05-02 23:59:59'
+          comment: Full Paper Deadline
+      timezone: AoE
+      date: September 2-5, 2025
+      place: Edinburgh, United Kingdom

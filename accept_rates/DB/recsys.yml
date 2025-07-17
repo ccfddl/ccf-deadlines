@@ -1,8 +1,8 @@
 - title: RecSys
   accept_rates:
-  - year: 2020
-    submitted: 218
-    accepted: 39
-    str: 17.9%(39/218 20')
-    rate: 0.178899082568807
-    source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2020
+      submitted: 218
+      accepted: 39
+      str: 17.9%(39/218 20')
+      rate: 0.178899082568807
+      source: https://github.com/lixin4ever/Conference-Acceptance-Rate

@@ -1,17 +1,17 @@
-  - title: COMPSAC
-    description: International Computer Software and Applications Conference
-    sub: SE
-    rank:
-      ccf: C
-      core: B
-      thcpl: N
-    dblp: compsac
-    confs:
-      - year: 2025
-        id: compsac25
-        link: https://ieeecompsac.computer.org/2025/
-        timeline:
-          - deadline: '2025-03-05 23:59:59'
-        timezone: AoE
-        date: July 8-11, 2025
-        place: Toronto, Canada
+- title: COMPSAC
+  description: International Computer Software and Applications Conference
+  sub: SE
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: compsac
+  confs:
+    - year: 2025
+      id: compsac25
+      link: https://ieeecompsac.computer.org/2025/
+      timeline:
+        - deadline: '2025-03-05 23:59:59'
+      timezone: AoE
+      date: July 8-11, 2025
+      place: Toronto, Canada

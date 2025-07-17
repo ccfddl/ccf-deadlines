@@ -1,20 +1,20 @@
 - title: CVPR
   accept_rates:
-  - year: 2023
-    submitted: 9155
-    accepted: 2360
-    str: 25.8%(2360/9155 23')
-    rate: 0.257782632441289
-    source: https://github.com/emeryberger/csconferences
-  - year: 2024
-    submitted: 11532
-    accepted: 2719
-    str: 23.6%(2719/11532 24')
-    rate: 0.2357787
-    source: https://csconfstats.xoveexu.com/
-  - year: 2025
-    submitted: 13008
-    accepted: 2878
-    str: 22.1%(2878/13008 25')
-    rate: 0,2212484625
-    source: https://mp.weixin.qq.com/s?__biz=Mzg4OTEwNjMzMA==&mid=2247663029&idx=1&sn=f36b388a84d4319f4b47930b3750cc3c&chksm=cec06fc2f86f6c080876f53860d9992f7fe5a3571ad1ef06474397fb01e4a5151ec7a0559f91&mpshare=1&scene=1&srcid=0318MpQJ3yoMi2832NjrF0oX&sharer_shareinfo=5f66e1303d9fb0f8fed93ef4736ebcdd&sharer_shareinfo_first=5f66e1303d9fb0f8fed93ef4736ebcdd#rd
+    - year: 2023
+      submitted: 9155
+      accepted: 2360
+      str: 25.8%(2360/9155 23')
+      rate: 0.257782632441289
+      source: https://github.com/emeryberger/csconferences
+    - year: 2024
+      submitted: 11532
+      accepted: 2719
+      str: 23.6%(2719/11532 24')
+      rate: 0.2357787
+      source: https://csconfstats.xoveexu.com/
+    - year: 2025
+      submitted: 13008
+      accepted: 2878
+      str: 22.1%(2878/13008 25')
+      rate: 0,2212484625
+      source: https://mp.weixin.qq.com/s?__biz=Mzg4OTEwNjMzMA==&mid=2247663029&idx=1&sn=f36b388a84d4319f4b47930b3750cc3c&chksm=cec06fc2f86f6c080876f53860d9992f7fe5a3571ad1ef06474397fb01e4a5151ec7a0559f91&mpshare=1&scene=1&srcid=0318MpQJ3yoMi2832NjrF0oX&sharer_shareinfo=5f66e1303d9fb0f8fed93ef4736ebcdd&sharer_shareinfo_first=5f66e1303d9fb0f8fed93ef4736ebcdd#rd

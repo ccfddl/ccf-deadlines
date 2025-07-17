@@ -1,25 +1,25 @@
-  - title: ISCAS
-    description: IEEE International Symposium on Circuits and Systems
-    sub: DS
-    rank:
-      ccf: C
-      core: N
-      thcpl: B
-    dblp: iscas
-    confs:
-      - year: 2025
-        id: iscas25
-        link: https://2025.ieee-iscas.org/
-        timeline:
-          - deadline: '2024-10-14 23:59:59'
-        timezone: AoE
-        date: May 25-28, 2025
-        place: London, UK
-      - year: 2026
-        id: iscas26
-        link: https://2026.ieee-iscas.org/
-        timeline:
-          - deadline: '2025-10-12 23:59:59'
-        timezone: AoE
-        date: May 24-27, 2026
-        place: SHANGHAI, CHINA
+- title: ISCAS
+  description: IEEE International Symposium on Circuits and Systems
+  sub: DS
+  rank:
+    ccf: C
+    core: N
+    thcpl: B
+  dblp: iscas
+  confs:
+    - year: 2025
+      id: iscas25
+      link: https://2025.ieee-iscas.org/
+      timeline:
+        - deadline: '2024-10-14 23:59:59'
+      timezone: AoE
+      date: May 25-28, 2025
+      place: London, UK
+    - year: 2026
+      id: iscas26
+      link: https://2026.ieee-iscas.org/
+      timeline:
+        - deadline: '2025-10-12 23:59:59'
+      timezone: AoE
+      date: May 24-27, 2026
+      place: SHANGHAI, CHINA
