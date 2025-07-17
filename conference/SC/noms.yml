@@ -1,18 +1,18 @@
-  - title: NOMS
-    description: IEEE/IFIP Network Operations and Management Symposium
-    sub: SC
-    rank:
-      ccf: N
-      core: B
-      thcpl: B
-    dblp: noms
-    confs:
-      - year: 2025
-        id: noms25
-        link: https://noms2025.ieee-noms.org/
-        timeline:
-          - abstract_deadline: '2024-09-07 19:59:59'
-            deadline: '2024-09-14 19:59:59'
-        timezone: UTC+10
-        date: May 12-16, 2025
-        place: Honolulu, HI, USA
+- title: NOMS
+  description: IEEE/IFIP Network Operations and Management Symposium
+  sub: SC
+  rank:
+    ccf: N
+    core: B
+    thcpl: B
+  dblp: noms
+  confs:
+    - year: 2025
+      id: noms25
+      link: https://noms2025.ieee-noms.org/
+      timeline:
+        - abstract_deadline: '2024-09-07 19:59:59'
+          deadline: '2024-09-14 19:59:59'
+      timezone: UTC+10
+      date: May 12-16, 2025
+      place: Honolulu, HI, USA

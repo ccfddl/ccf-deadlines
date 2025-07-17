@@ -1,34 +1,33 @@
-  - title: EUROCRYPT
-    description: European Cryptology Conference
-    sub: SC
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: eurocrypt
-    confs:
-      - year: 2021
-        id: eurocrypt21
-        link: https://eurocrypt.iacr.org/2021
-        timeline:
-          - deadline: '2020-10-08 21:00:00'
-        timezone: UTC-12
-        date: October 17-21, 2021
-        place: Zagreb, Croatia
-      - year: 2024
-        id: eurocrypt24
-        link: https://eurocrypt.iacr.org/2024
-        timeline:
-          - deadline: '2023-10-06 23:59:59'
-        timezone: AoE
-        date: May 26-30, 2024
-        place: Zurich, Switzerland
-      - year: 2025
-        id: eurocrypt25
-        link: https://eurocrypt.iacr.org/2025/
-        timeline:
-          - deadline: '2024-10-02 23:59:59'
-        timezone: AoE
-        date: May 4-8, 2025
-        place: Madrid, Spain
-
+- title: EUROCRYPT
+  description: European Cryptology Conference
+  sub: SC
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: eurocrypt
+  confs:
+    - year: 2021
+      id: eurocrypt21
+      link: https://eurocrypt.iacr.org/2021
+      timeline:
+        - deadline: '2020-10-08 21:00:00'
+      timezone: UTC-12
+      date: October 17-21, 2021
+      place: Zagreb, Croatia
+    - year: 2024
+      id: eurocrypt24
+      link: https://eurocrypt.iacr.org/2024
+      timeline:
+        - deadline: '2023-10-06 23:59:59'
+      timezone: AoE
+      date: May 26-30, 2024
+      place: Zurich, Switzerland
+    - year: 2025
+      id: eurocrypt25
+      link: https://eurocrypt.iacr.org/2025/
+      timeline:
+        - deadline: '2024-10-02 23:59:59'
+      timezone: AoE
+      date: May 4-8, 2025
+      place: Madrid, Spain

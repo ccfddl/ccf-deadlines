@@ -1,8 +1,8 @@
 - title: PLDI
   accept_rates:
-  - year: 2023
-    submitted: 281
-    accepted: 83
-    str: 29.5%(83/281 23')
-    rate: 0.295373665480427
-    source: https://github.com/emeryberger/csconferences
+    - year: 2023
+      submitted: 281
+      accepted: 83
+      str: 29.5%(83/281 23')
+      rate: 0.295373665480427
+      source: https://github.com/emeryberger/csconferences

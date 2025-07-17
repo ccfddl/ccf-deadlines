@@ -1,21 +1,21 @@
-  - title: GECCO
-    description: Genetic and Evolutionary Computation Conference
-    sub: AI
-    rank:
-      ccf: C
-      core: A
-      thcpl: B
-    dblp: gecco
-    confs:
-      - year: 2025
-        id: gecco25
-        link: https://gecco-2025.sigevo.org/HomePage
-        timeline:
-          - abstract_deadline: '2025-01-22 23:59:00'
-            deadline: '2025-01-29 23:59:00'
-            comment: 'Full papers (traditional category) '
-          - deadline: '2025-01-29 23:59:00'
-            comment: 'Poster-only papers '
-        timezone: AoE
-        date: July 14-18, 2025
-        place: Málaga, Spain (hybrid)
+- title: GECCO
+  description: Genetic and Evolutionary Computation Conference
+  sub: AI
+  rank:
+    ccf: C
+    core: A
+    thcpl: B
+  dblp: gecco
+  confs:
+    - year: 2025
+      id: gecco25
+      link: https://gecco-2025.sigevo.org/HomePage
+      timeline:
+        - abstract_deadline: '2025-01-22 23:59:00'
+          deadline: '2025-01-29 23:59:00'
+          comment: 'Full papers (traditional category) '
+        - deadline: '2025-01-29 23:59:00'
+          comment: 'Poster-only papers '
+      timezone: AoE
+      date: July 14-18, 2025
+      place: Málaga, Spain (hybrid)

@@ -1,14 +1,14 @@
 - title: NeurIPS
   accept_rates:
-  - year: 2023
-    submitted: 12343
-    accepted: 3218
-    str: 26.1%(3218/12343 23')
-    rate: 0.260714575062789
-    source: https://github.com/lixin4ever/Conference-Acceptance-Rate
-  - year: 2024
-    submitted: 15671
-    accepted: 4043
-    str: 25.8%(4037/15671 24')
-    rate: 0.2576095
-    source: https://media.neurips.cc/Conferences/NeurIPS2024/NeurIPS2024-Fact_Sheet.pdf
+    - year: 2023
+      submitted: 12343
+      accepted: 3218
+      str: 26.1%(3218/12343 23')
+      rate: 0.260714575062789
+      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2024
+      submitted: 15671
+      accepted: 4043
+      str: 25.8%(4037/15671 24')
+      rate: 0.2576095
+      source: https://media.neurips.cc/Conferences/NeurIPS2024/NeurIPS2024-Fact_Sheet.pdf

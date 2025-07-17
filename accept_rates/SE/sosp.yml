@@ -1,13 +1,13 @@
 - title: SOSP
   accept_rates:
-  - year: 2021
-    submitted: 348
-    accepted: 54
-    str: 15.5%(54/348 21')
-    rate: 0.155172413793103
-    source: https://github.com/emeryberger/csconferences
-  - year: 2025
-    submitted: 368
-    accepted: 65
-    str: 17.7%(65/368 25')
-    rate: 0.1766304348
+    - year: 2021
+      submitted: 348
+      accepted: 54
+      str: 15.5%(54/348 21')
+      rate: 0.155172413793103
+      source: https://github.com/emeryberger/csconferences
+    - year: 2025
+      submitted: 368
+      accepted: 65
+      str: 17.7%(65/368 25')
+      rate: 0.1766304348

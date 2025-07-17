@@ -1,20 +1,20 @@
-  - title: FPT
-    description: International Conference on Field Programmable Technology
-    sub: DS
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: fpt
-    confs:
-      - year: 2024
-        id: fpt2024
-        link: https://fpt2024.org/
-        timeline:
-          - deadline: '2024-07-14 23:59:59'
-            comment: Title and Abstract Due (Conference Track)
-          - deadline: '2024-07-21 23:59:59'
-            comment: Submission Due (Conference Track)
-        timezone: AoE
-        date: December 10 - December 12, 2024
-        place: Sydney, Australia
+- title: FPT
+  description: International Conference on Field Programmable Technology
+  sub: DS
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: fpt
+  confs:
+    - year: 2024
+      id: fpt2024
+      link: https://fpt2024.org/
+      timeline:
+        - deadline: '2024-07-14 23:59:59'
+          comment: Title and Abstract Due (Conference Track)
+        - deadline: '2024-07-21 23:59:59'
+          comment: Submission Due (Conference Track)
+      timezone: AoE
+      date: December 10 - December 12, 2024
+      place: Sydney, Australia

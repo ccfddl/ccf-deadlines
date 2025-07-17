@@ -1,57 +1,55 @@
-  - title: BIBM
-    description: IEEE International Conference on Bioinformatics and Biomedicine
-    sub: MX
-    rank:
-      ccf: B
-      core: N
-      thcpl: N
-    dblp: bibm
-    confs:
-      - year: 2021
-        id: bibm21
-        link: https://ieeebibm.org/BIBM2021/
-        timeline:
-          - deadline: '2021-08-28 17:00:00'
-            comment: Electronic submission of full papers
-        timezone: UTC-5
-        date: Dec 9-12, 2021
-        place: Online
-      - year: 2022
-        id: bibm22
-        link: http://ieeebibm.org/BIBM2022/
-        timeline:
-          - deadline: '2022-08-21 17:00:00'
-            comment: Electronic submission of full papers
-        timezone: UTC-5
-        date: Dec 6-9, 2022
-        place: Las Vegas, NV, USA
-      - year: 2023
-        id: bibm23
-        link: https://bidma.cpsc.ucalgary.ca/IEEE-BIBM-2023/
-        timeline:
-          - deadline: '2023-08-15 17:00:00'
-            comment: Electronic submission of full papers
-        timezone: UTC-5
-        date: Dec 5-8, 2023
-        place: Istanbul, Turkey
-      - year: 2024
-        id: bibm24
-        link: https://ieeebibm.org/BIBM2024/
-        timeline:
-          - deadline: '2024-06-20 17:00:00'
-            comment: First Round, papers submitted by the June 20 deadline will be
-              reviewed and notified by Aug 15
-          - deadline: '2024-08-16 17:00:00'
-            comment: Second Round, papers submitted by the Aug 16, 2024 deadline,
-              will be reviewed and notified by the Oct 16, 2024
-        timezone: UTC-5
-        date: Dec 3-6, 2024
-        place: Lisbon, Portugal
-      - year: 2025
-        id: bibm25
-        link: https://ieeebibm.org/BIBM2025/
-        timeline:
-          - deadline: '2025-08-03 17:00:00'
-        timezone: UTC-5
-        date: Dec 15-18, 2025
-        place: Wuhan, China
+- title: BIBM
+  description: IEEE International Conference on Bioinformatics and Biomedicine
+  sub: MX
+  rank:
+    ccf: B
+    core: N
+    thcpl: N
+  dblp: bibm
+  confs:
+    - year: 2021
+      id: bibm21
+      link: https://ieeebibm.org/BIBM2021/
+      timeline:
+        - deadline: '2021-08-28 17:00:00'
+          comment: Electronic submission of full papers
+      timezone: UTC-5
+      date: Dec 9-12, 2021
+      place: Online
+    - year: 2022
+      id: bibm22
+      link: http://ieeebibm.org/BIBM2022/
+      timeline:
+        - deadline: '2022-08-21 17:00:00'
+          comment: Electronic submission of full papers
+      timezone: UTC-5
+      date: Dec 6-9, 2022
+      place: Las Vegas, NV, USA
+    - year: 2023
+      id: bibm23
+      link: https://bidma.cpsc.ucalgary.ca/IEEE-BIBM-2023/
+      timeline:
+        - deadline: '2023-08-15 17:00:00'
+          comment: Electronic submission of full papers
+      timezone: UTC-5
+      date: Dec 5-8, 2023
+      place: Istanbul, Turkey
+    - year: 2024
+      id: bibm24
+      link: https://ieeebibm.org/BIBM2024/
+      timeline:
+        - deadline: '2024-06-20 17:00:00'
+          comment: First Round, papers submitted by the June 20 deadline will be reviewed and notified by Aug 15
+        - deadline: '2024-08-16 17:00:00'
+          comment: Second Round, papers submitted by the Aug 16, 2024 deadline, will be reviewed and notified by the Oct 16, 2024
+      timezone: UTC-5
+      date: Dec 3-6, 2024
+      place: Lisbon, Portugal
+    - year: 2025
+      id: bibm25
+      link: https://ieeebibm.org/BIBM2025/
+      timeline:
+        - deadline: '2025-08-03 17:00:00'
+      timezone: UTC-5
+      date: Dec 15-18, 2025
+      place: Wuhan, China

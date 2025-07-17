@@ -1,8 +1,8 @@
 - title: CCS
   accept_rates:
-  - year: 2021
-    submitted: 880
-    accepted: 196
-    str: 22.3%(196/880 21')
-    rate: 0.222727272727273
-    source: https://github.com/emeryberger/csconferences
+    - year: 2021
+      submitted: 880
+      accepted: 196
+      str: 22.3%(196/880 21')
+      rate: 0.222727272727273
+      source: https://github.com/emeryberger/csconferences

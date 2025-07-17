@@ -1,41 +1,41 @@
-  - title: ACSAC
-    description: Annual Computer Security Applications Conference
-    sub: SC
-    rank:
-      ccf: B
-      core: A
-      thcpl: B
-    dblp: acsac
-    confs:
-      - year: 2021
-        id: acsac21
-        link: https://www.acsac.org/
-        timeline:
-          - deadline: '2021-09-14 23:59:59'
-        timezone: UTC-12
-        date: December 6-10, 2021
-        place: Online
-      - year: 2023
-        id: acsac23
-        link: https://www.acsac.org/
-        timeline:
-          - deadline: '2023-05-26 23:59:59'
-        timezone: UTC-12
-        date: December 4-8, 2023
-        place: Austin, Texas, USA
-      - year: 2024
-        id: acsac24
-        link: https://www.acsac.org/
-        timeline:
-          - deadline: '2024-05-28 23:59:59'
-        timezone: UTC-12
-        date: December 9-13, 2024
-        place: Waikiki, Hawaii, USA
-      - year: 2025
-        id: acsac25
-        link: https://www.acsac.org/
-        timeline:
-          - deadline: '2025-05-30 23:59:59'
-        timezone: UTC-12
-        date: December 9-13, 2025
-        place: Honolulu, Hawaii, USA
+- title: ACSAC
+  description: Annual Computer Security Applications Conference
+  sub: SC
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: acsac
+  confs:
+    - year: 2021
+      id: acsac21
+      link: https://www.acsac.org/
+      timeline:
+        - deadline: '2021-09-14 23:59:59'
+      timezone: UTC-12
+      date: December 6-10, 2021
+      place: Online
+    - year: 2023
+      id: acsac23
+      link: https://www.acsac.org/
+      timeline:
+        - deadline: '2023-05-26 23:59:59'
+      timezone: UTC-12
+      date: December 4-8, 2023
+      place: Austin, Texas, USA
+    - year: 2024
+      id: acsac24
+      link: https://www.acsac.org/
+      timeline:
+        - deadline: '2024-05-28 23:59:59'
+      timezone: UTC-12
+      date: December 9-13, 2024
+      place: Waikiki, Hawaii, USA
+    - year: 2025
+      id: acsac25
+      link: https://www.acsac.org/
+      timeline:
+        - deadline: '2025-05-30 23:59:59'
+      timezone: UTC-12
+      date: December 9-13, 2025
+      place: Honolulu, Hawaii, USA

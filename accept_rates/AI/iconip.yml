@@ -1,8 +1,8 @@
 - title: ICONIP
   accept_rates:
-  - year: 2024
-    submitted: 1301
-    accepted: 790
-    str: 60.72%(790/1301 24')
-    rate: 0.6072252113758647
-    source: https://link.springer.com/book/9789819670079+https://link.springer.com/book/9789819666058
+    - year: 2024
+      submitted: 1301
+      accepted: 790
+      str: 60.72%(790/1301 24')
+      rate: 0.6072252113758647
+      source: https://link.springer.com/book/9789819670079+https://link.springer.com/book/9789819666058

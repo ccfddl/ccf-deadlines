@@ -1,18 +1,18 @@
-  - title: ICVRV
-    description: International Conference on Virtual Reality and Visualization
-    sub: CG
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: icvrv
-    confs:
-      - year: 2025
-        id: icvrv25
-        link: https://icvrv2025.aconf.org/
-        timeline:
-          - abstract_deadline: '2025-08-15 23:59:59'
-            deadline: '2025-08-22 23:59:59'
-        timezone: AoE
-        date: December 19-21, 2025
-        place: Bogota, Colombia
+- title: ICVRV
+  description: International Conference on Virtual Reality and Visualization
+  sub: CG
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: icvrv
+  confs:
+    - year: 2025
+      id: icvrv25
+      link: https://icvrv2025.aconf.org/
+      timeline:
+        - abstract_deadline: '2025-08-15 23:59:59'
+          deadline: '2025-08-22 23:59:59'
+      timezone: AoE
+      date: December 19-21, 2025
+      place: Bogota, Colombia

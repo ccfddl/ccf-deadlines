@@ -1,25 +1,25 @@
-  - title: RTSS
-    description: The IEEE Real-Time Systems Symposium
-    sub: MX
-    rank:
-      ccf: A
-      core: A*
-      thcpl: B
-    dblp: rtss
-    confs:
-      - year: 2022
-        id: rtss22
-        link: http://2022.rtss.org/
-        timeline:
-          - deadline: '2022-05-26 23:59:59'
-        timezone: AoE
-        date: December 5-8, 2022
-        place: Houston, USA
-      - year: 2025
-        id: rtss25
-        link: http://2025.rtss.org/
-        timeline:
-          - deadline: '2025-05-22 23:59:59'
-        timezone: AoE
-        date: December 2-5, 2025
-        place: Boston, MA, USA
+- title: RTSS
+  description: The IEEE Real-Time Systems Symposium
+  sub: MX
+  rank:
+    ccf: A
+    core: A*
+    thcpl: B
+  dblp: rtss
+  confs:
+    - year: 2022
+      id: rtss22
+      link: http://2022.rtss.org/
+      timeline:
+        - deadline: '2022-05-26 23:59:59'
+      timezone: AoE
+      date: December 5-8, 2022
+      place: Houston, USA
+    - year: 2025
+      id: rtss25
+      link: http://2025.rtss.org/
+      timeline:
+        - deadline: '2025-05-22 23:59:59'
+      timezone: AoE
+      date: December 2-5, 2025
+      place: Boston, MA, USA

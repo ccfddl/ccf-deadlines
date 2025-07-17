@@ -1,36 +1,36 @@
-  - title: IH&MMSec
-    description: ACM Workshop on Information Hiding and Multimedia Security
-    sub: SC
-    rank:
-      ccf: C
-      core: C
-      thcpl: B
-    dblp: ih
-    confs:
-      - year: 2021
-        id: ih&mmsec21
-        link: https://www.ihmmsec.org/
-        timeline:
-          - deadline: '2021-02-25 23:59:59'
-            comment: Paper Submission Deadline
-        timezone: AoE
-        date: June 22-25, 2021
-        place: Virtual
-      - year: 2024
-        id: ih&mmsec24
-        link: https://www.ihmmsec.org/
-        timeline:
-          - deadline: '2024-02-29 23:59:59'
-            comment: Paper Submission Deadline
-        timezone: AoE
-        date: June 24-26, 2024
-        place: Baiona, Spain
-      - year: 2025
-        id: ih&mmsec25
-        link: https://www.ihmmsec.org/cms/home/index.html
-        timeline:
-          - deadline: '2025-02-28 23:59:59'
-            comment: Submission Deadline
-        timezone: AoE
-        date: June 18-20, 2025
-        place: San Jose, CA, USA
+- title: IH&MMSec
+  description: ACM Workshop on Information Hiding and Multimedia Security
+  sub: SC
+  rank:
+    ccf: C
+    core: C
+    thcpl: B
+  dblp: ih
+  confs:
+    - year: 2021
+      id: ih&mmsec21
+      link: https://www.ihmmsec.org/
+      timeline:
+        - deadline: '2021-02-25 23:59:59'
+          comment: Paper Submission Deadline
+      timezone: AoE
+      date: June 22-25, 2021
+      place: Virtual
+    - year: 2024
+      id: ih&mmsec24
+      link: https://www.ihmmsec.org/
+      timeline:
+        - deadline: '2024-02-29 23:59:59'
+          comment: Paper Submission Deadline
+      timezone: AoE
+      date: June 24-26, 2024
+      place: Baiona, Spain
+    - year: 2025
+      id: ih&mmsec25
+      link: https://www.ihmmsec.org/cms/home/index.html
+      timeline:
+        - deadline: '2025-02-28 23:59:59'
+          comment: Submission Deadline
+      timezone: AoE
+      date: June 18-20, 2025
+      place: San Jose, CA, USA

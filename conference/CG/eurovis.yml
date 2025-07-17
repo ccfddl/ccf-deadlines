@@ -1,27 +1,27 @@
-  - title: EuroVis
-    description: Eurographics Conference on Visualization
-    sub: CG
-    rank:
-      ccf: B
-      core: B
-      thcpl: B
-    dblp: vissym
-    confs:
-      - year: 2025
-        id: eurovis2025
-        link: https://www.eurovis2025.lu/
-        timeline:
-          - abstract_deadline: '2024-11-27 23:59:59'
-            deadline: '2024-12-04 23:59:59'
-        timezone: AoE
-        date: June 2-6, 2025
-        place: Luxembourg City, Luxembourg
-      - year: 2026
-        id: eurovis2026
-        link: https://www.eurovis.org.uk/
-        timeline:
-          - abstract_deadline: 'TBD'
-            deadline: 'TBD'
-        timezone: AoE
-        date: June 8-12, 2026
-        place: Nottingham, United Kingdom
+- title: EuroVis
+  description: Eurographics Conference on Visualization
+  sub: CG
+  rank:
+    ccf: B
+    core: B
+    thcpl: B
+  dblp: vissym
+  confs:
+    - year: 2025
+      id: eurovis2025
+      link: https://www.eurovis2025.lu/
+      timeline:
+        - abstract_deadline: '2024-11-27 23:59:59'
+          deadline: '2024-12-04 23:59:59'
+      timezone: AoE
+      date: June 2-6, 2025
+      place: Luxembourg City, Luxembourg
+    - year: 2026
+      id: eurovis2026
+      link: https://www.eurovis.org.uk/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: June 8-12, 2026
+      place: Nottingham, United Kingdom

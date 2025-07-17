@@ -1,25 +1,25 @@
-  - title: SIGMETRICS
-    description: ACM Special Interest Group on Measurement and Evaluation
-    sub: DS
-    rank:
-      ccf: B
-      core: A*
-      thcpl: A
-    dblp: sigmetrics
-    confs:
-      - year: 2025
-        id: sigmetrics25
-        link: https://www.sigmetrics.org/sigmetrics2025/
-        timeline:
-          - abstract_deadline: '2024-07-31 23:59:00'
-            deadline: '2024-08-07 23:59:00'
-            comment: summer round
-          - abstract_deadline: '2024-10-02 23:59:00'
-            deadline: '2024-10-09 23:59:00'
-            comment: fall round
-          - abstract_deadline: '2025-01-15 23:59:00'
-            deadline: '2025-01-22 23:59:00'
-            comment: winter round
-        timezone: AoE
-        date: June 9-13, 2025
-        place: Stony Brook, New York, USA
+- title: SIGMETRICS
+  description: ACM Special Interest Group on Measurement and Evaluation
+  sub: DS
+  rank:
+    ccf: B
+    core: A*
+    thcpl: A
+  dblp: sigmetrics
+  confs:
+    - year: 2025
+      id: sigmetrics25
+      link: https://www.sigmetrics.org/sigmetrics2025/
+      timeline:
+        - abstract_deadline: '2024-07-31 23:59:00'
+          deadline: '2024-08-07 23:59:00'
+          comment: summer round
+        - abstract_deadline: '2024-10-02 23:59:00'
+          deadline: '2024-10-09 23:59:00'
+          comment: fall round
+        - abstract_deadline: '2025-01-15 23:59:00'
+          deadline: '2025-01-22 23:59:00'
+          comment: winter round
+      timezone: AoE
+      date: June 9-13, 2025
+      place: Stony Brook, New York, USA

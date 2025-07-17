@@ -1,17 +1,17 @@
-  - title: GLSVLSI
-    description: Great Lakes Symposium on VLSI
-    sub: DS
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: glvlsi
-    confs:
-      - year: 2025
-        id: glsvlsi2025
-        link: https://www.glsvlsi.org/
-        timeline:
-          - deadline: '2025-03-17 23:59:00'
-        timezone: UTC-5
-        date: June 30-July 2, 2025
-        place: New Orleans, LA, USA
+- title: GLSVLSI
+  description: Great Lakes Symposium on VLSI
+  sub: DS
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: glvlsi
+  confs:
+    - year: 2025
+      id: glsvlsi2025
+      link: https://www.glsvlsi.org/
+      timeline:
+        - deadline: '2025-03-17 23:59:00'
+      timezone: UTC-5
+      date: June 30-July 2, 2025
+      place: New Orleans, LA, USA

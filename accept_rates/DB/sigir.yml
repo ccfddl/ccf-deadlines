@@ -1,14 +1,14 @@
 - title: SIGIR
   accept_rates:
-  - year: 2023
-    submitted: 822
-    accepted: 165
-    str: 20.1%(165/822 23')
-    rate: 0.200729927007299
-    source: https://github.com/emeryberger/csconferences
-  - year: 2024
-    submitted: 791
-    accepted: 160
-    str: 20.2%(160/791 24')
-    rate: 0.202275600505689
-    source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3626772
+    - year: 2023
+      submitted: 822
+      accepted: 165
+      str: 20.1%(165/822 23')
+      rate: 0.200729927007299
+      source: https://github.com/emeryberger/csconferences
+    - year: 2024
+      submitted: 791
+      accepted: 160
+      str: 20.2%(160/791 24')
+      rate: 0.202275600505689
+      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3626772

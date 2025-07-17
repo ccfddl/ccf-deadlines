@@ -1,18 +1,18 @@
-  - title: SPM
-    description: Symposium on Solid and Physical Modeling
-    sub: CG
-    rank:
-      ccf: B
-      core: C
-      thcpl: B
-    dblp: sma
-    confs:
-      - year: 2025
-        id: spm25
-        link: https://spmconf2025.github.io/SPM2025/
-        timeline:
-          - abstract_deadline: '2025-03-08 23:59:59'
-            deadline: '2025-03-15 23:59:59'
-        timezone: AoE
-        date: October 29 - November 2, 2025 
-        place: Hangzhou, Zhejiang, P.R. China
+- title: SPM
+  description: Symposium on Solid and Physical Modeling
+  sub: CG
+  rank:
+    ccf: B
+    core: C
+    thcpl: B
+  dblp: sma
+  confs:
+    - year: 2025
+      id: spm25
+      link: https://spmconf2025.github.io/SPM2025/
+      timeline:
+        - abstract_deadline: '2025-03-08 23:59:59'
+          deadline: '2025-03-15 23:59:59'
+      timezone: AoE
+      date: October 29 - November 2, 2025
+      place: Hangzhou, Zhejiang, P.R. China

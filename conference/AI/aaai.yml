@@ -1,55 +1,54 @@
-  - title: AAAI
-    description: AAAI Conference on Artificial Intelligence
-    sub: AI
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: aaai
-    confs:
-      - year: 2022
-        id: aaai22
-        link: https://aaai.org/Conferences/AAAI-22/
-        timeline:
-          - abstract_deadline: '2021-08-30 23:59:59'
-            deadline: '2021-09-08 23:59:59'
-        timezone: UTC-12
-        date: February 22 - March 1, 2022
-        place: Vancouver, British Columbia, Canada
-      - year: 2023
-        id: aaai23
-        link: https://www.aaai.org/Conferences/AAAI-23/
-        timeline:
-          - abstract_deadline: '2022-08-08 23:59:59'
-            deadline: '2022-08-15 23:59:59'
-        timezone: UTC-12
-        date: February 7 - February 14, 2023
-        place: Washington, DC, USA
-      - year: 2024
-        id: aaai24
-        link: https://www.aaai.org/aaai-conference/
-        timeline:
-          - abstract_deadline: '2023-08-08 23:59:59'
-            deadline: '2023-08-15 23:59:59'
-        timezone: UTC-12
-        date: February 20 - February 27, 2024
-        place: Vancouver, British Columbia, Canada
-      - year: 2025
-        id: aaai25
-        link: https://aaai.org/conference/aaai/aaai-25/
-        timeline:
-          - abstract_deadline: '2024-08-07 23:59:59'
-            deadline: '2024-08-15 23:59:59'
-        timezone: UTC-12
-        date: February 25 - March 4, 2025
-        place: PHILADELPHIA, PENNSYLVANIA, USA
-      - year: 2026
-        id: aaai26
-        link: https://aaai.org/conference/aaai/aaai-26/
-        timeline:
-          - abstract_deadline: '2025-07-25 23:59:59'
-            deadline: '2025-08-01 23:59:59'
-        timezone: UTC-12
-        date: January 20 - 27, 2026
-        place: Singapore EXPO
-
+- title: AAAI
+  description: AAAI Conference on Artificial Intelligence
+  sub: AI
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: aaai
+  confs:
+    - year: 2022
+      id: aaai22
+      link: https://aaai.org/Conferences/AAAI-22/
+      timeline:
+        - abstract_deadline: '2021-08-30 23:59:59'
+          deadline: '2021-09-08 23:59:59'
+      timezone: UTC-12
+      date: February 22 - March 1, 2022
+      place: Vancouver, British Columbia, Canada
+    - year: 2023
+      id: aaai23
+      link: https://www.aaai.org/Conferences/AAAI-23/
+      timeline:
+        - abstract_deadline: '2022-08-08 23:59:59'
+          deadline: '2022-08-15 23:59:59'
+      timezone: UTC-12
+      date: February 7 - February 14, 2023
+      place: Washington, DC, USA
+    - year: 2024
+      id: aaai24
+      link: https://www.aaai.org/aaai-conference/
+      timeline:
+        - abstract_deadline: '2023-08-08 23:59:59'
+          deadline: '2023-08-15 23:59:59'
+      timezone: UTC-12
+      date: February 20 - February 27, 2024
+      place: Vancouver, British Columbia, Canada
+    - year: 2025
+      id: aaai25
+      link: https://aaai.org/conference/aaai/aaai-25/
+      timeline:
+        - abstract_deadline: '2024-08-07 23:59:59'
+          deadline: '2024-08-15 23:59:59'
+      timezone: UTC-12
+      date: February 25 - March 4, 2025
+      place: PHILADELPHIA, PENNSYLVANIA, USA
+    - year: 2026
+      id: aaai26
+      link: https://aaai.org/conference/aaai/aaai-26/
+      timeline:
+        - abstract_deadline: '2025-07-25 23:59:59'
+          deadline: '2025-08-01 23:59:59'
+      timezone: UTC-12
+      date: January 20 - 27, 2026
+      place: Singapore EXPO

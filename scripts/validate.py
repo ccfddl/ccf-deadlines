@@ -42,7 +42,7 @@ class ConferenceTest(TestCase):
                         if conf.endswith('.yaml'): # Some new contributors will commit a wrong the file extension.
                             self.fail(msg=f'\033[1;31m{conf}\033[m should be renamed as \033[1;31m{conf[:-4]}yml\033[m')
                         if not conf.endswith('.yml'):
-                            continue    
+                            continue
                         conference_yml_path = os.path.join(DATA_ROOT, sub, conf)
                         with open(conference_yml_path, 'r') as conference_yml_file:
                             try:

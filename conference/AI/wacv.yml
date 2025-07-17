@@ -1,33 +1,33 @@
-  - title: WACV
-    description: IEEE/CVF Winter Conference on Applications of Computer Vision
-    sub: AI
-    rank:
-      ccf: N
-      core: A
-      thcpl: N
-    dblp: wacv
-    confs:
-      - year: 2025
-        id: wacv25
-        link: https://wacv2025.thecvf.com/
-        timeline:
-          - deadline: '2024-07-15 23:59:59'
-            comment: first round
-          - deadline: '2024-09-09 23:59:59'
-            comment: second round
-        timezone: UTC-7
-        date: February 28 - March 4, 2025
-        place: Tucson, Arizona, USA
-      - year: 2026
-        id: wacv26
-        link: https://wacv.thecvf.com/
-        timeline:
-          - abstract_deadline: '2025-07-11 23:59:00'
-            deadline: '2025-07-18 23:59:59'
-            comment: First round
-          - abstract_deadline: '2025-09-12 23:59:00'
-            deadline: '2025-09-19 23:59:59'
-            comment: Second round
-        timezone: AoE
-        date: Mar 6 - 10, 2026
-        place: Tucson, Arizona, USA
+- title: WACV
+  description: IEEE/CVF Winter Conference on Applications of Computer Vision
+  sub: AI
+  rank:
+    ccf: N
+    core: A
+    thcpl: N
+  dblp: wacv
+  confs:
+    - year: 2025
+      id: wacv25
+      link: https://wacv2025.thecvf.com/
+      timeline:
+        - deadline: '2024-07-15 23:59:59'
+          comment: first round
+        - deadline: '2024-09-09 23:59:59'
+          comment: second round
+      timezone: UTC-7
+      date: February 28 - March 4, 2025
+      place: Tucson, Arizona, USA
+    - year: 2026
+      id: wacv26
+      link: https://wacv.thecvf.com/
+      timeline:
+        - abstract_deadline: '2025-07-11 23:59:00'
+          deadline: '2025-07-18 23:59:59'
+          comment: First round
+        - abstract_deadline: '2025-09-12 23:59:00'
+          deadline: '2025-09-19 23:59:59'
+          comment: Second round
+      timezone: AoE
+      date: Mar 6 - 10, 2026
+      place: Tucson, Arizona, USA

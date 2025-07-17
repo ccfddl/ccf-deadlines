@@ -1,20 +1,20 @@
-  - title: INSCRYPT
-    description: International Conference on Information Security and Cryptology
-    sub: SC
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: cisc
-    confs:
-      - year: 2025
-        id: inscrypt25
-        link: https://inscrypt2025.xidian.edu.cn/
-        timeline:
-          - deadline: '2025-04-15 23:59:59'
-            comment: 1st Round
-          - deadline: '2025-06-30 23:59:59'
-            comment: 2nd Round
-        timezone: UTC-8
-        date: October 19-21, 2025
-        place: Xi'an, China
+- title: INSCRYPT
+  description: International Conference on Information Security and Cryptology
+  sub: SC
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: cisc
+  confs:
+    - year: 2025
+      id: inscrypt25
+      link: https://inscrypt2025.xidian.edu.cn/
+      timeline:
+        - deadline: '2025-04-15 23:59:59'
+          comment: 1st Round
+        - deadline: '2025-06-30 23:59:59'
+          comment: 2nd Round
+      timezone: UTC-8
+      date: October 19-21, 2025
+      place: Xi'an, China

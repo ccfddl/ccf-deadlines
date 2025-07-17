@@ -1,36 +1,36 @@
-  - title: ISMAR
-    description: International Symposium on Mixed and Augmented Reality
-    sub: CG
-    rank:
-      ccf: B
-      core: A*
-      thcpl: B
-    dblp: ismar
-    confs:
-      - year: 2023
-        id: ismar2023
-        link: https://ismar23.org/
-        timeline:
-          - abstract_deadline: '2023-06-05 23:59:59'
-            deadline: '2023-06-12 23:59:59'
-        timezone: AoE
-        date: Oct 16-20, 2023
-        place: Sydney, Australia
-      - year: 2024
-        id: ismar2024
-        link: https://ieeeismar.org/
-        timeline:
-          - abstract_deadline: '2024-05-03 23:59:59'
-            deadline: '2024-05-08 23:59:59'
-        timezone: AoE
-        date: Oct 21-25, 2024
-        place: Greater Seattle Area, USA
-      - year: 2025
-        id: ismar2025
-        link: https://www.ieeeismar.net/2025/
-        timeline:
-          - abstract_deadline: '2025-04-04 23:59:59'
-            deadline: '2025-04-11 23:59:59'
-        timezone: AoE
-        date: Oct 8-12, 2025
-        place: Daejeon, South Korea
+- title: ISMAR
+  description: International Symposium on Mixed and Augmented Reality
+  sub: CG
+  rank:
+    ccf: B
+    core: A*
+    thcpl: B
+  dblp: ismar
+  confs:
+    - year: 2023
+      id: ismar2023
+      link: https://ismar23.org/
+      timeline:
+        - abstract_deadline: '2023-06-05 23:59:59'
+          deadline: '2023-06-12 23:59:59'
+      timezone: AoE
+      date: Oct 16-20, 2023
+      place: Sydney, Australia
+    - year: 2024
+      id: ismar2024
+      link: https://ieeeismar.org/
+      timeline:
+        - abstract_deadline: '2024-05-03 23:59:59'
+          deadline: '2024-05-08 23:59:59'
+      timezone: AoE
+      date: Oct 21-25, 2024
+      place: Greater Seattle Area, USA
+    - year: 2025
+      id: ismar2025
+      link: https://www.ieeeismar.net/2025/
+      timeline:
+        - abstract_deadline: '2025-04-04 23:59:59'
+          deadline: '2025-04-11 23:59:59'
+      timezone: AoE
+      date: Oct 8-12, 2025
+      place: Daejeon, South Korea
