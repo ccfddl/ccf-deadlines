@@ -25,3 +25,12 @@
       timezone: UTC
       date: May 12-16, 2025
       place: London, UK
+    - year: 2026
+      id: eg26
+      link: https://eg2026.github.io/
+      timeline:
+        - abstract_deadline: '2025-09-22 23:59:59'
+          deadline: '2025-09-26 23:59:59'
+      timezone: UTC
+      date: May 4-8, 2025
+      place: Aachen, Germany
