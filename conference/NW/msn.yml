@@ -15,3 +15,11 @@
       timezone: UTC-12
       date: December 20-22, 2024
       place: Harbin, China
+    - year: 2025
+      id: msn25
+      link: https://ieee-msn.org/2025
+      timeline:
+        - deadline: '2025-09-15 23:59:59'
+      timezone: UTC-12
+      date: December 3-6, 2025
+      place: Bandung, Indonesia
