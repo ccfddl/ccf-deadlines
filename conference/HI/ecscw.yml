@@ -16,3 +16,12 @@
       timezone: AoE
       date: June 30 - July 4, 2025
       place: Newcastle upon Tyne, UK
+    - year: 2026
+      id: ecscw26
+      link: https://ecscw.eusset.eu/2026
+      timeline:
+        - deadline: '2026-03-06 23:59:59'
+          comment: 'Conference Papers'
+      timezone: AoE
+      date: 29 June - 3 July, 2026
+      place: Munich, Germany
