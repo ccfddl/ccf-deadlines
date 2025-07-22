@@ -36,3 +36,12 @@
       timezone: AoE
       date: March 31- April 2, 2025
       place: Palais des congrès de Lyon, Lyon, France
+    - year: 2026
+      id: date2026
+      link: https://www.date-conference.com/call-for-papers
+      timeline:
+        - abstract_deadline: '2025-09-07 23:59:59'
+          deadline: '2025-09-14 23:59:59'
+      timezone: AoE
+      date: April 20- April 22, 2026
+      place: Verona, Italy
