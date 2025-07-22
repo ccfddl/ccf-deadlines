@@ -2,7 +2,7 @@
   description: International Conference on Cryptology in India
   sub: SC
   rank:
-    ccf: C
+    ccf: N
     core: N
     thcpl: N
   dblp: indocrypt
