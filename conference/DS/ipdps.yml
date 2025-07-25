@@ -43,3 +43,12 @@
       timezone: AoE
       date: June 3-7, 2025
       place: Politecnico di Milano, Milan, Italy
+    - year: 2026
+      id: ipdps26
+      link: https://www.ipdps.org/
+      timeline:
+        - abstract_deadline: '2025-10-02 23:59:59'
+          deadline: '2025-10-09 23:59:59'
+      timezone: AoE
+      date: May 25-29, 2026
+      place: New Orleans, USA
