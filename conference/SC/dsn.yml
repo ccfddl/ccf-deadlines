@@ -38,3 +38,12 @@
       timezone: AoE
       date: June 23-26, 2025
       place: Naples, Italy
+    - year: 2026
+      id: dsn26
+      link: https://dsn2026.github.io
+      timeline:
+        - abstract_deadline: '2025-11-27 23:59:59'
+          deadline: '2025-12-04 23:59:59'
+      timezone: AoE
+      date: June 22-25, 2026
+      place: Charlotte, USA
