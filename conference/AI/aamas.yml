@@ -34,3 +34,12 @@
       timezone: UTC-12
       date: May 19-23, 2025
       place: Detroit, Michigan, USA
+    - year: 2026
+      id: aamas26
+      link: https://cyprusconferences.org/aamas2026
+      timeline:
+        - abstract_deadline: '2025-10-01 23:59:59'
+          deadline: '2025-10-08 23:59:59'
+      timezone: UTC-12
+      date: May 27-29, 2026
+      place: Paphos, Cyprus
