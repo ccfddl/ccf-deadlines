@@ -31,3 +31,11 @@
       timezone: AoE
       date: May 4-8, 2025
       place: Madrid, Spain
+    - year: 2026
+      id: eurocrypt26
+      link: https://eurocrypt.iacr.org/2026/
+      timeline:
+        - deadline: '2025-10-02 23:59:59'
+      timezone: AoE
+      date: May 10-14, 2026
+      place: Rome, Italy
