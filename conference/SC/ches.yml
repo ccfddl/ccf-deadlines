@@ -67,3 +67,18 @@
       timezone: AoE
       date: September 14-18, 2025
       place: Kuala Lumpur, Malaysia
+    - year: 2026
+      id: ches26
+      link: https://ches.iacr.org/2026/
+      timeline:
+        - deadline: '2025-07-15 23:59:59'
+          comment: Schedule for TCHES Volume 2026/1
+        - deadline: '2025-10-15 23:59:59'
+          comment: Schedule for TCHES Volume 2026/2
+        - deadline: '2026-01-15 23:59:59'
+          comment: Schedule for TCHES Volume 2026/3
+        - deadline: '2026-04-15 23:59:59'
+          comment: Schedule for TCHES Volume 2026/4
+      timezone: AoE
+      date: October 11-15, 2026
+      place: Türkiye
