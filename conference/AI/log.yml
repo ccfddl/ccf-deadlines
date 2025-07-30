@@ -1,0 +1,20 @@
+- title: LOG
+  description: Learning on Graphs Conference
+  sub: AI
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: log
+  confs:
+    - year: 2025
+      id: log2025
+      link: https://logconference.org/
+      timeline:
+        - deadline: '2025-08-22 24:00:00'
+          comment: 'Abstract deadline'
+        - deadline: '2025-08-29 24:00:00'
+          comment: 'submission deadline'
+      timezone: AOE
+      date: December 10-12, 2025
+      place: Arizona State University, Phoenix, USA
