@@ -31,3 +31,11 @@
       timezone: UTC-12
       date: May 12-15, 2025
       place: Røros, Norway
+    - year: 2026
+      id: pkc26
+      link: https://pkc.iacr.org/2026/
+      timeline:
+        - deadline: '2025-10-24 23:59:59'
+      timezone: UTC-12
+      date: May 25-28, 2026
+      place: West Palm Beach, USA
