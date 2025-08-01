@@ -61,3 +61,14 @@
       timezone: UTC-12
       date: October 12-18, 2025
       place: Singapore
+    - year: 2026
+      id: oopsla26
+      link: https://conf.researchr.org/track/splash-2026/oopsla-2026
+      timeline:
+        - deadline: '2025-10-10 23:59:59'
+          comment: Submission Deadline Round 1
+        - deadline: '2026-03-17 23:59:59'
+          comment: Submission Deadline Round 2
+      timezone: UTC-12
+      date: October 3-9, 2025
+      place: Oakland, California, United States
