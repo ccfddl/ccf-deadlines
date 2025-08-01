@@ -57,3 +57,16 @@
       timezone: UTC-12
       date: June 16-20, 2025
       place: Santa Cruz, CA, USA
+    - year: 2026
+      id: csfw26
+      link: https://csf2026.ieee-security.org/
+      timeline:
+        - deadline: '2025-07-24 23:59:59'
+          comment: Summer
+        - deadline: '2025-10-09 23:59:59'
+          comment: Fall
+        - deadline: '2026-01-29 23:59:59'
+          comment: Winter
+      timezone: UTC-12
+      date: July 26-29, 2026
+      place: Lisbon, Portugal
