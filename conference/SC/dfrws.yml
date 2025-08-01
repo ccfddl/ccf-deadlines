@@ -25,3 +25,12 @@
       timezone: AoE
       date: April 1-4, 2025
       place: Brno, Czech Republic
+    - year: 2026
+      id: dfrws26
+      link: https://dfrws.org/conferences/dfrws-eu-2026/
+      timeline:
+        - abstract_deadline: '2025-09-19 23:59:59'
+          deadline: '2025-09-26 23:59:59'
+      timezone: AoE
+      date: March 24-27, 2026
+      place: Linköping, Sweden
