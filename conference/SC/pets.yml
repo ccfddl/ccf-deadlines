@@ -52,3 +52,18 @@
       timezone: AoE
       date: July 14-19, 2025
       place: Washington, DC and Online
+    - year: 2026
+      id: pets26
+      link: https://petsymposium.org/cfp26.php
+      timeline:
+        - deadline: '2025-05-31 23:59:59'
+          comment: Issue 1 Paper Submission Deadline
+        - deadline: '2025-08-31 23:59:59'
+          comment: Issue 2 Paper Submission Deadline
+        - deadline: '2025-11-30 23:59:59'
+          comment: Issue 3 Paper Submission Deadline
+        - deadline: '2026-02-28 23:59:59'
+          comment: Issue 4 Paper Submission Deadline
+      timezone: AoE
+      date: July, 2026
+      place: Location TBD
