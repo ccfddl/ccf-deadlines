@@ -51,6 +51,8 @@ The filter is mapped to the name of iCal file in the following rules:
 
 For example, given filter: lang=zh, sub=AI,CG, ccf=A,thcpl=A, then it will refer to `deadlines_zh_ccf_A_AI.ics`, `deadlines_zh_ccf_A_CG.ics`, `deadlines_zh_thcpl_A_AI.ics` and `deadlines_zh_thcpl_A_CG.ics`.
 
+## Community activity
+![Alt](https://repobeats.axiom.co/api/embed/98d0169b30fc63bfddcfbf2ac6d73656ef0f9d00.svg "Repobeats analytics image")]
 
 ## Add/Update a conference
 
@@ -180,9 +182,6 @@ The matching table:
 | `AI`  | Artificial Intelligence                                           |
 | `HI`  | Computer-Human Interaction                                        |
 | `MX`  | Interdiscipline/Mixture/Emerging                                  |
-
-## Community activity
-![Alt](https://repobeats.axiom.co/api/embed/98d0169b30fc63bfddcfbf2ac6d73656ef0f9d00.svg "Repobeats analytics image")]
 
 ## Contribution
 
