@@ -6,6 +6,8 @@
 
 English | [简体中文](./README.zh-CN.md)
 
+[![Alt]](https://repobeats.axiom.co/api/embed/98d0169b30fc63bfddcfbf2ac6d73656ef0f9d00.svg "Repobeats analytics image")]
+
 Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
 
 <table>
