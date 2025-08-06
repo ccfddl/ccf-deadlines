@@ -49,3 +49,13 @@
       timezone: UTC-12
       date: November, 2025
       place: Hong Kong, China
+    - year: 2026
+      id: mobicom26
+      link: https://sigmobile.org/mobicom/2026/
+      timeline:
+        - abstract_deadline: '2025-08-27 23:59:59'
+          deadline: '2025-09-03 23:59:59'
+          comment: Summer Deadlines
+      timezone: AoE
+      date: November, 2026
+      place: Austin, Texas, USA
