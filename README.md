@@ -181,10 +181,6 @@ The matching table:
 | `HI`  | Computer-Human Interaction                                        |
 | `MX`  | Interdiscipline/Mixture/Emerging                                  |
 
-
-## Community activity 
-![Alt](https://repobeats.axiom.co/api/embed/98d0169b30fc63bfddcfbf2ac6d73656ef0f9d00.svg)
-
 ## Contribution
 
 Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123), [@oliverck](https://github.com/oliverck), [@fffmath](https://github.com/fffmath), [@Allenpandas](https://github.com/Allenpandas), [@yuang-chen](https://github.com/yuang-chen), [@hepengfei5709](https://github.com/hepengfei5709), [@ViGeng](https://github.com/ViGeng), [@QianpengLi577](https://github.com/QianpengLi577).
