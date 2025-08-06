@@ -27,3 +27,13 @@
       timezone: AoE
       date: May 21-23, 2025
       place: Hotel City, Maribor, Slovenia
+    - year: 2026
+      id: sec26
+      link: https://ifipsec.org/index.html
+      timeline:
+        - deadline: '2025-12-19 23:59:59'
+          comment: Submission deadline
+      timezone: AoE
+      date: June 09 - 11, 2026
+      place: Perth, Australia
+      
