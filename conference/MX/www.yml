@@ -56,8 +56,8 @@
       id: www26
       link: https://www2026.thewebconf.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2025-09-30 23:59:59'
+          deadline: '2025-10-07 23:59:59'
       timezone: AoE
       date: April 13 - 17, 2026
       place: Dubaï, UAE
