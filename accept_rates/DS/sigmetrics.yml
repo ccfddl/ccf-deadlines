@@ -1,0 +1,14 @@
+- title: SIGMETRICS
+  accept_rates:
+    - year: 2024
+      submitted: 336
+      accepted: 52
+      str: 15.5%(52/336 24')
+      rate: 0.154762
+      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3652963#:~:text=ACM%20SIGMETRICS%2FIFIP%20Performance%202024%20received%20336%20submissions%20across,52%20papers%20for%20an%20acceptance%20rate%20of%2015%25.
+    - year: 2025
+      submitted: 382
+      accepted: 66
+      str: 17.3%(66/382 25')
+      rate: 0.172775
+      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3726854#:~:text=This%20year%2C%20ACM%20SIGMETRICS%20received%20382%20submissions%20across,66%20papers%20for%20an%20acceptance%20rate%20of%2017.3%25.

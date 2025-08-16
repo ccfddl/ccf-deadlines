@@ -1,0 +1,17 @@
+- title: HPCC
+  description: IEEE International Conference on High Performance Computing and Communications
+  sub: DS
+  rank:
+    ccf: C
+    core: C
+    thcpl: N
+  dblp: hpcc
+  confs:
+    - year: 2025
+      id: hpcc2025
+      link: https://hpcn.exeter.ac.uk/hpcc2025/
+      timeline:
+        - deadline: '2025-05-18 23:59:59'
+      timezone: AoE
+      date: August 13-15, 2025
+      place: Exeter, UK

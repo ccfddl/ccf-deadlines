@@ -1,27 +1,27 @@
-  - title: IEEE VIS
-    description: IEEE Visualization Conference
-    sub: CG
-    rank:
-      ccf: A
-      core: A
-      thcpl: A
-    dblp: visualization
-    confs:
-      - year: 2023
-        id: vis23
-        link: https://ieeevis.org/year/2023/welcome
-        timeline:
-          - abstract_deadline: '2023-03-21 23:59:59'
-            deadline: '2023-03-31 23:59:59'
-        timezone: AoE
-        date: October 22-27, 2023
-        place: Melbourne, Australia
-      - year: 2025
-        id: vis25
-        link: https://ieeevis.org/year/2025/welcome
-        timeline:
-          - abstract_deadline: '2025-03-21 23:59:59'
-            deadline: '2025-03-31 23:59:59'
-        timezone: AoE
-        date: November 2-7, 2025
-        place: Vienna, Austria
+- title: IEEE VIS
+  description: IEEE Visualization Conference
+  sub: CG
+  rank:
+    ccf: A
+    core: A
+    thcpl: A
+  dblp: visualization
+  confs:
+    - year: 2023
+      id: vis23
+      link: https://ieeevis.org/year/2023/welcome
+      timeline:
+        - abstract_deadline: '2023-03-21 23:59:59'
+          deadline: '2023-03-31 23:59:59'
+      timezone: AoE
+      date: October 22-27, 2023
+      place: Melbourne, Australia
+    - year: 2025
+      id: vis25
+      link: https://ieeevis.org/year/2025/welcome
+      timeline:
+        - abstract_deadline: '2025-03-21 23:59:59'
+          deadline: '2025-03-31 23:59:59'
+      timezone: AoE
+      date: November 2-7, 2025
+      place: Vienna, Austria

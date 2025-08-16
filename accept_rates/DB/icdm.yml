@@ -1,14 +1,14 @@
 - title: ICDM
   accept_rates:
-  - year: 2021
-    submitted: 990
-    accepted: 98
-    str: 9.9%(98/990 21')
-    rate: 0.098989898989899
-    source: https://github.com/lixin4ever/Conference-Acceptance-Rate
-  - year: 2023
-    submitted: 926
-    accepted: 200
-    str: 21.6%(200/926 23')
-    rate: 0.2159827
-    source: https://csconfstats.xoveexu.com/
+    - year: 2021
+      submitted: 990
+      accepted: 98
+      str: 9.9%(98/990 21')
+      rate: 0.098989898989899
+      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2023
+      submitted: 926
+      accepted: 200
+      str: 21.6%(200/926 23')
+      rate: 0.2159827
+      source: https://csconfstats.xoveexu.com/

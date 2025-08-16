@@ -1,36 +1,36 @@
-  - title: ECAI
-    description: European Conference on Artificial Intelligence
-    sub: AI
-    rank:
-      ccf: B
-      core: A
-      thcpl: N
-    dblp: ecai
-    confs:
-      - year: 2023
-        id: ecai23
-        link: https://ecai2023.eu/
-        timeline:
-          - abstract_deadline: '2023-05-02 23:59:59'
-            deadline: '2023-05-08 23:59:59'
-        timezone: UTC-12
-        date: October 2-5, 2023
-        place: Kraków, Poland
-      - year: 2024
-        id: ecai24
-        link: https://www.ecai2024.eu/
-        timeline:
-          - abstract_deadline: '2024-04-19 23:59:59'
-            deadline: '2024-04-25 23:59:59'
-        timezone: UTC-12
-        date: October 19-24, 2024
-        place: Santiago de Compostela
-      - year: 2025
-        id: ecai25
-        link: https://ecai2025.org/deadlines/
-        timeline:
-          - abstract_deadline: '2025-04-29 23:59:59'
-            deadline: '2025-05-06 23:59:59'
-        timezone: UTC-12
-        date: October 25-30, 2025
-        place: Bologna, ITALY
+- title: ECAI
+  description: European Conference on Artificial Intelligence
+  sub: AI
+  rank:
+    ccf: B
+    core: A
+    thcpl: N
+  dblp: ecai
+  confs:
+    - year: 2023
+      id: ecai23
+      link: https://ecai2023.eu/
+      timeline:
+        - abstract_deadline: '2023-05-02 23:59:59'
+          deadline: '2023-05-08 23:59:59'
+      timezone: UTC-12
+      date: October 2-5, 2023
+      place: Kraków, Poland
+    - year: 2024
+      id: ecai24
+      link: https://www.ecai2024.eu/
+      timeline:
+        - abstract_deadline: '2024-04-19 23:59:59'
+          deadline: '2024-04-25 23:59:59'
+      timezone: UTC-12
+      date: October 19-24, 2024
+      place: Santiago de Compostela
+    - year: 2025
+      id: ecai25
+      link: https://ecai2025.org/deadlines/
+      timeline:
+        - abstract_deadline: '2025-04-29 23:59:59'
+          deadline: '2025-05-06 23:59:59'
+      timezone: UTC-12
+      date: October 25-30, 2025
+      place: Bologna, ITALY

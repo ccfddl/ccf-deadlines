@@ -1,14 +1,14 @@
 - title: UAI
   accept_rates:
-  - year: 2023
-    submitted: 778
-    accepted: 243
-    str: 31.2%(243/778 23')
-    rate: 0.312339331619537
-    source: https://github.com/lixin4ever/Conference-Acceptance-Rate
-  - year: 2024
-    submitted: 715
-    accepted: 200
-    str: 28.0%(200/715 24')
-    rate: 0.2797203
-    source: https://csconfstats.xoveexu.com/
+    - year: 2023
+      submitted: 778
+      accepted: 243
+      str: 31.2%(243/778 23')
+      rate: 0.312339331619537
+      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2024
+      submitted: 715
+      accepted: 200
+      str: 28.0%(200/715 24')
+      rate: 0.2797203
+      source: https://csconfstats.xoveexu.com/

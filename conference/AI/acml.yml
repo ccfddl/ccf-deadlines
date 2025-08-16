@@ -1,44 +1,44 @@
-  - title: ACML
-    description: Asian Conference on Machine Learning
-    sub: AI
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: acml
-    confs:
-      - year: 2021
-        id: acml21
-        link: http://www.acml-conf.org/2021/
-        timeline:
-          - deadline: '2021-06-25 23:59:59'
-        timezone: UTC-7
-        date: November 17-19, 2021
-        place: Virtual
-      - year: 2023
-        id: acml23
-        link: https://www.acml-conf.org/2023/index.html
-        timeline:
-          - deadline: '2023-06-23 23:59:59'
-        timezone: UTC-12
-        date: November 11-14, 2023
-        place: İstanbul, Turkey
-      - year: 2024
-        id: acml24
-        link: https://www.acml-conf.org/2024/index.html
-        timeline:
-          - deadline: '2024-07-03 23:59:59'
-        timezone: UTC-12
-        date: December 5-7, 2024
-        place: Hanoi, Vietnam
-      - year: 2025
-        id: acml25
-        link: https://www.acml-conf.org/2025/
-        timeline:
-          - deadline: '2025-05-30 23:59:59'
-            comment: 'Journal Track'
-          - deadline: '2025-06-26 23:59:59'
-            comment: 'Conference Track'
-        timezone: AoE
-        date: December 9-12, 2025
-        place: Taipei, Taiwan
+- title: ACML
+  description: Asian Conference on Machine Learning
+  sub: AI
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: acml
+  confs:
+    - year: 2021
+      id: acml21
+      link: http://www.acml-conf.org/2021/
+      timeline:
+        - deadline: '2021-06-25 23:59:59'
+      timezone: UTC-7
+      date: November 17-19, 2021
+      place: Virtual
+    - year: 2023
+      id: acml23
+      link: https://www.acml-conf.org/2023/index.html
+      timeline:
+        - deadline: '2023-06-23 23:59:59'
+      timezone: UTC-12
+      date: November 11-14, 2023
+      place: İstanbul, Turkey
+    - year: 2024
+      id: acml24
+      link: https://www.acml-conf.org/2024/index.html
+      timeline:
+        - deadline: '2024-07-03 23:59:59'
+      timezone: UTC-12
+      date: December 5-7, 2024
+      place: Hanoi, Vietnam
+    - year: 2025
+      id: acml25
+      link: https://www.acml-conf.org/2025/
+      timeline:
+        - deadline: '2025-05-30 23:59:59'
+          comment: 'Journal Track'
+        - deadline: '2025-06-26 23:59:59'
+          comment: 'Conference Track'
+      timezone: AoE
+      date: December 9-12, 2025
+      place: Taipei, Taiwan

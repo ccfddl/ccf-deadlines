@@ -1,29 +1,28 @@
-  - title: APSys
-    description: ACM SIGOPS Asia-Pacific Workshop on Systems
-    sub: DS
-    rank:
-      ccf: N
-      core: N
-      thcpl: N
-    dblp: apsys
-    confs:
-      - year: 2024
-        id: apsys2024
-        link: https://apsys2024.github.io/
-        timeline:
-          - abstract_deadline: '2024-04-25 23:59:00'
-            deadline: '2024-05-02 23:59:00'
-            comment: call for papers
-        timezone: AoE
-        date: September 4-5, 2024
-        place: Kyoto, Japan
-      - year: 2025
-        id: apsys2025
-        link: https://apsys2025.github.io/
-        timeline:
-          - abstract_deadline: '2025-05-29 23:59:00'
-            deadline: '2025-06-05 23:59:00'
-        timezone: AoE
-        date: October 12-13, 2025
-        place: Seoul, South Korea
-
+- title: APSys
+  description: ACM SIGOPS Asia-Pacific Workshop on Systems
+  sub: DS
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: apsys
+  confs:
+    - year: 2024
+      id: apsys2024
+      link: https://apsys2024.github.io/
+      timeline:
+        - abstract_deadline: '2024-04-25 23:59:00'
+          deadline: '2024-05-02 23:59:00'
+          comment: call for papers
+      timezone: AoE
+      date: September 4-5, 2024
+      place: Kyoto, Japan
+    - year: 2025
+      id: apsys2025
+      link: https://apsys2025.github.io/
+      timeline:
+        - abstract_deadline: '2025-05-29 23:59:00'
+          deadline: '2025-06-05 23:59:00'
+      timezone: AoE
+      date: October 12-13, 2025
+      place: Seoul, South Korea

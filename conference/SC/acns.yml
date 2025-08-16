@@ -1,42 +1,42 @@
-  - title: ACNS
-    description: Applied Cryptography and Network Security
-    sub: SC
-    rank:
-      ccf: C
-      core: B
-      thcpl: B
-    dblp: acns
-    confs:
-      - year: 2022
-        id: acns22
-        link: https://sites.google.com/di.uniroma1.it/acns2022
-        timeline:
-          - deadline: '2021-09-03 23:59:59'
-            comment: First submission deadline
-          - deadline: '2022-01-14 23:59:59'
-            comment: Second submission deadline
-        timezone: AoE
-        date: June 20-23, 2022
-        place: Rome, Italy
-      - year: 2024
-        id: acns24
-        link: https://wp.nyu.edu/acns2024/
-        timeline:
-          - deadline: '2023-07-20 23:59:59'
-            comment: First submission deadline
-          - deadline: '2023-10-20 23:59:59'
-            comment: Second submission deadline
-        timezone: AoE
-        date: March 5-8, 2024
-        place: Abu Dhabi, UAE
-      - year: 2025
-        id: acns25
-        link: http://acns2025.fordaysec.de/
-        timeline:
-          - deadline: '2024-09-09 23:59:59'
-            comment: First submission deadline
-          - deadline: '2025-01-13 23:59:59'
-            comment: Second submission deadline
-        timezone: AoE
-        date: June 23-26, 2025
-        place: Munich, Germany
+- title: ACNS
+  description: Applied Cryptography and Network Security
+  sub: SC
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: acns
+  confs:
+    - year: 2022
+      id: acns22
+      link: https://sites.google.com/di.uniroma1.it/acns2022
+      timeline:
+        - deadline: '2021-09-03 23:59:59'
+          comment: First submission deadline
+        - deadline: '2022-01-14 23:59:59'
+          comment: Second submission deadline
+      timezone: AoE
+      date: June 20-23, 2022
+      place: Rome, Italy
+    - year: 2024
+      id: acns24
+      link: https://wp.nyu.edu/acns2024/
+      timeline:
+        - deadline: '2023-07-20 23:59:59'
+          comment: First submission deadline
+        - deadline: '2023-10-20 23:59:59'
+          comment: Second submission deadline
+      timezone: AoE
+      date: March 5-8, 2024
+      place: Abu Dhabi, UAE
+    - year: 2025
+      id: acns25
+      link: http://acns2025.fordaysec.de/
+      timeline:
+        - deadline: '2024-09-09 23:59:59'
+          comment: First submission deadline
+        - deadline: '2025-01-13 23:59:59'
+          comment: Second submission deadline
+      timezone: AoE
+      date: June 23-26, 2025
+      place: Munich, Germany

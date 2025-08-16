@@ -1,43 +1,41 @@
-  - title: UAI
-    description: Conference on Uncertainty in Artificial Intelligence
-    sub: AI
-    rank:
-      ccf: B
-      core: A
-      thcpl: B
-    dblp: uai
-    confs:
-      - year: 2021
-        id: uai21
-        link: http://auai.org/uai2021/
-        timeline:
-          - deadline: '2021-02-19 23:59:59'
-        timezone: UTC+0
-        date: July 27-29, 2021
-        place: Virtual
-      - year: 2023
-        id: uai23
-        link: http://auai.org/uai2023/
-        timeline:
-          - deadline: '2023-02-17 23:59:59'
-        timezone: AoE
-        date: August 1-3, 2023
-        place: Pittsburgh, PA, USA
-      - year: 2024
-        id: uai24
-        link: http://auai.org/uai2024/
-        timeline:
-          - deadline: '2024-02-09 23:59:59'
-        timezone: AoE
-        date: July 15-19, 2024
-        place: Barcelona, Spain
-      - year: 2025
-        id: uai25
-        link: https://www.auai.org/uai2025/
-        timeline:
-          - deadline: '2025-02-10 23:59:59'
-        timezone: AoE
-        date: July 21-25, 2025
-        place: Rio de Janeiro, Brazil
-        
-
+- title: UAI
+  description: Conference on Uncertainty in Artificial Intelligence
+  sub: AI
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: uai
+  confs:
+    - year: 2021
+      id: uai21
+      link: http://auai.org/uai2021/
+      timeline:
+        - deadline: '2021-02-19 23:59:59'
+      timezone: UTC+0
+      date: July 27-29, 2021
+      place: Virtual
+    - year: 2023
+      id: uai23
+      link: http://auai.org/uai2023/
+      timeline:
+        - deadline: '2023-02-17 23:59:59'
+      timezone: AoE
+      date: August 1-3, 2023
+      place: Pittsburgh, PA, USA
+    - year: 2024
+      id: uai24
+      link: http://auai.org/uai2024/
+      timeline:
+        - deadline: '2024-02-09 23:59:59'
+      timezone: AoE
+      date: July 15-19, 2024
+      place: Barcelona, Spain
+    - year: 2025
+      id: uai25
+      link: https://www.auai.org/uai2025/
+      timeline:
+        - deadline: '2025-02-10 23:59:59'
+      timezone: AoE
+      date: July 21-25, 2025
+      place: Rio de Janeiro, Brazil

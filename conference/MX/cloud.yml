@@ -1,17 +1,17 @@
-  - title: Cloud
-    description: IEEE International Conference on Cloud Computing
-    sub: MX
-    rank:
-      ccf: C
-      core: B
-      thcpl: B
-    dblp: IEEEcloud
-    confs:
-      - year: 2025
-        id: cloud25
-        link: https://services.conferences.computer.org/2025/cloud/
-        timeline:
-          - deadline: '2025-03-10 23:00:00'
-        timezone: AoE
-        date: July 7-12, 2025
-        place: Helsinki, Finland
+- title: Cloud
+  description: IEEE International Conference on Cloud Computing
+  sub: MX
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: IEEEcloud
+  confs:
+    - year: 2025
+      id: cloud25
+      link: https://services.conferences.computer.org/2025/cloud/
+      timeline:
+        - deadline: '2025-03-10 23:00:00'
+      timezone: AoE
+      date: July 7-12, 2025
+      place: Helsinki, Finland

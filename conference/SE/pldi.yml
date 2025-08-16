@@ -1,49 +1,49 @@
-  - title: PLDI
-    description: ACM SIGPLAN Conference on Programming Language Design & Implementation
-    sub: SE
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: pldi
-    confs:
-      - year: 2021
-        id: pldi21
-        link: https://pldi21.sigplan.org/
-        timeline:
-          - deadline: '2020-11-20 23:59:59'
-        timezone: AoE
-        date: June 23-25, 2021
-        place: Virtual
-      - year: 2022
-        id: pldi22
-        link: https://pldi22.sigplan.org/
-        timeline:
-          - deadline: '2021-11-19 23:59:59'
-        timezone: AoE
-        date: June 20-24, 2022
-        place: San Diego, California, United States
-      - year: 2023
-        id: pldi23
-        link: https://pldi23.sigplan.org/
-        timeline:
-          - deadline: '2022-11-10 23:59:59'
-        timezone: AoE
-        date: June 19-21, 2023
-        place: Orlando, Florida, United States
-      - year: 2024
-        id: pldi24
-        link: https://pldi24.sigplan.org/
-        timeline:
-          - deadline: '2023-11-16 23:59:59'
-        timezone: AoE
-        date: June 24-28, 2024
-        place: Copenhagen, Denmark
-      - year: 2025
-        id: pldi25
-        link: https://pldi25.sigplan.org/
-        timeline:
-          - deadline: '2024-11-14 23:59:59'
-        timezone: AoE
-        date: June 16-20, 2025
-        place: Seoul, South Korea
+- title: PLDI
+  description: ACM SIGPLAN Conference on Programming Language Design & Implementation
+  sub: SE
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: pldi
+  confs:
+    - year: 2021
+      id: pldi21
+      link: https://pldi21.sigplan.org/
+      timeline:
+        - deadline: '2020-11-20 23:59:59'
+      timezone: AoE
+      date: June 23-25, 2021
+      place: Virtual
+    - year: 2022
+      id: pldi22
+      link: https://pldi22.sigplan.org/
+      timeline:
+        - deadline: '2021-11-19 23:59:59'
+      timezone: AoE
+      date: June 20-24, 2022
+      place: San Diego, California, United States
+    - year: 2023
+      id: pldi23
+      link: https://pldi23.sigplan.org/
+      timeline:
+        - deadline: '2022-11-10 23:59:59'
+      timezone: AoE
+      date: June 19-21, 2023
+      place: Orlando, Florida, United States
+    - year: 2024
+      id: pldi24
+      link: https://pldi24.sigplan.org/
+      timeline:
+        - deadline: '2023-11-16 23:59:59'
+      timezone: AoE
+      date: June 24-28, 2024
+      place: Copenhagen, Denmark
+    - year: 2025
+      id: pldi25
+      link: https://pldi25.sigplan.org/
+      timeline:
+        - deadline: '2024-11-14 23:59:59'
+      timezone: AoE
+      date: June 16-20, 2025
+      place: Seoul, South Korea

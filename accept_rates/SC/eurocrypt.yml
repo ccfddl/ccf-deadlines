@@ -1,8 +1,8 @@
 - title: EUROCRYPT
   accept_rates:
-  - year: 2022
-    submitted: 372
-    accepted: 85
-    str: 22.8%(85/372 22')
-    rate: 0.228494623655914
-    source: https://github.com/emeryberger/csconferences
+    - year: 2022
+      submitted: 372
+      accepted: 85
+      str: 22.8%(85/372 22')
+      rate: 0.228494623655914
+      source: https://github.com/emeryberger/csconferences

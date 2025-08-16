@@ -1,18 +1,18 @@
-  - title: EGSR
-    description: Eurographics Symposium on Rendering
-    sub: CG
-    rank:
-      ccf: B
-      core: N
-      thcpl: N
-    dblp: rt
-    confs:
-      - year: 2025
-        id: egsr2025
-        link: https://conferences.eg.org/egsr2025/
-        timeline:
-          - abstract_deadline: '2025-04-01 23:59:59'
-            deadline: '2025-04-07 23:59:59'
-        timezone: UTC
-        date: June 25-27, 2025
-        place: Copenhagen, Denmark
+- title: EGSR
+  description: Eurographics Symposium on Rendering
+  sub: CG
+  rank:
+    ccf: B
+    core: N
+    thcpl: N
+  dblp: rt
+  confs:
+    - year: 2025
+      id: egsr2025
+      link: https://conferences.eg.org/egsr2025/
+      timeline:
+        - abstract_deadline: '2025-04-01 23:59:59'
+          deadline: '2025-04-07 23:59:59'
+      timezone: UTC
+      date: June 25-27, 2025
+      place: Copenhagen, Denmark

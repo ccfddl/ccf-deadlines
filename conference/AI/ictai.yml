@@ -1,17 +1,17 @@
-  - title: ICTAI
-    description: International Conference on Tools with Artificial Intellignce
-    sub: AI
-    rank:
-      ccf: C
-      core: B
-      thcpl: N
-    dblp: ictai
-    confs:
-      - year: 2021
-        id: ictai21
-        link: https://ictai.computer.org/
-        timeline:
-          - deadline: '2021-06-20 23:59:00'
-        timezone: UTC-7
-        date: November 01-03, 2021
-        place: Washington DC, USA
+- title: ICTAI
+  description: International Conference on Tools with Artificial Intellignce
+  sub: AI
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: ictai
+  confs:
+    - year: 2021
+      id: ictai21
+      link: https://ictai.computer.org/
+      timeline:
+        - deadline: '2021-06-20 23:59:00'
+      timezone: UTC-7
+      date: November 01-03, 2021
+      place: Washington DC, USA

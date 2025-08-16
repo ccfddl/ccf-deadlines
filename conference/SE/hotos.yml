@@ -1,27 +1,27 @@
-  - title: HotOS
-    description: USENIX Workshop on Hot Topics in Operating Systems
-    sub: SE
-    rank:
-      ccf: B
-      core: A
-      thcpl: B
-    dblp: hotos
-    confs:
-      - year: 2021
-        id: hotos21
-        link: https://www.usenix.org/conference/hotos15
-        timeline:
-          - deadline: '2021-02-03 23:59:59'
-            comment: Submission Deadline
-        timezone: AoE
-        date: May 31-Jun 02, 2021
-        place: Virtual
-      - year: 2025
-        id: hotos25
-        link: https://sigops.org/s/conferences/hotos/2025/
-        timeline:
-          - deadline: '2025-01-15 23:59:59'
-            comment: Submission Deadline
-        timezone: AoE
-        date: May 14-16, 2025
-        place: Banff, Alberta, Canada
+- title: HotOS
+  description: USENIX Workshop on Hot Topics in Operating Systems
+  sub: SE
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: hotos
+  confs:
+    - year: 2021
+      id: hotos21
+      link: https://www.usenix.org/conference/hotos15
+      timeline:
+        - deadline: '2021-02-03 23:59:59'
+          comment: Submission Deadline
+      timezone: AoE
+      date: May 31-Jun 02, 2021
+      place: Virtual
+    - year: 2025
+      id: hotos25
+      link: https://sigops.org/s/conferences/hotos/2025/
+      timeline:
+        - deadline: '2025-01-15 23:59:59'
+          comment: Submission Deadline
+      timezone: AoE
+      date: May 14-16, 2025
+      place: Banff, Alberta, Canada

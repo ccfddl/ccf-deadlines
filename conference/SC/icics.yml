@@ -1,48 +1,48 @@
-  - title: ICICS
-    description: International Conference on Information and Communications Security
-    sub: SC
-    rank:
-      ccf: C
-      core: C
-      thcpl: N
-    dblp: icics
-    confs:
-      - year: 2021
-        id: icics21
-        link: https://icics.cn/
-        timeline:
-          - deadline: '2021-05-22 23:59:59'
-            comment: Paper Submission deadline
-        timezone: AoE
-        date: September 17-19, 2021
-        place: Chongqing, China
-      - year: 2023
-        id: icics23
-        link: https://icics23.nankai.edu.cn/
-        timeline:
-          - deadline: '2023-03-30 23:59:59'
-        timezone: AoE
-        date: November 18-20, 2023
-        place: Nankai University, Tianjin, China
-      - year: 2024
-        id: icics24
-        link: http://icics2024.aegean.gr/
-        timeline:
-          - deadline: '2024-02-16 23:59:59'
-            comment: First Cycle
-          - deadline: '2024-04-19 23:59:59'
-            comment: Second Cycle
-        timezone: AoE
-        date: August 26-28, 2024
-        place: Mytilene, Greece
-      - year: 2025
-        id: icics25
-        link: https://www.icics2025.org/
-        timeline:
-          - deadline: '2025-02-28 23:59:59'
-            comment: First round
-          - deadline: '2025-05-23 23:59:59'
-            comment: Second round
-        timezone: UTC+8
-        date: October 29-31, 2025
-        place: Nanjing, China
+- title: ICICS
+  description: International Conference on Information and Communications Security
+  sub: SC
+  rank:
+    ccf: C
+    core: C
+    thcpl: N
+  dblp: icics
+  confs:
+    - year: 2021
+      id: icics21
+      link: https://icics.cn/
+      timeline:
+        - deadline: '2021-05-22 23:59:59'
+          comment: Paper Submission deadline
+      timezone: AoE
+      date: September 17-19, 2021
+      place: Chongqing, China
+    - year: 2023
+      id: icics23
+      link: https://icics23.nankai.edu.cn/
+      timeline:
+        - deadline: '2023-03-30 23:59:59'
+      timezone: AoE
+      date: November 18-20, 2023
+      place: Nankai University, Tianjin, China
+    - year: 2024
+      id: icics24
+      link: http://icics2024.aegean.gr/
+      timeline:
+        - deadline: '2024-02-16 23:59:59'
+          comment: First Cycle
+        - deadline: '2024-04-19 23:59:59'
+          comment: Second Cycle
+      timezone: AoE
+      date: August 26-28, 2024
+      place: Mytilene, Greece
+    - year: 2025
+      id: icics25
+      link: https://www.icics2025.org/
+      timeline:
+        - deadline: '2025-02-28 23:59:59'
+          comment: First round
+        - deadline: '2025-05-23 23:59:59'
+          comment: Second round
+      timezone: UTC+8
+      date: October 29-31, 2025
+      place: Nanjing, China

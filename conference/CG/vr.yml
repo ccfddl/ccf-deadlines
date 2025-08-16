@@ -1,36 +1,36 @@
-  - title: IEEE VR
-    description: IEEE Virtual Reality
-    sub: CG
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: vr
-    confs:
-      - year: 2024
-        id: vr24
-        link: http://ieeevr.org/2024/
-        timeline:
-          - abstract_deadline: '2023-09-27 23:59:59'
-            deadline: '2023-10-04 23:59:59'
-        timezone: AoE
-        date: March 16-20, 2024
-        place: Orlando, Florida USA
-      - year: 2025
-        id: vr25
-        link: https://ieeevr.org/2025/
-        timeline:
-          - abstract_deadline: '2024-09-11 23:59:59'
-            deadline: '2024-09-18 23:59:59'
-        timezone: AoE
-        date: March 8-12, 2025
-        place: Saint-Malo, France
-      - year: 2026
-        id: vr26
-        link: https://ieeevr.org/2026/
-        timeline:
-          - abstract_deadline: 'TBD'
-            deadline: 'TBD'
-        timezone: AoE
-        date: March 21 - 25, 2026
-        place: Daegu, Korea
+- title: IEEE VR
+  description: IEEE Virtual Reality
+  sub: CG
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: vr
+  confs:
+    - year: 2024
+      id: vr24
+      link: http://ieeevr.org/2024/
+      timeline:
+        - abstract_deadline: '2023-09-27 23:59:59'
+          deadline: '2023-10-04 23:59:59'
+      timezone: AoE
+      date: March 16-20, 2024
+      place: Orlando, Florida USA
+    - year: 2025
+      id: vr25
+      link: https://ieeevr.org/2025/
+      timeline:
+        - abstract_deadline: '2024-09-11 23:59:59'
+          deadline: '2024-09-18 23:59:59'
+      timezone: AoE
+      date: March 8-12, 2025
+      place: Saint-Malo, France
+    - year: 2026
+      id: vr26
+      link: https://ieeevr.org/2026/
+      timeline:
+        - abstract_deadline: '2025-09-05 23:59:59'
+          deadline: '2025-09-12 23:59:59'
+      timezone: AoE
+      date: March 21 - 25, 2026
+      place: Daegu, Korea

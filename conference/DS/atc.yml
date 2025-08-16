@@ -1,52 +1,52 @@
-  - title: USENIX ATC
-    description: USENIX Annual Technical Conference
-    sub: DS
-    rank:
-      ccf: A
-      core: A
-      thcpl: A
-    dblp: usenix
-    confs:
-      - year: 2021
-        id: atc2021
-        link: https://www.usenix.org/conference/atc21/
-        timeline:
-          - deadline: '2021-01-12 23:59:59'
-        timezone: AoE
-        date: July 14-16, 2021
-        place: SANTA CLARA, USA
-      - year: 2022
-        id: atc2022
-        link: https://www.usenix.org/conference/atc22/
-        timeline:
-          - deadline: '2022-01-13 23:59:59'
-        timezone: UTC+0
-        date: July 11-13, 2022
-        place: Omni La Costa Resort & Spa in Carlsbad, CA, USA
-      - year: 2023
-        id: atc2023
-        link: https://www.usenix.org/conference/atc23/
-        timeline:
-          - abstract_deadline: '2023-01-05 23:59:59'
-            deadline: '2023-01-12 23:59:59'
-        timezone: UTC+0
-        date: July 10-12, 2023
-        place: BOSTON, MA, USA
-      - year: 2024
-        id: atc2024
-        link: https://www.usenix.org/conference/atc24/
-        timeline:
-          - abstract_deadline: '2024-01-09 23:59:59'
-            deadline: '2024-01-16 23:59:59'
-        timezone: UTC+0
-        date: July 10-12, 2024
-        place: Santa Clara, CA, USA
-      - year: 2025
-        id: atc2025
-        link: https://www.usenix.org/conference/atc25
-        timeline:
-          - abstract_deadline: '2025-01-07 23:59:59'
-            deadline: '2025-01-14 23:59:59'
-        timezone: UTC+0
-        date: July 7-9, 2025
-        place: Boston, MA, USA
+- title: USENIX ATC
+  description: USENIX Annual Technical Conference
+  sub: DS
+  rank:
+    ccf: A
+    core: A
+    thcpl: A
+  dblp: usenix
+  confs:
+    - year: 2021
+      id: atc2021
+      link: https://www.usenix.org/conference/atc21/
+      timeline:
+        - deadline: '2021-01-12 23:59:59'
+      timezone: AoE
+      date: July 14-16, 2021
+      place: SANTA CLARA, USA
+    - year: 2022
+      id: atc2022
+      link: https://www.usenix.org/conference/atc22/
+      timeline:
+        - deadline: '2022-01-13 23:59:59'
+      timezone: UTC+0
+      date: July 11-13, 2022
+      place: Omni La Costa Resort & Spa in Carlsbad, CA, USA
+    - year: 2023
+      id: atc2023
+      link: https://www.usenix.org/conference/atc23/
+      timeline:
+        - abstract_deadline: '2023-01-05 23:59:59'
+          deadline: '2023-01-12 23:59:59'
+      timezone: UTC+0
+      date: July 10-12, 2023
+      place: BOSTON, MA, USA
+    - year: 2024
+      id: atc2024
+      link: https://www.usenix.org/conference/atc24/
+      timeline:
+        - abstract_deadline: '2024-01-09 23:59:59'
+          deadline: '2024-01-16 23:59:59'
+      timezone: UTC+0
+      date: July 10-12, 2024
+      place: Santa Clara, CA, USA
+    - year: 2025
+      id: atc2025
+      link: https://www.usenix.org/conference/atc25
+      timeline:
+        - abstract_deadline: '2025-01-07 23:59:59'
+          deadline: '2025-01-14 23:59:59'
+      timezone: UTC+0
+      date: July 7-9, 2025
+      place: Boston, MA, USA

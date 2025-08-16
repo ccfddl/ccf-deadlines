@@ -1,28 +1,27 @@
-  - title: ICS
-    description: ACM International Conference on Supercomputing
-    sub: DS
-    rank:
-      ccf: B
-      core: A
-      thcpl: B
-    dblp: ics
-    confs:
-      - year: 2024
-        id: ics24
-        link: https://ics2024.github.io/
-        timeline:
-          - abstract_deadline: '2024-01-11 23:59:59'
-            deadline: '2024-01-18 23:59:59'
-        timezone: AoE
-        date: June 4-7, 2024
-        place: Kyoto University, Kyoto, Japan
-  
-      - year: 2025
-        id: ics25
-        link: https://hpcrl.github.io/ICS2025-webpage/
-        timeline:
-          - abstract_deadline: '2025-01-13 23:59:59'
-            deadline: '2025-01-16 23:59:59'
-        timezone: AoE
-        date: June 9-11, 2025
-        place: Salt Lake City, U.S.A.
+- title: ICS
+  description: ACM International Conference on Supercomputing
+  sub: DS
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: ics
+  confs:
+    - year: 2024
+      id: ics24
+      link: https://ics2024.github.io/
+      timeline:
+        - abstract_deadline: '2024-01-11 23:59:59'
+          deadline: '2024-01-18 23:59:59'
+      timezone: AoE
+      date: June 4-7, 2024
+      place: Kyoto University, Kyoto, Japan
+    - year: 2025
+      id: ics25
+      link: https://hpcrl.github.io/ICS2025-webpage/
+      timeline:
+        - abstract_deadline: '2025-01-13 23:59:59'
+          deadline: '2025-01-16 23:59:59'
+      timezone: AoE
+      date: June 9-11, 2025
+      place: Salt Lake City, U.S.A.

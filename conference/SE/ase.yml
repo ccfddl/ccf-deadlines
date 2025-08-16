@@ -1,46 +1,46 @@
-  - title: ASE
-    description: International Conference on Automated Software Engineering
-    sub: SE
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: kbse
-    confs:
-      - year: 2022
-        id: ase22
-        link: https://conf.researchr.org/home/ase-2022
-        timeline:
-          - deadline: '2022-04-29 23:59:59'
-            comment: Abstract Submission
-          - deadline: '2022-05-06 23:59:59'
-            comment: Paper Submission
-        timezone: AoE
-        date: September 26- October 01, 2022
-        place: Ann Arbor, Michigan, United States
-      - year: 2023
-        id: ase23
-        link: https://conf.researchr.org/home/ase-2023
-        timeline:
-          - abstract_deadline: '2023-04-28 23:59:59'
-            deadline: '2023-05-05 23:59:59'
-        timezone: AoE
-        date: September 11-15, 2023
-        place: Kirchberg, Luxembourg
-      - year: 2024
-        id: ase24
-        link: https://conf.researchr.org/home/ase-2024
-        timeline:
-          - abstract_deadline: '2024-05-31 23:59:59'
-            deadline: '2024-06-07 23:59:59'
-        timezone: AoE
-        date: October 27- November 01, 2024
-        place: Sacramento, California, United States
-      - year: 2025
-        id: ase25
-        link: https://conf.researchr.org/home/ase-2025
-        timeline:
-          - deadline: '2025-05-30 23:59:59'
-        timezone: AoE
-        date: November 16 - November 20, 2025
-        place: Seoul, South Korea
+- title: ASE
+  description: International Conference on Automated Software Engineering
+  sub: SE
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: kbse
+  confs:
+    - year: 2022
+      id: ase22
+      link: https://conf.researchr.org/home/ase-2022
+      timeline:
+        - deadline: '2022-04-29 23:59:59'
+          comment: Abstract Submission
+        - deadline: '2022-05-06 23:59:59'
+          comment: Paper Submission
+      timezone: AoE
+      date: September 26- October 01, 2022
+      place: Ann Arbor, Michigan, United States
+    - year: 2023
+      id: ase23
+      link: https://conf.researchr.org/home/ase-2023
+      timeline:
+        - abstract_deadline: '2023-04-28 23:59:59'
+          deadline: '2023-05-05 23:59:59'
+      timezone: AoE
+      date: September 11-15, 2023
+      place: Kirchberg, Luxembourg
+    - year: 2024
+      id: ase24
+      link: https://conf.researchr.org/home/ase-2024
+      timeline:
+        - abstract_deadline: '2024-05-31 23:59:59'
+          deadline: '2024-06-07 23:59:59'
+      timezone: AoE
+      date: October 27- November 01, 2024
+      place: Sacramento, California, United States
+    - year: 2025
+      id: ase25
+      link: https://conf.researchr.org/home/ase-2025
+      timeline:
+        - deadline: '2025-05-30 23:59:59'
+      timezone: AoE
+      date: November 16 - November 20, 2025
+      place: Seoul, South Korea

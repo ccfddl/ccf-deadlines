@@ -1,8 +1,8 @@
 - title: RECOMB
   accept_rates:
-  - year: 2022
-    submitted: 188
-    accepted: 40
-    str: 21.3%(40/188 22')
-    rate: 0.2127659574468085
-    source: https://www.lamsade.dauphine.fr/~sikora/ratio/confs.php
+    - year: 2022
+      submitted: 188
+      accepted: 40
+      str: 21.3%(40/188 22')
+      rate: 0.2127659574468085
+      source: https://www.lamsade.dauphine.fr/~sikora/ratio/confs.php

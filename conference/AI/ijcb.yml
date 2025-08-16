@@ -1,17 +1,17 @@
-  - title: IJCB
-    description: International Joint Conference on Biometrics
-    sub: AI
-    rank:
-      ccf: C
-      core: B
-      thcpl: N
-    dblp: icb
-    confs:
-      - year: 2025
-        id: ijcb2025
-        link: https://ijcb2025.ieee-biometrics.org/
-        timeline:
-          - deadline: '2025-04-11 23:59:59'
-        timezone: UTC-7
-        date: September 8-11, 2025
-        place: Osaka, Japan
+- title: IJCB
+  description: International Joint Conference on Biometrics
+  sub: AI
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: icb
+  confs:
+    - year: 2025
+      id: ijcb2025
+      link: https://ijcb2025.ieee-biometrics.org/
+      timeline:
+        - deadline: '2025-04-11 23:59:59'
+      timezone: UTC-7
+      date: September 8-11, 2025
+      place: Osaka, Japan
