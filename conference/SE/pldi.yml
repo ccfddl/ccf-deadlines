@@ -47,3 +47,11 @@
       timezone: AoE
       date: June 16-20, 2025
       place: Seoul, South Korea
+    - year: 2026
+      id: pldi26
+      link: https://pldi26.sigplan.org/
+      timeline:
+        - deadline: '2025-11-13 23:59:59'
+      timezone: AoE
+      date: June 15-19, 2026
+      place: Boulder, Colorado, United States
