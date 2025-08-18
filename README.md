@@ -19,13 +19,14 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
     <td align="center"><img src=".readme_assets/applet_qrcode.jpg" width="240px"/></td>
     <td align="center"><img src=".readme_assets/screenshot_tabular.png" width="280px"/></td>
   </tr>
-  
 </table>
+
+**No More Finding and Time Conversion on Your Own!**
 
 ### Add-Ons
 <table>
   <tr>
-    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/cli">PyCli Tool</a><br></b></td>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/add_ons/cli">PyCli Tool</a><br></b></td>
     <td align="center"><b><a href="https://www.raycast.com/ViGeng/ccfddl?via=ViGeng">Raycast Extension</a><br></b></td>
     <td align="center"><b><a href="https://github.com/superpung/swiftbar-ccfddl/">SwiftBar Plugin</a><br></b></td>
   </tr>
@@ -35,7 +36,7 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
     <td align="center"><img src="https://raw.githubusercontent.com/superpung/swiftbar-ccfddl/refs/heads/main/docs/preview.png" width="280px"/></td>
   </tr>
     <tr>
-    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/add_ons/ical/">iCal Subscription</a><br></b></td>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/add_ons/ical">iCal Subscription</a><br></b></td>
   </tr>
   <tr>
      <td align="center"><img src=".readme_assets/screenshot_iCal.jpg" width="280px"/></td>
