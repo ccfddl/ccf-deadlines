@@ -29,7 +29,7 @@ jobs:
           cd ../..
       - name: Generate iCal files
         run: |
-          python cli/ccfddl/convert_to_ical.py
+          python add-ons/cli/ccfddl/convert_to_ical.py
           mv *.ics public/conference/
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
