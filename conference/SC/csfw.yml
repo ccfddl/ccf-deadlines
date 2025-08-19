@@ -1,59 +1,72 @@
-  - title: CSFW
-    description: IEEE Computer Security Foundations Workshop
-    sub: SC
-    rank:
-      ccf: B
-      core: A
-      thcpl: B
-    dblp: cgisfw
-    confs:
-      - year: 2022
-        id: csfw22
-        link: https://www.ieee-security.org/TC/CSF2022/
-        timeline:
-          - deadline: '2021-05-14 23:59:59'
-            comment: spring
-          - deadline: '2021-10-01 23:59:59'
-            comment: fall
-        timezone: UTC-12
-        date: August, 2022
-        place: Haifa, Israel
-      - year: 2023
-        id: csfw23
-        link: https://www.ieee-security.org/TC/CSF2023/
-        timeline:
-          - deadline: '2022-05-13 23:59:59'
-            comment: spring
-          - deadline: '2022-09-30 23:59:59'
-            comment: fall
-          - deadline: '2023-02-03 23:59:59'
-            comment: winter
-        timezone: UTC-12
-        date: July, 2023
-        place: Dubrovnik, Croatia
-      - year: 2024
-        id: csfw24
-        link: https://www.ieee-security.org/TC/CSF2024/
-        timeline:
-          - deadline: '2023-05-15 23:59:59'
-            comment: spring
-          - deadline: '2023-09-30 23:59:59'
-            comment: fall
-          - deadline: '2024-02-03 23:59:59'
-            comment: winter
-        timezone: UTC-12
-        date: July 8-12, 2024
-        place: Enschede, The Netherlands
-      - year: 2025
-        id: csfw25
-        link: https://csf2025.ieee-security.org/
-        timeline:
-          - deadline: '2024-05-28 23:59:59'
-            comment: spring
-          - deadline: '2024-10-01 23:59:59'
-            comment: fall
-          - deadline: '2025-02-04 23:59:59'
-            comment: winter
-        timezone: UTC-12
-        date: June 16-20, 2025
-        place: Santa Cruz, CA, USA
+- title: CSFW
+  description: IEEE Computer Security Foundations Workshop
+  sub: SC
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: cgisfw
+  confs:
+    - year: 2022
+      id: csfw22
+      link: https://www.ieee-security.org/TC/CSF2022/
+      timeline:
+        - deadline: '2021-05-14 23:59:59'
+          comment: spring
+        - deadline: '2021-10-01 23:59:59'
+          comment: fall
+      timezone: UTC-12
+      date: August, 2022
+      place: Haifa, Israel
+    - year: 2023
+      id: csfw23
+      link: https://www.ieee-security.org/TC/CSF2023/
+      timeline:
+        - deadline: '2022-05-13 23:59:59'
+          comment: spring
+        - deadline: '2022-09-30 23:59:59'
+          comment: fall
+        - deadline: '2023-02-03 23:59:59'
+          comment: winter
+      timezone: UTC-12
+      date: July, 2023
+      place: Dubrovnik, Croatia
+    - year: 2024
+      id: csfw24
+      link: https://www.ieee-security.org/TC/CSF2024/
+      timeline:
+        - deadline: '2023-05-15 23:59:59'
+          comment: spring
+        - deadline: '2023-09-30 23:59:59'
+          comment: fall
+        - deadline: '2024-02-03 23:59:59'
+          comment: winter
+      timezone: UTC-12
+      date: July 8-12, 2024
+      place: Enschede, The Netherlands
+    - year: 2025
+      id: csfw25
+      link: https://csf2025.ieee-security.org/
+      timeline:
+        - deadline: '2024-05-28 23:59:59'
+          comment: spring
+        - deadline: '2024-10-01 23:59:59'
+          comment: fall
+        - deadline: '2025-02-04 23:59:59'
+          comment: winter
+      timezone: UTC-12
+      date: June 16-20, 2025
+      place: Santa Cruz, CA, USA
+    - year: 2026
+      id: csfw26
+      link: https://csf2026.ieee-security.org/
+      timeline:
+        - deadline: '2025-07-24 23:59:59'
+          comment: Summer
+        - deadline: '2025-10-09 23:59:59'
+          comment: Fall
+        - deadline: '2026-01-29 23:59:59'
+          comment: Winter
+      timezone: UTC-12
+      date: July 26-29, 2026
+      place: Lisbon, Portugal

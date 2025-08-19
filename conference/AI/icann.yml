@@ -1,34 +1,34 @@
-  - title: ICANN
-    description: International Conference on Artificial Neural Networks
-    sub: AI
-    rank:
-      ccf: C
-      core: C
-      thcpl: N
-    dblp: icann
-    confs:
-      - year: 2023
-        id: icann2023
-        link: https://e-nns.org/icann2023/
-        timeline:
-          - abstract_deadline: '2023-04-09 23:59:59'
-            deadline: '2023-04-09 23:59:59'
-        timezone: UTC-12
-        date: Sept 26-29, 2023
-        place: Crete, Greece
-      - year: 2024
-        id: icann2024
-        link: https://e-nns.org/icann2024/
-        timeline:
-          - deadline: '2024-03-25 23:59:59'
-        timezone: AoE
-        date: Sept 17-20, 2024
-        place: Lugano-Viganello, Switzerland
-      - year: 2025
-        id: icann2025
-        link: https://e-nns.org/icann2025/
-        timeline:
-          - deadline: '2025-03-29 23:59:59'
-        timezone: AoE
-        date: Sept 9-12, 2025
-        place: Kaunas, Lithuania
+- title: ICANN
+  description: International Conference on Artificial Neural Networks
+  sub: AI
+  rank:
+    ccf: C
+    core: C
+    thcpl: N
+  dblp: icann
+  confs:
+    - year: 2023
+      id: icann2023
+      link: https://e-nns.org/icann2023/
+      timeline:
+        - abstract_deadline: '2023-04-09 23:59:59'
+          deadline: '2023-04-09 23:59:59'
+      timezone: UTC-12
+      date: Sept 26-29, 2023
+      place: Crete, Greece
+    - year: 2024
+      id: icann2024
+      link: https://e-nns.org/icann2024/
+      timeline:
+        - deadline: '2024-03-25 23:59:59'
+      timezone: AoE
+      date: Sept 17-20, 2024
+      place: Lugano-Viganello, Switzerland
+    - year: 2025
+      id: icann2025
+      link: https://e-nns.org/icann2025/
+      timeline:
+        - deadline: '2025-03-29 23:59:59'
+      timezone: AoE
+      date: Sept 9-12, 2025
+      place: Kaunas, Lithuania

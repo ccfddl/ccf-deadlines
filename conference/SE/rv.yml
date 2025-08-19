@@ -1,17 +1,17 @@
-  - title: RV
-    description: International Conference on Runtime Verification
-    sub: SE
-    rank:
-      ccf: C
-      core: B
-      thcpl: N
-    dblp: rv
-    confs:
-      - year: 2025
-        id: rv25
-        link: https://rv25.conf.tuwien.ac.at/
-        timeline:
-          - deadline: 'TBD'
-        timezone: AoE
-        date: September 15-19, 2025
-        place: Vienna, Austria
+- title: RV
+  description: International Conference on Runtime Verification
+  sub: SE
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: rv
+  confs:
+    - year: 2025
+      id: rv25
+      link: https://rv25.isec.tugraz.at/
+      timeline:
+        - deadline: '2025-05-30 23:59:59'
+      timezone: AoE
+      date: September 15-19, 2025
+      place: Graz, Austria

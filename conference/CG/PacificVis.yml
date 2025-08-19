@@ -1,22 +1,22 @@
-  - title: PacificVis
-    description: IEEE Pacific Visualization Symposium
-    sub: CG
-    rank:
-      ccf: C
-      core: B
-      thcpl: B
-    dblp: pacificvis
-    confs:
-      - year: 2025
-        id: pacificvis25
-        link: https://pacificvis2025.github.io/pages/index.html
-        timeline:
-          - abstract_deadline: '2024-09-15 23:59:00'
-            deadline: '2024-09-22 23:59:00'
-            comment: 'Journal track'
-          - abstract_deadline: '2024-11-13 23:59:00'
-            deadline: '2024-11-20 23:59:00'
-            comment: 'Conference track'
-        timezone: AoE
-        date: April 22 - 25, 2025
-        place: Chang Yung-fa Foundation International Convention Center, Taipei, Taiwan
+- title: PacificVis
+  description: IEEE Pacific Visualization Symposium
+  sub: CG
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: pacificvis
+  confs:
+    - year: 2025
+      id: pacificvis25
+      link: https://pacificvis2025.github.io/pages/index.html
+      timeline:
+        - abstract_deadline: '2024-09-15 23:59:00'
+          deadline: '2024-09-22 23:59:00'
+          comment: 'Journal track'
+        - abstract_deadline: '2024-11-13 23:59:00'
+          deadline: '2024-11-20 23:59:00'
+          comment: 'Conference track'
+      timezone: AoE
+      date: April 22 - 25, 2025
+      place: Chang Yung-fa Foundation International Convention Center, Taipei, Taiwan

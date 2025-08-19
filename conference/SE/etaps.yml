@@ -1,20 +1,35 @@
-  - title: ETAPS
-    description: European Joint Conferences on Theory and Practice of Software
-    sub: SE
-    rank:
-      ccf: B
-      core: N
-      thcpl: B
-    dblp: etaps
-    confs:
-      - year: 2022
-        id: etaps22
-        link: https://etaps.org/2022/
-        timeline:
-          - deadline: '2021-10-14 23:59:59'
-            comment: Paper submission deadline
-          - deadline: '2022-01-26 23:59:59'
-            comment: Paper final versions
-        timezone: AoE
-        date: April 2-7, 2022
-        place: Munich, Germany
+- title: ETAPS
+  description: European Joint Conferences on Theory and Practice of Software
+  sub: SE
+  rank:
+    ccf: B
+    core: N
+    thcpl: B
+  dblp: etaps
+  confs:
+    - year: 2022
+      id: etaps22
+      link: https://etaps.org/2022/
+      timeline:
+        - deadline: '2021-10-14 23:59:59'
+          comment: Paper submission deadline
+        - deadline: '2022-01-26 23:59:59'
+          comment: Paper final versions
+      timezone: AoE
+      date: April 2-7, 2022
+      place: Munich, Germany
+    - year: 2026
+      id: etaps26
+      link: https://etaps.org/2026
+      timeline:
+        - deadline: '2025-06-03 23:59:59'
+          comment: Submission deadline ESOP round 1
+        - deadline: '2025-10-16 23:59:59'
+          comment: Submission deadline ESOP round 2
+        - deadline: '2025-10-30 23:59:59'
+          comment: TACAS mandatory artifact submission
+        - deadline: '2026-01-08 23:59:59'
+          comment: ESOP, FASE, FoSSaCS artifact, TACAS voluntary artifact submission
+      timezone: AoE
+      date: April 11-16, 2026
+      place: Torino, Italy

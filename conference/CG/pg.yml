@@ -1,37 +1,36 @@
-  - title: PG
-    description: Pacific Graphics, The Pacific Conference on Computer Graphics and
-      Applications
-    sub: CG
-    rank:
-      ccf: B
-      core: N
-      thcpl: B
-    dblp: pg
-    confs:
-      - year: 2024
-        id: pg24
-        link: http://pg2024.hsu.edu.cn/
-        timeline:
-          - abstract_deadline: '2024-05-31 21:59:00'
-            deadline: '2024-06-07 21:59:00'
-        timezone: UTC
-        date: October 13-16, 2024
-        place: Huangshan, China
-      - year: 2023
-        id: pg23
-        link: https://pg2023.org/
-        timeline:
-          - abstract_deadline: '2023-06-01 23:59:59'
-            deadline: '2023-06-06 23:59:59'
-        timezone: AoE
-        date: October 10-13, 2023
-        place: Daejeon, South Korea
-      - year: 2025
-        id: pg25
-        link: https://pg2025.nccu.edu.tw/
-        timeline:
-          - abstract_deadline: '2025-05-30 23:59:59'
-            deadline: '2025-06-06 23:59:59'
-        timezone: AoE
-        date: October 14-17, 2025
-        place: National Chengchi University, Taipei, Taiwan
+- title: PG
+  description: Pacific Graphics, The Pacific Conference on Computer Graphics and Applications
+  sub: CG
+  rank:
+    ccf: B
+    core: N
+    thcpl: B
+  dblp: pg
+  confs:
+    - year: 2024
+      id: pg24
+      link: http://pg2024.hsu.edu.cn/
+      timeline:
+        - abstract_deadline: '2024-05-31 21:59:00'
+          deadline: '2024-06-07 21:59:00'
+      timezone: UTC
+      date: October 13-16, 2024
+      place: Huangshan, China
+    - year: 2023
+      id: pg23
+      link: https://pg2023.org/
+      timeline:
+        - abstract_deadline: '2023-06-01 23:59:59'
+          deadline: '2023-06-06 23:59:59'
+      timezone: AoE
+      date: October 10-13, 2023
+      place: Daejeon, South Korea
+    - year: 2025
+      id: pg25
+      link: https://pg2025.nccu.edu.tw/
+      timeline:
+        - abstract_deadline: '2025-05-30 23:59:59'
+          deadline: '2025-06-06 23:59:59'
+      timezone: AoE
+      date: October 14-17, 2025
+      place: National Chengchi University, Taipei, Taiwan

@@ -1,8 +1,8 @@
 - title: ACML
   accept_rates:
-  - year: 2024
-    submitted: 353
-    accepted: 92
-    str: 26.1%(92/353 24')
-    rate: 0.260623229
-    source: https://www.acml-conf.org/
+    - year: 2024
+      submitted: 353
+      accepted: 92
+      str: 26.1%(92/353 24')
+      rate: 0.260623229
+      source: https://www.acml-conf.org/

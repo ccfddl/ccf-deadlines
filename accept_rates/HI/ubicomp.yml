@@ -1,8 +1,8 @@
 - title: UbiComp
   accept_rates:
-  - year: 2016
-    submitted: 389
-    accepted: 101
-    str: 26.0%(101/389 16')
-    rate: 0.2596401
-    source: https://csconfstats.xoveexu.com/
+    - year: 2016
+      submitted: 389
+      accepted: 101
+      str: 26.0%(101/389 16')
+      rate: 0.2596401
+      source: https://csconfstats.xoveexu.com/

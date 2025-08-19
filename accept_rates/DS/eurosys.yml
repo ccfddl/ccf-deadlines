@@ -1,8 +1,8 @@
 - title: EuroSys
   accept_rates:
-  - year: 2022
-    submitted: 161
-    accepted: 45
-    str: 28.0%(45/161 22')
-    rate: 0.279503105590062
-    source: https://github.com/emeryberger/csconferences
+    - year: 2022
+      submitted: 161
+      accepted: 45
+      str: 28.0%(45/161 22')
+      rate: 0.279503105590062
+      source: https://github.com/emeryberger/csconferences

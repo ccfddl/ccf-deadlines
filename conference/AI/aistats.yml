@@ -1,34 +1,43 @@
-  - title: AISTATS
-    description: International Conference on Artificial Intelligence and Statistics
-    sub: AI
-    rank:
-      ccf: C
-      core: A
-      thcpl: B
-    dblp: aistats
-    confs:
-      - year: 2022
-        id: aistats22
-        link: https://aistats.org/aistats2022/
-        timeline:
-          - deadline: '2021-10-15 11:59:00'
-        timezone: UTC+0
-        date: March 30 - April 1, 2022
-        place: Valencia, Spain
-      - year: 2024
-        id: aistats24
-        link: https://aistats.org/aistats2024/
-        timeline:
-          - deadline: '2023-10-16 23:59:59'
-        timezone: UTC-12
-        date: May 2-4, 2024
-        place: Valencia, Spain
-      - year: 2025
-        id: aistats25
-        link: https://aistats.org/aistats2025
-        timeline:
-          - abstract_deadline: '2024-10-03 23:59:59'
-            deadline: '2024-10-10 23:59:59'
-        timezone: UTC-12
-        date: May 3-5, 2025
-        place: Mai Khao, Thailand
+- title: AISTATS
+  description: International Conference on Artificial Intelligence and Statistics
+  sub: AI
+  rank:
+    ccf: C
+    core: A
+    thcpl: B
+  dblp: aistats
+  confs:
+    - year: 2022
+      id: aistats22
+      link: https://aistats.org/aistats2022/
+      timeline:
+        - deadline: '2021-10-15 11:59:00'
+      timezone: UTC+0
+      date: March 30 - April 1, 2022
+      place: Valencia, Spain
+    - year: 2024
+      id: aistats24
+      link: https://aistats.org/aistats2024/
+      timeline:
+        - deadline: '2023-10-16 23:59:59'
+      timezone: UTC-12
+      date: May 2-4, 2024
+      place: Valencia, Spain
+    - year: 2025
+      id: aistats25
+      link: https://aistats.org/aistats2025
+      timeline:
+        - abstract_deadline: '2024-10-03 23:59:59'
+          deadline: '2024-10-10 23:59:59'
+      timezone: UTC-12
+      date: May 3-5, 2025
+      place: Mai Khao, Thailand
+    - year: 2026
+      id: aistats26
+      link: https://virtual.aistats.org/Conferences/2026
+      timeline:
+        - abstract_deadline: '2025-09-25 23:59:59'
+          deadline: '2025-10-02 23:59:59'
+      timezone: UTC-12
+      date: May 2-5, 2025
+      place: Morocco

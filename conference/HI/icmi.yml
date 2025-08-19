@@ -1,27 +1,27 @@
-  - title: ICMI
-    description: ACM International Conference on Multimodal Interaction
-    sub: HI
-    rank:
-      ccf: C
-      core: B
-      thcpl: B
-    dblp: icmi
-    confs:
-      - year: 2024
-        id: icmi24
-        link: https://icmi.acm.org/2024/
-        timeline:
-          - abstract_deadline: '2024-04-26 23:59:59'
-            deadline: '2024-05-10 23:59:59'
-        timezone: UTC+7
-        date: Nov 4 - 8, 2024
-        place: San José, Costa Rica
-      - year: 2025
-        id: icmi25
-        link: https://icmi.acm.org/2025/
-        timeline:
-          - abstract_deadline: '2025-04-25 23:59:59'
-            deadline: '2025-05-02 23:59:59'
-        timezone: UTC+7
-        date: Oct 13 - 17, 2025
-        place: Canberra, Australia
+- title: ICMI
+  description: ACM International Conference on Multimodal Interaction
+  sub: HI
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: icmi
+  confs:
+    - year: 2024
+      id: icmi24
+      link: https://icmi.acm.org/2024/
+      timeline:
+        - abstract_deadline: '2024-04-26 23:59:59'
+          deadline: '2024-05-10 23:59:59'
+      timezone: UTC+7
+      date: Nov 4 - 8, 2024
+      place: San José, Costa Rica
+    - year: 2025
+      id: icmi25
+      link: https://icmi.acm.org/2025/
+      timeline:
+        - abstract_deadline: '2025-04-25 23:59:59'
+          deadline: '2025-05-02 23:59:59'
+      timezone: UTC+7
+      date: Oct 13 - 17, 2025
+      place: Canberra, Australia

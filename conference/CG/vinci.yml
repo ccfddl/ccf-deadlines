@@ -1,0 +1,17 @@
+- title: VINCI
+  description: International Symposium on Visual Information Communication and Interaction
+  sub: CG
+  rank:
+    ccf: N
+    core: C
+    thcpl: N
+  dblp: vinci
+  confs:
+    - year: 2025
+      id: vinci2025
+      link: https://vinci2025.games.cg.jku.at
+      timeline:
+        - deadline: '2025-06-27 23:59:59'
+      timezone: AoE
+      date: December 1-3, 2025
+      place: Linz, Austria

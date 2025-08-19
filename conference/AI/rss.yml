@@ -1,34 +1,34 @@
-  - title: RSS
-    description: Robotics Science and Systems
-    sub: AI
-    rank:
-      ccf: N
-      core: A*
-      thcpl: A
-    dblp: rss
-    confs:
-      - year: 2023
-        id: rss23
-        link: https://roboticsconference.org/
-        timeline:
-          - deadline: '2023-02-03 23:59:59'
-        timezone: AoE
-        date: July 10-14, 2023
-        place: Daegu, Republic of Korea
-      - year: 2024
-        id: rss24
-        link: https://roboticsconference.org/
-        timeline:
-          - deadline: '2024-02-02 23:59:00'
-        timezone: AoE
-        date: July 15-19, 2024
-        place: Delft, Netherlands
-      - year: 2025
-        id: rss25
-        link: https://roboticsconference.org
-        timeline:
-          - abstract_deadline: '2025-01-17 23:59:00'
-            deadline: '2025-01-24 23:59:00'
-        timezone: AoE
-        date: June 21-25, 2025
-        place: Los Angeles, California, USA
+- title: RSS
+  description: Robotics Science and Systems
+  sub: AI
+  rank:
+    ccf: N
+    core: A*
+    thcpl: A
+  dblp: rss
+  confs:
+    - year: 2023
+      id: rss23
+      link: https://roboticsconference.org/
+      timeline:
+        - deadline: '2023-02-03 23:59:59'
+      timezone: AoE
+      date: July 10-14, 2023
+      place: Daegu, Republic of Korea
+    - year: 2024
+      id: rss24
+      link: https://roboticsconference.org/
+      timeline:
+        - deadline: '2024-02-02 23:59:00'
+      timezone: AoE
+      date: July 15-19, 2024
+      place: Delft, Netherlands
+    - year: 2025
+      id: rss25
+      link: https://roboticsconference.org
+      timeline:
+        - abstract_deadline: '2025-01-17 23:59:00'
+          deadline: '2025-01-24 23:59:00'
+      timezone: AoE
+      date: June 21-25, 2025
+      place: Los Angeles, California, USA

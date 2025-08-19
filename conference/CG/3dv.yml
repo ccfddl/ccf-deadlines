@@ -1,33 +1,33 @@
-  - title: 3DV
-    description: International Conference on 3D Vision
-    sub: CG
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: 3dim
-    confs:
-      - year: 2024
-        id: 3dv2024
-        link: https://3dvconf.github.io/2024/
-        timeline:
-          - deadline: '2023-08-07 23:59:59'
-        timezone: UTC-7
-        date: March 18-21, 2024
-        place: Davos, Switzerland
-      - year: 2025
-        id: 3dv2025
-        link: https://3dvconf.github.io/2025/
-        timeline:
-          - deadline: '2024-08-12 23:59:59'
-        timezone: UTC-7
-        date: March 25-28, 2025
-        place: Singapore
-      - year: 2026
-        id: 3dv2026
-        link: https://3dvconf.github.io/2026/
-        timeline:
-          - deadline: 'TBD'
-        timezone: UTC-7
-        date: March 24-27, 2026
-        place: Metro Vancouver, BC, Canada
+- title: 3DV
+  description: International Conference on 3D Vision
+  sub: CG
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: 3dim
+  confs:
+    - year: 2024
+      id: 3dv2024
+      link: https://3dvconf.github.io/2024/
+      timeline:
+        - deadline: '2023-08-07 23:59:59'
+      timezone: UTC-7
+      date: March 18-21, 2024
+      place: Davos, Switzerland
+    - year: 2025
+      id: 3dv2025
+      link: https://3dvconf.github.io/2025/
+      timeline:
+        - deadline: '2024-08-12 23:59:59'
+      timezone: UTC-7
+      date: March 25-28, 2025
+      place: Singapore
+    - year: 2026
+      id: 3dv2026
+      link: https://3dvconf.github.io/2026/
+      timeline:
+        - deadline: '2025-08-18 23:59:59'
+      timezone: UTC-7
+      date: March 24-27, 2026
+      place: Metro Vancouver, BC, Canada

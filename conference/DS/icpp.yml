@@ -1,54 +1,54 @@
-  - title: ICPP
-    description: International Conference on Parallel Processing
-    sub: DS
-    rank:
-      ccf: B
-      core: B
-      thcpl: B
-    dblp: icpp
-    confs:
-      - year: 2021
-        id: icpp21
-        link: https://oaciss.uoregon.edu/icpp21/
-        timeline:
-          - deadline: '2021-04-16 23:59:59'
-        timezone: AoE
-        date: August 9-12, 2021
-        place: Chicago, USA
-      - year: 2022
-        id: icpp22
-        link: https://icpp22.gitlabpages.inria.fr/
-        timeline:
-          - abstract_deadline: '2022-04-08 23:59:59'
-            deadline: '2022-04-14 23:59:59'
-        timezone: AoE
-        date: August 29-Sept 12, 2022
-        place: Bordeaux, France
-      - year: 2023
-        id: icpp23
-        link: https://icpp23.sci.utah.edu/
-        timeline:
-          - deadline: '2023-04-14 23:59:59'
-            comment: Abstract Submission
-          - deadline: '2023-04-22 23:59:59'
-            comment: Paper Submission
-        timezone: AoE
-        date: August 7-August 10, 2023
-        place: Salt Lake City, UTAH, USA
-      - year: 2024
-        id: icpp24
-        link: https://icpp2024.org/
-        timeline:
-          - abstract_deadline: '2024-04-22 23:59:59'
-            deadline: '2024-04-29 23:59:59'
-        timezone: AoE
-        date: August 12-15, 2024
-        place: Gotland, Sweden
-      - year: 2025
-        id: icpp25
-        link: https://icpp2025.sdsc.edu
-        timeline:
-          - deadline: '2025-05-01 23:59:59'
-        timezone: AoE
-        date: September 8-11, 2025
-        place: San Diego, CA, USA
+- title: ICPP
+  description: International Conference on Parallel Processing
+  sub: DS
+  rank:
+    ccf: B
+    core: B
+    thcpl: B
+  dblp: icpp
+  confs:
+    - year: 2021
+      id: icpp21
+      link: https://oaciss.uoregon.edu/icpp21/
+      timeline:
+        - deadline: '2021-04-16 23:59:59'
+      timezone: AoE
+      date: August 9-12, 2021
+      place: Chicago, USA
+    - year: 2022
+      id: icpp22
+      link: https://icpp22.gitlabpages.inria.fr/
+      timeline:
+        - abstract_deadline: '2022-04-08 23:59:59'
+          deadline: '2022-04-14 23:59:59'
+      timezone: AoE
+      date: August 29-Sept 12, 2022
+      place: Bordeaux, France
+    - year: 2023
+      id: icpp23
+      link: https://icpp23.sci.utah.edu/
+      timeline:
+        - deadline: '2023-04-14 23:59:59'
+          comment: Abstract Submission
+        - deadline: '2023-04-22 23:59:59'
+          comment: Paper Submission
+      timezone: AoE
+      date: August 7-August 10, 2023
+      place: Salt Lake City, UTAH, USA
+    - year: 2024
+      id: icpp24
+      link: https://icpp2024.org/
+      timeline:
+        - abstract_deadline: '2024-04-22 23:59:59'
+          deadline: '2024-04-29 23:59:59'
+      timezone: AoE
+      date: August 12-15, 2024
+      place: Gotland, Sweden
+    - year: 2025
+      id: icpp25
+      link: https://icpp2025.sdsc.edu
+      timeline:
+        - deadline: '2025-05-01 23:59:59'
+      timezone: AoE
+      date: September 8-11, 2025
+      place: San Diego, CA, USA

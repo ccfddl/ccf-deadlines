@@ -1,8 +1,8 @@
 - title: ESORICS
   accept_rates:
-  - year: 2024
-    submitted: 535
-    accepted: 86
-    str: 16.1%(86/535 24')
-    rate: 0.1607476635514019
-    source: https://esorics2024.org/accepted_papers-en
+    - year: 2024
+      submitted: 535
+      accepted: 86
+      str: 16.1%(86/535 24')
+      rate: 0.1607476635514019
+      source: https://esorics2024.org/accepted_papers-en

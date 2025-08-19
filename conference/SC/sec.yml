@@ -1,29 +1,38 @@
-  - title: SEC
-    description: IFIP International Information Security Conference
-    sub: SC
-    rank:
-      ccf: C
-      core: N
-      thcpl: B
-    dblp: sec
-    confs:
-      - year: 2021
-        id: sec21
-        link: https://ifipsec.org/2021/
-        timeline:
-          - deadline: '2021-02-15 23:59:59'
-            comment: Submission Deadline
-          - deadline: '2021-04-15 23:59:59'
-            comment: Submission of the camera-ready papers
-        timezone: AoE
-        date: June 22-24, 2021
-        place: Oslo, Norway
-      - year: 2025
-        id: sec25
-        link: https://sec2025.um.si/
-        timeline:
-          - deadline: '2025-01-20 23:59:59'
-            comment: Submission deadline
-        timezone: AoE
-        date: May 21-23, 2025
-        place: Hotel City, Maribor, Slovenia
+- title: SEC
+  description: IFIP International Information Security Conference
+  sub: SC
+  rank:
+    ccf: C
+    core: N
+    thcpl: B
+  dblp: sec
+  confs:
+    - year: 2021
+      id: sec21
+      link: https://ifipsec.org/2021/
+      timeline:
+        - deadline: '2021-02-15 23:59:59'
+          comment: Submission Deadline
+        - deadline: '2021-04-15 23:59:59'
+          comment: Submission of the camera-ready papers
+      timezone: AoE
+      date: June 22-24, 2021
+      place: Oslo, Norway
+    - year: 2025
+      id: sec25
+      link: https://sec2025.um.si/
+      timeline:
+        - deadline: '2025-01-20 23:59:59'
+          comment: Submission deadline
+      timezone: AoE
+      date: May 21-23, 2025
+      place: Hotel City, Maribor, Slovenia
+    - year: 2026
+      id: sec26
+      link: https://ifipsec.org/index.html
+      timeline:
+        - deadline: '2025-12-19 23:59:59'
+          comment: Submission deadline
+      timezone: AoE
+      date: June 09 - 11, 2026
+      place: Perth, Australia

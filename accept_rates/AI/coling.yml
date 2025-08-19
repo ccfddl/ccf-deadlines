@@ -1,8 +1,8 @@
 - title: COLING
   accept_rates:
-  - year: 2022
-    submitted: 1563
-    accepted: 522
-    str: 33.4%(522/1563 22')
-    rate: 0.333973128598848
-    source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2022
+      submitted: 1563
+      accepted: 522
+      str: 33.4%(522/1563 22')
+      rate: 0.333973128598848
+      source: https://github.com/lixin4ever/Conference-Acceptance-Rate

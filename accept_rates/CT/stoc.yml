@@ -1,8 +1,8 @@
 - title: STOC
   accept_rates:
-  - year: 2023
-    submitted: 480
-    accepted: 155
-    str: 32.3%(155/480 23')
-    rate: 0.322916666666667
-    source: https://github.com/emeryberger/csconferences
+    - year: 2023
+      submitted: 480
+      accepted: 155
+      str: 32.3%(155/480 23')
+      rate: 0.322916666666667
+      source: https://github.com/emeryberger/csconferences

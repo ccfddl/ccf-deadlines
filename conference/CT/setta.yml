@@ -1,30 +1,30 @@
-  - title: SETTA
-    description: 'Symposium on Dependable Software Engineering: Theories, Tools and Applications'
-    sub: CT
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: setta
-    confs:
-      - year: 2024
-        id: setta24
-        link: https://setta2024.cs.cityu.edu.hk
-        timeline:
-          - abstract_deadline: '2024-08-16 23:59:59'
-            deadline: '2024-08-28 23:59:59'
-            comment: 'deadline is extended from Aug. 23'
-        timezone: AoE
-        date: Nov 26-28, 2024
-        place: Hong Kong, China
-      - year: 2025
-        id: setta25
-        link: https://www.setta2025.uk
-        timeline:
-          - deadline: '2025-02-16 23:59:59'
-            comment: 'Round 1(Winter) Paper Submission'
-          - deadline: '2025-06-15 23:59:59'
-            comment: 'Round 2(Summer) Paper Submission'
-        timezone: AoE
-        date: Dec, 2025
-        place: Oxford, UK
+- title: SETTA
+  description: 'Symposium on Dependable Software Engineering: Theories, Tools and Applications'
+  sub: CT
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: setta
+  confs:
+    - year: 2024
+      id: setta24
+      link: https://setta2024.cs.cityu.edu.hk
+      timeline:
+        - abstract_deadline: '2024-08-16 23:59:59'
+          deadline: '2024-08-28 23:59:59'
+          comment: 'deadline is extended from Aug. 23'
+      timezone: AoE
+      date: Nov 26-28, 2024
+      place: Hong Kong, China
+    - year: 2025
+      id: setta25
+      link: https://www.setta2025.uk
+      timeline:
+        - deadline: '2025-04-30 23:59:59'
+          comment: 'Round 1 Paper Submission'
+        - deadline: '2025-08-20 23:59:59'
+          comment: 'Round 2 Paper Submission'
+      timezone: AoE
+      date: Dec, 2025
+      place: Oxford, UK

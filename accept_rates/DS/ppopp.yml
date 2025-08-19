@@ -1,8 +1,8 @@
 - title: PPoPP
   accept_rates:
-  - year: 2023
-    submitted: 131
-    accepted: 31
-    str: 23.7%(31/131 23')
-    rate: 0.236641221374046
-    source: https://github.com/emeryberger/csconferences
+    - year: 2023
+      submitted: 131
+      accepted: 31
+      str: 23.7%(31/131 23')
+      rate: 0.236641221374046
+      source: https://github.com/emeryberger/csconferences

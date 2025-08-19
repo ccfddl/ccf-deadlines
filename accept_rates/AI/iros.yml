@@ -1,8 +1,8 @@
 - title: IROS
   accept_rates:
-  - year: 2022
-    submitted: 3579
-    accepted: 1716
-    str: 47.9%(1716/3579 22')
-    rate: 0.479463537300922
-    source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2022
+      submitted: 3579
+      accepted: 1716
+      str: 47.9%(1716/3579 22')
+      rate: 0.479463537300922
+      source: https://github.com/lixin4ever/Conference-Acceptance-Rate

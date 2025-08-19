@@ -1,0 +1,41 @@
+- title: SATML
+  description: IEEE Conference on Secure and Trustworthy Machine Learning
+  sub: SC
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: satml
+  confs:
+    - year: 2026
+      id: satml26
+      link: https://www.satml.org
+      timeline:
+        - deadline: '2025-09-24 23:59:59'
+      timezone: UTC-12
+      date: March 23-25, 2026
+      place: Munich, Germany
+    - year: 2025
+      id: satml25
+      link: https://satml.org/2025/
+      timeline:
+        - deadline: '2024-09-27 23:59:59'
+      timezone: UTC-12
+      date: April 9-11, 2025
+      place: Copenhagen, Denmark
+    - year: 2024
+      id: satml24
+      link: https://satml.org/2024/
+      timeline:
+        - deadline: '2023-10-11 23:59:59'
+      timezone: UTC-12
+      date: April 9-11, 2024
+      place: Toronto, Canada
+    - year: 2023
+      id: satml23
+      link: https://satml.org/2023/
+      timeline:
+        - deadline: '2022-09-01 23:59:59'
+      timezone: UTC-12
+      date: February 8-10, 2023
+      place: Raleigh, North Carolina, USA

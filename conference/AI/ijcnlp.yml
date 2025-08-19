@@ -1,0 +1,18 @@
+- title: IJCNLP
+  description: International Joint Conference on Natural Language Processing
+  sub: AI
+  rank:
+    ccf: N
+    core: B
+    thcpl: N
+  dblp: ijcnlp
+  confs:
+    - year: 2025
+      id: ijcnlp2025
+      link: https://www.afnlp.org/conferences/ijcnlp2025/
+      timeline:
+        - deadline: '2025-07-28 23:59:59'
+          comment: 'ACL Rolling Review'
+      timezone: UTC-12
+      date: Dec 20-24, 2025
+      place: Mumbai, India

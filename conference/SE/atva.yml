@@ -1,0 +1,17 @@
+- title: ATVA
+  description: International Symposium on Automated Technology for Verification and Analysis
+  sub: SE
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: atva
+  confs:
+    - year: 2025
+      id: atva25
+      link: https://conf.researchr.org/home/atva-2025
+      timeline:
+        - deadline: '2025-04-25 23:59:59'
+      timezone: AoE
+      date: October 27-31, 2025
+      place: Bengaluru, India

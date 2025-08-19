@@ -1,25 +1,25 @@
-  - title: CoRL
-    description: The Conference on Robot Learning
-    sub: AI
-    rank:
-      ccf: N
-      core: N
-      thcpl: N
-    dblp: corl
-    confs:
-      - year: 2024
-        id: corl24
-        link: https://2024.corl.org/
-        timeline:
-          - deadline: '2024-06-06 23:59:59'
-        timezone: AoE
-        date: November 6-9, 2024
-        place: Munich, Germany
-      - year: 2025
-        id: corl25
-        link: https://www.corl.org/
-        timeline:
-          - deadline: '2025-04-30 23:59:59'
-        timezone: AoE
-        date: September 27-30, 2025
-        place: Seoul, Korea 
+- title: CoRL
+  description: The Conference on Robot Learning
+  sub: AI
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: corl
+  confs:
+    - year: 2024
+      id: corl24
+      link: https://2024.corl.org/
+      timeline:
+        - deadline: '2024-06-06 23:59:59'
+      timezone: AoE
+      date: November 6-9, 2024
+      place: Munich, Germany
+    - year: 2025
+      id: corl25
+      link: https://www.corl.org/
+      timeline:
+        - deadline: '2025-04-30 23:59:59'
+      timezone: AoE
+      date: September 27-30, 2025
+      place: Seoul, Korea

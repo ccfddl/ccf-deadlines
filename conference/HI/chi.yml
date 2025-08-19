@@ -1,36 +1,36 @@
-  - title: CHI
-    description: ACM Conference on Human Factors in Computing Systems
-    sub: HI
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: chi
-    confs:
-      - year: 2024
-        id: chi24
-        link: http://chi2024.acm.org/
-        timeline:
-          - abstract_deadline: '2023-09-07 23:59:59'
-            deadline: '2023-09-14 23:59:59'
-        timezone: AoE
-        date: May 11 - May 16, 2024
-        place: Honolulu, Hawaii, USA
-      - year: 2025
-        id: chi25
-        link: https://chi2025.acm.org/
-        timeline:
-          - abstract_deadline: '2024-09-05 23:59:59'
-            deadline: '2024-09-12 23:59:59'
-        timezone: AoE
-        date: April 26 - May 1, 2025
-        place: Yokohama, Japan
-      - year: 2026
-        id: chi26
-        link: https://chi2026.acm.org/
-        timeline:
-          - abstract_deadline: 'TBD'
-            deadline: 'TBD'
-        timezone: AoE
-        date: April 13 - 17, 2026
-        place: Centre de Convencions Internacional de Barcelona, Barcelona, Spain
+- title: CHI
+  description: ACM Conference on Human Factors in Computing Systems
+  sub: HI
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: chi
+  confs:
+    - year: 2024
+      id: chi24
+      link: http://chi2024.acm.org/
+      timeline:
+        - abstract_deadline: '2023-09-07 23:59:59'
+          deadline: '2023-09-14 23:59:59'
+      timezone: AoE
+      date: May 11 - May 16, 2024
+      place: Honolulu, Hawaii, USA
+    - year: 2025
+      id: chi25
+      link: https://chi2025.acm.org/
+      timeline:
+        - abstract_deadline: '2024-09-05 23:59:59'
+          deadline: '2024-09-12 23:59:59'
+      timezone: AoE
+      date: April 26 - May 1, 2025
+      place: Yokohama, Japan
+    - year: 2026
+      id: chi26
+      link: https://chi2026.acm.org/
+      timeline:
+        - abstract_deadline: '2025-09-04 23:59:59'
+          deadline: '2025-09-11 23:59:59'
+      timezone: AoE
+      date: April 13 - 17, 2026
+      place: Centre de Convencions Internacional de Barcelona, Barcelona, Spain

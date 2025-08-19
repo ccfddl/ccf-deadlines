@@ -1,42 +1,42 @@
-  - title: DIMVA
-    description: Detection of Intrusions and Malware & Vulnerability Assessment
-    sub: SC
-    rank:
-      ccf: C
-      core: C
-      thcpl: B
-    dblp: dimva
-    confs:
-      - year: 2021
-        id: dimva21
-        link: https://dimva2021.campus.ciencias.ulisboa.pt/
-        timeline:
-          - deadline: '2021-03-01 23:59:59'
-            comment: Paper submission deadline
-          - deadline: '2021-05-14 23:59:59'
-            comment: Final paper submission deadline
-        timezone: AoE
-        date: July 14-16 , 2022
-        place: Virtual
-      - year: 2024
-        id: dimva24
-        link: https://dimva.org/dimva2024/
-        timeline:
-          - deadline: '2023-12-19 23:59:59'
-            comment: Paper submission deadline
-          - deadline: '2024-02-14 23:59:59'
-            comment: Final paper submission deadline
-        timezone: AoE
-        date: July 17-19, 2024
-        place: Lausanne, Switzerland
-      - year: 2025
-        id: dimva25
-        link: https://www.dimva.org/dimva2025/
-        timeline:
-          - deadline: '2024-12-10 23:59:59'
-            comment: Paper submission deadline
-          - deadline: '2025-02-12 23:59:59'
-            comment: Final paper submission deadline
-        timezone: AoE
-        date: July 9-11, 2025
-        place: Graz University of Technology, Graz, Austria
+- title: DIMVA
+  description: Detection of Intrusions and Malware & Vulnerability Assessment
+  sub: SC
+  rank:
+    ccf: C
+    core: C
+    thcpl: B
+  dblp: dimva
+  confs:
+    - year: 2021
+      id: dimva21
+      link: https://dimva2021.campus.ciencias.ulisboa.pt/
+      timeline:
+        - deadline: '2021-03-01 23:59:59'
+          comment: Paper submission deadline
+        - deadline: '2021-05-14 23:59:59'
+          comment: Final paper submission deadline
+      timezone: AoE
+      date: July 14-16 , 2022
+      place: Virtual
+    - year: 2024
+      id: dimva24
+      link: https://dimva.org/dimva2024/
+      timeline:
+        - deadline: '2023-12-19 23:59:59'
+          comment: Paper submission deadline
+        - deadline: '2024-02-14 23:59:59'
+          comment: Final paper submission deadline
+      timezone: AoE
+      date: July 17-19, 2024
+      place: Lausanne, Switzerland
+    - year: 2025
+      id: dimva25
+      link: https://www.dimva.org/dimva2025/
+      timeline:
+        - deadline: '2024-12-10 23:59:59'
+          comment: Paper submission deadline
+        - deadline: '2025-02-12 23:59:59'
+          comment: Final paper submission deadline
+      timezone: AoE
+      date: July 9-11, 2025
+      place: Graz University of Technology, Graz, Austria

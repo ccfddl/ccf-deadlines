@@ -1,18 +1,18 @@
-  - title: APSEC
-    description: Asia-Pacific Software Engineering Conference
-    sub: SE
-    rank:
-      ccf: C
-      core: C
-      thcpl: N
-    dblp: apsec
-    confs:
-      - year: 2025
-        id: apsec25
-        link: https://conf.researchr.org/home/apsec-2025
-        timeline:
-          - abstract_deadline: '2025-07-06 23:59:59'
-            deadline: '2025-07-13 23:59:59'
-        timezone: AoE
-        date: December 2-5, 2025
-        place: Macao SAR, China
+- title: APSEC
+  description: Asia-Pacific Software Engineering Conference
+  sub: SE
+  rank:
+    ccf: C
+    core: C
+    thcpl: N
+  dblp: apsec
+  confs:
+    - year: 2025
+      id: apsec25
+      link: https://conf.researchr.org/home/apsec-2025
+      timeline:
+        - abstract_deadline: '2025-07-06 23:59:59'
+          deadline: '2025-07-13 23:59:59'
+      timezone: AoE
+      date: December 2-5, 2025
+      place: Macao SAR, China
