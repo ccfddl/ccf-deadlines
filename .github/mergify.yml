@@ -22,6 +22,7 @@ pull_request_rules:
     conditions:
       - "#approved-reviews-by>=1"
       - check-success=build
+      - check-success=pre-commit
       - base=main
     actions:
       merge:
