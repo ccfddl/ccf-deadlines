@@ -23,8 +23,8 @@ jobs:
       - name: Assemble yml files
         run: |
           mkdir -p public/conference && cd public/conference
-          python scripts/merge.py ../../conference --exclude "**/types.yml" > allconf.yml
-          python scripts/merge.py ../../accept_rates > allacc.yml
+          python ../../scripts/merge.py ../../conference --exclude "**/types.yml" > allconf.yml
+          python ../../scripts/merge.py ../../accept_rates > allacc.yml
           cp ../../conference/types.yml .
           cd ../..
       - name: Generate iCal files
