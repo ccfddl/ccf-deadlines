@@ -36,3 +36,12 @@
       timezone: UTC-12
       date: April 14-18, 2025
       place: Miyakojima, Japan
+    - year: 2026
+      id: fc26
+      link: https://fc26.ifca.ai/
+      timeline:
+        - deadline: '2025-09-16 23:59:59'
+          comment: Submission deadline
+      timezone: UTC-12
+      date: March 2-6, 2026
+      place: St. Kitts
