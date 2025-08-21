@@ -34,3 +34,12 @@
       timezone: AoE
       date: April 27-28, 2025
       place: Ottawa, Canada
+    - year: 2026
+      id: icpc26
+      link: https://conf.researchr.org/home/icpc-2026
+      timeline:
+        - abstract_deadline: '2025-10-19 23:59:59'
+          deadline: '2025-10-23 23:59:59'
+      timezone: AoE
+      date: April 12-13, 2026
+      place: Rio de Janeiro, Brazil
