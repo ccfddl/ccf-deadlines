@@ -1,0 +1,8 @@
+- title: MMSys
+  accept_rates:
+    - year: 2025
+      submitted: 79
+      accepted: 19
+      str: 24.1%(19/79 25')
+      rate: 0.240506
+      source: https://dl.acm.org/doi/proceedings/10.1145/3712676#acceptance-rates
