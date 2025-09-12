@@ -40,3 +40,14 @@
       timezone: UTC-12
       date: February 27 - March 01, 2025
       place: Monterey, California, USA
+    - year: 2026
+      id: fpga2026
+      link: https://www.isfpga.org/
+      timeline:
+        - deadline: '2025-9-24 23:59:59'
+          comment: Abstracts Due
+        - deadline: '2025-10-1 23:59:59'
+          comment: Submissions Due
+      timezone: UTC-12
+      date: February 22 - February 24, 2026
+      place: Monterey, California, USA
