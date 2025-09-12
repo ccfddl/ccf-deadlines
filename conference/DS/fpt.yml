@@ -18,3 +18,14 @@
       timezone: AoE
       date: December 10 - December 12, 2024
       place: Sydney, Australia
+    - year: 2025
+      id: fpt2025
+      link: https://fpt2025.shanghaitech.edu.cn
+      timeline:
+        - deadline: '2025-07-20 23:59:59'
+          comment: Title and Abstract Due (Conference Track)
+        - deadline: '2025-08-01 23:59:59'
+          comment: Submission Due (Conference Track)
+      timezone: AoE
+      date: December 02 - December 05, 2025
+      place: Shanghai, China
