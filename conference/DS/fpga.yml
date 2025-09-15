@@ -44,9 +44,9 @@
       id: fpga2026
       link: https://www.isfpga.org/
       timeline:
-        - deadline: '2025-9-24 23:59:59'
+        - deadline: '2025-09-24 23:59:59'
           comment: Abstracts Due
-        - deadline: '2025-10-1 23:59:59'
+        - deadline: '2025-10-01 23:59:59'
           comment: Submissions Due
       timezone: UTC-12
       date: February 22 - February 24, 2026
