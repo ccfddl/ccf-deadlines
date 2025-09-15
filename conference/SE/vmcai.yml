@@ -16,3 +16,11 @@
       timezone: AoE
       date: January 16-28, 2022
       place: Philadelphia, Pennsylvania, United States
+    - year: 2026
+      id: vmcai26
+      link: https://conf.researchr.org/home/VMCAI-2026
+      timeline:
+        - deadline: '2025-09-15 23:59:59'
+      timezone: AoE
+      date: January 12-13, 2026
+      place: Rennes, France
