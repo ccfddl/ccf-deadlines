@@ -1,0 +1,171 @@
+/* --------------------- Open Props --------------------------- */
+
+/* the props */
+@import "https://unpkg.com/open-props";
+
+/* ------------------------------------------------------------ */
+
+body {
+  background-color: white;
+}
+
+a {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+.home {
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.github-iframe {
+    border: none;
+    overflow: hidden;
+    background: transparent;
+    display: block;
+}
+
+
+.title {
+    font-size: 29px;
+    color: #2c3e50;
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+}
+
+.subtitle {
+    color: #666666;
+}
+
+/* --------------------- Footer --------------------------- */
+.footer {
+    color: #666666;
+    display: block;
+    padding-top: 8px;
+    height: 20px;
+}
+
+.el-row {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    font-size: 16px;
+}
+
+.el-switch {
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 10px; */
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.el-switch .is_active {
+  color: #409eff;
+}
+
+.thaw-switch__input:enabled:not(:checked) ~ .thaw-switch__indicator {
+  color: white;
+  background-color: #dcdfe6;
+  border-color: white;
+}
+.thaw-switch__input:enabled:checked ~ .thaw-switch__indicator {
+  background-color: #409eff;
+}
+
+.thaw-switch__input:enabled:checked:hover ~ .thaw-switch__indicator {
+  background-color: #409eff;
+}
+
+.thaw-switch__input:enabled:checked ~ .thaw-switch__indicator {
+  background-color: #409eff;
+}
+
+.checkbox-item {
+  flex-basis: 33%;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.custom-search-input {
+  border: 1px solid lightgray !important;
+}
+
+* input::placeholder {
+  color: lightgray !important;
+}
+
+.thaw-checkbox--checked {
+  --thaw-checkbox__indicator--background-color: #409eff;
+}
+
+.thaw-pagination-item, .thaw-button.thaw-pagination-item {
+    max-height: 20px;
+    max-width: 20px;
+}
+
+.thaw-button--primary {
+  background-color: #409eff;
+}
+
+.thaw-button--primary:hover {
+  background-color: #409eff;
+}
+
+.zonedivider{
+  margin-top: 8px;
+  border-bottom: 1px solid #ebeef5;
+}
+
+.thaw-table-cell-layout {
+  padding: 12px 0px;
+}
+
+.thaw-table-cell-layout .conf-fin {
+  opacity: 0.4;
+}
+
+.conf-title {
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+}
+
+.countdown-display {
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+}
+
+.countdown-value {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tag-container {
+  margin-top: 3px;
+}
+
+.tag-container .plain-tag.thaw-tag {
+  background-color: #fff;
+  border-color: #b3d8ff;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  height: 20px;
+  line-height: 18px;
+  padding: 0 5px;
+  font-size: 12px;
+}
+
+.thaw-tag__primary-text {
+  font-size: 12px;
+  color: #409eff;
+  padding: 0;
+}
