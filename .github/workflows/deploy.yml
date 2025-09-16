@@ -31,7 +31,6 @@ jobs:
         run: |
           python extensions/cli/ccfddl/convert_to_ical.py
           mv *.ics public/conference/
-      - uses: actions/checkout@v4 # repo checkout
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly
@@ -48,10 +47,6 @@ jobs:
         # relatively as favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
         # will obviously return error 404 not found.
         run: ./trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
-      - name: Copy conf files
-        run: |
-          mkdir -p dist/conference
-          cp -r public/conference dist/conference
       - name: Config Git
         run: |
           git config --global user.email "me@4f5da2.com"
