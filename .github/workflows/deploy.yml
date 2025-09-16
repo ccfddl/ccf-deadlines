@@ -48,10 +48,6 @@ jobs:
         # relatively as favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
         # will obviously return error 404 not found.
         run: ./trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
-      - name: Copy conf files
-        run: |
-          mkdir -p dist/conference
-          cp -r public/conference dist/conference
       - name: Config Git
         run: |
           git config --global user.email "me@4f5da2.com"
