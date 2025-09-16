@@ -29,7 +29,7 @@ jobs:
           cd ../..
       - name: Generate iCal files
         run: |
-          python add_ons/cli/ccfddl/convert_to_ical.py
+          python extensions/cli/ccfddl/convert_to_ical.py
           mv *.ics public/conference/
       - uses: actions/checkout@v4 # repo checkout
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
