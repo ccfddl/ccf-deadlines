@@ -98,7 +98,7 @@ pub struct ConfItem {
 }
 
 pub async fn fetch_all_conf() -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
-    let url = "https://raw.githubusercontent.com/ccfddl/ccfddl.github.io/page/conference/allconf.yml";
+    let url = "./conference/allconf.yml";
     let response = reqwest::get(url).await?;
     let contents = response.text().await?;
 
@@ -107,7 +107,7 @@ pub async fn fetch_all_conf() -> Result<Vec<Conference>, Box<dyn std::error::Err
 }
 
 pub async fn fetch_all_acc() -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
-    let url = "https://raw.githubusercontent.com/ccfddl/ccfddl.github.io/page/conference/allacc.yml";
+    let url = "./conference/allacc.yml";
     let response = reqwest::get(url).await?;
     let contents = response.text().await?;
 
