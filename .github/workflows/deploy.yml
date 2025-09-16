@@ -31,7 +31,6 @@ jobs:
         run: |
           python extensions/cli/ccfddl/convert_to_ical.py
           mv *.ics public/conference/
-      - uses: actions/checkout@v4 # repo checkout
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly

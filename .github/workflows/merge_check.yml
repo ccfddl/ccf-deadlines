@@ -27,7 +27,6 @@ jobs:
           python ../../scripts/merge.py ../../accept_rates > allacc.yml
           cp ../../conference/types.yml .
           cd ../..
-      - uses: actions/checkout@v4 # repo checkout
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly
