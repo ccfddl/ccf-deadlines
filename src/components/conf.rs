@@ -97,8 +97,8 @@ pub struct ConfItem {
     pub ddls: Vec<TimePoint>
 }
 
-pub async fn fetch_all_conf() -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
-    let url = "https://raw.githubusercontent.com/ccfddl/ccfddl.github.io/page/conference/allconf.yml";
+pub async fn fetch_all_conf(base_url: &String) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
+    let url = format!("{}/conference/allconf.yml", base_url);
     let response = reqwest::get(url).await?;
     let contents = response.text().await?;
 
@@ -106,8 +106,8 @@ pub async fn fetch_all_conf() -> Result<Vec<Conference>, Box<dyn std::error::Err
     Ok(conferences)
 }
 
-pub async fn fetch_all_acc() -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
-    let url = "https://raw.githubusercontent.com/ccfddl/ccfddl.github.io/page/conference/allacc.yml";
+pub async fn fetch_all_acc(base_url: &String) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
+    let url = format!("{}/conference/allacc.yml", base_url);
     let response = reqwest::get(url).await?;
     let contents = response.text().await?;
 
