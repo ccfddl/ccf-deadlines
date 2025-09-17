@@ -81,6 +81,12 @@ pub fn ShowTable() -> impl IntoView {
     let page_count = RwSignal::new(1);
     let is_filter_change = RwSignal::new(false);
 
+    // table
+    let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
+
+    // timezone
+    let time_zone = RwSignal::new(String::new());
+
     Effect::new(move |_| {
         let _ = check_list.get();
         let _ = input_value.get();
@@ -93,12 +99,6 @@ pub fn ShowTable() -> impl IntoView {
         }
     });
 
-    // table
-    let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
-
-    // timezone
-    let time_zone = RwSignal::new(String::new());
-
     Effect::new(move |_| {
         set_in_local_storage("use_english", &use_english.get().to_string());
         set_in_local_storage("types", &serde_json::to_string(&check_list.get()).unwrap());
@@ -107,6 +107,53 @@ pub fn ShowTable() -> impl IntoView {
 
     Effect::new(move |_| {
         set_in_local_storage("likes", &serde_json::to_string(&like_list.get()).unwrap());
+    });
+
+    Effect::new(move |_| {
+        let _ = check_list.get();
+        let _ = input_value.get();
+        let _ = rank_list.get();
+        let _ = page.get();
+
+        let (current_time, current_timezone) = get_browser_time_and_timezone();
+        let utc_map = load_utc_map();
+
+        all_conf_list.update(|conferences| {
+            for item in conferences.iter_mut() {
+                if item.deadline != "TBD" {
+                    let mut tz_str = item.timezone.clone();
+                    if tz_str == "AoE" {
+                        tz_str = "UTC-12".to_string();
+                    } else if tz_str == "UTC" {
+                        tz_str = "UTC+0".to_string();
+                    }
+
+                    if let Some(tz_offset) = utc_map.get(&tz_str) {
+                        let ddl_str = if item.deadline.contains(' ') {
+                            format!(
+                                "{}T{}{}",
+                                item.deadline.split(' ').nth(0).unwrap_or(""),
+                                item.deadline.split(' ').nth(1).unwrap_or("00:00:00"),
+                                tz_offset
+                            )
+                        } else {
+                            format!("{}T23:59:59{}", item.deadline, tz_offset)
+                        };
+
+                        if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
+                            let diff = ddl_datetime.signed_duration_since(current_time);
+                            if diff.num_milliseconds() <= 0 {
+                                item.remain = 0;
+                                item.status = "FIN".to_string();
+                            } else {
+                                item.remain = diff.num_milliseconds() as u64;
+                                item.status = "RUN".to_string();
+                            }
+                        }
+                    }
+                }
+            }
+        });
     });
 
     Effect::new(move || {
@@ -130,7 +177,12 @@ pub fn ShowTable() -> impl IntoView {
 
             let (current_time, current_timezone) = get_browser_time_and_timezone();
 
-            match fetch_all_conf().await {
+            // base_url
+            let window = web_sys::window().unwrap();
+            let location = window.location();
+            let base_url = location.origin().unwrap();
+
+            match fetch_all_conf(&base_url).await {
                 Ok(conferences) => {
                     let mut conf_vec = Vec::new();
 
@@ -355,7 +407,7 @@ pub fn ShowTable() -> impl IntoView {
                 }
             }
 
-            match fetch_all_acc().await {
+            match fetch_all_acc(&base_url).await {
                 Ok(all_acc) => {
                     for acc_item in all_acc {
                         for cur_acc in &acc_item.accept_rates {
