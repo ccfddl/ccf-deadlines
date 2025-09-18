@@ -37,13 +37,13 @@ pub fn Header() -> impl IntoView {
 
     view! {
         <section>
-            <div style="display: flex; align-items: center; font-size: 16px;">
+            <div style="display: inline-block; align-items: center; font-size: 16px;">
                 <a href="/" class="title">
                     "CCFDDL"
                     <sup>"®"</sup>
                     "\u{00a0}Open Deadlines"
                 </a>
-                <div style="padding-left: 5px;">
+                <div style="padding-left: 5px; display: inline-block;">
                     <GitButton />
                 </div>
                 {move || {
@@ -51,7 +51,7 @@ pub fn Header() -> impl IntoView {
                         .get()
                         .then(|| {
                             view! {
-                                <span style="color:#fd3c95;font-weight: bold; font-size: 16px;">
+                                <span style="display: inline-block; color:#fd3c95;font-weight: bold; font-size: 16px;">
                                     "Latest: " {show_str.get()} " !!!"
                                 </span>
                             }

@@ -40,18 +40,62 @@ a {
 
 .subtitle {
     color: #666666;
+    display: inline-block;
 }
 
 /* --------------------- Footer --------------------------- */
-.footer {
+/* .footer {
     color: #666666;
     display: block;
     padding-top: 8px;
     height: 20px;
+} */
+
+@media (min-width: 769px) {
+    .footer {
+        height: 20px;
+        padding-top: 8px;
+        color: #666666;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-text {
+        flex: 1;
+    }
+
+    .footer-pagination {
+        margin-right: 10px;
+    }
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+    .footer {
+        height: 20px;
+        padding-top: 8px;
+        color: #666666;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-pagination {
+        order: 1;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .footer-text {
+        order: 2;
+        text-align: center;
+        font-size: 14px;
+    }
 }
 
 .el-row {
-    display: flex;
+    /* display: flex; */
     align-items: center;
     padding-top: 15px;
     font-size: 16px;
@@ -124,6 +168,7 @@ a {
 }
 
 .thaw-table-cell-layout {
+  display: block;
   padding: 12px 0px;
 }
 

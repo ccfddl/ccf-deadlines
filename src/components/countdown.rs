@@ -34,7 +34,7 @@ pub fn CountDown(
         )
     };
 
-    view! { {display_time} }
+    view! { <span> {display_time} </span> }
 }
 
 /// A hook to create a reactive interval.
