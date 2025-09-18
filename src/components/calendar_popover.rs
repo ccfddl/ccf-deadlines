@@ -1,4 +1,5 @@
 use leptos::prelude::*;
+use leptos::*;
 use thaw::*;
 use chrono::{DateTime, Utc};
 
@@ -6,14 +7,30 @@ use chrono::{DateTime, Utc};
 pub fn CalendarPopover(
     google_calendar_url: Option<String>,
     icloud_calendar_url: Option<String>,
+    is_mobile: RwSignal<bool>
 ) -> impl IntoView {
     let show_popover = RwSignal::new(false);
 
     view! {
         <div
             class="calendar-popover-container"
-            on:mouseenter=move |_| show_popover.set(true)
-            on:mouseleave=move |_| show_popover.set(false)
+            on:click=move |_| {
+                if is_mobile.get() {
+                    show_popover.update(|v| *v = !*v);
+                } else {
+                    show_popover.set(false);
+                }
+            }
+            on:mouseenter=move |_| {
+                if !is_mobile.get() {
+                    show_popover.set(true);
+                }
+            }
+            on:mouseleave=move |_| {
+                if !is_mobile.get() {
+                    show_popover.set(false);
+                }
+            }
         >
             <Icon icon=icondata::VsCalendar style="margin-left: 5px; cursor: pointer" />
 
@@ -61,11 +78,9 @@ pub fn CalendarPopover(
                                 </div>
                             </div>
 
-                            // 箭头（桌面端右侧，移动端左侧）
                             <div class="calendar-popover-arrow"></div>
                         </div>
 
-                        // CSS 样式
                         <style>
                             ".calendar-popover-container {
                                 position: relative;

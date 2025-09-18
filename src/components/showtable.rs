@@ -810,6 +810,7 @@ pub fn ShowTable() -> impl IntoView {
                                                                                         <CalendarPopover
                                                                                             google_calendar_url=conf.google_calendar_url.clone()
                                                                                             icloud_calendar_url=conf.icloud_calendar_url.clone()
+                                                                                            is_mobile
                                                                                         />
                                                                                     </span>
                                                                                 </div>

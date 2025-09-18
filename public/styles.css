@@ -214,3 +214,7 @@ a {
   color: #409eff;
   padding: 0;
 }
+
+.thaw-input__input {
+  width: 125px;
+}
