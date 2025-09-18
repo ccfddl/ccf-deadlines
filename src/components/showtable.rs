@@ -846,7 +846,7 @@ pub fn ShowTable() -> impl IntoView {
                                                                     "website: "
                                                                     <a
                                                                         href=conf.link.clone()
-                                                                        style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"
+                                                                        style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit; word-wrap: break-word;"
                                                                         target="_blank"
                                                                     >
                                                                         {conf.link.clone()}
@@ -876,7 +876,7 @@ pub fn ShowTable() -> impl IntoView {
             </div>
 
             <div class="footer">
-                <div style="float: left;">
+                <div class="footer-text">
                     <span>
                         "Maintained by @ccfddl. If you find it useful, star or follow "
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank">
@@ -884,7 +884,7 @@ pub fn ShowTable() -> impl IntoView {
                         </a> " on Github."
                     </span>
                 </div>
-                <div style="float: right; margin-right: 10px">
+                <div class="footer-pagination">
                     <Pagination page page_count />
                 </div>
             </div>
