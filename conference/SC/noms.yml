@@ -16,3 +16,11 @@
       timezone: UTC+10
       date: May 12-16, 2025
       place: Honolulu, HI, USA
+    - year: 2026
+      id: noms26
+      link: https://noms2026.ieee-noms.org/
+      timeline:
+        - deadline: '2025-10-13 19:59:59'
+      timezone: UTC+10
+      date: May 18-22, 2026
+      place: Rome, Italy
