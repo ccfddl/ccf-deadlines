@@ -20,8 +20,9 @@
       id: recomb26
       link: https://recomb.org/recomb2026/
       timeline:
-        - deadline: 'TBD'
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
       timezone: AoE
-      date: May 26-29, 2026
+      date: May 26 - May 29, 2026
       place: Thessaloniki, Greece
 
