@@ -16,3 +16,12 @@
       timezone: UTC-12
       date: April 06 - April 10, 2025
       place: Lucca, Italy
+    - year: 2026
+      id: ecir26
+      link: https://ecir2026.eu/
+      timeline:
+        - abstract_deadline: '2025-09-25 23:59:59'
+          deadline: '2025-10-02 23:59:59'
+      timezone: AoE
+      date: March 30 - April 01, 2026
+      place: Delft, The Netherlands
