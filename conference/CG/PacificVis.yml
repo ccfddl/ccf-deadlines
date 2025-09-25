@@ -20,3 +20,16 @@
       timezone: AoE
       date: April 22 - 25, 2025
       place: Chang Yung-fa Foundation International Convention Center, Taipei, Taiwan
+    - year: 2026
+      id: pacificvis26
+      link: https://pacificvis2026.github.io/
+      timeline:
+        - abstract_deadline: '2025-09-01 23:59:00'
+          deadline: '2025-09-07 23:59:00'
+          comment: 'Journal track'
+        - abstract_deadline: '2025-11-01 23:59:00'
+          deadline: '2025-11-08 23:59:00'
+          comment: 'Conference track'
+      timezone: AoE
+      date: April 20 - 23, 2026
+      place: Sydney, Australia
