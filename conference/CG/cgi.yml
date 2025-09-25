@@ -23,3 +23,11 @@
       timezone: UTC
       date: July 14-18, 2025
       place: Hong Kong, China
+    - year: 2026
+      id: cgi26
+      link: https://www.cgs-network.org/cgi26/
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC
+      date: July 06-10, 2026
+      place: London, UK
