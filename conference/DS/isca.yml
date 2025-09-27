@@ -51,3 +51,14 @@
       timezone: AoE
       date: June 21-25, 2025
       place: Tokyo, Japan
+    - year: 2026
+      id: isca26
+      link: https://iscaconf.org/isca2026/
+      timeline:
+        - deadline: '2025-11-10 23:59:59'
+          comment: abstract deadline
+        - deadline: '2025-11-17 23:59:59'
+          comment: full paper deadline
+      timezone: AoE
+      date: June 27-July 1, 2026
+      place: Raleigh, USA
