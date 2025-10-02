@@ -1,58 +1,72 @@
-  - title: WWW
-    description: International World Wide Web Conferences
-    sub: MX
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: www
-    confs:
-      - year: 2021
-        id: www21
-        link: https://www2021.thewebconf.org/
-        timeline:
-          - abstract_deadline: '2020-10-12 23:59:59'
-            deadline: '2020-10-19 23:59:59'
-        timezone: AoE
-        date: April 19-23, 2021
-        place: Ljubljana, Slovenia
-
-      - year: 2022
-        id: www22
-        link: https://www2022.thewebconf.org/
-        timeline:
-          - abstract_deadline: '2021-10-14 23:59:59'
-            deadline: '2021-10-21 23:59:59'
-        timezone: AoE
-        date: April 25-29, 2022
-        place: Lyon, France
-
-      - year: 2023
-        id: www23
-        link: https://www2023.thewebconf.org/
-        timeline:
-          - abstract_deadline: '2022-10-06 23:59:59'
-            deadline: '2022-10-13 23:59:59'
-        timezone: AoE
-        date: May 1-5, 2023
-        place: Austin, Texas, USA
-
-      - year: 2024
-        id: www24
-        link: https://www2024.thewebconf.org/
-        timeline:
-          - abstract_deadline: '2023-10-05 23:59:59'
-            deadline: '2023-10-12 23:59:59'
-        timezone: AoE
-        date: May 13-17, 2024
-        place: Singapore
-
-      - year: 2025
-        id: www25
-        link: https://www2025.thewebconf.org/
-        timeline:
-          - abstract_deadline: '2024-10-07 23:59:59'
-            deadline: '2024-10-14 23:59:59'
-        timezone: AoE
-        date: April 28 - May 2, 2025
-        place: Sydney, Australia
+- title: WWW
+  description: International World Wide Web Conferences
+  sub: MX
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: www
+  confs:
+    - year: 2021
+      id: www21
+      link: https://www2021.thewebconf.org/
+      timeline:
+        - abstract_deadline: '2020-10-12 23:59:59'
+          deadline: '2020-10-19 23:59:59'
+      timezone: AoE
+      date: April 19-23, 2021
+      place: Ljubljana, Slovenia
+    - year: 2022
+      id: www22
+      link: https://www2022.thewebconf.org/
+      timeline:
+        - abstract_deadline: '2021-10-14 23:59:59'
+          deadline: '2021-10-21 23:59:59'
+      timezone: AoE
+      date: April 25-29, 2022
+      place: Lyon, France
+    - year: 2023
+      id: www23
+      link: https://www2023.thewebconf.org/
+      timeline:
+        - abstract_deadline: '2022-10-06 23:59:59'
+          deadline: '2022-10-13 23:59:59'
+      timezone: AoE
+      date: May 1-5, 2023
+      place: Austin, Texas, USA
+    - year: 2024
+      id: www24
+      link: https://www2024.thewebconf.org/
+      timeline:
+        - abstract_deadline: '2023-10-05 23:59:59'
+          deadline: '2023-10-12 23:59:59'
+      timezone: AoE
+      date: May 13-17, 2024
+      place: Singapore
+    - year: 2025
+      id: www25
+      link: https://www2025.thewebconf.org/
+      timeline:
+        - abstract_deadline: '2024-10-07 23:59:59'
+          deadline: '2024-10-14 23:59:59'
+      timezone: AoE
+      date: April 28 - May 2, 2025
+      place: Sydney, Australia
+    - year: 2026
+      id: www26
+      link: https://www2026.thewebconf.org/
+      timeline:
+        - abstract_deadline: '2025-09-30 23:59:59'
+          deadline: '2025-10-07 23:59:59'
+      timezone: AoE
+      date: April 13 - 17, 2026
+      place: Dubaï, UAE
+    - year: 2027
+      id: www27
+      link: https://www2027.thewebconf.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Dublin, Ireland

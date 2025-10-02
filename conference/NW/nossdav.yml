@@ -1,17 +1,17 @@
-  - title: NOSSDAV
-    description: International Workshop on Network and Operating System Support for Digital Audio and Video
-    sub: NW
-    rank:
-      ccf: B
-      core: B
-      thcpl: B
-    dblp: nossdav
-    confs:
-      - year: 2025
-        id: nossdav25
-        link: https://nossdav.org/2025/
-        timeline:
-          - deadline: '2025-01-17 23:59:59'
-        timezone: AoE
-        date: March 31- April 3, 2025
-        place: Stellenbosch, South Africa
+- title: NOSSDAV
+  description: International Workshop on Network and Operating System Support for Digital Audio and Video
+  sub: NW
+  rank:
+    ccf: B
+    core: B
+    thcpl: B
+  dblp: nossdav
+  confs:
+    - year: 2025
+      id: nossdav25
+      link: https://nossdav.org/2025/
+      timeline:
+        - deadline: '2025-01-17 23:59:59'
+      timezone: AoE
+      date: March 31- April 3, 2025
+      place: Stellenbosch, South Africa

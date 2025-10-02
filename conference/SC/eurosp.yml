@@ -1,25 +1,33 @@
-  - title: EuroS&P
-    description: IEEE European Symposium on Security and Privacy
-    sub: SC
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: eurosp
-    confs:
-      - year: 2024
-        id: eurosp24
-        link: https://eurosp2024.ieee-security.org/
-        timeline:
-          - deadline: '2023-11-02 23:59:59'
-        timezone: UTC-12
-        date: July 8-12, 2024
-        place: Vienna, Austria
-      - year: 2025
-        id: eurosp25
-        link: https://eurosp2025.ieee-security.org/
-        timeline:
-          - deadline: '2024-10-24 23:59:59'
-        timezone: UTC-12
-        date: June 30-July 4, 2025
-        place: Venice, Italy
+- title: EuroS&P
+  description: IEEE European Symposium on Security and Privacy
+  sub: SC
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: eurosp
+  confs:
+    - year: 2024
+      id: eurosp24
+      link: https://eurosp2024.ieee-security.org/
+      timeline:
+        - deadline: '2023-11-02 23:59:59'
+      timezone: UTC-12
+      date: July 8-12, 2024
+      place: Vienna, Austria
+    - year: 2025
+      id: eurosp25
+      link: https://eurosp2025.ieee-security.org/
+      timeline:
+        - deadline: '2024-10-24 23:59:59'
+      timezone: UTC-12
+      date: June 30-July 4, 2025
+      place: Venice, Italy
+    - year: 2026
+      id: eurosp26
+      link: https://eurosp2026.ieee-security.org/
+      timeline:
+        - deadline: '2025-11-20 23:59:59'
+      timezone: UTC-12
+      date: July 6 - 10, 2026
+      place: Lisbon, Portugal

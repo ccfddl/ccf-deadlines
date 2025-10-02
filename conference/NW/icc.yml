@@ -1,17 +1,25 @@
-  - title: ICC
-    description: IEEE International Conference on Communications
-    sub: NW
-    rank:
-      ccf: C
-      core: N
-      thcpl: B
-    dblp: icc
-    confs:
-      - year: 2025
-        id: icc25
-        link: https://icc2025.ieee-icc.org
-        timeline:
-            - deadline: '2024-10-11 23:59:59'
-        timezone: AoE
-        date: June 8-12, 2025
-        place: Palais des congrès de Montréal in Montreal, Quebec, Canada
+- title: ICC
+  description: IEEE International Conference on Communications
+  sub: NW
+  rank:
+    ccf: C
+    core: N
+    thcpl: B
+  dblp: icc
+  confs:
+    - year: 2025
+      id: icc25
+      link: https://icc2025.ieee-icc.org
+      timeline:
+        - deadline: '2024-10-11 23:59:59'
+      timezone: AoE
+      date: June 8-12, 2025
+      place: Palais des congrès de Montréal in Montreal, Quebec, Canada
+    - year: 2026
+      id: icc26
+      link: https://icc2026.ieee-icc.org
+      timeline:
+        - deadline: '2025-09-29 23:59:59'
+      timezone: UTC-4
+      date: May 24-28, 2026
+      place: Glasgow, Scotland

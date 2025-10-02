@@ -1,33 +1,33 @@
-  - title: KSEM
-    description: International Conference on Knowledge Science, Engineering and Management
-    sub: AI
-    rank:
-      ccf: C
-      core: C
-      thcpl: N
-    dblp: ksem
-    confs:
-      - year: 2023
-        id: ksem23
-        link: https://www.ksem2023.conferences.academy/
-        timeline:
-          - deadline: '2023-04-28 23:59:00'
-        timezone: UTC-8
-        date: Aug 16-18, 2023
-        place: Guangzhou, China
-      - year: 2024
-        id: ksem24
-        link: https://ai-edge.net/
-        timeline:
-          - deadline: '2024-02-15 23:59:00'
-        timezone: UTC+0
-        date: Aug 16-18, 2024
-        place: Birmingham
-      - year: 2025
-        id: ksem25
-        link: https://ksem2025.scimeeting.cn/
-        timeline:
-          - deadline: '2025-03-20 23:59:59'
-        timezone: UTC+0
-        date: August 4-6, 2025
-        place: Macao SAR, China
+- title: KSEM
+  description: International Conference on Knowledge Science, Engineering and Management
+  sub: AI
+  rank:
+    ccf: C
+    core: C
+    thcpl: N
+  dblp: ksem
+  confs:
+    - year: 2023
+      id: ksem23
+      link: https://www.ksem2023.conferences.academy/
+      timeline:
+        - deadline: '2023-04-28 23:59:00'
+      timezone: UTC-8
+      date: Aug 16-18, 2023
+      place: Guangzhou, China
+    - year: 2024
+      id: ksem24
+      link: https://ai-edge.net/
+      timeline:
+        - deadline: '2024-02-15 23:59:00'
+      timezone: UTC+0
+      date: Aug 16-18, 2024
+      place: Birmingham
+    - year: 2025
+      id: ksem25
+      link: https://ksem2025.scimeeting.cn/
+      timeline:
+        - deadline: '2025-03-20 23:59:59'
+      timezone: UTC+0
+      date: August 4-6, 2025
+      place: Macao SAR, China

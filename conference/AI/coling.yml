@@ -1,36 +1,36 @@
-  - title: COLING
-    description: INTERNATIONNAL CONFERENCE ON COMPUTATIONAL LINGUISTICS
-    sub: AI
-    rank:
-      ccf: B
-      core: B
-      thcpl: B
-    dblp: coling
-    confs:
-      - year: 2022
-        id: coling22
-        link: https://coling2022.org/
-        timeline:
-          - deadline: '2022-05-17 23:59:00'
-            comment: Papers Due
-        timezone: AoE
-        date: June 12-17, 2022
-        place: Gyeongju, Republic of Korea
-      - year: 2024
-        id: coling24
-        link: https://lrec-coling-2024.lrec-conf.org/
-        timeline:
-          - deadline: '2023-10-21 23:59:59'
-            comment: Long, short and position papers due
-        timezone: UTC-12
-        date: May 20 - May 25, 2024
-        place: Torino, Italy
-      - year: 2025
-        id: coling25
-        link: https://coling2025.org/
-        timeline:
-          - deadline: '2024-09-16 23:59:59'
-            comment: First Call for Main Conference Papers
-        timezone: UTC-12
-        date: Jan 19 - Jan 24, 2025
-        place: Abu Dhabi, UAE
+- title: COLING
+  description: INTERNATIONNAL CONFERENCE ON COMPUTATIONAL LINGUISTICS
+  sub: AI
+  rank:
+    ccf: B
+    core: B
+    thcpl: B
+  dblp: coling
+  confs:
+    - year: 2022
+      id: coling22
+      link: https://coling2022.org/
+      timeline:
+        - deadline: '2022-05-17 23:59:00'
+          comment: Papers Due
+      timezone: AoE
+      date: June 12-17, 2022
+      place: Gyeongju, Republic of Korea
+    - year: 2024
+      id: coling24
+      link: https://lrec-coling-2024.lrec-conf.org/
+      timeline:
+        - deadline: '2023-10-21 23:59:59'
+          comment: Long, short and position papers due
+      timezone: UTC-12
+      date: May 20 - May 25, 2024
+      place: Torino, Italy
+    - year: 2025
+      id: coling25
+      link: https://coling2025.org/
+      timeline:
+        - deadline: '2024-09-16 23:59:59'
+          comment: First Call for Main Conference Papers
+      timezone: UTC-12
+      date: Jan 19 - Jan 24, 2025
+      place: Abu Dhabi, UAE

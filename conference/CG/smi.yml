@@ -1,18 +1,18 @@
-  - title: SMI
-    description: Shape Modeling International
-    sub: CG
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: smi
-    confs:
-      - year: 2025
-        id: smi25
-        link: https://smiconf.github.io/2025/
-        timeline:
-          - abstract_deadline: '2025-04-14 23:59:59'
-            deadline: '2025-04-22 23:59:59'
-        timezone: AoE
-        date: October 29 - November 2, 2025 
-        place: Hangzhou, Zhejiang, P.R. China
+- title: SMI
+  description: Shape Modeling International
+  sub: CG
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: smi
+  confs:
+    - year: 2025
+      id: smi25
+      link: https://smiconf.github.io/2025/
+      timeline:
+        - abstract_deadline: '2025-04-14 23:59:59'
+          deadline: '2025-04-22 23:59:59'
+      timezone: AoE
+      date: October 29 - November 2, 2025
+      place: Hangzhou, Zhejiang, P.R. China

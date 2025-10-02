@@ -1,14 +1,14 @@
 - title: WSDM
   accept_rates:
-  - year: 2023
-    submitted: 690
-    accepted: 123
-    str: 17.8%(123/690 23')
-    rate: 0.178260869565217
-    source: https://github.com/emeryberger/csconferences
-  - year: 2024
-    submitted: 615
-    accepted: 109
-    str: 17.7%(109/615 24')
-    rate: 0.1772358
-    source: https://csconfstats.xoveexu.com/
+    - year: 2023
+      submitted: 690
+      accepted: 123
+      str: 17.8%(123/690 23')
+      rate: 0.178260869565217
+      source: https://github.com/emeryberger/csconferences
+    - year: 2024
+      submitted: 615
+      accepted: 109
+      str: 17.7%(109/615 24')
+      rate: 0.1772358
+      source: https://csconfstats.xoveexu.com/

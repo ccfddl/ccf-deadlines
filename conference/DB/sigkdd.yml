@@ -1,58 +1,66 @@
-  - title: SIGKDD
-    description: ACM Knowledge Discovery and Data Mining
-    sub: DB
-    rank:
-      ccf: A
-      core: A*
-      thcpl: A
-    dblp: kdd
-    confs:
-      - year: 2021
-        id: sigkdd21
-        link: https://www.kdd.org/kdd2021/
-        timeline:
-          - deadline: '2021-02-08 23:59:59'
-        timezone: AoE
-        date: August 14-18, 2021
-        place: Singapore
-      - year: 2022
-        id: sigkdd22
-        link: https://www.kdd.org/kdd2022/
-        timeline:
-          - deadline: '2022-02-10 23:59:59'
-        timezone: AoE
-        date: August 14-18, 2022
-        place: Washington DC Convention Center, USA
-      - year: 2023
-        id: sigkdd23
-        link: https://kdd.org/kdd2023/
-        timeline:
-          - deadline: '2023-02-02 23:59:59'
-        timezone: AoE
-        date: August 6-10, 2023
-        place: Long Beach Convention & Entertainment Center, USA
-      - year: 2024
-        id: sigkdd24
-        link: https://kdd2024.kdd.org/research-track-call-for-papers/
-        timeline:
-          - abstract_deadline: '2024-02-01 23:59:59'
-            deadline: '2024-02-08 23:59:59'
+- title: SIGKDD
+  description: ACM Knowledge Discovery and Data Mining
+  sub: DB
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: kdd
+  confs:
+    - year: 2021
+      id: sigkdd21
+      link: https://www.kdd.org/kdd2021/
+      timeline:
+        - deadline: '2021-02-08 23:59:59'
+      timezone: AoE
+      date: August 14-18, 2021
+      place: Singapore
+    - year: 2022
+      id: sigkdd22
+      link: https://www.kdd.org/kdd2022/
+      timeline:
+        - deadline: '2022-02-10 23:59:59'
+      timezone: AoE
+      date: August 14-18, 2022
+      place: Washington DC Convention Center, USA
+    - year: 2023
+      id: sigkdd23
+      link: https://kdd.org/kdd2023/
+      timeline:
+        - deadline: '2023-02-02 23:59:59'
+      timezone: AoE
+      date: August 6-10, 2023
+      place: Long Beach Convention & Entertainment Center, USA
+    - year: 2024
+      id: sigkdd24
+      link: https://kdd2024.kdd.org/research-track-call-for-papers/
+      timeline:
+        - abstract_deadline: '2024-02-01 23:59:59'
+          deadline: '2024-02-08 23:59:59'
           # comment: '1st deadline'
-        timezone: AoE
-        date: August 25-29, 2024
-        place: Barcelona, Spain
-      - year: 2025
-        id: sigkdd25
-        link: https://kdd2025.kdd.org/
-        timeline:
-          - abstract_deadline: '2024-08-01 23:59:59'
-            deadline: '2024-08-08 23:59:59'
-            comment: 1st round of 2 total rounds
-          - abstract_deadline: '2025-02-03 23:59:59'
-            deadline: '2025-02-10 23:59:59'
-            comment: 2nd round of 2 total rounds
-        timezone: AoE
-        date: August 3-7, 2025
-        place: Toronto, ON, Canada
-
-
+      timezone: AoE
+      date: August 25-29, 2024
+      place: Barcelona, Spain
+    - year: 2025
+      id: sigkdd25
+      link: https://kdd2025.kdd.org/
+      timeline:
+        - abstract_deadline: '2024-08-01 23:59:59'
+          deadline: '2024-08-08 23:59:59'
+          comment: 1st round of 2 total rounds
+        - abstract_deadline: '2025-02-03 23:59:59'
+          deadline: '2025-02-10 23:59:59'
+          comment: 2nd round of 2 total rounds
+      timezone: AoE
+      date: August 3-7, 2025
+      place: Toronto, ON, Canada
+    - year: 2026
+      id: sigkdd26
+      link: https://kdd2026.kdd.org/
+      timeline:
+        - abstract_deadline: '2025-07-24 23:59:59'
+          deadline: '2025-07-31 23:59:59'
+          comment: 1st round of 2 total rounds
+      timezone: AoE
+      date: TBD
+      place: TBD, Korea

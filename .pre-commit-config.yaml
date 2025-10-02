@@ -1,0 +1,30 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: validate
+        name: Validate Conference yaml files
+        entry: python scripts/validate.py
+        language: python
+        additional_dependencies: [PyYAML, jsonschema]
+        types: [python]
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.17.2
+    hooks:
+      - id: yamlfmt
+        name: Format YAML files
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.33.1
+    hooks:
+      - id: check-github-workflows
+        name: Check GitHub Workflow configuration

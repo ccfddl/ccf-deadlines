@@ -1,54 +1,69 @@
-  - title: PETS
-    description: Privacy Enhancing Technologies Symposium
-    sub: SC
-    rank:
-      ccf: C
-      core: A
-      thcpl: B
-    dblp: pet
-    confs:
-      - year: 2022
-        id: pets22
-        link: https://petsymposium.org/cfp22.php
-        timeline:
-          - deadline: '2021-05-31 23:59:59'
-            comment: Issue 1 Paper Submission Deadline
-          - deadline: '2021-08-31 23:59:59'
-            comment: Issue 2 Paper Submission Deadline
-          - deadline: '2021-11-30 23:59:59'
-            comment: Issue 3 Paper Submission Deadline
-          - deadline: '2022-02-28 23:59:59'
-            comment: Issue 4 Paper Submission Deadline
-        timezone: AoE
-        date: July 18-23, 2022
-        place: Sydney, Australia
-      - year: 2024
-        id: pets24
-        link: https://www.petsymposium.org/cfp24.php
-        timeline:
-          - deadline: '2023-05-31 23:59:59'
-            comment: Issue 1 Paper Submission Deadline
-          - deadline: '2023-08-31 23:59:59'
-            comment: Issue 2 Paper Submission Deadline
-          - deadline: '2023-11-30 23:59:59'
-            comment: Issue 3 Paper Submission Deadline
-          - deadline: '2024-02-29 23:59:59'
-            comment: Issue 4 Paper Submission Deadline
-        timezone: AoE
-        date: July 15-20, 2024
-        place: Bristol, UK and Online
-      - year: 2025
-        id: pets25
-        link: https://petsymposium.org/cfp25.php
-        timeline:
-          - deadline: '2024-05-31 23:59:59'
-            comment: Issue 1 Paper Submission Deadline
-          - deadline: '2024-08-31 23:59:59'
-            comment: Issue 2 Paper Submission Deadline
-          - deadline: '2024-11-30 23:59:59'
-            comment: Issue 3 Paper Submission Deadline
-          - deadline: '2025-02-28 23:59:59'
-            comment: Issue 4 Paper Submission Deadline
-        timezone: AoE
-        date: July 14-19, 2025
-        place: Washington, DC and Online
+- title: PETS
+  description: Privacy Enhancing Technologies Symposium
+  sub: SC
+  rank:
+    ccf: C
+    core: A
+    thcpl: B
+  dblp: pet
+  confs:
+    - year: 2022
+      id: pets22
+      link: https://petsymposium.org/cfp22.php
+      timeline:
+        - deadline: '2021-05-31 23:59:59'
+          comment: Issue 1 Paper Submission Deadline
+        - deadline: '2021-08-31 23:59:59'
+          comment: Issue 2 Paper Submission Deadline
+        - deadline: '2021-11-30 23:59:59'
+          comment: Issue 3 Paper Submission Deadline
+        - deadline: '2022-02-28 23:59:59'
+          comment: Issue 4 Paper Submission Deadline
+      timezone: AoE
+      date: July 18-23, 2022
+      place: Sydney, Australia
+    - year: 2024
+      id: pets24
+      link: https://www.petsymposium.org/cfp24.php
+      timeline:
+        - deadline: '2023-05-31 23:59:59'
+          comment: Issue 1 Paper Submission Deadline
+        - deadline: '2023-08-31 23:59:59'
+          comment: Issue 2 Paper Submission Deadline
+        - deadline: '2023-11-30 23:59:59'
+          comment: Issue 3 Paper Submission Deadline
+        - deadline: '2024-02-29 23:59:59'
+          comment: Issue 4 Paper Submission Deadline
+      timezone: AoE
+      date: July 15-20, 2024
+      place: Bristol, UK and Online
+    - year: 2025
+      id: pets25
+      link: https://petsymposium.org/cfp25.php
+      timeline:
+        - deadline: '2024-05-31 23:59:59'
+          comment: Issue 1 Paper Submission Deadline
+        - deadline: '2024-08-31 23:59:59'
+          comment: Issue 2 Paper Submission Deadline
+        - deadline: '2024-11-30 23:59:59'
+          comment: Issue 3 Paper Submission Deadline
+        - deadline: '2025-02-28 23:59:59'
+          comment: Issue 4 Paper Submission Deadline
+      timezone: AoE
+      date: July 14-19, 2025
+      place: Washington, DC and Online
+    - year: 2026
+      id: pets26
+      link: https://petsymposium.org/cfp26.php
+      timeline:
+        - deadline: '2025-05-31 23:59:59'
+          comment: Issue 1 Paper Submission Deadline
+        - deadline: '2025-08-31 23:59:59'
+          comment: Issue 2 Paper Submission Deadline
+        - deadline: '2025-11-30 23:59:59'
+          comment: Issue 3 Paper Submission Deadline
+        - deadline: '2026-02-28 23:59:59'
+          comment: Issue 4 Paper Submission Deadline
+      timezone: AoE
+      date: July 20-25, 2026
+      place: Calgary, Canada

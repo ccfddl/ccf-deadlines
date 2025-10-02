@@ -1,25 +1,25 @@
-  - title: ICPR
-    description: International Conference on Pattern Recognition
-    sub: AI
-    rank:
-      ccf: C
-      core: B
-      thcpl: B
-    dblp: icpr
-    confs:
-      - year: 2024
-        id: icpr24
-        link: https://icpr2024.org/
-        timeline:
-          - deadline: '2024-04-10 23:59:59'
-        timezone: UTC-7
-        date: Dec 01-05, 2024
-        place: Kolkata, India
-      - year: 2026
-        id: icpr26
-        link: https://icpr2026.org/
-        timeline:
-          - deadline: 'TBD'
-        timezone: AoE
-        date: August 17-21, 2026
-        place: Lyon, France
+- title: ICPR
+  description: International Conference on Pattern Recognition
+  sub: AI
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: icpr
+  confs:
+    - year: 2024
+      id: icpr24
+      link: https://icpr2024.org/
+      timeline:
+        - deadline: '2024-04-10 23:59:59'
+      timezone: UTC-7
+      date: Dec 01-05, 2024
+      place: Kolkata, India
+    - year: 2026
+      id: icpr26
+      link: https://icpr2026.org/
+      timeline:
+        - deadline: '2025-12-20 23:59:59'
+      timezone: AoE
+      date: August 17-21, 2026
+      place: Lyon, France

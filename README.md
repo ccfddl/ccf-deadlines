@@ -1,54 +1,50 @@
 # CCF-Deadlines
 
+> Helping researchers track worldwide conference ddls through collaboration.
+
 [![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/ccfddl/ccf-deadlines/.github/workflows/deploy.yml?branch=main)](https://github.com/ccfddl/ccf-deadlines/commits/main)
 [![Open PRs](https://img.shields.io/github/issues-pr/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-English | [简体中文](./README.zh-CN.md)
-
-Help researchers track deadlines of conferences recommended by [China Computer Federation (CCF)](https://www.ccf.org.cn/).
+English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=https://github.com/ccfddl/ccf-deadlines)
 
 <table>
   <tr>
-    <td align="center"><b><a href="https://ccfddl.github.io/">Website Preview<br>(Main Site)</a></b></td>
-    <td align="center"><b><a href="https://ccfddl.top/">Tabular Preview</a><br>No Ladder Required</b></td>
-    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/cli">PyCli Preview</a><br>Work In Progress</b></td>
+    <td align="center"><b><a href="https://ccfddl.github.io/">🌐 Website Portal<br></a>Main Site</b></td>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg">📱 Wechat Applet</a><br>Available Now</b></td>
+    <td align="center"><b><a href="https://ccfddl.top/">🌐 Tabular Portal</a><br>No Ladder Required</b></td>
   </tr>
   <tr>
     <td align="center"><img src=".readme_assets/screenshot_website.png" width="280px"/></td>
+    <td align="center"><img src=".readme_assets/applet_qrcode.jpg" width="240px"/></td>
     <td align="center"><img src=".readme_assets/screenshot_tabular.png" width="280px"/></td>
-    <td align="center"><img src=".readme_assets/screenshot_pycli.png" width="280px"/></td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg">Wechat Applet</a><br>Work In Progress</b></td>
-    <td align="center"><b><a href="https://www.raycast.com/ViGeng/ccfddl?via=ViGeng">Raycast Extension</a><br>Available Now</b></td>
-  </tr>
-  <tr>
-    <td align="center"><img src=".readme_assets/applet_qrcode.jpg" width="220px"/></td>
-    <td align="center"><img src=".readme_assets/screenshot_raycast.png" width="280px"/></td>
   </tr>
 </table>
 
 **No More Finding and Time Conversion on Your Own!**
 
-## iCal Subscription:
+### Extensions
+<table>
+  <tr>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/cli">PyCli Tool</a><br></b></td>
+    <td align="center"><b><a href="https://www.raycast.com/ViGeng/ccfddl?via=ViGeng">Raycast Extension</a><br></b></td>
+    <td align="center"><b><a href="https://github.com/superpung/swiftbar-ccfddl/">SwiftBar Plugin</a><br></b></td>
+  </tr>
+  <tr>
+   <td align="center"><img src=".readme_assets/screenshot_pycli.png" width="280px"/></td>
+    <td align="center"><img src=".readme_assets/screenshot_raycast.png" width="280px"/></td>
+    <td align="center"><img src="https://raw.githubusercontent.com/superpung/swiftbar-ccfddl/refs/heads/main/docs/preview.png" width="280px"/></td>
+  </tr>
+    <tr>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/ical">iCal Subscription</a><br></b></td>
+  </tr>
+  <tr>
+     <td align="center"><img src=".readme_assets/screenshot_iCal.jpg" width="280px"/></td>
+  </tr>
+</table>
 
-- English: `https://ccfddl.com/conference/deadlines_en.ics`
-- 简体中文: `https://ccfddl.com/conference/deadlines_zh.ics`
-
-<img src=".readme_assets/screenshot_iCal.jpg" width="500px"/>
-
-The filter is mapped to the name of iCal file in the following rules:
-
-- one filter: `deadlines_en.ics` and `deadlines_zh.ics`
-- two filters: `deadlines_{lang}_{rank}.ics` and `deadlines_{lang}_{sub}.ics`
-- common filters: `deadlines_{lang}_{rank}_{sub}.ics`
-
-For example, given filter: lang=zh, sub=AI,CG, ccf=A,thcpl=A, then it will refer to `deadlines_zh_ccf_A_AI.ics`, `deadlines_zh_ccf_A_CG.ics`, `deadlines_zh_thcpl_A_AI.ics` and `deadlines_zh_thcpl_A_CG.ics`.
-
+## Community Activity
+![Alt](https://repobeats.axiom.co/api/embed/98d0169b30fc63bfddcfbf2ac6d73656ef0f9d00.svg "Repobeats analytics image")
 
 ## Add/Update a conference
 
@@ -179,28 +175,9 @@ The matching table:
 | `HI`  | Computer-Human Interaction                                        |
 | `MX`  | Interdiscipline/Mixture/Emerging                                  |
 
-## Community activity [![Time period](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_badge.svg)](https://repography.com)
-
-[![Timeline graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_timeline.svg)](https://github.com/ccfddl/ccf-deadlines/commits)
-[![Issue status graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_issues.svg)](https://github.com/ccfddl/ccf-deadlines/issues)
-[![Pull request status graph](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_prs.svg)](https://github.com/ccfddl/ccf-deadlines/pulls)
-[![Top contributors](https://images.repography.com/34277855/ccfddl/ccf-deadlines/recent-activity/5fTrp8O5TMylbcyWax-RA4zvtLwFXQeUmCGlTEmHlOc/3ypSX5IK_DYSkrgdERBGvHuaPzIse7m6ydGPLX_wJKE_users.svg)](https://github.com/ccfddl/ccf-deadlines/graphs/contributors)
-
 ## Contribution
 
-Maintained by [@jacklightChen](https://github.com/jacklightChen), [@0x4f5da2](https://github.com/0x4f5da2), [@kzoacn](https://github.com/kzoacn), [@cubercsl](https://github.com/cubercsl), [@spingARbor](https://github.com/spingARbor), [@liborui](https://github.com/liborui), [@PAN-Ziyue](https://github.com/PAN-Ziyue), [@xuhangc](https://github.com/xuhangc), [@RyunMi](https://github.com/RyunMi), [@Lukangkang123](https://github.com/Lukangkang123), [@oliverck](https://github.com/oliverck), [@fffmath](https://github.com/fffmath), [@Allenpandas](https://github.com/Allenpandas), [@yuang-chen](https://github.com/yuang-chen), [@hepengfei5709](https://github.com/hepengfei5709), [@ViGeng](https://github.com/ViGeng), [@QianpengLi577](https://github.com/QianpengLi577).
-
-Inspired by [ai-deadlines](https://aideadlin.es/).
-
-### Best Practice
-
-We recommend branch-based workflow, which is a common practice in open source projects.
-As shown in the figure below, The basic idea is to create a new branch for each feature or bug fix. Then this new branch can be pushed to forked repository.
-All changes will be merged into upstream main branch through pull requests.
-
-<!-- make it smaller -->
-<!-- ![Branch-based Workflow](.readme_assets/branch_based_workflow.png) -->
-<img src=".readme_assets/branch_based_workflow.png" width="500px"/>
+Maintained by [@ccfddl](https://github.com/ccfddl) collaboration.
 
 ## License
 

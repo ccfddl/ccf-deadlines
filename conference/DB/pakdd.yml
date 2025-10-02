@@ -1,26 +1,25 @@
-  - title: PAKDD
-    description: Pacific-Asia Conference on Knowledge Discovery and Data Mining
-    sub: DB
-    rank:
-      ccf: C
-      core: B
-      thcpl: N
-    dblp: pakdd
-    confs:
-      - year: 2025
-        id: pakdd25
-        link: https://pakdd2025.org
-        timeline:
-          - deadline: '2024-11-30 23:59:59'
-        timezone: UTC-8
-        date: June 10-13, 2025
-        place: Sydney, Australia
-      - year: 2026
-        id: pakdd26
-        link: https://www.pakdd2026.org/
-        timeline:
-          - deadline: 'TBD'
-        timezone: UTC-8
-        date: June 9-12, 2026
-        place: Hong Kong, China
-
+- title: PAKDD
+  description: Pacific-Asia Conference on Knowledge Discovery and Data Mining
+  sub: DB
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: pakdd
+  confs:
+    - year: 2025
+      id: pakdd25
+      link: https://pakdd2025.org
+      timeline:
+        - deadline: '2024-11-30 23:59:59'
+      timezone: UTC-8
+      date: June 10-13, 2025
+      place: Sydney, Australia
+    - year: 2026
+      id: pakdd26
+      link: https://www.pakdd2026.org/
+      timeline:
+        - deadline: '2025-11-15 23:59:59'
+      timezone: UTC-8
+      date: June 9-12, 2026
+      place: Hong Kong, China

@@ -1,0 +1,19 @@
+- title: MMSys
+  description: ACM International Conference on Multimedia Systems
+  sub: NW
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: mmsys
+  confs:
+    - year: 2026
+      id: mmsys26
+      link: https://2026.acmmmsys.org
+      timeline:
+        - abstract_deadline: '2025-09-19 23:59:59'
+          deadline: '2025-09-26 23:59:59'
+          comment: 'Round 1 deadline'
+      timezone: AoE
+      date: April 4 - 8, 2026
+      place: Hong Kong SAR

@@ -1,18 +1,17 @@
-  - title: WASA
-    description: International Conference on Wireless Algorithms, Systems, and Applications
-    sub: NW
-    rank:
-      ccf: C
-      core: N
-      thcpl: N
-    dblp: wasa
-    confs:
-      - year: 2025
-        id: wasa25
-        link: http://wasa-conference.org/WASA2025/index.html
-        timeline:
-          - deadline: '2025-01-15 23:59:59'
-        timezone: AoE
-        date: June 24-26, 2025
-        place: Tokyo, Japan
-
+- title: WASA
+  description: International Conference on Wireless Algorithms, Systems, and Applications
+  sub: NW
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: wasa
+  confs:
+    - year: 2025
+      id: wasa25
+      link: http://wasa-conference.org/WASA2025/index.html
+      timeline:
+        - deadline: '2025-01-15 23:59:59'
+      timezone: AoE
+      date: June 24-26, 2025
+      place: Tokyo, Japan

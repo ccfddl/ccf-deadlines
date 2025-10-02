@@ -1,14 +1,14 @@
 - title: WWW
   accept_rates:
-  - year: 2023
-    submitted: 1900
-    accepted: 365
-    str: 19.2%(365/1900 23')
-    rate: 0.192105263157895
-    source: https://github.com/emeryberger/csconferences
-  - year: 2024
-    submitted: 2008
-    accepted: 405
-    str: 20.2%(405/2008 24')
-    rate: 0.2016932
-    source: https://csconfstats.xoveexu.com/
+    - year: 2023
+      submitted: 1900
+      accepted: 365
+      str: 19.2%(365/1900 23')
+      rate: 0.192105263157895
+      source: https://github.com/emeryberger/csconferences
+    - year: 2024
+      submitted: 2008
+      accepted: 405
+      str: 20.2%(405/2008 24')
+      rate: 0.2016932
+      source: https://csconfstats.xoveexu.com/

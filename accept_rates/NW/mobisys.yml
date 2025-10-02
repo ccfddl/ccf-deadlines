@@ -1,8 +1,8 @@
 - title: MobiSys
   accept_rates:
-  - year: 2024
-    submitted: 263
-    accepted: 43
-    str: 16.3%(43/263 24')
-    rate: 0.1634981
-    source: https://csconfstats.xoveexu.com/
+    - year: 2024
+      submitted: 263
+      accepted: 43
+      str: 16.3%(43/263 24')
+      rate: 0.1634981
+      source: https://csconfstats.xoveexu.com/

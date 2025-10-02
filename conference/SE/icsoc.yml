@@ -1,21 +1,33 @@
-  - title: ICSOC
-    description: International Conference on Service Oriented Computing
-    sub: SE
-    rank:
-      ccf: B
-      core: A
-      thcpl: N
-    dblp: icsoc
-    confs:
-      - year: 2022
-        id: icsoc22
-        link: http://www.icsoc.org/
-        timeline:
-          - deadline: '2022-03-01 23:59:59'
-            comment: Abstracts/Full-Text Paper Submission Deadline
-          - deadline: '2022-04-23 23:59:59'
-            comment: Final Paper (Camera Ready) Submission & Early Bird Registration
-              Deadline
-        timezone: AoE
-        date: May 26-27, 2022
-        place: Barcelona, Spain
+- title: ICSOC
+  description: International Conference on Service Oriented Computing
+  sub: SE
+  rank:
+    ccf: B
+    core: A
+    thcpl: N
+  dblp: icsoc
+  confs:
+    - year: 2022
+      id: icsoc22
+      link: http://www.icsoc.org/
+      timeline:
+        - deadline: '2022-03-01 23:59:59'
+          comment: Abstracts/Full-Text Paper Submission Deadline
+        - deadline: '2022-04-23 23:59:59'
+          comment: Final Paper (Camera Ready) Submission & Early Bird Registration Deadline
+      timezone: AoE
+      date: May 26-27, 2022
+      place: Barcelona, Spain
+    - year: 2025
+      id: icsoc25
+      link: https://icsoc2025.hit.edu.cn/main.htm
+      timeline:
+        - deadline: '2025-05-09 23:59:59'
+          comment: Early paper submissions
+        - deadline: '2025-07-07 23:59:59'
+          comment: Regular paper abstract submissions
+        - deadline: '2025-07-14 23:59:59'
+          comment: Regular paper submissions
+      timezone: AoE
+      date: December 1-4, 2025
+      place: Shenzhen, China

@@ -1,36 +1,36 @@
-  - title: IUI
-    description: ACM Conference on Intelligent User Interfaces
-    sub: HI
-    rank:
-      ccf: B
-      core: A
-      thcpl: B
-    dblp: iui
-    confs:
-      - year: 2024
-        id: iui24
-        link: https://iui.acm.org/2024/
-        timeline:
-          - abstract_deadline: '2023-10-02 23:59:59'
-            deadline: '2023-10-09 23:59:59'
-        timezone: AoE
-        date: March 18 - March 21, 2024
-        place: Greenville, South Carolina USA
-      - year: 2025
-        id: iui25
-        link: https://iui.acm.org/2025/
-        timeline:
-          - abstract_deadline: '2024-10-02 23:59:59'
-            deadline: '2024-10-09 23:59:59'
-        timezone: AoE
-        date: March 24 - March 27, 2025
-        place: Cagliari, Italy
-      - year: 2026
-        id: iui26
-        link: https://iui.hosting.acm.org/2026/
-        timeline:
-          - abstract_deadline: 'TBD'
-            deadline: 'TBD'
-        timezone: AoE
-        date: March 23 - March 26, 2026
-        place: Paphos, Cyprus
+- title: IUI
+  description: ACM Conference on Intelligent User Interfaces
+  sub: HI
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: iui
+  confs:
+    - year: 2024
+      id: iui24
+      link: https://iui.acm.org/2024/
+      timeline:
+        - abstract_deadline: '2023-10-02 23:59:59'
+          deadline: '2023-10-09 23:59:59'
+      timezone: AoE
+      date: March 18 - March 21, 2024
+      place: Greenville, South Carolina USA
+    - year: 2025
+      id: iui25
+      link: https://iui.acm.org/2025/
+      timeline:
+        - abstract_deadline: '2024-10-02 23:59:59'
+          deadline: '2024-10-09 23:59:59'
+      timezone: AoE
+      date: March 24 - March 27, 2025
+      place: Cagliari, Italy
+    - year: 2026
+      id: iui26
+      link: https://iui.hosting.acm.org/2026/
+      timeline:
+        - abstract_deadline: '2025-10-03 23:59:59'
+          deadline: '2025-10-10 23:59:59'
+      timezone: AoE
+      date: March 23 - 26, 2026
+      place: Paphos, Cyprus
