@@ -47,3 +47,12 @@
       timezone: UTC-8
       date: June 22-25, 2025
       place: San Francisco, CA
+    - year: 2026
+      id: dac26
+      link: https://dac.com/2026/call-for-contributions
+      timeline:
+        - abstract_deadline: '2025-11-11 17:00:00'
+          deadline: '2025-11-18 17:00:00'
+      timezone: UTC-8
+      date: July 26-29, 2026
+      place: Long Beach, CA
