@@ -1,0 +1,8 @@
+- title: SenSys
+  accept_rates:
+    - year: 2025
+      submitted: 235
+      accepted: 45
+      str: 19.1%(45/235 25')
+      rate: 0.19148936
+      source: https://dl.acm.org/doi/proceedings/10.1145/3715014
