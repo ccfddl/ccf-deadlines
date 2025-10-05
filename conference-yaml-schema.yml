@@ -61,7 +61,7 @@ items:
             - B
             - N
     dblp:
-      description: The suffix in dblp url, e.g., iccv in dblp.uni-trier.de/db/conf/iccv
+      description: The suffix in dblp url, e.g., iccv in dblp.org/db/conf/iccv
       type: string
     confs:
       type: array

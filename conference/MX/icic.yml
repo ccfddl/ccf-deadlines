@@ -23,3 +23,11 @@
       timezone: UTC+8
       date: July 26-29, 2025
       place: Ningbo, China
+    - year: 2026
+      id: icic26
+      link: http://www.ic-icc.cn/2026/
+      timeline:
+        - deadline: '2026-03-20 11:59:59'
+      timezone: UTC+8
+      date: July 22-26, 2026
+      place: Toronto, Canada

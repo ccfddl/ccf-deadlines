@@ -40,3 +40,14 @@
       timezone: AoE
       date: June 23-26, 2025
       place: Munich, Germany
+    - year: 2026
+      id: acns26
+      link: https://acns2026.github.io/index.html
+      timeline:
+        - deadline: '2025-09-26 23:59:59'
+          comment: Cycle 1 Submission deadline
+        - deadline: '2026-01-23 23:59:59'
+          comment: Cycle 2 Submission deadline
+      timezone: AoE
+      date: June 22-25, 2026
+      place: New York, United States
