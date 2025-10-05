@@ -29,3 +29,16 @@
       timezone: AoE
       date: Oct 28-31, 2025
       place: Madison, Wisconsin, USA
+    - year: 2026
+      id: imc26
+      link: https://conferences.sigcomm.org/imc/2026/
+      timeline:
+        - abstract_deadline: '2025-11-13 23:59:59'
+          deadline: '2025-11-20 23:59:59'
+          comment: 'Cycle 1 Deadline'
+        - abstract_deadline: '2026-04-22 23:59:59'
+          deadline: '2026-04-29 23:59:59'
+          comment: 'Cycle 2 Deadline'
+      timezone: AoE
+      date: November 03-06, 2026
+      place: Karlsruhe, Germany
