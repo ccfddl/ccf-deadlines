@@ -16,7 +16,6 @@
       timezone: UTC-12
       date: TBD
       place: TBD
-  confs:
     - year: 2026
       id: mobisys26
       link: https://www.sigmobile.org/mobisys/2026/
