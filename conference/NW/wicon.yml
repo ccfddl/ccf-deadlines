@@ -1,0 +1,18 @@
+- title: EAI WICON
+  description: EAI International Conference on Wireless Internet
+  sub: NET
+  rank:
+    ccf: N/A
+    core: N/A
+    thcpl: N/A
+  dblp: conf/wicon
+  confs:
+    - year: 2025
+      id: wicon2025
+      link: https://wicon.eai-conferences.org/2025/
+      timeline:
+        - deadline: '2025-10-20 23:59:59'
+          comment: 'Full Paper Submission'
+      timezone: UTC+3
+      date: December 5, 2025
+      place: Istanbul, Turkey
