@@ -55,3 +55,12 @@
       timezone: AoE
       date: March 10-12, 2025
       place: Virtual
+    - year: 2026
+      id: pam26
+      link: https://pam2026.at/
+      timeline:
+        - abstract_deadline: '2025-10-15 23:59:59'
+          deadline: '2025-10-15 23:59:59'
+      timezone: AoE
+      date: March 23-25, 2026
+      place: Virtual
