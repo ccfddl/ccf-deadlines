@@ -36,3 +36,14 @@
       timezone: AoE
       date: June 30 - July 3, 2025
       place: Arlington, Virginia, USA
+    - year: 2026
+      id: wisec26
+      link: https://wisec26.events.cispa.de/
+      timeline:
+        - deadline: '2025-11-18 23:59:59'
+          comment: First Cycle deadline
+        - deadline: '2026-03-03 23:59:59'
+          comment: Second Cycle deadline
+      timezone: AoE
+      date: June 30 - July 3, 2026
+      place: Saarbrücken, Germany
