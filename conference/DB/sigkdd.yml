@@ -62,5 +62,15 @@
           deadline: '2025-07-31 23:59:59'
           comment: 1st round of 2 total rounds
       timezone: AoE
-      date: TBD
-      place: TBD, Korea
+      date: August 9-13, 2026
+      place: Jeju, Korea
+    - year: 2026
+      id: sigkdd26
+      link: https://kdd2026.kdd.org/
+      timeline:
+        - abstract_deadline: '2026-02-01 23:59:59'
+          deadline: '2026-02-08 23:59:59'
+          comment: 2nd round of 2 total rounds
+      timezone: AoE
+      date: August 9-13, 2026
+      place: Jeju, Korea
