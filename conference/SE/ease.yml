@@ -24,9 +24,6 @@
         - abstract_deadline: '2026-01-16 23:59:59'
           deadline: '2026-01-23 23:59:59'
           comment: 'Research Papers'
-        - abstract_deadline: '2026-02-23 23:59:59'
-          deadline: '2026-03-02 23:59:59'
-          comment: 'Short Papers, Emerging Results'
       timezone: AoE
       date: June 9 - 12, 2026
       place: Glasgow, United Kingdom
