@@ -25,3 +25,15 @@
       timezone: AoE
       date: July 8-10, 2025
       place: Stony Brook, NY, USA
+    - year: 2026
+      id: sacmat26
+      link: https://www.sacmat.org/2026/index.php
+      timeline:
+        - deadline: '2025-10-27 23:59:59'
+          comment: 'First Cycle'
+        - deadline: '2026-03-02 23:59:59'
+          comment: 'Second Cycle'
+      timezone: AoE
+      date: July 8-10, 2026
+      place: Waterloo, Canada
+
