@@ -15,3 +15,12 @@
       timezone: AoE
       date: July 8-11, 2025
       place: Aarhus, Denmark
+    - year: 2026
+      id: icalp26
+      link: https://icalppodcspaa2026.cs.rhul.ac.uk/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: July 6–10, 2026
+      place: London, UK
+
