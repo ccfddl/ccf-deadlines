@@ -52,3 +52,12 @@
       timezone: AoE
       date: September 15-19, 2025
       place: Porto, Portugal
+    - year: 2026
+      id: ecmlpkdd2026
+      link: https://ecmlpkdd.org/2026/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: September 7-11, 2026
+      place: Naples, Italy
