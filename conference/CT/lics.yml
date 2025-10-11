@@ -15,3 +15,12 @@
       timezone: AoE
       date: June 26-29, 2023
       place: Boston University, USA
+    - year: 2026
+      id: lics26
+      link: https://lics.siglog.org/lics26/
+      timeline:
+        - abstract_deadline: '2026-01-15 23:59:59'
+          deadline: '2026-01-22 23:59:59'
+      timezone: AoE
+      date: July 20-23, 2026
+      place: Lisbon, Portugal
