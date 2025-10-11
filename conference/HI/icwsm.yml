@@ -20,3 +20,16 @@
       timezone: AoE
       date: June 23 - 26, 2025
       place: Copenhagen, Denmark
+    - year: 2026
+      id: icwsm2026
+      link: https://www.icwsm.org/2026/index.html
+      timeline:
+        - deadline: '2025-05-15 23:59:59'
+          comment: 1st Full-paper Deadline
+        - deadline: '2025-09-15 23:59:59'
+          comment: 2nd Full-paper Deadline
+        - deadline: '2026-01-15 23:59:59'
+          comment: 3rd Full-paper Deadline
+      timezone: AoE
+      date: May 27-29, 2026
+      place: Los Angeles, CA, USA
