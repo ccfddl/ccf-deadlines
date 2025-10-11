@@ -23,3 +23,12 @@
       timezone: UTC-5
       date: June 23-27, 2025
       place: Prague, Czech Republic
+    - year: 2026
+      id: stoc26
+      link: https://acm-stoc.org/stoc2026/
+      timeline:
+        - deadline: '2025-11-04 16:59:59'
+      timezone: UTC-5
+      date: June 22-26, 2026
+      place: Salt Lake City, Utah, USA
+
