@@ -43,3 +43,12 @@
       timezone: AoE
       date: July 4-6, 2025
       place: Xiangtan, China
+    - year: 2026
+      id: securecomm26
+      link: https://securecomm.eai-conferences.org/2026/
+      timeline:
+        - deadline: '2026-03-15 23:59:59'
+      timezone: AoE
+      date: July 4-6, 2026
+      place: Lancaster, UK and hybrid
+
