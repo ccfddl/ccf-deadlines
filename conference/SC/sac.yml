@@ -40,3 +40,11 @@
       timezone: AoE
       date: August 13-15, 2025
       place: Toronto, Ontario, Canada
+    - year: 2026
+      id: sac26
+      link: https://sacworkshop.org/SAC26/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: August 24-28, 2026
+      place: Ottawa, Ontario, Canada
