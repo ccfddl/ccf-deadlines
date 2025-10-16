@@ -116,7 +116,7 @@ Description of the fields:
    </tr>
    <tr>
       <td colspan="3"><code>dblp</code>*</td>
-      <td>The suffix in dblp url, e.g., <code>iccv</code> in https://dblp.uni-trier.de/db/conf/iccv</td>
+      <td>The suffix in dblp url, e.g., <code>iccv</code> in https://dblp.org/db/conf/iccv</td>
    </tr>
    <tr>
       <td rowspan="9"><code>confs</code></td>

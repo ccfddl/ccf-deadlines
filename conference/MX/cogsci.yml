@@ -31,3 +31,11 @@
       timezone: UTC+8
       date: July 30-August 2, 2025
       place: Marriott Marquis, San Francisco
+    - year: 2026
+      id: cogsci26
+      link: https://cognitivesciencesociety.org/cogsci-2026/
+      timeline:
+        - deadline: '2026-02-02 23:59:59'
+      timezone: AoE
+      date: July 22-25, 2026
+      place: Rio de Janeiro, Brazil

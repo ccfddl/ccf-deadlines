@@ -13,6 +13,10 @@
       timeline:
         - abstract_deadline: '2025-06-24 23:59:00'
           deadline: '2025-07-01 23:59:00'
+          comment: '1st deadline'
+        - abstract_deadline: '2025-11-06 23:59:00'
+          deadline: '2025-11-13 23:59:00'
+          comment: '2nd deadline'
       timezone: AoE
       date: May 11-14, 2026
       place: Saint-Malo, France

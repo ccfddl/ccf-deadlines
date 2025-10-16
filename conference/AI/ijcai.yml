@@ -42,3 +42,12 @@
       timezone: UTC-12
       date: August 16-22, 2025
       place: Montreal, Canada.
+    - year: 2026
+      id: ijcai26
+      link: https://2026.ijcai.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC-12
+      date: August 15-21, 2026
+      place: Bremen, Germany

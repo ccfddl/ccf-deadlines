@@ -46,3 +46,12 @@
       timezone: UTC-12
       date: July 11-19, 2025
       place: Vancouver Convention Center, Vancouver, Canada
+    - year: 2026
+      id: icml26
+      link: https://icml.cc/Conferences/2026
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC-12
+      date: July 6-12, 2026
+      place: Seoul, Korea

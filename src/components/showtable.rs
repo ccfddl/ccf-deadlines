@@ -632,7 +632,7 @@ pub fn ShowTable() -> impl IntoView {
                                                                 <div class="conf-title">
                                                                     <a
                                                                         href=format!(
-                                                                            "https://dblp.uni-trier.de/db/conf/{}",
+                                                                            "https://dblp.org/db/conf/{}",
                                                                             conf.dblp,
                                                                         )
                                                                         style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"

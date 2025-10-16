@@ -49,8 +49,8 @@ jobs:
         run: ./trunk build --release
       - name: Config Git
         run: |
-          git config --global user.email "me@4f5da2.com"
-          git config --global user.name "0x4f5da2"
+          git config --global user.email "jacklightchen@gmail.com"
+          git config --global user.name "jacklightChen"
       - name: Deploy
         run: |
           cd dist
