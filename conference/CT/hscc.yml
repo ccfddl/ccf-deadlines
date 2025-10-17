@@ -1,0 +1,18 @@
+- title: HSCC
+  description: International Conference on Hybrid Systems: Computation and Control
+  sub: CT
+  rank:
+    ccf: B
+    core: N
+    thcpl: B
+  dblp: hybrid
+  confs:
+    - year: 2026
+      id: hscc26
+      link: https://www.isis.vanderbilt.edu/events/hscciccps-2026
+      timeline:
+        - abstract_deadline: '2025-11-06 23:59:59'
+          deadline: '2025-11-13 23:59:59'
+      timezone: AoE
+      date: May 11-14, 2026
+      place: Saint Malo, France
