@@ -39,7 +39,7 @@
             deadline: '2025-12-12 23:59:59'
             comment: 'December Cycle'
         - abstract_deadline: '2026-05-29 23:59:59'
-            deadline: '2025-06-05 23:59:59'
+            deadline: '2026-06-05 23:59:59'
             comment: 'June Cycle'
       timezone: AoE
       date: December 7-10, 2026
