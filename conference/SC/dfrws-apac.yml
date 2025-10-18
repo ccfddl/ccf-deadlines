@@ -1,0 +1,17 @@
+- title: DFRWS APAC
+  description: Digital Forensic Research Workshop Asia Pacific
+  sub: SC
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: di
+  confs:
+    - year: 2025
+      id: dfrws-apac25
+      link: https://dfrws.org/conferences/dfrws-apac-2025/
+      timeline:
+        - deadline: "2025-05-23 23:59:59"
+      timezone: AoE
+      date: November 10-12, 2025
+      place: Seoul, South Korea
