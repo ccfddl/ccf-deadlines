@@ -50,8 +50,8 @@
       id: icml26
       link: https://icml.cc/Conferences/2026
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-      timezone: UTC-12
+        - deadline: '2026-01-29 11:59:59'
+          comment: Paper Submissions Open on OpenReview Jan 08 2026 12:00AM UTC-0
+      timezone: UTC-0
       date: July 6-12, 2026
       place: Seoul, Korea
