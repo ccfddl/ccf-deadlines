@@ -16,3 +16,12 @@
       timezone: UTC+0
       date: September 17-21, 2025
       place: Wuhan, China
+    - year: 2026
+      id: icdar2026
+      link: https://icdar2026.org/
+      timeline:
+        - abstract_deadline: '2026-02-13 23:59:59'
+          deadline: '2026-02-27 23:59:59'
+      timezone: UTC+0
+      date: August 30 - September 4, 2026
+      place: Vienna, Austria 
