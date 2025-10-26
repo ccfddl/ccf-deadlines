@@ -25,3 +25,12 @@
       timezone: UTC+7
       date: Oct 13 - 17, 2025
       place: Canberra, Australia
+    - year: 2026
+      id: icmi26
+      link: https://icmi.acm.org/2026/
+      timeline:
+        - abstract_deadline: '2026-04-13 23:59:59'
+          deadline: '2026-04-20 23:59:59'
+      timezone: UTC+7
+      date: Oct 5 - 9, 2026
+      place: Napoli, Italy

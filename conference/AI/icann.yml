@@ -32,3 +32,11 @@
       timezone: AoE
       date: Sept 9-12, 2025
       place: Kaunas, Lithuania
+    - year: 2026
+      id: icann2026
+      link: https://e-nns.org/icann2026/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: Sept 14-17, 2026
+      place: Conference center of the School of Psychology, University of Padua, Italy
