@@ -1,0 +1,25 @@
+- title: NeuS
+  description: 
+  sub: AI
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: neus
+  confs:
+    - year: 2025
+      id: neus25
+      link: https://neus-2025.github.io/
+      timeline:
+        - deadline: '2025-02-28 23:59:59'
+      timezone: AoE
+      date: May 28-30, 2025
+      place: Philadelphia, PA, USA
+    - year: 2026
+      id: neus26
+      link: https://sites.google.com/usc.edu/neus2026/home 
+      timeline:
+        - deadline: '2026-02-01 23:59:59'
+      timezone: AoE
+      date: June 16-18, 2026
+      place: Los Angeles, CA, USA
