@@ -1,5 +1,9 @@
 - title: NeuS
+<<<<<<< HEAD
+  description: International Conference on Neuro-Symbolic Systems
+=======
   description: 
+>>>>>>> fa30aa54e00618e042a6e6e2a0ea2743f9e75f9d
   sub: AI
   rank:
     ccf: N
