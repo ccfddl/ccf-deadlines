@@ -46,8 +46,8 @@
       id: ijcai26
       link: https://2026.ijcai.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-01-12 23:59:59'
+          deadline: '2026-01-19 23:59:59'
       timezone: UTC-12
       date: August 15-21, 2026
       place: Bremen, Germany
