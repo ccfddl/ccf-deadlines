@@ -4,6 +4,7 @@
   rank:
     ccf: B
     core: A
+    thcpl: B
   dblp: compgeom
   confs:
     - year: 2025
@@ -15,3 +16,12 @@
       timezone: AoE
       date: June 23-27, 2025
       place: Kanazawa, Japan
+    - year: 2026
+      id: socg26
+      link: https://cgweek26.computational-geometry.org/contribute/
+      timeline:
+        - abstract_deadline: '2025-11-25 23:59:00'
+          deadline: '2025-12-02 23:59:00'
+      timezone: AoE
+      date: June 2-5, 2026
+      place: New Brunswick, New Jersey, USA

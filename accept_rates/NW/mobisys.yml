@@ -6,3 +6,9 @@
       str: 16.3%(43/263 24')
       rate: 0.1634981
       source: https://csconfstats.xoveexu.com/
+    - year: 2025
+      submitted: 233
+      accepted: 42
+      str: 18.0%(42/233 25')
+      rate: 0.1802575
+      source: https://dl.acm.org/doi/proceedings/10.1145/3711875

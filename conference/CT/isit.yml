@@ -1,0 +1,17 @@
+- title: ISIT
+  description: IEEE International Symposium on Information Theory
+  sub: CT
+  rank:
+    ccf: N
+    core: B
+    thcpl: B
+  dblp: isit
+  confs:
+    - year: 2026
+      id: isit26
+      link: https://2026.ieee-isit.org/
+      timeline:
+        - deadline: '2026-01-16 23:59:59'
+      timezone: AoE
+      date: June 28 - July 3, 2026
+      place: Guangzhou, China

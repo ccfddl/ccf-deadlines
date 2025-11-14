@@ -25,3 +25,12 @@
       timezone: AoE
       date: April 28-29, 2025
       place: Ottawa, Canada
+    - year: 2026
+      id: msr26
+      link: https://2026.msrconf.org/
+      timeline:
+        - abstract_deadline: '2025-10-20 23:59:59'
+          deadline: '2025-10-23 23:59:59'
+      timezone: AoE
+      date: April 13-14, 2026
+      place: Rio de Janeiro, Brazil

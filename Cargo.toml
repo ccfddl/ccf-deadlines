@@ -1,0 +1,31 @@
+[package]
+name = "ccfddl"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+leptos = { version = "0.8.8", features = ["csr"] }
+leptos_meta = { version = "0.8" }
+leptos_router = { version = "0.8" }
+console_log = {version = "1", features = ["color"] }
+log = { version = "0.4" }
+console_error_panic_hook = { version =  "0.1" }
+serde = { version = "1.0.219" }
+reqwest = {version = "0.12.23", features = ["json"] }
+chrono = { version = "0.4", features = ["serde"] }
+chrono-tz = { version = "0.8" }
+web-sys = { version="0.3", features = ["Window", "Navigator", "Storage"] }
+wasm-bindgen = { version = "0.2" }
+wasm-bindgen-futures = { version = "0.4.50" }
+thaw = { version = "0.5.0-beta", features = ["csr"] }
+icondata = { version = "0.6.0" }
+serde_yaml = { version = "0.9.34" }
+serde_json = { version =  "1.0" }
+urlencoding = { version = "2.1.0" }
+
+
+[profile.release]
+opt-level = 'z'
+lto = true
+codegen-units = 1
+panic = "abort"

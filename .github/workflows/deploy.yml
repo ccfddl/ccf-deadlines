@@ -29,27 +29,28 @@ jobs:
           cd ../..
       - name: Generate iCal files
         run: |
-          python add_ons/cli/ccfddl/convert_to_ical.py
+          python extensions/cli/ccfddl/convert_to_ical.py
           mv *.ics public/conference/
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v4
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      # Install Rust Nightly Toolchain, with Clippy & Rustfmt
+      - name: Install nightly Rust
+        uses: dtolnay/rust-toolchain@nightly
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Install dependency and build
-        run: |
-          yarn config set strict-ssl false
-          yarn install
-          yarn build
+          components: clippy, rustfmt
+      - name: Add WASM target
+        run: rustup target add wasm32-unknown-unknown
+      - name: Download and install Trunk binary
+        run: wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.18.4/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
+      - name: Build with Trunk
+        # "${GITHUB_REPOSITORY#*/}" evaluates into the name of the repository
+        # using --public-url something will allow trunk to modify all the href paths like from favicon.ico to repo_name/favicon.ico .
+        # this is necessary for github pages where the site is deployed to username.github.io/repo_name and all files must be requested
+        # relatively as favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
+        # will obviously return error 404 not found.
+        run: ./trunk build --release
       - name: Config Git
         run: |
-          git config --global user.email "me@4f5da2.com"
-          git config --global user.name "0x4f5da2"
+          git config --global user.email "jacklightchen@gmail.com"
+          git config --global user.name "jacklightChen"
       - name: Deploy
         run: |
           cd dist

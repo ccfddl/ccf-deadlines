@@ -1,0 +1,17 @@
+- title: EACL
+  description: The Annual Conference of the European Chapter of the Association for Computational Linguistics
+  sub: AI
+  rank:
+    ccf: N
+    core: A
+    thcpl: N
+  dblp: eacl
+  confs:
+    - year: 2026
+      id: eacl26
+      link: https://2026.eacl.org/
+      timeline:
+        - deadline: '2025-10-06 23:59:59'
+      timezone: AoE
+      date: March 24-29, 2026
+      place: Rabat, Morocco

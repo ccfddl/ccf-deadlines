@@ -23,10 +23,10 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
 
 **No More Finding and Time Conversion on Your Own!**
 
-### Add-Ons
+### Extensions
 <table>
   <tr>
-    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/add_ons/cli">PyCli Tool</a><br></b></td>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/cli">PyCli Tool</a><br></b></td>
     <td align="center"><b><a href="https://www.raycast.com/ViGeng/ccfddl?via=ViGeng">Raycast Extension</a><br></b></td>
     <td align="center"><b><a href="https://github.com/superpung/swiftbar-ccfddl/">SwiftBar Plugin</a><br></b></td>
   </tr>
@@ -36,7 +36,7 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
     <td align="center"><img src="https://raw.githubusercontent.com/superpung/swiftbar-ccfddl/refs/heads/main/docs/preview.png" width="280px"/></td>
   </tr>
     <tr>
-    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/add_ons/ical">iCal Subscription</a><br></b></td>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/ical">iCal Subscription</a><br></b></td>
   </tr>
   <tr>
      <td align="center"><img src=".readme_assets/screenshot_iCal.jpg" width="280px"/></td>
@@ -116,7 +116,7 @@ Description of the fields:
    </tr>
    <tr>
       <td colspan="3"><code>dblp</code>*</td>
-      <td>The suffix in dblp url, e.g., <code>iccv</code> in https://dblp.uni-trier.de/db/conf/iccv</td>
+      <td>The suffix in dblp url, e.g., <code>iccv</code> in https://dblp.org/db/conf/iccv</td>
    </tr>
    <tr>
       <td rowspan="9"><code>confs</code></td>
