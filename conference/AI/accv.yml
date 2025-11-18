@@ -15,3 +15,11 @@
       timezone: UTC-12
       date: December 8-12, 2024
       place: Hanoi, Vietnam
+    - year: 2026
+      id: accv26
+      link: https://accv2026.org/
+      timeline:
+        - deadline: '2026-07-05 23:59:59'
+      timezone: UTC-12
+      date: December 14-18, 2026
+      place: Osaka, japan
