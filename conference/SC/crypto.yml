@@ -39,3 +39,11 @@
       timezone: UTC-12
       date: August 17-21, 2025
       place: Santa Barbara, USA
+    - year: 2026
+      id: crypto26
+      link: https://crypto.iacr.org/2026/
+      timeline:
+        - deadline: '2026-02-12 23:59:59'
+      timezone: UTC-12
+      date: August 17-20, 2026
+      place: Santa Barbara, USA
