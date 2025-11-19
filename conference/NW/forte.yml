@@ -16,3 +16,12 @@
       timezone: AoE
       date: June 17-21, 2024
       place: Groningen, The Netherlands
+    - year: 2026
+      id: forte26
+      link: https://www.discotec.org/2026/forte
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: June 8-12, 2026
+      place: Urbino, Italy
