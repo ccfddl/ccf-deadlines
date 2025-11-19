@@ -45,3 +45,12 @@
       timezone: AoE
       date: November 2-6, 2025
       place: Nara, Japan
+    - year: 2026
+      id: iswc26
+      link: https://iswc2026.semanticweb.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: October 25-29, 2026
+      place: Bari, Italy
