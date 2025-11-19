@@ -52,3 +52,12 @@
       timezone: AoE
       date: September 8-11, 2025
       place: San Diego, CA, USA
+    - year: 2026
+      id: icpp26
+      link: https://icpp2026.github.io/
+      timeline:
+        - abstract_deadline: '2026-04-24 23:59:59'
+        - deadline: '2026-05-01 23:59:59'
+      timezone: AoE
+      date: September 28-October 1, 2026
+      place: Singapore
