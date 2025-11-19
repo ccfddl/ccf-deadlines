@@ -32,3 +32,12 @@
       timezone: AoE
       date: June 21-25, 2025
       place: Los Angeles, California, USA
+    - year: 2026
+      id: rss26
+      link: https://roboticsconference.org
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: July 13-17, 2026
+      place: Sydney, Australia
