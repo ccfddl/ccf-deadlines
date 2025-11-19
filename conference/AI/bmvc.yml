@@ -41,3 +41,12 @@
       timezone: UTC+0
       date: November 24-27, 2025
       place: Sheffield, UK
+    - year: 2026
+      id: bmvc26
+      link: https://bmvc2026.bmva.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC+0
+      date: November 23-26, 2026
+      place: Lancaster, UK
