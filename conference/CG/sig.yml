@@ -7,6 +7,15 @@
     thcpl: A
   dblp: siggraph
   confs:
+    - year: 2026
+      id: siggraph26
+      link: https://s2026.siggraph.org/
+      timeline:
+        - abstract_deadline: '2026-01-15 22:00:00'
+          deadline: '2026-01-22 22:00:00'
+      timezone: UTC+0
+      date: July 19 - 23, 2026
+      place: Los Angeles, California
     - year: 2025
       id: siggraph25
       link: https://s2025.siggraph.org/
