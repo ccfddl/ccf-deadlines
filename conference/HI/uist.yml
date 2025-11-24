@@ -29,3 +29,12 @@
       timezone: UTC-8
       date: Sep 28 - Oct 1, 2025
       place: Busan, Korea
+    - year: 2026
+      id: uist2026
+      link: https://uist.acm.org/2026/
+      timeline:
+        - abstract_deadline: '2026-03-24 17:00:00'
+          deadline: '2026-03-31 17:00:00'
+      timezone: UTC-8
+      date: November 2 - 5, 2026
+      place: GM Renaissance Center, Detroit, MI, USA
