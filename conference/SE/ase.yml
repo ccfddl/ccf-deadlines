@@ -44,3 +44,11 @@
       timezone: AoE
       date: November 16 - November 20, 2025
       place: Seoul, South Korea
+    - year: 2026
+      id: ase26
+      link: https://conf.researchr.org/home/ase-2026
+      timeline:
+        - deadline: '2026-03-26 23:59:59'
+      timezone: AoE
+      date: October 12 - 16, 2026
+      place: Munich, Germany
