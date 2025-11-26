@@ -7,6 +7,15 @@
     thcpl: N
   dblp: siggrapha
   confs:
+    - year: 2026
+      id: siggrapha26
+      link: https://asia.siggraph.org/2026/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC-12
+      date: December 1-4, 2026
+      place: KLCC, Kuala Lumpur, Malaysia
     - year: 2025
       id: siggrapha25
       link: https://asia.siggraph.org/2025/
