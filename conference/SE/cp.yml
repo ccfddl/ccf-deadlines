@@ -25,3 +25,12 @@
       timezone: AoE
       date: August 10-15, 2025
       place: Glasgow, Scotland
+    - year: 2026
+      id: cp26
+      link: https://cp2026.a4cp.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: July 20-23, 2026
+      place: Lisbon, Portugal
