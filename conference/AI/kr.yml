@@ -34,3 +34,12 @@
       timezone: UTC-12
       date: November 11-17, 2025
       place: Melbourne, Australia
+    - year: 2026
+      id: krd26
+      link: https://kr.org/KR2026/
+      timeline:
+        - abstract_deadline: '2026-02-08 23:59:59'
+          deadline: '2026-02-13 23:59:59'
+      timezone: UTC-12
+      date: July 20-23, 2026
+      place: Lisbon, Portugal
