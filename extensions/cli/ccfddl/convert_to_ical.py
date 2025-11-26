@@ -67,12 +67,11 @@ def convert_to_ical(file_paths: list[str], output_path: str, lang: str='en', SUB
                 year = conf['year']
                 link = conf['link']
                 timeline = conf['timeline']
-                timezone = conf['timezone']
+                timezone_str = conf['timezone']
                 place = conf['place']
                 date = conf['date']
 
                 for entry in timeline:
-                    timezone_str = conf['timezone']
                     try:
                         tz = get_timezone(timezone_str)
                     except ValueError:
@@ -88,97 +87,107 @@ def convert_to_ical(file_paths: list[str], output_path: str, lang: str='en', SUB
                         cal.add_component(vtz)
                         added_tzids.add(tzid)
 
-                    # 判断截止类型
-                    deadline_type, deadline_str = None, None
+                    # 收集所有需要处理的截止日期
+                    deadlines_to_process = []
+
                     if 'abstract_deadline' in entry:
-                        deadline_type = ('摘要截稿', 'Abstract Deadline')
-                        deadline_str = entry['abstract_deadline']
-                    elif 'deadline' in entry:
-                        deadline_type = ('截稿日期', 'Deadline')
-                        deadline_str = entry['deadline']
-                    else:
-                        continue  # 跳过无效条目
+                        deadlines_to_process.append((
+                            ('摘要截稿', 'Abstract Deadline'),
+                            entry['abstract_deadline']
+                        ))
 
-                    if deadline_str == 'TBD':
-                        continue  # 忽略待定日期
+                    if 'deadline' in entry:
+                        deadlines_to_process.append((
+                            ('截稿日期', 'Deadline'),
+                            entry['deadline']
+                        ))
 
-                    # 解析日期和时间
-                    is_all_day = False
-                    try:
-                        deadline_dt = datetime.strptime(deadline_str, '%Y-%m-%d %H:%M:%S')
-                    except ValueError:
+                    # 如果没有任何截止日期，跳过
+                    if not deadlines_to_process:
+                        continue
+
+                    # 处理每个截止日期
+                    for deadline_type, deadline_str in deadlines_to_process:
+                        if deadline_str == 'TBD':
+                            continue  # 忽略待定日期
+
+                        # 解析日期和时间
+                        is_all_day = False
                         try:
-                            deadline_dt = datetime.strptime(deadline_str, '%Y-%m-%d')
-                            is_all_day = True
+                            deadline_dt = datetime.strptime(deadline_str, '%Y-%m-%d %H:%M:%S')
                         except ValueError:
-                            continue  # 无效日期格式
+                            try:
+                                deadline_dt = datetime.strptime(deadline_str, '%Y-%m-%d')
+                                is_all_day = True
+                            except ValueError:
+                                continue  # 无效日期格式
 
-                    # 创建事件对象
-                    event = Event()
-                    event.add('uid', uuid.uuid4())
-                    event.add('dtstamp', datetime.now(get_timezone(timezone)))  # UTC时区感知
+                        # 创建事件对象
+                        event = Event()
+                        event.add('uid', uuid.uuid4())
+                        event.add('dtstamp', datetime.now(tz))
 
-                    # 处理时间字段
-                    if is_all_day:
-                        event.add('dtstart', deadline_dt.date())
-                        event.add('dtend', (deadline_dt + timedelta(days=1)).date())
-                    else:
-                        aware_dt = deadline_dt.replace(tzinfo=tz)
-                        event.add('dtstart', aware_dt)
-                        event.add('dtend', aware_dt + timedelta(minutes=1))
+                        # 处理时间字段
+                        if is_all_day:
+                            event.add('dtstart', deadline_dt.date())
+                            event.add('dtend', (deadline_dt + timedelta(days=1)).date())
+                        else:
+                            aware_dt = deadline_dt.replace(tzinfo=tz)
+                            event.add('dtstart', aware_dt)
+                            event.add('dtend', aware_dt + timedelta(minutes=1))
 
-                    # 构建中英双语摘要
-                    if lang == 'en':
-                        summary = f"{title} {year} {deadline_type[1]}"
-                    else:
-                        summary = f"{title} {year} {deadline_type[0]}"
+                        # 构建中英双语摘要
+                        if lang == 'en':
+                            summary = f"{title} {year} {deadline_type[1]}"
+                        else:
+                            summary = f"{title} {year} {deadline_type[0]}"
 
-                    # 添加注释信息
-                    if 'comment' in entry:
-                        summary += f" [{entry['comment']}]"
-                    event.add('summary', summary)
+                        # 添加注释信息
+                        if 'comment' in entry:
+                            summary += f" [{entry['comment']}]"
+                        event.add('summary', summary)
 
-                    # 构建详细描述
-                    level_desc = [
-                        f"CCF {rank['ccf']}" if rank['ccf'] != "N" else None,
-                        f"CORE {rank['core']}" if rank.get('core', 'N') != "N" else None,
-                        f"THCPL {rank['thcpl']}" if rank.get('thcpl', 'N') != "N" else None,
-                    ]
-                    level_desc = [line for line in level_desc if line]
-                    if len(level_desc) > 0:
-                        level_desc = ", ".join(level_desc)
-                    else:
-                        level_desc = None
-                    if lang == 'en':
-                        description = [
-                            f"{conf_data['description']}",
-                            f"🗓️ Date: {date}",
-                            f"📍 Location: {place}",
-                            f"⏰ Original Deadline ({timezone}): {deadline_str}",
-                            f"Category: {sub_chinese} ({sub})",
-                            level_desc,
-                            f"Conference Website: {link}",
-                            f"DBLP Index: https://dblp.org/db/conf/{dblp}",
+                        # 构建详细描述
+                        level_desc = [
+                            f"CCF {rank['ccf']}" if rank['ccf'] != "N" else None,
+                            f"CORE {rank['core']}" if rank.get('core', 'N') != "N" else None,
+                            f"THCPL {rank['thcpl']}" if rank.get('thcpl', 'N') != "N" else None,
                         ]
-                    else:
-                        description = [
-                            f"{conf_data['description']}",
-                            f"🗓️ 会议时间: {date}",
-                            f"📍 会议地点: {place}",
-                            f"⏰ 原始截止时间 ({timezone}): {deadline_str}",
-                            f"分类: {sub_chinese} ({sub})",
-                            level_desc,
-                            f"会议官网: {link}",
-                            f"DBLP索引: https://dblp.org/db/conf/{dblp}",
-                        ]
-                    description = [line for line in description if line]
-                    event.add('description', '\n'.join(description))
+                        level_desc = [line for line in level_desc if line]
+                        if len(level_desc) > 0:
+                            level_desc = ", ".join(level_desc)
+                        else:
+                            level_desc = None
+                        if lang == 'en':
+                            description = [
+                                f"{conf_data['description']}",
+                                f"🗓️ Date: {date}",
+                                f"📍 Location: {place}",
+                                f"⏰ Original Deadline ({timezone_str}): {deadline_str}",
+                                f"Category: {sub_chinese} ({sub})",
+                                level_desc,
+                                f"Conference Website: {link}",
+                                f"DBLP Index: https://dblp.org/db/conf/{dblp}",
+                            ]
+                        else:
+                            description = [
+                                f"{conf_data['description']}",
+                                f"🗓️ 会议时间: {date}",
+                                f"📍 会议地点: {place}",
+                                f"⏰ 原始截止时间 ({timezone_str}): {deadline_str}",
+                                f"分类: {sub_chinese} ({sub})",
+                                level_desc,
+                                f"会议官网: {link}",
+                                f"DBLP索引: https://dblp.org/db/conf/{dblp}",
+                            ]
+                        description = [line for line in description if line]
+                        event.add('description', '\n'.join(description))
 
-                    # 添加其他元信息
-                    event.add('location', place)
-                    event.add('url', link)
+                        # 添加其他元信息
+                        event.add('location', place)
+                        event.add('url', link)
 
-                    cal.add_component(event)
+                        cal.add_component(event)
 
     # 写入输出文件
     with open(output_path, 'wb') as f:
