@@ -19,6 +19,8 @@ def get_timezone(tz_str: str) -> timezone:
     """将时区字符串转换为datetime.timezone对象"""
     if tz_str == 'AoE':
         return timezone(timedelta(hours=-12))
+    if tz_str == 'UTC':
+        return timezone.utc
     match = re.match(r'UTC([+-])(\d{1,2})$', tz_str)
     if not match:
         raise ValueError(f"无效的时区格式: {tz_str}")
