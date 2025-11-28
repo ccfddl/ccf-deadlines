@@ -44,3 +44,14 @@
       timezone: AoE
       date: September 22-26, 2025
       place: Toulouse, France
+    - year: 2026
+      id: esorics26
+      link: https://sites.google.com/di.uniroma1.it/esorics2026/home
+      timeline:
+        - deadline: '2026-01-09 23:59:59'
+          comment: First Submission deadline
+        - deadline: '2026-04-21 23:59:59'
+          comment: Second Submission deadline
+      timezone: AoE
+      date: September, 2026
+      place: Rome, Italy
