@@ -23,3 +23,11 @@
       timezone: UTC-12
       date: June 30 - July 3, 2025
       place: Chicago, USA
+    - year: 2026
+      id: icmr26
+      link: https://icmr2026.org/calls.html
+      timeline:
+        - deadline: '2026-02-06 23:59:59'
+      timezone: UTC-12
+      date: June 16-19, 2026
+      place: Amsterdam, Netherlands
