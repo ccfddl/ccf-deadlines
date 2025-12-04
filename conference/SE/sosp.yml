@@ -44,3 +44,12 @@
       timezone: UTC-7
       date: October 13 - 16, 2025
       place: Lotte Hotel World, Seoul, Republic of Korea
+    - year: 2026
+      id: sosp26
+      link: https://sigops.org/s/conferences/sosp/2026/index.html
+      timeline:
+        - abstract_deadline: '2026-03-26 23:59:59'
+          deadline: '2026-04-01 23:59:59'
+      timezone: AoE
+      date: September 29 - October 2, 2026
+      place: Clarion Congress Hotel Prague, Prague, Czechia
