@@ -34,3 +34,12 @@
       timezone: AoE
       date: Oct 8-12, 2025
       place: Daejeon, South Korea
+    - year: 2026
+      id: ismar2026
+      link: https://www.ieeeismar.net/2026/
+      timeline:
+        - abstract_deadline: '2026-03-09 23:59:59'
+          deadline: '2026-03-16 23:59:59'
+      timezone: AoE
+      date: Oct 5-9, 2026
+      place: Bari, Italy
