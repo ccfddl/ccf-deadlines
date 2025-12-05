@@ -1,0 +1,18 @@
+- title: SECON
+  description: IEEE International Conference on Sensing, Communication, and Networking
+  sub: NW
+  rank:
+    ccf: B
+    core: B
+    thcpl: B
+  dblp: secon
+  confs:
+    - year: 2026
+      id: secon26
+      link: https://secon2026.ieee-secon.org/important-dates
+      timeline:
+        - abstract_deadline: '2025-12-08 23:59:59'
+          deadline: '2025-12-30 23:59:59'
+      timezone: AoE
+      date: April 27-29, 2026
+      place: Abu Dhabi, UAE
