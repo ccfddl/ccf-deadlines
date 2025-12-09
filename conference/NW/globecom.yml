@@ -23,3 +23,11 @@
       timezone: UTC-4
       date: December 8-12, 2025
       place: Taipei, Taiwan
+    - year: 2026
+      id: globecom26
+      link: https://globecom2026.ieee-globecom.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC-4
+      date: December 7-11, 2026
+      place: Macao, China
