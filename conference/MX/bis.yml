@@ -1,0 +1,25 @@
+- title: BIS
+  description: International Conference on Business Information Systems
+  sub: MX
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: bis
+  confs:
+    - year: 2025
+      id: bis2025
+      link: https://bisconf.org/2025/
+      timeline:
+        - deadline: '2025-01-31 23:59:59'
+      timezone: AoE
+      date: June 25-27, 2025
+      place: Poznań, Poland
+    - year: 2026
+      id: bis2026
+      link: https://bisconf.org/2026/
+      timeline:
+        - deadline: '2026-01-15 23:59:59'
+      timezone: AoE
+      date: June 10-12, 2026
+      place: Prague, Czech Republic
