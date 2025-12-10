@@ -19,3 +19,15 @@
       timezone: AoE
       date: July 14-18, 2025
       place: Málaga, Spain (hybrid)
+    - year: 2026
+      id: gecco26
+      link: https://gecco-2026.sigevo.org/HomePage
+      timeline:
+        - abstract_deadline: '2026-01-19 23:59:00'
+          deadline: '2026-01-26 23:59:00'
+          comment: 'Full papers (traditional category) '
+        - deadline: '2025-01-26 23:59:00'
+          comment: 'Poster-only papers '
+      timezone: AoE
+      date: July 13-17, 2026
+      place: San José, Costa Rica (hybrid)
