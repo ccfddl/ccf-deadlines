@@ -24,3 +24,11 @@
       timezone: UTC+8
       date: November 14 - 17, 2025
       place: Guiyang, China
+    - year: 2026
+      id: trustcom26
+      link: https://collaboratecom.eai-conferences.org/2026/
+      timeline:
+        - deadline: '2026-05-01 23:59:59'
+      timezone: UTC+8
+      date: November 14 - 15, 2026
+      place: Hong Kong SAR, China
