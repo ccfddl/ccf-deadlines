@@ -25,3 +25,12 @@
       timezone: AoE
       date: November 2-7, 2025
       place: Vienna, Austria
+    - year: 2026
+      id: vis26
+      link: https://ieeevis.org/year/2026/welcome
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: November 9-13, 2026
+      place: Boston, Massachusetts, USA
