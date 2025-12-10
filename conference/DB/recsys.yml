@@ -34,3 +34,13 @@
       timezone: AoE
       date: September 22-26, 2025
       place: Prague, Czech Republic
+    - year: 2026
+      id: recsys26
+      link: https://recsys.acm.org/recsys26
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: September 28 - October 2, 2026
+      place: Minneapolis, Minnesota, USA
+
