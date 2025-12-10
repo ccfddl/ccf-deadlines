@@ -34,3 +34,12 @@
       timezone: UTC-8
       date: Sep 23-27, 2025
       place: Daejeon, Republic of Korea
+    - year: 2026
+      id: miccai26
+      link: https://conferences.miccai.org/2026/en/IMPORTANT-DATES.html
+      timeline:
+        - abstract_deadline: '2026-02-12 23:59:00'
+          deadline: '2026-02-26 23:59:00'
+      timezone: UTC-8
+      date: Oct 4-8, 2026
+      place: ADNEC CENTRE, ABU DHAB
