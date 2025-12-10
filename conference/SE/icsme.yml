@@ -43,3 +43,13 @@
       timezone: AoE
       date: September 07-12, 2025
       place: Auckland, New Zealand
+    - year: 2026
+      id: icsme26
+      link: https://conf.researchr.org/home/icsme-2026
+      timeline:
+        - abstract_deadline: '2026-02-27 23:59:59'
+          deadline: '2026-03-06 23:59:59'
+          comment: 'Research Papers Track'
+      timezone: AoE
+      date: September 14-18, 2026
+      place: Benevento, Italy
