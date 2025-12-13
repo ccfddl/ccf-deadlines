@@ -58,3 +58,14 @@
       timezone: AoE
       date: FEBRUARY 24-26, 2026
       place: SANTA CLARA, CA, USA
+    - year: 2027
+      id: fast27
+      link: https://www.usenix.org/conference/fast27
+      timeline:
+        - deadline: '2026-03-17 23:59:00'
+          comment: Spring deadline
+        - deadline: '2026-09-15 23:59:00'
+          comment: Fall deadline
+      timezone: AoE
+      date: FEBRUARY 23-25, 2027
+      place: Renton, WA, USA
