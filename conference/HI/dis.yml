@@ -16,3 +16,12 @@
       timezone: AoE
       date: July 5 - 9, 2025
       place: Funchal, Madeira, Portugal
+    - year: 2026
+      id: dis26
+      link: https://dis.acm.org/2026/
+      timeline:
+        - abstract_deadline: '2026-01-09 23:59:59'
+          deadline: '2026-01-19 23:59:59'
+      timezone: AoE
+      date: June 13 - 17, 2026
+      place: Singapore
