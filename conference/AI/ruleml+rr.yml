@@ -1,0 +1,23 @@
+- title: RuleML+RR
+  description: International Joint Conference on Rules and Reasoning
+  sub: DB
+  rank:
+    ccf: null
+    core: B
+    thcpl: null
+  dblp: rulemlrr
+  confs:
+    - year: 2026
+      id: rulemlrr2026
+      link: https://2026.declarativeai.net/events/ruleml-rr
+      timeline:
+        - deadline: '2026-05-08 23:59:59'
+          comment: 'Title and Abstract Submission (AoE)'
+        - deadline: '2026-05-15 23:59:59'
+          comment: 'Paper Submission (AoE)'
+        - deadline: '2026-06-26'
+          comment: 'Notification of Acceptance (AoE)'
+      timezone: AoE
+      date: August 24–26, 2026
+      place: Vilnius, Lithuania
+      note: Part of “Declarative AI: Rules, Reasoning, Decisions, and Explanations”. Proceedings published by Springer LNCS. Long papers: up to 15 pages + references; Short papers: up to 8 pages + references.
