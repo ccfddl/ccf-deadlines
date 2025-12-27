@@ -1,0 +1,18 @@
+- title: ASAP
+  description: IEEE International Conference on Application-Specific Systems, Architectures, and Processors
+  sub: DS
+  rank:
+    ccf: A
+    core: A
+    thcpl: N
+  dblp: asap
+  confs:
+    - year: 2026
+      id: asap2026
+      link: https://2026.asap-conf.org/
+      timeline:
+        - abstract_deadline: '2026-03-27 23:59:59'
+        - deadline: '2026-04-03 23:59:59'
+      timezone: AoE
+      date: Sep 3-4, 2026
+      place: London, UK
