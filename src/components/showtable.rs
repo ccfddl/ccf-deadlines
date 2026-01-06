@@ -449,7 +449,7 @@ pub fn ShowTable() -> impl IntoView {
         let input_val = input_value.get();
         if !input_val.is_empty() {
             let input_lower = input_val.to_lowercase();
-            filtered_list.retain(|item| item.id.to_lowercase().contains(&input_lower));
+            filtered_list.retain(|item| item.id.to_lowercase().contains(&input_lower) || item.title.to_lowercase().contains(&input_lower));
         }
 
         // Sorting and Grouping
