@@ -56,6 +56,9 @@
         - abstract_deadline: '2025-08-27 23:59:59'
           deadline: '2025-09-03 23:59:59'
           comment: Summer Deadlines
+        - abstract_deadline: '2026-03-06 23:59:59'
+          deadline: '2025-03-13 23:59:59'
+          comment: Winter Deadlines
       timezone: AoE
       date: November, 2026
       place: Austin, Texas, USA
