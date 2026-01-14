@@ -52,3 +52,12 @@
       timezone: UTC-12
       date: October 27-31, 2025
       place: Dublin, Ireland
+    - year: 2026
+      id: mm26
+      link: https://2026.acmmm.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC-12
+      date: November 10-14, 2026
+      place: Rio de Janeiro, Brazil
