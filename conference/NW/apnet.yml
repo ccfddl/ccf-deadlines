@@ -25,3 +25,11 @@
       timezone: AoE
       date: August 7-8, 2025
       place: Shanghai, China
+    - year: 2026
+      id: apnet26
+      link: https://conferences.sigcomm.org/events/apnet2026/
+      timeline:
+        - deadline: '2026-03-06 23:59:59'
+      timezone: AoE
+      date: August 6-7, 2026
+      place: Osaka, Japan
