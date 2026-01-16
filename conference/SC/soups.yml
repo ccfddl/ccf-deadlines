@@ -40,3 +40,14 @@
       timezone: AoE
       date: August 10-12, 2025
       place: Seattle, WA, USA
+    - year: 2026
+      id: soups26
+      link: https://soups.page/
+      timeline:
+        - deadline: '2026-02-12 23:59:59'
+          comment: Mandatory Paper Registration Deadline
+        - deadline: '2026-02-19 23:59:59'
+          comment: Paper Submission Deadline
+      timezone: AoE
+      date: August 23-26, 2026
+      place: Hannover, Germany
