@@ -20,8 +20,8 @@
       id: forte26
       link: https://www.discotec.org/2026/forte
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-01-30 23:59:59'
+          deadline: '2026-02-06 23:59:59'
       timezone: AoE
       date: June 8-12, 2026
       place: Urbino, Italy
