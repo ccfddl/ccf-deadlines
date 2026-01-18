@@ -1,0 +1,20 @@
+- title: EUSIPCO
+  accept_rates:
+    - year: 2017
+      submitted: 730
+      accepted: 461
+      str: 63.2%(461/730 17')
+      rate: 0.6315068493150685
+      source: https://www.eurasip.org/Proceedings/Eusipco/Eusipco2017/welcome1.html
+    - year: 2018
+      submitted: 709
+      accepted: 409
+      str: 57.7%(409/709 18')
+      rate: 0.5768688293370945
+      source: https://www.eurasip.org/Proceedings/Eusipco/Eusipco2018/welcome_TPC.html
+    - year: 2020
+      submitted: 829
+      accepted: 499
+      str: 60.2%(499/829 20')
+      rate: 0.6019300361881785
+      source: https://new.eurasip.org/Proceedings/Eusipco/Eusipco2020/HTML/welcometpc.html
