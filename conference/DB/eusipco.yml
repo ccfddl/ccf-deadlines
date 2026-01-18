@@ -1,8 +1,8 @@
 - title: EUSIPCO
-  description: IEEE Conference on Signal Processing
+  description: European Signal Processing Conference
   sub: SE
   rank:
-    ccf: B
+    ccf: N
     core: N
     thcpl: N
   dblp: eusipcolyon
