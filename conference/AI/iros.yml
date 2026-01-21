@@ -31,3 +31,11 @@
       timezone: UTC-8
       date: October 19-25, 2025
       place: Hangzhou, China
+    - year: 2026
+      id: iros26
+      link: https://2026.ieee-iros.org/
+      timeline:
+        - deadline: '2026-03-02 23:59:59'
+      timezone: UTC-8
+      date: September 27 - October 1, 2026
+      place: Pittsburgh, PA, USA
