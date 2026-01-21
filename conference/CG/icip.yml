@@ -5,7 +5,7 @@
     ccf: C
     core: B
     thcpl: B
-  dblp: ICIP
+  dblp: icip
   confs:
     - year: 2023
       id: icip23
@@ -35,7 +35,7 @@
       id: icip26
       link: https://2026.ieeeicip.org/
       timeline:
-        - deadline: '2026-01-21 23:59:59'
+        - deadline: '2026-02-04 23:59:59'
       timezone: UTC+0
       date: Sep 13-17, 2026
       place: Tampere, Finland
