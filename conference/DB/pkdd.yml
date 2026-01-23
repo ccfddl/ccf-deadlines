@@ -56,8 +56,8 @@
       id: ecmlpkdd2026
       link: https://ecmlpkdd.org/2026/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-03-05 23:59:59'
+          deadline: '2026-03-12 23:59:59'
       timezone: AoE
       date: September 7-11, 2026
       place: Naples, Italy
