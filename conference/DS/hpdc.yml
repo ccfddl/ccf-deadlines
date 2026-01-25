@@ -24,10 +24,6 @@
           comment: abstract registration deadline
         - deadline: '2026-02-05 23:59:59'
           comment: paper submission deadline
-        - deadline: '2026-03-31 23:59:59'
-          comment: notification deadline
-        - deadline: '2026-04-30 23:59:59'
-          comment: camera-ready deadline
       timezone: AoE
       date: July 13-16, 2026
       place: Cleveland, OH, USA
