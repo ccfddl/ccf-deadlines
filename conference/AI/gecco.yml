@@ -26,7 +26,7 @@
         - abstract_deadline: '2026-01-19 23:59:00'
           deadline: '2026-01-26 23:59:00'
           comment: 'Full papers (traditional category) '
-        - deadline: '2025-01-26 23:59:00'
+        - deadline: '2026-01-26 23:59:00'
           comment: 'Poster-only papers '
       timezone: AoE
       date: July 13-17, 2026
