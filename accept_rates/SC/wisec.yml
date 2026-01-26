@@ -2,7 +2,7 @@
   accept_rates:
     - year: 2024
       submitted: 144
-      accepted: 29 
+      accepted: 29
       srt: 20.1(29/144 24')
       rate: 0.20138889
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3643833
