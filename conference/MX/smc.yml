@@ -31,3 +31,11 @@
       timezone: UTC+8
       date: October 5-8, 2025
       place: Vienna, Austria
+    - year: 2026
+      id: smc26
+      link: https://www.ieeesmc2026.org/
+      timeline:
+        - deadline: '2026-03-22 23:59:59'
+      timezone: UTC-7
+      date: October 4-7, 2026
+      place: Bellevue, WA, USA
