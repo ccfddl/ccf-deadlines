@@ -1,0 +1,8 @@
+- title: IH&MMSec
+  accept_rates:
+    - year: 2025
+      submitted: 40
+      accepted: 20
+      str: 50%(20/40 25')
+      rate: 0.5
+      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3733102

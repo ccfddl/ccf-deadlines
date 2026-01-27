@@ -1,0 +1,14 @@
+- title: WiSec
+  accept_rates:
+    - year: 2024
+      submitted: 144
+      accepted: 29
+      srt: 20.1(29/144 24')
+      rate: 0.20138889
+      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3643833
+    - year: 2025
+      submitted: 123
+      accepted: 28
+      str: 22.8(28/123 25')
+      rate: 0.22764228
+      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3734477
