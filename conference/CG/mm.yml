@@ -56,8 +56,8 @@
       id: mm26
       link: https://2026.acmmm.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-03-24 11:59:59'
+          deadline: '2026-03-31 11:59:59'
       timezone: UTC-12
       date: November 10-14, 2026
       place: Rio de Janeiro, Brazil
