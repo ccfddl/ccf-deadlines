@@ -90,3 +90,14 @@
       timezone: UTC-4
       date: March 22-26, 2026
       place: Pittsburgh, PA, USA
+    - year: 2027
+      id: asplos27
+      link: https://www.asplos-conference.org/call-for-papers-asplos27/
+      timeline:
+        - deadline: '2026-04-15 23:59:59'
+          comment: April Cycle Submission Deadline
+        - deadline: '2026-09-09 23:59:59'
+          comment: September Cycle Submission Deadline
+      timezone: AoE
+      date: TBD
+      place: TBD
