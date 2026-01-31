@@ -15,3 +15,11 @@
       timezone: UTC-5
       date: June 30-July 2, 2025
       place: New Orleans, LA, USA
+    - year: 2026
+      id: glsvlsi2026
+      link: https://www.glsvlsi.org/
+      timeline:
+        - deadline: '2026-03-02 23:59:00'
+      timezone: UTC-5
+      date: June 22-24, 2026
+      place: Finger Lakes, NY, USA
