@@ -47,3 +47,12 @@
       timezone: UTC-12
       date: October 26 - 30, 2025
       place: MUNICH, GERMANY
+    - year: 2026
+      id: iccad26
+      link: https://iccad.com/2026
+      timeline:
+        - abstract_deadline: '2026-04-07 23:59:59'
+          deadline: '2026-04-14 23:59:59'
+      timezone: UTC-12
+      date: November 8 - 12, 2026
+      place: San Jose, California, USA
