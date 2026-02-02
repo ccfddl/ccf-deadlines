@@ -6,3 +6,15 @@
       str: 23.9%(83/348 22')
       rate: 0.238505747126437
       source: https://github.com/emeryberger/csconferences
+    - year: 2023
+      submitted: 434
+      accepted: 101
+      str: 23.3%(101/434 23')
+      rate: 0.232718894009217
+      source: https://github.com/emeryberger/csconferences
+    - year: 2024
+      submitted: 485
+      accepted: 113
+      str: 23.3%(113/485 24')
+      rate: 0.232989690721649
+      source: https://github.com/emeryberger/csconferences

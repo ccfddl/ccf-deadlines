@@ -60,3 +60,12 @@
       timezone: UTC-4
       date: October 18-22, 2025
       place: Seoul, Korea
+    - year: 2026
+      id: micro26
+      link: https://microarch.org/micro59/
+      timeline:
+        - abstract_deadline: '2026-03-31 23:59:59'
+          deadline: '2026-04-07 23:59:59'
+      timezone: UTC-4
+      date: October 31-November 4, 2026
+      place: Athens, Greece
