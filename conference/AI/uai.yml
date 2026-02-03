@@ -39,3 +39,11 @@
       timezone: AoE
       date: July 21-25, 2025
       place: Rio de Janeiro, Brazil
+    - year: 2026
+      id: uai26
+      link: https://www.auai.org/uai2026/
+      timeline:
+        - deadline: '2026-02-25 23:59:59'
+      timezone: AoE
+      date: August 17-21, 2026
+      place: Amsterdam, Netherlands
