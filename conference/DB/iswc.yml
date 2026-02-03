@@ -49,8 +49,8 @@
       id: iswc26
       link: https://iswc2026.semanticweb.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-05-02 23:59:59'
+          deadline: '2026-05-07 23:59:59'
       timezone: AoE
       date: October 25-29, 2026
       place: Bari, Italy
