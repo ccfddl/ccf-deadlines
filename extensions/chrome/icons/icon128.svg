@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="CCF DDL">
+  <rect width="128" height="128" rx="20" fill="#2563eb"/>
+  <rect x="28" y="28" width="72" height="72" rx="14" fill="#ffffff"/>
+  <rect x="28" y="28" width="72" height="20" fill="#2563eb"/>
+  <circle cx="48" cy="80" r="7" fill="#2563eb"/>
+  <circle cx="80" cy="80" r="7" fill="#2563eb"/>
+</svg>
