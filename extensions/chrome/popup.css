@@ -26,6 +26,17 @@ h2 {
   font-size: 16px;
 }
 
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
 p {
   margin: 0;
   color: var(--muted);
@@ -47,6 +58,7 @@ p {
 }
 
 .form-card,
+.import-card,
 .list-card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -87,6 +99,12 @@ button {
   cursor: pointer;
 }
 
+.ghost-btn {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--border);
+}
+
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -100,6 +118,10 @@ button {
   margin-bottom: 8px;
 }
 
+.search-label {
+  margin-top: 8px;
+}
+
 #deadline-list {
   list-style: none;
   padding: 0;
@@ -107,6 +129,53 @@ button {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.import-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.import-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.import-item-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.import-title {
+  font-weight: 600;
+}
+
+.import-meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.import-add {
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 .item {
