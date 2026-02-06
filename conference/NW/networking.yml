@@ -1,0 +1,17 @@
+- title: Networking
+  description: IFIP International Conference on Networking
+  sub: NW
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: networking
+  confs:
+    - year: 2026
+      id: networking26
+      link: https://networking.ifip.org/2026/
+      timeline:
+        - deadline: '2026-02-08 23:59:59'
+      timezone: AoE
+      date: May 24-27, 2026
+      place: Lugano, Switzerland
