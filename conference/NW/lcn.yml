@@ -1,0 +1,17 @@
+- title: LCN
+  description: IEEE Conference on Local Computer Networks
+  sub: NW
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: lcn
+  confs:
+    - year: 2026
+      id: lcn26
+      link: https://www.ieeelcn.org/
+      timeline:
+        - deadline: '2026-04-20 23:59:59'
+      timezone: AoE
+      date: October 7-9, 2026
+      place: Coimbra, Portugal
