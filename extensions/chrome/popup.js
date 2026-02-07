@@ -49,13 +49,28 @@ function formatDate(datetime) {
 function parseIcsDate(value) {
   if (!value) return null;
   const sanitized = value.trim();
-  const match = sanitized.match(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z?$/);
-  if (!match) return null;
+  const dateTimeMatch =
+    sanitized.match(
+      /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})(Z|[+-]\d{4})?$/
+    );
+  if (dateTimeMatch) {
+    const [, year, month, day, hour, minute, second, tz] = dateTimeMatch;
+    const offset = tz && tz !== "Z" ? `${tz.slice(0, 3)}:${tz.slice(3)}` : "";
+    const suffix = tz === "Z" ? "Z" : offset;
+    const iso = `${year}-${month}-${day}T${hour}:${minute}:${second}${suffix}`;
+    const date = new Date(iso);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
 
-  const [, year, month, day, hour, minute, second] = match;
-  const iso = `${year}-${month}-${day}T${hour}:${minute}:${second}${sanitized.endsWith("Z") ? "Z" : ""}`;
-  const date = new Date(iso);
-  return Number.isNaN(date.getTime()) ? null : date;
+  const dateOnlyMatch = sanitized.match(/^(\d{4})(\d{2})(\d{2})$/);
+  if (dateOnlyMatch) {
+    const [, year, month, day] = dateOnlyMatch;
+    const date = new Date(`${year}-${month}-${day}T23:59:59`);
+    return Number.isNaN(date.getTime()) ? null : date;
+  }
+
+  const parsed = new Date(sanitized);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
 
 function parseIcs(text) {
