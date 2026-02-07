@@ -4,6 +4,7 @@
   "description": "Track your upcoming CCF deadlines and see days remaining on the badge.",
   "version": "0.1.0",
   "permissions": ["storage", "alarms"],
+  "host_permissions": ["https://ccfddl.com/*"],
   "action": {
     "default_title": "CCF DDL Tracker",
     "default_popup": "popup.html",
