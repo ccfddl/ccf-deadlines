@@ -14,6 +14,14 @@ const ccfddlList = document.getElementById("ccfddl-list");
 const ccfddlEmpty = document.getElementById("ccfddl-empty");
 
 let ccfddlItems = [];
+const CCFDDL_MAX_RESULTS = 12;
+
+function normalizeText(value) {
+  return value
+    .toLowerCase()
+    .replace(/\s+/g, "")
+    .replace(/[^\p{L}\p{N}]+/gu, "");
+}
 
 function toTimestamp(value) {
   const parsed = new Date(value);
@@ -104,8 +112,9 @@ function renderCcfddlList(items) {
     return;
   }
 
+  const visibleItems = items.slice(0, CCFDDL_MAX_RESULTS);
   ccfddlEmpty.style.display = "none";
-  items.forEach((item) => {
+  visibleItems.forEach((item) => {
     const li = document.createElement("li");
     li.className = "import-item";
 
@@ -118,7 +127,7 @@ function renderCcfddlList(items) {
 
     const addBtn = document.createElement("button");
     addBtn.className = "import-add";
-    addBtn.textContent = "添加";
+    addBtn.textContent = "添加 / Add";
     addBtn.addEventListener("click", () => addImportedDeadline(item));
 
     header.append(title, addBtn);
@@ -130,6 +139,16 @@ function renderCcfddlList(items) {
     li.append(header, meta);
     ccfddlList.appendChild(li);
   });
+
+  if (items.length > CCFDDL_MAX_RESULTS) {
+    const li = document.createElement("li");
+    li.className = "import-item";
+    const meta = document.createElement("div");
+    meta.className = "import-meta";
+    meta.textContent = `仅显示前 ${CCFDDL_MAX_RESULTS} 条，继续搜索查看更多。/ Showing first ${CCFDDL_MAX_RESULTS}.`;
+    li.appendChild(meta);
+    ccfddlList.appendChild(li);
+  }
 }
 
 function filterCcfddlList() {
@@ -138,9 +157,14 @@ function filterCcfddlList() {
     renderCcfddlList(ccfddlItems);
     return;
   }
-  const filtered = ccfddlItems.filter((item) =>
-    item.title.toLowerCase().includes(keyword)
-  );
+  const normalizedKeyword = normalizeText(keyword);
+  const filtered = ccfddlItems.filter((item) => {
+    const title = item.title.toLowerCase();
+    return (
+      title.includes(keyword) ||
+      normalizeText(title).includes(normalizedKeyword)
+    );
+  });
   renderCcfddlList(filtered);
 }
 
@@ -158,21 +182,24 @@ function addImportedDeadline(item) {
 
 async function loadCcfddlData() {
   loadCcfddlBtn.disabled = true;
-  loadCcfddlBtn.textContent = "加载中...";
+  loadCcfddlBtn.textContent = "加载中... / Loading";
   try {
     const response = await fetch(
       "https://ccfddl.com/conference/deadlines_zh.ics"
     );
     if (!response.ok) throw new Error("加载失败");
     const text = await response.text();
-    ccfddlItems = parseIcs(text);
+    const now = Date.now();
+    ccfddlItems = parseIcs(text)
+      .filter((item) => toTimestamp(item.datetime) >= now)
+      .sort((a, b) => toTimestamp(a.datetime) - toTimestamp(b.datetime));
     filterCcfddlList();
   } catch (error) {
-    ccfddlEmpty.textContent = "加载失败，请稍后重试。";
+    ccfddlEmpty.textContent = "加载失败，请稍后重试。/ Failed to load.";
     ccfddlEmpty.style.display = "block";
   } finally {
     loadCcfddlBtn.disabled = false;
-    loadCcfddlBtn.textContent = "加载";
+    loadCcfddlBtn.textContent = "加载 / Load";
   }
 }
 
@@ -204,7 +231,7 @@ function render(deadlines) {
 
     const del = document.createElement("button");
     del.className = "delete-btn";
-    del.textContent = "删除";
+    del.textContent = "删除 / Delete";
     del.addEventListener("click", () => removeDeadline(index));
 
     header.append(title, del);
@@ -217,7 +244,8 @@ function render(deadlines) {
 
     const remaining = document.createElement("span");
     const remainingDays = daysLeft(item.datetime);
-    remaining.textContent = remainingDays === null ? "" : `剩余 ${remainingDays} 天`;
+    remaining.textContent =
+      remainingDays === null ? "" : `剩余 ${remainingDays} 天 / ${remainingDays} days`;
 
     meta.append(date, remaining);
 

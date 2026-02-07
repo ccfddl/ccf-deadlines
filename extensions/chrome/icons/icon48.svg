@@ -1,4 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="CCF DDL">
   <rect width="48" height="48" rx="8" fill="#2563eb"/>
-  <text x="24" y="30" font-size="16" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif">DDL</text>
+  <rect x="10" y="10" width="28" height="28" rx="6" fill="#ffffff"/>
+  <rect x="10" y="10" width="28" height="8" fill="#2563eb"/>
+  <circle cx="18" cy="30" r="3" fill="#2563eb"/>
+  <circle cx="30" cy="30" r="3" fill="#2563eb"/>
 </svg>

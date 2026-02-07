@@ -10,11 +10,30 @@ function createIconImageData(size) {
   ctx.fillStyle = BRAND_COLOR;
   ctx.fillRect(0, 0, size, size);
 
+  const padding = size * 0.18;
+  const calendarWidth = size - padding * 2;
+  const calendarHeight = size - padding * 2;
+  const radius = size * 0.12;
+
   ctx.fillStyle = "#ffffff";
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
-  ctx.font = `${Math.round(size * 0.42)}px Arial, sans-serif`;
-  ctx.fillText("DDL", size / 2, size / 2 + size * 0.02);
+  ctx.beginPath();
+  if (typeof ctx.roundRect === "function") {
+    ctx.roundRect(padding, padding, calendarWidth, calendarHeight, radius);
+  } else {
+    ctx.rect(padding, padding, calendarWidth, calendarHeight);
+  }
+  ctx.fill();
+
+  ctx.fillStyle = BRAND_COLOR;
+  const headerHeight = calendarHeight * 0.28;
+  ctx.fillRect(padding, padding, calendarWidth, headerHeight);
+
+  ctx.fillStyle = "#ffffff";
+  const dotRadius = size * 0.06;
+  ctx.beginPath();
+  ctx.arc(size * 0.42, padding + headerHeight + calendarHeight * 0.28, dotRadius, 0, Math.PI * 2);
+  ctx.arc(size * 0.62, padding + headerHeight + calendarHeight * 0.28, dotRadius, 0, Math.PI * 2);
+  ctx.fill();
 
   return ctx.getImageData(0, 0, size, size);
 }

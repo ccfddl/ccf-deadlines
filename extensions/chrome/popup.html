@@ -13,54 +13,57 @@
         <div>
         <h1>CCF DDL Tracker</h1>
         <p>添加你正在赶的截止日期，徽标显示最近的剩余天数。</p>
+        <p class="subtitle">Track deadlines and show the nearest days left.</p>
         </div>
       </div>
       <a class="link" href="https://ccfddl.com/" target="_blank" rel="noreferrer">
-        打开 CCFDDL
+        打开 CCFDDL / Open
       </a>
     </header>
 
     <section class="form-card">
-      <h2>新增截止日期</h2>
+      <h2>新增截止日期 / Add DDL</h2>
       <form id="deadline-form">
         <label>
-          标题
+          标题 / Title
           <input id="title" type="text" placeholder="例如：ACL 2025" required />
         </label>
         <div class="row">
           <label>
-            日期
+            日期 / Date
             <input id="date" type="date" required />
           </label>
           <label>
-            时间
+            时间 / Time
             <input id="time" type="time" value="23:59" />
           </label>
         </div>
-        <button type="submit">添加</button>
+        <button type="submit">添加 / Add</button>
       </form>
     </section>
 
     <section class="import-card">
       <div class="list-header">
-        <h2>从 CCFDDL 导入</h2>
-        <button id="load-ccfddl" type="button" class="ghost-btn">加载</button>
+        <h2>从 CCFDDL 导入 / Import</h2>
+        <button id="load-ccfddl" type="button" class="ghost-btn">加载 / Load</button>
       </div>
       <label class="search-label">
-        搜索会议
+        搜索会议 / Search
         <input id="ccfddl-search" type="text" placeholder="例如：ICML / SIGMOD" />
       </label>
       <ul id="ccfddl-list" class="import-list"></ul>
-      <p id="ccfddl-empty" class="empty">点击“加载”获取 CCFDDL 会议列表。</p>
+      <p id="ccfddl-empty" class="empty">
+        点击“加载”获取未过期的 CCFDDL 会议列表。/ Load upcoming deadlines.
+      </p>
     </section>
 
     <section class="list-card">
       <div class="list-header">
-        <h2>我的 DDL</h2>
+        <h2>我的 DDL / My DDLs</h2>
         <span id="count"></span>
       </div>
       <ul id="deadline-list"></ul>
-      <p id="empty-state" class="empty">还没有添加任何截止日期。</p>
+      <p id="empty-state" class="empty">还没有添加任何截止日期。/ No deadlines yet.</p>
     </section>
 
     <script src="popup.js"></script>
