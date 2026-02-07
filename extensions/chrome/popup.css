@@ -42,6 +42,10 @@ p {
   color: var(--muted);
 }
 
+.subtitle {
+  font-size: 12px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
