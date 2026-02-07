@@ -1,39 +1,31 @@
 const STORAGE_KEY = "deadlines";
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
-const BRAND_COLOR = "#2563eb";
+const BRAND_COLOR = "#334155";
+const ICON_STROKE = "#1f2937";
 
 function createIconImageData(size) {
   const canvas = new OffscreenCanvas(size, size);
   const ctx = canvas.getContext("2d");
   if (!ctx) return null;
 
-  ctx.fillStyle = BRAND_COLOR;
-  ctx.fillRect(0, 0, size, size);
+  const strokeWidth = Math.max(1, size * 0.08);
+  const radius = size / 2 - strokeWidth;
 
-  const padding = size * 0.18;
-  const calendarWidth = size - padding * 2;
-  const calendarHeight = size - padding * 2;
-  const radius = size * 0.12;
+  ctx.strokeStyle = ICON_STROKE;
+  ctx.lineWidth = strokeWidth;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
 
-  ctx.fillStyle = "#ffffff";
   ctx.beginPath();
-  if (typeof ctx.roundRect === "function") {
-    ctx.roundRect(padding, padding, calendarWidth, calendarHeight, radius);
-  } else {
-    ctx.rect(padding, padding, calendarWidth, calendarHeight);
-  }
-  ctx.fill();
+  ctx.arc(size / 2, size / 2, radius, 0, Math.PI * 2);
+  ctx.stroke();
 
-  ctx.fillStyle = BRAND_COLOR;
-  const headerHeight = calendarHeight * 0.28;
-  ctx.fillRect(padding, padding, calendarWidth, headerHeight);
-
-  ctx.fillStyle = "#ffffff";
-  const dotRadius = size * 0.06;
   ctx.beginPath();
-  ctx.arc(size * 0.42, padding + headerHeight + calendarHeight * 0.28, dotRadius, 0, Math.PI * 2);
-  ctx.arc(size * 0.62, padding + headerHeight + calendarHeight * 0.28, dotRadius, 0, Math.PI * 2);
-  ctx.fill();
+  ctx.moveTo(size / 2, size / 2);
+  ctx.lineTo(size / 2, size * 0.3);
+  ctx.moveTo(size / 2, size / 2);
+  ctx.lineTo(size * 0.68, size / 2);
+  ctx.stroke();
 
   return ctx.getImageData(0, 0, size, size);
 }

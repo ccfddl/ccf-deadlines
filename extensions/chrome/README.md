@@ -13,7 +13,7 @@
 - **查看详情**：弹窗中会按时间排序展示多个 DDL，并显示剩余天数。/ Sorted list with remaining days.
 - **徽标提示**：工具栏图标会显示最近一个 DDL 的剩余天数。/ Badge shows the nearest days left.
 - **删除 DDL**：在条目右侧点击“删除”。/ Delete from the list.
-- **从 CCFDDL 导入**：点击“加载”后可搜索并添加官网未过期的会议 DDL（可用搜索过滤）。/ Import upcoming items from CCFDDL.
+- **从 CCFDDL 导入**：点击“加载”后可搜索并添加官网全部类别、未过期的会议 DDL。/ Import upcoming items from all CCFDDL categories.
 
 ## 数据存储 / Data
 

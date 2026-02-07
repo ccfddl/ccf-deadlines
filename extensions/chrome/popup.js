@@ -14,7 +14,6 @@ const ccfddlList = document.getElementById("ccfddl-list");
 const ccfddlEmpty = document.getElementById("ccfddl-empty");
 
 let ccfddlItems = [];
-const CCFDDL_MAX_RESULTS = 12;
 
 function normalizeText(value) {
   return value
@@ -112,9 +111,8 @@ function renderCcfddlList(items) {
     return;
   }
 
-  const visibleItems = items.slice(0, CCFDDL_MAX_RESULTS);
   ccfddlEmpty.style.display = "none";
-  visibleItems.forEach((item) => {
+  items.forEach((item) => {
     const li = document.createElement("li");
     li.className = "import-item";
 
@@ -139,16 +137,6 @@ function renderCcfddlList(items) {
     li.append(header, meta);
     ccfddlList.appendChild(li);
   });
-
-  if (items.length > CCFDDL_MAX_RESULTS) {
-    const li = document.createElement("li");
-    li.className = "import-item";
-    const meta = document.createElement("div");
-    meta.className = "import-meta";
-    meta.textContent = `仅显示前 ${CCFDDL_MAX_RESULTS} 条，继续搜索查看更多。/ Showing first ${CCFDDL_MAX_RESULTS}.`;
-    li.appendChild(meta);
-    ccfddlList.appendChild(li);
-  }
 }
 
 function filterCcfddlList() {
@@ -180,17 +168,30 @@ function addImportedDeadline(item) {
   });
 }
 
+function mergeCcfddlItems(items) {
+  const seen = new Set();
+  return items.filter((item) => {
+    const key = `${item.title}__${item.datetime}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 async function loadCcfddlData() {
   loadCcfddlBtn.disabled = true;
   loadCcfddlBtn.textContent = "加载中... / Loading";
   try {
-    const response = await fetch(
-      "https://ccfddl.com/conference/deadlines_zh.ics"
-    );
-    if (!response.ok) throw new Error("加载失败");
-    const text = await response.text();
+    const [zhResponse, enResponse] = await Promise.all([
+      fetch("https://ccfddl.com/conference/deadlines_zh.ics"),
+      fetch("https://ccfddl.com/conference/deadlines_en.ics"),
+    ]);
+    const responses = [zhResponse, enResponse].filter((res) => res.ok);
+    if (responses.length === 0) throw new Error("加载失败");
+    const texts = await Promise.all(responses.map((res) => res.text()));
     const now = Date.now();
-    ccfddlItems = parseIcs(text)
+    const parsed = texts.flatMap((text) => parseIcs(text));
+    ccfddlItems = mergeCcfddlItems(parsed)
       .filter((item) => toTimestamp(item.datetime) >= now)
       .sort((a, b) => toTimestamp(a.datetime) - toTimestamp(b.datetime));
     filterCcfddlList();
