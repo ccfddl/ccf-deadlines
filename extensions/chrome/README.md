@@ -16,8 +16,8 @@
 - **从 CCFDDL 导入**：点击“加载”后优先使用 GitHub 仓库的最新会议信息，失败时再回退到 ICS。/ Prefer GitHub repository data, with an ICS fallback.
 - **中英切换**：点击右上角 EN/中文 按钮切换语言。/ Use the EN/中文 toggle to switch language.
 
-> 注：导入优先使用 GitHub 仓库数据，失败时回退到 CCFDDL ICS。  
-> Note: Imports prefer GitHub repository data and fall back to the CCFDDL ICS feed.
+注：导入优先使用 GitHub 仓库数据，失败时回退到 CCFDDL ICS。  
+Note: Imports prefer GitHub repository data and fall back to the CCFDDL ICS feed.
 
 ## 数据存储 / Data
 
