@@ -35,8 +35,9 @@ const translations = {
     loading: "加载中...",
     search_label: "搜索会议",
     search_placeholder: "例如：ICML / SIGMOD",
-    import_empty: "点击“加载”获取全部类别的未过期 CCFDDL 会议列表。",
-    import_hint: "数据来自 CCFDDL 官方 ICS，若官网未收录则无法导入。",
+    import_empty: "点击“加载”获取最新会议列表。",
+    import_hint:
+      "优先使用 GitHub 仓库的最新会议信息，失败时再回退到 CCFDDL ICS。",
     my_section: "我的 DDL",
     empty_state: "还没有添加任何截止日期。",
     add_item: "添加",
@@ -60,9 +61,9 @@ const translations = {
     loading: "Loading...",
     search_label: "Search",
     search_placeholder: "e.g., ICML / SIGMOD",
-    import_empty: "Click “Load” to fetch upcoming deadlines from all categories.",
+    import_empty: "Click “Load” to fetch the latest conference list.",
     import_hint:
-      "Data comes from the official CCFDDL ICS feed; missing items are not provided there.",
+      "Prefer GitHub repository data, with an ICS fallback if needed.",
     my_section: "My DDLs",
     empty_state: "No deadlines yet.",
     add_item: "Add",
@@ -207,6 +208,101 @@ function parseIcs(text) {
     .filter(Boolean);
 }
 
+function parseTimezoneOffset(timezone) {
+  if (!timezone) return 0;
+  const normalized = timezone.trim();
+  if (normalized.toUpperCase() === "AOE") return -12;
+  const match = normalized.match(/UTC([+-]\d{1,2})/i);
+  if (!match) return 0;
+  return Number.parseInt(match[1], 10);
+}
+
+function parseDeadlineWithTimezone(deadline, timezone) {
+  if (!deadline || deadline.toUpperCase() === "TBD") return null;
+  const [datePart, timePart] = deadline.split(" ");
+  if (!datePart || !timePart) return null;
+  const [year, month, day] = datePart.split("-").map((value) => Number(value));
+  const [hour, minute, second] = timePart.split(":").map((value) => Number(value));
+  if ([year, month, day, hour, minute, second].some((value) => Number.isNaN(value))) {
+    return null;
+  }
+  const offsetHours = parseTimezoneOffset(timezone);
+  const utcMs = Date.UTC(year, month - 1, day, hour, minute, second) - offsetHours * 3600 * 1000;
+  return new Date(utcMs).toISOString();
+}
+
+function parseAllConfYaml(text) {
+  const items = [];
+  let current = null;
+  let currentTimezone = null;
+  let currentYear = null;
+  let pendingDeadline = null;
+  let pendingComment = null;
+
+  const flushPending = () => {
+    if (!pendingDeadline || !current) return;
+    const iso = parseDeadlineWithTimezone(pendingDeadline, currentTimezone);
+    if (!iso) return;
+    const suffix = pendingComment ? ` (${pendingComment})` : "";
+    const title = currentYear ? `${current.title} ${currentYear}${suffix}` : `${current.title}${suffix}`;
+    items.push({ title, datetime: iso });
+    pendingDeadline = null;
+    pendingComment = null;
+  };
+
+  text.split(/\r?\n/).forEach((line) => {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) return;
+
+    if (trimmed.startsWith("- title:")) {
+      flushPending();
+      const title = trimmed.replace("- title:", "").trim().replace(/^['"]|['"]$/g, "");
+      current = { title };
+      currentTimezone = null;
+      currentYear = null;
+      return;
+    }
+
+    if (!current) return;
+
+    if (trimmed.startsWith("year:")) {
+      currentYear = trimmed.replace("year:", "").trim();
+      return;
+    }
+
+    if (trimmed.startsWith("timezone:")) {
+      currentTimezone = trimmed.replace("timezone:", "").trim();
+      return;
+    }
+
+    if (trimmed.startsWith("- deadline:") || trimmed.startsWith("deadline:")) {
+      flushPending();
+      pendingDeadline = trimmed.replace("- deadline:", "").replace("deadline:", "").trim();
+      pendingDeadline = pendingDeadline.replace(/^['"]|['"]$/g, "");
+      return;
+    }
+
+    if (trimmed.startsWith("- abstract_deadline:") || trimmed.startsWith("abstract_deadline:")) {
+      flushPending();
+      pendingDeadline = trimmed
+        .replace("- abstract_deadline:", "")
+        .replace("abstract_deadline:", "")
+        .trim();
+      pendingDeadline = pendingDeadline.replace(/^['"]|['"]$/g, "");
+      pendingComment = pendingComment ? pendingComment : "abstract";
+      return;
+    }
+
+    if (trimmed.startsWith("comment:")) {
+      pendingComment = trimmed.replace("comment:", "").trim().replace(/^['"]|['"]$/g, "");
+      return;
+    }
+  });
+
+  flushPending();
+  return items;
+}
+
 function renderCcfddlList(items) {
   ccfddlList.innerHTML = "";
 
@@ -286,6 +382,20 @@ async function loadCcfddlData() {
   loadCcfddlBtn.disabled = true;
   loadCcfddlBtn.textContent = t("loading", "加载中...");
   try {
+    const repoResponse = await fetch(
+      "https://ccfddl.github.io/conference/allconf.yml"
+    );
+    if (repoResponse.ok) {
+      const repoText = await repoResponse.text();
+      const now = Date.now();
+      const parsed = parseAllConfYaml(repoText);
+      ccfddlItems = mergeCcfddlItems(parsed)
+        .filter((item) => toTimestamp(item.datetime) >= now)
+        .sort((a, b) => toTimestamp(a.datetime) - toTimestamp(b.datetime));
+      filterCcfddlList();
+      return;
+    }
+
     const [zhResponse, enResponse] = await Promise.all([
       fetch("https://ccfddl.com/conference/deadlines_zh.ics"),
       fetch("https://ccfddl.com/conference/deadlines_en.ics"),
