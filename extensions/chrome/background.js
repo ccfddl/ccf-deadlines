@@ -62,7 +62,7 @@ function getSoonestDays(deadlines) {
   }
 
   const diff = upcoming[0].ts - now;
-  return Math.max(0, Math.ceil(diff / MS_PER_DAY));
+  return Math.max(0, Math.floor(diff / MS_PER_DAY));
 }
 
 function updateBadge() {
@@ -76,13 +76,13 @@ function updateBadge() {
 
 chrome.runtime.onInstalled.addListener(() => {
   ensureActionIcon();
-  chrome.alarms.create("badge-refresh", { periodInMinutes: 60 });
+  chrome.alarms.create("badge-refresh", { periodInMinutes: 1 });
   updateBadge();
 });
 
 chrome.runtime.onStartup.addListener(() => {
   ensureActionIcon();
-  chrome.alarms.create("badge-refresh", { periodInMinutes: 60 });
+  chrome.alarms.create("badge-refresh", { periodInMinutes: 1 });
   updateBadge();
 });
 
