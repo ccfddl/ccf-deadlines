@@ -55,6 +55,12 @@ p {
   margin-bottom: 16px;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .link {
   color: var(--primary);
   text-decoration: none;
@@ -125,6 +131,12 @@ button {
 
 .search-label {
   margin-top: 8px;
+}
+
+.import-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
 }
 
 #deadline-list {

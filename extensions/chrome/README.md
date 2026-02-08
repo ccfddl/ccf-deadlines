@@ -14,6 +14,10 @@
 - **徽标提示**：工具栏图标会显示最近一个 DDL 的剩余天数。/ Badge shows the nearest days left.
 - **删除 DDL**：在条目右侧点击“删除”。/ Delete from the list.
 - **从 CCFDDL 导入**：点击“加载”后可搜索并添加官网全部类别、未过期的会议 DDL。/ Import upcoming items from all CCFDDL categories.
+- **中英切换**：点击右上角 EN/中文 按钮切换语言。/ Use the EN/中文 toggle to switch language.
+
+> 注：导入数据来自 CCFDDL 官方 ICS，若官网未收录则无法导入。  
+> Note: Imports rely on the official CCFDDL ICS feed; missing items are not provided there.
 
 ## 数据存储 / Data
 

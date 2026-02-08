@@ -12,8 +12,96 @@ const loadCcfddlBtn = document.getElementById("load-ccfddl");
 const ccfddlSearchInput = document.getElementById("ccfddl-search");
 const ccfddlList = document.getElementById("ccfddl-list");
 const ccfddlEmpty = document.getElementById("ccfddl-empty");
+const langToggle = document.getElementById("lang-toggle");
 
 let ccfddlItems = [];
+let currentLang = "zh";
+const LANG_STORAGE_KEY = "language";
+
+const translations = {
+  zh: {
+    title: "CCF DDL Tracker",
+    subtitle_zh: "添加你正在赶的截止日期，徽标显示最近的剩余天数。",
+    subtitle_en: "",
+    open: "打开 CCFDDL",
+    add_section: "新增截止日期",
+    title_label: "标题",
+    title_placeholder: "例如：ACL 2025",
+    date_label: "日期",
+    time_label: "时间",
+    add_button: "添加",
+    import_section: "从 CCFDDL 导入",
+    load_button: "加载",
+    loading: "加载中...",
+    search_label: "搜索会议",
+    search_placeholder: "例如：ICML / SIGMOD",
+    import_empty: "点击“加载”获取全部类别的未过期 CCFDDL 会议列表。",
+    import_hint: "数据来自 CCFDDL 官方 ICS，若官网未收录则无法导入。",
+    my_section: "我的 DDL",
+    empty_state: "还没有添加任何截止日期。",
+    add_item: "添加",
+    delete_item: "删除",
+    remaining: (days) => `剩余 ${days} 天`,
+    load_failed: "加载失败，请稍后重试。",
+  },
+  en: {
+    title: "CCF DDL Tracker",
+    subtitle_zh: "",
+    subtitle_en: "Track deadlines and show the nearest days left.",
+    open: "Open CCFDDL",
+    add_section: "Add DDL",
+    title_label: "Title",
+    title_placeholder: "e.g., ACL 2025",
+    date_label: "Date",
+    time_label: "Time",
+    add_button: "Add",
+    import_section: "Import from CCFDDL",
+    load_button: "Load",
+    loading: "Loading...",
+    search_label: "Search",
+    search_placeholder: "e.g., ICML / SIGMOD",
+    import_empty: "Click “Load” to fetch upcoming deadlines from all categories.",
+    import_hint:
+      "Data comes from the official CCFDDL ICS feed; missing items are not provided there.",
+    my_section: "My DDLs",
+    empty_state: "No deadlines yet.",
+    add_item: "Add",
+    delete_item: "Delete",
+    remaining: (days) => `${days} days left`,
+    load_failed: "Failed to load. Please try again.",
+  },
+};
+
+function t(key, fallback = "") {
+  const entry = translations[currentLang]?.[key];
+  if (typeof entry === "function") return entry;
+  return entry ?? fallback;
+}
+
+function applyTranslations() {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    const value = t(key, el.textContent);
+    el.textContent = value;
+  });
+
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    el.setAttribute("placeholder", t(key, el.getAttribute("placeholder") || ""));
+  });
+
+  if (langToggle) {
+    langToggle.textContent = currentLang === "zh" ? "EN" : "中文";
+  }
+}
+
+function setLanguage(lang) {
+  currentLang = lang;
+  applyTranslations();
+  chrome.storage.local.set({ [LANG_STORAGE_KEY]: currentLang });
+  renderCcfddlList(ccfddlItems);
+  loadDeadlines();
+}
 
 function normalizeText(value) {
   return value
@@ -37,7 +125,8 @@ function daysLeft(datetime) {
 function formatDate(datetime) {
   const date = new Date(datetime);
   if (Number.isNaN(date.getTime())) return "无效日期";
-  return date.toLocaleString("zh-CN", {
+  const locale = currentLang === "en" ? "en-US" : "zh-CN";
+  return date.toLocaleString(locale, {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -140,7 +229,7 @@ function renderCcfddlList(items) {
 
     const addBtn = document.createElement("button");
     addBtn.className = "import-add";
-    addBtn.textContent = "添加 / Add";
+    addBtn.textContent = t("add_item", "添加");
     addBtn.addEventListener("click", () => addImportedDeadline(item));
 
     header.append(title, addBtn);
@@ -195,7 +284,7 @@ function mergeCcfddlItems(items) {
 
 async function loadCcfddlData() {
   loadCcfddlBtn.disabled = true;
-  loadCcfddlBtn.textContent = "加载中... / Loading";
+  loadCcfddlBtn.textContent = t("loading", "加载中...");
   try {
     const [zhResponse, enResponse] = await Promise.all([
       fetch("https://ccfddl.com/conference/deadlines_zh.ics"),
@@ -211,11 +300,11 @@ async function loadCcfddlData() {
       .sort((a, b) => toTimestamp(a.datetime) - toTimestamp(b.datetime));
     filterCcfddlList();
   } catch (error) {
-    ccfddlEmpty.textContent = "加载失败，请稍后重试。/ Failed to load.";
+    ccfddlEmpty.textContent = t("load_failed", "加载失败，请稍后重试。");
     ccfddlEmpty.style.display = "block";
   } finally {
     loadCcfddlBtn.disabled = false;
-    loadCcfddlBtn.textContent = "加载 / Load";
+    loadCcfddlBtn.textContent = t("load_button", "加载");
   }
 }
 
@@ -232,7 +321,7 @@ function render(deadlines) {
   }
 
   emptyEl.style.display = "none";
-  countEl.textContent = `${sorted.length} 项`;
+  countEl.textContent = currentLang === "zh" ? `${sorted.length} 项` : `${sorted.length}`;
 
   sorted.forEach((item, index) => {
     const li = document.createElement("li");
@@ -247,7 +336,7 @@ function render(deadlines) {
 
     const del = document.createElement("button");
     del.className = "delete-btn";
-    del.textContent = "删除 / Delete";
+    del.textContent = t("delete_item", "删除");
     del.addEventListener("click", () => removeDeadline(index));
 
     header.append(title, del);
@@ -260,8 +349,12 @@ function render(deadlines) {
 
     const remaining = document.createElement("span");
     const remainingDays = daysLeft(item.datetime);
-    remaining.textContent =
-      remainingDays === null ? "" : `剩余 ${remainingDays} 天 / ${remainingDays} days`;
+    if (remainingDays === null) {
+      remaining.textContent = "";
+    } else {
+      const remainingText = t("remaining", (days) => `剩余 ${days} 天`);
+      remaining.textContent = remainingText(remainingDays);
+    }
 
     meta.append(date, remaining);
 
@@ -314,7 +407,17 @@ form.addEventListener("submit", (event) => {
   });
 });
 
+langToggle.addEventListener("click", () => {
+  const next = currentLang === "zh" ? "en" : "zh";
+  setLanguage(next);
+});
+
+chrome.storage.local.get({ [LANG_STORAGE_KEY]: "zh" }, (result) => {
+  currentLang = result[LANG_STORAGE_KEY] || "zh";
+  applyTranslations();
+  renderCcfddlList(ccfddlItems);
+  loadDeadlines();
+});
+
 loadCcfddlBtn.addEventListener("click", loadCcfddlData);
 ccfddlSearchInput.addEventListener("input", filterCcfddlList);
-
-loadDeadlines();
