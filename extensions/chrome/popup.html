@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCF DDL Tracker</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 48 48" role="img" aria-label="CCF DDL">
+          <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="3" />
+          <path
+            d="M24 14v10h9"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <div>
+        <h1 data-i18n="title">CCF DDL Tracker</h1>
+        <p data-i18n="subtitle_zh">添加你正在赶的截止日期，徽标显示最近的剩余天数。</p>
+        <p class="subtitle" data-i18n="subtitle_en">Track deadlines and show the nearest days left.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="lang-toggle" type="button" class="ghost-btn">EN</button>
+        <a class="link" href="https://ccfddl.com/" target="_blank" rel="noreferrer" data-i18n="open">
+          打开 CCFDDL
+        </a>
+      </div>
+    </header>
+
+    <section class="form-card">
+      <h2 data-i18n="add_section">新增截止日期</h2>
+      <form id="deadline-form">
+        <label>
+          <span data-i18n="title_label">标题</span>
+          <input id="title" type="text" placeholder="例如：ACL 2025" data-i18n-placeholder="title_placeholder" required />
+        </label>
+        <div class="row">
+          <label>
+            <span data-i18n="date_label">日期</span>
+            <input id="date" type="date" required />
+          </label>
+          <label>
+            <span data-i18n="time_label">时间</span>
+            <input id="time" type="time" value="23:59" />
+          </label>
+        </div>
+        <button type="submit" data-i18n="add_button">添加</button>
+      </form>
+    </section>
+
+    <section class="import-card">
+      <div class="list-header">
+        <h2 data-i18n="import_section">从 CCFDDL 导入</h2>
+        <button id="load-ccfddl" type="button" class="ghost-btn" data-i18n="load_button">加载</button>
+      </div>
+      <label class="search-label">
+        <span data-i18n="search_label">搜索会议</span>
+        <input id="ccfddl-search" type="text" placeholder="例如：ICML / SIGMOD" data-i18n-placeholder="search_placeholder" />
+      </label>
+      <ul id="ccfddl-list" class="import-list"></ul>
+      <p id="ccfddl-empty" class="empty" data-i18n="import_empty">
+        点击“加载”获取最新会议列表。
+      </p>
+      <p class="import-hint" data-i18n="import_hint">
+        优先使用 GitHub 仓库的最新会议信息，失败时再回退到 CCFDDL ICS。
+      </p>
+    </section>
+
+    <section class="list-card">
+      <div class="list-header">
+        <h2 data-i18n="my_section">我的 DDL</h2>
+        <span id="count"></span>
+      </div>
+      <ul id="deadline-list"></ul>
+      <p id="empty-state" class="empty" data-i18n="empty_state">还没有添加任何截止日期。</p>
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
