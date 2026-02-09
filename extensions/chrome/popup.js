@@ -1,5 +1,6 @@
 const STORAGE_KEY = "deadlines";
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
+const REFRESH_INTERVAL_MS = 60 * 1000;
 
 const form = document.getElementById("deadline-form");
 const titleInput = document.getElementById("title");
@@ -13,10 +14,12 @@ const ccfddlSearchInput = document.getElementById("ccfddl-search");
 const ccfddlList = document.getElementById("ccfddl-list");
 const ccfddlEmpty = document.getElementById("ccfddl-empty");
 const langToggle = document.getElementById("lang-toggle");
+const refreshDeadlinesBtn = document.getElementById("refresh-deadlines");
 
 let ccfddlItems = [];
 let currentLang = "zh";
 const LANG_STORAGE_KEY = "language";
+let refreshTimer = null;
 
 const translations = {
   zh: {
@@ -40,6 +43,7 @@ const translations = {
       "优先使用 GitHub 仓库的最新会议信息，失败时再回退到 CCFDDL ICS。",
     my_section: "我的 DDL",
     empty_state: "还没有添加任何截止日期。",
+    refresh_button: "刷新",
     add_item: "添加",
     delete_item: "删除",
     remaining: (days) => `剩余 ${days} 天`,
@@ -66,6 +70,7 @@ const translations = {
       "Prefer GitHub repository data, with an ICS fallback if needed.",
     my_section: "My DDLs",
     empty_state: "No deadlines yet.",
+    refresh_button: "Refresh",
     add_item: "Add",
     delete_item: "Delete",
     remaining: (days) => `${days} days left`,
@@ -92,8 +97,13 @@ function applyTranslations() {
   });
 
   if (langToggle) {
-    langToggle.textContent = currentLang === "zh" ? "EN" : "中文";
+    langToggle.textContent = currentLang === "zh" ? "EN" : "ZH";
   }
+
+  const locale = currentLang === "en" ? "en-US" : "zh-CN";
+  document.documentElement.setAttribute("lang", locale);
+  dateInput?.setAttribute("lang", locale);
+  timeInput?.setAttribute("lang", locale);
 }
 
 function setLanguage(lang) {
@@ -120,7 +130,7 @@ function daysLeft(datetime) {
   const ts = toTimestamp(datetime);
   if (ts === null) return null;
   const diff = ts - Date.now();
-  return Math.ceil(diff / MS_PER_DAY);
+  return Math.max(0, Math.floor(diff / MS_PER_DAY));
 }
 
 function formatDate(datetime) {
@@ -479,6 +489,19 @@ function loadDeadlines() {
   });
 }
 
+function startAutoRefresh() {
+  if (refreshTimer) return;
+  refreshTimer = setInterval(loadDeadlines, REFRESH_INTERVAL_MS);
+
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      loadDeadlines();
+    }
+  });
+
+  window.addEventListener("focus", loadDeadlines);
+}
+
 function saveDeadlines(deadlines) {
   chrome.storage.local.set({ [STORAGE_KEY]: deadlines }, () => {
     render(deadlines);
@@ -527,7 +550,9 @@ chrome.storage.local.get({ [LANG_STORAGE_KEY]: "zh" }, (result) => {
   applyTranslations();
   renderCcfddlList(ccfddlItems);
   loadDeadlines();
+  startAutoRefresh();
 });
 
 loadCcfddlBtn.addEventListener("click", loadCcfddlData);
 ccfddlSearchInput.addEventListener("input", filterCcfddlList);
+refreshDeadlinesBtn.addEventListener("click", loadDeadlines);

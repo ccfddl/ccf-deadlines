@@ -37,7 +37,7 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
   </tr>
     <tr>
     <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/ical">iCal Subscription</a><br></b></td>
-    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/ical">Chrome Extension</a><br></b></td>
+    <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/chrome">Chrome Extension</a><br></b></td>
   </tr>
   <tr>
      <td align="center"><img src=".readme_assets/screenshot_iCal.jpg" width="280px"/></td>

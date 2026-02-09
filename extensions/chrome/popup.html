@@ -76,7 +76,12 @@
     <section class="list-card">
       <div class="list-header">
         <h2 data-i18n="my_section">我的 DDL</h2>
-        <span id="count"></span>
+        <div class="list-actions">
+          <button id="refresh-deadlines" type="button" class="ghost-btn" data-i18n="refresh_button">
+            刷新
+          </button>
+          <span id="count"></span>
+        </div>
       </div>
       <ul id="deadline-list"></ul>
       <p id="empty-state" class="empty" data-i18n="empty_state">还没有添加任何截止日期。</p>

@@ -129,6 +129,12 @@ button {
   margin-bottom: 8px;
 }
 
+.list-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .search-label {
   margin-top: 8px;
 }
@@ -157,6 +163,14 @@ button {
   gap: 8px;
   max-height: 180px;
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.import-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
 }
 
 .import-item {
