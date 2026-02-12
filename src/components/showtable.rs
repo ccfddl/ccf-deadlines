@@ -5,6 +5,7 @@ use crate::components::countdown::CountDown;
 use crate::components::timeline::*;
 use crate::components::timezone::*;
 use crate::components::calendar_popover::*;
+use crate::components::subscription_modal::*;
 use chrono::{DateTime, FixedOffset, Utc};
 use leptos::prelude::*;
 use serde_json;
@@ -74,6 +75,7 @@ pub fn ShowTable() -> impl IntoView {
     .unwrap_or_else(|| HashSet::new());
     let like_list = RwSignal::new(cached_like_list);
 
+    let show_subscription_modal = RwSignal::new(false);
 
     // pagination
     let page = RwSignal::new(1);
@@ -584,10 +586,25 @@ pub fn ShowTable() -> impl IntoView {
                     </Input>
                 </div>
 
-                <div style="float: right">
+                <div style="float: right; display: flex; align-items: center; gap: 10px;">
+                    <Button
+                        size=ButtonSize::Small
+                        appearance=ButtonAppearance::Subtle
+                        on_click=move |_| show_subscription_modal.set(true)
+                    >
+                        <Icon icon=icondata::AiCalendarOutlined style="margin-right: 4px;" />
+                        {move || if use_english.get() { "Subscribe" } else { "订阅" }}
+                    </Button>
                     <CheckboxButtonGroup rank_list=rank_list />
                 </div>
             </div>
+
+            <SubscriptionModal
+                show=show_subscription_modal
+                use_english=use_english
+                check_list=check_list
+                rank_list=rank_list
+            />
 
             <div class="zonedivider" />
             <div style="width: 100%">

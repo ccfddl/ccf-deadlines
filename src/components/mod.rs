@@ -6,4 +6,5 @@ pub mod countdown;
 pub mod timezone;
 pub mod checkbox_button;
 pub mod calendar_popover;
+pub mod subscription_modal;
 pub mod conf;
