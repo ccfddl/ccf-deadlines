@@ -1,0 +1,17 @@
+- title: ProbML
+  description: Symposium on Probabilistic Machine Learnin
+  sub: AI
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: probml
+  confs:
+    - year: 2026
+      id: probml2026
+      link: https://probml.cc
+      timeline:
+        - deadline: '2026-03-20 11:59:00'
+      timezone: AoE
+      date: July 5, 2026
+      place: Seoul, South Korea
