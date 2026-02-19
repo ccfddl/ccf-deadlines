@@ -51,3 +51,11 @@
       timezone: AoE
       date: December 2-7, 2025
       place: San Diego Convention Center, USA
+    - year: 2026
+      id: nips26
+      link: https://neurips.cc/Conferences/2026
+      timeline:
+        - deadline: '2026-05-07 11:59:00'
+      timezone: UTC+0
+      date: December 6, 2026
+      place: Sydney, Australia
