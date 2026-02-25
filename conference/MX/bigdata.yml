@@ -15,3 +15,11 @@
       timezone: AoE
       date: December 8-11, 2025
       place: Macau SAR, China
+    - year: 2026
+      id: bigdata26
+      link: https://bigdataieee.org/BigData2026/
+      timeline:
+        -deadline: '2026-08-21 23:59:59'
+      timezone: AoE
+      date: December 14-17, 2026
+      place: Sheraton Phoenix Downtown, Phoenix, Arizona, United State
