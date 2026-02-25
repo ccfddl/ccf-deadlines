@@ -25,3 +25,12 @@
       timezone: UTC-4
       date: November 20-22, 2024
       place: Redmond, USA
+    - year: 2026
+      id: socc26
+      link: https://acmsocc.org/2026/
+      timeline:
+        - abstract_deadline: '2026-07-07 23:59:59'
+          deadline: '2026-07-14 23:59:59'
+      date: November 18-20, 2026
+      timezone: AoE
+      place: Singapore
