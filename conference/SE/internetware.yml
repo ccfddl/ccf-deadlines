@@ -7,7 +7,7 @@
     thcpl: N
   dblp: internetware
   confs:
-      - year: 2026
+    - year: 2026
       id: internetware26
       link: https://conf.researchr.org/home/internetware-2026
       timeline:
