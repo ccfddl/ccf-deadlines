@@ -7,6 +7,15 @@
     thcpl: N
   dblp: internetware
   confs:
+      - year: 2026
+      id: internetware26
+      link: https://conf.researchr.org/home/internetware-2026
+      timeline:
+        - abstract_deadline: '2026-03-28 23:59:59'
+          deadline: '2023-04-04 23:59:59'
+      timezone: UTC-12
+      date: July 18-20, 2026
+      place: Gold Coast, Australia
     - year: 2025
       id: internetware25
       link: https://conf.researchr.org/home/internetware-2025
