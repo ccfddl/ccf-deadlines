@@ -53,3 +53,9 @@
       timezone: UTC-5
       date: Dec 15-18, 2025
       place: Wuhan, China
+    - year: 2026
+      id: bibm26
+      link: https://www3.cs.stonybrook.edu/~bibm2026/
+      timeline:
+        - deadline: '2026-07-05 23:59:59'
+      place: Dallas, United States
