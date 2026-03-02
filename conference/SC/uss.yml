@@ -70,3 +70,16 @@
       timezone: UTC-12
       date: August 12-14, 2026
       place: Baltimore, MD, USA
+    - year: 2027
+      id: uss27
+      link: https://www.usenix.org/conference/usenixsecurity27
+      timeline:
+        - abstract_deadline: '2026-08-18 23:59:59'
+          deadline: '2025-08-25 23:59:59'
+          comment: Cycle 1 Deadline
+        - abstract_deadline: '2026-01-19 23:59:59'
+          deadline: '2026-01-26 23:59:59'
+          comment: Cycle 2 Deadline
+      timezone: UTC-12
+      date: August 11-13, 2027
+      place: Denver, CO, USA

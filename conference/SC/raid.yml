@@ -40,3 +40,11 @@
       timezone: AoE
       date: October 19-22, 2025
       place: Gold Coast, Australia
+    - year: 2026
+      id: raid26
+      link: https://raid2026.org
+      timeline:
+        - deadline: '2026-04-16 23:59:59'
+      timezone: AoE
+      date: October 11-14, 2026
+      place: Lancaster, UK
