@@ -23,3 +23,11 @@
       timezone: UTC-12
       date: Nov 17-21, 2025
       place: Wellington, New Zealand
+    - year: 2026
+      id: pricai2026
+      link: https://2026.pricai.org/
+      timeline:
+        - deadline: '2026-06-13 23:59:59'
+      timezone: UTC-12
+      date: Nov 17-20, 2026
+      place: Guangzhou, China
