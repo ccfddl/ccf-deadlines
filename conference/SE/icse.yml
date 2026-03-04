@@ -61,3 +61,13 @@
       timezone: AoE
       date: April 12-18, 2026
       place: Rio De Janeiro, Brazil
+    - year: 2027
+      id: icse27
+      link: https://conf.researchr.org/home/icse-2027
+      timeline:
+        - abstract_deadline: '2026-06-23 23:59:59'
+          deadline: '2026-06-30 23:59:59'
+          comment: 'Single Submission Cycle Deadline'
+      timezone: AoE
+      date: April 25-May 01, 2027
+      place: Dublin, Ireland
