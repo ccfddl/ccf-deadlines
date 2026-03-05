@@ -2,7 +2,7 @@
   description: ACM Symposium on High-Performance Parallel and Distributed Computing
   sub: DS
   rank:
-    ccf: B
+    ccf: A
     core: A
     thcpl: B
   dblp: hpdc
