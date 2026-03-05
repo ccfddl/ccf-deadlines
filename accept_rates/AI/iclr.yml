@@ -6,3 +6,15 @@
       str: 30.8%(2250/7304 24')
       rate: 0.308050383351588
       source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2025
+      submitted: 11672
+      accepted: 3704
+      str: 31.73%(3704/11672 25')
+      rate: 0.31734064427
+      source: https://papercopilot.com/statistics/iclr-statistics/
+    - year: 2026
+      submitted: 19814
+      accepted: 5343
+      str: 26.97%(5343/19814 26')
+      rate: 0.2696578177
+      source: https://papercopilot.com/statistics/iclr-statistics/
