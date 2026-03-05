@@ -2,7 +2,7 @@
   description: International Symposium on Advanced Parallel Programming Technologies
   sub: DS
   rank:
-    ccf: N
+    ccf: C
     core: N
     thcpl: N
   dblp: appt
