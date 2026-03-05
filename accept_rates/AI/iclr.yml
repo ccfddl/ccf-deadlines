@@ -8,7 +8,7 @@
       source: https://github.com/lixin4ever/Conference-Acceptance-Rate
     - year: 2025
       submitted: 11672
-      accepted: 3704 
+      accepted: 3704
       str: 31.73%(3704/11672 25')
       rate: 0.31734064427
       source: https://papercopilot.com/statistics/iclr-statistics/
