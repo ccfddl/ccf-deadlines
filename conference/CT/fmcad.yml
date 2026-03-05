@@ -15,3 +15,12 @@
       timezone: AoE
       date: Oct. 6-10, 2025
       place: Menlo Park, USA
+    - year: 2026
+      id: fmcad26
+      link: https://fmcad.forsyte.at/FMCAD26/
+      timeline:
+        - deadline: '2026-04-26 23:59:59'
+          abstract_deadline: "2026-05-03 23:59:59"
+      timezone: AoE
+      date: Sep. 14-18, 2026
+      place: Graz, Austria
