@@ -1,0 +1,18 @@
+- title: ITC
+  description: International Test Conference
+  sub: DS
+  rank:
+    ccf: B
+    core: A
+    thcpl: N
+  dblp: itc
+  confs:
+    - year: 2026
+      id: itc2026
+      link: https://www.itctestweek.org/
+      timeline:
+        - abstract_deadline: '2026-03-20 23:59:59'
+          deadline: '2026-04-24 23:59:59'
+      timezone: AoE
+      date: October 11-16, 2026
+      place: Grand Hyatt San Antonio Riverwalk, TX, USA
