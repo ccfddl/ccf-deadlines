@@ -31,10 +31,17 @@
       id: issre25
       link: https://issre.github.io/2025/index.html
       timeline:
-        - deadline: '2025-04-28 23:59:59'
-          comment: Abstract submission - Research Track
-        - deadline: '2025-05-05 23:59:59'
-          comment: Paper submission - Research Track
+        - abstract_deadline: '2025-05-05 23:59:59'
+          deadline: '2025-05-12 23:59:59'
       timezone: AoE
-      date: October 21st-24th, 2025
+      date: October 21-24, 2025
       place: São Paulo, Brazil
+    - year: 2026
+      id: issre26
+      link: https://cyprusconferences.org/issre2026/
+      timeline:
+        - abstract_deadline: '2026-04-10 23:59:59'
+          deadline: '2025-04-17 23:59:59'
+      timezone: AoE
+      date: October 20-23, 2026
+      place: Limassol, Cyprus
