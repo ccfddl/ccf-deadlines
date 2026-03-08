@@ -4,6 +4,7 @@
   rank:
     ccf: B
     core: B
+    thcpl: B
   dblp: fmcad
   confs:
     - year: 2025

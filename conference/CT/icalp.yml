@@ -3,7 +3,8 @@
   sub: CT
   rank:
     ccf: B
-    core: A
+    core: A*
+    thcpl: A
   dblp: icalp
   confs:
     - year: 2025
