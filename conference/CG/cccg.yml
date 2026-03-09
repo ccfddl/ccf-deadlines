@@ -13,7 +13,7 @@
           comment: 'Submission Deadline'
         - deadline: '2026-06-06 23:59:59'
           comment: 'Notification Date'
-      timezone: UTC-8 
+      timezone: UTC-8
       date: August 12-14, 2026
       place: Orillia, Ontario, Canada
 
