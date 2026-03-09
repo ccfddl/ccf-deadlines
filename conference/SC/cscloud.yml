@@ -1,0 +1,17 @@
+- title: CSCloud
+  description: IEEE International Conference on Cyber Security and Cloud Computing
+  sub: SC
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: cscloud
+  confs:
+    - year: 2026
+      id: cscloud2026
+      link: https://www.cloud-conf.net/cscloud/2026/cscloud/
+      timeline:
+        - deadline: '2026-08-01 23:59:59'
+      timezone: AoE
+      date: December 19-21, 2026
+      place: Shanghai, China
