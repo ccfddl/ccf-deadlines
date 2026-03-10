@@ -5,7 +5,7 @@
     ccf: N
     core: N
     thcpl: N
-  dblp: https://dblp.org/db/conf/cccg
+  dblp: cccg
   confs:
     - year: 2026
       id: cccg2026
