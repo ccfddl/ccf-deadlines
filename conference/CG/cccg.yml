@@ -3,7 +3,9 @@
   sub: CG
   rank:
     ccf: N
-  dblp: cccg
+    core: N
+    thcpl: N
+  dblp: https://dblp.org/db/conf/cccg
   confs:
     - year: 2026
       id: cccg26
@@ -11,11 +13,6 @@
       timeline:
         - deadline: '2026-04-30 23:59:59'
           comment: 'Submission Deadline'
-        - deadline: '2026-06-06 23:59:59'
-          comment: 'Notification Date'
-      timezone: UTC-8
+      timezone: AoE
       date: August 12-14, 2026
-      place: Orillia,Ontario,Canada
-
-
-
+      place: Orillia, Ontario, Canada
