@@ -1,9 +1,10 @@
 - title: CADE
-  description: The Conference on Automated Deduction (CADE)
+  description: The Conference on Automated Deduction
   sub: CT
   rank:
     ccf: B
     core: A
+    thcpl: B
   dblp: cade
   confs:
     - year: 2025

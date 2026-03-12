@@ -1,0 +1,18 @@
+- title: SAT
+  description: International Conference on Theory and Applications of Satisfiability Testing
+  sub: CT
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: sat
+  confs:
+    - year: 2026
+      id: sat26
+      link: https://satisfiability.org/SAT26/
+      timeline:
+        - abstract_deadline: '2026-03-02 23:59:59'
+          deadline: '2026-03-10 23:59:59'
+      timezone: AoE
+      date: July 20 - July 23, 2026
+      place: Lisbon, Portugal

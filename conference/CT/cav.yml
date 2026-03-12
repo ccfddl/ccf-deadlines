@@ -23,3 +23,11 @@
       timezone: AoE
       date: July 21-25, 2025
       place: Zagreb, Croatia
+    - year: 2026
+      id: cav26
+      link: https://conferences.i-cav.org/2026/
+      timeline:
+        - deadline: '2026-01-28 23:59:59'
+      timezone: AoE
+      date: July 26-29, 2026
+      place: Lisbon, Portugal

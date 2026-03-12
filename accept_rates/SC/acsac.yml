@@ -1,0 +1,8 @@
+- title: ACSAC
+  accept_rates:
+    - year: 2025
+      submitted: 446
+      accepted: 84
+      str: 18.8%(84/446 25')
+      rate: 0.18834081
+      source: https://papers.submit.acsac.org/

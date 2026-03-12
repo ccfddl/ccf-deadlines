@@ -38,3 +38,14 @@
       timezone: AoE
       date: July 14-16, 2025
       place: Wollongong, Australia
+    - year: 2026
+      id: acisp26
+      link: https://acisp-conference.github.io/acisp2026/index.html
+      timeline:
+        - deadline: '2025-11-27 23:59:59'
+          comment: 1st round Deadline
+        - deadline: '2026-02-26 23:59:59'
+          comment: 2nd round Deadline
+      timezone: AoE
+      date: July 6-9, 2026
+      place: Perth, Australia

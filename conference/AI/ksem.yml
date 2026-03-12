@@ -31,3 +31,11 @@
       timezone: UTC+0
       date: August 4-6, 2025
       place: Macao SAR, China
+    - year: 2026
+      id: ksem26
+      link: https://ksem2026.rosc.org.cn/
+      timeline:
+        - deadline: '2026-01-15 23:59:59'
+      timezone: UTC+0
+      date: July 17-19, 2026
+      place: Beijing, China

@@ -34,3 +34,12 @@
       timezone: AoE
       date: July 02-04, 2025
       place: Gold Coast, Australia
+    - year: 2026
+      id: iwqos26
+      link: https://iwqos2026.ieee-iwqos.org/
+      timeline:
+        - abstract_deadline: '2026-02-02 23:59:59'
+          deadline: '2026-02-09 23:59:59'
+      timezone: AoE
+      date: 29 June - 2 July, 2026
+      place: Dubai, United Arab Emirates

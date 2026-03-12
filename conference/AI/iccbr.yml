@@ -18,3 +18,11 @@
       timezone: UTC-6
       date: June 1-4, 2024
       place: Merida, Yucatan, Mexico
+    - year: 2026
+      id: iccbr2026
+      link: https://2026.iccbr.org/
+      timeline:
+        - deadline: '2026-03-20 23:59:59'
+      timezone: AoE
+      date: August 13-16, 2026
+      place: Bremen, Germany

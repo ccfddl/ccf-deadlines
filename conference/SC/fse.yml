@@ -52,3 +52,18 @@
       timezone: UTC-12
       date: March 17-21, 2025
       place: Rome, Italy
+    - year: 2026
+      id: fse26
+      link: https://fse.iacr.org/2026/
+      timeline:
+        - deadline: '2025-03-01 23:59:59'
+          comment: ToSC, Volume 2025, Issue 2 Submission deadline
+        - deadline: '2025-06-01 23:59:59'
+          comment: ToSC, Volume 2025, Issue 3 Submission deadline
+        - deadline: '2025-09-01 23:59:59'
+          comment: ToSC, Volume 2025, Issue 4 Submission deadline
+        - deadline: '2025-11-23 23:59:59'
+          comment: ToSC, Volume 2026, Issue 1 Submission deadline
+      timezone: UTC-12
+      date: March 23-27, 2026
+      place: Singapore, Singapore

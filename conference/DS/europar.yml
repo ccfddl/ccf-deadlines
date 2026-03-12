@@ -34,3 +34,12 @@
       timezone: AoE
       date: August 25-29, 2025
       place: Dresden, Germany
+    - year: 2026
+      id: euro-par26
+      link: https://2026.euro-par.org/
+      timeline:
+        - abstract_deadline: '2026-02-27 23:59:59'
+          deadline: '2026-03-06 23:59:59'
+      timezone: AoE
+      date: August 24-28, 2026
+      place: Pisa, Italy

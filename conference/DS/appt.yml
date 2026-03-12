@@ -1,0 +1,18 @@
+- title: APPT
+  description: International Symposium on Advanced Parallel Programming Technologies
+  sub: DS
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: appt
+  confs:
+    - year: 2026
+      id: appt2026
+      link: https://www.appt-conference.com/2026
+      timeline:
+        - abstract_deadline: '2026-03-27 23:59:00'
+          deadline: '2026-04-03 23:59:00'
+      timezone: AoE
+      date: July 27-31, 2026
+      place: Brussels, Belgium

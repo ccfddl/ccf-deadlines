@@ -15,3 +15,11 @@
       timezone: UTC-12
       date: September 14-18, 2024
       place: University of Applied Sciences Upper Austria, Softwarepark Hagenberg, Austria
+    - year: 2026
+      id: ppsn26
+      link: https://ppsn2026.disi.unitn.it/
+      timeline:
+        - deadline: '2026-03-28 23:59:59'
+      timezone: AoE
+      date: August 29-September 2, 2026
+      place: University of Trento, Trento, Italy

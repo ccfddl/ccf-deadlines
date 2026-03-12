@@ -20,3 +20,16 @@
       timezone: AoE
       date: June 30 - July 4, 2025
       place: BILBAO, SPAIN
+    - year: 2026
+      id: sgp26
+      link: https://sgp26.org/
+      timeline:
+        - abstract_deadline: '2026-02-02 23:59:59'
+          deadline: '2026-02-04 23:59:59'
+          comment: 'First round'
+        - abstract_deadline: '2026-04-13 23:59:59'
+          deadline: '2026-04-15 23:59:59'
+          comment: 'Second round'
+      timezone: AoE
+      date: July 1 - 3, 2026
+      place: Bern, Switzerland

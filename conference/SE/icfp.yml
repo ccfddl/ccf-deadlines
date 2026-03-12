@@ -29,3 +29,11 @@
       timezone: AoE
       date: October 12-18, 2025
       place: Singapore
+    - year: 2026
+      id: icfp26
+      link: https://icfp26.sigplan.org/
+      timeline:
+        - deadline: '2026-02-19 23:59:59'
+      timezone: AoE
+      date: August 24 - 29, 2026
+      place: Indiana University Indianapolis, United States

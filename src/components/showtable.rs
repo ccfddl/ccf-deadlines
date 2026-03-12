@@ -5,6 +5,7 @@ use crate::components::countdown::CountDown;
 use crate::components::timeline::*;
 use crate::components::timezone::*;
 use crate::components::calendar_popover::*;
+use crate::components::subscription_modal::*;
 use chrono::{DateTime, FixedOffset, Utc};
 use leptos::prelude::*;
 use serde_json;
@@ -74,6 +75,7 @@ pub fn ShowTable() -> impl IntoView {
     .unwrap_or_else(|| HashSet::new());
     let like_list = RwSignal::new(cached_like_list);
 
+    let show_subscription_modal = RwSignal::new(false);
 
     // pagination
     let page = RwSignal::new(1);
@@ -335,12 +337,12 @@ pub fn ShowTable() -> impl IntoView {
                                     let abs_ddl_str = if abs_ddl.contains(' ') {
                                         format!(
                                             "{}T{}{}",
-                                            item.deadline.split(' ').nth(0).unwrap_or(""),
-                                            item.deadline.split(' ').nth(1).unwrap_or("00:00:00"),
+                                            abs_ddl.split(' ').nth(0).unwrap_or(""),
+                                            abs_ddl.split(' ').nth(1).unwrap_or("00:00:00"),
                                             tz_offset
                                         )
                                     } else {
-                                        format!("{}T23:59:59{}", item.deadline, tz_offset)
+                                        format!("{}T23:59:59{}", abs_ddl, tz_offset)
                                     };
                                     if let Ok(abs_datetime) =
                                         DateTime::parse_from_rfc3339(&abs_ddl_str)
@@ -449,7 +451,7 @@ pub fn ShowTable() -> impl IntoView {
         let input_val = input_value.get();
         if !input_val.is_empty() {
             let input_lower = input_val.to_lowercase();
-            filtered_list.retain(|item| item.id.to_lowercase().contains(&input_lower));
+            filtered_list.retain(|item| item.id.to_lowercase().contains(&input_lower) || item.title.to_lowercase().contains(&input_lower));
         }
 
         // Sorting and Grouping
@@ -584,10 +586,25 @@ pub fn ShowTable() -> impl IntoView {
                     </Input>
                 </div>
 
-                <div style="float: right">
+                <div style="float: right; display: flex; align-items: center; gap: 10px;">
+                    <Button
+                        size=ButtonSize::Small
+                        appearance=ButtonAppearance::Subtle
+                        on_click=move |_| show_subscription_modal.set(true)
+                    >
+                        <Icon icon=icondata::AiCalendarOutlined style="margin-right: 4px;" />
+                        {move || if use_english.get() { "Subscribe" } else { "订阅" }}
+                    </Button>
                     <CheckboxButtonGroup rank_list=rank_list />
                 </div>
             </div>
+
+            <SubscriptionModal
+                show=show_subscription_modal
+                use_english=use_english
+                check_list=check_list
+                rank_list=rank_list
+            />
 
             <div class="zonedivider" />
             <div style="width: 100%">

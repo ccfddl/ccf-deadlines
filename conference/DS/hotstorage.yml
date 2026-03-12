@@ -1,0 +1,17 @@
+- title: HotStorage
+  description: ACM Workshop on Hot Topics in Storage and File Systems
+  sub: DS
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: hotstorage
+  confs:
+    - year: 2026
+      id: hotstorage2026
+      link: https://www.hotstorage.org/2026/
+      timeline:
+        - deadline: '2026-06-05 23:59:59'
+      timezone: AoE
+      date: September 28-29, 2026
+      place: Prague, Czechia

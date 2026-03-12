@@ -71,3 +71,14 @@
       timezone: UTC-12
       date: October 13-17, 2025
       place: TICC, Taipei, Taiwan
+    - year: 2026
+      id: ccs26
+      link: https://www.sigsac.org/ccs/CCS2026/
+      timeline:
+        - deadline: '2026-01-14 23:59:59'
+          comment: First Review Cycle
+        - deadline: '2026-04-29 23:59:59'
+          comment: Second Review Cycle
+      timezone: UTC-12
+      date: November 15-19, 2026
+      place: World Forum, Hague, Netherlands

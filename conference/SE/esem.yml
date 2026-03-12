@@ -27,3 +27,12 @@
       timezone: AoE
       date: September 29 - October 3, 2025
       place: Honolulu, Hawai, USA
+    - year: 2026
+      id: esem26
+      link: https://conf.researchr.org/home/eseiw-2026
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: October 4 - 9, 2026
+      place: München, Germany

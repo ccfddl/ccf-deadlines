@@ -15,3 +15,12 @@
       timezone: AoE
       date: May 7-9, 2024
       place: Ischia, Italy
+    - year: 2026
+      id: cf2026
+      link: https://www.computingfrontiers.org/2026/
+      timeline:
+        - abstract_deadline: '2026-01-12 23:59:59'
+          deadline: '2026-01-19 23:59:59'
+      timezone: AoE
+      date: May 19-21, 2026
+      place: Catania, Sicily, Italy

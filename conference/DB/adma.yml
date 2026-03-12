@@ -32,3 +32,11 @@
       timezone: AoE
       date: October 22 - 24, 2025
       place: Kyoto, Japan
+    - year: 2026
+      id: adma26
+      link: https://adma2026.github.io/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: November 1 - 3, 2026
+      place: Hong Kong, China

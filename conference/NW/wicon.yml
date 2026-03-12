@@ -1,0 +1,17 @@
+- title: WiCON
+  description: International Wireless Internet Conference
+  sub: NW
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: wicon
+  confs:
+    - year: 2025
+      id: wicon2025
+      link: https://wicon.eai-conferences.org/2025/
+      timeline:
+        - deadline: '2025-10-20 23:59:59'
+      timezone: UTC+3
+      date: December 19, 2025
+      place: Istanbul, Turkey (Online)

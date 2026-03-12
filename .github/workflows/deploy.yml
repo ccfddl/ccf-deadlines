@@ -12,10 +12,10 @@ jobs:
         uses: actions/setup-node@main
         with:
           node-version: '15.x'
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v1
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.12.12
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -49,8 +49,8 @@ jobs:
         run: ./trunk build --release
       - name: Config Git
         run: |
-          git config --global user.email "me@4f5da2.com"
-          git config --global user.name "0x4f5da2"
+          git config --global user.email "jacklightchen@gmail.com"
+          git config --global user.name "jacklightChen"
       - name: Deploy
         run: |
           cd dist

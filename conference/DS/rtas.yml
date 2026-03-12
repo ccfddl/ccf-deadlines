@@ -16,3 +16,11 @@
       timezone: AoE
       date: May 13-16, 2024
       place: Hong Kong, China
+    - year: 2026
+      id: rtas2026
+      link: https://2026.rtas.org/
+      timeline:
+        - deadline: '2025-11-13 11:59:59'
+      timezone: AoE
+      date: May 12-14, 2026
+      place: Saint Malo, France

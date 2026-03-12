@@ -52,3 +52,12 @@
       timezone: UTC
       date: September 8-11, 2025
       place: Coimbra, Portugal
+    - year: 2026
+      id: sigcomm26
+      link: https://conferences.sigcomm.org/sigcomm/2026/
+      timeline:
+        - abstract_deadline: '2026-01-30 23:59:59'
+          deadline: '2026-02-06 23:59:59'
+      timezone: AoE
+      date: TBD
+      place: Denver, Colorado, USA

@@ -24,3 +24,11 @@
       timezone: UTC+0
       date: February 24-27, 2025
       place: Milan, Italy
+    - year: 2026
+      id: alt2026
+      link: https://algorithmiclearningtheory.org/alt2026/
+      timeline:
+        - deadline: '2025-10-02 09:59:59'
+      timezone: UTC+0
+      date: February 23-26, 2026
+      place: Fields Institute, Toronto, Canada

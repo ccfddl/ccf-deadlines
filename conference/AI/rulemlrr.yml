@@ -1,0 +1,18 @@
+- title: RuleML+RR
+  description: International Joint Conference on Rules and Reasoning
+  sub: AI
+  rank:
+    ccf: N
+    core: B
+    thcpl: N
+  dblp: rulemlrr
+  confs:
+    - year: 2026
+      id: rulemlrr2026
+      link: https://2026.declarativeai.net/events/ruleml-rr
+      timeline:
+        - abstract_deadline: '2026-05-08 23:59:59'
+          deadline: '2026-05-15 23:59:59'
+      timezone: AoE
+      date: August 24-26, 2026
+      place: Vilnius, Lithuania
