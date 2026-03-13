@@ -23,3 +23,11 @@
       timezone: UTC-12
       date: January 11-14, 2026
       place: Hyatt Regency Vancouver, Vancouver, Canada
+    - year: 2027
+      id: soda27
+      link: https://www.siam.org/conferences-events/siam-conferences/soda27/
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC-12
+      date: January 24-27, 2027
+      place: Philadelphia, Pennsylvania, U.S. 
