@@ -16,3 +16,12 @@
       timezone: AoE
       date: September 28 - October 3, 2025
       place: TAIPEI, TAIWAN
+    - year: 2026
+      id: emsoft26
+      link: https://esweek.org/emsoft/
+      timeline:
+        - abstract_deadline: '2026-03-23 23:59:59'
+          deadline: '2026-03-30 23:59:59'
+      timezone: AoE
+      date: October 4 - 9, 2026
+      place: Barcelona, Spain
