@@ -52,3 +52,12 @@
       timezone: AoE
       date: January 11-17, 2026
       place: Rennes, France
+    - year: 2027
+      id: popl27
+      link: https://popl27.sigplan.org/
+      timeline:
+        - deadline: '2026-07-09 23:59:59'
+          comment: Submission Deadline
+      timezone: AoE
+      date: January 10-16, 2027
+      place: Mexico City
