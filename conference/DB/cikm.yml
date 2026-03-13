@@ -59,3 +59,13 @@
       timezone: AoE
       date: November 10-14, 2025
       place: Coex, Seoul, Korea
+
+    - year: 2026
+      id: cikm26
+      link: https://cikm2026.diag.uniroma1.it/
+      timeline:
+        - abstract_deadline: '2026-05-18 23:59:59'
+          deadline: '2026-05-25 23:59:59'
+      timezone: AoE
+      date: November 7-11, 2026
+      place: Rome, Italy
