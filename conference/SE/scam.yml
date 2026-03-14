@@ -17,3 +17,12 @@
       timezone: AoE
       date: September 7-12, 2025
       place: Auckland, New Zealand
+    - year: 2026
+      id: scam26
+      link: https://conf.researchr.org/home/scam-2026
+      timeline:
+        - deadline: '2026-06-11 23:59:59'
+          comment: 'co-located with ICSME 2026'
+      timezone: AoE
+      date: September 14 - 15, 2026 
+      place: Benevento, Italy
