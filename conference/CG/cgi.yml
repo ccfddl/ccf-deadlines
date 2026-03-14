@@ -27,7 +27,10 @@
       id: cgi26
       link: https://www.cgs-network.org/cgi26/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2026-03-12 23:59:00'
+          comment: 'First Track: Call for papers with final publication in The Visual Computer Journal'
+        - deadline: '2026-04-20 23:59:00'
+          comment: 'Second Track: Call for papers with final publication in LNCS Book published by Springer or in The Visual Computer journal or Computer Animation and Virtual Worlds Journal'
       timezone: UTC
       date: July 06-10, 2026
       place: London, UK
