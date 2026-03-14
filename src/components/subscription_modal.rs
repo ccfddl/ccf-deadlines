@@ -6,10 +6,12 @@ use web_sys::js_sys;
 use web_sys::window;
 
 #[derive(Clone, Debug, PartialEq)]
-pub struct IcsSubscription {
+pub struct SubscriptionLink {
     pub url: String,
     pub description: String,
 }
+
+pub type IcsSubscription = SubscriptionLink;
 
 pub fn generate_ics_urls(
     lang: &str,
@@ -57,6 +59,62 @@ pub fn generate_ics_urls(
             urls.push(IcsSubscription {
                 url: format!(
                     "{}/deadlines_{}_{}_{}.ics",
+                    base_url, lang, rank_prefix, rank
+                ),
+                description: format!("{} {}", rank_prefix.to_uppercase(), rank),
+            });
+        }
+    }
+
+    urls
+}
+
+pub fn generate_rss_urls(
+    lang: &str,
+    subs: &HashSet<String>,
+    ranks: &HashSet<String>,
+) -> Vec<SubscriptionLink> {
+    let base_url = "https://ccfddl.com/conference";
+    let mut urls = Vec::new();
+
+    if subs.is_empty() && ranks.is_empty() {
+        urls.push(SubscriptionLink {
+            url: format!("{}/deadlines_{}.xml", base_url, lang),
+            description: if lang == "zh" {
+                "所有会议".to_string()
+            } else {
+                "All Conferences".to_string()
+            },
+        });
+        return urls;
+    }
+
+    if !subs.is_empty() && !ranks.is_empty() {
+        for sub in subs.iter() {
+            for rank in ranks.iter() {
+                let rank_prefix = get_rank_prefix(rank);
+                urls.push(SubscriptionLink {
+                    url: format!(
+                        "{}/deadlines_{}_{}_{}_{}.xml",
+                        base_url, lang, rank_prefix, rank, sub
+                    ),
+                    description: format!("{} {} {}", sub, rank_prefix.to_uppercase(), rank),
+                });
+            }
+        }
+    } else if !subs.is_empty() {
+        for sub in subs.iter() {
+            urls.push(SubscriptionLink {
+                url: format!("{}/deadlines_{}_{}.xml", base_url, lang, sub),
+                description: sub.clone(),
+            });
+        }
+    } else if !ranks.is_empty() {
+        for rank in ranks.iter() {
+            let rank_prefix = get_rank_prefix(rank);
+            urls.push(SubscriptionLink {
+                url: format!(
+                    "{}/deadlines_{}_{}_{}.xml",
                     base_url, lang, rank_prefix, rank
                 ),
                 description: format!("{} {}", rank_prefix.to_uppercase(), rank),
@@ -173,6 +231,13 @@ pub fn SubscriptionModal(
         generate_ics_urls(lang, &subs, &ranks)
     });
 
+    let rss_subscriptions = Memo::new(move |_| {
+        let lang = if use_english.get() { "en" } else { "zh" };
+        let subs = check_list.get();
+        let ranks = rank_list.get();
+        generate_rss_urls(lang, &subs, &ranks)
+    });
+
     let platform_hint = get_platform_instruction(use_english.get_untracked());
 
     view! {
@@ -282,6 +347,92 @@ pub fn SubscriptionModal(
                                         .into_any()
                                 }
                             }}
+                        </div>
+
+                        <div style="margin-bottom: 16px;">
+                            <div style="font-weight: 500; margin-bottom: 8px; font-size: 14px;">
+                                {move || {
+                                    if use_english.get() {
+                                        "RSS Feed:"
+                                    } else {
+                                        "RSS 订阅："
+                                    }
+                                }}
+                            </div>
+
+                            {move || {
+                                let subs = rss_subscriptions.get();
+                                if subs.len() > 10 {
+                                    let msg = if use_english.get() {
+                                        format!(
+                                            "Too many filter combinations ({} links). Consider reducing filters or subscribe to all.",
+                                            subs.len(),
+                                        )
+                                    } else {
+                                        format!(
+                                            "筛选组合过多（{} 个链接）。建议减少筛选条件或订阅全部。",
+                                            subs.len(),
+                                        )
+                                    };
+                                    view! {
+                                        <div style="color: #e6a23c; padding: 8px; background: #fdf6ec; border-radius: 4px; font-size: 13px;">
+                                            {msg}
+                                        </div>
+                                    }
+                                        .into_any()
+                                } else {
+                                    view! {
+                                        <div>
+                                            {subs
+                                                .iter()
+                                                .enumerate()
+                                                .map(|(idx, sub)| {
+                                                    let url = sub.url.clone();
+                                                    let url_for_copy = url.clone();
+                                                    let desc = sub.description.clone();
+                                                    let label = format!("{}. {}", idx + 1, desc);
+                                                    view! {
+                                                        <div style="margin-bottom: 12px; padding: 10px; border: 1px solid #dcdfe6; border-radius: 6px; background: white;">
+                                                            <div style="font-size: 13px; color: #333; margin-bottom: 6px; font-weight: 500;">
+                                                                {label}
+                                                            </div>
+                                                            <div style="display: flex; align-items: center; gap: 8px;">
+                                                                <input
+                                                                    type="text"
+                                                                    readonly
+                                                                    value=url
+                                                                    style="flex: 1; padding: 6px 8px; border: 1px solid #dcdfe6; border-radius: 4px; font-size: 12px; font-family: monospace; background: #f5f7fa; outline: none;"
+                                                                />
+                                                                <Button
+                                                                    size=ButtonSize::Small
+                                                                    on_click=move |_| {
+                                                                        copy_text_to_clipboard(&url_for_copy);
+                                                                    }
+                                                                >
+                                                                    {move || {
+                                                                        if use_english.get() { "Copy" } else { "复制" }
+                                                                    }}
+                                                                </Button>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                })
+                                                .collect::<Vec<_>>()}
+                                        </div>
+                                    }
+                                        .into_any()
+                                }
+                            }}
+
+                            <div style="font-size: 12px; color: #909399; margin-top: 4px;">
+                                {move || {
+                                    if use_english.get() {
+                                        "Paste into your RSS reader"
+                                    } else {
+                                        "粘贴到 RSS 阅读器中"
+                                    }
+                                }}
+                            </div>
                         </div>
 
                         <div style="padding: 12px; background: #ecf5ff; border-radius: 8px; border-left: 4px solid #409eff;">

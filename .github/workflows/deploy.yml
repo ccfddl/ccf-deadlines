@@ -31,6 +31,10 @@ jobs:
         run: |
           python extensions/cli/ccfddl/convert_to_ical.py
           mv *.ics public/conference/
+      - name: Generate RSS feeds
+        run: |
+          python extensions/cli/ccfddl/convert_to_rss.py
+          mv *.xml public/conference/
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly
