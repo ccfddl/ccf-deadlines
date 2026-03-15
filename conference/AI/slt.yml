@@ -1,0 +1,18 @@
+- title: SLT
+  description: IEEE Spoken Language Technology Workshop
+  sub: AI
+  rank:
+    ccf: N
+  dblp: slt
+  confs:
+    - year: 2026
+      id: slt2026
+      link: https://attend.ieee.org/slt-2026/call-for-papers/
+      timeline:
+        - deadline: '2026-06-17 23:59:59'
+          comment: Regular and special session paper submission due.
+        - deadline: '2026-07-08 23:59:59'
+          comment: Challenge and demo paper submission due.
+      timezone: AoE
+      date: December 13-16, 2026
+      place: Palermo, Italy

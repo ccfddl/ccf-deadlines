@@ -1,0 +1,16 @@
+- title: INTERSPEECH
+  description: Annual Conference of the International Speech Communication Association
+  sub: AI
+  rank:
+    ccf: A
+    core: A
+  dblp: interspeech
+  confs:
+    - year: 2026
+      id: interspeech2026
+      link: https://interspeech2026.org/en-AU/pages/calls/submit-a-paper
+      timeline:
+        - deadline: '2026-02-25 23:59:59'
+      timezone: AoE
+      date: September 27 - October 1, 2026
+      place: Sydney, Australia
