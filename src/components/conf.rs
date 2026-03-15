@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use chrono::prelude::*;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Conference {
@@ -42,7 +42,7 @@ pub struct AccYear {
     pub accepted: i32,
     pub str: String,
     pub rate: String,
-    pub source: Option<String>
+    pub source: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -94,10 +94,12 @@ pub struct ConfItem {
     pub google_calendar_url: Option<String>,
     pub icloud_calendar_url: Option<String>,
     pub acc_str: Option<String>,
-    pub ddls: Vec<TimePoint>
+    pub ddls: Vec<TimePoint>,
 }
 
-pub async fn fetch_all_conf(base_url: &String) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
+pub async fn fetch_all_conf(
+    base_url: &String,
+) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
     let url = format!("{}/conference/allconf.yml", base_url);
     let response = reqwest::get(url).await?;
     let contents = response.text().await?;
@@ -106,7 +108,9 @@ pub async fn fetch_all_conf(base_url: &String) -> Result<Vec<Conference>, Box<dy
     Ok(conferences)
 }
 
-pub async fn fetch_all_acc(base_url: &String) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
+pub async fn fetch_all_acc(
+    base_url: &String,
+) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
     let url = format!("{}/conference/allacc.yml", base_url);
     let response = reqwest::get(url).await?;
     let contents = response.text().await?;

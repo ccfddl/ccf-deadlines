@@ -13,123 +13,178 @@ pub struct SubscriptionLink {
 
 pub type IcsSubscription = SubscriptionLink;
 
-pub fn generate_ics_urls(
+fn sanitize_filter_value(value: &str) -> String {
+    value.replace('*', "star")
+}
+
+fn format_rank_label(system: &str, rank: &str) -> String {
+    match (system, rank) {
+        ("CCF", "N") => "Non-CCF".to_string(),
+        ("CORE", "N") => "Non-CORE".to_string(),
+        ("THCPL", "N") => "Non-THCPL".to_string(),
+        _ => format!("{} {}", system, rank),
+    }
+}
+
+fn format_rank_summary_value(system: &str, rank: &str) -> String {
+    match (system, rank) {
+        ("CCF", "N") => "Non-CCF".to_string(),
+        ("CORE", "N") => "Non-CORE".to_string(),
+        ("THCPL", "N") => "Non-THCPL".to_string(),
+        _ => rank.to_string(),
+    }
+}
+
+fn sorted_values(values: &HashSet<String>) -> Vec<String> {
+    let mut sorted: Vec<_> = values.iter().cloned().collect();
+    sorted.sort();
+    sorted
+}
+
+fn build_subscription_urls(
+    base_url: &str,
+    extension: &str,
     lang: &str,
     subs: &HashSet<String>,
-    ranks: &HashSet<String>,
-) -> Vec<IcsSubscription> {
-    let base_url = "webcal://ccfddl.com/conference";
-    let mut urls = Vec::new();
-
-    if subs.is_empty() && ranks.is_empty() {
-        urls.push(IcsSubscription {
-            url: format!("{}/deadlines_{}.ics", base_url, lang),
+    ccf_ranks: &HashSet<String>,
+    core_ranks: &HashSet<String>,
+    thcpl_ranks: &HashSet<String>,
+) -> Vec<SubscriptionLink> {
+    if subs.is_empty() && ccf_ranks.is_empty() && core_ranks.is_empty() && thcpl_ranks.is_empty() {
+        return vec![SubscriptionLink {
+            url: format!("{}/deadlines_{}.{}", base_url, lang, extension),
             description: if lang == "zh" {
                 "所有会议".to_string()
             } else {
                 "All Conferences".to_string()
             },
-        });
-        return urls;
+        }];
     }
 
-    if !subs.is_empty() && !ranks.is_empty() {
-        for sub in subs.iter() {
-            for rank in ranks.iter() {
-                let rank_prefix = get_rank_prefix(rank);
-                urls.push(IcsSubscription {
-                    url: format!(
-                        "{}/deadlines_{}_{}_{}_{}.ics",
-                        base_url, lang, rank_prefix, rank, sub
-                    ),
-                    description: format!("{} {} {}", sub, rank_prefix.to_uppercase(), rank),
-                });
+    let sub_tokens: Vec<Option<(String, String)>> = if subs.is_empty() {
+        vec![None]
+    } else {
+        sorted_values(subs)
+            .into_iter()
+            .map(|sub| Some((sub.clone(), sub)))
+            .collect()
+    };
+    let ccf_tokens: Vec<Option<(String, String)>> = if ccf_ranks.is_empty() {
+        vec![None]
+    } else {
+        sorted_values(ccf_ranks)
+            .into_iter()
+            .map(|rank| {
+                Some((
+                    format!("ccf_{}", sanitize_filter_value(&rank)),
+                    format_rank_label("CCF", &rank),
+                ))
+            })
+            .collect()
+    };
+    let core_tokens: Vec<Option<(String, String)>> = if core_ranks.is_empty() {
+        vec![None]
+    } else {
+        sorted_values(core_ranks)
+            .into_iter()
+            .map(|rank| {
+                Some((
+                    format!("core_{}", sanitize_filter_value(&rank)),
+                    format_rank_label("CORE", &rank),
+                ))
+            })
+            .collect()
+    };
+    let thcpl_tokens: Vec<Option<(String, String)>> = if thcpl_ranks.is_empty() {
+        vec![None]
+    } else {
+        sorted_values(thcpl_ranks)
+            .into_iter()
+            .map(|rank| {
+                Some((
+                    format!("thcpl_{}", sanitize_filter_value(&rank)),
+                    format_rank_label("THCPL", &rank),
+                ))
+            })
+            .collect()
+    };
+
+    let mut urls = Vec::new();
+
+    for ccf in &ccf_tokens {
+        for core in &core_tokens {
+            for thcpl in &thcpl_tokens {
+                for sub in &sub_tokens {
+                    let mut filename_parts = vec![format!("deadlines_{}", lang)];
+                    let mut description_parts = Vec::new();
+
+                    if let Some((token, label)) = ccf {
+                        filename_parts.push(token.clone());
+                        description_parts.push(label.clone());
+                    }
+                    if let Some((token, label)) = core {
+                        filename_parts.push(token.clone());
+                        description_parts.push(label.clone());
+                    }
+                    if let Some((token, label)) = thcpl {
+                        filename_parts.push(token.clone());
+                        description_parts.push(label.clone());
+                    }
+                    if let Some((token, label)) = sub {
+                        filename_parts.push(token.clone());
+                        description_parts.push(label.clone());
+                    }
+
+                    if description_parts.is_empty() {
+                        continue;
+                    }
+
+                    urls.push(SubscriptionLink {
+                        url: format!("{}/{}.{}", base_url, filename_parts.join("_"), extension),
+                        description: description_parts.join(" | "),
+                    });
+                }
             }
-        }
-    } else if !subs.is_empty() {
-        for sub in subs.iter() {
-            urls.push(IcsSubscription {
-                url: format!("{}/deadlines_{}_{}.ics", base_url, lang, sub),
-                description: sub.clone(),
-            });
-        }
-    } else if !ranks.is_empty() {
-        for rank in ranks.iter() {
-            let rank_prefix = get_rank_prefix(rank);
-            urls.push(IcsSubscription {
-                url: format!(
-                    "{}/deadlines_{}_{}_{}.ics",
-                    base_url, lang, rank_prefix, rank
-                ),
-                description: format!("{} {}", rank_prefix.to_uppercase(), rank),
-            });
         }
     }
 
     urls
+}
+
+pub fn generate_ics_urls(
+    lang: &str,
+    subs: &HashSet<String>,
+    ccf_ranks: &HashSet<String>,
+    core_ranks: &HashSet<String>,
+    thcpl_ranks: &HashSet<String>,
+) -> Vec<IcsSubscription> {
+    build_subscription_urls(
+        "webcal://ccfddl.com/conference",
+        "ics",
+        lang,
+        subs,
+        ccf_ranks,
+        core_ranks,
+        thcpl_ranks,
+    )
 }
 
 pub fn generate_rss_urls(
     lang: &str,
     subs: &HashSet<String>,
-    ranks: &HashSet<String>,
+    ccf_ranks: &HashSet<String>,
+    core_ranks: &HashSet<String>,
+    thcpl_ranks: &HashSet<String>,
 ) -> Vec<SubscriptionLink> {
-    let base_url = "https://ccfddl.com/conference";
-    let mut urls = Vec::new();
-
-    if subs.is_empty() && ranks.is_empty() {
-        urls.push(SubscriptionLink {
-            url: format!("{}/deadlines_{}.xml", base_url, lang),
-            description: if lang == "zh" {
-                "所有会议".to_string()
-            } else {
-                "All Conferences".to_string()
-            },
-        });
-        return urls;
-    }
-
-    if !subs.is_empty() && !ranks.is_empty() {
-        for sub in subs.iter() {
-            for rank in ranks.iter() {
-                let rank_prefix = get_rank_prefix(rank);
-                urls.push(SubscriptionLink {
-                    url: format!(
-                        "{}/deadlines_{}_{}_{}_{}.xml",
-                        base_url, lang, rank_prefix, rank, sub
-                    ),
-                    description: format!("{} {} {}", sub, rank_prefix.to_uppercase(), rank),
-                });
-            }
-        }
-    } else if !subs.is_empty() {
-        for sub in subs.iter() {
-            urls.push(SubscriptionLink {
-                url: format!("{}/deadlines_{}_{}.xml", base_url, lang, sub),
-                description: sub.clone(),
-            });
-        }
-    } else if !ranks.is_empty() {
-        for rank in ranks.iter() {
-            let rank_prefix = get_rank_prefix(rank);
-            urls.push(SubscriptionLink {
-                url: format!(
-                    "{}/deadlines_{}_{}_{}.xml",
-                    base_url, lang, rank_prefix, rank
-                ),
-                description: format!("{} {}", rank_prefix.to_uppercase(), rank),
-            });
-        }
-    }
-
-    urls
-}
-
-fn get_rank_prefix(rank: &str) -> &'static str {
-    match rank {
-        "A" | "B" | "C" | "N" => "ccf",
-        _ => "ccf",
-    }
+    build_subscription_urls(
+        "https://ccfddl.com/conference",
+        "xml",
+        lang,
+        subs,
+        ccf_ranks,
+        core_ranks,
+        thcpl_ranks,
+    )
 }
 
 fn copy_text_to_clipboard(text: &str) {
@@ -190,30 +245,75 @@ fn get_platform_instruction(use_english: bool) -> String {
 
 fn render_filter_summary(
     subs: &HashSet<String>,
-    ranks: &HashSet<String>,
+    ccf_ranks: &HashSet<String>,
+    core_ranks: &HashSet<String>,
+    thcpl_ranks: &HashSet<String>,
     use_english: bool,
 ) -> String {
     let mut parts = Vec::new();
     if !subs.is_empty() {
-        let mut sorted: Vec<_> = subs.iter().cloned().collect();
-        sorted.sort();
+        let sorted = sorted_values(subs);
         let label = if use_english { "Categories" } else { "分类" };
         parts.push(format!("{}: {}", label, sorted.join(", ")));
     }
-    if !ranks.is_empty() {
-        let mut sorted: Vec<_> = ranks.iter().cloned().collect();
-        sorted.sort();
-        let label = if use_english { "Ranks" } else { "等级" };
+    if !ccf_ranks.is_empty() {
+        let sorted = sorted_values(ccf_ranks)
+            .into_iter()
+            .map(|rank| format_rank_summary_value("CCF", &rank))
+            .collect::<Vec<_>>();
+        let label = if use_english {
+            "CCF Ranks"
+        } else {
+            "CCF 等级"
+        };
+        parts.push(format!("{}: {}", label, sorted.join(", ")));
+    }
+    if !core_ranks.is_empty() {
+        let sorted = sorted_values(core_ranks)
+            .into_iter()
+            .map(|rank| format_rank_summary_value("CORE", &rank))
+            .collect::<Vec<_>>();
+        let label = if use_english {
+            "CORE Ranks"
+        } else {
+            "CORE 等级"
+        };
+        parts.push(format!("{}: {}", label, sorted.join(", ")));
+    }
+    if !thcpl_ranks.is_empty() {
+        let sorted = sorted_values(thcpl_ranks)
+            .into_iter()
+            .map(|rank| format_rank_summary_value("THCPL", &rank))
+            .collect::<Vec<_>>();
+        let label = if use_english {
+            "THCPL Ranks"
+        } else {
+            "THCPL 等级"
+        };
         parts.push(format!("{}: {}", label, sorted.join(", ")));
     }
     if parts.is_empty() {
         if use_english {
-            "All conferences (no filters)".to_string()
+            "All conferences".to_string()
         } else {
-            "所有会议（未筛选）".to_string()
+            "全部会议".to_string()
         }
     } else {
-        parts.join(" | ")
+        parts.join(" · ")
+    }
+}
+
+fn render_link_limit_message(link_count: usize, use_english: bool) -> String {
+    if use_english {
+        format!(
+            "{} links generated. Narrow the filters or subscribe to all instead.",
+            link_count
+        )
+    } else {
+        format!(
+            "已生成 {} 个链接。建议缩小筛选范围，或直接订阅全部。",
+            link_count
+        )
     }
 }
 
@@ -223,22 +323,29 @@ pub fn SubscriptionModal(
     use_english: RwSignal<bool>,
     check_list: RwSignal<HashSet<String>>,
     rank_list: RwSignal<HashSet<String>>,
+    core_rank_list: RwSignal<HashSet<String>>,
+    thcpl_rank_list: RwSignal<HashSet<String>>,
 ) -> impl IntoView {
     let subscriptions = Memo::new(move |_| {
         let lang = if use_english.get() { "en" } else { "zh" };
         let subs = check_list.get();
         let ranks = rank_list.get();
-        generate_ics_urls(lang, &subs, &ranks)
+        let core_ranks = core_rank_list.get();
+        let thcpl_ranks = thcpl_rank_list.get();
+        generate_ics_urls(lang, &subs, &ranks, &core_ranks, &thcpl_ranks)
     });
 
     let rss_subscriptions = Memo::new(move |_| {
         let lang = if use_english.get() { "en" } else { "zh" };
         let subs = check_list.get();
         let ranks = rank_list.get();
-        generate_rss_urls(lang, &subs, &ranks)
+        let core_ranks = core_rank_list.get();
+        let thcpl_ranks = thcpl_rank_list.get();
+        generate_rss_urls(lang, &subs, &ranks, &core_ranks, &thcpl_ranks)
     });
 
-    let platform_hint = get_platform_instruction(use_english.get_untracked());
+    let has_multiple_subscriptions = Memo::new(move |_| subscriptions.get().len() > 1);
+    let platform_hint = Memo::new(move |_| get_platform_instruction(use_english.get()));
 
     view! {
         <Dialog open=show>
@@ -257,29 +364,68 @@ pub fn SubscriptionModal(
                         <div style="margin-bottom: 16px; color: #666; font-size: 14px;">
                             {move || {
                                 if use_english.get() {
-                                    "Subscribe based on your current filters:"
+                                    "These links are generated from the filters currently active on this page."
                                 } else {
-                                    "根据当前筛选条件订阅："
+                                    "下面的链接会直接继承你当前页面的筛选条件。"
                                 }
                             }}
                         </div>
 
                         <div style="margin-bottom: 16px; padding: 12px; background: #f5f7fa; border-radius: 8px; font-size: 13px;">
-                            {move || {
-                                let subs = check_list.get();
-                                let ranks = rank_list.get();
-                                let en = use_english.get();
-                                render_filter_summary(&subs, &ranks, en)
-                            }}
+                            <div style="font-size: 12px; font-weight: 600; color: #606266; margin-bottom: 6px;">
+                                {move || {
+                                    if use_english.get() {
+                                        "This subscription will include"
+                                    } else {
+                                        "本次订阅将包含"
+                                    }
+                                }}
+                            </div>
+                            <div style="color: #303133;">
+                                {move || {
+                                    let subs = check_list.get();
+                                    let ranks = rank_list.get();
+                                    let core_ranks = core_rank_list.get();
+                                    let thcpl_ranks = thcpl_rank_list.get();
+                                    let en = use_english.get();
+                                    render_filter_summary(
+                                        &subs,
+                                        &ranks,
+                                        &core_ranks,
+                                        &thcpl_ranks,
+                                        en,
+                                    )
+                                }}
+                            </div>
+                            <Show when=move || has_multiple_subscriptions.get()>
+                                <div style="margin-top: 8px; font-size: 12px; color: #909399; line-height: 1.6;">
+                                    {move || {
+                                        if use_english.get() {
+                                            "Multiple links are shown because the current filters expand into separate subscription combinations."
+                                        } else {
+                                            "当前筛选会拆分出多个订阅组合，因此这里会显示多个链接。"
+                                        }
+                                    }}
+                                </div>
+                            </Show>
                         </div>
 
                         <div style="margin-bottom: 16px;">
                             <div style="font-weight: 500; margin-bottom: 8px; font-size: 14px;">
                                 {move || {
                                     if use_english.get() {
-                                        "Subscription Links:"
+                                        "Calendar Subscription"
                                     } else {
-                                        "订阅链接："
+                                        "日历订阅"
+                                    }
+                                }}
+                            </div>
+                            <div style="font-size: 12px; color: #909399; margin-bottom: 10px; line-height: 1.6;">
+                                {move || {
+                                    if use_english.get() {
+                                        "Use these webcal links in Apple Calendar, Outlook, Google Calendar, or any app that supports calendar subscriptions."
+                                    } else {
+                                        "将这些 webcal 链接粘贴到支持订阅日历的应用中，例如 Apple 日历、Outlook、Google 日历等。"
                                     }
                                 }}
                             </div>
@@ -287,17 +433,7 @@ pub fn SubscriptionModal(
                             {move || {
                                 let subs = subscriptions.get();
                                 if subs.len() > 10 {
-                                    let msg = if use_english.get() {
-                                        format!(
-                                            "Too many filter combinations ({} links). Consider reducing filters or subscribe to all.",
-                                            subs.len(),
-                                        )
-                                    } else {
-                                        format!(
-                                            "筛选组合过多（{} 个链接）。建议减少筛选条件或订阅全部。",
-                                            subs.len(),
-                                        )
-                                    };
+                                    let msg = render_link_limit_message(subs.len(), use_english.get());
                                     view! {
                                         <div style="color: #e6a23c; padding: 8px; background: #fdf6ec; border-radius: 4px; font-size: 13px;">
                                             {msg}
@@ -347,15 +483,34 @@ pub fn SubscriptionModal(
                                         .into_any()
                                 }
                             }}
+
+                            <div style="font-size: 12px; color: #909399; margin-top: 6px; line-height: 1.6;">
+                                {move || {
+                                    if use_english.get() {
+                                        "Copy one link, then paste it into your calendar app's \"Subscribe by URL\" entry."
+                                    } else {
+                                        "复制一个链接，然后粘贴到日历应用的“通过 URL 订阅”入口。"
+                                    }
+                                }}
+                            </div>
                         </div>
 
                         <div style="margin-bottom: 16px;">
                             <div style="font-weight: 500; margin-bottom: 8px; font-size: 14px;">
                                 {move || {
                                     if use_english.get() {
-                                        "RSS Feed:"
+                                        "RSS Feed"
                                     } else {
                                         "RSS 订阅："
+                                    }
+                                }}
+                            </div>
+                            <div style="font-size: 12px; color: #909399; margin-bottom: 10px; line-height: 1.6;">
+                                {move || {
+                                    if use_english.get() {
+                                        "Use RSS if you prefer deadline updates in an RSS reader instead of a calendar app."
+                                    } else {
+                                        "如果你更习惯用 RSS 阅读器跟踪截止日期更新，可以使用下面的 RSS 链接。"
                                     }
                                 }}
                             </div>
@@ -363,17 +518,7 @@ pub fn SubscriptionModal(
                             {move || {
                                 let subs = rss_subscriptions.get();
                                 if subs.len() > 10 {
-                                    let msg = if use_english.get() {
-                                        format!(
-                                            "Too many filter combinations ({} links). Consider reducing filters or subscribe to all.",
-                                            subs.len(),
-                                        )
-                                    } else {
-                                        format!(
-                                            "筛选组合过多（{} 个链接）。建议减少筛选条件或订阅全部。",
-                                            subs.len(),
-                                        )
-                                    };
+                                    let msg = render_link_limit_message(subs.len(), use_english.get());
                                     view! {
                                         <div style="color: #e6a23c; padding: 8px; background: #fdf6ec; border-radius: 4px; font-size: 13px;">
                                             {msg}
@@ -427,9 +572,9 @@ pub fn SubscriptionModal(
                             <div style="font-size: 12px; color: #909399; margin-top: 4px;">
                                 {move || {
                                     if use_english.get() {
-                                        "Paste into your RSS reader"
+                                        "Paste the copied link into your RSS reader."
                                     } else {
-                                        "粘贴到 RSS 阅读器中"
+                                        "将复制的链接粘贴到 RSS 阅读器中。"
                                     }
                                 }}
                             </div>
@@ -439,9 +584,9 @@ pub fn SubscriptionModal(
                             <div style="font-weight: 500; margin-bottom: 8px; font-size: 14px; color: #409eff;">
                                 {move || {
                                     if use_english.get() {
-                                        "How to Subscribe:"
+                                        "Quick tip"
                                     } else {
-                                        "如何订阅："
+                                        "使用提示"
                                     }
                                 }}
                             </div>
@@ -450,22 +595,16 @@ pub fn SubscriptionModal(
                                     if use_english.get() {
                                         view! {
                                             <div>
-                                                <div>"1. Click the Copy button next to the link"</div>
-                                                <div>"2. Open your calendar app (Google Calendar, Apple Calendar, Outlook, etc.)"</div>
-                                                <div>"3. Find Subscribe to Calendar or Add Calendar by URL"</div>
-                                                <div>"4. Paste the copied link and confirm"</div>
-                                                <div>"5. The calendar will automatically sync new deadlines"</div>
+                                                <div>"Copy one link and paste it into your calendar app's Subscribe by URL entry."</div>
+                                                <div>"If multiple links appear, each link matches a different filter combination."</div>
                                             </div>
                                         }
                                             .into_any()
                                     } else {
                                         view! {
                                             <div>
-                                                <div>"1. 点击链接旁的 复制 按钮"</div>
-                                                <div>"2. 打开日历应用（Google 日历、Apple 日历、Outlook 等）"</div>
-                                                <div>"3. 找到 订阅日历 或 通过 URL 添加日历 选项"</div>
-                                                <div>"4. 粘贴复制的链接并确认"</div>
-                                                <div>"5. 日历将自动同步最新截止日期"</div>
+                                                <div>"复制一个链接，并粘贴到日历应用的“通过 URL 订阅”入口。"</div>
+                                                <div>"如果这里出现多个链接，表示每个链接对应一个不同的筛选组合。"</div>
                                             </div>
                                         }
                                             .into_any()
@@ -473,16 +612,16 @@ pub fn SubscriptionModal(
                                 }}
                             </div>
                             <div style="margin-top: 8px; font-size: 12px; color: #909399; font-style: italic;">
-                                {platform_hint.clone()}
+                                {move || platform_hint.get()}
                             </div>
                         </div>
 
                         <div style="margin-top: 12px; font-size: 12px; color: #909399; text-align: center;">
                             {move || {
                                 if use_english.get() {
-                                    "Calendars typically update every 12-24 hours"
+                                    "Subscribed calendars usually refresh every 12-24 hours."
                                 } else {
-                                    "日历通常每 12-24 小时更新一次"
+                                    "订阅的日历通常每 12-24 小时刷新一次。"
                                 }
                             }}
                         </div>

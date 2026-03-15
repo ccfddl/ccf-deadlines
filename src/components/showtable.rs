@@ -1,21 +1,21 @@
+use crate::components::calendar_popover::*;
 use crate::components::checkbox_button::*;
 use crate::components::conf::ConfItem;
 use crate::components::conf::*;
 use crate::components::countdown::CountDown;
+use crate::components::subscription_modal::*;
 use crate::components::timeline::*;
 use crate::components::timezone::*;
-use crate::components::calendar_popover::*;
-use crate::components::subscription_modal::*;
-use chrono::{DateTime, FixedOffset, Utc};
+use chrono::{DateTime, FixedOffset};
 use leptos::prelude::*;
 use serde_json;
 use std::collections::HashMap;
 use std::collections::HashSet;
 use thaw::*;
+use urlencoding::encode;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::spawn_local;
-use web_sys::{console, js_sys, window};
-use urlencoding::encode;
+use web_sys::{console, window};
 
 #[component]
 pub fn ShowTable() -> impl IntoView {
@@ -24,16 +24,18 @@ pub fn ShowTable() -> impl IntoView {
 
     // switch
     let cached_use_english = get_from_local_storage("use_english");
-    let use_english = RwSignal::new(cached_use_english
-        .as_deref()
-        .and_then(|s| s.parse::<bool>().ok())
-        .unwrap_or(false));
+    let use_english = RwSignal::new(
+        cached_use_english
+            .as_deref()
+            .and_then(|s| s.parse::<bool>().ok())
+            .unwrap_or(false),
+    );
 
     // checkbox
     let sub_list = RwSignal::new(get_categories());
     let cached_check_list: HashSet<String> = get_from_local_storage("types")
-    .and_then(|data| serde_json::from_str(&data).ok())
-    .unwrap_or_else(|| HashSet::new());
+        .and_then(|data| serde_json::from_str(&data).ok())
+        .unwrap_or_else(|| HashSet::new());
     let check_list = RwSignal::new(cached_check_list);
     let is_all_checked_memo = Memo::new(move |_| {
         let total_count = sub_list.get().len();
@@ -64,15 +66,27 @@ pub fn ShowTable() -> impl IntoView {
     let input_value = RwSignal::new(String::new());
 
     // checkboxbutton
-    let cached_rank_list: HashSet<String> = get_from_local_storage("ranks")
-    .and_then(|data| serde_json::from_str(&data).ok())
-    .unwrap_or_else(|| HashSet::new());
+    let mut cached_rank_list: HashSet<String> = get_from_local_storage("ranks")
+        .and_then(|data| serde_json::from_str(&data).ok())
+        .unwrap_or_else(|| HashSet::new());
+    normalize_rank_filter_selection(&mut cached_rank_list);
     let rank_list = RwSignal::new(cached_rank_list);
+    let mut cached_core_rank_list: HashSet<String> = get_from_local_storage("core_ranks")
+        .and_then(|data| serde_json::from_str(&data).ok())
+        .unwrap_or_else(|| HashSet::new());
+    normalize_rank_filter_selection(&mut cached_core_rank_list);
+    let core_rank_list = RwSignal::new(cached_core_rank_list);
+    let mut cached_thcpl_rank_list: HashSet<String> = get_from_local_storage("thcpl_ranks")
+        .and_then(|data| serde_json::from_str(&data).ok())
+        .unwrap_or_else(|| HashSet::new());
+    normalize_rank_filter_selection(&mut cached_thcpl_rank_list);
+    let thcpl_rank_list = RwSignal::new(cached_thcpl_rank_list);
+    let open_dropdown = RwSignal::new(None::<String>);
 
     // liked
     let cached_like_list: HashSet<String> = get_from_local_storage("likes")
-    .and_then(|data| serde_json::from_str(&data).ok())
-    .unwrap_or_else(|| HashSet::new());
+        .and_then(|data| serde_json::from_str(&data).ok())
+        .unwrap_or_else(|| HashSet::new());
     let like_list = RwSignal::new(cached_like_list);
 
     let show_subscription_modal = RwSignal::new(false);
@@ -93,6 +107,8 @@ pub fn ShowTable() -> impl IntoView {
         let _ = check_list.get();
         let _ = input_value.get();
         let _ = rank_list.get();
+        let _ = core_rank_list.get();
+        let _ = thcpl_rank_list.get();
 
         if is_filter_change.get_untracked() {
             page.set(1);
@@ -105,6 +121,14 @@ pub fn ShowTable() -> impl IntoView {
         set_in_local_storage("use_english", &use_english.get().to_string());
         set_in_local_storage("types", &serde_json::to_string(&check_list.get()).unwrap());
         set_in_local_storage("ranks", &serde_json::to_string(&rank_list.get()).unwrap());
+        set_in_local_storage(
+            "core_ranks",
+            &serde_json::to_string(&core_rank_list.get()).unwrap(),
+        );
+        set_in_local_storage(
+            "thcpl_ranks",
+            &serde_json::to_string(&thcpl_rank_list.get()).unwrap(),
+        );
     });
 
     Effect::new(move |_| {
@@ -115,9 +139,11 @@ pub fn ShowTable() -> impl IntoView {
         let _ = check_list.get();
         let _ = input_value.get();
         let _ = rank_list.get();
+        let _ = core_rank_list.get();
+        let _ = thcpl_rank_list.get();
         let _ = page.get();
 
-        let (current_time, current_timezone) = get_browser_time_and_timezone();
+        let (current_time, _) = get_browser_time_and_timezone();
         let utc_map = load_utc_map();
 
         all_conf_list.update(|conferences| {
@@ -193,7 +219,8 @@ pub fn ShowTable() -> impl IntoView {
                             let mut flag = false;
                             let len = year_conf.timeline.len();
                             let mut cur_deadline = year_conf.timeline[len - 1].deadline.clone();
-                            let mut cur_abstract_deadline = year_conf.timeline[len - 1].abstract_deadline.clone();
+                            let mut cur_abstract_deadline =
+                                year_conf.timeline[len - 1].abstract_deadline.clone();
                             let mut cur_comment = year_conf.timeline[len - 1].comment.clone();
                             let mut ddl_vec = Vec::<TimePoint>::new();
 
@@ -224,13 +251,25 @@ pub fn ShowTable() -> impl IntoView {
                                         format!("{}T23:59:59{}", abs_ddl, tz_offset)
                                     };
 
-                                    if let Ok(abs_ddl_datetime) = DateTime::parse_from_rfc3339(&abs_ddl_str) {
-                                        ddl_vec.push(TimePoint { timepoint: abs_ddl_datetime.with_timezone(&current_timezone).clone(), r#type: 0 });
+                                    if let Ok(abs_ddl_datetime) =
+                                        DateTime::parse_from_rfc3339(&abs_ddl_str)
+                                    {
+                                        ddl_vec.push(TimePoint {
+                                            timepoint: abs_ddl_datetime
+                                                .with_timezone(&current_timezone)
+                                                .clone(),
+                                            r#type: 0,
+                                        });
                                     }
                                 }
 
                                 if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                                    ddl_vec.push(TimePoint { timepoint: ddl_datetime.with_timezone(&current_timezone).clone(), r#type: 1 });
+                                    ddl_vec.push(TimePoint {
+                                        timepoint: ddl_datetime
+                                            .with_timezone(&current_timezone)
+                                            .clone(),
+                                        r#type: 1,
+                                    });
 
                                     let diff = ddl_datetime.signed_duration_since(current_time);
                                     if !flag && diff.num_milliseconds() > 0 {
@@ -274,7 +313,7 @@ pub fn ShowTable() -> impl IntoView {
                                 google_calendar_url: None,
                                 icloud_calendar_url: None,
                                 acc_str: None,
-                                ddls: ddl_vec
+                                ddls: ddl_vec,
                             }
                         });
                         conf_vec.extend(conf_items);
@@ -369,14 +408,19 @@ pub fn ShowTable() -> impl IntoView {
                                     item.status = "RUN".to_string();
                                 }
 
-                                let iso_string = local_ddl_datetime.format("%Y%m%dT%H%M%S").to_string();
+                                let iso_string =
+                                    local_ddl_datetime.format("%Y%m%dT%H%M%S").to_string();
 
                                 item.google_calendar_url = Some(format!(
                                     "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={:?}&location=Online&ctz={}&sf=true&output=xml",
                                     encode(&format!("{} {}", item.title, item.year)),
                                     iso_string,
                                     iso_string,
-                                    encode(&format!("{} {}", item.comment.as_ref().map_or("".to_string(), |c| c.clone()), "provided by @ccfddl".to_string())),
+                                    encode(&format!(
+                                        "{} {}",
+                                        item.comment.as_ref().map_or("".to_string(), |c| c.clone()),
+                                        "provided by @ccfddl".to_string()
+                                    )),
                                     time_zone.get_untracked(),
                                 ));
 
@@ -416,7 +460,9 @@ pub fn ShowTable() -> impl IntoView {
                             all_conf_list.update(|conferences| {
                                 for item in conferences.iter_mut() {
                                     for y in 1..=3 {
-                                        if item.title == acc_item.title && item.year == cur_acc.year + y {
+                                        if item.title == acc_item.title
+                                            && item.year == cur_acc.year + y
+                                        {
                                             item.acc_str = Some(cur_acc.str.clone());
                                         }
                                     }
@@ -430,8 +476,6 @@ pub fn ShowTable() -> impl IntoView {
                 }
             }
         });
-
-
     });
 
     let paginated_list = Memo::new(move |_| {
@@ -447,11 +491,28 @@ pub fn ShowTable() -> impl IntoView {
         if !rank_val.is_empty() {
             filtered_list.retain(|item| rank_val.contains(&item.rank));
         }
+        let core_rank_val = core_rank_list.get();
+        if !core_rank_val.is_empty() {
+            filtered_list.retain(|item| {
+                let core_rank = item.corerank.as_deref().unwrap_or("N");
+                core_rank_val.contains(core_rank)
+            });
+        }
+        let thcpl_rank_val = thcpl_rank_list.get();
+        if !thcpl_rank_val.is_empty() {
+            filtered_list.retain(|item| {
+                let thcpl_rank = item.thcplrank.as_deref().unwrap_or("N");
+                thcpl_rank_val.contains(thcpl_rank)
+            });
+        }
 
         let input_val = input_value.get();
         if !input_val.is_empty() {
             let input_lower = input_val.to_lowercase();
-            filtered_list.retain(|item| item.id.to_lowercase().contains(&input_lower) || item.title.to_lowercase().contains(&input_lower));
+            filtered_list.retain(|item| {
+                item.id.to_lowercase().contains(&input_lower)
+                    || item.title.to_lowercase().contains(&input_lower)
+            });
         }
 
         // Sorting and Grouping
@@ -460,7 +521,7 @@ pub fn ShowTable() -> impl IntoView {
             .filter(|item| item.status == "RUN".to_string())
             .cloned()
             .collect();
-        let mut tbd_list: Vec<_> = filtered_list
+        let tbd_list: Vec<_> = filtered_list
             .iter()
             .filter(|item| item.status == "TBD".to_string())
             .cloned()
@@ -509,7 +570,6 @@ pub fn ShowTable() -> impl IntoView {
             "全选".to_string()
         }
     });
-
 
     view! {
         <section>
@@ -569,24 +629,33 @@ pub fn ShowTable() -> impl IntoView {
                 </div>
             </CheckboxGroup>
 
-            <div class="timezone" style="padding-top: 15px; color: #666666; overflow: hidden;">
-                <div style="float: left; font-size: 16px">
-                    "Deadlines are shown in "{move || time_zone.get()}" time."
-                </div>
-                <div style="float: left; margin-left: 10px;">
-                    <Input
-                        value=input_value
-                        placeholder="search conference"
-                        size=InputSize::Small
-                        class="custom-search-input"
-                    >
-                        <InputPrefix slot>
-                            <Icon icon=icondata::FiSearch style="color: lightgray;" />
-                        </InputPrefix>
-                    </Input>
+            <div
+                class="timezone"
+                style="padding-top: 15px; color: #666666; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;"
+            >
+                <div
+                    style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1 1 420px; min-width: 260px;"
+                >
+                    <div style="font-size: 16px; line-height: 1.4;">
+                        "Deadlines are shown in "{move || time_zone.get()}" time."
+                    </div>
+                    <div style="flex: 1 1 240px; min-width: 220px; max-width: 320px;">
+                        <Input
+                            value=input_value
+                            placeholder="search conference"
+                            size=InputSize::Small
+                            class="custom-search-input"
+                        >
+                            <InputPrefix slot>
+                                <Icon icon=icondata::FiSearch style="color: lightgray;" />
+                            </InputPrefix>
+                        </Input>
+                    </div>
                 </div>
 
-                <div style="float: right; display: flex; align-items: center; gap: 10px;">
+                <div
+                    style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; margin-left: auto;"
+                >
                     <Button
                         size=ButtonSize::Small
                         appearance=ButtonAppearance::Subtle
@@ -595,7 +664,37 @@ pub fn ShowTable() -> impl IntoView {
                         <Icon icon=icondata::AiCalendarOutlined style="margin-right: 4px;" />
                         {move || if use_english.get() { "Subscribe" } else { "订阅" }}
                     </Button>
-                    <CheckboxButtonGroup rank_list=rank_list />
+                    <div
+                        style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end;"
+                    >
+                        <MultiSelectDropdown
+                            dropdown_id="ccf".to_string()
+                            title="CCF".to_string()
+                            options=ccf_filter_options()
+                            selected_values=rank_list
+                            use_english=use_english
+                            panel_width="180px".to_string()
+                            open_dropdown=open_dropdown
+                        />
+                        <MultiSelectDropdown
+                            dropdown_id="core".to_string()
+                            title="CORE".to_string()
+                            options=core_filter_options()
+                            selected_values=core_rank_list
+                            use_english=use_english
+                            panel_width="188px".to_string()
+                            open_dropdown=open_dropdown
+                        />
+                        <MultiSelectDropdown
+                            dropdown_id="thcpl".to_string()
+                            title="THCPL".to_string()
+                            options=thcpl_filter_options()
+                            selected_values=thcpl_rank_list
+                            use_english=use_english
+                            panel_width="196px".to_string()
+                            open_dropdown=open_dropdown
+                        />
+                    </div>
                 </div>
             </div>
 
@@ -604,6 +703,8 @@ pub fn ShowTable() -> impl IntoView {
                 use_english=use_english
                 check_list=check_list
                 rank_list=rank_list
+                core_rank_list=core_rank_list
+                thcpl_rank_list=thcpl_rank_list
             />
 
             <div class="zonedivider" />
@@ -632,6 +733,26 @@ pub fn ShowTable() -> impl IntoView {
                                         children=move |conf| {
                                             let is_finished = conf.status == "FIN";
                                             let is_tbd = conf.status == "TBD";
+                                            let ccf_rank_value = conf.rank.clone();
+                                            let ccf_rank_label = conf.displayrank.clone();
+                                            let core_rank_value = conf
+                                                .corerank
+                                                .clone()
+                                                .unwrap_or_else(|| "N".to_string());
+                                            let core_tag_label = if core_rank_value == "N" {
+                                                "Non-CORE".to_string()
+                                            } else {
+                                                format!("CORE {}", core_rank_value.clone())
+                                            };
+                                            let thcpl_rank_value = conf
+                                                .thcplrank
+                                                .clone()
+                                                .unwrap_or_else(|| "N".to_string());
+                                            let thcpl_tag_label = if thcpl_rank_value == "N" {
+                                                "Non-THCPL".to_string()
+                                            } else {
+                                                format!("THCPL {}", thcpl_rank_value.clone())
+                                            };
                                             let show_ddl_str = if is_tbd {
                                                 "TBD".to_string()
                                             } else {
@@ -727,42 +848,42 @@ pub fn ShowTable() -> impl IntoView {
                                                                 </div>
 
                                                                 <div class="tag-container">
-                                                                    <Tag class="plain-tag">
-                                                                        {move || {
-                                                                            if conf.displayrank == "N" {
-                                                                                "Non-CCF".to_string()
-                                                                            } else {
-                                                                                conf.displayrank.clone()
-                                                                            }
-                                                                        }}
-                                                                    </Tag>
+                                                                    <span class=move || {
+                                                                        if rank_list.get().contains(&ccf_rank_value) {
+                                                                            "tag-highlight"
+                                                                        } else {
+                                                                            ""
+                                                                        }
+                                                                    }>
+                                                                        <Tag class="plain-tag">
+                                                                            {ccf_rank_label.clone()}
+                                                                        </Tag>
+                                                                    </span>
                                                                     " "
-                                                                    {move || {
-                                                                        conf.corerank
-                                                                            .as_ref()
-                                                                            .filter(|corerank| corerank.as_str() != "N")
-                                                                            .map(|corerank| {
-                                                                                view! {
-                                                                                    <Tag class="plain-tag">
-                                                                                        {format!("CORE {} ", corerank.clone())}
-                                                                                    </Tag>
-                                                                                    " "
-                                                                                }
-                                                                            })
-                                                                    }}
-                                                                    {move || {
-                                                                        conf.thcplrank
-                                                                            .as_ref()
-                                                                            .filter(|thcplrank| thcplrank.as_str() != "N")
-                                                                            .map(|thcplrank| {
-                                                                                view! {
-                                                                                    <Tag class="plain-tag">
-                                                                                        {format!("THCPL {} ", thcplrank.clone())}
-                                                                                    </Tag>
-                                                                                    " "
-                                                                                }
-                                                                            })
-                                                                    }}
+                                                                    <span class=move || {
+                                                                        if core_rank_list.get().contains(&core_rank_value) {
+                                                                            "tag-highlight"
+                                                                        } else {
+                                                                            ""
+                                                                        }
+                                                                    }>
+                                                                        <Tag class="plain-tag">
+                                                                            {core_tag_label.clone()}
+                                                                        </Tag>
+                                                                    </span>
+                                                                    " "
+                                                                    <span class=move || {
+                                                                        if thcpl_rank_list.get().contains(&thcpl_rank_value) {
+                                                                            "tag-highlight"
+                                                                        } else {
+                                                                            ""
+                                                                        }
+                                                                    }>
+                                                                        <Tag class="plain-tag">
+                                                                            {thcpl_tag_label.clone()}
+                                                                        </Tag>
+                                                                    </span>
+                                                                    " "
                                                                     {move || {
                                                                         conf.comment
                                                                             .as_ref()
@@ -906,6 +1027,17 @@ pub fn ShowTable() -> impl IntoView {
                     <Pagination page page_count />
                 </div>
             </div>
+
+            <style>
+                {r#"
+                .tag-container .tag-highlight .plain-tag {
+                  background: #ecf5ff !important;
+                  color: #1d4ed8 !important;
+                  border: 1px solid #93c5fd !important;
+                  font-weight: 600;
+                }
+                "#}
+            </style>
         </section>
     }
 }
@@ -932,8 +1064,8 @@ fn load_utc_map() -> HashMap<String, String> {
 
 #[cfg(target_arch = "wasm32")]
 fn get_browser_time_and_timezone() -> (DateTime<FixedOffset>, FixedOffset) {
-    let utc_now = Utc::now();
-    let js_date = js_sys::Date::new_0();
+    let utc_now = chrono::Utc::now();
+    let js_date = web_sys::js_sys::Date::new_0();
     let offset_minutes = -(js_date.get_timezone_offset() as i32);
 
     let timezone = FixedOffset::east_opt(offset_minutes * 60)
@@ -969,15 +1101,36 @@ fn is_mobile_device() -> bool {
 
     let window = web_sys::window().expect("no global window exists");
     let navigator = window.navigator();
-    let user_agent = navigator.user_agent().expect("user agent not available").to_lowercase();
+    let user_agent = navigator
+        .user_agent()
+        .expect("user agent not available")
+        .to_lowercase();
 
     let mobile_keywords = [
-        "phone", "pad", "pod", "iphone", "ipod", "ios", "ipad", "android",
-        "mobile", "blackberry", "iemobile", "mqqbrowser", "juc", "fennec",
-        "wosbrowser", "browserng", "webos", "symbian", "windows phone"
+        "phone",
+        "pad",
+        "pod",
+        "iphone",
+        "ipod",
+        "ios",
+        "ipad",
+        "android",
+        "mobile",
+        "blackberry",
+        "iemobile",
+        "mqqbrowser",
+        "juc",
+        "fennec",
+        "wosbrowser",
+        "browserng",
+        "webos",
+        "symbian",
+        "windows phone",
     ];
 
-    mobile_keywords.iter().any(|&keyword| user_agent.contains(keyword))
+    mobile_keywords
+        .iter()
+        .any(|&keyword| user_agent.contains(keyword))
 }
 
 fn get_from_local_storage(key: &str) -> Option<String> {

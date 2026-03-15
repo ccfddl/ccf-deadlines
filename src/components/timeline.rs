@@ -1,8 +1,6 @@
-use leptos::*;
-use leptos::prelude::*;
-use chrono::{prelude::*, Duration};
 use crate::components::conf::TimePoint;
-use web_sys::js_sys;
+use chrono::{Duration, prelude::*};
+use leptos::prelude::*;
 
 #[component]
 pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
@@ -36,21 +34,30 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
         );
     });
 
-    let format_time_label = move |value: &DateTime<FixedOffset>, is_day: bool, index: usize| -> String {
-        if !is_day {
-            return format!("{}", value.format("%Y/%m/%d %H:%M:%S"));
-        }
-
-        let tips = date_tips.get();
-        if tips.len() > 1 && index < tips.len() - 1 {
-            let cur_percent = calculate_position_percent(&tips[index].timepoint, start_date.get(), end_date.get());
-            let next_percent = calculate_position_percent(&tips[index + 1].timepoint, start_date.get(), end_date.get());
-            if next_percent - cur_percent < 8.0 {
-                return String::new();
+    let format_time_label =
+        move |value: &DateTime<FixedOffset>, is_day: bool, index: usize| -> String {
+            if !is_day {
+                return format!("{}", value.format("%Y/%m/%d %H:%M:%S"));
             }
-        }
-        format!("{}", value.format("%m/%d"))
-    };
+
+            let tips = date_tips.get();
+            if tips.len() > 1 && index < tips.len() - 1 {
+                let cur_percent = calculate_position_percent(
+                    &tips[index].timepoint,
+                    start_date.get(),
+                    end_date.get(),
+                );
+                let next_percent = calculate_position_percent(
+                    &tips[index + 1].timepoint,
+                    start_date.get(),
+                    end_date.get(),
+                );
+                if next_percent - cur_percent < 8.0 {
+                    return String::new();
+                }
+            }
+            format!("{}", value.format("%m/%d"))
+        };
 
     let format_backup_type = |backup_type: i32| -> &'static str {
         match backup_type {
@@ -366,8 +373,8 @@ fn calculate_position_percent(time: &DateTime<FixedOffset>, start: f64, end: f64
 
 #[cfg(target_arch = "wasm32")]
 fn get_browser_time_and_timezone() -> (DateTime<FixedOffset>, FixedOffset) {
-    let utc_now = Utc::now();
-    let js_date = js_sys::Date::new_0();
+    let utc_now = chrono::Utc::now();
+    let js_date = web_sys::js_sys::Date::new_0();
     let offset_minutes = -(js_date.get_timezone_offset() as i32);
 
     let timezone = FixedOffset::east_opt(offset_minutes * 60)
@@ -414,7 +421,10 @@ fn initialize_timeline(
     let is_single_point = time_points.len() == 1;
 
     if is_single_point {
-        deadlines.push(TimePoint { timepoint: now, r#type: 1 });
+        deadlines.push(TimePoint {
+            timepoint: now,
+            r#type: 1,
+        });
         set_is_single.set(true);
     } else {
         set_is_single.set(false);
@@ -449,7 +459,10 @@ fn initialize_timeline(
         let width = progress_ratio * 100.0;
         let left = (now_timestamp - start_time) / (end_time - start_time) * 100.0;
         let max_width = 100.0 - left;
-        set_can_line_style.set(format!("width:{}%;left:{}%;max-width:{}%;", width, left, max_width));
+        set_can_line_style.set(format!(
+            "width:{}%;left:{}%;max-width:{}%;",
+            width, left, max_width
+        ));
     } else {
         set_can_line_style.set("width:0%;".to_string());
     }
@@ -458,8 +471,14 @@ fn initialize_timeline(
     set_date_tips.set(deadlines.clone());
 
     let mut all_incremental = deadlines.clone();
-    all_incremental.push(TimePoint { timepoint: deadlines.last().unwrap().timepoint, r#type: 1 });
-    all_incremental.push(TimePoint { timepoint: now, r#type: 1 });
+    all_incremental.push(TimePoint {
+        timepoint: deadlines.last().unwrap().timepoint,
+        r#type: 1,
+    });
+    all_incremental.push(TimePoint {
+        timepoint: now,
+        r#type: 1,
+    });
     set_all_incre.set(all_incremental);
 
     update_selected_dot(
