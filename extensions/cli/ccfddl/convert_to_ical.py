@@ -209,30 +209,38 @@ def convert_to_ical(
         f.write(cal.to_ical())
 
 
+def add_index_entry(index, key: str, file_path: str):
+    index[key].add(file_path)
+
+
 def reverse_index(file_paths: list[str], subs: list[str]):
-    index = defaultdict(list)
+    index = defaultdict(set)
 
     for file_path in file_paths:
         with open(file_path, "r", encoding="utf-8") as f:
             conferences = yaml.safe_load(f)
 
         for conf_data in conferences:
-            # title = conf_data['title']
             sub = conf_data["sub"]
             rank = conf_data["rank"]
-
-            # index[title].append(file_path)
+            ccf_rank = rank.get("ccf", "N")
+            core_rank = rank.get("core", "N")
+            thcpl_rank = rank.get("thcpl", "N")
             rank_keys = [
-                "ccf_" + rank.get("ccf", "N"),
-                "core_" + rank.get("core", "N"),
-                "thcpl_" + rank.get("thcpl", "N"),
+                f"ccf_{ccf_rank}",
+                f"core_{core_rank}",
+                f"thcpl_{thcpl_rank}",
             ]
-            for key in rank_keys:
-                index[key].append(file_path)
-                index[key + "_" + sub].append(file_path)
-            index[sub].append(file_path)
 
-    return index
+            add_index_entry(index, sub, file_path)
+
+            for size in range(1, len(rank_keys) + 1):
+                for combo in combinations(rank_keys, size):
+                    key = "_".join(combo)
+                    add_index_entry(index, key, file_path)
+                    add_index_entry(index, f"{key}_{sub}", file_path)
+
+    return {key: sorted(paths) for key, paths in index.items()}
 
 
 if __name__ == "__main__":

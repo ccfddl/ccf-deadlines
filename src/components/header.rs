@@ -1,7 +1,6 @@
 use leptos::prelude::*;
 use serde::{Deserialize, Serialize};
 use wasm_bindgen_futures::spawn_local;
-use web_sys::{console, js_sys, window};
 
 use crate::components::gitbutton::GitButton;
 
@@ -28,9 +27,7 @@ pub fn Header() -> impl IntoView {
                     set_show_latest_conf.set(show_conf);
                     set_show_str.set(conf_str);
                 }
-                Err(_) => {
-
-                }
+                Err(_) => {}
             }
         });
     });

@@ -49,10 +49,7 @@ where
             prev_handle.clear();
         }
 
-        set_interval_with_handle(
-            f.clone(),
-            Duration::from_millis(interval_millis.get()),
-        )
-        .expect("could not create interval")
+        set_interval_with_handle(f.clone(), Duration::from_millis(interval_millis.get()))
+            .expect("could not create interval")
     });
 }
