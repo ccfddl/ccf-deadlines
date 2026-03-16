@@ -72,3 +72,14 @@
       timezone: UTC-7
       date: May 4-8, 2026
       place: Montréal, Canada
+    - year: 2027
+      id: icde27
+      link: https://icde2027.github.io/
+      timeline:
+        - deadline: '2026-06-11 17:00:00'
+          comment: first round
+        - deadline: '2026-11-11 17:00:00'
+          comment: second round
+      timezone: UTC-7
+      date: May 17-21, 2027
+      place: Copenhagen, Denmark
