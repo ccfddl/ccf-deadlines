@@ -11,6 +11,8 @@ from icalendar import Calendar, Event, Timezone, TimezoneStandard
 def load_mapping(path: str = "conference/types.yml"):
     with open(path, encoding="utf-8") as f:
         types = yaml.safe_load(f)
+    if types is None:
+        return {}
     SUB_MAPPING = {}
     for types_data in types:
         SUB_MAPPING[types_data["sub"]] = types_data["name"]
@@ -219,6 +221,9 @@ def reverse_index(file_paths: list[str], subs: list[str]):
     for file_path in file_paths:
         with open(file_path, "r", encoding="utf-8") as f:
             conferences = yaml.safe_load(f)
+
+        if conferences is None:
+            continue
 
         for conf_data in conferences:
             sub = conf_data["sub"]

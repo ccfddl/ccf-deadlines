@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 
-from convert_to_ical import load_mapping, get_timezone, reverse_index
+from ccfddl.convert_to_ical import load_mapping, get_timezone, reverse_index
 
 import yaml
 
@@ -30,6 +30,9 @@ def convert_to_rss(
     for file_path in file_paths:
         with open(file_path, "r", encoding="utf-8") as f:
             conferences = yaml.safe_load(f)
+
+        if conferences is None:
+            continue
 
         for conf_data in conferences:
             title = conf_data["title"]
