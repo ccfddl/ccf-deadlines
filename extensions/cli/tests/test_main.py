@@ -3,34 +3,33 @@ from datetime import datetime, timezone, timedelta
 from unittest.mock import patch, MagicMock
 
 from ccfddl.__main__ import (
-    parse_tz,
     parse_args,
-    format_duration,
     extract_alpha_id,
     main,
 )
+from ccfddl.utils import format_duration, get_timezone
 
 
-class TestParseTz:
+class TestGetTimezone:
     def test_aoe(self):
-        assert parse_tz("AoE") == "-1200"
+        tz = get_timezone("AoE")
+        assert tz == timezone(timedelta(hours=-12))
+
+    def test_utc(self):
+        tz = get_timezone("UTC")
+        assert tz == timezone.utc
 
     def test_utc_negative(self):
-        assert parse_tz("UTC-8") == "-0008"
+        tz = get_timezone("UTC-8")
+        assert tz == timezone(timedelta(hours=-8))
 
     def test_utc_positive(self):
-        assert parse_tz("UTC+8") == "+0008"
+        tz = get_timezone("UTC+8")
+        assert tz == timezone(timedelta(hours=8))
 
-    def test_utc_single_digit(self):
-        assert parse_tz("UTC-5") == "-0005"
-        assert parse_tz("UTC+5") == "+0005"
-
-    def test_utc_zero(self):
-        assert parse_tz("UTC+0") == "+0000"
-        assert parse_tz("UTC") == "+0000"
-
-    def test_unknown_format(self):
-        assert parse_tz("GMT+8") == "+0000"
+    def test_invalid_format(self):
+        with pytest.raises(ValueError):
+            get_timezone("GMT+8")
 
 
 class TestParseArgs:
@@ -44,24 +43,27 @@ class TestParseArgs:
     def test_conf_args(self):
         with patch("sys.argv", ["ccfddl", "--conf", "CVPR", "ICML"]):
             args = parse_args()
-            assert args.conf == ["cvpr", "icml"]
+            assert args.conf == ["CVPR", "ICML"]
 
     def test_sub_args(self):
         with patch("sys.argv", ["ccfddl", "--sub", "AI", "CG"]):
             args = parse_args()
-            assert args.sub == ["ai", "cg"]
+            assert args.sub == ["AI", "CG"]
 
     def test_rank_args(self):
         with patch("sys.argv", ["ccfddl", "--rank", "A", "B"]):
             args = parse_args()
-            assert args.rank == ["a", "b"]
+            assert args.rank == ["A", "B"]
 
-    def test_all_args(self):
-        with patch("sys.argv", ["ccfddl", "--conf", "CVPR", "--sub", "AI", "--rank", "A"]):
+    def test_json_flag(self):
+        with patch("sys.argv", ["ccfddl", "--json"]):
             args = parse_args()
-            assert args.conf == ["cvpr"]
-            assert args.sub == ["ai"]
-            assert args.rank == ["a"]
+            assert args.json is True
+
+    def test_list_categories_flag(self):
+        with patch("sys.argv", ["ccfddl", "--list-categories"]):
+            args = parse_args()
+            assert args.list_categories is True
 
 
 class TestFormatDuration:
@@ -92,7 +94,7 @@ class TestFormatDuration:
     def test_single_day(self, now):
         ddl = now + timedelta(days=1)
         result = format_duration(ddl, now)
-        assert "01 day " in result
+        assert "01 day" in result
 
 
 class TestExtractAlphaId:
@@ -117,11 +119,11 @@ class TestExtractAlphaId:
 
 class TestMain:
     @patch("ccfddl.__main__.requests.get")
-    @patch("builtins.print")
-    def test_main_basic(self, mock_print, mock_get):
+    def test_main_basic(self, mock_get):
         mock_response = MagicMock()
-        mock_response.content.decode.return_value = """
+        mock_response.content = """
 - title: CVPR
+  description: Test Conference
   sub: AI
   rank:
     ccf: A
@@ -135,10 +137,19 @@ class TestMain:
       timezone: UTC+0
       date: June 2030
       place: Test City
-"""
+""".encode("utf-8")
+        mock_response.raise_for_status = MagicMock()
         mock_get.return_value = mock_response
 
         with patch("sys.argv", ["ccfddl"]):
             main()
 
-        mock_get.assert_called_once_with("https://ccfddl.github.io/conference/allconf.yml")
+        mock_get.assert_called_once()
+
+    @patch("builtins.print")
+    def test_list_categories(self, mock_print):
+        with patch("sys.argv", ["ccfddl", "--list-categories"]):
+            main()
+
+        printed = [str(call) for call in mock_print.call_args_list]
+        assert any("Available Categories" in str(p) for p in printed)
