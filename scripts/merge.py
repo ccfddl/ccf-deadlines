@@ -2,105 +2,175 @@
 
 """
 YAML Structured Merger Script
-Parse and merge multiple YAML files into a single structured file
+
+Parse and merge multiple YAML files into a single structured file.
+Outputs merged YAML to stdout, progress messages to stderr.
+
+Usage:
+    python scripts/merge.py <directory> [--exclude pattern]
+    python scripts/merge.py ../../conference --exclude types.yml
 """
 
-import os
-import yaml
 import argparse
+import sys
 from pathlib import Path
+from typing import Any
 
-def find_yml_files(base_path, exclude_pattern="types.yml"):
+import yaml
+
+
+def find_yml_files(
+    base_path: Path, exclude_patterns: list[str] | None = None
+) -> list[Path]:
     """
-    Find all .yml files in the directory, excluding specified patterns
+    Find all .yml files in the directory, excluding specified patterns.
 
     Args:
         base_path: Base directory to search
-        exclude_pattern: Filename pattern to exclude
+        exclude_patterns: List of filename patterns to exclude
 
     Returns:
-        List of yml file paths
+        Sorted list of yml file paths
     """
-    base_path = Path(base_path)
-
-    yml_files = []
+    if exclude_patterns is None:
+        exclude_patterns = ["types.yml"]
+    
+    yml_files: list[Path] = []
+    
     for yml_file in base_path.rglob("*.yml"):
-        # Skip if matches exclude pattern
-        if yml_file.name == exclude_pattern:
+        if yml_file.name in exclude_patterns:
             continue
         yml_files.append(yml_file)
-
-    # Sort for consistent output
+    
     return sorted(yml_files)
 
-# Remove the separate merge function since we're doing everything in main now
 
-def main():
-    """Main function - output YAML to stdout for redirection"""
+def load_yaml_file(file_path: Path) -> list[Any] | None:
+    """
+    Load a YAML file and return its contents as a list.
 
-    # Command line argument parsing
-    parser = argparse.ArgumentParser(description='Merge YAML files from specified directory')
-    parser.add_argument('path',
-                       help='Directory path to search for YAML files (e.g., ../../conference)')
-    parser.add_argument('--exclude', default='types.yml',
-                       help='Filename pattern to exclude (default: types.yml)')
+    Args:
+        file_path: Path to the YAML file
 
+    Returns:
+        List of items from the YAML file, or None if loading fails
+    """
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+        
+        if data is None:
+            return []
+        
+        if isinstance(data, list):
+            return data
+        
+        return [data]
+    
+    except yaml.YAMLError as e:
+        print(
+            f"YAML parsing error in {file_path}: {e}",
+            file=sys.stderr,
+        )
+        return None
+    
+    except Exception as e:
+        print(f"Error reading {file_path}: {e}", file=sys.stderr)
+        return None
+
+
+def merge_yaml_files(
+    file_paths: list[Path], verbose: bool = True
+) -> list[Any]:
+    """
+    Merge multiple YAML files into a single list.
+
+    Args:
+        file_paths: List of YAML file paths to merge
+        verbose: Whether to print progress messages
+
+    Returns:
+        Merged list of all items
+    """
+    all_data: list[Any] = []
+    
+    for yml_file in file_paths:
+        if verbose:
+            print(f"Processing: {yml_file}", file=sys.stderr)
+        
+        data = load_yaml_file(yml_file)
+        if data is not None:
+            all_data.extend(data)
+    
+    return all_data
+
+
+def main() -> int:
+    """Main entry point for the merge script."""
+    parser = argparse.ArgumentParser(
+        description="Merge YAML files from specified directory",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=__doc__,
+    )
+    parser.add_argument(
+        "path",
+        type=Path,
+        help="Directory path to search for YAML files",
+    )
+    parser.add_argument(
+        "--exclude",
+        nargs="*",
+        default=["types.yml"],
+        help="Filename patterns to exclude (default: types.yml)",
+    )
+    parser.add_argument(
+        "-q",
+        "--quiet",
+        action="store_true",
+        help="Suppress progress messages",
+    )
+    
     args = parser.parse_args()
-
-    # Configuration
-    search_path = Path(args.path)
-
-    import sys
-
-    # Send progress messages to stderr so they don't interfere with stdout
-    print(f"🔍 Finding YAML files in {search_path}...", file=sys.stderr)
+    search_path = args.path
+    
+    if not search_path.is_dir():
+        print(f"Error: Directory not found: {search_path}", file=sys.stderr)
+        return 1
+    
+    verbose = not args.quiet
+    
+    if verbose:
+        print(f"Finding YAML files in {search_path}...", file=sys.stderr)
+    
     yml_files = find_yml_files(search_path, args.exclude)
-
+    
     if not yml_files:
-        print("❌ No YAML files found!", file=sys.stderr)
-        return
+        print("No YAML files found!", file=sys.stderr)
+        return 0
+    
+    if verbose:
+        print(f"Found {len(yml_files)} YAML files", file=sys.stderr)
+    
+    all_data = merge_yaml_files(yml_files, verbose=verbose)
+    
+    yaml.dump(
+        all_data,
+        sys.stdout,
+        default_flow_style=False,
+        allow_unicode=True,
+        sort_keys=False,
+        indent=2,
+    )
+    
+    if verbose:
+        print(
+            f"Successfully merged {len(yml_files)} files "
+            f"with {len(all_data)} total entries",
+            file=sys.stderr,
+        )
+    
+    return 0
 
-    print(f"📁 Found {len(yml_files)} YAML files", file=sys.stderr)
-
-    # Collect all data
-    all_data = []
-
-    for yml_file in yml_files:
-        print(f"Processing: {yml_file}", file=sys.stderr)
-        try:
-            with open(yml_file, 'r', encoding='utf-8') as file:
-                # Load YAML content
-                data = yaml.safe_load(file)
-
-                # Handle different YAML structures
-                if isinstance(data, list):
-                    # If it's a list, extend our main list
-                    all_data.extend(data)
-                elif isinstance(data, dict):
-                    # If it's a dict, add source info and append
-                    data['_source_file'] = str(yml_file.relative_to(Path.cwd()))
-                    all_data.append(data)
-                elif data is not None:
-                    # Handle other data types
-                    data_entry = {
-                        'data': data,
-                        '_source_file': str(yml_file.relative_to(Path.cwd()))
-                    }
-                    all_data.append(data_entry)
-
-        except yaml.YAMLError as e:
-            print(f"❌ YAML parsing error in {yml_file}: {e}", file=sys.stderr)
-        except Exception as e:
-            print(f"❌ Error reading {yml_file}: {e}", file=sys.stderr)
-
-    # Output merged YAML to stdout
-    yaml.dump(all_data, sys.stdout,
-             default_flow_style=False,
-             allow_unicode=True,
-             sort_keys=False,
-             indent=2)
-
-    print(f"✅ Successfully merged {len(yml_files)} files with {len(all_data)} total entries", file=sys.stderr)
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

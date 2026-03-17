@@ -1,81 +1,122 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
-pre-commit hook to check conference yml files
+Pre-commit hook to validate conference YAML files.
 
-To use it normally as git pre-commit hook,
-make a symlink and install dependencies:
-$ ln -s ../../scripts/validate .git/hooks/pre-commit
-$ pip install PyYAML jsonschema
+Usage:
+    python scripts/validate.py
+    python scripts/validate.py --help
+
+To use as git pre-commit hook, install dependencies:
+    pip install PyYAML jsonschema
 """
 
 import os
 import sys
-
 from io import StringIO
-from pprint import pprint
+from pathlib import Path
+from typing import Any
 from unittest import TestCase, TestLoader, TextTestRunner
 
 import jsonschema
-import jsonschema.exceptions
-
 import yaml
 
-ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-DATA_ROOT = os.path.join(ROOT, 'conference')
-YAML_SCHEMA = None
-
-def load_conference_yaml_schema():
-    global YAML_SCHEMA
-    with open(os.path.join(ROOT, 'conference-yaml-schema.yml'), 'r') as schema:
-        YAML_SCHEMA = yaml.load(schema, Loader=yaml.SafeLoader)
+ROOT = Path(__file__).parent.parent
+DATA_ROOT = ROOT / "conference"
+SCHEMA_PATH = ROOT / "conference-yaml-schema.yml"
 
 
-class ConferenceTest(TestCase):
-    def test_conference_yaml_schema(self):
-        self.assertTrue(os.path.isdir(DATA_ROOT))
-        for sub in os.listdir(DATA_ROOT):
-            subdir = os.path.join(DATA_ROOT, sub)
-            if os.path.isdir(subdir):
-                for conf in os.listdir(subdir):
-                    with self.subTest(conf=conf):
-                        if conf.endswith('.yaml'): # Some new contributors will commit a wrong the file extension.
-                            self.fail(msg=f'\033[1;31m{conf}\033[m should be renamed as \033[1;31m{conf[:-4]}yml\033[m')
-                        if not conf.endswith('.yml'):
-                            continue
-                        conference_yml_path = os.path.join(DATA_ROOT, sub, conf)
-                        with open(conference_yml_path, 'r') as conference_yml_file:
-                            try:
-                                conference_yml = yaml.load(conference_yml_file.read(), Loader=yaml.SafeLoader)
-                            except Exception:
-                                self.fail(msg=f'Conference \033[1;31m{conf}\033[m contains invalid YAML')
-                            try:
-                                jsonschema.validate(conference_yml, YAML_SCHEMA)
-                            except jsonschema.exceptions.ValidationError:
-                                self.fail(msg=f'Conference \033[1;31m{conf}\033[m contains invalid properties')
+def load_conference_yaml_schema(schema_path: Path = SCHEMA_PATH) -> dict[str, Any]:
+    """Load and return the YAML validation schema."""
+    with open(schema_path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
 
 
-def run_test(testcase, msg):
-    output = StringIO()
-    suite = TestLoader().loadTestsFromTestCase(testcase)
-    runner = TextTestRunner(output, verbosity=0)
-    results = runner.run(suite)
-    if not results.wasSuccessful():
-        print(output.getvalue())
-        print(msg.format(len(results.failures)))
-        sys.exit(1)
+def validate_single_conference(
+    conf_path: Path, schema: dict[str, Any]
+) -> list[str]:
+    """Validate a single conference YAML file. Returns list of error messages."""
+    errors = []
+    
+    if conf_path.suffix == ".yaml":
+        errors.append(
+            f"{conf_path.name} should be renamed as {conf_path.stem}.yml"
+        )
+        return errors
+    
+    if conf_path.suffix != ".yml":
+        return errors
+    
+    try:
+        with open(conf_path, "r", encoding="utf-8") as f:
+            content = yaml.safe_load(f)
+    except yaml.YAMLError as e:
+        errors.append(f"Invalid YAML syntax in {conf_path.name}: {e}")
+        return errors
+    except Exception as e:
+        errors.append(f"Error reading {conf_path.name}: {e}")
+        return errors
+    
+    try:
+        jsonschema.validate(content, schema)
+    except jsonschema.ValidationError as e:
+        errors.append(f"Schema validation failed for {conf_path.name}: {e.message}")
+    
+    return errors
 
 
-def usage():
-    print(__doc__)
+def validate_all_conferences(
+    data_root: Path = DATA_ROOT, schema: dict[str, Any] | None = None
+) -> list[str]:
+    """Validate all conference YAML files. Returns list of all error messages."""
+    if schema is None:
+        schema = load_conference_yaml_schema()
+    
+    all_errors: list[str] = []
+    
+    if not data_root.is_dir():
+        all_errors.append(f"Data directory not found: {data_root}")
+        return all_errors
+    
+    for sub_dir in sorted(data_root.iterdir()):
+        if not sub_dir.is_dir():
+            continue
+        
+        for conf_file in sorted(sub_dir.iterdir()):
+            if conf_file.is_file():
+                errors = validate_single_conference(conf_file, schema)
+                all_errors.extend(errors)
+    
+    return all_errors
 
 
-if __name__ == '__main__':
+def run_validation() -> bool:
+    """Run validation and return True if all files are valid."""
+    schema = load_conference_yaml_schema()
+    errors = validate_all_conferences(schema=schema)
+    
+    if errors:
+        print("\n\033[1;31mValidation Errors:\033[m")
+        for error in errors:
+            print(f"  - {error}")
+        print(
+            f"\n\033[1;31mFound {len(errors)} error(s). "
+            f"Please fix and commit again.\033[m"
+        )
+        return False
+    
+    print("\033[1;32mAll conference YAML files are valid.\033[m")
+    return True
 
-    if '-h' in sys.argv or '--help' in sys.argv:
-        usage()
-        sys.exit(0)
 
-    load_conference_yaml_schema()
-    run_test(ConferenceTest,
-             msg=('\033[1;31mThere are {0} error(s) inside repo. Please fix the errors and commit again.\033[m'))
+def main() -> int:
+    """Main entry point for the validation script."""
+    if "-h" in sys.argv or "--help" in sys.argv:
+        print(__doc__)
+        return 0
+    
+    return 0 if run_validation() else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
