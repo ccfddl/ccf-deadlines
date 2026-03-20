@@ -13,6 +13,7 @@ import yaml
 from tabulate import tabulate
 from termcolor import colored
 
+from ccfddl import __version__
 from ccfddl.models import CATEGORIES, Conference, get_category_by_sub
 from ccfddl.utils import format_duration, parse_datetime_with_tz
 
@@ -22,6 +23,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="CCFDDL CLI - Conference Deadline Tracker",
         epilog="Example: ccfddl --conf CVPR ICML --sub AI --rank A",
+    )
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
     )
     parser.add_argument(
         "--conf",
@@ -70,7 +76,7 @@ def fetch_conferences(url: str) -> list[Conference]:
     try:
         response = requests.get(url, timeout=30, allow_redirects=True)
         response.raise_for_status()
-        content = response.content.decode("utf-8")
+        content = response.content
         data = yaml.safe_load(content)
         return [Conference.from_dict(item) for item in data]
     except requests.RequestException as e:

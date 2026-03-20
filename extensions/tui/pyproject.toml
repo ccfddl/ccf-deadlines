@@ -3,33 +3,21 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ccfddl"
-version = "0.2.0"
-description = "CLI tool for CCFDDL - Conference Deadline Tracker"
-readme = "readme.md"
+name = "ccfddl-tui"
+version = "0.1.0"
+description = "TUI tool for CCFDDL - Conference Deadline Tracker"
+readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
-authors = [
-    {name = "0x4f5da2", email = "me@4f5da2.com"}
-]
 dependencies = [
-    "tabulate",
+    "textual>=0.47.0",
     "pyyaml",
     "requests",
-    "termcolor",
-    "icalendar",
-    "xlin",
-]
-
-[project.optional-dependencies]
-dev = [
-    "mypy",
-    "pytest>=7.0",
-    "pytest-cov",
+    "python-dateutil",
 ]
 
 [project.scripts]
-ccfddl = "ccfddl.__main__:main"
+ccfddl-tui = "ccfddl_tui.main:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -47,5 +35,5 @@ warn_unused_ignores = true
 disallow_untyped_defs = true
 
 [[tool.mypy.overrides]]
-module = ["icalendar.*", "xlin.*", "termcolor.*"]
+module = ["textual.*"]
 ignore_missing_imports = true
