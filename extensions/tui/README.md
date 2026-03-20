@@ -233,7 +233,7 @@ Main application orchestrator:
 ### Data Flow
 
 ```
-[Remote YAML] 
+[Remote YAML]
      │
      ▼
 [DataService.load_conferences()]

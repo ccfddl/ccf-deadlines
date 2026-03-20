@@ -27,9 +27,9 @@ class FilterChanged(Message):
     """
 
     def __init__(
-        self, 
-        subs: Set[str], 
-        ranks: Set[str], 
+        self,
+        subs: Set[str],
+        ranks: Set[str],
         core_ranks: Set[str],
         thcpl_ranks: Set[str],
         show_expired: bool,
@@ -235,7 +235,7 @@ class FilterSidebar(Vertical):
         """Get the current filter state.
 
         Returns:
-            A tuple of (selected_subs, selected_ranks, selected_core_ranks, 
+            A tuple of (selected_subs, selected_ranks, selected_core_ranks,
                        selected_thcpl_ranks, show_expired, search_query).
         """
         return (

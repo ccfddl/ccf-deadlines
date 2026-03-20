@@ -86,7 +86,7 @@ def sample_conference_row_finished() -> ConferenceRow:
 def sample_conference_rows_mixed() -> list[ConferenceRow]:
     """Create a list of ConferenceRows with mixed statuses (running, TBD, finished)."""
     now = datetime.now(timezone.utc)
-    
+
     # Running conferences (different deadlines to test sorting)
     running1 = ConferenceRow(
         title="CVPR",
@@ -105,7 +105,7 @@ def sample_conference_rows_mixed() -> list[ConferenceRow]:
         is_running=True,
         is_tbd=False,
     )
-    
+
     running2 = ConferenceRow(
         title="ICLR",
         year=2025,
@@ -123,7 +123,7 @@ def sample_conference_rows_mixed() -> list[ConferenceRow]:
         is_running=True,
         is_tbd=False,
     )
-    
+
     running3 = ConferenceRow(
         title="SIGMOD",
         year=2025,
@@ -141,7 +141,7 @@ def sample_conference_rows_mixed() -> list[ConferenceRow]:
         is_running=True,
         is_tbd=False,
     )
-    
+
     # TBD conference
     tbd = ConferenceRow(
         title="NeurIPS",
@@ -160,7 +160,7 @@ def sample_conference_rows_mixed() -> list[ConferenceRow]:
         is_running=True,
         is_tbd=True,
     )
-    
+
     # Finished conferences
     finished1 = ConferenceRow(
         title="ICML",
@@ -179,7 +179,7 @@ def sample_conference_rows_mixed() -> list[ConferenceRow]:
         is_running=False,
         is_tbd=False,
     )
-    
+
     finished2 = ConferenceRow(
         title="VLDB",
         year=2024,
@@ -197,7 +197,7 @@ def sample_conference_rows_mixed() -> list[ConferenceRow]:
         is_running=False,
         is_tbd=False,
     )
-    
+
     return [running1, running2, running3, tbd, finished1, finished2]
 
 
@@ -206,7 +206,7 @@ def sample_conference_rows_various_categories() -> list[ConferenceRow]:
     """Create ConferenceRows with different categories (sub) for filter testing."""
     now = datetime.now(timezone.utc)
     deadline = now + timedelta(days=10)
-    
+
     return [
         ConferenceRow(
             title="CVPR",
@@ -284,7 +284,7 @@ def sample_conference_rows_various_ranks() -> list[ConferenceRow]:
     """Create ConferenceRows with different CCF ranks for filter testing."""
     now = datetime.now(timezone.utc)
     deadline = now + timedelta(days=10)
-    
+
     return [
         ConferenceRow(
             title="CVPR",

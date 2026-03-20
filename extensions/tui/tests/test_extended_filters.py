@@ -24,7 +24,7 @@ class TestFilterChangedMessage:
             show_expired=False,
             query="test",
         )
-        
+
         assert msg.subs == {"AI", "DB"}
         assert msg.ranks == {"A", "B"}
         assert msg.core_ranks == {"A*", "A"}
@@ -42,7 +42,7 @@ class TestFilterChangedMessage:
             show_expired=True,
             query="",
         )
-        
+
         assert msg.show_expired is True
 
 
@@ -67,7 +67,7 @@ class TestConferenceRowExtended:
             is_tbd=False,
             is_expired=False,
         )
-        
+
         assert row.core_rank == "A*"
         assert row.thcpl_rank == "A"
         assert row.is_expired is False
@@ -90,7 +90,7 @@ class TestConferenceRowExtended:
             is_tbd=True,
             is_expired=False,
         )
-        
+
         assert row.core_rank is None
         assert row.thcpl_rank is None
 
@@ -102,29 +102,29 @@ class TestDataServiceRankFiltering:
         """Should filter by CCF rank."""
         service = DataService()
         rows = sample_conference_rows_with_ranks
-        
+
         result = service.filter_by_rank(rows, {"A"})
-        
+
         assert len(result) == 2
         assert all(r.rank == "A" for r in result)
 
     def test_filter_expired_conferences(self, sample_conference_rows_mixed):
         """Should filter out expired conferences when show_expired=False."""
         rows = sample_conference_rows_mixed
-        
+
         # Filter out expired
         result = [r for r in rows if not r.is_expired]
-        
+
         assert len(result) == 2  # Running and TBD
         assert all(not r.is_expired for r in result)
 
     def test_include_expired_when_enabled(self, sample_conference_rows_mixed):
         """Should include expired when show_expired=True."""
         rows = sample_conference_rows_mixed
-        
+
         # Include all
         result = rows
-        
+
         assert len(result) == 3
         assert any(r.is_expired for r in result)
 
@@ -136,17 +136,17 @@ class TestFilterSidebarExtended:
     async def test_core_rank_checkboxes_exist(self):
         """Sidebar should have CORE rank checkboxes."""
         from textual.app import App
-        
+
         class TestApp(App):
             def compose(self):
                 yield FilterSidebar()
-        
+
         app = TestApp()
         async with app.run_test() as pilot:
             await pilot.pause()
-            
+
             sidebar = pilot.app.query_one(FilterSidebar)
-            
+
             # Check CORE rank checkboxes exist
             for rank in ["A*", "A", "B", "C", "N"]:
                 safe_id = rank.replace("*", "star")
@@ -158,17 +158,17 @@ class TestFilterSidebarExtended:
     async def test_thcpl_rank_checkboxes_exist(self):
         """Sidebar should have THCPL rank checkboxes."""
         from textual.app import App
-        
+
         class TestApp(App):
             def compose(self):
                 yield FilterSidebar()
-        
+
         app = TestApp()
         async with app.run_test() as pilot:
             await pilot.pause()
-            
+
             sidebar = pilot.app.query_one(FilterSidebar)
-            
+
             # Check THCPL rank checkboxes exist
             for rank in ["A", "B", "N"]:
                 checkbox = sidebar.query_one(f"#thcpl-rank-{rank}")
@@ -179,17 +179,17 @@ class TestFilterSidebarExtended:
     async def test_show_expired_checkbox_exists(self):
         """Sidebar should have show_expired checkbox."""
         from textual.app import App
-        
+
         class TestApp(App):
             def compose(self):
                 yield FilterSidebar()
-        
+
         app = TestApp()
         async with app.run_test() as pilot:
             await pilot.pause()
-            
+
             sidebar = pilot.app.query_one(FilterSidebar)
-            
+
             checkbox = sidebar.query_one("#show-expired")
             assert checkbox is not None
             assert checkbox.value is False  # Default unchecked
@@ -198,29 +198,29 @@ class TestFilterSidebarExtended:
     async def test_core_rank_toggle_emits_filter_changed(self):
         """Toggling CORE rank should emit FilterChanged."""
         from textual.app import App
-        
+
         class TestApp(App):
             def compose(self):
                 yield FilterSidebar()
-        
+
         app = TestApp()
         messages = []
-        
+
         def capture_message(msg):
             messages.append(msg)
-        
+
         async with app.run_test() as pilot:
             await pilot.pause()
-            
+
             sidebar = pilot.app.query_one(FilterSidebar)
             sidebar.watch(selected_core_ranks, capture_message)
-            
+
             # Toggle off A*
             checkbox = sidebar.query_one("#core-rank-Astar")
             checkbox.value = False
-            
+
             await pilot.pause()
-            
+
             assert len(messages) > 0
 
 
@@ -230,14 +230,14 @@ class TestLocalDataFallback:
     def test_using_local_data_property(self, mock_local_conferences):
         """DataService should track if using local data."""
         service = DataService()
-        
+
         # Initially false
         assert service.using_local_data is False
 
     def test_last_error_property(self):
         """DataService should store last error."""
         service = DataService()
-        
+
         # Initially None
         assert service.last_error is None
 
@@ -248,7 +248,7 @@ class TestLocalDataFallback:
 def sample_conference_rows_with_ranks():
     """Sample rows with different rank types."""
     now = datetime.now(timezone.utc)
-    
+
     return [
         ConferenceRow(
             title="CVPR",
@@ -305,7 +305,7 @@ def sample_conference_rows_with_ranks():
 def sample_conference_rows_mixed():
     """Sample rows with running, TBD, and expired conferences."""
     now = datetime.now(timezone.utc)
-    
+
     return [
         ConferenceRow(
             title="Running Conf",
@@ -363,5 +363,5 @@ def mock_local_conferences(monkeypatch):
     """Mock local conference loading."""
     def mock_load_local(self):
         return []
-    
+
     monkeypatch.setattr(DataService, "_load_local_conferences", mock_load_local)

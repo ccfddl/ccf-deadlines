@@ -272,17 +272,17 @@ class CCFDeadlinesApp(App):
         """Update the header with current conference count and data source."""
         count = len(self.conferences)
         total = len(self._all_rows)
-        
+
         # Add indicator for local data fallback
         source_indicator = ""
         if self.data_service.using_local_data:
             source_indicator = " [LOCAL]"
-        
+
         if self.language == "zh":
             subtitle = f"显示 {count} / {total} 个会议{source_indicator}"
         else:
             subtitle = f"Showing {count} of {total} conferences{source_indicator}"
-        
+
         self.sub_title = subtitle
 
     @on(FilterChanged)
@@ -345,21 +345,21 @@ class CCFDeadlinesApp(App):
         try:
             table = self.query_one("#conference-table", ConferenceTable)
             selected_row = table.get_selected_row()
-            
+
             if selected_row:
                 # Toggle favorite in data service
                 is_favorite = self.data_service.toggle_favorite(selected_row)
-                
+
                 # Update the row in our data
                 for row in self._all_rows:
                     if row.title == selected_row.title and row.year == selected_row.year:
                         row.is_favorite = is_favorite
                         break
-                
+
                 # Re-sort and update display
                 self._update_conferences()
                 self._update_table()
-                
+
                 # Show notification
                 action = "added to" if is_favorite else "removed from"
                 self.notify(f"{selected_row.title} {action} favorites")

@@ -37,16 +37,16 @@ def validate_single_conference(
 ) -> list[str]:
     """Validate a single conference YAML file. Returns list of error messages."""
     errors = []
-    
+
     if conf_path.suffix == ".yaml":
         errors.append(
             f"{conf_path.name} should be renamed as {conf_path.stem}.yml"
         )
         return errors
-    
+
     if conf_path.suffix != ".yml":
         return errors
-    
+
     try:
         with open(conf_path, "r", encoding="utf-8") as f:
             content = yaml.safe_load(f)
@@ -56,12 +56,12 @@ def validate_single_conference(
     except Exception as e:
         errors.append(f"Error reading {conf_path.name}: {e}")
         return errors
-    
+
     try:
         jsonschema.validate(content, schema)
     except jsonschema.ValidationError as e:
         errors.append(f"Schema validation failed for {conf_path.name}: {e.message}")
-    
+
     return errors
 
 
@@ -71,22 +71,22 @@ def validate_all_conferences(
     """Validate all conference YAML files. Returns list of all error messages."""
     if schema is None:
         schema = load_conference_yaml_schema()
-    
+
     all_errors: list[str] = []
-    
+
     if not data_root.is_dir():
         all_errors.append(f"Data directory not found: {data_root}")
         return all_errors
-    
+
     for sub_dir in sorted(data_root.iterdir()):
         if not sub_dir.is_dir():
             continue
-        
+
         for conf_file in sorted(sub_dir.iterdir()):
             if conf_file.is_file():
                 errors = validate_single_conference(conf_file, schema)
                 all_errors.extend(errors)
-    
+
     return all_errors
 
 
@@ -94,7 +94,7 @@ def run_validation() -> bool:
     """Run validation and return True if all files are valid."""
     schema = load_conference_yaml_schema()
     errors = validate_all_conferences(schema=schema)
-    
+
     if errors:
         print("\n\033[1;31mValidation Errors:\033[m")
         for error in errors:
@@ -104,7 +104,7 @@ def run_validation() -> bool:
             f"Please fix and commit again.\033[m"
         )
         return False
-    
+
     print("\033[1;32mAll conference YAML files are valid.\033[m")
     return True
 
@@ -114,7 +114,7 @@ def main() -> int:
     if "-h" in sys.argv or "--help" in sys.argv:
         print(__doc__)
         return 0
-    
+
     return 0 if run_validation() else 1
 
 

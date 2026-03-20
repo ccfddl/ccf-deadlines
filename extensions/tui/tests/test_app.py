@@ -41,7 +41,7 @@ def create_mock_conference(
     deadline = (
         datetime.now(timezone.utc) + timedelta(days=deadline_days)
     ).strftime("%Y-%m-%d %H:%M:%S")
-    
+
     return Conference(
         title=title,
         description=f"{title} Conference",
@@ -82,7 +82,7 @@ def create_mock_conferences_list() -> list[Conference]:
 def create_mock_conference_rows() -> list[ConferenceRow]:
     """Create mock ConferenceRow objects for testing."""
     now = datetime.now(timezone.utc)
-    
+
     return [
         ConferenceRow(
             title="CVPR",
@@ -163,26 +163,26 @@ def create_mock_conference_rows() -> list[ConferenceRow]:
 async def test_app_launch() -> None:
     """Test that app launches and shows expected components."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         await pilot.pause()
-        
+
         # Verify Header exists
         header = pilot.app.query_one(Header)
         assert header is not None
-        
+
         # Verify Footer exists
         footer = pilot.app.query_one(Footer)
         assert footer is not None
-        
+
         # Verify FilterSidebar exists
         sidebar = pilot.app.query_one("#filter-sidebar", FilterSidebar)
         assert sidebar is not None
-        
+
         # Verify ConferenceTable exists
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         assert table is not None
-        
+
         # Verify app title
         assert pilot.app.title == "CCF-Deadlines TUI"
 
@@ -192,20 +192,20 @@ async def test_app_launch() -> None:
 async def test_data_loading(mock_load_data) -> None:
     """Test that data loads and displays in table."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Initially, loading overlay should be shown
         await pilot.pause()
-        
+
         # Manually set up test data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         # Verify table has data
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         assert table.has_rows() is True
@@ -216,7 +216,7 @@ async def test_data_loading(mock_load_data) -> None:
 async def test_filter_by_category() -> None:
     """Test clicking category checkbox updates table filter."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up initial data
         test_rows = create_mock_conference_rows()
@@ -225,30 +225,30 @@ async def test_filter_by_category() -> None:
         pilot.app.selected_subs = {"AI", "DB", "CG", "SE"}
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         # Get initial row count (all 4 rows)
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         initial_count = table.get_row_count()
         assert initial_count == 4
-        
+
         # Uncheck DB category checkbox
         db_checkbox = pilot.app.query_one("#sub-DB", Checkbox)
         db_checkbox.value = False
         await pilot.pause()
-        
+
         # Verify table updated (should have only AI rows, 3 rows)
         # Note: The filter change is handled by the FilterChanged message
         # We need to check the app's state
         assert "DB" not in pilot.app.selected_subs
-        
+
         # Manually trigger filter update to verify behavior
         pilot.app.selected_subs = {"AI"}
         pilot.app._update_conferences()
         pilot.app._update_table()
         await pilot.pause()
-        
+
         # Should only have AI conferences (CVPR, ECCV, LocalConf = 3)
         assert table.get_row_count() == 3
 
@@ -257,7 +257,7 @@ async def test_filter_by_category() -> None:
 async def test_filter_by_rank() -> None:
     """Test clicking rank checkbox updates table filter."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up initial data
         test_rows = create_mock_conference_rows()
@@ -266,28 +266,28 @@ async def test_filter_by_rank() -> None:
         pilot.app.selected_ranks = {"A", "B", "C", "N"}
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         # Get initial row count
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         initial_count = table.get_row_count()
         assert initial_count == 4
-        
+
         # Uncheck rank-N checkbox
         rank_n_checkbox = pilot.app.query_one("#rank-N", Checkbox)
         rank_n_checkbox.value = False
         await pilot.pause()
-        
+
         # Verify app state updated
         assert "N" not in pilot.app.selected_ranks
-        
+
         # Manually filter to only A rank
         pilot.app.selected_ranks = {"A"}
         pilot.app._update_conferences()
         pilot.app._update_table()
         await pilot.pause()
-        
+
         # Should only have A rank conferences (CVPR, SIGMOD = 2)
         assert table.get_row_count() == 2
 
@@ -296,7 +296,7 @@ async def test_filter_by_rank() -> None:
 async def test_search_filter() -> None:
     """Test typing in search box filters results."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up initial data
         test_rows = create_mock_conference_rows()
@@ -304,27 +304,27 @@ async def test_search_filter() -> None:
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         # Get initial row count
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         initial_count = table.get_row_count()
         assert initial_count == 4
-        
+
         # Type in search input - use SIGMOD which is unique
         search_input = pilot.app.query_one("#search", Input)
         search_input.value = "SIGMOD"
         await pilot.pause()
-        
+
         # Verify app state updated
         assert pilot.app.search_query == "SIGMOD"
-        
+
         # Update conferences with search
         pilot.app._update_conferences()
         pilot.app._update_table()
         await pilot.pause()
-        
+
         # Should only have SIGMOD
         assert table.get_row_count() == 1
 
@@ -333,26 +333,26 @@ async def test_search_filter() -> None:
 async def test_language_toggle() -> None:
     """Test pressing 'l' key toggles language."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         await pilot.pause()
-        
+
         # Initial language is English
         assert pilot.app.language == "en"
         assert pilot.app.title == "CCF-Deadlines TUI"
-        
+
         # Press 'l' to toggle language
         await pilot.press("l")
         await pilot.pause()
-        
+
         # Language should be Chinese
         assert pilot.app.language == "zh"
         assert pilot.app.title == "CCF-Deadlines 终端界面"
-        
+
         # Press 'l' again to toggle back
         await pilot.press("l")
         await pilot.pause()
-        
+
         # Language should be English again
         assert pilot.app.language == "en"
         assert pilot.app.title == "CCF-Deadlines TUI"
@@ -365,9 +365,9 @@ async def test_refresh_data(mock_load) -> None:
     # Set up mock
     mock_conferences = create_mock_conferences_list()
     mock_load.return_value = mock_conferences
-    
+
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up initial data
         test_rows = create_mock_conference_rows()
@@ -375,17 +375,17 @@ async def test_refresh_data(mock_load) -> None:
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         # Get initial row count
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         initial_count = table.get_row_count()
-        
+
         # Press 'r' to refresh
         await pilot.press("r")
         await pilot.pause()
-        
+
         # Loading should be triggered (mock prevents actual reload)
         # The app should show loading overlay initially
         # After mock returns, table should update
@@ -395,7 +395,7 @@ async def test_refresh_data(mock_load) -> None:
 async def test_keyboard_navigation() -> None:
     """Test j/k keys navigate table rows."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up data
         test_rows = create_mock_conference_rows()
@@ -403,28 +403,28 @@ async def test_keyboard_navigation() -> None:
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         table = pilot.app.query_one("#conference-table", ConferenceTable)
-        
+
         # Focus the table
         table.focus()
         await pilot.pause()
-        
+
         # Initial cursor should be at row 0
         assert table.cursor_coordinate.row == 0
-        
+
         # Press 'j' to move down
         await pilot.press("j")
         await pilot.pause()
         assert table.cursor_coordinate.row == 1
-        
+
         # Press 'j' again
         await pilot.press("j")
         await pilot.pause()
         assert table.cursor_coordinate.row == 2
-        
+
         # Press 'k' to move up
         await pilot.press("k")
         await pilot.pause()
@@ -436,7 +436,7 @@ async def test_keyboard_navigation() -> None:
 async def test_open_url(mock_browser_open) -> None:
     """Test pressing Enter opens URL in browser."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up data
         test_rows = create_mock_conference_rows()
@@ -444,20 +444,20 @@ async def test_open_url(mock_browser_open) -> None:
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         table.focus()
         await pilot.pause()
-        
+
         # Cursor is at first row (CVPR)
         assert table.cursor_coordinate.row == 0
-        
+
         # Press Enter to open URL
         await pilot.press("enter")
         await pilot.pause()
-        
+
         # Verify webbrowser.open was called with CVPR URL
         mock_browser_open.assert_called_once_with("https://cvpr2025.org")
 
@@ -466,28 +466,28 @@ async def test_open_url(mock_browser_open) -> None:
 async def test_help_screen() -> None:
     """Test pressing '?' shows help screen."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         await pilot.pause()
-        
+
         # Initially, not on help screen
         assert not isinstance(pilot.app.screen, HelpScreen)
-        
+
         # Call action directly
         pilot.app.action_show_help()
         await pilot.pause()
-        
+
         # Should now be on HelpScreen
         assert isinstance(pilot.app.screen, HelpScreen)
-        
+
         # Verify help content exists
         help_labels = pilot.app.screen.query(Label)
         assert len(help_labels) > 0
-        
+
         # Press Escape to close
         await pilot.press("escape")
         await pilot.pause()
-        
+
         # Should be back to main screen
         assert not isinstance(pilot.app.screen, HelpScreen)
 
@@ -496,17 +496,17 @@ async def test_help_screen() -> None:
 async def test_quit_binding() -> None:
     """Test pressing 'q' quits the app."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         await pilot.pause()
-        
+
         # App should be running
         assert pilot.app.is_running is True
-        
+
         # Press 'q' to quit
         await pilot.press("q")
         await pilot.pause()
-        
+
         # App should have quit
         assert pilot.app.is_running is False
 
@@ -515,7 +515,7 @@ async def test_quit_binding() -> None:
 async def test_header_subtitle_updates() -> None:
     """Test that header subtitle shows correct conference count."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up data
         test_rows = create_mock_conference_rows()
@@ -523,20 +523,20 @@ async def test_header_subtitle_updates() -> None:
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_header()
-        
+
         await pilot.pause()
-        
+
         # Check subtitle shows count
         subtitle = pilot.app.sub_title
         assert "4" in subtitle  # 4 conferences
         assert "4 of 4" in subtitle or "4 / 4" in subtitle
-        
+
         # Filter to only AI
         pilot.app.selected_subs = {"AI"}
         pilot.app._update_conferences()
         pilot.app._update_header()
         await pilot.pause()
-        
+
         # Subtitle should show filtered count
         subtitle = pilot.app.sub_title
         assert "3" in subtitle  # 3 AI conferences
@@ -546,20 +546,20 @@ async def test_header_subtitle_updates() -> None:
 async def test_filter_sidebar_initial_state() -> None:
     """Test that filter sidebar has correct initial state."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         await pilot.pause()
-        
+
         sidebar = pilot.app.query_one("#filter-sidebar", FilterSidebar)
-        
+
         # All categories should be checked
         from ccfddl.models import CATEGORIES
         expected_subs = {cat.sub for cat in CATEGORIES}
         assert sidebar.selected_subs == expected_subs
-        
+
         # All ranks should be checked
         assert sidebar.selected_ranks == {"A", "B", "C", "N"}
-        
+
         # Search should be empty
         assert sidebar.search_query == ""
 
@@ -568,18 +568,18 @@ async def test_filter_sidebar_initial_state() -> None:
 async def test_empty_table_state() -> None:
     """Test app handles empty table state gracefully."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up empty data
         pilot.app._all_rows = []
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         table = pilot.app.query_one("#conference-table", ConferenceTable)
-        
+
         # Table should be empty but not error
         assert table.has_rows() is False
         assert table.get_row_count() == 0
@@ -590,7 +590,7 @@ async def test_empty_table_state() -> None:
 async def test_go_top_bottom_navigation() -> None:
     """Test g/G keys navigate to top/bottom of table."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up data with many rows
         now = datetime.now(timezone.utc)
@@ -618,24 +618,24 @@ async def test_go_top_bottom_navigation() -> None:
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         table.focus()
         await pilot.pause()
-        
+
         # Move cursor to middle
         from textual.coordinate import Coordinate
         table.cursor_coordinate = Coordinate(5, 0)
         await pilot.pause()
         assert table.cursor_coordinate.row == 5
-        
+
         # Press 'G' (shift+g) to go to bottom
         await pilot.press("G")
         await pilot.pause()
         assert table.cursor_coordinate.row == 9
-        
+
         # Press 'g' to go to top
         await pilot.press("g")
         await pilot.pause()
@@ -646,38 +646,38 @@ async def test_go_top_bottom_navigation() -> None:
 async def test_multiple_filters_combined() -> None:
     """Test combining category, rank, and search filters."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
         pilot.app._hide_overlays()
-        
+
         await pilot.pause()
-        
+
         # Apply category filter (AI only)
         pilot.app.selected_subs = {"AI"}
         pilot.app._update_conferences()
         pilot.app._update_table()
         await pilot.pause()
-        
+
         table = pilot.app.query_one("#conference-table", ConferenceTable)
         assert table.get_row_count() == 3  # CVPR, ECCV, LocalConf
-        
+
         # Apply rank filter (A only)
         pilot.app.selected_ranks = {"A"}
         pilot.app._update_conferences()
         pilot.app._update_table()
         await pilot.pause()
-        
+
         assert table.get_row_count() == 1  # Only CVPR
-        
+
         # Apply search filter
         pilot.app.search_query = "CVPR"
         pilot.app._update_conferences()
         pilot.app._update_table()
         await pilot.pause()
-        
+
         assert table.get_row_count() == 1  # CVPR matches all filters
 
 
@@ -685,12 +685,12 @@ async def test_multiple_filters_combined() -> None:
 async def test_loading_overlay_shown() -> None:
     """Test that loading overlay is shown during data load."""
     app = CCFDeadlinesApp()
-    
+
     # Don't mock _load_data so we can test the loading state
     async with app.run_test() as pilot:
         # Wait for mount
         await pilot.pause()
-        
+
         # Loading overlay should be shown initially
         # Note: _load_data runs async, so we check before it completes
         loading_overlays = pilot.app.query(LoadingOverlay)
@@ -703,19 +703,19 @@ async def test_loading_overlay_shown() -> None:
 async def test_error_overlay_on_load_failure(mock_load) -> None:
     """Test that error overlay is shown when data loading fails."""
     mock_load.side_effect = Exception("Network error")
-    
+
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         await pilot.pause()
-        
+
         # Wait for initial load to fail
         await pilot.pause()
         await pilot.pause()
-        
+
         # Check for error overlay or error message
         error_overlays = pilot.app.query(ErrorOverlay)
-        
+
         if len(error_overlays) == 0:
             assert pilot.app._error_message is not None
 
@@ -724,21 +724,21 @@ async def test_error_overlay_on_load_failure(mock_load) -> None:
 async def test_help_screen_bindings() -> None:
     """Test help screen keyboard bindings."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         pilot.app.action_show_help()
         await pilot.pause()
-        
+
         # Should now be on HelpScreen
         assert isinstance(pilot.app.screen, HelpScreen)
-        
+
         # Press 'q' should close help (not quit app)
         await pilot.press("q")
         await pilot.pause()
-        
+
         # Should be back to main screen
         assert not isinstance(pilot.app.screen, HelpScreen)
-        
+
         # App should still be running
         assert pilot.app.is_running is True
 
@@ -747,7 +747,7 @@ async def test_help_screen_bindings() -> None:
 async def test_escape_clears_search() -> None:
     """Test pressing Escape clears search input."""
     app = CCFDeadlinesApp()
-    
+
     async with app.run_test() as pilot:
         # Set up data
         test_rows = create_mock_conference_rows()
@@ -755,23 +755,23 @@ async def test_escape_clears_search() -> None:
         pilot.app._hide_overlays()
         pilot.app._update_conferences()
         pilot.app._update_table()
-        
+
         await pilot.pause()
-        
+
         # Type in search
         search_input = pilot.app.query_one("#search", Input)
         search_input.value = "test query"
         await pilot.pause()
-        
+
         assert pilot.app.search_query == "test query"
-        
+
         # Focus the search input
         search_input.focus()
         await pilot.pause()
-        
+
         # Press Escape
         await pilot.press("escape")
         await pilot.pause()
-        
+
         # Search should be cleared
         assert search_input.value == ""

@@ -37,7 +37,7 @@ class TestFavoriteFunctionality:
             is_expired=False,
             is_favorite=True,
         )
-        
+
         assert row.is_favorite is True
 
     def test_conference_row_default_favorite_false(self):
@@ -58,7 +58,7 @@ class TestFavoriteFunctionality:
             is_tbd=False,
             is_expired=False,
         )
-        
+
         assert row.is_favorite is False
 
     def test_data_service_has_favorites_set(self):
@@ -71,11 +71,11 @@ class TestFavoriteFunctionality:
         """toggle_favorite should add conference to favorites."""
         with tempfile.TemporaryDirectory() as tmpdir:
             favorites_path = Path(tmpdir) / "favorites.json"
-            
+
             service = DataService()
             service._get_favorites_path = lambda: favorites_path
             service._favorites = service._load_favorites()
-            
+
             row = ConferenceRow(
                 title="CVPR",
                 year=2025,
@@ -93,9 +93,9 @@ class TestFavoriteFunctionality:
                 is_expired=False,
                 is_favorite=False,
             )
-            
+
             result = service.toggle_favorite(row)
-            
+
             assert result is True
             assert service.is_favorite(row) is True
 
@@ -103,11 +103,11 @@ class TestFavoriteFunctionality:
         """toggle_favorite should remove conference from favorites."""
         with tempfile.TemporaryDirectory() as tmpdir:
             favorites_path = Path(tmpdir) / "favorites.json"
-            
+
             service = DataService()
             service._get_favorites_path = lambda: favorites_path
             service._favorites = service._load_favorites()
-            
+
             row = ConferenceRow(
                 title="CVPR",
                 year=2025,
@@ -125,14 +125,14 @@ class TestFavoriteFunctionality:
                 is_expired=False,
                 is_favorite=True,
             )
-            
+
             # Add first
             service.toggle_favorite(row)
             assert service.is_favorite(row) is True
-            
+
             # Remove
             result = service.toggle_favorite(row)
-            
+
             assert result is False
             assert service.is_favorite(row) is False
 
@@ -140,10 +140,10 @@ class TestFavoriteFunctionality:
         """Favorites should be persisted to file."""
         with tempfile.TemporaryDirectory() as tmpdir:
             favorites_path = Path(tmpdir) / "favorites.json"
-            
+
             service = DataService()
             service._get_favorites_path = lambda: favorites_path
-            
+
             row = ConferenceRow(
                 title="ICML",
                 year=2025,
@@ -160,12 +160,12 @@ class TestFavoriteFunctionality:
                 is_tbd=False,
                 is_expired=False,
             )
-            
+
             service.toggle_favorite(row)
-            
+
             # Check file was created
             assert favorites_path.exists()
-            
+
             # Check file contents
             with open(favorites_path, "r") as f:
                 data = json.load(f)
@@ -176,15 +176,15 @@ class TestFavoriteFunctionality:
         with tempfile.TemporaryDirectory() as tmpdir:
             favorites_path = Path(tmpdir) / "favorites.json"
             favorites_path.parent.mkdir(parents=True, exist_ok=True)
-            
+
             # Create favorites file
             with open(favorites_path, "w") as f:
                 json.dump({"favorites": ["NeurIPS_2025", "ICML_2025"]}, f)
-            
+
             service = DataService()
             service._get_favorites_path = lambda: favorites_path
             service._favorites = service._load_favorites()
-            
+
             row1 = ConferenceRow(
                 title="NeurIPS", year=2025, sub="AI", rank="A",
                 core_rank="A", thcpl_rank="A", deadline=None, countdown="TBD",
@@ -197,7 +197,7 @@ class TestFavoriteFunctionality:
                 place="Test", date="2025", link="http://test.com",
                 is_running=True, is_tbd=True, is_expired=False,
             )
-            
+
             assert service.is_favorite(row1) is True
             assert service.is_favorite(row2) is True
 
@@ -209,7 +209,7 @@ class TestFavoriteSorting:
         """Favorites should appear first in sorted results."""
         service = DataService()
         now = datetime.now(timezone.utc)
-        
+
         rows = [
             ConferenceRow(
                 title="Regular Conf",
@@ -246,9 +246,9 @@ class TestFavoriteSorting:
                 is_favorite=True,
             ),
         ]
-        
+
         sorted_rows = service.sort_rows(rows)
-        
+
         assert sorted_rows[0].title == "Favorite Conf"
         assert sorted_rows[1].title == "Regular Conf"
 
@@ -256,7 +256,7 @@ class TestFavoriteSorting:
         """Multiple favorites should be sorted by deadline."""
         service = DataService()
         now = datetime.now(timezone.utc)
-        
+
         rows = [
             ConferenceRow(
                 title="Favorite Later",
@@ -293,9 +293,9 @@ class TestFavoriteSorting:
                 is_favorite=True,
             ),
         ]
-        
+
         sorted_rows = service.sort_rows(rows)
-        
+
         assert sorted_rows[0].title == "Favorite Soon"
         assert sorted_rows[1].title == "Favorite Later"
 
@@ -321,7 +321,7 @@ class TestRankDisplay:
             is_tbd=False,
             is_expired=False,
         )
-        
+
         assert row.rank == "A"
 
     def test_core_rank_display(self):
@@ -342,7 +342,7 @@ class TestRankDisplay:
             is_tbd=False,
             is_expired=False,
         )
-        
+
         assert row.core_rank == "A*"
 
     def test_thcpl_rank_display(self):
@@ -363,7 +363,7 @@ class TestRankDisplay:
             is_tbd=False,
             is_expired=False,
         )
-        
+
         assert row.thcpl_rank == "B"
 
     def test_optional_ranks_none(self):
@@ -384,6 +384,6 @@ class TestRankDisplay:
             is_tbd=False,
             is_expired=False,
         )
-        
+
         assert row.core_rank is None
         assert row.thcpl_rank is None

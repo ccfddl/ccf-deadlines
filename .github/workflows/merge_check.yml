@@ -9,39 +9,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
       - name: Install CLI dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -e extensions/cli/
-
       - name: Install TUI dependencies
         run: |
           pip install -e extensions/tui/
-
       - name: Run CLI tests
         run: |
           cd extensions/cli
           python -m pytest tests/ -v
-
       - name: Run TUI tests
         run: |
           cd extensions/tui
           python -m pytest tests/ -v
-
       - name: Install scripts dependencies
         run: |
           python -m pip install PyYAML jsonschema
-
       - name: Run scripts tests
         run: |
           python -m pytest scripts/tests/ -v
-
   build:
     name: Build Frontend
     runs-on: ubuntu-latest

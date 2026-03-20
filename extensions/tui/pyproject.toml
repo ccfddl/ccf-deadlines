@@ -16,6 +16,13 @@ dependencies = [
     "python-dateutil",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "mypy",
+    "pytest>=7.0",
+    "pytest-cov",
+]
+
 [project.scripts]
 ccfddl-tui = "ccfddl_tui.main:main"
 

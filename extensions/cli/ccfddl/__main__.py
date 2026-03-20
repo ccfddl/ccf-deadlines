@@ -92,7 +92,7 @@ def process_conference_deadlines(
 ) -> list[dict]:
     """Process conferences and extract upcoming deadlines."""
     results = []
-    
+
     for conf in conferences:
         base_info = {
             "title": conf.title,
@@ -101,15 +101,15 @@ def process_conference_deadlines(
             "rank": conf.rank.ccf,
             "dblp": conf.dblp,
         }
-        
+
         for conf_year in conf.confs:
             time_obj = None
-            
+
             for timeline in conf_year.timeline:
                 deadline_str = timeline.deadline
                 if not deadline_str or deadline_str == "TBD":
                     continue
-                    
+
                 try:
                     cur_d = parse_datetime_with_tz(deadline_str, conf_year.timezone)
                     if cur_d < now:
@@ -118,7 +118,7 @@ def process_conference_deadlines(
                         time_obj = cur_d
                 except ValueError:
                     continue
-            
+
             if time_obj is not None and time_obj > now:
                 category = get_category_by_sub(conf.sub)
                 result = {
@@ -135,7 +135,7 @@ def process_conference_deadlines(
                     "subname_en": category.name_en if category else conf.sub,
                 }
                 results.append(result)
-    
+
     results.sort(key=lambda x: x["deadline"])
     return results
 
@@ -148,11 +148,11 @@ def filter_results(
 ) -> list[dict]:
     """Apply filters to results."""
     filtered = []
-    
+
     conf_filter_lower = [f.lower() for f in conf_filter] if conf_filter else None
     sub_filter_lower = [f.lower() for f in sub_filter] if sub_filter else None
     rank_filter_lower = [f.lower() for f in rank_filter] if rank_filter else None
-    
+
     for item in results:
         if conf_filter_lower:
             id_alpha = extract_alpha_id(item["id"])
@@ -164,7 +164,7 @@ def filter_results(
         if rank_filter_lower and item["rank"].lower() not in rank_filter_lower:
             continue
         filtered.append(item)
-    
+
     return filtered
 
 
@@ -172,7 +172,7 @@ def format_colored_duration(ddl_time: datetime, now: datetime) -> str:
     """Format duration with color coding."""
     duration_str = format_duration(ddl_time, now)
     days = (ddl_time - now).days
-    
+
     if days < 1:
         return colored(duration_str, "red")
     elif days < 30:
@@ -186,7 +186,7 @@ def format_colored_duration(ddl_time: datetime, now: datetime) -> str:
 def output_table(results: list[dict], now: datetime) -> None:
     """Output results as a formatted table."""
     table = [["Title", "Sub", "Rank", "DDL", "Link"]]
-    
+
     for item in results:
         table.append([
             f"{item['title']} {item['year']}",
@@ -195,7 +195,7 @@ def output_table(results: list[dict], now: datetime) -> None:
             format_colored_duration(item["deadline"], now),
             item["link"],
         ])
-    
+
     print(tabulate(table, headers="firstrow", tablefmt="fancy_grid"))
 
 
@@ -234,22 +234,22 @@ def list_categories() -> None:
 def main() -> None:
     """Main entry point."""
     args = parse_args()
-    
+
     if args.list_categories:
         list_categories()
         return
-    
+
     now = datetime.now(tz=timezone.utc)
     conferences = fetch_conferences(args.url)
     results = process_conference_deadlines(conferences, now)
-    
+
     filtered = filter_results(
         results,
         args.conf,
         args.sub,
         args.rank,
     )
-    
+
     if args.json:
         output_json(filtered)
     else:

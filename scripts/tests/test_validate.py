@@ -50,14 +50,14 @@ class TestValidateSingleConference:
     def test_valid_yaml_file(self, tmp_path, valid_schema, valid_yaml_content):
         yaml_file = tmp_path / "cvpr.yml"
         yaml_file.write_text(valid_yaml_content)
-        
+
         errors = validate_single_conference(yaml_file, valid_schema)
         assert len(errors) == 0
 
     def test_invalid_yaml_extension(self, tmp_path, valid_schema):
         yaml_file = tmp_path / "cvpr.yaml"
         yaml_file.write_text("test: value")
-        
+
         errors = validate_single_conference(yaml_file, valid_schema)
         assert len(errors) == 1
         assert "should be renamed" in errors[0]
@@ -65,14 +65,14 @@ class TestValidateSingleConference:
     def test_non_yml_file(self, tmp_path, valid_schema):
         txt_file = tmp_path / "cvpr.txt"
         txt_file.write_text("some content")
-        
+
         errors = validate_single_conference(txt_file, valid_schema)
         assert len(errors) == 0
 
     def test_invalid_yaml_syntax(self, tmp_path, valid_schema):
         yaml_file = tmp_path / "invalid.yml"
         yaml_file.write_text("invalid: yaml: content: [")
-        
+
         errors = validate_single_conference(yaml_file, valid_schema)
         assert len(errors) == 1
         assert "Invalid YAML" in errors[0]
@@ -95,7 +95,7 @@ class TestValidateSingleConference:
       date: Jan 2025
       place: Test
 """)
-        
+
         errors = validate_single_conference(yaml_file, valid_schema)
         assert len(errors) >= 1
 
@@ -108,7 +108,7 @@ class TestValidateSingleConference:
     ccf: A
   dblp: test
 """)
-        
+
         errors = validate_single_conference(yaml_file, valid_schema)
         assert len(errors) >= 1
 

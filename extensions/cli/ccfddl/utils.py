@@ -14,10 +14,10 @@ import yaml
 
 def load_mapping(path: str = "conference/types.yml") -> dict[str, str]:
     """Load sub-category name mapping from YAML file.
-    
+
     Args:
         path: Path to the types.yml file
-        
+
     Returns:
         Dictionary mapping sub codes to Chinese names
     """
@@ -31,18 +31,18 @@ def load_mapping(path: str = "conference/types.yml") -> dict[str, str]:
 
 def get_timezone(tz_str: str) -> timezone:
     """Convert timezone string to datetime.timezone object.
-    
+
     Supported formats:
         - 'AoE' (Anywhere on Earth, UTC-12)
         - 'UTC' (UTC+0)
         - 'UTC+8', 'UTC-5' (UTC with offset)
-    
+
     Args:
         tz_str: Timezone string
-        
+
     Returns:
         A timezone object
-        
+
     Raises:
         ValueError: If the timezone format is invalid
     """
@@ -62,15 +62,15 @@ def parse_datetime_with_tz(
     dt_str: str, tz_str: str, format_str: str = "%Y-%m-%d %H:%M:%S"
 ) -> datetime:
     """Parse datetime string with timezone.
-    
+
     Args:
         dt_str: Datetime string (e.g., '2025-01-15 23:59:59')
         tz_str: Timezone string (e.g., 'UTC-8', 'AoE')
         format_str: Datetime format string
-        
+
     Returns:
         Timezone-aware datetime object
-        
+
     Raises:
         ValueError: If datetime or timezone format is invalid
     """
@@ -81,11 +81,11 @@ def parse_datetime_with_tz(
 
 def format_duration(ddl_time: datetime, now: datetime) -> str:
     """Format the remaining duration until deadline.
-    
+
     Args:
         ddl_time: Deadline datetime (timezone-aware)
         now: Current datetime (timezone-aware)
-        
+
     Returns:
         Formatted duration string
     """
@@ -109,11 +109,11 @@ def format_duration(ddl_time: datetime, now: datetime) -> str:
 
 def reverse_index(file_paths: list[str], subs: list[str]) -> dict[str, list[str]]:
     """Build reverse index of conferences by category and rank.
-    
+
     Args:
         file_paths: List of YAML file paths to process
         subs: List of valid sub codes
-        
+
     Returns:
         Dictionary mapping category/rank keys to file paths
     """

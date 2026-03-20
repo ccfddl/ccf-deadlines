@@ -34,14 +34,14 @@ def find_yml_files(
     """
     if exclude_patterns is None:
         exclude_patterns = ["types.yml"]
-    
+
     yml_files: list[Path] = []
-    
+
     for yml_file in base_path.rglob("*.yml"):
         if yml_file.name in exclude_patterns:
             continue
         yml_files.append(yml_file)
-    
+
     return sorted(yml_files)
 
 
@@ -58,22 +58,22 @@ def load_yaml_file(file_path: Path) -> list[Any] | None:
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             data = yaml.safe_load(f)
-        
+
         if data is None:
             return []
-        
+
         if isinstance(data, list):
             return data
-        
+
         return [data]
-    
+
     except yaml.YAMLError as e:
         print(
             f"YAML parsing error in {file_path}: {e}",
             file=sys.stderr,
         )
         return None
-    
+
     except Exception as e:
         print(f"Error reading {file_path}: {e}", file=sys.stderr)
         return None
@@ -93,15 +93,15 @@ def merge_yaml_files(
         Merged list of all items
     """
     all_data: list[Any] = []
-    
+
     for yml_file in file_paths:
         if verbose:
             print(f"Processing: {yml_file}", file=sys.stderr)
-        
+
         data = load_yaml_file(yml_file)
         if data is not None:
             all_data.extend(data)
-    
+
     return all_data
 
 
@@ -129,30 +129,30 @@ def main() -> int:
         action="store_true",
         help="Suppress progress messages",
     )
-    
+
     args = parser.parse_args()
     search_path = args.path
-    
+
     if not search_path.is_dir():
         print(f"Error: Directory not found: {search_path}", file=sys.stderr)
         return 1
-    
+
     verbose = not args.quiet
-    
+
     if verbose:
         print(f"Finding YAML files in {search_path}...", file=sys.stderr)
-    
+
     yml_files = find_yml_files(search_path, args.exclude)
-    
+
     if not yml_files:
         print("No YAML files found!", file=sys.stderr)
         return 0
-    
+
     if verbose:
         print(f"Found {len(yml_files)} YAML files", file=sys.stderr)
-    
+
     all_data = merge_yaml_files(yml_files, verbose=verbose)
-    
+
     yaml.dump(
         all_data,
         sys.stdout,
@@ -161,14 +161,14 @@ def main() -> int:
         sort_keys=False,
         indent=2,
     )
-    
+
     if verbose:
         print(
             f"Successfully merged {len(yml_files)} files "
             f"with {len(all_data)} total entries",
             file=sys.stderr,
         )
-    
+
     return 0
 
 

@@ -90,15 +90,15 @@ class TestReverseIndex:
 
     def test_reverse_index_basic(self, sample_yaml_files):
         index = reverse_index(sample_yaml_files, ["AI"])
-        
+
         assert "AI" in index
         assert len(index["AI"]) == 2
-        
+
         assert "ccf_A" in index
         assert len(index["ccf_A"]) == 2
-        
+
         assert "ccf_A_AI" in index
-        
+
         assert "core_A*" in index
         assert "thcpl_A" in index
 
