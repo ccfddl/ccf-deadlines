@@ -62,7 +62,23 @@
       </div>
       <label class="search-label">
         <span data-i18n="search_label">搜索会议</span>
-        <input id="ccfddl-search" type="text" placeholder="例如：ICML / SIGMOD" data-i18n-placeholder="search_placeholder" />
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input
+            id="ccfddl-search"
+            type="text"
+            placeholder="例如：ICML / SIGMOD"
+            data-i18n-placeholder="search_placeholder"
+          />
+          <button id="ccfddl-clear" type="button" class="search-clear" aria-label="清除搜索" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </label>
       <ul id="ccfddl-list" class="import-list"></ul>
       <p id="ccfddl-empty" class="empty" data-i18n="import_empty">
