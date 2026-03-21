@@ -11,6 +11,7 @@ use leptos::prelude::*;
 use serde_json;
 use std::collections::HashMap;
 use std::collections::HashSet;
+use std::sync::OnceLock;
 use thaw::*;
 use urlencoding::encode;
 use wasm_bindgen::prelude::*;
@@ -21,6 +22,7 @@ use web_sys::{console, window};
 pub fn ShowTable() -> impl IntoView {
     // mobile
     let is_mobile = RwSignal::new(false);
+    let show_filters = RwSignal::new(false);
 
     // switch
     let cached_use_english = get_from_local_storage("use_english");
@@ -149,24 +151,10 @@ pub fn ShowTable() -> impl IntoView {
         all_conf_list.update(|conferences| {
             for item in conferences.iter_mut() {
                 if item.deadline != "TBD" {
-                    let mut tz_str = item.timezone.clone();
-                    if tz_str == "AoE" {
-                        tz_str = "UTC-12".to_string();
-                    } else if tz_str == "UTC" {
-                        tz_str = "UTC+0".to_string();
-                    }
+                    let tz_str = normalize_timezone(&item.timezone);
 
                     if let Some(tz_offset) = utc_map.get(&tz_str) {
-                        let ddl_str = if item.deadline.contains(' ') {
-                            format!(
-                                "{}T{}{}",
-                                item.deadline.split(' ').nth(0).unwrap_or(""),
-                                item.deadline.split(' ').nth(1).unwrap_or("00:00:00"),
-                                tz_offset
-                            )
-                        } else {
-                            format!("{}T23:59:59{}", item.deadline, tz_offset)
-                        };
+                        let ddl_str = parse_deadline_to_rfc3339(&item.deadline, tz_offset);
 
                         if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
                             let diff = ddl_datetime.signed_duration_since(current_time);
@@ -193,15 +181,7 @@ pub fn ShowTable() -> impl IntoView {
 
         spawn_local(async move {
             let utc_map = load_utc_map();
-            let rank_options: HashMap<&str, &str> = [
-                ("A", "CCF A"),
-                ("B", "CCF B"),
-                ("C", "CCF C"),
-                ("N", "Non-CCF"),
-            ]
-            .iter()
-            .cloned()
-            .collect();
+            let rank_options: HashMap<&str, &str> = RANK_OPTIONS.iter().cloned().collect();
 
             let (current_time, current_timezone) = get_browser_time_and_timezone();
 
@@ -227,29 +207,11 @@ pub fn ShowTable() -> impl IntoView {
                             for timeline_item in year_conf.timeline.iter() {
                                 let tz_offset = utc_map.get(&year_conf.timezone).unwrap();
 
-                                let ddl_str = if timeline_item.deadline.contains(' ') {
-                                    format!(
-                                        "{}T{}{}",
-                                        timeline_item.deadline.split(' ').nth(0).unwrap(),
-                                        timeline_item.deadline.split(' ').nth(1).unwrap(),
-                                        tz_offset
-                                    )
-                                } else {
-                                    format!("{}T23:59:59{}", timeline_item.deadline, tz_offset)
-                                };
+                                let ddl_str = parse_deadline_to_rfc3339(&timeline_item.deadline, tz_offset);
 
                                 // abstract type:0 submission type:1
                                 if let Some(abs_ddl) = timeline_item.abstract_deadline.clone() {
-                                    let abs_ddl_str = if abs_ddl.contains(' ') {
-                                        format!(
-                                            "{}T{}{}",
-                                            abs_ddl.split(' ').nth(0).unwrap(),
-                                            abs_ddl.split(' ').nth(1).unwrap(),
-                                            tz_offset
-                                        )
-                                    } else {
-                                        format!("{}T23:59:59{}", abs_ddl, tz_offset)
-                                    };
+                                    let abs_ddl_str = parse_deadline_to_rfc3339(&abs_ddl, tz_offset);
 
                                     if let Ok(abs_ddl_datetime) =
                                         DateTime::parse_from_rfc3339(&abs_ddl_str)
@@ -336,25 +298,11 @@ pub fn ShowTable() -> impl IntoView {
                             continue;
                         }
 
-                        let mut tz_str = item.timezone.clone();
-                        if tz_str == "AoE" {
-                            tz_str = "UTC-12".to_string();
-                        } else if tz_str == "UTC" {
-                            tz_str = "UTC+0".to_string();
-                        }
+                        let tz_str = normalize_timezone(&item.timezone);
 
                         // 4. Calculate deadlines and remaining time
                         if let Some(tz_offset) = utc_map.get(&tz_str) {
-                            let ddl_str = if item.deadline.contains(' ') {
-                                format!(
-                                    "{}T{}{}",
-                                    item.deadline.split(' ').nth(0).unwrap_or(""),
-                                    item.deadline.split(' ').nth(1).unwrap_or("00:00:00"),
-                                    tz_offset
-                                )
-                            } else {
-                                format!("{}T23:59:59{}", item.deadline, tz_offset)
-                            };
+                            let ddl_str = parse_deadline_to_rfc3339(&item.deadline, tz_offset);
 
                             if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
                                 // Convert to browser local time and format
@@ -373,16 +321,7 @@ pub fn ShowTable() -> impl IntoView {
 
                                 // Handle abstract deadline
                                 if let Some(abs_ddl) = &item.abstract_deadline {
-                                    let abs_ddl_str = if abs_ddl.contains(' ') {
-                                        format!(
-                                            "{}T{}{}",
-                                            abs_ddl.split(' ').nth(0).unwrap_or(""),
-                                            abs_ddl.split(' ').nth(1).unwrap_or("00:00:00"),
-                                            tz_offset
-                                        )
-                                    } else {
-                                        format!("{}T23:59:59{}", abs_ddl, tz_offset)
-                                    };
+                                    let abs_ddl_str = parse_deadline_to_rfc3339(abs_ddl, tz_offset);
                                     if let Ok(abs_datetime) =
                                         DateTime::parse_from_rfc3339(&abs_ddl_str)
                                     {
@@ -664,37 +603,97 @@ pub fn ShowTable() -> impl IntoView {
                         <Icon icon=icondata::AiCalendarOutlined style="margin-right: 4px;" />
                         {move || if use_english.get() { "Subscribe" } else { "订阅" }}
                     </Button>
-                    <div
-                        style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end;"
-                    >
-                        <MultiSelectDropdown
-                            dropdown_id="ccf".to_string()
-                            title="CCF".to_string()
-                            options=ccf_filter_options()
-                            selected_values=rank_list
-                            use_english=use_english
-                            panel_width="180px".to_string()
-                            open_dropdown=open_dropdown
-                        />
-                        <MultiSelectDropdown
-                            dropdown_id="core".to_string()
-                            title="CORE".to_string()
-                            options=core_filter_options()
-                            selected_values=core_rank_list
-                            use_english=use_english
-                            panel_width="188px".to_string()
-                            open_dropdown=open_dropdown
-                        />
-                        <MultiSelectDropdown
-                            dropdown_id="thcpl".to_string()
-                            title="THCPL".to_string()
-                            options=thcpl_filter_options()
-                            selected_values=thcpl_rank_list
-                            use_english=use_english
-                            panel_width="196px".to_string()
-                            open_dropdown=open_dropdown
-                        />
-                    </div>
+                    {move || {
+                        if is_mobile.get() {
+                            view! {
+                                <Button
+                                    size=ButtonSize::Small
+                                    appearance=ButtonAppearance::Subtle
+                                    on_click=move |_| show_filters.update(|v| *v = !*v)
+                                >
+                                    <Icon icon=icondata::FiFilter style="margin-right: 4px;" />
+                                    {move || if use_english.get() { "Filters" } else { "筛选" }}
+                                    <Icon icon=if show_filters.get() { icondata::BsChevronUp } else { icondata::BsChevronDown } style="margin-left: 4px;" />
+                                </Button>
+                                {move || {
+                                    if show_filters.get() {
+                                        view! {
+                                            <div
+                                                style="position: absolute; top: 100%; right: 0; z-index: 100; background: white; border: 1px solid #dcdfe6; border-radius: 4px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 8px; min-width: 200px;"
+                                            >
+                                                <MultiSelectDropdown
+                                                    dropdown_id="ccf".to_string()
+                                                    title="CCF".to_string()
+                                                    options=ccf_filter_options()
+                                                    selected_values=rank_list
+                                                    use_english=use_english
+                                                    panel_width="180px".to_string()
+                                                    open_dropdown=open_dropdown
+                                                />
+                                                <MultiSelectDropdown
+                                                    dropdown_id="core".to_string()
+                                                    title="CORE".to_string()
+                                                    options=core_filter_options()
+                                                    selected_values=core_rank_list
+                                                    use_english=use_english
+                                                    panel_width="188px".to_string()
+                                                    open_dropdown=open_dropdown
+                                                />
+                                                <MultiSelectDropdown
+                                                    dropdown_id="thcpl".to_string()
+                                                    title="THCPL".to_string()
+                                                    options=thcpl_filter_options()
+                                                    selected_values=thcpl_rank_list
+                                                    use_english=use_english
+                                                    panel_width="196px".to_string()
+                                                    open_dropdown=open_dropdown
+                                                />
+                                            </div>
+                                        }
+                                            .into_any()
+                                    } else {
+                                        view! {}.into_any()
+                                    }
+                                }}
+                            }
+                                .into_any()
+                        } else {
+                            view! {
+                                <div
+                                    style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end;"
+                                >
+                                    <MultiSelectDropdown
+                                        dropdown_id="ccf".to_string()
+                                        title="CCF".to_string()
+                                        options=ccf_filter_options()
+                                        selected_values=rank_list
+                                        use_english=use_english
+                                        panel_width="180px".to_string()
+                                        open_dropdown=open_dropdown
+                                    />
+                                    <MultiSelectDropdown
+                                        dropdown_id="core".to_string()
+                                        title="CORE".to_string()
+                                        options=core_filter_options()
+                                        selected_values=core_rank_list
+                                        use_english=use_english
+                                        panel_width="188px".to_string()
+                                        open_dropdown=open_dropdown
+                                    />
+                                    <MultiSelectDropdown
+                                        dropdown_id="thcpl".to_string()
+                                        title="THCPL".to_string()
+                                        options=thcpl_filter_options()
+                                        selected_values=thcpl_rank_list
+                                        use_english=use_english
+                                        panel_width="196px".to_string()
+                                        open_dropdown=open_dropdown
+                                    />
+                                </div>
+                            }
+                                .into_any()
+                        }
+                    }}
                 </div>
             </div>
 
@@ -786,53 +785,53 @@ pub fn ShowTable() -> impl IntoView {
                                                                         let current_like = conf.is_like;
                                                                         if !current_like {
                                                                             view! {
-                                                                                <div
-                                                                                    style="display: inline;"
-                                                                                    on:click=move |_| {
-                                                                                        all_conf_list
-                                                                                            .update(|conferences| {
-                                                                                                for item in conferences.iter_mut() {
-                                                                                                    if item.title == conf_title && item.year == conf_year {
-                                                                                                        item.is_like = true;
-                                                                                                        like_list
-                                                                                                            .update(|mut list| {
-                                                                                                                list.insert(item.id.clone());
-                                                                                                            });
-                                                                                                        break;
-                                                                                                    }
-                                                                                                }
-                                                                                            });
-                                                                                    }
-                                                                                >
-                                                                                    <Icon icon=icondata::BsStar style="margin-left: 5px;" />
-                                                                                </div>
+                                                                             <div
+                                                                                     style="display: inline; cursor: pointer; transition: transform 0.15s ease;"
+                                                                                     on:click=move |_| {
+                                                                                         all_conf_list
+                                                                                             .update(|conferences| {
+                                                                                                 for item in conferences.iter_mut() {
+                                                                                                     if item.title == conf_title && item.year == conf_year {
+                                                                                                         item.is_like = true;
+                                                                                                         like_list
+                                                                                                             .update(|mut list| {
+                                                                                                                 list.insert(item.id.clone());
+                                                                                                             });
+                                                                                                         break;
+                                                                                                     }
+                                                                                                 }
+                                                                                             });
+                                                                                     }
+                                                                                 >
+                                                                                     <Icon icon=icondata::BsStar style="margin-left: 5px; font-size: 18px; color: #909399;" />
+                                                                                 </div>
                                                                             }
                                                                                 .into_any()
                                                                         } else {
                                                                             view! {
-                                                                                <div
-                                                                                    style="display: inline;"
-                                                                                    on:click=move |_| {
-                                                                                        all_conf_list
-                                                                                            .update(|conferences| {
-                                                                                                for item in conferences.iter_mut() {
-                                                                                                    if item.title == conf_title && item.year == conf_year {
-                                                                                                        item.is_like = false;
-                                                                                                        like_list
-                                                                                                            .update(|mut list| {
-                                                                                                                list.remove(&item.id.clone());
-                                                                                                            });
-                                                                                                        break;
-                                                                                                    }
-                                                                                                }
-                                                                                            });
-                                                                                    }
-                                                                                >
-                                                                                    <Icon
-                                                                                        icon=icondata::BsStarFill
-                                                                                        style="color: rgb(251, 202, 4); margin-left: 5px;"
-                                                                                    />
-                                                                                </div>
+                                                                             <div
+                                                                                     style="display: inline; cursor: pointer; transition: transform 0.15s ease;"
+                                                                                     on:click=move |_| {
+                                                                                         all_conf_list
+                                                                                             .update(|conferences| {
+                                                                                                 for item in conferences.iter_mut() {
+                                                                                                     if item.title == conf_title && item.year == conf_year {
+                                                                                                         item.is_like = false;
+                                                                                                         like_list
+                                                                                                             .update(|mut list| {
+                                                                                                                 list.remove(&item.id.clone());
+                                                                                                             });
+                                                                                                         break;
+                                                                                                     }
+                                                                                                 }
+                                                                                             });
+                                                                                     }
+                                                                                 >
+                                                                                     <Icon
+                                                                                         icon=icondata::BsStarFill
+                                                                                         style="color: rgb(251, 202, 4); margin-left: 5px; font-size: 18px;"
+                                                                                     />
+                                                                                 </div>
                                                                             }
                                                                                 .into_any()
                                                                         }
@@ -1042,24 +1041,62 @@ pub fn ShowTable() -> impl IntoView {
     }
 }
 
-fn load_utc_map() -> HashMap<String, String> {
-    let mut utc_map: HashMap<String, String> = HashMap::new();
+static UTC_MAP: OnceLock<HashMap<String, String>> = OnceLock::new();
 
-    for i in -12..=12 {
-        if i >= 0 {
-            let offset_str = format!("+{:02}:00", i);
-            let key = format!("UTC+{}", i);
-            utc_map.insert(key, offset_str);
-        } else {
-            let offset_str = format!("-{:02}:00", -i);
-            let key = format!("UTC{}", i);
+fn normalize_timezone(tz: &str) -> String {
+    match tz {
+        "AoE" => "UTC-12".to_string(),
+        "UTC" => "UTC+0".to_string(),
+        _ => tz.to_string(),
+    }
+}
+
+fn parse_deadline_to_rfc3339(deadline: &str, tz_offset: &str) -> String {
+    if deadline.contains(' ') {
+        format!(
+            "{}T{}{}",
+            deadline.split(' ').nth(0).unwrap_or(""),
+            deadline.split(' ').nth(1).unwrap_or("00:00:00"),
+            tz_offset
+        )
+    } else {
+        format!("{}T23:59:59{}", deadline, tz_offset)
+    }
+}
+
+const RANK_OPTIONS: &[(&str, &str)] = &[("A", "CCF A"), ("B", "CCF B"), ("C", "CCF C"), ("N", "Non-CCF")];
+
+const MOBILE_KEYWORDS: &[&str] = &[
+    "phone", "pad", "pod", "iphone", "ipod", "ios", "ipad", "android", "mobile",
+    "blackberry", "iemobile", "mqqbrowser", "juc", "fennec", "wosbrowser",
+    "browserng", "webos", "symbian", "windows phone",
+];
+
+fn get_utc_map() -> &'static HashMap<String, String> {
+    UTC_MAP.get_or_init(|| {
+        let mut utc_map = HashMap::new();
+        for i in -12..=12 {
+            let offset_str = if i >= 0 {
+                format!("+{:02}:00", i)
+            } else {
+                format!("-{:02}:00", -i)
+            };
+            let key = if i >= 0 {
+                format!("UTC+{}", i)
+            } else {
+                format!("UTC{}", i)
+            };
             utc_map.insert(key, offset_str);
         }
-    }
-    utc_map.insert("AoE".to_string(), "-12:00".to_string());
-    utc_map.insert("UTC".to_string(), "+00:00".to_string());
+        utc_map.insert("AoE".to_string(), "-12:00".to_string());
+        utc_map.insert("UTC".to_string(), "+00:00".to_string());
+        utc_map
+    })
+}
 
-    utc_map
+#[allow(dead_code)]
+fn load_utc_map() -> HashMap<String, String> {
+    get_utc_map().clone()
 }
 
 #[cfg(target_arch = "wasm32")]
@@ -1106,29 +1143,7 @@ fn is_mobile_device() -> bool {
         .expect("user agent not available")
         .to_lowercase();
 
-    let mobile_keywords = [
-        "phone",
-        "pad",
-        "pod",
-        "iphone",
-        "ipod",
-        "ios",
-        "ipad",
-        "android",
-        "mobile",
-        "blackberry",
-        "iemobile",
-        "mqqbrowser",
-        "juc",
-        "fennec",
-        "wosbrowser",
-        "browserng",
-        "webos",
-        "symbian",
-        "windows phone",
-    ];
-
-    mobile_keywords
+    MOBILE_KEYWORDS
         .iter()
         .any(|&keyword| user_agent.contains(keyword))
 }
