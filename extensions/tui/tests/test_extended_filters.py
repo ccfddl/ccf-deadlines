@@ -213,7 +213,7 @@ class TestFilterSidebarExtended:
             await pilot.pause()
 
             sidebar = pilot.app.query_one(FilterSidebar)
-            sidebar.watch(selected_core_ranks, capture_message)
+            sidebar.watch(sidebar, "selected_core_ranks", capture_message)
 
             # Toggle off A*
             checkbox = sidebar.query_one("#core-rank-Astar")

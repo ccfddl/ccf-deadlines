@@ -30,7 +30,7 @@ jobs:
           python -m pytest tests/ -v
       - name: Install scripts dependencies
         run: |
-          python -m pip install PyYAML jsonschema
+          python -m pip install PyYAML jsonschema pytest
       - name: Run scripts tests
         run: |
           python -m pytest scripts/tests/ -v
