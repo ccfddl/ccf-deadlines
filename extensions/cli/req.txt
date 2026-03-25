@@ -1,5 +1,6 @@
 tabulate
-yaml
 pyyaml
 requests
 termcolor
+icalendar
+xlin
