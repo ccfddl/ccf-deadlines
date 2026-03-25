@@ -1,259 +1,121 @@
-"""CCFDDL CLI - Conference Deadline Tracker.
-
-A command-line tool for viewing and filtering conference deadlines.
-"""
-
-import argparse
-import json
-import sys
-from datetime import datetime, timezone
-
+import string
 import requests
 import yaml
-from tabulate import tabulate
 from termcolor import colored
-
-from ccfddl import __version__
-from ccfddl.models import CATEGORIES, Conference, get_category_by_sub
-from ccfddl.utils import format_duration, parse_datetime_with_tz
-
-
-def parse_args() -> argparse.Namespace:
-    """Parse command-line arguments."""
-    parser = argparse.ArgumentParser(
-        description="CCFDDL CLI - Conference Deadline Tracker",
-        epilog="Example: ccfddl --conf CVPR ICML --sub AI --rank A",
-    )
-    parser.add_argument(
-        "--version",
-        action="version",
-        version=f"%(prog)s {__version__}",
-    )
-    parser.add_argument(
-        "--conf",
-        type=str,
-        nargs="+",
-        help="Filter by conference IDs (e.g., --conf CVPR ICML)",
-    )
-    parser.add_argument(
-        "--sub",
-        type=str,
-        nargs="+",
-        help="Filter by subcategories (e.g., --sub AI CG)",
-    )
-    parser.add_argument(
-        "--rank",
-        type=str,
-        nargs="+",
-        help="Filter by CCF ranks (e.g., --rank A B)",
-    )
-    parser.add_argument(
-        "--json",
-        action="store_true",
-        help="Output in JSON format",
-    )
-    parser.add_argument(
-        "--list-categories",
-        action="store_true",
-        help="List all categories",
-    )
-    parser.add_argument(
-        "--url",
-        type=str,
-        default="https://ccfddl.github.io/conference/allconf.yml",
-        help="URL to fetch conference data (default: ccfddl.github.io)",
-    )
-    return parser.parse_args()
+from argparse import ArgumentParser
+from copy import deepcopy
+from datetime import datetime
+from tabulate import tabulate
+from datetime import timezone
 
 
-def extract_alpha_id(with_digits: str) -> str:
-    """Extract alphabetic characters from string, converted to lowercase."""
-    return "".join(char for char in with_digits.lower() if char.isalpha())
+def parse_tz(tz):
+    if tz == "AoE":
+        return "-1200"
+    elif tz.startswith("UTC-"):
+        return "-{:04d}".format(int(tz[4:]))
+    elif tz.startswith("UTC+"):
+        return "+{:04d}".format(int(tz[4:]))
+    else:
+        return "+0000"
 
 
-def fetch_conferences(url: str) -> list[Conference]:
-    """Fetch and parse conference data from URL."""
-    try:
-        response = requests.get(url, timeout=30, allow_redirects=True)
-        response.raise_for_status()
-        content = response.content
-        data = yaml.safe_load(content)
-        return [Conference.from_dict(item) for item in data]
-    except requests.RequestException as e:
-        print(f"Error fetching data: {e}", file=sys.stderr)
-        sys.exit(1)
-    except yaml.YAMLError as e:
-        print(f"Error parsing YAML: {e}", file=sys.stderr)
-        sys.exit(1)
+def parse_args():
+    parser = ArgumentParser(description="cli for ccfddl")
+    parser.add_argument("--conf", type=str, nargs='+',
+                        help="A list of conference ids you want to filter, e.g.: '--conf CVPR ICML'")
+    parser.add_argument("--sub", type=str, nargs='+',
+                        help="A list of subcategories ids you want to filter, e.g.: '--sub AI CG'")
+    parser.add_argument("--rank", type=str, nargs='+',
+                        help="A list of ranks you want to filter, e.g.: '--rank C N'")
+    args = parser.parse_args()
+    # Convert all arguments to lowercase
+    for arg_name in vars(args):
+        arg_value = getattr(args, arg_name)
+        if arg_value:
+            setattr(args, arg_name, [arg.lower() for arg in arg_value])
+    return args
 
 
-def process_conference_deadlines(
-    conferences: list[Conference], now: datetime
-) -> list[dict]:
-    """Process conferences and extract upcoming deadlines."""
-    results = []
+def format_duraton(ddl_time: datetime, now: datetime) -> str:
+        duration = ddl_time - now
+        months, days= duration.days // 30, duration.days
+        hours, remainder= divmod(duration.seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
 
-    for conf in conferences:
-        base_info = {
-            "title": conf.title,
-            "description": conf.description,
-            "sub": conf.sub,
-            "rank": conf.rank.ccf,
-            "dblp": conf.dblp,
-        }
+        day_word_str = "days" if days > 1 else "day "
+        # for alignment
+        months_str, days_str, = str(months).zfill(2), str(days).zfill(2)
+        hours_str, minutes_str = str(hours).zfill(2), str(minutes).zfill(2)
 
-        for conf_year in conf.confs:
+        if days < 1:
+            return colored(f'{hours_str}:{minutes_str}:{seconds}', "red")
+        if days < 30:
+            return colored(f'{days_str} {day_word_str}, {hours_str}:{minutes_str}', "yellow")
+        if days < 100:
+            return colored(f"{days_str} {day_word_str}", "blue")
+        return colored(f"{months_str} months", "green")
+
+
+def main():
+    args = parse_args()
+    yml_str = requests.get(
+        "https://ccfddl.github.io/conference/allconf.yml").content.decode("utf-8")
+    all_conf = yaml.safe_load(yml_str)
+
+    all_conf_ext = []
+    now = datetime.now(tz=timezone.utc)
+    for conf in all_conf:
+        for c in conf["confs"]:
+            cur_conf = deepcopy(conf)
+            cur_conf["title"] = cur_conf["title"] + str(c["year"])
+            cur_conf.update(c)
             time_obj = None
-
-            for timeline in conf_year.timeline:
-                deadline_str = timeline.deadline
-                if not deadline_str or deadline_str == "TBD":
-                    continue
-
+            tz = parse_tz(c["timezone"])
+            for d in c["timeline"]:
                 try:
-                    cur_d = parse_datetime_with_tz(deadline_str, conf_year.timezone)
+                    cur_d = datetime.strptime(
+                        d["deadline"] + " {}".format(tz), '%Y-%m-%d %H:%M:%S %z')
                     if cur_d < now:
                         continue
                     if time_obj is None or cur_d < time_obj:
                         time_obj = cur_d
-                except ValueError:
-                    continue
+                except Exception as e:
+                    pass
+            if time_obj is not None:
+                cur_conf["time_obj"] = time_obj
+                if time_obj > now:
+                    all_conf_ext.append(cur_conf)
 
-            if time_obj is not None and time_obj > now:
-                category = get_category_by_sub(conf.sub)
-                result = {
-                    **base_info,
-                    "year": conf_year.year,
-                    "id": conf_year.id,
-                    "link": conf_year.link,
-                    "deadline": time_obj,
-                    "deadline_str": time_obj.strftime("%Y-%m-%d %H:%M:%S %Z"),
-                    "timezone": conf_year.timezone,
-                    "date": conf_year.date,
-                    "place": conf_year.place,
-                    "subname": category.name if category else conf.sub,
-                    "subname_en": category.name_en if category else conf.sub,
-                }
-                results.append(result)
+    all_conf_ext = sorted(all_conf_ext, key=lambda x: x['time_obj'])
 
-    results.sort(key=lambda x: x["deadline"])
-    return results
+    # This is not an elegant solution.
+    # The purpose is to keep the above logic untouched,
+    # return alpha id(conf name) without digits(year)
+    def alpha_id(with_digits: string) -> string:
+        return ''.join(char for char in with_digits.lower() if char.isalpha())
 
-
-def filter_results(
-    results: list[dict],
-    conf_filter: list[str] | None,
-    sub_filter: list[str] | None,
-    rank_filter: list[str] | None,
-) -> list[dict]:
-    """Apply filters to results."""
-    filtered = []
-
-    conf_filter_lower = [f.lower() for f in conf_filter] if conf_filter else None
-    sub_filter_lower = [f.lower() for f in sub_filter] if sub_filter else None
-    rank_filter_lower = [f.lower() for f in rank_filter] if rank_filter else None
-
-    for item in results:
-        if conf_filter_lower:
-            id_alpha = extract_alpha_id(item["id"])
-            title_alpha = extract_alpha_id(item["title"])
-            if id_alpha not in conf_filter_lower and title_alpha not in conf_filter_lower:
-                continue
-        if sub_filter_lower and extract_alpha_id(item["sub"]) not in sub_filter_lower:
-            continue
-        if rank_filter_lower and item["rank"].lower() not in rank_filter_lower:
-            continue
-        filtered.append(item)
-
-    return filtered
-
-
-def format_colored_duration(ddl_time: datetime, now: datetime) -> str:
-    """Format duration with color coding."""
-    duration_str = format_duration(ddl_time, now)
-    days = (ddl_time - now).days
-
-    if days < 1:
-        return colored(duration_str, "red")
-    elif days < 30:
-        return colored(duration_str, "yellow")
-    elif days < 100:
-        return colored(duration_str, "blue")
-    else:
-        return colored(duration_str, "green")
-
-
-def output_table(results: list[dict], now: datetime) -> None:
-    """Output results as a formatted table."""
     table = [["Title", "Sub", "Rank", "DDL", "Link"]]
+    # Filter intersection by args
+    for x in all_conf_ext:
+        skip = False
+        if args.conf and alpha_id(x["id"]) not in args.conf:
+            skip = True
+        if args.sub and alpha_id(x["sub"]) not in args.sub:
+            skip = True
+        if args.rank and alpha_id(x["rank"]) not in args.rank:
+            skip = True
+        if skip:
+            continue
+        table.append(
+            [x["title"],
+                x["sub"],
+                x["rank"],
+                format_duraton(x["time_obj"], now),
+                x["link"]]
+            )
 
-    for item in results:
-        table.append([
-            f"{item['title']} {item['year']}",
-            item["sub"],
-            item["rank"],
-            format_colored_duration(item["deadline"], now),
-            item["link"],
-        ])
-
-    print(tabulate(table, headers="firstrow", tablefmt="fancy_grid"))
-
-
-def output_json(results: list[dict]) -> None:
-    """Output results as JSON."""
-    output = []
-    for item in results:
-        output.append({
-            "title": item["title"],
-            "year": item["year"],
-            "id": item["id"],
-            "sub": item["sub"],
-            "subname": item["subname"],
-            "subname_en": item["subname_en"],
-            "rank": item["rank"],
-            "deadline": item["deadline_str"],
-            "timezone": item["timezone"],
-            "date": item["date"],
-            "place": item["place"],
-            "link": item["link"],
-            "dblp": item["dblp"],
-        })
-    print(json.dumps(output, indent=2, ensure_ascii=False))
-
-
-def list_categories() -> None:
-    """Print all available categories."""
-    print("Available Categories:")
-    print("-" * 60)
-    for cat in CATEGORIES:
-        print(f"  {cat.sub:4s} | {cat.name_en:30s} | {cat.name}")
-    print("-" * 60)
-    print(f"Total: {len(CATEGORIES)} categories")
-
-
-def main() -> None:
-    """Main entry point."""
-    args = parse_args()
-
-    if args.list_categories:
-        list_categories()
-        return
-
-    now = datetime.now(tz=timezone.utc)
-    conferences = fetch_conferences(args.url)
-    results = process_conference_deadlines(conferences, now)
-
-    filtered = filter_results(
-        results,
-        args.conf,
-        args.sub,
-        args.rank,
-    )
-
-    if args.json:
-        output_json(filtered)
-    else:
-        output_table(filtered, now)
+    print(tabulate(table, headers='firstrow', tablefmt='fancy_grid'))
 
 
 if __name__ == "__main__":
