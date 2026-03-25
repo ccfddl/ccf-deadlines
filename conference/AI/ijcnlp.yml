@@ -16,3 +16,12 @@
       timezone: UTC-12
       date: Dec 20-24, 2025
       place: Mumbai, India
+    - year: 2026
+      id: ijcnlp2026
+      link: https://2026.aaclnet.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'AACL-IJCNLP 2026 (the 5th AACL & 15th IJCNLP)'
+      timezone: UTC-12
+      date: Nov 6-10, 2026
+      place: Hengqin, China
