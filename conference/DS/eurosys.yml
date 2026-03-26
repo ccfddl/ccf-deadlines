@@ -75,3 +75,16 @@
       timezone: AoE
       date: April 13-16, 2026
       place: Edinburgh, UK
+    - year: 2027
+      id: eurosys2027
+      link: https://2027.eurosys.org/
+      timeline:
+        - abstract_deadline: '2026-05-07 23:59:59'
+          deadline: '2026-05-14 23:59:59'
+          comment: Spring Submission Deadline
+        - abstract_deadline: '2026-09-17 23:59:59'
+          deadline: '2026-09-24 23:59:59'
+          comment: Fall Submission Deadline
+      timezone: AoE
+      date: April 19-24, 2027
+      place: Rabat, Morocco
