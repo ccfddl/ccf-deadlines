@@ -53,9 +53,8 @@
       id: saner2027
       link: https://conf.researchr.org/home/saner-2027
       timeline:
-        - deadline: 'TBD'
-          comment: Research Track Abstract submission (mandatory)
-        - deadline: 'TBD'
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
           comment: Research Track Paper submission deadline
       timezone: AoE
       date: March 9-12, 2027
