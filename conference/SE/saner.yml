@@ -49,3 +49,14 @@
       timezone: AoE
       date: March 17-20, 2026
       place: Limassol, Cyprus
+    - year: 2027
+      id: saner2027
+      link: https://conf.researchr.org/home/saner-2027
+      timeline:
+        - deadline: 'TBD'
+          comment: Research Track Abstract submission (mandatory)
+        - deadline: 'TBD'
+          comment: Research Track Paper submission deadline
+      timezone: AoE
+      date: TBD
+      place: Richmond, Virginia, United States
