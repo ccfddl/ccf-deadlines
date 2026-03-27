@@ -13,74 +13,12 @@ from textual.binding import Binding
 from textual.containers import Horizontal, Vertical
 from textual.reactive import reactive
 from textual.screen import Screen
-from textual.widgets import Footer, Header, Label, LoadingIndicator, Static
+from textual.widgets import Footer, Header, Label, Static
 
 from ccfddl.models import CATEGORIES
 
 from .data import ConferenceRow, DataService
 from .widgets import ConferenceTable, FilterChanged, FilterSidebar
-
-
-class LoadingOverlay(Vertical):
-    """Overlay widget shown while loading data."""
-
-    DEFAULT_CSS = """
-    LoadingOverlay {
-        align: center middle;
-        height: 100%;
-        width: 100%;
-        background: $surface;
-    }
-
-    LoadingOverlay Label {
-        text-align: center;
-        margin-top: 1;
-    }
-    """
-
-    def compose(self) -> ComposeResult:
-        yield LoadingIndicator()
-        yield Label("Loading conference data...", id="loading-text")
-
-
-class ErrorOverlay(Vertical):
-    """Overlay widget shown when data loading fails."""
-
-    DEFAULT_CSS = """
-    ErrorOverlay {
-        align: center middle;
-        height: 100%;
-        width: 100%;
-        background: $surface;
-    }
-
-    ErrorOverlay Label {
-        text-align: center;
-        margin-top: 1;
-    }
-
-    ErrorOverlay .error-title {
-        text-style: bold;
-        color: $error;
-    }
-
-    ErrorOverlay .error-message {
-        color: $text-muted;
-    }
-
-    ErrorOverlay .hint {
-        color: $accent;
-    }
-    """
-
-    def __init__(self, error_message: str, **kwargs) -> None:
-        super().__init__(**kwargs)
-        self.error_message = error_message
-
-    def compose(self) -> ComposeResult:
-        yield Label("Failed to Load Data", classes="error-title")
-        yield Label(self.error_message, classes="error-message")
-        yield Label("Press 'r' to retry", classes="hint")
 
 
 class CCFDeadlinesApp(App):
@@ -160,40 +98,22 @@ class CCFDeadlinesApp(App):
 
     def on_mount(self) -> None:
         """Handle app mount - load initial data."""
-        self._show_loading()
+        self._show_loading_in_header()
         self._load_data()
 
-    def _show_loading(self) -> None:
-        """Show loading overlay."""
-        table_container = self.query_one("#table-container", Vertical)
-        # Remove any existing overlays
-        overlays = list(table_container.query("LoadingOverlay, ErrorOverlay"))
-        for overlay in overlays:
-            overlay.remove()
+    def _show_loading_in_header(self) -> None:
+        """Show loading status in header."""
+        if self.language == "zh":
+            self.sub_title = "正在加载会议数据..."
+        else:
+            self.sub_title = "Loading conference data..."
 
-        # Add loading overlay (no fixed ID to avoid duplicate ID errors)
-        table_container.mount(LoadingOverlay())
-
-    def _show_error(self, message: str) -> None:
-        """Show error overlay.
-
-        Args:
-            message: Error message to display.
-        """
-        table_container = self.query_one("#table-container", Vertical)
-        # Remove any existing overlays
-        overlays = list(table_container.query("LoadingOverlay, ErrorOverlay"))
-        for overlay in overlays:
-            overlay.remove()
-
-        # Add error overlay (no fixed ID to avoid duplicate ID errors)
-        table_container.mount(ErrorOverlay(message))
-
-    def _hide_overlays(self) -> None:
-        """Hide all overlay widgets."""
-        table_container = self.query_one("#table-container", Vertical)
-        for overlay in table_container.query("LoadingOverlay, ErrorOverlay"):
-            overlay.remove()
+    def _show_error_in_header(self, message: str) -> None:
+        """Show error status in header."""
+        if self.language == "zh":
+            self.sub_title = f"加载失败: {message} (按 r 重试)"
+        else:
+            self.sub_title = f"Error: {message} (press 'r' to retry)"
 
     @work(exclusive=True, name="load_data")
     async def _load_data(self) -> None:
@@ -221,13 +141,12 @@ class CCFDeadlinesApp(App):
             self._update_conferences()
 
             # Update UI
-            self._hide_overlays()
             self._update_table()
             self._update_header()
 
         except Exception as e:
             self._error_message = str(e)
-            self._show_error(self._error_message)
+            self._show_error_in_header(self._error_message)
 
         finally:
             self._is_loading = False
@@ -330,7 +249,7 @@ class CCFDeadlinesApp(App):
         if self._is_loading:
             return
 
-        self._show_loading()
+        self._show_loading_in_header()
         self._load_data()
 
     def action_show_help(self) -> None:

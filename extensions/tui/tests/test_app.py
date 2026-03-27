@@ -19,7 +19,7 @@ from textual.containers import Vertical
 
 from ccfddl.models import Conference, ConferenceYear, Rank, Timeline
 
-from ccfddl_tui.app import CCFDeadlinesApp, HelpScreen, LoadingOverlay, ErrorOverlay
+from ccfddl_tui.app import CCFDeadlinesApp, HelpScreen
 from ccfddl_tui.widgets.conference_table import ConferenceTable
 from ccfddl_tui.widgets.filters import FilterSidebar
 from ccfddl_tui.data.data_service import ConferenceRow
@@ -200,7 +200,7 @@ async def test_data_loading(mock_load_data) -> None:
         # Manually set up test data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_table()
 
@@ -221,7 +221,7 @@ async def test_filter_by_category() -> None:
         # Set up initial data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app.selected_subs = {"AI", "DB", "CG", "SE"}
         pilot.app._update_conferences()
         pilot.app._update_table()
@@ -262,7 +262,7 @@ async def test_filter_by_rank() -> None:
         # Set up initial data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app.selected_ranks = {"A", "B", "C", "N"}
         pilot.app._update_conferences()
         pilot.app._update_table()
@@ -301,7 +301,7 @@ async def test_search_filter() -> None:
         # Set up initial data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_table()
 
@@ -372,7 +372,7 @@ async def test_refresh_data(mock_load) -> None:
         # Set up initial data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_table()
 
@@ -400,7 +400,7 @@ async def test_keyboard_navigation() -> None:
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_table()
 
@@ -441,7 +441,7 @@ async def test_open_url(mock_browser_open) -> None:
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_table()
 
@@ -520,7 +520,7 @@ async def test_header_subtitle_updates() -> None:
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_header()
 
@@ -572,7 +572,7 @@ async def test_empty_table_state() -> None:
     async with app.run_test() as pilot:
         # Set up empty data
         pilot.app._all_rows = []
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_table()
 
@@ -615,7 +615,7 @@ async def test_go_top_bottom_navigation() -> None:
             for i in range(10)
         ]
         pilot.app._all_rows = rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_table()
 
@@ -651,7 +651,7 @@ async def test_multiple_filters_combined() -> None:
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
 
         await pilot.pause()
 
@@ -682,26 +682,33 @@ async def test_multiple_filters_combined() -> None:
 
 
 @pytest.mark.asyncio
-async def test_loading_overlay_shown() -> None:
-    """Test that loading overlay is shown during data load."""
+@patch("ccfddl_tui.data.data_service.DataService.load_conferences")
+async def test_loading_shown_in_header(mock_load) -> None:
+    """Test that loading status is shown in header during data load."""
+    # Set up mock to return data
+    mock_conferences = create_mock_conferences_list()
+    mock_load.return_value = mock_conferences
+
     app = CCFDeadlinesApp()
 
-    # Don't mock _load_data so we can test the loading state
     async with app.run_test() as pilot:
-        # Wait for mount
         await pilot.pause()
 
-        # Loading overlay should be shown initially
-        # Note: _load_data runs async, so we check before it completes
-        loading_overlays = pilot.app.query(LoadingOverlay)
-        # The overlay might already be removed if loading completed quickly
-        # This tests the mechanism exists
+        # Header should show loading status initially
+        assert pilot.app.sub_title is not None
+        # Wait for loading to complete
+        for _ in range(10):
+            await pilot.pause()
+            if "Showing" in pilot.app.sub_title or "显示" in pilot.app.sub_title:
+                break
+        # After loading completes, should show conference count
+        assert "Showing" in pilot.app.sub_title or "显示" in pilot.app.sub_title
 
 
 @pytest.mark.asyncio
 @patch("ccfddl_tui.data.data_service.DataService.load_conferences")
-async def test_error_overlay_on_load_failure(mock_load) -> None:
-    """Test that error overlay is shown when data loading fails."""
+async def test_error_shown_in_header_on_load_failure(mock_load) -> None:
+    """Test that error status is shown in header when data loading fails."""
     mock_load.side_effect = Exception("Network error")
 
     app = CCFDeadlinesApp()
@@ -713,11 +720,9 @@ async def test_error_overlay_on_load_failure(mock_load) -> None:
         await pilot.pause()
         await pilot.pause()
 
-        # Check for error overlay or error message
-        error_overlays = pilot.app.query(ErrorOverlay)
-
-        if len(error_overlays) == 0:
-            assert pilot.app._error_message is not None
+        # Header should show error message
+        assert pilot.app._error_message is not None
+        assert "Error" in pilot.app.sub_title or "失败" in pilot.app.sub_title
 
 
 @pytest.mark.asyncio
@@ -752,7 +757,7 @@ async def test_escape_clears_search() -> None:
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
-        pilot.app._hide_overlays()
+        pilot.app._update_header()
         pilot.app._update_conferences()
         pilot.app._update_table()
 
