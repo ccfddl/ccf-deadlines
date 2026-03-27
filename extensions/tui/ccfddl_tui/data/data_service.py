@@ -126,16 +126,17 @@ class DataService:
         self.save_favorites(self._favorites)
         return is_favorite
 
-    def is_favorite(self, row: ConferenceRow) -> bool:
+    def is_favorite(self, title: str, year: int) -> bool:
         """Check if a conference is favorited.
 
         Args:
-            row: ConferenceRow to check.
+            title: Conference title.
+            year: Conference year.
 
         Returns:
             True if conference is favorited.
         """
-        conf_id = f"{row.title}_{row.year}"
+        conf_id = f"{title}_{year}"
         return conf_id in self._favorites
 
     def load_conferences(self, url: str | None = None) -> list[Conference]:
@@ -403,22 +404,7 @@ class DataService:
             is_running=is_running,
             is_tbd=is_tbd,
             is_expired=not is_running and not is_tbd,
-            is_favorite=self.is_favorite(ConferenceRow(
-                title=conf.title,
-                year=conf_year.year,
-                sub="",
-                rank="",
-                core_rank=None,
-                thcpl_rank=None,
-                deadline=None,
-                countdown="",
-                place="",
-                date="",
-                link="",
-                is_running=False,
-                is_tbd=False,
-                is_expired=False,
-            )),
+            is_favorite=self.is_favorite(conf.title, conf_year.year),
         )
 
     def filter_by_sub(
@@ -545,12 +531,6 @@ class DataService:
         finished.sort(key=lambda r: r.year, reverse=True)
 
         return favorites + running + tbd + finished
-        tbd.sort(key=lambda r: r.year, reverse=True)
-
-        # Sort finished by year descending
-        finished.sort(key=lambda r: r.year, reverse=True)
-
-        return running + tbd + finished
 
     def get_category_name(self, sub: str) -> str:
         """Get the English name for a category code.

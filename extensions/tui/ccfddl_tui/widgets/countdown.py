@@ -67,14 +67,17 @@ class CountdownWidget(Static):
         """
         super().__init__(name=name, id=id, classes=classes, disabled=disabled)
         self.deadline = deadline
-        self._interval_id: Optional[str] = None
+        self._timer = None
 
     def on_mount(self) -> None:
         """Set up the countdown update interval when widget is mounted."""
-        # Update every second
-        self.set_interval(1, self._update_countdown)
-        # Initial update
+        self._timer = self.set_interval(1, self._update_countdown)
         self._update_countdown()
+
+    def on_unmount(self) -> None:
+        """Clean up timer when widget is removed."""
+        if self._timer:
+            self._timer.stop()
 
     def _update_countdown(self) -> None:
         """Calculate remaining time and update the widget display."""

@@ -111,15 +111,21 @@ class ConferenceTable(DataTable):
         self._pending_rows: list[ConferenceRow] = []
         self._column_keys: list = []
         self._row_keys: list = []
+        self._countdown_timer = None
 
     def on_mount(self) -> None:
         self._column_keys = self.add_columns(
             "★", "Title", "Sub", "CCF", "CORE", "THCPL", "Countdown", "Date", "Place"
         )
-        self.set_interval(1, self._refresh_countdowns)
+        self._countdown_timer = self.set_interval(1, self._refresh_countdowns)
         if self._pending_rows:
             self._do_update_rows(self._pending_rows)
             self._pending_rows = []
+
+    def on_unmount(self) -> None:
+        """Clean up timer when widget is removed."""
+        if self._countdown_timer:
+            self._countdown_timer.stop()
 
     def update_rows(self, rows: list[ConferenceRow]) -> None:
         if len(self.columns) == 0:
