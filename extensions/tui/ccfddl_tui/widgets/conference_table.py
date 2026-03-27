@@ -77,12 +77,17 @@ class ConferenceTable(DataTable):
 
     rows_data: list[ConferenceRow] = reactive(list)
 
-    COLUMN_TITLE = 0
-    COLUMN_SUB = 1
-    COLUMN_RANK = 2
-    COLUMN_COUNTDOWN = 3
-    COLUMN_DATE = 4
-    COLUMN_PLACE = 5
+    # Column indices matching add_columns order:
+    # "★", "Title", "Sub", "CCF", "CORE", "THCPL", "Countdown", "Date", "Place"
+    COLUMN_FAVORITE = 0
+    COLUMN_TITLE = 1
+    COLUMN_SUB = 2
+    COLUMN_CCF_RANK = 3
+    COLUMN_CORE_RANK = 4
+    COLUMN_THCPL_RANK = 5
+    COLUMN_COUNTDOWN = 6
+    COLUMN_DATE = 7
+    COLUMN_PLACE = 8
 
     def __init__(
         self,
@@ -104,9 +109,11 @@ class ConferenceTable(DataTable):
         self._sort_column: int = self.COLUMN_COUNTDOWN
         self._sort_reverse: bool = False
         self._pending_rows: list[ConferenceRow] = []
+        self._column_keys: list = []
+        self._row_keys: list = []
 
     def on_mount(self) -> None:
-        self.add_columns(
+        self._column_keys = self.add_columns(
             "★", "Title", "Sub", "CCF", "CORE", "THCPL", "Countdown", "Date", "Place"
         )
         self.set_interval(1, self._refresh_countdowns)
@@ -124,11 +131,12 @@ class ConferenceTable(DataTable):
     def _do_update_rows(self, rows: list[ConferenceRow]) -> None:
         self.rows_data = rows
         self.clear()
+        self._row_keys = []
         if not rows:
             return
         sorted_rows = self._sort_rows(rows.copy())
         for row in sorted_rows:
-            self.add_row(
+            row_key = self.add_row(
                 self._format_favorite(row),
                 self._format_title(row),
                 self._format_sub(row),
@@ -139,6 +147,7 @@ class ConferenceTable(DataTable):
                 self._format_date(row),
                 self._format_place(row),
             )
+            self._row_keys.append(row_key)
 
     def _sort_rows(self, rows: list[ConferenceRow]) -> list[ConferenceRow]:
         if not rows:
@@ -149,7 +158,7 @@ class ConferenceTable(DataTable):
                 return row.title.lower()
             elif self._sort_column == self.COLUMN_SUB:
                 return row.sub
-            elif self._sort_column == self.COLUMN_RANK:
+            elif self._sort_column == self.COLUMN_CCF_RANK:
                 rank_order = {"A": 0, "B": 1, "C": 2, "N": 3}
                 return rank_order.get(row.rank, 4)
             elif self._sort_column == self.COLUMN_COUNTDOWN:
@@ -165,19 +174,20 @@ class ConferenceTable(DataTable):
         return sorted(rows, key=sort_key, reverse=self._sort_reverse)
 
     def _refresh_countdowns(self) -> None:
-        if not self.rows_data or len(self.columns) == 0:
+        if not self.rows_data or not self._row_keys or not self._column_keys:
             return
 
         now = datetime.now(timezone.utc)
         sorted_rows = self._sort_rows(self.rows_data.copy())
+        countdown_column_key = self._column_keys[self.COLUMN_COUNTDOWN]
 
         for idx, row in enumerate(sorted_rows):
-            if idx < self.row_count:
+            if idx < len(self._row_keys):
                 countdown_text = self._format_countdown_live(row, now)
                 try:
                     self.update_cell(
-                        row_key=self.get_row_at(idx),
-                        column_key=self.COLUMN_COUNTDOWN,
+                        row_key=self._row_keys[idx],
+                        column_key=countdown_column_key,
                         value=countdown_text,
                     )
                 except Exception:
@@ -334,5 +344,6 @@ class ConferenceTable(DataTable):
     def clear_rows(self) -> None:
         self.rows_data = []
         self._pending_rows = []
+        self._row_keys = []
         if len(self.columns) > 0:
             self.clear()

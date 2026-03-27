@@ -167,11 +167,12 @@ class CCFDeadlinesApp(App):
         """Show loading overlay."""
         table_container = self.query_one("#table-container", Vertical)
         # Remove any existing overlays
-        for overlay in table_container.query("LoadingOverlay, ErrorOverlay"):
+        overlays = list(table_container.query("LoadingOverlay, ErrorOverlay"))
+        for overlay in overlays:
             overlay.remove()
 
-        # Add loading overlay
-        table_container.mount(LoadingOverlay(id="loading-overlay"))
+        # Add loading overlay (no fixed ID to avoid duplicate ID errors)
+        table_container.mount(LoadingOverlay())
 
     def _show_error(self, message: str) -> None:
         """Show error overlay.
@@ -181,11 +182,12 @@ class CCFDeadlinesApp(App):
         """
         table_container = self.query_one("#table-container", Vertical)
         # Remove any existing overlays
-        for overlay in table_container.query("LoadingOverlay, ErrorOverlay"):
+        overlays = list(table_container.query("LoadingOverlay, ErrorOverlay"))
+        for overlay in overlays:
             overlay.remove()
 
-        # Add error overlay
-        table_container.mount(ErrorOverlay(message, id="error-overlay"))
+        # Add error overlay (no fixed ID to avoid duplicate ID errors)
+        table_container.mount(ErrorOverlay(message))
 
     def _hide_overlays(self) -> None:
         """Hide all overlay widgets."""
@@ -200,16 +202,20 @@ class CCFDeadlinesApp(App):
         Fetches data from the data service, processes it into display rows,
         and updates the table. Handles errors gracefully.
         """
+        import asyncio
+
         self._is_loading = True
         self._error_message = None
 
         try:
-            # Load conferences from URL
-            self.data_service.load_conferences()
+            # Load conferences from URL (run blocking call in thread)
+            await asyncio.to_thread(self.data_service.load_conferences)
 
             # Process into display rows
             now = datetime.now(timezone.utc)
-            self._all_rows = self.data_service.process_rows(now)
+            self._all_rows = await asyncio.to_thread(
+                self.data_service.process_rows, now
+            )
 
             # Apply initial filtering and sorting
             self._update_conferences()
