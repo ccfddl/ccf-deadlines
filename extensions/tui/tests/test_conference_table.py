@@ -73,12 +73,15 @@ class TestConferenceTable:
         assert table._sort_column == ConferenceTable.COLUMN_COUNTDOWN
 
     def test_column_constants(self) -> None:
-        assert ConferenceTable.COLUMN_TITLE == 0
-        assert ConferenceTable.COLUMN_SUB == 1
-        assert ConferenceTable.COLUMN_RANK == 2
-        assert ConferenceTable.COLUMN_COUNTDOWN == 3
-        assert ConferenceTable.COLUMN_DATE == 4
-        assert ConferenceTable.COLUMN_PLACE == 5
+        assert ConferenceTable.COLUMN_FAVORITE == 0
+        assert ConferenceTable.COLUMN_TITLE == 1
+        assert ConferenceTable.COLUMN_SUB == 2
+        assert ConferenceTable.COLUMN_CCF_RANK == 3
+        assert ConferenceTable.COLUMN_CORE_RANK == 4
+        assert ConferenceTable.COLUMN_THCPL_RANK == 5
+        assert ConferenceTable.COLUMN_COUNTDOWN == 6
+        assert ConferenceTable.COLUMN_DATE == 7
+        assert ConferenceTable.COLUMN_PLACE == 8
 
     def test_bindings_defined(self) -> None:
         bindings = ConferenceTable.BINDINGS
@@ -197,7 +200,7 @@ class TestConferenceTable:
 
     def test_sort_rows_by_rank(self) -> None:
         table = ConferenceTable()
-        table._sort_column = ConferenceTable.COLUMN_RANK
+        table._sort_column = ConferenceTable.COLUMN_CCF_RANK
         table._sort_reverse = False
 
         rows = [

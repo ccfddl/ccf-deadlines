@@ -97,7 +97,7 @@ class TestFavoriteFunctionality:
             result = service.toggle_favorite(row)
 
             assert result is True
-            assert service.is_favorite(row) is True
+            assert service.is_favorite("CVPR", 2025) is True
 
     def test_toggle_favorite_removes_conference(self):
         """toggle_favorite should remove conference from favorites."""
@@ -128,13 +128,13 @@ class TestFavoriteFunctionality:
 
             # Add first
             service.toggle_favorite(row)
-            assert service.is_favorite(row) is True
+            assert service.is_favorite("CVPR", 2025) is True
 
             # Remove
             result = service.toggle_favorite(row)
 
             assert result is False
-            assert service.is_favorite(row) is False
+            assert service.is_favorite("CVPR", 2025) is False
 
     def test_favorites_persistence(self):
         """Favorites should be persisted to file."""
@@ -198,8 +198,8 @@ class TestFavoriteFunctionality:
                 is_running=True, is_tbd=True, is_expired=False,
             )
 
-            assert service.is_favorite(row1) is True
-            assert service.is_favorite(row2) is True
+            assert service.is_favorite("NeurIPS", 2025) is True
+            assert service.is_favorite("ICML", 2025) is True
 
 
 class TestFavoriteSorting:
