@@ -34,3 +34,12 @@
       timezone: AoE
       date: March 23 - 26, 2026
       place: Paphos, Cyprus
+    - year: 2027
+      id: iui27
+      link: https://iui.hosting.acm.org/2027/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: February 8-11, 2027
+      place: Helsinki, Finland
