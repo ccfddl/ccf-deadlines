@@ -153,8 +153,24 @@ class CCFDeadlinesApp(App):
 
     def _update_conferences(self) -> None:
         """Apply filters and search to conference data."""
-        rows = self._all_rows
+        rows = self._apply_filters(self._all_rows)
 
+        # Apply search
+        if self.search_query:
+            rows = self.data_service.fuzzy_search(rows, self.search_query)
+
+        # Sort for display
+        self.conferences = self.data_service.sort_rows(rows)
+
+    def _apply_filters(self, rows: list[ConferenceRow]) -> list[ConferenceRow]:
+        """Apply all active filters to the conference rows.
+
+        Args:
+            rows: List of all conference rows.
+
+        Returns:
+            Filtered list of rows matching all active filter criteria.
+        """
         # Apply category filter
         if self.selected_subs:
             rows = [r for r in rows if r.sub in self.selected_subs]
@@ -175,21 +191,14 @@ class CCFDeadlinesApp(App):
         if not self.show_expired:
             rows = [r for r in rows if not r.is_expired]
 
-        # Apply search
-        if self.search_query:
-            rows = self.data_service.fuzzy_search(rows, self.search_query)
-
-        # Sort for display
-        rows = self.data_service.sort_rows(rows)
-
-        self.conferences = rows
+        return rows
 
     def _update_table(self) -> None:
         """Update the conference table with current data."""
         try:
             table = self.query_one("#conference-table", ConferenceTable)
             table.update_rows(self.conferences)
-        except Exception:
+        except (RuntimeError, ValueError):
             # Table might not be mounted yet
             pass
 
@@ -241,7 +250,7 @@ class CCFDeadlinesApp(App):
             # Re-render sidebar with new language
             # Note: FilterSidebar currently uses English labels
             pass
-        except Exception:
+        except (RuntimeError, ValueError):
             pass
 
     def action_refresh(self) -> None:
@@ -262,7 +271,7 @@ class CCFDeadlinesApp(App):
             sidebar = self.query_one("#filter-sidebar", FilterSidebar)
             # Reset filters to clear search
             sidebar.reset_filters()
-        except Exception:
+        except (RuntimeError, ValueError):
             pass
 
     def action_toggle_favorite(self) -> None:
@@ -288,7 +297,7 @@ class CCFDeadlinesApp(App):
                 # Show notification
                 action = "added to" if is_favorite else "removed from"
                 self.notify(f"{selected_row.title} {action} favorites")
-        except Exception:
+        except (RuntimeError, ValueError, AttributeError):
             pass
 
     def watch_language(self, old_language: str, new_language: str) -> None:

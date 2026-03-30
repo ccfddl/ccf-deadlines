@@ -1,3 +1,8 @@
+"""RSS feed generator for CCF conference deadlines.
+
+This module converts conference YAML data to RSS 2.0 format for feed readers.
+"""
+
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import format_datetime
@@ -11,8 +16,16 @@ def convert_to_rss(
     file_paths: list[str],
     output_path: str,
     lang: str = "en",
-    sub_mapping: dict | None = None,
+    sub_mapping: dict[str, str] | None = None,
 ) -> None:
+    """Convert conference YAML files to RSS format.
+
+    Args:
+        file_paths: List of paths to YAML files containing conference data.
+        output_path: Path to write the output .xml file.
+        lang: Language for feed content ('en' or 'zh').
+        sub_mapping: Mapping from sub codes to Chinese names.
+    """
     if sub_mapping is None:
         sub_mapping = {}
 

@@ -18,6 +18,9 @@ from ccfddl.models import Conference, CATEGORIES
 from ccfddl.utils import parse_datetime_with_tz, format_duration
 
 
+FUZZY_MATCH_THRESHOLD = 0.3
+
+
 @dataclass
 class ConferenceRow:
     """Display row for a conference in the TUI table.
@@ -86,7 +89,7 @@ class DataService:
             with open(favorites_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 return set(data.get("favorites", []))
-        except Exception:
+        except (json.JSONDecodeError, IOError, OSError):
             return set()
 
     def save_favorites(self, favorites: set[str]) -> None:
@@ -102,7 +105,7 @@ class DataService:
             with open(favorites_path, "w", encoding="utf-8") as f:
                 json.dump({"favorites": list(favorites)}, f)
             self._favorites = favorites
-        except Exception:
+        except (IOError, OSError):
             pass
 
     def toggle_favorite(self, row: ConferenceRow) -> bool:
@@ -223,7 +226,7 @@ class DataService:
                     data = yaml.safe_load(f)
                 if data and isinstance(data, list):
                     all_data.extend(data)
-            except Exception:
+            except (yaml.YAMLError, IOError, OSError):
                 continue
 
         if not all_data:
@@ -478,7 +481,7 @@ class DataService:
                 ).ratio()
 
             # Only include results above threshold
-            if score > 0.3:
+            if score > FUZZY_MATCH_THRESHOLD:
                 matches.append((row, score))
 
         # Sort by score descending

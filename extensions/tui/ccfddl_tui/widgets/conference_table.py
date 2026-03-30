@@ -15,6 +15,28 @@ from ..data.data_service import ConferenceRow
 from ..utils.formatters import format_deadline_countdown, get_countdown_color
 
 
+CCF_RANK_COLORS: dict[str, str] = {
+    "A": "red",
+    "B": "yellow",
+    "C": "green",
+    "N": "dim",
+}
+
+CORE_RANK_COLORS: dict[str, str] = {
+    "A*": "red bold",
+    "A": "red",
+    "B": "yellow",
+    "C": "green",
+    "N": "dim",
+}
+
+THCPL_RANK_COLORS: dict[str, str] = {
+    "A": "red",
+    "B": "yellow",
+    "N": "dim",
+}
+
+
 class RowSelected(Message):
     """Message emitted when a conference row is selected."""
 
@@ -196,7 +218,8 @@ class ConferenceTable(DataTable):
                         column_key=countdown_column_key,
                         value=countdown_text,
                     )
-                except Exception:
+                except (KeyError, IndexError, AttributeError):
+                    # Row or column key may no longer exist after data refresh
                     pass
 
     def _format_title(self, row: ConferenceRow) -> Text:
@@ -209,67 +232,37 @@ class ConferenceTable(DataTable):
         return Text(row.sub, style="cyan")
 
     def _format_rank(self, row: ConferenceRow) -> Text:
-        rank_colors = {
-            "A": "red",
-            "B": "yellow",
-            "C": "green",
-            "N": "dim",
-        }
-        color = rank_colors.get(row.rank, "white")
+        color = CCF_RANK_COLORS.get(row.rank, "white")
         return Text(f"CCF {row.rank}", style=color)
 
     def _format_favorite(self, row: ConferenceRow) -> Text:
-        """Format favorite indicator."""
         if row.is_favorite:
             return Text("★", style="yellow")
         return Text("☆", style="dim")
 
     def _format_ccf_rank(self, row: ConferenceRow) -> Text:
-        """Format CCF rank."""
-        rank_colors = {
-            "A": "red",
-            "B": "yellow",
-            "C": "green",
-            "N": "dim",
-        }
-        color = rank_colors.get(row.rank, "white")
+        color = CCF_RANK_COLORS.get(row.rank, "white")
         return Text(row.rank, style=color)
 
     def _format_core_rank(self, row: ConferenceRow) -> Text:
-        """Format CORE rank."""
         if not row.core_rank:
             return Text("-", style="dim")
-        rank_colors = {
-            "A*": "red bold",
-            "A": "red",
-            "B": "yellow",
-            "C": "green",
-            "N": "dim",
-        }
-        color = rank_colors.get(row.core_rank, "white")
+        color = CORE_RANK_COLORS.get(row.core_rank, "white")
         return Text(row.core_rank, style=color)
 
     def _format_thcpl_rank(self, row: ConferenceRow) -> Text:
-        """Format THCPL rank."""
         if not row.thcpl_rank:
             return Text("-", style="dim")
-        rank_colors = {
-            "A": "red",
-            "B": "yellow",
-            "N": "dim",
-        }
-        color = rank_colors.get(row.thcpl_rank, "white")
+        color = THCPL_RANK_COLORS.get(row.thcpl_rank, "white")
         return Text(row.thcpl_rank, style=color)
 
     def _format_countdown(self, row: ConferenceRow) -> Text:
-        """Format countdown for initial display."""
         return format_deadline_countdown(
             deadline=row.deadline,
             is_tbd=row.is_tbd,
         )
 
     def _format_countdown_live(self, row: ConferenceRow, now: datetime) -> Text:
-        """Format countdown for live refresh."""
         return format_deadline_countdown(
             deadline=row.deadline,
             is_tbd=row.is_tbd,

@@ -1,12 +1,18 @@
+"""iCal feed generator for CCF conference deadlines.
+
+This module converts conference YAML data to iCal format for calendar subscription.
+"""
+
 import uuid
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
+
 from icalendar import Calendar, Event, Timezone, TimezoneStandard
 import yaml
 
 from ccfddl.utils import load_mapping, get_timezone, reverse_index
 
 
-def create_vtimezone(tz) -> Timezone:
+def create_vtimezone(tz: timezone) -> Timezone:
     tz_offset = tz.utcoffset(datetime.now())
     offset_hours = tz_offset.total_seconds() // 3600
     tzid = f"UTC{offset_hours:+03.0f}:00"
@@ -28,8 +34,16 @@ def convert_to_ical(
     file_paths: list[str],
     output_path: str,
     lang: str = "en",
-    sub_mapping: dict | None = None,
+    sub_mapping: dict[str, str] | None = None,
 ) -> None:
+    """Convert conference YAML files to iCal format.
+
+    Args:
+        file_paths: List of paths to YAML files containing conference data.
+        output_path: Path to write the output .ics file.
+        lang: Language for event descriptions ('en' or 'zh').
+        sub_mapping: Mapping from sub codes to Chinese names.
+    """
     if sub_mapping is None:
         sub_mapping = {}
 

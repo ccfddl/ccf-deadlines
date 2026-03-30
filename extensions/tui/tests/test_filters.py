@@ -81,8 +81,8 @@ class TestFilterChanged:
         assert msg.ranks == {"A", "B", "C", "N"}
         assert len(msg.ranks) == 4
 
-    def test_filter_changed_sets_are_same_reference(self) -> None:
-        """Test that subs and ranks are the same reference (not copies)."""
+    def test_filter_changed_sets_are_copies(self) -> None:
+        """Test that subs and ranks are copies (defensive copy pattern)."""
         original_subs = {"AI", "DB"}
         original_ranks = {"A"}
 
@@ -95,9 +95,11 @@ class TestFilterChanged:
             query="test",
         )
 
-        # Verify they are the same reference
-        assert msg.subs is original_subs
-        assert msg.ranks is original_ranks
+        # Verify they are copies, not the same reference (defensive copy)
+        assert msg.subs == original_subs
+        assert msg.ranks == original_ranks
+        assert msg.subs is not original_subs
+        assert msg.ranks is not original_ranks
 
 
 class TestFilterSidebarInit:

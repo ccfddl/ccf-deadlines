@@ -45,10 +45,10 @@ class FilterChanged(Message):
             show_expired: Whether to show expired conferences.
             query: Search query string.
         """
-        self.subs = subs
-        self.ranks = ranks
-        self.core_ranks = core_ranks
-        self.thcpl_ranks = thcpl_ranks
+        self.subs = subs.copy()  # Store copies to prevent external mutation
+        self.ranks = ranks.copy()
+        self.core_ranks = core_ranks.copy()
+        self.thcpl_ranks = thcpl_ranks.copy()
         self.show_expired = show_expired
         self.query = query
         super().__init__()

@@ -10,15 +10,15 @@ Terminal User Interface for tracking academic conference deadlines. Browse, filt
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │ CCF-Deadlines TUI - Showing 156 of 312 conferences                     [?] │
 ├──────────────────────┬────────────────────────────────────────────────────┤
-│ Filters              │ Title         Sub  Rank Countdown      Date  Place │
-│ Categories           │ ──────────────────────────────────────────────────│
-│ [x] AI - AI          │ NeurIPS 2025  AI   CCF A 15 days 08:32:15 Jun...   │
-│ [x] CG - Graphics    │ ICLR 2025     AI   CCF A 28 days 14:22:10 May...   │
-│ [x] CT - Theory      │ CVPR 2025     AI   CCF A Expired            Jun... │
-│ [x] DB - Database    │ SIGMOD 2025   DB   CCF A 45 days 02:15:33 Jun...   │
-│ [x] DS - Arch/Stor   │ ICML 2025     AI   CCF A 12 days 22:45:00 Jul...   │
-│ [x] HI - HCI         │ ACL 2025      AI   CCF A  8 days 11:30:22 Aug...   │
-│ [x] MX - Interdisc   │ ──────────────────────────────────────────────────│
+│ Filters              │ ★   Title      Sub  CCF  CORE  THCPL  Countdown    │
+│ Categories           │ ───────────────────────────────────────────────────│
+│ [x] AI - AI          │ ★   NeurIPS    AI   A    A*     A     15 days...   │
+│ [x] CG - Graphics    │ ☆   ICLR       AI   A    A      A     28 days...   │
+│ [x] CT - Theory      │ ☆   CVPR       AI   A    A*     A     Expired      │
+│ [x] DB - Database    │ ───────────────────────────────────────────────────│
+│ [x] DS - Arch/Stor   │                                                    │
+│ [x] HI - HCI         │                                                    │
+│ [x] MX - Interdisc   │                                                    │
 │ [x] NW - Network     │                                                    │
 │ [x] SC - Security    │                                                    │
 │ [x] SE - Soft/OS/PL  │                                                    │
@@ -27,10 +27,22 @@ Terminal User Interface for tracking academic conference deadlines. Browse, filt
 │ [x] CCF B            │                                                    │
 │ [x] CCF C            │                                                    │
 │ [x] CCF N            │                                                    │
+│ CORE Ranks           │                                                    │
+│ [x] CORE A*          │                                                    │
+│ [x] CORE A           │                                                    │
+│ [x] CORE B           │                                                    │
+│ [x] CORE C           │                                                    │
+│ [x] CORE N           │                                                    │
+│ THCPL Ranks          │                                                    │
+│ [x] THCPL A          │                                                    │
+│ [x] THCPL B          │                                                    │
+│ [x] THCPL N          │                                                    │
+│ Options              │                                                    │
+│ [ ] Show Expired     │                                                    │
 │ Search               │                                                    │
 │ [neur____________]   │                                                    │
 ├──────────────────────┴────────────────────────────────────────────────────┤
-│ Quit: q  Language: l  Refresh: r  Open URL: Enter  Help: ?               │
+│ Quit: q  Language: l  Refresh: r  Favorite: f  Open URL: Enter  Help: ?  │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -38,13 +50,15 @@ Terminal User Interface for tracking academic conference deadlines. Browse, filt
 
 - **Real-time Countdown** - Live countdown timers that update every second
 - **10 Research Categories** - Filter by AI, DB, CG, CT, DS, HI, MX, NW, SC, SE
-- **CCF Rank Filtering** - Show only CCF A, B, C, or N ranked conferences
+- **Multi-rank Filtering** - Filter by CCF, CORE, and THCPL rankings
+- **Favorites** - Star conferences to pin them to the top of the list
 - **Fuzzy Search** - Quick search by conference title with smart matching
 - **Bilingual Support** - Toggle between English and Chinese interface
 - **Vim-style Navigation** - Familiar j/k keys for power users
 - **Direct URL Opening** - Open conference websites with a single keypress
 - **Color-coded Countdown** - Visual urgency indicators (red < 1 day, yellow < 7 days, blue < 30 days, green >= 30 days)
-- **Auto-sorting** - Running conferences sorted by deadline, expired sorted by year
+- **Auto-sorting** - Favorites first, then running conferences sorted by deadline, expired sorted by year
+- **Local Fallback** - Automatically falls back to local data when remote is unavailable
 
 ## Installation
 
@@ -128,6 +142,7 @@ ccfddl-tui --version
 | Key | Action |
 |-----|--------|
 | `Enter` | Open selected conference URL in browser |
+| `f` | Toggle favorite (★) for selected conference |
 | `l` | Toggle language (English/Chinese) |
 | `r` | Refresh data from source |
 | `q` | Quit application |
@@ -181,16 +196,23 @@ extensions/tui/
 │   ├── data/
 │   │   ├── __init__.py
 │   │   └── data_service.py  # Data loading & filtering
-│   └── widgets/
+│   ├── widgets/
+│   │   ├── __init__.py
+│   │   ├── conference_table.py  # Conference display table
+│   │   ├── filters.py     # Filter sidebar widget
+│   │   └── countdown.py   # Countdown utilities
+│   └── utils/
 │       ├── __init__.py
-│       ├── conference_table.py  # Conference display table
-│       ├── filters.py     # Filter sidebar widget
-│       └── countdown.py   # Countdown utilities
+│       └── formatters.py  # Shared formatting utilities
 ├── tests/
+│   ├── conftest.py        # Shared test fixtures
+│   ├── test_app.py        # Application tests
 │   ├── test_conference_table.py
 │   ├── test_filters.py
 │   ├── test_data_service.py
-│   └── test_countdown.py
+│   ├── test_countdown.py
+│   ├── test_favorites.py
+│   └── test_extended_filters.py
 ├── pyproject.toml
 └── README.md
 ```
@@ -203,15 +225,19 @@ The TUI is built on [Textual](https://github.com/Textualize/textual), a modern P
 
 #### `DataService`
 Handles data loading and processing:
-- Fetches conference YAML from remote URL
+- Fetches conference YAML from remote URL with local fallback
 - Converts raw data to display rows
 - Provides fuzzy search and filtering
-- Sorts conferences by deadline status
+- Manages favorites persistence (~/.ccfddl/favorites.json)
+- Sorts conferences by favorites, deadline status
 
 #### `FilterSidebar`
 Left sidebar with filter controls:
 - Category checkboxes (10 research areas)
 - CCF rank checkboxes (A/B/C/N)
+- CORE rank checkboxes (A*/A/B/C/N)
+- THCPL rank checkboxes (A/B/N)
+- Show Expired toggle
 - Search input field
 - Emits `FilterChanged` messages on updates
 
@@ -222,6 +248,7 @@ Main data display widget:
 - Zebra striping for readability
 - Color-coded countdown urgency
 - Row selection with URL opening
+- Favorite indicator (★/☆)
 
 #### `CCFDeadlinesApp`
 Main application orchestrator:
@@ -236,7 +263,7 @@ Main application orchestrator:
 [Remote YAML]
      │
      ▼
-[DataService.load_conferences()]
+[DataService.load_conferences()] ──fallback──▶ [Local YAML files]
      │
      ▼
 [DataService.process_rows()]
@@ -276,6 +303,7 @@ export TERM=xterm-256color
    ```bash
    ccfddl-tui --url https://ccfddl.top/conference/allconf.yml
    ```
+4. If remote fails, the app automatically falls back to local data (shows `[LOCAL]` indicator)
 
 ### URL Not Opening in Browser
 
@@ -283,9 +311,9 @@ The TUI uses Python's `webbrowser` module. If URLs don't open:
 - On Linux, ensure `xdg-open` is available
 - On macOS, ensure the default browser is set
 - Set the `BROWSER` environment variable:
-  ```bash
-  export BROWSER=firefox
-  ```
+   ```bash
+   export BROWSER=firefox
+   ```
 
 ### App Crashes on Start
 
