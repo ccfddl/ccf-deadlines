@@ -1,5 +1,5 @@
-- title: USENIX ATC
-  description: USENIX Annual Technical Conference
+- title: SIGOPS ATC
+  description: ACM SIGOPS Annual Technical Conference
   sub: DS
   rank:
     ccf: A

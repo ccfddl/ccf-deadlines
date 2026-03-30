@@ -39,3 +39,12 @@
       timezone: AoE
       date: June 8-12, 2026
       place: Ann Arbor, Michigan, USA
+    - year: 2027
+      id: sigmetrics27
+      link: https://www.sigmetrics.org/sigmetrics2027/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Atlanta, Georgia, USA

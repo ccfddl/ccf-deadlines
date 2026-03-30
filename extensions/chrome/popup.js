@@ -11,6 +11,7 @@ const emptyEl = document.getElementById("empty-state");
 const countEl = document.getElementById("count");
 const loadCcfddlBtn = document.getElementById("load-ccfddl");
 const ccfddlSearchInput = document.getElementById("ccfddl-search");
+const ccfddlClearBtn = document.getElementById("ccfddl-clear");
 const ccfddlList = document.getElementById("ccfddl-list");
 const ccfddlEmpty = document.getElementById("ccfddl-empty");
 const langToggle = document.getElementById("lang-toggle");
@@ -554,5 +555,14 @@ chrome.storage.local.get({ [LANG_STORAGE_KEY]: "zh" }, (result) => {
 });
 
 loadCcfddlBtn.addEventListener("click", loadCcfddlData);
-ccfddlSearchInput.addEventListener("input", filterCcfddlList);
+ccfddlSearchInput.addEventListener("input", () => {
+  filterCcfddlList();
+  ccfddlClearBtn.hidden = !ccfddlSearchInput.value.trim();
+});
+ccfddlClearBtn.addEventListener("click", () => {
+  ccfddlSearchInput.value = "";
+  ccfddlClearBtn.hidden = true;
+  filterCcfddlList();
+  ccfddlSearchInput.focus();
+});
 refreshDeadlinesBtn.addEventListener("click", loadDeadlines);

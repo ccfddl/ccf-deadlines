@@ -31,3 +31,11 @@
       timezone: UTC-7
       date: Jan 18-21, 2026
       place: Chaminade Resort & Spa, Santa Cruz, California, USA
+    - year: 2027
+      id: cidr27
+      link: https://www.cidrdb.org/cidr2027/
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC-7
+      date: January 24-27, 2027
+      place: Amsterdam, The Netherlands

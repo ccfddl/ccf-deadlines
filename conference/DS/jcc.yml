@@ -7,8 +7,8 @@
     thcpl: N
   dblp: N
   confs:
-    - year: 2025
-      id: jcc2025
+    - year: 2026
+      id: jcc2026
       link: https://jointcloud.cloud
       timeline:
         - abstract_deadline: '2026-04-10 23:59:59'
