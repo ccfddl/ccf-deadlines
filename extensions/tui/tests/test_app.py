@@ -218,6 +218,10 @@ async def test_filter_by_category() -> None:
     app = CCFDeadlinesApp()
 
     async with app.run_test() as pilot:
+        # Wait for initial load to complete and stop any pending loads
+        await pilot.pause()
+        pilot.app._is_loading = True  # Block any further loading
+
         # Set up initial data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
@@ -259,6 +263,10 @@ async def test_filter_by_rank() -> None:
     app = CCFDeadlinesApp()
 
     async with app.run_test() as pilot:
+        # Wait for initial load to complete and stop any pending loads
+        await pilot.pause()
+        pilot.app._is_loading = True  # Block any further loading
+
         # Set up initial data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
@@ -298,6 +306,10 @@ async def test_search_filter() -> None:
     app = CCFDeadlinesApp()
 
     async with app.run_test() as pilot:
+        # Wait for initial load to complete and stop any pending loads
+        await pilot.pause()
+        pilot.app._is_loading = True  # Block any further loading
+
         # Set up initial data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
@@ -397,6 +409,10 @@ async def test_keyboard_navigation() -> None:
     app = CCFDeadlinesApp()
 
     async with app.run_test() as pilot:
+        # Wait for initial load to complete and stop any pending loads
+        await pilot.pause()
+        pilot.app._is_loading = True  # Block any further loading
+
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
@@ -438,6 +454,10 @@ async def test_open_url(mock_browser_open) -> None:
     app = CCFDeadlinesApp()
 
     async with app.run_test() as pilot:
+        # Wait for initial load to complete and stop any pending loads
+        await pilot.pause()
+        pilot.app._is_loading = True  # Block any further loading
+
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
@@ -592,6 +612,10 @@ async def test_go_top_bottom_navigation() -> None:
     app = CCFDeadlinesApp()
 
     async with app.run_test() as pilot:
+        # Wait for initial load to complete and stop any pending loads
+        await pilot.pause()
+        pilot.app._is_loading = True  # Block any further loading
+
         # Set up data with many rows
         now = datetime.now(timezone.utc)
         rows = [
@@ -648,6 +672,10 @@ async def test_multiple_filters_combined() -> None:
     app = CCFDeadlinesApp()
 
     async with app.run_test() as pilot:
+        # Wait for initial load to complete and stop any pending loads
+        await pilot.pause()
+        pilot.app._is_loading = True  # Block any further loading
+
         # Set up data
         test_rows = create_mock_conference_rows()
         pilot.app._all_rows = test_rows
