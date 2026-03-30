@@ -52,7 +52,14 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install PyYAML jsonschema
+          python -m pip install PyYAML jsonschema icalendar xlin
+      - name: Install CLI dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "extensions/cli/[dev]"
+      - name: Install TUI dependencies
+        run: |
+          pip install -e "extensions/tui/[dev]"
       - name: Assemble yml files
         run: |
           mkdir -p public/conference && cd public/conference
@@ -60,6 +67,14 @@ jobs:
           python ../../scripts/merge.py ../../accept_rates > allacc.yml
           cp ../../conference/types.yml .
           cd ../..
+      - name: Generate iCal files
+        run: |
+          python extensions/cli/ccfddl/convert_to_ical.py
+          mv *.ics public/conference/
+      - name: Generate RSS feeds
+        run: |
+          python extensions/cli/ccfddl/convert_to_rss.py
+          mv *.xml public/conference/
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly
