@@ -147,20 +147,20 @@ def convert_to_ical(
                         if lang == "en":
                             description = [
                                 f"{conf_data['description']}",
-                                f"Date: {date}",
-                                f"Location: {place}",
-                                f"Original Deadline ({timezone_str}): {deadline_str}",
+                                f"🗓️ Date: {date}",
+                                f"📍 Location: {place}",
+                                f"⏰ Original Deadline ({timezone_str}): {deadline_str}",
                                 f"Category: {sub_chinese} ({sub})",
                                 level_str,
                                 f"Conference Website: {link}",
-                                f"DBLP: https://dblp.org/db/conf/{dblp}",
+                                f"DBLP Index: https://dblp.org/db/conf/{dblp}",
                             ]
                         else:
                             description = [
                                 f"{conf_data['description']}",
-                                f"会议时间: {date}",
-                                f"会议地点: {place}",
-                                f"原始截止时间 ({timezone_str}): {deadline_str}",
+                                f"🗓️ 会议时间: {date}",
+                                f"📍 会议地点: {place}",
+                                f"⏰ 原始截止时间 ({timezone_str}): {deadline_str}",
                                 f"分类: {sub_chinese} ({sub})",
                                 level_str,
                                 f"会议官网: {link}",

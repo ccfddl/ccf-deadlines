@@ -215,130 +215,104 @@ async def test_data_loading(mock_load_data) -> None:
 @pytest.mark.asyncio
 async def test_filter_by_category() -> None:
     """Test clicking category checkbox updates table filter."""
-    app = CCFDeadlinesApp()
+    with patch.object(CCFDeadlinesApp, "_load_data"):
+        app = CCFDeadlinesApp()
+        async with app.run_test() as pilot:
+            await pilot.pause()
 
-    async with app.run_test() as pilot:
-        # Wait for initial load to complete and stop any pending loads
-        await pilot.pause()
-        pilot.app._is_loading = True  # Block any further loading
+            test_rows = create_mock_conference_rows()
+            pilot.app._all_rows = test_rows
+            pilot.app._update_header()
+            pilot.app.selected_subs = {"AI", "DB", "CG", "SE"}
+            pilot.app._update_conferences()
+            pilot.app._update_table()
 
-        # Set up initial data
-        test_rows = create_mock_conference_rows()
-        pilot.app._all_rows = test_rows
-        pilot.app._update_header()
-        pilot.app.selected_subs = {"AI", "DB", "CG", "SE"}
-        pilot.app._update_conferences()
-        pilot.app._update_table()
+            await pilot.pause()
 
-        await pilot.pause()
+            table = pilot.app.query_one("#conference-table", ConferenceTable)
+            initial_count = table.get_row_count()
+            assert initial_count == 4
 
-        # Get initial row count (all 4 rows)
-        table = pilot.app.query_one("#conference-table", ConferenceTable)
-        initial_count = table.get_row_count()
-        assert initial_count == 4
+            db_checkbox = pilot.app.query_one("#sub-DB", Checkbox)
+            db_checkbox.value = False
+            await pilot.pause()
 
-        # Uncheck DB category checkbox
-        db_checkbox = pilot.app.query_one("#sub-DB", Checkbox)
-        db_checkbox.value = False
-        await pilot.pause()
+            assert "DB" not in pilot.app.selected_subs
 
-        # Verify table updated (should have only AI rows, 3 rows)
-        # Note: The filter change is handled by the FilterChanged message
-        # We need to check the app's state
-        assert "DB" not in pilot.app.selected_subs
+            pilot.app.selected_subs = {"AI"}
+            pilot.app._update_conferences()
+            pilot.app._update_table()
+            await pilot.pause()
 
-        # Manually trigger filter update to verify behavior
-        pilot.app.selected_subs = {"AI"}
-        pilot.app._update_conferences()
-        pilot.app._update_table()
-        await pilot.pause()
-
-        # Should only have AI conferences (CVPR, ECCV, LocalConf = 3)
-        assert table.get_row_count() == 3
+            assert table.get_row_count() == 3
 
 
 @pytest.mark.asyncio
 async def test_filter_by_rank() -> None:
     """Test clicking rank checkbox updates table filter."""
-    app = CCFDeadlinesApp()
+    with patch.object(CCFDeadlinesApp, "_load_data"):
+        app = CCFDeadlinesApp()
+        async with app.run_test() as pilot:
+            await pilot.pause()
 
-    async with app.run_test() as pilot:
-        # Wait for initial load to complete and stop any pending loads
-        await pilot.pause()
-        pilot.app._is_loading = True  # Block any further loading
+            test_rows = create_mock_conference_rows()
+            pilot.app._all_rows = test_rows
+            pilot.app._update_header()
+            pilot.app.selected_ranks = {"A", "B", "C", "N"}
+            pilot.app._update_conferences()
+            pilot.app._update_table()
 
-        # Set up initial data
-        test_rows = create_mock_conference_rows()
-        pilot.app._all_rows = test_rows
-        pilot.app._update_header()
-        pilot.app.selected_ranks = {"A", "B", "C", "N"}
-        pilot.app._update_conferences()
-        pilot.app._update_table()
+            await pilot.pause()
 
-        await pilot.pause()
+            table = pilot.app.query_one("#conference-table", ConferenceTable)
+            initial_count = table.get_row_count()
+            assert initial_count == 4
 
-        # Get initial row count
-        table = pilot.app.query_one("#conference-table", ConferenceTable)
-        initial_count = table.get_row_count()
-        assert initial_count == 4
+            rank_n_checkbox = pilot.app.query_one("#rank-N", Checkbox)
+            rank_n_checkbox.value = False
+            await pilot.pause()
 
-        # Uncheck rank-N checkbox
-        rank_n_checkbox = pilot.app.query_one("#rank-N", Checkbox)
-        rank_n_checkbox.value = False
-        await pilot.pause()
+            assert "N" not in pilot.app.selected_ranks
 
-        # Verify app state updated
-        assert "N" not in pilot.app.selected_ranks
+            pilot.app.selected_ranks = {"A"}
+            pilot.app._update_conferences()
+            pilot.app._update_table()
+            await pilot.pause()
 
-        # Manually filter to only A rank
-        pilot.app.selected_ranks = {"A"}
-        pilot.app._update_conferences()
-        pilot.app._update_table()
-        await pilot.pause()
-
-        # Should only have A rank conferences (CVPR, SIGMOD = 2)
-        assert table.get_row_count() == 2
+            assert table.get_row_count() == 2
 
 
 @pytest.mark.asyncio
 async def test_search_filter() -> None:
     """Test typing in search box filters results."""
-    app = CCFDeadlinesApp()
+    with patch.object(CCFDeadlinesApp, "_load_data"):
+        app = CCFDeadlinesApp()
+        async with app.run_test() as pilot:
+            await pilot.pause()
 
-    async with app.run_test() as pilot:
-        # Wait for initial load to complete and stop any pending loads
-        await pilot.pause()
-        pilot.app._is_loading = True  # Block any further loading
+            test_rows = create_mock_conference_rows()
+            pilot.app._all_rows = test_rows
+            pilot.app._update_header()
+            pilot.app._update_conferences()
+            pilot.app._update_table()
 
-        # Set up initial data
-        test_rows = create_mock_conference_rows()
-        pilot.app._all_rows = test_rows
-        pilot.app._update_header()
-        pilot.app._update_conferences()
-        pilot.app._update_table()
+            await pilot.pause()
 
-        await pilot.pause()
+            table = pilot.app.query_one("#conference-table", ConferenceTable)
+            initial_count = table.get_row_count()
+            assert initial_count == 4
 
-        # Get initial row count
-        table = pilot.app.query_one("#conference-table", ConferenceTable)
-        initial_count = table.get_row_count()
-        assert initial_count == 4
+            search_input = pilot.app.query_one("#search", Input)
+            search_input.value = "SIGMOD"
+            await pilot.pause()
 
-        # Type in search input - use SIGMOD which is unique
-        search_input = pilot.app.query_one("#search", Input)
-        search_input.value = "SIGMOD"
-        await pilot.pause()
+            assert pilot.app.search_query == "SIGMOD"
 
-        # Verify app state updated
-        assert pilot.app.search_query == "SIGMOD"
+            pilot.app._update_conferences()
+            pilot.app._update_table()
+            await pilot.pause()
 
-        # Update conferences with search
-        pilot.app._update_conferences()
-        pilot.app._update_table()
-        await pilot.pause()
-
-        # Should only have SIGMOD
-        assert table.get_row_count() == 1
+            assert table.get_row_count() == 1
 
 
 @pytest.mark.asyncio
@@ -406,80 +380,66 @@ async def test_refresh_data(mock_load) -> None:
 @pytest.mark.asyncio
 async def test_keyboard_navigation() -> None:
     """Test j/k keys navigate table rows."""
-    app = CCFDeadlinesApp()
+    with patch.object(CCFDeadlinesApp, "_load_data"):
+        app = CCFDeadlinesApp()
+        async with app.run_test() as pilot:
+            await pilot.pause()
 
-    async with app.run_test() as pilot:
-        # Wait for initial load to complete and stop any pending loads
-        await pilot.pause()
-        pilot.app._is_loading = True  # Block any further loading
+            test_rows = create_mock_conference_rows()
+            pilot.app._all_rows = test_rows
+            pilot.app._update_header()
+            pilot.app._update_conferences()
+            pilot.app._update_table()
 
-        # Set up data
-        test_rows = create_mock_conference_rows()
-        pilot.app._all_rows = test_rows
-        pilot.app._update_header()
-        pilot.app._update_conferences()
-        pilot.app._update_table()
+            await pilot.pause()
 
-        await pilot.pause()
+            table = pilot.app.query_one("#conference-table", ConferenceTable)
 
-        table = pilot.app.query_one("#conference-table", ConferenceTable)
+            table.focus()
+            await pilot.pause()
 
-        # Focus the table
-        table.focus()
-        await pilot.pause()
+            assert table.cursor_coordinate.row == 0
 
-        # Initial cursor should be at row 0
-        assert table.cursor_coordinate.row == 0
+            await pilot.press("j")
+            await pilot.pause()
+            assert table.cursor_coordinate.row == 1
 
-        # Press 'j' to move down
-        await pilot.press("j")
-        await pilot.pause()
-        assert table.cursor_coordinate.row == 1
+            await pilot.press("j")
+            await pilot.pause()
+            assert table.cursor_coordinate.row == 2
 
-        # Press 'j' again
-        await pilot.press("j")
-        await pilot.pause()
-        assert table.cursor_coordinate.row == 2
-
-        # Press 'k' to move up
-        await pilot.press("k")
-        await pilot.pause()
-        assert table.cursor_coordinate.row == 1
+            await pilot.press("k")
+            await pilot.pause()
+            assert table.cursor_coordinate.row == 1
 
 
 @pytest.mark.asyncio
 @patch("ccfddl_tui.widgets.conference_table.webbrowser.open")
 async def test_open_url(mock_browser_open) -> None:
     """Test pressing Enter opens URL in browser."""
-    app = CCFDeadlinesApp()
+    with patch.object(CCFDeadlinesApp, "_load_data"):
+        app = CCFDeadlinesApp()
+        async with app.run_test() as pilot:
+            await pilot.pause()
 
-    async with app.run_test() as pilot:
-        # Wait for initial load to complete and stop any pending loads
-        await pilot.pause()
-        pilot.app._is_loading = True  # Block any further loading
+            test_rows = create_mock_conference_rows()
+            pilot.app._all_rows = test_rows
+            pilot.app._update_header()
+            pilot.app._update_conferences()
+            pilot.app._update_table()
 
-        # Set up data
-        test_rows = create_mock_conference_rows()
-        pilot.app._all_rows = test_rows
-        pilot.app._update_header()
-        pilot.app._update_conferences()
-        pilot.app._update_table()
+            await pilot.pause()
 
-        await pilot.pause()
+            table = pilot.app.query_one("#conference-table", ConferenceTable)
+            table.focus()
+            await pilot.pause()
 
-        table = pilot.app.query_one("#conference-table", ConferenceTable)
-        table.focus()
-        await pilot.pause()
+            assert table.cursor_coordinate.row == 0
 
-        # Cursor is at first row (CVPR)
-        assert table.cursor_coordinate.row == 0
+            await pilot.press("enter")
+            await pilot.pause()
 
-        # Press Enter to open URL
-        await pilot.press("enter")
-        await pilot.pause()
-
-        # Verify webbrowser.open was called with CVPR URL
-        mock_browser_open.assert_called_once_with("https://cvpr2025.org")
+            mock_browser_open.assert_called_once_with("https://cvpr2025.org")
 
 
 @pytest.mark.asyncio
@@ -609,104 +569,92 @@ async def test_empty_table_state() -> None:
 @pytest.mark.asyncio
 async def test_go_top_bottom_navigation() -> None:
     """Test g/G keys navigate to top/bottom of table."""
-    app = CCFDeadlinesApp()
+    with patch.object(CCFDeadlinesApp, "_load_data"):
+        app = CCFDeadlinesApp()
+        async with app.run_test() as pilot:
+            await pilot.pause()
 
-    async with app.run_test() as pilot:
-        # Wait for initial load to complete and stop any pending loads
-        await pilot.pause()
-        pilot.app._is_loading = True  # Block any further loading
+            now = datetime.now(timezone.utc)
+            rows = [
+                ConferenceRow(
+                    title=f"CONF{i}",
+                    year=2025,
+                    sub="AI",
+                    rank="A",
+                    core_rank="A",
+                    thcpl_rank="A",
+                    deadline=now + timedelta(days=i),
+                    countdown=f"{i} days",
+                    place="Test City",
+                    date="June 2025",
+                    link=f"https://conf{i}.org",
+                    is_running=True,
+                    is_tbd=False,
+                    is_expired=False,
+                    is_favorite=False,
+                )
+                for i in range(10)
+            ]
+            pilot.app._all_rows = rows
+            pilot.app._update_header()
+            pilot.app._update_conferences()
+            pilot.app._update_table()
 
-        # Set up data with many rows
-        now = datetime.now(timezone.utc)
-        rows = [
-            ConferenceRow(
-                title=f"CONF{i}",
-                year=2025,
-                sub="AI",
-                rank="A",
-                core_rank="A",
-                thcpl_rank="A",
-                deadline=now + timedelta(days=i),
-                countdown=f"{i} days",
-                place="Test City",
-                date="June 2025",
-                link=f"https://conf{i}.org",
-                is_running=True,
-                is_tbd=False,
-                is_expired=False,
-                is_favorite=False,
-            )
-            for i in range(10)
-        ]
-        pilot.app._all_rows = rows
-        pilot.app._update_header()
-        pilot.app._update_conferences()
-        pilot.app._update_table()
+            await pilot.pause()
 
-        await pilot.pause()
+            table = pilot.app.query_one("#conference-table", ConferenceTable)
+            table.focus()
+            await pilot.pause()
 
-        table = pilot.app.query_one("#conference-table", ConferenceTable)
-        table.focus()
-        await pilot.pause()
+            from textual.coordinate import Coordinate
+            table.cursor_coordinate = Coordinate(5, 0)
+            await pilot.pause()
+            assert table.cursor_coordinate.row == 5
 
-        # Move cursor to middle
-        from textual.coordinate import Coordinate
-        table.cursor_coordinate = Coordinate(5, 0)
-        await pilot.pause()
-        assert table.cursor_coordinate.row == 5
+            await pilot.press("G")
+            await pilot.pause()
+            assert table.cursor_coordinate.row == 9
 
-        # Press 'G' (shift+g) to go to bottom
-        await pilot.press("G")
-        await pilot.pause()
-        assert table.cursor_coordinate.row == 9
-
-        # Press 'g' to go to top
-        await pilot.press("g")
-        await pilot.pause()
-        assert table.cursor_coordinate.row == 0
+            await pilot.press("g")
+            await pilot.pause()
+            assert table.cursor_coordinate.row == 0
 
 
 @pytest.mark.asyncio
 async def test_multiple_filters_combined() -> None:
     """Test combining category, rank, and search filters."""
-    app = CCFDeadlinesApp()
+    with patch.object(CCFDeadlinesApp, "_load_data"):
+        app = CCFDeadlinesApp()
+        async with app.run_test() as pilot:
+            await pilot.pause()
 
-    async with app.run_test() as pilot:
-        # Wait for initial load to complete and stop any pending loads
-        await pilot.pause()
-        pilot.app._is_loading = True  # Block any further loading
+            test_rows = create_mock_conference_rows()
+            pilot.app._all_rows = test_rows
+            pilot.app._update_header()
 
-        # Set up data
-        test_rows = create_mock_conference_rows()
-        pilot.app._all_rows = test_rows
-        pilot.app._update_header()
+            await pilot.pause()
 
-        await pilot.pause()
+            pilot.app.selected_subs = {"AI"}
+            pilot.app._update_conferences()
+            pilot.app._update_table()
+            await pilot.pause()
 
-        # Apply category filter (AI only)
-        pilot.app.selected_subs = {"AI"}
-        pilot.app._update_conferences()
-        pilot.app._update_table()
-        await pilot.pause()
+            table = pilot.app.query_one("#conference-table", ConferenceTable)
+            assert table.get_row_count() == 3
 
-        table = pilot.app.query_one("#conference-table", ConferenceTable)
-        assert table.get_row_count() == 3  # CVPR, ECCV, LocalConf
+            pilot.app.selected_ranks = {"A"}
+            pilot.app._update_conferences()
+            pilot.app._update_table()
+            await pilot.pause()
 
-        # Apply rank filter (A only)
-        pilot.app.selected_ranks = {"A"}
-        pilot.app._update_conferences()
-        pilot.app._update_table()
-        await pilot.pause()
+            assert table.get_row_count() == 1
 
-        assert table.get_row_count() == 1  # Only CVPR
+            pilot.app.search_query = "CVPR"
+            pilot.app._update_conferences()
+            pilot.app._update_table()
+            await pilot.pause()
 
-        # Apply search filter
-        pilot.app.search_query = "CVPR"
-        pilot.app._update_conferences()
-        pilot.app._update_table()
-        await pilot.pause()
-
-        assert table.get_row_count() == 1  # CVPR matches all filters
+            assert table.get_row_count() == 1
 
 
 @pytest.mark.asyncio
