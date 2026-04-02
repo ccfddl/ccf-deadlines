@@ -1,15 +1,34 @@
-import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta, timezone
-from email.utils import format_datetime
+"""RSS feed generator for CCF conference deadlines.
 
-from convert_to_ical import load_mapping, get_timezone, reverse_index
+This module converts conference YAML data to RSS 2.0 format for feed readers.
+"""
+
+import xml.etree.ElementTree as ET
+from datetime import datetime, timezone
+from email.utils import format_datetime
 
 import yaml
 
+from ccfddl.utils import load_mapping, get_timezone, reverse_index
+
 
 def convert_to_rss(
-    file_paths: list[str], output_path: str, lang: str = "en", SUB_MAPPING={}
-):
+    file_paths: list[str],
+    output_path: str,
+    lang: str = "en",
+    sub_mapping: dict[str, str] | None = None,
+) -> None:
+    """Convert conference YAML files to RSS format.
+
+    Args:
+        file_paths: List of paths to YAML files containing conference data.
+        output_path: Path to write the output .xml file.
+        lang: Language for feed content ('en' or 'zh').
+        sub_mapping: Mapping from sub codes to Chinese names.
+    """
+    if sub_mapping is None:
+        sub_mapping = {}
+
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
 
@@ -23,9 +42,7 @@ def convert_to_rss(
         else "会议投稿截止日期追踪"
     )
     ET.SubElement(channel, "language").text = "en" if lang == "en" else "zh-CN"
-    ET.SubElement(channel, "lastBuildDate").text = format_datetime(
-        datetime.now(timezone.utc)
-    )
+    ET.SubElement(channel, "lastBuildDate").text = format_datetime(datetime.now(timezone.utc))
 
     for file_path in file_paths:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -34,7 +51,7 @@ def convert_to_rss(
         for conf_data in conferences:
             title = conf_data["title"]
             sub = conf_data["sub"]
-            sub_chinese = SUB_MAPPING.get(sub, sub)
+            sub_chinese = sub_mapping.get(sub, sub)
             rank = conf_data["rank"]
             dblp = conf_data["dblp"]
 
@@ -56,11 +73,7 @@ def convert_to_rss(
 
                     if "abstract_deadline" in entry:
                         deadlines_to_process.append(
-                            (
-                                ("摘要截稿", "Abstract Deadline"),
-                                entry["abstract_deadline"],
-                                "abstract",
-                            )
+                            (("摘要截稿", "Abstract Deadline"), entry["abstract_deadline"], "abstract")
                         )
 
                     if "deadline" in entry:
@@ -76,14 +89,10 @@ def convert_to_rss(
                             continue
 
                         try:
-                            deadline_dt = datetime.strptime(
-                                deadline_str, "%Y-%m-%d %H:%M:%S"
-                            )
+                            deadline_dt = datetime.strptime(deadline_str, "%Y-%m-%d %H:%M:%S")
                         except ValueError:
                             try:
-                                deadline_dt = datetime.strptime(
-                                    deadline_str, "%Y-%m-%d"
-                                )
+                                deadline_dt = datetime.strptime(deadline_str, "%Y-%m-%d")
                             except ValueError:
                                 continue
 
@@ -102,15 +111,10 @@ def convert_to_rss(
                         ET.SubElement(item, "title").text = summary
                         ET.SubElement(item, "link").text = link
 
-                        # Build description
                         level_desc = [
                             f"CCF {rank['ccf']}" if rank["ccf"] != "N" else None,
-                            f"CORE {rank['core']}"
-                            if rank.get("core", "N") != "N"
-                            else None,
-                            f"THCPL {rank['thcpl']}"
-                            if rank.get("thcpl", "N") != "N"
-                            else None,
+                            f"CORE {rank['core']}" if rank.get("core", "N") != "N" else None,
+                            f"THCPL {rank['thcpl']}" if rank.get("thcpl", "N") != "N" else None,
                         ]
                         level_desc = [x for x in level_desc if x]
                         level_str = ", ".join(level_desc) if level_desc else None
@@ -142,9 +146,7 @@ def convert_to_rss(
 
                         ET.SubElement(item, "pubDate").text = format_datetime(aware_dt)
 
-                        guid = ET.SubElement(
-                            item, "guid", isPermaLink="false"
-                        )
+                        guid = ET.SubElement(item, "guid", isPermaLink="false")
                         guid.text = f"{title}-{year}-{type_key}-{deadline_str}@ccfddl.com"
 
                         ET.SubElement(item, "category").text = sub
@@ -158,18 +160,18 @@ def convert_to_rss(
 if __name__ == "__main__":
     from xlin import ls, element_mapping
 
-    SUB_MAPPING = load_mapping("conference/types.yml")
+    sub_mapping = load_mapping("conference/types.yml")
     paths = ls("conference", filter=lambda f: f.name != "types.yml")
-    index = reverse_index(paths, list(SUB_MAPPING.keys()))
+    index = reverse_index(paths, list(sub_mapping.keys()))
     for lang in ["zh", "en"]:
-        convert_to_rss(paths, f"deadlines_{lang}.xml", lang, SUB_MAPPING)
+        convert_to_rss(paths, f"deadlines_{lang}.xml", lang, sub_mapping)
         f = lambda key: (
             len(index[key]) > 0,
             convert_to_rss(
                 index[key],
                 f"deadlines_{lang}_{key.replace('*', 'star')}.xml",
                 lang,
-                SUB_MAPPING,
+                sub_mapping,
             ),
         )
         element_mapping(index.keys(), f, thread_pool_size=8)
