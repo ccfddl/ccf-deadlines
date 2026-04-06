@@ -43,9 +43,6 @@
 - **提示与刷新按钮微调**：导入区提示文字改为居中显示，“我的截止日期”的刷新按钮改为图标按钮。/ The import helper text is now centered, and the "My DDLs" refresh control now uses an icon button.
 - **刷新图标与动效**：刷新按钮改为更常见的无底框 SVG 图标，并增加旋转动效表示已触发刷新。/ The refresh control now uses a more standard frameless SVG icon and spins briefly to indicate that refresh was triggered.
 
-注：导入优先使用 GitHub 仓库数据，失败时回退到 CCFDDL ICS。  
-Note: Imports prefer GitHub repository data and fall back to the CCFDDL ICS feed.
-
 ## 数据存储 / Data
 
 所有数据保存在 `chrome.storage.local` 中，仅在本机可见。/ Stored locally in `chrome.storage.local`.
