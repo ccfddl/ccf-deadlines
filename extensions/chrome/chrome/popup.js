@@ -1,6 +1,9 @@
 const STORAGE_KEY = "deadlines";
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 const REFRESH_INTERVAL_MS = 60 * 1000;
+const STARTUP_CLICK_GUARD_MS = 300;
+const TIME_FORMAT_STORAGE_KEY = "timeFormat";
+const DATE_ORDER_STORAGE_KEY = "dateOrder";
 
 const form = document.getElementById("deadline-form");
 const titleInput = document.getElementById("title");
@@ -9,18 +12,34 @@ const timeInput = document.getElementById("time");
 const listEl = document.getElementById("deadline-list");
 const emptyEl = document.getElementById("empty-state");
 const countEl = document.getElementById("count");
-const loadCcfddlBtn = document.getElementById("load-ccfddl");
+const addActionBtn = document.getElementById("show-add-panel");
+const importActionBtn = document.getElementById("show-import-panel");
+const addPanel = document.getElementById("add-panel");
+const importPanel = document.getElementById("import-panel");
 const ccfddlSearchInput = document.getElementById("ccfddl-search");
-const ccfddlClearBtn = document.getElementById("ccfddl-clear");
+const ccfddlDropdown = document.getElementById("ccfddl-dropdown");
 const ccfddlList = document.getElementById("ccfddl-list");
 const ccfddlEmpty = document.getElementById("ccfddl-empty");
 const langToggle = document.getElementById("lang-toggle");
+const settingsToggle = document.getElementById("settings-toggle");
+const settingsPanel = document.getElementById("settings-panel");
 const refreshDeadlinesBtn = document.getElementById("refresh-deadlines");
+const timeFormatInputs = Array.from(document.querySelectorAll('input[name="time-format"]'));
+const dateOrderInputs = Array.from(document.querySelectorAll('input[name="date-order"]'));
 
 let ccfddlItems = [];
 let currentLang = "zh";
 const LANG_STORAGE_KEY = "language";
+let currentTimeFormat = "24h";
+let currentDateOrder = "ymd";
 let refreshTimer = null;
+let refreshButtonAnimationTimer = null;
+let isAddFormExpanded = false;
+let isCcfddlExpanded = false;
+let isCcfddlDropdownOpen = false;
+let isCcfddlLoading = false;
+let isSettingsOpen = false;
+const popupOpenedAt = performance.now();
 
 const translations = {
   zh: {
@@ -28,23 +47,33 @@ const translations = {
     subtitle_zh: "添加你正在赶的截止日期，徽标显示最近的剩余天数。",
     subtitle_en: "",
     open: "打开 CCFDDL",
+    contribute: "共同开发",
     add_section: "新增截止日期",
+    add_hint: "手动填写标题、日期和时间",
     title_label: "标题",
     title_placeholder: "例如：ACL 2025",
     date_label: "日期",
     time_label: "时间",
     add_button: "添加",
     import_section: "从 CCFDDL 导入",
-    load_button: "加载",
+    import_hint_short: "加载推荐会议并一键加入",
     loading: "加载中...",
     search_label: "搜索会议",
     search_placeholder: "例如：ICML / SIGMOD",
-    import_empty: "点击“加载”获取最新会议列表。",
-    import_hint:
-      "优先使用 GitHub 仓库的最新会议信息，失败时再回退到 CCFDDL ICS。",
-    my_section: "我的 DDL",
+    import_click_hint: "点击搜索框可获取最新会议列表",
+    import_empty: "推荐会议会显示在这里。",
+    my_section: "我的截止日期",
     empty_state: "还没有添加任何截止日期。",
     refresh_button: "刷新",
+    settings_button: "设置",
+    settings_title: "显示设置",
+    time_format_label: "时间显示",
+    time_format_24h: "24 小时制",
+    time_format_12h: "12 小时制",
+    date_order_label: "日期顺序",
+    date_order_ymd: "年月日",
+    date_order_mdy: "月日年",
+    open_site: "打开会议官网",
     add_item: "添加",
     delete_item: "删除",
     remaining: (days) => `剩余 ${days} 天`,
@@ -55,23 +84,33 @@ const translations = {
     subtitle_zh: "",
     subtitle_en: "Track deadlines and show the nearest days left.",
     open: "Open CCFDDL",
+    contribute: "Contribute",
     add_section: "Add DDL",
+    add_hint: "Add a title, date, and time",
     title_label: "Title",
     title_placeholder: "e.g., ACL 2025",
     date_label: "Date",
     time_label: "Time",
     add_button: "Add",
-    import_section: "Import from CCFDDL",
-    load_button: "Load",
+    import_section: "Import CCFDDL",
+    import_hint_short: "Browse conferences and add them fast",
     loading: "Loading...",
     search_label: "Search",
     search_placeholder: "e.g., ICML / SIGMOD",
-    import_empty: "Click “Load” to fetch the latest conference list.",
-    import_hint:
-      "Prefer GitHub repository data, with an ICS fallback if needed.",
+    import_click_hint: "Click the search box to load the latest conferences",
+    import_empty: "Recommended conferences will appear here.",
     my_section: "My DDLs",
     empty_state: "No deadlines yet.",
     refresh_button: "Refresh",
+    settings_button: "Settings",
+    settings_title: "Display Settings",
+    time_format_label: "Time Format",
+    time_format_24h: "24-hour clock",
+    time_format_12h: "12-hour clock",
+    date_order_label: "Date Order",
+    date_order_ymd: "Year / Month / Day",
+    date_order_mdy: "Month / Day / Year",
+    open_site: "Open conference website",
     add_item: "Add",
     delete_item: "Delete",
     remaining: (days) => `${days} days left`,
@@ -92,6 +131,13 @@ function applyTranslations() {
     el.textContent = value;
   });
 
+  document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-title");
+    const value = t(key, el.getAttribute("aria-label") || "");
+    el.setAttribute("aria-label", value);
+    el.setAttribute("title", value);
+  });
+
   document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
     const key = el.getAttribute("data-i18n-placeholder");
     el.setAttribute("placeholder", t(key, el.getAttribute("placeholder") || ""));
@@ -103,8 +149,27 @@ function applyTranslations() {
 
   const locale = currentLang === "en" ? "en-US" : "zh-CN";
   document.documentElement.setAttribute("lang", locale);
-  dateInput?.setAttribute("lang", locale);
   timeInput?.setAttribute("lang", locale);
+  syncTimeFormatInputs();
+  syncDateOrderInputs();
+  syncDateInputMode();
+  syncActionButtons();
+}
+
+function syncDateInputMode() {
+  if (!dateInput) return;
+
+  const currentValue = dateInput.value;
+  if (dateInput.type !== "date") {
+    dateInput.type = "date";
+  }
+
+  dateInput.setAttribute("lang", currentLang === "en" ? "en-US" : "zh-CN");
+  dateInput.placeholder = "";
+
+  if (currentValue) {
+    dateInput.value = currentValue;
+  }
 }
 
 function setLanguage(lang) {
@@ -113,6 +178,26 @@ function setLanguage(lang) {
   chrome.storage.local.set({ [LANG_STORAGE_KEY]: currentLang });
   renderCcfddlList(ccfddlItems);
   loadDeadlines();
+}
+
+function setAddFormExpanded(expanded) {
+  isAddFormExpanded = expanded;
+  addPanel.hidden = !expanded;
+  if (expanded) {
+    setCcfddlDropdownOpen(false);
+  }
+  syncActionButtons();
+}
+
+function syncActionButtons() {
+  if (addActionBtn) {
+    addActionBtn.classList.toggle("is-active", isAddFormExpanded);
+    addActionBtn.setAttribute("aria-pressed", isAddFormExpanded ? "true" : "false");
+  }
+  if (importActionBtn) {
+    importActionBtn.classList.toggle("is-active", isCcfddlExpanded);
+    importActionBtn.setAttribute("aria-pressed", isCcfddlExpanded ? "true" : "false");
+  }
 }
 
 function normalizeText(value) {
@@ -127,6 +212,24 @@ function toTimestamp(value) {
   return Number.isNaN(parsed.getTime()) ? null : parsed.getTime();
 }
 
+function normalizeDateInput(value) {
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+
+  const isoMatch = trimmed.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (isoMatch) {
+    return trimmed;
+  }
+
+  const slashMatch = trimmed.match(/^(\d{4})\/(\d{2})\/(\d{2})$/);
+  if (slashMatch) {
+    const [, year, month, day] = slashMatch;
+    return `${year}-${month}-${day}`;
+  }
+
+  return trimmed;
+}
+
 function daysLeft(datetime) {
   const ts = toTimestamp(datetime);
   if (ts === null) return null;
@@ -137,14 +240,63 @@ function daysLeft(datetime) {
 function formatDate(datetime) {
   const date = new Date(datetime);
   if (Number.isNaN(date.getTime())) return "无效日期";
-  const locale = currentLang === "en" ? "en-US" : "zh-CN";
-  return date.toLocaleString(locale, {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
+  const year = String(date.getFullYear());
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const dateText =
+    currentDateOrder === "mdy"
+      ? `${month}/${day}/${year}`
+      : `${year}/${month}/${day}`;
+
+  const hours = date.getHours();
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  if (currentTimeFormat === "12h") {
+    const period = currentLang === "en" ? (hours >= 12 ? "PM" : "AM") : (hours >= 12 ? "下午" : "上午");
+    const displayHour = String(hours % 12 || 12).padStart(2, "0");
+    return `${dateText} ${period} ${displayHour}:${minutes}`;
+  }
+
+  return `${dateText} ${String(hours).padStart(2, "0")}:${minutes}`;
+}
+
+function syncTimeFormatInputs() {
+  timeFormatInputs.forEach((input) => {
+    input.checked = input.value === currentTimeFormat;
   });
+}
+
+function syncDateOrderInputs() {
+  dateOrderInputs.forEach((input) => {
+    input.checked = input.value === currentDateOrder;
+  });
+}
+
+function setSettingsOpen(open) {
+  isSettingsOpen = open;
+  if (settingsPanel) {
+    settingsPanel.hidden = !open;
+  }
+  if (settingsToggle) {
+    settingsToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+}
+
+function setTimeFormat(nextFormat) {
+  if (nextFormat !== "24h" && nextFormat !== "12h") return;
+  currentTimeFormat = nextFormat;
+  syncTimeFormatInputs();
+  chrome.storage.local.set({ [TIME_FORMAT_STORAGE_KEY]: currentTimeFormat });
+  renderCcfddlList(ccfddlItems);
+  loadDeadlines();
+}
+
+function setDateOrder(nextOrder) {
+  if (nextOrder !== "ymd" && nextOrder !== "mdy") return;
+  currentDateOrder = nextOrder;
+  syncDateOrderInputs();
+  chrome.storage.local.set({ [DATE_ORDER_STORAGE_KEY]: currentDateOrder });
+  renderCcfddlList(ccfddlItems);
+  loadDeadlines();
 }
 
 function parseIcsDate(value) {
@@ -205,6 +357,7 @@ function parseIcs(text) {
     const value = rest.join(":");
     if (key === "SUMMARY") current.summary = value;
     if (key === "DTSTART") current.start = value;
+    if (key === "URL") current.url = value;
   });
 
   return events
@@ -214,9 +367,19 @@ function parseIcs(text) {
       return {
         title: event.summary,
         datetime: date.toISOString(),
+        url: event.url || "",
       };
     })
     .filter(Boolean);
+}
+
+function normalizeConferenceUrl(value) {
+  if (!value) return "";
+  const trimmed = value.trim().replace(/^['"]|['"]$/g, "");
+  if (!trimmed) return "";
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  if (/^www\./i.test(trimmed)) return `https://${trimmed}`;
+  return "";
 }
 
 function parseTimezoneOffset(timezone) {
@@ -256,7 +419,7 @@ function parseAllConfYaml(text) {
     if (!iso) return;
     const suffix = pendingComment ? ` (${pendingComment})` : "";
     const title = currentYear ? `${current.title} ${currentYear}${suffix}` : `${current.title}${suffix}`;
-    items.push({ title, datetime: iso });
+    items.push({ title, datetime: iso, url: normalizeConferenceUrl(current.link) });
     pendingDeadline = null;
     pendingComment = null;
   };
@@ -283,6 +446,11 @@ function parseAllConfYaml(text) {
 
     if (trimmed.startsWith("timezone:")) {
       currentTimezone = trimmed.replace("timezone:", "").trim();
+      return;
+    }
+
+    if (trimmed.startsWith("link:")) {
+      current.link = trimmed.replace("link:", "").trim();
       return;
     }
 
@@ -318,7 +486,7 @@ function renderCcfddlList(items) {
   ccfddlList.innerHTML = "";
 
   if (items.length === 0) {
-    ccfddlEmpty.style.display = "block";
+    ccfddlEmpty.style.display = isCcfddlExpanded && isCcfddlDropdownOpen ? "block" : "none";
     return;
   }
 
@@ -350,6 +518,38 @@ function renderCcfddlList(items) {
   });
 }
 
+function setCcfddlDropdownOpen(open) {
+  isCcfddlDropdownOpen = open && isCcfddlExpanded;
+  ccfddlDropdown.hidden = !isCcfddlDropdownOpen;
+
+  if (!isCcfddlDropdownOpen) {
+    ccfddlEmpty.style.display = "none";
+    return;
+  }
+
+  if (ccfddlList.children.length === 0) {
+    ccfddlEmpty.style.display = "block";
+  } else {
+    ccfddlEmpty.style.display = "none";
+  }
+}
+
+function setCcfddlExpanded(expanded) {
+  isCcfddlExpanded = expanded;
+  importPanel.hidden = !expanded;
+
+  if (!expanded) {
+    setCcfddlDropdownOpen(false);
+  } else if (ccfddlList.children.length === 0 && isCcfddlDropdownOpen) {
+    ccfddlEmpty.textContent = t("import_empty", "推荐会议会显示在这里。");
+    ccfddlEmpty.style.display = "block";
+  } else {
+    ccfddlEmpty.style.display = "none";
+  }
+
+  syncActionButtons();
+}
+
 function filterCcfddlList() {
   const keyword = ccfddlSearchInput.value.trim().toLowerCase();
   if (!keyword) {
@@ -367,13 +567,34 @@ function filterCcfddlList() {
   renderCcfddlList(filtered);
 }
 
+function applyLoadedCcfddlItems(items) {
+  if (items.length === 0) {
+    if (ccfddlItems.length === 0) {
+      ccfddlEmpty.textContent = t("import_empty", "推荐会议会显示在这里。");
+      ccfddlEmpty.style.display = isCcfddlExpanded && isCcfddlDropdownOpen ? "block" : "none";
+    }
+    return;
+  }
+
+  ccfddlItems = items;
+  ccfddlEmpty.textContent = t("import_empty", "推荐会议会显示在这里。");
+  filterCcfddlList();
+}
+
 function addImportedDeadline(item) {
   chrome.storage.local.get({ [STORAGE_KEY]: [] }, (result) => {
     const existing = result[STORAGE_KEY];
-    const exists = existing.some(
+    const matchIndex = existing.findIndex(
       (entry) => entry.title === item.title && entry.datetime === item.datetime
     );
-    if (exists) return;
+    if (matchIndex >= 0) {
+      const matchedItem = existing[matchIndex];
+      if (matchedItem.url || !item.url) return;
+      const updated = [...existing];
+      updated[matchIndex] = { ...matchedItem, url: item.url };
+      saveDeadlines(updated);
+      return;
+    }
     const updated = [...existing, item];
     saveDeadlines(updated);
   });
@@ -390,8 +611,10 @@ function mergeCcfddlItems(items) {
 }
 
 async function loadCcfddlData() {
-  loadCcfddlBtn.disabled = true;
-  loadCcfddlBtn.textContent = t("loading", "加载中...");
+  if (isCcfddlLoading) return;
+  isCcfddlLoading = true;
+  ccfddlEmpty.textContent = t("loading", "加载中...");
+  ccfddlEmpty.style.display = isCcfddlExpanded && isCcfddlDropdownOpen ? "block" : "none";
   try {
     const repoResponse = await fetch(
       "https://ccfddl.github.io/conference/allconf.yml"
@@ -399,11 +622,10 @@ async function loadCcfddlData() {
     if (repoResponse.ok) {
       const repoText = await repoResponse.text();
       const now = Date.now();
-      const parsed = parseAllConfYaml(repoText);
-      ccfddlItems = mergeCcfddlItems(parsed)
+      const parsedItems = mergeCcfddlItems(parseAllConfYaml(repoText))
         .filter((item) => toTimestamp(item.datetime) >= now)
         .sort((a, b) => toTimestamp(a.datetime) - toTimestamp(b.datetime));
-      filterCcfddlList();
+      applyLoadedCcfddlItems(parsedItems);
       return;
     }
 
@@ -415,18 +637,52 @@ async function loadCcfddlData() {
     if (responses.length === 0) throw new Error("加载失败");
     const texts = await Promise.all(responses.map((res) => res.text()));
     const now = Date.now();
-    const parsed = texts.flatMap((text) => parseIcs(text));
-    ccfddlItems = mergeCcfddlItems(parsed)
+    const parsedItems = mergeCcfddlItems(texts.flatMap((text) => parseIcs(text)))
       .filter((item) => toTimestamp(item.datetime) >= now)
       .sort((a, b) => toTimestamp(a.datetime) - toTimestamp(b.datetime));
-    filterCcfddlList();
+    applyLoadedCcfddlItems(parsedItems);
   } catch (error) {
-    ccfddlEmpty.textContent = t("load_failed", "加载失败，请稍后重试。");
-    ccfddlEmpty.style.display = "block";
+    if (ccfddlItems.length === 0) {
+      ccfddlEmpty.textContent = t("load_failed", "加载失败，请稍后重试。");
+      ccfddlEmpty.style.display = isCcfddlExpanded && isCcfddlDropdownOpen ? "block" : "none";
+    }
   } finally {
-    loadCcfddlBtn.disabled = false;
-    loadCcfddlBtn.textContent = t("load_button", "加载");
+    isCcfddlLoading = false;
   }
+}
+
+async function openCcfddlDropdown() {
+  if (!isCcfddlExpanded) return;
+
+  setCcfddlDropdownOpen(true);
+  if (ccfddlItems.length > 0) {
+    filterCcfddlList();
+    return;
+  }
+
+  renderCcfddlList([]);
+  await loadCcfddlData();
+}
+
+async function toggleAddPanel() {
+  if (isAddFormExpanded) {
+    setAddFormExpanded(false);
+    return;
+  }
+
+  setCcfddlExpanded(false);
+  setAddFormExpanded(true);
+  titleInput.focus();
+}
+
+async function toggleImportPanel() {
+  if (isCcfddlExpanded) {
+    setCcfddlExpanded(false);
+    return;
+  }
+
+  setAddFormExpanded(false);
+  setCcfddlExpanded(true);
 }
 
 function render(deadlines) {
@@ -442,11 +698,25 @@ function render(deadlines) {
   }
 
   emptyEl.style.display = "none";
-  countEl.textContent = currentLang === "zh" ? `${sorted.length} 项` : `${sorted.length}`;
+  countEl.textContent = currentLang === "zh" ? `(${sorted.length} 项)` : `(${sorted.length})`;
 
   sorted.forEach((item, index) => {
     const li = document.createElement("li");
     li.className = "item";
+    const hasLink = Boolean(item.url);
+
+    if (hasLink) {
+      li.classList.add("is-linkable");
+      li.tabIndex = 0;
+      li.setAttribute("role", "link");
+      li.setAttribute("title", t("open_site", "打开会议官网"));
+      li.addEventListener("click", () => openDeadlineLink(item.url));
+      li.addEventListener("keydown", (event) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        openDeadlineLink(item.url);
+      });
+    }
 
     const header = document.createElement("div");
     header.className = "item-header";
@@ -458,7 +728,10 @@ function render(deadlines) {
     const del = document.createElement("button");
     del.className = "delete-btn";
     del.textContent = t("delete_item", "删除");
-    del.addEventListener("click", () => removeDeadline(index));
+    del.addEventListener("click", (event) => {
+      event.stopPropagation();
+      removeDeadline(index);
+    });
 
     header.append(title, del);
 
@@ -484,10 +757,38 @@ function render(deadlines) {
   });
 }
 
+function openDeadlineLink(url) {
+  const normalizedUrl = normalizeConferenceUrl(url);
+  if (!normalizedUrl) return;
+
+  if (chrome.tabs?.create) {
+    chrome.tabs.create({ url: normalizedUrl });
+    return;
+  }
+
+  window.open(normalizedUrl, "_blank", "noopener,noreferrer");
+}
+
 function loadDeadlines() {
   chrome.storage.local.get({ [STORAGE_KEY]: [] }, (result) => {
     render(result[STORAGE_KEY]);
   });
+}
+
+function animateRefreshButton() {
+  if (!refreshDeadlinesBtn) return;
+  refreshDeadlinesBtn.classList.add("is-spinning");
+  if (refreshButtonAnimationTimer) {
+    clearTimeout(refreshButtonAnimationTimer);
+  }
+  refreshButtonAnimationTimer = window.setTimeout(() => {
+    refreshDeadlinesBtn.classList.remove("is-spinning");
+    refreshButtonAnimationTimer = null;
+  }, 700);
+}
+
+function shouldIgnoreStartupInteraction() {
+  return performance.now() - popupOpenedAt < STARTUP_CLICK_GUARD_MS;
 }
 
 function startAutoRefresh() {
@@ -519,7 +820,7 @@ function removeDeadline(index) {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const title = titleInput.value.trim();
-  const date = dateInput.value;
+  const date = normalizeDateInput(dateInput.value);
   const time = timeInput.value || "23:59";
 
   if (!title || !date) return;
@@ -538,6 +839,7 @@ form.addEventListener("submit", (event) => {
     saveDeadlines(updated);
     form.reset();
     timeInput.value = "23:59";
+    setAddFormExpanded(false);
   });
 });
 
@@ -546,23 +848,74 @@ langToggle.addEventListener("click", () => {
   setLanguage(next);
 });
 
-chrome.storage.local.get({ [LANG_STORAGE_KEY]: "zh" }, (result) => {
-  currentLang = result[LANG_STORAGE_KEY] || "zh";
-  applyTranslations();
-  renderCcfddlList(ccfddlItems);
-  loadDeadlines();
-  startAutoRefresh();
-});
+chrome.storage.local.get(
+  {
+    [LANG_STORAGE_KEY]: "zh",
+    [TIME_FORMAT_STORAGE_KEY]: "24h",
+    [DATE_ORDER_STORAGE_KEY]: "ymd",
+  },
+  (result) => {
+    currentLang = result[LANG_STORAGE_KEY] || "zh";
+    currentTimeFormat = result[TIME_FORMAT_STORAGE_KEY] || "24h";
+    currentDateOrder = result[DATE_ORDER_STORAGE_KEY] || "ymd";
+    applyTranslations();
+    setAddFormExpanded(false);
+    setCcfddlExpanded(true);
+    setSettingsOpen(false);
+    renderCcfddlList(ccfddlItems);
+    loadDeadlines();
+    startAutoRefresh();
+  }
+);
 
-loadCcfddlBtn.addEventListener("click", loadCcfddlData);
-ccfddlSearchInput.addEventListener("input", () => {
-  filterCcfddlList();
-  ccfddlClearBtn.hidden = !ccfddlSearchInput.value.trim();
+addActionBtn.addEventListener("click", () => {
+  setSettingsOpen(false);
+  toggleAddPanel().catch(() => {});
 });
-ccfddlClearBtn.addEventListener("click", () => {
-  ccfddlSearchInput.value = "";
-  ccfddlClearBtn.hidden = true;
-  filterCcfddlList();
-  ccfddlSearchInput.focus();
+importActionBtn.addEventListener("click", () => {
+  if (shouldIgnoreStartupInteraction()) return;
+  setSettingsOpen(false);
+  toggleImportPanel().catch(() => {});
 });
-refreshDeadlinesBtn.addEventListener("click", loadDeadlines);
+settingsToggle.addEventListener("click", (event) => {
+  event.stopPropagation();
+  setSettingsOpen(!isSettingsOpen);
+});
+timeFormatInputs.forEach((input) => {
+  input.addEventListener("change", () => {
+    if (!input.checked) return;
+    setTimeFormat(input.value);
+  });
+});
+dateOrderInputs.forEach((input) => {
+  input.addEventListener("change", () => {
+    if (!input.checked) return;
+    setDateOrder(input.value);
+  });
+});
+ccfddlSearchInput.addEventListener("focus", () => {
+  if (shouldIgnoreStartupInteraction()) return;
+  openCcfddlDropdown().catch(() => {});
+});
+ccfddlSearchInput.addEventListener("click", () => {
+  if (shouldIgnoreStartupInteraction()) return;
+  openCcfddlDropdown().catch(() => {});
+});
+ccfddlSearchInput.addEventListener("input", filterCcfddlList);
+refreshDeadlinesBtn.addEventListener("click", () => {
+  animateRefreshButton();
+  loadDeadlines();
+});
+document.addEventListener("pointerdown", (event) => {
+  if (
+    isSettingsOpen &&
+    !settingsPanel?.contains(event.target) &&
+    !settingsToggle?.contains(event.target)
+  ) {
+    setSettingsOpen(false);
+  }
+  if (!isCcfddlDropdownOpen) return;
+  if (importPanel.hidden) return;
+  if (importPanel.contains(event.target)) return;
+  setCcfddlDropdownOpen(false);
+});
