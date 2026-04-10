@@ -20,8 +20,8 @@
       id: ijcnlp2026
       link: https://2026.aaclnet.org/
       timeline:
-        - deadline: 'TBD'
-          comment: 'AACL-IJCNLP 2026 (the 5th AACL & 15th IJCNLP)'
+        - deadline: '2026-05-25 23:59:59'
+          comment: 'ARR Submission; AACL-IJCNLP 2026 (the 5th AACL & 15th IJCNLP)'
       timezone: UTC-12
       date: Nov 6-10, 2026
       place: Hengqin, China
