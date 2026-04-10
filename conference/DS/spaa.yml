@@ -25,3 +25,12 @@
       timezone: AoE
       date: July 28 - August 1, 2025
       place: Portland, Oregon
+    - year: 2026
+      id: spaa26
+      link: https://spaa.acm.org/
+      timeline:
+        - abstract_deadline: '2026-02-20 23:59:59'
+          deadline: '2026-02-27 23:59:59'
+      timezone: AoE
+      date: July 6 - July 10, 2026
+      place: London, UK

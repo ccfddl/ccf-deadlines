@@ -27,3 +27,15 @@
       timezone: AoE
       date: August 8-10, 2025
       place: Vancouver, Canada
+    - year: 2026
+      id: sca26
+      link: https://computeranimation.org/
+      timeline:
+        - abstract_deadline: '2026-04-10 23:59:59'
+          deadline: '2026-04-17 23:59:59'
+          comment: Submission deadline (papers)
+        - deadline: '2026-06-01 23:59:59'
+          comment: Submission deadline (posters)
+      timezone: AoE
+      date: July 8-10, 2026
+      place: Barcelona, Spain

@@ -1,5 +1,5 @@
-- title: USENIX ATC
-  description: USENIX Annual Technical Conference
+- title: SIGOPS ATC
+  description: ACM SIGOPS Annual Technical Conference
   sub: DS
   rank:
     ccf: A
@@ -50,3 +50,11 @@
       timezone: UTC+0
       date: July 7-9, 2025
       place: Boston, MA, USA
+    - year: 2026
+      id: atc2026
+      link: https://sigops.org/s/conferences/atc/2026/index.html
+      timeline:
+        - deadline: '2026-06-10 23:59:59'
+      timezone: UTC+0
+      date: November 15-18, 2026
+      place: Hyatt Hotel, Shatin, Hong Kong, China

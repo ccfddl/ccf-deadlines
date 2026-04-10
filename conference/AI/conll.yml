@@ -15,3 +15,11 @@
       timezone: UTC-12
       date: July 31 - August 1, 2025
       place: Vienna, Austria
+    - year: 2026
+      id: conll26
+      link: https://www.conll.org/
+      timeline:
+        - deadline: '2026-02-19 23:59:59'
+      timezone: UTC-12
+      date: July 3 - 4, 2026
+      place: San Diego, California, United States

@@ -29,3 +29,14 @@
       timezone: UTC-8
       date: August 28-30, 2025
       place: Shenyang, China
+    - year: 2026
+      id: apweb26
+      link: https://conferences.sigappfr.org/apweb2026/
+      timeline:
+        - deadline: '2026-03-31 23:59:59'
+          comment: first round
+        - deadline: '2026-05-04 23:59:59'
+          comment: second round
+      timezone: AoE
+      date: September 7-9, 2026
+      place: Danang, Vietnam

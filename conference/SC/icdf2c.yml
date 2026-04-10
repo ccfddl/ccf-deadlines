@@ -36,3 +36,11 @@
       timezone: UTC-12
       date: November 17-19, 2025
       place: Miami, Florida, USA
+    - year: 2026
+      id: icdf2c26
+      link: https://icdf2c.eai-conferences.org/2026/
+      timeline:
+        - deadline: '2026-01-20 23:59:59'
+      timezone: UTC-12
+      date: September 8-10, 2026
+      place: Reykjavik, Iceland

@@ -45,8 +45,8 @@
       id: bmvc26
       link: https://bmvc2026.bmva.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-05-22 23:59:59'
+          deadline: '2026-05-29 23:59:59'
       timezone: UTC+0
       date: November 23-26, 2026
       place: Lancaster, UK

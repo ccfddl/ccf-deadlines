@@ -34,3 +34,11 @@
       timezone: AoE
       date: August 24-27, 2025
       place: Aerzen, Germany
+    - year: 2026
+      id: nspw26
+      link: https://www.nspw.org/2026
+      timeline:
+        - deadline: '2026-04-30 23:59:59'
+      timezone: AoE
+      date: September 27-30, 2026
+      place: Victoria, BC, Canada

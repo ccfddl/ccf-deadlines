@@ -41,3 +41,12 @@
       timezone: AoE
       date: November 16-21, 2025
       place: St. louis, Missouri, USA
+    - year: 2026
+      id: sc26
+      link: https://sc26.supercomputing.org/
+      timeline:
+        - abstract_deadline: '2026-04-01 23:59:59'
+          deadline: '2026-04-08 23:59:00'
+      timezone: AoE
+      date: November 15-20, 2026
+      place: McCormick Place, Chicago, Illinois, USA

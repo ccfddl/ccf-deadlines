@@ -1,0 +1,14 @@
+- title: MobiHoc
+  accept_rates:
+    - year: 2024
+      submitted: 155
+      accepted: 38
+      str: 24.5%(38/155 24')
+      rate: 0.245161
+      source: https://dlnext.acm.org/doi/proceedings/10.1145/3641512
+    - year: 2025
+      submitted: 169
+      accepted: 39
+      str: 23.1%(39/169 25')
+      rate: 0.230769
+      source: https://dlnext.acm.org/doi/proceedings/10.1145/3704413

@@ -1,0 +1,8 @@
+- title: GLOBECOM
+  accept_rates:
+    - year: 2024
+      submitted: 2295
+      accepted: 911
+      str: 39.7%(911/2295 24')
+      rate: 0.3969498910675381
+      source: https://ieeexplore.ieee.org/abstract/document/10901143

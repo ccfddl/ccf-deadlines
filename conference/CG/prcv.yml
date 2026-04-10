@@ -32,3 +32,11 @@
       timezone: UTC+8
       date: Oct 16-19, 2025
       place: Shanghai, China
+    - year: 2026
+      id: prcv26
+      link: https://www.prcv.cn/web/#/home
+      timeline:
+        - deadline: '2026-04-15 23:59:59'
+      timezone: UTC+8
+      date: Aug 22-25, 2026
+      place: Harbin, China

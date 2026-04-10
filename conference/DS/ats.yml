@@ -1,0 +1,17 @@
+- title: ATS
+  description: IEEE Asian Test Symposium
+  sub: DS
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: ats
+  confs:
+    - year: 2026
+      id: ats2026
+      link: https://www.ats2026.tw/
+      timeline:
+        - deadline: '2026-06-06 23:59:59'
+      timezone: UTC+8
+      date: December 1-3, 2026
+      place: Taiwan

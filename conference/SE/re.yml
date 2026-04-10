@@ -27,3 +27,15 @@
       timezone: AoE
       date: September 4-8, 2023
       place: Hannover, Germany
+    - year: 2026
+      id: re26
+      link: https://conf.researchr.org/home/RE-2026
+      timeline:
+        - abstract_deadline: '2026-02-16 23:59:59'
+          deadline: '2026-02-23 23:59:59'
+          comment: Research Papers
+        - deadline: '2026-04-13 23:59:59'
+          comment: Journal Paper
+      timezone: AoE
+      date: August 17-21, 2026
+      place: Montreal, Canada
