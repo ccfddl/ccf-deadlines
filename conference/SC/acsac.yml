@@ -39,3 +39,11 @@
       timezone: UTC-12
       date: December 8-12, 2025
       place: Honolulu, Hawaii, USA
+    - year: 2026
+      id: acsac26
+      link: https://www.acsac.org/
+      timeline:
+        - deadline: '2026-05-26 23:59:59'
+      timezone: UTC-12
+      date: December 7-11, 2026
+      place: Los Angeles, California, USA
