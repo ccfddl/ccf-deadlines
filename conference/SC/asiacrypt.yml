@@ -39,3 +39,11 @@
       timezone: UTC
       date: December 8-12, 2025
       place: Melbourne, Australia
+    - year: 2026
+      id: asiacrypt26
+      link: https://asiacrypt.iacr.org/2026/
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC
+      date: December 7-11, 2026
+      place: Hong Kong, China1
