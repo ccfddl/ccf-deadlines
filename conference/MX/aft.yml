@@ -1,0 +1,75 @@
+- title: AFT
+  description: Advances in Financial Technologies
+  sub: MX
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: aft
+  confs:
+    - year: 2019
+      id: aft19
+      link: https://aft.ifca.ai/aft19/index.html
+      timeline:
+        - deadline: '2019-05-24 23:59:59'
+      timezone: UTC-12
+      date: October 21-23, 2019
+      place: Zurich, Switzerland
+    - year: 2020
+      id: aft20
+      link: https://aft.ifca.ai/aft20/index.html
+      timeline:
+        - deadline: '2020-06-11 23:59:59'
+      timezone: UTC-12
+      date: October 21-23, 2020
+      place: Online
+    - year: 2021
+      id: aft21
+      link: https://aft.ifca.ai/aft21/index.html
+      timeline:
+        - deadline: '2021-05-27 23:59:59'
+      timezone: UTC-12
+      date: September 26-28, 2021
+      place: Online
+    - year: 2022
+      id: aft22
+      link: https://aft.ifca.ai/aft22/index.html
+      timeline:
+        - deadline: '2022-05-13 23:59:59'
+      timezone: UTC-12
+      date: September 19-21, 2022
+      place: Cambridge, MA, USA
+    - year: 2023
+      id: aft23
+      link: https://aft.ifca.ai/aft23/index.html
+      timeline:
+        - deadline: '2023-06-15 23:59:59'
+      timezone: UTC-12
+      date: October 23-25, 2023
+      place: Princeton, NJ, USA
+    - year: 2024
+      id: aft24
+      link: https://aft.ifca.ai/aft24/index.html
+      timeline:
+        - abstract_deadline: '2024-05-15 23:59:59'
+          deadline: '2024-05-22 23:59:59'
+      timezone: UTC-12
+      date: September 23-25, 2024
+      place: Vienna, Austria
+    - year: 2025
+      id: aft25
+      link: https://aft.ifca.ai/aft25/index.html
+      timeline:
+        - deadline: '2025-05-28 23:59:59'
+      timezone: UTC-12
+      date: October 7-10, 2025
+      place: Pittsburgh, PA, USA
+    - year: 2026
+      id: aft26
+      link: https://aft.ifca.ai/aft26/index.html
+      timeline:
+        - abstract_deadline: '2026-05-20 23:59:59'
+          deadline: '2026-05-27 23:59:59'
+      timezone: UTC-12
+      date: October 6-9, 2026
+      place: London, UK
