@@ -38,3 +38,12 @@
       timezone: AoE
       date: Jan 19-22, 2026
       place: Hong Kong Disneyland
+    - year: 2027
+      id: aspdac27
+      link: https://www.aspdac.com/aspdac2027/
+      timeline:
+        - abstract_deadline: '2026-07-03 17:00:00'
+          deadline: '2026-07-10 17:00:00'
+      timezone: AoE
+      date: Jan 25-28, 2027
+      place: Hitotsubashi Hall, Tokyo, Japan

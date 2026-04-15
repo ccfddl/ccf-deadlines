@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCF DDL Tracker</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">
+        <img class="logo" src="icons/logo.png" alt="CCF DDL Tracker logo" />
+        <div>
+        <h1 data-i18n="title">CCF DDL Tracker</h1>
+        <p data-i18n="subtitle_zh">添加你正在赶的截止日期，徽标显示最近的剩余天数。</p>
+        <p class="subtitle" data-i18n="subtitle_en">Track deadlines and show the nearest days left.</p>
+        </div>
+      </div>
+      <span class="version-tag" aria-label="Version 2.0">v2.0</span>
+    </header>
+
+    <section class="action-grid">
+      <button id="show-add-panel" type="button" class="action-card" aria-pressed="false">
+        <span class="action-card-icon" aria-hidden="true">+</span>
+        <span class="action-card-title" data-i18n="add_section">新增截止日期</span>
+        <span class="action-card-text" data-i18n="add_hint">手动填写标题、日期和时间</span>
+      </button>
+      <button id="show-import-panel" type="button" class="action-card" aria-pressed="false">
+        <span class="action-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 20 20" focusable="false">
+            <circle cx="8.5" cy="8.5" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+            <path d="M12 12l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </span>
+        <span class="action-card-title" data-i18n="import_section">从 CCFDDL 导入</span>
+        <span class="action-card-text" data-i18n="import_hint_short">加载推荐会议并一键加入</span>
+      </button>
+    </section>
+
+    <section id="add-panel" class="form-card panel-card" hidden>
+      <form id="deadline-form">
+        <label>
+          <span data-i18n="title_label">标题</span>
+          <input id="title" type="text" placeholder="例如：ACL 2025" data-i18n-placeholder="title_placeholder" required />
+        </label>
+        <div class="row">
+          <label>
+            <span data-i18n="date_label">日期</span>
+            <input id="date" type="date" required />
+          </label>
+          <label>
+            <span data-i18n="time_label">时间</span>
+            <input id="time" type="time" value="23:59" />
+          </label>
+        </div>
+        <button type="submit" data-i18n="add_button">添加</button>
+      </form>
+    </section>
+
+    <section id="import-panel" class="import-card panel-card" hidden>
+      <div class="import-combobox">
+        <label class="search-label">
+          <span data-i18n="search_label">搜索会议</span>
+          <input id="ccfddl-search" type="text" placeholder="例如：ICML / SIGMOD" data-i18n-placeholder="search_placeholder" autocomplete="off" />
+        </label>
+        <p class="field-hint" data-i18n="import_click_hint">点击搜索框可获取最新会议列表</p>
+        <div id="ccfddl-dropdown" class="import-dropdown" hidden>
+          <ul id="ccfddl-list" class="import-list"></ul>
+          <p id="ccfddl-empty" class="empty" data-i18n="import_empty">
+            推荐会议会显示在这里。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="list-card">
+      <div class="list-header">
+        <h2 class="section-title">
+          <span data-i18n="my_section">我的 DDL</span>
+          <span id="count"></span>
+        </h2>
+        <div class="list-actions">
+          <button id="refresh-deadlines" type="button" class="icon-ghost-btn" data-i18n-title="refresh_button" aria-label="刷新">
+            <svg class="refresh-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+              <path
+                d="M16 10a6 6 0 1 1-1.76-4.24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M16 4.5v3.8h-3.8"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <ul id="deadline-list"></ul>
+      <p id="empty-state" class="empty" data-i18n="empty_state">还没有添加任何截止日期。</p>
+    </section>
+
+    <footer class="footer-tools">
+      <div class="footer-actions">
+        <button id="lang-toggle" type="button" class="ghost-btn footer-toggle">EN</button>
+        <button
+          id="settings-toggle"
+          type="button"
+          class="icon-ghost-btn footer-settings-btn"
+          data-i18n-title="settings_button"
+          aria-label="设置"
+          aria-expanded="false"
+        >
+          <svg viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+            <path
+              d="M8.08 3.15a1 1 0 0 1 .94-.65h1.96a1 1 0 0 1 .94.65l.33 1a5.9 5.9 0 0 1 1.16.48l.98-.42a1 1 0 0 1 1.1.22l1.38 1.38a1 1 0 0 1 .22 1.1l-.42.98c.19.37.35.76.48 1.16l1 .33a1 1 0 0 1 .65.94v1.96a1 1 0 0 1-.65.94l-1 .33a5.9 5.9 0 0 1-.48 1.16l.42.98a1 1 0 0 1-.22 1.1l-1.38 1.38a1 1 0 0 1-1.1.22l-.98-.42a5.9 5.9 0 0 1-1.16.48l-.33 1a1 1 0 0 1-.94.65H9.02a1 1 0 0 1-.94-.65l-.33-1a5.9 5.9 0 0 1-1.16-.48l-.98.42a1 1 0 0 1-1.1-.22L3.13 15.8a1 1 0 0 1-.22-1.1l.42-.98a5.9 5.9 0 0 1-.48-1.16l-1-.33a1 1 0 0 1-.65-.94V9.33a1 1 0 0 1 .65-.94l1-.33c.13-.4.29-.79.48-1.16l-.42-.98a1 1 0 0 1 .22-1.1l1.38-1.38a1 1 0 0 1 1.1-.22l.98.42c.37-.19.76-.35 1.16-.48l.33-1Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.35"
+              stroke-linejoin="round"
+            />
+            <circle cx="10" cy="10.31" r="2.2" fill="none" stroke="currentColor" stroke-width="1.35" />
+          </svg>
+        </button>
+      </div>
+      <div class="footer-links">
+        <a
+          class="footer-link"
+          href="https://github.com/jaychempan/ccf-ddl-tracker"
+          target="_blank"
+          rel="noreferrer"
+          data-i18n-title="contribute"
+          aria-label="共同开发"
+        >
+          <span class="footer-link-mark" aria-hidden="true">
+            <svg viewBox="0 0 20 20" focusable="false">
+              <path
+                d="M10 2.5a7.5 7.5 0 0 0-2.37 14.62c.37.07.5-.16.5-.36v-1.27c-2.02.44-2.45-.86-2.45-.86-.33-.84-.8-1.06-.8-1.06-.66-.45.05-.45.05-.45.73.05 1.11.74 1.11.74.65 1.1 1.7.79 2.12.61.07-.46.25-.79.45-.97-1.61-.18-3.3-.79-3.3-3.52 0-.78.28-1.42.74-1.92-.07-.18-.32-.9.07-1.88 0 0 .6-.19 1.97.73A6.9 6.9 0 0 1 10 6.56c.64 0 1.28.09 1.88.27 1.37-.92 1.97-.73 1.97-.73.39.98.14 1.7.07 1.88.46.5.74 1.14.74 1.92 0 2.74-1.69 3.34-3.3 3.52.26.22.49.66.49 1.33v1.97c0 .2.13.44.5.36A7.5 7.5 0 0 0 10 2.5Z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+          <span class="footer-link-text" data-i18n="contribute">共同开发</span>
+        </a>
+        <a
+          class="footer-link"
+          href="https://ccfddl.com/"
+          target="_blank"
+          rel="noreferrer"
+          data-i18n-title="open"
+          aria-label="打开 CCFDDL"
+        >
+          <span class="footer-link-mark" aria-hidden="true">
+            <svg viewBox="0 0 20 20" focusable="false">
+              <path
+                d="M10 3.25a6.75 6.75 0 1 0 6.75 6.75"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+              <path
+                d="M11.5 2.75h5.75V8.5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M17.25 2.75 9.75 10.25"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="footer-link-text">CCFDDL</span>
+        </a>
+      </div>
+    </footer>
+
+    <section id="settings-panel" class="settings-panel" hidden>
+      <p class="settings-title" data-i18n="settings_title">显示设置</p>
+      <fieldset class="settings-group">
+        <legend class="settings-legend" data-i18n="time_format_label">时间显示</legend>
+        <label class="settings-option">
+          <input type="radio" name="time-format" value="24h" checked />
+          <span data-i18n="time_format_24h">24 小时制</span>
+        </label>
+        <label class="settings-option">
+          <input type="radio" name="time-format" value="12h" />
+          <span data-i18n="time_format_12h">12 小时制</span>
+        </label>
+      </fieldset>
+      <fieldset class="settings-group">
+        <legend class="settings-legend" data-i18n="date_order_label">日期顺序</legend>
+        <label class="settings-option">
+          <input type="radio" name="date-order" value="ymd" checked />
+          <span data-i18n="date_order_ymd">年月日</span>
+        </label>
+        <label class="settings-option">
+          <input type="radio" name="date-order" value="mdy" />
+          <span data-i18n="date_order_mdy">月日年</span>
+        </label>
+      </fieldset>
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

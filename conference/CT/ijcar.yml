@@ -1,0 +1,18 @@
+- title: IJCAR
+  description: International Joint Conference on Automated Reasoning
+  sub: CT
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: ijcar
+  confs:
+    - year: 2026
+      id: ijcar26
+      link: https://www.floc26.org/ijcar
+      timeline:
+        - abstract_deadline: '2026-02-06 23:59:59'
+          deadline: '2025-02-15 23:59:59'
+      timezone: AoE
+      date: July 26-29, 2026
+      place: Lisbon, Portugal

@@ -3,7 +3,7 @@
   sub: CT
   rank:
     ccf: B
-    core: A
+    core: B
     thcpl: B
   dblp: concur
   confs:
@@ -16,3 +16,12 @@
       timezone: AoE
       date: Aug 26-29, 2025
       place: Aarhus, Denmark
+    - year: 2026
+      id: concur26
+      link: https://confest-2026.github.io/concur/
+      timeline:
+        - deadline: '2026-04-27 23:59:59'
+          abstract_deadline: "2026-04-20 23:59:59"
+      timezone: AoE
+      date: Sep 1-4, 2026
+      place: Liverpool, UK

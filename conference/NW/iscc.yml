@@ -1,0 +1,17 @@
+- title: ISCC
+  description: IEEE Symposium on Computers and Communications
+  sub: NW
+  rank:
+    ccf: C
+    core: C
+    thcpl: N
+  dblp: iscc
+  confs:
+    - year: 2026
+      id: iscc26
+      link: https://ieee-iscc.computer.org/2026/
+      timeline:
+        - deadline: '2026-02-15 23:59:59'
+      timezone: UTC+0
+      date: June 23-26, 2026
+      place: Vilamoura, Algarve, Portugal

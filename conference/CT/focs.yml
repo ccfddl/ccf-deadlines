@@ -23,3 +23,11 @@
       timezone: UTC-5
       date: December 14-17, 2025
       place: Sydney, Australia
+    - year: 2026
+      id: focs26
+      link: https://sanjeevkhanna.org/FOCS2026_CFP.html
+      timeline:
+        - deadline: '2026-04-01 21:00:00'
+      timezone: UTC
+      date: November 8-11, 2026
+      place: New York City, NY, USA

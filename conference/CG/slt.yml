@@ -1,0 +1,17 @@
+- title: SLT
+  description: IEEE Spoken Language Technology (SLT) Workshop
+  sub: CG
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: slt
+  confs:
+    - year: 2026
+      id: slt26
+      link: https://attend.ieee.org/slt-2026/
+      timeline:
+        - deadline: '2026-06-17 23:59:59'
+      timezone: AoE
+      date: December 13-16, 2026
+      place: Palermo, Sicily, Italy

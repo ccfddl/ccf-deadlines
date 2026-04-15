@@ -1,0 +1,17 @@
+- title: CODASPY
+  description: ACM Conference on Data and Application Security and Privacy
+  sub: SC
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: codaspy
+  confs:
+    - year: 2026
+      id: codaspy2026
+      link: https://www.codaspy.org/2026/
+      timeline:
+        - deadline: '2025-12-26 23:59:59'
+      timezone: AoE
+      date: June 23-25, 2026
+      place: Frankfurt am Main, Germany

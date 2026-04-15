@@ -1,0 +1,18 @@
+- title: ITC-Asia
+  description: IEEE International Test Conference in Asia
+  sub: DS
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: itc-asia
+  confs:
+    - year: 2026
+      id: itc-asia2026
+      link: https://www.castest.com.cn/itcasia_2026
+      timeline:
+        - abstract_deadline: '2026-04-18 23:59:59'
+          deadline: '2026-04-25 23:59:59'
+      timezone: UTC+8
+      date: August 19-21, 2026
+      place: Ningbo International Conference Center, Ningbo, China

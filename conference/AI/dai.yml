@@ -1,0 +1,17 @@
+- title: DAI
+  description: International Conference on Distributed Artificial Intelligence
+  sub: AI
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: dai2
+  confs:
+    - year: 2025
+      id: dai2025
+      link: https://www.adai.ai/dai/2025/index.html
+      timeline:
+        - deadline: '2025-08-21 23:59:59'
+      timezone: UTC-12
+      date: November 21-24, 2025
+      place: London, United Kingdom

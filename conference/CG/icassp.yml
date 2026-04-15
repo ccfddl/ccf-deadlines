@@ -47,3 +47,11 @@
       timezone: UTC-12
       date: May 4-8, 2026
       place: Barcelona, Spain
+    - year: 2027
+      id: icassp27
+      link: https://2027.ieeeicassp.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC-12
+      date: May 16-21, 2027
+      place: Toronto, Canada

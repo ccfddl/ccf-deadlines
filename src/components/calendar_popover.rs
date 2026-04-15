@@ -1,13 +1,11 @@
 use leptos::prelude::*;
-use leptos::*;
 use thaw::*;
-use chrono::{DateTime, Utc};
 
 #[component]
 pub fn CalendarPopover(
     google_calendar_url: Option<String>,
     icloud_calendar_url: Option<String>,
-    is_mobile: RwSignal<bool>
+    is_mobile: RwSignal<bool>,
 ) -> impl IntoView {
     let show_popover = RwSignal::new(false);
 

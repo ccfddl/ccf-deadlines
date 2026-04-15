@@ -31,3 +31,11 @@
       timezone: UTC-12
       date: November 20-24, 2025
       place: Okinawa, Japan
+    - year: 2026
+      id: iconip2026
+      link: https://www.iconip2026.org/
+      timeline:
+        - deadline: '2026-05-10 23:59:59'
+      timezone: UTC-12
+      date: November 23-27, 2026
+      place: Melbourne, Australia

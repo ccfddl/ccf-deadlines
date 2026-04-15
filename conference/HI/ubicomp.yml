@@ -7,6 +7,21 @@
     thcpl: A
   dblp: huc
   confs:
+    - year: 2026
+      id: ubicomp26
+      link: https://www.ubicomp.org/ubicomp-iswc-2026
+      timeline:
+        - deadline: '2026-02-01 23:59:59'
+          comment: first round
+        - deadline: '2026-05-01 23:59:59'
+          comment: second round
+        - deadline: '2026-08-01 23:59:59'
+          comment: third round (only for resubmissions after major revisions)
+        - deadline: '2026-11-01 23:59:59'
+          comment: fourth round
+      timezone: AoE
+      date: October 11-15, 2026
+      place: Shanghai, China
     - year: 2025
       id: ubicomp25
       link: https://www.ubicomp.org/ubicomp-iswc-2025

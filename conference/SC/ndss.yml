@@ -64,3 +64,14 @@
       timezone: UTC-12
       date: February 23 - February 27, 2026
       place: San Diego, California
+    - year: 2027
+      id: ndss27
+      link: https://www.ndss-symposium.org/ndss2027/
+      timeline:
+        - deadline: '2026-05-06 23:59:59'
+          comment: Summer
+        - deadline: '2026-08-19 23:59:59'
+          comment: Fall
+      timezone: UTC-12
+      date: TBD
+      place: TBD

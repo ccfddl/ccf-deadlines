@@ -15,3 +15,11 @@
       timezone: UTC-7
       date: November 01-03, 2021
       place: Washington DC, USA
+    - year: 2026
+      id: ictai26
+      link: https://ictai.computer.org/2026/
+      timeline:
+        - deadline: '2026-06-30 23:59:00'
+      timezone: AoE
+      date: November 02-04, 2026
+      place: Boca Raton FL, USA

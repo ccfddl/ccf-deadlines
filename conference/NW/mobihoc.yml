@@ -16,3 +16,12 @@
       timezone: UTC-12
       date: October 17-22, 2022
       place: Seoul, South Korea
+    - year: 2026
+      id: mobihoc26
+      link: https://www.sigmobile.org/mobihoc/2026/
+      timeline:
+        - abstract_deadline: '2026-04-13 23:59:59'
+          deadline: '2026-04-20 23:59:59'
+      timezone: AoE
+      date: November 23-26, 2026
+      place: Tokyo, Japan

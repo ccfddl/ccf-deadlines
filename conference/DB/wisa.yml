@@ -1,0 +1,18 @@
+- title: WISA
+  description: Web Information Systems and Applications
+  sub: DB
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: wisa
+  confs:
+    - year: 2026
+      id: wisa2026
+      link: https://conf.ccf.org.cn/WISA2026
+      timeline:
+        - abstract_deadline: '2026-04-21 23:59:59'
+          deadline: '2026-04-28 23:59:59'
+      timezone: UTC+8
+      date: August 07-09, 2026
+      place: Kunming, China

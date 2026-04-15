@@ -1,0 +1,17 @@
+- title: MSWiM
+  description: International Conference on Modeling, Analysis and Simulation of Wireless and Mobile Systems
+  sub: NW
+  rank:
+    ccf: C
+    core: A
+    thcpl: N
+  dblp: mswim
+  confs:
+    - year: 2026
+      id: mswim26
+      link: https://mswimconf.com/2026/
+      timeline:
+        - deadline: '2026-06-01 23:59:59'
+      timezone: UTC+1
+      date: October 26-30, 2026
+      place: Paris, France

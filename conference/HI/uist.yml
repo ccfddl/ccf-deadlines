@@ -33,8 +33,8 @@
       id: uist2026
       link: https://uist.acm.org/2026/
       timeline:
-        - abstract_deadline: '2026-03-24 17:00:00'
-          deadline: '2026-03-31 17:00:00'
-      timezone: UTC-8
+        - abstract_deadline: '2026-03-24 23:59:59'
+          deadline: '2026-03-31 23:59:59'
+      timezone: AoE
       date: November 2 - 5, 2026
       place: GM Renaissance Center, Detroit, MI, USA

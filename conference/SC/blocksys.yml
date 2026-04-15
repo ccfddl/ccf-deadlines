@@ -1,0 +1,17 @@
+- title: BlockSys
+  description: International Conference on Blockchain, Artificial Intelligence, and Trustworthy Systems
+  sub: SC
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: blocksys
+  confs:
+    - year: 2026
+      id: blocksys2026
+      link: https://blocksys.info/2026/
+      timeline:
+        - deadline: '2026-04-20 23:59:59'
+      timezone: UTC+8
+      date: July 29-31, 2026
+      place: Chengdu, China

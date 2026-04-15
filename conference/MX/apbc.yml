@@ -15,3 +15,11 @@
       timezone: UTC+0
       date: September 19-22, 2025
       place: Nanjing， China
+    - year: 2026
+      id: apbc26
+      link: https://www.apbc2026.com/home
+      timeline:
+        - deadline: '2026-06-15 23:59:59'
+      timezone: UTC+0
+      date: October 21-24, 2026
+      place: Hsinchu, Taiwan， China

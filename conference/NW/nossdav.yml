@@ -15,3 +15,11 @@
       timezone: AoE
       date: March 31- April 3, 2025
       place: Stellenbosch, South Africa
+    - year: 2026
+      id: nossdav26
+      link: https://nossdav.org/2026/
+      timeline:
+        - deadline: '2026-01-16 23:59:59'
+      timezone: AoE
+      date: April 8, 2026
+      place: Hong Kong, China

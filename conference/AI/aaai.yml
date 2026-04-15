@@ -52,3 +52,12 @@
       timezone: UTC-12
       date: January 20 - 27, 2026
       place: Singapore EXPO
+    - year: 2027
+      id: aaai27
+      link: https://aaai.org/conference/aaai/aaai-27/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC-12
+      date: February 16-23, 2027
+      place: Montréal, Québec, Canada

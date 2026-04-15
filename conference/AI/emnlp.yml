@@ -41,3 +41,11 @@
       timezone: UTC-12
       date: November 5 - 9, 2025
       place: Suzhou, China
+    - year: 2026
+      id: emnlp26
+      link: https://2026.emnlp.org/
+      timeline:
+        - deadline: '2026-05-25 23:59:59'
+      timezone: UTC-12
+      date: October 24 - 29, 2026
+      place: Budapest, Hungary

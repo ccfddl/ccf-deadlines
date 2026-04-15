@@ -65,8 +65,8 @@
       id: icdcs26
       link: http://icdcs2026.icdcs.org/
       timeline:
-        - abstract_deadline: '2026-01-07 23:59:59'
-          deadline: '2026-01-14 23:59:59'
+        - abstract_deadline: '2026-01-21 23:59:59'
+          deadline: '2026-01-21 23:59:59'
       timezone: AoE
       date: June 22-25, 2026
       place: Seoul, South Korea

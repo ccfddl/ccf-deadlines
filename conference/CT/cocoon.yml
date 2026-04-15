@@ -15,3 +15,11 @@
       timezone: AoE
       date: August 15-17, 2025
       place: Chengdu, China
+    - year: 2026
+      id: cocoon26
+      link: https://event.ntu.edu.sg/cocoon2026
+      timeline:
+        - deadline: '2025-03-04 23:59:59'
+      timezone: AoE
+      date: July 23-25, 2026
+      place: Singapore
