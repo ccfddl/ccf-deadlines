@@ -35,7 +35,7 @@
       id: cidr27
       link: https://www.cidrdb.org/cidr2027/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2026-08-04 23:59:59'
       timezone: UTC-7
       date: January 24-27, 2027
       place: Amsterdam, The Netherlands
