@@ -42,3 +42,14 @@
       timezone: AoE
       date: December 9-12, 2025
       place: Taipei, Taiwan
+    - year: 2026
+      id: acml26
+      link: https://www.acml-conf.org/2026/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Journal Track'
+        - deadline: 'TBD'
+          comment: 'Conference Track'
+      timezone: AoE
+      date: December 1-4, 2026
+      place: Melbourne, Australia
