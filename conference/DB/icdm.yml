@@ -53,6 +53,9 @@
       timeline:
         - abstract_deadline: '2026-05-30 23:59:59'
           deadline: '2026-06-06 23:59:59'
+          comment: 'Research & Applied Track'
+        - deadline: '2026-08-20 23:59:59'
+          comment: 'Demo Track'
       timezone: AoE
       date: November 12-15, 2026
       place: Shenyang, China
