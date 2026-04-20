@@ -25,3 +25,12 @@
       timezone: AoE
       date: March 23-26, 2026
       place: Poznań, Poland
+    - year: 2027
+      id: refsq27
+      link: https://2027.refsq.org/
+      timeline:
+        - abstract_deadline: '2026-11-05 23:59:59'
+          deadline: '2026-11-12 23:59:59'
+      timezone: AoE
+      date: April 12-15, 2027
+      place: Basel, Switzerland
