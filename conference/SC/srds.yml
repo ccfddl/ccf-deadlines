@@ -55,9 +55,9 @@
       id: srds26
       link: https://srds-conference.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2026-04-24 23:59:59'
           comment: Abstract Submission
-        - deadline: 'TBD'
+        - deadline: '2026-05-01 23:59:59'
           comment: Full Paper Submission
       timezone: AoE
       date: September 21-25, 2026

@@ -15,3 +15,11 @@
       timezone: UTC-8
       date: March 18-21, 2025
       place: Snowbird, Utah, U.S.
+    - year: 2027
+      id: dcc2027
+      link: https://datacompressionconference.org/
+      timeline:
+        - deadline: '2026-10-02 23:59:59'
+      timezone: AoE
+      date: March 23-26, 2027
+      place: The Cliff Lodge convention center, Snowbird, Utah, U.S.
