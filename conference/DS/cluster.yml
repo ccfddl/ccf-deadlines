@@ -43,3 +43,12 @@
       timezone: AoE
       date: September 2-5, 2025
       place: Edinburgh, United Kingdom
+    - year: 2026
+      id: cluster26
+      link: https://clustercomp.org/2026
+      timeline:
+        - abstract_deadline: '2026-04-23 23:59:59'
+          deadline: '2026-04-30 23:59:59'
+      timezone: AoE
+      date: September 22-25, 2026
+      place: Alexandria, Virginia, USA
