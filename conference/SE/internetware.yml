@@ -13,6 +13,10 @@
       timeline:
         - abstract_deadline: '2026-03-28 23:59:59'
           deadline: '2026-04-04 23:59:59'
+          comment: 'Round 1'
+        - abstract_deadline: '2026-04-27 23:59:59'
+          deadline: '2026-05-04 23:59:59'
+          comment: 'Round 2'
       timezone: UTC-12
       date: July 18-20, 2026
       place: Gold Coast, Australia
