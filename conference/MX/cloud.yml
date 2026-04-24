@@ -15,3 +15,11 @@
       timezone: AoE
       date: July 7-12, 2025
       place: Helsinki, Finland
+    - year: 2026
+      id: cloud26
+      link: https://services.conferences.computer.org/2026/cloud/
+      timeline:
+        - deadline: '2026-03-22 23:00:00'
+      timezone: AoE
+      date: July 13-18, 2026
+      place: Sydney, Australia
