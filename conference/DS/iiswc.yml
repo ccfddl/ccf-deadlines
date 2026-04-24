@@ -25,3 +25,11 @@
       timezone: UTC
       date: October 12-14, 2025
       place: Irvine, USA
+    - year: 2026
+      id: iiswc2026
+      link: https://iiswc.org/iiswc2026/
+      timeline:
+        - deadline: '2026-05-14 00:00:00'
+      timezone: UTC
+      date: September 27-29, 2026
+      place: Boulder, USA
