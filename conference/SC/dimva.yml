@@ -3,7 +3,7 @@
   sub: SC
   rank:
     ccf: C
-    core: C
+    core: B
     thcpl: B
   dblp: dimva
   confs:
@@ -44,9 +44,9 @@
       id: dimva26
       link: https://www.dimva.org/dimva2026/
       timeline:
-        - deadline: '2025-12-03 23:59:59'
+        - deadline: '2025-12-10 23:59:59'
           comment: Cycle 1 submission deadline
-        - deadline: '2026-02-11 23:59:59'
+        - deadline: '2026-02-18 23:59:59'
           comment: Cycle 2 submission deadline
       timezone: AoE
       date: July 1-3, 2026
