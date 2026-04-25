@@ -47,8 +47,8 @@
       id: cluster26
       link: https://clustercomp.org/2026
       timeline:
-        - abstract_deadline: '2026-04-23 23:59:59'
-          deadline: '2026-04-30 23:59:59'
+        - abstract_deadline: '2026-04-30 23:59:59'
+          deadline: '2026-05-07 23:59:59'
       timezone: AoE
       date: September 22-25, 2026
       place: Alexandria, Virginia, USA
