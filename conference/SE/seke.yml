@@ -31,3 +31,11 @@
       timezone: UTC-5
       date: Sept 29 - Oct 6, 2025
       place: Pompeii, Italy & Virtual
+    - year: 2026
+      id: seke26
+      link: https://ksiresearch.org/seke/seke26.html
+      timeline:
+        - deadline: '2026-05-10 23:59:00'
+      timezone: UTC-5
+      date: Oct 1 - Oct 10, 2025
+      place: Toronto, Canada & Virtual
