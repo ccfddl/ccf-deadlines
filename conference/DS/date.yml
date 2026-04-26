@@ -45,3 +45,12 @@
       timezone: AoE
       date: April 20- April 22, 2026
       place: Verona, Italy
+    - year: 2027
+      id: date2027
+      link: https://www.date-conference.com/date-2027-call-papers
+      timeline:
+        - abstract_deadline: '2026-09-13 23:59:59'
+          deadline: '2026-09-20 23:59:59'
+      timezone: AoE
+      date: March 22-24, 2027
+      place: Dresden, Germany
