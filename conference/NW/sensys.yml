@@ -20,3 +20,16 @@
       timezone: AoE
       date: May 11-14, 2026
       place: Saint-Malo, France
+    - year: 2027
+      id: sensys27
+      link: https://sensys.acm.org/2027/
+      timeline:
+        - abstract_deadline: '2026-05-29 23:59:00'
+          deadline: '2026-06-05 23:59:00'
+          comment: '1st deadline'
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: '2nd deadline'
+      timezone: AoE
+      date: '2027'
+      place: New York, USA
