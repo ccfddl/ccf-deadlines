@@ -48,3 +48,12 @@
       timezone: UTC-12
       date: February 22 - 26, 2026
       place: Boise, Idaho, USA
+    - year: 2027
+      id: wsdm27
+      link: https://wsdm-conference.org/2027/
+      timeline:
+        - abstract_deadline: '2026-08-11 23:59:59'
+          deadline: '2026-08-18 23:59:59'
+      timezone: UTC-12
+      date: February 15 - 19, 2027
+      place: Cordis, Hong Kong SAR, China
