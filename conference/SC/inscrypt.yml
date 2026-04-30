@@ -18,3 +18,14 @@
       timezone: UTC-8
       date: October 19-21, 2025
       place: Xi'an, China
+    - year: 2026
+      id: inscrypt26
+      link: https://inscrypt2026.comp.polyu.edu.hk
+      timeline:
+        - deadline: '2026-05-01 23:59:59'
+          comment: 1st Round
+        - deadline: '2026-07-01 23:59:59'
+          comment: 2nd Round
+      timezone: UTC-8
+      date: Nov 07-09, 2026
+      place: Hong Kong SAR, China
