@@ -68,3 +68,16 @@
       timezone: UTC-12
       date: MAY 18-21, 2026
       place: SAN FRANCISCO, CA
+    - year: 2027
+      id: sp27
+      link: https://sp2027.ieee-security.org/index.html
+      timeline:
+        - abstract_deadline: '2026-06-04 23:59:59' 
+          deadline: '2026-06-11 23:59:59'
+          comment: First Paper submission deadline
+        - abstract_deadline: '2026-11-10 23:59:59' 
+          deadline: '2026-11-17 23:59:59'
+          comment: Second Paper submission deadline
+      timezone: UTC-12
+      date: TBA
+      place: MONTREAL, CANADA
