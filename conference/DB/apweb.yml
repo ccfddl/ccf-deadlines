@@ -35,7 +35,7 @@
       timeline:
         - deadline: '2026-03-31 23:59:59'
           comment: first round
-        - deadline: '2026-05-04 23:59:59'
+        - deadline: '2026-05-14 23:59:59'
           comment: second round
       timezone: AoE
       date: September 7-9, 2026
