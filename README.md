@@ -31,17 +31,19 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
     <td align="center"><b><a href="https://github.com/superpung/swiftbar-ccfddl/">SwiftBar Plugin</a><br></b></td>
   </tr>
   <tr>
-   <td align="center"><img src=".readme_assets/screenshot_pycli.png" width="280px"/></td>
+    <td align="center"><img src=".readme_assets/screenshot_pycli.png" width="280px"/></td>
     <td align="center"><img src=".readme_assets/screenshot_raycast.png" width="280px"/></td>
     <td align="center"><img src="https://raw.githubusercontent.com/superpung/swiftbar-ccfddl/refs/heads/main/docs/preview.png" width="280px"/></td>
   </tr>
     <tr>
     <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/ical">iCal Subscription</a><br></b></td>
     <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/extensions/chrome">Chrome Extension</a><br></b></td>
+    <td align="center"><b><a href="https://github.com/ccfddl/tui">TUI App</a><br></b></td>
   </tr>
   <tr>
      <td align="center"><img src=".readme_assets/screenshot_iCal.jpg" width="280px"/></td>
      <td align="center"><img src=".readme_assets/screenshot_ccf-ddl-tracker.png" width="280px"/></td>
+     <td align="center"><img src=".readme_assets/CCF-Deadlines_TUI_2026-05-01T19_50_27_068657.svg" width="280px"/></td>
   </tr>
 </table>
 
