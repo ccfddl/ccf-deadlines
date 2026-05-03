@@ -29,3 +29,22 @@
       timezone: AoE
       date: December 02 - December 05, 2025
       place: Shanghai, China
+    - year: 2026
+      id: fpt2026
+      link: https://fpt2026.uark.edu/
+      timeline:
+        - deadline: '2026-06-05 23:59:59'
+          comment: Title and Abstract Due (Conference Track)
+        - deadline: '2026-06-12 23:59:59'
+          comment: Full Paper Submission Due (Conference Track)
+        - deadline: '2026-07-17 23:59:59'
+          comment: Rebuttal Period Start (Conference Track)
+        - deadline: '2026-07-24 23:59:59'
+          comment: Rebuttal Period End / Artifact Form Due (Conference Track)
+        - deadline: '2026-05-01 23:59:59'
+          comment: Submission to ACM TRETS FPT 2026 Journal Track
+        - deadline: '2026-08-14 23:59:59'
+          comment: Notification of Acceptance
+      timezone: UTC-12
+      date: December 07 - December 10, 2026
+      place: Honolulu, Hawaii, USA
