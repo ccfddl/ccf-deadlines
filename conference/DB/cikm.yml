@@ -63,8 +63,8 @@
       id: cikm26
       link: https://cikm2026.diag.uniroma1.it/
       timeline:
-        - abstract_deadline: '2026-05-18 23:59:59'
-          deadline: '2026-05-25 23:59:59'
+        - abstract_deadline: '2026-05-16 23:59:59'
+          deadline: '2026-05-23 23:59:59'
       timezone: AoE
       date: November 7-11, 2026
       place: Rome, Italy
