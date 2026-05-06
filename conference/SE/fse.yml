@@ -56,3 +56,11 @@
       timezone: AoE
       date: July 6-10, 2026
       place: Montréal, Canada
+    - year: 2027
+      id: fse27
+      link: https://conf.researchr.org/home/fse-2027
+      timeline:
+        - deadline: '2026-10-02 23:59:59'
+      timezone: AoE
+      date: July 12-16, 2027
+      place: Shenzhen, China
