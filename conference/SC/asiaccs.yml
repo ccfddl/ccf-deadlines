@@ -51,3 +51,15 @@
       timezone: AoE
       date: June 1-5, 2026
       place: Bangalore, India
+    - year: 2027
+      id: asiaccs27
+      link: https://asiaccs2027.cityu.edu.mo/index.html
+      timeline:
+        - deadline: '2026-08-21 23:59:59'
+          comment: 1st round Deadline
+        - deadline: '2026-12-11 23:59:59'
+          comment: 2nd round Deadline
+      timezone: AoE
+      date: July 12-16, 2027
+      place: Macau, China
+    
