@@ -67,3 +67,18 @@
       timezone: AoE
       date: July 20-25, 2026
       place: Calgary, Canada
+    - year: 2027
+      id: pets27
+      link: https://petsymposium.org/cfp27.php
+      timeline:
+        - deadline: '2026-05-31 23:59:59'
+          comment: Issue 1 Paper Submission Deadline
+        - deadline: '2026-08-31 23:59:59'
+          comment: Issue 2 Paper Submission Deadline
+        - deadline: '2026-11-30 23:59:59'
+          comment: Issue 3 Paper Submission Deadline
+        - deadline: '2027-02-28 23:59:59'
+          comment: Issue 4 Paper Submission Deadline
+      timezone: AoE
+      date: TBD
+      place: TBA (Europe)
