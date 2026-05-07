@@ -3,7 +3,7 @@
   sub: DS
   rank:
     ccf: B
-    core: B
+    core: C
     thcpl: B
   dblp: cluster
   confs:
