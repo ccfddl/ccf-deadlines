@@ -34,3 +34,11 @@
       timezone: AoE
       date: October 20-22, 2025
       place: Seoul, South Korea
+    - year: 2026
+      id: isc26
+      link: https://isc2026.github.io/
+      timeline:
+        - deadline: '2026-06-22 23:59:59'
+      timezone: AoE
+      date: October 28-30, 2026
+      place: Rennes, France
