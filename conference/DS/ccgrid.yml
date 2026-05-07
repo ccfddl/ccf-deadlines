@@ -1,0 +1,18 @@
+- title: CCGRID
+  description: IEEE International Symposium on Cluster, Cloud and Internet Computing
+  sub: DS
+  rank:
+    ccf: C
+    core: B
+    thcpl: B
+  dblp: ccgrid
+  confs:
+    - year: 2026
+      id: ccgrid26
+      link: https://www.ccgrid2026.org/
+      timeline:
+        - abstract_deadline: '2025-12-21 23:59:59'
+          deadline: '2025-12-21 23:59:59'
+      timezone: AoE
+      date: May 18-21, 2026
+      place: Sydney, Australia
