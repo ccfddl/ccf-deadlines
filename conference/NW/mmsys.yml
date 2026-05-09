@@ -17,3 +17,12 @@
       timezone: AoE
       date: April 4 - 8, 2026
       place: Hong Kong SAR
+    - year: 2027
+      id: mmsys27
+      link: https://2027.acmmmsys.org
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: March 30 - April 2, 2027
+      place: Ghent, Belgium
