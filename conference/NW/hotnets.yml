@@ -1,0 +1,17 @@
+- title: HotNets
+  description: ACM Workshop on Hot Topics in Networks
+  sub: NW
+  rank:
+    ccf: C
+    core: N
+    thcpl: B
+  dblp: hotnets
+  confs:
+    - year: 2026
+      id: hotnets26
+      link: https://conferences.sigcomm.org/hotnets/2026/
+      timeline:
+        - deadline: '2026-07-16 23:59:59'
+      timezone: UTC-12
+      date: November 16-17, 2026
+      place: Salt Lake City, Utah, USA
