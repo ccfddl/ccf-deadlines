@@ -35,3 +35,13 @@
       timezone: AoE
       date: November 10-12, 2025
       place: Dallas, USA
+    - year: 2026
+      id: iccd26
+      link: https://www.iccd-conf.com/2026/home.html
+      timeline:
+        - abstract_deadline: '2026-05-29 23:59:00'
+          deadline: '2026-06-05 23:59:00'
+          comment: abstract and full paper deadline
+      timezone: AoE
+      date: November 16-18, 2026
+      place: Hong Kong SAR, China
