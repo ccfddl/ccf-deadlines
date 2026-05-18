@@ -3,7 +3,7 @@
   sub: NW
   rank:
     ccf: N
-    core: N
+    core: A
     thcpl: N
   dblp: mmsys
   confs:
@@ -21,8 +21,8 @@
       id: mmsys27
       link: https://2027.acmmmsys.org
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-09-10 23:59:59'
+          deadline: '2026-09-17 23:59:59'
       timezone: AoE
       date: March 30 - April 2, 2027
       place: Ghent, Belgium
