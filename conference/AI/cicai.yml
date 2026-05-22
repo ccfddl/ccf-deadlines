@@ -15,3 +15,11 @@
       timezone: UTC+8
       date: July 22-23, 2023
       place: Fuzhou, China
+    - year: 2026
+      id: cicai26
+      link: https://cicai.caai.cn/index.html
+      timeline:
+        - deadline: '2026-06-08 23:59:59'
+      timezone: UTC+8
+      date: October 17-19, 2026
+      place: Haining, Zhejiang, China
