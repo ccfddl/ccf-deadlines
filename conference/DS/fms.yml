@@ -1,0 +1,18 @@
+- title: FMS
+  description: The Future of Memory and Storage
+  sub: DS
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: ""
+  confs:
+    - year: 2026
+      id: fms2026
+      link: https://futurememorystorage.com/speakers/call-for-proposals
+      timeline:
+        - deadline: '2026-03-02 23:59:59'
+          comment: Proposal submission deadline
+      timezone: AoE
+      date: August 4-6, 2026
+      place: Santa Clara, California, USA
