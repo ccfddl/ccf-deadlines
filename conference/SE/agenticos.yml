@@ -1,0 +1,18 @@
+- title: AgenticOS
+  description: Workshop on Operating Systems Design for AI Agents
+  sub: SE
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: ""
+  confs:
+    - year: 2026
+      id: agenticos2026
+      link: https://os-for-agent.github.io/
+      timeline:
+        - deadline: '2026-07-01 23:59:59'
+          comment: Paper Submission Deadline
+      timezone: AoE
+      date: September 29, 2026
+      place: Prague, Czechia
