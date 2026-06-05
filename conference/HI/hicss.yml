@@ -1,0 +1,18 @@
+- title: HICSS
+  description: Hawaii International Conference on System Sciences
+  sub: HI
+  rank:
+    ccf: N
+    core: A
+    thcpl: N
+  dblp: hicss
+  confs:
+    - year: 2027
+      id: hicss27
+      link: https://hicss.hawaii.edu/
+      timeline:
+        - deadline: '2026-06-15 23:59:59'
+          comment: 'Paper Submission Deadline'
+      timezone: UTC-10
+      date: January 5-8, 2027
+      place: Big Island, Hawaii, USA
