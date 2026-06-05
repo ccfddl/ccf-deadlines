@@ -58,3 +58,12 @@
       timezone: UTC
       date: Feb 25-Mar 1, 2026
       place: Sydney, NSW, Australia
+    - year: 2027
+      id: hpca27
+      link: https://conf.researchr.org/home/hpca-2027
+      timeline:
+        - abstract_deadline: '2026-07-24 23:59:59'
+          deadline: '2026-07-31 23:59:59'
+      timezone: AoE
+      date: Jan 30-Feb 3, 2027
+      place: Salt Lake City, Utah
