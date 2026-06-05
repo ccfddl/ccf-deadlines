@@ -15,3 +15,11 @@
       timezone: AoE
       date: March 24-29, 2026
       place: Rabat, Morocco
+    - year: 2027
+      id: eacl27
+      link: https://2027.eacl.org/
+      timeline:
+        - deadline: '2026-08-03 23:59:59'
+      timezone: AoE
+      date: March 9-14, 2027
+      place: Athens, Greece
