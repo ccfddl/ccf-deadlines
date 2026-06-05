@@ -330,12 +330,12 @@ pub fn ShowTable() -> impl IntoView {
                                             .format("%b %e, %Y")
                                             .to_string();
                                         let abs_note =
-                                            format!("abstract deadline on {}.", formatted_abs_ddl);
+                                            format!("abstract deadline on {}", formatted_abs_ddl);
                                         item.comment = Some(match &item.comment {
                                             Some(existing) if !existing.is_empty() => {
-                                                format!("{} ({})", existing, abs_note)
+                                                format!("{} ({}).", existing, abs_note)
                                             }
-                                            _ => abs_note,
+                                            _ => format!("{}.", abs_note),
                                         });
                                     }
                                 }
