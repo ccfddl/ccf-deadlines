@@ -329,12 +329,14 @@ pub fn ShowTable() -> impl IntoView {
                                             .with_timezone(&current_timezone)
                                             .format("%b %e, %Y")
                                             .to_string();
-                                        if item.comment.is_none() {
-                                            item.comment = Some(format!(
-                                                "abstract deadline on {}.",
-                                                formatted_abs_ddl
-                                            ));
-                                        }
+                                        let abs_note =
+                                            format!("abstract deadline on {}", formatted_abs_ddl);
+                                        item.comment = Some(match &item.comment {
+                                            Some(existing) if !existing.is_empty() => {
+                                                format!("{} ({}).", existing, abs_note)
+                                            }
+                                            _ => format!("{}.", abs_note),
+                                        });
                                     }
                                 }
 
