@@ -150,7 +150,7 @@ Description of the fields:
    </tr>
    <tr>
       <td colspan="2"><code>timezone</code>*</td>
-      <td>Timezone of deadline, currently support <code>UTC-12</code> ~ <code>UTC+12</code> & <code>AoE</code></td>
+      <td>Timezone of deadline, currently support <code>UTC-12</code> ~ <code>UTC+12</code>, <code>AoE</code> & <code>PT</code> (US Pacific Time, auto-adjusts for daylight saving)</td>
    </tr>
    <tr>
       <td colspan="2"><code>date</code>*</td>

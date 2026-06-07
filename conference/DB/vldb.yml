@@ -23,7 +23,7 @@
         - deadline: '2021-01-01 17:00:00'
         - deadline: '2021-02-01 17:00:00'
         - deadline: '2021-03-01 17:00:00'
-      timezone: UTC-7
+      timezone: PT
       date: August 16-20, 2021
       place: Copenhagen, Denmark
     - year: 2022
@@ -42,7 +42,7 @@
         - deadline: '2022-01-01 17:00:00'
         - deadline: '2022-02-01 17:00:00'
         - deadline: '2022-03-01 17:00:00'
-      timezone: UTC-7
+      timezone: PT
       date: September 05-09, 2022
       place: Sydney, Australia
     - year: 2023
@@ -61,7 +61,7 @@
         - deadline: '2023-01-01 17:00:00'
         - deadline: '2023-02-01 17:00:00'
         - deadline: '2023-03-01 17:00:00'
-      timezone: UTC-7
+      timezone: PT
       date: August 28 - September 01, 2023
       place: Vancouver, Canada
     - year: 2024
@@ -80,7 +80,7 @@
         - deadline: '2024-01-01 17:00:00'
         - deadline: '2024-02-01 17:00:00'
         - deadline: '2024-03-01 17:00:00'
-      timezone: UTC-7
+      timezone: PT
       date: August 25-29, 2024
       place: Guangzhou, China (and hybrid)
     - year: 2025
@@ -99,7 +99,7 @@
         - deadline: '2025-01-01 17:00:00'
         - deadline: '2025-02-01 17:00:00'
         - deadline: '2025-03-01 17:00:00'
-      timezone: UTC-7
+      timezone: PT
       date: September 1-5, 2025
       place: London, United Kingdom
     - year: 2026
@@ -118,7 +118,7 @@
         - deadline: '2026-01-01 17:00:00'
         - deadline: '2026-02-01 17:00:00'
         - deadline: '2026-03-01 17:00:00'
-      timezone: UTC-7
+      timezone: PT
       date: August 31 - September 4, 2026
       place: Boston, MA, USA
     - year: 2027
@@ -149,6 +149,6 @@
           deadline: '2027-02-01 17:00:00'
         - abstract_deadline: '2027-02-25 17:00:00'
           deadline: '2027-03-01 17:00:00'
-      timezone: UTC-7
+      timezone: PT
       date: August 23 - August 27, 2027
       place: Athens, Greece

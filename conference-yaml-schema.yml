@@ -137,6 +137,7 @@ items:
               - UTC+11
               - UTC+12
               - AoE
+              - PT
           date:
             description: When the main conference is happening, e.g., Mar 12-16, 2021
             type: string
