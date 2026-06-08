@@ -38,8 +38,8 @@
       id: vr27
       link: https://ieeevr.org/2027/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-08-24 23:59:59'
+          deadline: '2026-08-31 23:59:59'
       timezone: AoE
       date: February 27 - March 3, 2027
       place: Melbourne, Australia
