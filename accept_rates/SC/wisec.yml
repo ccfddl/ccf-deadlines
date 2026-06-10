@@ -12,3 +12,9 @@
       str: 22.8(28/123 25')
       rate: 0.22764228
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3734477
+    - year: 2026
+      submitted: 121
+      accepted: 23
+      str: 19.0(23/121 26')
+      rate: 0.19008264
+      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3765613
