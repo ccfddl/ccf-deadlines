@@ -36,3 +36,12 @@
       timezone: UTC-8
       date: October 30- November 2, 2025
       place: Zhengzhou, Henan, China
+    - year: 2026
+      id: ica3pp
+      link: https://hpcn.exeter.ac.uk/ica3pp2026/
+      timeline:
+        - deadline: '2026-07-10 23:59:00'
+          comment: Paper Submission Due
+      timezone: AoE
+      date: October 26-28, 2026
+      place: Exeter, UK
