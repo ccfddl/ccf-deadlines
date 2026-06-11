@@ -46,10 +46,10 @@
       id: acml26
       link: https://www.acml-conf.org/2026/
       timeline:
-        - deadline: '2026-06-06 23:59:59'
+        - deadline: '2026-06-20 23:59:59'
           comment: 'Journal Track'
-        - deadline: '2025-06-26 23:59:59'
+        - deadline: '2026-06-26 23:59:59'
           comment: 'Conference Track'
-      timezone: UTC-7
+      timezone: AoE
       date: December 1-4, 2026
       place: Melbourne, Australia

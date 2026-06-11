@@ -23,3 +23,11 @@
       timezone: UTC-12
       date: April 13-16, 2026
       place: Kuala Lumpur, Malaysia
+    - year: 2027
+      id: wcnc27
+      link: https://wcnc2027.ieee-wcnc.org/
+      timeline:
+        - deadline: '2026-09-15 23:59:59'
+      timezone: AoE
+      date: April 5-8, 2027
+      place: Panama City, Panama

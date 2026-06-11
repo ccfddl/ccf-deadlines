@@ -1,0 +1,17 @@
+- title: ICAIF
+  description: International Conference on AI in Finance
+  sub: MX
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: icaif
+  confs:
+    - year: 2026
+      id: icaif2026
+      link: https://icaif2026.org/index.html
+      timeline:
+        - deadline: '2026-08-02 23:59:59'
+      timezone: AoE
+      date: November 14-17, 2026
+      place: Milan, Italy

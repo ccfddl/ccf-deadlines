@@ -1,0 +1,15 @@
+- title: LISA
+  description: Large Installation System Administration Conference
+  sub: DS
+  rank:
+    ccf: B
+  dblp: lisa
+  confs:
+    - year: 2026
+      id: lisa26
+      link: https://www.usenix.org/conferences/byname/5
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: TBD
+      place: TBD

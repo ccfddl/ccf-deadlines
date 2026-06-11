@@ -6,7 +6,7 @@ use crate::components::countdown::CountDown;
 use crate::components::subscription_modal::*;
 use crate::components::timeline::*;
 use crate::components::timezone::*;
-use chrono::{DateTime, FixedOffset};
+use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate};
 use leptos::prelude::*;
 use serde_json;
 use std::collections::HashMap;
@@ -146,16 +146,13 @@ pub fn ShowTable() -> impl IntoView {
         let _ = page.get();
 
         let (current_time, _) = get_browser_time_and_timezone();
-        let utc_map = load_utc_map();
 
         all_conf_list.update(|conferences| {
             for item in conferences.iter_mut() {
                 if item.deadline != "TBD" {
-                    let tz_str = normalize_timezone(&item.timezone);
-
-                    if let Some(tz_offset) = utc_map.get(&tz_str) {
-                        let ddl_str = parse_deadline_to_rfc3339(&item.deadline, tz_offset);
-
+                    if let Some(ddl_str) =
+                        parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
+                    {
                         if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
                             let diff = ddl_datetime.signed_duration_since(current_time);
                             if diff.num_milliseconds() <= 0 {
@@ -180,7 +177,6 @@ pub fn ShowTable() -> impl IntoView {
         time_zone.set(get_timezone_name().unwrap());
 
         spawn_local(async move {
-            let utc_map = load_utc_map();
             let rank_options: HashMap<&str, &str> = RANK_OPTIONS.iter().cloned().collect();
 
             let (current_time, current_timezone) = get_browser_time_and_timezone();
@@ -205,25 +201,33 @@ pub fn ShowTable() -> impl IntoView {
                             let mut ddl_vec = Vec::<TimePoint>::new();
 
                             for timeline_item in year_conf.timeline.iter() {
-                                let tz_offset = utc_map.get(&year_conf.timezone).unwrap();
-
-                                let ddl_str = parse_deadline_to_rfc3339(&timeline_item.deadline, tz_offset);
+                                let tz = &year_conf.timezone;
 
                                 // abstract type:0 submission type:1
                                 if let Some(abs_ddl) = timeline_item.abstract_deadline.clone() {
-                                    let abs_ddl_str = parse_deadline_to_rfc3339(&abs_ddl, tz_offset);
-
-                                    if let Ok(abs_ddl_datetime) =
-                                        DateTime::parse_from_rfc3339(&abs_ddl_str)
+                                    if let Some(abs_ddl_str) =
+                                        parse_deadline_to_rfc3339(&abs_ddl, tz)
                                     {
-                                        ddl_vec.push(TimePoint {
-                                            timepoint: abs_ddl_datetime
-                                                .with_timezone(&current_timezone)
-                                                .clone(),
-                                            r#type: 0,
-                                        });
+                                        if let Ok(abs_ddl_datetime) =
+                                            DateTime::parse_from_rfc3339(&abs_ddl_str)
+                                        {
+                                            ddl_vec.push(TimePoint {
+                                                timepoint: abs_ddl_datetime
+                                                    .with_timezone(&current_timezone)
+                                                    .clone(),
+                                                r#type: 0,
+                                            });
+                                        }
                                     }
                                 }
+
+                                let ddl_str = match parse_deadline_to_rfc3339(
+                                    &timeline_item.deadline,
+                                    tz,
+                                ) {
+                                    Some(s) => s,
+                                    None => continue,
+                                };
 
                                 if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
                                     ddl_vec.push(TimePoint {
@@ -298,12 +302,10 @@ pub fn ShowTable() -> impl IntoView {
                             continue;
                         }
 
-                        let tz_str = normalize_timezone(&item.timezone);
-
                         // 4. Calculate deadlines and remaining time
-                        if let Some(tz_offset) = utc_map.get(&tz_str) {
-                            let ddl_str = parse_deadline_to_rfc3339(&item.deadline, tz_offset);
-
+                        if let Some(ddl_str) =
+                            parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
+                        {
                             if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
                                 // Convert to browser local time and format
                                 let local_ddl_datetime =
@@ -321,7 +323,9 @@ pub fn ShowTable() -> impl IntoView {
 
                                 // Handle abstract deadline
                                 if let Some(abs_ddl) = &item.abstract_deadline {
-                                    let abs_ddl_str = parse_deadline_to_rfc3339(abs_ddl, tz_offset);
+                                    if let Some(abs_ddl_str) =
+                                        parse_deadline_to_rfc3339(abs_ddl, &item.timezone)
+                                    {
                                     if let Ok(abs_datetime) =
                                         DateTime::parse_from_rfc3339(&abs_ddl_str)
                                     {
@@ -329,12 +333,15 @@ pub fn ShowTable() -> impl IntoView {
                                             .with_timezone(&current_timezone)
                                             .format("%b %e, %Y")
                                             .to_string();
-                                        if item.comment.is_none() {
-                                            item.comment = Some(format!(
-                                                "abstract deadline on {}.",
-                                                formatted_abs_ddl
-                                            ));
-                                        }
+                                        let abs_note =
+                                            format!("abstract deadline on {}", formatted_abs_ddl);
+                                        item.comment = Some(match &item.comment {
+                                            Some(existing) if !existing.is_empty() => {
+                                                format!("{} ({}).", existing, abs_note)
+                                            }
+                                            _ => format!("{}.", abs_note),
+                                        });
+                                    }
                                     }
                                 }
 
@@ -1051,17 +1058,53 @@ fn normalize_timezone(tz: &str) -> String {
     }
 }
 
-fn parse_deadline_to_rfc3339(deadline: &str, tz_offset: &str) -> String {
-    if deadline.contains(' ') {
+/// Nth (1-indexed) Sunday of the given month/year.
+fn nth_sunday(year: i32, month: u32, n: u32) -> Option<NaiveDate> {
+    let first = NaiveDate::from_ymd_opt(year, month, 1)?;
+    let days_to_first_sunday = (7 - first.weekday().num_days_from_sunday()) % 7;
+    Some(first + Duration::days(days_to_first_sunday as i64 + 7 * (n as i64 - 1)))
+}
+
+/// Whether the given date falls within US daylight saving time, which runs from
+/// the second Sunday in March to the first Sunday in November.
+fn is_us_dst(date: NaiveDate) -> bool {
+    let year = date.year();
+    match (nth_sunday(year, 3, 2), nth_sunday(year, 11, 1)) {
+        (Some(start), Some(end)) => date >= start && date < end,
+        _ => false,
+    }
+}
+
+/// Resolve a timezone label to a fixed `+HH:MM` / `-HH:MM` offset for a given
+/// deadline date. Labels with a constant offset (`UTC-8`, `AoE`, ...) ignore the
+/// date; daylight-saving labels such as `PT` (US Pacific Time) pick UTC-7 during
+/// DST and UTC-8 otherwise based on the deadline date.
+fn resolve_tz_offset(tz: &str, date: &str) -> Option<String> {
+    if tz == "PT" {
+        let naive = NaiveDate::parse_from_str(date, "%Y-%m-%d").ok()?;
+        return Some(if is_us_dst(naive) {
+            "-07:00".to_string()
+        } else {
+            "-08:00".to_string()
+        });
+    }
+    let tz_str = normalize_timezone(tz);
+    get_utc_map().get(&tz_str).cloned()
+}
+
+fn parse_deadline_to_rfc3339(deadline: &str, tz: &str) -> Option<String> {
+    let date_part = deadline.split(' ').nth(0).unwrap_or(deadline);
+    let tz_offset = resolve_tz_offset(tz, date_part)?;
+    Some(if deadline.contains(' ') {
         format!(
             "{}T{}{}",
-            deadline.split(' ').nth(0).unwrap_or(""),
+            date_part,
             deadline.split(' ').nth(1).unwrap_or("00:00:00"),
             tz_offset
         )
     } else {
         format!("{}T23:59:59{}", deadline, tz_offset)
-    }
+    })
 }
 
 const RANK_OPTIONS: &[(&str, &str)] = &[("A", "CCF A"), ("B", "CCF B"), ("C", "CCF C"), ("N", "Non-CCF")];
@@ -1092,11 +1135,6 @@ fn get_utc_map() -> &'static HashMap<String, String> {
         utc_map.insert("UTC".to_string(), "+00:00".to_string());
         utc_map
     })
-}
-
-#[allow(dead_code)]
-fn load_utc_map() -> HashMap<String, String> {
-    get_utc_map().clone()
 }
 
 #[cfg(target_arch = "wasm32")]
