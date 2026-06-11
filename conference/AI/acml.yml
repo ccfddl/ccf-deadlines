@@ -3,7 +3,7 @@
   sub: AI
   rank:
     ccf: C
-    core: N
+    core: C
     thcpl: N
   dblp: acml
   confs:
