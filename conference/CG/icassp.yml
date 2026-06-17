@@ -55,11 +55,3 @@
       timezone: UTC-12
       date: May 16-21, 2027
       place: Toronto, Canada
-    - year: 2028
-      id: icassp28
-      link: https://2028.ieeeicassp.org/
-      timeline:
-        - deadline: 'TBD'
-      timezone: UTC-12
-      date: May 28 - June 2, 2028
-      place: Tokyo, Japan
