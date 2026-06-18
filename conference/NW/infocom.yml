@@ -61,3 +61,12 @@
       timezone: AoE
       date: May 18 - 21, 2026
       place: Tokyo, Japan
+    - year: 2027
+      id: infocom27
+      link: https://infocom2027.ieee-infocom.org/
+      timeline:
+        - abstract_deadline: '2026-07-24 23:59:59'
+          deadline: '2026-07-31 23:59:59'
+      timezone: AoE
+      date: May 24 - 27, 2027
+      place: Honolulu, HI, USA
