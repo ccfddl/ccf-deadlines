@@ -1,0 +1,8 @@
+- title: ISCAS
+  accept_rates:
+    - year: 2026
+      submitted: 1673
+      accepted: 869
+      str: 51.9%(869/1673 26')
+      rate: 0.519425941422594
+      source: https://ieeexplore.ieee.org/document/11562709

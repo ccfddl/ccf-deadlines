@@ -3,7 +3,7 @@
   sub: DS
   rank:
     ccf: B
-    core: N
+    core: C
     thcpl: B
   dblp: iscas
   confs:
@@ -22,4 +22,12 @@
         - deadline: '2025-10-12 23:59:59'
       timezone: AoE
       date: May 24-27, 2026
-      place: SHANGHAI, CHINA
+      place: Shanghai, China
+    - year: 2027
+      id: iscas27
+      link: https://2027.ieee-iscas.org/
+      timeline:
+        - deadline: '2026-10-13 23:59:59'
+      timezone: AoE
+      date: June 6-9, 2027
+      place: Bordeaux, France
