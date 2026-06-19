@@ -39,3 +39,11 @@
       timezone: AoE
       date: May 10-14, 2026
       place: Rome, Italy
+    - year: 2027
+      id: eurocrypt27
+      link: https://eurocrypt.iacr.org/2027/
+      timeline:
+        - deadline: '2026-09-17 23:59:59'
+      timezone: AoE
+      date: April 11-15, 2027
+      place: Eindhoven, Netherlands
