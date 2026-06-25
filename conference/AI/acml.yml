@@ -48,7 +48,7 @@
       timeline:
         - deadline: '2026-06-20 23:59:59'
           comment: 'Journal Track'
-        - deadline: '2026-06-26 23:59:59'
+        - deadline: '2026-07-05 23:59:59'
           comment: 'Conference Track'
       timezone: AoE
       date: December 1-4, 2026
