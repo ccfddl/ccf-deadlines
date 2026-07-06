@@ -45,3 +45,12 @@
       timezone: UTC-12
       date: March 2-6, 2026
       place: St. Kitts
+    - year: 2027
+      id: fc27
+      link: https://fc27.ifca.ai/
+      timeline:
+        - deadline: '2026-09-17 23:59:59'
+          comment: Submission deadline
+      timezone: UTC-12
+      date: February 8-12, 2027
+      place: Barbados (tentative)

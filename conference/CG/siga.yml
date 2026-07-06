@@ -3,7 +3,7 @@
   sub: CG
   rank:
     ccf: N
-    core: N
+    core: A*
     thcpl: N
   dblp: siggrapha
   confs:

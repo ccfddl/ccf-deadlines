@@ -1,9 +1,9 @@
 - title: DCC
   description: Data Compression Conference
-  sub: DS
+  sub: CG
   rank:
     ccf: B
-    core: A*
+    core: B
     thcpl: B
   dblp: dcc
   confs:
@@ -12,14 +12,14 @@
       link: https://datacompressionconference.org/
       timeline:
         - deadline: '2024-10-11 23:59:59'
-      timezone: UTC-8
+      timezone: PT
       date: March 18-21, 2025
-      place: Snowbird, Utah, U.S.
+      place: Snowbird, Utah, United States
     - year: 2027
       id: dcc2027
       link: https://datacompressionconference.org/
       timeline:
         - deadline: '2026-10-02 23:59:59'
-      timezone: AoE
+      timezone: PT
       date: March 23-26, 2027
-      place: The Cliff Lodge convention center, Snowbird, Utah, U.S.
+      place: Snowbird, Utah, United States

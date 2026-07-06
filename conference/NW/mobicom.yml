@@ -16,8 +16,8 @@
         - abstract_deadline: '2022-03-18 23:59:59'
           deadline: '2022-03-25 23:59:59'
       timezone: UTC-7
-      date: TBD
-      place: TBD
+      date: October 17-21, 2022
+      place: Sydney, Australia
     - year: 2023
       id: mobicom23
       link: https://www.sigmobile.org/mobicom/2023/

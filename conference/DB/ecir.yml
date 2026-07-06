@@ -9,7 +9,7 @@
   confs:
     - year: 2025
       id: ecir25
-      link: https://ecir2025.eu/key-dates/
+      link: https://ecir2025.eu/
       timeline:
         - abstract_deadline: '2024-10-02 23:59:59'
           deadline: '2024-10-09 23:59:59'
@@ -25,3 +25,12 @@
       timezone: AoE
       date: March 30 - April 01, 2026
       place: Delft, The Netherlands
+    - year: 2027
+      id: ecir27
+      link: https://ecir2027.co.uk/
+      timeline:
+        - abstract_deadline: '2026-09-25 23:59:59'
+          deadline: '2026-10-02 23:59:59'
+      timezone: UTC+0
+      date: March 21-25, 2027
+      place: Southampton, UK
