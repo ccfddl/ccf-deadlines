@@ -31,3 +31,12 @@
       timezone: UTC-12
       date: April 29-May 4, 2025
       place: Albuquerque, New Mexico, USA
+    - year: 2027
+      id: naacl27
+      link: https://2027.naacl.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'ARR Submission'
+      timezone: UTC-12
+      date: June 1-5, 2027
+      place: San Francisco, California, USA

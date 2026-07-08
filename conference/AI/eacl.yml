@@ -20,6 +20,7 @@
       link: https://2027.eacl.org/
       timeline:
         - deadline: '2026-08-03 23:59:59'
-      timezone: AoE
+          comment: 'ARR Submission; commitment deadline: 2026-10-11'
+      timezone: UTC-12
       date: March 9-14, 2027
       place: Athens, Greece

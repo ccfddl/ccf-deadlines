@@ -51,3 +51,12 @@
       timezone: UTC-12
       date: July 2 - 7, 2026
       place: San Diego, California, United States
+    - year: 2027
+      id: acl27
+      link: https://2027.aclweb.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'ARR Submission'
+      timezone: UTC-12
+      date: August 17-22, 2027
+      place: Kyoto, Japan
