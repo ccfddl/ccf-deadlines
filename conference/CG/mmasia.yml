@@ -23,3 +23,12 @@
       timezone: AoE
       date: December 9-12, 2025
       place: Grand Millenium Hotel, Kuala Lumpur, Malaysia
+    - year: 2026
+      id: mmasia26
+      link: https://www.mmasia2026.org/
+      timeline:
+        - deadline: '2026-08-03 23:59:59'
+          comment: Regular Paper / Special Session Submission
+      timezone: AoE
+      date: December 15-18, 2026
+      place: VinUniversity, Hanoi, Vietnam
