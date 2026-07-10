@@ -53,3 +53,12 @@
       timezone: UTC
       date: July 13-15, 2026
       place: Seattle, WA, USA
+    - year: 2027
+      id: osdi2027
+      link: https://www.usenix.org/conference/osdi27
+      timeline:
+        - abstract_deadline: '2026-12-01 22:59:59'
+          deadline: '2026-12-08 22:59:59'
+      timezone: UTC
+      date: July 7-9, 2027
+      place: Baltimore, MD, USA

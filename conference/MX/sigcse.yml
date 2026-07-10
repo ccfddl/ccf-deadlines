@@ -1,0 +1,36 @@
+- title: SIGCSE
+  description: Technical Symposium on Computer Science Education Conference
+  sub: MX
+  rank:
+    ccf: N
+    core: A
+    thcpl: N
+  dblp: sigcse
+  confs:
+    - year: 2025
+      id: sigcse25
+      link: https://sigcse2025.sigcse.org/
+      timeline:
+        - abstract_deadline: '2024-07-14 23:59:59'
+          deadline: '2024-07-21 23:59:59'
+      timezone: UTC-12
+      date: February 26 - March 1, 2025
+      place: Pittsburgh, Pennsylvania, USA
+    - year: 2026
+      id: sigcse26
+      link: https://sigcse2026.sigcse.org/
+      timeline:
+        - abstract_deadline: '2025-06-26 23:59:59'
+          deadline: '2025-07-03 23:59:59'
+      timezone: UTC-12
+      date: February 18-21, 2026
+      place: St. Louis, Missouri, USA
+    - year: 2027
+      id: sigcse27
+      link: https://2027.sigcse-ts.acm.org/
+      timeline:
+        - abstract_deadline: '2026-06-26 23:59:59'
+          deadline: '2026-07-03 23:59:59'
+      timezone: UTC-12
+      date: February 17-20, 2027
+      place: Sacramento, California, USA

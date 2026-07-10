@@ -67,3 +67,13 @@
       timezone: AoE
       date: August 9-13, 2026
       place: Jeju, Korea
+    - year: 2027
+      id: sigkdd27
+      link: https://kdd2027.kdd.org/
+      timeline:
+        - abstract_deadline: '2026-07-19 23:59:59'
+          deadline: '2026-07-26 23:59:59'
+          comment: 1st round of 2 total rounds
+      timezone: AoE
+      date: August 2027 (exact dates TBD)
+      place: San Jose, California, USA

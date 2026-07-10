@@ -57,3 +57,11 @@
       timezone: AoE
       date: Jan 31-Feb 4, 2026
       place: Sydney, Australia
+    - year: 2027
+      id: ppopp27
+      link: https://ppopp27.sigplan.org/
+      timeline:
+        - deadline: '2026-08-03 23:59:59'
+      timezone: AoE
+      date: Mar 20-24, 2027
+      place: Salt Lake City, Utah, USA

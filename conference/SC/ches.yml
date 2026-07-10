@@ -81,4 +81,19 @@
           comment: Schedule for TCHES Volume 2026/4
       timezone: AoE
       date: October 11-15, 2026
-      place: Türkiye
+      place: Antalya, Türkiye
+    - year: 2027
+      id: ches27
+      link: https://ches.iacr.org/2027/
+      timeline:
+        - deadline: '2026-07-15 23:59:59'
+          comment: Schedule for TCHES Volume 2027/1
+        - deadline: '2026-10-15 23:59:59'
+          comment: Schedule for TCHES Volume 2027/2
+        - deadline: '2027-01-15 23:59:59'
+          comment: Schedule for TCHES Volume 2027/3
+        - deadline: '2027-04-15 23:59:59'
+          comment: Schedule for TCHES Volume 2027/4
+      timezone: AoE
+      date: TBD, 2027
+      place: TBD, Americas

@@ -43,3 +43,12 @@
       timezone: UTC-12
       date: May 27-29, 2026
       place: Paphos, Cyprus
+    - year: 2027
+      id: aamas27
+      link: https://openreview.net/group?id=ifaamas.org/AAMAS/2027/Conference
+      timeline:
+        - abstract_deadline: '2026-10-02 11:59:00'
+          deadline: '2026-10-09 11:59:00'
+      timezone: UTC+0
+      date: May 03, 2027
+      place: Hanoi, Vietnam
