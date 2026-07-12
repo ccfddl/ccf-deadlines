@@ -31,3 +31,11 @@
       timezone: UTC-12
       date: June 21 - 26, 2026
       place: Maastricht Exhibition & Congress Center, Maastricht, The Netherlands
+    - year: 2027
+      id: ijcnn2027
+      link: https://ijcnn.org/2027
+      timeline:
+        - deadline: '2027-01-31 23:59:59'
+      timezone: UTC-12
+      date: June 14 - 18, 2027
+      place: Cape Town, South Africa

@@ -22,10 +22,8 @@
       id: iceccs26
       link: https://formal-analysis.com/iceccs/2026/
       timeline:
-        - deadline: '2026-06-29 23:59:59'
-          comment: Abstract submission
-        - deadline: '2026-07-06 23:59:59'
-          comment: Full paper submission
+        - deadline: '2026-07-20 23:59:59'
+          comment: Abstract and full paper submission
       timezone: AoE
       date: November 23-24, 2026
       place: Brisbane, Australia
