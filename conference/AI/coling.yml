@@ -38,7 +38,7 @@
       id: coling27
       link: https://coling2027.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2026-10-12 23:59:59'
           comment: 'ARR Submission'
       timezone: UTC-12
       date: May 9-14, 2027
