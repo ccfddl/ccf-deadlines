@@ -3,7 +3,7 @@
   sub: CG
   rank:
     ccf: C
-    core: N
+    core: C
     thcpl: N
   dblp: mmasia
   confs:
