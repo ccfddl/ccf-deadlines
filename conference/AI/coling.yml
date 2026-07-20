@@ -36,7 +36,7 @@
       place: Abu Dhabi, UAE
     - year: 2027
       id: coling27
-      link: https://coling2027.org/
+      link: https://2027.coling-iccl.org/
       timeline:
         - deadline: '2026-10-12 23:59:59'
           comment: 'ARR Submission'
