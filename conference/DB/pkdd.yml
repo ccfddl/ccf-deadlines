@@ -61,3 +61,11 @@
       timezone: AoE
       date: September 7-11, 2026
       place: Naples, Italy
+    - year: 2027
+      id: ecmlpkdd2027
+      link: https://ecmlpkdd.org/2027/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: September 20-24, 2027
+      place: Eindhoven, The Netherlands
