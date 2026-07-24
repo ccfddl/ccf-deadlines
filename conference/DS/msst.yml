@@ -15,3 +15,11 @@
       timezone: UTC
       date: June 3-7, 2024
       place: Santa Clara, CA
+    - year: 2026
+      id: msst2026
+      link: https://msstconference.org/2026/index.html
+      timeline:
+        - deadline: '2026-04-14 23:59:59'
+      timezone: UTC
+      date: June 1-5, 2026
+      place: Santa Clara University, Santa Clara, CA, USA

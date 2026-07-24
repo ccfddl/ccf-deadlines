@@ -52,3 +52,12 @@
       timezone: AoE
       date: May 25-29, 2026
       place: New Orleans, USA
+    - year: 2027
+      id: ipdps27
+      link: https://www.ipdps.org/
+      timeline:
+        - abstract_deadline: '2026-10-01 23:59:59'
+          deadline: '2026-10-08 23:59:59'
+      timezone: AoE
+      date: June 1-5, 2027
+      place: Seattle, USA

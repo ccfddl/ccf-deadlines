@@ -16,3 +16,11 @@
       timezone: AoE
       date: April 27-29, 2026
       place: Abu Dhabi, UAE
+    - year: 2027
+      id: secon27
+      link: https://secon2027.ieee-secon.org/
+      timeline:
+        - deadline: '2026-11-30 23:59:59'
+      timezone: AoE
+      date: May 5-7, 2027
+      place: Lisbon, Portugal
