@@ -16,3 +16,21 @@
       timezone: AoE
       date: June 17-21, 2024
       place: Nantes, France
+    - year: 2025
+      id: podc25
+      link: https://www.podc.org/podc2025/
+      timeline:
+        - abstract_deadline: '2025-02-04 23:59:59'
+          deadline: '2025-02-08 23:59:59'
+      timezone: AoE
+      date: June 16-20, 2025
+      place: Santa María Huatulco, Mexico
+    - year: 2026
+      id: podc26
+      link: https://www.podc.org/podc2026/
+      timeline:
+        - abstract_deadline: '2026-02-11 23:59:59'
+          deadline: '2026-02-16 23:59:59'
+      timezone: AoE
+      date: July 6-10, 2026
+      place: Egham, England
