@@ -1,0 +1,8 @@
+- title: PPSN
+  accept_rates:
+    - year: 2026
+      submitted: 527
+      accepted: 165
+      str: 31.3%(165/527 26')
+      rate: 0.313092979127134724
+      source: https://ryojitanabe.github.io/ecconf/#ppsn
