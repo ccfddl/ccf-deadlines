@@ -50,3 +50,11 @@
       timezone: UTC-8
       date: Jun 1-5, 2026
       place: Vienna, Austria
+    - year: 2027
+      id: icra27
+      link: https://2027.ieee-icra.org/
+      timeline:
+        - deadline: '2026-09-15 23:59:59'
+      timezone: UTC-7
+      date: May 24-28, 2027
+      place: Seoul, Republic of Korea
