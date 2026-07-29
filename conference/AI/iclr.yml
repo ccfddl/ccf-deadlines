@@ -55,3 +55,12 @@
       timezone: AoE
       date: May 01-05, 2026
       place: Brazil
+    - year: 2027
+      id: iclr27
+      link: https://iclr.cc/Conferences/2027
+      timeline:
+        - abstract_deadline: '2026-09-11 23:59:59'
+          deadline: '2026-09-16 23:59:59'
+      timezone: AoE
+      date: April 27-30, 2027
+      place: San Francisco, CA, USA
