@@ -54,6 +54,8 @@
       timeline:
         - abstract_deadline: '2026-08-17 23:59:59'
           deadline: '2026-08-24 23:59:59'
+        - deadline: '2026-11-17 23:59:59'
+          comment: Short Paper
       timezone: UTC-12
       date: February 15 - 19, 2027
       place: Cordis, Hong Kong SAR, China
