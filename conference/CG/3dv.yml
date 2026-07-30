@@ -31,3 +31,12 @@
       timezone: UTC-7
       date: March 24-27, 2026
       place: Metro Vancouver, BC, Canada
+    - year: 2027
+      id: 3dv2027
+      link: https://3dvconf.github.io/2027/
+      timeline:
+        - deadline: '2026-08-28 11:00:00'
+          comment: 'Supplementary material due Sep 2, 2026. All deadlines are 11:00 am PDT.'
+      timezone: UTC-7
+      date: April 6-9, 2027
+      place: Thessaloniki, Greece

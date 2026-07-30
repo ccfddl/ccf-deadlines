@@ -36,7 +36,18 @@
       id: adma26
       link: https://adma2026.github.io/
       timeline:
-        - deadline: '2026-06-26 23:59:59'
+        - deadline: '2026-07-17 23:59:59'
+          comment: Main Track
+        - deadline: '2026-07-31 23:59:59'
+          comment: Industry Track
+        - deadline: '2026-07-31 23:59:59'
+          comment: Special Session Paper
+        - deadline: '2026-08-07 23:59:59'
+          comment: Short Paper
+        - deadline: '2026-09-11 23:59:59'
+          comment: Poster Paper
+        - deadline: '2026-09-11 23:59:59'
+          comment: Encore Paper
       timezone: AoE
       date: November 13 - 15, 2026
       place: Hong Kong, China

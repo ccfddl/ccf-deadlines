@@ -1,9 +1,9 @@
 - title: WCNC
-  description: Wireless Communications and Networking Conference
+  description: IEEE Wireless Communications and Networking Conference
   sub: NW
   rank:
     ccf: C
-    core: N
+    core: B
     thcpl: N
   dblp: wcnc
   confs:

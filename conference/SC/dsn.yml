@@ -47,3 +47,12 @@
       timezone: AoE
       date: June 22-25, 2026
       place: Charlotte, USA
+    - year: 2027
+      id: dsn27
+      link: https://dsn2027-berlin.github.io/
+      timeline:
+        - abstract_deadline: '2026-11-25 23:59:59'
+          deadline: '2026-12-02 23:59:59'
+      timezone: AoE
+      date: June 22-25, 2027
+      place: Berlin, Germany

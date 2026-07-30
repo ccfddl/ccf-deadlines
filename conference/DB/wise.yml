@@ -1,0 +1,18 @@
+- title: WISE
+  description: International Conference on Web Information Systems Engineering
+  sub: DB
+  rank:
+    ccf: B
+    core: B
+    thcpl: N
+  dblp: wise
+  confs:
+    - year: 2026
+      id: wise26
+      link: https://conferences.sigappfr.org/wise2026/
+      timeline:
+        - deadline: '2026-06-30 23:59:59'
+          comment: Extended submission deadline
+      timezone: AoE
+      date: November 2-5, 2026
+      place: Venice, Italy

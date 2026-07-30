@@ -70,3 +70,16 @@
       timezone: UTC-12
       date: July 26-29, 2026
       place: Lisbon, Portugal
+    - year: 2027
+      id: csfw27
+      link: https://www.ieee-security.org/TC/CSF2027/
+      timeline:
+        - deadline: '2026-08-03 23:59:59'
+          comment: Summer
+        - deadline: '2026-10-15 23:59:59'
+          comment: Fall
+        - deadline: '2027-01-28 23:59:59'
+          comment: Winter
+      timezone: UTC-12
+      date: TBA
+      place: Tokyo, Japan

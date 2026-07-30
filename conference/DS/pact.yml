@@ -40,3 +40,12 @@
       timezone: AoE
       date: November 3-6, 2025
       place: Irvine, California, USA
+    - year: 2026
+      id: pact26
+      link: https://pact2026.github.io/
+      timeline:
+        - abstract_deadline: '2026-04-23 23:59:59'
+          deadline: '2026-04-30 23:59:59'
+      timezone: AoE
+      date: October 19-22, 2026
+      place: Chicago, Illinois, USA

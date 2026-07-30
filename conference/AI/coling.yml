@@ -34,3 +34,12 @@
       timezone: UTC-12
       date: Jan 19 - Jan 24, 2025
       place: Abu Dhabi, UAE
+    - year: 2027
+      id: coling27
+      link: https://2027.coling-iccl.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'ARR Submission'
+      timezone: UTC-12
+      date: May 9-14, 2027
+      place: Macau SAR, China

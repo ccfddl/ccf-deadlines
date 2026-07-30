@@ -24,3 +24,12 @@
       timezone: UTC-8
       date: May 1-3, 2025
       place: Alexandria, Virginia, USA
+    - year: 2026
+      id: sdm2026
+      link: https://www.siam.org/conferences-events/siam-conferences/sdm26/
+      timeline:
+        - abstract_deadline: '2026-04-10 23:59:59'
+          deadline: '2026-04-17 23:59:59'
+      timezone: AoE
+      date: November 19-20, 2026
+      place: Salt Lake City, Utah, USA

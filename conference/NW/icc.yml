@@ -23,3 +23,11 @@
       timezone: UTC-4
       date: May 24-28, 2026
       place: Glasgow, Scotland, UK
+    - year: 2027
+      id: icc27
+      link: https://icc2027.ieee-icc.org
+      timeline:
+        - deadline: '2026-10-02 23:59:59'
+      timezone: UTC-4
+      date: May 30 - June 3, 2027
+      place: Washington, DC, USA
