@@ -39,3 +39,11 @@
       timezone: UTC-12
       date: May 25-28, 2026
       place: West Palm Beach, USA
+    - year: 2027
+      id: pkc27
+      link: https://pkc.iacr.org/2027/
+      timeline:
+        - deadline: '2026-08-16 23:59:59'
+      timezone: UTC-12
+      date: March 1-4, 2027
+      place: Taipei, Taiwan
