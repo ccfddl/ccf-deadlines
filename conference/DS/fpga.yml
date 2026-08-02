@@ -55,9 +55,10 @@
       id: fpga2027
       link: https://www.isfpga.org/
       timeline:
+        - deadline: '2026-10-01 23:59:59'
+          comment: Abstracts Due
         - deadline: '2026-10-08 23:59:59'
-          abstract_deadline: '2026-10-01 23:59:59'
-          comment: 'No extensions'
+          comment: Submissions Due
       timezone: UTC-12
       date: March 14 - March 16, 2027
       place: Monterey, California, USA
