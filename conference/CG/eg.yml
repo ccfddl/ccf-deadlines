@@ -34,3 +34,12 @@
       timezone: UTC
       date: May 4-8, 2026
       place: Aachen, Germany
+    - year: 2027
+      id: eg27
+      link: https://eg2027.isti.cnr.it/
+      timeline:
+        - abstract_deadline: '2026-09-25 23:59:59'
+          deadline: '2026-10-01 23:59:59'
+      timezone: UTC
+      date: May 10-14, 2027
+      place: Lucca, Italy
