@@ -18,3 +18,17 @@
       timezone: AoE
       date: November 7-11, 2022
       place: Fairmont Le Château Frontenac, Québec City, Québec, Canada
+    - year: 2026
+      id: middleware26
+      link: https://middleware-conf.github.io/2026/
+      timeline:
+        - abstract_deadline: '2025-12-09 23:59:59'
+          deadline: '2025-12-12 23:59:59'
+          comment: Round 1
+        - abstract_deadline: '2026-05-29 23:59:59'
+          deadline: '2026-06-05 23:59:59'
+          comment: Round 2
+      timezone: AoE
+      date: December 14-18, 2026
+      place: Universitat Rovira i Virgili, Tarragona, Spain
+

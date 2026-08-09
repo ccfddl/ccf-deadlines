@@ -24,3 +24,13 @@
       timezone: AoE
       date: May 12-14, 2026
       place: Saint Malo, France
+    - year: 2027
+      id: rtas2027
+      link: https://2027.rtas.org/
+      timeline:
+        - deadline: '2026-11-05 23:59:59'
+          comment: Submission Deadline (Firm)
+      timezone: AoE
+      date: May 17-20, 2027
+      place: ''
+
