@@ -28,7 +28,11 @@
       link: https://www.mmasia2026.org/
       timeline:
         - deadline: '2026-08-14 23:59:59'
-          comment: Regular Paper / Special Session Submission
+          comment: Regular Paper
+        - deadline: '2026-08-21 23:59:59'
+          comment: Special Session Paper
+        - deadline: '2026-09-01 23:59:59'
+          comment: Demo / Industry Submission
       timezone: AoE
       date: December 15-18, 2026
       place: VinUniversity, Hanoi, Vietnam
