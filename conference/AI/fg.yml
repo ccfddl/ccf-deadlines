@@ -31,3 +31,12 @@
       timezone: UTC-8
       date: May 25-29, 2026
       place: Kyoto, Japan
+    - year: 2027
+      id: fg27
+      link: https://fg2027.ieee-biometrics.org/
+      timeline:
+        - abstract_deadline: '2026-10-09 23:59:59'
+          deadline: '2026-10-16 23:59:59'
+      timezone: AoE
+      date: April 26-30, 2027
+      place: Marrakesh, Morocco
