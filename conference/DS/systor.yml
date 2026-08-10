@@ -31,3 +31,12 @@
       timezone: AoE
       date: September 8-9, 2025
       place: IBM Haifa, Israel
+    - year: 2026
+      id: systor26
+      link: https://www.systor.org/2026/
+      timeline:
+        - deadline: '2026-05-25 23:59:59'
+          comment: Full and Short Papers Track
+      timezone: AoE
+      date: September 8-9, 2026
+      place: Virtual
