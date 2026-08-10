@@ -24,3 +24,11 @@
       timezone: AoE
       date: January 12-13, 2026
       place: Rennes, France
+    - year: 2027
+      id: vmcai27
+      link: https://conf.researchr.org/home/VMCAI-2027
+      timeline:
+        - deadline: '2026-09-16 23:59:59'
+      timezone: AoE
+      date: January 11-12, 2027
+      place: Mexico City, Mexico
