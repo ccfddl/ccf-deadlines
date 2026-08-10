@@ -55,3 +55,11 @@
       timezone: AoE
       date: June 15-19, 2026
       place: Boulder, Colorado, United States
+    - year: 2027
+      id: pldi27
+      link: https://pldi27.sigplan.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 5-11, 2027
+      place: Atlanta, Georgia, USA
