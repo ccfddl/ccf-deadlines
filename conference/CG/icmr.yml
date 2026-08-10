@@ -31,3 +31,11 @@
       timezone: UTC-12
       date: June 16-19, 2026
       place: Amsterdam, Netherlands
+    - year: 2027
+      id: icmr27
+      link: https://www.icmr2027.org/
+      timeline:
+        - deadline: '2027-01-31 23:59:59'
+      timezone: UTC-12
+      date: June 7-10, 2027
+      place: Singapore
