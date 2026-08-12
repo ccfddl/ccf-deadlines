@@ -1,0 +1,18 @@
+- title: HOST
+  description: International Symposium on Hardware Oriented Security and Trust
+  sub: SC
+  rank:
+    ccf: N
+  dblp: host
+  confs:
+    - year: 2027
+      id: host27
+      link: https://host.conferences.computer.org/2027/
+      timeline:
+        - deadline: '2026-11-01 23:59:59'
+          comment: Abstract Submission deadline (Winter round)
+        - deadline: '2026-11-08 23:59:59'
+          comment: Full Paper Submission deadline (Winter round)
+      timezone: AoE
+      date: May 3-6, 2027
+      place: Washington DC, USA
