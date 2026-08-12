@@ -57,3 +57,14 @@
       timezone: AoE
       date: October 3-9, 2026
       place: Oakland, California, United States
+    - year: 2027
+      id: issta27
+      link: https://conf.researchr.org/home/issta-2027
+      timeline:
+        - deadline: '2027-01-08 23:59:59'
+          comment: Research Papers Mandatory Abstract submission (Round 1)
+        - deadline: '2027-01-11 23:59:59'
+          comment: Research Papers Full Paper submission (Round 1)
+      timezone: AoE
+      date: July 2027
+      place: Singapore
