@@ -43,3 +43,12 @@
       timezone: UTC-12
       date: March 23-26, 2026
       place: San Francisco, California, USA
+    - year: 2027
+      id: ct-rsa27
+      link: https://www.esat.kuleuven.be/cosic/events/ct-rsa-2027/
+      timeline:
+        - deadline: '2026-10-22 23:59:59'
+          comment: Paper submission deadline
+      timezone: UTC-12
+      date: April 5-8, 2027
+      place: San Francisco, California, USA
