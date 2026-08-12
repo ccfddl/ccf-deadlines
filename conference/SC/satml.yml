@@ -7,6 +7,14 @@
     thcpl: N
   dblp: satml
   confs:
+    - year: 2027
+      id: satml27
+      link: https://satml.org/
+      timeline:
+        - deadline: '2026-09-29 23:59:59'
+      timezone: UTC-12
+      date: Early May, 2027
+      place: Reykjavik, Iceland
     - year: 2026
       id: satml26
       link: https://www.satml.org
