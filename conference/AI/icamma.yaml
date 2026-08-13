@@ -1,0 +1,20 @@
+- title: IC-AMMA 2026
+  year: 2026
+  id: icamma2026
+  full_name: International Conference on ARTIFICIAL INTELLIGENCE METHODS AND MODERN APPLICATIONS 
+  link: https://sites.google.com/view/icamma2026
+  deadline: '2026-09-19 23:59:00'
+  abstract_deadline: '2026-09-19 23:59:00'
+  timezone: Asia/Kolkata
+  place: Mangaluru, Karnataka, India
+  date: December 12-13, 2026
+  start: 2026-12-12
+  end: 2026-12-13
+  paperslink: https://cmt3.research.microsoft.com/ICAMMA2026.
+  pwclink: 
+  hindex: 
+  sub:
+    - ML
+    - CV
+    - NLP
+  note:
