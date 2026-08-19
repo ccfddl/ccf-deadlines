@@ -32,3 +32,11 @@
       timezone: UTC+0
       date: February 23-26, 2026
       place: Fields Institute, Toronto, Canada
+    - year: 2027
+      id: alt2027
+      link: https://algorithmiclearningtheory.org/alt2027/
+      timeline:
+        - deadline: '2026-10-12 23:59:59'
+      timezone: AoE
+      date: March 9-12, 2027
+      place: Leiden, Netherlands
