@@ -50,3 +50,12 @@
       timezone: UTC-12
       date: June 3-7, 2026
       place: Denver, Colorado, United States
+    - year: 2027
+      id: cvpr27
+      link: https://cvpr.thecvf.com/Conferences/2027
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC-12
+      date: June 20-24, 2027
+      place: Seattle, WA, United States
