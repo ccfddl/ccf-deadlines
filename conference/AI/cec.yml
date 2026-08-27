@@ -23,3 +23,11 @@
       timezone: UTC-12
       date: June 22-26, 2026
       place: Maastricht Exhibition & Congress Centre (MECC), The Netherlands
+    - year: 2027
+      id: cec2027
+      link: https://ieeecec.org/2027
+      timeline:
+        - deadline: '2027-02-28 23:59:59'
+      timezone: UTC-12
+      date: July 25-28, 2027
+      place: Edinburgh, Scotland, UK
