@@ -55,3 +55,11 @@
       timezone: AoE
       date: May 17-22, 2026
       place: Bellevue, Washington, USA
+    - year: 2027
+      id: mlsys27
+      link: https://mlsys.org/
+      timeline:
+        - deadline: '2026-10-30 20:00:00'
+      timezone: UTC
+      date: TBD
+      place: Bellevue, Washington, USA
