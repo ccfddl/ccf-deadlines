@@ -59,8 +59,7 @@
       id: mlsys27
       link: https://mlsys.org/
       timeline:
-        - abstract_deadline: '2026-10-10 20:00:00'
-          deadline: '2026-10-30 20:00:00'
+        - deadline: '2026-10-30 20:00:00'
       timezone: AoE
       date: TBD
       place: Bellevue, Washington, USA
