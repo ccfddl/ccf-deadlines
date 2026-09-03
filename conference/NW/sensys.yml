@@ -27,9 +27,9 @@
         - abstract_deadline: '2026-05-29 23:59:00'
           deadline: '2026-06-05 23:59:00'
           comment: '1st deadline'
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-10-29 23:59:00'
+          deadline: '2026-11-05 23:59:00'
           comment: '2nd deadline'
       timezone: AoE
       date: May 17-20, 2027
-      place: New York, USA
+      place: Boulder, CO, USA
