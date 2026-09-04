@@ -54,8 +54,8 @@
       id: cvpr27
       link: https://cvpr.thecvf.com/Conferences/2027
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
+        - abstract_deadline: '2026-11-10 23:59:00'
+          deadline: '2026-11-16 23:59:00'
       timezone: UTC-12
       date: June 20-24, 2027
       place: Seattle, WA, United States
