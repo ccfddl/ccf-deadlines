@@ -41,3 +41,12 @@
       timezone: UTC-12
       date: May 2-5, 2026
       place: Morocco
+    - year: 2027
+      id: aistats27
+      link: https://virtual.aistats.org/Conferences/2027
+      timeline:
+        - abstract_deadline: '2026-09-24 23:59:59'
+          deadline: '2026-10-06 23:59:59'
+      timezone: UTC-12
+      date: May 3, 2027
+      place: Montréal, Canada
