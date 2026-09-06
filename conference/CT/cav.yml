@@ -31,3 +31,11 @@
       timezone: AoE
       date: July 26-29, 2026
       place: Lisbon, Portugal
+    - year: 2027
+      id: cav27
+      link: https://conferences.i-cav.org/2027/
+      timeline:
+        - deadline: '2027-01-20 23:59:59'
+      timezone: AoE
+      date: July 19-23, 2027
+      place: KIT, Amsterdam, The Netherlands
