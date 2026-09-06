@@ -49,3 +49,14 @@
       timezone: AoE
       date: July 6-9, 2026
       place: Perth, Australia
+    - year: 2027
+      id: acisp27
+      link: https://acisp.org/
+      timeline:
+        - deadline: '2026-11-30 23:59:59'
+          comment: 1st round Deadline
+        - deadline: '2027-03-01 23:59:59'
+          comment: 2nd round Deadline
+      timezone: AoE
+      date: July 7-10, 2027
+      place: Melbourne, Australia
