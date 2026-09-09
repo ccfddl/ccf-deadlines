@@ -59,3 +59,11 @@
       timezone: AoE
       date: April 21-24, 2026
       place: Jeju Island, South Korea
+    - year: 2027
+      id: dasfaa27
+      link: https://dasfaa2027.github.io/
+      timeline:
+        - deadline: '2026-11-25 23:59:59'
+      timezone: AoE
+      date: May 27-30, 2027
+      place: Shenyang, China
