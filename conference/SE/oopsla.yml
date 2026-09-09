@@ -72,3 +72,14 @@
       timezone: UTC-12
       date: October 3-9, 2026
       place: Oakland, California, United States
+    - year: 2027
+      id: oopsla27
+      link: https://2027.splashcon.org/track/splashoopsla2027
+      timeline:
+        - deadline: '2026-10-14 23:59:59'
+          comment: Submission Deadline Round 1
+        - deadline: '2027-04-07 23:59:59'
+          comment: Submission Deadline Round 2
+      timezone: AoE
+      date: October 10-15, 2027
+      place: Prague, Czechia
