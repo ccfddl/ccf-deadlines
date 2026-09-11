@@ -1,0 +1,19 @@
+- title: EvoCOP
+  description: European Conference on Evolutionary Computation in Combinatorial Optimisation
+  sub: AI
+  rank:
+    ccf: N
+    core: B
+    thcpl: N
+  dblp: evocop
+  confs:
+    - year: 2027
+      id: evocop27
+      link: https://www.evostar.org/2027/evocop/
+      timeline:
+        - abstract_deadline: '2026-11-01 23:59:00'
+          deadline: '2026-11-01 23:59:00'
+          comment: 'Full papers'
+      timezone: AoE
+      date: March 31-April 2, 2027
+      place: Mainz, Germany (hybrid)
