@@ -56,3 +56,11 @@
       timezone: UTC-8
       date: July 26-29, 2026
       place: Long Beach, CA
+    - year: 2027
+      id: dac27
+      link: https://dac.com/2027/authors/call-for-contributions
+      timeline:
+        - deadline: '2026-11-18 17:00:00'
+      timezone: UTC-8
+      date: July 11-14, 2027
+      place: San Jose, CA
