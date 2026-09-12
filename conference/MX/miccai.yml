@@ -43,3 +43,21 @@
       timezone: UTC-8
       date: Oct 4-8, 2026
       place: ADNEC Centre, Abu Dhabi, U.A.E.
+    - year: 2027
+      id: miccai27
+      link: https://conferences.miccai.org/2027/en/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC-8
+      date: Sep 27 - Oct 1, 2027
+      place: Auckland, New Zealand
+    - year: 2028
+      id: miccai28
+      link: https://conferences.miccai.org/2028/en/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: UTC-8
+      date: Oct 16-20, 2028
+      place: São Paulo, Brazil
