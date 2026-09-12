@@ -330,11 +330,13 @@ pub fn ShowTable() -> impl IntoView {
                                         DateTime::parse_from_rfc3339(&abs_ddl_str)
                                     {
                                         let formatted_abs_ddl = abs_datetime
-                                            .with_timezone(&current_timezone)
                                             .format("%b %e, %Y")
                                             .to_string();
-                                        let abs_note =
-                                            format!("abstract deadline on {}", formatted_abs_ddl);
+                                        let abs_note = format!(
+                                            "abstract deadline on {} {}",
+                                            formatted_abs_ddl,
+                                            display_deadline_timezone(&item.timezone)
+                                        );
                                         item.comment = Some(match &item.comment {
                                             Some(existing) if !existing.is_empty() => {
                                                 format!("{} ({}).", existing, abs_note)
@@ -1105,6 +1107,30 @@ fn parse_deadline_to_rfc3339(deadline: &str, tz: &str) -> Option<String> {
     } else {
         format!("{}T23:59:59{}", deadline, tz_offset)
     })
+}
+
+fn display_deadline_timezone(tz: &str) -> &str {
+    match tz {
+        // UTC-12 is the fixed-offset representation of Anywhere on Earth used
+        // by many entries. Naming both makes the convention clear to readers.
+        "UTC-12" => "AoE (UTC-12)",
+        _ => tz,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{display_deadline_timezone, parse_deadline_to_rfc3339};
+    use chrono::DateTime;
+
+    #[test]
+    fn abstract_deadline_keeps_the_source_calendar_date() {
+        let deadline = parse_deadline_to_rfc3339("2026-08-18 23:59:59", "UTC-12").unwrap();
+        let date = DateTime::parse_from_rfc3339(&deadline).unwrap();
+
+        assert_eq!(date.format("%b %e, %Y").to_string(), "Aug 18, 2026");
+        assert_eq!(display_deadline_timezone("UTC-12"), "AoE (UTC-12)");
+    }
 }
 
 const RANK_OPTIONS: &[(&str, &str)] = &[("A", "CCF A"), ("B", "CCF B"), ("C", "CCF C"), ("N", "Non-CCF")];
