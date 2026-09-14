@@ -31,3 +31,12 @@
       timezone: UTC-12
       date: July 6 - 10, 2026
       place: Lisbon, Portugal
+    - year: 2027
+      id: eurosp27
+      link: https://eurosp2027.ieee-security.org/
+      timeline:
+        - abstract_deadline: '2026-11-25 23:59:59'
+          deadline: '2026-12-02 23:59:59'
+      timezone: UTC-12
+      date: July 5 - 9, 2027
+      place: Madrid, Spain
