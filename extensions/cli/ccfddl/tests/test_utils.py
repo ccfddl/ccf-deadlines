@@ -1,5 +1,5 @@
 import pytest
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from ccfddl.utils import get_timezone, load_mapping, reverse_index
 
@@ -28,6 +28,25 @@ class TestGetTimezone:
         tz = get_timezone("UTC+0")
         expected = timezone(timedelta(hours=0))
         assert tz == expected
+
+    def test_pt_standard_time(self):
+        tz = get_timezone("PT", date(2026, 1, 1))
+        assert tz == timezone(timedelta(hours=-8))
+
+    def test_pt_daylight_saving(self):
+        tz = get_timezone("PT", date(2026, 7, 1))
+        assert tz == timezone(timedelta(hours=-7))
+
+    def test_pt_without_date_defaults_to_standard(self):
+        tz = get_timezone("PT")
+        assert tz == timezone(timedelta(hours=-8))
+
+    def test_pt_dst_boundaries(self):
+        # DST runs from the 2nd Sunday of March to the 1st Sunday of November
+        assert get_timezone("PT", date(2026, 3, 7)) == timezone(timedelta(hours=-8))
+        assert get_timezone("PT", date(2026, 3, 8)) == timezone(timedelta(hours=-7))
+        assert get_timezone("PT", date(2026, 10, 31)) == timezone(timedelta(hours=-7))
+        assert get_timezone("PT", date(2026, 11, 1)) == timezone(timedelta(hours=-8))
 
     def test_invalid_format(self):
         with pytest.raises(ValueError, match="Invalid timezone format"):

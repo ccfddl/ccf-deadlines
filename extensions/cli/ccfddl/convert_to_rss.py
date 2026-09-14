@@ -51,7 +51,7 @@ def convert_to_rss(
 
                 for entry in timeline:
                     try:
-                        tz = get_timezone(timezone_str)
+                        get_timezone(timezone_str)
                     except ValueError:
                         continue
 
@@ -90,6 +90,8 @@ def convert_to_rss(
                             except ValueError:
                                 continue
 
+                        # 按截止日期解析时区 (PT 需要按日期判断夏令时)
+                        tz = get_timezone(timezone_str, deadline_dt.date())
                         aware_dt = deadline_dt.replace(tzinfo=tz)
 
                         item = ET.SubElement(channel, "item")

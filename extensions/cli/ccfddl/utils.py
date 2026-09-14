@@ -6,7 +6,7 @@ and conference data processing.
 
 import re
 from collections import defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from itertools import combinations
 
 import yaml
@@ -31,16 +31,31 @@ def load_mapping(path: str = "conference/types.yml") -> dict[str, str]:
     return sub_mapping
 
 
-def get_timezone(tz_str: str) -> timezone:
+def nth_sunday(year: int, month: int, n: int) -> date:
+    """Return the nth Sunday of the given month."""
+    first = date(year, month, 1)
+    # date.weekday(): Monday=0 ... Sunday=6
+    return first + timedelta(days=(6 - first.weekday()) % 7 + 7 * (n - 1))
+
+
+def is_us_dst(day: date) -> bool:
+    """US daylight saving time: 2nd Sunday of March to 1st Sunday of November."""
+    return nth_sunday(day.year, 3, 2) <= day < nth_sunday(day.year, 11, 1)
+
+
+def get_timezone(tz_str: str, on_date: date | None = None) -> timezone:
     """Convert timezone string to datetime.timezone object.
 
     Supported formats:
         - 'AoE' (Anywhere on Earth, UTC-12)
         - 'UTC' (UTC+0)
         - 'UTC+8', 'UTC-5' (UTC with offset)
+        - 'PT' (US Pacific Time, UTC-7 during DST and UTC-8 otherwise)
 
     Args:
         tz_str: Timezone string
+        on_date: Date the deadline falls on, used to resolve daylight saving
+            labels such as 'PT'. Defaults to standard time when omitted.
 
     Returns:
         A timezone object
@@ -52,6 +67,10 @@ def get_timezone(tz_str: str) -> timezone:
         return timezone(timedelta(hours=-12))
     if tz_str == "UTC":
         return timezone.utc
+    if tz_str == "PT":
+        if on_date is not None and is_us_dst(on_date):
+            return timezone(timedelta(hours=-7))
+        return timezone(timedelta(hours=-8))
     match = re.match(r"UTC([+-])(\d{1,2})$", tz_str)
     if not match:
         raise ValueError(f"Invalid timezone format: {tz_str}")
@@ -76,8 +95,8 @@ def parse_datetime_with_tz(
     Raises:
         ValueError: If datetime or timezone format is invalid
     """
-    tz = get_timezone(tz_str)
     dt = datetime.strptime(dt_str, format_str)
+    tz = get_timezone(tz_str, dt.date())
     return dt.replace(tzinfo=tz)
 
 

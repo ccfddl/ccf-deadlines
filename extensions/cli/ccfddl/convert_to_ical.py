@@ -3,7 +3,7 @@ import re
 import uuid
 from collections import defaultdict
 from itertools import combinations
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from icalendar import Calendar, Event, Timezone, TimezoneStandard
 
 
@@ -19,12 +19,32 @@ def load_mapping(path: str = "conference/types.yml"):
     return SUB_MAPPING
 
 
-def get_timezone(tz_str: str) -> timezone:
-    """将时区字符串转换为datetime.timezone对象"""
+def nth_sunday(year: int, month: int, n: int) -> date:
+    """返回该年月的第n个星期日"""
+    first = date(year, month, 1)
+    # date.weekday(): Monday=0 ... Sunday=6
+    return first + timedelta(days=(6 - first.weekday()) % 7 + 7 * (n - 1))
+
+
+def is_us_dst(day: date) -> bool:
+    """美国夏令时区间: 3月第2个星期日 至 11月第1个星期日"""
+    return nth_sunday(day.year, 3, 2) <= day < nth_sunday(day.year, 11, 1)
+
+
+def get_timezone(tz_str: str, on_date: date | None = None) -> timezone:
+    """将时区字符串转换为datetime.timezone对象
+
+    PT (美国太平洋时间) 会随夏令时变化: 夏令时为 UTC-7, 其余为 UTC-8。
+    未提供 on_date 时按标准时间 UTC-8 处理。
+    """
     if tz_str == "AoE":
         return timezone(timedelta(hours=-12))
     if tz_str == "UTC":
         return timezone.utc
+    if tz_str == "PT":
+        if on_date is not None and is_us_dst(on_date):
+            return timezone(timedelta(hours=-7))
+        return timezone(timedelta(hours=-8))
     match = re.match(r"UTC([+-])(\d{1,2})$", tz_str)
     if not match:
         raise ValueError(f"无效的时区格式: {tz_str}")
@@ -81,19 +101,9 @@ def convert_to_ical(
 
                 for entry in timeline:
                     try:
-                        tz = get_timezone(timezone_str)
+                        get_timezone(timezone_str)
                     except ValueError:
                         continue
-
-                    # 添加VTIMEZONE组件
-                    tz_offset = tz.utcoffset(datetime.now())
-                    offset_hours = tz_offset.total_seconds() // 3600
-                    tzid = f"UTC{offset_hours:+03.0f}:00"
-
-                    if tzid not in added_tzids:
-                        vtz = create_vtimezone(tz)
-                        cal.add_component(vtz)
-                        added_tzids.add(tzid)
 
                     # 收集所有需要处理的截止日期
                     deadlines_to_process = []
@@ -134,6 +144,19 @@ def convert_to_ical(
                                 is_all_day = True
                             except ValueError:
                                 continue  # 无效日期格式
+
+                        # 按截止日期解析时区 (PT 需要按日期判断夏令时)
+                        tz = get_timezone(timezone_str, deadline_dt.date())
+
+                        # 添加VTIMEZONE组件
+                        tz_offset = tz.utcoffset(datetime.now())
+                        offset_hours = tz_offset.total_seconds() // 3600
+                        tzid = f"UTC{offset_hours:+03.0f}:00"
+
+                        if tzid not in added_tzids:
+                            vtz = create_vtimezone(tz)
+                            cal.add_component(vtz)
+                            added_tzids.add(tzid)
 
                         # 创建事件对象
                         event = Event()
