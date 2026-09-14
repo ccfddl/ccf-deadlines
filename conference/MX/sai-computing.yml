@@ -1,0 +1,15 @@
+- title: SAI Computing Conference
+  description: Computing Conference (SAI)
+  sub: MX
+  rank:
+    ccf: N
+  dblp: sai
+  confs:
+    - year: 2027
+      id: computing27
+      link: https://saiconference.com/Computing
+      timeline:
+        - deadline: '2026-10-01 23:59:00'
+      timezone: AoE
+      date: July 8-9, 2027
+      place: London, United Kingdom
