@@ -1,0 +1,15 @@
+- title: CVC
+  description: Computer Vision Conference
+  sub: AI
+  rank:
+    ccf: N
+  dblp: cvc
+  confs:
+    - year: 2027
+      id: cvc27
+      link: https://saiconference.com/CVC
+      timeline:
+        - deadline: '2026-10-01 23:59:00'
+      timezone: AoE
+      date: April 15-16, 2027
+      place: Amsterdam, Netherlands
