@@ -1,0 +1,18 @@
+- title: ESA
+  description: European Symposium on Algorithms
+  sub: CT
+  rank:
+    ccf: B
+    core: A
+    thcpl: B
+  dblp: esa
+  confs:
+    - year: 2026
+      id: esa2026
+      link: https://algo-conference.org/2026/esa/
+      timeline:
+        - abstract_deadline: '2026-04-21 23:59:59'
+          deadline: '2026-04-23 23:59:59'
+      timezone: AoE
+      date: August 31 - September 4, 2026
+      place: L'Aquila, Italy

@@ -16,3 +16,12 @@
       timezone: AoE
       date: May 18-21, 2026
       place: Sydney, Australia
+    - year: 2027
+      id: ccgrid27
+      link: https://hpcclab.org/ccgrid27/
+      timeline:
+        - abstract_deadline: '2026-11-24 23:59:59'
+          deadline: '2026-12-01 23:59:59'
+      timezone: AoE
+      date: May 24-27, 2027
+      place: Dallas-Fort Worth, Texas, USA

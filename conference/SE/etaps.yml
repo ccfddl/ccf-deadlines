@@ -29,3 +29,14 @@
       timezone: AoE
       date: April 11-16, 2026
       place: Torino, Italy
+    - year: 2027
+      id: etaps27
+      link: https://etaps.org/2027
+      timeline:
+        - deadline: '2026-05-28 23:59:59'
+          comment: ESOP round 1
+        - deadline: '2026-10-15 23:59:59'
+          comment: ESOP round 2, FoSSaCS, TACAS, iFS
+      timezone: AoE
+      date: April 10-15, 2027
+      place: Copenhagen, Denmark
