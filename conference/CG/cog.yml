@@ -1,0 +1,31 @@
+- title: IEEE CoG
+  description: IEEE Conference on Games
+  sub: CG
+  rank:
+    ccf: N
+    core: C
+    thcpl: N
+  dblp: cig
+  confs:
+    - year: 2026
+      id: cog26
+      link: https://cog2026.org/
+      timeline:
+        - deadline: '2026-03-17 23:59:59'
+          comment: 'Regular Paper'
+        - deadline: '2026-05-14 23:59:59'
+          comment: 'Auxiliary Paper'
+      timezone: AoE
+      date: September 1-4, 2026
+      place: Madrid, Spain
+    - year: 2027
+      id: cog27
+      link: https://cog2027.u-aizu.ac.jp/
+      timeline:
+        - deadline: '2027-03-01 23:59:59'
+          comment: 'Full Technical Paper'
+        - deadline: '2027-05-15 23:59:59'
+          comment: 'Auxiliary Paper'
+      timezone: AoE
+      date: August 2-5, 2027
+      place: Aizuwakamatsu, Japan
