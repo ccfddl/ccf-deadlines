@@ -44,3 +44,12 @@
       timezone: UTC-12
       date: September 8-10, 2026
       place: Reykjavik, Iceland
+    - year: 2027
+      id: icdf2c27
+      link: https://icdf2c.eai-conferences.org/2027/
+      timeline:
+        - deadline: '2026-12-15 23:59:59'
+          comment: Full Paper Submission deadline
+      timezone: UTC-12
+      date: June 25-27, 2027
+      place: New York, USA

@@ -51,3 +51,12 @@
       timezone: AoE
       date: July 21-24, 2026
       place: Lancaster, UK and hybrid
+    - year: 2027
+      id: securecomm27
+      link: https://securecomm.eai-conferences.org/2027/
+      timeline:
+        - deadline: '2027-03-01 23:59:59'
+          comment: Full Paper Submission deadline
+      timezone: AoE
+      date: October 15-18, 2027
+      place: Hefei, China

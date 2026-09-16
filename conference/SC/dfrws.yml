@@ -34,3 +34,12 @@
       timezone: AoE
       date: March 24-27, 2026
       place: Linköping, Sweden
+    - year: 2027
+      id: dfrws27
+      link: https://dfrws.org/conferences/dfceurope2027/
+      timeline:
+        - abstract_deadline: '2026-09-18 23:59:59'
+          deadline: '2026-09-25 23:59:59'
+      timezone: AoE
+      date: March 30 - April 2, 2027
+      place: Edinburgh, Scotland
