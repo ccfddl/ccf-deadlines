@@ -36,3 +36,14 @@
       timezone: AoE
       date: July 8-10, 2026
       place: Waterloo, Canada
+    - year: 2027
+      id: sacmat27
+      link: https://www.sacmat.org/2027/
+      timeline:
+        - deadline: '2026-10-30 23:59:59'
+          comment: 'First Cycle'
+        - deadline: '2027-02-12 23:59:59'
+          comment: 'Second Cycle'
+      timezone: AoE
+      date: July 19-21, 2027
+      place: Durham, England, United Kingdom

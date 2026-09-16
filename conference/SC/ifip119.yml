@@ -25,3 +25,12 @@
       timezone: AoE
       date: January 5 - 6, 2026
       place: New Delhi, India
+    - year: 2027
+      id: ifip119'27
+      link: https://www.ifip119.org/Conferences/
+      timeline:
+        - deadline: '2026-10-10 23:59:59'
+          comment: Submission Deadline
+      timezone: AoE
+      date: January 7 - 8, 2027
+      place: New Delhi, India
