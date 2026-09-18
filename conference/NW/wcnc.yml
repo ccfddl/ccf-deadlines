@@ -27,7 +27,7 @@
       id: wcnc27
       link: https://wcnc2027.ieee-wcnc.org/
       timeline:
-        - deadline: '2026-09-15 23:59:59'
-      timezone: AoE
+        - deadline: '2026-10-05 23:59:59'
+      timezone: UTC-4
       date: April 5-8, 2027
       place: Panama City, Panama
