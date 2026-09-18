@@ -31,3 +31,11 @@
       timezone: UTC-5
       date: June 22-26, 2026
       place: Salt Lake City, Utah, USA
+    - year: 2027
+      id: stoc27
+      link: https://acm-stoc.org/stoc2027/
+      timeline:
+        - deadline: '2026-11-02 23:59:59'
+      timezone: UTC-12
+      date: June 6-11, 2027
+      place: Atlanta, Georgia, USA
