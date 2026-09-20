@@ -61,3 +61,12 @@
       timezone: AoE
       date: August 17 - 21, 2026
       place: Denver, Colorado, USA
+    - year: 2027
+      id: sigcomm27
+      link: https://conferences.sigcomm.org/sigcomm/2027/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: August 8 - 12, 2027
+      place: Bangkok, Thailand
