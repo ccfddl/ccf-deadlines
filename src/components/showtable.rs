@@ -358,7 +358,7 @@ pub fn ShowTable() -> impl IntoView {
                                     local_ddl_datetime.format("%Y%m%dT%H%M%S").to_string();
 
                                 item.google_calendar_url = Some(format!(
-                                    "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={:?}&location=Online&ctz={}&sf=true&output=xml",
+                                    "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location=Online&ctz={}&sf=true&output=xml",
                                     encode(&format!("{} {}", item.title, item.year)),
                                     iso_string,
                                     iso_string,
