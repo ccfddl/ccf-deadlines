@@ -31,3 +31,20 @@
       timezone: AoE
       date: May 5-7, 2025
       place: Compiègne, France
+    - year: 2026
+      id: cscwd26
+      link: http://2026.cscwd.org
+      timeline:
+        - deadline: '2025-11-30 23:59:59'
+      timezone: AoE
+      date: May 13-15, 2026
+      place: Fuzhou, China
+    - year: 2027
+      id: cscwd27
+      link: http://2027.cscwd.org
+      timeline:
+        - deadline: '2026-10-31 23:59:59'
+      timezone: AoE
+      date: May 26-28, 2027
+      place: Brisbane, Australia
+
