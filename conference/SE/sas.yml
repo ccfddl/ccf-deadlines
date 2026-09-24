@@ -25,3 +25,12 @@
       timezone: AoE
       date: October 12-18, 2025
       place: Singapore
+    - year: 2026
+      id: sas26
+      link: https://conf.researchr.org/home/splash-issta-2026/sas-2026
+      timeline:
+        - abstract_deadline: '2026-05-01 23:59:59'
+          deadline: '2026-05-07 23:59:59'
+      timezone: AoE
+      date: October 6-8, 2026
+      place: Oakland, California, USA
