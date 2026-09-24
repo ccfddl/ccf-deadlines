@@ -11,10 +11,9 @@
       id: issre23
       link: https://issre.github.io/2023/index.html
       timeline:
-        - deadline: '2023-05-22 23:59:59'
-          comment: Abstract submission
-        - deadline: '2021-06-01 23:59:59'
-          comment: Full paper submission
+        - abstract_deadline: '2023-06-01 23:59:59'
+          deadline: '2023-06-07 23:59:59'
+          comment: Firm Research Track deadlines
       timezone: AoE
       date: October 9-12, 2023
       place: Florence, Italy
