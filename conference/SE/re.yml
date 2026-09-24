@@ -39,3 +39,11 @@
       timezone: AoE
       date: August 17-21, 2026
       place: Montreal, Canada
+    - year: 2027
+      id: re27
+      link: https://conf.researchr.org/home/RE-2027
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: August 23-27, 2027
+      place: Milan, Italy
