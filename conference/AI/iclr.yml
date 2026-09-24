@@ -53,8 +53,8 @@
         - abstract_deadline: '2025-09-19 23:59:59'
           deadline: '2025-09-24 23:59:59'
       timezone: AoE
-      date: May 01-05, 2026
-      place: Brazil
+      date: April 23-27, 2026
+      place: Rio de Janeiro, Brazil
     - year: 2027
       id: iclr27
       link: https://iclr.cc/Conferences/2027
