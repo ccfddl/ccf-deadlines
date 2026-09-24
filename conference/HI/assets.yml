@@ -15,3 +15,11 @@
       timezone: AoE
       date: Oct 26 - 29, 2025
       place: Denver, Colorado
+    - year: 2026
+      id: assets26
+      link: https://assets26.sigaccess.org/
+      timeline:
+        - deadline: '2026-04-22 23:59:59'
+      timezone: AoE
+      date: October 25-28, 2026
+      place: Porto, Portugal
