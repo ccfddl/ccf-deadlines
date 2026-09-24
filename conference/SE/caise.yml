@@ -36,3 +36,11 @@
       timezone: AoE
       date: June 8-12, 2026
       place: Verona, Italy
+    - year: 2027
+      id: caise27
+      link: https://deal.us.es/caise27/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 7-11, 2027
+      place: Seville, Spain
