@@ -43,3 +43,11 @@
       timezone: AoE
       date: September 28 - October 2, 2026
       place: Minneapolis, Minnesota, USA
+    - year: 2027
+      id: recsys27
+      link: https://recsys.acm.org/recsys27/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: August 23-27, 2027
+      place: Honolulu, O‘ahu, Hawaii, USA
