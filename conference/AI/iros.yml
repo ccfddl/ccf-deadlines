@@ -39,3 +39,11 @@
       timezone: UTC-8
       date: September 27 - October 1, 2026
       place: Pittsburgh, PA, USA
+    - year: 2027
+      id: iros27
+      link: https://2027.ieee-iros.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: September 26 - October 1, 2027
+      place: Florence, Italy
