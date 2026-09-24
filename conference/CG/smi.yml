@@ -16,3 +16,12 @@
       timezone: AoE
       date: October 29 - November 2, 2025
       place: Hangzhou, Zhejiang, P.R. China
+    - year: 2026
+      id: smi26
+      link: https://smiconf.github.io/2026/
+      timeline:
+        - abstract_deadline: '2026-03-23 23:59:59'
+          deadline: '2026-03-30 23:59:59'
+      timezone: UTC
+      date: July 6-9, 2026
+      place: Istanbul, Turkey
