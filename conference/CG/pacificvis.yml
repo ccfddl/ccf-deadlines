@@ -33,3 +33,16 @@
       timezone: AoE
       date: April 20 - 23, 2026
       place: Sydney, Australia
+    - year: 2027
+      id: pacificvis27
+      link: https://pacificvis2027.github.io/
+      timeline:
+        - abstract_deadline: '2026-09-01 23:59:59'
+          deadline: '2026-09-08 23:59:59'
+          comment: 'TVCG journal track'
+        - abstract_deadline: '2026-11-02 23:59:59'
+          deadline: '2026-11-09 23:59:59'
+          comment: 'Conference track'
+      timezone: AoE
+      date: April 19-22, 2027
+      place: Busan, South Korea
