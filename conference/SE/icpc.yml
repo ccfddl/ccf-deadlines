@@ -43,3 +43,11 @@
       timezone: AoE
       date: April 12-13, 2026
       place: Rio de Janeiro, Brazil
+    - year: 2027
+      id: icpc27
+      link: https://conf.researchr.org/home/icpc-2027
+      timeline:
+        - deadline: '2026-11-05 23:59:59'
+      timezone: AoE
+      date: April 25-26, 2027
+      place: Dublin, Ireland

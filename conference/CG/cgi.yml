@@ -34,3 +34,14 @@
       timezone: UTC
       date: July 06-10, 2026
       place: London, UK
+    - year: 2027
+      id: cgi27
+      link: https://cgs-network.org/cgi27/
+      timeline:
+        - deadline: '2027-02-28 23:59:59'
+          comment: 'First Track: Call for papers with final publication in The Visual Computer Journal'
+        - deadline: '2027-04-20 23:59:59'
+          comment: 'Second Track: Call for papers with final publication in LNCS Book published by Springer'
+      timezone: UTC
+      date: July 5-9, 2027
+      place: Cairns, Australia

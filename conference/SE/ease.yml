@@ -27,3 +27,13 @@
       timezone: AoE
       date: June 9 - 12, 2026
       place: Glasgow, United Kingdom
+    - year: 2027
+      id: ease27
+      link: https://conf.researchr.org/home/ease-2027
+      timeline:
+        - abstract_deadline: '2027-01-15 23:59:59'
+          deadline: '2027-01-22 23:59:59'
+          comment: 'Research Papers'
+      timezone: AoE
+      date: June 15 - 18, 2027
+      place: Hanoi, Vietnam

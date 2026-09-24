@@ -25,3 +25,12 @@
       timezone: UTC+0
       date: August 30 - September 4, 2026
       place: Vienna, Austria
+    - year: 2027
+      id: icdar2027
+      link: https://icdar2027.org/
+      timeline:
+        - abstract_deadline: '2027-01-31 23:59:59'
+          deadline: '2027-02-20 23:59:59'
+      timezone: AoE
+      date: August 18 - 22, 2027
+      place: Kuala Lumpur, Malaysia

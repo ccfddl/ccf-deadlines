@@ -24,3 +24,11 @@
       timezone: UTC+10
       date: May 18-22, 2026
       place: Rome, Italy
+    - year: 2027
+      id: noms27
+      link: https://noms2027.ieee-noms.org/
+      timeline:
+        - deadline: '2026-11-09 23:59:59'
+      timezone: AoE
+      date: May 10-14, 2027
+      place: Montreal, Canada

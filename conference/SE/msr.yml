@@ -34,3 +34,12 @@
       timezone: AoE
       date: April 13-14, 2026
       place: Rio de Janeiro, Brazil
+    - year: 2027
+      id: msr27
+      link: https://2027.msrconf.org/
+      timeline:
+        - abstract_deadline: '2026-10-20 23:59:59'
+          deadline: '2026-10-23 23:59:59'
+      timezone: AoE
+      date: April 26-27, 2027
+      place: Dublin, Ireland

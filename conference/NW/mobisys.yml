@@ -25,3 +25,12 @@
       timezone: AoE
       date: June 21-25, 2026
       place: Cambridge, UK
+    - year: 2027
+      id: mobisys27
+      link: https://www.sigmobile.org/mobisys/2027/
+      timeline:
+        - abstract_deadline: '2026-11-27 23:59:59'
+          deadline: '2026-12-04 23:59:59'
+      timezone: AoE
+      date: June 21-25, 2027
+      place: Ho Chi Minh City, Vietnam

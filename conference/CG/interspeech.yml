@@ -48,3 +48,11 @@
       timezone: UTC+0
       date: September 27 - October 1, 2026
       place: Sydney, Australia
+    - year: 2027
+      id: interspeech27
+      link: https://interspeech2027.org/
+      timeline:
+        - deadline: '2027-02-09 23:59:59'
+      timezone: UTC+0
+      date: August 29 - September 2, 2027
+      place: São Paulo, Brazil

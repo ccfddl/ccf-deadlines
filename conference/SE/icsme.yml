@@ -53,3 +53,12 @@
       timezone: AoE
       date: September 14-18, 2026
       place: Benevento, Italy
+    - year: 2027
+      id: icsme27
+      link: https://conf.researchr.org/home/icsme-2027
+      timeline:
+        - deadline: '2027-03-05 23:59:59'
+          comment: 'Research Papers Track'
+      timezone: AoE
+      date: September 7-11, 2027
+      place: Toronto, Canada

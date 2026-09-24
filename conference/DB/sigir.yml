@@ -61,3 +61,12 @@
       timezone: AoE
       date: July 20-24, 2026
       place: Melbourne, Australia
+    - year: 2027
+      id: sigir27
+      link: https://sigir2027.org/
+      timeline:
+        - abstract_deadline: '2027-01-14 23:59:59'
+          deadline: '2027-01-21 23:59:59'
+      timezone: AoE
+      date: July 18-24, 2027
+      place: San Jose, California, USA

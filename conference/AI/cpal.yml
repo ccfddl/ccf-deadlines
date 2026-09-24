@@ -23,3 +23,12 @@
       timezone: AoE
       date: March 23-27, 2026
       place: Tübingen, Germany
+    - year: 2027
+      id: cpal27
+      link: https://cpal.cc/
+      timeline:
+        - abstract_deadline: '2026-11-23 23:59:59'
+          deadline: '2026-12-05 23:59:59'
+      timezone: AoE
+      date: March 23-26, 2027
+      place: Tokyo, Japan
