@@ -1,11 +1,11 @@
 - title: EUSIPCO
   description: European Signal Processing Conference
-  sub: SE
+  sub: CG
   rank:
     ccf: N
     core: N
     thcpl: N
-  dblp: eusipcolyon
+  dblp: eusipco
   confs:
     - year: 2024
       id: eusipco2024
