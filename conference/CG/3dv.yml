@@ -35,8 +35,9 @@
       id: 3dv2027
       link: https://3dvconf.github.io/2027/
       timeline:
-        - deadline: '2026-08-28 11:00:00'
-          comment: 'Supplementary material due Sep 2, 2026. All deadlines are 11:00 am PDT.'
-      timezone: UTC-7
+        - abstract_deadline: '2026-08-28 23:59:59'
+          deadline: '2026-08-28 23:59:59'
+          comment: 'Abstract registration and paper submission are both due Aug 28; supplementary material is due Sep 2.'
+      timezone: AoE
       date: April 6-9, 2027
       place: Thessaloniki, Greece
