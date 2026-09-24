@@ -24,3 +24,11 @@
       timezone: AoE
       date: July 20-23, 2026
       place: Lisbon, Portugal
+    - year: 2027
+      id: lics27
+      link: https://lics.siglog.org/lics27/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 21-24, 2027
+      place: Montréal, Canada
