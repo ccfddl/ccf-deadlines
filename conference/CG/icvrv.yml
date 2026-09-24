@@ -16,3 +16,12 @@
       timezone: AoE
       date: December 19-21, 2025
       place: Bogota, Colombia
+    - year: 2026
+      id: icvrv26
+      link: https://icvrv2026.aconf.org/
+      timeline:
+        - abstract_deadline: '2026-08-15 23:59:59'
+          deadline: '2026-08-22 23:59:59'
+      timezone: AoE
+      date: December 18-20, 2026
+      place: Valparaíso, Chile
