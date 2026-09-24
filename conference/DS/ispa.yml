@@ -15,3 +15,11 @@
       timezone: AoE
       date: September 30-October 3, 2021
       place: New York, USA
+    - year: 2026
+      id: ispa26
+      link: https://ieee-ai-for-science.org/2026/ispa/
+      timeline:
+        - deadline: '2026-09-30 23:59:59'
+      timezone: AoE
+      date: December 27-30, 2026
+      place: Kuala Lumpur, Malaysia
