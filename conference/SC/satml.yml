@@ -43,7 +43,8 @@
       id: satml27
       link: https://satml.org/
       timeline:
-        - deadline: '2026-09-29 23:59:59'
+        - abstract_deadline: '2026-09-22 23:59:59'
+          deadline: '2026-09-29 23:59:59'
       timezone: UTC-12
       date: May 2027 (exact dates TBD)
       place: Reykjavik, Iceland
