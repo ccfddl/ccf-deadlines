@@ -46,8 +46,8 @@
       timeline:
         - deadline: '2026-02-02 23:59:59'
           comment: Paper submission deadline (cycle 1)
-        - deadline: '2025-05-11 23:59:59'
+        - deadline: '2026-05-11 23:59:59'
           comment: Paper submission deadline (cycle 2)
       timezone: AoE
-      date: August 24-28, 2026
+      date: August 26-28, 2026
       place: Ottawa, Ontario, Canada
