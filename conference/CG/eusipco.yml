@@ -32,3 +32,11 @@
       timezone: AoE
       date: August 31 - September 4, 2026
       place: Bruges, Belgium
+    - year: 2027
+      id: eusipco27
+      link: https://eusipco2027.de/
+      timeline:
+        - deadline: '2027-02-06 23:59:59'
+      timezone: AoE
+      date: August 30 - September 3, 2027
+      place: Darmstadt, Germany

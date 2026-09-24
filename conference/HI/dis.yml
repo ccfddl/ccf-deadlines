@@ -25,3 +25,12 @@
       timezone: AoE
       date: June 13 - 17, 2026
       place: Singapore
+    - year: 2027
+      id: dis27
+      link: https://dis.acm.org/2027/
+      timeline:
+        - abstract_deadline: '2027-01-11 23:59:59'
+          deadline: '2027-01-18 23:59:59'
+      timezone: AoE
+      date: June 28 - July 2, 2027
+      place: Stockholm, Sweden

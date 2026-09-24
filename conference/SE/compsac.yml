@@ -23,3 +23,11 @@
       timezone: AoE
       date: July 7-10, 2026
       place: Madrid, Spain
+    - year: 2027
+      id: compsac27
+      link: https://ieeecompsac.computer.org/2027/
+      timeline:
+        - deadline: '2027-01-31 23:59:59'
+      timezone: AoE
+      date: July 13-16, 2027
+      place: Tokyo, Japan

@@ -16,3 +16,12 @@
       timezone: AoE
       date: July 28-31, 2025
       place: DHBW Stuttgart, Stuttgart, Germany
+    - year: 2027
+      id: cade27
+      link: https://fscd-cade.science.ru.nl/
+      timeline:
+        - abstract_deadline: '2027-02-15 23:59:59'
+          deadline: '2027-02-22 23:59:59'
+      timezone: AoE
+      date: August 22-25, 2027
+      place: Nijmegen, Netherlands
