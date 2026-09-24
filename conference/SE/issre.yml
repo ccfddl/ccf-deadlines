@@ -45,3 +45,11 @@
       timezone: AoE
       date: October 20-23, 2026
       place: Limassol, Cyprus
+    - year: 2027
+      id: issre27
+      link: https://conf.researchr.org/home/issre-2027
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: October 19-22, 2027
+      place: Taipa, Macao SAR, China
