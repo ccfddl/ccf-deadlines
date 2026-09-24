@@ -29,3 +29,25 @@
       timezone: AoE
       date: June 30 - July 4, 2025
       place: Bergen, Norway
+    - year: 2026
+      id: ecoop26
+      link: https://2026.ecoop.org/
+      timeline:
+        - deadline: '2025-11-27 23:59:59'
+          comment: Submission R1
+        - deadline: '2026-02-12 23:59:59'
+          comment: Submission R2
+      timezone: AoE
+      date: June 29 - July 3, 2026
+      place: Brussels, Belgium
+    - year: 2027
+      id: ecoop27
+      link: https://2027.ecoop.org/
+      timeline:
+        - deadline: '2026-11-19 23:59:59'
+          comment: Submission R1
+        - deadline: '2027-02-11 23:59:59'
+          comment: Submission R2
+      timezone: AoE
+      date: June 28 - July 2, 2027
+      place: Turin, Italy
