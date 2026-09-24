@@ -25,3 +25,11 @@
       timezone: AoE
       date: July 6-9, 2026
       place: Istanbul, Türkiye
+    - year: 2027
+      id: spm27
+      link: https://igs2027singapore.github.io/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 21-25, 2027
+      place: Singapore
