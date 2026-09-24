@@ -8,7 +8,7 @@
   dblp: ica3pp
   confs:
     - year: 2022
-      id: ica3pp
+      id: ica3pp22
       link: https://ica3pp2022.compute.dtu.dk/
       timeline:
         - deadline: '2021-05-30 17:00:00'
@@ -19,7 +19,7 @@
       date: October 10-12, 2022
       place: Copenhagen, Denmark
     - year: 2023
-      id: ica3pp
+      id: ica3pp23
       link: http://tjutanklab.com/ica3pp2023/
       timeline:
         - deadline: '2023-05-30 23:59:00'
@@ -28,7 +28,7 @@
       date: October 20-22, 2022
       place: Tianjin, China
     - year: 2025
-      id: ica3pp
+      id: ica3pp25
       link: https://ieee-cybermatics.org/2025/ica3pp/
       timeline:
         - deadline: '2025-06-30 23:59:00'
@@ -37,7 +37,7 @@
       date: October 30- November 2, 2025
       place: Zhengzhou, Henan, China
     - year: 2026
-      id: ica3pp
+      id: ica3pp26
       link: https://hpcn.exeter.ac.uk/ica3pp2026/
       timeline:
         - deadline: '2026-07-25 23:59:00'

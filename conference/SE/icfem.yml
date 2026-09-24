@@ -7,15 +7,6 @@
     thcpl: N
   dblp: icfem
   confs:
-    - year: 2024
-      id: icfem24
-      link: https://icfem2024.info/
-      timeline:
-        - deadline: '2024-06-24 23:59:59'
-          comment: Paper Submission
-      timezone: AoE
-      date: December 02 - December 06, 2024
-      place: Hiroshima, Japan
     - year: 2023
       id: icfem23
       link: https://formal-analysis.com/icfem/2023/
@@ -27,6 +18,15 @@
       timezone: AoE
       date: November 21 - November 24, 2023
       place: Brisbane, Australia
+    - year: 2024
+      id: icfem24
+      link: https://icfem2024.info/
+      timeline:
+        - deadline: '2024-06-24 23:59:59'
+          comment: Paper Submission
+      timezone: AoE
+      date: December 02 - December 06, 2024
+      place: Hiroshima, Japan
     - year: 2025
       id: icfem25
       link: https://icfem2025.github.io/

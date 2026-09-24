@@ -8,7 +8,7 @@
   dblp: fse
   confs:
     - year: 2023
-      id: fse23
+      id: iacr-fse23
       link: https://fse.iacr.org/2023/
       timeline:
         - deadline: '2022-03-01 11:59:59'
@@ -23,7 +23,7 @@
       date: March 20-24, 2023
       place: Beijing, China
     - year: 2024
-      id: fse24
+      id: iacr-fse24
       link: https://fse.iacr.org/2024/
       timeline:
         - deadline: '2023-03-01 11:59:59'
@@ -38,7 +38,7 @@
       date: March 25-29, 2024
       place: Leuven, Belgium
     - year: 2025
-      id: fse25
+      id: iacr-fse25
       link: https://fse.iacr.org/2025/
       timeline:
         - deadline: '2024-03-01 23:59:59'
@@ -53,7 +53,7 @@
       date: March 17-21, 2025
       place: Rome, Italy
     - year: 2026
-      id: fse26
+      id: iacr-fse26
       link: https://fse.iacr.org/2026/
       timeline:
         - deadline: '2025-03-01 23:59:59'
