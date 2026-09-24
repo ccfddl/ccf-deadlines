@@ -16,3 +16,12 @@
       timezone: AoE
       date: October 29 - November 2, 2025
       place: Hangzhou, Zhejiang, P.R. China
+    - year: 2026
+      id: spm26
+      link: https://spmconf2026.github.io/
+      timeline:
+        - abstract_deadline: '2026-02-08 23:59:59'
+          deadline: '2026-02-15 23:59:59'
+      timezone: AoE
+      date: July 6-9, 2026
+      place: Istanbul, Türkiye
