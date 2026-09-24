@@ -7,17 +7,22 @@
     thcpl: B
   dblp: cgo
   confs:
-    - year: 2027
-      id: cgo2027
-      link: https://conf.researchr.org/home/cgo-2027
+    - year: 2024
+      id: cgo2024
+      link: https://conf.researchr.org/home/cgo-2024
       timeline:
-        - deadline: '2026-06-11 23:59:59'
-          comment: 'First Submission'
-        - deadline: '2026-09-10 23:59:59'
-          comment: 'Second Submission'
+        - deadline: '2023-05-19 23:59:59'
       timezone: AoE
-      date: March 20-24, 2027
-      place: Salt Lake City, Utah, USA
+      date: March 2-6, 2024
+      place: Edinburgh, United Kingdom
+    - year: 2025
+      id: cgo2025
+      link: https://conf.researchr.org/home/cgo-2025
+      timeline:
+        - deadline: '2024-05-30 23:59:59'
+      timezone: AoE
+      date: March 1-5, 2025
+      place: Las Vegas, Nevada, United States
     - year: 2026
       id: cgo2026
       link: https://conf.researchr.org/home/cgo-2026
@@ -29,19 +34,14 @@
       timezone: AoE
       date: January 31 - 4 February, 2026
       place: Sydney, Australia
-    - year: 2025
-      id: cgo2025
-      link: https://conf.researchr.org/home/cgo-2025
+    - year: 2027
+      id: cgo2027
+      link: https://conf.researchr.org/home/cgo-2027
       timeline:
-        - deadline: '2024-05-30 23:59:59'
+        - deadline: '2026-06-11 23:59:59'
+          comment: 'First Submission'
+        - deadline: '2026-09-10 23:59:59'
+          comment: 'Second Submission'
       timezone: AoE
-      date: March 1-5, 2025
-      place: Las Vegas, Nevada, United States
-    - year: 2024
-      id: cgo2024
-      link: https://conf.researchr.org/home/cgo-2024
-      timeline:
-        - deadline: '2023-05-19 23:59:59'
-      timezone: AoE
-      date: March 2-6, 2024
-      place: Edinburgh, United Kingdom
+      date: March 20-24, 2027
+      place: Salt Lake City, Utah, USA
