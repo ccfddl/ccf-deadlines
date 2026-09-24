@@ -41,3 +41,11 @@
       timezone: AoE
       date: July 13-17, 2026
       place: Sydney, Australia
+    - year: 2027
+      id: rss27
+      link: https://roboticsconference.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: July 6-11, 2027
+      place: Athens, Greece
