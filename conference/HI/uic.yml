@@ -16,3 +16,11 @@
       timezone: UTC-4
       date: Aug 18 - 22, 2025
       place: Calgary, Alberta, Canada
+    - year: 2026
+      id: uic26
+      link: https://swc-ieee-2026.github.io/uic/
+      timeline:
+        - deadline: '2026-05-31 23:59:59'
+      timezone: UTC+2
+      date: Sept 7 - 11, 2026
+      place: Rende, Italy
