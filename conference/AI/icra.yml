@@ -51,7 +51,8 @@
       id: icra27
       link: https://2027.ieee-icra.org/
       timeline:
-        - deadline: '2026-09-15 23:59:59'
-      timezone: UTC-7
+        - deadline: '2026-09-16 23:59:59'
+          comment: Extended submission deadline
+      timezone: UTC-8
       date: May 24-28, 2027
       place: Seoul, Republic of Korea
