@@ -25,3 +25,12 @@
       timezone: UTC-12
       date: June 27 - July 2, 2026
       place: Dublin, Ireland
+    - year: 2027
+      id: icaps27
+      link: https://icaps27.icaps-conference.org/
+      timeline:
+        - abstract_deadline: '2026-12-07 23:59:59'
+          deadline: '2026-12-14 23:59:59'
+      timezone: UTC-12
+      date: June 27 - July 2, 2027
+      place: Columbia, SC, USA
