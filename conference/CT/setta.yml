@@ -28,3 +28,14 @@
       timezone: AoE
       date: Dec, 2025
       place: Oxford, UK
+    - year: 2026
+      id: setta26
+      link: https://www.setta2026.sg/
+      timeline:
+        - deadline: '2026-05-24 23:59:59'
+          comment: Round 1 (extended)
+        - deadline: '2026-08-24 23:59:59'
+          comment: Round 2 (extended)
+      timezone: AoE
+      date: December 2-4, 2026
+      place: Singapore
