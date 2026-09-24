@@ -15,3 +15,12 @@
       timezone: AoE
       date: November 10-12, 2025
       place: Seoul, South Korea
+    - year: 2026
+      id: dfrws-apac26
+      link: https://dfrws.org/conferences/dfrws-apac-2026/
+      timeline:
+        - abstract_deadline: '2026-05-29 23:59:59'
+          deadline: '2026-06-05 23:59:59'
+      timezone: AoE
+      date: October 19-22, 2026
+      place: Singapore
