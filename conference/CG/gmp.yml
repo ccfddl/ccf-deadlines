@@ -36,3 +36,12 @@
       timezone: UTC
       date: May 27-29, 2026
       place: Pilsen, Czech Republic
+    - year: 2027
+      id: gmp27
+      link: https://gmp-conference-2027.github.io/gmp2027/
+      timeline:
+        - abstract_deadline: '2026-12-14 23:59:59'
+          deadline: '2026-12-21 23:59:59'
+      timezone: UTC
+      date: June 21-25, 2027
+      place: Singapore
