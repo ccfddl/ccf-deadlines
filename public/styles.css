@@ -795,6 +795,15 @@ a {
   font-family: inherit;
 }
 
+.subscription-dialog .thaw-dialog-content {
+  overflow-y: auto;
+}
+
+.subscription-dialog input,
+.subscription-dialog button {
+  font-family: inherit;
+}
+
 body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   background: rgba(0, 0, 0, 0.32) !important;
   opacity: 1 !important;
@@ -980,9 +989,7 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 }
 
 .conference-detail-timeline .line_time .can_line {
-  height: 3px;
-  border-radius: 999px;
-  background: #88b4d8;
+  display: none;
 }
 
 .conference-detail-timeline .line_time .reference,
