@@ -42,3 +42,11 @@
       timezone: AoE
       date: Oct 12-16, 2026
       place: Karlsruhe, Germany
+    - year: 2027
+      id: imc27
+      link: https://www.sigcomm.org/news/november-2025-sigcomm-newsletter
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Atlanta, GA, USA
