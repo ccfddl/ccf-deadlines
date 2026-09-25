@@ -12,3 +12,9 @@
       str: 21.4%(943/4407 24')
       rate: 0.2139778
       source: https://csconfstats.xoveexu.com/
+    - year: 2025
+      submitted: 8360
+      accepted: 1699
+      str: 20.3%(1699/8360 25')
+      rate: 0.203229665071770
+      source: https://aclanthology.org/2025.acl-long.0.pdf
