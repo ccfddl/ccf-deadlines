@@ -15,7 +15,7 @@
           comment: Abstract submission
         - deadline: '2023-12-15 23:59:59'
           comment: Full paper submission
-      timezone: UTC-5
+      timezone: AoE
       date: May 5-7, 2024
       place: Indianapolis, Indiana
     - year: 2026
@@ -24,6 +24,6 @@
       timeline:
         - abstract_deadline: '2025-12-08 17:00:00'
           deadline: '2025-12-15 17:00:00'
-      timezone: AoE
+      timezone: UTC-5
       date: April 26-28, 2026
       place: Seoul, South Korea
