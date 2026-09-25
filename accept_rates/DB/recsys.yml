@@ -1,8 +1,117 @@
+# Long papers only, as reported by the official RecSys historical statistics.
 - title: RecSys
   accept_rates:
+    - year: 2007
+      submitted: 35
+      accepted: 16
+      str: 45.7%(16/35 07')
+      rate: 0.457142857142857
+      source: https://recsys.acm.org/statistics/
+    - year: 2008
+      submitted: 112
+      accepted: 35
+      str: 31.2%(35/112 08')
+      rate: 0.312500000000000
+      source: https://recsys.acm.org/statistics/
+    - year: 2009
+      submitted: 131
+      accepted: 25
+      str: 19.1%(25/131 09')
+      rate: 0.190839694656489
+      source: https://recsys.acm.org/statistics/
+    - year: 2010
+      submitted: 129
+      accepted: 25
+      str: 19.4%(25/129 10')
+      rate: 0.193798449612403
+      source: https://recsys.acm.org/statistics/
+    - year: 2011
+      submitted: 110
+      accepted: 22
+      str: 20.0%(22/110 11')
+      rate: 0.200000000000000
+      source: https://recsys.acm.org/statistics/
+    - year: 2012
+      submitted: 119
+      accepted: 24
+      str: 20.2%(24/119 12')
+      rate: 0.201680672268908
+      source: https://recsys.acm.org/statistics/
+    - year: 2013
+      submitted: 136
+      accepted: 32
+      str: 23.5%(32/136 13')
+      rate: 0.235294117647059
+      source: https://recsys.acm.org/statistics/
+    - year: 2014
+      submitted: 152
+      accepted: 35
+      str: 23.0%(35/152 14')
+      rate: 0.230263157894737
+      source: https://recsys.acm.org/statistics/
+    - year: 2015
+      submitted: 131
+      accepted: 28
+      str: 21.4%(28/131 15')
+      rate: 0.213740458015267
+      source: https://recsys.acm.org/statistics/
+    - year: 2016
+      submitted: 159
+      accepted: 29
+      str: 18.2%(29/159 16')
+      rate: 0.182389937106918
+      source: https://recsys.acm.org/statistics/
+    - year: 2017
+      submitted: 125
+      accepted: 26
+      str: 20.8%(26/125 17')
+      rate: 0.208000000000000
+      source: https://recsys.acm.org/statistics/
+    - year: 2018
+      submitted: 181
+      accepted: 32
+      str: 17.7%(32/181 18')
+      rate: 0.176795580110497
+      source: https://recsys.acm.org/statistics/
+    - year: 2019
+      submitted: 189
+      accepted: 36
+      str: 19.0%(36/189 19')
+      rate: 0.190476190476190
+      source: https://recsys.acm.org/statistics/
     - year: 2020
       submitted: 218
       accepted: 39
       str: 17.9%(39/218 20')
       rate: 0.178899082568807
-      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+      source: https://recsys.acm.org/statistics/
+    - year: 2021
+      submitted: 267
+      accepted: 49
+      str: 18.4%(49/267 21')
+      rate: 0.183520599250936
+      source: https://recsys.acm.org/statistics/
+    - year: 2022
+      submitted: 231
+      accepted: 39
+      str: 16.9%(39/231 22')
+      rate: 0.168831168831169
+      source: https://recsys.acm.org/statistics/
+    - year: 2023
+      submitted: 269
+      accepted: 47
+      str: 17.5%(47/269 23')
+      rate: 0.174721189591078
+      source: https://recsys.acm.org/statistics/
+    - year: 2024
+      submitted: 266
+      accepted: 58
+      str: 21.8%(58/266 24')
+      rate: 0.218045112781955
+      source: https://recsys.acm.org/statistics/
+    - year: 2025
+      submitted: 261
+      accepted: 49
+      str: 18.8%(49/261 25')
+      rate: 0.187739463601533
+      source: https://recsys.acm.org/statistics/
