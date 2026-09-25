@@ -23,3 +23,11 @@
       timezone: AoE
       date: April 8, 2026
       place: Hong Kong, China
+    - year: 2027
+      id: nossdav27
+      link: https://nossdav.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Ghent, Belgium
