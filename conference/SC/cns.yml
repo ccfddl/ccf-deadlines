@@ -1,0 +1,41 @@
+- title: CNS
+  description: IEEE Conference on Communications and Network Security
+  sub: SC
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: cns
+  confs:
+    - year: 2023
+      id: cns23
+      link: https://cns2023.ieee-cns.org/
+      timeline:
+        - deadline: '2023-06-18 23:59:59'
+      timezone: AoE
+      date: October 2-5, 2023
+      place: Orlando, FL, USA
+    - year: 2024
+      id: cns24
+      link: https://cns2024.ieee-cns.org/
+      timeline:
+        - deadline: '2024-06-24 23:59:59'
+      timezone: AoE
+      date: September 30-October 3, 2024
+      place: Taipei, Taiwan
+    - year: 2025
+      id: cns25
+      link: https://cns2025.ieee-cns.org/
+      timeline:
+        - deadline: '2025-05-30 23:59:59'
+      timezone: AoE
+      date: September 8-11, 2025
+      place: Avignon, France
+    - year: 2026
+      id: cns26
+      link: https://cns2026.ieee-cns.org/
+      timeline:
+        - deadline: '2026-05-18 23:59:59'
+      timezone: AoE
+      date: September 14-17, 2026
+      place: Newark, Delaware, USA
