@@ -38,7 +38,7 @@
         - deadline: '2022-10-15 23:59:00'
           comment: third round
       timezone: UTC-8
-      date: June 18-23, 2022
+      date: June 18-23, 2023
       place: Seattle, WA, USA
     - year: 2024
       id: sigmod24
