@@ -1,11 +1,25 @@
+# Main conference track only; Datasets and Benchmarks and journal showcase papers are excluded.
 - title: NeurIPS
   accept_rates:
+    - year: 2021
+      submitted: 9122
+      accepted: 2334
+      str: 25.6%(2334/9122 21')
+      rate: 0.255864941898706
+      source: https://neurips.cc/media/Press/NeurIPS_2021-Fact_Sheet.pdf
+    # Accepted count: https://blog.neurips.cc/2022/11/22/getting-ready-for-neurips-3-2022-conference-highlights/
+    - year: 2022
+      submitted: 10411
+      accepted: 2672
+      str: 25.7%(2672/10411 22')
+      rate: 0.256651618480453
+      source: https://blog.neurips.cc/2023/12/09/reflections-on-the-neurips-2023-ethics-review-process/
     - year: 2023
       submitted: 12343
       accepted: 3218
       str: 26.1%(3218/12343 23')
       rate: 0.260714575062789
-      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+      source: https://media.neurips.cc/Conferences/NeurIPS2023/NeurIPS2023-Fact_Sheet.pdf
     - year: 2024
       submitted: 15671
       accepted: 4037
