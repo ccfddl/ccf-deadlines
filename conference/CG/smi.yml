@@ -25,3 +25,11 @@
       timezone: UTC
       date: July 6-9, 2026
       place: Istanbul, Turkey
+    - year: 2027
+      id: smi27
+      link: https://smiconf.github.io/2027/
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC
+      date: June 21-25, 2027
+      place: Singapore
