@@ -33,9 +33,9 @@
       id: fpt2026
       link: https://fpt2026.uark.edu
       timeline:
-        - deadline: '2026-06-05 23:59:59'
+        - deadline: '2026-06-19 23:59:59'
           comment: Title and Abstract Due (Conference Track)
-        - deadline: '2026-06-12 23:59:59'
+        - deadline: '2026-06-19 23:59:59'
           comment: Submission Due (Conference Track)
       timezone: AoE
       date: December 07 - December 10, 2026
