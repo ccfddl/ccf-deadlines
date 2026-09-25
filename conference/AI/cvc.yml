@@ -9,7 +9,10 @@
       id: cvc27
       link: https://saiconference.com/CVC
       timeline:
-        - deadline: '2026-10-01 23:59:00'
+        - deadline: '2026-09-01 23:59:59'
+          comment: 'Round 1'
+        - deadline: '2026-10-01 23:59:59'
+          comment: 'Round 2'
       timezone: AoE
       date: April 15-16, 2027
       place: Amsterdam, Netherlands
