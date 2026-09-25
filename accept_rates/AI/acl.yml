@@ -1,20 +1,39 @@
+# Main conference, long and short papers; excludes Findings and separate journal/industry/demo tracks.
 - title: ACL
   accept_rates:
+    - year: 2021
+      submitted: 3350
+      accepted: 710
+      str: 21.2%(710/3350 21')
+      rate: 0.211940298507463
+      source: https://aclanthology.org/2021.acl-long.0.pdf
+    - year: 2022
+      submitted: 3378
+      accepted: 701
+      str: 20.8%(701/3378 22')
+      rate: 0.207519242155121
+      source: https://aclanthology.org/2022.acl-long.0.pdf
     - year: 2023
-      submitted: 3872
-      accepted: 910
-      str: 23.5%(910/3872 23')
-      rate: 0.235020661157025
-      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+      submitted: 4864
+      accepted: 1074
+      str: 22.1%(1074/4864 23')
+      rate: 0.220805921052632
+      source: https://aclanthology.org/2023.acl-long.0.pdf
     - year: 2024
       submitted: 4407
-      accepted: 943
-      str: 21.4%(943/4407 24')
-      rate: 0.2139778
-      source: https://csconfstats.xoveexu.com/
+      accepted: 940
+      str: 21.3%(940/4407 24')
+      rate: 0.213297027456319
+      source: https://aclanthology.org/2024.acl-long.0.pdf
     - year: 2025
       submitted: 8360
       accepted: 1699
       str: 20.3%(1699/8360 25')
       rate: 0.203229665071770
       source: https://aclanthology.org/2025.acl-long.0.pdf
+    - year: 2026
+      submitted: 12148
+      accepted: 2296
+      str: 18.9%(2296/12148 26')
+      rate: 0.189002304906157
+      source: https://aclanthology.org/2026.acl-long.0.pdf
