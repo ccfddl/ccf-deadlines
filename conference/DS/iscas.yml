@@ -27,8 +27,7 @@
       id: iscas27
       link: https://2027.ieee-iscas.org/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Regular paper submission deadline: October 13, 2026; exact cutoff time and timezone not specified on the official conference page'
-      timezone: AoE
+        - deadline: '2026-10-13 23:59:59'
+      timezone: UTC-5
       date: June 6-9, 2027
       place: Bordeaux, France
