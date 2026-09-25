@@ -47,3 +47,11 @@
       timezone: UTC-12
       date: July 6 - July 10, 2026
       place: Bangkok, Thailand
+    - year: 2027
+      id: icme27
+      link: https://ieee-cas.org/event/conference/2027-ieee-international-conference-multimedia-expo-icme
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: July 13-17, 2027
+      place: Xiamen, China
