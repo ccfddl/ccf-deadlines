@@ -20,7 +20,8 @@
       id: trustcom25
       link: https://ieee-aiplus-2025.org/
       timeline:
-        - deadline: '2025-08-01 23:59:59'
+        - deadline: '2025-08-25 23:59:59'
+          comment: Firm submission deadline
       timezone: UTC+8
       date: November 14 - 17, 2025
       place: Guiyang, China
