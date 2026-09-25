@@ -23,6 +23,14 @@
       timezone: AoE
       date: May 24-26, 2023
       place: Rio de Janeiro, Brazil
+    - year: 2024
+      id: cscwd24
+      link: http://2024.cscwd.org
+      timeline:
+        - deadline: '2023-11-20 23:59:59'
+      timezone: AoE
+      date: May 8-10, 2024
+      place: Tianjin, China
     - year: 2025
       id: cscwd25
       link: http://2025.cscwd.org
