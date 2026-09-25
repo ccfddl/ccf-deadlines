@@ -34,13 +34,13 @@ pub fn Header() -> impl IntoView {
 
     view! {
         <section>
-            <div style="display: inline-block; align-items: center; font-size: 16px;">
+            <div class="header-main">
                 <a href="/" class="title">
-                    "CCFDDL"
-                    <sup>"®"</sup>
-                    "\u{00a0}Open Deadlines"
+                    <span class="title-normal">"CCFDDL"</span>
+                    <span class="title-normal">"\u{00a0}Open "</span>
+                    <span class="title-accent">"Deadlines"</span>
                 </a>
-                <div style="padding-left: 5px; display: inline-block;">
+                <div class="header-github">
                     <GitButton />
                 </div>
                 {move || {
@@ -48,7 +48,7 @@ pub fn Header() -> impl IntoView {
                         .get()
                         .then(|| {
                             view! {
-                                <span style="display: inline-block; color:#fd3c95;font-weight: bold; font-size: 16px;">
+                                <span class="header-latest">
                                     "Latest: " {show_str.get()} " !!!"
                                 </span>
                             }
@@ -63,19 +63,6 @@ pub fn Header() -> impl IntoView {
                     target="_blank"
                 >
                     "send a pull request"
-                </a> "."
-            </div>
-            <div class="el-row subtitle">
-                "Preview tabular portal:\u{00a0}"
-                <a style="color: #666666" href="https://ccfddl.cn/" target="_blank">
-                    "https://ccfddl.cn/"
-                </a> ", or scan to try\u{00a0}"
-                <a
-                    style="color: #666666"
-                    href="https://github.com/ccfddl/ccf-deadlines/blob/main/.readme_assets/applet_qrcode.jpg"
-                    target="_blank"
-                >
-                    "wechat applet"
                 </a> "."
             </div>
             <div class="el-row subtitle">
