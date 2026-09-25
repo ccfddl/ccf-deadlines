@@ -1,0 +1,15 @@
+- title: WHC
+  description: IEEE World Haptics Conference
+  sub: HI
+  rank:
+    ccf: C
+  dblp: haptics
+  confs:
+    - year: 2027
+      id: whc27
+      link: https://2027.worldhaptics.org/
+      timeline:
+        - deadline: '2027-01-29 23:59:59'
+      timezone: AoE
+      date: July 13-16, 2027
+      place: Boston, Massachusetts, USA

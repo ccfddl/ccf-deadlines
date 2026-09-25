@@ -1,0 +1,15 @@
+- title: CCC
+  description: Computational Complexity Conference
+  sub: CT
+  rank:
+    ccf: B
+  dblp: coco
+  confs:
+    - year: 2027
+      id: ccc27
+      link: https://computationalcomplexity.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: July 19-22, 2027
+      place: Seattle, Washington, USA

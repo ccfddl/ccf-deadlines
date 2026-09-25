@@ -1,0 +1,16 @@
+- title: MobileHCI
+  description: ACM International Conference on Mobile Human-Computer Interaction
+  sub: HI
+  rank:
+    ccf: B
+  dblp: mhci
+  confs:
+    - year: 2027
+      id: mobilehci27
+      link: https://mobilehci.acm.org/2027/
+      timeline:
+        - abstract_deadline: '2027-02-10 23:59:59'
+          deadline: '2027-02-17 23:59:59'
+      timezone: AoE
+      date: September 20-23, 2027
+      place: Limassol, Cyprus

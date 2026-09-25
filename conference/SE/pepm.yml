@@ -1,0 +1,15 @@
+- title: PEPM
+  description: ACM SIGPLAN Workshop on Partial Evaluation and Program Manipulation
+  sub: SE
+  rank:
+    ccf: C
+  dblp: pepm
+  confs:
+    - year: 2027
+      id: pepm27
+      link: https://popl27.sigplan.org/home/pepm-2027
+      timeline:
+        - deadline: '2026-10-23 23:59:59'
+      timezone: AoE
+      date: January 12, 2027
+      place: Mexico City, Mexico

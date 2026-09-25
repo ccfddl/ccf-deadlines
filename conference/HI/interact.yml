@@ -1,0 +1,15 @@
+- title: INTERACT
+  description: IFIP TC13 International Conference on Human-Computer Interaction
+  sub: HI
+  rank:
+    ccf: C
+  dblp: interact
+  confs:
+    - year: 2027
+      id: interact27
+      link: https://interact2027.org/
+      timeline:
+        - deadline: '2027-02-01 23:59:59'
+      timezone: AoE
+      date: August 23-27, 2027
+      place: Tallinn, Estonia
