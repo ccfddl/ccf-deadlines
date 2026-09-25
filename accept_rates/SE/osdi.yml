@@ -6,3 +6,9 @@
       str: 19.6%(50/255 23')
       rate: 0.196078431372549
       source: https://github.com/emeryberger/csconferences
+    - year: 2026
+      submitted: 669
+      accepted: 134
+      str: 20.0%(134/669 26')
+      rate: 0.200298953662182
+      source: https://www.usenix.org/sites/default/files/osdi26-message.pdf
