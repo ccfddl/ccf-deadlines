@@ -12,3 +12,9 @@
       str: 21.3%(1047/4909 23')
       rate: 0.2132817
       source: https://csconfstats.xoveexu.com/
+    - year: 2025
+      submitted: 8174
+      accepted: 1811
+      str: 22.2%(1811/8174 25')
+      rate: 0.221556153657940
+      source: https://aclanthology.org/2025.emnlp-main.0.pdf
