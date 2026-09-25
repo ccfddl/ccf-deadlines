@@ -80,6 +80,6 @@
           comment: first round
         - deadline: '2026-11-11 17:00:00'
           comment: second round
-      timezone: UTC-7
+      timezone: PT
       date: May 17-21, 2027
       place: Copenhagen, Denmark
