@@ -34,3 +34,13 @@
       timezone: AoE
       date: May 25-29, 2026
       place: Chania, Greec
+    - year: 2027
+      id: ets2027
+      link: https://www.ets2027.co.uk/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: Official CFP lists Dec 8 / Dec 15, 2026; exact time and timezone are not specified
+      timezone: AoE
+      date: May 24-28, 2027
+      place: London, UK
