@@ -1,0 +1,15 @@
+- title: FSCD
+  description: International Conference on Formal Structures for Computation and Deduction
+  sub: CT
+  rank:
+    ccf: C
+  dblp: fscd
+  confs:
+    - year: 2027
+      id: fscd27
+      link: https://fscd-cade.science.ru.nl/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: August 23-26, 2027
+      place: Nijmegen, Netherlands

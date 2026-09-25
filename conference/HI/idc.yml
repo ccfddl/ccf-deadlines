@@ -1,0 +1,15 @@
+- title: IDC
+  description: ACM Interaction Design and Children Conference
+  sub: HI
+  rank:
+    ccf: C
+  dblp: acmidc
+  confs:
+    - year: 2027
+      id: idc27
+      link: https://idc.acm.org/2027/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 21-24, 2027
+      place: Seattle, Washington, USA

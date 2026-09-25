@@ -1,0 +1,16 @@
+- title: ISPD
+  description: International Symposium on Physical Design
+  sub: DS
+  rank:
+    ccf: C
+  dblp: ispd
+  confs:
+    - year: 2027
+      id: ispd27
+      link: https://ispd.cc/ispd2027/
+      timeline:
+        - abstract_deadline: '2026-09-21 23:59:59'
+          deadline: '2026-09-28 23:59:59'
+      timezone: AoE
+      date: March 30 - April 2, 2027
+      place: Taipei, Taiwan

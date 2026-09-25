@@ -1,0 +1,15 @@
+- title: GI
+  description: Graphics Interface
+  sub: HI
+  rank:
+    ccf: C
+  dblp: graphicsinterface
+  confs:
+    - year: 2027
+      id: gi27
+      link: https://conferences.graphicsinterface.org/2027
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 15-18, 2027
+      place: Winnipeg, Canada
