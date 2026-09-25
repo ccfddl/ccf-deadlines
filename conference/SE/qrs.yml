@@ -25,3 +25,13 @@
       timezone: AoE
       date: July 16-20, 2025
       place: Hangzhou, China
+    - year: 2026
+      id: qrs26
+      link: https://qrs26.techconf.org/
+      timeline:
+        - abstract_deadline: '2026-04-08 23:59:59'
+          deadline: '2026-04-22 23:59:59'
+          comment: Regular and Short Papers (extended)
+      timezone: AoE
+      date: July 22-25, 2026
+      place: University of Florence, Florence, Italy
