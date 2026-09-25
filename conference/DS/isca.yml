@@ -62,3 +62,11 @@
       timezone: AoE
       date: June 27-July 1, 2026
       place: Raleigh, USA
+    - year: 2027
+      id: isca27
+      link: https://www.iscaconf.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Atlanta, Georgia, USA
