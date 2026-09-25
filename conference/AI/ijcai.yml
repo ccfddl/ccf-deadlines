@@ -51,3 +51,11 @@
       timezone: UTC-12
       date: August 15-21, 2026
       place: Bremen, Germany
+    - year: 2027
+      id: ijcai27
+      link: https://www.ijcai.org/node/8
+      timeline:
+        - deadline: 'TBD'
+      timezone: UTC-12
+      date: August 7-13 and August 15-17, 2027
+      place: Kyoto, Japan and Hengqin, China

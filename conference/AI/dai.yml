@@ -19,8 +19,7 @@
       id: dai2026
       link: https://www.adai.ai/dai/2026/index.html
       timeline:
-        - abstract_deadline: '2026-07-27 23:59:59'
-          deadline: '2026-08-03 23:59:59'
+        - deadline: '2026-08-03 23:59:59'
           comment: 'Research / Industry Track'
         - deadline: '2026-08-10 23:59:59'
           comment: 'AI Paper Track'

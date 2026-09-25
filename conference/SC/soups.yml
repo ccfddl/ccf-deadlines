@@ -51,3 +51,11 @@
       timezone: AoE
       date: August 23-26, 2026
       place: Hannover, Germany
+    - year: 2027
+      id: soups27
+      link: https://www.usenix.org/conference/soups2027
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: August 8-10, 2027
+      place: Denver, Colorado, USA

@@ -70,3 +70,11 @@
       timezone: AoE
       date: June 22-25, 2026
       place: Seoul, South Korea
+    - year: 2027
+      id: icdcs27
+      link: https://icdcs2027.icdcs.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: July 5-8, 2027
+      place: Melbourne, Australia

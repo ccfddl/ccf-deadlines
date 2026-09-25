@@ -43,3 +43,11 @@
       timezone: UTC-12
       date: August 15-21, 2026
       place: Bremen, Germany
+    - year: 2027
+      id: ecai27
+      link: https://ecai2027.org/
+      timeline:
+        - deadline: '2027-04-14 23:59:59'
+      timezone: AoE
+      date: October 2-7, 2027
+      place: Athens, Greece

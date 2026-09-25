@@ -30,7 +30,8 @@
       link: https://icmi.acm.org/2026/
       timeline:
         - abstract_deadline: '2026-04-13 23:59:59'
-          deadline: '2026-04-20 23:59:59'
-      timezone: UTC+7
+          deadline: '2026-04-24 04:59:59'
+          comment: 'Paper deadline extended to Apr 23, 23:59 AoE; normalized to UTC-7'
+      timezone: UTC-7
       date: Oct 5 - 9, 2026
       place: Napoli, Italy

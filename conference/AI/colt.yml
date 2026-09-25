@@ -39,3 +39,11 @@
       timezone: AoE
       date: June 29 - July 3, 2026
       place: San Diego, California
+    - year: 2027
+      id: colt27
+      link: https://learningtheory.org/colt2027/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 28 - July 2, 2027
+      place: Tokyo, Japan
