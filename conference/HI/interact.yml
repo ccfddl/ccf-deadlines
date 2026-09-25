@@ -9,7 +9,8 @@
       id: interact27
       link: https://interact2027.org/
       timeline:
-        - deadline: '2027-02-01 23:59:59'
+        - abstract_deadline: '2027-01-25 23:59:59'
+          deadline: '2027-02-01 23:59:59'
       timezone: AoE
       date: August 23-27, 2027
       place: Tallinn, Estonia
