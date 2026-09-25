@@ -36,3 +36,11 @@
       timezone: AoE
       date: November 10 - 13, 2025
       place: Hangzhou, China
+    - year: 2026
+      id: icfem26
+      link: https://icfem2026.github.io/
+      timeline:
+        - deadline: '2026-06-22 23:59:59'
+      timezone: AoE
+      date: November 17-20, 2026
+      place: Southampton, UK
