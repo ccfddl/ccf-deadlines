@@ -31,3 +31,11 @@
       timezone: AoE
       date: July 13-17, 2026
       place: San José, Costa Rica (hybrid)
+    - year: 2027
+      id: gecco27
+      link: https://gecco-2027.sigevo.org/HomePage
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: July 12-16, 2027
+      place: Kraków, Poland
