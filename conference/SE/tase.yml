@@ -25,3 +25,13 @@
       timezone: AoE
       date: July 14-16, 2025
       place: Limassol, Cyprus
+    - year: 2026
+      id: tase26
+      link: https://tase2026.github.io/
+      timeline:
+        - abstract_deadline: '2026-03-01 23:59:59'
+          deadline: '2026-03-07 23:59:59'
+          comment: Extended deadlines
+      timezone: AoE
+      date: July 4-6, 2026
+      place: Shanghai, China
