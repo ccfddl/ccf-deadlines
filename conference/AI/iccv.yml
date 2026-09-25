@@ -32,3 +32,11 @@
       timezone: UTC+0
       date: October 19-25, 2025
       place: Honolulu, Hawaii
+    - year: 2027
+      id: iccv27
+      link: https://iccv.thecvf.com/Conferences/2027
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: October 2-8, 2027
+      place: Hong Kong, China
