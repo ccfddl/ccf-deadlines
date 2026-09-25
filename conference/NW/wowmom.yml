@@ -24,3 +24,11 @@
       timezone: AoE
       date: June 16-19, 2026
       place: Bologna, Italy
+    - year: 2027
+      id: wowmom27
+      link: https://wowmom2027.dii.unipi.it/index.html
+      timeline:
+        - deadline: '2026-12-01 23:59:59'
+      timezone: AoE
+      date: June 21-24, 2027
+      place: Irvine, California, USA
