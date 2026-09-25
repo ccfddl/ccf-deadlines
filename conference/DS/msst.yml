@@ -23,3 +23,11 @@
       timezone: UTC
       date: June 1-5, 2026
       place: Santa Clara University, Santa Clara, CA, USA
+    - year: 2027
+      id: msst2027
+      link: https://www.msstconference.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: May 17-21, 2027
+      place: TBD
