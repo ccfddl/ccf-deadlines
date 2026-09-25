@@ -25,3 +25,13 @@
       timezone: AoE
       date: March 16 - 20, 2026
       place: Pisa, Italy
+    - year: 2027
+      id: percom27
+      link: https://percom.org/
+      timeline:
+        - abstract_deadline: '2026-09-11 23:59:59'
+          deadline: '2026-09-18 23:59:59'
+          comment: Extended deadlines
+      timezone: AoE
+      date: March 8-12, 2027
+      place: Goa, India
