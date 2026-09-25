@@ -23,3 +23,12 @@
       timezone: UTC-12
       date: December 14-17, 2025
       place: IIIT Bhubaneswar, Odisha, India
+    - year: 2026
+      id: indocrypt26
+      link: https://indocrypt2026.cdacb.in/
+      timeline:
+        - deadline: '2026-08-27 23:59:59'
+          comment: Extended submission deadline
+      timezone: AoE
+      date: December 13-16, 2026
+      place: Bengaluru, India
