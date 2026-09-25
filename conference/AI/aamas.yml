@@ -45,10 +45,10 @@
       place: Paphos, Cyprus
     - year: 2027
       id: aamas27
-      link: https://openreview.net/group?id=ifaamas.org/AAMAS/2027/Conference
+      link: https://warwick.ac.uk/fac/sci/dcs/aamas2027/
       timeline:
-        - abstract_deadline: '2026-10-02 11:59:00'
-          deadline: '2026-10-09 11:59:00'
-      timezone: UTC+0
-      date: May 03, 2027
+        - abstract_deadline: '2026-10-01 23:59:59'
+          deadline: '2026-10-08 23:59:59'
+      timezone: AoE
+      date: May 3-7, 2027
       place: Hanoi, Vietnam
