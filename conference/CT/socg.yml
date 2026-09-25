@@ -25,3 +25,11 @@
       timezone: AoE
       date: June 2-5, 2026
       place: New Brunswick, New Jersey, USA
+    - year: 2027
+      id: socg27
+      link: https://cgweek27.computational-geometry.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 21-25, 2027
+      place: Bengaluru, India
