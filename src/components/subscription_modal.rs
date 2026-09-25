@@ -349,9 +349,9 @@ pub fn SubscriptionModal(
 
     view! {
         <Dialog open=show>
-            <DialogSurface>
+            <DialogSurface class="conference-detail-dialog subscription-dialog">
                 <DialogBody>
-                    <DialogTitle>
+                    <DialogTitle class="conference-detail-title">
                         {move || {
                             if use_english.get() {
                                 "Subscribe to Conference Deadlines"
@@ -360,6 +360,12 @@ pub fn SubscriptionModal(
                             }
                         }}
                     </DialogTitle>
+                    <button
+                        type="button"
+                        class="conference-detail-close"
+                        aria-label=move || if use_english.get() { "Close" } else { "关闭" }
+                        on:click=move |_| show.set(false)
+                    >"×"</button>
                     <DialogContent>
                         <div style="margin-bottom: 16px; color: #666; font-size: 14px;">
                             {move || {
@@ -461,7 +467,7 @@ pub fn SubscriptionModal(
                                                                     type="text"
                                                                     readonly
                                                                     value=url
-                                                                    style="flex: 1; padding: 6px 8px; border: 1px solid #dcdfe6; border-radius: 4px; font-size: 12px; font-family: monospace; background: #f5f7fa; outline: none;"
+                                                                    style="flex: 1; padding: 6px 8px; border: 1px solid #dcdfe6; border-radius: 4px; font-size: 12px; background: #f5f7fa; outline: none;"
                                                                 />
                                                                 <Button
                                                                     size=ButtonSize::Small
@@ -546,7 +552,7 @@ pub fn SubscriptionModal(
                                                                     type="text"
                                                                     readonly
                                                                     value=url
-                                                                    style="flex: 1; padding: 6px 8px; border: 1px solid #dcdfe6; border-radius: 4px; font-size: 12px; font-family: monospace; background: #f5f7fa; outline: none;"
+                                                                    style="flex: 1; padding: 6px 8px; border: 1px solid #dcdfe6; border-radius: 4px; font-size: 12px; background: #f5f7fa; outline: none;"
                                                                 />
                                                                 <Button
                                                                     size=ButtonSize::Small
@@ -626,14 +632,6 @@ pub fn SubscriptionModal(
                             }}
                         </div>
                     </DialogContent>
-                    <DialogActions>
-                        <Button
-                            appearance=ButtonAppearance::Secondary
-                            on_click=move |_| show.set(false)
-                        >
-                            {move || if use_english.get() { "Close" } else { "关闭" }}
-                        </Button>
-                    </DialogActions>
                 </DialogBody>
             </DialogSurface>
         </Dialog>
