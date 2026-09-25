@@ -6,3 +6,9 @@
       str: 21.5%(28/130 22')
       rate: 0.215384615384615
       source: https://github.com/emeryberger/csconferences
+    - year: 2026
+      submitted: 253
+      accepted: 44
+      str: 17.4%(44/253 26')
+      rate: 0.173913043478261
+      source: https://www.usenix.org/sites/default/files/fast26_message_1.pdf
