@@ -37,3 +37,13 @@
       timezone: AoE
       date: June 24, 2024
       place: Copenhagen, Denmark
+    - year: 2026
+      id: lctes26
+      link: https://pldi26.sigplan.org/home/LCTES-2026
+      timeline:
+        - abstract_deadline: '2026-03-13 23:59:59'
+          deadline: '2026-03-20 23:59:59'
+          comment: Extended deadlines
+      timezone: AoE
+      date: June 15-16, 2026
+      place: Boulder, Colorado, USA
