@@ -25,9 +25,9 @@
         - abstract_deadline: '2025-09-25 23:59:59'
           deadline: '2025-10-06 23:59:59'
           comment: 'Round 1'
-        - abstract_deadline: '2026-01-25 23:59:59'
+        - abstract_deadline: '2026-01-09 23:59:59'
           deadline: '2026-01-25 23:59:59'
-          comment: 'Round 2'
+          comment: 'Round 2 (paper deadline extended)'
       timezone: AoE
       date: May 25-29, 2026
       place: Kyoto, Japan
