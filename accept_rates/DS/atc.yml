@@ -6,3 +6,9 @@
       str: 18.8%(64/341 21')
       rate: 0.187683284457478
       source: https://github.com/emeryberger/csconferences
+    - year: 2025
+      submitted: 634
+      accepted: 100
+      str: 15.8%(100/634 25')
+      rate: 0.157728706624606
+      source: https://www.usenix.org/sites/default/files/atc25_message.pdf
