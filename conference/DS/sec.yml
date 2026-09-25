@@ -11,8 +11,8 @@
       id: sec2026
       link: https://acm-ieee-sec.org/2026/
       timeline:
-        - abstract_deadline: '2026-04-24 23:59:59'
-          deadline: '2026-05-01 23:59:59'
+        - abstract_deadline: '2026-05-08 23:59:59'
+          deadline: '2026-05-08 23:59:59'
       timezone: AoE
       date: Oct 13-16, 2026
       place: Santa Clara University, CA, USA
