@@ -33,3 +33,16 @@
       timezone: AoE
       date: May 27-29, 2026
       place: Los Angeles, CA, USA
+    - year: 2027
+      id: icwsm2027
+      link: https://www.icwsm.org/2027/
+      timeline:
+        - deadline: '2026-05-15 23:59:59'
+          comment: 1st Full-paper Deadline
+        - deadline: '2026-09-15 23:59:59'
+          comment: 2nd Full-paper Deadline
+        - deadline: '2027-01-15 23:59:59'
+          comment: 3rd Full-paper Deadline
+      timezone: AoE
+      date: TBD
+      place: Edinburgh, Scotland
