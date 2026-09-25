@@ -7,21 +7,14 @@
     thcpl: N
   dblp: tabletop
   confs:
-    - year: 2025
-      id: iss25
-      link: https://iss.acm.org/2025/
+    - year: 2026
+      id: iss26
+      link: https://iss.acm.org/2026/
       timeline:
         - deadline: '2025-03-14 23:59:59'
           comment: 'First round 2025'
         - deadline: '2025-07-25 23:59:59'
           comment: 'Second round 2025'
-      timezone: AoE
-      date: TBD
-      place: TBD
-    - year: 2026
-      id: iss26
-      link: https://iss.acm.org/2026/
-      timeline:
         - deadline: '2026-02-12 23:59:59'
           comment: 'Winter round'
         - deadline: '2026-07-22 23:59:59'
