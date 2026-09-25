@@ -19,7 +19,8 @@
       id: accv26
       link: https://accv2026.org/
       timeline:
-        - deadline: '2026-07-05 23:59:59'
-      timezone: UTC-12
+        - abstract_deadline: '2026-07-03 23:59:59'
+          deadline: '2026-07-05 23:59:59'
+      timezone: UTC+0
       date: December 14-18, 2026
       place: Osaka, Japan
