@@ -38,3 +38,11 @@
       timezone: AoE
       date: July 6-9, 2026
       place: Belfast, Northern Ireland, United Kingdom
+    - year: 2027
+      id: ics27
+      link: https://ics-conference.org/index.html
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Atlanta, Georgia, USA
