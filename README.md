@@ -1,6 +1,6 @@
 # CCF-Deadlines
 
-> Helping researchers track worldwide conference ddls through collaboration.
+> Helping researchers track worldwide conference ddls through (agentic) collaboration.
 
 [![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/ccfddl/ccf-deadlines/.github/workflows/deploy.yml?branch=main)](https://github.com/ccfddl/ccf-deadlines/commits/main)
@@ -20,8 +20,6 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
     <td align="center"><img src=".readme_assets/screenshot_tabular.png" width="280px"/></td>
   </tr>
 </table>
-
-**No More Finding and Time Conversion on Your Own!**
 
 ### Extensions
 <table>

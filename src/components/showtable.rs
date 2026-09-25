@@ -1,10 +1,9 @@
-use crate::components::calendar_popover::*;
 use crate::components::checkbox_button::*;
 use crate::components::conf::ConfItem;
 use crate::components::conf::*;
-use crate::components::countdown::CountDown;
+use crate::components::countdown::{CountDown, urgency_class_for};
 use crate::components::subscription_modal::*;
-use crate::components::timeline::*;
+use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
 use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate};
 use leptos::prelude::*;
@@ -32,38 +31,29 @@ pub fn ShowTable() -> impl IntoView {
             .and_then(|s| s.parse::<bool>().ok())
             .unwrap_or(false),
     );
+    let show_past = RwSignal::new(
+        get_from_local_storage("show_past")
+            .as_deref()
+            .and_then(|s| s.parse::<bool>().ok())
+            .unwrap_or(false),
+    );
 
     // checkbox
     let sub_list = RwSignal::new(get_categories());
-    let cached_check_list: HashSet<String> = get_from_local_storage("types")
+    let stored_check_list: HashSet<String> = get_from_local_storage("types")
         .and_then(|data| serde_json::from_str(&data).ok())
-        .unwrap_or_else(|| HashSet::new());
-    let check_list = RwSignal::new(cached_check_list);
-    let is_all_checked_memo = Memo::new(move |_| {
-        let total_count = sub_list.get().len();
-        let checked_count = check_list.get().len();
-        total_count > 0 && checked_count == total_count
-    });
-
-    let is_all_checked = RwSignal::new(false);
-
-    Effect::new(move |_| {
-        is_all_checked.set(is_all_checked_memo.get());
-    });
-
-    let handle_check_all = move |_| {
-        if is_all_checked_memo.get_untracked() {
-            check_list.set(HashSet::new());
-        } else {
-            let all_subs: HashSet<String> = sub_list
-                .get_untracked()
-                .iter()
-                .map(|s| s.sub.clone())
-                .collect();
-            check_list.set(all_subs);
-        }
+        .unwrap_or_default();
+    let all_categories: HashSet<String> = sub_list
+        .get_untracked()
+        .iter()
+        .map(|item| item.sub.clone())
+        .collect();
+    let cached_check_list = if stored_check_list == all_categories {
+        HashSet::new()
+    } else {
+        stored_check_list
     };
-
+    let check_list = RwSignal::new(cached_check_list);
     // input
     let input_value = RwSignal::new(String::new());
 
@@ -92,10 +82,12 @@ pub fn ShowTable() -> impl IntoView {
     let like_list = RwSignal::new(cached_like_list);
 
     let show_subscription_modal = RwSignal::new(false);
+    let show_conf_detail = RwSignal::new(false);
+    let selected_conf = RwSignal::new(None::<ConfItem>);
 
     // pagination
     let page = RwSignal::new(1);
-    let page_size = RwSignal::new(10);
+    let page_size = RwSignal::new(12);
     let page_count = RwSignal::new(1);
     let is_filter_change = RwSignal::new(false);
 
@@ -111,6 +103,7 @@ pub fn ShowTable() -> impl IntoView {
         let _ = rank_list.get();
         let _ = core_rank_list.get();
         let _ = thcpl_rank_list.get();
+        let _ = show_past.get();
 
         if is_filter_change.get_untracked() {
             page.set(1);
@@ -121,6 +114,7 @@ pub fn ShowTable() -> impl IntoView {
 
     Effect::new(move |_| {
         set_in_local_storage("use_english", &use_english.get().to_string());
+        set_in_local_storage("show_past", &show_past.get().to_string());
         set_in_local_storage("types", &serde_json::to_string(&check_list.get()).unwrap());
         set_in_local_storage("ranks", &serde_json::to_string(&rank_list.get()).unwrap());
         set_in_local_storage(
@@ -150,8 +144,7 @@ pub fn ShowTable() -> impl IntoView {
         all_conf_list.update(|conferences| {
             for item in conferences.iter_mut() {
                 if item.deadline != "TBD" {
-                    if let Some(ddl_str) =
-                        parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
+                    if let Some(ddl_str) = parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
                     {
                         if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
                             let diff = ddl_datetime.signed_duration_since(current_time);
@@ -192,13 +185,12 @@ pub fn ShowTable() -> impl IntoView {
 
                     for conf in conferences {
                         let conf_items = conf.confs.iter().map(|year_conf| {
-                            let mut flag = false;
                             let len = year_conf.timeline.len();
                             let mut cur_deadline = year_conf.timeline[len - 1].deadline.clone();
-                            let mut cur_abstract_deadline =
-                                year_conf.timeline[len - 1].abstract_deadline.clone();
+                            let mut cur_abstract_deadline = None;
                             let mut cur_comment = year_conf.timeline[len - 1].comment.clone();
                             let mut ddl_vec = Vec::<TimePoint>::new();
+                            let mut upcoming_deadlines = Vec::new();
 
                             for timeline_item in year_conf.timeline.iter() {
                                 let tz = &year_conf.timezone;
@@ -217,17 +209,23 @@ pub fn ShowTable() -> impl IntoView {
                                                     .clone(),
                                                 r#type: 0,
                                             });
+                                            if abs_ddl_datetime > current_time {
+                                                upcoming_deadlines.push((
+                                                    abs_ddl_datetime,
+                                                    abs_ddl,
+                                                    true,
+                                                    timeline_item.comment.clone(),
+                                                ));
+                                            }
                                         }
                                     }
                                 }
 
-                                let ddl_str = match parse_deadline_to_rfc3339(
-                                    &timeline_item.deadline,
-                                    tz,
-                                ) {
-                                    Some(s) => s,
-                                    None => continue,
-                                };
+                                let ddl_str =
+                                    match parse_deadline_to_rfc3339(&timeline_item.deadline, tz) {
+                                        Some(s) => s,
+                                        None => continue,
+                                    };
 
                                 if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
                                     ddl_vec.push(TimePoint {
@@ -236,16 +234,24 @@ pub fn ShowTable() -> impl IntoView {
                                             .clone(),
                                         r#type: 1,
                                     });
-
-                                    let diff = ddl_datetime.signed_duration_since(current_time);
-                                    if !flag && diff.num_milliseconds() > 0 {
-                                        cur_deadline = timeline_item.deadline.clone();
-                                        cur_abstract_deadline =
-                                            timeline_item.abstract_deadline.clone();
-                                        cur_comment = timeline_item.comment.clone();
-                                        flag = true;
+                                    if ddl_datetime > current_time {
+                                        upcoming_deadlines.push((
+                                            ddl_datetime,
+                                            timeline_item.deadline.clone(),
+                                            false,
+                                            timeline_item.comment.clone(),
+                                        ));
                                     }
                                 }
+                            }
+
+                            if let Some((_, deadline, is_abstract, comment)) = upcoming_deadlines
+                                .into_iter()
+                                .min_by(|left, right| left.0.cmp(&right.0))
+                            {
+                                cur_deadline = deadline.clone();
+                                cur_abstract_deadline = is_abstract.then_some(deadline);
+                                cur_comment = comment;
                             }
 
                             ConfItem {
@@ -320,30 +326,6 @@ pub fn ShowTable() -> impl IntoView {
                                     Some(format!("{} {}", formatted_date_time, formatted_timezone));
                                 item.origin_ddl =
                                     Some(format!("{} {}", item.deadline, item.timezone));
-
-                                // Handle abstract deadline
-                                if let Some(abs_ddl) = &item.abstract_deadline {
-                                    if let Some(abs_ddl_str) =
-                                        parse_deadline_to_rfc3339(abs_ddl, &item.timezone)
-                                    {
-                                    if let Ok(abs_datetime) =
-                                        DateTime::parse_from_rfc3339(&abs_ddl_str)
-                                    {
-                                        let formatted_abs_ddl = abs_datetime
-                                            .with_timezone(&current_timezone)
-                                            .format("%b %e, %Y")
-                                            .to_string();
-                                        let abs_note =
-                                            format!("abstract deadline on {}", formatted_abs_ddl);
-                                        item.comment = Some(match &item.comment {
-                                            Some(existing) if !existing.is_empty() => {
-                                                format!("{} ({}).", existing, abs_note)
-                                            }
-                                            _ => format!("{}.", abs_note),
-                                        });
-                                    }
-                                    }
-                                }
 
                                 let diff = ddl_datetime.signed_duration_since(current_time);
                                 if diff.num_milliseconds() <= 0 {
@@ -427,6 +409,10 @@ pub fn ShowTable() -> impl IntoView {
     let paginated_list = Memo::new(move |_| {
         let mut filtered_list = all_conf_list.get();
 
+        if !show_past.get() {
+            filtered_list.retain(|item| item.status != "FIN");
+        }
+
         // Filtering
         let checkbox_val = check_list.get();
         if !checkbox_val.is_empty() {
@@ -509,35 +495,31 @@ pub fn ShowTable() -> impl IntoView {
         paginated_list
     });
 
-    let select_all_name = Memo::new(move |_| {
-        if use_english.get() {
-            "Select All".to_string()
-        } else {
-            "全选".to_string()
-        }
-    });
-
     view! {
         <section>
-            <div class="el-switch">
-                <span class=("is_active", move || !use_english.get())>"中文"</span>
-                <Switch checked=use_english />
-                <span class=("is_active", move || use_english.get())>"English"</span>
-            </div>
-
-            <div class="checkbox-item">
-                <label>
-                    <Checkbox
-                        size=CheckboxSize::Large
-                        checked=is_all_checked
-                        on:change=handle_check_all
-                        label=select_all_name
-                    />
-                </label>
+            <div class="language-switches">
+                <div class="el-switch">
+                    <span class=("is_active", move || !use_english.get())>"中文"</span>
+                    <Switch checked=use_english />
+                    <span class=("is_active", move || use_english.get())>"English"</span>
+                </div>
+                <div
+                    class="el-switch past-switch"
+                    on:click=move |_| show_past.update(|value| *value = !*value)
+                >
+                    <Switch checked=show_past />
+                    <span class="past-label">
+                        {move || if use_english.get() {
+                            "Show past conferences"
+                        } else {
+                            "显示往期会议"
+                        }}
+                    </span>
+                </div>
             </div>
 
             <CheckboxGroup value=check_list>
-                <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                <div class="category-filter-grid">
                     <For
                         each=move || {
                             sub_list
@@ -549,6 +531,7 @@ pub fn ShowTable() -> impl IntoView {
                         key=|(_, item)| item.sub.clone()
                         children=move |(_, item)| {
                             let sub = item.sub.clone();
+                            let selected_sub = sub.clone();
                             let label = Memo::new(move |_| {
                                 if is_mobile.get() {
                                     sub.clone()
@@ -560,7 +543,13 @@ pub fn ShowTable() -> impl IntoView {
                             });
 
                             view! {
-                                <div class="checkbox-item">
+                                <div class=move || {
+                                    if check_list.get().contains(&selected_sub) {
+                                        "checkbox-item filter-selected"
+                                    } else {
+                                        "checkbox-item"
+                                    }
+                                }>
                                     <label>
                                         <Checkbox
                                             size=CheckboxSize::Large
@@ -572,6 +561,22 @@ pub fn ShowTable() -> impl IntoView {
                             }
                         }
                     />
+                    {move || {
+                        if check_list.get().is_empty() {
+                            view! {}.into_any()
+                        } else {
+                            view! {
+                                <button
+                                    type="button"
+                                    class="clear-filter"
+                                    on:click=move |_| check_list.set(HashSet::new())
+                                >
+                                    {move || if use_english.get() { "Clear ×" } else { "清除 ×" }}
+                                </button>
+                            }
+                                .into_any()
+                        }
+                    }}
                 </div>
             </CheckboxGroup>
 
@@ -583,7 +588,7 @@ pub fn ShowTable() -> impl IntoView {
                     style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1 1 420px; min-width: 260px;"
                 >
                     <div style="font-size: 16px; line-height: 1.4;">
-                        "Deadlines are shown in "{move || time_zone.get()}" time."
+                        "Countdowns are shown in "{move || time_zone.get()}" time."
                     </div>
                     <div style="flex: 1 1 240px; min-width: 220px; max-width: 320px;">
                         <Input
@@ -713,17 +718,210 @@ pub fn ShowTable() -> impl IntoView {
                 thcpl_rank_list=thcpl_rank_list
             />
 
-            <div class="zonedivider" />
-            <div style="width: 100%">
+            <Dialog open=show_conf_detail>
+                <DialogSurface class="conference-detail-dialog">
+                    <DialogBody>
+                        <Show when=move || selected_conf.get().is_some()>
+                            {move || {
+                                selected_conf.get().map(|conf| {
+                                    let is_tbd = conf.status == "TBD";
+                                    let mut deadlines = conf.ddls.clone();
+                                    deadlines.sort_by_key(|point| point.timepoint);
+                                    let now = chrono::Utc::now();
+                                    let next_index = deadlines
+                                        .iter()
+                                        .position(|point| point.timepoint > now);
+                                    let next_remain = next_index.map(|index| {
+                                        deadlines[index]
+                                            .timepoint
+                                            .signed_duration_since(now)
+                                            .num_milliseconds()
+                                            .max(0) as u64
+                                    });
+                                    let first_timeline_date = deadlines
+                                        .first()
+                                        .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
+                                    let last_timeline_date = deadlines
+                                        .last()
+                                        .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
+                                    let ics_filename = format!("{}-{}.ics", conf.title, conf.year);
+                                    let core_rank = conf.corerank.as_deref().unwrap_or("N");
+                                    let core_label = if core_rank == "N" {
+                                        "Non-CORE".to_string()
+                                    } else {
+                                        format!("CORE {core_rank}")
+                                    };
+                                    let thcpl_rank = conf.thcplrank.as_deref().unwrap_or("N");
+                                    let thcpl_label = if thcpl_rank == "N" {
+                                        "Non-THCPL".to_string()
+                                    } else {
+                                        format!("THCPL {thcpl_rank}")
+                                    };
+                                    let show_round = deadlines.iter().filter(|point| point.r#type == 1).count() > 1;
+                                    let mut round = 1;
+                                    let deadline_cards = deadlines
+                                        .iter()
+                                        .enumerate()
+                                        .map(|(index, point)| {
+                                            let label = if point.r#type == 0 {
+                                                "Abstract submission deadline"
+                                            } else {
+                                                "Paper submission deadline"
+                                            };
+                                            let label = if show_round {
+                                                format!("Round {round} {label}")
+                                            } else {
+                                                label.to_string()
+                                            };
+                                            if point.r#type == 1 {
+                                                round += 1;
+                                            }
+                                            let is_next = next_index == Some(index);
+                                            let is_passed = point.timepoint <= now;
+                                            let remaining = point.timepoint.signed_duration_since(now);
+                                            let remaining_ms = remaining.num_milliseconds().max(0) as u64;
+                                            let days = remaining.num_days();
+                                            let status_class = format!(
+                                                "conference-detail-deadline-status {}",
+                                                urgency_class_for(remaining_ms / 1000),
+                                            );
+                                            let date = point.timepoint.format("%b %-d, %Y · UTC%:z").to_string();
+                                            view! {
+                                                <div class=if is_next { "conference-detail-deadline is-next" } else if is_passed { "conference-detail-deadline is-passed" } else { "conference-detail-deadline" }>
+                                                    <div class="conference-detail-deadline-main">
+                                                        <div class="conference-detail-deadline-name">
+                                                            {label}
+                                                            {is_next.then(|| view! { <small>"NEXT"</small> })}
+                                                        </div>
+                                                        <div class="conference-detail-deadline-date">{date}</div>
+                                                    </div>
+                                                    <span class=status_class>
+                                                        {if is_passed {
+                                                            view! { "passed" }.into_any()
+                                                        } else if days < 1 {
+                                                            view! { <CountDown remain=remaining_ms /> }.into_any()
+                                                        } else if days == 1 {
+                                                            view! { "1 day" }.into_any()
+                                                        } else {
+                                                            view! { {format!("{days} days")} }.into_any()
+                                                        }}
+                                                    </span>
+                                                </div>
+                                            }
+                                        })
+                                        .collect_view();
+                                    view! {
+                                        <DialogTitle class="conference-detail-title">
+                                            {conf.title.clone()} " " {conf.year}
+                                        </DialogTitle>
+                                        <button
+                                            type="button"
+                                            class="conference-detail-close"
+                                            aria-label="Close"
+                                            on:click=move |_| show_conf_detail.set(false)
+                                        >"×"</button>
+                                        <DialogContent>
+                                            <div class="conference-detail-description">
+                                                {conf.description.clone()}
+                                            </div>
+                                            {conf.acc_str.clone().map(|rate| view! {
+                                                <div class="conference-detail-acceptance">
+                                                    "Acc. Rate: " {rate}
+                                                </div>
+                                            })}
+                                            <div class="conference-detail-section">
+                                                <span class="conference-detail-label">"DATES"</span>
+                                                <div>{conf.date.clone()}</div>
+                                            </div>
+                                            <div class="conference-detail-section">
+                                                <span class="conference-detail-label">"VENUE"</span>
+                                                <div>{conf.place.clone()}</div>
+                                            </div>
+                                            {conf.comment.clone().map(|comment| view! {
+                                                <div class="conference-detail-note">
+                                                    "NOTE: " {comment}
+                                                </div>
+                                            })}
+                                            <div class="conference-detail-next">
+                                                <span class="conference-detail-label">"NEXT DEADLINE IN"</span>
+                                                <strong>
+                                                    {if is_tbd {
+                                                        view! { "TBD" }.into_any()
+                                                    } else if let Some(remain) = next_remain {
+                                                        view! { <CountDown remain detailed=true /> }.into_any()
+                                                    } else {
+                                                        view! { "Passed" }.into_any()
+                                                    }}
+                                                </strong>
+                                            </div>
+                                            <div class="conference-detail-section">
+                                                <span class="conference-detail-label">"IMPORTANT DEADLINES"</span>
+                                                {(!is_tbd && conf.status != "FIN" && !conf.ddls.is_empty()).then(|| view! {
+                                                    <div class="conference-detail-timeline">
+                                                        <TimeLine time_points=conf.ddls.clone() />
+                                                        <div class="conference-detail-timeline-range">
+                                                            <span>{first_timeline_date.clone()}</span>
+                                                            <span>{last_timeline_date.clone()}</span>
+                                                        </div>
+                                                    </div>
+                                                })}
+                                                {deadline_cards}
+                                                {is_tbd.then(|| view! { <div class="conference-detail-deadline">"Dates to be announced"</div> })}
+                                            </div>
+                                            <div class="conference-detail-tags">
+                                                <span>{conf.displayrank.clone()}</span>
+                                                <span>{core_label}</span>
+                                                <span>{thcpl_label}</span>
+                                                <span>{conf.subname.clone()}</span>
+                                            </div>
+                                            <div class="conference-detail-actions">
+                                                <a class="conference-detail-website" href=conf.link.clone() target="_blank">"Visit website ↗"</a>
+                                                {conf.google_calendar_url.clone().map(|url| view! {
+                                                    <a class="conference-detail-calendar-link" href=url target="_blank">
+                                                        <img
+                                                            src="https://ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_31_2x.png"
+                                                            alt=""
+                                                            aria-hidden="true"
+                                                        />
+                                                        <span>"Google Calendar"</span>
+                                                    </a>
+                                                })}
+                                                {conf.icloud_calendar_url.clone().map(|url| view! {
+                                                    <a class="conference-detail-calendar-link" href=url download=ics_filename.clone()>
+                                                        <img
+                                                            src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png"
+                                                            alt=""
+                                                            aria-hidden="true"
+                                                        />
+                                                        <span>"iCloud Calendar"</span>
+                                                    </a>
+                                                })}
+                                            </div>
+                                        </DialogContent>
+                                    }
+                                })
+                            }}
+                        </Show>
+                    </DialogBody>
+                </DialogSurface>
+            </Dialog>
+
+            <div class="conference-list">
                 <Table>
                     <TableBody>
                         {move || {
                             if paginated_list.get().is_empty() {
                                 view! {
-                                    <TableRow>
+                                    <TableRow class="no-data-row">
                                         <TableCell>
-                                            <div style="color: #909399; text-align: center;">
-                                                "No data available."
+                                            <div class="no-data-message">
+                                                {move || {
+                                                    if use_english.get() {
+                                                        "No data available."
+                                                    } else {
+                                                        "暂无数据"
+                                                    }
+                                                }}
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -739,6 +937,7 @@ pub fn ShowTable() -> impl IntoView {
                                         children=move |conf| {
                                             let is_finished = conf.status == "FIN";
                                             let is_tbd = conf.status == "TBD";
+                                            let conf_for_detail = conf.clone();
                                             let ccf_rank_value = conf.rank.clone();
                                             let ccf_rank_label = conf.displayrank.clone();
                                             let core_rank_value = conf
@@ -759,33 +958,57 @@ pub fn ShowTable() -> impl IntoView {
                                             } else {
                                                 format!("THCPL {}", thcpl_rank_value.clone())
                                             };
-                                            let show_ddl_str = if is_tbd {
+                                            let deadline_kind = if conf.abstract_deadline.is_some() {
+                                                "Abstract submission"
+                                            } else {
+                                                "Paper submission"
+                                            };
+                                            let deadline_value = if is_tbd {
                                                 "TBD".to_string()
                                             } else {
-                                                format!(
-                                                    "{} ({})",
-                                                    conf.local_ddl.clone().unwrap(),
-                                                    conf.origin_ddl.clone().unwrap(),
+                                                format_deadline_display(
+                                                    conf.abstract_deadline
+                                                        .as_deref()
+                                                        .unwrap_or(&conf.deadline),
+                                                    &conf.timezone,
                                                 )
                                             };
                                             view! {
-                                                <TableRow>
+                                                <TableRow
+                                                    on:click=move |_| {
+                                                        selected_conf.set(Some(conf_for_detail.clone()));
+                                                        show_conf_detail.set(true);
+                                                    }
+                                                >
                                                     <TableCell>
                                                         <TableCellLayout>
                                                             <div class=("conf-fin", is_finished)>
-                                                                <div class="conf-title">
+                                                                <div class="conference-card-heading">
+                                                                    <div class="conf-title">
+                                                                        <a
+                                                                            href=format!(
+                                                                                "https://dblp.org/db/conf/{}",
+                                                                                conf.dblp,
+                                                                            )
+                                                                            on:click=move |event| event.stop_propagation()
+                                                                            style="text-decoration: none; color: inherit;"
+                                                                            target="_blank"
+                                                                        >
+                                                                            {conf.title.clone()}
+                                                                        </a>
+                                                                        " "
+                                                                        {conf.year.clone()}
+                                                                    </div>
                                                                     <a
-                                                                        href=format!(
-                                                                            "https://dblp.org/db/conf/{}",
-                                                                            conf.dblp,
-                                                                        )
-                                                                        style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"
+                                                                        class="conference-card-website"
+                                                                        href=conf.link.clone()
+                                                                        on:click=move |event| event.stop_propagation()
                                                                         target="_blank"
+                                                                        aria-label="Visit conference website"
+                                                                        title="Visit conference website"
                                                                     >
-                                                                        {conf.title.clone()}
+                                                                        <Icon icon=icondata::FiExternalLink />
                                                                     </a>
-                                                                    " "
-                                                                    {conf.year.clone()}
                                                                     {move || {
                                                                         let conf_title = conf.title.clone();
                                                                         let conf_year = conf.year.clone();
@@ -810,7 +1033,7 @@ pub fn ShowTable() -> impl IntoView {
                                                                                              });
                                                                                      }
                                                                                  >
-                                                                                     <Icon icon=icondata::BsStar style="margin-left: 5px; font-size: 18px; color: #909399;" />
+                                                                                     <Icon icon=icondata::BsStar style="font-size: 18px; color: #909399;" />
                                                                                  </div>
                                                                             }
                                                                                 .into_any()
@@ -836,7 +1059,7 @@ pub fn ShowTable() -> impl IntoView {
                                                                                  >
                                                                                      <Icon
                                                                                          icon=icondata::BsStarFill
-                                                                                         style="color: rgb(251, 202, 4); margin-left: 5px; font-size: 18px;"
+                                                                                         style="color: rgb(251, 202, 4); font-size: 18px;"
                                                                                      />
                                                                                  </div>
                                                                             }
@@ -845,12 +1068,9 @@ pub fn ShowTable() -> impl IntoView {
                                                                     }}
                                                                 </div>
 
-                                                                <div style="font-size: 14px; color: #606266; margin-top: 3px;">
-                                                                    {conf.date.clone()} " " {conf.place.clone()}
-                                                                </div>
-
-                                                                <div style="font-size: 14px; color: #606266; margin-top: 3px;">
-                                                                    {conf.description.clone()}
+                                                                <div class="conference-card-date" style="font-size: 13px; color: #606266; margin-top: 3px;">
+                                                                    <div>{conf.date.clone()}</div>
+                                                                    <div>{display_place(&conf.place)}</div>
                                                                 </div>
 
                                                                 <div class="tag-container">
@@ -890,29 +1110,16 @@ pub fn ShowTable() -> impl IntoView {
                                                                         </Tag>
                                                                     </span>
                                                                     " "
-                                                                    {move || {
-                                                                        conf.comment
-                                                                            .as_ref()
-                                                                            .map(|comment| {
-                                                                                view! {
-                                                                                    <span style="color: #409eff">
-                                                                                        <b>"NOTE: "</b>
-                                                                                        {comment.clone()}
-                                                                                    </span>
-                                                                                }
-                                                                            })
-                                                                    }}
                                                                 </div>
 
-                                                                <div style="padding-top: 5px; font-size: 14px; color: #606266;">
-                                                                    {move || {
-                                                                        if let Some(ref acc) = conf.acc_str {
-                                                                            format!("Acc. Rate: {} ", acc)
+                                                                <div class="conference-card-acceptance" style="padding-top: 5px; font-size: 12px; color: #606266;">
+                                                                    <span class=move || {
+                                                                        if check_list.get().contains(&conf.sub) {
+                                                                            "conference-card-category category-highlight"
                                                                         } else {
-                                                                            "".to_string()
+                                                                            "conference-card-category"
                                                                         }
-                                                                    }}
-                                                                    <span style="color: rgb(36, 101, 191); background: rgba(236, 240, 241, 0.7); font-size: 13px; padding: 3px 5px;">
+                                                                    }>
                                                                         {move || {
                                                                             if use_english.get() {
                                                                                 conf.subname_en.clone()
@@ -933,77 +1140,65 @@ pub fn ShowTable() -> impl IntoView {
                                                                 "conf-fin",
                                                                 is_finished,
                                                             )>
-
-                                                                {move || {
-                                                                    if is_tbd {
-                                                                        view! {
-                                                                            <div class="countdown-container">
-                                                                                <div class="countdown-display">
-                                                                                    <span class="countdown-value">"TBD"</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        }
-                                                                            .into_any()
-                                                                    } else {
-                                                                        view! {
-                                                                            <div class="countdown-container">
-                                                                                <div class="countdown-display">
-                                                                                    <span class="countdown-value">
-                                                                                        <CountDown remain=conf.remain.clone() />
-                                                                                        // <Icon icon=icondata::VsCalendar style="margin-left: 5px"/>
-                                                                                        <CalendarPopover
-                                                                                            google_calendar_url=conf.google_calendar_url.clone()
-                                                                                            icloud_calendar_url=conf.icloud_calendar_url.clone()
-                                                                                            is_mobile
-                                                                                        />
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                        }
-                                                                            .into_any()
+                                                                {if is_finished {
+                                                                    view! {
+                                                                        <div class="conference-card-passed">
+                                                                            "Deadline passed"
+                                                                        </div>
                                                                     }
-                                                                }}
-                                                                <div style="font-size: 14px; color: #606266; margin-top: 3px;">
-                                                                    {move || {
-                                                                        if is_tbd {
-                                                                            view! {
-                                                                                <span>
-                                                                                    "Deadline: "
-                                                                                    <a
-                                                                                        href="https://github.com/ccfddl/ccf-deadlines/pulls"
-                                                                                        style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"
-                                                                                        target="_blank"
-                                                                                    >
-                                                                                        "pull request to update"
-                                                                                    </a>
-                                                                                </span>
-                                                                            }
-                                                                                .into_any()
-                                                                        } else {
-                                                                            view! {
-                                                                                <span>{format!("Deadline: {}", show_ddl_str)}</span>
-                                                                            }
-                                                                                .into_any()
-                                                                        }
-                                                                    }}
-                                                                </div>
-                                                                <div style="font-size: 14px; color: #606266; margin-top: 3px;">
-                                                                    "website: "
-                                                                    <a
-                                                                        href=conf.link.clone()
-                                                                        style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit; word-wrap: break-word;"
-                                                                        target="_blank"
-                                                                    >
-                                                                        {conf.link.clone()}
-                                                                    </a>
-                                                                </div>
-                                                                {move || {
-                                                                    if is_finished || is_tbd {
-                                                                        view! {}.into_any()
-                                                                    } else {
-                                                                        view! { <TimeLine time_points=conf.ddls.clone() /> }
-                                                                            .into_any()
+                                                                        .into_any()
+                                                                } else {
+                                                                    view! {
+                                                                        <div class="conference-card-deadline-row">
+                                                                            {if is_tbd {
+                                                                                view! {
+                                                                                    <div class="countdown-container">
+                                                                                        <div class="countdown-display">
+                                                                                            <span class="countdown-value">"TBD"</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                }
+                                                                                    .into_any()
+                                                                            } else {
+                                                                                view! {
+                                                                                    <div class="countdown-container">
+                                                                                        <div class="countdown-display">
+                                                                                            <span class="countdown-value">
+                                                                                                <CountDown remain=conf.remain.clone() />
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                }
+                                                                                    .into_any()
+                                                                            }}
+                                                                            <div class="conference-card-deadline" style="font-size: 11px; color: #606266; margin-top: 3px;">
+                                                                                {if is_tbd {
+                                                                                    view! {
+                                                                                        <span>
+                                                                                            <a
+                                                                                                href="https://github.com/ccfddl/ccf-deadlines/pulls"
+                                                                                                on:click=move |event| event.stop_propagation()
+                                                                                                style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"
+                                                                                                target="_blank"
+                                                                                            >
+                                                                                                "pull request to update"
+                                                                                            </a>
+                                                                                        </span>
+                                                                                    }
+                                                                                        .into_any()
+                                                                                } else {
+                                                                                    view! {
+                                                                                        <span>
+                                                                                            <b>{deadline_kind}</b>
+                                                                                            <small>{deadline_value.clone()}</small>
+                                                                                        </span>
+                                                                                    }
+                                                                                        .into_any()
+                                                                                }}
+                                                                            </div>
+                                                                        </div>
                                                                     }
+                                                                        .into_any()
                                                                 }}
                                                             </div>
                                                         </TableCellLayout>
@@ -1037,9 +1232,9 @@ pub fn ShowTable() -> impl IntoView {
             <style>
                 {r#"
                 .tag-container .tag-highlight .plain-tag {
-                  background: #ecf5ff !important;
-                  color: #1d4ed8 !important;
-                  border: 1px solid #93c5fd !important;
+                                    background: #e9f2fa !important;
+                                    color: #356d9e !important;
+                                    border: 1px solid #b8d2e8 !important;
                   font-weight: 600;
                 }
                 "#}
@@ -1056,6 +1251,27 @@ fn normalize_timezone(tz: &str) -> String {
         "UTC" => "UTC+0".to_string(),
         _ => tz.to_string(),
     }
+}
+
+fn display_place(place: &str) -> String {
+    if place.chars().count() <= 28 {
+        return place.to_string();
+    }
+
+    place
+        .split(',')
+        .last()
+        .map(str::trim)
+        .filter(|segment| !segment.is_empty())
+        .unwrap_or(place)
+        .to_string()
+}
+
+fn format_deadline_display(deadline: &str, timezone: &str) -> String {
+    parse_deadline_to_rfc3339(deadline, timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+        .map(|value| format!("{} ({})", value.format("%b %-d, %Y"), timezone))
+        .unwrap_or_else(|| format!("{} ({})", deadline, timezone))
 }
 
 /// Nth (1-indexed) Sunday of the given month/year.
@@ -1107,12 +1323,33 @@ fn parse_deadline_to_rfc3339(deadline: &str, tz: &str) -> Option<String> {
     })
 }
 
-const RANK_OPTIONS: &[(&str, &str)] = &[("A", "CCF A"), ("B", "CCF B"), ("C", "CCF C"), ("N", "Non-CCF")];
+const RANK_OPTIONS: &[(&str, &str)] = &[
+    ("A", "CCF A"),
+    ("B", "CCF B"),
+    ("C", "CCF C"),
+    ("N", "Non-CCF"),
+];
 
 const MOBILE_KEYWORDS: &[&str] = &[
-    "phone", "pad", "pod", "iphone", "ipod", "ios", "ipad", "android", "mobile",
-    "blackberry", "iemobile", "mqqbrowser", "juc", "fennec", "wosbrowser",
-    "browserng", "webos", "symbian", "windows phone",
+    "phone",
+    "pad",
+    "pod",
+    "iphone",
+    "ipod",
+    "ios",
+    "ipad",
+    "android",
+    "mobile",
+    "blackberry",
+    "iemobile",
+    "mqqbrowser",
+    "juc",
+    "fennec",
+    "wosbrowser",
+    "browserng",
+    "webos",
+    "symbian",
+    "windows phone",
 ];
 
 fn get_utc_map() -> &'static HashMap<String, String> {

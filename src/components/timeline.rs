@@ -97,7 +97,7 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
 
     let get_backup_text_style = move |index: usize| -> &'static str {
         if index as i32 <= expire_index.get() {
-            "color: #ccc;"
+            "color: #7a8795;"
         } else {
             ""
         }
