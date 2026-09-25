@@ -23,3 +23,11 @@
       timezone: AoE
       date: June 2-5, 2025
       place: Strasbourg, France
+    - year: 2026
+      id: casa2026
+      link: https://cgs-network.org/CASAXR26/
+      timeline:
+        - deadline: '2026-02-10 23:59:59'
+      timezone: AoE
+      date: June 1-3, 2026
+      place: Geneva, Switzerland
