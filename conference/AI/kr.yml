@@ -43,3 +43,11 @@
       timezone: UTC-12
       date: July 20-23, 2026
       place: Lisbon, Portugal
+    - year: 2027
+      id: krd27
+      link: https://kr.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Buenos Aires, Argentina
