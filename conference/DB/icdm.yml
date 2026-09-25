@@ -51,8 +51,7 @@
       id: icdm2026
       link: http://icdm2026.neu.edu.cn/
       timeline:
-        - abstract_deadline: '2026-05-30 23:59:59'
-          deadline: '2026-06-06 23:59:59'
+        - deadline: '2026-06-06 23:59:59'
       timezone: AoE
       date: November 12-15, 2026
       place: Shenyang, China
