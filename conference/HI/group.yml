@@ -26,6 +26,9 @@
         - abstract_deadline: '2025-07-08 23:59:59'
           deadline: '2025-07-15 23:59:59'
           comment: 'Full Paper First Wave Submissions'
+        - abstract_deadline: '2026-03-24 23:59:59'
+          deadline: '2026-03-31 23:59:59'
+          comment: 'Full Paper Second Wave Submissions (extended)'
       timezone: AoE
       date: January 10-13, 2027
       place: St Simons Island, Georgia, USA
