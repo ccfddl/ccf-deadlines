@@ -36,3 +36,11 @@
       timezone: AoE
       date: June 09 - 11, 2026
       place: Perth, Australia
+    - year: 2027
+      id: sec27
+      link: https://ifipsec.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Linköping, Sweden
