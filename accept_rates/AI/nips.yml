@@ -8,7 +8,13 @@
       source: https://github.com/lixin4ever/Conference-Acceptance-Rate
     - year: 2024
       submitted: 15671
-      accepted: 4043
+      accepted: 4037
       str: 25.8%(4037/15671 24')
-      rate: 0.2576095
+      rate: 0.257609597345415
       source: https://media.neurips.cc/Conferences/NeurIPS2024/NeurIPS2024-Fact_Sheet.pdf
+    - year: 2025
+      submitted: 21575
+      accepted: 5290
+      str: 24.5%(5290/21575 25')
+      rate: 0.245191193511008
+      source: https://media.neurips.cc/Conferences/NeurIPS2025/press/NeurIPS2025-Fact_Sheet.pdf
