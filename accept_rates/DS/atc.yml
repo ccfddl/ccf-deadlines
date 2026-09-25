@@ -5,7 +5,25 @@
       accepted: 64
       str: 18.8%(64/341 21')
       rate: 0.187683284457478
-      source: https://github.com/emeryberger/csconferences
+      source: https://www.usenix.org/sites/default/files/atc21_message.pdf
+    - year: 2022
+      submitted: 394
+      accepted: 64
+      str: 16.2%(64/394 22')
+      rate: 0.162436548223350
+      source: https://www.usenix.org/sites/default/files/atc22_message.pdf
+    - year: 2023
+      submitted: 353
+      accepted: 65
+      str: 18.4%(65/353 23')
+      rate: 0.184135977337110
+      source: https://www.usenix.org/sites/default/files/atc23_message.pdf
+    - year: 2024
+      submitted: 488
+      accepted: 77
+      str: 15.8%(77/488 24')
+      rate: 0.157786885245902
+      source: https://www.usenix.org/sites/default/files/atc24-message.pdf
     - year: 2025
       submitted: 634
       accepted: 100
