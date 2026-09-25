@@ -193,8 +193,13 @@ Cargo.lock
 AGENTS.md
 .DS_Store
 node_modules
-dist
-public/conference
+
+# Build output
+/dist/
+/target/
+
+# Generated conference data and feeds
+/public/conference/
 
 
 # local env files

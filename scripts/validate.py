@@ -27,7 +27,7 @@ YAML_SCHEMA = None
 
 def load_conference_yaml_schema():
     global YAML_SCHEMA
-    with open(os.path.join(ROOT, 'conference-yaml-schema.yml'), 'r') as schema:
+    with open(os.path.join(ROOT, 'scripts', 'conference-yaml-schema.yml'), 'r') as schema:
         YAML_SCHEMA = yaml.load(schema, Loader=yaml.SafeLoader)
 
 
