@@ -1,11 +1,29 @@
 - title: FAST
   accept_rates:
+    - year: 2021
+      submitted: 130
+      accepted: 28
+      str: 21.5%(28/130 21')
+      rate: 0.215384615384615
+      source: https://www.usenix.org/sites/default/files/fast21_message.pdf
     - year: 2022
       submitted: 130
       accepted: 28
       str: 21.5%(28/130 22')
       rate: 0.215384615384615
-      source: https://github.com/emeryberger/csconferences
+      source: https://www.usenix.org/sites/default/files/fast22_message.pdf
+    - year: 2023
+      submitted: 122
+      accepted: 28
+      str: 23.0%(28/122 23')
+      rate: 0.229508196721311
+      source: https://www.usenix.org/sites/default/files/fast23_message.pdf
+    - year: 2024
+      submitted: 123
+      accepted: 22
+      str: 17.9%(22/123 24')
+      rate: 0.178861788617886
+      source: https://www.usenix.org/sites/default/files/fast24-message.pdf
     - year: 2025
       submitted: 167
       accepted: 36
