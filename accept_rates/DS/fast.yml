@@ -6,6 +6,12 @@
       str: 21.5%(28/130 22')
       rate: 0.215384615384615
       source: https://github.com/emeryberger/csconferences
+    - year: 2025
+      submitted: 167
+      accepted: 36
+      str: 21.6%(36/167 25')
+      rate: 0.215568862275449
+      source: https://www.usenix.org/sites/default/files/fast25-chairs_message.pdf
     - year: 2026
       submitted: 253
       accepted: 44
