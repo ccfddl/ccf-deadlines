@@ -24,3 +24,12 @@
       timezone: AoE
       date: July 6-10, 2026
       place: London, UK
+    - year: 2027
+      id: icalp27
+      link: https://icalp.uj.edu.pl/
+      timeline:
+        - deadline: '2026-09-15 23:59:59'
+          comment: 'Track B first round; Track A and Track B second round TBA'
+      timezone: AoE
+      date: July 5-9, 2027
+      place: Kraków, Poland
