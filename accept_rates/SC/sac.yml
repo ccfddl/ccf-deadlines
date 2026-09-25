@@ -1,0 +1,189 @@
+# Selected Areas in Cryptography; 1994-1995 submission counts are absent from the official table.
+- title: SAC
+  accept_rates:
+    - year: 1996
+      submitted: 24
+      accepted: 14
+      str: 58.3%(14/24 96')
+      rate: 0.583333333333333
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 1997
+      submitted: 31
+      accepted: 20
+      str: 64.5%(20/31 97')
+      rate: 0.645161290322581
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 1998
+      submitted: 39
+      accepted: 26
+      str: 66.7%(26/39 98')
+      rate: 0.666666666666667
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 1999
+      submitted: 29
+      accepted: 17
+      str: 58.6%(17/29 99')
+      rate: 0.586206896551724
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2000
+      submitted: 41
+      accepted: 24
+      str: 58.5%(24/41 00')
+      rate: 0.585365853658537
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2001
+      submitted: 57
+      accepted: 25
+      str: 43.9%(25/57 01')
+      rate: 0.438596491228070
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2002
+      submitted: 90
+      accepted: 25
+      str: 27.8%(25/90 02')
+      rate: 0.277777777777778
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2003
+      submitted: 85
+      accepted: 25
+      str: 29.4%(25/85 03')
+      rate: 0.294117647058824
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2004
+      submitted: 117
+      accepted: 25
+      str: 21.4%(25/117 04')
+      rate: 0.213675213675214
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2005
+      submitted: 96
+      accepted: 25
+      str: 26.0%(25/96 05')
+      rate: 0.260416666666667
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2006
+      submitted: 86
+      accepted: 25
+      str: 29.1%(25/86 06')
+      rate: 0.290697674418605
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2007
+      submitted: 73
+      accepted: 25
+      str: 34.2%(25/73 07')
+      rate: 0.342465753424658
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2008
+      submitted: 99
+      accepted: 27
+      str: 27.3%(27/99 08')
+      rate: 0.272727272727273
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2009
+      submitted: 86
+      accepted: 28
+      str: 32.6%(28/86 09')
+      rate: 0.325581395348837
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2010
+      submitted: 90
+      accepted: 24
+      str: 26.7%(24/90 10')
+      rate: 0.266666666666667
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2011
+      submitted: 92
+      accepted: 23
+      str: 25.0%(23/92 11')
+      rate: 0.250000000000000
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2012
+      submitted: 87
+      accepted: 24
+      str: 27.6%(24/87 12')
+      rate: 0.275862068965517
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2013
+      submitted: 98
+      accepted: 26
+      str: 26.5%(26/98 13')
+      rate: 0.265306122448980
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2014
+      submitted: 103
+      accepted: 22
+      str: 21.4%(22/103 14')
+      rate: 0.213592233009709
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2015
+      submitted: 91
+      accepted: 26
+      str: 28.6%(26/91 15')
+      rate: 0.285714285714286
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2016
+      submitted: 100
+      accepted: 28
+      str: 28.0%(28/100 16')
+      rate: 0.280000000000000
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2017
+      submitted: 66
+      accepted: 23
+      str: 34.8%(23/66 17')
+      rate: 0.348484848484849
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2018
+      submitted: 57
+      accepted: 22
+      str: 38.6%(22/57 18')
+      rate: 0.385964912280702
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2019
+      submitted: 74
+      accepted: 26
+      str: 35.1%(26/74 19')
+      rate: 0.351351351351351
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2020
+      submitted: 52
+      accepted: 27
+      str: 51.9%(27/52 20')
+      rate: 0.519230769230769
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2021
+      submitted: 60
+      accepted: 23
+      str: 38.3%(23/60 21')
+      rate: 0.383333333333333
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2022
+      submitted: 53
+      accepted: 21
+      str: 39.6%(21/53 22')
+      rate: 0.396226415094340
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2023
+      submitted: 45
+      accepted: 21
+      str: 46.7%(21/45 23')
+      rate: 0.466666666666667
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2024
+      submitted: 89
+      accepted: 25
+      str: 28.1%(25/89 24')
+      rate: 0.280898876404494
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2025
+      submitted: 109
+      accepted: 29
+      str: 26.6%(29/109 25')
+      rate: 0.266055045871560
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2026
+      submitted: 114
+      accepted: 29
+      str: 25.4%(29/114 26')
+      rate: 0.254385964912281
+      source: https://sacworkshop.org/historical-acceptance.html
