@@ -1,0 +1,4 @@
+-r extensions/cli/req.txt
+jsonschema
+icalendar
+xlin
