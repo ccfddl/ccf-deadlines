@@ -27,7 +27,8 @@
       id: wcnc27
       link: https://wcnc2027.ieee-wcnc.org/
       timeline:
-        - deadline: '2026-10-05 23:59:59'
-      timezone: UTC-4
+        - deadline: 'TBD'
+          comment: 'Technical paper deadline: September 15, 2026; exact cutoff time and timezone not specified on the official IEEE ComSoc event page'
+      timezone: AoE
       date: April 5-8, 2027
       place: Panama City, Panama
