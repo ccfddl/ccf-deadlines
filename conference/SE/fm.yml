@@ -42,3 +42,11 @@
       timezone: AoE
       date: May 18-22, 2026
       place: Tokyo, Japan
+    - year: 2027
+      id: fm27
+      link: https://www.fmeurope.org/feature/upcoming_conferences/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: October 18-22, 2027
+      place: Athens, Greece
