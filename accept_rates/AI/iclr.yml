@@ -1,17 +1,30 @@
+# Main-conference review statistics; Tiny Papers, blog posts and workshops are excluded.
 - title: ICLR
   accept_rates:
+    - year: 2022
+      submitted: 3391
+      accepted: 1095
+      str: 32.3%(1095/3391 22')
+      rate: 0.322913594809791
+      source: https://iclr.cc/media/Press/ICLR_2022_Fact_Sheet.pdf
+    - year: 2023
+      submitted: 4938
+      accepted: 1574
+      str: 31.9%(1574/4938 23')
+      rate: 0.318752531389226
+      source: https://media.iclr.cc/Conferences/ICLR2023/ICLR2023-Fact_Sheet.pdf
     - year: 2024
-      submitted: 7304
-      accepted: 2250
-      str: 30.8%(2250/7304 24')
-      rate: 0.308050383351588
-      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+      submitted: 7262
+      accepted: 2260
+      str: 31.1%(2260/7262 24')
+      rate: 0.311209033324153
+      source: https://media.iclr.cc/Conferences/ICLR2024/ICLR2024-Fact_Sheet.pdf
     - year: 2025
-      submitted: 11672
+      submitted: 11603
       accepted: 3704
-      str: 31.73%(3704/11672 25')
-      rate: 0.31734064427
-      source: https://papercopilot.com/statistics/iclr-statistics/
+      str: 31.9%(3704/11603 25')
+      rate: 0.319227785917435
+      source: https://media.iclr.cc/Conferences/ICLR2025/ICLR2025_Fact_Sheet.pdf
     - year: 2026
       submitted: 19525
       accepted: 5355
