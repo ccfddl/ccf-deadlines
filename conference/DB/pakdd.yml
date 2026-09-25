@@ -7,6 +7,30 @@
     thcpl: N
   dblp: pakdd
   confs:
+    - year: 2022
+      id: pakdd22
+      link: https://www.pakdd.net/
+      timeline:
+        - deadline: '2021-11-15 23:59:59'
+      timezone: UTC-8
+      date: May 16-19, 2022
+      place: Chengdu, China
+    - year: 2023
+      id: pakdd23
+      link: https://pakdd23.pakdd.org/
+      timeline:
+        - deadline: '2022-12-07 23:59:59'
+      timezone: UTC-8
+      date: May 25-28, 2023
+      place: Osaka, Japan
+    - year: 2024
+      id: pakdd24
+      link: https://pakdd2024.org
+      timeline:
+        - deadline: '2023-11-29 23:59:59'
+      timezone: UTC-8
+      date: May 7-10, 2024
+      place: Taipei, Taiwan
     - year: 2025
       id: pakdd25
       link: https://pakdd2025.org
