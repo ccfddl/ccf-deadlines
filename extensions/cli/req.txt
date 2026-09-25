@@ -1,0 +1,4 @@
+tabulate
+pyyaml
+requests
+termcolor
