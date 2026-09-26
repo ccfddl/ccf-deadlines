@@ -231,6 +231,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-size: var(--font-size-sm);
   padding-right: 14px;
   border-right: 1px solid var(--color-border-light);
   white-space: nowrap;
@@ -252,6 +253,7 @@ a {
   border: 0;
   opacity: 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 .footer-base-time:hover .footer-base-time-value,

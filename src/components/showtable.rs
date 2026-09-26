@@ -99,6 +99,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
     let base_time = RwSignal::new(None::<DateTime<Utc>>);
     let base_time_input = RwSignal::new(String::new());
+    let base_time_editing = RwSignal::new(false);
 
     // timezone
     let browser_time_zone = RwSignal::new(get_timezone_name().unwrap_or_else(|| "UTC".to_string()));
@@ -109,7 +110,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let time_zone = RwSignal::new(stored_timezone);
 
     use_interval(1_000, move || {
-        if base_time.get_untracked().is_none() {
+        if base_time.get_untracked().is_none() && !base_time_editing.get_untracked() {
             base_time_input.set(format_datetime_local(
                 Utc::now(),
                 &selected_timezone.get_untracked(),
@@ -1467,9 +1468,20 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             } else {
                                 "设置倒计时基准时间"
                             }
+                            on:focus=move |_| base_time_editing.set(true)
+                            on:input=move |event| {
+                                base_time_input.set(event_target_value(&event));
+                            }
                             on:change=move |event| {
                                 let value = event_target_value(&event);
-                                if let Some(parsed) = parse_datetime_local(
+                                if value.trim().is_empty() {
+                                    base_time.set(None);
+                                    base_time_input.set(format_datetime_local(
+                                        Utc::now(),
+                                        &selected_timezone.get_untracked(),
+                                    ));
+                                    page.set(1);
+                                } else if let Some(parsed) = parse_datetime_local(
                                     &value,
                                     &selected_timezone.get_untracked(),
                                 ) {
@@ -1478,6 +1490,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                     page.set(1);
                                 }
                             }
+                            on:blur=move |_| base_time_editing.set(false)
                         />
                     </div>
                     <span class="footer-credit">
