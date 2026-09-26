@@ -2,6 +2,12 @@
   accept_rates:
     # Main-paper HotCRP: regular plus tool/benchmark papers; separate poster/short-paper/PhD forum portal excluded.
     # Accepted decisions / submissions as publicly reported; desk/withdrawal treatment unspecified, not final publication counts.
+    - year: 2022
+      submitted: 48
+      accepted: 23
+      str: 47.9%(23/48 22')
+      rate: 0.479166666666667
+      source: https://iiswc22.hotcrp.com/
     - year: 2025
       submitted: 91
       accepted: 38
