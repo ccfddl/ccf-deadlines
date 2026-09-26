@@ -15,7 +15,7 @@ struct CommitInfo {
 }
 
 #[component]
-pub fn Header() -> impl IntoView {
+pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
     let (show_latest_conf, set_show_latest_conf) = signal(false);
     let (show_str, set_show_str) = signal(String::new());
 
@@ -49,24 +49,32 @@ pub fn Header() -> impl IntoView {
                         .then(|| {
                             view! {
                                 <span class="header-latest">
-                                    "Latest: " {show_str.get()} " !!!"
+                                    {move || if use_english.get() { "Latest: " } else { "最新：" }} {show_str.get()} " !!!"
                                 </span>
                             }
                         })
                 }}
             </div>
             <div class="el-row subtitle">
-                "Worldwide Conference Deadline Countdowns. To add/edit a conference,\u{00a0}"
+                {move || if use_english.get() {
+                    "Worldwide Conference Deadline Countdowns. To add/edit a conference,\u{00a0}"
+                } else {
+                    "全球学术会议截止日期倒计时。添加或修改会议信息，请\u{00a0}"
+                }}
                 <a
                     style="color: #666666"
                     href="https://github.com/ccfddl/ccf-deadlines/pulls"
                     target="_blank"
                 >
-                    "send a pull request"
+                    {move || if use_english.get() { "send a pull request" } else { "提交 Pull Request" }}
                 </a> "."
             </div>
             <div class="el-row subtitle">
-                "*Disclaimer: The data provided by ccfddl is manually collected and for reference purposes only."
+                {move || if use_english.get() {
+                    "*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only."
+                } else {
+                    "*免责声明：ccfddl 的数据由自动化方式收集，仅供参考。"
+                }}
             </div>
         </section>
     }

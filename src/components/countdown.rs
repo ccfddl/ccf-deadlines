@@ -46,7 +46,11 @@ where
 }
 
 #[component]
-pub fn CountDown(remain: u64, #[prop(default = false)] detailed: bool) -> impl IntoView {
+pub fn CountDown(
+    remain: u64,
+    use_english: RwSignal<bool>,
+    #[prop(default = false)] detailed: bool,
+) -> impl IntoView {
     let remaining_time = RwSignal::new(remain / 1000);
 
     use_interval(1000, move || {
@@ -86,15 +90,16 @@ pub fn CountDown(remain: u64, #[prop(default = false)] detailed: bool) -> impl I
                     <span class="countdown-value">
                         {move || {
                             let (days, hours, minutes) = display_time();
+                            let prefix = if use_english.get() { "in " } else { "剩余 " };
                             if days > 0 {
-                                format!("in {}d {}h", days, hours)
+                                format!("{prefix}{}d {}h", days, hours)
                             } else if hours > 0 {
-                                format!("in {:02}h {:02}m", hours, minutes)
+                                format!("{prefix}{:02}h {:02}m", hours, minutes)
                             } else if minutes > 0 {
                                 let seconds = remaining_time.get() % 60;
-                                format!("in {:02}m {:02}s", minutes, seconds)
+                                format!("{prefix}{:02}m {:02}s", minutes, seconds)
                             } else {
-                                format!("in {}s", remaining_time.get() % 60)
+                                format!("{prefix}{}s", remaining_time.get() % 60)
                             }
                         }}
                     </span>

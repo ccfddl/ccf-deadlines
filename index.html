@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY374M6FJ8"></script>
   <script>
@@ -15,6 +16,7 @@
   <!-- Add a plain CSS file: see https://trunkrs.dev/assets/#css -->
   <!-- If using Tailwind with Leptos CSR, see https://trunkrs.dev/assets/#tailwind instead-->
   <link data-trunk rel="css" href="public/styles.css" />
+  <link rel="preload" href="/conference/allconf.json" as="fetch" type="application/json" crossorigin="anonymous" />
 
   <!-- Include favicon in dist output: see https://trunkrs.dev/assets/#icon -->
   <link data-trunk rel="icon" href="public/favicon.ico" />
@@ -28,6 +30,15 @@
 </head>
 
 
-<body></body>
+<body>
+  <div id="initial-loading" class="initial-loading" role="status" aria-live="polite">
+    <span>Loading conference deadlines…</span>
+  </div>
+  <script>
+    window.addEventListener('TrunkApplicationStarted', function () {
+      document.getElementById('initial-loading')?.remove();
+    }, { once: true });
+  </script>
+</body>
 
 </html>

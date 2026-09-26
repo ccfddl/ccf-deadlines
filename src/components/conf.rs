@@ -27,22 +27,7 @@ pub struct ConferenceYear {
     pub timezone: String,
     pub date: String,
     pub place: String,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct ConfAccRate {
-    pub title: String,
-    pub accept_rates: Vec<AccYear>,
-}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct AccYear {
-    pub year: i32,
-    pub submitted: i32,
-    pub accepted: i32,
-    pub str: String,
-    pub rate: String,
-    pub source: Option<String>,
+    pub acc_str: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -100,23 +85,10 @@ pub struct ConfItem {
 pub async fn fetch_all_conf(
     base_url: &String,
 ) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
-    let url = format!("{}/conference/allconf.yml", base_url);
+    let url = format!("{}/conference/allconf.json", base_url);
     let response = reqwest::get(url).await?;
-    let contents = response.text().await?;
-
-    let conferences: Vec<Conference> = serde_yaml::from_str(&contents)?;
+    let conferences: Vec<Conference> = response.json().await?;
     Ok(conferences)
-}
-
-pub async fn fetch_all_acc(
-    base_url: &String,
-) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
-    let url = format!("{}/conference/allacc.yml", base_url);
-    let response = reqwest::get(url).await?;
-    let contents = response.text().await?;
-
-    let accs: Vec<ConfAccRate> = serde_yaml::from_str(&contents)?;
-    Ok(accs)
 }
 
 pub fn get_categories() -> Vec<Category> {
@@ -172,16 +144,4 @@ pub fn get_categories() -> Vec<Category> {
             sub: "MX".to_string(),
         },
     ]
-}
-
-#[allow(dead_code)]
-pub async fn fetch_all_category() -> Result<Vec<Category>, Box<dyn std::error::Error>> {
-    // Fetch the YAML from the URL
-    let url = "https://raw.githubusercontent.com/ccfddl/ccfddl.github.io/page/conference/types.yml";
-    let response = reqwest::get(url).await?;
-    let contents = response.text().await?;
-
-    // Deserialize YAML into Vec<Conference>
-    let conferences: Vec<Category> = serde_yaml::from_str(&contents)?;
-    Ok(conferences)
 }

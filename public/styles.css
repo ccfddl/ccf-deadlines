@@ -51,14 +51,21 @@
   --font-size-3xl: 29px;
 }
 
-/* --------------------- Open Props --------------------------- */
-@import "https://unpkg.com/open-props";
-
-/* ------------------------------------------------------------ */
-
 body {
   background-color: #faf9f7;
   font-family: "PingFang SC", "Microsoft YaHei", "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.initial-loading {
+  display: flex;
+  min-height: 55vh;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: #697583;
+  font-family: "Roboto Mono", "SF Mono", Monaco, monospace;
+  font-size: 14px;
+  text-align: center;
 }
 
 .thaw-config-provider:not(.thaw-dialog) {
@@ -110,13 +117,16 @@ a {
 
 
 .title {
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  flex: 0 0 auto;
   line-height: 1;
   font-size: var(--font-size-3xl);
   font-style: normal;
   color: var(--color-text-primary);
   text-decoration: none;
-  border-bottom: 2px solid currentColor;
+  border-bottom: 2px solid #d9554f;
+  white-space: nowrap;
 }
 
 .title-accent {
@@ -420,6 +430,46 @@ a {
 
 .thaw-input__input {
   width: 125px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 15px;
+  color: #666;
+}
+
+.toolbar-main {
+  display: flex;
+  flex: 1 1 420px;
+  min-width: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.toolbar-timezone {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.toolbar-search {
+  flex: 1 1 240px;
+  min-width: 0;
+  max-width: 320px;
+}
+
+.toolbar-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-left: auto;
 }
 
 .thaw-table-cell-layout:hover {
@@ -802,6 +852,10 @@ a {
 .subscription-dialog input,
 .subscription-dialog button {
   font-family: inherit;
+}
+
+.subscription-dialog input {
+  min-width: 0;
 }
 
 body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
@@ -1407,5 +1461,132 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   }
   .skeleton-search-input {
     width: 100%;
+  }
+}
+
+@media (max-width: 1100px) and (min-width: 851px) {
+  .conference-list tbody {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 850px) and (min-width: 601px) {
+  .conference-list tbody {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .conference-list tbody {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .home {
+    padding: 0 12px;
+  }
+
+  .header-main {
+    align-items: flex-start;
+  }
+
+  .header-main .title {
+    max-width: 100%;
+    font-size: clamp(18px, 6.25vw, 25px);
+    line-height: 1.15;
+  }
+
+  .header-latest {
+    font-size: 13px;
+  }
+
+  .language-switches {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .toolbar-main {
+    flex-basis: 100%;
+  }
+
+  .toolbar-timezone {
+    font-size: 13px;
+  }
+
+  .toolbar-search {
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  .toolbar-search .thaw-input,
+  .toolbar-search .thaw-input__input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .toolbar-actions {
+    width: 100%;
+  }
+
+  .conference-list tr .conference-card-heading {
+    margin: 16px 16px 0;
+  }
+
+  .conference-list tr .conference-card-deadline-row,
+  .conference-list .conference-card-passed {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .conference-list .conference-card-date,
+  .conference-list td:first-child .tag-container,
+  .conference-list .conference-card-acceptance,
+  .conference-list td:nth-child(2) .time_con {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .conference-detail-dialog {
+    width: calc(100vw - 24px);
+    height: 85vh;
+    height: 85dvh;
+    max-height: 85vh;
+    max-height: 85dvh;
+    padding: 16px;
+  }
+
+  .conference-detail-dialog .conference-detail-title {
+    padding-right: 24px;
+    font-size: 22px;
+    overflow-wrap: anywhere;
+  }
+
+  .conference-detail-close {
+    top: -6px;
+    right: -4px;
+  }
+
+  .conference-detail-deadline {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .conference-detail-deadline-status {
+    align-self: flex-start;
+  }
+
+  .subscription-dialog .thaw-dialog-content > div {
+    min-width: 0;
+  }
+
+  .footer {
+    height: auto;
+    gap: 10px;
+    padding-bottom: 18px;
   }
 }
