@@ -641,6 +641,7 @@ a {
   flex: 0 1 180px;
   min-width: 0;
   max-width: 180px;
+  margin-left: 10px;
 }
 
 .toolbar-search .thaw-input,
@@ -2081,6 +2082,7 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .toolbar-search {
     flex-basis: 100%;
     max-width: none;
+    margin-left: 0;
   }
 
   .toolbar-search .thaw-input,
