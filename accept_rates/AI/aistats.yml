@@ -1,8 +1,22 @@
 - title: AISTATS
   accept_rates:
+    - year: 2021
+      # Primary AISTATS decision email from the Program Chairs.
+      submitted: 1527
+      accepted: 455
+      str: 29.8%(455/1527 21')
+      rate: 0.297969875573019
+      source: https://www.pure.ed.ac.uk/ws/portalfiles/portal/192696052/Model_updating_after_interventions_paradoxically_introduces_bias_acceptance_email.pdf
     - year: 2024
       submitted: 1980
       accepted: 546
       str: 27.6%(546/1980 24')
       rate: 0.275757575757576
       source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2026
+      # Program Chair Arno Solin reports the exact conference-wide submission and acceptance totals.
+      submitted: 2102
+      accepted: 590
+      str: 28.1%(590/2102 26')
+      rate: 0.28068506184586106
+      source: https://www.linkedin.com/posts/asolin_aistats2026-tangier-morocco-activity-7424831733768044544-DjfS
