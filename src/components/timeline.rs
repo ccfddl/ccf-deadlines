@@ -417,20 +417,14 @@ fn initialize_timeline(
     let (now, now_timezone) = get_browser_time_and_timezone();
     let now_timestamp = now.timestamp() as f64;
 
-    let mut deadlines = Vec::new();
+    let deadlines = time_points.to_vec();
     let is_single_point = time_points.len() == 1;
 
     if is_single_point {
-        deadlines.push(TimePoint {
-            timepoint: now,
-            r#type: 1,
-        });
         set_is_single.set(true);
     } else {
         set_is_single.set(false);
     }
-
-    deadlines.extend(time_points.iter().cloned());
 
     let expire_idx = deadlines
         .iter()

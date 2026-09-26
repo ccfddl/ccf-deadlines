@@ -685,10 +685,26 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                     });
                                     let first_timeline_date = deadlines
                                         .first()
-                                        .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
+                                        .map(|point| {
+                                            if point.timepoint > now {
+                                                now.with_timezone(point.timepoint.offset())
+                                                    .format("%b %-d, %Y")
+                                                    .to_string()
+                                            } else {
+                                                point.timepoint.format("%b %-d, %Y").to_string()
+                                            }
+                                        });
                                     let last_timeline_date = deadlines
                                         .last()
-                                        .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
+                                        .map(|point| {
+                                            if point.timepoint < now {
+                                                now.with_timezone(point.timepoint.offset())
+                                                    .format("%b %-d, %Y")
+                                                    .to_string()
+                                            } else {
+                                                point.timepoint.format("%b %-d, %Y").to_string()
+                                            }
+                                        });
                                     let ics_filename = format!("{}-{}.ics", conf.title, conf.year);
                                     let (google_calendar_url, icloud_calendar_url) =
                                         build_calendar_urls(
