@@ -2,6 +2,12 @@
   accept_rates:
     # Main-paper HotCRP: regular plus tool/benchmark papers; separate poster/short-paper/PhD forum portal excluded.
     # Accepted decisions / submissions as publicly reported; desk/withdrawal treatment unspecified, not final publication counts.
+    - year: 2021
+      submitted: 48
+      accepted: 19
+      str: 39.6%(19/48 21')
+      rate: 0.395833333333333
+      source: https://engineering.purdue.edu/IISWC2021/
     - year: 2022
       submitted: 48
       accepted: 23
