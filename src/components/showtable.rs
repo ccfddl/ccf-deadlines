@@ -1472,9 +1472,6 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                 }
                             }
                         >
-                            <span class="footer-base-time-label">
-                                {move || if use_english.get() { "Base time" } else { "基准时间" }}
-                            </span>
                             <strong class="footer-base-time-value">
                                 {move || format_base_time_display(&base_time_input.get())}
                             </strong>
