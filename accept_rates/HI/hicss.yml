@@ -12,6 +12,18 @@
       str: 47.4%(678/1429 23')
       rate: 0.47445766270118966
       source: https://aisel.aisnet.org/hicss-56/
+    - year: 2024
+      submitted: 1620
+      accepted: 764
+      str: 47.2%(764/1620 24')
+      rate: 0.47160493827160493
+      source: https://www.hawaii.edu/news/2024/01/12/hicss-harc-2024/
+    - year: 2025
+      submitted: 1516
+      accepted: 736
+      str: 48.5%(736/1516 25')
+      rate: 0.48548812664907653
+      source: https://www.hawaii.edu/news/2025/01/16/harc-hicss-2025/
     - year: 2026
       submitted: 1559
       accepted: 727
