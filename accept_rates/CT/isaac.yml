@@ -1,0 +1,37 @@
+- title: ISAAC
+  accept_rates:
+    # Proceedings preface, PDF page 11; contributed papers only, excludes invited talks.
+    - year: 2021
+      submitted: 215
+      accepted: 72
+      str: 33.5%(72/215 21')
+      rate: 0.33488372093023255
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol212-isaac2021/LIPIcs.ISAAC.2021.0/LIPIcs.ISAAC.2021.0.pdf
+    # Proceedings preface, PDF page 11; contributed papers only, excludes invited talks.
+    - year: 2022
+      submitted: 177
+      accepted: 65
+      str: 36.7%(65/177 22')
+      rate: 0.3672316384180791
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol248-isaac2022/LIPIcs.ISAAC.2022.0/LIPIcs.ISAAC.2022.0.pdf
+    # Proceedings preface, PDF page 9; contributed papers only, excludes invited talks.
+    - year: 2023
+      submitted: 184
+      accepted: 55
+      str: 29.9%(55/184 23')
+      rate: 0.29891304347826086
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol283-isaac2023/LIPIcs.ISAAC.2023.0/LIPIcs.ISAAC.2023.0.pdf
+    # Proceedings preface, PDF page 9; contributed papers only, excludes invited talks.
+    - year: 2024
+      submitted: 193
+      accepted: 56
+      str: 29.0%(56/193 24')
+      rate: 0.29015544041450775
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol322-isaac2024/LIPIcs.ISAAC.2024.0/LIPIcs.ISAAC.2024.0.pdf
+    # Proceedings preface, PDF page 9; contributed papers only, excludes invited talks.
+    - year: 2025
+      submitted: 178
+      accepted: 52
+      str: 29.2%(52/178 25')
+      rate: 0.29213483146067415
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol359-isaac2025/LIPIcs.ISAAC.2025.0/LIPIcs.ISAAC.2025.0.pdf
