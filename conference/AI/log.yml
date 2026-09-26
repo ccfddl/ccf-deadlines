@@ -9,7 +9,7 @@
   confs:
     - year: 2022
       id: log2022
-      link: https://log2022.logconference.org/
+      link: https://proceedings.mlr.press/v198/
       timeline:
         - deadline: TBD
           comment: 'Regular proceedings papers; original submission deadline unverified'
