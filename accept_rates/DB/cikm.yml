@@ -6,3 +6,15 @@
       str: 24.0%(354/1472 23')
       rate: 0.240489130434783
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3583780
+    - year: 2024
+      submitted: 1496
+      accepted: 347
+      str: 23.2%(347/1496 24')
+      rate: 0.23195187165775402
+      source: https://repository.tudelft.nl/file/File_5367be80-6576-4b11-bcdd-b2d81dcec39c
+    - year: 2025
+      submitted: 1627
+      accepted: 443
+      str: 27.2%(443/1627 25')
+      rate: 0.272280270436386
+      source: https://www.sigir.org/wp-content/uploads/2026/02/p18.pdf
