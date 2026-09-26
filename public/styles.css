@@ -1946,8 +1946,16 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   }
 
   .conference-list--rows tr > td + td {
-    border-top: 1px solid var(--color-border-light);
+    border-top: 0;
     border-left: 0;
+  }
+
+  .conference-list--rows tr > td:first-child .thaw-table-cell-layout {
+    padding-bottom: 6px;
+  }
+
+  .conference-list--rows tr > td:nth-child(2) .thaw-table-cell-layout {
+    padding-top: 4px;
   }
 
   .conference-list--rows tr .conference-card-heading,
@@ -1962,6 +1970,6 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 
   .conference-list--rows tr .conference-card-deadline-row,
   .conference-list--rows .conference-card-passed {
-    min-height: 62px;
+    min-height: 0;
   }
 }
