@@ -19,7 +19,8 @@
       id: apbc26
       link: https://www.apbc2026.com/home
       timeline:
-        - deadline: '2026-06-15 23:59:59'
+        - deadline: TBD
+          comment: 'Final extended paper deadline: July 17, 2026; exact time and timezone TBD (UTC+0 below is an unverified schema placeholder).'
       timezone: UTC+0
       date: October 21-24, 2026
       place: Hsinchu, Taiwan， China
