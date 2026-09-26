@@ -7,6 +7,14 @@
     thcpl: B
   dblp: iros
   confs:
+    - year: 2022
+      id: iros22
+      link: https://iros2022.org/
+      timeline:
+        - deadline: '2022-03-01 23:59:00'
+      timezone: UTC-8
+      date: October 23-27, 2022
+      place: Kyoto, Japan (Hybrid)
     - year: 2023
       id: iros23
       link: https://ieee-iros.org/
