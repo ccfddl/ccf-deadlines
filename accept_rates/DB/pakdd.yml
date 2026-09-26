@@ -1,0 +1,40 @@
+# Main proceedings papers; 2025-2026 include Main, Survey, and LLM tracks, but exclude DSFA transfers.
+- title: PAKDD
+  accept_rates:
+    - year: 2021
+      submitted: 628
+      accepted: 157
+      str: 25.0%(157/628 21')
+      rate: 0.250000000000000
+      source: https://link.springer.com/book/10.1007/978-3-030-75762-5
+    - year: 2022
+      submitted: 558
+      accepted: 121
+      str: 21.7%(121/558 22')
+      rate: 0.216845878136201
+      source: https://link.springer.com/book/10.1007/978-3-031-05936-0
+    - year: 2023
+      submitted: 813
+      accepted: 143
+      str: 17.6%(143/813 23')
+      rate: 0.175891758917589
+      source: https://link.springer.com/book/10.1007/978-3-031-33383-5
+    - year: 2024
+      submitted: 720
+      accepted: 177
+      str: 24.6%(177/720 24')
+      rate: 0.245833333333333
+      source: https://link.springer.com/book/10.1007/978-981-97-2253-2
+    # 2025: (134 + 10 + 24) accepted / (557 + 35 + 104) submitted.
+    - year: 2025
+      submitted: 696
+      accepted: 168
+      str: 24.1%(168/696 25')
+      rate: 0.241379310344828
+      source: https://link.springer.com/book/10.1007/978-981-96-8170-9
+    - year: 2026
+      submitted: 728
+      accepted: 184
+      str: 25.3%(184/728 26')
+      rate: 0.252747252747253
+      source: https://link.springer.com/book/10.1007/978-981-92-1468-6
