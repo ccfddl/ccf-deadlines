@@ -1,8 +1,18 @@
 - title: COLING
+  # Main-conference long and short papers, excluding industry, demos and workshops.
+  # Received-paper denominators, not the smaller reviewed-only subsets.
   accept_rates:
     - year: 2022
-      submitted: 1563
-      accepted: 522
-      str: 33.4%(522/1563 22')
-      rate: 0.333973128598848
-      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+      # Received papers, including papers not sent for review; main-track long and short papers.
+      submitted: 2253
+      accepted: 632
+      str: 28.1%(632/2253 22')
+      rate: 0.2805148690634710
+      source: https://aclanthology.org/2022.coling-1.0.pdf
+    - year: 2025
+      # 2530 direct submissions + 193 ARR commitments; 690 + 70 acceptances.
+      submitted: 2723
+      accepted: 760
+      str: 27.9%(760/2723 25')
+      rate: 0.2791039294895336
+      source: https://aclanthology.org/2025.coling-main.0.pdf
