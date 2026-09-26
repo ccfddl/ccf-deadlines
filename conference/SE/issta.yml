@@ -13,8 +13,6 @@
       timeline:
         - deadline: '2022-01-28 23:59:59'
           comment: Technical Papers due
-        - deadline: '2022-01-31 23:59:59'
-          comment: Workshops Submission Deadline
       timezone: AoE
       date: July 18-22, 2022
       place: Daejeon, South Korea
