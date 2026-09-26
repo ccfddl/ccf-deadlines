@@ -1,9 +1,21 @@
 - title: ITC
   accept_rates:
-    # Regular submissions accepted as full papers; excludes 5 short contributions and posters.
+    # Organizer's Regular Paper cohort; full-paper outcomes exclude short contributions and posters.
+    - year: 2023
+      submitted: 162
+      accepted: 30
+      rate: 0.18518518518518517
+      str: "18.5%(30/162 23')"
+      source: https://www.itctestweek.org/acceptance-rates/
+    - year: 2024
+      submitted: 155
+      accepted: 36
+      rate: 0.23225806451612904
+      str: "23.2%(36/155 24')"
+      source: https://www.itctestweek.org/acceptance-rates/
     - year: 2025
       submitted: 164
       accepted: 40
       rate: 0.24390243902439024
       str: "24.4%(40/164 25')"
-      source: https://www.youtube.com/watch?v=99T3dMcL750&t=816s
+      source: https://www.itctestweek.org/acceptance-rates/
