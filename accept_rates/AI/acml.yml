@@ -1,8 +1,27 @@
+# Conference track only; journal-track submissions and acceptances are excluded.
 - title: ACML
   accept_rates:
+    - year: 2021
+      submitted: 378
+      accepted: 115
+      str: 30.4%(115/378 21')
+      rate: 0.304232804232804
+      source: https://www.acml-conf.org/
+    - year: 2022
+      submitted: 248
+      accepted: 83
+      str: 33.5%(83/248 22')
+      rate: 0.334677419354839
+      source: https://www.acml-conf.org/
     - year: 2024
       submitted: 353
       accepted: 92
       str: 26.1%(92/353 24')
-      rate: 0.260623229
+      rate: 0.260623229461756
+      source: https://raw.githubusercontent.com/mlresearch/v260/main/assets/nguyen25a/nguyen25a.pdf
+    - year: 2025
+      submitted: 272
+      accepted: 79
+      str: 29.0%(79/272 25')
+      rate: 0.290441176470588
       source: https://www.acml-conf.org/
