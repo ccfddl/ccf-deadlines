@@ -1,6 +1,12 @@
 # Full and short papers in the main proceedings; separate workshops, PhD and demo proceedings excluded.
 - title: WISE
   accept_rates:
+    - year: 2021
+      submitted: 229
+      accepted: 84
+      str: 36.7%(84/229 21')
+      rate: 0.366812227074236
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-90888-1/1
     - year: 2023
       submitted: 137
       accepted: 73
