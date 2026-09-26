@@ -13,8 +13,6 @@
       timeline:
         - deadline: '2021-06-18 23:59:59'
           comment: Regular Papers
-        - deadline: '2021-07-12 23:59:59'
-          comment: Blue Sky Papers
       timezone: UTC-7
       date: November 8-11, 2021
       place: London, UK (Hybrid)
