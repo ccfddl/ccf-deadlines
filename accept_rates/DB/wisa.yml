@@ -1,0 +1,26 @@
+- title: WISA
+  accept_rates:
+    # English long papers / conference-wide received submissions; excludes short papers
+    # and Chinese journal recommendations. English-only denominator is not reported.
+    - year: 2021
+      submitted: 206
+      accepted: 49
+      str: 23.8%(49/206 21')
+      rate: 0.23786407766990292
+      source: https://tc.ccf.org.cn/tcis/tbtj/2021-12-20/761555.shtml
+    # English long papers / conference-wide received submissions; excludes short papers
+    # and Chinese journal recommendations. English-only denominator is not reported.
+    - year: 2022
+      submitted: 214
+      accepted: 42
+      str: 19.6%(42/214 22')
+      rate: 0.19626168224299065
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-20309-1/1
+    # English long papers / conference-wide received submissions; excludes short papers
+    # and Chinese journal recommendations. English-only denominator is not reported.
+    - year: 2023
+      submitted: 213
+      accepted: 43
+      str: 20.2%(43/213 23')
+      rate: 0.20187793427230047
+      source: https://tc.ccf.org.cn/tcis/tbtj/2023-09-15/823515.shtml
