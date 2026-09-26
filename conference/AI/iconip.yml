@@ -7,9 +7,18 @@
     thcpl: N
   dblp: iconip
   confs:
+    - year: 2022
+      id: iconip2022
+      link: https://www.apnns.org/ICONIP2022/
+      timeline:
+        - deadline: '2022-07-28 23:59:00'
+          comment: Final extended paper submission deadline
+      timezone: UTC-12
+      date: November 22-26, 2022
+      place: Online
     - year: 2023
       id: iconip2023
-      link: http://iconip2023.org/
+      link: https://www.apnns.org/conferences/
       timeline:
         - deadline: '2023-06-30 11:59:00'
       timezone: UTC-8
