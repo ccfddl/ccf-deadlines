@@ -98,7 +98,12 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
 
     // timezone
-    let time_zone = RwSignal::new(String::new());
+    let browser_time_zone = RwSignal::new(get_timezone_name().unwrap_or_else(|| "UTC".to_string()));
+    let stored_timezone = get_from_local_storage("display_timezone")
+        .filter(|value| is_supported_display_timezone(value, &browser_time_zone.get_untracked()))
+        .unwrap_or_else(|| browser_time_zone.get_untracked());
+    let selected_timezone = RwSignal::new(stored_timezone.clone());
+    let time_zone = RwSignal::new(stored_timezone);
 
     Effect::new(move |_| {
         let _ = check_list.get();
@@ -142,6 +147,19 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     });
 
     Effect::new(move |_| {
+        let selection = selected_timezone.get();
+        set_in_local_storage("display_timezone", &selection);
+        time_zone.set(selection.clone());
+
+        all_conf_list.update(|items| apply_display_timezone(items, &selection));
+        selected_conf.update(|selected| {
+            if let Some(item) = selected.as_mut() {
+                apply_display_timezone(std::slice::from_mut(item), &selection);
+            }
+        });
+    });
+
+    Effect::new(move |_| {
         set_in_local_storage(
             "conference_view",
             if is_list_view.get() { "list" } else { "cards" },
@@ -149,7 +167,6 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     });
 
     Effect::new(move || {
-        time_zone.set(get_timezone_name().unwrap_or_else(|| "UTC".to_string()));
         let categories = sub_list.get_untracked();
         let likes = like_list.get_untracked();
 
@@ -160,7 +177,14 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             match fetch_all_conf(&base_url).await {
                 Ok(conferences) => {
                     let rates = acceptance_rates.get_untracked();
-                    all_conf_list.set(build_conf_items(conferences, &categories, &likes, &rates));
+                    let timezone = selected_timezone.get_untracked();
+                    all_conf_list.set(build_conf_items(
+                        conferences,
+                        &categories,
+                        &likes,
+                        &rates,
+                        &timezone,
+                    ));
                 }
                 Err(error) => {
                     console::error_1(&format!("Error: {error:?}").into());
@@ -372,7 +396,60 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             <div class="timezone toolbar">
                 <div class="toolbar-main">
                     <div class="toolbar-timezone">
-                        "Countdowns are shown in "{move || time_zone.get()}" time."
+                        <span>"Deadlines are shown in"</span>
+                        <div class="toolbar-timezone-picker">
+                            <button
+                                type="button"
+                                class="toolbar-timezone-trigger"
+                                aria-label="Select display timezone"
+                                aria-haspopup="listbox"
+                                aria-expanded=move || {
+                                    open_dropdown.get().as_deref() == Some("timezone")
+                                }
+                                on:click=move |_| {
+                                    if open_dropdown.get_untracked().as_deref() == Some("timezone") {
+                                        open_dropdown.set(None);
+                                    } else {
+                                        open_dropdown.set(Some("timezone".to_string()));
+                                    }
+                                }
+                            >
+                                <span>{move || time_zone.get()}</span>
+                                <span class="toolbar-timezone-arrow" aria-hidden="true">"⌄"</span>
+                            </button>
+                            <Show when=move || open_dropdown.get().as_deref() == Some("timezone")>
+                                <div
+                                    class="toolbar-timezone-backdrop"
+                                    on:click=move |_| open_dropdown.set(None)
+                                ></div>
+                                <div class="toolbar-timezone-menu" role="listbox">
+                                    {display_timezone_options(&browser_time_zone.get_untracked())
+                                        .into_iter()
+                                        .map(|timezone| {
+                                            let value = timezone.clone();
+                                            let selected_value = timezone.clone();
+                                            view! {
+                                                <button
+                                                    type="button"
+                                                    class="toolbar-timezone-option"
+                                                    role="option"
+                                                    aria-selected=move || {
+                                                        selected_timezone.get() == selected_value
+                                                    }
+                                                    on:click=move |_| {
+                                                        selected_timezone.set(value.clone());
+                                                        open_dropdown.set(None);
+                                                    }
+                                                >
+                                                    {timezone}
+                                                </button>
+                                            }
+                                        })
+                                        .collect_view()}
+                                </div>
+                            </Show>
+                        </div>
+                        <span>"time."</span>
                     </div>
                     <div class="toolbar-search">
                         <Input
@@ -549,6 +626,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             {move || {
                                 selected_conf.get().map(|conf| {
                                     let is_tbd = conf.status == "TBD";
+                                    let display_timezone = time_zone.get();
                                     let estimated_next_labels = conf
                                         .estimated_deadlines
                                         .iter()
@@ -613,7 +691,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                         .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
                                     let ics_filename = format!("{}-{}.ics", conf.title, conf.year);
                                     let (google_calendar_url, icloud_calendar_url) =
-                                        build_calendar_urls(&conf, &time_zone.get_untracked());
+                                        build_calendar_urls(
+                                            &conf,
+                                            &browser_time_zone.get_untracked(),
+                                        );
                                     let core_rank = conf.corerank.as_deref().unwrap_or("N");
                                     let core_label = if core_rank == "N" {
                                         "Non-CORE".to_string()
@@ -654,7 +735,11 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                 "conference-detail-deadline-status {}",
                                                 urgency_class_for(remaining_ms / 1000),
                                             );
-                                            let date = point.timepoint.format("%b %-d, %Y · UTC%:z").to_string();
+                                            let date = format!(
+                                                "{} · {}",
+                                                point.timepoint.format("%H:%M, %b %-d, %Y"),
+                                                display_timezone,
+                                            );
                                             view! {
                                                 <div class=if is_next { "conference-detail-deadline is-next" } else if is_passed { "conference-detail-deadline is-passed" } else { "conference-detail-deadline" }>
                                                     <div class="conference-detail-deadline-main">
@@ -866,7 +951,13 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                 view! {
                                     <For
                                         each=move || paginated_list.get()
-                                        key=|conf| (conf.id.clone(), conf.is_like)
+                                        key=move |conf| {
+                                            (
+                                                conf.id.clone(),
+                                                conf.is_like,
+                                                selected_timezone.get(),
+                                            )
+                                        }
                                         children=move |conf| {
                                             let is_finished = conf.status == "FIN";
                                             let is_tbd = conf.status == "TBD";
@@ -905,12 +996,21 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                 .clone()
                                                 .unwrap_or_else(|| conf.deadline.clone());
                                             let deadline_timezone = conf.timezone.clone();
+                                            let countdown_remain = remaining_until_deadline(
+                                                &deadline_date,
+                                                &deadline_timezone,
+                                            )
+                                            .unwrap_or(conf.remain);
                                             let list_deadline = deadline_date.clone();
                                             let list_timezone = deadline_timezone.clone();
+                                            let timezone_selection =
+                                                selected_timezone.get_untracked();
+                                            let display_timezone = time_zone.get_untracked();
                                             let list_deadline_display = format_legacy_deadline_display(
                                                 &list_deadline,
                                                 &list_timezone,
-                                                &time_zone.get_untracked(),
+                                                &timezone_selection,
+                                                &display_timezone,
                                             );
                                             let list_website = conf.link.clone();
                                             let list_timeline = conf.ddls.clone();
@@ -1145,12 +1245,12 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                                 {move || {
                                                                                                     if is_list_view.get() {
                                                                                                         view! {
-                                                                                                            <CountDown remain=conf.remain legacy=true />
+                                                                                                            <CountDown remain=countdown_remain legacy=true />
                                                                                                         }
                                                                                                             .into_any()
                                                                                                     } else {
                                                                                                         view! {
-                                                                                                            <CountDown remain=conf.remain />
+                                                                                                            <CountDown remain=countdown_remain />
                                                                                                         }
                                                                                                             .into_any()
                                                                                                     }
@@ -1207,7 +1307,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                     view! {
                                                                                         <span>
                                                                                             <b>{deadline_kind}</b>
-                                                                                            <small>{format_deadline_display(&deadline_date, &deadline_timezone)}</small>
+                                                                                            <small>{format_deadline_display(
+                                                                                                &deadline_date,
+                                                                                                &deadline_timezone,
+                                                                                            )}</small>
                                                                                         </span>
                                                                                     }
                                                                                         .into_any()
@@ -1336,13 +1439,154 @@ fn browser_origin() -> Option<String> {
     window().and_then(|browser| browser.location().origin().ok())
 }
 
+const DISPLAY_TIMEZONES: &[&str] = &[
+    "Pacific/Honolulu",
+    "America/Los_Angeles",
+    "America/Denver",
+    "America/Chicago",
+    "America/New_York",
+    "America/Sao_Paulo",
+    "Europe/London",
+    "Europe/Paris",
+    "Europe/Berlin",
+    "Africa/Cairo",
+    "Asia/Dubai",
+    "Asia/Kolkata",
+    "Asia/Bangkok",
+    "Asia/Shanghai",
+    "Asia/Tokyo",
+    "Australia/Sydney",
+    "Pacific/Auckland",
+];
+
+#[cfg(target_arch = "wasm32")]
+fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
+    use wasm_bindgen::JsCast;
+    use web_sys::js_sys::Array;
+
+    let mut options =
+        web_sys::js_sys::eval("Intl.supportedValuesOf ? Intl.supportedValuesOf('timeZone') : []")
+            .ok()
+            .and_then(|value| value.dyn_into::<Array>().ok())
+            .map(|values| {
+                values
+                    .iter()
+                    .filter_map(|value| value.as_string())
+                    .collect()
+            })
+            .unwrap_or_else(|| fallback_display_timezone_options());
+    options.retain(|timezone| timezone != browser_timezone);
+    options.insert(0, browser_timezone.to_string());
+    options
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
+    let mut options = fallback_display_timezone_options();
+    options.retain(|timezone| timezone != browser_timezone);
+    options.insert(0, browser_timezone.to_string());
+    options
+}
+
+fn fallback_display_timezone_options() -> Vec<String> {
+    DISPLAY_TIMEZONES
+        .iter()
+        .map(|timezone| (*timezone).to_string())
+        .collect()
+}
+
+fn is_supported_display_timezone(value: &str, browser_timezone: &str) -> bool {
+    display_timezone_options(browser_timezone)
+        .iter()
+        .any(|timezone| timezone == value)
+}
+
+#[cfg(target_arch = "wasm32")]
+fn display_timezone_offset_at(timezone: &str, timestamp_millis: i64) -> FixedOffset {
+    timezone_offset_from_intl(timezone, timestamp_millis)
+        .unwrap_or_else(|| FixedOffset::east_opt(0).expect("UTC offset is valid"))
+}
+
+#[cfg(target_arch = "wasm32")]
+fn timezone_offset_from_intl(timezone: &str, timestamp_millis: i64) -> Option<FixedOffset> {
+    use web_sys::js_sys::{Array, Date, Intl, Object, Reflect};
+
+    let locales = Array::new();
+    locales.push(&"en-US".into());
+    let options = Object::new();
+    for (key, value) in [
+        ("timeZone", timezone),
+        ("year", "numeric"),
+        ("month", "2-digit"),
+        ("day", "2-digit"),
+        ("hour", "2-digit"),
+        ("minute", "2-digit"),
+        ("second", "2-digit"),
+        ("hourCycle", "h23"),
+    ] {
+        Reflect::set(&options, &key.into(), &value.into()).ok()?;
+    }
+
+    let formatter = Intl::DateTimeFormat::new(&locales, &options);
+    let date = Date::new(&wasm_bindgen::JsValue::from_f64(timestamp_millis as f64));
+    let parts = formatter.format_to_parts(&date);
+    let mut values = HashMap::new();
+    for part in parts.iter() {
+        let kind = Reflect::get(&part, &"type".into()).ok()?.as_string()?;
+        let value = Reflect::get(&part, &"value".into()).ok()?.as_string()?;
+        values.insert(kind, value);
+    }
+
+    let number = |name: &str| values.get(name)?.parse::<u32>().ok();
+    let local_time =
+        NaiveDate::from_ymd_opt(number("year")? as i32, number("month")?, number("day")?)?
+            .and_hms_opt(number("hour")?, number("minute")?, number("second")?)?;
+    let instant_millis = timestamp_millis.div_euclid(1000) * 1000;
+    let offset_minutes =
+        (local_time.and_utc().timestamp_millis() - instant_millis).div_euclid(60_000);
+    FixedOffset::east_opt((offset_minutes * 60) as i32)
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn display_timezone_offset_at(timezone: &str, _timestamp_millis: i64) -> FixedOffset {
+    let seconds = match timezone {
+        "Pacific/Honolulu" => -10 * 3600,
+        "America/Los_Angeles" => -8 * 3600,
+        "America/Denver" => -7 * 3600,
+        "America/Chicago" => -6 * 3600,
+        "America/New_York" => -5 * 3600,
+        "America/Sao_Paulo" => -3 * 3600,
+        "Europe/Paris" | "Europe/Berlin" | "Africa/Cairo" => 3600,
+        "Asia/Dubai" => 4 * 3600,
+        "Asia/Kolkata" => 5 * 3600 + 1800,
+        "Asia/Bangkok" => 7 * 3600,
+        "Asia/Shanghai" => 8 * 3600,
+        "Asia/Tokyo" => 9 * 3600,
+        "Australia/Sydney" => 10 * 3600,
+        "Pacific/Auckland" => 12 * 3600,
+        _ => 0,
+    };
+    FixedOffset::east_opt(seconds).expect("display timezone offset is valid")
+}
+
+fn apply_display_timezone(items: &mut [ConfItem], timezone: &str) {
+    for item in items {
+        for deadline in &mut item.ddls {
+            let offset =
+                display_timezone_offset_at(timezone, deadline.timepoint.timestamp_millis());
+            deadline.timepoint = deadline.timepoint.with_timezone(&offset);
+        }
+    }
+}
+
 fn build_conf_items(
     conferences: Vec<Conference>,
     categories: &[Category],
     likes: &HashSet<String>,
     acceptance_rates: &AcceptanceRateMap,
+    display_timezone: &str,
 ) -> Vec<ConfItem> {
-    let (current_time, current_timezone) = get_browser_time_and_timezone();
+    let current_time = chrono::Utc::now().fixed_offset();
     let mut items = Vec::new();
 
     for conference in conferences {
@@ -1362,8 +1606,10 @@ fn build_conf_items(
                         parse_deadline_to_rfc3339(&abstract_value, &edition.timezone)
                             .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
                     {
+                        let display_offset =
+                            display_timezone_offset_at(display_timezone, value.timestamp_millis());
                         deadlines.push(TimePoint {
-                            timepoint: value.with_timezone(&current_timezone),
+                            timepoint: value.with_timezone(&display_offset),
                             r#type: 0,
                         });
                         if value > current_time {
@@ -1381,8 +1627,10 @@ fn build_conf_items(
                     parse_deadline_to_rfc3339(&timeline_item.deadline, &edition.timezone)
                         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
                 {
+                    let display_offset =
+                        display_timezone_offset_at(display_timezone, value.timestamp_millis());
                     deadlines.push(TimePoint {
-                        timepoint: value.with_timezone(&current_timezone),
+                        timepoint: value.with_timezone(&display_offset),
                         r#type: 1,
                     });
                     if value > current_time {
@@ -1633,6 +1881,17 @@ fn display_place(place: &str) -> String {
         .to_string()
 }
 
+fn remaining_until_deadline(deadline: &str, timezone: &str) -> Option<u64> {
+    let deadline_time = parse_deadline_to_rfc3339(deadline, timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())?;
+    Some(
+        deadline_time
+            .signed_duration_since(chrono::Utc::now())
+            .num_milliseconds()
+            .max(0) as u64,
+    )
+}
+
 fn format_estimated_deadline_date(deadline: &str) -> String {
     deadline
         .split_whitespace()
@@ -1645,14 +1904,15 @@ fn format_estimated_deadline_date(deadline: &str) -> String {
 fn format_deadline_display(deadline: &str, timezone: &str) -> String {
     parse_deadline_to_rfc3339(deadline, timezone)
         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
-        .map(|value| format!("{} ({})", value.format("%b %-d, %Y"), timezone))
+        .map(|value| format!("{} ({})", value.format("%H:%M, %b %-d, %Y"), timezone))
         .unwrap_or_else(|| format!("{} ({})", deadline, timezone))
 }
 
 fn format_legacy_deadline_display(
     deadline: &str,
     timezone: &str,
-    browser_timezone: &str,
+    display_timezone: &str,
+    display_timezone_label: &str,
 ) -> String {
     let Some(origin_time) = parse_deadline_to_rfc3339(deadline, timezone)
         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
@@ -1660,8 +1920,9 @@ fn format_legacy_deadline_display(
         return format!("{} ({})", deadline, normalize_timezone(timezone));
     };
 
-    let (_, browser_offset) = get_browser_time_and_timezone();
-    let local_time = origin_time.with_timezone(&browser_offset);
+    let selected_offset =
+        display_timezone_offset_at(display_timezone, origin_time.timestamp_millis());
+    let local_time = origin_time.with_timezone(&selected_offset);
     let day = local_time.day();
     let suffix = match day % 100 {
         11..=13 => "th",
@@ -1672,10 +1933,10 @@ fn format_legacy_deadline_display(
             _ => "th",
         },
     };
-    let local_timezone = match browser_timezone {
+    let local_timezone = match display_timezone_label {
         "Asia/Shanghai" | "Asia/Chongqing" => "CST".to_string(),
         "UTC" | "Etc/UTC" | "Etc/GMT" => "UTC".to_string(),
-        "" => format_utc_offset(browser_offset.local_minus_utc()),
+        "" => format_utc_offset(selected_offset.local_minus_utc()),
         value => value.to_string(),
     };
 
@@ -1764,7 +2025,7 @@ const RANK_OPTIONS: &[(&str, &str)] = &[
 fn get_utc_map() -> &'static HashMap<String, String> {
     UTC_MAP.get_or_init(|| {
         let mut utc_map = HashMap::new();
-        for i in -12..=12 {
+        for i in -12..=14 {
             let offset_str = if i >= 0 {
                 format!("+{:02}:00", i)
             } else {
