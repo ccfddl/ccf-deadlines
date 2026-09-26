@@ -2023,28 +2023,28 @@ fn remaining_until_deadline(
 
 fn deadline_summary_label(deadline_type: i32) -> &'static str {
     match deadline_type {
-        0 => "Abstract submission",
+        0 => "Abstract Submission",
         2 => "Rebuttal Submission",
         3 => "Final Decisions",
-        _ => "Paper submission",
+        _ => "Paper Submission",
     }
 }
 
 fn deadline_short_label(deadline_type: i32) -> &'static str {
     match deadline_type {
-        0 => "Abstract deadline",
+        0 => "Abstract Deadline",
         2 => "Rebuttal Submission",
         3 => "Final Decisions",
-        _ => "Paper deadline",
+        _ => "Paper Deadline",
     }
 }
 
 fn deadline_detail_label(deadline_type: i32) -> &'static str {
     match deadline_type {
-        0 => "Abstract submission deadline",
+        0 => "Abstract Submission Deadline",
         2 => "Rebuttal Submission",
         3 => "Final Decisions",
-        _ => "Paper submission deadline",
+        _ => "Paper Submission Deadline",
     }
 }
 
