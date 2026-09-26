@@ -1,0 +1,33 @@
+- title: ISC
+  # Main-conference full and short papers; excludes workshops.
+  accept_rates:
+    - year: 2021
+      submitted: 87
+      accepted: 21
+      str: 24.1%(21/87 21')
+      rate: 0.2413793103448276
+      source: https://link.springer.com/book/10.1007/978-3-030-91356-4
+    - year: 2022
+      submitted: 72
+      accepted: 29
+      str: 40.3%(29/72 22')
+      rate: 0.4027777777777778
+      source: https://link.springer.com/book/10.1007/978-3-031-22390-7
+    - year: 2023
+      submitted: 90
+      accepted: 29
+      str: 32.2%(29/90 23')
+      rate: 0.3222222222222222
+      source: https://link.springer.com/book/10.1007/978-3-031-49187-0
+    - year: 2024
+      submitted: 111
+      accepted: 33
+      str: 29.7%(33/111 24')
+      rate: 0.2972972972972973
+      source: https://link.springer.com/book/10.1007/978-3-031-75757-0
+    - year: 2025
+      submitted: 77
+      accepted: 28
+      str: 36.4%(28/77 25')
+      rate: 0.3636363636363636
+      source: https://link.springer.com/book/10.1007/978-3-032-08124-7
