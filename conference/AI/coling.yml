@@ -40,6 +40,8 @@
       timeline:
         - deadline: '2026-10-12 23:59:59'
           comment: 'ARR Submission'
+        - deadline: '2026-12-23 23:59:59'
+          comment: 'COLING commitment after ARR meta-reviews; reviewed papers only'
       timezone: UTC-12
       date: May 9-14, 2027
       place: Macau SAR, China
