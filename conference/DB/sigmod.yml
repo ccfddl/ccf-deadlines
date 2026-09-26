@@ -11,9 +11,11 @@
       id: sigmod21
       link: http://2021.sigmod.org/
       timeline:
+        - deadline: '2020-07-07 17:00:00'
+          comment: 'first round'
         - deadline: '2020-09-22 17:00:00'
           comment: second round
-      timezone: UTC-8
+      timezone: PT
       date: June 20-25, 2021
       place: Xi'an, China
     - year: 2022
@@ -24,7 +26,7 @@
           comment: first round
         - deadline: '2021-09-15 17:00:00'
           comment: second round
-      timezone: UTC-8
+      timezone: PT
       date: June 12-17, 2022
       place: Philadelphia, PA, USA
     - year: 2023
@@ -37,7 +39,7 @@
           comment: second round
         - deadline: '2022-10-15 23:59:00'
           comment: third round
-      timezone: UTC-8
+      timezone: PT
       date: June 18-23, 2023
       place: Seattle, WA, USA
     - year: 2024
@@ -52,7 +54,7 @@
           comment: round 3
         - deadline: '2023-10-15 23:59:00'
           comment: round 4
-      timezone: UTC-7
+      timezone: PT
       date: June 11-16, 2024
       place: Santiago, Chile
     - year: 2025
