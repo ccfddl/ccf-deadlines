@@ -1,8 +1,33 @@
+# Full papers only; invited contributions excluded. The existing 2022 record is preserved.
 - title: CRYPTO
   accept_rates:
+    - year: 2021
+      submitted: 426
+      accepted: 103
+      str: 24.2%(103/426 21')
+      rate: 0.241784037558685
+      source: https://link.springer.com/book/10.1007/978-3-030-84242-0
     - year: 2022
       submitted: 455
       accepted: 99
       str: 21.8%(99/455 22')
       rate: 0.217582417582418
       source: https://github.com/emeryberger/csconferences
+    - year: 2023
+      submitted: 479
+      accepted: 124
+      str: 25.9%(124/479 23')
+      rate: 0.258872651356994
+      source: https://link.springer.com/book/10.1007/978-3-031-38557-5
+    - year: 2024
+      submitted: 526
+      accepted: 143
+      str: 27.2%(143/526 24')
+      rate: 0.271863117870722
+      source: https://link.springer.com/book/10.1007/978-3-031-68376-3
+    - year: 2025
+      submitted: 643
+      accepted: 156
+      str: 24.3%(156/643 25')
+      rate: 0.242612752721617
+      source: https://link.springer.com/book/10.1007/978-3-032-01855-7
