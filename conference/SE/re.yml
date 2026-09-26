@@ -34,8 +34,6 @@
         - abstract_deadline: '2026-02-16 23:59:59'
           deadline: '2026-02-23 23:59:59'
           comment: Research Papers
-        - deadline: '2026-04-13 23:59:59'
-          comment: Journal Paper
       timezone: AoE
       date: August 17-21, 2026
       place: Montreal, Canada
