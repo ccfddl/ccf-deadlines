@@ -1,0 +1,26 @@
+- title: DAC
+  accept_rates:
+    - year: 2021
+      submitted: 914
+      accepted: 215
+      str: 23.5%(215/914 21')
+      rate: 0.235229759299781
+      source: https://archive.dac.com/media-center/dac-press-releases/58th-design-automation-conference-announces-preliminary-attendance-numbers.html
+    - year: 2022
+      submitted: 987
+      accepted: 223
+      str: 22.6%(223/987 22')
+      rate: 0.225937183383992
+      source: https://archive.dac.com/media-center/dac-press-releases/the-59th-design-automation-conference-returns-with-a-strong-technical-program-and-expanded-training-sessions-advance-registration-now-open.html
+    - year: 2023
+      submitted: 1156
+      accepted: 263
+      str: 22.8%(263/1156 23')
+      rate: 0.227508650519031
+      source: https://archive.dac.com/media-center/dac-press-releases/the-design-automation-conference-announces-the-technical-program-with-prominent-invited-speakers-to-celebrate-60-years-influencing-innovation.html
+    - year: 2024
+      submitted: 1545
+      accepted: 337
+      str: 21.8%(337/1545 24')
+      rate: 0.218122977346278
+      source: https://dac.com/press-release/the-61st-dac-chips-to-systems-conference-best-paper-awards
