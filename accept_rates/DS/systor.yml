@@ -1,0 +1,32 @@
+- title: SYSTOR
+  accept_rates:
+    - year: 2021
+      submitted: 63
+      accepted: 19
+      str: 30.2%(19/63 21')
+      rate: 0.30158730158730157
+      source: https://systor21.hotcrp.com/
+    - year: 2022
+      submitted: 41
+      accepted: 12
+      str: 29.3%(12/41 22')
+      rate: 0.2926829268292683
+      source: https://systor22.hotcrp.com/
+    - year: 2023
+      submitted: 30
+      accepted: 12
+      str: 40.0%(12/30 23')
+      rate: 0.4
+      source: https://systor23.hotcrp.com/
+    - year: 2024
+      submitted: 38
+      accepted: 14
+      str: 36.8%(14/38 24')
+      rate: 0.3684210526315789
+      source: https://systor24.hotcrp.com/
+    - year: 2025
+      submitted: 43
+      accepted: 16
+      str: 37.2%(16/43 25')
+      rate: 0.37209302325581395
+      source: https://systor25.hotcrp.com/
