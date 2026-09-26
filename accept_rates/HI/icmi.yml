@@ -1,0 +1,16 @@
+- title: ICMI
+  accept_rates:
+    # Main-track final acceptances / reviewed papers; received total unspecified.
+    - year: 2021
+      submitted: 247
+      accepted: 93
+      rate: 0.3765182186234818
+      str: "37.7%(93/247 21')"
+      source: https://icmi.acm.org/2021/docs/ICMI_2021_Booklet_Final.pdf
+    # Main-track final acceptances / reviewed papers; received total unspecified.
+    - year: 2022
+      submitted: 201
+      accepted: 66
+      rate: 0.3283582089552239
+      str: "32.8%(66/201 22')"
+      source: https://icmi.acm.org/2022/wp-content/uploads/2022/11/ICMI-2022-Booklet-FinalDraft-v2.pdf
