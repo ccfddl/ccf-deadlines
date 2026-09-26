@@ -11,7 +11,7 @@ console_log = {version = "1", features = ["color"] }
 log = { version = "0.4" }
 console_error_panic_hook = { version =  "0.1" }
 serde = { version = "1.0.219" }
-reqwest = {version = "0.12.23", features = ["json"] }
+gloo-net = { version = "0.6", default-features = false, features = ["http", "json"] }
 chrono = { version = "0.4", features = ["serde"] }
 web-sys = { version="0.3", features = ["Window", "Navigator", "Storage", "Document", "Element"] }
 wasm-bindgen = { version = "0.2" }

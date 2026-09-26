@@ -9,8 +9,7 @@ use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate};
 use leptos::prelude::*;
 use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde_json;
-use std::collections::HashMap;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
 use thaw::*;
 use urlencoding::encode;
@@ -90,6 +89,9 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
 
     // table
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
+    let initial_data_loaded = RwSignal::new(false);
+    let archive_loaded = RwSignal::new(false);
+    let archive_loading = RwSignal::new(false);
 
     // timezone
     let time_zone = RwSignal::new(String::new());
@@ -136,220 +138,54 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     });
 
     Effect::new(move || {
-        // timezone
-        time_zone.set(get_timezone_name().unwrap());
+        time_zone.set(get_timezone_name().unwrap_or_else(|| "UTC".to_string()));
+        let categories = sub_list.get_untracked();
+        let likes = like_list.get_untracked();
 
         spawn_local(async move {
-            let rank_options: HashMap<&str, &str> = RANK_OPTIONS.iter().cloned().collect();
-
-            let (current_time, current_timezone) = get_browser_time_and_timezone();
-
-            // base_url
-            let window = web_sys::window().unwrap();
-            let location = window.location();
-            let base_url = location.origin().unwrap();
-
-            match fetch_all_conf(&base_url).await {
+            let Some(base_url) = browser_origin() else {
+                return;
+            };
+            match fetch_all_conf(&base_url, false).await {
                 Ok(conferences) => {
-                    let mut conf_vec = Vec::new();
-
-                    for conf in conferences {
-                        let conf_items = conf.confs.iter().map(|year_conf| {
-                            let len = year_conf.timeline.len();
-                            let mut cur_deadline = year_conf.timeline[len - 1].deadline.clone();
-                            let mut cur_abstract_deadline = None;
-                            let mut cur_comment = year_conf.timeline[len - 1].comment.clone();
-                            let mut ddl_vec = Vec::<TimePoint>::new();
-                            let mut upcoming_deadlines = Vec::new();
-
-                            for timeline_item in year_conf.timeline.iter() {
-                                let tz = &year_conf.timezone;
-
-                                // abstract type:0 submission type:1
-                                if let Some(abs_ddl) = timeline_item.abstract_deadline.clone() {
-                                    if let Some(abs_ddl_str) =
-                                        parse_deadline_to_rfc3339(&abs_ddl, tz)
-                                    {
-                                        if let Ok(abs_ddl_datetime) =
-                                            DateTime::parse_from_rfc3339(&abs_ddl_str)
-                                        {
-                                            ddl_vec.push(TimePoint {
-                                                timepoint: abs_ddl_datetime
-                                                    .with_timezone(&current_timezone)
-                                                    .clone(),
-                                                r#type: 0,
-                                            });
-                                            if abs_ddl_datetime > current_time {
-                                                upcoming_deadlines.push((
-                                                    abs_ddl_datetime,
-                                                    abs_ddl,
-                                                    true,
-                                                    timeline_item.comment.clone(),
-                                                ));
-                                            }
-                                        }
-                                    }
-                                }
-
-                                let ddl_str =
-                                    match parse_deadline_to_rfc3339(&timeline_item.deadline, tz) {
-                                        Some(s) => s,
-                                        None => continue,
-                                    };
-
-                                if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                                    ddl_vec.push(TimePoint {
-                                        timepoint: ddl_datetime
-                                            .with_timezone(&current_timezone)
-                                            .clone(),
-                                        r#type: 1,
-                                    });
-                                    if ddl_datetime > current_time {
-                                        upcoming_deadlines.push((
-                                            ddl_datetime,
-                                            timeline_item.deadline.clone(),
-                                            false,
-                                            timeline_item.comment.clone(),
-                                        ));
-                                    }
-                                }
-                            }
-
-                            if let Some((_, deadline, is_abstract, comment)) = upcoming_deadlines
-                                .into_iter()
-                                .min_by(|left, right| left.0.cmp(&right.0))
-                            {
-                                cur_deadline = deadline.clone();
-                                cur_abstract_deadline = is_abstract.then_some(deadline);
-                                cur_comment = comment;
-                            }
-
-                            ConfItem {
-                                title: conf.title.clone(),
-                                description: conf.description.clone(),
-                                sub: conf.sub.clone(),
-                                rank: conf.rank.ccf.clone(),
-                                corerank: conf.rank.core.clone(),
-                                thcplrank: conf.rank.thcpl.clone(),
-                                displayrank: rank_options
-                                    .get(conf.rank.ccf.as_str())
-                                    .unwrap()
-                                    .to_string(),
-                                dblp: conf.dblp.clone(),
-                                year: year_conf.year,
-                                id: year_conf.id.clone(),
-                                link: year_conf.link.clone(),
-                                abstract_deadline: cur_abstract_deadline,
-                                deadline: cur_deadline,
-                                comment: cur_comment,
-                                timezone: year_conf.timezone.clone(),
-                                date: year_conf.date.clone(),
-                                place: year_conf.place.clone(),
-                                status: "".to_string(), // Placeholder, should be determined based on current date
-                                is_like: like_list.get_untracked().contains(&year_conf.id),
-                                remain: 0,
-                                local_ddl: None,
-                                origin_ddl: None,
-                                subname: "".to_string(),
-                                subname_en: "".to_string(),
-                                google_calendar_url: None,
-                                icloud_calendar_url: None,
-                                acc_str: year_conf.acc_str.clone(),
-                                ddls: ddl_vec,
-                            }
-                        });
-                        conf_vec.extend(conf_items);
-                    }
-
-                    for item in conf_vec.iter_mut() {
-                        // subname
-                        if let Some(matched_category) = sub_list
-                            .get_untracked()
-                            .iter()
-                            .find(|sub_item| sub_item.sub == item.sub)
-                        {
-                            item.subname = matched_category.name.clone();
-                            item.subname_en = matched_category.name_en.clone();
-                        }
-
-                        if item.deadline == "TBD" {
-                            item.remain = 0;
-                            item.status = "TBD".to_string();
-                            continue;
-                        }
-
-                        // 4. Calculate deadlines and remaining time
-                        if let Some(ddl_str) =
-                            parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
-                        {
-                            if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                                // Convert to browser local time and format
-                                let local_ddl_datetime =
-                                    ddl_datetime.with_timezone(&current_timezone);
-                                let formatted_date_time =
-                                    local_ddl_datetime.format("%Y-%m-%d %H:%M:%S").to_string();
-                                let offset_seconds = local_ddl_datetime.offset().local_minus_utc();
-                                let offset_hours = offset_seconds / 3600;
-                                let formatted_timezone = format!("UTC{:+}", offset_hours);
-
-                                item.local_ddl =
-                                    Some(format!("{} {}", formatted_date_time, formatted_timezone));
-                                item.origin_ddl =
-                                    Some(format!("{} {}", item.deadline, item.timezone));
-
-                                let diff = ddl_datetime.signed_duration_since(current_time);
-                                if diff.num_milliseconds() <= 0 {
-                                    item.remain = 0;
-                                    item.status = "FIN".to_string();
-                                } else {
-                                    item.remain = diff.num_milliseconds() as u64;
-                                    item.status = "RUN".to_string();
-                                }
-
-                                let iso_string =
-                                    local_ddl_datetime.format("%Y%m%dT%H%M%S").to_string();
-
-                                item.google_calendar_url = Some(format!(
-                                    "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location=Online&ctz={}&sf=true&output=xml",
-                                    encode(&format!("{} {}", item.title, item.year)),
-                                    iso_string,
-                                    iso_string,
-                                    encode(&format!(
-                                        "{} {}",
-                                        item.comment.as_ref().map_or("".to_string(), |c| c.clone()),
-                                        "provided by @ccfddl".to_string()
-                                    )),
-                                    time_zone.get_untracked(),
-                                ));
-
-                                item.icloud_calendar_url = Some(format!(
-                                    "data:text/calendar;charset=utf8,BEGIN:VCALENDAR\n\
-                                    VERSION:2.0\n\
-                                    BEGIN:VEVENT\n\
-                                    URL:{}\n\
-                                    DTSTART:{}\n\
-                                    DTEND:{}\n\
-                                    SUMMARY:{}\n\
-                                    DESCRIPTION:{}\n\
-                                    LOCATION:{}\n\
-                                    END:VEVENT\n\
-                                    END:VCALENDAR",
-                                    encode("https://ccfddl.github.io/"),
-                                    iso_string,
-                                    iso_string,
-                                    encode(&format!("{} {} Deadline", item.title, item.year)),
-                                    encode(item.comment.as_ref().map_or("", |c| c.as_str())),
-                                    encode(""),
-                                ));
-                            }
-                        }
-                    }
-                    all_conf_list.set(conf_vec);
+                    all_conf_list.set(build_conf_items(conferences, &categories, &likes));
+                    initial_data_loaded.set(true);
                 }
-                Err(e) => {
-                    console::error_1(&format!("Error: {:?}", e).into());
+                Err(error) => {
+                    console::error_1(&format!("Error: {error:?}").into());
                 }
             }
+        });
+    });
+
+    Effect::new(move |_| {
+        if !show_past.get()
+            || !initial_data_loaded.get()
+            || archive_loaded.get_untracked()
+            || archive_loading.get_untracked()
+        {
+            return;
+        }
+
+        archive_loading.set(true);
+        let categories = sub_list.get_untracked();
+        let likes = like_list.get_untracked();
+        spawn_local(async move {
+            let Some(base_url) = browser_origin() else {
+                archive_loading.set(false);
+                return;
+            };
+            match fetch_all_conf(&base_url, true).await {
+                Ok(conferences) => {
+                    let archive = build_conf_items(conferences, &categories, &likes);
+                    all_conf_list.update(|items| items.extend(archive));
+                    archive_loaded.set(true);
+                }
+                Err(error) => {
+                    console::error_1(&format!("Error loading archive: {error:?}").into());
+                }
+            }
+            archive_loading.set(false);
         });
     });
 
@@ -694,6 +530,8 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                         .last()
                                         .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
                                     let ics_filename = format!("{}-{}.ics", conf.title, conf.year);
+                                    let (google_calendar_url, icloud_calendar_url) =
+                                        build_calendar_urls(&conf, &time_zone.get_untracked());
                                     let core_rank = conf.corerank.as_deref().unwrap_or("N");
                                     let core_label = if core_rank == "N" {
                                         "Non-CORE".to_string()
@@ -825,7 +663,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                             </div>
                                             <div class="conference-detail-actions">
                                                 <a class="conference-detail-website" href=conf.link.clone() target="_blank">"Visit website ↗"</a>
-                                                {conf.google_calendar_url.clone().map(|url| view! {
+                                                {google_calendar_url.map(|url| view! {
                                                     <a class="conference-detail-calendar-link" href=url target="_blank">
                                                         <img
                                                             src="https://ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_31_2x.png"
@@ -835,7 +673,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                         <span>"Google Calendar"</span>
                                                     </a>
                                                 })}
-                                                {conf.icloud_calendar_url.clone().map(|url| view! {
+                                                {icloud_calendar_url.map(|url| view! {
                                                     <a class="conference-detail-calendar-link" href=url download=ics_filename.clone()>
                                                         <img
                                                             src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png"
@@ -1194,6 +1032,187 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
 }
 
 static UTC_MAP: OnceLock<HashMap<String, String>> = OnceLock::new();
+
+fn browser_origin() -> Option<String> {
+    window().and_then(|browser| browser.location().origin().ok())
+}
+
+fn build_conf_items(
+    conferences: Vec<Conference>,
+    categories: &[Category],
+    likes: &HashSet<String>,
+) -> Vec<ConfItem> {
+    let (current_time, current_timezone) = get_browser_time_and_timezone();
+    let mut items = Vec::new();
+
+    for conference in conferences {
+        for edition in &conference.confs {
+            let Some(last_timeline) = edition.timeline.last() else {
+                continue;
+            };
+            let mut deadline = last_timeline.deadline.clone();
+            let mut abstract_deadline = None;
+            let mut comment = last_timeline.comment.clone();
+            let mut deadlines = Vec::<TimePoint>::new();
+            let mut upcoming_deadlines = Vec::new();
+
+            for timeline_item in &edition.timeline {
+                if let Some(abstract_value) = timeline_item.abstract_deadline.clone() {
+                    if let Some(value) =
+                        parse_deadline_to_rfc3339(&abstract_value, &edition.timezone)
+                            .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+                    {
+                        deadlines.push(TimePoint {
+                            timepoint: value.with_timezone(&current_timezone),
+                            r#type: 0,
+                        });
+                        if value > current_time {
+                            upcoming_deadlines.push((
+                                value,
+                                abstract_value,
+                                true,
+                                timeline_item.comment.clone(),
+                            ));
+                        }
+                    }
+                }
+
+                if let Some(value) =
+                    parse_deadline_to_rfc3339(&timeline_item.deadline, &edition.timezone)
+                        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+                {
+                    deadlines.push(TimePoint {
+                        timepoint: value.with_timezone(&current_timezone),
+                        r#type: 1,
+                    });
+                    if value > current_time {
+                        upcoming_deadlines.push((
+                            value,
+                            timeline_item.deadline.clone(),
+                            false,
+                            timeline_item.comment.clone(),
+                        ));
+                    }
+                }
+            }
+
+            if let Some((_, next_deadline, is_abstract, next_comment)) = upcoming_deadlines
+                .into_iter()
+                .min_by(|left, right| left.0.cmp(&right.0))
+            {
+                deadline = next_deadline.clone();
+                abstract_deadline = is_abstract.then_some(next_deadline);
+                comment = next_comment;
+            }
+
+            let category = categories
+                .iter()
+                .find(|category| category.sub == conference.sub);
+            let display_rank = RANK_OPTIONS
+                .iter()
+                .find(|(rank, _)| *rank == conference.rank.ccf)
+                .map(|(_, label)| *label)
+                .unwrap_or("Non-CCF")
+                .to_string();
+            let mut item = ConfItem {
+                title: conference.title.clone(),
+                description: conference.description.clone(),
+                sub: conference.sub.clone(),
+                rank: conference.rank.ccf.clone(),
+                corerank: conference.rank.core.clone(),
+                thcplrank: conference.rank.thcpl.clone(),
+                displayrank: display_rank,
+                dblp: conference.dblp.clone(),
+                year: edition.year,
+                id: edition.id.clone(),
+                link: edition.link.clone(),
+                abstract_deadline,
+                deadline,
+                comment,
+                timezone: edition.timezone.clone(),
+                date: edition.date.clone(),
+                place: edition.place.clone(),
+                status: String::new(),
+                is_like: likes.contains(&edition.id),
+                remain: 0,
+                subname: category.map(|value| value.name.clone()).unwrap_or_default(),
+                subname_en: category
+                    .map(|value| value.name_en.clone())
+                    .unwrap_or_default(),
+                acc_str: edition.acc_str.clone(),
+                ddls: deadlines,
+            };
+
+            if item.deadline == "TBD" {
+                item.status = "TBD".to_string();
+                items.push(item);
+                continue;
+            }
+
+            if let Some(deadline_time) = parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
+                .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+            {
+                let remaining = deadline_time.signed_duration_since(current_time);
+                if remaining.num_milliseconds() <= 0 {
+                    item.status = "FIN".to_string();
+                } else {
+                    item.remain = remaining.num_milliseconds() as u64;
+                    item.status = "RUN".to_string();
+                }
+            }
+            items.push(item);
+        }
+    }
+
+    items
+}
+
+fn build_calendar_urls(
+    conf: &ConfItem,
+    browser_timezone: &str,
+) -> (Option<String>, Option<String>) {
+    let Some(deadline_time) = parse_deadline_to_rfc3339(&conf.deadline, &conf.timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+    else {
+        return (None, None);
+    };
+    let (_, current_timezone) = get_browser_time_and_timezone();
+    let iso_string = deadline_time
+        .with_timezone(&current_timezone)
+        .format("%Y%m%dT%H%M%S")
+        .to_string();
+    let google = format!(
+        "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location=Online&ctz={}&sf=true&output=xml",
+        encode(&format!("{} {}", conf.title, conf.year)),
+        iso_string,
+        iso_string,
+        encode(&format!(
+            "{} provided by @ccfddl",
+            conf.comment.as_deref().unwrap_or("")
+        )),
+        browser_timezone,
+    );
+    let icloud = format!(
+        "data:text/calendar;charset=utf8,BEGIN:VCALENDAR\n\
+        VERSION:2.0\n\
+        BEGIN:VEVENT\n\
+        URL:{}\n\
+        DTSTART:{}\n\
+        DTEND:{}\n\
+        SUMMARY:{}\n\
+        DESCRIPTION:{}\n\
+        LOCATION:{}\n\
+        END:VEVENT\n\
+        END:VCALENDAR",
+        encode("https://ccfddl.github.io/"),
+        iso_string,
+        iso_string,
+        encode(&format!("{} {} Deadline", conf.title, conf.year)),
+        encode(conf.comment.as_deref().unwrap_or("")),
+        encode(""),
+    );
+    (Some(google), Some(icloud))
+}
 
 fn normalize_timezone(tz: &str) -> String {
     match tz {

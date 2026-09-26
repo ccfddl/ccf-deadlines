@@ -4,6 +4,7 @@ import json
 import shutil
 import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -40,9 +41,27 @@ def main() -> None:
             acc_str = acceptance_rates.get((conference["title"], edition["year"]))
             if acc_str is not None:
                 edition["acc_str"] = acc_str
+    current_year = datetime.now(timezone.utc).year
+    current_conferences = []
+    archived_conferences = []
+    for conference in conferences:
+        current_editions = [
+            edition for edition in conference["confs"] if edition["year"] >= current_year
+        ]
+        archived_editions = [
+            edition for edition in conference["confs"] if edition["year"] < current_year
+        ]
+        if current_editions:
+            current_conferences.append({**conference, "confs": current_editions})
+        if archived_editions:
+            archived_conferences.append({**conference, "confs": archived_editions})
+
+    json_options = {"ensure_ascii": False, "separators": (",", ":")}
     (OUTPUT_DIR / "allconf.json").write_text(
-        json.dumps(conferences, ensure_ascii=False, separators=(",", ":")),
-        encoding="utf-8",
+        json.dumps(current_conferences, **json_options), encoding="utf-8"
+    )
+    (OUTPUT_DIR / "allconf_archive.json").write_text(
+        json.dumps(archived_conferences, **json_options), encoding="utf-8"
     )
     (OUTPUT_DIR / "allacc.json").unlink(missing_ok=True)
     shutil.copy2(ROOT / "conference" / "types.yml", OUTPUT_DIR / "types.yml")

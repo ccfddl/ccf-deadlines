@@ -1,4 +1,3 @@
-pub mod calendar_popover;
 pub mod checkbox_button;
 pub mod conf;
 pub mod countdown;

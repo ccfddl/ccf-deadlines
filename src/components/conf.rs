@@ -1,4 +1,5 @@
 use chrono::prelude::*;
+use gloo_net::http::Request;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -72,23 +73,27 @@ pub struct ConfItem {
     pub status: String, // "RUN", "FIN", "TBD"
     pub is_like: bool,
     pub remain: u64,
-    pub local_ddl: Option<String>,
-    pub origin_ddl: Option<String>,
     pub subname: String,
     pub subname_en: String,
-    pub google_calendar_url: Option<String>,
-    pub icloud_calendar_url: Option<String>,
     pub acc_str: Option<String>,
     pub ddls: Vec<TimePoint>,
 }
 
 pub async fn fetch_all_conf(
-    base_url: &String,
+    base_url: &str,
+    archived: bool,
 ) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
-    let url = format!("{}/conference/allconf.json", base_url);
-    let response = reqwest::get(url).await?;
-    let conferences: Vec<Conference> = response.json().await?;
-    Ok(conferences)
+    let filename = if archived {
+        "allconf_archive.json"
+    } else {
+        "allconf.json"
+    };
+    let url = format!("{base_url}/conference/{filename}");
+    Ok(Request::get(&url)
+        .send()
+        .await?
+        .json::<Vec<Conference>>()
+        .await?)
 }
 
 pub fn get_categories() -> Vec<Category> {
