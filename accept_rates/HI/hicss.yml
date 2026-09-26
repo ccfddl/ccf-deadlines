@@ -1,5 +1,17 @@
 - title: HICSS
   accept_rates:
+    - year: 2022
+      submitted: 1553
+      accepted: 759
+      str: 48.9%(759/1553 22')
+      rate: 0.48873148744365746
+      source: https://aisel.aisnet.org/hicss-55/
+    - year: 2023
+      submitted: 1429
+      accepted: 678
+      str: 47.4%(678/1429 23')
+      rate: 0.47445766270118966
+      source: https://aisel.aisnet.org/hicss-56/
     - year: 2026
       submitted: 1559
       accepted: 727
