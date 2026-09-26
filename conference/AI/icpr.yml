@@ -7,6 +7,16 @@
     thcpl: B
   dblp: icpr
   confs:
+    - year: 2022
+      id: icpr22
+      link: https://iapr.org/archives/icpr2022/index.html
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Paper registration January 17 and final paper submission January 24, 2022; clock and timezone unverified, UTC+0 is a placeholder'
+      timezone: UTC+0
+      date: August 21-25, 2022
+      place: Montreal, Canada and Online
     - year: 2024
       id: icpr24
       link: https://icpr2024.org/
@@ -25,5 +35,5 @@
       timeline:
         - deadline: '2026-01-10 23:59:59'
       timezone: AoE
-      date: August 17-21, 2026
+      date: August 17-22, 2026
       place: Lyon, France
