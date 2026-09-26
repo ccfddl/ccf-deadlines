@@ -38,7 +38,7 @@ class Timeline:
     deadline: str
     abstract_deadline: Optional[str] = None
     rebuttal_deadline: Optional[str] = None
-    notification_deadline: Optional[str] = None
+    decision_deadline: Optional[str] = None
     comment: Optional[str] = None
 
     @classmethod
@@ -47,7 +47,7 @@ class Timeline:
             deadline=data.get("deadline", ""),
             abstract_deadline=data.get("abstract_deadline"),
             rebuttal_deadline=data.get("rebuttal_deadline"),
-            notification_deadline=data.get("notification_deadline"),
+            decision_deadline=data.get("decision_deadline"),
             comment=data.get("comment"),
         )
 
@@ -57,8 +57,8 @@ class Timeline:
             result["abstract_deadline"] = self.abstract_deadline
         if self.rebuttal_deadline is not None:
             result["rebuttal_deadline"] = self.rebuttal_deadline
-        if self.notification_deadline is not None:
-            result["notification_deadline"] = self.notification_deadline
+        if self.decision_deadline is not None:
+            result["decision_deadline"] = self.decision_deadline
         if self.comment is not None:
             result["comment"] = self.comment
         return result

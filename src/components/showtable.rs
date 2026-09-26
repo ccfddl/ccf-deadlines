@@ -1707,7 +1707,7 @@ fn build_conf_items(
                     (0, timeline_item.abstract_deadline.as_deref()),
                     (1, Some(timeline_item.deadline.as_str())),
                     (2, timeline_item.rebuttal_deadline.as_deref()),
-                    (3, timeline_item.notification_deadline.as_deref()),
+                    (3, timeline_item.decision_deadline.as_deref()),
                 ];
 
                 for (kind, raw_deadline) in timeline_deadlines {
@@ -2025,7 +2025,7 @@ fn deadline_summary_label(deadline_type: i32) -> &'static str {
     match deadline_type {
         0 => "Abstract submission",
         2 => "Rebuttal Submission",
-        3 => "Notification",
+        3 => "Final Decisions",
         _ => "Paper submission",
     }
 }
@@ -2033,8 +2033,8 @@ fn deadline_summary_label(deadline_type: i32) -> &'static str {
 fn deadline_short_label(deadline_type: i32) -> &'static str {
     match deadline_type {
         0 => "Abstract deadline",
-        2 => "Rebuttal deadline",
-        3 => "Notification deadline",
+        2 => "Rebuttal Submission",
+        3 => "Final Decisions",
         _ => "Paper deadline",
     }
 }
@@ -2042,8 +2042,8 @@ fn deadline_short_label(deadline_type: i32) -> &'static str {
 fn deadline_detail_label(deadline_type: i32) -> &'static str {
     match deadline_type {
         0 => "Abstract submission deadline",
-        2 => "Rebuttal deadline",
-        3 => "Notification deadline",
+        2 => "Rebuttal Submission",
+        3 => "Final Decisions",
         _ => "Paper submission deadline",
     }
 }

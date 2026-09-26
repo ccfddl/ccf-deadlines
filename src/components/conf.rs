@@ -50,7 +50,7 @@ pub struct Timeline {
     pub abstract_deadline: Option<String>,
     pub deadline: String,
     pub rebuttal_deadline: Option<String>,
-    pub notification_deadline: Option<String>,
+    pub decision_deadline: Option<String>,
     pub comment: Option<String>,
 }
 

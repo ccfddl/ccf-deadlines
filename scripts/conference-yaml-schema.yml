@@ -109,8 +109,8 @@ items:
                   type: string
                   format: date-time
                   pattern: ^([1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d|TBD)$
-                notification_deadline:
-                  description: Acceptance notification deadline for this round, optional
+                decision_deadline:
+                  description: Final decision deadline for this round, optional
                   type: string
                   format: date-time
                   pattern: ^([1-9]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])\s+(20|21|22|23|[0-1]\d):[0-5]\d:[0-5]\d|TBD)$

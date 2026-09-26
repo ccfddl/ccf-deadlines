@@ -74,18 +74,18 @@ def convert_to_rss(
                     if "rebuttal_deadline" in entry:
                         deadlines_to_process.append(
                             (
-                                ("答辩截止", "Rebuttal Deadline"),
+                                ("答辩提交", "Rebuttal Submission"),
                                 entry["rebuttal_deadline"],
                                 "rebuttal",
                             )
                         )
 
-                    if "notification_deadline" in entry:
+                    if "decision_deadline" in entry:
                         deadlines_to_process.append(
                             (
-                                ("录用通知", "Notification Deadline"),
-                                entry["notification_deadline"],
-                                "notification",
+                                ("最终决定", "Final Decisions"),
+                                entry["decision_deadline"],
+                                "decision",
                             )
                         )
 

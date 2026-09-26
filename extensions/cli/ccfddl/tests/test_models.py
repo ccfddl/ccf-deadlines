@@ -46,14 +46,14 @@ class TestTimeline:
             "deadline": "2025-01-15 23:59:59",
             "abstract_deadline": "2025-01-08 23:59:59",
             "rebuttal_deadline": "2025-02-01 23:59:59",
-            "notification_deadline": "2025-02-15 23:59:59",
+            "decision_deadline": "2025-02-15 23:59:59",
             "comment": "Main",
         }
         timeline = Timeline.from_dict(data)
         assert timeline.deadline == "2025-01-15 23:59:59"
         assert timeline.abstract_deadline == "2025-01-08 23:59:59"
         assert timeline.rebuttal_deadline == "2025-02-01 23:59:59"
-        assert timeline.notification_deadline == "2025-02-15 23:59:59"
+        assert timeline.decision_deadline == "2025-02-15 23:59:59"
         assert timeline.comment == "Main"
 
     def test_from_dict_minimal(self):
@@ -62,20 +62,20 @@ class TestTimeline:
         assert timeline.deadline == "2025-01-15 23:59:59"
         assert timeline.abstract_deadline is None
         assert timeline.rebuttal_deadline is None
-        assert timeline.notification_deadline is None
+        assert timeline.decision_deadline is None
         assert timeline.comment is None
 
     def test_to_dict(self):
         timeline = Timeline(
             deadline="2025-01-15 23:59:59",
             rebuttal_deadline="2025-02-01 23:59:59",
-            notification_deadline="2025-02-15 23:59:59",
+            decision_deadline="2025-02-15 23:59:59",
             comment="Test",
         )
         result = timeline.to_dict()
         assert result["deadline"] == "2025-01-15 23:59:59"
         assert result["rebuttal_deadline"] == "2025-02-01 23:59:59"
-        assert result["notification_deadline"] == "2025-02-15 23:59:59"
+        assert result["decision_deadline"] == "2025-02-15 23:59:59"
         assert result["comment"] == "Test"
 
 

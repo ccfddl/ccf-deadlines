@@ -147,8 +147,8 @@ Description of the fields:
       <td>Rebuttal or author-response deadline for this round, optional</td>
    </tr>
    <tr>
-      <td><code>notification_deadline</code></td>
-      <td>Acceptance notification deadline for this round, optional</td>
+      <td><code>decision_deadline</code></td>
+      <td>Final decision deadline for this round, optional</td>
    </tr>
    <tr>
       <td><code>comment</code></td>

@@ -69,8 +69,8 @@ pub fn TimeLine(
         match backup_type {
             0 => "Registration:",
             1 => "Submission:",
-            2 => "Rebuttal:",
-            3 => "Notification:",
+            2 => "Rebuttal Submission:",
+            3 => "Final Decisions:",
             _ => "",
         }
     };
@@ -80,7 +80,7 @@ pub fn TimeLine(
             0 => "square square_all",
             1 => "dot dot_all",
             2 => "dot dot_all dot_rebuttal",
-            3 => "dot dot_all dot_notification",
+            3 => "dot dot_all dot_decision",
             _ => "",
         }
     };
@@ -219,7 +219,7 @@ pub fn TimeLine(
                     background: #fff9eb;
                 }
 
-                .line_time .dot_notification {
+                .line_time .dot_decision {
                     border-color: #55a66a;
                     background: #f1faf3;
                 }
