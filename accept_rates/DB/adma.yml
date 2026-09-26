@@ -25,3 +25,10 @@
       str: 37.7%(159/422 24')
       rate: 0.376777251184834
       source: https://link.springer.com/book/10.1007/978-981-96-0811-9
+    # 2025: original preface reports 147 regular papers; 3 posters excluded.
+    - year: 2025
+      submitted: 327
+      accepted: 147
+      str: 45.0%(147/327 25')
+      rate: 0.449541284403670
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-3453-1/1
