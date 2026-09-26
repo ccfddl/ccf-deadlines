@@ -7,12 +7,13 @@
       str: 47.4%(36/76 21')
       rate: 0.473684210526316
       source: https://link.springer.com/book/10.1007/978-3-030-79876-5
+    # Original PC report: 74 examined submissions; publisher summary instead says 77, with no explanation.
     - year: 2023
-      submitted: 77
+      submitted: 74
       accepted: 33
-      str: 42.9%(33/77 23')
-      rate: 0.428571428571429
-      source: https://link.springer.com/book/10.1007/978-3-031-38499-8
+      str: 44.6%(33/74 23')
+      rate: 0.44594594594594594
+      source: https://cadeinc.org/Reports/CADE-29_JuergenGiesl.pdf
     - year: 2025
       submitted: 87
       accepted: 37
