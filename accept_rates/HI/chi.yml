@@ -1,14 +1,44 @@
 - title: CHI
   accept_rates:
+    # Papers-track counts from the official SIGCHI conference-history table.
+    - year: 2021
+      submitted: 2845
+      accepted: 747
+      str: 26.3%(747/2845 21')
+      rate: 0.26256590509666083
+      source: https://archive.sigchi.org/conferences/conference-history/chi/
+    # Original Technical Program Chairs' Welcome, PDF page 6, library-hosted proceedings copy.
     - year: 2022
       submitted: 2579
       accepted: 637
       str: 24.7%(637/2579 22')
       rate: 0.246994959286545
-      source: https://github.com/emeryberger/csconferences
+      source: https://jcer.in/jcer-docs/E-Learning/Digital%20Library%20/E-Books/Human%20Factors%20in%20Computing%20Systems.pdf
+    # Original Papers Chairs' Welcome, PDF page 6: final acceptances / complete submissions.
     - year: 2023
-      submitted: 3180
+      submitted: 3182
       accepted: 879
-      str: 27.6%(879/3180 23')
-      rate: 0.2764151
-      source: https://csconfstats.xoveexu.com/
+      str: 27.6%(879/3182 23')
+      rate: 0.2762413576367065
+      source: https://researchnow-admin.flinders.edu.au/ws/portalfiles/portal/83602092/Emsenhuber_Eye_Perspective_P2023.pdf
+    # PC acceptances; submission total: https://chi2024.acm.org/2023/11/17/chi-2024-papers-track-post-round-one-outcomes-report/
+    - year: 2024
+      submitted: 4028
+      accepted: 1060
+      str: 26.3%(1060/4028 24')
+      rate: 0.263157894736842
+      source: https://chi2024.acm.org/2024/01/29/chi-2024-papers-track-post-pc-outcomes-report/
+    # Post-PC conditional acceptances / all completed submissions; not the publication-stage paper count.
+    - year: 2025
+      submitted: 5014
+      accepted: 1249
+      str: 24.9%(1249/5014 25')
+      rate: 0.249102512963702
+      source: https://chi2025.acm.org/chi-2025-papers-track-post-pc-outcomes-report/
+    # Post-PC conditional acceptances / all completed submissions; not the publication-stage paper count.
+    - year: 2026
+      submitted: 6730
+      accepted: 1705
+      str: 25.3%(1705/6730 26')
+      rate: 0.253343239227340
+      source: https://chi2026.acm.org/2026/02/06/insights-into-the-papers-track-post-pc-meeting-outcomes/
