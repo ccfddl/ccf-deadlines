@@ -37,7 +37,7 @@
       timeline:
         - abstract_deadline: '2026-08-28 23:59:59'
           deadline: '2026-08-28 23:59:59'
-          comment: 'Abstract registration and paper submission are both due Aug 28; supplementary material is due Sep 2.'
+          comment: 'Regular-paper abstract registration and paper submission are both due Aug 28.'
       timezone: AoE
       date: April 6-9, 2027
       place: Thessaloniki, Greece
