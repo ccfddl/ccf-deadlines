@@ -1,0 +1,21 @@
+- title: FM
+  # Main track, including tools and case studies; excludes industry and other tracks.
+  accept_rates:
+    - year: 2021
+      submitted: 131
+      accepted: 35
+      str: 26.7%(35/131 21')
+      rate: 0.2671755725190840
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-90870-6/1
+    - year: 2023
+      submitted: 95
+      accepted: 28
+      str: 29.5%(28/95 23')
+      rate: 0.2947368421052631
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-27481-7/1
+    - year: 2024
+      submitted: 178
+      accepted: 44
+      str: 24.7%(44/178 24')
+      rate: 0.2471910112359550
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-71162-6/1
