@@ -868,12 +868,6 @@ a {
   white-space: nowrap;
 }
 
-.conference-card-deadline-row .countdown-container:has(.conference-card-estimate) {
-  align-items: flex-end;
-  margin-left: auto;
-  text-align: right;
-}
-
 .conference-list-place,
 .conference-list-description,
 .conference-list-note {

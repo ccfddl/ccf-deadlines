@@ -942,6 +942,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                     )
                                                 })
                                                 .collect::<Vec<_>>();
+                                            let estimated_deadline_card =
+                                                estimated_deadline_display.clone();
+                                            let estimated_deadline_list =
+                                                estimated_deadline_display.clone();
                                             view! {
                                                 <TableRow
                                                     on:click=move |_| {
@@ -1130,15 +1134,6 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                         <div class="countdown-display">
                                                                                             <span class="countdown-value">"TBD"</span>
                                                                                         </div>
-                                                                                        {estimated_deadline_display
-                                                                                            .clone()
-                                                                                            .into_iter()
-                                                                                            .map(|(label, title)| view! {
-                                                                                                <div class="conference-card-estimate" title=title>
-                                                                                                    {label}
-                                                                                                </div>
-                                                                                            })
-                                                                                            .collect_view()}
                                                                                     </div>
                                                                                 }
                                                                                     .into_any()
@@ -1180,7 +1175,34 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                             }}
                                                                             <div class="conference-card-deadline" style="font-size: 11px; color: #606266; margin-top: 3px;">
                                                                                 {if is_tbd {
-                                                                                    view! {}.into_any()
+                                                                                    if estimated_deadline_card.is_empty() {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                <a
+                                                                                                    href="https://github.com/ccfddl/ccf-deadlines/pulls"
+                                                                                                    on:click=move |event| event.stop_propagation()
+                                                                                                    target="_blank"
+                                                                                                >
+                                                                                                    "pull request to update"
+                                                                                                </a>
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    } else {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                {estimated_deadline_card
+                                                                                                    .into_iter()
+                                                                                                    .map(|(label, title)| view! {
+                                                                                                        <span class="conference-card-estimate" title=title>
+                                                                                                            {label}
+                                                                                                        </span>
+                                                                                                    })
+                                                                                                    .collect_view()}
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    }
                                                                                 } else {
                                                                                     view! {
                                                                                         <span>
@@ -1208,7 +1230,35 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                         view! {
                                                                             <div class="conference-list-deadline-meta">
                                                                                 {if is_tbd {
-                                                                                    view! {}.into_any()
+                                                                                    if estimated_deadline_list.is_empty() {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                <a
+                                                                                                    href="https://github.com/ccfddl/ccf-deadlines/pulls"
+                                                                                                    on:click=move |event| event.stop_propagation()
+                                                                                                    target="_blank"
+                                                                                                >
+                                                                                                    "pull request to update"
+                                                                                                </a>
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    } else {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                {estimated_deadline_list
+                                                                                                    .clone()
+                                                                                                    .into_iter()
+                                                                                                    .map(|(label, title)| view! {
+                                                                                                        <span class="conference-card-estimate" title=title>
+                                                                                                            {label}
+                                                                                                        </span>
+                                                                                                    })
+                                                                                                    .collect_view()}
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    }
                                                                                 } else {
                                                                                     view! {
                                                                                         <span>
