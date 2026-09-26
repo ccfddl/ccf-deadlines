@@ -7,30 +7,26 @@ use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
 use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate};
 use leptos::prelude::*;
+use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde_json;
-use std::collections::HashMap;
-use std::collections::HashSet;
+use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
 use thaw::*;
 use urlencoding::encode;
-use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::{console, window};
 
 #[component]
-pub fn ShowTable() -> impl IntoView {
+pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     // mobile
-    let is_mobile = RwSignal::new(false);
+    let is_mobile = RwSignal::new(is_narrow_viewport());
     let show_filters = RwSignal::new(false);
+    let resize_listener = window_event_listener(ev::resize, move |_| {
+        is_mobile.set(is_narrow_viewport());
+    });
+    on_cleanup(move || resize_listener.remove());
 
     // switch
-    let cached_use_english = get_from_local_storage("use_english");
-    let use_english = RwSignal::new(
-        cached_use_english
-            .as_deref()
-            .and_then(|s| s.parse::<bool>().ok())
-            .unwrap_or(false),
-    );
     let show_past = RwSignal::new(
         get_from_local_storage("show_past")
             .as_deref()
@@ -84,6 +80,12 @@ pub fn ShowTable() -> impl IntoView {
     let show_subscription_modal = RwSignal::new(false);
     let show_conf_detail = RwSignal::new(false);
     let selected_conf = RwSignal::new(None::<ConfItem>);
+    let is_list_view = RwSignal::new(
+        get_from_local_storage("conference_view")
+            .as_deref()
+            .map(|view| view == "list")
+            .unwrap_or(false),
+    );
 
     // pagination
     let page = RwSignal::new(1);
@@ -93,6 +95,7 @@ pub fn ShowTable() -> impl IntoView {
 
     // table
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
+    let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
 
     // timezone
     let time_zone = RwSignal::new(String::new());
@@ -113,7 +116,6 @@ pub fn ShowTable() -> impl IntoView {
     });
 
     Effect::new(move |_| {
-        set_in_local_storage("use_english", &use_english.get().to_string());
         set_in_local_storage("show_past", &show_past.get().to_string());
         set_in_local_storage("types", &serde_json::to_string(&check_list.get()).unwrap());
         set_in_local_storage("ranks", &serde_json::to_string(&rank_list.get()).unwrap());
@@ -127,372 +129,159 @@ pub fn ShowTable() -> impl IntoView {
         );
     });
 
+    Effect::new(move |previous: Option<bool>| {
+        let english = use_english.get();
+        if previous.is_some() {
+            set_in_local_storage("language_preference", if english { "en" } else { "zh" });
+        }
+        english
+    });
+
     Effect::new(move |_| {
         set_in_local_storage("likes", &serde_json::to_string(&like_list.get()).unwrap());
     });
 
     Effect::new(move |_| {
-        let _ = check_list.get();
-        let _ = input_value.get();
-        let _ = rank_list.get();
-        let _ = core_rank_list.get();
-        let _ = thcpl_rank_list.get();
-        let _ = page.get();
-
-        let (current_time, _) = get_browser_time_and_timezone();
-
-        all_conf_list.update(|conferences| {
-            for item in conferences.iter_mut() {
-                if item.deadline != "TBD" {
-                    if let Some(ddl_str) = parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
-                    {
-                        if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                            let diff = ddl_datetime.signed_duration_since(current_time);
-                            if diff.num_milliseconds() <= 0 {
-                                item.remain = 0;
-                                item.status = "FIN".to_string();
-                            } else {
-                                item.remain = diff.num_milliseconds() as u64;
-                                item.status = "RUN".to_string();
-                            }
-                        }
-                    }
-                }
-            }
-        });
+        set_in_local_storage(
+            "conference_view",
+            if is_list_view.get() { "list" } else { "cards" },
+        );
     });
 
     Effect::new(move || {
-        // mobile check
-        is_mobile.set(is_mobile_device());
-
-        // timezone
-        time_zone.set(get_timezone_name().unwrap());
+        time_zone.set(get_timezone_name().unwrap_or_else(|| "UTC".to_string()));
+        let categories = sub_list.get_untracked();
+        let likes = like_list.get_untracked();
 
         spawn_local(async move {
-            let rank_options: HashMap<&str, &str> = RANK_OPTIONS.iter().cloned().collect();
-
-            let (current_time, current_timezone) = get_browser_time_and_timezone();
-
-            // base_url
-            let window = web_sys::window().unwrap();
-            let location = window.location();
-            let base_url = location.origin().unwrap();
-
+            let Some(base_url) = browser_origin() else {
+                return;
+            };
             match fetch_all_conf(&base_url).await {
                 Ok(conferences) => {
-                    let mut conf_vec = Vec::new();
-
-                    for conf in conferences {
-                        let conf_items = conf.confs.iter().map(|year_conf| {
-                            let len = year_conf.timeline.len();
-                            let mut cur_deadline = year_conf.timeline[len - 1].deadline.clone();
-                            let mut cur_abstract_deadline = None;
-                            let mut cur_comment = year_conf.timeline[len - 1].comment.clone();
-                            let mut ddl_vec = Vec::<TimePoint>::new();
-                            let mut upcoming_deadlines = Vec::new();
-
-                            for timeline_item in year_conf.timeline.iter() {
-                                let tz = &year_conf.timezone;
-
-                                // abstract type:0 submission type:1
-                                if let Some(abs_ddl) = timeline_item.abstract_deadline.clone() {
-                                    if let Some(abs_ddl_str) =
-                                        parse_deadline_to_rfc3339(&abs_ddl, tz)
-                                    {
-                                        if let Ok(abs_ddl_datetime) =
-                                            DateTime::parse_from_rfc3339(&abs_ddl_str)
-                                        {
-                                            ddl_vec.push(TimePoint {
-                                                timepoint: abs_ddl_datetime
-                                                    .with_timezone(&current_timezone)
-                                                    .clone(),
-                                                r#type: 0,
-                                            });
-                                            if abs_ddl_datetime > current_time {
-                                                upcoming_deadlines.push((
-                                                    abs_ddl_datetime,
-                                                    abs_ddl,
-                                                    true,
-                                                    timeline_item.comment.clone(),
-                                                ));
-                                            }
-                                        }
-                                    }
-                                }
-
-                                let ddl_str =
-                                    match parse_deadline_to_rfc3339(&timeline_item.deadline, tz) {
-                                        Some(s) => s,
-                                        None => continue,
-                                    };
-
-                                if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                                    ddl_vec.push(TimePoint {
-                                        timepoint: ddl_datetime
-                                            .with_timezone(&current_timezone)
-                                            .clone(),
-                                        r#type: 1,
-                                    });
-                                    if ddl_datetime > current_time {
-                                        upcoming_deadlines.push((
-                                            ddl_datetime,
-                                            timeline_item.deadline.clone(),
-                                            false,
-                                            timeline_item.comment.clone(),
-                                        ));
-                                    }
-                                }
-                            }
-
-                            if let Some((_, deadline, is_abstract, comment)) = upcoming_deadlines
-                                .into_iter()
-                                .min_by(|left, right| left.0.cmp(&right.0))
-                            {
-                                cur_deadline = deadline.clone();
-                                cur_abstract_deadline = is_abstract.then_some(deadline);
-                                cur_comment = comment;
-                            }
-
-                            ConfItem {
-                                title: conf.title.clone(),
-                                description: conf.description.clone(),
-                                sub: conf.sub.clone(),
-                                rank: conf.rank.ccf.clone(),
-                                corerank: conf.rank.core.clone(),
-                                thcplrank: conf.rank.thcpl.clone(),
-                                displayrank: rank_options
-                                    .get(conf.rank.ccf.as_str())
-                                    .unwrap()
-                                    .to_string(),
-                                dblp: conf.dblp.clone(),
-                                year: year_conf.year,
-                                id: year_conf.id.clone(),
-                                link: year_conf.link.clone(),
-                                abstract_deadline: cur_abstract_deadline,
-                                deadline: cur_deadline,
-                                comment: cur_comment,
-                                timezone: year_conf.timezone.clone(),
-                                date: year_conf.date.clone(),
-                                place: year_conf.place.clone(),
-                                status: "".to_string(), // Placeholder, should be determined based on current date
-                                is_like: like_list.get_untracked().contains(&year_conf.id),
-                                remain: 0,
-                                local_ddl: None,
-                                origin_ddl: None,
-                                subname: "".to_string(),
-                                subname_en: "".to_string(),
-                                google_calendar_url: None,
-                                icloud_calendar_url: None,
-                                acc_str: None,
-                                ddls: ddl_vec,
-                            }
-                        });
-                        conf_vec.extend(conf_items);
-                    }
-
-                    for item in conf_vec.iter_mut() {
-                        // subname
-                        if let Some(matched_category) = sub_list
-                            .get_untracked()
-                            .iter()
-                            .find(|sub_item| sub_item.sub == item.sub)
-                        {
-                            item.subname = matched_category.name.clone();
-                            item.subname_en = matched_category.name_en.clone();
-                        }
-
-                        if item.deadline == "TBD" {
-                            item.remain = 0;
-                            item.status = "TBD".to_string();
-                            continue;
-                        }
-
-                        // 4. Calculate deadlines and remaining time
-                        if let Some(ddl_str) =
-                            parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
-                        {
-                            if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                                // Convert to browser local time and format
-                                let local_ddl_datetime =
-                                    ddl_datetime.with_timezone(&current_timezone);
-                                let formatted_date_time =
-                                    local_ddl_datetime.format("%Y-%m-%d %H:%M:%S").to_string();
-                                let offset_seconds = local_ddl_datetime.offset().local_minus_utc();
-                                let offset_hours = offset_seconds / 3600;
-                                let formatted_timezone = format!("UTC{:+}", offset_hours);
-
-                                item.local_ddl =
-                                    Some(format!("{} {}", formatted_date_time, formatted_timezone));
-                                item.origin_ddl =
-                                    Some(format!("{} {}", item.deadline, item.timezone));
-
-                                let diff = ddl_datetime.signed_duration_since(current_time);
-                                if diff.num_milliseconds() <= 0 {
-                                    item.remain = 0;
-                                    item.status = "FIN".to_string();
-                                } else {
-                                    item.remain = diff.num_milliseconds() as u64;
-                                    item.status = "RUN".to_string();
-                                }
-
-                                let iso_string =
-                                    local_ddl_datetime.format("%Y%m%dT%H%M%S").to_string();
-
-                                item.google_calendar_url = Some(format!(
-                                    "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location=Online&ctz={}&sf=true&output=xml",
-                                    encode(&format!("{} {}", item.title, item.year)),
-                                    iso_string,
-                                    iso_string,
-                                    encode(&format!(
-                                        "{} {}",
-                                        item.comment.as_ref().map_or("".to_string(), |c| c.clone()),
-                                        "provided by @ccfddl".to_string()
-                                    )),
-                                    time_zone.get_untracked(),
-                                ));
-
-                                item.icloud_calendar_url = Some(format!(
-                                    "data:text/calendar;charset=utf8,BEGIN:VCALENDAR\n\
-                                    VERSION:2.0\n\
-                                    BEGIN:VEVENT\n\
-                                    URL:{}\n\
-                                    DTSTART:{}\n\
-                                    DTEND:{}\n\
-                                    SUMMARY:{}\n\
-                                    DESCRIPTION:{}\n\
-                                    LOCATION:{}\n\
-                                    END:VEVENT\n\
-                                    END:VCALENDAR",
-                                    encode("https://ccfddl.github.io/"),
-                                    iso_string,
-                                    iso_string,
-                                    encode(&format!("{} {} Deadline", item.title, item.year)),
-                                    encode(item.comment.as_ref().map_or("", |c| c.as_str())),
-                                    encode(""),
-                                ));
-                            }
-                        }
-                    }
-                    all_conf_list.set(conf_vec);
+                    let rates = acceptance_rates.get_untracked();
+                    all_conf_list.set(build_conf_items(conferences, &categories, &likes, &rates));
                 }
-                Err(e) => {
-                    console::error_1(&format!("Error: {:?}", e).into());
+                Err(error) => {
+                    console::error_1(&format!("Error: {error:?}").into());
                 }
             }
+        });
 
+        spawn_local(async move {
+            let Some(base_url) = browser_origin() else {
+                return;
+            };
             match fetch_all_acc(&base_url).await {
                 Ok(all_acc) => {
-                    for acc_item in all_acc {
-                        for cur_acc in &acc_item.accept_rates {
-                            all_conf_list.update(|conferences| {
-                                for item in conferences.iter_mut() {
-                                    for y in 1..=3 {
-                                        if item.title == acc_item.title
-                                            && item.year == cur_acc.year + y
-                                        {
-                                            item.acc_str = Some(cur_acc.str.clone());
-                                        }
-                                    }
-                                }
-                            });
+                    let rates = build_acceptance_rate_map(all_acc);
+                    acceptance_rates.set(rates.clone());
+                    all_conf_list.update(|items| apply_acceptance_rates(items, &rates));
+                    selected_conf.update(|selected| {
+                        if let Some(item) = selected.as_mut() {
+                            apply_acceptance_rate(item, &rates);
                         }
-                    }
+                    });
                 }
-                Err(e) => {
-                    console::error_1(&format!("Error: {:?}", e).into());
+                Err(error) => {
+                    console::error_1(&format!("Error loading acceptance rates: {error:?}").into());
                 }
             }
         });
     });
 
     let paginated_list = Memo::new(move |_| {
-        let mut filtered_list = all_conf_list.get();
+        all_conf_list.with(|conferences| {
+            let mut filtered_list: Vec<&ConfItem> = conferences.iter().collect();
 
-        if !show_past.get() {
-            filtered_list.retain(|item| item.status != "FIN");
-        }
+            if !show_past.get() {
+                filtered_list.retain(|item| item.status != "FIN");
+            }
 
-        // Filtering
-        let checkbox_val = check_list.get();
-        if !checkbox_val.is_empty() {
-            filtered_list.retain(|item| checkbox_val.contains(&item.sub.to_uppercase()));
-        }
+            // Filtering
+            let checkbox_val = check_list.get();
+            if !checkbox_val.is_empty() {
+                filtered_list.retain(|item| checkbox_val.contains(&item.sub.to_uppercase()));
+            }
 
-        let rank_val = rank_list.get();
-        if !rank_val.is_empty() {
-            filtered_list.retain(|item| rank_val.contains(&item.rank));
-        }
-        let core_rank_val = core_rank_list.get();
-        if !core_rank_val.is_empty() {
-            filtered_list.retain(|item| {
-                let core_rank = item.corerank.as_deref().unwrap_or("N");
-                core_rank_val.contains(core_rank)
-            });
-        }
-        let thcpl_rank_val = thcpl_rank_list.get();
-        if !thcpl_rank_val.is_empty() {
-            filtered_list.retain(|item| {
-                let thcpl_rank = item.thcplrank.as_deref().unwrap_or("N");
-                thcpl_rank_val.contains(thcpl_rank)
-            });
-        }
+            let rank_val = rank_list.get();
+            if !rank_val.is_empty() {
+                filtered_list.retain(|item| rank_val.contains(&item.rank));
+            }
+            let core_rank_val = core_rank_list.get();
+            if !core_rank_val.is_empty() {
+                filtered_list.retain(|item| {
+                    let core_rank = item.corerank.as_deref().unwrap_or("N");
+                    core_rank_val.contains(core_rank)
+                });
+            }
+            let thcpl_rank_val = thcpl_rank_list.get();
+            if !thcpl_rank_val.is_empty() {
+                filtered_list.retain(|item| {
+                    let thcpl_rank = item.thcplrank.as_deref().unwrap_or("N");
+                    thcpl_rank_val.contains(thcpl_rank)
+                });
+            }
 
-        let input_val = input_value.get();
-        if !input_val.is_empty() {
-            let input_lower = input_val.to_lowercase();
-            filtered_list.retain(|item| {
-                item.id.to_lowercase().contains(&input_lower)
-                    || item.title.to_lowercase().contains(&input_lower)
-            });
-        }
+            let input_val = input_value.get();
+            if !input_val.is_empty() {
+                let input_lower = input_val.to_lowercase();
+                filtered_list.retain(|item| {
+                    item.id.to_lowercase().contains(&input_lower)
+                        || item.title.to_lowercase().contains(&input_lower)
+                });
+            }
 
-        // Sorting and Grouping
-        let mut run_list: Vec<_> = filtered_list
-            .iter()
-            .filter(|item| item.status == "RUN".to_string())
-            .cloned()
-            .collect();
-        let tbd_list: Vec<_> = filtered_list
-            .iter()
-            .filter(|item| item.status == "TBD".to_string())
-            .cloned()
-            .collect();
-        let mut fin_list: Vec<_> = filtered_list
-            .iter()
-            .filter(|item| item.status == "FIN".to_string())
-            .cloned()
-            .collect();
+            // Sorting and Grouping
+            let mut run_list: Vec<_> = filtered_list
+                .iter()
+                .copied()
+                .filter(|item| item.status == "RUN")
+                .collect();
+            let tbd_list: Vec<_> = filtered_list
+                .iter()
+                .copied()
+                .filter(|item| item.status == "TBD")
+                .collect();
+            let mut fin_list: Vec<_> = filtered_list
+                .iter()
+                .copied()
+                .filter(|item| item.status == "FIN")
+                .collect();
 
-        run_list.sort_by(|a, b| a.remain.cmp(&b.remain));
-        fin_list.sort_by(|a, b| b.year.cmp(&a.year));
+            run_list.sort_by(|a, b| a.remain.cmp(&b.remain));
+            fin_list.sort_by(|a, b| b.year.cmp(&a.year));
 
-        let mut all_list = Vec::new();
-        all_list.extend(run_list);
-        all_list.extend(tbd_list);
-        all_list.extend(fin_list);
+            let mut all_list = Vec::new();
+            all_list.extend(run_list);
+            all_list.extend(tbd_list);
+            all_list.extend(fin_list);
 
-        let (liked_list, unliked_list): (Vec<_>, Vec<_>) =
-            all_list.into_iter().partition(|conf| conf.is_like);
+            let (liked_list, unliked_list): (Vec<_>, Vec<_>) =
+                all_list.into_iter().partition(|conf| conf.is_like);
 
-        let mut final_list = liked_list;
-        final_list.extend(unliked_list);
+            let mut final_list = liked_list;
+            final_list.extend(unliked_list);
 
-        // Pagination
-        let total_count = final_list.len();
-        let page_val = page.get();
-        let page_size_val = page_size.get();
-        let start = (page_val - 1) as usize * page_size_val as usize;
-        let end = (start + page_size_val as usize).min(total_count);
-        page_count.set((total_count + page_size_val - 1) / page_size_val);
+            // Pagination
+            let total_count = final_list.len();
+            let page_val = page.get();
+            let page_size_val = page_size.get();
+            let start = (page_val - 1) as usize * page_size_val as usize;
+            let end = (start + page_size_val as usize).min(total_count);
+            page_count.set((total_count + page_size_val - 1) / page_size_val);
 
-        let paginated_list: Vec<ConfItem> = if start < total_count {
-            final_list[start..end].to_vec()
-        } else {
-            Vec::new()
-        };
+            let paginated_list: Vec<ConfItem> = if start < total_count {
+                final_list[start..end]
+                    .iter()
+                    .map(|item| (*item).clone())
+                    .collect()
+            } else {
+                Vec::new()
+            };
 
-        paginated_list
+            paginated_list
+        })
     });
 
     view! {
@@ -580,17 +369,12 @@ pub fn ShowTable() -> impl IntoView {
                 </div>
             </CheckboxGroup>
 
-            <div
-                class="timezone"
-                style="padding-top: 15px; color: #666666; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;"
-            >
-                <div
-                    style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1 1 420px; min-width: 260px;"
-                >
-                    <div style="font-size: 16px; line-height: 1.4;">
+            <div class="timezone toolbar">
+                <div class="toolbar-main">
+                    <div class="toolbar-timezone">
                         "Countdowns are shown in "{move || time_zone.get()}" time."
                     </div>
-                    <div style="flex: 1 1 240px; min-width: 220px; max-width: 320px;">
+                    <div class="toolbar-search">
                         <Input
                             value=input_value
                             placeholder="search conference"
@@ -604,9 +388,45 @@ pub fn ShowTable() -> impl IntoView {
                     </div>
                 </div>
 
-                <div
-                    style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; margin-left: auto;"
-                >
+                <div class="toolbar-actions">
+                    <Button
+                        class="view-mode-toggle"
+                        size=ButtonSize::Small
+                        appearance=ButtonAppearance::Subtle
+                        on_click=move |_| is_list_view.update(|value| *value = !*value)
+                        attr:title=move || {
+                            if is_list_view.get() {
+                                if use_english.get() {
+                                    "switch UI 2.0"
+                                } else {
+                                    "切换新版UI"
+                                }
+                            } else if use_english.get() {
+                                "switch UI 1.0"
+                            } else {
+                                "切换旧版UI"
+                            }
+                        }
+                    >
+                        {move || {
+                            if is_list_view.get() {
+                                view! { <Icon icon=icondata::BsGrid style="margin-right: 4px;" /> }
+                                    .into_any()
+                            } else {
+                                view! { <Icon icon=icondata::BsList style="margin-right: 4px;" /> }
+                                    .into_any()
+                            }
+                        }}
+                        {move || {
+                            if is_list_view.get() {
+                                if use_english.get() { "switch UI 2.0" } else { "切换新版UI" }
+                            } else if use_english.get() {
+                                "switch UI 1.0"
+                            } else {
+                                "切换旧版UI"
+                            }
+                        }}
+                    </Button>
                     <Button
                         size=ButtonSize::Small
                         appearance=ButtonAppearance::Subtle
@@ -625,7 +445,11 @@ pub fn ShowTable() -> impl IntoView {
                                 >
                                     <Icon icon=icondata::FiFilter style="margin-right: 4px;" />
                                     {move || if use_english.get() { "Filters" } else { "筛选" }}
-                                    <Icon icon=if show_filters.get() { icondata::BsChevronUp } else { icondata::BsChevronDown } style="margin-left: 4px;" />
+                                    {move || if show_filters.get() {
+                                        view! { <Icon icon=icondata::BsChevronUp style="margin-left: 4px;" /> }.into_any()
+                                    } else {
+                                        view! { <Icon icon=icondata::BsChevronDown style="margin-left: 4px;" /> }.into_any()
+                                    }}
                                 </Button>
                                 {move || {
                                     if show_filters.get() {
@@ -745,6 +569,8 @@ pub fn ShowTable() -> impl IntoView {
                                         .last()
                                         .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
                                     let ics_filename = format!("{}-{}.ics", conf.title, conf.year);
+                                    let (google_calendar_url, icloud_calendar_url) =
+                                        build_calendar_urls(&conf, &time_zone.get_untracked());
                                     let core_rank = conf.corerank.as_deref().unwrap_or("N");
                                     let core_label = if core_rank == "N" {
                                         "Non-CORE".to_string()
@@ -822,7 +648,24 @@ pub fn ShowTable() -> impl IntoView {
                                         >"×"</button>
                                         <DialogContent>
                                             <div class="conference-detail-description">
-                                                {conf.description.clone()}
+                                                <span>{conf.description.clone()}</span>
+                                                <a
+                                                    class="conference-detail-dblp"
+                                                    href=format!(
+                                                        "https://dblp.org/db/conf/{}",
+                                                        conf.dblp,
+                                                    )
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    title="View on DBLP"
+                                                    aria-label="View conference on DBLP"
+                                                >
+                                                    <img
+                                                        src="https://dblp.org/img/favicon.ico"
+                                                        alt=""
+                                                        aria-hidden="true"
+                                                    />
+                                                </a>
                                             </div>
                                             {conf.acc_str.clone().map(|rate| view! {
                                                 <div class="conference-detail-acceptance">
@@ -876,7 +719,7 @@ pub fn ShowTable() -> impl IntoView {
                                             </div>
                                             <div class="conference-detail-actions">
                                                 <a class="conference-detail-website" href=conf.link.clone() target="_blank">"Visit website ↗"</a>
-                                                {conf.google_calendar_url.clone().map(|url| view! {
+                                                {google_calendar_url.map(|url| view! {
                                                     <a class="conference-detail-calendar-link" href=url target="_blank">
                                                         <img
                                                             src="https://ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_31_2x.png"
@@ -886,7 +729,7 @@ pub fn ShowTable() -> impl IntoView {
                                                         <span>"Google Calendar"</span>
                                                     </a>
                                                 })}
-                                                {conf.icloud_calendar_url.clone().map(|url| view! {
+                                                {icloud_calendar_url.map(|url| view! {
                                                     <a class="conference-detail-calendar-link" href=url download=ics_filename.clone()>
                                                         <img
                                                             src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png"
@@ -906,7 +749,20 @@ pub fn ShowTable() -> impl IntoView {
                 </DialogSurface>
             </Dialog>
 
-            <div class="conference-list">
+            <div class=move || {
+                if is_list_view.get() {
+                    "conference-list conference-list--rows"
+                } else {
+                    "conference-list"
+                }
+            }>
+                <div class="conference-list-hint">
+                    {move || if use_english.get() {
+                        "Click over cells for more information"
+                    } else {
+                        "点击卡片查看详情"
+                    }}
+                </div>
                 <Table>
                     <TableBody>
                         {move || {
@@ -931,9 +787,7 @@ pub fn ShowTable() -> impl IntoView {
                                 view! {
                                     <For
                                         each=move || paginated_list.get()
-                                        key=|conf| {
-                                            format!("{}{}", conf.title.clone(), conf.year.clone())
-                                        }
+                                        key=|conf| (conf.id.clone(), conf.is_like)
                                         children=move |conf| {
                                             let is_finished = conf.status == "FIN";
                                             let is_tbd = conf.status == "TBD";
@@ -963,20 +817,31 @@ pub fn ShowTable() -> impl IntoView {
                                             } else {
                                                 "Paper submission"
                                             };
-                                            let deadline_value = if is_tbd {
-                                                "TBD".to_string()
+                                            let list_deadline_kind = if conf.abstract_deadline.is_some() {
+                                                "Abstract deadline"
                                             } else {
-                                                format_deadline_display(
-                                                    conf.abstract_deadline
-                                                        .as_deref()
-                                                        .unwrap_or(&conf.deadline),
-                                                    &conf.timezone,
-                                                )
+                                                "Paper deadline"
                                             };
+                                            let deadline_date = conf.abstract_deadline
+                                                .clone()
+                                                .unwrap_or_else(|| conf.deadline.clone());
+                                            let deadline_timezone = conf.timezone.clone();
+                                            let list_deadline = deadline_date.clone();
+                                            let list_timezone = deadline_timezone.clone();
+                                            let list_deadline_display = format_legacy_deadline_display(
+                                                &list_deadline,
+                                                &list_timezone,
+                                                &time_zone.get_untracked(),
+                                            );
+                                            let list_website = conf.link.clone();
+                                            let list_timeline = conf.ddls.clone();
                                             view! {
                                                 <TableRow
                                                     on:click=move |_| {
-                                                        selected_conf.set(Some(conf_for_detail.clone()));
+                                                        let mut detail_conf = conf_for_detail.clone();
+                                                        let rates = acceptance_rates.get_untracked();
+                                                        apply_acceptance_rate(&mut detail_conf, &rates);
+                                                        selected_conf.set(Some(detail_conf));
                                                         show_conf_detail.set(true);
                                                     }
                                                 >
@@ -985,17 +850,7 @@ pub fn ShowTable() -> impl IntoView {
                                                             <div class=("conf-fin", is_finished)>
                                                                 <div class="conference-card-heading">
                                                                     <div class="conf-title">
-                                                                        <a
-                                                                            href=format!(
-                                                                                "https://dblp.org/db/conf/{}",
-                                                                                conf.dblp,
-                                                                            )
-                                                                            on:click=move |event| event.stop_propagation()
-                                                                            style="text-decoration: none; color: inherit;"
-                                                                            target="_blank"
-                                                                        >
-                                                                            {conf.title.clone()}
-                                                                        </a>
+                                                                        {conf.title.clone()}
                                                                         " "
                                                                         {conf.year.clone()}
                                                                     </div>
@@ -1016,6 +871,7 @@ pub fn ShowTable() -> impl IntoView {
                                                                         if !current_like {
                                                                             view! {
                                                                              <div
+                                                                                     class="conference-like-toggle"
                                                                                      style="display: inline; cursor: pointer; transition: transform 0.15s ease;"
                                                                                      on:click=move |_| {
                                                                                          all_conf_list
@@ -1040,6 +896,7 @@ pub fn ShowTable() -> impl IntoView {
                                                                         } else {
                                                                             view! {
                                                                              <div
+                                                                                     class="conference-like-toggle is-liked"
                                                                                      style="display: inline; cursor: pointer; transition: transform 0.15s ease;"
                                                                                      on:click=move |_| {
                                                                                          all_conf_list
@@ -1070,7 +927,12 @@ pub fn ShowTable() -> impl IntoView {
 
                                                                 <div class="conference-card-date" style="font-size: 13px; color: #606266; margin-top: 3px;">
                                                                     <div>{conf.date.clone()}</div>
-                                                                    <div>{display_place(&conf.place)}</div>
+                                                                    <div class="conference-card-place">{display_place(&conf.place)}</div>
+                                                                    <div class="conference-list-place">{conf.place.clone()}</div>
+                                                                </div>
+
+                                                                <div class="conference-list-description">
+                                                                    {conf.description.clone()}
                                                                 </div>
 
                                                                 <div class="tag-container">
@@ -1110,9 +972,14 @@ pub fn ShowTable() -> impl IntoView {
                                                                         </Tag>
                                                                     </span>
                                                                     " "
+                                                                    {conf.comment.clone().map(|comment| view! {
+                                                                        <span class="conference-list-note">
+                                                                            <b>"NOTE: "</b>{comment}
+                                                                        </span>
+                                                                    })}
                                                                 </div>
 
-                                                                <div class="conference-card-acceptance" style="padding-top: 5px; font-size: 12px; color: #606266;">
+                                                                <div class="conference-card-acceptance">
                                                                     <span class=move || {
                                                                         if check_list.get().contains(&conf.sub) {
                                                                             "conference-card-category category-highlight"
@@ -1164,7 +1031,31 @@ pub fn ShowTable() -> impl IntoView {
                                                                                     <div class="countdown-container">
                                                                                         <div class="countdown-display">
                                                                                             <span class="countdown-value">
-                                                                                                <CountDown remain=conf.remain.clone() />
+                                                                                                {move || {
+                                                                                                    if is_list_view.get() {
+                                                                                                        view! {
+                                                                                                            <CountDown remain=conf.remain legacy=true />
+                                                                                                        }
+                                                                                                            .into_any()
+                                                                                                    } else {
+                                                                                                        view! {
+                                                                                                            <CountDown remain=conf.remain />
+                                                                                                        }
+                                                                                                            .into_any()
+                                                                                                    }
+                                                                                                }}
+                                                                                                {move || {
+                                                                                                    if is_list_view.get() {
+                                                                                                        view! {
+                                                                                                            <span class="conference-list-calendar" aria-hidden="true">
+                                                                                                                <Icon icon=icondata::VsCalendar />
+                                                                                                            </span>
+                                                                                                        }
+                                                                                                            .into_any()
+                                                                                                    } else {
+                                                                                                        view! {}.into_any()
+                                                                                                    }
+                                                                                                }}
                                                                                             </span>
                                                                                         </div>
                                                                                     </div>
@@ -1190,7 +1081,7 @@ pub fn ShowTable() -> impl IntoView {
                                                                                     view! {
                                                                                         <span>
                                                                                             <b>{deadline_kind}</b>
-                                                                                            <small>{deadline_value.clone()}</small>
+                                                                                            <small>{format_deadline_display(&deadline_date, &deadline_timezone)}</small>
                                                                                         </span>
                                                                                     }
                                                                                         .into_any()
@@ -1199,6 +1090,59 @@ pub fn ShowTable() -> impl IntoView {
                                                                         </div>
                                                                     }
                                                                         .into_any()
+                                                                }}
+                                                                {move || {
+                                                                    if is_list_view.get() {
+                                                                        let timeline = if is_finished || is_tbd {
+                                                                            view! {}.into_any()
+                                                                        } else {
+                                                                            view! {
+                                                                                <TimeLine time_points=list_timeline.clone() />
+                                                                            }
+                                                                                .into_any()
+                                                                        };
+                                                                        view! {
+                                                                            <div class="conference-list-deadline-meta">
+                                                                                {if is_tbd {
+                                                                                    view! {
+                                                                                        <span>
+                                                                                            {list_deadline_kind}": "
+                                                                                            <a
+                                                                                                href="https://github.com/ccfddl/ccf-deadlines/pulls"
+                                                                                                on:click=move |event| event.stop_propagation()
+                                                                                                target="_blank"
+                                                                                            >
+                                                                                                "pull request to update"
+                                                                                            </a>
+                                                                                        </span>
+                                                                                    }
+                                                                                        .into_any()
+                                                                                } else {
+                                                                                    view! {
+                                                                                        <span>
+                                                                                            {list_deadline_kind}": "
+                                                                                            {list_deadline_display.clone()}
+                                                                                        </span>
+                                                                                    }
+                                                                                        .into_any()
+                                                                                }}
+                                                                            </div>
+                                                                            <div class="conference-list-website">
+                                                                                "Website: "
+                                                                                <a
+                                                                                    href=list_website.clone()
+                                                                                    on:click=move |event| event.stop_propagation()
+                                                                                    target="_blank"
+                                                                                >
+                                                                                    {list_website.clone()}
+                                                                                </a>
+                                                                            </div>
+                                                                            {timeline}
+                                                                        }
+                                                                            .into_any()
+                                                                    } else {
+                                                                        view! {}.into_any()
+                                                                    }
                                                                 }}
                                                             </div>
                                                         </TableCellLayout>
@@ -1244,6 +1188,228 @@ pub fn ShowTable() -> impl IntoView {
 }
 
 static UTC_MAP: OnceLock<HashMap<String, String>> = OnceLock::new();
+type AcceptanceRateMap = HashMap<String, Vec<(i32, String)>>;
+
+fn browser_origin() -> Option<String> {
+    window().and_then(|browser| browser.location().origin().ok())
+}
+
+fn build_conf_items(
+    conferences: Vec<Conference>,
+    categories: &[Category],
+    likes: &HashSet<String>,
+    acceptance_rates: &AcceptanceRateMap,
+) -> Vec<ConfItem> {
+    let (current_time, current_timezone) = get_browser_time_and_timezone();
+    let mut items = Vec::new();
+
+    for conference in conferences {
+        for edition in &conference.confs {
+            let Some(last_timeline) = edition.timeline.last() else {
+                continue;
+            };
+            let mut deadline = last_timeline.deadline.clone();
+            let mut abstract_deadline = None;
+            let mut comment = last_timeline.comment.clone();
+            let mut deadlines = Vec::<TimePoint>::new();
+            let mut upcoming_deadlines = Vec::new();
+
+            for timeline_item in &edition.timeline {
+                if let Some(abstract_value) = timeline_item.abstract_deadline.clone() {
+                    if let Some(value) =
+                        parse_deadline_to_rfc3339(&abstract_value, &edition.timezone)
+                            .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+                    {
+                        deadlines.push(TimePoint {
+                            timepoint: value.with_timezone(&current_timezone),
+                            r#type: 0,
+                        });
+                        if value > current_time {
+                            upcoming_deadlines.push((
+                                value,
+                                abstract_value,
+                                true,
+                                timeline_item.comment.clone(),
+                            ));
+                        }
+                    }
+                }
+
+                if let Some(value) =
+                    parse_deadline_to_rfc3339(&timeline_item.deadline, &edition.timezone)
+                        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+                {
+                    deadlines.push(TimePoint {
+                        timepoint: value.with_timezone(&current_timezone),
+                        r#type: 1,
+                    });
+                    if value > current_time {
+                        upcoming_deadlines.push((
+                            value,
+                            timeline_item.deadline.clone(),
+                            false,
+                            timeline_item.comment.clone(),
+                        ));
+                    }
+                }
+            }
+
+            if let Some((_, next_deadline, is_abstract, next_comment)) = upcoming_deadlines
+                .into_iter()
+                .min_by(|left, right| left.0.cmp(&right.0))
+            {
+                deadline = next_deadline.clone();
+                abstract_deadline = is_abstract.then_some(next_deadline);
+                comment = next_comment;
+            }
+
+            let category = categories
+                .iter()
+                .find(|category| category.sub == conference.sub);
+            let display_rank = RANK_OPTIONS
+                .iter()
+                .find(|(rank, _)| *rank == conference.rank.ccf)
+                .map(|(_, label)| *label)
+                .unwrap_or("Non-CCF")
+                .to_string();
+            let mut item = ConfItem {
+                title: conference.title.clone(),
+                description: conference.description.clone(),
+                sub: conference.sub.clone(),
+                rank: conference.rank.ccf.clone(),
+                corerank: conference.rank.core.clone(),
+                thcplrank: conference.rank.thcpl.clone(),
+                displayrank: display_rank,
+                dblp: conference.dblp.clone(),
+                year: edition.year,
+                id: edition.id.clone(),
+                link: edition.link.clone(),
+                abstract_deadline,
+                deadline,
+                comment,
+                timezone: edition.timezone.clone(),
+                date: edition.date.clone(),
+                place: edition.place.clone(),
+                status: String::new(),
+                is_like: likes.contains(&edition.id),
+                remain: 0,
+                subname: category.map(|value| value.name.clone()).unwrap_or_default(),
+                subname_en: category
+                    .map(|value| value.name_en.clone())
+                    .unwrap_or_default(),
+                acc_str: recent_acceptance_rates(&conference.title, edition.year, acceptance_rates),
+                ddls: deadlines,
+            };
+
+            if item.deadline == "TBD" {
+                item.status = "TBD".to_string();
+                items.push(item);
+                continue;
+            }
+
+            if let Some(deadline_time) = parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
+                .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+            {
+                let remaining = deadline_time.signed_duration_since(current_time);
+                if remaining.num_milliseconds() <= 0 {
+                    item.status = "FIN".to_string();
+                } else {
+                    item.remain = remaining.num_milliseconds() as u64;
+                    item.status = "RUN".to_string();
+                }
+            }
+            items.push(item);
+        }
+    }
+
+    items
+}
+
+fn build_acceptance_rate_map(all_acc: Vec<ConfAccRate>) -> AcceptanceRateMap {
+    let mut rates = AcceptanceRateMap::new();
+    for conference in all_acc {
+        let conference_rates = rates.entry(conference.title).or_default();
+        for rate in conference.accept_rates {
+            conference_rates.push((rate.year, rate.label));
+        }
+        conference_rates.sort_by(|left, right| right.0.cmp(&left.0));
+        conference_rates.dedup_by(|left, right| left.0 == right.0);
+    }
+    rates
+}
+
+fn apply_acceptance_rates(items: &mut [ConfItem], rates: &AcceptanceRateMap) {
+    for item in items {
+        apply_acceptance_rate(item, rates);
+    }
+}
+
+fn apply_acceptance_rate(item: &mut ConfItem, rates: &AcceptanceRateMap) {
+    item.acc_str = recent_acceptance_rates(&item.title, item.year, rates);
+}
+
+fn recent_acceptance_rates(
+    conference_title: &str,
+    conference_year: i32,
+    rates: &AcceptanceRateMap,
+) -> Option<String> {
+    let recent_rates = rates
+        .get(conference_title)?
+        .iter()
+        .filter(|(year, _)| *year <= conference_year)
+        .take(2)
+        .map(|(_, label)| label.as_str())
+        .collect::<Vec<_>>();
+
+    (!recent_rates.is_empty()).then(|| recent_rates.join("  ·  "))
+}
+
+fn build_calendar_urls(
+    conf: &ConfItem,
+    browser_timezone: &str,
+) -> (Option<String>, Option<String>) {
+    let Some(deadline_time) = parse_deadline_to_rfc3339(&conf.deadline, &conf.timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+    else {
+        return (None, None);
+    };
+    let (_, current_timezone) = get_browser_time_and_timezone();
+    let iso_string = deadline_time
+        .with_timezone(&current_timezone)
+        .format("%Y%m%dT%H%M%S")
+        .to_string();
+    let google = format!(
+        "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location=Online&ctz={}&sf=true&output=xml",
+        encode(&format!("{} {}", conf.title, conf.year)),
+        iso_string,
+        iso_string,
+        encode(&format!(
+            "{} provided by @ccfddl",
+            conf.comment.as_deref().unwrap_or("")
+        )),
+        browser_timezone,
+    );
+    let icloud = format!(
+        "data:text/calendar;charset=utf8,BEGIN:VCALENDAR\n\
+        VERSION:2.0\n\
+        BEGIN:VEVENT\n\
+        URL:{}\n\
+        DTSTART:{}\n\
+        DTEND:{}\n\
+        SUMMARY:{}\n\
+        DESCRIPTION:{}\n\
+        LOCATION:{}\n\
+        END:VEVENT\n\
+        END:VCALENDAR",
+        encode("https://ccfddl.github.io/"),
+        iso_string,
+        iso_string,
+        encode(&format!("{} {} Deadline", conf.title, conf.year)),
+        encode(conf.comment.as_deref().unwrap_or("")),
+        encode(""),
+    );
+    (Some(google), Some(icloud))
+}
 
 fn normalize_timezone(tz: &str) -> String {
     match tz {
@@ -1272,6 +1438,62 @@ fn format_deadline_display(deadline: &str, timezone: &str) -> String {
         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
         .map(|value| format!("{} ({})", value.format("%b %-d, %Y"), timezone))
         .unwrap_or_else(|| format!("{} ({})", deadline, timezone))
+}
+
+fn format_legacy_deadline_display(
+    deadline: &str,
+    timezone: &str,
+    browser_timezone: &str,
+) -> String {
+    let Some(origin_time) = parse_deadline_to_rfc3339(deadline, timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+    else {
+        return format!("{} ({})", deadline, normalize_timezone(timezone));
+    };
+
+    let (_, browser_offset) = get_browser_time_and_timezone();
+    let local_time = origin_time.with_timezone(&browser_offset);
+    let day = local_time.day();
+    let suffix = match day % 100 {
+        11..=13 => "th",
+        _ => match day % 10 {
+            1 => "st",
+            2 => "nd",
+            3 => "rd",
+            _ => "th",
+        },
+    };
+    let local_timezone = match browser_timezone {
+        "Asia/Shanghai" | "Asia/Chongqing" => "CST".to_string(),
+        "UTC" | "Etc/UTC" | "Etc/GMT" => "UTC".to_string(),
+        "" => format_utc_offset(browser_offset.local_minus_utc()),
+        value => value.to_string(),
+    };
+
+    format!(
+        "{} {} {}{} {} {} {} ({} {})",
+        local_time.format("%a"),
+        local_time.format("%b"),
+        day,
+        suffix,
+        local_time.year(),
+        local_time.format("%H:%M:%S"),
+        local_timezone,
+        origin_time.format("%Y-%m-%d %H:%M:%S"),
+        normalize_timezone(timezone),
+    )
+}
+
+fn format_utc_offset(offset_seconds: i32) -> String {
+    let sign = if offset_seconds >= 0 { '+' } else { '-' };
+    let total_minutes = offset_seconds.unsigned_abs() / 60;
+    let hours = total_minutes / 60;
+    let minutes = total_minutes % 60;
+    if minutes == 0 {
+        format!("UTC{sign}{hours}")
+    } else {
+        format!("UTC{sign}{hours}:{minutes:02}")
+    }
 }
 
 /// Nth (1-indexed) Sunday of the given month/year.
@@ -1330,28 +1552,6 @@ const RANK_OPTIONS: &[(&str, &str)] = &[
     ("N", "Non-CCF"),
 ];
 
-const MOBILE_KEYWORDS: &[&str] = &[
-    "phone",
-    "pad",
-    "pod",
-    "iphone",
-    "ipod",
-    "ios",
-    "ipad",
-    "android",
-    "mobile",
-    "blackberry",
-    "iemobile",
-    "mqqbrowser",
-    "juc",
-    "fennec",
-    "wosbrowser",
-    "browserng",
-    "webos",
-    "symbian",
-    "windows phone",
-];
-
 fn get_utc_map() -> &'static HashMap<String, String> {
     UTC_MAP.get_or_init(|| {
         let mut utc_map = HashMap::new();
@@ -1396,41 +1596,21 @@ fn get_browser_time_and_timezone() -> (DateTime<FixedOffset>, FixedOffset) {
     (local_time.with_timezone(&timezone), timezone)
 }
 
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_namespace = navigator, getter, js_name = userAgent)]
-    fn user_agent() -> String;
-}
-
-fn is_client_device() -> bool {
-    web_sys::window().is_some()
-}
-
-fn is_mobile_device() -> bool {
-    if !is_client_device() {
-        return false;
-    }
-
-    let window = web_sys::window().expect("no global window exists");
-    let navigator = window.navigator();
-    let user_agent = navigator
-        .user_agent()
-        .expect("user agent not available")
-        .to_lowercase();
-
-    MOBILE_KEYWORDS
-        .iter()
-        .any(|&keyword| user_agent.contains(keyword))
+fn is_narrow_viewport() -> bool {
+    window()
+        .and_then(|browser| browser.inner_width().ok())
+        .and_then(|width| width.as_f64())
+        .is_some_and(|width| width <= 768.0)
 }
 
 fn get_from_local_storage(key: &str) -> Option<String> {
-    let window = window().unwrap();
-    let local_storage = window.local_storage().ok().flatten().unwrap();
-    local_storage.get_item(key).unwrap()
+    window()
+        .and_then(|window| window.local_storage().ok().flatten())
+        .and_then(|storage| storage.get_item(key).ok().flatten())
 }
 
 fn set_in_local_storage(key: &str, value: &str) {
-    let window = window().unwrap();
-    let local_storage = window.local_storage().ok().flatten().unwrap();
-    local_storage.set_item(key, value).unwrap();
+    if let Some(storage) = window().and_then(|window| window.local_storage().ok().flatten()) {
+        let _ = storage.set_item(key, value);
+    }
 }

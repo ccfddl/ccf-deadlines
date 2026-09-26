@@ -1,5 +1,8 @@
 use chrono::prelude::*;
+use gloo_net::http::Request;
+use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
+use web_sys::RequestCache;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Conference {
@@ -29,20 +32,17 @@ pub struct ConferenceYear {
     pub place: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct ConfAccRate {
     pub title: String,
     pub accept_rates: Vec<AccYear>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct AccYear {
     pub year: i32,
-    pub submitted: i32,
-    pub accepted: i32,
-    pub str: String,
-    pub rate: String,
-    pub source: Option<String>,
+    #[serde(rename = "str", alias = "srt")]
+    pub label: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -87,36 +87,51 @@ pub struct ConfItem {
     pub status: String, // "RUN", "FIN", "TBD"
     pub is_like: bool,
     pub remain: u64,
-    pub local_ddl: Option<String>,
-    pub origin_ddl: Option<String>,
     pub subname: String,
     pub subname_en: String,
-    pub google_calendar_url: Option<String>,
-    pub icloud_calendar_url: Option<String>,
     pub acc_str: Option<String>,
     pub ddls: Vec<TimePoint>,
 }
 
-pub async fn fetch_all_conf(
-    base_url: &String,
-) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
-    let url = format!("{}/conference/allconf.yml", base_url);
-    let response = reqwest::get(url).await?;
-    let contents = response.text().await?;
-
-    let conferences: Vec<Conference> = serde_yaml::from_str(&contents)?;
-    Ok(conferences)
+pub async fn fetch_all_conf(base_url: &str) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
+    let url = format!("{base_url}/conference/allconf.json");
+    fetch_json_with_cache_recovery(&url).await
 }
 
-pub async fn fetch_all_acc(
-    base_url: &String,
-) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
-    let url = format!("{}/conference/allacc.yml", base_url);
-    let response = reqwest::get(url).await?;
-    let contents = response.text().await?;
+pub async fn fetch_all_acc(base_url: &str) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
+    let url = format!("{base_url}/conference/allacc.json");
+    fetch_json_with_cache_recovery(&url).await
+}
 
-    let accs: Vec<ConfAccRate> = serde_yaml::from_str(&contents)?;
-    Ok(accs)
+async fn fetch_json_with_cache_recovery<T: DeserializeOwned>(
+    url: &str,
+) -> Result<T, Box<dyn std::error::Error>> {
+    match fetch_json(url, false).await {
+        Ok(data) => Ok(data),
+        Err(_) => fetch_json(url, true).await,
+    }
+}
+
+async fn fetch_json<T: DeserializeOwned>(
+    url: &str,
+    reload: bool,
+) -> Result<T, Box<dyn std::error::Error>> {
+    let mut request = Request::get(url);
+    if reload {
+        request = request.cache(RequestCache::Reload);
+    }
+
+    let response = request.send().await?;
+    if !response.ok() {
+        return Err(std::io::Error::other(format!(
+            "request for {url} returned HTTP {}",
+            response.status()
+        ))
+        .into());
+    }
+
+    let body = response.text().await?;
+    Ok(serde_json::from_str(&body)?)
 }
 
 pub fn get_categories() -> Vec<Category> {
@@ -172,16 +187,4 @@ pub fn get_categories() -> Vec<Category> {
             sub: "MX".to_string(),
         },
     ]
-}
-
-#[allow(dead_code)]
-pub async fn fetch_all_category() -> Result<Vec<Category>, Box<dyn std::error::Error>> {
-    // Fetch the YAML from the URL
-    let url = "https://raw.githubusercontent.com/ccfddl/ccfddl.github.io/page/conference/types.yml";
-    let response = reqwest::get(url).await?;
-    let contents = response.text().await?;
-
-    // Deserialize YAML into Vec<Conference>
-    let conferences: Vec<Category> = serde_yaml::from_str(&contents)?;
-    Ok(conferences)
 }
