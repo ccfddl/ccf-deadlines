@@ -18,6 +18,12 @@
       str: 24.5%(244/996 24')
       rate: 0.244979919678715
       source: https://past.date-conference.com/proceedings-archive/2024/DATA/frontmatter.pdf
+    - year: 2025
+      submitted: 1213
+      accepted: 302
+      str: 24.9%(302/1213 25')
+      rate: 0.248969497114592
+      source: https://past.date-conference.com/proceedings-archive/2025/START.pdf
     - year: 2026
       submitted: 1310
       accepted: 325
