@@ -1,8 +1,16 @@
 - title: NAACL
+  # Main-conference long and short papers; excludes Findings and other tracks.
   accept_rates:
+    - year: 2021
+      submitted: 1797
+      accepted: 477
+      str: 26.5%(477/1797 21')
+      rate: 0.2654424040066778
+      source: https://aclanthology.org/2021.naacl-main.0.pdf
     - year: 2024
+      # Official ARR-eligible submission pool; not the smaller commitment count.
       submitted: 2434
       accepted: 565
       str: 23.2%(565/2434 24')
-      rate: 0.2321282
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.2321281840591619
+      source: https://aclanthology.org/2024.naacl-long.0.pdf
