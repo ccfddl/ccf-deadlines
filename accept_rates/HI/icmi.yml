@@ -14,3 +14,10 @@
       rate: 0.3283582089552239
       str: "32.8%(66/201 22')"
       source: https://icmi.acm.org/2022/wp-content/uploads/2022/11/ICMI-2022-Booklet-FinalDraft-v2.pdf
+    # Main-track final acceptances / complete submitted papers.
+    - year: 2024
+      submitted: 154
+      accepted: 59
+      rate: 0.38311688311688313
+      str: "38.3%(59/154 24')"
+      source: https://repository.tudelft.nl/file/File_44197bd9-d822-46f3-91fb-4688cb57eb4a
