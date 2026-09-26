@@ -1,13 +1,13 @@
 # Full research papers only; excludes short, industrial, demo, PhD, tutorial, and workshop papers.
 - title: DASFAA
   accept_rates:
-    # Full-paper count: https://dm.iis.sinica.edu.tw/DASFAA2021/accepted.html
+    # 2021: original proceedings preface, PDF page 5; explicit full-research pair.
     - year: 2021
       submitted: 490
       accepted: 98
       str: 20.0%(98/490 21')
       rate: 0.200000000000000
-      source: https://link.springer.com/book/10.1007/978-3-030-73194-6
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-73194-6/1
     - year: 2022
       submitted: 543
       accepted: 72
