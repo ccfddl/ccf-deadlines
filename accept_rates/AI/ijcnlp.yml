@@ -20,3 +20,10 @@
       str: 25.9%(94/363 23')
       rate: 0.2589531680440771
       source: https://aclanthology.org/2023.ijcnlp-main.0.pdf
+    - year: 2025
+      # Original received total; printed 19% disagrees with this pair; no denominator explanation.
+      submitted: 1456
+      accepted: 232
+      str: 15.9%(232/1456 25')
+      rate: 0.1593406593406593
+      source: https://aclanthology.org/2025.ijcnlp-long.0.pdf
