@@ -19,7 +19,8 @@
       id: icpads26
       link: https://www.cloud-conf.net/icpads2026
       timeline:
-        - deadline: '2026-06-30 23:59:59'
+        - deadline: 'TBD'
+          comment: 'Research paper submission: August 15, 2026 (extended, firm). Exact time and timezone TBD; AoE is a schema placeholder.'
       timezone: AoE
       date: November 22-26 2026
       place: Tokyo, Japan
