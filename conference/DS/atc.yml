@@ -12,14 +12,15 @@
       link: https://www.usenix.org/conference/atc21/
       timeline:
         - deadline: '2021-01-12 23:59:59'
-      timezone: AoE
+      timezone: UTC
       date: July 14-16, 2021
-      place: SANTA CLARA, USA
+      place: Virtual
     - year: 2022
       id: atc2022
       link: https://www.usenix.org/conference/atc22/
       timeline:
-        - deadline: '2022-01-13 23:59:59'
+        - abstract_deadline: '2022-01-06 23:59:59'
+          deadline: '2022-01-13 23:59:59'
       timezone: UTC+0
       date: July 11-13, 2022
       place: Omni La Costa Resort & Spa in Carlsbad, CA, USA
