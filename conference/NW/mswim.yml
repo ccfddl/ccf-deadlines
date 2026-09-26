@@ -11,7 +11,9 @@
       id: mswim26
       link: https://mswimconf.com/2026/
       timeline:
-        - deadline: '2026-06-01 23:59:59'
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Extended abstract registration: June 14, 2026; full paper: June 15, 2026. Exact times and timezone TBD (UTC+1 below is an unverified schema placeholder).'
       timezone: UTC+1
       date: October 26-30, 2026
       place: Paris, France
