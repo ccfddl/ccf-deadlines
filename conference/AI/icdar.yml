@@ -13,8 +13,6 @@
       timeline:
         - deadline: '2021-02-24 23:59:00'
           comment: Conference papers; final extension
-        - deadline: TBD
-          comment: 'IJDAR journal track initial submission; November 18, 2020, clock and timezone unverified'
       timezone: UTC-8
       date: September 5-10, 2021
       place: Lausanne, Switzerland and Online
@@ -25,8 +23,6 @@
         - abstract_deadline: TBD
           deadline: '2025-03-14 23:59:59'
           comment: 'Conference papers; abstract due February 28, 2025 at 11:59 PST, AM/PM unspecified'
-        - deadline: TBD
-          comment: 'IJDAR journal track initial submission; November 15, 2024, clock and timezone unverified'
       timezone: UTC-8
       date: September 16-21, 2025
       place: Wuhan, China
@@ -37,8 +33,6 @@
         - abstract_deadline: '2026-02-13 23:59:59'
           deadline: '2026-02-27 23:59:59'
           comment: Conference papers
-        - deadline: '2025-11-14 23:59:00'
-          comment: IJDAR journal track initial submission
       timezone: UTC-12
       date: August 30 - September 4, 2026
       place: Vienna, Austria
