@@ -1,14 +1,35 @@
+# Main-conference long/short papers; annual denominators follow the chairs' published definitions.
 - title: EMNLP
   accept_rates:
+    # All received: 3717 direct + 17 ARR pilot; accepted 840 direct + 6 ARR.
+    # The direct-only reviewed cohort is 840/3600.
+    - year: 2021
+      submitted: 3734
+      accepted: 846
+      str: 22.7%(846/3734 21')
+      rate: 0.2265666845206213
+      source: https://aclanthology.org/2021.emnlp-main.0.pdf
     - year: 2022
-      submitted: 3242
-      accepted: 715
-      str: 22.1%(715/3242 22')
-      rate: 0.220542874768661
-      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+      submitted: 4190
+      accepted: 829
+      str: 19.8%(829/4190 22')
+      rate: 0.197852028639618
+      source: https://aclanthology.org/2022.findings-emnlp.0.pdf
     - year: 2023
       submitted: 4909
       accepted: 1047
       str: 21.3%(1047/4909 23')
-      rate: 0.2132817
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.213281727439397
+      source: https://aclanthology.org/2023.emnlp-main.0.pdf
+    - year: 2024
+      submitted: 6105
+      accepted: 1271
+      str: 20.8%(1271/6105 24')
+      rate: 0.208190008190008
+      source: https://aclanthology.org/2024.emnlp-main.0.pdf
+    - year: 2025
+      submitted: 8174
+      accepted: 1811
+      str: 22.2%(1811/8174 25')
+      rate: 0.221556153657940
+      source: https://aclanthology.org/2025.emnlp-main.0.pdf
