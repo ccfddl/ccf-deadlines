@@ -1,0 +1,39 @@
+# Selected Areas in Cryptography, not the ACM Symposium on Applied Computing.
+- title: SAC
+  accept_rates:
+    - year: 2021
+      submitted: 60
+      accepted: 23
+      str: 38.3%(23/60 21')
+      rate: 0.383333333333333
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2022
+      submitted: 53
+      accepted: 21
+      str: 39.6%(21/53 22')
+      rate: 0.396226415094340
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2023
+      submitted: 45
+      accepted: 21
+      str: 46.7%(21/45 23')
+      rate: 0.466666666666667
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2024
+      submitted: 89
+      accepted: 25
+      str: 28.1%(25/89 24')
+      rate: 0.280898876404494
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2025
+      submitted: 109
+      accepted: 29
+      str: 26.6%(29/109 25')
+      rate: 0.266055045871560
+      source: https://sacworkshop.org/historical-acceptance.html
+    - year: 2026
+      submitted: 114
+      accepted: 29
+      str: 25.4%(29/114 26')
+      rate: 0.254385964912281
+      source: https://sacworkshop.org/historical-acceptance.html
