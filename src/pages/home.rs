@@ -1,3 +1,4 @@
+use crate::components::favorites::FavoritesContext;
 use crate::components::header::Header;
 use crate::components::showtable::ShowTable;
 use leptos::prelude::*;
@@ -7,6 +8,10 @@ use thaw::*;
 /// Default Home Page
 #[component]
 pub fn Home() -> impl IntoView {
+    let favorites = FavoritesContext::new();
+    provide_context(favorites);
+    favorites.load();
+
     let storage = web_sys::window().and_then(|window| window.local_storage().ok().flatten());
     let stored_language = storage
         .as_ref()
@@ -64,7 +69,7 @@ pub fn Home() -> impl IntoView {
     view! {
         <ConfigProvider theme>
             <div class="home">
-                <Header />
+                <Header use_english />
                 <ShowTable use_english />
             </div>
         </ConfigProvider>

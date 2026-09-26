@@ -89,17 +89,86 @@ a {
 }
 
 .header-main {
+  position: relative;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 7px;
   min-height: 36px;
+  padding-right: 160px;
   font-size: 16px;
 }
 
 .header-github {
   display: flex;
   align-items: center;
+}
+
+.header-auth {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.github-login-button,
+.github-user-link,
+.github-logout-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  box-sizing: border-box;
+  border: 1px solid #d9d3cb;
+  border-radius: 8px;
+  background: #fff;
+  color: #3f4751;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.github-login-button {
+  gap: 6px;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.github-login-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.github-user-link {
+  gap: 6px;
+  padding: 0 8px 0 4px;
+}
+
+.github-user-link img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.github-logout-button {
+  padding: 0 8px;
+  border-color: transparent;
+  background: transparent;
+  color: #75808b;
+  cursor: pointer;
+}
+
+.github-login-button:hover,
+.github-user-link:hover,
+.github-logout-button:hover {
+  border-color: #bfc8d1;
+  background: #f7f9fb;
+  color: #29394b;
+  text-decoration: none;
 }
 
 .github-star-link {
@@ -806,7 +875,7 @@ a {
   gap: 4px;
 }
 
-.conference-card-heading > div:not(.conf-title) {
+.conference-card-heading > .conference-like-toggle {
   order: 2;
 }
 
@@ -821,6 +890,36 @@ a {
 .conference-card-heading .conference-card-website {
   order: 3;
   margin-left: auto;
+}
+
+.conference-like-toggle {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #909399;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.conference-like-toggle:hover {
+  color: #e6a23c;
+  transform: scale(1.06);
+}
+
+.conference-like-toggle.is-liked {
+  color: #fbc804;
+}
+
+.conference-like-toggle:disabled {
+  cursor: wait;
+  opacity: 0.55;
 }
 
 .conference-card-website {
@@ -868,7 +967,7 @@ a {
   margin: 22px 0 0 22px;
 }
 
-.conference-list .conference-card-heading > div:not(.conf-title) {
+.conference-list .conference-card-heading > .conference-like-toggle {
   order: 2;
   margin-top: 22px;
 }
@@ -895,10 +994,10 @@ a {
   margin: 0;
 }
 
-.conference-list tr .conference-card-heading > div:not(.conf-title) {
+.conference-list tr .conference-card-heading > .conference-like-toggle {
   flex: 0 0 auto;
   order: 2;
-  margin: 3px 0 0;
+  margin: 1px 0 0;
 }
 
 .conference-list tr .conference-card-heading .conference-card-website {
@@ -1112,7 +1211,7 @@ a {
   line-height: 1.25;
 }
 
-.conference-list--rows tr .conference-card-heading > div:not(.conf-title) {
+.conference-list--rows tr .conference-card-heading > .conference-like-toggle {
   flex: 0 0 auto;
   margin: 1px 0 0;
 }
@@ -1359,11 +1458,40 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 }
 
 .conference-detail-dialog .conference-detail-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: inherit;
   font-size: 27px;
   font-weight: 500;
   line-height: 1.15;
   color: #292d33;
+}
+
+.conference-detail-title-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.conference-detail-star-count {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 7px;
+  border: 1px solid #e1dbd3;
+  border-radius: 999px;
+  background: #f7f3ee;
+  color: #5f6873;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.conference-detail-star-count svg {
+  color: #e6a23c;
+  font-size: 13px;
 }
 
 .conference-detail-close {
@@ -2044,6 +2172,22 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 
   .header-main {
     align-items: flex-start;
+    padding-right: 86px;
+  }
+
+  .header-auth {
+    flex: 0 0 auto;
+  }
+
+  .github-login-button span,
+  .github-user-link span {
+    display: none;
+  }
+
+  .github-login-button,
+  .github-user-link {
+    width: 30px;
+    padding: 0;
   }
 
   .header-main .title {

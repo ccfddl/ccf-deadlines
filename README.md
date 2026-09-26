@@ -189,6 +189,10 @@ The matching table:
 
 Maintained by [@ccfddl](https://github.com/ccfddl) collaboration.
 
+## GitHub conference favorites
+
+The website can use the Cloudflare Worker and D1 service in [`worker/`](worker/) for GitHub sign-in and account-scoped conference favorites. Favorite totals are stored independently for each conference edition. See [`worker/README.md`](worker/README.md) for OAuth, database, and deployment setup.
+
 ## License
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fccfddl%2Fccf-deadlines?ref=badge_large)
