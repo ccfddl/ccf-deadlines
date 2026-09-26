@@ -12,3 +12,9 @@
       str: 27.5%(2609/9473 24')
       rate: 0.2754143
       source: https://csconfstats.xoveexu.com/
+    - year: 2026
+      submitted: 24661
+      accepted: 6552
+      str: 26.6%(6552/24661 26')
+      rate: 0.2656826568265683
+      source: https://media.icml.cc/Conferences/ICML2026/ICML2026_Fact_Sheet.pdf
