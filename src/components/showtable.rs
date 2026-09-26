@@ -295,12 +295,8 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             all_list.extend(run_list);
             all_list.extend(tbd_list);
             all_list.extend(fin_list);
-
-            let (liked_list, unliked_list): (Vec<_>, Vec<_>) =
-                all_list.into_iter().partition(|conf| conf.is_like);
-
-            let mut final_list = liked_list;
-            final_list.extend(unliked_list);
+            all_list.sort_by_key(|conf| favorite_sort_group(&conf.status, conf.is_like));
+            let final_list = all_list;
 
             // Pagination
             let total_count = final_list.len();
@@ -1820,6 +1816,14 @@ fn build_conf_items(
     items
 }
 
+fn favorite_sort_group(status: &str, is_like: bool) -> u8 {
+    match (status == "FIN", is_like) {
+        (false, true) => 0,
+        (false, false) => 1,
+        (true, _) => 2,
+    }
+}
+
 fn estimate_deadlines(conference: &Conference, edition: &ConferenceYear) -> Vec<EstimatedDeadline> {
     let Some(previous) = conference
         .confs
@@ -2287,5 +2291,14 @@ mod historical_deadline_tests {
                 assert!(!unknown.estimated_deadlines.is_empty());
             }
         }
+    }
+
+    #[test]
+    fn favorites_only_receive_priority_before_the_conference_ends() {
+        assert_eq!(favorite_sort_group("RUN", true), 0);
+        assert_eq!(favorite_sort_group("TBD", true), 0);
+        assert_eq!(favorite_sort_group("RUN", false), 1);
+        assert_eq!(favorite_sort_group("FIN", true), 2);
+        assert_eq!(favorite_sort_group("FIN", false), 2);
     }
 }
