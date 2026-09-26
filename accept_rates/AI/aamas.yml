@@ -1,0 +1,46 @@
+- title: AAMAS
+  # Main-track full papers only; excludes extended abstracts and all special tracks.
+  # Annual denominators follow the explicitly identified paper cohorts below.
+  accept_rates:
+    - year: 2021
+      # Received full-paper submissions, including desk rejects; 612 were reviewed.
+      submitted: 628
+      accepted: 152
+      str: 24.2%(152/628 21')
+      rate: 0.2420382165605096
+      source: https://www.ifaamas.org/Proceedings/aamas2021/pdfs/welcome.pdf
+    - year: 2022
+      # Completed papers at the paper deadline; 615 remained at the decision deadline.
+      submitted: 636
+      accepted: 166
+      str: 26.1%(166/636 22')
+      rate: 0.2610062893081761
+      source: https://www.ifaamas.org/Proceedings/aamas2022/pdfs/welcome.pdf
+    - year: 2023
+      # Received papers, including 37 desk rejections.
+      submitted: 1015
+      accepted: 237
+      str: 23.3%(237/1015 23')
+      rate: 0.2334975369458128
+      source: https://www.ifaamas.org/Proceedings/aamas2023/pdfs/welcome.pdf
+    - year: 2024
+      # Reviewed papers; do not use the 1113 registrations, some of which never materialized.
+      submitted: 847
+      accepted: 230
+      str: 27.2%(230/847 24')
+      rate: 0.2715466351829988
+      source: https://www.ifaamas.org/Proceedings/aamas2024/pdfs/welcome.pdf
+    - year: 2025
+      # Reviewed main-track papers, not 1361 abstract registrations.
+      submitted: 1021
+      accepted: 250
+      str: 24.5%(250/1021 25')
+      rate: 0.2448579823702253
+      source: https://www.ifaamas.org/Proceedings/aamas2025/pdfs/welcome.pdf
+    - year: 2026
+      # Reviewed main-track papers, not 1842 abstract registrations.
+      submitted: 1359
+      accepted: 338
+      str: 24.9%(338/1359 26')
+      rate: 0.2487122884473878
+      source: https://www.ifaamas.org/Proceedings/aamas2026/pdfs/welcome.pdf
