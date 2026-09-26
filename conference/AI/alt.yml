@@ -7,20 +7,47 @@
     thcpl: B
   dblp: alt
   confs:
+    - year: 2021
+      id: alt2021
+      link: https://algorithmiclearningtheory.org/alt2021/
+      timeline:
+        - deadline: '2020-09-30 17:00:00'
+          comment: 'Official CFP and submission instructions specify 5:00 PM EST (UTC-5)'
+      timezone: UTC-5
+      date: March 16-19, 2021
+      place: Virtual
+    - year: 2022
+      id: alt2022
+      link: https://algorithmiclearningtheory.org/alt2022/
+      timeline:
+        - deadline: TBD
+          comment: 'October 5, 2021 at 5 PM; CFP says EST, submission instructions say ET; exact UTC offset unresolved'
+      timezone: UTC-5
+      date: March 29 - April 1, 2022
+      place: Paris, France (Hybrid)
+    - year: 2023
+      id: alt2023
+      link: https://algorithmiclearningtheory.org/alt2023/
+      timeline:
+        - deadline: TBD
+          comment: 'September 30, 2022 at 5 PM; CFP says EST, submission instructions say ET; exact UTC offset unresolved'
+      timezone: UTC-5
+      date: February 20-23, 2023
+      place: Singapore
     - year: 2024
       id: alt2024
       link: http://algorithmiclearningtheory.org/alt2024/
       timeline:
-        - abstract_deadline: '2023-09-26 23:59:59'
-          deadline: '2023-09-26 23:59:59'
-      timezone: UTC+8
+        - deadline: TBD
+          comment: 'Paper submission: September 26, 2023 AoE; exact clock not published'
+      timezone: AoE
       date: February 25-28, 2024
       place: San Diego, California
     - year: 2025
       id: alt2025
       link: https://algorithmiclearningtheory.org/alt2025/
       timeline:
-        - deadline: '2024-10-01 09:59:59'
+        - deadline: '2024-10-01 22:00:00'
       timezone: UTC+0
       date: February 24-27, 2025
       place: Milan, Italy
@@ -28,8 +55,8 @@
       id: alt2026
       link: https://algorithmiclearningtheory.org/alt2026/
       timeline:
-        - deadline: '2025-10-02 09:59:59'
-      timezone: UTC+0
+        - deadline: '2025-10-02 23:59:59'
+      timezone: AoE
       date: February 23-26, 2026
       place: Fields Institute, Toronto, Canada
     - year: 2027
