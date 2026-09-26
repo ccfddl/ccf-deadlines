@@ -1,0 +1,40 @@
+# Peer-reviewed conference papers, including tool and case-study papers; invited contributions excluded.
+- title: VMCAI
+  accept_rates:
+    - year: 2021
+      submitted: 48
+      accepted: 23
+      str: 47.9%(23/48 21')
+      rate: 0.479166666666667
+      source: https://link.springer.com/book/10.1007/978-3-030-67067-2
+    - year: 2022
+      submitted: 48
+      accepted: 22
+      str: 45.8%(22/48 22')
+      rate: 0.458333333333333
+      source: https://link.springer.com/book/10.1007/978-3-030-94583-1
+    - year: 2023
+      submitted: 34
+      accepted: 17
+      str: 50.0%(17/34 23')
+      rate: 0.500000000000000
+      source: https://link.springer.com/book/10.1007/978-3-031-24950-1
+    - year: 2024
+      submitted: 74
+      accepted: 30
+      str: 40.5%(30/74 24')
+      rate: 0.405405405405405
+      source: https://link.springer.com/book/10.1007/978-3-031-50524-9
+    # 20 total = 18 regular/case-study + 2 tool papers; official list: https://conf.researchr.org/home/VMCAI-2025
+    - year: 2025
+      submitted: 48
+      accepted: 20
+      str: 41.7%(20/48 25')
+      rate: 0.416666666666667
+      source: https://link.springer.com/book/10.1007/978-3-031-82700-6
+    - year: 2026
+      submitted: 54
+      accepted: 18
+      str: 33.3%(18/54 26')
+      rate: 0.333333333333333
+      source: https://link.springer.com/book/10.1007/978-3-032-15700-3
