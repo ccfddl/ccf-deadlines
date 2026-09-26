@@ -1,14 +1,20 @@
 - title: UAI
   accept_rates:
+    - year: 2021
+      submitted: 777
+      accepted: 205
+      str: 26.4%(205/777 21')
+      rate: 0.2638352638352638
+      source: https://proceedings.mlr.press/v161/campos21a/campos21a.pdf
     - year: 2023
       submitted: 778
       accepted: 243
       str: 31.2%(243/778 23')
-      rate: 0.312339331619537
+      rate: 0.3123393316195373
       source: https://github.com/lixin4ever/Conference-Acceptance-Rate
     - year: 2024
-      submitted: 715
+      submitted: 744
       accepted: 200
-      str: 28.0%(200/715 24')
-      rate: 0.2797203
-      source: https://csconfstats.xoveexu.com/
+      str: 26.9%(200/744 24')
+      rate: 0.26881720430107525
+      source: https://raw.githubusercontent.com/mlresearch/v244/main/assets/kiyavash24a/kiyavash24a.pdf
