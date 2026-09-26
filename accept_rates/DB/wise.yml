@@ -1,0 +1,21 @@
+# Full and short papers in the main proceedings; separate workshops, PhD and demo proceedings excluded.
+- title: WISE
+  accept_rates:
+    - year: 2023
+      submitted: 137
+      accepted: 73
+      str: 53.3%(73/137 23')
+      rate: 0.532846715328467
+      source: https://link.springer.com/book/10.1007/978-981-99-7254-8
+    - year: 2024
+      submitted: 368
+      accepted: 165
+      str: 44.8%(165/368 24')
+      rate: 0.448369565217391
+      source: https://link.springer.com/book/10.1007/978-981-96-0579-8
+    - year: 2025
+      submitted: 140
+      accepted: 76
+      str: 54.3%(76/140 25')
+      rate: 0.542857142857143
+      source: https://link.springer.com/book/10.1007/978-981-95-7394-3
