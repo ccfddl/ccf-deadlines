@@ -11,8 +11,8 @@
       id: hotstorage2026
       link: https://www.hotstorage.org/2026/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Submission deadline: June 12, 2026 (extended, AoE). Exact deadline time TBD.'
+        - deadline: '2026-06-12 23:59:59'
+          comment: 'Regular paper submission (extended)'
       timezone: AoE
       date: September 28-29, 2026
       place: Prague, Czechia
