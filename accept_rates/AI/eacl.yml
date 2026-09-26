@@ -1,0 +1,32 @@
+- title: EACL
+  # Main-conference long and short papers; excludes Findings, journals and workshops.
+  # Denominator stages differ by year as explicitly documented below.
+  accept_rates:
+    - year: 2021
+      # Received submissions; the printed 24.7% is inconsistent with these reported counts.
+      submitted: 1400
+      accepted: 326
+      str: 23.3%(326/1400 21')
+      rate: 0.2328571428571428
+      source: https://aclanthology.org/2021.eacl-main.0.pdf
+    - year: 2023
+      # Main-conference decisions among active papers; excludes 201 Findings acceptances.
+      submitted: 1166
+      accepted: 281
+      str: 24.1%(281/1166 23')
+      rate: 0.2409948542024014
+      source: https://aclanthology.org/2023.findings-eacl.0.pdf
+    - year: 2024
+      # Official ARR-eligible pool, not only the 474 commitments.
+      submitted: 1114
+      accepted: 226
+      str: 20.3%(226/1114 24')
+      rate: 0.2028725314183124
+      source: https://aclanthology.org/2024.eacl-long.0.pdf
+    - year: 2026
+      # Official ARR-eligible pool, not only the 1365 commitments.
+      submitted: 2200
+      accepted: 445
+      str: 20.2%(445/2200 26')
+      rate: 0.2022727272727273
+      source: https://aclanthology.org/2026.eacl-long.0.pdf
