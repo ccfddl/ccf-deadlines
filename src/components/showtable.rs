@@ -53,13 +53,6 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let check_list = RwSignal::new(cached_check_list);
     // input
     let input_value = RwSignal::new(String::new());
-    let search_placeholder = Memo::new(move |_| {
-        if use_english.get() {
-            "Search conferences".to_string()
-        } else {
-            "搜索会议".to_string()
-        }
-    });
 
     // checkboxbutton
     let mut cached_rank_list: HashSet<String> = get_from_local_storage("ranks")
@@ -542,14 +535,12 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             <div class="timezone toolbar">
                 <div class="toolbar-main">
                     <div class="toolbar-timezone">
-                        {move || if use_english.get() { "Countdowns are shown in " } else { "倒计时按 " }}
-                        {move || time_zone.get()}
-                        {move || if use_english.get() { " time." } else { " 时间显示。" }}
+                        "Countdowns are shown in "{move || time_zone.get()}" time."
                     </div>
                     <div class="toolbar-search">
                         <Input
                             value=input_value
-                            placeholder=search_placeholder
+                            placeholder="search conference"
                             size=InputSize::Small
                             class="custom-search-input"
                         >
@@ -682,7 +673,6 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                         <Show when=move || selected_conf.get().is_some()>
                             {move || {
                                 selected_conf.get().map(|conf| {
-                                    let english = use_english.get();
                                     let is_tbd = conf.status == "TBD";
                                     let mut deadlines = conf.ddls.clone();
                                     deadlines.sort_by_key(|point| point.timepoint);
@@ -699,10 +689,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                     });
                                     let first_timeline_date = deadlines
                                         .first()
-                                        .map(|point| format_short_date(&point.timepoint, english));
+                                        .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
                                     let last_timeline_date = deadlines
                                         .last()
-                                        .map(|point| format_short_date(&point.timepoint, english));
+                                        .map(|point| point.timepoint.format("%b %-d, %Y").to_string());
                                     let ics_filename = format!("{}-{}.ics", conf.title, conf.year);
                                     let core_rank = conf.corerank.as_deref().unwrap_or("N");
                                     let core_label = if core_rank == "N" {
@@ -723,10 +713,12 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                         .enumerate()
                                         .map(|(index, point)| {
                                             let label = if point.r#type == 0 {
-                                                if english { "Abstract submission deadline" } else { "摘要提交截止" }
-                                            } else if english { "Paper submission deadline" } else { "论文提交截止" };
+                                                "Abstract submission deadline"
+                                            } else {
+                                                "Paper submission deadline"
+                                            };
                                             let label = if show_round {
-                                                if english { format!("Round {round} {label}") } else { format!("第 {round} 轮{label}") }
+                                                format!("Round {round} {label}")
                                             } else {
                                                 label.to_string()
                                             };
@@ -742,25 +734,25 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                 "conference-detail-deadline-status {}",
                                                 urgency_class_for(remaining_ms / 1000),
                                             );
-                                            let date = format!("{} · UTC{}", format_short_date(&point.timepoint, english), point.timepoint.format("%:z"));
+                                            let date = point.timepoint.format("%b %-d, %Y · UTC%:z").to_string();
                                             view! {
                                                 <div class=if is_next { "conference-detail-deadline is-next" } else if is_passed { "conference-detail-deadline is-passed" } else { "conference-detail-deadline" }>
                                                     <div class="conference-detail-deadline-main">
                                                         <div class="conference-detail-deadline-name">
                                                             {label}
-                                                            {is_next.then(|| view! { <small>{if english { "NEXT" } else { "最近" }}</small> })}
+                                                            {is_next.then(|| view! { <small>"NEXT"</small> })}
                                                         </div>
                                                         <div class="conference-detail-deadline-date">{date}</div>
                                                     </div>
                                                     <span class=status_class>
                                                         {if is_passed {
-                                                            view! { {if english { "passed" } else { "已截止" }} }.into_any()
+                                                            view! { "passed" }.into_any()
                                                         } else if days < 1 {
-                                                            view! { <CountDown remain=remaining_ms use_english /> }.into_any()
+                                                            view! { <CountDown remain=remaining_ms /> }.into_any()
                                                         } else if days == 1 {
-                                                            view! { {if english { "1 day" } else { "1 天" }} }.into_any()
+                                                            view! { "1 day" }.into_any()
                                                         } else {
-                                                            view! { {if english { format!("{days} days") } else { format!("{days} 天") }} }.into_any()
+                                                            view! { {format!("{days} days")} }.into_any()
                                                         }}
                                                     </span>
                                                 </div>
@@ -774,7 +766,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                         <button
                                             type="button"
                                             class="conference-detail-close"
-                                            aria-label=if english { "Close" } else { "关闭" }
+                                            aria-label="Close"
                                             on:click=move |_| show_conf_detail.set(false)
                                         >"×"</button>
                                         <DialogContent>
@@ -783,36 +775,36 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                             </div>
                                             {conf.acc_str.clone().map(|rate| view! {
                                                 <div class="conference-detail-acceptance">
-                                                    {if english { "Acc. Rate: " } else { "录用率：" }} {rate}
+                                                    "Acc. Rate: " {rate}
                                                 </div>
                                             })}
                                             <div class="conference-detail-section">
-                                                <span class="conference-detail-label">{if english { "DATES" } else { "会议日期" }}</span>
+                                                <span class="conference-detail-label">"DATES"</span>
                                                 <div>{conf.date.clone()}</div>
                                             </div>
                                             <div class="conference-detail-section">
-                                                <span class="conference-detail-label">{if english { "VENUE" } else { "会议地点" }}</span>
+                                                <span class="conference-detail-label">"VENUE"</span>
                                                 <div>{conf.place.clone()}</div>
                                             </div>
                                             {conf.comment.clone().map(|comment| view! {
                                                 <div class="conference-detail-note">
-                                                    {if english { "NOTE: " } else { "备注：" }} {comment}
+                                                    "NOTE: " {comment}
                                                 </div>
                                             })}
                                             <div class="conference-detail-next">
-                                                <span class="conference-detail-label">{if english { "NEXT DEADLINE IN" } else { "距离最近截止时间" }}</span>
+                                                <span class="conference-detail-label">"NEXT DEADLINE IN"</span>
                                                 <strong>
                                                     {if is_tbd {
                                                         view! { "TBD" }.into_any()
                                                     } else if let Some(remain) = next_remain {
-                                                        view! { <CountDown remain detailed=true use_english /> }.into_any()
+                                                        view! { <CountDown remain detailed=true /> }.into_any()
                                                     } else {
-                                                        view! { {if english { "Passed" } else { "已截止" }} }.into_any()
+                                                        view! { "Passed" }.into_any()
                                                     }}
                                                 </strong>
                                             </div>
                                             <div class="conference-detail-section">
-                                                <span class="conference-detail-label">{if english { "IMPORTANT DEADLINES" } else { "重要截止日期" }}</span>
+                                                <span class="conference-detail-label">"IMPORTANT DEADLINES"</span>
                                                 {(!is_tbd && conf.status != "FIN" && !conf.ddls.is_empty()).then(|| view! {
                                                     <div class="conference-detail-timeline">
                                                         <TimeLine time_points=conf.ddls.clone() />
@@ -823,7 +815,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                     </div>
                                                 })}
                                                 {deadline_cards}
-                                                {is_tbd.then(|| view! { <div class="conference-detail-deadline">{if english { "Dates to be announced" } else { "日期待公布" }}</div> })}
+                                                {is_tbd.then(|| view! { <div class="conference-detail-deadline">"Dates to be announced"</div> })}
                                             </div>
                                             <div class="conference-detail-tags">
                                                 <span>{conf.displayrank.clone()}</span>
@@ -832,7 +824,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                 <span>{conf.subname.clone()}</span>
                                             </div>
                                             <div class="conference-detail-actions">
-                                                <a class="conference-detail-website" href=conf.link.clone() target="_blank">{if english { "Visit website ↗" } else { "访问官网 ↗" }}</a>
+                                                <a class="conference-detail-website" href=conf.link.clone() target="_blank">"Visit website ↗"</a>
                                                 {conf.google_calendar_url.clone().map(|url| view! {
                                                     <a class="conference-detail-calendar-link" href=url target="_blank">
                                                         <img
@@ -865,11 +857,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
 
             <div class="conference-list">
                 <div class="conference-list-hint">
-                    {move || if use_english.get() {
-                        "Click over cells for more information."
-                    } else {
-                        "点击会议卡片查看更多信息。"
-                    }}
+                    "Click over cells for more information."
                 </div>
                 <Table>
                     <TableBody>
@@ -922,7 +910,11 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                             } else {
                                                 format!("THCPL {}", thcpl_rank_value.clone())
                                             };
-                                            let deadline_is_abstract = conf.abstract_deadline.is_some();
+                                            let deadline_kind = if conf.abstract_deadline.is_some() {
+                                                "Abstract submission"
+                                            } else {
+                                                "Paper submission"
+                                            };
                                             let deadline_date = conf.abstract_deadline
                                                 .clone()
                                                 .unwrap_or_else(|| conf.deadline.clone());
@@ -1097,7 +1089,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                 {if is_finished {
                                                                     view! {
                                                                         <div class="conference-card-passed">
-                                                                            {move || if use_english.get() { "Deadline passed" } else { "截止日期已过" }}
+                                                                            "Deadline passed"
                                                                         </div>
                                                                     }
                                                                         .into_any()
@@ -1118,7 +1110,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                     <div class="countdown-container">
                                                                                         <div class="countdown-display">
                                                                                             <span class="countdown-value">
-                                                                                                <CountDown remain=conf.remain.clone() use_english />
+                                                                                                <CountDown remain=conf.remain.clone() />
                                                                                             </span>
                                                                                         </div>
                                                                                     </div>
@@ -1135,7 +1127,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                                 style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"
                                                                                                 target="_blank"
                                                                                             >
-                                                                                                {move || if use_english.get() { "pull request to update" } else { "提交更新" }}
+                                                                                                "pull request to update"
                                                                                             </a>
                                                                                         </span>
                                                                                     }
@@ -1143,13 +1135,8 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                 } else {
                                                                                     view! {
                                                                                         <span>
-                                                                                            <b>{move || match (deadline_is_abstract, use_english.get()) {
-                                                                                                (true, true) => "Abstract submission",
-                                                                                                (true, false) => "摘要提交",
-                                                                                                (false, true) => "Paper submission",
-                                                                                                (false, false) => "论文提交",
-                                                                                            }}</b>
-                                                                                            <small>{move || format_deadline_display(&deadline_date, &deadline_timezone, use_english.get())}</small>
+                                                                                            <b>{deadline_kind}</b>
+                                                                                            <small>{format_deadline_display(&deadline_date, &deadline_timezone)}</small>
                                                                                         </span>
                                                                                     }
                                                                                         .into_any()
@@ -1177,14 +1164,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             <div class="footer">
                 <div class="footer-text">
                     <span>
-                        {move || if use_english.get() {
-                            "Maintained by @ccfddl. If you find it useful, star or follow "
-                        } else {
-                            "由 @ccfddl 维护。觉得有用的话，欢迎在 GitHub 上给 "
-                        }}
+                        "Maintained by @ccfddl. If you find it useful, star or follow "
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank">
                             "@ccfddl"
-                        </a> {move || if use_english.get() { " on Github." } else { " 点赞或关注。" }}
+                        </a> " on Github."
                     </span>
                 </div>
                 <div class="footer-pagination">
@@ -1230,31 +1213,11 @@ fn display_place(place: &str) -> String {
         .to_string()
 }
 
-fn format_deadline_display(deadline: &str, timezone: &str, english: bool) -> String {
+fn format_deadline_display(deadline: &str, timezone: &str) -> String {
     parse_deadline_to_rfc3339(deadline, timezone)
         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
-        .map(|value| {
-            if english {
-                format!("{} ({})", value.format("%b %-d, %Y"), timezone)
-            } else {
-                format!(
-                    "{}年{}月{}日 ({})",
-                    value.year(),
-                    value.month(),
-                    value.day(),
-                    timezone
-                )
-            }
-        })
+        .map(|value| format!("{} ({})", value.format("%b %-d, %Y"), timezone))
         .unwrap_or_else(|| format!("{} ({})", deadline, timezone))
-}
-
-fn format_short_date(date: &DateTime<FixedOffset>, english: bool) -> String {
-    if english {
-        date.format("%b %-d, %Y").to_string()
-    } else {
-        format!("{}年{}月{}日", date.year(), date.month(), date.day())
-    }
 }
 
 /// Nth (1-indexed) Sunday of the given month/year.

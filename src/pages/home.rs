@@ -64,7 +64,7 @@ pub fn Home() -> impl IntoView {
     view! {
         <ConfigProvider theme>
             <div class="home">
-                <Header use_english />
+                <Header />
                 <ShowTable use_english />
             </div>
         </ConfigProvider>

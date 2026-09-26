@@ -15,7 +15,7 @@ struct CommitInfo {
 }
 
 #[component]
-pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
+pub fn Header() -> impl IntoView {
     let (show_latest_conf, set_show_latest_conf) = signal(false);
     let (show_str, set_show_str) = signal(String::new());
 
@@ -49,32 +49,24 @@ pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
                         .then(|| {
                             view! {
                                 <span class="header-latest">
-                                    {move || if use_english.get() { "Latest: " } else { "最新：" }} {show_str.get()} " !!!"
+                                    "Latest: " {show_str.get()} " !!!"
                                 </span>
                             }
                         })
                 }}
             </div>
             <div class="el-row subtitle">
-                {move || if use_english.get() {
-                    "Worldwide Conference Deadline Countdowns. To add/edit a conference,\u{00a0}"
-                } else {
-                    "全球学术会议截止日期倒计时。添加或修改会议信息，请\u{00a0}"
-                }}
+                "Worldwide Conference Deadline Countdowns. To add/edit a conference,\u{00a0}"
                 <a
                     style="color: #666666"
                     href="https://github.com/ccfddl/ccf-deadlines/pulls"
                     target="_blank"
                 >
-                    {move || if use_english.get() { "send a pull request" } else { "提交 Pull Request" }}
+                    "send a pull request"
                 </a> "."
             </div>
             <div class="el-row subtitle">
-                {move || if use_english.get() {
-                    "*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only."
-                } else {
-                    "*免责声明：ccfddl 的数据由自动化方式收集，仅供参考。"
-                }}
+                "*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only."
             </div>
         </section>
     }
