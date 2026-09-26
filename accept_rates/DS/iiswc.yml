@@ -1,0 +1,22 @@
+- title: IISWC
+  accept_rates:
+    # Main-paper HotCRP: regular plus tool/benchmark papers; separate poster/short-paper/PhD forum portal excluded.
+    # Accepted decisions / submissions as publicly reported; desk/withdrawal treatment unspecified, not final publication counts.
+    - year: 2021
+      submitted: 48
+      accepted: 19
+      str: 39.6%(19/48 21')
+      rate: 0.395833333333333
+      source: https://engineering.purdue.edu/IISWC2021/
+    - year: 2022
+      submitted: 48
+      accepted: 23
+      str: 47.9%(23/48 22')
+      rate: 0.479166666666667
+      source: https://iiswc22.hotcrp.com/
+    - year: 2025
+      submitted: 91
+      accepted: 38
+      str: 41.8%(38/91 25')
+      rate: 0.417582417582418
+      source: https://iiswc2025.hotcrp.com/
