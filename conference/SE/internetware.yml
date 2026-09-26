@@ -20,7 +20,10 @@
       id: internetware25
       link: https://conf.researchr.org/home/internetware-2025
       timeline:
-        - deadline: '2025-02-14 23:59:59'
+        - deadline: '2025-03-01 23:59:59'
+          comment: 'First Cycle'
+        - deadline: '2025-03-31 23:59:59'
+          comment: 'Second Cycle'
       timezone: UTC-12
       date: June 20-22, 2025
       place: Trondheim, Norway
