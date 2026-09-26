@@ -11,8 +11,8 @@
       id: iwqos22
       link: https://iwqos2022.ieee-iwqos.org/
       timeline:
-        - abstract_deadline: '2022-02-01 23:59:59'
-          deadline: '2022-02-07 23:59:59'
+        - abstract_deadline: '2022-02-07 23:59:59'
+          deadline: '2022-02-16 23:59:59'
       timezone: UTC-12
       date: June 10-12, 2022
       place: Virtual
@@ -20,8 +20,8 @@
       id: iwqos23
       link: https://iwqos2023.ieee-iwqos.org/
       timeline:
-        - abstract_deadline: '2023-01-29 23:59:59'
-          deadline: '2023-02-07 23:59:59'
+        - abstract_deadline: '2023-02-05 23:59:59'
+          deadline: '2023-02-12 23:59:59'
       timezone: UTC-12
       date: June 19-21, 2023
       place: Orlando, FL, USA
@@ -38,8 +38,8 @@
       id: iwqos26
       link: https://iwqos2026.ieee-iwqos.org/
       timeline:
-        - abstract_deadline: '2026-02-02 23:59:59'
-          deadline: '2026-02-09 23:59:59'
+        - abstract_deadline: '2026-02-16 23:59:59'
+          deadline: '2026-02-23 23:59:59'
       timezone: AoE
       date: 29 June - 2 July, 2026
       place: Dubai, United Arab Emirates
