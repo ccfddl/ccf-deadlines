@@ -6,8 +6,16 @@ const NON_RANK_VALUE: &str = "N";
 #[derive(Clone, PartialEq, Eq)]
 pub struct FilterDropdownOption {
     pub value: &'static str,
-    pub label: &'static str,
     pub summary_label: &'static str,
+}
+
+/// Display name of a rank in one ranking system, e.g. "CCF A" or "Non-CCF" / "非 CCF".
+pub fn rank_label(system: &str, rank: &str, english: bool) -> String {
+    match (rank == NON_RANK_VALUE, english) {
+        (true, true) => format!("Non-{system}"),
+        (true, false) => format!("非 {system}"),
+        _ => format!("{system} {rank}"),
+    }
 }
 
 pub fn normalize_rank_filter_selection(selected_values: &mut HashSet<String>) {
@@ -20,22 +28,18 @@ pub fn ccf_filter_options() -> Vec<FilterDropdownOption> {
     vec![
         FilterDropdownOption {
             value: "A",
-            label: "CCF A",
             summary_label: "A",
         },
         FilterDropdownOption {
             value: "B",
-            label: "CCF B",
             summary_label: "B",
         },
         FilterDropdownOption {
             value: "C",
-            label: "CCF C",
             summary_label: "C",
         },
         FilterDropdownOption {
             value: "N",
-            label: "Non-CCF",
             summary_label: "Non",
         },
     ]
@@ -45,27 +49,22 @@ pub fn core_filter_options() -> Vec<FilterDropdownOption> {
     vec![
         FilterDropdownOption {
             value: "A*",
-            label: "CORE A*",
             summary_label: "A*",
         },
         FilterDropdownOption {
             value: "A",
-            label: "CORE A",
             summary_label: "A",
         },
         FilterDropdownOption {
             value: "B",
-            label: "CORE B",
             summary_label: "B",
         },
         FilterDropdownOption {
             value: "C",
-            label: "CORE C",
             summary_label: "C",
         },
         FilterDropdownOption {
             value: "N",
-            label: "Non-CORE",
             summary_label: "Non",
         },
     ]
@@ -75,17 +74,14 @@ pub fn thcpl_filter_options() -> Vec<FilterDropdownOption> {
     vec![
         FilterDropdownOption {
             value: "A",
-            label: "THCPL A",
             summary_label: "A",
         },
         FilterDropdownOption {
             value: "B",
-            label: "THCPL B",
             summary_label: "B",
         },
         FilterDropdownOption {
             value: "N",
-            label: "Non-THCPL",
             summary_label: "Non",
         },
     ]
@@ -107,9 +103,14 @@ pub fn MultiSelectDropdown(
     let options_for_summary = options.clone();
     let title_for_summary = title.clone();
     let title_for_panel = title.clone();
+    let title_for_options = StoredValue::new(title.clone());
     let options_for_render = StoredValue::new(options.clone());
     let summary = Memo::new(move |_| {
         let selected = selected_values.get();
+        // "Non" is always selected on its own; "非 CCF" reads better than "CCF 非".
+        if !use_english.get() && selected.contains(NON_RANK_VALUE) {
+            return rank_label(&title_for_summary, NON_RANK_VALUE, false);
+        }
         let selected_labels: Vec<&str> = options_for_summary
             .iter()
             .filter(|option| selected.contains(option.value))
@@ -200,7 +201,9 @@ pub fn MultiSelectDropdown(
                                 .into_iter()
                                 .map(|option| {
                                     let value = option.value.to_string();
-                                    let label = option.label.to_string();
+                                    let label = title_for_options.with_value(|system| {
+                                        rank_label(system, option.value, use_english.get())
+                                    });
                                     let value_for_checked = value.clone();
                                     let value_for_update = value.clone();
 

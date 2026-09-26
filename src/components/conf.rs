@@ -76,7 +76,6 @@ pub struct ConfItem {
     pub rank: String,
     pub corerank: Option<String>,
     pub thcplrank: Option<String>,
-    pub displayrank: String,
     pub dblp: String,
     pub year: i32,
     pub id: String,

@@ -1,3 +1,4 @@
+use crate::components::checkbox_button::rank_label;
 use leptos::prelude::*;
 use std::collections::HashSet;
 use thaw::*;
@@ -17,21 +18,11 @@ fn sanitize_filter_value(value: &str) -> String {
     value.replace('*', "star")
 }
 
-fn format_rank_label(system: &str, rank: &str) -> String {
-    match (system, rank) {
-        ("CCF", "N") => "Non-CCF".to_string(),
-        ("CORE", "N") => "Non-CORE".to_string(),
-        ("THCPL", "N") => "Non-THCPL".to_string(),
-        _ => format!("{} {}", system, rank),
-    }
-}
-
-fn format_rank_summary_value(system: &str, rank: &str) -> String {
-    match (system, rank) {
-        ("CCF", "N") => "Non-CCF".to_string(),
-        ("CORE", "N") => "Non-CORE".to_string(),
-        ("THCPL", "N") => "Non-THCPL".to_string(),
-        _ => rank.to_string(),
+fn format_rank_summary_value(system: &str, rank: &str, english: bool) -> String {
+    if rank == "N" {
+        rank_label(system, rank, english)
+    } else {
+        rank.to_string()
     }
 }
 
@@ -50,6 +41,7 @@ fn build_subscription_urls(
     core_ranks: &HashSet<String>,
     thcpl_ranks: &HashSet<String>,
 ) -> Vec<SubscriptionLink> {
+    let english = lang != "zh";
     if subs.is_empty() && ccf_ranks.is_empty() && core_ranks.is_empty() && thcpl_ranks.is_empty() {
         return vec![SubscriptionLink {
             url: format!("{}/deadlines_{}.{}", base_url, lang, extension),
@@ -77,7 +69,7 @@ fn build_subscription_urls(
             .map(|rank| {
                 Some((
                     format!("ccf_{}", sanitize_filter_value(&rank)),
-                    format_rank_label("CCF", &rank),
+                    rank_label("CCF", &rank, english),
                 ))
             })
             .collect()
@@ -90,7 +82,7 @@ fn build_subscription_urls(
             .map(|rank| {
                 Some((
                     format!("core_{}", sanitize_filter_value(&rank)),
-                    format_rank_label("CORE", &rank),
+                    rank_label("CORE", &rank, english),
                 ))
             })
             .collect()
@@ -103,7 +95,7 @@ fn build_subscription_urls(
             .map(|rank| {
                 Some((
                     format!("thcpl_{}", sanitize_filter_value(&rank)),
-                    format_rank_label("THCPL", &rank),
+                    rank_label("THCPL", &rank, english),
                 ))
             })
             .collect()
@@ -254,43 +246,43 @@ fn render_filter_summary(
     if !subs.is_empty() {
         let sorted = sorted_values(subs);
         let label = if use_english { "Categories" } else { "分类" };
-        parts.push(format!("{}: {}", label, sorted.join(", ")));
+        parts.push(format_summary_part(label, &sorted, use_english));
     }
     if !ccf_ranks.is_empty() {
         let sorted = sorted_values(ccf_ranks)
             .into_iter()
-            .map(|rank| format_rank_summary_value("CCF", &rank))
+            .map(|rank| format_rank_summary_value("CCF", &rank, use_english))
             .collect::<Vec<_>>();
         let label = if use_english {
             "CCF Ranks"
         } else {
             "CCF 等级"
         };
-        parts.push(format!("{}: {}", label, sorted.join(", ")));
+        parts.push(format_summary_part(label, &sorted, use_english));
     }
     if !core_ranks.is_empty() {
         let sorted = sorted_values(core_ranks)
             .into_iter()
-            .map(|rank| format_rank_summary_value("CORE", &rank))
+            .map(|rank| format_rank_summary_value("CORE", &rank, use_english))
             .collect::<Vec<_>>();
         let label = if use_english {
             "CORE Ranks"
         } else {
             "CORE 等级"
         };
-        parts.push(format!("{}: {}", label, sorted.join(", ")));
+        parts.push(format_summary_part(label, &sorted, use_english));
     }
     if !thcpl_ranks.is_empty() {
         let sorted = sorted_values(thcpl_ranks)
             .into_iter()
-            .map(|rank| format_rank_summary_value("THCPL", &rank))
+            .map(|rank| format_rank_summary_value("THCPL", &rank, use_english))
             .collect::<Vec<_>>();
         let label = if use_english {
             "THCPL Ranks"
         } else {
             "THCPL 等级"
         };
-        parts.push(format!("{}: {}", label, sorted.join(", ")));
+        parts.push(format_summary_part(label, &sorted, use_english));
     }
     if parts.is_empty() {
         if use_english {
@@ -300,6 +292,14 @@ fn render_filter_summary(
         }
     } else {
         parts.join(" · ")
+    }
+}
+
+fn format_summary_part(label: &str, values: &[String], use_english: bool) -> String {
+    if use_english {
+        format!("{}: {}", label, values.join(", "))
+    } else {
+        format!("{}：{}", label, values.join("、"))
     }
 }
 
@@ -507,7 +507,7 @@ pub fn SubscriptionModal(
                                     if use_english.get() {
                                         "RSS Feed"
                                     } else {
-                                        "RSS 订阅："
+                                        "RSS 订阅"
                                     }
                                 }}
                             </div>

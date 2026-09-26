@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY374M6FJ8"></script>
@@ -34,6 +35,27 @@
   <div id="initial-loading" class="initial-loading" role="status" aria-live="polite">
     <span>Loading conference deadlines...</span>
   </div>
+  <script>
+    // Pick the same language as src/pages/home.rs so Chinese visitors do not see English while the app loads.
+    (function () {
+      var english;
+      try {
+        var preference = localStorage.getItem("language_preference");
+        if (preference === "en" || preference === "zh") {
+          english = preference === "en";
+        } else if (localStorage.getItem("use_english") === "true") {
+          english = true;
+        }
+      } catch (error) {}
+      if (english === undefined) {
+        english = !(navigator.language || "").toLowerCase().startsWith("zh");
+      }
+      if (!english) {
+        document.documentElement.lang = "zh-CN";
+        document.querySelector("#initial-loading span").textContent = "正在加载会议截止日期…";
+      }
+    })();
+  </script>
 </body>
 
 </html>

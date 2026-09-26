@@ -62,7 +62,8 @@ pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
                         .then(|| {
                             view! {
                                 <span class="header-latest">
-                                    "Latest: " {show_str.get()} " !!!"
+                                    {move || if use_english.get() { "Latest: " } else { "最新：" }}
+                                    {show_str.get()} " !!!"
                                 </span>
                             }
                         })
@@ -76,7 +77,11 @@ pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
                                     href=user.profile_url
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    title="View GitHub profile"
+                                    title=move || if use_english.get() {
+                                        "View GitHub profile"
+                                    } else {
+                                        "查看 GitHub 主页"
+                                    }
                                 >
                                     <img src=user.avatar_url alt="" aria-hidden="true" />
                                     <span>{format!("@{}", user.login)}</span>
@@ -113,17 +118,26 @@ pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
                 </div>
             </div>
             <div class="el-row subtitle">
-                "Worldwide Conference Deadline Countdowns. To add/edit a conference,\u{00a0}"
+                {move || if use_english.get() {
+                    "Worldwide Conference Deadline Countdowns. To add/edit a conference,\u{00a0}"
+                } else {
+                    "全球学术会议截稿倒计时。如需添加或修改会议信息，欢迎"
+                }}
                 <a
                     style="color: #666666"
                     href="https://github.com/ccfddl/ccf-deadlines/pulls"
                     target="_blank"
                 >
-                    "send a pull request"
-                </a> "."
+                    {move || if use_english.get() { "send a pull request" } else { "提交 Pull Request" }}
+                </a>
+                {move || if use_english.get() { "." } else { "。" }}
             </div>
             <div class="el-row subtitle">
-                "*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only."
+                {move || if use_english.get() {
+                    "*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only."
+                } else {
+                    "*免责声明：ccfddl 提供的数据由 AI 智能体收集，仅供参考。"
+                }}
             </div>
         </section>
     }
