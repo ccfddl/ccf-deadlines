@@ -45,7 +45,10 @@
       id: rss27
       link: https://roboticsconference.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2026-12-04 23:59:00'
+          comment: 'Stage 1: initial 6-page extended abstract submission'
+        - deadline: '2027-04-16 23:59:00'
+          comment: 'Stage 2: final paper submission, only for papers invited to execute an Extension Charter'
       timezone: AoE
       date: July 6-11, 2027
       place: Athens, Greece
