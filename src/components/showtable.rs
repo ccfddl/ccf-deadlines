@@ -857,7 +857,11 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
 
             <div class="conference-list">
                 <div class="conference-list-hint">
-                    "Click over cells for more information."
+                    {move || if use_english.get() {
+                        "Click over cells for more information."
+                    } else {
+                        "点击会议卡片查看更多信息。"
+                    }}
                 </div>
                 <Table>
                     <TableBody>
