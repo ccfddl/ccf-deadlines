@@ -7,9 +7,43 @@
     thcpl: N
   dblp: conll
   confs:
+    - year: 2021
+      id: conll21
+      link: https://www.conll.org/2021
+      timeline:
+        - deadline: '2021-06-14 23:59:00'
+      timezone: UTC-12
+      date: November 10-11, 2021
+      place: Punta Cana, Dominican Republic (Hybrid)
+    - year: 2022
+      id: conll22
+      link: https://www.conll.org/2022
+      timeline:
+        - deadline: '2022-06-30 23:59:00'
+          comment: 'Direct submissions; ARR commitment deadline: August 1, 2022, 23:59 UTC-12'
+      timezone: UTC-12
+      date: December 7-8, 2022
+      place: Abu Dhabi, United Arab Emirates (Hybrid)
+    - year: 2023
+      id: conll23
+      link: https://www.conll.org/2023
+      timeline:
+        - deadline: '2023-06-30 23:59:00'
+      timezone: UTC-12
+      date: December 6-7, 2023
+      place: Singapore
+    - year: 2024
+      id: conll24
+      link: https://www.conll.org/2024
+      timeline:
+        - deadline: '2024-07-07 23:59:00'
+          comment: 'Direct submissions (extended); ARR commitment deadline: August 30, 2024, 23:59 UTC-12'
+      timezone: UTC-12
+      date: November 15-16, 2024
+      place: Miami, Florida, USA
     - year: 2025
       id: conll25
-      link: https://www.conll.org/
+      link: https://www.conll.org/2025
       timeline:
         - deadline: '2025-03-14 23:59:59'
       timezone: UTC-12
