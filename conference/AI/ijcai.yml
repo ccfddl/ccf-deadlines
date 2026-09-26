@@ -7,11 +7,22 @@
     thcpl: B
   dblp: ijcai
   confs:
+    - year: 2021
+      id: ijcai21
+      link: https://ijcai-21.org/
+      timeline:
+        - abstract_deadline: '2021-01-13 23:59:00'
+          deadline: '2021-01-20 23:59:00'
+      timezone: UTC-12
+      date: August 19-26, 2021
+      place: Virtual conference
     - year: 2022
       id: ijcai22
       link: https://ijcai-22.org
       timeline:
-        - deadline: '2022-01-14 23:59:59'
+        - abstract_deadline: '2022-01-08 12:59:00'
+          deadline: '2022-01-14 23:59:59'
+          comment: 'Abstract: January 7, 23:59 AoE (UTC-12), converted to CET (UTC+1); full paper: January 14, 23:59 CET'
       timezone: UTC+1
       date: July 23-29, 2022
       place: Vienna, Austria.
@@ -23,7 +34,7 @@
           deadline: '2023-01-18 23:59:59'
       timezone: UTC-12
       date: August 19-25, 2023
-      place: Cape Town, South Africa.
+      place: Macao, China
     - year: 2024
       id: ijcai24
       link: https://ijcai24.org/
@@ -39,6 +50,7 @@
       timeline:
         - abstract_deadline: '2025-01-16 23:59:59'
           deadline: '2025-01-23 23:59:59'
+          comment: 'Separate satellite event: August 29-31, 2025, Guangzhou, China'
       timezone: UTC-12
       date: August 16-22, 2025
       place: Montreal, Canada.
