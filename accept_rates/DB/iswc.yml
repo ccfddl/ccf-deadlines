@@ -1,4 +1,4 @@
-# Track scope varies by year; 2023 and 2024 are research-only, other years use main proceedings full papers.
+# Track scope varies by year; 2022-2024 are research-only, other years use main proceedings full papers.
 - title: ISWC
   accept_rates:
     # 2021 denominator: full submissions sent for review, organizer-provided Crossmark.
@@ -8,12 +8,13 @@
       str: 20.8%(42/202 21')
       rate: 0.207920792079208
       source: https://crossmark.crossref.org/dialog/?doi=10.1007%2F978-3-030-88361-4_35
+    # Research track: original preface reports 30 accepted from 156 full submissions.
     - year: 2022
-      submitted: 239
-      accepted: 48
-      str: 20.1%(48/239 22')
-      rate: 0.200836820083682
-      source: https://link.springer.com/book/10.1007/978-3-031-19433-7
+      submitted: 156
+      accepted: 30
+      str: 19.2%(30/156 22')
+      rate: 0.192307692307692
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-19433-7/1
     # Research track only: signed preface; publisher aggregate 58/248 conflicts with track totals.
     - year: 2023
       submitted: 170
