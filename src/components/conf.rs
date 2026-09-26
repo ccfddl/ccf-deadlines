@@ -91,6 +91,14 @@ pub struct ConfItem {
     pub subname_en: String,
     pub acc_str: Option<String>,
     pub ddls: Vec<TimePoint>,
+    pub estimated_deadlines: Vec<EstimatedDeadline>,
+}
+
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+pub struct EstimatedDeadline {
+    pub deadline: String,
+    pub is_abstract: bool,
+    pub source_year: i32,
 }
 
 pub async fn fetch_all_conf(base_url: &str) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
