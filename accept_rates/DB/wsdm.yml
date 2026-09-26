@@ -5,10 +5,10 @@
       accepted: 123
       str: 17.8%(123/690 23')
       rate: 0.178260869565217
-      source: https://github.com/emeryberger/csconferences
+      source: https://www.sigir.org/wp-content/uploads/2023/07/p08.pdf
     - year: 2024
       submitted: 615
       accepted: 109
       str: 17.7%(109/615 24')
-      rate: 0.1772358
+      rate: 0.17723577235772358
       source: https://csconfstats.xoveexu.com/
