@@ -7,6 +7,28 @@
     thcpl: B
   dblp: fg
   confs:
+    - year: 2021
+      id: fg21
+      link: https://iab-rubric.org/fg2021/
+      timeline:
+        - deadline: '2021-05-01 23:59:00'
+          comment: 'Round 1'
+        - deadline: '2021-08-20 23:59:00'
+          comment: 'Round 2 (new submissions and revised Round 1 papers)'
+      timezone: UTC-7
+      date: December 15-18, 2021
+      place: Virtual
+    - year: 2024
+      id: fg24
+      link: https://fg2024.ieee-biometrics.org/
+      timeline:
+        - deadline: '2023-10-02 23:59:00'
+          comment: 'Round 1 (extended; official literal PST)'
+        - deadline: '2024-01-26 23:59:00'
+          comment: 'Round 2 (extended)'
+      timezone: UTC-8
+      date: May 27-31, 2024
+      place: Istanbul, Turkey
     - year: 2025
       id: fg25
       link: https://fg2025.ieee-biometrics.org/
