@@ -13,18 +13,12 @@
       str: 33.5%(83/248 22')
       rate: 0.334677419354839
       source: https://www.acml-conf.org/
-    - year: 2023
-      submitted: 333
-      accepted: 114
-      str: 34.2%(114/333 23')
-      rate: 0.342342342342342
-      source: https://www.acml-conf.org/
     - year: 2024
       submitted: 353
-      accepted: 71
-      str: 20.1%(71/353 24')
-      rate: 0.201133144475921
-      source: https://www.acml-conf.org/
+      accepted: 92
+      str: 26.1%(92/353 24')
+      rate: 0.260623229461756
+      source: https://raw.githubusercontent.com/mlresearch/v260/main/assets/nguyen25a/nguyen25a.pdf
     - year: 2025
       submitted: 272
       accepted: 79
