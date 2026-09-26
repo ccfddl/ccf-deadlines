@@ -1,8 +1,14 @@
 - title: ECIR
   accept_rates:
+    - year: 2023
+      submitted: 228
+      accepted: 65
+      str: 28.5%(65/228 23')
+      rate: 0.2850877192982456
+      source: https://www.sigir.org/wp-content/uploads/2023/07/p11.pdf
     - year: 2024
-      submitted: 230
+      submitted: 280
       accepted: 57
-      str: 24.8%(57/230 24')
-      rate: 0.2478261
-      source: https://csconfstats.xoveexu.com/
+      str: 20.4%(57/280 24')
+      rate: 0.20357142857142857
+      source: https://sigir.org/wp-content/uploads/2024/07/p06.pdf
