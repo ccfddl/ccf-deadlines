@@ -11,8 +11,8 @@
       id: cidr24
       link: https://www.cidrdb.org/cidr2024/
       timeline:
-        - deadline: '2023-07-27 23:59:59'
-      timezone: UTC-8
+        - deadline: '2023-07-31 23:59:59'
+      timezone: UTC-7
       date: Jan 14-17, 2024
       place: Chaminade, USA
     - year: 2025
