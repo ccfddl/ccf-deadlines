@@ -1,0 +1,29 @@
+- title: DIMVA
+  # Main-conference full and short research papers; excludes posters and invited talks.
+  accept_rates:
+    - year: 2021
+      # The preface reports 18 full + 1 short out of 65; its printed 27.9% is inconsistent.
+      submitted: 65
+      accepted: 19
+      str: 29.2%(19/65 21')
+      rate: 0.2923076923076923
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-80825-9/1
+    - year: 2022
+      submitted: 39
+      accepted: 11
+      str: 28.2%(11/39 22')
+      rate: 0.28205128205128205
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-09484-2/1
+    - year: 2023
+      submitted: 43
+      accepted: 13
+      str: 30.2%(13/43 23')
+      rate: 0.3023255813953488
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-35504-2/1
+    - year: 2025
+      # Exclude the 11 separately reviewed poster papers.
+      submitted: 103
+      accepted: 25
+      str: 24.3%(25/103 25')
+      rate: 0.24271844660194175
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-97620-9/1
