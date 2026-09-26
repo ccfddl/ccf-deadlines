@@ -27,7 +27,8 @@
       id: cec2027
       link: https://ieeecec.org/2027
       timeline:
-        - deadline: '2027-02-28 23:59:59'
+        - deadline: 'TBD'
+          comment: 'Full paper submission deadline: February 28, 2027; exact cutoff time and timezone are not specified on the official IEEE CEC site or CFP'
       timezone: UTC-12
       date: July 25-28, 2027
       place: Edinburgh, Scotland, UK
