@@ -121,7 +121,7 @@ Description of the fields:
       <td>The suffix in dblp url, e.g., <code>iccv</code> in https://dblp.org/db/conf/iccv</td>
    </tr>
    <tr>
-      <td rowspan="9"><code>confs</code></td>
+      <td rowspan="11"><code>confs</code></td>
       <td colspan="2"><code>year</code>*</td>
       <td>Year the conference is happening</td>
    </tr>
@@ -134,13 +134,21 @@ Description of the fields:
       <td>URL to the conference home page</td>
    </tr>
    <tr>
-      <td rowspan="3"><code>timeline</code>*</td>
+      <td rowspan="5"><code>timeline</code>*</td>
       <td><code>abstract_deadline</code></td>
       <td>Abstract deadline if applicable, optional</td>
    </tr>
    <tr>
       <td><code>deadline</code>*</td>
       <td>Deadline, in the format of <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
+   </tr>
+   <tr>
+      <td><code>rebuttal_deadline</code></td>
+      <td>Rebuttal or author-response deadline for this round, optional</td>
+   </tr>
+   <tr>
+      <td><code>decision_deadline</code></td>
+      <td>Final decision deadline for this round, optional</td>
    </tr>
    <tr>
       <td><code>comment</code></td>

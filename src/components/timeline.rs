@@ -3,7 +3,12 @@ use chrono::{Duration, prelude::*};
 use leptos::prelude::*;
 
 #[component]
-pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
+pub fn TimeLine(
+    time_points: Vec<TimePoint>,
+    reference_time: DateTime<Utc>,
+    #[prop(default = false)] custom_reference: bool,
+) -> impl IntoView {
+    let has_custom_reference = custom_reference;
     let (sel_time, set_sel_time) = signal(String::new());
     let (start_date, set_start_date) = signal(0.0);
     let (end_date, set_end_date) = signal(0.0);
@@ -31,6 +36,7 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
             set_sel_dot_style,
             set_sel_dot_class,
             all_incre,
+            reference_time,
         );
     });
 
@@ -63,6 +69,8 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
         match backup_type {
             0 => "Registration:",
             1 => "Submission:",
+            2 => "Rebuttal Submission:",
+            3 => "Final Decisions:",
             _ => "",
         }
     };
@@ -71,6 +79,8 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
         match backup_type {
             0 => "square square_all",
             1 => "dot dot_all",
+            2 => "dot dot_all dot_rebuttal",
+            3 => "dot dot_all dot_decision",
             _ => "",
         }
     };
@@ -202,6 +212,16 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
 
                 .line_time .dot_all:hover em {
                     display: inline-block;
+                }
+
+                .line_time .dot_rebuttal {
+                    border-color: #d59a2a;
+                    background: #fff9eb;
+                }
+
+                .line_time .dot_decision {
+                    border-color: #55a66a;
+                    background: #f1faf3;
                 }
 
                 /* 方形备份点 */
@@ -356,8 +376,12 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
                         <div
                             class=move || format!("dot sel_dot {}", sel_dot_class.get())
                             style=move || sel_dot_style.get()
+                            data-label=if has_custom_reference { "BASE" } else { "NOW" }
                         >
-                            <em>"Now: "{move || sel_time.get()}</em>
+                            <em>
+                                {if has_custom_reference { "Base: " } else { "Now: " }}
+                                {move || sel_time.get()}
+                            </em>
                         </div>
                     </div>
                 </div>
@@ -413,8 +437,10 @@ fn initialize_timeline(
     set_sel_dot_style: WriteSignal<String>,
     set_sel_dot_class: WriteSignal<String>,
     all_incre: ReadSignal<Vec<TimePoint>>,
+    reference_time: DateTime<Utc>,
 ) {
-    let (now, now_timezone) = get_browser_time_and_timezone();
+    let (_, now_timezone) = get_browser_time_and_timezone();
+    let now = reference_time.with_timezone(&now_timezone);
     let now_timestamp = now.timestamp() as f64;
 
     let deadlines = time_points.to_vec();
@@ -468,10 +494,12 @@ fn initialize_timeline(
     all_incremental.push(TimePoint {
         timepoint: deadlines.last().unwrap().timepoint,
         r#type: 1,
+        round: deadlines.last().map(|point| point.round).unwrap_or(1),
     });
     all_incremental.push(TimePoint {
         timepoint: now,
         r#type: 1,
+        round: 1,
     });
     set_all_incre.set(all_incremental);
 

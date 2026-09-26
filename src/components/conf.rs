@@ -4,7 +4,7 @@ use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use web_sys::RequestCache;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Conference {
     pub title: String,
     pub description: String,
@@ -14,14 +14,14 @@ pub struct Conference {
     pub confs: Vec<ConferenceYear>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Rank {
     pub ccf: String,
     pub core: Option<String>,
     pub thcpl: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ConferenceYear {
     pub year: i32,
     pub id: String,
@@ -49,6 +49,8 @@ pub struct AccYear {
 pub struct Timeline {
     pub abstract_deadline: Option<String>,
     pub deadline: String,
+    pub rebuttal_deadline: Option<String>,
+    pub decision_deadline: Option<String>,
     pub comment: Option<String>,
 }
 
@@ -63,6 +65,7 @@ pub struct Category {
 pub struct TimePoint {
     pub timepoint: DateTime<FixedOffset>,
     pub r#type: i32,
+    pub round: usize,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
@@ -80,6 +83,7 @@ pub struct ConfItem {
     pub link: String,
     pub abstract_deadline: Option<String>,
     pub deadline: String,
+    pub deadline_type: i32,
     pub comment: Option<String>,
     pub timezone: String,
     pub date: String,

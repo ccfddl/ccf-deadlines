@@ -121,6 +121,22 @@ def convert_to_ical(
                             (("截稿日期", "Deadline"), entry["deadline"])
                         )
 
+                    if "rebuttal_deadline" in entry:
+                        deadlines_to_process.append(
+                            (
+                                ("答辩提交", "Rebuttal Submission"),
+                                entry["rebuttal_deadline"],
+                            )
+                        )
+
+                    if "decision_deadline" in entry:
+                        deadlines_to_process.append(
+                            (
+                                ("最终决定", "Final Decisions"),
+                                entry["decision_deadline"],
+                            )
+                        )
+
                     # 如果没有任何截止日期，跳过
                     if not deadlines_to_process:
                         continue
