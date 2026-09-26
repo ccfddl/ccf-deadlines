@@ -1,0 +1,33 @@
+# Full papers only; denominators follow the official annual proceedings descriptions.
+- title: ASIACRYPT
+  accept_rates:
+    - year: 2021
+      submitted: 341
+      accepted: 95
+      str: 27.9%(95/341 21')
+      rate: 0.278592375366569
+      source: https://link.springer.com/book/10.1007/978-3-030-92062-3
+    - year: 2022
+      submitted: 364
+      accepted: 98
+      str: 26.9%(98/364 22')
+      rate: 0.269230769230769
+      source: https://link.springer.com/book/10.1007/978-3-031-22963-3
+    - year: 2023
+      submitted: 375
+      accepted: 106
+      str: 28.3%(106/375 23')
+      rate: 0.282666666666667
+      source: https://link.springer.com/book/10.1007/978-981-99-8721-4
+    - year: 2024
+      submitted: 433
+      accepted: 127
+      str: 29.3%(127/433 24')
+      rate: 0.293302540415704
+      source: https://link.springer.com/book/10.1007/978-981-96-0875-1
+    - year: 2025
+      submitted: 533
+      accepted: 143
+      str: 26.8%(143/533 25')
+      rate: 0.268292682926829
+      source: https://link.springer.com/book/10.1007/978-981-95-5119-4
