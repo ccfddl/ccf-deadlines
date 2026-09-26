@@ -11,7 +11,9 @@
       id: ncmmsc26
       link: https://www.ncmmsc.org.cn/
       timeline:
-        - deadline: '2026-07-05 23:59:59'
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: 'Abstract: July 5, 2026; full paper: July 12, 2026 (extended). Exact times and timezone TBD; UTC+8 is a schema placeholder.'
       timezone: UTC+8
       date: Nov 5-8, 2026
       place: Hengqin, China
