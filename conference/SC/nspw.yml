@@ -13,8 +13,6 @@
       timeline:
         - deadline: '2021-06-04 23:59:59'
           comment: Submission deadline
-        - deadline: TBD
-          comment: 'Final proceedings version (accepted papers only): November 24, 2021; exact time TBD.'
       timezone: UTC-11
       date: October 26-28, 2021
       place: Virtual
