@@ -1,0 +1,9 @@
+# Regular research acceptances only; short, industry and demo papers excluded.
+- title: APWeb-WAIM
+  accept_rates:
+    - year: 2025
+      submitted: 472
+      accepted: 136
+      str: 28.8%(136/472 25')
+      rate: 0.288135593220339
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-5716-5/1
