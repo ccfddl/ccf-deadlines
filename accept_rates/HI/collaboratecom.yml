@@ -12,3 +12,15 @@
       str: 33.3%(57/171 22')
       rate: 0.3333333333333333
       source: https://link.springer.com/content/pdf/bfm:978-3-031-24383-7/1
+    - year: 2023
+      submitted: 176
+      accepted: 72
+      str: 40.9%(72/176 23')
+      rate: 0.4090909090909091
+      source: https://link.springer.com/book/10.1007/978-3-031-54531-3
+    - year: 2024
+      submitted: 173
+      accepted: 62
+      str: 35.8%(62/173 24')
+      rate: 0.3583815028901734
+      source: https://link.springer.com/book/10.1007/978-3-031-93257-1
