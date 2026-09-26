@@ -25,7 +25,7 @@
       accepted: 153
       str: 29.5%(153/519 24')
       rate: 0.2947976878612717
-      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024/LIPIcs.ICALP.2024.pdf
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024.0/LIPIcs.ICALP.2024.0.pdf
     - year: 2025
       # Official conference page reports Track A 135/445 and Track B 35/118; totals are summed once.
       submitted: 563
@@ -33,3 +33,10 @@
       str: 30.2%(170/563 25')
       rate: 0.3019538188277087
       source: https://conferences.au.dk/icalp2025/accepted-papers
+    - year: 2026
+      # Official preface reports 628 eligible anonymous submissions: Track A 523 and Track B 105.
+      submitted: 628
+      accepted: 190
+      str: 30.3%(190/628 26')
+      rate: 0.30254777070063693
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol374-icalp2026/LIPIcs.ICALP.2026.0/LIPIcs.ICALP.2026.0.pdf
