@@ -1,0 +1,37 @@
+- title: INSCRYPT
+  # Main-conference full and short papers; excludes posters, invited talks and workshops.
+  accept_rates:
+    - year: 2021
+      submitted: 81
+      accepted: 28
+      str: 34.6%(28/81 21')
+      rate: 0.345679012345679
+      source: https://link.springer.com/book/10.1007/978-3-030-88323-2
+    - year: 2022
+      # 23 full + 3 short papers from the publisher's selection statement.
+      submitted: 68
+      accepted: 26
+      str: 38.2%(26/68 22')
+      rate: 0.38235294117647056
+      source: https://link.springer.com/book/10.1007/978-3-031-26553-2
+    - year: 2023
+      # 38 full + 7 short papers; excludes the six separately reported posters.
+      submitted: 152
+      accepted: 45
+      str: 29.6%(45/152 23')
+      rate: 0.29605263157894735
+      source: https://link.springer.com/content/pdf/bfm:978-981-97-0942-7/1
+    - year: 2024
+      # The preface prints 30.1%; recompute 29.5% from its exact 46/156 pair.
+      submitted: 156
+      accepted: 46
+      str: 29.5%(46/156 24')
+      rate: 0.2948717948717949
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-4731-6/1
+    - year: 2025
+      # Conference-wide totals across both rounds and all three volumes, counted once.
+      submitted: 315
+      accepted: 79
+      str: 25.1%(79/315 25')
+      rate: 0.2507936507936508
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-6203-9/1
