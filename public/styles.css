@@ -486,8 +486,94 @@ a {
 }
 
 .toolbar-timezone {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
   font-size: 16px;
   line-height: 1.4;
+}
+
+.toolbar-timezone-picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.toolbar-timezone-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  width: auto;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.toolbar-timezone-trigger:focus-visible {
+  outline: 1px dotted #8b96a3;
+  outline-offset: 2px;
+}
+
+.toolbar-timezone-arrow {
+  position: relative;
+  top: -1px;
+  color: inherit;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.toolbar-timezone-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+
+.toolbar-timezone-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 31;
+  width: max-content;
+  min-width: 180px;
+  max-height: 220px;
+  padding: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #ded8d1;
+  border-radius: 7px;
+  background: #fffefa;
+  box-shadow: 0 8px 24px rgba(45, 38, 31, 0.14);
+}
+
+.toolbar-timezone-option {
+  display: block;
+  width: 100%;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text-primary);
+  font: inherit;
+  line-height: 1.2;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.toolbar-timezone-option:hover,
+.toolbar-timezone-option:focus-visible {
+  background: #f5f2ee;
+  outline: none;
+}
+
+.toolbar-timezone-option[aria-selected="true"] {
+  font-weight: 600;
 }
 
 .toolbar-search {
@@ -1898,6 +1984,10 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 
   .toolbar-timezone {
     font-size: 13px;
+  }
+
+  .toolbar-timezone-menu {
+    max-width: calc(100vw - 40px);
   }
 
   .toolbar-search {
