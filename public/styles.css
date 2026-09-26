@@ -607,15 +607,16 @@ a {
 .conference-list-hint {
   position: absolute;
   top: -8px;
-  right: 8px;
+  left: 50%;
   z-index: 1;
   margin: 0;
   padding: 0 6px;
+  transform: translateX(-50%);
   background: #faf9f7;
   color: var(--color-text-muted);
   font-size: 10px;
   line-height: 16px;
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
 }
 
