@@ -13,7 +13,7 @@ console_error_panic_hook = { version =  "0.1" }
 serde = { version = "1.0.219" }
 gloo-net = { version = "0.6", default-features = false, features = ["http", "json"] }
 chrono = { version = "0.4", features = ["serde"] }
-web-sys = { version="0.3", features = ["Window", "Navigator", "Storage", "Document", "Element", "RequestCache"] }
+web-sys = { version="0.3", features = ["Window", "Navigator", "Storage", "Document", "Element", "HtmlElement", "HtmlInputElement", "RequestCache"] }
 wasm-bindgen = { version = "0.2" }
 wasm-bindgen-futures = { version = "0.4.50" }
 thaw = { version = "0.5.0-beta", features = ["csr"] }

@@ -13,6 +13,7 @@ use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
 use thaw::*;
 use urlencoding::encode;
+use wasm_bindgen::JsCast;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::{console, window};
 
@@ -100,6 +101,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let base_time = RwSignal::new(None::<DateTime<Utc>>);
     let base_time_input = RwSignal::new(String::new());
     let base_time_editing = RwSignal::new(false);
+    let base_time_input_ref = NodeRef::<leptos::html::Input>::new();
 
     // timezone
     let browser_time_zone = RwSignal::new(get_timezone_name().unwrap_or_else(|| "UTC".to_string()));
@@ -1452,16 +1454,37 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             "footer-base-time"
                         }
                     }>
-                        <span class="footer-base-time-label">
-                            {move || if use_english.get() { "Base time" } else { "基准时间" }}
-                        </span>
-                        <strong class="footer-base-time-value">
-                            {move || format_base_time_display(&base_time_input.get())}
-                        </strong>
+                        <button
+                            type="button"
+                            class="footer-base-time-trigger"
+                            aria-label=move || if use_english.get() {
+                                "Set countdown base time"
+                            } else {
+                                "设置倒计时基准时间"
+                            }
+                            on:click=move |_| {
+                                if let Some(input) = base_time_input_ref.get() {
+                                    let element: &web_sys::HtmlElement = input.unchecked_ref();
+                                    let _ = element.focus();
+                                    if input.show_picker().is_err() {
+                                        base_time_editing.set(false);
+                                    }
+                                }
+                            }
+                        >
+                            <span class="footer-base-time-label">
+                                {move || if use_english.get() { "Base time" } else { "基准时间" }}
+                            </span>
+                            <strong class="footer-base-time-value">
+                                {move || format_base_time_display(&base_time_input.get())}
+                            </strong>
+                        </button>
                         <input
+                            node_ref=base_time_input_ref
                             id="base-time-input"
                             type="datetime-local"
                             step="1"
+                            tabindex="-1"
                             prop:value=move || base_time_input.get()
                             aria-label=move || if use_english.get() {
                                 "Set countdown base time"
@@ -1473,6 +1496,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                 base_time_input.set(event_target_value(&event));
                             }
                             on:change=move |event| {
+                                base_time_editing.set(false);
                                 let value = event_target_value(&event);
                                 if value.trim().is_empty() {
                                     base_time.set(None);
