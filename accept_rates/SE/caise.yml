@@ -1,0 +1,33 @@
+# Main-conference papers only; workshops and the separate Forum are excluded.
+- title: CAiSE
+  accept_rates:
+    - year: 2022
+      submitted: 203
+      accepted: 31
+      str: 15.3%(31/203 22')
+      rate: 0.152709359605911
+      source: https://link.springer.com/book/10.1007/978-3-031-07472-1
+    - year: 2023
+      submitted: 161
+      accepted: 36
+      str: 22.4%(36/161 23')
+      rate: 0.223602484472050
+      source: https://link.springer.com/book/10.1007/978-3-031-34560-9
+    - year: 2024
+      submitted: 180
+      accepted: 36
+      str: 20.0%(36/180 24')
+      rate: 0.200000000000000
+      source: https://link.springer.com/book/10.1007/978-3-031-61057-8
+    - year: 2025
+      submitted: 229
+      accepted: 35
+      str: 15.3%(35/229 25')
+      rate: 0.152838427947598
+      source: https://link.springer.com/book/10.1007/978-3-031-94569-4
+    - year: 2026
+      submitted: 331
+      accepted: 46
+      str: 13.9%(46/331 26')
+      rate: 0.138972809667674
+      source: https://link.springer.com/book/10.1007/978-3-032-28110-4
