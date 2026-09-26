@@ -12,7 +12,7 @@
       link: https://log2022.logconference.org/
       timeline:
         - deadline: TBD
-          comment: 'Proceedings and extended abstracts; original submission deadline unverified'
+          comment: 'Regular proceedings papers; original submission deadline unverified'
       timezone: UTC+0 # Placeholder only; the deadline is TBD
       date: December 9-12, 2022
       place: Online
@@ -20,8 +20,9 @@
       id: log2023
       link: https://log2023.logconference.org/
       timeline:
-        - deadline: TBD
-          comment: 'Both tracks: abstract August 18, paper August 21, 2023 (AoE); exact time unverified'
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular papers: abstract August 18, paper August 21, 2023 (AoE); exact time unverified'
       timezone: AoE
       date: November 27-30, 2023
       place: Online
@@ -29,10 +30,9 @@
       id: log2024
       link: https://log2024.logconference.org/
       timeline:
-        - deadline: TBD
-          comment: 'Both tracks: abstract September 4, paper September 11, 2024 (AoE); exact time unverified'
-        - deadline: TBD
-          comment: 'TMLR Journal Track: October 26, 2024 (AoE); exact time unverified; previously published papers'
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular papers: abstract September 4, paper September 11, 2024 (AoE); exact time unverified'
       timezone: AoE
       date: November 26-29, 2024
       place: Online
@@ -40,10 +40,9 @@
       id: log2025
       link: https://log2025.logconference.org/
       timeline:
-        - deadline: '2025-08-29 23:59:59'
-          comment: 'Both tracks: abstract August 24, 2025 (AoE), exact abstract time unverified; existing paper time still needs primary confirmation'
-        - deadline: TBD
-          comment: 'TMLR Journal Track: September 30, 2025 (AoE); exact time unverified; previously published papers'
+        - abstract_deadline: TBD
+          deadline: '2025-08-29 23:59:59'
+          comment: 'Regular papers: abstract August 24, 2025 (AoE), exact abstract time unverified; existing paper time still needs primary confirmation'
       timezone: AoE
       date: December 10-12, 2025
       place: Arizona State University, Phoenix, USA
