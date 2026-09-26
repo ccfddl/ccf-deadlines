@@ -1,12 +1,13 @@
 # Main-conference long/short papers; annual denominators follow the chairs' published definitions.
 - title: EMNLP
   accept_rates:
-    # Direct-review cohort; excludes the separately reported ARR pilot (6 accepted / 17 commitments).
+    # All received: 3717 direct + 17 ARR pilot; accepted 840 direct + 6 ARR.
+    # The direct-only reviewed cohort is 840/3600.
     - year: 2021
-      submitted: 3600
-      accepted: 840
-      str: 23.3%(840/3600 21')
-      rate: 0.233333333333333
+      submitted: 3734
+      accepted: 846
+      str: 22.7%(846/3734 21')
+      rate: 0.2265666845206213
       source: https://aclanthology.org/2021.emnlp-main.0.pdf
     - year: 2022
       submitted: 4190
