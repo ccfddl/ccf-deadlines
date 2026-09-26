@@ -39,16 +39,21 @@
       link: https://securecomm.eai-conferences.org/2025/
       timeline:
         - deadline: '2025-03-01 23:59:59'
-          comment: Full Paper Submission deadline
-      timezone: AoE
+          comment: 'Main track'
+        - deadline: '2025-04-16 23:59:59'
+          comment: 'Late track'
+      timezone: UTC
       date: July 4-6, 2025
       place: Xiangtan, China
     - year: 2026
       id: securecomm26
       link: https://securecomm.eai-conferences.org/2026/
       timeline:
-        - deadline: '2025-12-15 23:59:59'
-      timezone: AoE
+        - deadline: '2026-01-15 23:59:59'
+          comment: 'Cycle 1'
+        - deadline: '2026-02-15 23:59:59'
+          comment: 'Cycle 2'
+      timezone: UTC
       date: July 21-24, 2026
       place: Lancaster, UK and hybrid
     - year: 2027
