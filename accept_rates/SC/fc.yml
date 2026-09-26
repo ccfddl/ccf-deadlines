@@ -1,0 +1,33 @@
+- title: FC
+  # Main-conference full, short and SoK papers; excludes workshops.
+  accept_rates:
+    - year: 2021
+      submitted: 223
+      accepted: 54
+      str: 24.2%(54/223 21')
+      rate: 0.2421524663677130
+      source: https://link.springer.com/book/10.1007/978-3-662-64322-8
+    - year: 2022
+      submitted: 159
+      accepted: 36
+      str: 22.6%(36/159 22')
+      rate: 0.2264150943396226
+      source: https://link.springer.com/book/10.1007/978-3-031-18283-9
+    - year: 2023
+      submitted: 182
+      accepted: 41
+      str: 22.5%(41/182 23')
+      rate: 0.2252747252747253
+      source: https://link.springer.com/book/10.1007/978-3-031-47754-6
+    - year: 2024
+      submitted: 199
+      accepted: 42
+      str: 21.1%(42/199 24')
+      rate: 0.2110552763819095
+      source: https://link.springer.com/book/10.1007/978-3-031-78676-1
+    - year: 2025
+      submitted: 300
+      accepted: 46
+      str: 15.3%(46/300 25')
+      rate: 0.1533333333333333
+      source: https://link.springer.com/book/10.1007/978-3-032-07024-1
