@@ -1,0 +1,44 @@
+- title: COCOON
+  accept_rates:
+    # Publisher's explicit selected-paper cohort.
+    - year: 2021
+      submitted: 131
+      accepted: 56
+      str: 42.7%(56/131 21')
+      rate: 0.42748091603053434
+      source: https://link.springer.com/book/10.1007/978-3-030-89543-3
+    # Chairs' preface PDF page 5: 39 regular + 12 short papers / 101 full submissions.
+    - year: 2022
+      submitted: 101
+      accepted: 51
+      str: 50.5%(51/101 22')
+      rate: 0.504950495049505
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-22105-7/1
+    # Both proceedings volumes combined, full papers.
+    - year: 2023
+      submitted: 146
+      accepted: 60
+      str: 41.1%(60/146 23')
+      rate: 0.410958904109589
+      source: https://link.springer.com/book/10.1007/978-3-031-49190-0
+    # Chairs' preface PDF page 5: regular-paper outcomes / full submissions; excludes short and workshop papers.
+    - year: 2024
+      submitted: 277
+      accepted: 90
+      str: 32.5%(90/277 24')
+      rate: 0.3249097472924188
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-1090-7/1
+    # Both proceedings volumes combined, full papers.
+    - year: 2025
+      submitted: 191
+      accepted: 54
+      str: 28.3%(54/191 25')
+      rate: 0.28272251308900526
+      source: https://link.springer.com/book/10.1007/978-981-95-0215-8
+    # Conference edition 2026 (publisher copyright 2027), full papers.
+    - year: 2026
+      submitted: 109
+      accepted: 34
+      str: 31.2%(34/109 26')
+      rate: 0.3119266055045872
+      source: https://link.springer.com/book/10.1007/978-981-92-3309-0
