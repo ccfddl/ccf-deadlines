@@ -14,12 +14,12 @@
         - deadline: '2024-06-24 23:59:59'
           comment: Full and Short Papers Track
         - deadline: '2024-07-24 23:59:59'
-          comment: Highlight Papers Track
+          comment: Highlight Papers for the Israeli Systems Workshop
         - deadline: '2024-07-15 23:59:59'
           comment: Posters with Extended Abstract Track
       timezone: UTC+2
-      date: June 17-19, 2024
-      place: Tel Aviv, Israel
+      date: September 23-24, 2024
+      place: Virtual
     - year: 2025
       id: systor25
       link: https://www.systor.org/2025/
@@ -30,7 +30,7 @@
           comment: Posters with Extended Abstract Track
       timezone: AoE
       date: September 8-9, 2025
-      place: IBM Haifa, Israel
+      place: Virtual
     - year: 2026
       id: systor26
       link: https://www.systor.org/2026/
