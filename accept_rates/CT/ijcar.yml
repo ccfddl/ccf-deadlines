@@ -1,0 +1,21 @@
+# Full research and short papers across all proceedings volumes; invited contributions excluded.
+- title: IJCAR
+  accept_rates:
+    - year: 2022
+      submitted: 85
+      accepted: 41
+      str: 48.2%(41/85 22')
+      rate: 0.482352941176471
+      source: https://link.springer.com/book/10.1007/978-3-031-10769-6
+    - year: 2024
+      submitted: 115
+      accepted: 45
+      str: 39.1%(45/115 24')
+      rate: 0.391304347826087
+      source: https://link.springer.com/book/10.1007/978-3-031-63498-7
+    - year: 2026
+      submitted: 112
+      accepted: 49
+      str: 43.8%(49/112 26')
+      rate: 0.437500000000000
+      source: https://link.springer.com/book/10.1007/978-3-032-32589-1
