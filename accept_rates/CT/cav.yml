@@ -1,8 +1,41 @@
+# Overall peer-reviewed papers, including tools and case studies; invited papers excluded.
 - title: CAV
   accept_rates:
+    - year: 2021
+      submitted: 290
+      accepted: 79
+      str: 27.2%(79/290 21')
+      rate: 0.272413793103448
+      source: https://link.springer.com/book/10.1007/978-3-030-81685-8
     - year: 2022
       submitted: 209
-      accepted: 40
-      str: 19.1%(40/209 22')
-      rate: 0.191387559808612
-      source: https://github.com/emeryberger/csconferences
+      accepted: 51
+      str: 24.4%(51/209 22')
+      rate: 0.244019138755981
+      source: https://link.springer.com/book/10.1007/978-3-031-13185-1
+    - year: 2023
+      submitted: 261
+      accepted: 67
+      str: 25.7%(67/261 23')
+      rate: 0.256704980842912
+      source: https://link.springer.com/book/10.1007/978-3-031-37706-8
+    # Original chairs' preface: 51 regular + 16 tool + 2 case-study papers / 317 received.
+    # Printed approximate 26% per-category statement does not establish an overall rate.
+    - year: 2024
+      submitted: 317
+      accepted: 69
+      str: 21.8%(69/317 24')
+      rate: 0.217665615141956
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-65633-0/1
+    - year: 2025
+      submitted: 305
+      accepted: 79
+      str: 25.9%(79/305 25')
+      rate: 0.259016393442623
+      source: https://link.springer.com/book/10.1007/978-3-031-98668-0
+    - year: 2026
+      submitted: 319
+      accepted: 81
+      str: 25.4%(81/319 26')
+      rate: 0.253918495297806
+      source: https://link.springer.com/book/10.1007/978-3-032-32519-8
