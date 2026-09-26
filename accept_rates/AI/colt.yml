@@ -31,3 +31,10 @@
       str: 35.7%(160/448 24')
       rate: 0.357142857142857
       source: https://proceedings.mlr.press/v247/agrawal24a/agrawal24a.pdf
+    # Main research papers; five open problems (three invited) are separately reported.
+    - year: 2026
+      submitted: 657
+      accepted: 191
+      str: 29.1%(191/657 26')
+      rate: 0.2907153729071537
+      source: https://raw.githubusercontent.com/mlresearch/v336/main/assets/hanneke26a/hanneke26a.pdf
