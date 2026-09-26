@@ -415,6 +415,74 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
 
             <div class="timezone toolbar">
                 <div class="toolbar-main">
+                    <div class=move || {
+                        if base_time.get().is_some() {
+                            "toolbar-base-time is-custom"
+                        } else {
+                            "toolbar-base-time"
+                        }
+                    }>
+                        <button
+                            type="button"
+                            class="toolbar-base-time-trigger"
+                            aria-label=move || if use_english.get() {
+                                "Set countdown base time"
+                            } else {
+                                "设置倒计时基准时间"
+                            }
+                            on:click=move |_| {
+                                if let Some(input) = base_time_input_ref.get() {
+                                    let element: &web_sys::HtmlElement = input.unchecked_ref();
+                                    let _ = element.focus();
+                                    if input.show_picker().is_err() {
+                                        base_time_editing.set(false);
+                                    }
+                                }
+                            }
+                        >
+                            <strong class="toolbar-base-time-value">
+                                {move || format_base_time_display(&base_time_input.get())}
+                            </strong>
+                        </button>
+                        <input
+                            node_ref=base_time_input_ref
+                            id="base-time-input"
+                            type="datetime-local"
+                            step="1"
+                            tabindex="-1"
+                            lang=move || if use_english.get() { "en" } else { "zh-CN" }
+                            prop:value=move || base_time_input.get()
+                            aria-label=move || if use_english.get() {
+                                "Set countdown base time"
+                            } else {
+                                "设置倒计时基准时间"
+                            }
+                            on:focus=move |_| base_time_editing.set(true)
+                            on:input=move |event| {
+                                base_time_input.set(event_target_value(&event));
+                            }
+                            on:change=move |event| {
+                                base_time_editing.set(false);
+                                let value = event_target_value(&event);
+                                if value.trim().is_empty() {
+                                    base_time.set(None);
+                                    base_time_input.set(format_datetime_local(
+                                        Utc::now(),
+                                        &selected_timezone.get_untracked(),
+                                    ));
+                                    page.set(1);
+                                } else if let Some(parsed) = parse_datetime_local(
+                                    &value,
+                                    &selected_timezone.get_untracked(),
+                                ) {
+                                    base_time_input.set(value);
+                                    base_time.set(Some(parsed));
+                                    page.set(1);
+                                }
+                            }
+                            on:blur=move |_| base_time_editing.set(false)
+                        />
+                    </div>
                     <div class="toolbar-timezone">
                         <span>"Deadlines are shown in"</span>
                         <div class="toolbar-timezone-picker">
@@ -1447,74 +1515,6 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
 
             <div class="footer">
                 <div class="footer-text">
-                    <div class=move || {
-                        if base_time.get().is_some() {
-                            "footer-base-time is-custom"
-                        } else {
-                            "footer-base-time"
-                        }
-                    }>
-                        <button
-                            type="button"
-                            class="footer-base-time-trigger"
-                            aria-label=move || if use_english.get() {
-                                "Set countdown base time"
-                            } else {
-                                "设置倒计时基准时间"
-                            }
-                            on:click=move |_| {
-                                if let Some(input) = base_time_input_ref.get() {
-                                    let element: &web_sys::HtmlElement = input.unchecked_ref();
-                                    let _ = element.focus();
-                                    if input.show_picker().is_err() {
-                                        base_time_editing.set(false);
-                                    }
-                                }
-                            }
-                        >
-                            <strong class="footer-base-time-value">
-                                {move || format_base_time_display(&base_time_input.get())}
-                            </strong>
-                        </button>
-                        <input
-                            node_ref=base_time_input_ref
-                            id="base-time-input"
-                            type="datetime-local"
-                            step="1"
-                            tabindex="-1"
-                            lang=move || if use_english.get() { "en" } else { "zh-CN" }
-                            prop:value=move || base_time_input.get()
-                            aria-label=move || if use_english.get() {
-                                "Set countdown base time"
-                            } else {
-                                "设置倒计时基准时间"
-                            }
-                            on:focus=move |_| base_time_editing.set(true)
-                            on:input=move |event| {
-                                base_time_input.set(event_target_value(&event));
-                            }
-                            on:change=move |event| {
-                                base_time_editing.set(false);
-                                let value = event_target_value(&event);
-                                if value.trim().is_empty() {
-                                    base_time.set(None);
-                                    base_time_input.set(format_datetime_local(
-                                        Utc::now(),
-                                        &selected_timezone.get_untracked(),
-                                    ));
-                                    page.set(1);
-                                } else if let Some(parsed) = parse_datetime_local(
-                                    &value,
-                                    &selected_timezone.get_untracked(),
-                                ) {
-                                    base_time_input.set(value);
-                                    base_time.set(Some(parsed));
-                                    page.set(1);
-                                }
-                            }
-                            on:blur=move |_| base_time_editing.set(false)
-                        />
-                    </div>
                     <span class="footer-credit">
                         "Maintained by @ccfddl. If you find it useful, star or follow "
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank">
