@@ -11,8 +11,8 @@
       id: mlsys21
       link: https://mlsys.org/Conferences/2021
       timeline:
-        - deadline: '2020-10-11 00:00:00'
-      timezone: UTC
+        - deadline: '2020-10-11 23:59:59'
+      timezone: AoE
       date: April 5-9, 2021
       place: virtual
     - year: 2022
