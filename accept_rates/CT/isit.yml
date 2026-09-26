@@ -1,0 +1,9 @@
+- title: ISIT
+  accept_rates:
+    # Includes in-person 397/619 and virtual 66/98; excludes invited talks and tutorials.
+    - year: 2023
+      submitted: 717
+      accepted: 463
+      rate: 0.6457461645746164
+      str: "64.6%(463/717 23')"
+      source: https://www.itsoc.org/sites/default/files/2023-09/BoG_minutes_June_2023.pdf
