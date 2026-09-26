@@ -13,7 +13,7 @@
       timeline:
         - deadline: '2023-03-25 23:59:59'
           comment: Abstract submission deadline
-        - deadline: '2023-04-01 23:59:59'
+        - deadline: '2023-04-15 23:59:59'
           comment: Paper submission deadline
       timezone: AoE
       date: October 21-October 25, 2023
@@ -33,9 +33,9 @@
       id: pact25
       link: https://pact2025.github.io/
       timeline:
-        - deadline: '2025-04-11 23:59:59'
-          comment: Abstract submission deadline
         - deadline: '2025-04-18 23:59:59'
+          comment: Abstract submission deadline
+        - deadline: '2025-04-25 23:59:59'
           comment: Paper submission deadline
       timezone: AoE
       date: November 3-6, 2025
