@@ -1,0 +1,33 @@
+# Main-conference paper-selection statistics reported in the official proceedings; satellite events excluded.
+- title: MICCAI
+  accept_rates:
+    - year: 2021
+      submitted: 1630
+      accepted: 531
+      str: 32.6%(531/1630 21')
+      rate: 0.325766871165644
+      source: https://link.springer.com/book/10.1007/978-3-030-87193-2
+    - year: 2022
+      submitted: 1831
+      accepted: 574
+      str: 31.3%(574/1831 22')
+      rate: 0.313489896231567
+      source: https://link.springer.com/book/10.1007/978-3-031-16431-6
+    - year: 2023
+      submitted: 2250
+      accepted: 730
+      str: 32.4%(730/2250 23')
+      rate: 0.324444444444444
+      source: https://link.springer.com/book/10.1007/978-3-031-43907-0
+    - year: 2024
+      submitted: 2781
+      accepted: 857
+      str: 30.8%(857/2781 24')
+      rate: 0.308162531463502
+      source: https://link.springer.com/book/10.1007/978-3-031-72378-0
+    - year: 2025
+      submitted: 3447
+      accepted: 1027
+      str: 29.8%(1027/3447 25')
+      rate: 0.297940237888019
+      source: https://link.springer.com/book/10.1007/978-3-032-04927-8
