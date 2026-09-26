@@ -9,12 +9,31 @@
   confs:
     - year: 2021
       id: ictai21
-      link: https://ictai.computer.org/
+      link: https://ictai.computer.org/2021/
       timeline:
-        - deadline: '2021-06-20 23:59:00'
+        - deadline: 'TBD'
+          comment: 'Extended paper deadline: July 26, 2021; exact cutoff time and timezone are not specified by the official homepage or CFP'
       timezone: UTC-7
       date: November 01-03, 2021
-      place: Washington DC, USA
+      place: Virtual
+    - year: 2024
+      id: ictai24
+      link: https://ictai.computer.org/2024/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Final extended paper deadline: July 21, 2024 AoE; exact cutoff time is not specified'
+      timezone: AoE
+      date: October 28-30, 2024
+      place: Herndon, VA, USA
+    - year: 2025
+      id: ictai25
+      link: https://easyconferences.eu/ictai2025/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Extended paper deadline: July 15, 2025 AoE; exact cutoff time is not specified'
+      timezone: AoE
+      date: November 3-5, 2025
+      place: Athens, Greece
     - year: 2026
       id: ictai26
       link: https://ictai.computer.org/2026/
