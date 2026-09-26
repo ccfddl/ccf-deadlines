@@ -11,7 +11,8 @@
       id: eurosp24
       link: https://eurosp2024.ieee-security.org/
       timeline:
-        - deadline: '2023-11-02 23:59:59'
+        - abstract_deadline: '2023-10-30 23:59:59'
+          deadline: '2023-11-02 23:59:59'
       timezone: UTC-12
       date: July 8-12, 2024
       place: Vienna, Austria
@@ -19,7 +20,8 @@
       id: eurosp25
       link: https://eurosp2025.ieee-security.org/
       timeline:
-        - deadline: '2024-10-24 23:59:59'
+        - abstract_deadline: '2024-10-21 23:59:59'
+          deadline: '2024-10-24 23:59:59'
       timezone: UTC-12
       date: June 30-July 4, 2025
       place: Venice, Italy
@@ -27,7 +29,8 @@
       id: eurosp26
       link: https://eurosp2026.ieee-security.org/
       timeline:
-        - deadline: '2025-11-20 23:59:59'
+        - abstract_deadline: '2025-11-13 23:59:59'
+          deadline: '2025-11-20 23:59:59'
       timezone: UTC-12
       date: July 6 - 10, 2026
       place: Lisbon, Portugal
