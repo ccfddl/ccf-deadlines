@@ -13,8 +13,6 @@
       timeline:
         - deadline: '2021-10-14 23:59:59'
           comment: Paper submission deadline
-        - deadline: '2022-01-26 23:59:59'
-          comment: Paper final versions
       timezone: AoE
       date: April 2-7, 2022
       place: Munich, Germany
