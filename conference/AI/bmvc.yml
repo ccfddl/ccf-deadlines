@@ -9,18 +9,28 @@
   confs:
     - year: 2021
       id: bmvc21
-      link: https://britishmachinevisionassociation.github.io/bmvc
+      link: https://bmva-archive.org.uk/bmvc/2021/
       timeline:
-        - deadline: '2021-06-25 23:59:59'
-      timezone: UTC-8
+        - abstract_deadline: '2021-06-18 23:59:59'
+          deadline: '2021-06-25 23:59:59'
+      timezone: UTC+0
       date: November 22-25, 2021
       place: Virtual
+    - year: 2022
+      id: bmvc22
+      link: https://bmvc2022.org/
+      timeline:
+        - abstract_deadline: '2022-07-25 23:59:59'
+          deadline: '2022-07-29 23:59:59'
+      timezone: UTC+0
+      date: November 21-24, 2022
+      place: London, UK (Hybrid)
     - year: 2023
       id: bmvc23
       link: https://www.bmvc2023.org/
       timeline:
         - deadline: '2023-05-12 23:59:59'
-      timezone: UTC
+      timezone: UTC+1
       date: November 20-24, 2023
       place: Aberdeen, UK
     - year: 2024
