@@ -15,7 +15,7 @@
           deadline: '2021-09-08 23:59:59'
       timezone: UTC-12
       date: February 22 - March 1, 2022
-      place: Vancouver, British Columbia, Canada
+      place: Virtual
     - year: 2023
       id: aaai23
       link: https://www.aaai.org/Conferences/AAAI-23/
@@ -27,7 +27,7 @@
       place: Washington, DC, USA
     - year: 2024
       id: aaai24
-      link: https://www.aaai.org/aaai-conference/
+      link: https://aaai.org/conference/aaai/aaai-24/
       timeline:
         - abstract_deadline: '2023-08-08 23:59:59'
           deadline: '2023-08-15 23:59:59'
