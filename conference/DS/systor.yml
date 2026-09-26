@@ -13,10 +13,6 @@
       timeline:
         - deadline: '2024-06-24 23:59:59'
           comment: Full and Short Papers Track
-        - deadline: '2024-07-24 23:59:59'
-          comment: Highlight Papers for the Israeli Systems Workshop
-        - deadline: '2024-07-15 23:59:59'
-          comment: Posters with Extended Abstract Track
       timezone: UTC+2
       date: September 23-24, 2024
       place: Virtual
@@ -26,8 +22,6 @@
       timeline:
         - deadline: '2025-05-26 23:59:59'
           comment: Full and Short Papers Track
-        - deadline: '2025-07-10 23:59:59'
-          comment: Posters with Extended Abstract Track
       timezone: AoE
       date: September 8-9, 2025
       place: Virtual
