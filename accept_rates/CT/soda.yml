@@ -1,0 +1,43 @@
+- title: SODA
+  # Annual main-conference paper decisions from the original SIAM proceedings prefaces.
+  accept_rates:
+    - year: 2021
+      # 641 papers were received; four were later withdrawn. Use all received submissions.
+      submitted: 641
+      accepted: 180
+      str: 28.1%(180/641 21')
+      rate: 0.28081123244929795
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611976465.fm
+    - year: 2022
+      submitted: 491
+      accepted: 148
+      str: 30.1%(148/491 22')
+      rate: 0.3014256619144603
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611977073.fm
+    - year: 2023
+      submitted: 652
+      accepted: 190
+      str: 29.1%(190/652 23')
+      rate: 0.29141104294478526
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611977554.fm
+    - year: 2024
+      # 192 papers were accepted; two pairs were each merged into one talk slot.
+      submitted: 652
+      accepted: 192
+      str: 29.4%(192/652 24')
+      rate: 0.294478527607362
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611977912.fm
+    - year: 2025
+      # 192 papers were accepted; one pair was merged into one talk slot.
+      submitted: 655
+      accepted: 192
+      str: 29.3%(192/655 25')
+      rate: 0.2931297709923664
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611978322.fm
+    - year: 2026
+      # 243 papers were accepted; four pairs were each merged into one talk slot.
+      submitted: 809
+      accepted: 243
+      str: 30.0%(243/809 26')
+      rate: 0.3003708281829419
+      source: https://epubs.siam.org/doi/epdf/10.1137/1.9781611978971.fm
