@@ -50,15 +50,18 @@ pub fn CountDown(
     remain: u64,
     #[prop(default = false)] detailed: bool,
     #[prop(default = false)] legacy: bool,
+    #[prop(default = true)] running: bool,
 ) -> impl IntoView {
     let remaining_time = RwSignal::new(remain / 1000);
 
     use_interval(1000, move || {
-        remaining_time.update(|r| {
-            if *r > 0 {
-                *r -= 1;
-            }
-        });
+        if running {
+            remaining_time.update(|r| {
+                if *r > 0 {
+                    *r -= 1;
+                }
+            });
+        }
     });
 
     let display_time = move || {

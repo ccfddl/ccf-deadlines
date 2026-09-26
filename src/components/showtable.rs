@@ -1,11 +1,11 @@
 use crate::components::checkbox_button::*;
 use crate::components::conf::ConfItem;
 use crate::components::conf::*;
-use crate::components::countdown::{CountDown, urgency_class_for};
+use crate::components::countdown::{CountDown, urgency_class_for, use_interval};
 use crate::components::subscription_modal::*;
 use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
-use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate};
+use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate, Utc};
 use leptos::prelude::*;
 use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde_json;
@@ -94,8 +94,11 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let is_filter_change = RwSignal::new(false);
 
     // table
+    let raw_conferences = RwSignal::new(Vec::<Conference>::new());
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
     let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
+    let base_time = RwSignal::new(None::<DateTime<Utc>>);
+    let base_time_input = RwSignal::new(String::new());
 
     // timezone
     let browser_time_zone = RwSignal::new(get_timezone_name().unwrap_or_else(|| "UTC".to_string()));
@@ -104,6 +107,15 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         .unwrap_or_else(|| browser_time_zone.get_untracked());
     let selected_timezone = RwSignal::new(stored_timezone.clone());
     let time_zone = RwSignal::new(stored_timezone);
+
+    use_interval(1_000, move || {
+        if base_time.get_untracked().is_none() {
+            base_time_input.set(format_datetime_local(
+                Utc::now(),
+                &selected_timezone.get_untracked(),
+            ));
+        }
+    });
 
     Effect::new(move |_| {
         let _ = check_list.get();
@@ -150,13 +162,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         let selection = selected_timezone.get();
         set_in_local_storage("display_timezone", &selection);
         time_zone.set(selection.clone());
-
-        all_conf_list.update(|items| apply_display_timezone(items, &selection));
-        selected_conf.update(|selected| {
-            if let Some(item) = selected.as_mut() {
-                apply_display_timezone(std::slice::from_mut(item), &selection);
-            }
-        });
+        base_time_input.set(format_datetime_local(
+            base_time.get_untracked().unwrap_or_else(Utc::now),
+            &selection,
+        ));
     });
 
     Effect::new(move |_| {
@@ -167,24 +176,13 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     });
 
     Effect::new(move || {
-        let categories = sub_list.get_untracked();
-        let likes = like_list.get_untracked();
-
         spawn_local(async move {
             let Some(base_url) = browser_origin() else {
                 return;
             };
             match fetch_all_conf(&base_url).await {
                 Ok(conferences) => {
-                    let rates = acceptance_rates.get_untracked();
-                    let timezone = selected_timezone.get_untracked();
-                    all_conf_list.set(build_conf_items(
-                        conferences,
-                        &categories,
-                        &likes,
-                        &rates,
-                        &timezone,
-                    ));
+                    raw_conferences.set(conferences);
                 }
                 Err(error) => {
                     console::error_1(&format!("Error: {error:?}").into());
@@ -199,19 +197,38 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             match fetch_all_acc(&base_url).await {
                 Ok(all_acc) => {
                     let rates = build_acceptance_rate_map(all_acc);
-                    acceptance_rates.set(rates.clone());
-                    all_conf_list.update(|items| apply_acceptance_rates(items, &rates));
-                    selected_conf.update(|selected| {
-                        if let Some(item) = selected.as_mut() {
-                            apply_acceptance_rate(item, &rates);
-                        }
-                    });
+                    acceptance_rates.set(rates);
                 }
                 Err(error) => {
                     console::error_1(&format!("Error loading acceptance rates: {error:?}").into());
                 }
             }
         });
+    });
+
+    Effect::new(move |_| {
+        let conferences = raw_conferences.get();
+        if conferences.is_empty() {
+            return;
+        }
+
+        let selected_id = selected_conf
+            .get_untracked()
+            .as_ref()
+            .map(|item| item.id.clone());
+        let items = build_conf_items(
+            conferences,
+            &sub_list.get_untracked(),
+            &like_list.get(),
+            &acceptance_rates.get(),
+            &selected_timezone.get(),
+            base_time.get().unwrap_or_else(Utc::now),
+        );
+
+        if let Some(selected_id) = selected_id {
+            selected_conf.set(items.iter().find(|item| item.id == selected_id).cloned());
+        }
+        all_conf_list.set(items);
     });
 
     let paginated_list = Memo::new(move |_| {
@@ -672,7 +689,9 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                         .collect::<Vec<_>>();
                                     let mut deadlines = conf.ddls.clone();
                                     deadlines.sort_by_key(|point| point.timepoint);
-                                    let now = chrono::Utc::now();
+                                    let custom_base_time = base_time.get();
+                                    let countdown_running = custom_base_time.is_none();
+                                    let now = custom_base_time.unwrap_or_else(Utc::now);
                                     let next_index = deadlines
                                         .iter()
                                         .position(|point| point.timepoint > now);
@@ -766,7 +785,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                         {if is_passed {
                                                             view! { "passed" }.into_any()
                                                         } else if days < 1 {
-                                                            view! { <CountDown remain=remaining_ms /> }.into_any()
+                                                            view! { <CountDown remain=remaining_ms running=countdown_running /> }.into_any()
                                                         } else if days == 1 {
                                                             view! { "1 day" }.into_any()
                                                         } else {
@@ -832,7 +851,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                     {if is_tbd {
                                                         view! { "TBD" }.into_any()
                                                     } else if let Some(remain) = next_remain {
-                                                        view! { <CountDown remain detailed=true /> }.into_any()
+                                                        view! { <CountDown remain detailed=true running=countdown_running /> }.into_any()
                                                     } else {
                                                         view! { "Passed" }.into_any()
                                                     }}
@@ -850,7 +869,11 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                 <span class="conference-detail-label">"IMPORTANT DEADLINES"</span>
                                                 {(!is_tbd && conf.status != "FIN" && !conf.ddls.is_empty()).then(|| view! {
                                                     <div class="conference-detail-timeline">
-                                                        <TimeLine time_points=conf.ddls.clone() />
+                                                        <TimeLine
+                                                            time_points=conf.ddls.clone()
+                                                            reference_time=now
+                                                            custom_reference=!countdown_running
+                                                        />
                                                         <div class="conference-detail-timeline-range">
                                                             <span>{first_timeline_date.clone()}</span>
                                                             <span>{last_timeline_date.clone()}</span>
@@ -969,6 +992,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                 conf.id.clone(),
                                                 conf.is_like,
                                                 selected_timezone.get(),
+                                                base_time.get().map(|value| value.timestamp_millis()),
                                             )
                                         }
                                         children=move |conf| {
@@ -1004,8 +1028,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                             let countdown_remain = remaining_until_deadline(
                                                 &deadline_date,
                                                 &deadline_timezone,
+                                                base_time.get_untracked().unwrap_or_else(Utc::now),
                                             )
                                             .unwrap_or(conf.remain);
+                                            let countdown_running = base_time.get_untracked().is_none();
                                             let list_deadline = deadline_date.clone();
                                             let list_timezone = deadline_timezone.clone();
                                             let timezone_selection =
@@ -1019,6 +1045,9 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                             );
                                             let list_website = conf.link.clone();
                                             let list_timeline = conf.ddls.clone();
+                                            let timeline_reference = base_time
+                                                .get_untracked()
+                                                .unwrap_or_else(Utc::now);
                                             let estimated_deadline_display = conf
                                                 .estimated_deadlines
                                                 .iter()
@@ -1250,12 +1279,12 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                                 {move || {
                                                                                                     if is_list_view.get() {
                                                                                                         view! {
-                                                                                                            <CountDown remain=countdown_remain legacy=true />
+                                                                                                            <CountDown remain=countdown_remain legacy=true running=countdown_running />
                                                                                                         }
                                                                                                             .into_any()
                                                                                                     } else {
                                                                                                         view! {
-                                                                                                            <CountDown remain=countdown_remain />
+                                                                                                            <CountDown remain=countdown_remain running=countdown_running />
                                                                                                         }
                                                                                                             .into_any()
                                                                                                     }
@@ -1331,7 +1360,11 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                             view! {}.into_any()
                                                                         } else {
                                                                             view! {
-                                                                                <TimeLine time_points=list_timeline.clone() />
+                                                                                <TimeLine
+                                                                                    time_points=list_timeline.clone()
+                                                                                    reference_time=timeline_reference
+                                                                                    custom_reference=!countdown_running
+                                                                                />
                                                                             }
                                                                                 .into_any()
                                                                         };
@@ -1411,7 +1444,43 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
 
             <div class="footer">
                 <div class="footer-text">
-                    <span>
+                    <div class=move || {
+                        if base_time.get().is_some() {
+                            "footer-base-time is-custom"
+                        } else {
+                            "footer-base-time"
+                        }
+                    }>
+                        <span class="footer-base-time-label">
+                            {move || if use_english.get() { "Base time" } else { "基准时间" }}
+                        </span>
+                        <strong class="footer-base-time-value">
+                            {move || format_base_time_display(&base_time_input.get())}
+                        </strong>
+                        <input
+                            id="base-time-input"
+                            type="datetime-local"
+                            step="1"
+                            prop:value=move || base_time_input.get()
+                            aria-label=move || if use_english.get() {
+                                "Set countdown base time"
+                            } else {
+                                "设置倒计时基准时间"
+                            }
+                            on:change=move |event| {
+                                let value = event_target_value(&event);
+                                if let Some(parsed) = parse_datetime_local(
+                                    &value,
+                                    &selected_timezone.get_untracked(),
+                                ) {
+                                    base_time_input.set(value);
+                                    base_time.set(Some(parsed));
+                                    page.set(1);
+                                }
+                            }
+                        />
+                    </div>
+                    <span class="footer-credit">
                         "Maintained by @ccfddl. If you find it useful, star or follow "
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank">
                             "@ccfddl"
@@ -1574,24 +1643,15 @@ fn display_timezone_offset_at(timezone: &str, _timestamp_millis: i64) -> FixedOf
     FixedOffset::east_opt(seconds).expect("display timezone offset is valid")
 }
 
-fn apply_display_timezone(items: &mut [ConfItem], timezone: &str) {
-    for item in items {
-        for deadline in &mut item.ddls {
-            let offset =
-                display_timezone_offset_at(timezone, deadline.timepoint.timestamp_millis());
-            deadline.timepoint = deadline.timepoint.with_timezone(&offset);
-        }
-    }
-}
-
 fn build_conf_items(
     conferences: Vec<Conference>,
     categories: &[Category],
     likes: &HashSet<String>,
     acceptance_rates: &AcceptanceRateMap,
     display_timezone: &str,
+    reference_time: DateTime<Utc>,
 ) -> Vec<ConfItem> {
-    let current_time = chrono::Utc::now().fixed_offset();
+    let current_time = reference_time.fixed_offset();
     let mut items = Vec::new();
 
     for conference in conferences {
@@ -1798,12 +1858,6 @@ fn build_acceptance_rate_map(all_acc: Vec<ConfAccRate>) -> AcceptanceRateMap {
     rates
 }
 
-fn apply_acceptance_rates(items: &mut [ConfItem], rates: &AcceptanceRateMap) {
-    for item in items {
-        apply_acceptance_rate(item, rates);
-    }
-}
-
 fn apply_acceptance_rate(item: &mut ConfItem, rates: &AcceptanceRateMap) {
     item.acc_str = recent_acceptance_rates(&item.title, item.year, rates);
 }
@@ -1893,12 +1947,40 @@ fn display_place(place: &str) -> String {
         .to_string()
 }
 
-fn remaining_until_deadline(deadline: &str, timezone: &str) -> Option<u64> {
+fn format_datetime_local(time: DateTime<Utc>, timezone: &str) -> String {
+    let offset = display_timezone_offset_at(timezone, time.timestamp_millis());
+    time.with_timezone(&offset)
+        .format("%Y-%m-%dT%H:%M:%S")
+        .to_string()
+}
+
+fn parse_datetime_local(value: &str, timezone: &str) -> Option<DateTime<Utc>> {
+    let local_time = chrono::NaiveDateTime::parse_from_str(value, "%Y-%m-%dT%H:%M:%S")
+        .or_else(|_| chrono::NaiveDateTime::parse_from_str(value, "%Y-%m-%dT%H:%M"))
+        .ok()?;
+    let tentative_utc = local_time.and_utc();
+    let offset = display_timezone_offset_at(timezone, tentative_utc.timestamp_millis());
+    Some(tentative_utc - Duration::seconds(offset.local_minus_utc().into()))
+}
+
+fn format_base_time_display(value: &str) -> String {
+    let mut display = value.replace('-', "/").replace('T', " ");
+    if display.matches(':').count() == 1 {
+        display.push_str(":00");
+    }
+    display
+}
+
+fn remaining_until_deadline(
+    deadline: &str,
+    timezone: &str,
+    reference_time: DateTime<Utc>,
+) -> Option<u64> {
     let deadline_time = parse_deadline_to_rfc3339(deadline, timezone)
         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())?;
     Some(
         deadline_time
-            .signed_duration_since(chrono::Utc::now())
+            .signed_duration_since(reference_time)
             .num_milliseconds()
             .max(0) as u64,
     )

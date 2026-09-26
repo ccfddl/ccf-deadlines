@@ -178,7 +178,7 @@ a {
 /* --------------------- Footer --------------------------- */
 @media (min-width: 769px) {
     .footer {
-        height: 20px;
+        min-height: 20px;
         padding-top: 8px;
         color: var(--color-text-secondary);
         display: flex;
@@ -217,6 +217,64 @@ a {
         text-align: center;
         font-size: var(--font-size-sm);
     }
+}
+
+.footer-text {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.footer-base-time {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 14px;
+  border-right: 1px solid var(--color-border-light);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.footer-base-time-value {
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+.footer-base-time input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.footer-base-time:hover .footer-base-time-value,
+.footer-base-time.is-custom .footer-base-time-value {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.footer-credit {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .footer-text {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-base-time {
+    padding-right: 0;
+    border-right: 0;
+  }
+
 }
 
 .el-row {
@@ -1556,7 +1614,7 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   left: 50%;
   transform: translateX(-50%);
   color: #8a929b;
-  content: "NOW";
+  content: attr(data-label);
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.08em;

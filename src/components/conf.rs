@@ -4,7 +4,7 @@ use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
 use web_sys::RequestCache;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Conference {
     pub title: String,
     pub description: String,
@@ -14,14 +14,14 @@ pub struct Conference {
     pub confs: Vec<ConferenceYear>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Rank {
     pub ccf: String,
     pub core: Option<String>,
     pub thcpl: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ConferenceYear {
     pub year: i32,
     pub id: String,
