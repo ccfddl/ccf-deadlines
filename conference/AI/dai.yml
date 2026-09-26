@@ -7,11 +7,48 @@
     thcpl: N
   dblp: dai2
   confs:
+    - year: 2021
+      id: dai2021
+      link: https://adai.ai/dai/2021/index.html
+      timeline:
+        - deadline: '2021-09-30 23:59:00'
+          comment: 'Regular papers'
+      timezone: UTC-12
+      date: January 3-5, 2022
+      place: Shanghai, China (Hybrid)
+    - year: 2022
+      id: dai2022
+      link: https://adai.ai/dai/2022/2022.html
+      timeline:
+        - deadline: '2022-10-15 23:59:00'
+          comment: 'Regular papers'
+      timezone: UTC-12
+      date: December 15-17, 2022
+      place: Tianjin, China (Hybrid)
+    - year: 2023
+      id: dai2023
+      link: https://adai.ai/dai/2023/
+      timeline:
+        - deadline: '2023-09-15 23:59:00'
+          comment: 'Regular papers'
+      timezone: UTC-12
+      date: November 30-December 3, 2023
+      place: Singapore
+    - year: 2024
+      id: dai2024
+      link: https://www.adai.ai/dai/2024/index.html
+      timeline:
+        - deadline: '2024-09-10 23:59:00'
+          comment: 'Regular papers'
+      timezone: UTC-12
+      date: December 18-22, 2024
+      place: Singapore
     - year: 2025
       id: dai2025
       link: https://www.adai.ai/dai/2025/index.html
       timeline:
         - deadline: '2025-08-21 23:59:59'
+          comment: 'Regular papers (extended)'
       timezone: UTC-12
       date: November 21-24, 2025
       place: London, United Kingdom
