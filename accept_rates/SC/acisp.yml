@@ -1,0 +1,42 @@
+- title: ACISP
+  # Refereed conference papers, including short/SoK and special tracks; excludes invited talks.
+  accept_rates:
+    - year: 2021
+      submitted: 157
+      accepted: 35
+      str: 22.3%(35/157 21')
+      rate: 0.2229299363057325
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-90567-5/1
+    - year: 2022
+      submitted: 62
+      accepted: 25
+      str: 40.3%(25/62 22')
+      rate: 0.4032258064516129
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-22301-3/1
+    - year: 2023
+      submitted: 87
+      accepted: 27
+      str: 31.0%(27/87 23')
+      rate: 0.3103448275862069
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-35486-1/1
+    - year: 2024
+      # Includes one SoK; both submission rounds counted once.
+      submitted: 232
+      accepted: 70
+      str: 30.2%(70/232 24')
+      rate: 0.3017241379310345
+      source: https://link.springer.com/content/pdf/bfm:978-981-97-5025-2/1
+    - year: 2025
+      # 54 full + 6 short papers; excludes invited contributions.
+      submitted: 181
+      accepted: 60
+      str: 33.1%(60/181 25')
+      rate: 0.3314917127071823
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-9095-4/1
+    - year: 2026
+      # Includes the special track, as in the official overall totals.
+      submitted: 260
+      accepted: 69
+      str: 26.5%(69/260 26')
+      rate: 0.2653846153846154
+      source: https://link.springer.com/content/pdf/bfm:978-981-92-3012-9/1
