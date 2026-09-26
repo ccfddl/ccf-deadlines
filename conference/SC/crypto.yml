@@ -12,7 +12,7 @@
       link: https://crypto.iacr.org/2021/
       timeline:
         - deadline: '2021-02-24 21:00:00'
-      timezone: UTC-12
+      timezone: UTC
       date: August 15-19, 2021
       place: Virtual
     - year: 2023
@@ -44,6 +44,6 @@
       link: https://crypto.iacr.org/2026/
       timeline:
         - deadline: '2026-02-12 23:59:59'
-      timezone: UTC-12
+      timezone: UTC-8
       date: August 17-20, 2026
       place: Santa Barbara, USA
