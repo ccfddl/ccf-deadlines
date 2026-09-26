@@ -9,10 +9,12 @@
   confs:
     - year: 2024
       id: accv24
-      link: https://accv2024.org/
+      link: https://minhhoai.net/accv24/index.html
       timeline:
-        - deadline: '2024-07-02 23:59:59'
-      timezone: UTC-12
+        - abstract_deadline: '2024-07-03 13:00:00'
+          deadline: '2024-07-05 13:00:00'
+          comment: 'Extended deadlines; official author guidelines explicitly state 1:00 PM PST.'
+      timezone: UTC-8
       date: December 8-12, 2024
       place: Hanoi, Vietnam
     - year: 2026
