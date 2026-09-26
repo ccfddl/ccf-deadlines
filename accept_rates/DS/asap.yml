@@ -1,0 +1,26 @@
+- title: ASAP
+  accept_rates:
+    # PC co-chair report, PDF p. 10: long-paper decisions / submissions entering review.
+    # 105 abstract registrations and 7 accepted posters are separate; withdrawal/desk handling unknown.
+    - year: 2021
+      submitted: 82
+      accepted: 24
+      str: 29.3%(24/82 21')
+      rate: 0.2926829268292683
+      source: https://ieeecs-media.computer.org/tc-media/sites/18/2021/08/18161925/VCaSL_Aug2021-newsletter.pdf
+    # Public annual submission portal aggregate decisions, not a long-paper-only or final-publication count.
+    # Track breakdown and withdrawal/desk denominator exclusions are not disclosed.
+    - year: 2025
+      submitted: 47
+      accepted: 34
+      str: 72.3%(34/47 25')
+      rate: 0.723404255319149
+      source: https://asap25.hotcrp.com/
+    # Public annual submission portal aggregate decisions, not a long-paper-only or final-publication count.
+    # Track breakdown and withdrawal/desk denominator exclusions are not disclosed.
+    - year: 2026
+      submitted: 83
+      accepted: 43
+      str: 51.8%(43/83 26')
+      rate: 0.5180722891566265
+      source: https://asap26.hotcrp.com/
