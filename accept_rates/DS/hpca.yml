@@ -1,8 +1,22 @@
 - title: HPCA
   accept_rates:
+    # Main research track; 5 industry papers and 3 Best of CAL talks excluded.
+    - year: 2022
+      submitted: 273
+      accepted: 80
+      str: 29.3%(80/273 22')
+      rate: 0.29304029304029305
+      source: https://www.sigarch.org/hpca22-trip-report/
     - year: 2023
       submitted: 360
       accepted: 91
       str: 25.3%(91/360 23')
       rate: 0.252777777777778
       source: https://github.com/emeryberger/csconferences
+    # Main-track HotCRP acceptance decisions; separate industry portal excluded.
+    - year: 2026
+      submitted: 563
+      accepted: 119
+      str: 21.1%(119/563 26')
+      rate: 0.2113676731793961
+      source: https://hpca2026.hotcrp.com/
