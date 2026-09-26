@@ -7,12 +7,13 @@
       str: 26.3%(747/2845 21')
       rate: 0.26256590509666083
       source: https://archive.sigchi.org/conferences/conference-history/chi/
+    # Original Technical Program Chairs' Welcome, PDF page 6, library-hosted proceedings copy.
     - year: 2022
       submitted: 2579
       accepted: 637
       str: 24.7%(637/2579 22')
       rate: 0.246994959286545
-      source: https://github.com/emeryberger/csconferences
+      source: https://jcer.in/jcer-docs/E-Learning/Digital%20Library%20/E-Books/Human%20Factors%20in%20Computing%20Systems.pdf
     # Original Papers Chairs' Welcome, PDF page 6: final acceptances / complete submissions.
     - year: 2023
       submitted: 3182
