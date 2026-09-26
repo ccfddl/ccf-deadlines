@@ -7,6 +7,46 @@
     thcpl: B
   dblp: icaps
   confs:
+    - year: 2021
+      id: icaps21
+      link: https://icaps21.icaps-conference.org/Calls/main-track.html
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: 'Abstract: 2020-12-11; paper: 2020-12-18; official CFP gives UTC-12 calendar dates without an explicit clock.'
+      timezone: UTC-12
+      date: August 2-13, 2021
+      place: Virtual
+    - year: 2022
+      id: icaps22
+      link: https://icaps22.icaps-conference.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: 'Abstract: 2021-12-10; paper: 2021-12-15; official CFP gives UTC-12 calendar dates without an explicit clock.'
+      timezone: UTC-12
+      date: June 13-24, 2022
+      place: Virtual
+    - year: 2023
+      id: icaps23
+      link: https://icaps23.icaps-conference.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: 'Abstract: 2022-11-25; paper: 2022-11-30; official CFP gives UTC-12 calendar dates without an explicit clock.'
+      timezone: UTC-12
+      date: July 8-13, 2023
+      place: Prague, Czech Republic
+    - year: 2024
+      id: icaps24
+      link: https://icaps24.icaps-conference.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: 'Abstract: 2023-12-07; paper: 2023-12-13; official CFP gives UTC-12 calendar dates without an explicit clock.'
+      timezone: UTC-12
+      date: June 1-6, 2024
+      place: Banff, Alberta, Canada
     - year: 2025
       id: icaps25
       link: https://icaps25.icaps-conference.org/
