@@ -1,5 +1,11 @@
 - title: ECIR
   accept_rates:
+    - year: 2022
+      submitted: 180
+      accepted: 35
+      str: 19.4%(35/180 22')
+      rate: 0.19444444444444445
+      source: https://www.bcs.org/media/8389/irsg-minutes-201021.pdf
     - year: 2023
       submitted: 228
       accepted: 65
