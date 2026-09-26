@@ -39,8 +39,8 @@
       id: iccd26
       link: https://www.iccd-conf.com/2026/home.html
       timeline:
-        - abstract_deadline: '2026-05-29 23:59:00'
-          deadline: '2026-06-05 23:59:00'
+        - abstract_deadline: '2026-06-03 23:59:00'
+          deadline: '2026-06-10 23:59:00'
           comment: abstract and full paper deadline
       timezone: AoE
       date: November 16-18, 2026
