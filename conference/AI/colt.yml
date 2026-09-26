@@ -7,6 +7,14 @@
     thcpl: A
   dblp: colt
   confs:
+    - year: 2021
+      id: colt21
+      link: https://learningtheory.org/colt2021/
+      timeline:
+        - deadline: '2021-01-29 16:00:00'
+      timezone: UTC-8
+      date: August 4-5 (Virtual) and August 15-19 (Hybrid), 2021
+      place: Boulder, Colorado, USA (Hybrid)
     - year: 2022
       id: colt22
       link: https://learningtheory.org/colt2022/index.html
@@ -15,9 +23,17 @@
       timezone: UTC-8
       date: July 2-5, 2022
       place: London, UK
+    - year: 2023
+      id: colt23
+      link: https://learningtheory.org/colt2023/
+      timeline:
+        - deadline: '2023-02-10 16:00:00'
+      timezone: UTC-8
+      date: July 12-15, 2023
+      place: Bangalore, India
     - year: 2024
       id: colt24
-      link: https://www.learningtheory.org/colt2024/
+      link: https://learningtheory.org/colt2024/
       timeline:
         - deadline: '2024-02-09 15:59:59'
       timezone: UTC-5
@@ -35,7 +51,8 @@
       id: colt26
       link: https://learningtheory.org/colt2026/
       timeline:
-        - deadline: '2026-02-04 16:59:59'
+        - deadline: TBD
+          comment: 'Paper submission: February 4, 2026 AoE; exact clock not published in CFP'
       timezone: AoE
       date: June 29 - July 3, 2026
       place: San Diego, California
