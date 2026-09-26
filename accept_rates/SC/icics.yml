@@ -2,32 +2,32 @@
   # Main-conference full and short papers; excludes workshops.
   accept_rates:
     - year: 2021
-      submitted: 182
+      submitted: 202
       accepted: 49
-      str: 26.9%(49/182 21')
-      rate: 0.2692307692307692
-      source: https://link.springer.com/book/10.1007/978-3-030-86890-1
+      str: 24.3%(49/202 21')
+      rate: 0.2425742574257426
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-86890-1/1
     - year: 2022
       submitted: 150
       accepted: 34
       str: 22.7%(34/150 22')
       rate: 0.2266666666666667
-      source: https://link.springer.com/book/10.1007/978-3-031-15777-6
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-15777-6/1
     - year: 2023
-      submitted: 181
+      submitted: 210
       accepted: 44
-      str: 24.3%(44/181 23')
-      rate: 0.2430939226519337
-      source: https://link.springer.com/book/10.1007/978-981-99-7356-9
+      str: 21.0%(44/210 23')
+      rate: 0.2095238095238095
+      source: https://link.springer.com/content/pdf/bfm:978-981-99-7356-9/1
     - year: 2024
       submitted: 123
       accepted: 32
       str: 26.0%(32/123 24')
       rate: 0.2601626016260163
-      source: https://link.springer.com/book/10.1007/978-981-97-8798-2
+      source: https://link.springer.com/content/pdf/bfm:978-981-97-8798-2/1
     - year: 2025
       submitted: 357
       accepted: 91
       str: 25.5%(91/357 25')
       rate: 0.2549019607843137
-      source: https://link.springer.com/book/10.1007/978-981-95-3540-8
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-3540-8/1
