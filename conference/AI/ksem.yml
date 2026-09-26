@@ -11,8 +11,8 @@
       id: ksem23
       link: https://www.ksem2023.conferences.academy/
       timeline:
-        - deadline: '2023-04-28 23:59:00'
-      timezone: UTC-8
+        - deadline: '2023-05-05 23:59:00'
+      timezone: AoE
       date: Aug 16-18, 2023
       place: Guangzhou, China
     - year: 2024
@@ -28,7 +28,7 @@
       link: https://ksem2025.scimeeting.cn/
       timeline:
         - deadline: '2025-03-20 23:59:59'
-      timezone: UTC+0
+      timezone: AoE
       date: August 4-6, 2025
       place: Macao SAR, China
     - year: 2026
