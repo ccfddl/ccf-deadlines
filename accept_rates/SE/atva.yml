@@ -1,0 +1,33 @@
+# Peer-reviewed conference papers, including tool/short papers; invited contributions excluded.
+- title: ATVA
+  accept_rates:
+    - year: 2021
+      submitted: 75
+      accepted: 23
+      str: 30.7%(23/75 21')
+      rate: 0.306666666666667
+      source: https://link.springer.com/book/10.1007/978-3-030-88885-5
+    - year: 2022
+      submitted: 81
+      accepted: 26
+      str: 32.1%(26/81 22')
+      rate: 0.320987654320988
+      source: https://link.springer.com/book/10.1007/978-3-031-19992-9
+    - year: 2023
+      submitted: 150
+      accepted: 37
+      str: 24.7%(37/150 23')
+      rate: 0.246666666666667
+      source: https://link.springer.com/book/10.1007/978-3-031-45329-8
+    - year: 2024
+      submitted: 73
+      accepted: 24
+      str: 32.9%(24/73 24')
+      rate: 0.328767123287671
+      source: https://link.springer.com/book/10.1007/978-3-031-78709-6
+    - year: 2025
+      submitted: 59
+      accepted: 21
+      str: 35.6%(21/59 25')
+      rate: 0.355932203389831
+      source: https://link.springer.com/book/10.1007/978-3-032-08707-2
