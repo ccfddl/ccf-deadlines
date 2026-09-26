@@ -48,8 +48,6 @@
         - abstract_deadline: '2025-01-17 23:59:00'
           deadline: '2025-01-24 23:59:00'
           comment: 'Initial semi-complete paper required; title, abstract and authors become final'
-        - deadline: '2025-01-31 23:59:00'
-          comment: 'Final PDF update deadline; requires initial submission by January 24'
       timezone: AoE
       date: June 21-25, 2025
       place: Los Angeles, California, USA
@@ -68,8 +66,6 @@
       timeline:
         - deadline: '2026-12-04 23:59:00'
           comment: 'Stage 1: initial 6-page extended abstract submission'
-        - deadline: '2027-04-16 23:59:00'
-          comment: 'Stage 2: final paper submission, only for papers invited to execute an Extension Charter'
       timezone: AoE
       date: July 6-11, 2027
       place: Athens, Greece
