@@ -21,8 +21,8 @@
       timeline:
         - deadline: '2022-01-15 23:59:59'
       timezone: AoE
-      date: January 1, 2022
-      place: Taiwan
+      date: November 8-22, 2022
+      place: Virtual
     - year: 2023
       id: cscw23
       link: https://cscw.acm.org/2023/
@@ -54,8 +54,8 @@
       id: cscw26
       link: https://cscw.acm.org/2026/
       timeline:
-        - deadline: '2025-05-13 23:59:59'
-          comment: 'MAY 2025 SUBMISSION CYCLE'
-      timezone: AoE
+        - deadline: '2025-05-14 12:00:00'
+          comment: 'MAY 2025 SUBMISSION CYCLE (12:00 EDT)'
+      timezone: UTC-4
       date: October 10-14, 2026
       place: Salt Lake City, Utah, USA
