@@ -1,0 +1,39 @@
+# Paper-selection counts from the official annual proceedings descriptions.
+- title: PKC
+  accept_rates:
+    - year: 2021
+      submitted: 156
+      accepted: 52
+      str: 33.3%(52/156 21')
+      rate: 0.333333333333333
+      source: https://link.springer.com/book/10.1007/978-3-030-75245-3
+    - year: 2022
+      submitted: 137
+      accepted: 40
+      str: 29.2%(40/137 22')
+      rate: 0.291970802919708
+      source: https://link.springer.com/book/10.1007/978-3-030-97121-2
+    - year: 2023
+      submitted: 183
+      accepted: 49
+      str: 26.8%(49/183 23')
+      rate: 0.267759562841530
+      source: https://link.springer.com/book/10.1007/978-3-031-31368-4
+    - year: 2024
+      submitted: 176
+      accepted: 54
+      str: 30.7%(54/176 24')
+      rate: 0.306818181818182
+      source: https://link.springer.com/book/10.1007/978-3-031-57718-5
+    - year: 2025
+      submitted: 199
+      accepted: 60
+      str: 30.2%(60/199 25')
+      rate: 0.301507537688442
+      source: https://link.springer.com/book/10.1007/978-3-031-91820-9
+    - year: 2026
+      submitted: 259
+      accepted: 65
+      str: 25.1%(65/259 26')
+      rate: 0.250965250965251
+      source: https://link.springer.com/book/10.1007/978-3-032-26731-3
