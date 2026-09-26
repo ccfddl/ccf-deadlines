@@ -13,8 +13,6 @@
       timeline:
         - deadline: '2023-08-28 23:59:00'
           comment: 'Proceedings Track'
-        - deadline: '2023-10-10 23:59:00'
-          comment: 'Recent Spotlight Track (non-archival)'
       timezone: AoE
       date: January 3-6, 2024
       place: Hong Kong, China
@@ -24,8 +22,6 @@
       timeline:
         - deadline: '2024-12-02 23:59:59'
           comment: 'Proceedings Track'
-        - deadline: '2025-01-12 23:59:00'
-          comment: 'Recent Spotlight Track (non-archival; extended)'
       timezone: AoE
       date: March 24-27, 2025
       place: Stanford, California, USA
@@ -35,8 +31,6 @@
       timeline:
         - deadline: '2025-12-12 23:59:59'
           comment: 'Proceedings Track'
-        - deadline: '2026-01-15 23:59:00'
-          comment: 'Recent Spotlight Track (non-archival)'
       timezone: AoE
       date: March 23-26, 2026
       place: Tübingen, Germany
