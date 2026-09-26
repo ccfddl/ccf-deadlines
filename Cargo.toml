@@ -5,8 +5,6 @@ edition = "2024"
 
 [dependencies]
 leptos = { version = "0.8.8", features = ["csr"] }
-leptos_meta = { version = "0.8" }
-leptos_router = { version = "0.8" }
 console_log = {version = "1", features = ["color"] }
 log = { version = "0.4" }
 console_error_panic_hook = { version =  "0.1" }

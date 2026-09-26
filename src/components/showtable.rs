@@ -97,6 +97,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let raw_conferences = RwSignal::new(Vec::<Conference>::new());
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
     let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
+    let acceptance_rates_requested = RwSignal::new(false);
     let base_time = RwSignal::new(None::<DateTime<Utc>>);
     let base_time_input = RwSignal::new(String::new());
     let base_time_editing = RwSignal::new(false);
@@ -187,17 +188,30 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                 }
             }
         });
+    });
 
+    Effect::new(move |_| {
+        if !show_conf_detail.get() || acceptance_rates_requested.get_untracked() {
+            return;
+        }
+        acceptance_rates_requested.set(true);
         spawn_local(async move {
             let Some(base_url) = browser_origin() else {
+                acceptance_rates_requested.set(false);
                 return;
             };
             match fetch_all_acc(&base_url).await {
                 Ok(all_acc) => {
                     let rates = build_acceptance_rate_map(all_acc);
+                    selected_conf.update(|selected| {
+                        if let Some(item) = selected {
+                            apply_acceptance_rate(item, &rates);
+                        }
+                    });
                     acceptance_rates.set(rates);
                 }
                 Err(error) => {
+                    acceptance_rates_requested.set(false);
                     console::error_1(&format!("Error loading acceptance rates: {error:?}").into());
                 }
             }
@@ -217,8 +231,8 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         let items = build_conf_items(
             conferences,
             &sub_list.get_untracked(),
-            &like_list.get(),
-            &acceptance_rates.get(),
+            &like_list.get_untracked(),
+            &acceptance_rates.get_untracked(),
             &selected_timezone.get(),
             base_time.get().unwrap_or_else(Utc::now),
         );
@@ -227,6 +241,20 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             selected_conf.set(items.iter().find(|item| item.id == selected_id).cloned());
         }
         all_conf_list.set(items);
+    });
+
+    Effect::new(move |_| {
+        let likes = like_list.get();
+        all_conf_list.update(|items| {
+            for item in items {
+                item.is_like = likes.contains(&item.id);
+            }
+        });
+        selected_conf.update(|selected| {
+            if let Some(item) = selected {
+                item.is_like = likes.contains(&item.id);
+            }
+        });
     });
 
     let paginated_list = Memo::new(move |_| {

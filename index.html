@@ -1,22 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr" data-theme="light">
 
 <head>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY374M6FJ8"></script>
+  <meta name="description" content="CCFDDL Open Deadlines helps researchers track worldwide conference deadlines through collaboration." />
+  <meta name="keywords" content="conference deadlines" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>ccf-deadlines</title>
+  <!-- Load analytics after the app's critical resources and first paint. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-RY374M6FJ8');
+    window.addEventListener('load', function () {
+      var loadAnalytics = function () {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-RY374M6FJ8';
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-RY374M6FJ8');
+      };
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(loadAnalytics, { timeout: 3000 });
+      } else {
+        window.setTimeout(loadAnalytics, 1000);
+      }
+    }, { once: true });
   </script>
 
   <!-- Add a plain CSS file: see https://trunkrs.dev/assets/#css -->
   <!-- If using Tailwind with Leptos CSR, see https://trunkrs.dev/assets/#tailwind instead-->
   <link data-trunk rel="css" href="public/styles.css" />
-  <link rel="preload" href="/conference/allconf.json" as="fetch" type="application/json" crossorigin="anonymous" />
+  <link rel="preload" href="/conference/allconf.json" as="fetch" type="application/json" crossorigin="anonymous" fetchpriority="high" />
 
   <!-- Include favicon in dist output: see https://trunkrs.dev/assets/#icon -->
   <link data-trunk rel="icon" href="public/favicon.ico" />
