@@ -13,12 +13,8 @@
       timeline:
         - deadline: '2021-10-12 23:59:59'
           comment: Submission Deadline Round 1
-        - deadline: '2022-02-11 23:59:59'
-          comment: Submission of Revisions Round 1
         - deadline: '2022-04-15 23:59:59'
           comment: Submission Deadline Round 2
-        - deadline: '2022-08-15 23:59:59'
-          comment: Submission of Revisions Round 2
       timezone: AoE
       date: November 14-19, 2022
       place: Auckland, New Zealand
@@ -28,12 +24,8 @@
       timeline:
         - deadline: '2022-10-28 23:59:59'
           comment: Submission Deadline Round 1
-        - deadline: '2023-02-24 23:59:59'
-          comment: Submission of Revisions Round 1
         - deadline: '2023-04-14 23:59:59'
           comment: Submission Deadline Round 2
-        - deadline: '2023-08-18 23:59:59'
-          comment: Submission of Revisions Round 2
       timezone: AoE
       date: October 22-27, 2023
       place: Lisbon, Portugal
@@ -54,8 +46,6 @@
       timeline:
         - deadline: '2024-10-15 07:59:59'
           comment: Submission Deadline Round 1
-        - deadline: '2025-02-04 07:59:59'
-          comment: Submission Deadline Revision R1
         - deadline: '2025-03-25 23:59:59'
           comment: Submission Deadline Round 2
       timezone: UTC-12
