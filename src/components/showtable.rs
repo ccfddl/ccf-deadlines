@@ -2024,7 +2024,7 @@ fn remaining_until_deadline(
 fn deadline_summary_label(deadline_type: i32) -> &'static str {
     match deadline_type {
         0 => "Abstract submission",
-        2 => "Rebuttal",
+        2 => "Rebuttal Submission",
         3 => "Notification",
         _ => "Paper submission",
     }
