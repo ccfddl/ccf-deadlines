@@ -1,38 +1,38 @@
 - title: ICDT
   accept_rates:
-  - year: 2021
-    submitted: 42
-    accepted: 20
-    str: 47.6%(20/42 21')
-    rate: 0.47619047619047616
-    source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol186-icdt2021/LIPIcs.ICDT.2021.0/LIPIcs.ICDT.2021.0.pdf
-  - year: 2022
-    submitted: 41
-    accepted: 16
-    str: 39.0%(16/41 22')
-    rate: 0.3902439024390244
-    source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol220-icdt2022/LIPIcs.ICDT.2022.0/LIPIcs.ICDT.2022.0.pdf
-  - year: 2023
-    submitted: 49
-    accepted: 21
-    str: 42.9%(21/49 23')
-    rate: 0.42857142857142855
-    source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol255-icdt2023/LIPIcs.ICDT.2023.0/LIPIcs.ICDT.2023.0.pdf
-  - year: 2024
-    submitted: 74
-    accepted: 22
-    str: 29.7%(22/74 24')
-    rate: 0.2972972972972973
-    source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol290-icdt2024/LIPIcs.ICDT.2024.0/LIPIcs.ICDT.2024.0.pdf
-  - year: 2025
-    submitted: 80
-    accepted: 29
-    str: 36.3%(29/80 25')
-    rate: 0.3625
-    source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol328-icdt2025/LIPIcs.ICDT.2025.0/LIPIcs.ICDT.2025.0.pdf
-  - year: 2026
-    submitted: 73
-    accepted: 20
-    str: 27.4%(20/73 26')
-    rate: 0.273972602739726
-    source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol365-icdt2026/LIPIcs.ICDT.2026.0/LIPIcs.ICDT.2026.0.pdf
+    - year: 2021
+      submitted: 42
+      accepted: 20
+      str: 47.6%(20/42 21')
+      rate: 0.47619047619047616
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol186-icdt2021/LIPIcs.ICDT.2021.0/LIPIcs.ICDT.2021.0.pdf
+    - year: 2022
+      submitted: 41
+      accepted: 16
+      str: 39.0%(16/41 22')
+      rate: 0.3902439024390244
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol220-icdt2022/LIPIcs.ICDT.2022.0/LIPIcs.ICDT.2022.0.pdf
+    - year: 2023
+      submitted: 49
+      accepted: 21
+      str: 42.9%(21/49 23')
+      rate: 0.42857142857142855
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol255-icdt2023/LIPIcs.ICDT.2023.0/LIPIcs.ICDT.2023.0.pdf
+    - year: 2024
+      submitted: 74
+      accepted: 22
+      str: 29.7%(22/74 24')
+      rate: 0.2972972972972973
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol290-icdt2024/LIPIcs.ICDT.2024.0/LIPIcs.ICDT.2024.0.pdf
+    - year: 2025
+      submitted: 80
+      accepted: 29
+      str: 36.3%(29/80 25')
+      rate: 0.3625
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol328-icdt2025/LIPIcs.ICDT.2025.0/LIPIcs.ICDT.2025.0.pdf
+    - year: 2026
+      submitted: 73
+      accepted: 20
+      str: 27.4%(20/73 26')
+      rate: 0.273972602739726
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol365-icdt2026/LIPIcs.ICDT.2026.0/LIPIcs.ICDT.2026.0.pdf
