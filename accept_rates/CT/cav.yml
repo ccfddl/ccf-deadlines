@@ -19,6 +19,14 @@
       str: 25.7%(67/261 23')
       rate: 0.256704980842912
       source: https://link.springer.com/book/10.1007/978-3-031-37706-8
+    # Original chairs' preface: 51 regular + 16 tool + 2 case-study papers / 317 received.
+    # Printed approximate 26% per-category statement does not establish an overall rate.
+    - year: 2024
+      submitted: 317
+      accepted: 69
+      str: 21.8%(69/317 24')
+      rate: 0.217665615141956
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-65633-0/1
     - year: 2025
       submitted: 305
       accepted: 79
