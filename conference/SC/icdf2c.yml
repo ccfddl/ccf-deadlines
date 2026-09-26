@@ -22,8 +22,10 @@
       id: icdf2c24
       link: https://icdf2c.eai-conferences.org/2024/
       timeline:
-        - deadline: '2024-04-30 23:59:59'
-          comment: Full Paper Submission deadline
+        - deadline: '2024-05-15 23:59:59'
+          comment: 'Full paper submission'
+        - deadline: '2024-07-25 23:59:59'
+          comment: 'Extended submission'
       timezone: UTC-12
       date: October 9-10, 2024
       place: Dubrovnik, Croatia
@@ -32,7 +34,11 @@
       link: https://icdf2c.eai-conferences.org/2025/
       timeline:
         - deadline: '2025-05-31 23:59:59'
-          comment: Full Paper Submission deadline
+          comment: 'Main track'
+        - deadline: '2025-06-25 23:59:59'
+          comment: 'Summer submission track'
+        - deadline: '2025-07-10 23:59:59'
+          comment: 'Late track'
       timezone: UTC-12
       date: November 17-19, 2025
       place: Miami, Florida, USA
@@ -41,6 +47,9 @@
       link: https://icdf2c.eai-conferences.org/2026/
       timeline:
         - deadline: '2026-01-20 23:59:59'
+          comment: 'Main track'
+        - deadline: '2026-04-25 23:59:59'
+          comment: 'Final round'
       timezone: UTC-12
       date: September 8-10, 2026
       place: Reykjavik, Iceland
