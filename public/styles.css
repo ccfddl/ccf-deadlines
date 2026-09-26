@@ -859,6 +859,15 @@ a {
   justify-content: center;
 }
 
+.conference-card-estimate {
+  margin-top: 2px;
+  color: #b87519;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
 .conference-list-place,
 .conference-list-description,
 .conference-list-note {
@@ -1057,6 +1066,11 @@ a {
   margin: 0;
   min-height: 0;
   align-items: flex-start;
+  text-align: left;
+}
+
+.conference-list--rows .conference-card-estimate {
+  font-size: 12px;
 }
 
 .conference-list--rows .countdown-display {
@@ -1314,6 +1328,12 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   white-space: nowrap;
 }
 
+.conference-detail-next-estimate {
+  color: #a86412;
+  font-size: 11px;
+  font-weight: 500;
+}
+
 .conference-detail-deadline {
   display: flex;
   align-items: flex-start;
@@ -1335,6 +1355,12 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 
 .conference-detail-deadline.is-passed {
   color: #77828d;
+}
+
+.conference-detail-deadline.is-estimated {
+  border-color: #e6c690;
+  background: #fff8eb;
+  color: #5f4a2a;
 }
 
 .conference-detail-deadline-main {
@@ -1366,6 +1392,11 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 
 .conference-detail-deadline.is-passed .conference-detail-deadline-status {
   color: #808a94;
+}
+
+.conference-detail-estimate-source {
+  color: #a86412;
+  font-size: 11px;
 }
 
 .conference-detail-tags {

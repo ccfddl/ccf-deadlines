@@ -549,6 +549,49 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             {move || {
                                 selected_conf.get().map(|conf| {
                                     let is_tbd = conf.status == "TBD";
+                                    let estimated_next_labels = conf
+                                        .estimated_deadlines
+                                        .iter()
+                                        .map(|estimate| {
+                                            let kind = if estimate.is_abstract {
+                                                "abstract"
+                                            } else {
+                                                "paper"
+                                            };
+                                            format!(
+                                                "Est. {}: {} · {}",
+                                                if kind == "abstract" {
+                                                    "Abstract"
+                                                } else {
+                                                    "Paper"
+                                                },
+                                                format_estimated_deadline_date(&estimate.deadline),
+                                                conf.timezone,
+                                            )
+                                        })
+                                        .collect::<Vec<_>>();
+                                    let estimated_details = conf
+                                        .estimated_deadlines
+                                        .iter()
+                                        .map(|estimate| {
+                                            let kind = if estimate.is_abstract {
+                                                "abstract"
+                                            } else {
+                                                "paper"
+                                            };
+                                            (
+                                                format!("Estimated {kind} submission deadline"),
+                                                format!(
+                                                    "{} · {}",
+                                                    format_estimated_deadline_date(
+                                                        &estimate.deadline,
+                                                    ),
+                                                    conf.timezone,
+                                                ),
+                                                format!("based on {}", estimate.source_year),
+                                            )
+                                        })
+                                        .collect::<Vec<_>>();
                                     let mut deadlines = conf.ddls.clone();
                                     deadlines.sort_by_key(|point| point.timepoint);
                                     let now = chrono::Utc::now();
@@ -696,6 +739,14 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                         view! { "Passed" }.into_any()
                                                     }}
                                                 </strong>
+                                                {estimated_next_labels
+                                                    .into_iter()
+                                                    .map(|label| view! {
+                                                        <small class="conference-detail-next-estimate">
+                                                            {label}
+                                                        </small>
+                                                    })
+                                                    .collect_view()}
                                             </div>
                                             <div class="conference-detail-section">
                                                 <span class="conference-detail-label">"IMPORTANT DEADLINES"</span>
@@ -709,7 +760,35 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                     </div>
                                                 })}
                                                 {deadline_cards}
-                                                {is_tbd.then(|| view! { <div class="conference-detail-deadline">"Dates to be announced"</div> })}
+                                                {is_tbd.then(|| {
+                                                    if estimated_details.is_empty() {
+                                                        view! {
+                                                            <div class="conference-detail-deadline">
+                                                                "Dates to be announced"
+                                                            </div>
+                                                        }
+                                                            .into_any()
+                                                    } else {
+                                                        estimated_details
+                                                            .into_iter()
+                                                            .map(|(label, date, source)| view! {
+                                                                <div class="conference-detail-deadline is-estimated">
+                                                                    <div class="conference-detail-deadline-main">
+                                                                        <div class="conference-detail-deadline-name">
+                                                                            {label}
+                                                                            <small>"EST."</small>
+                                                                        </div>
+                                                                        <div class="conference-detail-deadline-date">{date}</div>
+                                                                    </div>
+                                                                    <span class="conference-detail-deadline-status conference-detail-estimate-source">
+                                                                        {source}
+                                                                    </span>
+                                                                </div>
+                                                            })
+                                                            .collect_view()
+                                                            .into_any()
+                                                    }
+                                                })}
                                             </div>
                                             <div class="conference-detail-tags">
                                                 <span>{conf.displayrank.clone()}</span>
@@ -835,6 +914,38 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                             );
                                             let list_website = conf.link.clone();
                                             let list_timeline = conf.ddls.clone();
+                                            let estimated_deadline_display = conf
+                                                .estimated_deadlines
+                                                .iter()
+                                                .map(|estimate| {
+                                                    let kind = if estimate.is_abstract {
+                                                        "abstract"
+                                                    } else {
+                                                        "paper"
+                                                    };
+                                                    let date = format_estimated_deadline_date(
+                                                        &estimate.deadline,
+                                                    );
+                                                    (
+                                                        format!(
+                                                            "Est. {}: {date}",
+                                                            if kind == "abstract" {
+                                                                "Abstract"
+                                                            } else {
+                                                                "Paper"
+                                                            },
+                                                        ),
+                                                        format!(
+                                                            "Estimated from the {} deadline schedule",
+                                                            estimate.source_year,
+                                                        ),
+                                                    )
+                                                })
+                                                .collect::<Vec<_>>();
+                                            let estimated_deadline_card =
+                                                estimated_deadline_display.clone();
+                                            let estimated_deadline_list =
+                                                estimated_deadline_display.clone();
                                             view! {
                                                 <TableRow
                                                     on:click=move |_| {
@@ -1064,19 +1175,34 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                             }}
                                                                             <div class="conference-card-deadline" style="font-size: 11px; color: #606266; margin-top: 3px;">
                                                                                 {if is_tbd {
-                                                                                    view! {
-                                                                                        <span>
-                                                                                            <a
-                                                                                                href="https://github.com/ccfddl/ccf-deadlines/pulls"
-                                                                                                on:click=move |event| event.stop_propagation()
-                                                                                                style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"
-                                                                                                target="_blank"
-                                                                                            >
-                                                                                                "pull request to update"
-                                                                                            </a>
-                                                                                        </span>
+                                                                                    if estimated_deadline_card.is_empty() {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                <a
+                                                                                                    href="https://github.com/ccfddl/ccf-deadlines/pulls"
+                                                                                                    on:click=move |event| event.stop_propagation()
+                                                                                                    target="_blank"
+                                                                                                >
+                                                                                                    "pull request to update"
+                                                                                                </a>
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    } else {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                {estimated_deadline_card
+                                                                                                    .into_iter()
+                                                                                                    .map(|(label, title)| view! {
+                                                                                                        <span class="conference-card-estimate" title=title>
+                                                                                                            {label}
+                                                                                                        </span>
+                                                                                                    })
+                                                                                                    .collect_view()}
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
                                                                                     }
-                                                                                        .into_any()
                                                                                 } else {
                                                                                     view! {
                                                                                         <span>
@@ -1104,19 +1230,35 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                         view! {
                                                                             <div class="conference-list-deadline-meta">
                                                                                 {if is_tbd {
-                                                                                    view! {
-                                                                                        <span>
-                                                                                            {list_deadline_kind}": "
-                                                                                            <a
-                                                                                                href="https://github.com/ccfddl/ccf-deadlines/pulls"
-                                                                                                on:click=move |event| event.stop_propagation()
-                                                                                                target="_blank"
-                                                                                            >
-                                                                                                "pull request to update"
-                                                                                            </a>
-                                                                                        </span>
+                                                                                    if estimated_deadline_list.is_empty() {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                <a
+                                                                                                    href="https://github.com/ccfddl/ccf-deadlines/pulls"
+                                                                                                    on:click=move |event| event.stop_propagation()
+                                                                                                    target="_blank"
+                                                                                                >
+                                                                                                    "pull request to update"
+                                                                                                </a>
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    } else {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                {estimated_deadline_list
+                                                                                                    .clone()
+                                                                                                    .into_iter()
+                                                                                                    .map(|(label, title)| view! {
+                                                                                                        <span class="conference-card-estimate" title=title>
+                                                                                                            {label}
+                                                                                                        </span>
+                                                                                                    })
+                                                                                                    .collect_view()}
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
                                                                                     }
-                                                                                        .into_any()
                                                                                 } else {
                                                                                     view! {
                                                                                         <span>
@@ -1299,10 +1441,12 @@ fn build_conf_items(
                     .unwrap_or_default(),
                 acc_str: recent_acceptance_rates(&conference.title, edition.year, acceptance_rates),
                 ddls: deadlines,
+                estimated_deadlines: Vec::new(),
             };
 
             if item.deadline == "TBD" {
                 item.status = "TBD".to_string();
+                item.estimated_deadlines = estimate_deadlines(&conference, edition);
                 items.push(item);
                 continue;
             }
@@ -1323,6 +1467,62 @@ fn build_conf_items(
     }
 
     items
+}
+
+fn estimate_deadlines(conference: &Conference, edition: &ConferenceYear) -> Vec<EstimatedDeadline> {
+    let Some(previous) = conference
+        .confs
+        .iter()
+        .find(|candidate| candidate.year == edition.year - 1)
+    else {
+        return Vec::new();
+    };
+
+    let abstract_deadline = previous
+        .timeline
+        .iter()
+        .filter_map(|timeline| timeline.abstract_deadline.as_deref())
+        .filter(|deadline| *deadline != "TBD")
+        .filter_map(shift_deadline_one_year)
+        .min()
+        .map(|deadline| EstimatedDeadline {
+            deadline,
+            is_abstract: true,
+            source_year: previous.year,
+        });
+    let paper_deadline = previous
+        .timeline
+        .iter()
+        .map(|timeline| timeline.deadline.as_str())
+        .filter(|deadline| *deadline != "TBD")
+        .filter_map(shift_deadline_one_year)
+        .min()
+        .map(|deadline| EstimatedDeadline {
+            deadline,
+            is_abstract: false,
+            source_year: previous.year,
+        });
+
+    [abstract_deadline, paper_deadline]
+        .into_iter()
+        .flatten()
+        .collect()
+}
+
+fn shift_deadline_one_year(deadline: &str) -> Option<String> {
+    let (date_value, time_value) = deadline
+        .split_once(' ')
+        .map_or((deadline, None), |(date, time)| (date, Some(time)));
+    let date = NaiveDate::parse_from_str(date_value, "%Y-%m-%d").ok()?;
+    let next_year = date.year() + 1;
+    let shifted = date
+        .with_year(next_year)
+        .or_else(|| date.with_day(28)?.with_year(next_year))?;
+
+    Some(match time_value {
+        Some(time) => format!("{} {time}", shifted.format("%Y-%m-%d")),
+        None => shifted.format("%Y-%m-%d").to_string(),
+    })
 }
 
 fn build_acceptance_rate_map(all_acc: Vec<ConfAccRate>) -> AcceptanceRateMap {
@@ -1431,6 +1631,15 @@ fn display_place(place: &str) -> String {
         .filter(|segment| !segment.is_empty())
         .unwrap_or(place)
         .to_string()
+}
+
+fn format_estimated_deadline_date(deadline: &str) -> String {
+    deadline
+        .split_whitespace()
+        .next()
+        .and_then(|date| NaiveDate::parse_from_str(date, "%Y-%m-%d").ok())
+        .map(|date| date.format("%b %-d, %Y").to_string())
+        .unwrap_or_else(|| deadline.to_string())
 }
 
 fn format_deadline_display(deadline: &str, timezone: &str) -> String {
