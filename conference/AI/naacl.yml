@@ -7,19 +7,33 @@
     thcpl: B
   dblp: naacl
   confs:
+    - year: 2021
+      id: naacl21
+      link: https://2021.naacl.org/
+      timeline:
+        - deadline: '2020-11-23 23:59:00'
+      timezone: UTC-12
+      date: June 6-11, 2021
+      place: Virtual
     - year: 2022
       id: naacl22
       link: https://2022.naacl.org/
       timeline:
         - deadline: '2022-01-15 23:59:59'
+          comment: 'ARR Submission'
+        - deadline: '2022-03-06 23:59:00'
+          comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
       date: July 10-15, 2022
-      place: Washington DC, USA
+      place: Seattle, Washington, USA (Hybrid)
     - year: 2024
       id: naacl24
       link: https://2024.naacl.org/
       timeline:
         - deadline: '2023-12-15 23:59:59'
+          comment: 'ARR Submission'
+        - deadline: '2024-02-20 23:59:00'
+          comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
       date: June 16-21, 2024
       place: Mexico City, Mexico
@@ -28,6 +42,9 @@
       link: https://2025.naacl.org/
       timeline:
         - deadline: '2024-10-15 23:59:59'
+          comment: 'ARR Submission'
+        - deadline: '2024-12-16 23:59:00'
+          comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
       date: April 29-May 4, 2025
       place: Albuquerque, New Mexico, USA
