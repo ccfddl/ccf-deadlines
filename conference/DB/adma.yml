@@ -12,7 +12,7 @@
       link: https://adma2023.uqcloud.net/index.html
       timeline:
         - abstract_deadline: '2023-04-08 23:59:59'
-          deadline: '2023-04-15 23:59:59'
+          deadline: '2023-04-30 23:59:59'
       timezone: UTC-7
       date: August 21 - 23, 2023
       place: Shenyang, China
@@ -20,7 +20,10 @@
       id: adma24
       link: https://adma2024.github.io
       timeline:
-        - deadline: '2024-06-01 23:59:59'
+        - deadline: '2024-03-15 23:59:59'
+          comment: 'Early track'
+        - deadline: '2024-07-05 23:59:59'
+          comment: 'Main track'
       timezone: AoE
       date: December 3 - 5, 2024
       place: Sydney, Australia
@@ -28,7 +31,7 @@
       id: adma25
       link: https://adma2025.github.io
       timeline:
-        - deadline: '2025-05-08 23:59:59'
+        - deadline: '2025-06-05 23:59:59'
       timezone: AoE
       date: October 22 - 24, 2025
       place: Kyoto, Japan
