@@ -1,0 +1,44 @@
+- title: NETYS
+  accept_rates:
+    # Publisher-selected proceedings papers: 15 full + 2 short; initial decisions/withdrawals unquantified.
+    - year: 2021
+      submitted: 32
+      accepted: 17
+      str: 53.1%(17/32 21')
+      rate: 0.53125
+      source: https://link.springer.com/book/10.1007/978-3-030-91014-3
+    # Publisher-selected proceedings papers: 18 full + 2 short; initial decisions/withdrawals unquantified.
+    - year: 2022
+      submitted: 100
+      accepted: 20
+      str: 20.0%(20/100 22')
+      rate: 0.2
+      source: https://link.springer.com/book/10.1007/978-3-031-17436-0
+    # Publisher-selected proceedings papers: 9 full + 3 short; initial decisions/withdrawals unquantified.
+    - year: 2023
+      submitted: 31
+      accepted: 12
+      str: 38.7%(12/31 23')
+      rate: 0.3870967741935484
+      source: https://link.springer.com/book/10.1007/978-3-031-37765-5
+    # Publisher-selected proceedings papers: 14 full + 3 short; initial decisions/withdrawals unquantified.
+    - year: 2024
+      submitted: 42
+      accepted: 17
+      str: 40.5%(17/42 24')
+      rate: 0.40476190476190477
+      source: https://link.springer.com/book/10.1007/978-3-031-67321-4
+    # Publisher-selected proceedings papers: 16 full + 1 short; initial decisions/withdrawals unquantified.
+    - year: 2025
+      submitted: 45
+      accepted: 17
+      str: 37.8%(17/45 25')
+      rate: 0.37777777777777777
+      source: https://link.springer.com/book/10.1007/978-3-032-00347-8
+    # Publisher prepublication selection: 14 full + 1 short; book due 2026-10-28, final publication unverified.
+    - year: 2026
+      submitted: 38
+      accepted: 15
+      str: 39.5%(15/38 26')
+      rate: 0.39473684210526316
+      source: https://link.springer.com/book/9783032331250
