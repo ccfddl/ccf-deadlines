@@ -35,7 +35,8 @@
       id: wsdm25
       link: https://www.wsdm-conference.org/2025/
       timeline:
-        - deadline: '2024-08-14 23:59:59'
+        - abstract_deadline: '2024-08-09 23:59:59'
+          deadline: '2024-08-14 23:59:59'
       timezone: UTC-12
       date: March 10 - March 14, 2025
       place: Hannover, Germany
