@@ -11,7 +11,7 @@
       id: stoc21
       link: http://acm-stoc.org/stoc2021/
       timeline:
-        - deadline: '2020-11-06 11:59:59'
+        - deadline: '2020-11-06 23:59:59'
       timezone: UTC-5
       date: June 21-25, 2021
       place: Virtual
@@ -29,7 +29,7 @@
       timeline:
         - deadline: '2025-11-04 16:59:59'
       timezone: UTC-5
-      date: June 22-26, 2026
+      date: June 22-27, 2026
       place: Salt Lake City, Utah, USA
     - year: 2027
       id: stoc27
