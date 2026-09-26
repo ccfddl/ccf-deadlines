@@ -1,0 +1,11 @@
+- title: CF
+  accept_rates:
+    # ACM SIGMICRO FY23 report quotes CF 2022 PC chairs: 18 full + 6 short / 68 submissions.
+    # Excludes 1 main-pool poster and 10 separately selected posters; not a full-paper-only rate.
+    # Withdrawal/desk exclusions unknown; source excerpt read, PDF page not independently retrieved.
+    - year: 2022
+      submitted: 68
+      accepted: 24
+      str: 35.3%(24/68 22')
+      rate: 0.35294117647058826
+      source: https://www.acm.org/binaries/content/assets/about/annual-reports/appendix-d-fy23-sgb-annual-report-.pdf
