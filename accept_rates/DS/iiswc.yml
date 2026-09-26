@@ -1,0 +1,10 @@
+- title: IISWC
+  accept_rates:
+    # Main-paper HotCRP: regular plus tool/benchmark papers; separate poster/short-paper/PhD forum portal excluded.
+    # Accepted decisions / submissions as publicly reported; desk/withdrawal treatment unspecified, not final publication counts.
+    - year: 2025
+      submitted: 91
+      accepted: 38
+      str: 41.8%(38/91 25')
+      rate: 0.417582417582418
+      source: https://iiswc2025.hotcrp.com/
