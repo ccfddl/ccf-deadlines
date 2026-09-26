@@ -7,6 +7,15 @@
     thcpl: A
   dblp: cvpr
   confs:
+    - year: 2021
+      id: cvpr21
+      link: https://cvpr2021.thecvf.com/
+      timeline:
+        - abstract_deadline: '2020-11-09 23:59:00'
+          deadline: '2020-11-16 23:59:00'
+      timezone: UTC-8
+      date: June 19-25, 2021
+      place: Virtual
     - year: 2022
       id: cvpr22
       link: http://cvpr2022.thecvf.com/
@@ -18,17 +27,21 @@
       place: New Orleans, Louisiana
     - year: 2023
       id: cvpr23
-      link: http://cvpr2023.thecvf.com/
+      link: https://cvpr.thecvf.com/Conferences/2023
       timeline:
-        - deadline: '2022-11-11 23:59:59'
+        - abstract_deadline: '2022-11-04 22:59:00'
+          deadline: '2022-11-11 23:59:59'
+          comment: 'Registration: November 4, 23:59 Pacific (PDT, UTC-7), converted to UTC-8'
       timezone: UTC-8
-      date: June 17-23, 2023
+      date: June 18-22, 2023
       place: Vancouver, Canada
     - year: 2024
       id: cvpr24
       link: https://cvpr.thecvf.com/Conferences/2024
       timeline:
-        - deadline: '2023-11-17 23:59:59'
+        - abstract_deadline: '2023-11-03 22:59:00'
+          deadline: '2023-11-17 23:59:59'
+          comment: 'Registration: November 3, 23:59 Pacific (PDT, UTC-7), converted to UTC-8'
       timezone: UTC-8
       date: June 17-21, 2024
       place: Seattle, USA
@@ -39,7 +52,7 @@
         - abstract_deadline: '2024-11-07 23:59:00'
           deadline: '2024-11-14 23:59:00'
       timezone: UTC-8
-      date: June 10-17, 2025
+      date: June 11-15, 2025
       place: Nashville, Tennessee, USA
     - year: 2026
       id: cvpr26
