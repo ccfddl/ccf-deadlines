@@ -1,5 +1,12 @@
 - title: ISIT
   accept_rates:
+    # ITSoc organizing guidelines, Table 6 (PDF p10), exact historical paper counts.
+    - year: 2022
+      submitted: 822
+      accepted: 566
+      rate: 0.6885644768856448
+      str: "68.9%(566/822 22')"
+      source: https://www.itsoc.org/sites/default/files/2026-01/Short_Conf_Document.pdf
     # Includes in-person 397/619 and virtual 66/98; excludes invited talks and tutorials.
     - year: 2023
       submitted: 717
