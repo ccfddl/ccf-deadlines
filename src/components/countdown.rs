@@ -46,7 +46,11 @@ where
 }
 
 #[component]
-pub fn CountDown(remain: u64, #[prop(default = false)] detailed: bool) -> impl IntoView {
+pub fn CountDown(
+    remain: u64,
+    #[prop(default = false)] detailed: bool,
+    #[prop(default = false)] legacy: bool,
+) -> impl IntoView {
     let remaining_time = RwSignal::new(remain / 1000);
 
     use_interval(1000, move || {
@@ -72,7 +76,22 @@ pub fn CountDown(remain: u64, #[prop(default = false)] detailed: bool) -> impl I
 
     view! {
         <span class=urgency_class>
-            {if detailed {
+            {if legacy {
+                view! {
+                    <span class="countdown-legacy-value">
+                        {move || {
+                            let (days, hours, minutes) = display_time();
+                            let seconds = remaining_time.get() % 60;
+                            let day_label = if days == 1 { "day" } else { "days" };
+                            format!(
+                                "{:02} {} {:02} h {:02} m {:02} s",
+                                days, day_label, hours, minutes, seconds,
+                            )
+                        }}
+                    </span>
+                }
+                    .into_any()
+            } else if detailed {
                 view! {
                     <span class="countdown-detailed-value">
                         {move || {

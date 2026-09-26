@@ -1,6 +1,8 @@
 use chrono::prelude::*;
 use gloo_net::http::Request;
+use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
+use web_sys::RequestCache;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Conference {
@@ -28,7 +30,19 @@ pub struct ConferenceYear {
     pub timezone: String,
     pub date: String,
     pub place: String,
-    pub acc_str: Option<String>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct ConfAccRate {
+    pub title: String,
+    pub accept_rates: Vec<AccYear>,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct AccYear {
+    pub year: i32,
+    #[serde(rename = "str", alias = "srt")]
+    pub label: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
@@ -79,21 +93,45 @@ pub struct ConfItem {
     pub ddls: Vec<TimePoint>,
 }
 
-pub async fn fetch_all_conf(
-    base_url: &str,
-    archived: bool,
-) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
-    let filename = if archived {
-        "allconf_archive.json"
-    } else {
-        "allconf.json"
-    };
-    let url = format!("{base_url}/conference/{filename}");
-    Ok(Request::get(&url)
-        .send()
-        .await?
-        .json::<Vec<Conference>>()
-        .await?)
+pub async fn fetch_all_conf(base_url: &str) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
+    let url = format!("{base_url}/conference/allconf.json");
+    fetch_json_with_cache_recovery(&url).await
+}
+
+pub async fn fetch_all_acc(base_url: &str) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
+    let url = format!("{base_url}/conference/allacc.json");
+    fetch_json_with_cache_recovery(&url).await
+}
+
+async fn fetch_json_with_cache_recovery<T: DeserializeOwned>(
+    url: &str,
+) -> Result<T, Box<dyn std::error::Error>> {
+    match fetch_json(url, false).await {
+        Ok(data) => Ok(data),
+        Err(_) => fetch_json(url, true).await,
+    }
+}
+
+async fn fetch_json<T: DeserializeOwned>(
+    url: &str,
+    reload: bool,
+) -> Result<T, Box<dyn std::error::Error>> {
+    let mut request = Request::get(url);
+    if reload {
+        request = request.cache(RequestCache::Reload);
+    }
+
+    let response = request.send().await?;
+    if !response.ok() {
+        return Err(std::io::Error::other(format!(
+            "request for {url} returned HTTP {}",
+            response.status()
+        ))
+        .into());
+    }
+
+    let body = response.text().await?;
+    Ok(serde_json::from_str(&body)?)
 }
 
 pub fn get_categories() -> Vec<Category> {
