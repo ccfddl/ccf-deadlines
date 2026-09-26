@@ -1,0 +1,32 @@
+- title: SOUPS
+  accept_rates:
+    - year: 2021
+      submitted: 136
+      accepted: 36
+      str: 26.5%(36/136 21')
+      rate: 0.264705882352941
+      source: https://www.usenix.org/sites/default/files/soups2021_message.pdf
+    - year: 2022
+      submitted: 133
+      accepted: 37
+      str: 27.8%(37/133 22')
+      rate: 0.278195488721804
+      source: https://www.usenix.org/sites/default/files/soups2022-message.pdf
+    - year: 2023
+      submitted: 147
+      accepted: 33
+      str: 22.4%(33/147 23')
+      rate: 0.224489795918367
+      source: https://www.usenix.org/sites/default/files/soups2023-message.pdf
+    - year: 2024
+      submitted: 156
+      accepted: 33
+      str: 21.2%(33/156 24')
+      rate: 0.211538461538462
+      source: https://www.usenix.org/sites/default/files/soups2024-message.pdf
+    - year: 2025
+      submitted: 157
+      accepted: 30
+      str: 19.1%(30/157 25')
+      rate: 0.191082802547771
+      source: https://www.usenix.org/sites/default/files/soups2025_message.pdf
