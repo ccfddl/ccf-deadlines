@@ -19,7 +19,8 @@
       id: rv26
       link: https://rv2026.smithengineering.queensu.ca/
       timeline:
-        - deadline: '2026-05-31 23:59:59'
+        - deadline: TBD
+          comment: 'Extended paper submission: June 16, 2026 (AoE); exact time TBD.'
       timezone: AoE
       date: October 6-9, 2026
       place: Kingston, Canada
