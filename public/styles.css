@@ -1514,9 +1514,28 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   display: none;
 }
 
-.conference-detail-timeline .line_time .reference,
+.conference-detail-timeline .line_time .reference {
+  display: none;
+}
+
 .conference-detail-timeline .line_time .dot_all,
 .conference-detail-timeline .line_time .square_all {
+  display: block;
+  top: -3px;
+  width: 9px;
+  height: 9px;
+  margin-left: -4px;
+  border-color: #6f9fca;
+  background: #fffefa;
+  z-index: 2;
+}
+
+.conference-detail-timeline .line_time .square_all {
+  border-radius: 2px;
+}
+
+.conference-detail-timeline .line_time .dot_all em,
+.conference-detail-timeline .line_time .square_all em {
   display: none;
 }
 
