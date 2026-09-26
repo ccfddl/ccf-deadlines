@@ -483,6 +483,14 @@ a {
   background: transparent;
 }
 
+.conference-list-hint {
+  margin: -2px 0 10px;
+  color: var(--color-text-muted);
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: right;
+}
+
 .conference-list table,
 .conference-list tbody {
   display: block;
@@ -1480,6 +1488,10 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .conference-list tbody {
     grid-template-columns: minmax(0, 1fr);
     gap: 12px;
+  }
+
+  .conference-list-hint {
+    text-align: left;
   }
 
   .home {
