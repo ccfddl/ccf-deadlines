@@ -30,8 +30,6 @@
           comment: first round
         - deadline: '2024-05-01 23:59:59'
           comment: second round
-        - deadline: '2024-08-01 23:59:59'
-          comment: third round (only for revised paper)
         - deadline: '2024-11-01 23:59:59'
           comment: fourth round
       timezone: AoE
@@ -45,8 +43,6 @@
           comment: first round
         - deadline: '2025-05-01 23:59:59'
           comment: second round
-        - deadline: '2025-08-01 23:59:59'
-          comment: third round (only for resubmissions after major revisions)
         - deadline: '2025-11-01 23:59:59'
           comment: fourth round
       timezone: AoE
@@ -60,8 +56,6 @@
           comment: first round
         - deadline: '2026-05-01 23:59:59'
           comment: second round
-        - deadline: '2026-08-01 23:59:59'
-          comment: third round (only for resubmissions after major revisions)
         - deadline: '2026-11-01 23:59:59'
           comment: fourth round
       timezone: AoE
