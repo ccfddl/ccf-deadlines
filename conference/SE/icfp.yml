@@ -11,10 +11,8 @@
       id: icfp22
       link: https://icfp22.sigplan.org/
       timeline:
-        - deadline: '2021-03-02 23:59:59'
-          comment: Submission Deadline
-        - deadline: '2021-06-16 23:59:59'
-          comment: Submission of revised papers
+        - deadline: 'TBD'
+          comment: 'Regular paper submission: March 2, 2022 AoE; exact cutoff time unverified'
       timezone: AoE
       date: September 11-16, 2022
       place: Ljubljana, Slovenia
@@ -24,8 +22,6 @@
       timeline:
         - deadline: '2025-02-27 23:59:59'
           comment: Submission Deadline
-        - deadline: '2025-06-12 23:59:59'
-          comment: Submission of revised papers
       timezone: AoE
       date: October 12-18, 2025
       place: Singapore
