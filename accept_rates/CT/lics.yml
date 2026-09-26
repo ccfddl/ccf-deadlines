@@ -6,3 +6,10 @@
       str: 34.8%(63/181 22')
       rate: 0.348066298342541
       source: https://github.com/emeryberger/csconferences
+    # Original chairs preface PDF page 11. All 293 received, including 7 desk-rejected papers.
+    - year: 2026
+      submitted: 293
+      accepted: 82
+      str: 28.0%(82/293 26')
+      rate: 0.27986348122866894
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol380-lics2026/LIPIcs.LICS.2026.0/LIPIcs.LICS.2026.0.pdf
