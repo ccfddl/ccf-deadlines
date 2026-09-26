@@ -1482,6 +1482,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             type="datetime-local"
                             step="1"
                             tabindex="-1"
+                            lang=move || if use_english.get() { "en" } else { "zh-CN" }
                             prop:value=move || base_time_input.get()
                             aria-label=move || if use_english.get() {
                                 "Set countdown base time"
