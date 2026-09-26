@@ -241,6 +241,8 @@ a {
   margin-top: 3px;
     color: var(--color-text-secondary);
     display: inline-block;
+  /* Keep the tagline and the disclaimer on separate lines even when the (shorter) Chinese text would fit on one. */
+  width: 100%;
   line-height: 1.25;
 }
 

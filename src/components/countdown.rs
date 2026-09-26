@@ -48,6 +48,7 @@ where
 #[component]
 pub fn CountDown(
     remain: u64,
+    use_english: RwSignal<bool>,
     #[prop(default = false)] detailed: bool,
     #[prop(default = false)] legacy: bool,
     #[prop(default = true)] running: bool,
@@ -64,17 +65,6 @@ pub fn CountDown(
         }
     });
 
-    let display_time = move || {
-        let mut secs = remaining_time.get();
-        let days = secs / (24 * 3600);
-        secs %= 24 * 3600;
-        let hours = secs / 3600;
-        secs %= 3600;
-        let minutes = secs / 60;
-
-        (days, hours, minutes)
-    };
-
     let urgency_class = move || urgency_class_for(remaining_time.get());
 
     view! {
@@ -82,46 +72,145 @@ pub fn CountDown(
             {if legacy {
                 view! {
                     <span class="countdown-legacy-value">
-                        {move || {
-                            let (days, hours, minutes) = display_time();
-                            let seconds = remaining_time.get() % 60;
-                            let day_label = if days == 1 { "day" } else { "days" };
-                            format!(
-                                "{:02} {} {:02} h {:02} m {:02} s",
-                                days, day_label, hours, minutes, seconds,
-                            )
-                        }}
+                        {move || format_legacy_countdown(remaining_time.get(), use_english.get())}
                     </span>
                 }
                     .into_any()
             } else if detailed {
                 view! {
                     <span class="countdown-detailed-value">
-                        {move || {
-                            let (days, hours, minutes) = display_time();
-                            format!("{}d {:02}h {:02}m {:02}s", days, hours, minutes, remaining_time.get() % 60)
-                        }}
+                        {move || format_detailed_countdown(remaining_time.get(), use_english.get())}
                     </span>
                 }.into_any()
             } else {
                 view! {
                     <span class="countdown-value">
-                        {move || {
-                            let (days, hours, minutes) = display_time();
-                            if days > 0 {
-                                format!("in {}d {}h", days, hours)
-                            } else if hours > 0 {
-                                format!("in {:02}h {:02}m", hours, minutes)
-                            } else if minutes > 0 {
-                                let seconds = remaining_time.get() % 60;
-                                format!("in {:02}m {:02}s", minutes, seconds)
-                            } else {
-                                format!("in {}s", remaining_time.get() % 60)
-                            }
-                        }}
+                        {move || format_compact_countdown(remaining_time.get(), use_english.get())}
                     </span>
                 }.into_any()
             }}
         </span>
+    }
+}
+
+/// Splits a number of seconds into (days, hours, minutes, seconds).
+fn split_duration(total_secs: u64) -> (u64, u64, u64, u64) {
+    (
+        total_secs / 86400,
+        total_secs % 86400 / 3600,
+        total_secs % 3600 / 60,
+        total_secs % 60,
+    )
+}
+
+/// Short countdown shown on conference cards, e.g. "in 3d 19h" / "还剩 3天19小时".
+pub fn format_compact_countdown(total_secs: u64, english: bool) -> String {
+    let (days, hours, minutes, seconds) = split_duration(total_secs);
+    if english {
+        if days > 0 {
+            format!("in {}d {}h", days, hours)
+        } else if hours > 0 {
+            format!("in {:02}h {:02}m", hours, minutes)
+        } else if minutes > 0 {
+            format!("in {:02}m {:02}s", minutes, seconds)
+        } else {
+            format!("in {}s", seconds)
+        }
+    } else if days > 0 {
+        format!("还剩 {}天{}小时", days, hours)
+    } else if hours > 0 {
+        format!("还剩 {}小时{:02}分", hours, minutes)
+    } else if minutes > 0 {
+        format!("还剩 {}分{:02}秒", minutes, seconds)
+    } else {
+        format!("还剩 {}秒", seconds)
+    }
+}
+
+/// Full countdown shown in the conference detail dialog.
+pub fn format_detailed_countdown(total_secs: u64, english: bool) -> String {
+    let (days, hours, minutes, seconds) = split_duration(total_secs);
+    if english {
+        format!("{}d {:02}h {:02}m {:02}s", days, hours, minutes, seconds)
+    } else {
+        format!(
+            "{}天 {:02}时 {:02}分 {:02}秒",
+            days, hours, minutes, seconds
+        )
+    }
+}
+
+/// Countdown used by the legacy list view (UI 1.0).
+pub fn format_legacy_countdown(total_secs: u64, english: bool) -> String {
+    let (days, hours, minutes, seconds) = split_duration(total_secs);
+    if english {
+        let day_label = if days == 1 { "day" } else { "days" };
+        format!(
+            "{:02} {} {:02} h {:02} m {:02} s",
+            days, day_label, hours, minutes, seconds,
+        )
+    } else {
+        format!(
+            "{:02}天 {:02}时 {:02}分 {:02}秒",
+            days, hours, minutes, seconds
+        )
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const DAY: u64 = 86400;
+
+    #[test]
+    fn english_countdowns_keep_their_format() {
+        assert_eq!(
+            format_compact_countdown(3 * DAY + 19 * 3600, true),
+            "in 3d 19h"
+        );
+        assert_eq!(
+            format_compact_countdown(5 * 3600 + 7 * 60, true),
+            "in 05h 07m"
+        );
+        assert_eq!(format_compact_countdown(12 * 60 + 5, true), "in 12m 05s");
+        assert_eq!(format_compact_countdown(42, true), "in 42s");
+        assert_eq!(
+            format_detailed_countdown(2 * DAY + 3723, true),
+            "2d 01h 02m 03s"
+        );
+        assert_eq!(
+            format_legacy_countdown(DAY + 3723, true),
+            "01 day 01 h 02 m 03 s"
+        );
+        assert_eq!(
+            format_legacy_countdown(2 * DAY, true),
+            "02 days 00 h 00 m 00 s"
+        );
+    }
+
+    #[test]
+    fn chinese_countdowns_use_chinese_units() {
+        assert_eq!(
+            format_compact_countdown(3 * DAY + 19 * 3600, false),
+            "还剩 3天19小时"
+        );
+        assert_eq!(
+            format_compact_countdown(5 * 3600 + 7 * 60, false),
+            "还剩 5小时07分"
+        );
+        assert_eq!(
+            format_compact_countdown(12 * 60 + 5, false),
+            "还剩 12分05秒"
+        );
+        assert_eq!(format_compact_countdown(42, false), "还剩 42秒");
+        assert_eq!(
+            format_detailed_countdown(2 * DAY + 3723, false),
+            "2天 01时 02分 03秒"
+        );
+        assert_eq!(
+            format_legacy_countdown(DAY + 3723, false),
+            "01天 01时 02分 03秒"
+        );
     }
 }

@@ -6,6 +6,7 @@ use leptos::prelude::*;
 pub fn TimeLine(
     time_points: Vec<TimePoint>,
     reference_time: DateTime<Utc>,
+    use_english: RwSignal<bool>,
     #[prop(default = false)] custom_reference: bool,
 ) -> impl IntoView {
     let has_custom_reference = custom_reference;
@@ -65,12 +66,16 @@ pub fn TimeLine(
             format!("{}", value.format("%m/%d"))
         };
 
-    let format_backup_type = |backup_type: i32| -> &'static str {
-        match backup_type {
-            0 => "Registration:",
-            1 => "Submission:",
-            2 => "Rebuttal Submission:",
-            3 => "Final Decisions:",
+    let format_backup_type = |backup_type: i32, english: bool| -> &'static str {
+        match (backup_type, english) {
+            (0, true) => "Registration:",
+            (1, true) => "Submission:",
+            (2, true) => "Rebuttal Submission:",
+            (3, true) => "Final Decisions:",
+            (0, false) => "摘要截止：",
+            (1, false) => "论文截止：",
+            (2, false) => "Rebuttal 截止：",
+            (3, false) => "录用通知：",
             _ => "",
         }
     };
@@ -357,7 +362,8 @@ pub fn TimeLine(
                                         index,
                                     );
                                     let text_style = get_backup_text_style(index);
-                                    let type_label = format_backup_type(backup_point.r#type);
+                                    let type_label =
+                                        format_backup_type(backup_point.r#type, use_english.get());
                                     let time_label = format_time_label(
                                         &backup_point.timepoint,
                                         false,
@@ -376,10 +382,20 @@ pub fn TimeLine(
                         <div
                             class=move || format!("dot sel_dot {}", sel_dot_class.get())
                             style=move || sel_dot_style.get()
-                            data-label=if has_custom_reference { "BASE" } else { "NOW" }
+                            data-label=move || match (has_custom_reference, use_english.get()) {
+                                (true, true) => "BASE",
+                                (false, true) => "NOW",
+                                (true, false) => "基准",
+                                (false, false) => "现在",
+                            }
                         >
                             <em>
-                                {if has_custom_reference { "Base: " } else { "Now: " }}
+                                {move || match (has_custom_reference, use_english.get()) {
+                                    (true, true) => "Base: ",
+                                    (false, true) => "Now: ",
+                                    (true, false) => "基准：",
+                                    (false, false) => "当前：",
+                                }}
                                 {move || sel_time.get()}
                             </em>
                         </div>
