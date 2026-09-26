@@ -11,7 +11,8 @@
       id: icccn26
       link: http://www.icccn.org/ICCCN26/
       timeline:
-        - deadline: '2026-02-13 23:59:59'
+        - abstract_deadline: '2026-03-07 23:59:59'
+          deadline: '2026-03-13 23:59:59'
       timezone: UTC-10
       date: July 27-30, 2026
       place: Honolulu, Hawaii, USA
