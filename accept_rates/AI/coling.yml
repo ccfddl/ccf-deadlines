@@ -1,5 +1,6 @@
 - title: COLING
-  # Main-conference long and short papers, excluding industry, demos and workshops.
+  # Main regular papers; 2024 joint LREC-COLING includes position papers.
+  # Excludes industry, demos and workshops.
   # Received-paper denominators, not the smaller reviewed-only subsets.
   accept_rates:
     - year: 2022
@@ -9,6 +10,13 @@
       str: 28.1%(632/2253 22')
       rate: 0.2805148690634710
       source: https://aclanthology.org/2022.coling-1.0.pdf
+    - year: 2024
+      # 1208 long + 15 position + 333 short; all 3471 received, not 2959 reviewed.
+      submitted: 3471
+      accepted: 1556
+      str: 44.8%(1556/3471 24')
+      rate: 0.4482857966004034
+      source: https://iris.unife.it/retrieve/4b9c00a1-45e3-448b-87b5-17a85e8470e1/2561851.pdf
     - year: 2025
       # 2530 direct submissions + 193 ARR commitments; 690 + 70 acceptances.
       submitted: 2723
