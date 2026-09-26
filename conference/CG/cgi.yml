@@ -19,7 +19,7 @@
       id: cgi25
       link: https://www.cgs-network.org/cgi25/
       timeline:
-        - deadline: '2025-02-18 23:59:00'
+        - deadline: '2025-02-20 23:59:00'
       timezone: UTC
       date: July 14-18, 2025
       place: Hong Kong, China
@@ -29,7 +29,7 @@
       timeline:
         - deadline: '2026-03-12 23:59:00'
           comment: 'First Track: Call for papers with final publication in The Visual Computer Journal'
-        - deadline: '2026-04-20 23:59:00'
+        - deadline: '2026-04-30 23:59:00'
           comment: 'Second Track: Call for papers with final publication in LNCS Book published by Springer or in The Visual Computer journal or Computer Animation and Virtual Worlds Journal'
       timezone: UTC
       date: July 06-10, 2026
