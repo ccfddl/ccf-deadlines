@@ -9,15 +9,15 @@
   confs:
     - year: 2022
       id: icra22
-      link: https://www.icra2022.org/
+      link: https://ewh.ieee.org/soc/ras/conf/fullysponsored/icra/2022/icra2022.org/
       timeline:
-        - deadline: '2021-09-15 02:59:00'
-      timezone: UTC-8
+        - deadline: '2021-09-15 23:59:00'
+      timezone: UTC-7
       date: May 23-27, 2022
       place: Philadelphia (PA), USA
     - year: 2023
       id: icra23
-      link: https://www.icra2023.org/
+      link: https://ewh.ieee.org/soc/ras/conf/fullysponsored/icra/ICRA%202023/www.icra2023.org/
       timeline:
         - deadline: '2022-09-15 23:59:59'
       timezone: UTC-8
@@ -36,7 +36,8 @@
       link: https://2025.ieee-icra.org
       timeline:
         - deadline: '2024-09-16 23:59:59'
-      timezone: UTC-7
+          comment: Extended deadline; the official announcement explicitly specifies PST (UTC-8)
+      timezone: UTC-8
       date: May 19-23, 2025
       place: Atlanta (GA), USA
     - year: 2026
