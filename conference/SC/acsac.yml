@@ -34,7 +34,7 @@
       place: Austin, Texas, USA
     - year: 2024
       id: acsac24
-      link: https://www.acsac.org/
+      link: https://www.acsac.org/2024/
       timeline:
         - deadline: '2024-05-28 23:59:59'
       timezone: UTC-12
@@ -42,7 +42,7 @@
       place: Waikiki, Hawaii, USA
     - year: 2025
       id: acsac25
-      link: https://www.acsac.org/
+      link: https://www.acsac.org/2025/
       timeline:
         - deadline: '2025-05-30 23:59:59'
       timezone: UTC-12
@@ -50,7 +50,7 @@
       place: Honolulu, Hawaii, USA
     - year: 2026
       id: acsac26
-      link: https://www.acsac.org/
+      link: https://www.acsac.org/2026/
       timeline:
         - deadline: '2026-05-26 23:59:59'
       timezone: UTC-12
