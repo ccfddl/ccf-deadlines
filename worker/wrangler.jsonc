@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ccfddl-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-26",
+  "routes": [
+    {
+      "pattern": "ccfddl.com/api/*",
+      "zone_name": "ccfddl.com"
+    }
+  ],
+  "vars": {
+    "PUBLIC_ORIGIN": "https://ccfddl.com"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ccfddl",
+      "database_id": "bd7f9241-7c08-4b9a-bfd8-f2687b31d929",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

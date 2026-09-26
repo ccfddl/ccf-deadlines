@@ -4,7 +4,9 @@ use serde::{Deserialize, Serialize};
 use std::time::Duration;
 use wasm_bindgen_futures::spawn_local;
 
+use crate::components::favorites::{FavoritesContext, start_github_login};
 use crate::components::gitbutton::GitButton;
+use thaw::Icon;
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 struct CommitData {
@@ -17,7 +19,8 @@ struct CommitInfo {
 }
 
 #[component]
-pub fn Header() -> impl IntoView {
+pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
+    let favorites = expect_context::<FavoritesContext>();
     let (show_latest_conf, set_show_latest_conf) = signal(false);
     let (show_str, set_show_str) = signal(String::new());
 
@@ -64,6 +67,50 @@ pub fn Header() -> impl IntoView {
                             }
                         })
                 }}
+                <div class="header-auth">
+                    {move || {
+                        if let Some(user) = favorites.user.get() {
+                            view! {
+                                <a
+                                    class="github-user-link"
+                                    href=user.profile_url
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title="View GitHub profile"
+                                >
+                                    <img src=user.avatar_url alt="" aria-hidden="true" />
+                                    <span>{format!("@{}", user.login)}</span>
+                                </a>
+                                <button
+                                    type="button"
+                                    class="github-logout-button"
+                                    on:click=move |_| favorites.logout()
+                                >
+                                    {move || if use_english.get() { "Sign out" } else { "退出" }}
+                                </button>
+                            }
+                                .into_any()
+                        } else {
+                            view! {
+                                <button
+                                    type="button"
+                                    class="github-login-button"
+                                    on:click=move |_| start_github_login()
+                                >
+                                    <Icon icon=icondata::BsGithub />
+                                    <span>
+                                        {move || if use_english.get() {
+                                            "Sign in with GitHub"
+                                        } else {
+                                            "使用 GitHub 登录"
+                                        }}
+                                    </span>
+                                </button>
+                            }
+                                .into_any()
+                        }
+                    }}
+                </div>
             </div>
             <div class="el-row subtitle">
                 "Worldwide Conference Deadline Countdowns. To add/edit a conference,\u{00a0}"

@@ -1,6 +1,7 @@
 pub mod checkbox_button;
 pub mod conf;
 pub mod countdown;
+pub mod favorites;
 pub mod gitbutton;
 pub mod header;
 pub mod showtable;

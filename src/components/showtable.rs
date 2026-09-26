@@ -2,6 +2,7 @@ use crate::components::checkbox_button::*;
 use crate::components::conf::ConfItem;
 use crate::components::conf::*;
 use crate::components::countdown::{CountDown, urgency_class_for, use_interval};
+use crate::components::favorites::FavoritesContext;
 use crate::components::subscription_modal::*;
 use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
@@ -19,6 +20,7 @@ use web_sys::{console, window};
 
 #[component]
 pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
+    let favorites = expect_context::<FavoritesContext>();
     // mobile
     let is_mobile = RwSignal::new(is_narrow_viewport());
     let show_filters = RwSignal::new(false);
@@ -72,11 +74,8 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let thcpl_rank_list = RwSignal::new(cached_thcpl_rank_list);
     let open_dropdown = RwSignal::new(None::<String>);
 
-    // liked
-    let cached_like_list: HashSet<String> = get_from_local_storage("likes")
-        .and_then(|data| serde_json::from_str(&data).ok())
-        .unwrap_or_else(|| HashSet::new());
-    let like_list = RwSignal::new(cached_like_list);
+    // Favorites are account-scoped and loaded from the Cloudflare D1 API.
+    let like_list = favorites.starred;
 
     let show_subscription_modal = RwSignal::new(false);
     let show_conf_detail = RwSignal::new(false);
@@ -155,10 +154,6 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             set_in_local_storage("language_preference", if english { "en" } else { "zh" });
         }
         english
-    });
-
-    Effect::new(move |_| {
-        set_in_local_storage("likes", &serde_json::to_string(&like_list.get()).unwrap());
     });
 
     Effect::new(move |_| {
@@ -869,7 +864,22 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                         .collect_view();
                                     view! {
                                         <DialogTitle class="conference-detail-title">
-                                            {conf.title.clone()} " " {conf.year}
+                                            <span class="conference-detail-title-text">
+                                                {conf.title.clone()} " " {conf.year}
+                                            </span>
+                                            {
+                                                let conference_key = conf.id.clone();
+                                                view! {
+                                                    <span
+                                                        class="conference-detail-star-count"
+                                                        title="GitHub user favorites"
+                                                        aria-label="GitHub user favorites"
+                                                    >
+                                                        <Icon icon=icondata::BsStarFill />
+                                                        <span>{move || favorites.count(&conference_key)}</span>
+                                                    </span>
+                                                }
+                                            }
                                         </DialogTitle>
                                         <button
                                             type="button"
@@ -1180,65 +1190,46 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                     >
                                                                         <Icon icon=icondata::FiExternalLink />
                                                                     </a>
-                                                                    {move || {
-                                                                        let conf_title = conf.title.clone();
-                                                                        let conf_year = conf.year.clone();
-                                                                        let current_like = conf.is_like;
-                                                                        if !current_like {
-                                                                            view! {
-                                                                             <div
-                                                                                     class="conference-like-toggle"
-                                                                                     style="display: inline; cursor: pointer; transition: transform 0.15s ease;"
-                                                                                     on:click=move |_| {
-                                                                                         all_conf_list
-                                                                                             .update(|conferences| {
-                                                                                                 for item in conferences.iter_mut() {
-                                                                                                     if item.title == conf_title && item.year == conf_year {
-                                                                                                         item.is_like = true;
-                                                                                                         like_list
-                                                                                                             .update(|mut list| {
-                                                                                                                 list.insert(item.id.clone());
-                                                                                                             });
-                                                                                                         break;
-                                                                                                     }
-                                                                                                 }
-                                                                                             });
-                                                                                     }
-                                                                                 >
-                                                                                     <Icon icon=icondata::BsStar style="font-size: 18px; color: #909399;" />
-                                                                                 </div>
-                                                                            }
-                                                                                .into_any()
+                                                                    {
+                                                                        let conference_key = conf.id.clone();
+                                                                        let pending_key = conference_key.clone();
+                                                                        let is_liked = conf.is_like;
+                                                                        let label = if !favorites.loaded.get_untracked() {
+                                                                            "Loading favorites"
+                                                                        } else if is_liked {
+                                                                            "Remove from favorites"
+                                                                        } else if favorites.user.get_untracked().is_some() {
+                                                                            "Add to favorites"
                                                                         } else {
-                                                                            view! {
-                                                                             <div
-                                                                                     class="conference-like-toggle is-liked"
-                                                                                     style="display: inline; cursor: pointer; transition: transform 0.15s ease;"
-                                                                                     on:click=move |_| {
-                                                                                         all_conf_list
-                                                                                             .update(|conferences| {
-                                                                                                 for item in conferences.iter_mut() {
-                                                                                                     if item.title == conf_title && item.year == conf_year {
-                                                                                                         item.is_like = false;
-                                                                                                         like_list
-                                                                                                             .update(|mut list| {
-                                                                                                                 list.remove(&item.id.clone());
-                                                                                                             });
-                                                                                                         break;
-                                                                                                     }
-                                                                                                 }
-                                                                                             });
-                                                                                     }
-                                                                                 >
-                                                                                     <Icon
-                                                                                         icon=icondata::BsStarFill
-                                                                                         style="color: rgb(251, 202, 4); font-size: 18px;"
-                                                                                     />
-                                                                                 </div>
-                                                                            }
-                                                                                .into_any()
+                                                                            "Sign in with GitHub to favorite"
+                                                                        };
+                                                                        view! {
+                                                                            <button
+                                                                                type="button"
+                                                                                class=if is_liked {
+                                                                                    "conference-like-toggle is-liked"
+                                                                                } else {
+                                                                                    "conference-like-toggle"
+                                                                                }
+                                                                                disabled=move || {
+                                                                                    !favorites.loaded.get()
+                                                                                        || favorites.is_pending(&pending_key)
+                                                                                }
+                                                                                aria-label=label
+                                                                                title=label
+                                                                                on:click=move |event| {
+                                                                                    event.stop_propagation();
+                                                                                    favorites.toggle(conference_key.clone());
+                                                                                }
+                                                                            >
+                                                                                <Icon icon=if is_liked {
+                                                                                    icondata::BsStarFill
+                                                                                } else {
+                                                                                    icondata::BsStar
+                                                                                } />
+                                                                            </button>
                                                                         }
-                                                                    }}
+                                                                    }
                                                                 </div>
 
                                                                 <div class="conference-card-date" style="font-size: 13px; color: #606266; margin-top: 3px;">
@@ -2277,6 +2268,7 @@ mod historical_deadline_tests {
                 &HashSet::new(),
                 &HashMap::new(),
                 "UTC",
+                chrono::Utc::now(),
             );
             let unknown = items.iter().find(|item| item.id == "unknown").unwrap();
             assert_eq!(unknown.deadline, "TBD");

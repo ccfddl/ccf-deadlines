@@ -193,6 +193,7 @@ Cargo.lock
 AGENTS.md
 .DS_Store
 node_modules
+.wrangler/
 
 # Build output
 /dist/
