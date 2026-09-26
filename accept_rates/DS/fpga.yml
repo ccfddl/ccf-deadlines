@@ -1,0 +1,14 @@
+- title: FPGA
+  accept_rates:
+    - year: 2022
+      submitted: 72
+      accepted: 18
+      str: 25.0%(18/72 22')
+      rate: 0.250000000000000
+      source: https://www.epfl.ch/labs/lap/wp-content/uploads/2022/06/AdlerFeb22_ChairsWelcome_FPGA22.pdf
+    - year: 2023
+      submitted: 82
+      accepted: 23
+      str: 28.0%(23/82 23')
+      rate: 0.280487804878049
+      source: https://www.epfl.ch/labs/lap/wp-content/uploads/2024/02/IenneFeb23-FPGA-2023-Chairs-Welcome-FPGA.pdf
