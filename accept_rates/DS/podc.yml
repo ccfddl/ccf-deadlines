@@ -1,0 +1,16 @@
+- title: PODC
+  accept_rates:
+    # Publisher chair abstract: regular decisions/submissions; 14 accepted and 20 submitted brief announcements excluded.
+    - year: 2021
+      submitted: 172
+      accepted: 44
+      rate: 0.2558139534883721
+      str: "25.6%(44/172 21')"
+      source: https://dl.acm.org/doi/proceedings/10.1145/3465084
+    # Publisher chair abstract: regular decisions/submissions; 19 accepted and 11 submitted brief announcements excluded.
+    - year: 2022
+      submitted: 134
+      accepted: 40
+      rate: 0.29850746268656714
+      str: "29.9%(40/134 22')"
+      source: https://dl.acm.org/doi/proceedings/10.1145/3519270
