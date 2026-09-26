@@ -50,9 +50,10 @@
       timeline:
         - abstract_deadline: '2025-01-16 23:59:59'
           deadline: '2025-01-23 23:59:59'
+          comment: 'Separate satellite event: August 29-31, 2025, Guangzhou, China'
       timezone: UTC-12
-      date: August 16-22 and August 28-31, 2025
-      place: Montreal, Canada and Guangzhou, China (Satellite)
+      date: August 16-22, 2025
+      place: Montreal, Canada.
     - year: 2026
       id: ijcai26
       link: https://2026.ijcai.org/
