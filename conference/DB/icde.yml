@@ -21,7 +21,7 @@
       timeline:
         - deadline: '2021-07-21 23:59:59'
           comment: first round
-        - deadline: '2021-11-17 23:59:59'
+        - deadline: '2021-11-19 23:59:59'
           comment: second round
       timezone: UTC-8
       date: May 9-12, 2022
