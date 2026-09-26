@@ -723,25 +723,22 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                     } else {
                                         format!("THCPL {thcpl_rank}")
                                     };
-                                    let show_round = deadlines.iter().filter(|point| point.r#type == 1).count() > 1;
-                                    let mut round = 1;
+                                    let show_round = deadlines
+                                        .iter()
+                                        .map(|point| point.round)
+                                        .max()
+                                        .unwrap_or_default()
+                                        > 1;
                                     let deadline_cards = deadlines
                                         .iter()
                                         .enumerate()
                                         .map(|(index, point)| {
-                                            let label = if point.r#type == 0 {
-                                                "Abstract submission deadline"
-                                            } else {
-                                                "Paper submission deadline"
-                                            };
+                                            let label = deadline_detail_label(point.r#type);
                                             let label = if show_round {
-                                                format!("Round {round} {label}")
+                                                format!("Round {} {label}", point.round)
                                             } else {
                                                 label.to_string()
                                             };
-                                            if point.r#type == 1 {
-                                                round += 1;
-                                            }
                                             let is_next = next_index == Some(index);
                                             let is_passed = point.timepoint <= now;
                                             let remaining = point.timepoint.signed_duration_since(now);
@@ -998,19 +995,11 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                             } else {
                                                 format!("THCPL {}", thcpl_rank_value.clone())
                                             };
-                                            let deadline_kind = if conf.abstract_deadline.is_some() {
-                                                "Abstract submission"
-                                            } else {
-                                                "Paper submission"
-                                            };
-                                            let list_deadline_kind = if conf.abstract_deadline.is_some() {
-                                                "Abstract deadline"
-                                            } else {
-                                                "Paper deadline"
-                                            };
-                                            let deadline_date = conf.abstract_deadline
-                                                .clone()
-                                                .unwrap_or_else(|| conf.deadline.clone());
+                                            let deadline_kind =
+                                                deadline_summary_label(conf.deadline_type);
+                                            let list_deadline_kind =
+                                                deadline_short_label(conf.deadline_type);
+                                            let deadline_date = conf.deadline.clone();
                                             let deadline_timezone = conf.timezone.clone();
                                             let countdown_remain = remaining_until_deadline(
                                                 &deadline_date,
@@ -1611,61 +1600,67 @@ fn build_conf_items(
                 continue;
             };
             let mut deadline = last_timeline.deadline.clone();
+            let mut deadline_type = 1;
             let mut abstract_deadline = None;
             let mut comment = last_timeline.comment.clone();
             let mut deadlines = Vec::<TimePoint>::new();
             let mut upcoming_deadlines = Vec::new();
+            let mut latest_deadline = None;
 
-            for timeline_item in &edition.timeline {
-                if let Some(abstract_value) = timeline_item.abstract_deadline.clone() {
-                    if let Some(value) =
-                        parse_deadline_to_rfc3339(&abstract_value, &edition.timezone)
-                            .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
-                    {
-                        let display_offset =
-                            display_timezone_offset_at(display_timezone, value.timestamp_millis());
-                        deadlines.push(TimePoint {
-                            timepoint: value.with_timezone(&display_offset),
-                            r#type: 0,
-                        });
-                        if value > current_time {
-                            upcoming_deadlines.push((
-                                value,
-                                abstract_value,
-                                true,
-                                timeline_item.comment.clone(),
-                            ));
-                        }
-                    }
-                }
+            for (round_index, timeline_item) in edition.timeline.iter().enumerate() {
+                let timeline_deadlines = [
+                    (0, timeline_item.abstract_deadline.as_deref()),
+                    (1, Some(timeline_item.deadline.as_str())),
+                    (2, timeline_item.rebuttal_deadline.as_deref()),
+                    (3, timeline_item.notification_deadline.as_deref()),
+                ];
 
-                if let Some(value) =
-                    parse_deadline_to_rfc3339(&timeline_item.deadline, &edition.timezone)
+                for (kind, raw_deadline) in timeline_deadlines {
+                    let Some(raw_deadline) = raw_deadline else {
+                        continue;
+                    };
+                    let Some(value) = parse_deadline_to_rfc3339(raw_deadline, &edition.timezone)
                         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
-                {
+                    else {
+                        continue;
+                    };
                     let display_offset =
                         display_timezone_offset_at(display_timezone, value.timestamp_millis());
                     deadlines.push(TimePoint {
                         timepoint: value.with_timezone(&display_offset),
-                        r#type: 1,
+                        r#type: kind,
+                        round: round_index + 1,
                     });
+
+                    let candidate = (
+                        value,
+                        raw_deadline.to_string(),
+                        kind,
+                        timeline_item.comment.clone(),
+                    );
+                    if latest_deadline.as_ref().is_none_or(
+                        |latest: &(DateTime<FixedOffset>, String, i32, Option<String>)| {
+                            candidate.0 > latest.0
+                        },
+                    ) {
+                        latest_deadline = Some(candidate.clone());
+                    }
                     if value > current_time {
-                        upcoming_deadlines.push((
-                            value,
-                            timeline_item.deadline.clone(),
-                            false,
-                            timeline_item.comment.clone(),
-                        ));
+                        upcoming_deadlines.push(candidate);
                     }
                 }
             }
 
-            if let Some((_, next_deadline, is_abstract, next_comment)) = upcoming_deadlines
+            deadlines.sort_by_key(|point| point.timepoint);
+
+            let selected_deadline = upcoming_deadlines
                 .into_iter()
                 .min_by(|left, right| left.0.cmp(&right.0))
-            {
+                .or(latest_deadline);
+            if let Some((_, next_deadline, next_type, next_comment)) = selected_deadline {
                 deadline = next_deadline.clone();
-                abstract_deadline = is_abstract.then_some(next_deadline);
+                deadline_type = next_type;
+                abstract_deadline = (next_type == 0).then_some(next_deadline);
                 comment = next_comment;
             }
 
@@ -1692,6 +1687,7 @@ fn build_conf_items(
                 link: edition.link.clone(),
                 abstract_deadline,
                 deadline,
+                deadline_type,
                 comment,
                 timezone: edition.timezone.clone(),
                 date: edition.date.clone(),
@@ -1906,6 +1902,33 @@ fn remaining_until_deadline(deadline: &str, timezone: &str) -> Option<u64> {
             .num_milliseconds()
             .max(0) as u64,
     )
+}
+
+fn deadline_summary_label(deadline_type: i32) -> &'static str {
+    match deadline_type {
+        0 => "Abstract submission",
+        2 => "Rebuttal",
+        3 => "Notification",
+        _ => "Paper submission",
+    }
+}
+
+fn deadline_short_label(deadline_type: i32) -> &'static str {
+    match deadline_type {
+        0 => "Abstract deadline",
+        2 => "Rebuttal deadline",
+        3 => "Notification deadline",
+        _ => "Paper deadline",
+    }
+}
+
+fn deadline_detail_label(deadline_type: i32) -> &'static str {
+    match deadline_type {
+        0 => "Abstract submission deadline",
+        2 => "Rebuttal deadline",
+        3 => "Notification deadline",
+        _ => "Paper submission deadline",
+    }
 }
 
 fn format_estimated_deadline_date(deadline: &str) -> String {

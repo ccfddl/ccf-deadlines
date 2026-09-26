@@ -61,6 +61,8 @@
       timeline:
         - abstract_deadline: '2026-09-18 23:59:59'
           deadline: '2026-09-25 23:59:59'
+          rebuttal_deadline: '2026-11-18 23:59:59'
+          notification_deadline: '2026-12-16 23:59:59'
       timezone: AoE
       date: April 26-30, 2027
       place: San Francisco, CA, USA

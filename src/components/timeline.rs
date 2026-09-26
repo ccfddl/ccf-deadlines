@@ -63,6 +63,8 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
         match backup_type {
             0 => "Registration:",
             1 => "Submission:",
+            2 => "Rebuttal:",
+            3 => "Notification:",
             _ => "",
         }
     };
@@ -71,6 +73,8 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
         match backup_type {
             0 => "square square_all",
             1 => "dot dot_all",
+            2 => "dot dot_all dot_rebuttal",
+            3 => "dot dot_all dot_notification",
             _ => "",
         }
     };
@@ -202,6 +206,16 @@ pub fn TimeLine(time_points: Vec<TimePoint>) -> impl IntoView {
 
                 .line_time .dot_all:hover em {
                     display: inline-block;
+                }
+
+                .line_time .dot_rebuttal {
+                    border-color: #d59a2a;
+                    background: #fff9eb;
+                }
+
+                .line_time .dot_notification {
+                    border-color: #55a66a;
+                    background: #f1faf3;
                 }
 
                 /* 方形备份点 */
@@ -468,10 +482,12 @@ fn initialize_timeline(
     all_incremental.push(TimePoint {
         timepoint: deadlines.last().unwrap().timepoint,
         r#type: 1,
+        round: deadlines.last().map(|point| point.round).unwrap_or(1),
     });
     all_incremental.push(TimePoint {
         timepoint: now,
         r#type: 1,
+        round: 1,
     });
     set_all_incre.set(all_incremental);
 

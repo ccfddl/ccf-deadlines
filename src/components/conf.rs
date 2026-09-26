@@ -49,6 +49,8 @@ pub struct AccYear {
 pub struct Timeline {
     pub abstract_deadline: Option<String>,
     pub deadline: String,
+    pub rebuttal_deadline: Option<String>,
+    pub notification_deadline: Option<String>,
     pub comment: Option<String>,
 }
 
@@ -63,6 +65,7 @@ pub struct Category {
 pub struct TimePoint {
     pub timepoint: DateTime<FixedOffset>,
     pub r#type: i32,
+    pub round: usize,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
@@ -80,6 +83,7 @@ pub struct ConfItem {
     pub link: String,
     pub abstract_deadline: Option<String>,
     pub deadline: String,
+    pub deadline_type: i32,
     pub comment: Option<String>,
     pub timezone: String,
     pub date: String,
