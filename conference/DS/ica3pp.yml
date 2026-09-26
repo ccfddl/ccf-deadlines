@@ -11,13 +11,11 @@
       id: ica3pp22
       link: https://ica3pp2022.compute.dtu.dk/
       timeline:
-        - deadline: '2021-05-30 17:00:00'
-          comment: first round
-        - deadline: '2021-06-30 17:00:00'
-          comment: second round
+        - deadline: TBD
+          comment: 'Extended paper submission: June 30, 2022 (firm); exact time and timezone not published'
       timezone: UTC-8
       date: October 10-12, 2022
-      place: Copenhagen, Denmark
+      place: Copenhagen, Denmark (Online)
     - year: 2023
       id: ica3pp23
       link: http://tjutanklab.com/ica3pp2023/
