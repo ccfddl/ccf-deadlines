@@ -21,8 +21,6 @@
       timeline:
         - deadline: TBD
           comment: 'Regular track: May 1, 2026; exact time and timezone TBD (UTC-8 below is an unverified schema placeholder).'
-        - deadline: TBD
-          comment: 'Late track: August 17, 2026; exact time and timezone TBD (UTC-8 below is an unverified schema placeholder).'
       timezone: UTC-8
       date: November 14-15, 2026
       place: Hong Kong SAR, China
