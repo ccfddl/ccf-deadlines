@@ -125,7 +125,7 @@ a {
   font-style: normal;
   color: var(--color-text-primary);
   text-decoration: none;
-  border-bottom: 2px solid #d9554f;
+  border-bottom: 2px solid currentColor;
   white-space: nowrap;
 }
 

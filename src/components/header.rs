@@ -37,7 +37,7 @@ pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
             <div class="header-main">
                 <a href="/" class="title">
                     <span class="title-normal">"CCFDDL"</span>
-                    <span class="title-normal">"\u{00a0}Open "</span>
+                    <span class="title-normal">"\u{00a0}Open\u{00a0}"</span>
                     <span class="title-accent">"Deadlines"</span>
                 </a>
                 <div class="header-github">
