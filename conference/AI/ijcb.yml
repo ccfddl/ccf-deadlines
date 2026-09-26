@@ -16,6 +16,17 @@
       timezone: UTC-8
       date: August 4-7, 2021
       place: Online
+    - year: 2023
+      id: ijcb2023
+      link: https://ijcb2023.ieee-biometrics.org/
+      timeline:
+        - deadline: '2023-05-08 23:59:00'
+          comment: Main conference papers; final extension
+        - deadline: TBD
+          comment: 'Special session papers; July 31, 2023, clock and timezone unverified'
+      timezone: UTC-7
+      date: September 25-28, 2023
+      place: Ljubljana, Slovenia
     - year: 2024
       id: ijcb2024
       link: https://iapr.org/archives/ijcb2024/index.html
