@@ -1,0 +1,33 @@
+# Peer-reviewed conference papers, including short papers; invited contributions excluded.
+- title: SAS
+  accept_rates:
+    - year: 2021
+      submitted: 48
+      accepted: 22
+      str: 45.8%(22/48 21')
+      rate: 0.458333333333333
+      source: https://link.springer.com/book/10.1007/978-3-030-88806-0
+    - year: 2022
+      submitted: 43
+      accepted: 18
+      str: 41.9%(18/43 22')
+      rate: 0.418604651162791
+      source: https://link.springer.com/book/10.1007/978-3-031-22308-2
+    - year: 2023
+      submitted: 40
+      accepted: 20
+      str: 50.0%(20/40 23')
+      rate: 0.500000000000000
+      source: https://link.springer.com/book/10.1007/978-3-031-44245-2
+    - year: 2024
+      submitted: 45
+      accepted: 18
+      str: 40.0%(18/45 24')
+      rate: 0.400000000000000
+      source: https://link.springer.com/book/10.1007/978-3-031-74776-2
+    - year: 2025
+      submitted: 32
+      accepted: 15
+      str: 46.9%(15/32 25')
+      rate: 0.468750000000000
+      source: https://link.springer.com/book/10.1007/978-3-032-07106-4
