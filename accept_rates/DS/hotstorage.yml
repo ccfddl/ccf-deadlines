@@ -1,26 +1,26 @@
 - title: HotStorage
   accept_rates:
-  - year: 2021
-    submitted: 40
-    accepted: 15
-    str: 37.5%(15/40 21')
-    rate: 0.375
-    source: https://hotstorage21.hotcrp.com/
-  - year: 2022
-    submitted: 47
-    accepted: 19
-    str: 40.4%(19/47 22')
-    rate: 0.40425531914893614
-    source: https://www.hotstorage.org/2022/camera-ready/frontmatter.pdf
-  - year: 2024
-    submitted: 46
-    accepted: 18
-    str: 39.1%(18/46 24')
-    rate: 0.391304347826087
-    source: https://hotstorage24.hotcrp.com/
-  - year: 2026
-    submitted: 78
-    accepted: 23
-    str: 29.5%(23/78 26')
-    rate: 0.2948717948717949
-    source: https://hotstorage26.hotcrp.com/
+    - year: 2021
+      submitted: 40
+      accepted: 15
+      str: 37.5%(15/40 21')
+      rate: 0.375
+      source: https://hotstorage21.hotcrp.com/
+    - year: 2022
+      submitted: 47
+      accepted: 19
+      str: 40.4%(19/47 22')
+      rate: 0.40425531914893614
+      source: https://www.hotstorage.org/2022/camera-ready/frontmatter.pdf
+    - year: 2024
+      submitted: 46
+      accepted: 18
+      str: 39.1%(18/46 24')
+      rate: 0.391304347826087
+      source: https://hotstorage24.hotcrp.com/
+    - year: 2026
+      submitted: 78
+      accepted: 23
+      str: 29.5%(23/78 26')
+      rate: 0.2948717948717949
+      source: https://hotstorage26.hotcrp.com/
