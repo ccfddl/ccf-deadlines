@@ -14,8 +14,6 @@
         - abstract_deadline: '2025-01-22 23:59:00'
           deadline: '2025-01-29 23:59:00'
           comment: 'Full papers (traditional category) '
-        - deadline: '2025-01-29 23:59:00'
-          comment: 'Poster-only papers '
       timezone: AoE
       date: July 14-18, 2025
       place: Málaga, Spain (hybrid)
@@ -26,8 +24,6 @@
         - abstract_deadline: '2026-01-19 23:59:00'
           deadline: '2026-01-26 23:59:00'
           comment: 'Full papers (traditional category) '
-        - deadline: '2026-01-26 23:59:00'
-          comment: 'Poster-only papers '
       timezone: AoE
       date: July 13-17, 2026
       place: San José, Costa Rica (hybrid)
