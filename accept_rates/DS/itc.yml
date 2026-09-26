@@ -1,0 +1,9 @@
+- title: ITC
+  accept_rates:
+    # Regular submissions accepted as full papers; excludes 5 short contributions and posters.
+    - year: 2025
+      submitted: 164
+      accepted: 40
+      rate: 0.24390243902439024
+      str: "24.4%(40/164 25')"
+      source: https://www.youtube.com/watch?v=99T3dMcL750&t=816s
