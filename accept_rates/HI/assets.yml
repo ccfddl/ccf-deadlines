@@ -1,0 +1,14 @@
+- title: ASSETS
+  accept_rates:
+    - year: 2021
+      submitted: 124
+      accepted: 36
+      str: 29.0%(36/124 21')
+      rate: 0.2903225806451613
+      source: https://www.sigaccess.org/newsletter/2022-01/assets21_overview.html
+    - year: 2022
+      submitted: 132
+      accepted: 35
+      str: 26.5%(35/132 22')
+      rate: 0.26515151515151514
+      source: https://assets22.sigaccess.org/talks/ASSETS2022_Day1_OpeningPlenary_v3-Optimized.pdf
