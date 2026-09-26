@@ -9,15 +9,23 @@
   confs:
     - year: 2021
       id: srds21
-      link: https://srds-conference.org/
+      link: https://srds21.cse.msu.edu/
       timeline:
-        - deadline: '2021-04-16 23:59:59'
-          comment: ABSTRACT
-        - deadline: '2021-04-23 23:59:59'
-          comment: FULL PAPER
+        - abstract_deadline: '2021-04-16 23:59:59'
+          deadline: '2021-04-23 23:59:59'
       timezone: AoE
       date: September 20-23, 2021
       place: Virtual
+    - year: 2022
+      id: srds22
+      link: https://www.dedisys.org/srds22/
+      timeline:
+        - abstract_deadline: '2022-04-18 23:59:59'
+          deadline: '2022-04-25 23:59:59'
+          comment: Abstract registration is recommended.
+      timezone: AoE
+      date: September 19-22, 2022
+      place: Vienna, Austria
     - year: 2023
       id: srds23
       link: https://srds-conference.org/
@@ -31,23 +39,19 @@
       place: Marrakech, Morocco
     - year: 2024
       id: srds24
-      link: https://srds-conference.org/
+      link: https://srds-conference.org/2024/
       timeline:
-        - deadline: '2024-04-26 23:59:59'
-          comment: ABSTRACT
-        - deadline: '2024-05-03 23:59:59'
-          comment: FULL PAPER
+        - abstract_deadline: '2024-05-03 23:59:59'
+          deadline: '2024-05-10 23:59:59'
       timezone: AoE
-      date: September 30-October 4, 2024
+      date: September 30-October 3, 2024
       place: Charlotte, USA
     - year: 2025
       id: srds25
-      link: https://srds-conference.org/
+      link: https://srds-conference.org/2025/index.html
       timeline:
-        - deadline: '2025-04-25 23:59:59'
-          comment: Abstract Submission
-        - deadline: '2025-05-02 23:59:59'
-          comment: Full Paper Submission
+        - abstract_deadline: '2025-05-02 23:59:59'
+          deadline: '2025-05-09 23:59:59'
       timezone: AoE
       date: September 29-October 2, 2025
       place: Porto, Portugal
@@ -55,10 +59,8 @@
       id: srds26
       link: https://srds-conference.org/
       timeline:
-        - deadline: '2026-05-01 23:59:59'
-          comment: Abstract Submission
-        - deadline: '2026-05-08 23:59:59'
-          comment: Full Paper Submission
+        - abstract_deadline: '2026-05-01 23:59:59'
+          deadline: '2026-05-08 23:59:59'
       timezone: AoE
-      date: September 21-25, 2026
+      date: September 22-24, 2026
       place: Rome, Italy
