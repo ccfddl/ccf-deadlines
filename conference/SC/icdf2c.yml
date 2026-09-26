@@ -25,7 +25,7 @@
         - deadline: '2024-05-15 23:59:59'
           comment: 'Full paper submission'
         - deadline: '2024-07-25 23:59:59'
-          comment: 'Extended submission'
+          comment: 'Late-breaking short papers (extended)'
       timezone: UTC-12
       date: October 9-10, 2024
       place: Dubrovnik, Croatia
