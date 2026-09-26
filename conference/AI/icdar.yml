@@ -7,14 +7,24 @@
     thcpl: B
   dblp: icdar
   confs:
+    - year: 2021
+      id: icdar2021
+      link: https://iapr.org/archives/icdar2021/index.html
+      timeline:
+        - deadline: '2021-02-24 23:59:00'
+          comment: Conference papers; final extension
+      timezone: UTC-8
+      date: September 5-10, 2021
+      place: Lausanne, Switzerland and Online
     - year: 2025
       id: icdar2025
-      link: https://www.icdar2025.com/home
+      link: https://www.icdar2025.com/
       timeline:
-        - abstract_deadline: '2025-02-28 23:59:59'
-          deadline: '2025-03-07 23:59:59'
-      timezone: UTC+0
-      date: September 17-21, 2025
+        - abstract_deadline: TBD
+          deadline: '2025-03-14 23:59:59'
+          comment: 'Conference papers; abstract due February 28, 2025 at 11:59 PST, AM/PM unspecified'
+      timezone: UTC-8
+      date: September 16-21, 2025
       place: Wuhan, China
     - year: 2026
       id: icdar2026
@@ -22,7 +32,8 @@
       timeline:
         - abstract_deadline: '2026-02-13 23:59:59'
           deadline: '2026-02-27 23:59:59'
-      timezone: UTC+0
+          comment: Conference papers
+      timezone: UTC-12
       date: August 30 - September 4, 2026
       place: Vienna, Austria
     - year: 2027
