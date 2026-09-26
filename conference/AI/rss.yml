@@ -7,9 +7,27 @@
     thcpl: A
   dblp: rss
   confs:
+    - year: 2021
+      id: rss21
+      link: https://roboticsconference.org/2021/
+      timeline:
+        - deadline: TBD
+          comment: 'Paper submission: March 1, 2021 AoE; exact clock not published in the archived CFP'
+      timezone: AoE
+      date: July 12-16, 2021
+      place: Virtual
+    - year: 2022
+      id: rss22
+      link: https://roboticsconference.org/2022/
+      timeline:
+        - deadline: TBD
+          comment: 'Paper deadline conflict: CFP January 28 23:59 AoE; final homepage January 29 11:59 AoE'
+      timezone: AoE
+      date: June 27 - July 1, 2022
+      place: New York City, USA (Hybrid)
     - year: 2023
       id: rss23
-      link: https://roboticsconference.org/
+      link: https://roboticsconference.org/2023/
       timeline:
         - deadline: '2023-02-03 23:59:59'
       timezone: AoE
@@ -17,7 +35,7 @@
       place: Daegu, Republic of Korea
     - year: 2024
       id: rss24
-      link: https://roboticsconference.org/
+      link: https://roboticsconference.org/2024/
       timeline:
         - deadline: '2024-02-02 23:59:00'
       timezone: AoE
@@ -25,16 +43,19 @@
       place: Delft, Netherlands
     - year: 2025
       id: rss25
-      link: https://roboticsconference.org
+      link: https://roboticsconference.org/2025/
       timeline:
         - abstract_deadline: '2025-01-17 23:59:00'
           deadline: '2025-01-24 23:59:00'
+          comment: 'Initial semi-complete paper required; title, abstract and authors become final'
+        - deadline: '2025-01-31 23:59:00'
+          comment: 'Final PDF update deadline; requires initial submission by January 24'
       timezone: AoE
       date: June 21-25, 2025
       place: Los Angeles, California, USA
     - year: 2026
       id: rss26
-      link: https://roboticsconference.org
+      link: https://roboticsconference.org/2026/
       timeline:
         - abstract_deadline: '2026-01-23 23:59:00'
           deadline: '2026-01-30 23:59:00'
