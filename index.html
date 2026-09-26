@@ -34,11 +34,6 @@
   <div id="initial-loading" class="initial-loading" role="status" aria-live="polite">
     <span>Loading conference deadlines…</span>
   </div>
-  <script>
-    window.addEventListener('TrunkApplicationStarted', function () {
-      document.getElementById('initial-loading')?.remove();
-    }, { once: true });
-  </script>
 </body>
 
 </html>
