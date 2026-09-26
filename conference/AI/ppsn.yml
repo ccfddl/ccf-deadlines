@@ -7,6 +7,15 @@
     thcpl: N
   dblp: ppsn
   confs:
+    - year: 2022
+      id: ppsn22
+      link: https://easychair.org/cfp/PPSN2022
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper submission: April 13, 2022; exact time and timezone unverified'
+      timezone: UTC+0 # Placeholder only; the deadline is TBD
+      date: September 10-14, 2022
+      place: Dortmund, Germany
     - year: 2024
       id: ppsn24
       link: https://ppsn2024.fh-ooe.at/
