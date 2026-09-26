@@ -1800,8 +1800,13 @@ fn build_conf_items(
             };
 
             if item.deadline == "TBD" {
-                item.status = "TBD".to_string();
-                item.estimated_deadlines = estimate_deadlines(&conference, edition);
+                if edition.year < current_time.year() {
+                    // Missing historical clock precision does not make an old edition upcoming.
+                    item.status = "FIN".to_string();
+                } else {
+                    item.status = "TBD".to_string();
+                    item.estimated_deadlines = estimate_deadlines(&conference, edition);
+                }
                 items.push(item);
                 continue;
             }
@@ -2238,5 +2243,57 @@ fn get_from_local_storage(key: &str) -> Option<String> {
 fn set_in_local_storage(key: &str, value: &str) {
     if let Some(storage) = window().and_then(|window| window.local_storage().ok().flatten()) {
         let _ = storage.set_item(key, value);
+    }
+}
+
+#[cfg(test)]
+mod historical_deadline_tests {
+    use super::*;
+
+    #[test]
+    fn unknown_historical_deadlines_stay_out_of_the_active_list() {
+        let current_year = chrono::Utc::now().year();
+        for edition_year in [current_year - 1, current_year, current_year + 1] {
+            let conference: Conference = serde_json::from_value(serde_json::json!({
+                "title": "TEST", "description": "Test conference", "sub": "AI",
+                "rank": {"ccf": "A"}, "dblp": "test",
+                "confs": [
+                    {
+                        "year": edition_year - 1, "id": "previous", "link": "https://example.org",
+                        "timeline": [{"deadline": format!("{}-01-15 23:59:59", edition_year - 1)}],
+                        "timezone": "AoE", "date": "Unknown", "place": "Virtual"
+                    },
+                    {
+                        "year": edition_year, "id": "unknown", "link": "https://example.org",
+                        "timeline": [{"deadline": "TBD", "comment": "Clock not published"}],
+                        "timezone": "AoE", "date": "Unknown", "place": "Virtual"
+                    }
+                ]
+            }))
+            .unwrap();
+            let items = build_conf_items(
+                vec![conference],
+                &[],
+                &HashSet::new(),
+                &HashMap::new(),
+                "UTC",
+            );
+            let unknown = items.iter().find(|item| item.id == "unknown").unwrap();
+            assert_eq!(unknown.deadline, "TBD");
+            assert_eq!(unknown.comment.as_deref(), Some("Clock not published"));
+            if edition_year < current_year {
+                assert_eq!(unknown.status, "FIN");
+                assert!(unknown.estimated_deadlines.is_empty());
+                assert!(
+                    !items
+                        .iter()
+                        .filter(|item| item.status != "FIN")
+                        .any(|item| item.id == "unknown")
+                );
+            } else {
+                assert_eq!(unknown.status, "TBD");
+                assert!(!unknown.estimated_deadlines.is_empty());
+            }
+        }
     }
 }
