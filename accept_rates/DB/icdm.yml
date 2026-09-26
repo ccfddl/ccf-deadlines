@@ -4,11 +4,29 @@
       submitted: 990
       accepted: 98
       str: 9.9%(98/990 21')
-      rate: 0.098989898989899
-      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+      rate: 0.09898989898989899
+      source: https://icdm2021.auckland.ac.nz/files/2020/06/ICDM2021_Handbook_modified.pdf
+    - year: 2022
+      submitted: 870
+      accepted: 85
+      str: 9.8%(85/870 22')
+      rate: 0.09770114942528736
+      source: https://icdm.zhonghuapu.com/ICDMAcceptanceRates.shtml
     - year: 2023
-      submitted: 926
+      submitted: 1003
       accepted: 200
-      str: 21.6%(200/926 23')
-      rate: 0.2159827
-      source: https://csconfstats.xoveexu.com/
+      str: 19.9%(200/1003 23')
+      rate: 0.19940179461615154
+      source: https://icdm.zhonghuapu.com/ICDMAcceptanceRates.shtml
+    - year: 2024
+      submitted: 604
+      accepted: 67
+      str: 11.1%(67/604 24')
+      rate: 0.11092715231788079
+      source: https://icdm.zhonghuapu.com/ICDMAcceptanceRates.shtml
+    - year: 2025
+      submitted: 785
+      accepted: 106
+      str: 13.5%(106/785 25')
+      rate: 0.13503184713375796
+      source: https://icdm.zhonghuapu.com/ICDMAcceptanceRates.shtml
