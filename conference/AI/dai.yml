@@ -31,8 +31,6 @@
       timeline:
         - deadline: '2023-09-15 23:59:00'
           comment: 'Regular papers'
-        - deadline: '2023-10-15 23:59:00'
-          comment: 'Student Poster Track (non-archival)'
       timezone: UTC-12
       date: November 30-December 3, 2023
       place: Singapore
@@ -42,8 +40,6 @@
       timeline:
         - deadline: '2024-09-10 23:59:00'
           comment: 'Regular papers'
-        - deadline: '2024-11-01 23:59:00'
-          comment: 'Student Poster Track (non-archival)'
       timezone: UTC-12
       date: December 18-22, 2024
       place: Singapore
@@ -53,8 +49,6 @@
       timeline:
         - deadline: '2025-08-21 23:59:59'
           comment: 'Regular papers (extended)'
-        - deadline: '2025-10-19 23:59:00'
-          comment: 'Student Poster Track (non-archival)'
       timezone: UTC-12
       date: November 21-24, 2025
       place: London, United Kingdom
