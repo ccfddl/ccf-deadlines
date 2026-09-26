@@ -11,8 +11,6 @@
       id: acml21
       link: http://www.acml-conf.org/2021/
       timeline:
-        - deadline: '2021-05-14 23:59:59'
-          comment: Journal Track
         - deadline: '2021-07-02 23:59:59'
           comment: Conference Track
       timezone: UTC-7
@@ -22,8 +20,6 @@
       id: acml22
       link: https://www.acml-conf.org/2022/
       timeline:
-        - deadline: '2022-05-26 23:59:59'
-          comment: Journal Track
         - deadline: '2022-06-23 23:59:59'
           comment: Conference Track
       timezone: UTC-12
@@ -33,8 +29,6 @@
       id: acml23
       link: https://www.acml-conf.org/2023/index.html
       timeline:
-        - deadline: '2023-06-02 23:59:59'
-          comment: Journal Track
         - deadline: '2023-06-30 23:59:59'
           comment: Conference Track
       timezone: UTC-12
@@ -44,8 +38,6 @@
       id: acml24
       link: https://www.acml-conf.org/2024/index.html
       timeline:
-        - deadline: '2024-05-29 23:59:59'
-          comment: Journal Track
         - deadline: '2024-07-03 23:59:59'
           comment: Conference Track
       timezone: UTC-12
@@ -55,8 +47,6 @@
       id: acml25
       link: https://www.acml-conf.org/2025/
       timeline:
-        - deadline: '2025-05-30 23:59:59'
-          comment: 'Journal Track'
         - deadline: '2025-06-26 23:59:59'
           comment: 'Conference Track'
       timezone: AoE
@@ -66,8 +56,6 @@
       id: acml26
       link: https://www.acml-conf.org/2026/
       timeline:
-        - deadline: '2026-06-20 23:59:59'
-          comment: 'Journal Track'
         - deadline: '2026-07-05 23:59:59'
           comment: 'Conference Track'
       timezone: AoE
