@@ -22,8 +22,6 @@
       timeline:
         - deadline: '2023-05-08 23:59:00'
           comment: Main conference papers; final extension
-        - deadline: TBD
-          comment: 'Special session papers; July 31, 2023, clock and timezone unverified'
       timezone: UTC-7
       date: September 25-28, 2023
       place: Ljubljana, Slovenia
@@ -34,10 +32,6 @@
         - abstract_deadline: '2024-04-30 23:59:00'
           deadline: '2024-04-30 23:59:00'
           comment: Main conference papers; final extension
-        - deadline: TBD
-          comment: 'Special session papers; July 10, 2024, clock and timezone unverified'
-        - deadline: '2024-08-10 23:59:00'
-          comment: Journal presentation requests; previously published papers
       timezone: UTC-7
       date: September 15-18, 2024
       place: Buffalo, New York, USA
@@ -48,8 +42,6 @@
         - abstract_deadline: '2025-05-05 23:59:59'
           deadline: '2025-05-05 23:59:59'
           comment: Main conference papers; final extension
-        - deadline: TBD
-          comment: 'Special session papers; July 17, 2025, clock and timezone unverified'
       timezone: UTC-7
       date: September 8-11, 2025
       place: Osaka, Japan
