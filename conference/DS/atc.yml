@@ -14,7 +14,7 @@
         - deadline: '2021-01-12 23:59:59'
       timezone: UTC
       date: July 14-16, 2021
-      place: SANTA CLARA, USA
+      place: Virtual
     - year: 2022
       id: atc2022
       link: https://www.usenix.org/conference/atc22/
