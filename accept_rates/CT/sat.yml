@@ -1,0 +1,44 @@
+- title: SAT
+  accept_rates:
+    # Original preface PDF page 5. All contributed paper categories, final acceptances / received submissions.
+    - year: 2021
+      submitted: 73
+      accepted: 37
+      str: 50.7%(37/73 21')
+      rate: 0.5068493150684932
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-80223-3/1
+    # Original preface PDF page 7. Final two-phase acceptances; 25 initial + 6 revised papers.
+    - year: 2022
+      submitted: 70
+      accepted: 31
+      str: 44.3%(31/70 22')
+      rate: 0.44285714285714284
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol236-sat2022/LIPIcs.SAT.2022.0/LIPIcs.SAT.2022.0.pdf
+    # Original preface PDF page 7. All contributed categories / submitted-and-reviewed cohort (47 regular + 10 short + 10 tool).
+    - year: 2023
+      submitted: 67
+      accepted: 30
+      str: 44.8%(30/67 23')
+      rate: 0.44776119402985076
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol271-sat2023/LIPIcs.SAT.2023.0/LIPIcs.SAT.2023.0.pdf
+    # Original preface PDF page 7. Final acceptances after revision: 23 regular + 1 short + 4 tool.
+    - year: 2024
+      submitted: 70
+      accepted: 28
+      str: 40.0%(28/70 24')
+      rate: 0.4
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol305-sat2024/LIPIcs.SAT.2024.0/LIPIcs.SAT.2024.0.pdf
+    # Original preface PDF page 9. All 77 received submissions, including 4 initially filtered; accepted 23 long + 4 short + 3 tool.
+    - year: 2025
+      submitted: 77
+      accepted: 30
+      str: 39.0%(30/77 25')
+      rate: 0.38961038961038963
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol341-sat2025/LIPIcs.SAT.2025.0/LIPIcs.SAT.2025.0.pdf
+    # Original preface PDF page 9. All contributed paper categories, final acceptances / received submissions.
+    - year: 2026
+      submitted: 95
+      accepted: 41
+      str: 43.2%(41/95 26')
+      rate: 0.43157894736842106
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol377-sat2026/LIPIcs.SAT.2026.0/LIPIcs.SAT.2026.0.pdf
