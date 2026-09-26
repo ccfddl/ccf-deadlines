@@ -7,6 +7,15 @@
     thcpl: N
   dblp: cec
   confs:
+    - year: 2021
+      id: cec2021
+      link: https://cec2021.mini.pw.edu.pl/en/index.html
+      timeline:
+        - deadline: '2021-02-23 23:59:00'
+          comment: Final extended paper submission deadline
+      timezone: UTC-12
+      date: June 28 - July 1, 2021
+      place: Virtual
     - year: 2025
       id: cec2025
       link: https://www.cec2025.org/
@@ -21,7 +30,7 @@
       timeline:
         - deadline: '2026-01-31 23:59:59'
       timezone: UTC-12
-      date: June 22-26, 2026
+      date: June 21-26, 2026
       place: Maastricht Exhibition & Congress Centre (MECC), The Netherlands
     - year: 2027
       id: cec2027
