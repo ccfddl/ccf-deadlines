@@ -1,0 +1,26 @@
+- title: ECML-PKDD
+  accept_rates:
+    - year: 2021
+      submitted: 685
+      accepted: 146
+      str: 21.3%(146/685 21')
+      rate: 0.21313868613138687
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-86486-6/1
+    - year: 2023
+      submitted: 829
+      accepted: 196
+      str: 23.6%(196/829 23')
+      rate: 0.23642943305186973
+      source: https://link.springer.com/book/10.1007/978-3-031-43421-1
+    - year: 2024
+      submitted: 826
+      accepted: 202
+      str: 24.5%(202/826 24')
+      rate: 0.24455205811138014
+      source: https://link.springer.com/book/10.1007/978-3-031-70341-6
+    - year: 2026
+      submitted: 1150
+      accepted: 280
+      str: 24.3%(280/1150 26')
+      rate: 0.24347826086956523
+      source: https://link.springer.com/book/9783032376787
