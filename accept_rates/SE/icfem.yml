@@ -1,0 +1,15 @@
+# Full conference papers only; doctoral symposium and invited contributions excluded.
+- title: ICFEM
+  accept_rates:
+    - year: 2024
+      submitted: 50
+      accepted: 22
+      str: 44.0%(22/50 24')
+      rate: 0.440000000000000
+      source: https://link.springer.com/book/10.1007/978-981-96-0617-7
+    - year: 2025
+      submitted: 47
+      accepted: 20
+      str: 42.6%(20/47 25')
+      rate: 0.425531914893617
+      source: https://link.springer.com/book/10.1007/978-981-95-4213-0
