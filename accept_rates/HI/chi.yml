@@ -1,17 +1,25 @@
 - title: CHI
   accept_rates:
+    # Papers-track counts from the official SIGCHI conference-history table.
+    - year: 2021
+      submitted: 2845
+      accepted: 747
+      str: 26.3%(747/2845 21')
+      rate: 0.26256590509666083
+      source: https://archive.sigchi.org/conferences/conference-history/chi/
     - year: 2022
       submitted: 2579
       accepted: 637
       str: 24.7%(637/2579 22')
       rate: 0.246994959286545
       source: https://github.com/emeryberger/csconferences
+    # Original Papers Chairs' Welcome, PDF page 6: final acceptances / complete submissions.
     - year: 2023
-      submitted: 3180
+      submitted: 3182
       accepted: 879
-      str: 27.6%(879/3180 23')
-      rate: 0.2764151
-      source: https://csconfstats.xoveexu.com/
+      str: 27.6%(879/3182 23')
+      rate: 0.2762413576367065
+      source: https://researchnow-admin.flinders.edu.au/ws/portalfiles/portal/83602092/Emsenhuber_Eye_Perspective_P2023.pdf
     # PC acceptances; submission total: https://chi2024.acm.org/2023/11/17/chi-2024-papers-track-post-round-one-outcomes-report/
     - year: 2024
       submitted: 4028
