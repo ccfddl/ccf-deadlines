@@ -38,8 +38,8 @@
       id: eg27
       link: https://eg2027.isti.cnr.it/
       timeline:
-        - abstract_deadline: '2026-09-25 23:59:59'
-          deadline: '2026-10-01 23:59:59'
+        - abstract_deadline: '2026-09-26 09:59:00'
+          deadline: '2026-10-01 23:59:00'
       timezone: UTC
       date: May 10-14, 2027
       place: Lucca, Italy
