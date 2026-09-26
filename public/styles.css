@@ -558,7 +558,7 @@ a {
   align-items: center;
   flex-wrap: wrap;
   gap: 5px;
-  font-size: 16px;
+  font-size: var(--font-size-sm);
   line-height: 1.4;
 }
 
@@ -645,9 +645,15 @@ a {
 }
 
 .toolbar-search {
-  flex: 1 1 240px;
+  flex: 0 1 220px;
   min-width: 0;
-  max-width: 320px;
+  max-width: 220px;
+}
+
+.toolbar-search .thaw-input,
+.toolbar-search .thaw-input__input {
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .toolbar-actions {
@@ -2070,6 +2076,7 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
     flex-basis: 100%;
   }
 
+  .toolbar-base-time,
   .toolbar-timezone {
     font-size: 13px;
   }
