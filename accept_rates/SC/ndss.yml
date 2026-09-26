@@ -6,3 +6,16 @@
       str: 16.2%(83/513 22')
       rate: 0.161793372319688
       source: https://github.com/emeryberger/csconferences
+    - year: 2024
+      submitted: 694
+      accepted: 140
+      str: 20.2%(140/694 24')
+      rate: 0.201729106628242
+      source: https://www.ndss-symposium.org/ndss-2024/ndss-2024-largest-ndss-signals-continued-importance-of-distributed-systems-security/
+    # Official news dated 8 April 2025; submission total also confirmed by the October PC retrospective.
+    - year: 2025
+      submitted: 1311
+      accepted: 211
+      str: 16.1%(211/1311 25')
+      rate: 0.160945842868040
+      source: https://www.ndss-symposium.org/news/
