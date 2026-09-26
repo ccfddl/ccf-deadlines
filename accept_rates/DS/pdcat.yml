@@ -2,27 +2,27 @@
 # Springer proceedings Preface, printed p. v (PDF p. 5) for each year.
 - title: PDCAT
   accept_rates:
-  - year: 2021
-    submitted: 97
-    accepted: 24
-    rate: 0.24742268041237114
-    str: 24.7%(24/97 21')
-    source: https://link.springer.com/content/pdf/bfm:978-3-030-96772-7/1
-  - year: 2022
-    submitted: 95
-    accepted: 24
-    rate: 0.25263157894736843
-    str: 25.3%(24/95 22')
-    source: https://link.springer.com/content/pdf/bfm:978-3-031-29927-8/1
-  - year: 2024
-    submitted: 114
-    accepted: 47
-    rate: 0.41228070175438597
-    str: 41.2%(47/114 24')
-    source: https://link.springer.com/content/pdf/bfm:978-981-96-4207-6/1
-  - year: 2025
-    submitted: 158
-    accepted: 47
-    rate: 0.2974683544303797
-    str: 29.7%(47/158 25')
-    source: https://link.springer.com/content/pdf/bfm:978-981-95-9846-5/1
+    - year: 2021
+      submitted: 97
+      accepted: 24
+      rate: 0.24742268041237114
+      str: 24.7%(24/97 21')
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-96772-7/1
+    - year: 2022
+      submitted: 95
+      accepted: 24
+      rate: 0.25263157894736843
+      str: 25.3%(24/95 22')
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-29927-8/1
+    - year: 2024
+      submitted: 114
+      accepted: 47
+      rate: 0.41228070175438597
+      str: 41.2%(47/114 24')
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-4207-6/1
+    - year: 2025
+      submitted: 158
+      accepted: 47
+      rate: 0.2974683544303797
+      str: 29.7%(47/158 25')
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-9846-5/1
