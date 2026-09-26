@@ -12,7 +12,7 @@
       link: https://e-nns.org/icann2023/
       timeline:
         - deadline: 'TBD'
-          comment: 'Extended full-paper and separate extended-abstract submission deadline: April 19, 2023; exact cutoff time and timezone are not specified'
+          comment: 'Extended regular full-paper submission deadline: April 19, 2023; exact cutoff time and timezone are not specified'
       timezone: UTC-12
       date: Sept 26-29, 2023
       place: Heraklion, Crete, Greece (Hybrid)
@@ -22,8 +22,6 @@
       timeline:
         - deadline: 'TBD'
           comment: 'Initial paper submission extended to March 26, 2024 AoE after system issues; exact cutoff time is not specified'
-        - deadline: '2024-03-29 23:59:00'
-          comment: Final paper updates; only for papers already submitted before the initial deadline
       timezone: AoE
       date: Sept 17-20, 2024
       place: Lugano-Viganello, Switzerland
