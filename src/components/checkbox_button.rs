@@ -107,17 +107,14 @@ pub fn MultiSelectDropdown(
     let options_for_render = StoredValue::new(options.clone());
     let summary = Memo::new(move |_| {
         let selected = selected_values.get();
-        let english = use_english.get();
+        // "Non" is always selected on its own; "非 CCF" reads better than "CCF 非".
+        if !use_english.get() && selected.contains(NON_RANK_VALUE) {
+            return rank_label(&title_for_summary, NON_RANK_VALUE, false);
+        }
         let selected_labels: Vec<&str> = options_for_summary
             .iter()
             .filter(|option| selected.contains(option.value))
-            .map(|option| {
-                if option.value == NON_RANK_VALUE && !english {
-                    "非"
-                } else {
-                    option.summary_label
-                }
-            })
+            .map(|option| option.summary_label)
             .collect();
 
         match selected_labels.len() {
