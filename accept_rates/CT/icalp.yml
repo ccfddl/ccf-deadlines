@@ -1,0 +1,35 @@
+- title: ICALP
+  # Main-conference contributed papers across Tracks A and B; excludes invited talks and workshops.
+  accept_rates:
+    - year: 2021
+      submitted: 362
+      accepted: 137
+      str: 37.8%(137/362 21')
+      rate: 0.3784530386740331
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol198-icalp2021/LIPIcs.ICALP.2021.0/LIPIcs.ICALP.2021.0.pdf
+    - year: 2022
+      submitted: 433
+      accepted: 127
+      str: 29.3%(127/433 22')
+      rate: 0.29330254041570436
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol229-icalp2022/LIPIcs.ICALP.2022.0/LIPIcs.ICALP.2022.0.pdf
+    - year: 2023
+      submitted: 443
+      accepted: 132
+      str: 29.8%(132/443 23')
+      rate: 0.2979683972911964
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol261-icalp2023/LIPIcs.ICALP.2023.0/LIPIcs.ICALP.2023.0.pdf
+    - year: 2024
+      # The official preface reports eligible anonymous submissions.
+      submitted: 519
+      accepted: 153
+      str: 29.5%(153/519 24')
+      rate: 0.2947976878612717
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol297-icalp2024/LIPIcs.ICALP.2024/LIPIcs.ICALP.2024.pdf
+    - year: 2025
+      # Official conference page reports Track A 135/445 and Track B 35/118; totals are summed once.
+      submitted: 563
+      accepted: 170
+      str: 30.2%(170/563 25')
+      rate: 0.3019538188277087
+      source: https://conferences.au.dk/icalp2025/accepted-papers
