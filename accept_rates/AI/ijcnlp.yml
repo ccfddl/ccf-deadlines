@@ -1,0 +1,22 @@
+- title: IJCNLP
+  # Joint editions; regular main long and short papers only.
+  # Annual denominators follow the signed PC report definitions.
+  accept_rates:
+    - year: 2021
+      submitted: 3350
+      accepted: 710
+      str: 21.2%(710/3350 21')
+      rate: 0.2119402985074627
+      source: https://aclanthology.org/2021.acl-long.0.pdf
+    - year: 2022
+      submitted: 554
+      accepted: 147
+      str: 26.5%(147/554 22')
+      rate: 0.2653429602888087
+      source: https://aclanthology.org/2022.aacl-main.0.pdf
+    - year: 2023
+      submitted: 363
+      accepted: 94
+      str: 25.9%(94/363 23')
+      rate: 0.2589531680440771
+      source: https://aclanthology.org/2023.ijcnlp-main.0.pdf
