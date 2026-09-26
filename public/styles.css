@@ -645,9 +645,9 @@ a {
 }
 
 .toolbar-search {
-  flex: 0 1 220px;
+  flex: 0 1 180px;
   min-width: 0;
-  max-width: 220px;
+  max-width: 180px;
 }
 
 .toolbar-search .thaw-input,
