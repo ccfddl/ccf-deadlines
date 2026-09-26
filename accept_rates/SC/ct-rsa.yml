@@ -1,0 +1,44 @@
+- title: CT-RSA
+  # Paper acceptance decisions over all received submissions; includes conditional acceptances.
+  accept_rates:
+    - year: 2021
+      submitted: 100
+      accepted: 27
+      str: 27.0%(27/100 21')
+      rate: 0.27
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-75539-3/1
+    - year: 2022
+      # 20 accepted + 5 conditional decisions; one later withdrawal reduced the program to 24.
+      submitted: 87
+      accepted: 25
+      str: 28.7%(25/87 22')
+      rate: 0.28735632183908044
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-95312-6/1
+    - year: 2023
+      # Includes 6 conditional acceptances and the 1 desk-rejected submission.
+      submitted: 76
+      accepted: 26
+      str: 34.2%(26/76 23')
+      rate: 0.34210526315789475
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-30872-7/1
+    - year: 2024
+      # All 47 received submissions, including 1 withdrawal; not the 46 reviewed subset.
+      submitted: 47
+      accepted: 18
+      str: 38.3%(18/47 24')
+      rate: 0.3829787234042553
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-58868-6/1
+    - year: 2025
+      # 51 received, 2 desk rejected, 49 reviewed; the later 17/48 statement is inconsistent.
+      submitted: 51
+      accepted: 17
+      str: 33.3%(17/51 25')
+      rate: 0.3333333333333333
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-88661-4/1
+    - year: 2026
+      # All 39 received submissions, including 2 desk rejects; not the 37 reviewed subset.
+      submitted: 39
+      accepted: 12
+      str: 30.8%(12/39 26')
+      rate: 0.3076923076923077
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-22931-1/1
