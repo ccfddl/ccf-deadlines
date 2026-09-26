@@ -7,6 +7,17 @@
     thcpl: B
   dblp: icdar
   confs:
+    - year: 2021
+      id: icdar2021
+      link: https://iapr.org/archives/icdar2021/index.html
+      timeline:
+        - deadline: '2021-02-24 23:59:00'
+          comment: Conference papers; final extension
+        - deadline: TBD
+          comment: 'IJDAR journal track initial submission; November 18, 2020, clock and timezone unverified'
+      timezone: UTC-8
+      date: September 5-10, 2021
+      place: Lausanne, Switzerland and Online
     - year: 2025
       id: icdar2025
       link: https://www.icdar2025.com/
