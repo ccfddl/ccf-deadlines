@@ -558,6 +558,8 @@ a {
   align-items: center;
   flex-wrap: wrap;
   gap: 5px;
+  padding-right: 14px;
+  border-right: 1px solid var(--color-border-light);
   font-size: var(--font-size-sm);
   line-height: 1.4;
 }
@@ -2079,6 +2081,11 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .toolbar-base-time,
   .toolbar-timezone {
     font-size: 13px;
+  }
+
+  .toolbar-timezone {
+    padding-right: 0;
+    border-right: 0;
   }
 
   .toolbar-timezone-menu {

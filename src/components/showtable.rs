@@ -537,7 +537,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                 </div>
                             </Show>
                         </div>
-                        <span>"time."</span>
+                        <span>"time"</span>
                     </div>
                     <div class="toolbar-search">
                         <Input
