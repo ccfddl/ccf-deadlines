@@ -37,6 +37,8 @@
       timeline:
         - deadline: '2026-10-12 23:59:59'
           comment: 'ARR Submission'
+        - deadline: '2026-12-23 23:59:59'
+          comment: 'NAACL commitment after ARR meta-reviews; reviewed papers only'
       timezone: UTC-12
       date: June 1-5, 2027
       place: San Francisco, California, USA
