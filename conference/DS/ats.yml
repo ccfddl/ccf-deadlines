@@ -11,7 +11,7 @@
       id: ats2026
       link: https://www.ats2026.tw/
       timeline:
-        - deadline: '2026-06-06 23:59:59'
-      timezone: UTC+8
+        - deadline: '2026-07-07 23:59:59'
+      timezone: AoE
       date: December 1-3, 2026
-      place: Taiwan
+      place: Kaohsiung, Taiwan
