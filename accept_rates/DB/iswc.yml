@@ -1,0 +1,27 @@
+# Full papers across the main proceedings tracks (research, resources and in-use/applied); not research-only.
+- title: ISWC
+  accept_rates:
+    - year: 2022
+      submitted: 239
+      accepted: 48
+      str: 20.1%(48/239 22')
+      rate: 0.200836820083682
+      source: https://link.springer.com/book/10.1007/978-3-031-19433-7
+    - year: 2023
+      submitted: 248
+      accepted: 58
+      str: 23.4%(58/248 23')
+      rate: 0.233870967741935
+      source: https://link.springer.com/book/10.1007/978-3-031-47240-4
+    - year: 2024
+      submitted: 155
+      accepted: 44
+      str: 28.4%(44/155 24')
+      rate: 0.283870967741935
+      source: https://link.springer.com/book/10.1007/978-3-031-77844-5
+    - year: 2025
+      submitted: 277
+      accepted: 60
+      str: 21.7%(60/277 25')
+      rate: 0.216606498194946
+      source: https://link.springer.com/book/10.1007/978-3-032-09527-5
