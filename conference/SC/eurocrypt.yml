@@ -15,6 +15,24 @@
       timezone: UTC
       date: October 17-21, 2021
       place: Zagreb, Croatia
+    - year: 2022
+      id: eurocrypt22
+      link: https://eurocrypt.iacr.org/2022/
+      timeline:
+        - deadline: '2021-10-01 16:00:00'
+          comment: Regular paper submission deadline
+      timezone: UTC+2
+      date: May 30-June 3, 2022
+      place: Trondheim, Norway
+    - year: 2023
+      id: eurocrypt23
+      link: https://eurocrypt.iacr.org/2023/
+      timeline:
+        - deadline: '2022-10-06 23:59:59'
+          comment: Regular paper submission deadline
+      timezone: AoE
+      date: April 23-27, 2023
+      place: Lyon, France
     - year: 2024
       id: eurocrypt24
       link: https://eurocrypt.iacr.org/2024
