@@ -81,6 +81,7 @@ pub fn MessageWallModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> im
     let next_cursor = RwSignal::new(None::<usize>);
     let sort = RwSignal::new(WallSort::Latest);
     let draft = RwSignal::new(String::new());
+    let composer_open = RwSignal::new(false);
     let loading = RwSignal::new(false);
     let loading_more = RwSignal::new(false);
     let submitting = RwSignal::new(false);
@@ -98,6 +99,8 @@ pub fn MessageWallModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> im
     Effect::new(move |_| {
         if show.get() {
             load_messages(messages, next_cursor, loading, error, sort.get(), sort);
+        } else {
+            composer_open.set(false);
         }
     });
 
@@ -124,6 +127,7 @@ pub fn MessageWallModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> im
             match create_message(&body, None).await {
                 Ok(message) => {
                     draft.set(String::new());
+                    composer_open.set(false);
                     if sort.get_untracked() == WallSort::Likes {
                         load_messages(messages, next_cursor, loading, error, WallSort::Likes, sort);
                     } else {
@@ -252,48 +256,68 @@ pub fn MessageWallModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> im
                                 }}
                             </p>
 
-                            <div class="wall-sort-tabs" role="tablist">
-                                <button
-                                    type="button"
-                                    role="tab"
-                                    class="wall-sort-tab"
-                                    class:wall-sort-tab--active=move || sort.get() == WallSort::Latest
-                                    aria-selected=move || sort.get() == WallSort::Latest
-                                    on:click=move |_| sort.set(WallSort::Latest)
-                                >
-                                    {move || if use_english.get() { "Latest" } else { "最新" }}
-                                </button>
-                                <button
-                                    type="button"
-                                    role="tab"
-                                    class="wall-sort-tab"
-                                    class:wall-sort-tab--active=move || sort.get() == WallSort::Likes
-                                    aria-selected=move || sort.get() == WallSort::Likes
-                                    on:click=move |_| sort.set(WallSort::Likes)
-                                >
-                                    {move || if use_english.get() {
-                                        "Most liked (30d)"
-                                    } else {
-                                        "近30天最多点赞"
-                                    }}
-                                </button>
-                                <Show when=move || favorites.user.get().is_some()>
+                            <div class="wall-toolbar">
+                                <div class="wall-sort-tabs" role="tablist">
                                     <button
                                         type="button"
                                         role="tab"
                                         class="wall-sort-tab"
-                                        class:wall-sort-tab--active=move || sort.get() == WallSort::Mine
-                                        aria-selected=move || sort.get() == WallSort::Mine
-                                        on:click=move |_| sort.set(WallSort::Mine)
+                                        class:wall-sort-tab--active=move || sort.get() == WallSort::Latest
+                                        aria-selected=move || sort.get() == WallSort::Latest
+                                        on:click=move |_| sort.set(WallSort::Latest)
                                     >
-                                        {move || if use_english.get() { "My messages" } else { "我的留言" }}
+                                        {move || if use_english.get() { "Latest" } else { "最新" }}
+                                    </button>
+                                    <button
+                                        type="button"
+                                        role="tab"
+                                        class="wall-sort-tab"
+                                        class:wall-sort-tab--active=move || sort.get() == WallSort::Likes
+                                        aria-selected=move || sort.get() == WallSort::Likes
+                                        on:click=move |_| sort.set(WallSort::Likes)
+                                    >
+                                        {move || if use_english.get() {
+                                            "Most liked (30d)"
+                                        } else {
+                                            "近30天最多点赞"
+                                        }}
+                                    </button>
+                                    <Show when=move || favorites.user.get().is_some()>
+                                        <button
+                                            type="button"
+                                            role="tab"
+                                            class="wall-sort-tab"
+                                            class:wall-sort-tab--active=move || sort.get() == WallSort::Mine
+                                            aria-selected=move || sort.get() == WallSort::Mine
+                                            on:click=move |_| sort.set(WallSort::Mine)
+                                        >
+                                            {move || if use_english.get() { "Mine" } else { "我的留言" }}
+                                        </button>
+                                    </Show>
+                                </div>
+                                <Show when=move || favorites.user.get().is_some()>
+                                    <button
+                                        type="button"
+                                        class="wall-compose-toggle"
+                                        class:wall-compose-toggle--active=move || composer_open.get()
+                                        aria-expanded=move || composer_open.get()
+                                        on:click=move |_| composer_open.update(|open| *open = !*open)
+                                    >
+                                        {move || if composer_open.get() {
+                                            if use_english.get() { "Hide" } else { "收起" }
+                                        } else if use_english.get() {
+                                            "Write"
+                                        } else {
+                                            "写留言"
+                                        }}
                                     </button>
                                 </Show>
                             </div>
 
-                            {move || {
-                                if let Some(user) = favorites.user.get() {
-                                    view! {
+                            <Show when=move || composer_open.get() && favorites.user.get().is_some()>
+                                {move || {
+                                    favorites.user.get().map(|user| {
+                                        view! {
                                         <div class="wall-composer">
                                             <div class="wall-composer-user">
                                                 <img src=user.avatar_url alt="" aria-hidden="true" />
@@ -320,6 +344,14 @@ pub fn MessageWallModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> im
                                                         format!("{}/{} · 每日 10 条", draft.get().chars().count(), MESSAGE_MAX_CHARACTERS)
                                                     }}
                                                 </span>
+                                                <button
+                                                    type="button"
+                                                    class="wall-composer-cancel"
+                                                    disabled=move || submitting.get()
+                                                    on:click=move |_| composer_open.set(false)
+                                                >
+                                                    {move || if use_english.get() { "Cancel" } else { "取消" }}
+                                                </button>
                                                 <Button
                                                     size=ButtonSize::Small
                                                     disabled=Signal::derive(move || {
@@ -341,26 +373,25 @@ pub fn MessageWallModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> im
                                                 </Button>
                                             </div>
                                         </div>
-                                    }
-                                        .into_any()
-                                } else {
-                                    view! {
-                                        <button
-                                            type="button"
-                                            class="wall-login-button"
-                                            on:click=move |_| start_github_login()
-                                        >
-                                            <Icon icon=icondata::BsGithub />
-                                            <span>{move || if use_english.get() {
-                                                "Sign in to post and browse all messages"
-                                            } else {
-                                                "使用 GitHub 登录后留言并浏览全部"
-                                            }}</span>
-                                        </button>
-                                    }
-                                        .into_any()
-                                }
-                            }}
+                                        }
+                                    })
+                                }}
+                            </Show>
+
+                            <Show when=move || favorites.user.get().is_none()>
+                                <button
+                                    type="button"
+                                    class="wall-login-button"
+                                    on:click=move |_| start_github_login()
+                                >
+                                    <Icon icon=icondata::BsGithub />
+                                    <span>{move || if use_english.get() {
+                                        "Sign in to post and browse all messages"
+                                    } else {
+                                        "使用 GitHub 登录后留言并浏览全部"
+                                    }}</span>
+                                </button>
+                            </Show>
 
                             <Show when=move || error.get().is_some()>
                                 <div class="wall-error" role="alert">

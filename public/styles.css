@@ -722,10 +722,10 @@ a {
 }
 
 .toolbar-search {
-  flex: 0 1 180px;
+  flex: 0 1 160px;
   min-width: 0;
-  max-width: 180px;
-  margin-left: 10px;
+  max-width: 160px;
+  margin-left: 8px;
 }
 
 .toolbar-search .thaw-input,
@@ -744,8 +744,15 @@ a {
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   margin-left: auto;
+}
+
+@media (min-width: 601px) {
+  .toolbar-main {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
 }
 
 .star-sort-control.is-active .star-sort-toggle {
@@ -1847,9 +1854,17 @@ a {
   line-height: 1.5;
 }
 
-.wall-sort-tabs {
+.wall-toolbar {
   display: flex;
   flex: 0 0 auto;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.wall-sort-tabs {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
   gap: 5px;
   padding: 3px;
   border-radius: 7px;
@@ -1876,6 +1891,26 @@ a {
   color: #365a76;
   box-shadow: 0 1px 3px rgba(37, 55, 70, 0.1);
   font-weight: 600;
+}
+
+.wall-compose-toggle {
+  flex: 0 0 auto;
+  min-width: 64px;
+  padding: 6px 10px;
+  border: 1px solid #b9c9d7;
+  border-radius: 7px;
+  background: #f6fafc;
+  color: #456b88;
+  cursor: pointer;
+  font: 600 11px/1.35 "Roboto Mono", "SF Mono", Monaco, monospace;
+  white-space: nowrap;
+}
+
+.wall-compose-toggle:hover,
+.wall-compose-toggle--active {
+  border-color: #83a9cc;
+  background: #eaf3f9;
+  color: #315c7c;
 }
 
 .wall-composer {
@@ -1939,6 +1974,26 @@ a {
   color: #8b949e;
   font-size: 10px;
   font-variant-numeric: tabular-nums;
+}
+
+.wall-composer-cancel {
+  padding: 5px 7px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #7b8792;
+  cursor: pointer;
+  font: 10px/1.2 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-composer-cancel:hover {
+  background: #f1eee9;
+  color: #536170;
+}
+
+.wall-composer-cancel:disabled {
+  cursor: wait;
+  opacity: 0.55;
 }
 
 .wall-login-button {
