@@ -7,12 +7,23 @@
     thcpl: B
   dblp: icws
   confs:
+    - year: 2021
+      id: icws21
+      link: https://conferences.computer.org/icws/2021/
+      timeline:
+        - deadline: '2021-03-01 05:00:00'
+          comment: Optional early regular-paper submission
+        - deadline: '2021-04-30 05:00:00'
+          comment: Extended normal regular-paper submission
+      timezone: UTC
+      date: September 5-10, 2021
+      place: Virtual
     - year: 2022
       id: icws22
-      link: https://www.servicessociety.org/icws/2022/
+      link: https://conferences.computer.org/icws/2022/
       timeline:
-        - deadline: '2022-09-15 23:59:59'
-          comment: Submission deadline
+        - deadline: TBD
+          comment: 'Regular-paper submission: April 1, 2022 AoE; exact clock unpublished'
       timezone: AoE
       date: December 10-14, 2022
       place: Honolulu, Hawaii, USA
@@ -24,12 +35,21 @@
       timezone: AoE
       date: July 2-8, 2023
       place: Chicago, Illinois, USA
+    - year: 2024
+      id: icws24
+      link: https://icws.conferences.computer.org/2024/
+      timeline:
+        - deadline: TBD
+          comment: 'Final submission accepting new regular papers: March 31, 2024; exact clock and timezone unpublished'
+      timezone: UTC
+      date: July 7-13, 2024
+      place: Shenzhen, China
     - year: 2025
       id: icws25
       link: https://services.conferences.computer.org/2025/icws-2025/
       timeline:
         - abstract_deadline: '2025-02-24 23:59:59'
-          deadline: '2025-03-03 23:59:59'
+          deadline: '2025-03-10 23:00:00'
       timezone: AoE
       date: July 7-12, 2025
       place: Helsinki, Finland
