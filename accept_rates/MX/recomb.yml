@@ -1,5 +1,13 @@
 - title: RECOMB
   accept_rates:
+    # Main papers selected for presentation/proceedings; later journal subset excluded.
+    # Signed 2021 chair preface; desk/withdrawal totals not separately quantified.
+    - year: 2021
+      submitted: 195
+      accepted: 40
+      str: "20.5%(40/195 21')"
+      rate: 0.20512820512820512
+      source: https://journals.sagepub.com/doi/full/10.1089/cmb.2021.29050.jp
     # Main peer-reviewed papers, both full/short publication versions; highlights excluded.
     # Signed chair preface p. v; desk/withdrawal totals not separately quantified.
     - year: 2022
