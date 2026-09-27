@@ -1483,6 +1483,232 @@ a {
   min-width: 0;
 }
 
+.wall-dialog {
+  width: min(620px, 90vw);
+  height: auto;
+  max-width: 620px;
+  max-height: 87vh;
+}
+
+.wall-dialog .thaw-dialog-content {
+  overflow: hidden;
+}
+
+.wall-title svg {
+  flex: 0 0 auto;
+  color: #6f9fca;
+  font-size: 23px;
+}
+
+.wall-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+  min-height: 0;
+}
+
+.wall-intro {
+  margin: 0;
+  color: #6d7883;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.wall-composer {
+  flex: 0 0 auto;
+  padding: 11px;
+  border: 1px solid #e4ded7;
+  border-radius: 8px;
+  background: #fffefa;
+}
+
+.wall-composer-user {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 8px;
+  color: #536170;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.wall-composer-user img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+
+.wall-textarea {
+  display: block;
+  width: 100%;
+  min-height: 74px;
+  box-sizing: border-box;
+  padding: 8px 9px;
+  resize: vertical;
+  border: 1px solid #dcd6ce;
+  border-radius: 6px;
+  outline: none;
+  background: #fffdfa;
+  color: #334155;
+  font: 13px/1.5 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-textarea:focus {
+  border-color: #83a9cc;
+  box-shadow: 0 0 0 2px rgba(111, 159, 202, 0.12);
+}
+
+.wall-textarea:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.wall-composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.wall-character-count {
+  color: #8b949e;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.wall-login-button {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid #dcd6ce;
+  border-radius: 7px;
+  background: #f7f4ef;
+  color: #3f4c59;
+  cursor: pointer;
+  font: 12px/1.3 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-login-button:hover {
+  border-color: #b9c9d7;
+  background: #f0f6fb;
+}
+
+.wall-error {
+  flex: 0 0 auto;
+  padding: 7px 9px;
+  border-left: 2px solid #ef6b73;
+  background: #fff2f2;
+  color: #a64349;
+  font-size: 11px;
+}
+
+.wall-feed {
+  min-height: 0;
+  max-height: min(440px, 52vh);
+  padding-right: 4px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.wall-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-bottom: 8px;
+  padding: 10px;
+  border: 1px solid #e8e2db;
+  border-radius: 8px;
+  background: #fffefa;
+}
+
+.wall-message-avatar {
+  display: block;
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+}
+
+.wall-message-avatar img {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.wall-message-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.wall-message-meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  color: #7a8590;
+  font-size: 10px;
+}
+
+.wall-message-meta strong {
+  overflow: hidden;
+  color: #455564;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.wall-message-meta time {
+  flex: 0 0 auto;
+}
+
+.wall-message-main p {
+  margin: 5px 0 0;
+  color: #334155;
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.wall-delete-button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: -4px 0 -4px auto;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #9aa2aa;
+  cursor: pointer;
+}
+
+.wall-delete-button:hover {
+  background: #fff0f0;
+  color: #c75b62;
+}
+
+.wall-delete-button:disabled {
+  cursor: wait;
+  opacity: 0.5;
+}
+
+.wall-status {
+  padding: 28px 12px;
+  color: #8a949e;
+  font-size: 12px;
+  text-align: center;
+}
+
 body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   background: rgba(0, 0, 0, 0.32) !important;
   opacity: 1 !important;
@@ -2320,6 +2546,27 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 
   .subscription-dialog .thaw-dialog-content > div {
     min-width: 0;
+  }
+
+  .wall-dialog {
+    width: calc(100vw - 24px);
+    height: auto;
+    max-height: 88vh;
+    max-height: 88dvh;
+  }
+
+  .wall-feed {
+    max-height: 46vh;
+    max-height: 46dvh;
+  }
+
+  .wall-message-meta {
+    flex-wrap: wrap;
+    gap: 2px 7px;
+  }
+
+  .wall-message-meta time {
+    flex-basis: calc(100% - 30px);
   }
 
   .footer {

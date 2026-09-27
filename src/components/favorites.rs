@@ -209,7 +209,7 @@ async fn mutate_star(conference_key: &str, should_star: bool) -> Result<StarMuta
     response.json().await.map_err(|error| error.to_string())
 }
 
-fn api_url(path: &str) -> String {
+pub(crate) fn api_url(path: &str) -> String {
     let base = option_env!("CCFDDL_API_BASE")
         .unwrap_or_default()
         .trim_end_matches('/');

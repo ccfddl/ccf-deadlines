@@ -4,6 +4,7 @@ pub mod countdown;
 pub mod favorites;
 pub mod gitbutton;
 pub mod header;
+pub mod message_wall;
 pub mod showtable;
 pub mod subscription_modal;
 pub mod timeline;

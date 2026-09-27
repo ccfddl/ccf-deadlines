@@ -2,6 +2,9 @@ const OAUTH_COOKIE = "ccfddl_oauth";
 const SESSION_COOKIE = "ccfddl_session";
 const OAUTH_TTL_SECONDS = 10 * 60;
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60;
+const MESSAGE_MAX_CHARACTERS = 500;
+const MESSAGE_MAX_LINES = 8;
+const MESSAGE_COOLDOWN_SECONDS = 30;
 
 export default {
   async fetch(request, env) {
@@ -35,6 +38,17 @@ async function route(request, env) {
   }
   if (request.method === "GET" && url.pathname === "/api/bootstrap") {
     return bootstrap(request, env);
+  }
+  if (request.method === "GET" && url.pathname === "/api/messages") {
+    return listMessages(request, env);
+  }
+  if (request.method === "POST" && url.pathname === "/api/messages") {
+    assertTrustedOrigin(request, env);
+    return createMessage(request, env);
+  }
+  if (request.method === "DELETE" && url.pathname.startsWith("/api/messages/")) {
+    assertTrustedOrigin(request, env);
+    return deleteMessage(request, env, url);
   }
   if (
     (request.method === "PUT" || request.method === "DELETE") &&
@@ -223,6 +237,122 @@ async function mutateStar(request, env, url) {
   });
 }
 
+async function listMessages(request, env) {
+  const user = await authenticatedUser(request, env);
+  const rows = await env.DB.prepare(
+    `SELECT wall_messages.id, wall_messages.github_id, wall_messages.body,
+            wall_messages.created_at, users.login, users.avatar_url, users.profile_url
+     FROM wall_messages
+     JOIN users ON users.github_id = wall_messages.github_id
+     ORDER BY wall_messages.created_at DESC, wall_messages.id DESC
+     LIMIT 50`,
+  ).all();
+
+  return json({
+    messages: rows.results.map((row) => ({
+      id: Number(row.id),
+      body: row.body,
+      created_at: Number(row.created_at),
+      author: {
+        login: row.login,
+        avatar_url: row.avatar_url,
+        profile_url: row.profile_url,
+      },
+      can_delete: Boolean(user && Number(row.github_id) === Number(user.github_id)),
+    })),
+  });
+}
+
+async function createMessage(request, env) {
+  const user = await authenticatedUser(request, env);
+  if (!user) {
+    return json({ error: "GitHub sign-in is required." }, 401);
+  }
+
+  let payload;
+  try {
+    payload = await request.json();
+  } catch {
+    throw new HttpError(400, "Invalid JSON body.");
+  }
+  const body = normalizeWallMessage(payload?.body);
+  if (!body) {
+    throw new HttpError(
+      400,
+      `Messages must contain 1-${MESSAGE_MAX_CHARACTERS} characters and at most ${MESSAGE_MAX_LINES} lines.`,
+    );
+  }
+
+  const now = unixTime();
+  const lastMessage = await env.DB.prepare(
+    `SELECT created_at FROM wall_messages
+     WHERE github_id = ?
+     ORDER BY created_at DESC
+     LIMIT 1`,
+  )
+    .bind(user.github_id)
+    .first();
+  if (
+    lastMessage &&
+    now - Number(lastMessage.created_at) < MESSAGE_COOLDOWN_SECONDS
+  ) {
+    throw new HttpError(429, "Please wait before posting another message.");
+  }
+
+  const result = await env.DB.prepare(
+    "INSERT INTO wall_messages (github_id, body, created_at) VALUES (?, ?, ?)",
+  )
+    .bind(user.github_id, body, now)
+    .run();
+
+  return json(
+    {
+      message: {
+        id: Number(result.meta.last_row_id),
+        body,
+        created_at: now,
+        author: {
+          login: user.login,
+          avatar_url: user.avatar_url,
+          profile_url: user.profile_url,
+        },
+        can_delete: true,
+      },
+    },
+    201,
+  );
+}
+
+async function deleteMessage(request, env, url) {
+  const user = await authenticatedUser(request, env);
+  if (!user) {
+    return json({ error: "GitHub sign-in is required." }, 401);
+  }
+
+  const rawId = url.pathname.slice("/api/messages/".length);
+  if (!/^\d+$/.test(rawId)) {
+    throw new HttpError(400, "Invalid message ID.");
+  }
+  const messageId = Number(rawId);
+  if (!Number.isSafeInteger(messageId) || messageId < 1) {
+    throw new HttpError(400, "Invalid message ID.");
+  }
+
+  const result = await env.DB.prepare(
+    "DELETE FROM wall_messages WHERE id = ? AND github_id = ?",
+  )
+    .bind(messageId, user.github_id)
+    .run();
+  if (Number(result.meta.changes) === 0) {
+    throw new HttpError(404, "Message not found.");
+  }
+
+  return new Response(null, {
+    status: 204,
+    headers: { "Cache-Control": "no-store" },
+  });
+}
+
 async function logout(request, env) {
   const token = parseCookies(request.headers.get("Cookie"))[SESSION_COOKIE];
   if (token) {
@@ -328,6 +458,22 @@ export function isValidConferenceKey(value) {
     value.length <= 100 &&
     /^[A-Za-z0-9][A-Za-z0-9._&+'-]*$/.test(value)
   );
+}
+
+export function normalizeWallMessage(value) {
+  if (typeof value !== "string") return null;
+  const message = value.replace(/\r\n?/g, "\n").trim();
+  const characterCount = Array.from(message).length;
+  const lineCount = message ? message.split("\n").length : 0;
+  const hasControlCharacters = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(
+    message,
+  );
+  return characterCount >= 1 &&
+    characterCount <= MESSAGE_MAX_CHARACTERS &&
+    lineCount <= MESSAGE_MAX_LINES &&
+    !hasControlCharacters
+    ? message
+    : null;
 }
 
 async function signPayload(payload, secret) {
