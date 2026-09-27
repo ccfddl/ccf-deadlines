@@ -2,7 +2,8 @@ use chrono::prelude::*;
 use gloo_net::http::Request;
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
-use web_sys::RequestCache;
+use wasm_bindgen::{JsCast, closure::Closure};
+use web_sys::{AbortController, RequestCache};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Conference {
@@ -193,7 +194,51 @@ async fn fetch_json_with_cache_recovery<T: DeserializeOwned>(
 ) -> Result<T, Box<dyn std::error::Error>> {
     match fetch_json(url, false).await {
         Ok(data) => Ok(data),
+        Err(error)
+            if error
+                .downcast_ref::<std::io::Error>()
+                .is_some_and(|error| error.kind() == std::io::ErrorKind::TimedOut) =>
+        {
+            Err(error)
+        }
         Err(_) => fetch_json(url, true).await,
+    }
+}
+
+struct RequestDeadline {
+    controller: AbortController,
+    window: web_sys::Window,
+    timer: i32,
+    _callback: Closure<dyn FnMut()>,
+}
+
+impl RequestDeadline {
+    fn new() -> Result<Self, Box<dyn std::error::Error>> {
+        let window =
+            web_sys::window().ok_or_else(|| std::io::Error::other("browser unavailable"))?;
+        let controller = AbortController::new()
+            .map_err(|_| std::io::Error::other("unable to create request deadline"))?;
+        let timer_controller = controller.clone();
+        let callback =
+            Closure::wrap(Box::new(move || timer_controller.abort()) as Box<dyn FnMut()>);
+        let timer = window
+            .set_timeout_with_callback_and_timeout_and_arguments_0(
+                callback.as_ref().unchecked_ref(),
+                10_000,
+            )
+            .map_err(|_| std::io::Error::other("unable to start request deadline"))?;
+        Ok(Self {
+            controller,
+            window,
+            timer,
+            _callback: callback,
+        })
+    }
+}
+
+impl Drop for RequestDeadline {
+    fn drop(&mut self) {
+        self.window.clear_timeout_with_handle(self.timer);
     }
 }
 
@@ -201,22 +246,34 @@ async fn fetch_json<T: DeserializeOwned>(
     url: &str,
     reload: bool,
 ) -> Result<T, Box<dyn std::error::Error>> {
-    let mut request = Request::get(url);
+    let deadline = RequestDeadline::new()?;
+    let mut request = Request::get(url).abort_signal(Some(&deadline.controller.signal()));
     if reload {
         request = request.cache(RequestCache::Reload);
     }
 
-    let response = request.send().await?;
-    if !response.ok() {
-        return Err(std::io::Error::other(format!(
-            "request for {url} returned HTTP {}",
-            response.status()
-        ))
+    let result = async {
+        let response = request.send().await?;
+        if !response.ok() {
+            return Err(std::io::Error::other(format!(
+                "request for {url} returned HTTP {}",
+                response.status()
+            ))
+            .into());
+        }
+
+        let body = response.binary().await?;
+        Ok(serde_json::from_slice(&body)?)
+    }
+    .await;
+    if deadline.controller.signal().aborted() {
+        return Err(std::io::Error::new(
+            std::io::ErrorKind::TimedOut,
+            "conference request timed out",
+        )
         .into());
     }
-
-    let body = response.binary().await?;
-    Ok(serde_json::from_slice(&body)?)
+    result
 }
 
 pub fn get_categories() -> Vec<Category> {

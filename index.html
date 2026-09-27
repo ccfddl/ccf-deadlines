@@ -10,6 +10,50 @@
   <meta name="keywords" content="conference deadlines" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>ccf-deadlines</title>
+  <script id="startup-recovery">
+    (function () {
+      var timer;
+      var finished = false;
+      var failedBeforeReady = false;
+      function stop() {
+        finished = true;
+        window.clearTimeout(timer);
+        window.removeEventListener('error', onError, true);
+        window.removeEventListener('unhandledrejection', recover);
+      }
+      function recover() {
+        if (finished) return;
+        var loading = document.getElementById('initial-loading');
+        if (!loading) {
+          if (document.readyState === 'loading') failedBeforeReady = true;
+          else stop();
+          return;
+        }
+        loading.querySelector('span').textContent = 'Unable to finish loading. Please retry.';
+        loading.querySelector('button').hidden = false;
+        window.clearTimeout(timer);
+      }
+      function onError(event) {
+        var source = event.filename || (event.target && event.target.src);
+        if (source && new URL(source, window.location.href).origin !== window.location.origin) return;
+        if (event.error || (event.target && event.target.tagName === 'SCRIPT')) recover();
+      }
+      function start() {
+        if (finished) return;
+        var loading = document.getElementById('initial-loading');
+        if (!loading) return;
+        loading.querySelector('button').addEventListener('click', function () {
+          window.location.reload();
+        });
+        if (failedBeforeReady) recover();
+        else timer = window.setTimeout(recover, 30000);
+      }
+      window.addEventListener('error', onError, true);
+      window.addEventListener('unhandledrejection', recover);
+      window.addEventListener('TrunkApplicationStarted', stop, { once: true });
+      document.addEventListener('DOMContentLoaded', start, { once: true });
+    }());
+  </script>
   <!-- Load analytics after the app's critical resources and first paint. -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -51,6 +95,7 @@
 <body>
   <div id="initial-loading" class="initial-loading" role="status" aria-live="polite">
     <span>Loading conference deadlines...</span>
+    <button type="button" hidden>Retry</button>
   </div>
 </body>
 

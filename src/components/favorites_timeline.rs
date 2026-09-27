@@ -239,7 +239,7 @@ pub fn FavoritesTimelineModal(
                                                                 .max(0) as u64;
                                                             let running = reference_time.get_untracked().is_none();
                                                             let date = event.timepoint.format("%Y/%m/%d %H:%M").to_string();
-                                                            let interval = format!("{interval_days} d");
+                                                            let interval = format!("{interval_days}d");
                                                             let deadline_label = deadline_label(
                                                                 event.deadline_type,
                                                                 event.round,
