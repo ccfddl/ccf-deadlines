@@ -7,6 +7,15 @@
     thcpl: A
   dblp: cav
   confs:
+    - year: 2021
+      id: cav21
+      link: https://ucl-pplv.github.io/CAV21/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular papers: January 28, 2021 (AoE); exact cutoff time not specified.'
+      timezone: AoE
+      date: July 18-24, 2021
+      place: Online
     - year: 2022
       id: cav22
       link: http://i-cav.org/2022/
@@ -15,6 +24,15 @@
       timezone: AoE
       date: Aug 7-10, 2022
       place: Technion, Haifa, Israel
+    - year: 2023
+      id: cav23
+      link: http://www.i-cav.org/2023/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular papers: February 3, 2023; exact cutoff time and timezone not verified.'
+      timezone: UTC+0
+      date: July 17-22, 2023
+      place: Paris, France
     - year: 2025
       id: cav25
       link: https://conferences.i-cav.org/2025/
