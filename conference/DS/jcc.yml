@@ -7,6 +7,25 @@
     thcpl: N
   dblp: N
   confs:
+    - year: 2024
+      id: jcc2024
+      link: https://ieeejcc.com/call-for-papers/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular paper: abstract 2024-04-07; paper 2024-04-28 (extended). Exact time and timezone not published.'
+      timezone: UTC+0
+      date: July 15-18, 2024
+      place: Shanghai, China
+    - year: 2025
+      id: jcc2025
+      link: https://conf.researchr.org/track/cisose-2025/jcc-2025
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper: official CFP says final deadline 2025-04-29, but official Important Dates lists 2025-05-06 AoE. Conflicting dates; exact time not published.'
+      timezone: AoE
+      date: July 21-24, 2025
+      place: Tucson, Arizona, USA
     - year: 2026
       id: jcc2026
       link: https://jointcloud.cloud
