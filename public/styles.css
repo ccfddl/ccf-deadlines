@@ -619,7 +619,7 @@ a {
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 0;
   font-size: var(--font-size-sm);
   line-height: 1.4;
 }
@@ -628,6 +628,10 @@ a {
   position: relative;
   display: inline-flex;
   align-items: center;
+}
+
+.toolbar-timezone > span:last-child {
+  margin-left: 3px;
 }
 
 .toolbar-timezone-trigger {
@@ -717,6 +721,10 @@ a {
 .toolbar-search .thaw-input__input {
   width: 100%;
   box-sizing: border-box;
+}
+
+.star-sort-toggle {
+  white-space: nowrap;
 }
 
 .toolbar-actions {

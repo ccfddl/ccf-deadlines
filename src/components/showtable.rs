@@ -525,7 +525,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                         />
                     </div>
                     <div class="toolbar-timezone">
-                        <span>"Deadlines are shown in"</span>
+                        <span>"("</span>
                         <div class="toolbar-timezone-picker">
                             <button
                                 type="button"
@@ -578,7 +578,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                 </div>
                             </Show>
                         </div>
-                        <span>"time"</span>
+                        <span>" time)"</span>
                     </div>
                     <div class="toolbar-search">
                         <Input
