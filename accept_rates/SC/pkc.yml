@@ -1,30 +1,36 @@
 # Paper-selection counts from the official annual proceedings descriptions.
 - title: PKC
   accept_rates:
+    # 2021: 52 selected include six initially conditional and two soft-merged papers.
+    # Soft merge shared a presentation slot; papers and invited abstract remain distinct.
     - year: 2021
       submitted: 156
       accepted: 52
       str: 33.3%(52/156 21')
       rate: 0.333333333333333
       source: https://link.springer.com/book/10.1007/978-3-030-75245-3
+    # 2022: 40 initially accepted, one later author withdrawal, 39 published.
     - year: 2022
       submitted: 137
       accepted: 40
       str: 29.2%(40/137 22')
       rate: 0.291970802919708
       source: https://link.springer.com/book/10.1007/978-3-030-97121-2
+    # Original PC preface: 50 selected from 183 received submissions.
+    # Previous publisher About-based row: 49/183 (26.8%); final-publication difference unexplained.
     - year: 2023
       submitted: 183
-      accepted: 49
-      str: 26.8%(49/183 23')
-      rate: 0.267759562841530
-      source: https://link.springer.com/book/10.1007/978-3-031-31368-4
+      accepted: 50
+      str: 27.3%(50/183 23')
+      rate: 0.273224043715847
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-31368-4/1
     - year: 2024
       submitted: 176
       accepted: 54
       str: 30.7%(54/176 24')
       rate: 0.306818181818182
       source: https://link.springer.com/book/10.1007/978-3-031-57718-5
+    # 2025: all 60 selected papers published; four soft-merged papers shared two talks.
     - year: 2025
       submitted: 199
       accepted: 60
