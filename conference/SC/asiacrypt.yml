@@ -15,6 +15,14 @@
       timezone: UTC
       date: December 5-9, 2021
       place: Singapore
+    - year: 2022
+      id: asiacrypt22
+      link: https://asiacrypt.iacr.org/2022/
+      timeline:
+        - deadline: '2022-05-27 11:59:00'
+      timezone: UTC
+      date: December 5-9, 2022
+      place: Taipei, Taiwan
     - year: 2023
       id: asiacrypt23
       link: https://asiacrypt.iacr.org/2023/
@@ -35,7 +43,7 @@
       id: asiacrypt25
       link: https://asiacrypt.iacr.org/2025/
       timeline:
-        - deadline: '2025-05-16 11:59:59'
+        - deadline: '2025-05-16 12:00:00'
       timezone: UTC
       date: December 8-12, 2025
       place: Melbourne, Australia
