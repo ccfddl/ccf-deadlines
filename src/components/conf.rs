@@ -105,14 +105,87 @@ pub struct EstimatedDeadline {
     pub source_year: i32,
 }
 
-pub async fn fetch_all_conf(base_url: &str) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
-    let url = format!("{base_url}/conference/allconf.json");
-    fetch_json_with_cache_recovery(&url).await
+#[derive(Debug, Deserialize)]
+pub struct InitialConferences {
+    pub conferences: Vec<Conference>,
+    pub archive: Option<String>,
 }
 
-pub async fn fetch_all_acc(base_url: &str) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
-    let url = format!("{base_url}/conference/allacc.json");
-    fetch_json_with_cache_recovery(&url).await
+pub async fn fetch_initial_conf(
+    base_url: &str,
+) -> Result<InitialConferences, Box<dyn std::error::Error>> {
+    let url = format!("{base_url}/conference/initial.json");
+    match fetch_json_with_cache_recovery(&url).await {
+        Ok(data) => Ok(data),
+        Err(_) => Ok(InitialConferences {
+            conferences: fetch_json_with_cache_recovery(&format!(
+                "{base_url}/conference/allconf.json"
+            ))
+            .await?,
+            archive: None,
+        }),
+    }
+}
+
+pub async fn fetch_archive_conf(
+    base_url: &str,
+    archive: &str,
+) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
+    if !archive.starts_with("parts/history-")
+        || !archive.ends_with(".json")
+        || archive.contains("..")
+        || archive.contains('\\')
+        || archive.contains('?')
+        || archive.contains('#')
+    {
+        return Err(std::io::Error::other("invalid conference archive path").into());
+    }
+    match fetch_json_with_cache_recovery(&format!("{base_url}/conference/{archive}")).await {
+        Ok(data) => Ok(data),
+        Err(_) => {
+            fetch_json_with_cache_recovery(&format!("{base_url}/conference/allconf.json")).await
+        }
+    }
+}
+
+pub fn merge_conferences(current: &mut Vec<Conference>, additional: Vec<Conference>) {
+    for conference in additional {
+        if let Some(existing) = current
+            .iter_mut()
+            .find(|item| item.title == conference.title && item.sub == conference.sub)
+        {
+            for edition in conference.confs {
+                if !existing.confs.iter().any(|item| item.id == edition.id) {
+                    existing.confs.push(edition);
+                }
+            }
+            existing.confs.sort_by_key(|edition| edition.year);
+        } else {
+            current.push(conference);
+        }
+    }
+}
+
+pub fn acceptance_bucket(title: &str) -> u32 {
+    title.as_bytes().iter().fold(2166136261u32, |hash, byte| {
+        (hash ^ u32::from(*byte)).wrapping_mul(16777619)
+    }) % 16
+}
+
+pub async fn fetch_conference_acc(
+    base_url: &str,
+    title: &str,
+) -> Result<Vec<ConfAccRate>, Box<dyn std::error::Error>> {
+    let url = format!(
+        "{base_url}/conference/parts/acceptance-{:02}.json",
+        acceptance_bucket(title)
+    );
+    match fetch_json_with_cache_recovery(&url).await {
+        Ok(data) => Ok(data),
+        Err(_) => {
+            fetch_json_with_cache_recovery(&format!("{base_url}/conference/allacc.json")).await
+        }
+    }
 }
 
 async fn fetch_json_with_cache_recovery<T: DeserializeOwned>(
@@ -199,4 +272,42 @@ pub fn get_categories() -> Vec<Category> {
             sub: "MX".to_string(),
         },
     ]
+}
+
+#[cfg(test)]
+mod loading_tests {
+    use super::*;
+
+    #[test]
+    fn acceptance_buckets_match_python_generator() {
+        assert_eq!(acceptance_bucket("ICLR"), 11);
+        assert_eq!(acceptance_bucket("VLDB"), 9);
+        assert_eq!(acceptance_bucket("中文"), 5);
+    }
+
+    #[test]
+    fn historical_loading_merges_editions_without_duplicate_cards() {
+        let conference = |years: &[i32]| -> Conference {
+            serde_json::from_value(serde_json::json!({
+                "title": "Example", "description": "Example conference", "sub": "AI",
+                "rank": {"ccf": "A"}, "dblp": "example",
+                "confs": years.iter().map(|year| serde_json::json!({
+                    "year": year, "id": format!("example{year}"), "link": "https://example.com",
+                    "timeline": [{"deadline": "TBD"}], "timezone": "UTC", "date": "TBD", "place": "TBD"
+                })).collect::<Vec<_>>()
+            })).expect("valid conference fixture")
+        };
+        let mut current = vec![conference(&[2027])];
+        merge_conferences(&mut current, vec![conference(&[2025, 2026, 2027])]);
+        merge_conferences(&mut current, vec![conference(&[2025, 2026])]);
+        assert_eq!(current.len(), 1);
+        assert_eq!(
+            current[0]
+                .confs
+                .iter()
+                .map(|edition| edition.year)
+                .collect::<Vec<_>>(),
+            vec![2025, 2026, 2027]
+        );
+    }
 }

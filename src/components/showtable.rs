@@ -110,7 +110,10 @@ pub fn ShowTable(
     let raw_conferences = RwSignal::new(Vec::<Conference>::new());
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
     let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
-    let acceptance_rates_requested = RwSignal::new(false);
+    let acceptance_buckets_loaded = RwSignal::new(HashSet::<u32>::new());
+    let acceptance_buckets_pending = RwSignal::new(HashSet::<u32>::new());
+    let archive_path = RwSignal::new(None::<String>);
+    let archive_requested = RwSignal::new(false);
     let base_time = RwSignal::new(None::<DateTime<Utc>>);
     let base_time_input = RwSignal::new(String::new());
     let base_time_editing = RwSignal::new(false);
@@ -197,9 +200,10 @@ pub fn ShowTable(
             let Some(base_url) = browser_origin() else {
                 return;
             };
-            match fetch_all_conf(&base_url).await {
-                Ok(conferences) => {
-                    raw_conferences.set(conferences);
+            match fetch_initial_conf(&base_url).await {
+                Ok(data) => {
+                    raw_conferences.set(data.conferences);
+                    archive_path.set(data.archive);
                 }
                 Err(error) => {
                     console::error_1(&format!("Error: {error:?}").into());
@@ -209,30 +213,88 @@ pub fn ShowTable(
     });
 
     Effect::new(move |_| {
-        if !show_conf_detail.get() || acceptance_rates_requested.get_untracked() {
+        let path = archive_path.get();
+        let needs_history = show_past.get()
+            || base_time.get().is_some()
+            || raw_conferences.with(|conferences| {
+                like_list.with(|likes| {
+                    likes.iter().any(|id| {
+                        !conferences.iter().any(|conference| {
+                            conference.confs.iter().any(|edition| &edition.id == id)
+                        })
+                    })
+                })
+            });
+        let Some(path) = path else {
+            return;
+        };
+        if !needs_history || archive_requested.get_untracked() {
             return;
         }
-        acceptance_rates_requested.set(true);
+        archive_requested.set(true);
         spawn_local(async move {
             let Some(base_url) = browser_origin() else {
-                acceptance_rates_requested.set(false);
                 return;
             };
-            match fetch_all_acc(&base_url).await {
+            match fetch_archive_conf(&base_url, &path).await {
+                Ok(conferences) => {
+                    raw_conferences.update(|current| merge_conferences(current, conferences));
+                    archive_path.set(None);
+                }
+                Err(error) => {
+                    archive_requested.set(false);
+                    console::error_1(
+                        &format!("Error loading conference history: {error:?}").into(),
+                    );
+                }
+            }
+        });
+    });
+
+    Effect::new(move |_| {
+        if !show_conf_detail.get() {
+            return;
+        }
+        let Some(conference) = selected_conf.get() else {
+            return;
+        };
+        let bucket = acceptance_bucket(&conference.title);
+        if acceptance_buckets_loaded.with_untracked(|loaded| loaded.contains(&bucket))
+            || acceptance_buckets_pending.with_untracked(|pending| pending.contains(&bucket))
+        {
+            return;
+        }
+        acceptance_buckets_pending.update(|pending| {
+            pending.insert(bucket);
+        });
+        spawn_local(async move {
+            let Some(base_url) = browser_origin() else {
+                acceptance_buckets_pending.update(|pending| {
+                    pending.remove(&bucket);
+                });
+                return;
+            };
+            match fetch_conference_acc(&base_url, &conference.title).await {
                 Ok(all_acc) => {
-                    let rates = build_acceptance_rate_map(all_acc);
+                    acceptance_rates
+                        .update(|rates| rates.extend(build_acceptance_rate_map(all_acc)));
+                    let rates = acceptance_rates.get_untracked();
+                    acceptance_buckets_loaded.update(|loaded| {
+                        loaded.insert(bucket);
+                    });
                     selected_conf.update(|selected| {
                         if let Some(item) = selected {
                             apply_acceptance_rate(item, &rates);
                         }
                     });
-                    acceptance_rates.set(rates);
                 }
                 Err(error) => {
-                    acceptance_rates_requested.set(false);
                     console::error_1(&format!("Error loading acceptance rates: {error:?}").into());
                 }
             }
+            acceptance_buckets_pending.update(|pending| {
+                pending.remove(&bucket);
+            });
         });
     });
 
@@ -250,7 +312,7 @@ pub fn ShowTable(
             conferences,
             &sub_list.get_untracked(),
             &like_list.get_untracked(),
-            &acceptance_rates.get_untracked(),
+            &acceptance_rates.get(),
             &selected_timezone.get(),
             base_time.get().unwrap_or_else(Utc::now),
         );
