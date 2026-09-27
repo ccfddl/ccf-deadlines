@@ -609,7 +609,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             }
                         >
                             <Icon icon=icondata::BsStarFill style="margin-right: 4px;" />
-                            {move || if use_english.get() { "Most starred" } else { "星数排序" }}
+                            {move || if use_english.get() { "Most starred" } else { "最多收藏" }}
                         </Button>
                     </span>
                     <Button
