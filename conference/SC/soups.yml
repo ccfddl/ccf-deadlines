@@ -25,7 +25,7 @@
           deadline: '2022-02-17 23:59:00'
           comment: Mandatory paper registration with title and abstract
       timezone: AoE
-      date: August 7-9, 2022
+      date: August 8-9, 2022
       place: Boston, MA, USA
     - year: 2023
       id: soups23
@@ -35,7 +35,7 @@
           deadline: '2023-02-16 23:59:00'
           comment: Mandatory paper registration with title and abstract
       timezone: AoE
-      date: August 6-8, 2023
+      date: August 7-8, 2023
       place: Anaheim, CA, USA
     - year: 2024
       id: soups24
