@@ -1,5 +1,17 @@
 - title: AFT
   accept_rates:
+    - year: 2021
+      submitted: 80
+      accepted: 16
+      rate: 0.2
+      str: "20.0%(16/80 21')"
+      source: https://aft21.hotcrp.com/
+    - year: 2022
+      submitted: 79
+      accepted: 22
+      rate: 0.27848101265822783
+      str: "27.8%(22/79 22')"
+      source: https://aft22.hotcrp.com/
     - year: 2023
       submitted: 100
       accepted: 31
