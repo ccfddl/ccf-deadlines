@@ -6,6 +6,12 @@
       rate: 0.31
       str: "31.0%(31/100 23')"
       source: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.AFT.2023.0
+    - year: 2024
+      submitted: 106
+      accepted: 30
+      rate: 0.2830188679245283
+      str: "28.3%(30/106 24')"
+      source: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.AFT.2024.0
     - year: 2025
       submitted: 135
       accepted: 35
