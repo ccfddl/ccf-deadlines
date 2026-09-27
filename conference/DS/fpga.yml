@@ -14,7 +14,7 @@
         - abstract_deadline: '2020-09-07 23:59:00'
           deadline: '2020-09-14 23:59:00'
       timezone: AoE
-      date: February 28 - March 2, 2021
+      date: March 1-2, 2021
       place: Virtual
     - year: 2022
       id: fpga2022
@@ -23,7 +23,7 @@
         - abstract_deadline: '2021-09-06 23:59:00'
           deadline: '2021-09-13 23:59:00'
       timezone: AoE
-      date: February 27 - March 1, 2022
+      date: February 28 - March 1, 2022
       place: Virtual
     - year: 2023
       id: fpga2023
