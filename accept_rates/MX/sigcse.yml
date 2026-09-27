@@ -1,5 +1,21 @@
 - title: SIGCSE
   accept_rates:
+    # Main-paper accepted decisions in official board minutes, PDF page 1; other tracks excluded.
+    # No quantified desk-rejection or withdrawal partition.
+    - year: 2023
+      submitted: 474
+      accepted: 165
+      str: "34.8%(165/474 23')"
+      rate: 0.34810126582278483
+      source: https://sigcse.org/about/reports/BoardMinutes/2022-2025/Minutes-2023-10-24.pdf
+    # Main-paper accepted decisions in official board minutes, PDF page 1; other tracks excluded.
+    # No quantified desk-rejection or withdrawal partition.
+    - year: 2024
+      submitted: 669
+      accepted: 216
+      str: "32.3%(216/669 24')"
+      rate: 0.32286995515695066
+      source: https://sigcse.org/about/reports/BoardMinutes/2022-2025/Minutes-2023-10-24.pdf
     # Main papers across CER, ERT and PCI; separate Student Research Competition acceptances excluded.
     # Signed symposium recap; no quantified desk-rejection or withdrawal partition.
     - year: 2026
