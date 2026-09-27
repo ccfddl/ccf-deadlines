@@ -1,0 +1,39 @@
+# Peer-reviewed main-conference papers only; invited talks and workshops excluded.
+- title: ICCBR
+  accept_rates:
+    - year: 2021
+      submitted: 85
+      accepted: 21
+      str: 24.7%(21/85 21')
+      rate: 0.247058823529412
+      source: https://link.springer.com/book/10.1007/978-3-030-86957-1
+    - year: 2022
+      submitted: 68
+      accepted: 26
+      str: 38.2%(26/68 22')
+      rate: 0.382352941176471
+      source: https://link.springer.com/book/10.1007/978-3-031-14923-8
+    - year: 2023
+      submitted: 79
+      accepted: 26
+      str: 32.9%(26/79 23')
+      rate: 0.329113924050633
+      source: https://link.springer.com/book/10.1007/978-3-031-40177-0
+    - year: 2024
+      submitted: 91
+      accepted: 29
+      str: 31.9%(29/91 24')
+      rate: 0.318681318681319
+      source: https://link.springer.com/book/10.1007/978-3-031-63646-2
+    - year: 2025
+      submitted: 81
+      accepted: 30
+      str: 37.0%(30/81 25')
+      rate: 0.370370370370370
+      source: https://link.springer.com/book/10.1007/978-3-031-96559-3
+    - year: 2026
+      submitted: 85
+      accepted: 36
+      str: 42.4%(36/85 26')
+      rate: 0.423529411764706
+      source: https://link.springer.com/book/10.1007/978-3-032-33865-5
