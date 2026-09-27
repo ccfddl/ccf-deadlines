@@ -7,12 +7,33 @@
     thcpl: N
   dblp: ets
   confs:
+    - year: 2021
+      id: ets2021
+      link: https://www.ieee-ets.org/past_events/ets21/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract December 10 and paper December 17, 2020; exact times and timezone unpublished (UTC+0 placeholder)
+      timezone: UTC+0
+      date: May 24-28, 2021
+      place: Virtual
+    - year: 2022
+      id: ets2022
+      link: https://ets2022.upc.edu/en
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract December 14 and paper December 31, 2021, final extensions; exact times and timezone unpublished (UTC+0 placeholder)
+      timezone: UTC+0
+      date: May 23-27, 2022
+      place: Barcelona, Spain (hybrid)
     - year: 2024
       id: ets2024
       link: https://ets24.ewi.tudelft.nl/
       timeline:
-        - abstract_deadline: '2023-12-08 23:59:59'
-          deadline: '2023-12-16 23:59:59'
+        - abstract_deadline: TBD
+          deadline: '2023-12-22 23:59:59'
+          comment: Abstract December 15, 2023, exact time unpublished; paper December 22, 2023 at 24:00 AoE, final extensions
       timezone: AoE
       date: May 20-24, 2024
       place: The Hague, Netherlands
