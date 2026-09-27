@@ -12,6 +12,23 @@
   "vars": {
     "PUBLIC_ORIGIN": "https://ccfddl.com"
   },
+  "ratelimits": [
+    {
+      "name": "API_RATE_LIMITER",
+      "namespace_id": "22101",
+      "simple": { "limit": 600, "period": 60 }
+    },
+    {
+      "name": "AUTH_RATE_LIMITER",
+      "namespace_id": "22102",
+      "simple": { "limit": 30, "period": 60 }
+    },
+    {
+      "name": "USER_WRITE_LIMITER",
+      "namespace_id": "22103",
+      "simple": { "limit": 60, "period": 60 }
+    }
+  ],
   "d1_databases": [
     {
       "binding": "DB",

@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'; form-action 'self' https://github.com" />
   <meta name="description" content="CCFDDL Open Deadlines helps researchers track worldwide conference deadlines through collaboration." />
   <meta name="keywords" content="conference deadlines" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,7 +34,7 @@
   <!-- Add a plain CSS file: see https://trunkrs.dev/assets/#css -->
   <!-- If using Tailwind with Leptos CSR, see https://trunkrs.dev/assets/#tailwind instead-->
   <link data-trunk rel="css" href="public/styles.css" />
-  <link rel="preload" href="/conference/allconf.json" as="fetch" type="application/json" crossorigin="anonymous" fetchpriority="high" />
+  <link rel="preload" href="/conference/initial.json" as="fetch" type="application/json" crossorigin="anonymous" fetchpriority="high" />
 
   <!-- Include favicon in dist output: see https://trunkrs.dev/assets/#icon -->
   <link data-trunk rel="icon" href="public/favicon.ico" />

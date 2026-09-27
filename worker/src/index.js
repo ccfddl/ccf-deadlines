@@ -1,26 +1,34 @@
-const OAUTH_COOKIE = "ccfddl_oauth";
-const SESSION_COOKIE = "ccfddl_session";
+const OAUTH_COOKIE = "__Host-ccfddl_oauth";
+const SESSION_COOKIE = "__Host-ccfddl_session";
 const OAUTH_TTL_SECONDS = 10 * 60;
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60;
 const MESSAGE_MAX_CHARACTERS = 500;
 const MESSAGE_MAX_LINES = 8;
-const MESSAGE_COOLDOWN_SECONDS = 30;
 const MESSAGE_PAGE_SIZE = 50;
 const MESSAGE_REPLY_PAGE_SIZE = 20;
 const MESSAGE_DAILY_LIMIT = 10;
 const MESSAGE_LIKES_WINDOW_SECONDS = 30 * 24 * 60 * 60;
+const MAX_JSON_BYTES = 8 * 1024;
 
 export default {
   async fetch(request, env) {
+    let response;
     try {
-      return await route(request, env);
+      await enforceRateLimit(request, env);
+      response = await route(request, env);
     } catch (error) {
       if (error instanceof HttpError) {
-        return json({ error: error.message }, error.status);
+        response = json({ error: error.message }, error.status);
+      } else {
+        console.error("Worker request failed", error?.name ?? "Error");
+        response = json({ error: "Internal server error" }, 500);
       }
-      console.error(error);
-      return json({ error: "Internal server error" }, 500);
     }
+    response.headers.set("X-Content-Type-Options", "nosniff");
+    response.headers.set("Referrer-Policy", "no-referrer");
+    response.headers.set("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'");
+    if (response.status === 429) response.headers.set("Retry-After", "60");
+    return response;
   },
 };
 
@@ -86,7 +94,7 @@ async function beginGithubLogin(request, env, url) {
   const challenge = await sha256Base64Url(verifier);
   const returnTo = sanitizeReturnTo(url.searchParams.get("return_to"));
   const payload = await signPayload(
-    JSON.stringify({ state, verifier, returnTo }),
+    JSON.stringify({ state, verifier, returnTo, issued_at: unixTime() }),
     env.SESSION_SECRET,
   );
   const callback = `${env.PUBLIC_ORIGIN}/api/auth/github/callback`;
@@ -104,8 +112,8 @@ async function beginGithubLogin(request, env, url) {
 
 async function finishGithubLogin(request, env, url) {
   requireConfiguration(env);
-  const signedPayload = parseCookies(request.headers.get("Cookie"))[OAUTH_COOKIE];
-  const payload = signedPayload
+  const signedPayload = parseCookies(request.headers.get("Cookie"))[cookieName(OAUTH_COOKIE, request)];
+  const payload = signedPayload && signedPayload.length <= 4096
     ? await verifyPayload(signedPayload, env.SESSION_SECRET)
     : null;
   if (!payload) {
@@ -113,6 +121,9 @@ async function finishGithubLogin(request, env, url) {
   }
 
   const oauth = JSON.parse(payload);
+  if (!isFreshOAuthPayload(oauth)) {
+    return json({ error: "The GitHub login request has expired." }, 400);
+  }
   const state = url.searchParams.get("state");
   const code = url.searchParams.get("code");
   if (!code || !state || !safeEqual(state, oauth.state)) {
@@ -121,6 +132,8 @@ async function finishGithubLogin(request, env, url) {
 
   const tokenResponse = await fetch("https://github.com/login/oauth/access_token", {
     method: "POST",
+    signal: AbortSignal.timeout(10_000),
+    redirect: "error",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -141,6 +154,8 @@ async function finishGithubLogin(request, env, url) {
   }
 
   const userResponse = await fetch("https://api.github.com/user", {
+    signal: AbortSignal.timeout(10_000),
+    redirect: "error",
     headers: {
       Accept: "application/vnd.github+json",
       Authorization: `Bearer ${token.access_token}`,
@@ -157,6 +172,13 @@ async function finishGithubLogin(request, env, url) {
   const sessionToken = randomToken(32);
   const sessionHash = await sha256Hex(sessionToken);
   await env.DB.batch([
+    env.DB.prepare("DELETE FROM sessions WHERE expires_at <= ?").bind(now),
+    env.DB.prepare(
+      `DELETE FROM sessions WHERE github_id = ? AND token_hash NOT IN (
+         SELECT token_hash FROM sessions WHERE github_id = ?
+         ORDER BY created_at DESC, token_hash LIMIT 19
+       )`,
+    ).bind(githubUser.id, githubUser.id),
     env.DB.prepare(
       `INSERT INTO users (github_id, login, avatar_url, profile_url, created_at, updated_at)
        VALUES (?, ?, ?, ?, ?, ?)
@@ -418,12 +440,7 @@ async function createMessage(request, env) {
     return json({ error: "GitHub sign-in is required." }, 401);
   }
 
-  let payload;
-  try {
-    payload = await request.json();
-  } catch {
-    throw new HttpError(400, "Invalid JSON body.");
-  }
+  const payload = await readJsonBody(request);
   const body = normalizeWallMessage(payload?.body);
   if (!body) {
     throw new HttpError(
@@ -454,44 +471,23 @@ async function createMessage(request, env) {
   }
 
   const now = unixTime();
-  const dayStart = utcDayStart(now);
-  const lastMessage = await env.DB.prepare(
-    `SELECT created_at FROM wall_messages
-     WHERE github_id = ?
-     ORDER BY created_at DESC
-     LIMIT 1`,
-  )
-    .bind(user.github_id)
-    .first();
-  if (
-    lastMessage &&
-    now - Number(lastMessage.created_at) < MESSAGE_COOLDOWN_SECONDS
-  ) {
-    throw new HttpError(429, "Please wait before posting another message.");
+  let result;
+  try {
+    // The database trigger reserves the quota and cooldown in the same transaction.
+    result = await env.DB.prepare(
+      "INSERT INTO wall_messages (github_id, body, created_at, parent_id) VALUES (?, ?, ?, ?)",
+    )
+      .bind(user.github_id, body, now, parentId)
+      .run();
+  } catch (error) {
+    if (String(error.message).includes("wall_post_cooldown")) {
+      throw new HttpError(429, "Please wait before posting another message.");
+    }
+    if (String(error.message).includes("wall_daily_limit")) {
+      throw new HttpError(429, `Each GitHub account can post up to ${MESSAGE_DAILY_LIMIT} messages per UTC day.`);
+    }
+    throw error;
   }
-
-  const quota = await env.DB.prepare(
-    `INSERT INTO wall_daily_post_counts (github_id, day_start, post_count)
-     VALUES (?, ?, 1)
-     ON CONFLICT(github_id, day_start) DO UPDATE SET
-       post_count = wall_daily_post_counts.post_count + 1
-     WHERE wall_daily_post_counts.post_count < ?
-     RETURNING post_count`,
-  )
-    .bind(user.github_id, dayStart, MESSAGE_DAILY_LIMIT)
-    .first();
-  if (!quota) {
-    throw new HttpError(
-      429,
-      `Each GitHub account can post up to ${MESSAGE_DAILY_LIMIT} messages per UTC day.`,
-    );
-  }
-
-  const result = await env.DB.prepare(
-    "INSERT INTO wall_messages (github_id, body, created_at, parent_id) VALUES (?, ?, ?, ?)",
-  )
-    .bind(user.github_id, body, now, parentId)
-    .run();
 
   return json(
     {
@@ -589,7 +585,7 @@ async function deleteMessage(request, env, url) {
 }
 
 async function logout(request, env) {
-  const token = parseCookies(request.headers.get("Cookie"))[SESSION_COOKIE];
+  const token = parseCookies(request.headers.get("Cookie"))[cookieName(SESSION_COOKIE, request)];
   if (token) {
     await env.DB.prepare("DELETE FROM sessions WHERE token_hash = ?")
       .bind(await sha256Hex(token))
@@ -605,15 +601,20 @@ async function logout(request, env) {
 }
 
 async function authenticatedUser(request, env) {
-  const token = parseCookies(request.headers.get("Cookie"))[SESSION_COOKIE];
-  if (!token) return null;
-  return env.DB.prepare(
+  const token = parseCookies(request.headers.get("Cookie"))[cookieName(SESSION_COOKIE, request)];
+  if (!token || !/^[A-Za-z0-9_-]{43}$/.test(token)) return null;
+  const user = await env.DB.prepare(
     `SELECT users.github_id, users.login, users.avatar_url, users.profile_url
      FROM sessions JOIN users ON users.github_id = sessions.github_id
      WHERE sessions.token_hash = ? AND sessions.expires_at > ?`,
   )
     .bind(await sha256Hex(token), unixTime())
     .first();
+  if (user && ["POST", "PUT", "DELETE"].includes(request.method) && env.USER_WRITE_LIMITER) {
+    const { success } = await env.USER_WRITE_LIMITER.limit({ key: String(user.github_id) });
+    if (!success) throw new HttpError(429, "Too many requests. Please try again later.");
+  }
+  return user;
 }
 
 function requireConfiguration(env) {
@@ -625,11 +626,20 @@ function requireConfiguration(env) {
   ]) {
     if (!env[key]) throw new Error(`Missing Worker configuration: ${key}`);
   }
+  if (new TextEncoder().encode(env.SESSION_SECRET).length < 32) {
+    throw new Error("SESSION_SECRET must contain at least 32 bytes.");
+  }
+  const origin = new URL(env.PUBLIC_ORIGIN);
+  const localHttp = origin.protocol === "http:" && ["localhost", "127.0.0.1", "[::1]"].includes(origin.hostname);
+  if (origin.origin !== env.PUBLIC_ORIGIN || (origin.protocol !== "https:" && !localHttp)) {
+    throw new Error("PUBLIC_ORIGIN must be a valid origin.");
+  }
 }
 
 function assertTrustedOrigin(request, env) {
   const origin = request.headers.get("Origin");
-  if (origin && origin !== env.PUBLIC_ORIGIN) {
+  const fetchSite = request.headers.get("Sec-Fetch-Site");
+  if (origin !== env.PUBLIC_ORIGIN || (fetchSite && fetchSite !== "same-origin" && fetchSite !== "none")) {
     throw new HttpError(403, "Untrusted request origin.");
   }
 }
@@ -659,7 +669,12 @@ function redirect(location, cookies = []) {
 
 function serializeCookie(name, value, maxAge, request) {
   const secure = new URL(request.url).protocol === "https:" ? "; Secure" : "";
-  return `${name}=${value}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${maxAge}${secure}`;
+  return `${cookieName(name, request)}=${value}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${maxAge}${secure}`;
+}
+
+function cookieName(name, request) {
+  // The host prefix prevents a sibling subdomain from injecting login cookies.
+  return new URL(request.url).protocol === "https:" ? name : name.replace(/^__Host-/, "");
 }
 
 export function parseCookies(header) {
@@ -681,9 +696,66 @@ export function sanitizeReturnTo(value) {
   return typeof value === "string" &&
     value.startsWith("/") &&
     !value.startsWith("//") &&
+    !/[\\\u0000-\u0020\u007f]/.test(value) &&
     value.length <= 2048
     ? value
     : "/";
+}
+
+export function isFreshOAuthPayload(payload, now = unixTime()) {
+  return payload && Number.isInteger(payload.issued_at)
+    && payload.issued_at <= now + 30
+    && now - payload.issued_at < OAUTH_TTL_SECONDS
+    && typeof payload.state === "string" && /^[A-Za-z0-9_-]{32}$/.test(payload.state)
+    && typeof payload.verifier === "string" && /^[A-Za-z0-9_-]{64}$/.test(payload.verifier);
+}
+
+async function enforceRateLimit(request, env) {
+  const url = new URL(request.url);
+  if (url.pathname === "/api/health") return;
+  const ip = request.headers.get("CF-Connecting-IP");
+  // CF-Connecting-IP is supplied by Cloudflare, not by a client on the deployed route.
+  if (!ip) return;
+  const limiter = url.pathname.startsWith("/api/auth/github") ? env.AUTH_RATE_LIMITER : env.API_RATE_LIMITER;
+  if (limiter) {
+    const { success } = await limiter.limit({ key: ip });
+    if (!success) throw new HttpError(429, "Too many requests. Please try again later.");
+  }
+}
+
+export async function readJsonBody(request) {
+  if (request.headers.get("Content-Type")?.split(";")[0].trim().toLowerCase() !== "application/json") {
+    throw new HttpError(415, "Content-Type must be application/json.");
+  }
+  if (Number(request.headers.get("Content-Length")) > MAX_JSON_BYTES) {
+    throw new HttpError(413, "Request body is too large.");
+  }
+  if (!request.body) throw new HttpError(400, "Invalid JSON body.");
+  const reader = request.body.getReader();
+  const chunks = [];
+  let length = 0;
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      length += value.byteLength;
+      if (length > MAX_JSON_BYTES) {
+        await reader.cancel();
+        throw new HttpError(413, "Request body is too large.");
+      }
+      chunks.push(value);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+  const bytes = new Uint8Array(length);
+  let offset = 0;
+  for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
+  try {
+    return JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes));
+  } catch {
+    throw new HttpError(400, "Invalid JSON body.");
+  }
 }
 
 export function isValidConferenceKey(value) {

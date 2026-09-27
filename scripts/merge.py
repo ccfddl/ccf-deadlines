@@ -64,6 +64,7 @@ def main():
 
     # Collect all data
     all_data = []
+    errors = 0
 
     for yml_file in yml_files:
         print(f"Processing: {yml_file}", file=sys.stderr)
@@ -89,9 +90,14 @@ def main():
                     all_data.append(data_entry)
 
         except yaml.YAMLError as e:
+            errors += 1
             print(f"❌ YAML parsing error in {yml_file}: {e}", file=sys.stderr)
         except Exception as e:
+            errors += 1
             print(f"❌ Error reading {yml_file}: {e}", file=sys.stderr)
+
+    if errors:
+        sys.exit(1)
 
     # Output merged YAML to stdout
     yaml.dump(all_data, sys.stdout,
