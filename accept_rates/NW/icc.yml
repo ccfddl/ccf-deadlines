@@ -1,0 +1,11 @@
+- title: ICC
+  accept_rates:
+    # Overall main Technical Symposia and SAC tracks; workshops excluded.
+    # Accepted decisions / received submissions, not a final-publication census.
+    # Desk/withdrawal and later no-show removals are not separately quantified.
+    - year: 2022
+      submitted: 2529
+      accepted: 962
+      str: 38.0%(962/2529 22')
+      rate: 0.3803875049426651
+      source: https://icc2022.ieee-icc.org/welcome-message.html
