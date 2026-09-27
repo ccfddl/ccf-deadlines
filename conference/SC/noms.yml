@@ -7,12 +7,31 @@
     thcpl: B
   dblp: noms
   confs:
+    - year: 2022
+      id: noms22
+      link: https://noms2022.ieee-noms.org/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular full technical paper final firm deadline: November 1, 2021; exact time and timezone not published.'
+      timezone: UTC
+      date: April 25-29, 2022
+      place: Budapest, Hungary / Hybrid
+    - year: 2024
+      id: noms24
+      link: https://noms2024.ieee-noms.org/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular full technical paper deadline extended to October 27, 2023; exact time and timezone not published.'
+      timezone: UTC
+      date: May 6-10, 2024
+      place: Seoul, South Korea
     - year: 2025
       id: noms25
       link: https://noms2025.ieee-noms.org/
       timeline:
         - abstract_deadline: '2024-09-07 19:59:59'
-          deadline: '2024-09-14 19:59:59'
+          deadline: TBD
+          comment: 'Regular full technical paper final deadline: October 25, 2024; exact time and timezone not published.'
       timezone: UTC+10
       date: May 12-16, 2025
       place: Honolulu, HI, USA
@@ -20,7 +39,8 @@
       id: noms26
       link: https://noms2026.ieee-noms.org/
       timeline:
-        - deadline: '2025-10-13 19:59:59'
+        - deadline: TBD
+          comment: 'Regular full technical paper final deadline: November 10, 2025; exact time and timezone not published.'
       timezone: UTC+10
       date: May 18-22, 2026
       place: Rome, Italy
