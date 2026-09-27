@@ -11,19 +11,17 @@
       id: sat21
       link: https://iiia.csic.es/sat2021/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular/long papers: abstract March 15, 2021; paper March 19, 2021 (AoE); exact cutoff time not specified.'
+        - abstract_deadline: '2021-03-15 23:59:59'
+          deadline: '2021-03-19 23:59:59'
       timezone: AoE
-      date: July 5-9, 2021
+      date: July 7-9, 2021
       place: Barcelona, Spain (hybrid)
     - year: 2022
       id: sat22
       link: https://satisfiability.org/SAT22/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular/long papers: abstract February 21, 2022; paper February 28, 2022 (AoE); exact cutoff time not specified.'
+        - abstract_deadline: '2022-02-21 23:59:59'
+          deadline: '2022-02-28 23:59:59'
       timezone: AoE
       date: August 2-5, 2022
       place: Haifa, Israel
@@ -31,19 +29,17 @@
       id: sat23
       link: https://satisfiability.org/SAT23/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular/long papers: abstract March 10, 2023; paper March 17, 2023 (AoE); exact cutoff time not specified.'
+        - abstract_deadline: '2023-03-10 23:59:59'
+          deadline: '2023-03-17 23:59:59'
       timezone: AoE
-      date: July 4-8, 2023
+      date: July 5-8, 2023
       place: Alghero, Italy
     - year: 2024
       id: sat24
       link: https://satisfiability.org/SAT24/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular/long papers: abstract March 8, 2024; paper March 17, 2024 (AoE); exact cutoff time not specified.'
+        - abstract_deadline: '2024-03-08 23:59:59'
+          deadline: '2024-03-17 23:59:59'
       timezone: AoE
       date: August 21-24, 2024
       place: Pune, India
