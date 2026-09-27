@@ -4,7 +4,6 @@ use crate::components::favorites::{FavoritesContext, start_github_login};
 use chrono::{DateTime, FixedOffset, Utc};
 use leptos::prelude::*;
 use std::collections::HashMap;
-use std::time::Duration;
 use thaw::*;
 
 #[derive(Clone, Debug, PartialEq)]
@@ -21,12 +20,6 @@ struct FavoriteTimelineEvent {
 }
 
 #[derive(Clone, Debug, PartialEq)]
-enum FavoriteTimelineRow {
-    Now,
-    Event(FavoriteTimelineEvent),
-}
-
-#[derive(Clone, Debug, PartialEq)]
 struct FavoriteConferenceLegend {
     id: String,
     label: String,
@@ -35,7 +28,7 @@ struct FavoriteConferenceLegend {
 
 #[derive(Clone, Debug, PartialEq)]
 struct FavoriteTimelineData {
-    rows: Vec<FavoriteTimelineRow>,
+    events: Vec<FavoriteTimelineEvent>,
     legends: Vec<FavoriteConferenceLegend>,
     awaiting_dates: Vec<ConfItem>,
 }
@@ -55,21 +48,12 @@ pub fn FavoritesTimelineModal(
             reference_time.get().unwrap_or_else(Utc::now),
         )
     });
-    let now_marker_ref = NodeRef::<leptos::html::Div>::new();
+    let selected_conference = RwSignal::new(None::<String>);
 
     Effect::new(move |_| {
         if !show.get() {
-            return;
+            selected_conference.set(None);
         }
-        let _ = timeline.get();
-        set_timeout(
-            move || {
-                if let Some(marker) = now_marker_ref.get() {
-                    marker.scroll_into_view_with_bool(true);
-                }
-            },
-            Duration::from_millis(40),
-        );
     });
 
     view! {
@@ -148,125 +132,154 @@ pub fn FavoritesTimelineModal(
                                         }
                                             .into_any()
                                     } else {
-                                        let awaiting_dates = data.awaiting_dates.clone();
-                                        let has_awaiting_dates = !awaiting_dates.is_empty();
+                                        let selected = selected_conference.get();
+                                        let visible_events = data
+                                            .events
+                                            .into_iter()
+                                            .filter(|event| {
+                                                selected
+                                                    .as_ref()
+                                                    .is_none_or(|id| id == &event.conference_id)
+                                            })
+                                            .collect::<Vec<_>>();
+                                        let visible_awaiting_dates = data
+                                            .awaiting_dates
+                                            .into_iter()
+                                            .filter(|conference| {
+                                                selected
+                                                    .as_ref()
+                                                    .is_none_or(|id| id == &conference.id)
+                                            })
+                                            .collect::<Vec<_>>();
+                                        let has_future_events = !visible_events.is_empty();
+                                        let has_awaiting_dates = !visible_awaiting_dates.is_empty();
                                         view! {
-                                            <div class="favorites-timeline-legends" aria-label=move || {
-                                                if use_english.get() {
-                                                    "Conference colors"
-                                                } else {
-                                                    "会议颜色"
-                                                }
-                                            }>
-                                                {data
-                                                    .legends
-                                                    .into_iter()
-                                                    .map(|legend| {
-                                                        view! {
-                                                            <span
-                                                                class="favorites-timeline-legend"
-                                                                title=legend.id
-                                                            >
-                                                                <i style=format!("background:{}", legend.color)></i>
-                                                                {legend.label}
-                                                            </span>
-                                                        }
-                                                    })
-                                                    .collect_view()}
-                                            </div>
-                                            <div class="favorites-timeline-scroll">
-                                                <div class="favorites-timeline-rows">
+                                            <div class="favorites-timeline-toolbar">
+                                                <div class="favorites-timeline-legends" aria-label=move || {
+                                                    if use_english.get() {
+                                                        "Filter by conference"
+                                                    } else {
+                                                        "按会议筛选"
+                                                    }
+                                                }>
+                                                    <button
+                                                        type="button"
+                                                        class="favorites-timeline-legend"
+                                                        class:favorites-timeline-legend--active=selected.is_none()
+                                                        aria-pressed=selected.is_none()
+                                                        on:click=move |_| selected_conference.set(None)
+                                                    >
+                                                        {move || if use_english.get() { "All" } else { "全部会议" }}
+                                                    </button>
                                                     {data
-                                                        .rows
+                                                        .legends
                                                         .into_iter()
-                                                        .map(|row| match row {
-                                                            FavoriteTimelineRow::Now => view! {
-                                                                <div
-                                                                    node_ref=now_marker_ref
-                                                                    class="favorites-timeline-row favorites-timeline-now"
+                                                        .map(|legend| {
+                                                            let conference_id = legend.id.clone();
+                                                            let is_selected = selected.as_ref() == Some(&legend.id);
+                                                            view! {
+                                                                <button
+                                                                    type="button"
+                                                                    class="favorites-timeline-legend"
+                                                                    class:favorites-timeline-legend--active=is_selected
+                                                                    aria-pressed=is_selected
+                                                                    title=legend.id
+                                                                    on:click=move |_| {
+                                                                        selected_conference
+                                                                            .set(Some(conference_id.clone()));
+                                                                    }
                                                                 >
-                                                                    <span class="favorites-timeline-date">
-                                                                        {move || if use_english.get() { "NOW" } else { "现在" }}
-                                                                    </span>
-                                                                    <span class="favorites-timeline-rail">
-                                                                        <i></i>
-                                                                    </span>
-                                                                    <span class="favorites-timeline-now-line"></span>
-                                                                </div>
-                                                            }
-                                                                .into_any(),
-                                                            FavoriteTimelineRow::Event(event) => {
-                                                                let is_past = event.timepoint.timestamp_millis()
-                                                                    <= reference_time
-                                                                        .get_untracked()
-                                                                        .unwrap_or_else(Utc::now)
-                                                                        .timestamp_millis();
-                                                                let remaining = event
-                                                                    .timepoint
-                                                                    .timestamp_millis()
-                                                                    .saturating_sub(
-                                                                        reference_time
-                                                                            .get_untracked()
-                                                                            .unwrap_or_else(Utc::now)
-                                                                            .timestamp_millis(),
-                                                                    )
-                                                                    .max(0) as u64;
-                                                                let running = reference_time.get_untracked().is_none();
-                                                                let date = event.timepoint.format("%b %-d, %Y").to_string();
-                                                                let clock = event.timepoint.format("%H:%M").to_string();
-                                                                let deadline_label = deadline_label(
-                                                                    event.deadline_type,
-                                                                    event.round,
-                                                                    event.multi_round,
-                                                                );
-                                                                view! {
-                                                                    <div
-                                                                        class="favorites-timeline-row favorites-timeline-event"
-                                                                        class:favorites-timeline-event--past=is_past
-                                                                        style=format!("--conference-color:{}", event.color)
-                                                                    >
-                                                                        <span class="favorites-timeline-date">
-                                                                            <strong>{date}</strong>
-                                                                            <small>{clock}</small>
-                                                                        </span>
-                                                                        <span class="favorites-timeline-rail">
-                                                                            <i></i>
-                                                                        </span>
-                                                                        <article class="favorites-timeline-card">
-                                                                            <div class="favorites-timeline-card-heading">
-                                                                                <a
-                                                                                    href=event.link
-                                                                                    target="_blank"
-                                                                                    rel="noopener noreferrer"
-                                                                                >
-                                                                                    {format!("{} {}", event.conference_title, event.conference_year)}
-                                                                                </a>
-                                                                                <span>{deadline_label}</span>
-                                                                            </div>
-                                                                            <div class="favorites-timeline-card-meta">
-                                                                                <span>{move || display_timezone.get()}</span>
-                                                                                {if is_past {
-                                                                                    view! {
-                                                                                        <span class="favorites-timeline-passed">
-                                                                                            {move || if use_english.get() { "passed" } else { "已结束" }}
-                                                                                        </span>
-                                                                                    }
-                                                                                        .into_any()
-                                                                                } else {
-                                                                                    view! {
-                                                                                        <CountDown remain=remaining running=running />
-                                                                                    }
-                                                                                        .into_any()
-                                                                                }}
-                                                                            </div>
-                                                                        </article>
-                                                                    </div>
-                                                                }
-                                                                    .into_any()
+                                                                    <i style=format!("background:{}", legend.color)></i>
+                                                                    {legend.label}
+                                                                </button>
                                                             }
                                                         })
                                                         .collect_view()}
                                                 </div>
+                                                <span class="favorites-timeline-timezone">
+                                                    {move || if use_english.get() {
+                                                        format!("Times shown in {}", display_timezone.get())
+                                                    } else {
+                                                        format!("时间均按 {} 显示", display_timezone.get())
+                                                    }}
+                                                </span>
+                                            </div>
+                                            <div class="favorites-timeline-scroll">
+                                                <div class="favorites-timeline-track">
+                                                    <div class="favorites-timeline-node favorites-timeline-now">
+                                                        <span class="favorites-timeline-date">
+                                                            {move || if use_english.get() { "NOW" } else { "现在" }}
+                                                        </span>
+                                                        <span class="favorites-timeline-rail"><i></i></span>
+                                                        <span class="favorites-timeline-now-label">
+                                                            {move || if use_english.get() {
+                                                                "Upcoming deadlines"
+                                                            } else {
+                                                                "接下来的重要节点"
+                                                            }}
+                                                        </span>
+                                                    </div>
+                                                    {visible_events
+                                                        .into_iter()
+                                                        .map(|event| {
+                                                            let remaining = event
+                                                                .timepoint
+                                                                .timestamp_millis()
+                                                                .saturating_sub(
+                                                                    reference_time
+                                                                        .get_untracked()
+                                                                        .unwrap_or_else(Utc::now)
+                                                                        .timestamp_millis(),
+                                                                )
+                                                                .max(0) as u64;
+                                                            let running = reference_time.get_untracked().is_none();
+                                                            let date = event.timepoint.format("%b %-d, %Y").to_string();
+                                                            let clock = event.timepoint.format("%H:%M").to_string();
+                                                            let deadline_label = deadline_label(
+                                                                event.deadline_type,
+                                                                event.round,
+                                                                event.multi_round,
+                                                            );
+                                                            view! {
+                                                                <div
+                                                                    class="favorites-timeline-node favorites-timeline-event"
+                                                                    style=format!("--conference-color:{}", event.color)
+                                                                >
+                                                                    <span class="favorites-timeline-date">
+                                                                        <strong>{date}</strong>
+                                                                        <small>{clock}</small>
+                                                                    </span>
+                                                                    <span class="favorites-timeline-rail"><i></i></span>
+                                                                    <article class="favorites-timeline-card">
+                                                                        <div class="favorites-timeline-card-heading">
+                                                                            <a
+                                                                                href=event.link
+                                                                                target="_blank"
+                                                                                rel="noopener noreferrer"
+                                                                            >
+                                                                                {format!("{} {}", event.conference_title, event.conference_year)}
+                                                                            </a>
+                                                                            <span>{deadline_label}</span>
+                                                                        </div>
+                                                                        <div class="favorites-timeline-card-meta">
+                                                                            <CountDown remain=remaining running=running />
+                                                                        </div>
+                                                                    </article>
+                                                                </div>
+                                                            }
+                                                        })
+                                                        .collect_view()}
+                                                </div>
+
+                                                <Show when=move || !has_future_events>
+                                                    <div class="favorites-timeline-no-upcoming">
+                                                        {move || if use_english.get() {
+                                                            "No upcoming deadlines for this selection."
+                                                        } else {
+                                                            "当前选择没有未来的截止日期"
+                                                        }}
+                                                    </div>
+                                                </Show>
 
                                                 <Show when=move || has_awaiting_dates>
                                                     <section class="favorites-timeline-tbd">
@@ -276,7 +289,7 @@ pub fn FavoritesTimelineModal(
                                                             "日期待定"
                                                         }}</h3>
                                                         <div>
-                                                            {awaiting_dates
+                                                            {visible_awaiting_dates
                                                                 .clone()
                                                                 .into_iter()
                                                                 .map(|conference| view! {
@@ -353,6 +366,9 @@ fn build_favorite_timeline(
             > 1;
         let color = colors[&conference.id].clone();
         for point in conference.ddls {
+            if point.timepoint.timestamp_millis() <= reference_time.timestamp_millis() {
+                continue;
+            }
             events.push(FavoriteTimelineEvent {
                 conference_id: conference.id.clone(),
                 conference_title: conference.title.clone(),
@@ -374,29 +390,10 @@ fn build_favorite_timeline(
     });
 
     FavoriteTimelineData {
-        rows: insert_now_row(events, reference_time),
+        events,
         legends,
         awaiting_dates,
     }
-}
-
-fn insert_now_row(
-    events: Vec<FavoriteTimelineEvent>,
-    reference_time: DateTime<Utc>,
-) -> Vec<FavoriteTimelineRow> {
-    let mut rows = Vec::with_capacity(events.len() + 1);
-    let mut inserted = false;
-    for event in events {
-        if !inserted && event.timepoint.timestamp_millis() >= reference_time.timestamp_millis() {
-            rows.push(FavoriteTimelineRow::Now);
-            inserted = true;
-        }
-        rows.push(FavoriteTimelineRow::Event(event));
-    }
-    if !inserted {
-        rows.push(FavoriteTimelineRow::Now);
-    }
-    rows
 }
 
 fn deadline_label(deadline_type: i32, round: usize, multi_round: bool) -> String {
@@ -465,7 +462,7 @@ mod tests {
     }
 
     #[test]
-    fn merges_favorites_around_now_with_distinct_conference_colors() {
+    fn keeps_only_upcoming_events_with_distinct_conference_colors() {
         let reference = DateTime::from_timestamp(200, 0).expect("test timestamp is valid");
         let data = build_favorite_timeline(
             vec![
@@ -477,9 +474,8 @@ mod tests {
 
         assert_eq!(data.legends.len(), 2);
         assert_ne!(data.legends[0].color, data.legends[1].color);
-        assert!(matches!(data.rows[0], FavoriteTimelineRow::Event(_)));
-        assert!(matches!(data.rows[1], FavoriteTimelineRow::Now));
-        assert!(matches!(data.rows[2], FavoriteTimelineRow::Event(_)));
+        assert_eq!(data.events.len(), 1);
+        assert_eq!(data.events[0].conference_id, "beta27");
     }
 
     #[test]
@@ -488,6 +484,6 @@ mod tests {
         let data = build_favorite_timeline(vec![favorite("tbd27", "TBD", &[])], reference);
 
         assert_eq!(data.awaiting_dates.len(), 1);
-        assert!(matches!(data.rows.as_slice(), [FavoriteTimelineRow::Now]));
+        assert!(data.events.is_empty());
     }
 }
