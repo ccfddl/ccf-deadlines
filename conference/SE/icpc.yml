@@ -7,6 +7,16 @@
     thcpl: B
   dblp: icpc
   confs:
+    - year: 2021
+      id: icpc21
+      link: https://conf.researchr.org/home/icpc-2021
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Research track: abstract January 22, 2021; paper January 29, 2021 (AoE); exact clock not published.'
+      timezone: AoE
+      date: May 18-20, 2021
+      place: Virtual
     - year: 2022
       id: icpc22
       link: https://conf.researchr.org/home/icpc-2022
@@ -16,12 +26,22 @@
       timezone: AoE
       date: May 21-22, 2022
       place: Pittsburgh, Pennsylvania, United States
+    - year: 2023
+      id: icpc23
+      link: https://conf.researchr.org/home/icpc-2023
+      timeline:
+        - abstract_deadline: '2022-12-12 23:59:59'
+          deadline: '2022-12-19 23:59:59'
+      timezone: AoE
+      date: May 15-16, 2023
+      place: Melbourne, Australia
     - year: 2024
       id: icpc24
       link: https://conf.researchr.org/home/icpc-2024
       timeline:
         - abstract_deadline: '2023-10-30 23:59:59'
-          deadline: '2023-11-03 23:59:59'
+          deadline: TBD
+          comment: 'Research track paper deadline conflict: CFP November 3, 2023 AoE; public HotCRP November 6, 2023 07:59:59 EST (November 5, 2023 23:59:59 AoE).'
       timezone: AoE
       date: April 14-20, 2024
       place: Lisbon, Portugal
@@ -38,8 +58,9 @@
       id: icpc26
       link: https://conf.researchr.org/home/icpc-2026
       timeline:
-        - abstract_deadline: '2025-10-19 23:59:59'
+        - abstract_deadline: TBD
           deadline: '2025-10-23 23:59:59'
+          comment: 'Research track abstract deadline conflict: CFP October 19, 2025 AoE; public HotCRP October 20, 2025 09:00 AoE.'
       timezone: AoE
       date: April 12-13, 2026
       place: Rio de Janeiro, Brazil
