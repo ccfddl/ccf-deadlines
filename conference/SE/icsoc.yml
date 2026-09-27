@@ -7,25 +7,50 @@
     thcpl: N
   dblp: icsoc
   confs:
+    - year: 2021
+      id: icsoc21
+      link: https://icsoc2021.servtech.info/icsoc2021.josueonline.com/index.html
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Early regular papers: title/abstract June 4, 2021; full paper grace period June 6, 2021 for registered papers only (AoE); exact clock unpublished.'
+        - deadline: TBD
+          comment: 'Normal regular papers: extended deadline August 22, 2021 (AoE); exact clock and effective separate abstract date unverified.'
+      timezone: AoE
+      date: November 22-25, 2021
+      place: Virtual
     - year: 2022
       id: icsoc22
-      link: http://www.icsoc.org/
+      link: https://icsoc2022.servtech.info/index.html
       timeline:
-        - deadline: '2022-03-01 23:59:59'
-          comment: Abstracts/Full-Text Paper Submission Deadline
+        - deadline: TBD
+          comment: 'Early regular papers: May 5, 2022 (AoE); exact clock unpublished.'
+        - deadline: TBD
+          comment: 'Normal regular papers: extended final deadline July 7, 2022 (AoE); exact clock unpublished.'
       timezone: AoE
       date: May 26-27, 2022
       place: Barcelona, Spain
+    - year: 2024
+      id: icsoc24
+      link: https://icsoc2024.redcad.tn/
+      timeline:
+        - deadline: TBD
+          comment: 'Early regular papers: May 9, 2024 (AoE); exact clock unpublished.'
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular papers: abstract July 10, 2024; full paper July 24, 2024 (firm dates, AoE); exact clock unpublished.'
+      timezone: AoE
+      date: December 3-6, 2024
+      place: Tunis, Tunisia
     - year: 2025
       id: icsoc25
       link: https://icsoc2025.hit.edu.cn/main.htm
       timeline:
         - deadline: '2025-05-09 23:59:59'
           comment: Early paper submissions
-        - deadline: '2025-07-07 23:59:59'
-          comment: Regular paper abstract submissions
-        - deadline: '2025-07-14 23:59:59'
-          comment: Regular paper submissions
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular papers: extended abstract July 14, 2025; full paper July 21, 2025 (AoE); exact clock unpublished.'
       timezone: AoE
       date: December 1-4, 2025
       place: Shenzhen, China
