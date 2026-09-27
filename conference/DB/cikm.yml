@@ -19,7 +19,8 @@
       id: cikm21
       link: https://www.cikm2021.org/
       timeline:
-        - deadline: '2021-05-26 23:59:59'
+        - abstract_deadline: '2021-05-19 23:59:00'
+          deadline: '2021-05-26 23:59:59'
       timezone: AoE
       date: November 01-05, 2021
       place: Queensland, Australia
