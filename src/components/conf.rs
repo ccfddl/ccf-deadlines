@@ -142,8 +142,8 @@ async fn fetch_json<T: DeserializeOwned>(
         .into());
     }
 
-    let body = response.text().await?;
-    Ok(serde_json::from_str(&body)?)
+    let body = response.binary().await?;
+    Ok(serde_json::from_slice(&body)?)
 }
 
 pub fn get_categories() -> Vec<Category> {

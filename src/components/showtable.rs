@@ -10,6 +10,7 @@ use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate, Utc};
 use leptos::prelude::*;
 use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde_json;
+use std::cmp::Reverse;
 use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
 use thaw::*;
@@ -86,6 +87,12 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             .map(|view| view == "list")
             .unwrap_or(false),
     );
+    let sort_by_stars = RwSignal::new(
+        get_from_local_storage("sort_by_stars")
+            .as_deref()
+            .and_then(|value| value.parse::<bool>().ok())
+            .unwrap_or(false),
+    );
 
     // pagination
     let page = RwSignal::new(1);
@@ -97,6 +104,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let raw_conferences = RwSignal::new(Vec::<Conference>::new());
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
     let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
+    let acceptance_rates_requested = RwSignal::new(false);
     let base_time = RwSignal::new(None::<DateTime<Utc>>);
     let base_time_input = RwSignal::new(String::new());
     let base_time_editing = RwSignal::new(false);
@@ -126,6 +134,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         let _ = core_rank_list.get();
         let _ = thcpl_rank_list.get();
         let _ = show_past.get();
+        let _ = sort_by_stars.get();
 
         if is_filter_change.get_untracked() {
             page.set(1);
@@ -173,6 +182,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         );
     });
 
+    Effect::new(move |_| {
+        set_in_local_storage("sort_by_stars", &sort_by_stars.get().to_string());
+    });
+
     Effect::new(move || {
         spawn_local(async move {
             let Some(base_url) = browser_origin() else {
@@ -187,17 +200,30 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                 }
             }
         });
+    });
 
+    Effect::new(move |_| {
+        if !show_conf_detail.get() || acceptance_rates_requested.get_untracked() {
+            return;
+        }
+        acceptance_rates_requested.set(true);
         spawn_local(async move {
             let Some(base_url) = browser_origin() else {
+                acceptance_rates_requested.set(false);
                 return;
             };
             match fetch_all_acc(&base_url).await {
                 Ok(all_acc) => {
                     let rates = build_acceptance_rate_map(all_acc);
+                    selected_conf.update(|selected| {
+                        if let Some(item) = selected {
+                            apply_acceptance_rate(item, &rates);
+                        }
+                    });
                     acceptance_rates.set(rates);
                 }
                 Err(error) => {
+                    acceptance_rates_requested.set(false);
                     console::error_1(&format!("Error loading acceptance rates: {error:?}").into());
                 }
             }
@@ -217,8 +243,8 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         let items = build_conf_items(
             conferences,
             &sub_list.get_untracked(),
-            &like_list.get(),
-            &acceptance_rates.get(),
+            &like_list.get_untracked(),
+            &acceptance_rates.get_untracked(),
             &selected_timezone.get(),
             base_time.get().unwrap_or_else(Utc::now),
         );
@@ -227,6 +253,20 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             selected_conf.set(items.iter().find(|item| item.id == selected_id).cloned());
         }
         all_conf_list.set(items);
+    });
+
+    Effect::new(move |_| {
+        let likes = like_list.get();
+        all_conf_list.update(|items| {
+            for item in items {
+                item.is_like = likes.contains(&item.id);
+            }
+        });
+        selected_conf.update(|selected| {
+            if let Some(item) = selected {
+                item.is_like = likes.contains(&item.id);
+            }
+        });
     });
 
     let paginated_list = Memo::new(move |_| {
@@ -295,12 +335,18 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             all_list.extend(run_list);
             all_list.extend(tbd_list);
             all_list.extend(fin_list);
-
-            let (liked_list, unliked_list): (Vec<_>, Vec<_>) =
-                all_list.into_iter().partition(|conf| conf.is_like);
-
-            let mut final_list = liked_list;
-            final_list.extend(unliked_list);
+            if sort_by_stars.get() {
+                let counts = favorites.counts.get();
+                all_list.sort_by_key(|conf| {
+                    star_count_sort_key(
+                        &conf.status,
+                        counts.get(&conf.id).copied().unwrap_or_default(),
+                    )
+                });
+            } else {
+                all_list.sort_by_key(|conf| favorite_sort_group(&conf.status, conf.is_like));
+            }
+            let final_list = all_list;
 
             // Pagination
             let total_count = final_list.len();
@@ -479,7 +525,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                         />
                     </div>
                     <div class="toolbar-timezone">
-                        <span>"Deadlines are shown in"</span>
+                        <span>"("</span>
                         <div class="toolbar-timezone-picker">
                             <button
                                 type="button"
@@ -532,7 +578,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                 </div>
                             </Show>
                         </div>
-                        <span>"time"</span>
+                        <span>" time)"</span>
                     </div>
                     <div class="toolbar-search">
                         <Input
@@ -549,6 +595,23 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                 </div>
 
                 <div class="toolbar-actions">
+                    <span class="star-sort-control" class:is-active=move || sort_by_stars.get()>
+                        <Button
+                            class="star-sort-toggle"
+                            size=ButtonSize::Small
+                            appearance=ButtonAppearance::Subtle
+                            on_click=move |_| sort_by_stars.update(|value| *value = !*value)
+                            attr:aria-pressed=move || sort_by_stars.get().to_string()
+                            attr:title=move || if use_english.get() {
+                                "Sort by star count, highest first"
+                            } else {
+                                "按收藏星数从高到低排序"
+                            }
+                        >
+                            <Icon icon=icondata::BsStarFill style="margin-right: 4px;" />
+                            {move || if use_english.get() { "Most starred" } else { "最多收藏" }}
+                        </Button>
+                    </span>
                     <Button
                         class="view-mode-toggle"
                         size=ButtonSize::Small
@@ -1193,6 +1256,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                     {
                                                                         let conference_key = conf.id.clone();
                                                                         let pending_key = conference_key.clone();
+                                                                        let count_key = conference_key.clone();
                                                                         let is_liked = conf.is_like;
                                                                         let label = if !favorites.loaded.get_untracked() {
                                                                             "Loading favorites"
@@ -1227,6 +1291,9 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                 } else {
                                                                                     icondata::BsStar
                                                                                 } />
+                                                                                <span class="conference-like-count">
+                                                                                    {move || favorites.count(&count_key)}
+                                                                                </span>
                                                                             </button>
                                                                         }
                                                                     }
@@ -1820,6 +1887,18 @@ fn build_conf_items(
     items
 }
 
+fn favorite_sort_group(status: &str, is_like: bool) -> u8 {
+    match (status == "FIN", is_like) {
+        (false, true) => 0,
+        (false, false) => 1,
+        (true, _) => 2,
+    }
+}
+
+fn star_count_sort_key(status: &str, count: u64) -> (bool, Reverse<u64>) {
+    (status == "FIN", Reverse(count))
+}
+
 fn estimate_deadlines(conference: &Conference, edition: &ConferenceYear) -> Vec<EstimatedDeadline> {
     let Some(previous) = conference
         .confs
@@ -2287,5 +2366,21 @@ mod historical_deadline_tests {
                 assert!(!unknown.estimated_deadlines.is_empty());
             }
         }
+    }
+
+    #[test]
+    fn favorites_only_receive_priority_before_the_conference_ends() {
+        assert_eq!(favorite_sort_group("RUN", true), 0);
+        assert_eq!(favorite_sort_group("TBD", true), 0);
+        assert_eq!(favorite_sort_group("RUN", false), 1);
+        assert_eq!(favorite_sort_group("FIN", true), 2);
+        assert_eq!(favorite_sort_group("FIN", false), 2);
+    }
+
+    #[test]
+    fn star_count_sort_keeps_active_conferences_before_finished_ones() {
+        assert!(star_count_sort_key("RUN", 2) < star_count_sort_key("RUN", 1));
+        assert!(star_count_sort_key("TBD", 0) < star_count_sort_key("FIN", 100));
+        assert_eq!(star_count_sort_key("FIN", 5), star_count_sort_key("FIN", 5));
     }
 }

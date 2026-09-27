@@ -8,6 +8,7 @@ Create an OAuth app in GitHub with:
 
 - Homepage URL: `https://ccfddl.com`
 - Authorization callback URL: `https://ccfddl.com/api/auth/github/callback`
+- Application logo: upload [`assets/ccfddl-oauth-logo.png`](assets/ccfddl-oauth-logo.png)
 
 No OAuth scope is requested. The Worker only reads the signed-in user's public GitHub identity and does not store the GitHub access token.
 
