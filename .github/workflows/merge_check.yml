@@ -27,7 +27,7 @@ jobs:
       - name: Test data loading and database limits
         run: python -m unittest discover -s scripts -p 'test_*.py'
       - name: Test Worker security
-        run: node --test worker/test/*.test.js
+        run: node --test worker/test/*.test.js scripts/test_startup.mjs
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly

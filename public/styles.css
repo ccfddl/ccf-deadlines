@@ -58,6 +58,8 @@ body {
 
 .initial-loading {
   display: flex;
+  flex-direction: column;
+  gap: 12px;
   min-height: 55vh;
   align-items: center;
   justify-content: center;
@@ -66,6 +68,21 @@ body {
   font-family: "Roboto Mono", "SF Mono", Monaco, monospace;
   font-size: 14px;
   text-align: center;
+}
+
+.initial-loading button,
+.conference-load-retry {
+  padding: 6px 14px;
+  border: 1px solid #d9dfe5;
+  border-radius: 6px;
+  color: #4d5d6d;
+  background: #fffefa;
+  font: inherit;
+  cursor: pointer;
+}
+
+.conference-load-retry {
+  margin-top: 12px;
 }
 
 .thaw-config-provider:not(.thaw-dialog) {
@@ -818,6 +835,7 @@ a {
 
 .conference-list .no-data-message {
   display: flex;
+  flex-direction: column;
   min-height: 80px;
   align-items: center;
   justify-content: center;

@@ -108,6 +108,9 @@ pub fn ShowTable(
 
     // table
     let raw_conferences = RwSignal::new(Vec::<Conference>::new());
+    let conference_load_attempt = RwSignal::new(0u32);
+    let conferences_loading = RwSignal::new(true);
+    let conference_load_failed = RwSignal::new(false);
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
     let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
     let acceptance_buckets_loaded = RwSignal::new(HashSet::<u32>::new());
@@ -196,8 +199,13 @@ pub fn ShowTable(
     });
 
     Effect::new(move || {
+        let _ = conference_load_attempt.get();
+        conferences_loading.set(true);
+        conference_load_failed.set(false);
         spawn_local(async move {
             let Some(base_url) = browser_origin() else {
+                conference_load_failed.set(true);
+                conferences_loading.set(false);
                 return;
             };
             match fetch_initial_conf(&base_url).await {
@@ -207,8 +215,10 @@ pub fn ShowTable(
                 }
                 Err(error) => {
                     console::error_1(&format!("Error: {error:?}").into());
+                    conference_load_failed.set(true);
                 }
             }
+            conferences_loading.set(false);
         });
     });
 
@@ -1198,12 +1208,29 @@ pub fn ShowTable(
                                         <TableCell>
                                             <div class="no-data-message">
                                                 {move || {
-                                                    if use_english.get() {
+                                                    if conferences_loading.get() {
+                                                        "Loading conference deadlines..."
+                                                    } else if conference_load_failed.get() {
+                                                        if use_english.get() {
+                                                            "Unable to load conference deadlines. Please retry."
+                                                        } else {
+                                                            "会议数据加载失败，请重试。"
+                                                        }
+                                                    } else if use_english.get() {
                                                         "No data available."
                                                     } else {
                                                         "暂无数据"
                                                     }
                                                 }}
+                                                <Show when=move || conference_load_failed.get()>
+                                                    <button
+                                                        type="button"
+                                                        class="conference-load-retry"
+                                                        on:click=move |_| conference_load_attempt.update(|attempt| *attempt += 1)
+                                                    >
+                                                        {move || if use_english.get() { "Retry" } else { "重试" }}
+                                                    </button>
+                                                </Show>
                                             </div>
                                         </TableCell>
                                     </TableRow>
