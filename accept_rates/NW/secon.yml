@@ -1,0 +1,8 @@
+- title: SECON
+  accept_rates:
+    - year: 2021
+      submitted: 140
+      accepted: 37
+      str: 26.4%(37/140 21')
+      rate: 0.2642857142857143
+      source: https://secon21.hotcrp.com/
