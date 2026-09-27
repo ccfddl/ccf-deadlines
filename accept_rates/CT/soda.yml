@@ -1,0 +1,37 @@
+- title: SODA
+  accept_rates:
+    # Original PC chairs preface; main-program accepted papers, excluding plenaries and co-located conferences. All 641 received, including 4 later withdrawn.
+    - year: 2021
+      submitted: 641
+      accepted: 180
+      str: 28.1%(180/641 21')
+      rate: 0.28081123244929795
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611976465.fm
+    # Original PC chairs preface; main-program accepted papers, excluding plenaries and co-located conferences.
+    - year: 2022
+      submitted: 491
+      accepted: 148
+      str: 30.1%(148/491 22')
+      rate: 0.3014256619144603
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611977073.fm
+    # Original PC chairs preface; main-program accepted papers, excluding plenaries and co-located conferences.
+    - year: 2023
+      submitted: 652
+      accepted: 190
+      str: 29.1%(190/652 23')
+      rate: 0.29141104294478526
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611977554.fm
+    # Original PC chairs preface; main-program accepted papers, excluding plenaries and co-located conferences. Two pairs share talk slots; keep 192 papers.
+    - year: 2024
+      submitted: 652
+      accepted: 192
+      str: 29.4%(192/652 24')
+      rate: 0.294478527607362
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611977912.fm
+    # Original PC chairs preface; main-program accepted papers, excluding plenaries and co-located conferences. One pair shares a talk slot; keep 192 papers.
+    - year: 2025
+      submitted: 655
+      accepted: 192
+      str: 29.3%(192/655 25')
+      rate: 0.2931297709923664
+      source: https://epubs.siam.org/doi/pdf/10.1137/1.9781611978322.fm
