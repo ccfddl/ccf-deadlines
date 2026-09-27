@@ -7,6 +7,56 @@
     thcpl: B
   dblp: ccgrid
   confs:
+    - year: 2021
+      id: ccgrid21
+      link: https://clouds.cis.unimelb.edu.au/ccgrid2021/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract December 8 and paper December 15, 2020 (AoE); exact times unpublished
+      timezone: AoE
+      date: May 10-13, 2021
+      place: Virtual
+    - year: 2022
+      id: ccgrid22
+      link: https://fcrlab.unime.it/ccgrid22/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract and paper December 19, 2021 (AoE), final extension; exact times unpublished
+      timezone: AoE
+      date: May 16-19, 2022
+      place: Taormina, Italy
+    - year: 2023
+      id: ccgrid23
+      link: https://ccgrid2023.iisc.ac.in/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract December 5 and paper December 12, 2022 (AoE), extended; exact times unpublished
+      timezone: AoE
+      date: May 1-4, 2023
+      place: Bangalore, India
+    - year: 2024
+      id: ccgrid24
+      link: https://2024.ccgrid-conference.org/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract December 4 and paper December 11, 2023 (AoE), extended; exact times unpublished
+      timezone: AoE
+      date: May 6-9, 2024
+      place: Philadelphia, USA
+    - year: 2025
+      id: ccgrid25
+      link: https://site.uit.no/ccgrid2025/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Optional abstract December 9 and paper December 23, 2024 (AoE), final extension; exact times unpublished
+      timezone: AoE
+      date: May 19-22, 2025
+      place: Tromsø, Norway
     - year: 2026
       id: ccgrid26
       link: https://www.ccgrid2026.org/
