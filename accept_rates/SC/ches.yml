@@ -1,0 +1,11 @@
+- title: CHES
+  accept_rates:
+    # Four TCHES cycles; submissions include major revisions and reject/resubmit.
+    # Report PDF pp. 3, 7-8: 101 accepted / 373 received submission events.
+    # Not a rate over unique new manuscripts; desk/withdrawal counts unreported.
+    - year: 2024
+      submitted: 373
+      accepted: 101
+      str: "27.1%(101/373 24')"
+      rate: 0.2707774798927614
+      source: https://ches.iacr.org/2024/PC-report.pdf
