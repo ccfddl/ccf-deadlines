@@ -1,5 +1,13 @@
 - title: RTSS
   accept_rates:
+    # Main full papers across both research tracks; BP, demos and industry session excluded.
+    # Chair preface pp. xii-xiii; complete received submissions, no desk/withdrawal partition.
+    - year: 2021
+      submitted: 133
+      accepted: 39
+      str: "29.3%(39/133 21')"
+      rate: 0.2932330827067669
+      source: https://iris.unito.it/retrieve/f52c0a67-c097-4736-a2eb-d0e87ca1182c/Message_from_the_Program_Track_and_General_Chairs.pdf
     - year: 2022
       submitted: 128
       accepted: 37
