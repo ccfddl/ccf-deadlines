@@ -905,6 +905,11 @@ a {
   white-space: nowrap;
 }
 
+.conference-list:not(.conference-list--rows) .conference-card-heading .conf-title {
+  flex: 0 1 auto;
+  max-width: calc(100% - 76px);
+}
+
 .conference-card-heading .conference-card-website {
   order: 3;
   margin-left: auto;
