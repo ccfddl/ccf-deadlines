@@ -11,33 +11,32 @@
       id: asplos21
       link: https://asplos-conference.org/
       timeline:
-        - deadline: '2020-08-21 23:59:59'
-      timezone: AoE
+        - abstract_deadline: '2020-08-14 14:59:59'
+          deadline: '2020-08-21 14:59:59'
+      timezone: UTC-7
       date: April 19-23, 2021
       place: Virtual
     - year: 2022
       id: asplos22
       link: https://asplos-conference.org/
       timeline:
-        - deadline: '2021-08-06 23:59:59'
-      timezone: AoE
+        - abstract_deadline: '2021-08-06 14:59:59'
+          deadline: '2021-08-13 14:59:59'
+      timezone: UTC-7
       date: Feb 28-March 4, 2022
       place: Virtual
     - year: 2023
       id: asplos23
       link: https://asplos-conference.org/asplos-2023-cfp/
       timeline:
-        - deadline: '2022-03-24 17:59:59'
-          comment: Spring Registration Deadline
-        - deadline: '2022-03-31 17:59:59'
+        - abstract_deadline: '2022-03-24 18:00:00'
+          deadline: '2022-03-31 18:00:00'
           comment: Spring Submission Deadline
-        - deadline: '2022-06-30 17:59:59'
-          comment: Summber Registration Deadline
-        - deadline: '2022-07-07 17:59:59'
+        - abstract_deadline: '2022-06-30 18:00:00'
+          deadline: '2022-07-07 18:00:00'
           comment: Summer Submission Deadline
-        - deadline: '2022-10-13 17:59:59'
-          comment: Fall Registration Deadline
-        - deadline: '2022-10-20 17:59:59'
+        - abstract_deadline: '2022-10-13 18:00:00'
+          deadline: '2022-10-20 18:00:00'
           comment: Fall Submission Deadline
       timezone: UTC-4
       date: March 25-March 29, 2023
@@ -46,17 +45,14 @@
       id: asplos24
       link: https://www.asplos-conference.org/asplos2024/cfp/
       timeline:
-        - deadline: '2023-04-14 02:59:59'
-          comment: Spring Registration Deadline
-        - deadline: '2023-04-21 02:59:59'
+        - abstract_deadline: '2023-04-14 03:00:00'
+          deadline: '2023-04-21 03:00:00'
           comment: Spring Submission Deadline
-        - deadline: '2023-08-04 02:59:59'
-          comment: Summber Registration Deadline
-        - deadline: '2023-08-11 02:59:59'
+        - abstract_deadline: '2023-08-04 03:00:00'
+          deadline: '2023-08-11 03:00:00'
           comment: Summer Submission Deadline
-        - deadline: '2023-11-24 02:59:59'
-          comment: Fall Registration Deadline
-        - deadline: '2023-12-01 02:59:59'
+        - abstract_deadline: '2023-11-25 04:00:00'
+          deadline: '2023-12-01 04:00:00'
           comment: Fall Submission Deadline
       timezone: UTC+8
       date: April, 2024
