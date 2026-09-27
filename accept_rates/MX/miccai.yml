@@ -1,4 +1,7 @@
-# Main-conference paper-selection statistics reported in the official proceedings; satellite events excluded.
+# Main-conference final proceedings selections; satellite events excluded.
+# 2021 uses received full submissions; 2022 onward uses fully reviewed submissions.
+# 2026: 4601 received, 199 desk rejections, 4402 fully reviewed.
+# 2026 final selection 1167; earlier June 1211 decisions remain unreconciled.
 - title: MICCAI
   accept_rates:
     - year: 2021
@@ -31,3 +34,9 @@
       str: 29.8%(1027/3447 25')
       rate: 0.297940237888019
       source: https://link.springer.com/book/10.1007/978-3-032-04927-8
+    - year: 2026
+      submitted: 4402
+      accepted: 1167
+      str: 26.5%(1167/4402 26')
+      rate: 0.265106769650159
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-38059-3%2F1
