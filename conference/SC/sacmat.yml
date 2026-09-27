@@ -16,6 +16,39 @@
       timezone: AoE
       date: June 16-18, 2021
       place: Virtual
+    - year: 2022
+      id: sacmat22
+      link: https://www.sacmat.org/2022/
+      timeline:
+        - deadline: TBD
+          comment: 'Cycle 1 originally November 15, 2021, now struck through on the CFP; final cutoff unverified.'
+        - deadline: '2022-02-25 23:59:00'
+          comment: Second cycle
+      timezone: AoE
+      date: June 8-10, 2022
+      place: Virtual
+    - year: 2023
+      id: sacmat23
+      link: https://www.sacmat.org/2023/
+      timeline:
+        - deadline: '2022-12-15 23:59:00'
+          comment: First cycle
+        - abstract_deadline: TBD
+          deadline: '2023-03-02 23:59:00'
+          comment: 'Second cycle; recommended, non-mandatory abstract registration February 23, 2023, time unverified.'
+      timezone: AoE
+      date: June 7-9, 2023
+      place: Trento, Italy
+    - year: 2024
+      id: sacmat24
+      link: https://www.sacmat.org/2024/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Recommended, non-mandatory abstract registration February 1, 2024; full submission extended to February 18, 2024, final time unverified.'
+      timezone: AoE
+      date: May 15-17, 2024
+      place: San Antonio, TX, USA
     - year: 2025
       id: sacmat25
       link: https://www.sacmat.org/2025/index.php
