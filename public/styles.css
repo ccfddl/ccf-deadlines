@@ -3109,12 +3109,23 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   }
 
   .header-main {
-    align-items: flex-start;
-    padding-right: 185px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    padding-right: 0;
+  }
+
+  .header-github {
+    grid-column: 1;
+    grid-row: 2;
   }
 
   .header-auth {
-    flex: 0 0 auto;
+    position: static;
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
   }
 
   .github-login-button span,
@@ -3129,12 +3140,19 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   }
 
   .header-main .title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: start;
     max-width: 100%;
     font-size: clamp(18px, 6.25vw, 25px);
     line-height: 1.15;
   }
 
   .header-latest {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    min-width: 0;
+    overflow-wrap: anywhere;
     font-size: 13px;
   }
 
