@@ -20,10 +20,9 @@
       id: sosp23
       link: https://sosp2023.mpi-sws.org/
       timeline:
-        - deadline: '2023-04-10 23:59:59'
-          comment: Deadline to Register Abstracts
-        - deadline: '2023-04-17 23:59:59'
-          comment: Submission Deadline (no extensions)
+        - abstract_deadline: '2023-04-10 23:59:59'
+          deadline: '2023-04-17 23:59:59'
+          comment: 'Regular papers; mandatory abstract registration; no extensions'
       timezone: UTC-4
       date: October 23 - 26, 2023
       place: Koblenz, Germany
