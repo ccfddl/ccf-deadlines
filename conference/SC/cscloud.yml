@@ -7,6 +7,42 @@
     thcpl: N
   dblp: cscloud
   confs:
+    - year: 2021
+      id: cscloud2021
+      link: https://www.cloud-conf.net/cscloud/2021/cscloud/
+      timeline:
+        - deadline: TBD
+          comment: Regular paper submission deadline (firm); April 20, 2021, clock and timezone not published
+      timezone: UTC
+      date: June 26-28, 2021
+      place: Washington DC, USA
+    - year: 2022
+      id: cscloud2022
+      link: https://www.cloud-conf.net/cscloud/2022/cscloud/
+      timeline:
+        - deadline: TBD
+          comment: Regular paper submission deadline (firm); April 15, 2022, clock and timezone not published
+      timezone: UTC
+      date: June 25-27, 2022
+      place: Xi'an, China
+    - year: 2024
+      id: cscloud2024
+      link: https://www.cloud-conf.net/cscloud/2024/cscloud/
+      timeline:
+        - deadline: TBD
+          comment: Regular paper submission deadline (firm); May 5, 2024, clock and timezone not published
+      timezone: UTC
+      date: June 28-30, 2024
+      place: Shanghai, China
+    - year: 2025
+      id: cscloud2025
+      link: https://www.cloud-conf.net/cscloud/2025/cscloud/
+      timeline:
+        - deadline: TBD
+          comment: Regular paper submission deadline (firm); September 8, 2025, clock and timezone not published
+      timezone: UTC
+      date: November 7-9, 2025
+      place: New York City, USA
     - year: 2026
       id: cscloud2026
       link: https://www.cloud-conf.net/cscloud/2026/cscloud/
