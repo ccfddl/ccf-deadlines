@@ -19,7 +19,7 @@
       timeline:
         - deadline: '2022-02-14 17:00:00'
       timezone: UTC-8
-      date: July 21-23, 2022
+      date: July 20-23, 2022
       place: Philadelphia, Pennsylvania, USA
     - year: 2023
       id: ccc23
@@ -27,7 +27,7 @@
       timeline:
         - deadline: '2023-02-10 23:59:00'
       timezone: AoE
-      date: July 18-20, 2023
+      date: July 17-20, 2023
       place: Warwick, UK
     - year: 2024
       id: ccc24
