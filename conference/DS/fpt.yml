@@ -7,14 +7,40 @@
     thcpl: N
   dblp: fpt
   confs:
+    - year: 2021
+      id: fpt2021
+      link: https://parallel.auckland.ac.nz/fpt21/
+      timeline:
+        - abstract_deadline: '2021-07-26 23:59:00'
+          deadline: '2021-08-04 23:59:00'
+      timezone: AoE
+      date: December 6-10, 2021
+      place: Virtual
+    - year: 2022
+      id: fpt2022
+      link: https://fpt22.hkust.edu.hk/
+      timeline:
+        - abstract_deadline: '2022-07-29 23:59:00'
+          deadline: '2022-08-05 23:59:00'
+      timezone: AoE
+      date: December 5-9, 2022
+      place: Hong Kong SAR, China (Hybrid)
+    - year: 2023
+      id: fpt2023
+      link: https://fpt2023.org/
+      timeline:
+        - abstract_deadline: '2023-07-21 23:59:00'
+          deadline: '2023-07-30 23:59:00'
+      timezone: AoE
+      date: December 11-14, 2023
+      place: Yokohama, Japan
     - year: 2024
       id: fpt2024
       link: https://fpt2024.org/
       timeline:
-        - deadline: '2024-07-14 23:59:59'
-          comment: Title and Abstract Due (Conference Track)
-        - deadline: '2024-07-21 23:59:59'
-          comment: Submission Due (Conference Track)
+        - abstract_deadline: '2024-07-21 23:59:59'
+          deadline: TBD
+          comment: Regular paper; CFP July 28, 2024 vs HotCRP July 30, 2024 23:59:59 AoE
       timezone: AoE
       date: December 10 - December 12, 2024
       place: Sydney, Australia
@@ -22,10 +48,8 @@
       id: fpt2025
       link: https://fpt2025.shanghaitech.edu.cn
       timeline:
-        - deadline: '2025-07-20 23:59:59'
-          comment: Title and Abstract Due (Conference Track)
-        - deadline: '2025-08-01 23:59:59'
-          comment: Submission Due (Conference Track)
+        - abstract_deadline: '2025-07-20 23:59:59'
+          deadline: '2025-08-01 23:59:59'
       timezone: AoE
       date: December 02 - December 05, 2025
       place: Shanghai, China
