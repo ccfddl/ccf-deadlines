@@ -11,17 +11,15 @@
       id: isaac21
       link: https://tcs.inf.kyushu-u.ac.jp/isaac2021/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers: submission 2021-07-05 (AoE); exact cutoff time not specified'
+        - deadline: '2021-07-05 23:59:59'
       timezone: AoE
       date: December 6-8, 2021
       place: Fukuoka, Japan (Hybrid)
     - year: 2022
       id: isaac22
-      link: https://isa.hanyang.ac.kr/isaac2022/
+      link: http://isa.hanyang.ac.kr/isaac2022/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers: submission 2022-06-27 (AoE); exact cutoff time not specified'
+        - deadline: '2022-06-27 23:59:59'
       timezone: AoE
       date: December 19-21, 2022
       place: Seoul, Korea (Hybrid)
@@ -29,10 +27,9 @@
       id: isaac23
       link: https://www.kurims.kyoto-u.ac.jp/isaac/isaac2023/index.html
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers: submission 2023-06-30 (AoE); exact cutoff time not specified'
+        - deadline: '2023-06-30 23:59:59'
       timezone: AoE
-      date: December 3-6, 2023
+      date: December 4-6, 2023
       place: Kyoto, Japan
     - year: 2024
       id: isaac24
@@ -40,7 +37,7 @@
       timeline:
         - deadline: '2024-06-28 23:59:00'
       timezone: AoE
-      date: December 8-11, 2024
+      date: December 9-11, 2024
       place: Sydney, Australia
     - year: 2025
       id: isaac25
