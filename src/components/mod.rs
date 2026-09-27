@@ -2,6 +2,7 @@ pub mod checkbox_button;
 pub mod conf;
 pub mod countdown;
 pub mod favorites;
+pub mod favorites_timeline;
 pub mod gitbutton;
 pub mod header;
 pub mod message_wall;
