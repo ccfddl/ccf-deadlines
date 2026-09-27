@@ -7,6 +7,15 @@
     thcpl: A
   dblp: oopsla
   confs:
+    - year: 2021
+      id: oopsla21
+      link: https://2021.splashcon.org/track/splash-2021-oopsla
+      timeline:
+        - deadline: TBD
+          comment: 'Initial regular research submission: April 16, 2021 AoE; exact time unpublished'
+      timezone: AoE
+      date: October 17-22, 2021
+      place: Chicago, Illinois, USA and Online
     - year: 2022
       id: oopsla22
       link: https://2022.splashcon.org/track/splash-2022-oopsla
@@ -44,8 +53,8 @@
       id: oopsla25
       link: https://2025.splashcon.org/track/OOPSLA
       timeline:
-        - deadline: '2024-10-15 07:59:59'
-          comment: Submission Deadline Round 1
+        - deadline: TBD
+          comment: 'Submission Round 1: October 15, 2024 AoE; exact time unpublished'
         - deadline: '2025-03-25 23:59:59'
           comment: Submission Deadline Round 2
       timezone: UTC-12
