@@ -1,0 +1,39 @@
+# Paper-submission and acceptance totals from the official DSN historical statistics.
+- title: DSN
+  accept_rates:
+    - year: 2021
+      submitted: 295
+      accepted: 48
+      str: 16.3%(48/295 21')
+      rate: 0.162711864406780
+      source: https://www.dependability.org/?page_id=808
+    - year: 2022
+      submitted: 269
+      accepted: 49
+      str: 18.2%(49/269 22')
+      rate: 0.182156133828996
+      source: https://www.dependability.org/?page_id=808
+    - year: 2023
+      submitted: 240
+      accepted: 47
+      str: 19.6%(47/240 23')
+      rate: 0.195833333333333
+      source: https://www.dependability.org/?page_id=808
+    - year: 2024
+      submitted: 204
+      accepted: 42
+      str: 20.6%(42/204 24')
+      rate: 0.205882352941176
+      source: https://www.dependability.org/?page_id=808
+    - year: 2025
+      submitted: 277
+      accepted: 56
+      str: 20.2%(56/277 25')
+      rate: 0.202166064981949
+      source: https://www.dependability.org/?page_id=808
+    - year: 2026
+      submitted: 329
+      accepted: 65
+      str: 19.8%(65/329 26')
+      rate: 0.197568389057751
+      source: https://www.dependability.org/?page_id=808
