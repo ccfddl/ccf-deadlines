@@ -7,12 +7,39 @@
     thcpl: N
   dblp: eusipco
   confs:
+    - year: 2021
+      id: eusipco2021
+      link: https://eusipco2021.org/call-for-papers/
+      timeline:
+        - deadline: TBD
+          comment: Regular full-paper deadline extended to March 1, 2021; official CFP does not specify a cutoff time or timezone.
+      timezone: UTC+0
+      date: August 23-27, 2021
+      place: Online
+    - year: 2022
+      id: eusipco2022
+      link: https://2022.eusipco.org/
+      timeline:
+        - deadline: '2022-03-07 23:59:00'
+          comment: Regular full-paper deadline extended to March 7, 23:59 Hawaii Standard Time.
+      timezone: UTC-10
+      date: August 29 - September 2, 2022
+      place: Belgrade, Serbia
+    - year: 2023
+      id: eusipco2023
+      link: https://eusipco2023.org/
+      timeline:
+        - deadline: TBD
+          comment: Regular full-paper deadline extended from March 6 to March 10, 2023; official homepage does not specify a cutoff time or timezone.
+      timezone: UTC+0
+      date: September 4-8, 2023
+      place: Helsinki, Finland
     - year: 2024
       id: eusipco2024
       link: https://eusipcolyon.sciencesconf.org/
       timeline:
         - deadline: '2024-03-14 18:00:00'
-          comment: first round
+          comment: Regular full papers; March 14 date confirmed by official CFP, existing clock and timezone not independently verified.
       timezone: UTC-8
       date: August 26-30, 2024
       place: LYON, FRANCE
