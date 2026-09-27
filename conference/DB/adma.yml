@@ -7,21 +7,12 @@
     thcpl: N
   dblp: adma
   confs:
-    - year: 2021
-      id: adma21
-      link: https://adma21.webflow.io/
-      timeline:
-        - deadline: TBD
-          comment: Regular papers; announced submission date August 15, 2021; exact cutoff time and timezone unverified (UTC+0 is a schema placeholder).
-      timezone: UTC+0
-      date: February 2-4, 2022
-      place: Online
     - year: 2022
       id: adma22
       link: https://adma2022.uqcloud.net/
       timeline:
-        - deadline: TBD
-          comment: Regular papers; final extended submission date July 15, 2022 (AoE); exact cutoff time unverified.
+        - deadline: '2022-07-15 23:59:59'
+          comment: Regular papers; extended deadline.
       timezone: AoE
       date: November 28-30, 2022
       place: Brisbane, Australia
