@@ -7,14 +7,43 @@
     thcpl: N
   dblp: gmp
   confs:
+    - year: 2021
+      id: gmp2021
+      link: http://www.kma.zcu.cz/gmp2021
+      timeline:
+        - abstract_deadline: '2020-12-16 23:59:59'
+          deadline: '2020-12-23 23:59:59'
+          comment: Regular full papers; initial conference PC review
+      timezone: UTC
+      date: May 12, 2021
+      place: Online
+    - year: 2022
+      id: gmp2022
+      link: https://indico.oist.jp/event/13/
+      timeline:
+        - abstract_deadline: '2021-12-17 23:59:59'
+          deadline: '2021-12-21 23:59:59'
+          comment: Regular full papers; extended initial submission deadlines
+      timezone: UTC
+      date: May 11, 2022
+      place: Online
+    - year: 2023
+      id: gmp2023
+      link: https://gmpconf.github.io/GMP2023/index.html
+      timeline:
+        - abstract_deadline: '2022-12-15 23:59:59'
+          deadline: '2022-12-22 23:59:59'
+          comment: Regular full papers; initial conference PC review
+      timezone: UTC
+      date: July 6-7, 2023
+      place: Genova, Italy
     - year: 2024
       id: gmp2024
       link: https://irc.cs.sdu.edu.cn/gmp2024/index.html
       timeline:
-        - deadline: '2023-12-11 23:59:59'
-          comment: Abstract submission
-        - deadline: '2023-12-18 23:59:59'
-          comment: Full paper submission
+        - abstract_deadline: '2023-12-11 23:59:59'
+          deadline: '2023-12-18 23:59:59'
+          comment: Regular full papers; initial conference PC review
       timezone: UTC
       date: June 5-7, 2024
       place: Qingdao, China
@@ -22,8 +51,9 @@
       id: gmp2025
       link: https://sites.wustl.edu/gmp2025/
       timeline:
-        - abstract_deadline: '2024-12-09 23:59:59'
-          deadline: '2024-12-16 23:59:59'
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular full papers; conflicting primary sources: website abstract 2024-12-09 and full paper 2024-12-16 (clock and zone unpublished), SRM abstract 2024-12-10 11:59:00 UTC and full paper 2024-12-18 15:59:00 UTC'
       timezone: UTC
       date: May 28-30, 2025
       place: Washington University in St. Louis, USA
@@ -32,7 +62,8 @@
       link: https://gmp2026.kma.zcu.cz/
       timeline:
         - abstract_deadline: '2025-12-16 23:59:59'
-          deadline: '2025-12-18 23:59:59'
+          deadline: TBD
+          comment: 'Regular full papers; conflicting initial full-paper cutoffs: website 2025-12-18 23:59:59 UTC, SRM 2025-12-19 00:59:00 UTC'
       timezone: UTC
       date: May 27-29, 2026
       place: Pilsen, Czech Republic
