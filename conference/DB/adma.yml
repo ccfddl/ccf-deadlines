@@ -7,6 +7,15 @@
     thcpl: N
   dblp: adma
   confs:
+    - year: 2022
+      id: adma22
+      link: https://adma2022.uqcloud.net/
+      timeline:
+        - deadline: '2022-07-15 23:59:59'
+          comment: Regular papers; extended deadline.
+      timezone: AoE
+      date: November 28-30, 2022
+      place: Brisbane, Australia
     - year: 2023
       id: adma23
       link: https://adma2023.uqcloud.net/index.html
