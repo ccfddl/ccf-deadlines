@@ -7,6 +7,16 @@
     thcpl: B
   dblp: mobihoc
   confs:
+    - year: 2021
+      id: mobihoc21
+      link: https://www.sigmobile.org/mobihoc/2021/
+      timeline:
+        - abstract_deadline: '2020-12-12 23:59:00'
+          deadline: '2020-12-19 23:59:00'
+          comment: Regular papers
+      timezone: UTC-5
+      date: July 26-29, 2021
+      place: Shanghai, China
     - year: 2022
       id: mobihoc22
       link: https://www.sigmobile.org/mobihoc/2022/
@@ -16,6 +26,36 @@
       timezone: UTC-5
       date: October 17-22, 2022
       place: Seoul, South Korea
+    - year: 2023
+      id: mobihoc23
+      link: https://www.sigmobile.org/mobihoc/2023/
+      timeline:
+        - abstract_deadline: '2023-03-10 23:59:00'
+          deadline: '2023-03-10 23:59:00'
+          comment: Regular papers; firm deadline
+      timezone: UTC-5
+      date: October 23-26, 2023
+      place: Washington, DC, USA
+    - year: 2024
+      id: mobihoc24
+      link: https://www.sigmobile.org/mobihoc/2024/
+      timeline:
+        - abstract_deadline: '2024-04-14 23:59:00'
+          deadline: '2024-04-14 23:59:00'
+          comment: Regular papers; extended deadline
+      timezone: UTC-4
+      date: October 14-17, 2024
+      place: Athens, Greece
+    - year: 2025
+      id: mobihoc25
+      link: https://www.sigmobile.org/mobihoc/2025/
+      timeline:
+        - abstract_deadline: '2025-03-30 23:59:00'
+          deadline: '2025-04-06 23:59:00'
+          comment: Regular papers; final extended deadlines
+      timezone: UTC-4
+      date: October 27-30, 2025
+      place: Houston, Texas, USA
     - year: 2026
       id: mobihoc26
       link: https://www.sigmobile.org/mobihoc/2026/
