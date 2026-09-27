@@ -620,14 +620,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                         appearance=ButtonAppearance::Subtle
                         on_click=move |_| is_list_view.update(|value| *value = !*value)
                         attr:title=move || {
-                            if is_list_view.get() {
-                                if use_english.get() {
-                                    "switch UI 2.0"
-                                } else {
-                                    "切换新版UI"
-                                }
-                            } else if use_english.get() {
-                                "switch UI 1.0"
+                            if use_english.get() {
+                                "switch UI"
+                            } else if is_list_view.get() {
+                                "切换新版UI"
                             } else {
                                 "切换旧版UI"
                             }
@@ -643,10 +639,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             }
                         }}
                         {move || {
-                            if is_list_view.get() {
-                                if use_english.get() { "switch UI 2.0" } else { "切换新版UI" }
-                            } else if use_english.get() {
-                                "switch UI 1.0"
+                            if use_english.get() {
+                                "switch UI"
+                            } else if is_list_view.get() {
+                                "切换新版UI"
                             } else {
                                 "切换旧版UI"
                             }
@@ -658,7 +654,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                         on_click=move |_| show_message_wall.set(true)
                     >
                         <Icon icon=icondata::BsChatDots style="margin-right: 4px;" />
-                        {move || if use_english.get() { "Wall" } else { "漂流墙" }}
+                        {move || if use_english.get() { "Wall" } else { "吹水墙" }}
                     </Button>
                     <Button
                         size=ButtonSize::Small

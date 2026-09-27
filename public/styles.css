@@ -598,7 +598,7 @@ a {
 
 .toolbar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
@@ -611,6 +611,7 @@ a {
   flex: 1 1 420px;
   min-width: 0;
   align-items: center;
+  align-content: flex-start;
   flex-wrap: wrap;
   gap: 8px;
 }
@@ -1515,6 +1516,37 @@ a {
   line-height: 1.5;
 }
 
+.wall-sort-tabs {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 5px;
+  padding: 3px;
+  border-radius: 7px;
+  background: #f3f1ed;
+}
+
+.wall-sort-tab {
+  flex: 1 1 0;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #77818b;
+  cursor: pointer;
+  font: 11px/1.35 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-sort-tab:hover {
+  color: #405b72;
+}
+
+.wall-sort-tab--active {
+  background: #fffefa;
+  color: #365a76;
+  box-shadow: 0 1px 3px rgba(37, 55, 70, 0.1);
+  font-weight: 600;
+}
+
 .wall-composer {
   flex: 0 0 auto;
   padding: 11px;
@@ -1676,6 +1708,180 @@ a {
   white-space: pre-wrap;
 }
 
+.wall-message-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.wall-reply-button {
+  padding: 3px 5px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: #7b8792;
+  cursor: pointer;
+  font: 10px/1.2 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-reply-button:hover {
+  background: #eef4f8;
+  color: #456b88;
+}
+
+.wall-like-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 34px;
+  margin-left: auto;
+  padding: 3px 6px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: #8b949e;
+  cursor: pointer;
+  font: 10px/1 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-like-button:hover {
+  background: #fff0f2;
+  color: #d35d6c;
+}
+
+.wall-like-button--active {
+  color: #dc5f70;
+}
+
+.wall-like-button:disabled {
+  cursor: default;
+  opacity: 0.58;
+}
+
+.wall-like-button:disabled:hover {
+  background: transparent;
+  color: #8b949e;
+}
+
+.wall-reply-composer {
+  margin-top: 9px;
+  padding: 8px;
+  border-left: 2px solid #9dbbd3;
+  border-radius: 0 6px 6px 0;
+  background: #f7fafc;
+}
+
+.wall-replying-to {
+  margin-bottom: 5px;
+  color: #66798a;
+  font-size: 10px;
+}
+
+.wall-reply-composer textarea {
+  display: block;
+  width: 100%;
+  min-height: 54px;
+  box-sizing: border-box;
+  padding: 7px 8px;
+  resize: vertical;
+  border: 1px solid #d7e0e7;
+  border-radius: 5px;
+  outline: none;
+  background: #fff;
+  color: #334155;
+  font: 11px/1.5 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-reply-composer textarea:focus {
+  border-color: #83a9cc;
+}
+
+.wall-reply-composer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.wall-reply-composer-actions span {
+  margin-right: auto;
+  color: #8b949e;
+  font-size: 9px;
+}
+
+.wall-reply-composer-actions button,
+.wall-replies-more {
+  padding: 4px 7px;
+  border: 0;
+  border-radius: 4px;
+  background: #e8f0f6;
+  color: #476a84;
+  cursor: pointer;
+  font: 10px/1.2 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-reply-composer-actions button:disabled,
+.wall-replies-more:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.wall-replies {
+  margin-top: 9px;
+  padding-left: 10px;
+  border-left: 2px solid #e0e7ed;
+}
+
+.wall-reply {
+  display: flex;
+  gap: 7px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ece8e2;
+}
+
+.wall-reply:last-of-type {
+  border-bottom: 0;
+}
+
+.wall-reply > a,
+.wall-reply > a img {
+  display: block;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.wall-reply-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.wall-reply-main p {
+  margin: 4px 0 0;
+  color: #3f4f5d;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.wall-replies-status {
+  padding: 8px;
+  color: #8b949e;
+  font-size: 10px;
+  text-align: center;
+}
+
+.wall-replies-more {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+}
+
 .wall-delete-button {
   display: inline-flex;
   flex: 0 0 auto;
@@ -1707,6 +1913,28 @@ a {
   color: #8a949e;
   font-size: 12px;
   text-align: center;
+}
+
+.wall-load-more {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: #f3f6f8;
+  color: #637484;
+  cursor: pointer;
+  font: 11px/1.35 "Roboto Mono", "SF Mono", Monaco, monospace;
+}
+
+.wall-load-more:hover {
+  background: #eaf1f6;
+  color: #3f607a;
+}
+
+.wall-load-more:disabled {
+  cursor: wait;
+  opacity: 0.65;
 }
 
 body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
