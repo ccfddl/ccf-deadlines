@@ -3,7 +3,7 @@ use crate::components::countdown::CountDown;
 use crate::components::favorites::{FavoritesContext, start_github_login};
 use chrono::{DateTime, FixedOffset, Utc};
 use leptos::prelude::*;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 use thaw::*;
 
 #[derive(Clone, Debug, PartialEq)]
@@ -48,11 +48,11 @@ pub fn FavoritesTimelineModal(
             reference_time.get().unwrap_or_else(Utc::now),
         )
     });
-    let selected_conference = RwSignal::new(None::<String>);
+    let selected_conferences = RwSignal::new(HashSet::<String>::new());
 
     Effect::new(move |_| {
         if !show.get() {
-            selected_conference.set(None);
+            selected_conferences.update(HashSet::clear);
         }
     });
 
@@ -132,23 +132,21 @@ pub fn FavoritesTimelineModal(
                                         }
                                             .into_any()
                                     } else {
-                                        let selected = selected_conference.get();
+                                        let selected = selected_conferences.get();
                                         let visible_events = data
                                             .events
                                             .into_iter()
                                             .filter(|event| {
-                                                selected
-                                                    .as_ref()
-                                                    .is_none_or(|id| id == &event.conference_id)
+                                                selected.is_empty()
+                                                    || selected.contains(&event.conference_id)
                                             })
                                             .collect::<Vec<_>>();
                                         let visible_awaiting_dates = data
                                             .awaiting_dates
                                             .into_iter()
                                             .filter(|conference| {
-                                                selected
-                                                    .as_ref()
-                                                    .is_none_or(|id| id == &conference.id)
+                                                selected.is_empty()
+                                                    || selected.contains(&conference.id)
                                             })
                                             .collect::<Vec<_>>();
                                         let has_future_events = !visible_events.is_empty();
@@ -165,9 +163,9 @@ pub fn FavoritesTimelineModal(
                                                     <button
                                                         type="button"
                                                         class="favorites-timeline-legend"
-                                                        class:favorites-timeline-legend--active=selected.is_none()
-                                                        aria-pressed=selected.is_none()
-                                                        on:click=move |_| selected_conference.set(None)
+                                                        class:favorites-timeline-legend--active=selected.is_empty()
+                                                        aria-pressed=selected.is_empty()
+                                                        on:click=move |_| selected_conferences.update(HashSet::clear)
                                                     >
                                                         {move || if use_english.get() { "All" } else { "全部会议" }}
                                                     </button>
@@ -176,7 +174,7 @@ pub fn FavoritesTimelineModal(
                                                         .into_iter()
                                                         .map(|legend| {
                                                             let conference_id = legend.id.clone();
-                                                            let is_selected = selected.as_ref() == Some(&legend.id);
+                                                            let is_selected = selected.contains(&legend.id);
                                                             view! {
                                                                 <button
                                                                     type="button"
@@ -185,8 +183,11 @@ pub fn FavoritesTimelineModal(
                                                                     aria-pressed=is_selected
                                                                     title=legend.id
                                                                     on:click=move |_| {
-                                                                        selected_conference
-                                                                            .set(Some(conference_id.clone()));
+                                                                        selected_conferences.update(|selected| {
+                                                                            if !selected.insert(conference_id.clone()) {
+                                                                                selected.remove(&conference_id);
+                                                                            }
+                                                                        });
                                                                     }
                                                                 >
                                                                     <i style=format!("background:{}", legend.color)></i>
@@ -219,7 +220,8 @@ pub fn FavoritesTimelineModal(
                                                             |previous, event| {
                                                                 let interval_days = event.timepoint
                                                                     .signed_duration_since(*previous)
-                                                                    .num_milliseconds() as f64 / 86_400_000.0;
+                                                                    .num_days()
+                                                                    .max(0);
                                                                 *previous = event.timepoint.with_timezone(&Utc);
                                                                 Some((event, interval_days))
                                                             },
@@ -236,10 +238,8 @@ pub fn FavoritesTimelineModal(
                                                                 )
                                                                 .max(0) as u64;
                                                             let running = reference_time.get_untracked().is_none();
-                                                            let date = event.timepoint.format("%Y/%m/%d").to_string();
-                                                            let interval = format!("{interval_days:.1}");
-                                                            let interval = format!("{}d", interval.trim_end_matches('0').trim_end_matches('.'));
-                                                            let clock = event.timepoint.format("%H:%M").to_string();
+                                                            let date = event.timepoint.format("%Y/%m/%d %H:%M").to_string();
+                                                            let interval = format!("{interval_days} d");
                                                             let deadline_label = deadline_label(
                                                                 event.deadline_type,
                                                                 event.round,
@@ -252,7 +252,6 @@ pub fn FavoritesTimelineModal(
                                                                 >
                                                                     <span class="favorites-timeline-date">
                                                                         <strong>{date}</strong>
-                                                                        <small>{clock}</small>
                                                                     </span>
                                                                     <span class="favorites-timeline-rail">
                                                                         <span class="favorites-timeline-gap">{interval}</span>

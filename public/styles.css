@@ -1652,11 +1652,6 @@ a {
   font-weight: 600;
 }
 
-.favorites-timeline-date small {
-  color: #89939d;
-  font-size: 10px;
-}
-
 .favorites-timeline-rail {
   position: relative;
   display: flex;
