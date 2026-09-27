@@ -7,6 +7,26 @@
     thcpl: B
   dblp: pact
   confs:
+    - year: 2021
+      id: pact21
+      link: http://pact21.snu.ac.kr/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: '2021-04-19 23:59:59'
+          comment: Abstract registration date April 15, 2021; exact abstract cutoff time and timezone unconfirmed
+      timezone: AoE
+      date: September 26-29, 2021
+      place: Virtual
+    - year: 2022
+      id: pact22
+      link: https://pact22.cs.illinois.edu/
+      timeline:
+        - abstract_deadline: '2022-04-18 23:59:59'
+          deadline: TBD
+          comment: Full paper submission date April 25, 2022; exact full-paper cutoff time and timezone unconfirmed
+      timezone: AoE
+      date: October 10-12, 2022
+      place: Chicago, Illinois, USA
     - year: 2023
       id: pact23
       link: https://pact2023.github.io/
@@ -22,10 +42,8 @@
       id: pact24
       link: https://pact2024.github.io/
       timeline:
-        - deadline: '2024-03-25 23:59:59'
-          comment: Abstract submission deadline
-        - deadline: '2024-04-01 23:59:59'
-          comment: Paper submission deadline
+        - abstract_deadline: '2024-03-25 23:59:59'
+          deadline: '2024-04-01 23:59:59'
       timezone: AoE
       date: October 13-16, 2024
       place: Long Beach, California, USA
