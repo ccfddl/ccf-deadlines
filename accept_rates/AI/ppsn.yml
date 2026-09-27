@@ -1,8 +1,21 @@
 - title: PPSN
+  # Refereed full papers; excludes workshops, tutorials and invited talks.
   accept_rates:
+    - year: 2022
+      submitted: 185
+      accepted: 85
+      str: 45.9%(85/185 22')
+      rate: 0.4594594594594595
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-14714-2/1
+    - year: 2024
+      submitted: 294
+      accepted: 101
+      str: 34.4%(101/294 24')
+      rate: 0.3435374149659864
+      source: https://link.springer.com/book/10.1007/978-3-031-70055-2
     - year: 2026
       submitted: 527
       accepted: 165
       str: 31.3%(165/527 26')
-      rate: 0.313092979127134724
-      source: https://ryojitanabe.github.io/ecconf/#ppsn
+      rate: 0.3130929791271347
+      source: https://link.springer.com/book/10.1007/978-3-032-36214-8
