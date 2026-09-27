@@ -7,23 +7,13 @@
     thcpl: B
   dblp: isit
   confs:
-    - year: 2024
-      id: isit24
-      link: https://www.itsoc.org/archive/2024.ieee-isit.org/index
-      timeline:
-        - deadline: TBD
-          comment: 'Regular papers: 2024-01-29; exact time and timezone not published in recovered official sources'
-      timezone: UTC+0
-      date: July 7-12, 2024
-      place: Athens, Greece
     - year: 2025
       id: isit25
       link: https://2025.ieee-isit.org/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers: 2025-01-22 AoE; exact time not published'
+        - deadline: '2025-01-22 23:59:59'
       timezone: AoE
-      date: June 22-27, 2025
+      date: June 23-27, 2025
       place: Ann Arbor, Michigan, USA
     - year: 2026
       id: isit26
