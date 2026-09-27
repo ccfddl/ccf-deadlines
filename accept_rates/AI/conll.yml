@@ -1,0 +1,40 @@
+- title: CoNLL
+  # Archival main-conference papers; excludes non-archival, shared-task and invited papers.
+  accept_rates:
+    - year: 2021
+      submitted: 226
+      accepted: 52
+      str: 23.0%(52/226 21')
+      rate: 0.2300884955752212
+      source: https://aclanthology.org/2021.conll-1.0.pdf
+    - year: 2022
+      # 102 direct submissions + 5 ARR commitments; 26 + 2 acceptances.
+      submitted: 107
+      accepted: 28
+      str: 26.2%(28/107 22')
+      rate: 0.2616822429906542
+      source: https://aclanthology.org/2022.conll-1.0.pdf
+    - year: 2023
+      submitted: 143
+      accepted: 40
+      str: 28.0%(40/143 23')
+      rate: 0.2797202797202797
+      source: https://aclanthology.org/2023.conll-1.0.pdf
+    - year: 2024
+      submitted: 97
+      accepted: 40
+      str: 41.2%(40/97 24')
+      rate: 0.4123711340206185
+      source: https://aclanthology.org/2024.conll-1.0.pdf
+    - year: 2025
+      submitted: 217
+      accepted: 40
+      str: 18.4%(40/217 25')
+      rate: 0.1843317972350230
+      source: https://aclanthology.org/2025.conll-1.0.pdf
+    - year: 2026
+      submitted: 257
+      accepted: 47
+      str: 18.3%(47/257 26')
+      rate: 0.1828793774319066
+      source: https://aclanthology.org/2026.conll-main.0.pdf
