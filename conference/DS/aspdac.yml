@@ -7,14 +7,39 @@
     thcpl: B
   dblp: aspdac
   confs:
+    - year: 2021
+      id: aspdac21
+      link: https://www.aspdac.com/aspdac2021/
+      timeline:
+        - deadline: '2020-07-26 17:00:00'
+          comment: Initial paper registration/submission; later PDF update excluded
+      timezone: AoE
+      date: January 18-21, 2021
+      place: Virtual
+    - year: 2022
+      id: aspdac22
+      link: https://www.aspdac.com/aspdac2022/
+      timeline:
+        - deadline: '2021-07-21 17:00:00'
+          comment: Initial manuscript required; later PDF update excluded
+      timezone: AoE
+      date: January 17-20, 2022
+      place: Virtual
+    - year: 2023
+      id: aspdac23
+      link: https://www.aspdac.com/aspdac2023/
+      timeline:
+        - abstract_deadline: '2022-07-24 17:00:00'
+          deadline: '2022-07-29 17:00:00'
+      timezone: AoE
+      date: January 16-19, 2023
+      place: Tokyo Odaiba Miraikan, Japan
     - year: 2024
       id: aspdac24
       link: https://www.aspdac.com/aspdac2024/
       timeline:
-        - deadline: '2023-07-28 17:00:00'
-          comment: abstract deadline
-        - deadline: '2023-08-04 19:00:00'
-          comment: full paper deadline
+        - abstract_deadline: '2023-07-28 17:00:00'
+          deadline: '2023-08-04 17:00:00'
       timezone: AoE
       date: Jan 22-25, 2024
       place: Sondo Convensia, Incheon, Korea
@@ -22,10 +47,8 @@
       id: aspdac25
       link: https://www.aspdac.com/aspdac2025/
       timeline:
-        - deadline: '2024-07-05 17:00:00'
-          comment: abstract deadline
-        - deadline: '2024-07-12 17:00:00'
-          comment: full paper deadline
+        - abstract_deadline: '2024-07-05 17:00:00'
+          deadline: '2024-07-12 17:00:00'
       timezone: AoE
       date: Jan 20-23, 2025
       place: Tokyo Odaiba Miraikan, Japan
