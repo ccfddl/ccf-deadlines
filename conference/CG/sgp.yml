@@ -7,17 +7,57 @@
     thcpl: B
   dblp: sgp
   confs:
+    - year: 2021
+      id: sgp21
+      link: https://sgp2021.github.io/
+      timeline:
+        - abstract_deadline: '2021-04-19 23:59:00'
+          deadline: '2021-04-24 23:59:00'
+          comment: Regular technical papers; recommended abstract registration
+      timezone: UTC+0
+      date: July 12-14, 2021
+      place: Online
+    - year: 2022
+      id: sgp22
+      link: https://sgp2022.github.io/
+      timeline:
+        - abstract_deadline: '2022-04-07 23:59:00'
+          deadline: '2022-04-11 23:59:00'
+          comment: Regular technical papers; recommended abstract registration
+      timezone: UTC+0
+      date: July 4-6, 2022
+      place: Online
+    - year: 2023
+      id: sgp23
+      link: https://sgp2023.github.io/
+      timeline:
+        - abstract_deadline: '2023-04-07 23:59:00'
+          deadline: '2023-04-12 23:59:00'
+          comment: Regular technical papers; recommended abstract registration
+      timezone: UTC+0
+      date: July 3-5, 2023
+      place: Genoa, Italy
+    - year: 2024
+      id: sgp24
+      link: https://sgp2024.github.io/
+      timeline:
+        - abstract_deadline: '2024-04-10 23:59:00'
+          deadline: '2024-04-12 23:59:00'
+          comment: Regular technical papers; recommended abstract registration
+      timezone: UTC+0
+      date: June 24-26, 2024
+      place: Cambridge, MA, USA
     - year: 2025
       id: sgp25
       link: https://sgp2025.my.canva.site/
       timeline:
-        - abstract_deadline: '2025-02-04 23:59:59'
-          deadline: '2025-02-07 23:59:59'
+        - abstract_deadline: '2025-02-04 23:59:00'
+          deadline: '2025-02-07 23:59:00'
           comment: 'First (visa-friendly) round'
-        - abstract_deadline: '2025-04-08 23:59:59'
-          deadline: '2025-04-11 23:59:59'
+        - abstract_deadline: '2025-04-08 23:59:00'
+          deadline: '2025-04-11 23:59:00'
           comment: 'Second (traditional) round'
-      timezone: AoE
+      timezone: UTC+0
       date: June 30 - July 4, 2025
       place: BILBAO, SPAIN
     - year: 2026
@@ -26,10 +66,10 @@
       timeline:
         - abstract_deadline: '2026-02-02 23:59:59'
           deadline: '2026-02-04 23:59:59'
-          comment: 'First round'
-        - abstract_deadline: '2026-04-13 23:59:59'
+          comment: 'First round: abstract February 2 at 23:59 UTC verified; full date February 4 verified, legacy clock retained but initial full cutoff clock unverified.'
+        - abstract_deadline: TBD
           deadline: '2026-04-15 23:59:59'
-          comment: 'Second round'
+          comment: 'Second round: abstract date conflicts, April 13 on CFP vs April 12 at 23:59 UTC on SRM; full date April 15 verified, legacy clock retained but initial full cutoff clock unverified.'
       timezone: UTC+0
       date: July 1 - 3, 2026
       place: Bern, Switzerland
