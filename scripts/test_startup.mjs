@@ -88,6 +88,19 @@ test('startup completed before DOM readiness does not start a watchdog', () => {
   assert.equal(app.timers.size, 0);
 });
 
+test('watchdog starts before DOM readiness while application modules are pending', () => {
+  const app = startup();
+  app.emit('InitialLoadingReady');
+  assert.equal(app.timers.size, 1);
+  const originalTimer = app.timers.get(1);
+  app.ready();
+  assert.equal(app.timers.get(1), originalTimer);
+  app.timeout();
+  assert.equal(app.button.hidden, false);
+  app.button.click();
+  assert.equal(app.reloads, 1);
+});
+
 test('unrelated external scripts and extensions do not report startup failure', () => {
   const app = startup();
   app.ready();
