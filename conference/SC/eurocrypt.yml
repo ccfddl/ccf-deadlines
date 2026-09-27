@@ -31,7 +31,7 @@
         - deadline: '2022-10-06 23:59:59'
           comment: Regular paper submission deadline
       timezone: AoE
-      date: April 23-27, 2023
+      date: April 24-27, 2023
       place: Lyon, France
     - year: 2024
       id: eurocrypt24
