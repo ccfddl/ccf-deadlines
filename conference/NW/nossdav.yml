@@ -7,11 +7,51 @@
     thcpl: B
   dblp: nossdav
   confs:
+    - year: 2021
+      id: nossdav21
+      link: https://nossdav.org/2021/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: 'Round 1: registration 2020-12-11; submission 2020-12-14; explicit clock and timezone unverified.'
+        - abstract_deadline: 'TBD'
+          deadline: '2021-03-08 23:59:59'
+          comment: 'Round 2: registration date 2021-03-05; explicit registration clock unverified.'
+      timezone: AoE
+      date: September 28 - October 1, 2021
+      place: Istanbul, Turkey
+    - year: 2022
+      id: nossdav22
+      link: https://nossdav.org/2022/
+      timeline:
+        - deadline: '2022-03-18 23:59:59'
+      timezone: AoE
+      date: June 17, 2022
+      place: Athlone, Ireland
+    - year: 2023
+      id: nossdav23
+      link: https://nossdav.org/2023/
+      timeline:
+        - deadline: '2023-03-10 23:59:59'
+      timezone: AoE
+      date: June 10, 2023
+      place: Vancouver, Canada
+    - year: 2024
+      id: nossdav24
+      link: https://nossdav.org/2024/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: '2024-02-02 23:59:59'
+          comment: 'CFP registration 2024-01-26 AoE conflicts with linked HotCRP 2024-02-02 11:59:59 AoE.'
+      timezone: AoE
+      date: April 15-18, 2024
+      place: Bari, Italy
     - year: 2025
       id: nossdav25
       link: https://nossdav.org/2025/
       timeline:
-        - deadline: '2025-01-17 23:59:59'
+        - deadline: 'TBD'
+          comment: 'CFP submission 2025-01-17 conflicts with co-located MMSys final 2025-01-26 and linked HotCRP 2025-01-27 23:59:59 AoE.'
       timezone: AoE
       date: March 31- April 3, 2025
       place: Stellenbosch, South Africa
