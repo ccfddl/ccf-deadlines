@@ -7,6 +7,22 @@
     thcpl: N
   dblp: cocoon
   confs:
+    - year: 2023
+      id: cocoon23
+      link: https://theory.utdallas.edu/COCOON2023/index.html
+      timeline:
+        - deadline: '2023-06-30 23:59:00'
+      timezone: UTC+2
+      date: December 15-17, 2023
+      place: Honolulu, Hawaii, USA
+    - year: 2024
+      id: cocoon24
+      link: https://anl.sjtu.edu.cn/cocoon2024/
+      timeline:
+        - deadline: '2024-04-08 23:59:00'
+      timezone: AoE
+      date: August 23-25, 2024
+      place: Shanghai, China
     - year: 2025
       id: cocoon25
       link: https://tcsuestc.com/cocoon2025
