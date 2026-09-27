@@ -7,11 +7,48 @@
     thcpl: N
   dblp: wcnc
   confs:
+    - year: 2021
+      id: wcnc21
+      link: https://wcnc2021.ieee-wcnc.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Regular paper final deadline: October 30, 2020; exact cutoff time and timezone not specified'
+      timezone: UTC
+      date: March 29-April 1, 2021
+      place: Nanjing, China / Hybrid
+    - year: 2022
+      id: wcnc22
+      link: https://wcnc2022.ieee-wcnc.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Regular paper extended deadline: October 15, 2021; exact cutoff time and timezone not specified'
+      timezone: UTC
+      date: April 10-13, 2022
+      place: Austin, TX, USA / Hybrid
+    - year: 2023
+      id: wcnc23
+      link: https://wcnc2023.ieee-wcnc.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Regular paper extended deadline: September 30, 2022; exact cutoff time and timezone not specified'
+      timezone: UTC
+      date: March 26-29, 2023
+      place: Glasgow, Scotland, UK
+    - year: 2024
+      id: wcnc24
+      link: https://wcnc2024.ieee-wcnc.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Regular paper final deadline: October 25, 2023; exact cutoff time and timezone not specified'
+      timezone: UTC
+      date: April 21-24, 2024
+      place: Dubai, United Arab Emirates
     - year: 2025
       id: wcnc25
       link: https://wcnc2025.ieee-wcnc.org/
       timeline:
-        - deadline: '2024-09-02 23:59:59'
+        - deadline: 'TBD'
+          comment: 'Regular paper final deadline: October 14, 2024; exact cutoff time and timezone not specified'
       timezone: UTC-12
       date: March 24-27, 2025
       place: Milan, Italy
@@ -19,7 +56,8 @@
       id: wcnc26
       link: https://wcnc2026.ieee-wcnc.org/group/21
       timeline:
-        - deadline: '2025-09-14 23:59:59'
+        - deadline: 'TBD'
+          comment: 'Regular paper deadline: October 26, 2025; exact cutoff time and timezone not specified'
       timezone: UTC-12
       date: April 13-16, 2026
       place: Kuala Lumpur, Malaysia
