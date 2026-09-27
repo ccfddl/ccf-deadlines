@@ -15,6 +15,41 @@
       timezone: AoE
       date: September 30-October 3, 2021
       place: New York, USA
+    - year: 2022
+      id: ispa22
+      link: http://www.swinflow.org/confs/2022/ispa/
+      timeline:
+        - deadline: '2022-09-25 23:59:00'
+      timezone: UTC+0
+      date: December 17-19, 2022
+      place: Melbourne, Australia
+    - year: 2023
+      id: ispa23
+      link: http://www.ieee-hust-ncc.org/2023/ISPA/index.html
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper: September 15, 2023 (extended); exact time and timezone unpublished (UTC+0 is a placeholder).'
+      timezone: UTC+0
+      date: December 21-24, 2023
+      place: Wuhan, China (Hybrid)
+    - year: 2024
+      id: ispa24
+      link: https://www.ieee-ispa.org/2024/ispa/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper: July 22, 2024 (extended); exact time and timezone unpublished (UTC+0 is a placeholder).'
+      timezone: UTC+0
+      date: October 30-November 2, 2024
+      place: Kaifeng, China
+    - year: 2025
+      id: ispa25
+      link: https://www.ieee-ai-for-science.org/2025/ispa/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper: July 31, 2025 AoE (extended); exact time unpublished.'
+      timezone: AoE
+      date: October 10-12, 2025
+      place: Shenyang, China
     - year: 2026
       id: ispa26
       link: https://ieee-ai-for-science.org/2026/ispa/
