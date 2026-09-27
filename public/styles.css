@@ -906,8 +906,8 @@ a {
 }
 
 .conference-list:not(.conference-list--rows) .conference-card-heading .conf-title {
-  flex: 0 1 calc(100% - 96px);
-  max-width: calc(100% - 96px);
+  flex: 0 1 calc(100% - 84px);
+  max-width: calc(100% - 84px);
 }
 
 .conference-card-heading .conference-card-website {
