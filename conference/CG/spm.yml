@@ -7,12 +7,53 @@
     thcpl: B
   dblp: sma
   confs:
+    - year: 2021
+      id: spm21
+      link: https://www.siam.org/conferences/cm/conference/gdspm21
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: Regular full papers; CFP abstract March 5 and full March 12, 2021; final extension status, clock and timezone unverified
+      timezone: UTC+0
+      date: September 27-29, 2021
+      place: Online
+    - year: 2022
+      id: spm22
+      link: https://spm2022.sciencesconf.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: Regular full papers; extended abstract February 11 and full February 17, 2022; clock and timezone unverified
+      timezone: UTC+0
+      date: June 27-29, 2022
+      place: Online
+    - year: 2023
+      id: spm23
+      link: https://sites.google.com/view/spm-2023/home
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: Regular full papers; abstract and full February 17, 2023 date verified; clock and timezone unverified
+      timezone: UTC+0
+      date: July 5-7, 2023
+      place: Genoa, Italy
+    - year: 2024
+      id: spm24
+      link: https://spmconf.github.io/SPM2024/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+          comment: Regular full papers; extended abstract and full February 17, 2024 date verified; clock and timezone unverified
+      timezone: UTC+0
+      date: July 8-10, 2024
+      place: Montreal, Quebec, Canada
     - year: 2025
       id: spm25
       link: https://spmconf2025.github.io/SPM2025/
       timeline:
         - abstract_deadline: '2025-03-08 23:59:59'
           deadline: '2025-03-15 23:59:59'
+          comment: Regular full papers; dates verified; existing clock and timezone retained with evidence gap
       timezone: AoE
       date: October 29 - November 2, 2025
       place: Hangzhou, Zhejiang, P.R. China
