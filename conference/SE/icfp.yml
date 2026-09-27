@@ -7,6 +7,15 @@
     thcpl: B
   dblp: icfp
   confs:
+    - year: 2021
+      id: icfp21
+      link: https://icfp21.sigplan.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Regular research paper submission: March 2, 2021 AoE. Exact cutoff time unverified.'
+      timezone: AoE
+      date: August 22-28, 2021
+      place: Virtual
     - year: 2022
       id: icfp22
       link: https://icfp22.sigplan.org/
@@ -16,6 +25,24 @@
       timezone: AoE
       date: September 11-16, 2022
       place: Ljubljana, Slovenia
+    - year: 2023
+      id: icfp23
+      link: https://icfp23.sigplan.org/
+      timeline:
+        - deadline: '2023-03-01 23:59:00'
+          comment: Regular research paper submission
+      timezone: AoE
+      date: September 4-9, 2023
+      place: Seattle, Washington, USA
+    - year: 2024
+      id: icfp24
+      link: https://icfp24.sigplan.org/
+      timeline:
+        - deadline: '2024-02-28 23:59:00'
+          comment: Regular research paper submission
+      timezone: AoE
+      date: September 2-7, 2024
+      place: Milan, Italy
     - year: 2025
       id: icfp25
       link: https://icfp25.sigplan.org/
