@@ -19,6 +19,13 @@
       str: 20.2%(405/2008 24')
       rate: 0.20169322709163345
       source: https://www2024.thewebconf.org/about/newsletters/
+    # Main research selected papers / full submissions before desk rejection; original PC foreword.
+    - year: 2025
+      submitted: 2500
+      accepted: 409
+      str: "16.4%(409/2500 25')"
+      rate: 0.1636
+      source: https://archives.iw3c2.org/www2025/www2025-proceedings.pdf
     # Main research selected papers / full submissions before desk rejection; chair preface PDF5/v.
     - year: 2026
       submitted: 3370
