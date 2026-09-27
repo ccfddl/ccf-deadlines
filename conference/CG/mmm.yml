@@ -7,19 +7,39 @@
     thcpl: N
   dblp: mmm
   confs:
+    - year: 2022
+      id: mmm22
+      link: https://mmm2022.org/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular full papers: September 13, 2021; exact time and timezone unverified'
+      timezone: UTC+0
+      date: June 6-10, 2022
+      place: Phu Quoc, Vietnam
+    - year: 2024
+      id: mmm24
+      link: https://mmm2024.org/
+      timeline:
+        - deadline: '2023-09-18 23:59:59'
+          comment: 'Regular papers; extended deadline; midnight GMT-11'
+      timezone: UTC-11
+      date: January 29-February 2, 2024
+      place: Amsterdam, Netherlands
     - year: 2025
       id: mmm25
       link: https://mmm2025.net/
       timeline:
-        - deadline: '2024-08-19 23:59:59'
-      timezone: AoE
+        - deadline: TBD
+          comment: 'Regular papers: August 19, 2024 at 23:59; official wording Anywhere on Inhabited Earth (AOE), UTC offset unverified'
+      timezone: UTC+0
       date: January 7-10, 2025
       place: Nara, Japan
     - year: 2026
       id: mmm26
       link: https://mmm2026.cz/
       timeline:
-        - deadline: '2025-08-19 23:59:59'
+        - deadline: '2025-09-02 23:59:00'
+          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: January 29-31, 2026
       place: Prague, Czech Republic
