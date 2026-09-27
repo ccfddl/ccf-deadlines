@@ -7,6 +7,46 @@
     thcpl: B
   dblp: pacificvis
   confs:
+    - year: 2021
+      id: pacificvis21
+      link: https://vis.tju.edu.cn/pvis2021/index.html
+      timeline:
+        - abstract_deadline: '2020-10-23 21:00:00'
+          deadline: '2020-10-30 21:00:00'
+          comment: 'Regular full papers; extended deadlines; 21:00 Pacific Time (PDT)'
+      timezone: UTC-7
+      date: April 19-21, 2021
+      place: Online
+    - year: 2022
+      id: pacificvis22
+      link: https://pvis2022.github.io/pvis2022/
+      timeline:
+        - abstract_deadline: '2021-10-15 21:00:00'
+          deadline: '2021-10-22 21:00:00'
+          comment: 'Regular full papers; 21:00 Pacific Time (PDT)'
+      timezone: UTC-7
+      date: April 11-14, 2022
+      place: Online
+    - year: 2023
+      id: pacificvis23
+      link: https://pvis2023.github.io/pvis2023/
+      timeline:
+        - abstract_deadline: '2022-10-21 21:00:00'
+          deadline: '2022-10-28 21:00:00'
+          comment: 'Regular full papers; extended deadlines; 21:00 Pacific Time (PDT)'
+      timezone: UTC-7
+      date: April 18-21, 2023
+      place: Seoul, South Korea
+    - year: 2024
+      id: pacificvis24
+      link: https://pacificvis.org/pvis2024/
+      timeline:
+        - abstract_deadline: '2023-11-16 23:59:00'
+          deadline: '2023-11-22 23:59:00'
+          comment: 'Conference track'
+      timezone: AoE
+      date: April 23-26, 2024
+      place: Tokyo, Japan
     - year: 2025
       id: pacificvis25
       link: https://pacificvis2025.github.io/pages/index.html
