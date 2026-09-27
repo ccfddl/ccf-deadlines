@@ -52,7 +52,7 @@ npm run deploy
 
 After deployment, verify `https://ccfddl.com/api/health` returns `{"ok":true}` before publishing the static frontend changes.
 
-When a new migration is added, apply the migration before deploying the Worker version that uses it. The message wall requires migrations `0002` through `0006`. Migration `0006` enforces posting limits atomically in D1; deploy it before this Worker version to keep message posting working.
+When a new migration is added, apply the migration before deploying the Worker version that uses it. The message wall requires migrations `0002` through `0006`. Migration `0006` enforces posting limits atomically in D1; deploy it before this Worker version to keep message posting working. It preserves existing daily quotas in a separate counter, avoiding double-counting while the previous Worker is still running.
 
 ## Security configuration
 
