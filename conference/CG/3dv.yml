@@ -7,6 +7,26 @@
     thcpl: N
   dblp: 3dim
   confs:
+    - year: 2021
+      id: 3dv2021
+      link: https://3dv2021.surrey.ac.uk/
+      timeline:
+        - abstract_deadline: '2021-07-30 23:59:00'
+          deadline: '2021-07-30 23:59:00'
+          comment: 'Regular-paper registration and full submission; registration extended to July 30'
+      timezone: UTC-7
+      date: December 1-3, 2021
+      place: Online
+    - year: 2022
+      id: 3dv2022
+      link: https://3dvconf.github.io/2022/
+      timeline:
+        - abstract_deadline: '2022-06-02 23:59:00'
+          deadline: '2022-06-02 23:59:00'
+          comment: 'Regular-paper registration and full submission; registration extended to June 2'
+      timezone: UTC-7
+      date: September 12-15, 2022
+      place: Prague, Czechia
     - year: 2024
       id: 3dv2024
       link: https://3dvconf.github.io/2024/
