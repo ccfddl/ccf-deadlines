@@ -11,17 +11,38 @@
       id: dfrws22
       link: https://dfrws.org/conferences/dfrws-eu-2022/
       timeline:
-        - deadline: '2021-10-03 23:59:59'
-          comment: Paper submission deadline
+        - deadline: TBD
+          comment: Regular full paper submission deadline (extended); October 15, 2021, clock and timezone not published
       timezone: AoE
       date: March 28-31 , 2022
       place: Online and Physical (Location TBC)
+    - year: 2023
+      id: dfrws23
+      link: https://dfrws.org/conferences/dfrws-eu-2023/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Regular full paper abstract/title October 10, 2022 and full submission October 17, 2022; clock and timezone not published
+      timezone: UTC
+      date: March 21-24, 2023
+      place: Bonn, Germany (Hybrid)
+    - year: 2024
+      id: dfrws24
+      link: https://dfrws.org/conferences/dfrws-eu-2024/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Extended regular full paper abstract/title October 5, 2023 and full submission October 12, 2023; clock and timezone not published
+      timezone: UTC
+      date: March 19-22, 2024
+      place: Zaragoza, Spain (Hybrid)
     - year: 2025
       id: dfrws25
       link: https://dfrws.org/conferences/dfrws-eu-2025/
       timeline:
-        - abstract_deadline: '2024-09-20 23:59:59'
-          deadline: '2024-09-27 23:59:59'
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Extended regular full paper abstract/title October 4, 2024 and full submission October 11, 2024; clock and timezone not published
       timezone: AoE
       date: April 1-4, 2025
       place: Brno, Czech Republic
