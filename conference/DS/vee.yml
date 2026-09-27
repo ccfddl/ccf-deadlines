@@ -7,6 +7,15 @@
     thcpl: B
   dblp: vee
   confs:
+    - year: 2021
+      id: vee2021
+      link: https://conf.researchr.org/home/vee-2021
+      timeline:
+        - deadline: TBD
+          comment: Paper submission January 22, 2021 (AoE); exact time unpublished
+      timezone: AoE
+      date: April 16, 2021
+      place: Virtual
     - year: 2022
       id: vee2022
       link: https://conf.researchr.org/home/vee-2022
