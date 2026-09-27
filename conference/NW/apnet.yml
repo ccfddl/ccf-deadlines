@@ -7,6 +7,35 @@
     thcpl: N
   dblp: apnet
   confs:
+    - year: 2021
+      id: apnet21
+      link: https://conferences.sigcomm.org/events/apnet2021/
+      timeline:
+        - abstract_deadline: '2021-03-19 23:59:00'
+          deadline: '2021-03-19 23:59:00'
+          comment: Regular papers; abstract registration moved to the paper deadline
+      timezone: UTC-4
+      date: June 24-25, 2021
+      place: Virtual
+    - year: 2022
+      id: apnet22
+      link: https://conferences.sigcomm.org/events/apnet2022/
+      timeline:
+        - abstract_deadline: '2022-03-18 23:15:00'
+          deadline: '2022-03-18 23:15:00'
+          comment: Regular papers; optional abstract registration until the paper deadline
+      timezone: UTC-4
+      date: July 1-2, 2022
+      place: Fuzhou, China
+    - year: 2023
+      id: apnet23
+      link: https://conferences.sigcomm.org/events/apnet2023/
+      timeline:
+        - deadline: '2023-03-17 23:30:00'
+          comment: Regular papers
+      timezone: UTC-4
+      date: June 29-30, 2023
+      place: Hong Kong SAR, China
     - year: 2024
       id: apnet24
       link: https://conferences.sigcomm.org/events/apnet2024/
