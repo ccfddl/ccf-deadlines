@@ -15,6 +15,16 @@
       str: 26.6%(38/143 22')
       rate: 0.265734265734266
       source: https://github.com/emeryberger/csconferences
+    # Overall full + short decisions, including invited replicability submissions.
+    # Separate EoI portal excluded; replicability may publish in CCR or IMC.
+    # Shepherd approval required for proceedings; not a publication census.
+    # Desk/withdrawal and conditional/final partitions are unquantified.
+    - year: 2023
+      submitted: 208
+      accepted: 52
+      str: 25.0%(52/208 23')
+      rate: 0.25
+      source: https://imc2023.hotcrp.com/
     - year: 2024
       submitted: 253
       accepted: 55
