@@ -7,6 +7,16 @@
     thcpl: A
   dblp: mobisys
   confs:
+    - year: 2021
+      id: mobisys21
+      link: https://www.sigmobile.org/mobisys/2021/
+      timeline:
+        - abstract_deadline: '2021-01-08 23:59:59'
+          deadline: '2021-01-15 23:59:59'
+          comment: Regular papers
+      timezone: AoE
+      date: June 24-July 2, 2021
+      place: Virtual
     - year: 2022
       id: mobisys22
       link: https://www.sigmobile.org/mobisys/2022/
@@ -16,6 +26,35 @@
       timezone: UTC-12
       date: June 27 - July 1, 2022
       place: Portland, Oregon, USA
+    - year: 2023
+      id: mobisys23
+      link: https://www.sigmobile.org/mobisys/2023/
+      timeline:
+        - deadline: '2022-12-09 23:59:59'
+          comment: Regular papers; no independent abstract-registration deadline
+      timezone: AoE
+      date: June 18-22, 2023
+      place: Helsinki, Finland
+    - year: 2024
+      id: mobisys24
+      link: https://www.sigmobile.org/mobisys/2024/
+      timeline:
+        - abstract_deadline: '2023-11-23 23:59:00'
+          deadline: '2023-11-30 23:59:00'
+          comment: Regular papers
+      timezone: AoE
+      date: June 3-7, 2024
+      place: Tokyo, Japan
+    - year: 2025
+      id: mobisys25
+      link: https://www.sigmobile.org/mobisys/2025/
+      timeline:
+        - abstract_deadline: '2024-12-02 23:59:00'
+          deadline: '2024-12-09 23:59:00'
+          comment: Regular papers
+      timezone: AoE
+      date: June 23-27, 2025
+      place: Anaheim, California, USA
     - year: 2026
       id: mobisys26
       link: https://www.sigmobile.org/mobisys/2026/
