@@ -7,6 +7,42 @@
     thcpl: B
   dblp: vissym
   confs:
+    - year: 2021
+      id: eurovis2021
+      link: https://files.ifi.uzh.ch/webarchives/eurovis21.ifi.uzh.ch/index.html%3Fp%3D57.html
+      timeline:
+        - abstract_deadline: '2020-11-25 23:59:00'
+          deadline: '2020-12-04 23:59:00'
+      timezone: UTC+0
+      date: June 14-18, 2021
+      place: Online
+    - year: 2022
+      id: eurovis2022
+      link: https://listserv.uni-tuebingen.de/pipermail/ieee_vis/2021/002067.html
+      timeline:
+        - abstract_deadline: '2021-11-24 23:59:00'
+          deadline: '2021-12-02 23:59:00'
+      timezone: UTC+0
+      date: June 13-17, 2022
+      place: Rome, Italy
+    - year: 2023
+      id: eurovis2023
+      link: https://conferences.eg.org/eurovis2023/for-submitters/full-papers/
+      timeline:
+        - abstract_deadline: '2022-11-25 23:59:00'
+          deadline: '2022-12-02 23:59:00'
+      timezone: UTC+0
+      date: June 13-16, 2023
+      place: Leipzig, Germany
+    - year: 2024
+      id: eurovis2024
+      link: https://listserv.uni-tuebingen.de/pipermail/ieee_vis/2023/002610.html
+      timeline:
+        - abstract_deadline: '2023-11-23 23:59:00'
+          deadline: '2023-11-30 23:59:00'
+      timezone: UTC+0
+      date: May 27-31, 2024
+      place: Odense, Denmark
     - year: 2025
       id: eurovis2025
       link: https://www.eurovis2025.lu/
