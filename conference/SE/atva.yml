@@ -7,11 +7,51 @@
     thcpl: B
   dblp: atva
   confs:
+    - year: 2021
+      id: atva21
+      link: https://formal-analysis.com/atva/2021/
+      timeline:
+        - deadline: TBD
+          comment: Extended full paper submission on April 26, 2021 AoE; exact time unverified
+      timezone: AoE
+      date: October 18 - 22, 2021
+      place: Virtual
+    - year: 2022
+      id: atva22
+      link: https://atva-conference.org/2022/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Extended abstract on May 8 and full paper on May 15, 2022 AoE; exact time unverified
+      timezone: AoE
+      date: October 25 - 28, 2022
+      place: Virtual
+    - year: 2023
+      id: atva23
+      link: https://atva-conference.org/2023/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Extended abstract and full paper submission on May 11, 2023 AoE; exact time unverified
+      timezone: AoE
+      date: October 24 - 27, 2023
+      place: Singapore
+    - year: 2024
+      id: atva24
+      link: https://atva-conference.org/2024/
+      timeline:
+        - deadline: TBD
+          comment: Extended initial paper submission on April 25, 2024 AoE; April 28 update-only cutoff excluded; exact time unverified
+      timezone: AoE
+      date: October 21 - 24, 2024
+      place: Kyoto, Japan
     - year: 2025
       id: atva25
       link: https://conf.researchr.org/home/atva-2025
       timeline:
-        - deadline: '2025-04-25 23:59:59'
+        - abstract_deadline: TBD
+          deadline: '2025-04-25 23:59:59'
+          comment: Joint abstract and full submission on April 25, 2025 AoE; abstract exact time unverified
       timezone: AoE
       date: October 27-31, 2025
       place: Bengaluru, India
