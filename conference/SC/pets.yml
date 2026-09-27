@@ -20,7 +20,7 @@
         - deadline: '2021-02-28 23:59:59'
           comment: Issue 4 Paper Submission Deadline
       timezone: AoE
-      date: July 12-16, 2021
+      date: July 12-15, 2021
       place: Virtual
     - year: 2022
       id: pets22
@@ -50,7 +50,7 @@
         - deadline: '2023-02-28 23:59:59'
           comment: Issue 4 Paper Submission Deadline
       timezone: AoE
-      date: July 10-15, 2023
+      date: July 10-13, 2023
       place: Lausanne, Switzerland and Online
     - year: 2024
       id: pets24
