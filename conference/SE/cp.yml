@@ -7,21 +7,52 @@
     thcpl: B
   dblp: cp
   confs:
+    - year: 2021
+      id: cp21
+      link: https://cp2021.a4cp.org/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular full papers: extended abstract May 21 / submission May 30, 2021; exact clocks unpublished'
+      timezone: AoE
+      date: October 25-29, 2021
+      place: Online
     - year: 2022
       id: cp22
       link: https://cp2022.a4cp.org/
       timeline:
-        - deadline: '2022-02-25 23:59:59'
-          comment: Full Paper Submission
+        - abstract_deadline: TBD
+          deadline: '2022-02-25 23:59:59'
+          comment: 'Regular full papers: extended abstract February 18, 2022; abstract clock unpublished'
       timezone: AoE
       date: July 31-August 8, 2022
       place: HAIFA, ISRAEL
+    - year: 2023
+      id: cp23
+      link: https://cp2023.a4cp.org/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular full papers: extended abstract April 28 / submission May 5, 2023; exact clocks unpublished'
+      timezone: AoE
+      date: August 27-31, 2023
+      place: Toronto, Canada
+    - year: 2024
+      id: cp24
+      link: https://cp2024.a4cp.org/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular full papers: abstract April 18 / extended submission April 26, 2024; exact clocks unpublished'
+      timezone: AoE
+      date: September 2-6, 2024
+      place: Girona, Catalonia, Spain
     - year: 2025
       id: cp25
       link: https://cp2025.a4cp.org/
       timeline:
-        - abstract_deadline: '2025-03-20 22:59:59'
-          deadline: '2025-03-27 22:59:59'
+        - abstract_deadline: '2025-03-24 23:00:00'
+          deadline: '2025-04-03 23:00:00'
       timezone: AoE
       date: August 10-15, 2025
       place: Glasgow, Scotland
