@@ -7,6 +7,44 @@
     thcpl: N
   dblp: blocksys
   confs:
+    - year: 2022
+      id: blocksys22
+      link: https://blocksys.info/2022/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper date in updated official CFP: April 30, 2022; clock, timezone and any later extension unverified'
+      timezone: UTC
+      date: August 4-5, 2022
+      place: Chengdu, China
+    - year: 2023
+      id: blocksys23
+      link: https://easychair.org/cfp/BlockSys2023
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper date in organizer CFP: March 15, 2023; clock, timezone and any later extension unverified'
+      timezone: UTC
+      date: August 8-10, 2023
+      place: Haikou, China
+    - year: 2024
+      id: blocksys24
+      link: https://blocksys.info/2024/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper submission extended to May 12, 2024; clock and timezone not specified'
+      timezone: UTC
+      date: July 12-14, 2024
+      place: Hangzhou, China
+    - year: 2025
+      id: blocksys25
+      link: https://blocksys.info/2025/
+      timeline:
+        - deadline: TBD
+          comment: '1st round regular paper date: December 1, 2024; clock and timezone not specified'
+        - deadline: TBD
+          comment: '2nd round regular paper extended to March 1, 2025; clock and timezone not specified'
+      timezone: UTC
+      date: May 30-31, 2025
+      place: Zhuhai, China
     - year: 2026
       id: blocksys2026
       link: https://blocksys.info/2026/
