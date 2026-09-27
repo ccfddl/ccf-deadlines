@@ -7,6 +7,16 @@
     thcpl: N
   dblp: pakdd
   confs:
+    - year: 2021
+      id: pakdd21
+      link: https://archive.dbsj.org/dbjapan/2020/pdfaCLcph6ncB.pdf
+      timeline:
+        - abstract_deadline: '2020-11-23 23:59:00'
+          deadline: '2020-11-30 23:59:00'
+          comment: Regular research papers; dates from the archived official CFP.
+      timezone: UTC-8
+      date: May 11-14, 2021
+      place: Online
     - year: 2022
       id: pakdd22
       link: https://www.pakdd.net/
