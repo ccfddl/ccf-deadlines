@@ -1,0 +1,11 @@
+- title: MLSys
+  accept_rates:
+    # Main research papers; chair opening slides 8 and 10.
+    # 61 accepted includes 13 accepted with shepherding.
+    # Annual desk/withdrawal counts are not separately quantified.
+    - year: 2025
+      submitted: 271
+      accepted: 61
+      rate: 0.22509225092250923
+      str: "22.5%(61/271 25')"
+      source: https://slideslive.com/39042971/opening-remarks
