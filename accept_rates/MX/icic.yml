@@ -1,0 +1,43 @@
+- title: ICIC
+  accept_rates:
+    # Final selection for Springer proceedings across the annual volume sets.
+    # 2022 includes special-session/workshop papers reviewed by the main PC.
+    # 2024-2026 exclude separate poster-only website selections.
+    # 2025-2026 include LNCS/LNAI/LNBI and CCIS, not one series alone.
+    # Withdrawal and desk-rejection counts are not separately quantified.
+    - year: 2021
+      submitted: 458
+      accepted: 192
+      rate: 0.4192139737991266
+      str: "41.9%(192/458 21')"
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-84529-2%2F1
+    - year: 2022
+      submitted: 449
+      accepted: 209
+      rate: 0.46547884187082406
+      str: "46.5%(209/449 22')"
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-13870-6%2F1
+    - year: 2023
+      submitted: 828
+      accepted: 337
+      rate: 0.40700483091787437
+      str: "40.7%(337/828 23')"
+      source: https://link.springer.com/content/pdf/bfm:978-981-99-4755-3%2F1
+    - year: 2024
+      submitted: 2189
+      accepted: 863
+      rate: 0.3942439470077661
+      str: "39.4%(863/2189 24')"
+      source: https://link.springer.com/content/pdf/bfm:978-981-97-5678-0%2F1
+    - year: 2025
+      submitted: 4032
+      accepted: 1729
+      rate: 0.4288194444444444
+      str: "42.9%(1729/4032 25')"
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-0030-7%2F1
+    - year: 2026
+      submitted: 4561
+      accepted: 1844
+      rate: 0.4042973032229774
+      str: "40.4%(1844/4561 26')"
+      source: https://link.springer.com/content/pdf/bfm:978-981-92-3510-0%2F1
