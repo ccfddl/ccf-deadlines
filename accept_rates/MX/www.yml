@@ -1,5 +1,12 @@
 - title: WWW
   accept_rates:
+    # Main research acceptances / received submissions; organizer report PDF page 3.
+    - year: 2021
+      submitted: 1736
+      accepted: 355
+      str: "20.4%(355/1736 21')"
+      rate: 0.20449308755760368
+      source: https://sigir.org/wp-content/uploads/2021/09/p13.pdf
     - year: 2023
       submitted: 1900
       accepted: 365
@@ -10,5 +17,12 @@
       submitted: 2008
       accepted: 405
       str: 20.2%(405/2008 24')
-      rate: 0.2016932
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.20169322709163345
+      source: https://www2024.thewebconf.org/about/newsletters/
+    # Main research selected papers / full submissions before desk rejection; chair preface PDF5/v.
+    - year: 2026
+      submitted: 3370
+      accepted: 676
+      str: "20.1%(676/3370 26')"
+      rate: 0.20059347181008902
+      source: https://publications.hse.ru/pubs/share/direct/1152301113.pdf
