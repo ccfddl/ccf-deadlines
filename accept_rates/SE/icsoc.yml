@@ -1,0 +1,33 @@
+# Selected full, short and vision papers in the annual main proceedings; separate workshops excluded.
+- title: ICSOC
+  accept_rates:
+    - year: 2021
+      submitted: 189
+      accepted: 60
+      str: 31.7%(60/189 21')
+      rate: 0.317460317460317
+      source: https://link.springer.com/book/10.1007/978-3-030-91431-8
+    - year: 2022
+      submitted: 221
+      accepted: 48
+      str: 21.7%(48/221 22')
+      rate: 0.217194570135747
+      source: https://link.springer.com/book/10.1007/978-3-031-20984-0
+    - year: 2023
+      submitted: 208
+      accepted: 45
+      str: 21.6%(45/208 23')
+      rate: 0.216346153846154
+      source: https://link.springer.com/book/10.1007/978-3-031-48421-6
+    - year: 2024
+      submitted: 255
+      accepted: 57
+      str: 22.4%(57/255 24')
+      rate: 0.223529411764706
+      source: https://link.springer.com/book/10.1007/978-981-96-0805-8
+    - year: 2025
+      submitted: 219
+      accepted: 63
+      str: 28.8%(63/219 25')
+      rate: 0.287671232876712
+      source: https://link.springer.com/book/10.1007/978-981-95-5012-8
