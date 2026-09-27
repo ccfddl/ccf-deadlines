@@ -13,7 +13,7 @@
       timeline:
         - deadline: '2020-10-26 23:59:00'
       timezone: AoE
-      date: May 18-21, 2021
+      date: May 19-21, 2021
       place: Virtual
     - year: 2022
       id: rtas2022
@@ -29,7 +29,7 @@
       timeline:
         - deadline: '2022-10-31 23:59:00'
       timezone: AoE
-      date: May 9-12, 2023
+      date: May 10-12, 2023
       place: San Antonio, Texas, USA
     - year: 2024
       id: rtas2024
@@ -46,7 +46,7 @@
       timeline:
         - deadline: '2024-11-14 23:59:00'
       timezone: AoE
-      date: May 6-9, 2025
+      date: May 7-9, 2025
       place: Irvine, CA, USA
     - year: 2026
       id: rtas2026
