@@ -7,6 +7,25 @@
     thcpl: N
   dblp: europar
   confs:
+    - year: 2021
+      id: euro-par21
+      link: https://2021.euro-par.org/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract February 8 and paper February 19, 2021 (AoE), final extensions; exact times unpublished
+      timezone: AoE
+      date: August 30-September 3, 2021
+      place: Virtual
+    - year: 2022
+      id: euro-par22
+      link: https://2022.euro-par.org/
+      timeline:
+        - abstract_deadline: '2022-02-11 23:59:59'
+          deadline: '2022-02-18 23:59:59'
+      timezone: AoE
+      date: August 22-26, 2022
+      place: Glasgow, UK (hybrid)
     - year: 2023
       id: euro-par23
       link: https://2023.euro-par.org
