@@ -7,20 +7,52 @@
     thcpl: B
   dblp: rtas
   confs:
+    - year: 2021
+      id: rtas2021
+      link: https://2021.rtas.org/
+      timeline:
+        - deadline: '2020-10-26 23:59:00'
+      timezone: AoE
+      date: May 19-21, 2021
+      place: Virtual
+    - year: 2022
+      id: rtas2022
+      link: https://2022.rtas.org/
+      timeline:
+        - deadline: '2021-10-29 23:59:00'
+      timezone: AoE
+      date: May 4-6, 2022
+      place: Milano, Italy
+    - year: 2023
+      id: rtas2023
+      link: https://2023.rtas.org/
+      timeline:
+        - deadline: '2022-10-31 23:59:00'
+      timezone: AoE
+      date: May 10-12, 2023
+      place: San Antonio, Texas, USA
     - year: 2024
       id: rtas2024
       link: https://2024.rtas.org/
       timeline:
-        - deadline: '2023-10-31 11:59:59'
+        - deadline: '2023-10-31 23:59:59'
           comment: Submission Deadline (firm)
       timezone: AoE
       date: May 13-16, 2024
       place: Hong Kong, China
+    - year: 2025
+      id: rtas2025
+      link: https://2025.rtas.org/
+      timeline:
+        - deadline: '2024-11-14 23:59:00'
+      timezone: AoE
+      date: May 7-9, 2025
+      place: Irvine, CA, USA
     - year: 2026
       id: rtas2026
       link: https://2026.rtas.org/
       timeline:
-        - deadline: '2025-11-13 11:59:59'
+        - deadline: '2025-11-13 23:59:59'
       timezone: AoE
       date: May 12-14, 2026
       place: Saint Malo, France
