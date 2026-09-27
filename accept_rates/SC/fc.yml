@@ -1,12 +1,16 @@
 - title: FC
   # Main-conference full, short and SoK papers; excludes workshops.
   accept_rates:
+    # 2021: 223 received includes six desk rejections; 217 reviewed.
+    # 54 final program papers exclude one conditional paper failing shepherding.
     - year: 2021
       submitted: 223
       accepted: 54
       str: 24.2%(54/223 21')
       rate: 0.2421524663677130
       source: https://link.springer.com/content/pdf/bfm:978-3-662-64322-8/1
+    # 2022: 36 selected/published includes five short and one SoK per original preface.
+    # Publisher About says 32 full + four short; total36 agrees, type breakdown conflicts.
     - year: 2022
       submitted: 159
       accepted: 36
@@ -31,3 +35,11 @@
       str: 15.3%(46/300 25')
       rate: 0.1533333333333333
       source: https://link.springer.com/content/pdf/bfm:978-3-032-07024-1/1
+    # 2026: publisher-announced main proceedings selection, 42 full + four short papers.
+    # Received/reviewed distinction, desk rejections and withdrawals unspecified.
+    - year: 2026
+      submitted: 246
+      accepted: 46
+      str: 18.7%(46/246 26')
+      rate: 0.1869918699186992
+      source: https://link.springer.com/book/9783032366948
