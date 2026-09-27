@@ -1,8 +1,20 @@
 - title: SenSys
   accept_rates:
+    - year: 2021
+      submitted: 139
+      accepted: 25
+      str: 18.0%(25/139 21')
+      rate: 0.17985611510791366
+      source: https://sensys21.hotcrp.com/
+    - year: 2023
+      submitted: 179
+      accepted: 34
+      str: 19.0%(34/179 23')
+      rate: 0.18994413407821228
+      source: https://sensys23.hotcrp.com/
     - year: 2025
       submitted: 235
       accepted: 45
       str: 19.1%(45/235 25')
-      rate: 0.19148936
+      rate: 0.19148936170212766
       source: https://dl.acm.org/doi/proceedings/10.1145/3715014
