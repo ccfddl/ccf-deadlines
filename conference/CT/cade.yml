@@ -11,22 +11,11 @@
       id: cade21
       link: https://www.cs.cmu.edu/~mheule/CADE28/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: abstract February 15, 2021; paper February 22, 2021 (AoE); exact cutoff time not specified.'
+        - abstract_deadline: '2021-02-15 23:59:59'
+          deadline: '2021-02-22 23:59:59'
       timezone: AoE
-      date: July 11-16, 2021
+      date: July 12-15, 2021
       place: Online
-    - year: 2023
-      id: cade23
-      link: https://easyconferences.eu/cade2023/
-      timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: abstract February 27, 2023; paper March 6, 2023; exact cutoff time and timezone not specified.'
-      timezone: UTC+0
-      date: July 1-4, 2023
-      place: Rome, Italy
     - year: 2025
       id: cade25
       link: https://www.dhbw-stuttgart.de/cade-30/
