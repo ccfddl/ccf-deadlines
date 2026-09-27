@@ -7,6 +7,15 @@
     thcpl: B
   dblp: ipps
   confs:
+    - year: 2021
+      id: ipdps21
+      link: https://www.ipdps.org/ipdps2021/
+      timeline:
+        - abstract_deadline: '2020-10-12 23:59:59'
+          deadline: '2020-10-19 23:59:59'
+      timezone: AoE
+      date: May 17-21, 2021
+      place: Virtual
     - year: 2022
       id: ipdps22
       link: https://www.ipdps.org/ipdps2022/
