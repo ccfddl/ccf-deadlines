@@ -7,6 +7,33 @@
     thcpl: A
   dblp: soda
   confs:
+    - year: 2021
+      id: soda21
+      link: https://www.siam.org/conferences-events/past-event-archive/soda21/
+      timeline:
+        - deadline: '2020-07-15 16:59:00'
+          abstract_deadline: '2020-07-13 16:59:00'
+      timezone: UTC-4
+      date: January 10-13, 2021
+      place: Online
+    - year: 2023
+      id: soda23
+      link: https://www.siam.org/conferences-events/past-event-archive/soda23/
+      timeline:
+        - deadline: '2022-07-14 23:59:59'
+          abstract_deadline: '2022-07-10 23:59:59'
+      timezone: AoE
+      date: January 22-25, 2023
+      place: Florence, Italy
+    - year: 2024
+      id: soda24
+      link: https://www.siam.org/conferences-events/past-event-archive/soda24/
+      timeline:
+        - deadline: '2023-07-13 23:59:59'
+          abstract_deadline: '2023-07-09 23:59:59'
+      timezone: AoE
+      date: January 7-10, 2024
+      place: Alexandria, Virginia, USA
     - year: 2025
       id: soda25
       link: https://www.siam.org/conferences/cm/conference/soda25
