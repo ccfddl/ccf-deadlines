@@ -7,6 +7,24 @@
     thcpl: B
   dblp: dcc
   confs:
+    - year: 2021
+      id: dcc2021
+      link: https://dcc2019.signalprocessingsociety.org/www.cs.brandeis.edu/_dcc/Call.html
+      timeline:
+        - deadline: '2020-11-02 23:59:00'
+          comment: Regular full papers; no separate abstract registration deadline.
+      timezone: PT
+      date: March 23-26, 2021
+      place: Online
+    - year: 2023
+      id: dcc2023
+      link: https://signalprocessingsociety.org/events/dcc-2023-2023-data-compression-conference
+      timeline:
+        - deadline: TBD
+          comment: Regular full papers due November 8, 2022; the IEEE event listing does not specify a cutoff time or timezone.
+      timezone: UTC+0
+      date: March 21-24, 2023
+      place: Snowbird, Utah, United States
     - year: 2025
       id: dcc2025
       link: https://datacompressionconference.org/
@@ -14,6 +32,15 @@
         - deadline: '2024-10-11 23:59:59'
       timezone: PT
       date: March 18-21, 2025
+      place: Snowbird, Utah, United States
+    - year: 2026
+      id: dcc2026
+      link: https://datacompressionconference.org/CfP/dcc2026_cfp.pdf
+      timeline:
+        - deadline: TBD
+          comment: Regular full papers due October 3, 2025; the official CFP does not specify a cutoff time or timezone.
+      timezone: UTC+0
+      date: March 24-27, 2026
       place: Snowbird, Utah, United States
     - year: 2027
       id: dcc2027
