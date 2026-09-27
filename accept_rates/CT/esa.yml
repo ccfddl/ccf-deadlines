@@ -1,0 +1,43 @@
+- title: ESA
+  # All competitive tracks: A and B/E, plus Simplicity (S) since 2022; excludes invited talks.
+  accept_rates:
+    - year: 2021
+      # Counts after track changes and withdrawals.
+      submitted: 320
+      accepted: 80
+      str: 25.0%(80/320 21')
+      rate: 0.25
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol204-esa2021/LIPIcs.ESA.2021.0/LIPIcs.ESA.2021.0.pdf
+    - year: 2022
+      submitted: 300
+      accepted: 92
+      str: 30.7%(92/300 22')
+      rate: 0.30666666666666664
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol244-esa2022/LIPIcs.ESA.2022.0/LIPIcs.ESA.2022.0.pdf
+    - year: 2023
+      submitted: 370
+      accepted: 103
+      str: 27.8%(103/370 23')
+      rate: 0.27837837837837837
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol274-esa2023/LIPIcs.ESA.2023.0/LIPIcs.ESA.2023.0.pdf
+    - year: 2024
+      # Official denominator excludes 3 later withdrawals.
+      submitted: 333
+      accepted: 103
+      str: 30.9%(103/333 24')
+      rate: 0.30930930930930933
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol308-esa2024/LIPIcs.ESA.2024.0/LIPIcs.ESA.2024.0.pdf
+    - year: 2025
+      # Official denominator excludes 5 later withdrawals.
+      submitted: 372
+      accepted: 115
+      str: 30.9%(115/372 25')
+      rate: 0.30913978494623656
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol351-esa2025/LIPIcs.ESA.2025.0/LIPIcs.ESA.2025.0.pdf
+    - year: 2026
+      # Engineering Track E replaces the former Track B.
+      submitted: 487
+      accepted: 158
+      str: 32.4%(158/487 26')
+      rate: 0.324435318275154
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol388-esa2026/LIPIcs.ESA.2026.0/LIPIcs.ESA.2026.0.pdf
