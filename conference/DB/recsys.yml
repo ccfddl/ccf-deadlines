@@ -7,6 +7,24 @@
     thcpl: B
   dblp: recsys
   confs:
+    - year: 2021
+      id: recsys21
+      link: https://recsys.acm.org/recsys21/
+      timeline:
+        - abstract_deadline: '2021-04-27 23:59:00'
+          deadline: '2021-05-04 23:59:00'
+      timezone: AoE
+      date: September 27 - October 1, 2021
+      place: Amsterdam, Netherlands
+    - year: 2022
+      id: recsys22
+      link: https://recsys.acm.org/recsys22/
+      timeline:
+        - abstract_deadline: '2022-04-26 23:59:00'
+          deadline: '2022-05-03 23:59:00'
+      timezone: AoE
+      date: September 18-23, 2022
+      place: Seattle, WA, USA (with remote attendance)
     - year: 2023
       id: recsys23
       link: https://recsys.acm.org/recsys23
