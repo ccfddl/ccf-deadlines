@@ -7,12 +7,32 @@
     thcpl: B
   dblp: iccd
   confs:
+    - year: 2021
+      id: iccd21
+      link: https://iccd-conf.com/2021/Home.html
+      timeline:
+        - abstract_deadline: '2021-06-11 23:59:00'
+          deadline: '2021-06-11 23:59:00'
+          comment: Final extended regular-paper deadlines
+      timezone: AoE
+      date: October 24-27, 2021
+      place: Virtual
+    - year: 2022
+      id: iccd22
+      link: https://iccd-conf.com/2022/Home.html
+      timeline:
+        - abstract_deadline: '2022-06-18 23:59:00'
+          deadline: '2022-06-18 23:59:00'
+          comment: Final extended regular-paper deadlines
+      timezone: AoE
+      date: October 23-26, 2022
+      place: Lake Tahoe, USA
     - year: 2023
       id: iccd23
       link: https://www.iccd-conf.com/Call_for_papers.html
       timeline:
-        - abstract_deadline: '2023-06-09 23:59:00'
-          deadline: '2023-06-16 23:59:00'
+        - abstract_deadline: '2023-06-25 23:59:00'
+          deadline: '2023-06-27 23:59:00'
           comment: abstract and full paper deadline
       timezone: AoE
       date: November 6-8, 2023
