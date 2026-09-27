@@ -36,7 +36,7 @@
           comment: second round
         - deadline: '2022-10-08 23:59:59'
           comment: third round
-      timezone: UTC-8
+      timezone: PT
       date: April 3-7, 2023
       place: Anaheim, California, USA
     - year: 2024
