@@ -7,19 +7,45 @@
     thcpl: B
   dblp: globecom
   confs:
+    - year: 2021
+      id: globecom21
+      link: https://globecom2021.ieee-globecom.org/
+      timeline:
+        - deadline: '2021-05-28 23:59:00'
+          comment: 'Final regular paper deadline; official CFP explicitly specifies EST'
+      timezone: UTC-5
+      date: December 7-11, 2021
+      place: Madrid, Spain / Hybrid
+    - year: 2022
+      id: globecom22
+      link: https://globecom2022.ieee-globecom.org/
+      timeline:
+        - deadline: '2022-05-22 23:59:00'
+      timezone: UTC-4
+      date: December 4-8, 2022
+      place: Rio de Janeiro, Brazil / Hybrid
     - year: 2023
       id: globecom23
       link: https://globecom2023.ieee-globecom.org/
       timeline:
-        - deadline: '2023-04-15 23:59:59'
+        - deadline: '2023-05-21 23:59:00'
       timezone: UTC-4
       date: December 4-8, 2023
       place: Kuala Lumpur, Malaysia
+    - year: 2024
+      id: globecom24
+      link: https://globecom2024.ieee-globecom.org/
+      timeline:
+        - deadline: '2024-04-30 23:59:00'
+      timezone: UTC-4
+      date: December 8-12, 2024
+      place: Cape Town, South Africa
     - year: 2025
       id: globecom25
       link: https://globecom2025.ieee-globecom.org/
       timeline:
-        - deadline: '2025-04-15 23:59:59'
+        - deadline: 'TBD'
+          comment: 'Regular paper final deadline: May 2, 2025; exact cutoff time and timezone not specified'
       timezone: UTC-4
       date: December 8-12, 2025
       place: Taipei, Taiwan
