@@ -1,0 +1,27 @@
+# Full-paper acceptances over the publisher's submission totals; short papers and abstracts are excluded.
+- title: ICANN
+  accept_rates:
+    - year: 2021
+      submitted: 496
+      accepted: 265
+      str: 53.4%(265/496 21')
+      rate: 0.534274193548387
+      source: https://link.springer.com/book/10.1007/978-3-030-86362-3
+    - year: 2022
+      submitted: 561
+      accepted: 255
+      str: 45.5%(255/561 22')
+      rate: 0.454545454545455
+      source: https://link.springer.com/book/10.1007/978-3-031-15919-0
+    - year: 2023
+      submitted: 947
+      accepted: 426
+      str: 45.0%(426/947 23')
+      rate: 0.449841605068638
+      source: https://link.springer.com/book/10.1007/978-3-031-44207-0
+    - year: 2025
+      submitted: 375
+      accepted: 170
+      str: 45.3%(170/375 25')
+      rate: 0.453333333333333
+      source: https://link.springer.com/book/10.1007/978-3-032-04558-4
