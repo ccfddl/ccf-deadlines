@@ -60,11 +60,13 @@ When a new migration is added, apply the migration before deploying the Worker v
 - OAuth state is signed and expires after 10 minutes on the server. PKCE remains enabled. Login return paths reject backslashes and control characters.
 - Sessions use random, hashed tokens and HttpOnly cookies with Secure and the `__Host-` prefix on HTTPS, preventing subdomain cookie injection. Local HTTP development uses unprefixed cookies. Existing users will need to sign in once after this cookie-name update. Expired sessions are removed during login; each account keeps at most 20 sessions.
 - JSON bodies are limited to 8 KiB while streaming. Messages retain their 500-character limit and are displayed as plain text.
-- Rate-limit bindings in `wrangler.jsonc` allow 600 API requests per minute per IP, 30 OAuth requests per minute per IP, and 60 authenticated writes per minute per account. The generous API limit allows shared networks; adjust the namespaces if they already belong to another Worker in your Cloudflare account. These edge limits apply per Cloudflare location, while the message quota is enforced globally in D1.
+- Rate-limit bindings in `wrangler.jsonc` allow 10,000 API requests per minute per IP, 300 OAuth requests per minute per IP, and 600 authenticated writes per minute per account. The generous API limit allows shared networks; adjust the namespaces if they already belong to another Worker in your Cloudflare account. These edge limits apply per Cloudflare location, while the message quota is enforced globally in D1.
 - The database trigger enforces 10 posts per UTC day and a 30-second cooldown, including replies. Deleting a message cannot reset either limit. A failed insert does not consume quota.
 - API responses include `nosniff`, a restrictive CSP, and a no-referrer policy. Operational failures return a generic error rather than sensitive details.
 
 The rate-limit bindings are deployed with the Worker configuration. No extra secret is required. See the [Cloudflare rate-limit binding documentation](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/).
+
+Worker logs are enabled in `wrangler.jsonc`. After deployment, view diagnostic logs in Workers & Pages → ccfddl-api → Observability. Automatic invocation logs are disabled to avoid storing OAuth callback URLs containing authorization codes. Login failures include a safe stage-specific `code` in the JSON response; logs omit codes, tokens, cookies, secrets, and raw upstream error messages.
 
 To test migration and concurrency behavior locally:
 

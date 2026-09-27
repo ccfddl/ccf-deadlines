@@ -283,3 +283,59 @@ test("rejects a weak signing secret before beginning OAuth", async () => {
   assert.equal(response.status, 500);
   assert.deepEqual(await response.json(), { error: "Internal server error" });
 });
+
+test("completes OAuth and identifies upstream versus session-storage failures safely", async (t) => {
+  let failure = null;
+  const logs = [];
+  t.mock.method(console, "error", (...args) => logs.push(args));
+  t.mock.method(globalThis, "fetch", async (url, options) => {
+    assert.equal(options.redirect, "manual");
+    if (failure === "network") throw new TypeError("sensitive upstream details");
+    if (failure === "json") return new Response("not JSON");
+    if (failure === "redirect" || (failure === "profile_redirect" && url.includes("api.github.com"))) {
+      return new Response(null, { status: 307, headers: { Location: "https://example.com/collect" } });
+    }
+    return Response.json(url.includes("access_token")
+      ? { access_token: "private-access-token" }
+      : { id: 1, login: "test-user", avatar_url: "https://example.com/avatar", html_url: "https://github.com/test-user" });
+  });
+  const env = {
+    PUBLIC_ORIGIN: "https://ccfddl.com", GITHUB_CLIENT_ID: "test-client",
+    GITHUB_CLIENT_SECRET: "private-client-secret", SESSION_SECRET: "s".repeat(32),
+    DB: {
+      prepare(sql) { return { bind(...parameters) { return { sql, parameters }; } }; },
+      async batch(statements) {
+        if (failure === "database") throw new Error("private database details");
+        assert.equal(statements.length, 4);
+      },
+    },
+  };
+  const start = await worker.fetch(new Request(`${env.PUBLIC_ORIGIN}/api/auth/github`), env);
+  const state = new URL(start.headers.get("Location")).searchParams.get("state");
+  const cookie = start.headers.get("Set-Cookie").split(";")[0];
+  for (const mode of [null, "network", "json", "redirect", "profile_redirect", "database"]) {
+    failure = mode;
+    const response = await worker.fetch(new Request(
+      `${env.PUBLIC_ORIGIN}/api/auth/github/callback?code=private-code&state=${state}`,
+      { headers: { Cookie: cookie } },
+    ), env);
+    if (mode === null) {
+      assert.equal(response.status, 302);
+      assert.equal(response.headers.get("Location"), `${env.PUBLIC_ORIGIN}/`);
+      assert.match(response.headers.get("Set-Cookie"), /__Host-ccfddl_session=/);
+    } else {
+      assert.equal(response.status, mode === "database" ? 500 : 502);
+      const body = await response.json();
+      assert.match(body.error, mode === "database" ? /save.*session/ : /contact GitHub/);
+      assert.equal(body.code, {
+        network: "github_token_request_network_error",
+        json: "github_token_response_invalid_json",
+        redirect: "github_token_request_redirect_rejected",
+        profile_redirect: "github_profile_request_redirect_rejected",
+        database: "github_session_storage_failed",
+      }[mode]);
+    }
+  }
+  assert.deepEqual(logs.map((entry) => entry[1]), ["token_request", "token_response", "token_request", "profile_request", "session_storage"]);
+  assert.doesNotMatch(JSON.stringify(logs), /private|sensitive/);
+});

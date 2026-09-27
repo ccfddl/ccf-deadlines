@@ -211,17 +211,20 @@ pub fn FavoritesTimelineModal(
                                                             {move || if use_english.get() { "NOW" } else { "现在" }}
                                                         </span>
                                                         <span class="favorites-timeline-rail"><i></i></span>
-                                                        <span class="favorites-timeline-now-label">
-                                                            {move || if use_english.get() {
-                                                                "Upcoming deadlines"
-                                                            } else {
-                                                                "接下来的重要节点"
-                                                            }}
-                                                        </span>
                                                     </div>
                                                     {visible_events
                                                         .into_iter()
-                                                        .map(|event| {
+                                                        .scan(
+                                                            reference_time.get_untracked().unwrap_or_else(Utc::now),
+                                                            |previous, event| {
+                                                                let interval_days = event.timepoint
+                                                                    .signed_duration_since(*previous)
+                                                                    .num_milliseconds() as f64 / 86_400_000.0;
+                                                                *previous = event.timepoint.with_timezone(&Utc);
+                                                                Some((event, interval_days))
+                                                            },
+                                                        )
+                                                        .map(|(event, interval_days)| {
                                                             let remaining = event
                                                                 .timepoint
                                                                 .timestamp_millis()
@@ -233,7 +236,9 @@ pub fn FavoritesTimelineModal(
                                                                 )
                                                                 .max(0) as u64;
                                                             let running = reference_time.get_untracked().is_none();
-                                                            let date = event.timepoint.format("%b %-d, %Y").to_string();
+                                                            let date = event.timepoint.format("%Y/%m/%d").to_string();
+                                                            let interval = format!("{interval_days:.1}");
+                                                            let interval = format!("{}d", interval.trim_end_matches('0').trim_end_matches('.'));
                                                             let clock = event.timepoint.format("%H:%M").to_string();
                                                             let deadline_label = deadline_label(
                                                                 event.deadline_type,
@@ -249,7 +254,10 @@ pub fn FavoritesTimelineModal(
                                                                         <strong>{date}</strong>
                                                                         <small>{clock}</small>
                                                                     </span>
-                                                                    <span class="favorites-timeline-rail"><i></i></span>
+                                                                    <span class="favorites-timeline-rail">
+                                                                        <span class="favorites-timeline-gap">{interval}</span>
+                                                                        <i></i>
+                                                                    </span>
                                                                     <article class="favorites-timeline-card">
                                                                         <div class="favorites-timeline-card-heading">
                                                                             <a

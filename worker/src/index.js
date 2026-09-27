@@ -18,7 +18,7 @@ export default {
       response = await route(request, env);
     } catch (error) {
       if (error instanceof HttpError) {
-        response = json({ error: error.message }, error.status);
+        response = json({ error: error.message, ...(error.code ? { code: error.code } : {}) }, error.status);
       } else {
         console.error("Worker request failed", error?.name ?? "Error");
         response = json({ error: "Internal server error" }, 500);
@@ -130,10 +130,9 @@ async function finishGithubLogin(request, env, url) {
     return json({ error: "Invalid GitHub OAuth state." }, 400);
   }
 
-  const tokenResponse = await fetch("https://github.com/login/oauth/access_token", {
+  const tokenResponse = await githubLoginStep("token_request", () => fetchGithubWithoutRedirects("https://github.com/login/oauth/access_token", {
     method: "POST",
     signal: AbortSignal.timeout(10_000),
-    redirect: "error",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -146,24 +145,23 @@ async function finishGithubLogin(request, env, url) {
       redirect_uri: `${env.PUBLIC_ORIGIN}/api/auth/github/callback`,
       code_verifier: oauth.verifier,
     }),
-  });
-  const token = await tokenResponse.json();
+  }));
+  const token = await githubLoginStep("token_response", () => tokenResponse.json());
   if (!tokenResponse.ok || !token.access_token) {
     console.error("GitHub token exchange failed", token.error);
     return json({ error: "GitHub login failed." }, 502);
   }
 
-  const userResponse = await fetch("https://api.github.com/user", {
+  const userResponse = await githubLoginStep("profile_request", () => fetchGithubWithoutRedirects("https://api.github.com/user", {
     signal: AbortSignal.timeout(10_000),
-    redirect: "error",
     headers: {
       Accept: "application/vnd.github+json",
       Authorization: `Bearer ${token.access_token}`,
       "User-Agent": "ccfddl-api",
       "X-GitHub-Api-Version": "2022-11-28",
     },
-  });
-  const githubUser = await userResponse.json();
+  }));
+  const githubUser = await githubLoginStep("profile_response", () => userResponse.json());
   if (!userResponse.ok || !Number.isInteger(githubUser.id)) {
     return json({ error: "Unable to read the GitHub profile." }, 502);
   }
@@ -171,7 +169,7 @@ async function finishGithubLogin(request, env, url) {
   const now = unixTime();
   const sessionToken = randomToken(32);
   const sessionHash = await sha256Hex(sessionToken);
-  await env.DB.batch([
+  await githubLoginStep("session_storage", () => env.DB.batch([
     env.DB.prepare("DELETE FROM sessions WHERE expires_at <= ?").bind(now),
     env.DB.prepare(
       `DELETE FROM sessions WHERE github_id = ? AND token_hash NOT IN (
@@ -198,12 +196,42 @@ async function finishGithubLogin(request, env, url) {
     env.DB.prepare(
       "INSERT INTO sessions (token_hash, github_id, expires_at, created_at) VALUES (?, ?, ?, ?)",
     ).bind(sessionHash, githubUser.id, now + SESSION_TTL_SECONDS, now),
-  ]);
+  ]));
 
   return redirect(`${env.PUBLIC_ORIGIN}${sanitizeReturnTo(oauth.returnTo)}`, [
     serializeCookie(OAUTH_COOKIE, "", 0, request),
     serializeCookie(SESSION_COOKIE, sessionToken, SESSION_TTL_SECONDS, request),
   ]);
+}
+
+async function fetchGithubWithoutRedirects(url, options) {
+  // workerd does not support redirect: "error". Manual mode preserves the
+  // no-redirect policy without forwarding OAuth secrets to another endpoint.
+  const response = await fetch(url, { ...options, redirect: "manual" });
+  if (response.status >= 300 && response.status < 400) {
+    await response.body?.cancel();
+    throw new TypeError("GitHub redirect rejected");
+  }
+  return response;
+}
+
+async function githubLoginStep(stage, operation) {
+  try {
+    return await operation();
+  } catch (error) {
+    // Record the failing stage without OAuth codes, tokens, cookies, or secrets.
+    const reason = error?.name === "TimeoutError" ? "timeout"
+      : error?.name === "AbortError" ? "aborted"
+      : error?.name === "SyntaxError" ? "invalid_json"
+      : error?.name === "TypeError" && /redirect/i.test(error.message ?? "") ? "redirect_rejected"
+      : error?.name === "TypeError" ? "network_error" : "failed";
+    const code = `github_${stage}_${reason}`;
+    console.error("GitHub login step failed", stage, code);
+    const message = stage === "session_storage"
+      ? "Unable to save the GitHub login session."
+      : "Unable to contact GitHub or read its response. Please try signing in again.";
+    throw new HttpError(stage === "session_storage" ? 500 : 502, message, code);
+  }
 }
 
 async function bootstrap(request, env) {
@@ -645,9 +673,10 @@ function assertTrustedOrigin(request, env) {
 }
 
 class HttpError extends Error {
-  constructor(status, message) {
+  constructor(status, message, code = null) {
     super(message);
     this.status = status;
+    this.code = code;
   }
 }
 
