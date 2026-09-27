@@ -10,6 +10,7 @@ use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate, Utc};
 use leptos::prelude::*;
 use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde_json;
+use std::cmp::Reverse;
 use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
 use thaw::*;
@@ -86,6 +87,12 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             .map(|view| view == "list")
             .unwrap_or(false),
     );
+    let sort_by_stars = RwSignal::new(
+        get_from_local_storage("sort_by_stars")
+            .as_deref()
+            .and_then(|value| value.parse::<bool>().ok())
+            .unwrap_or(false),
+    );
 
     // pagination
     let page = RwSignal::new(1);
@@ -127,6 +134,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         let _ = core_rank_list.get();
         let _ = thcpl_rank_list.get();
         let _ = show_past.get();
+        let _ = sort_by_stars.get();
 
         if is_filter_change.get_untracked() {
             page.set(1);
@@ -172,6 +180,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             "conference_view",
             if is_list_view.get() { "list" } else { "cards" },
         );
+    });
+
+    Effect::new(move |_| {
+        set_in_local_storage("sort_by_stars", &sort_by_stars.get().to_string());
     });
 
     Effect::new(move || {
@@ -323,7 +335,17 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             all_list.extend(run_list);
             all_list.extend(tbd_list);
             all_list.extend(fin_list);
-            all_list.sort_by_key(|conf| favorite_sort_group(&conf.status, conf.is_like));
+            if sort_by_stars.get() {
+                let counts = favorites.counts.get();
+                all_list.sort_by_key(|conf| {
+                    star_count_sort_key(
+                        &conf.status,
+                        counts.get(&conf.id).copied().unwrap_or_default(),
+                    )
+                });
+            } else {
+                all_list.sort_by_key(|conf| favorite_sort_group(&conf.status, conf.is_like));
+            }
             let final_list = all_list;
 
             // Pagination
@@ -573,6 +595,23 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                 </div>
 
                 <div class="toolbar-actions">
+                    <span class="star-sort-control" class:is-active=move || sort_by_stars.get()>
+                        <Button
+                            class="star-sort-toggle"
+                            size=ButtonSize::Small
+                            appearance=ButtonAppearance::Subtle
+                            on_click=move |_| sort_by_stars.update(|value| *value = !*value)
+                            attr:aria-pressed=move || sort_by_stars.get().to_string()
+                            attr:title=move || if use_english.get() {
+                                "Sort by star count, highest first"
+                            } else {
+                                "按收藏星数从高到低排序"
+                            }
+                        >
+                            <Icon icon=icondata::BsStarFill style="margin-right: 4px;" />
+                            {move || if use_english.get() { "Most starred" } else { "星数排序" }}
+                        </Button>
+                    </span>
                     <Button
                         class="view-mode-toggle"
                         size=ButtonSize::Small
@@ -1217,6 +1256,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                     {
                                                                         let conference_key = conf.id.clone();
                                                                         let pending_key = conference_key.clone();
+                                                                        let count_key = conference_key.clone();
                                                                         let is_liked = conf.is_like;
                                                                         let label = if !favorites.loaded.get_untracked() {
                                                                             "Loading favorites"
@@ -1251,6 +1291,9 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                 } else {
                                                                                     icondata::BsStar
                                                                                 } />
+                                                                                <span class="conference-like-count">
+                                                                                    {move || favorites.count(&count_key)}
+                                                                                </span>
                                                                             </button>
                                                                         }
                                                                     }
@@ -1852,6 +1895,10 @@ fn favorite_sort_group(status: &str, is_like: bool) -> u8 {
     }
 }
 
+fn star_count_sort_key(status: &str, count: u64) -> (bool, Reverse<u64>) {
+    (status == "FIN", Reverse(count))
+}
+
 fn estimate_deadlines(conference: &Conference, edition: &ConferenceYear) -> Vec<EstimatedDeadline> {
     let Some(previous) = conference
         .confs
@@ -2328,5 +2375,12 @@ mod historical_deadline_tests {
         assert_eq!(favorite_sort_group("RUN", false), 1);
         assert_eq!(favorite_sort_group("FIN", true), 2);
         assert_eq!(favorite_sort_group("FIN", false), 2);
+    }
+
+    #[test]
+    fn star_count_sort_keeps_active_conferences_before_finished_ones() {
+        assert!(star_count_sort_key("RUN", 2) < star_count_sort_key("RUN", 1));
+        assert!(star_count_sort_key("TBD", 0) < star_count_sort_key("FIN", 100));
+        assert_eq!(star_count_sort_key("FIN", 5), star_count_sort_key("FIN", 5));
     }
 }

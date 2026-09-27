@@ -729,6 +729,16 @@ a {
   margin-left: auto;
 }
 
+.star-sort-control.is-active .star-sort-toggle {
+  background: #fff4dc;
+  color: #b86f00;
+}
+
+.star-sort-control.is-active .star-sort-toggle:hover {
+  background: #ffedc4;
+  color: #9c5e00;
+}
+
 .thaw-table-cell-layout:hover {
   background-color: var(--color-bg-secondary);
 }
@@ -897,7 +907,8 @@ a {
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: 22px;
+  gap: 3px;
+  min-width: 22px;
   height: 22px;
   padding: 0;
   border: 0;
@@ -915,6 +926,14 @@ a {
 
 .conference-like-toggle.is-liked {
   color: #fbc804;
+}
+
+.conference-like-count {
+  color: #59636f;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .conference-like-toggle:disabled {
