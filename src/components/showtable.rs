@@ -3,6 +3,7 @@ use crate::components::conf::ConfItem;
 use crate::components::conf::*;
 use crate::components::countdown::{CountDown, urgency_class_for, use_interval};
 use crate::components::favorites::FavoritesContext;
+use crate::components::message_wall::MessageWallModal;
 use crate::components::subscription_modal::*;
 use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
@@ -79,6 +80,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let like_list = favorites.starred;
 
     let show_subscription_modal = RwSignal::new(false);
+    let show_message_wall = RwSignal::new(false);
     let show_conf_detail = RwSignal::new(false);
     let selected_conf = RwSignal::new(None::<ConfItem>);
     let is_list_view = RwSignal::new(
@@ -618,14 +620,10 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                         appearance=ButtonAppearance::Subtle
                         on_click=move |_| is_list_view.update(|value| *value = !*value)
                         attr:title=move || {
-                            if is_list_view.get() {
-                                if use_english.get() {
-                                    "switch UI 2.0"
-                                } else {
-                                    "切换新版UI"
-                                }
-                            } else if use_english.get() {
-                                "switch UI 1.0"
+                            if use_english.get() {
+                                "switch UI"
+                            } else if is_list_view.get() {
+                                "切换新版UI"
                             } else {
                                 "切换旧版UI"
                             }
@@ -641,14 +639,22 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             }
                         }}
                         {move || {
-                            if is_list_view.get() {
-                                if use_english.get() { "switch UI 2.0" } else { "切换新版UI" }
-                            } else if use_english.get() {
-                                "switch UI 1.0"
+                            if use_english.get() {
+                                "switch UI"
+                            } else if is_list_view.get() {
+                                "切换新版UI"
                             } else {
                                 "切换旧版UI"
                             }
                         }}
+                    </Button>
+                    <Button
+                        size=ButtonSize::Small
+                        appearance=ButtonAppearance::Subtle
+                        on_click=move |_| show_message_wall.set(true)
+                    >
+                        <Icon icon=icondata::BsChatDots style="margin-right: 4px;" />
+                        {move || if use_english.get() { "Wall" } else { "吹水墙" }}
                     </Button>
                     <Button
                         size=ButtonSize::Small
@@ -764,6 +770,8 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                 core_rank_list=core_rank_list
                 thcpl_rank_list=thcpl_rank_list
             />
+
+            <MessageWallModal show=show_message_wall use_english=use_english />
 
             <Dialog open=show_conf_detail>
                 <DialogSurface class="conference-detail-dialog">

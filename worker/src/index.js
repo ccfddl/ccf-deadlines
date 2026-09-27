@@ -2,6 +2,13 @@ const OAUTH_COOKIE = "ccfddl_oauth";
 const SESSION_COOKIE = "ccfddl_session";
 const OAUTH_TTL_SECONDS = 10 * 60;
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60;
+const MESSAGE_MAX_CHARACTERS = 500;
+const MESSAGE_MAX_LINES = 8;
+const MESSAGE_COOLDOWN_SECONDS = 30;
+const MESSAGE_PAGE_SIZE = 50;
+const MESSAGE_REPLY_PAGE_SIZE = 20;
+const MESSAGE_DAILY_LIMIT = 10;
+const MESSAGE_LIKES_WINDOW_SECONDS = 30 * 24 * 60 * 60;
 
 export default {
   async fetch(request, env) {
@@ -35,6 +42,31 @@ async function route(request, env) {
   }
   if (request.method === "GET" && url.pathname === "/api/bootstrap") {
     return bootstrap(request, env);
+  }
+  if (request.method === "GET" && url.pathname === "/api/messages") {
+    return listMessages(request, env, url);
+  }
+  const messageRepliesMatch = url.pathname.match(
+    /^\/api\/messages\/(\d+)\/replies$/,
+  );
+  if (request.method === "GET" && messageRepliesMatch) {
+    return listMessageReplies(request, env, url, Number(messageRepliesMatch[1]));
+  }
+  if (request.method === "POST" && url.pathname === "/api/messages") {
+    assertTrustedOrigin(request, env);
+    return createMessage(request, env);
+  }
+  const messageLikeMatch = url.pathname.match(/^\/api\/messages\/(\d+)\/like$/);
+  if (
+    messageLikeMatch &&
+    (request.method === "PUT" || request.method === "DELETE")
+  ) {
+    assertTrustedOrigin(request, env);
+    return mutateMessageLike(request, env, Number(messageLikeMatch[1]));
+  }
+  if (request.method === "DELETE" && url.pathname.startsWith("/api/messages/")) {
+    assertTrustedOrigin(request, env);
+    return deleteMessage(request, env, url);
   }
   if (
     (request.method === "PUT" || request.method === "DELETE") &&
@@ -223,6 +255,339 @@ async function mutateStar(request, env, url) {
   });
 }
 
+async function listMessages(request, env, url) {
+  const sort = url.searchParams.get("sort") ?? "latest";
+  if (!["latest", "likes", "mine"].includes(sort)) {
+    throw new HttpError(400, "Invalid message sort.");
+  }
+  const offset = parseMessageOffset(url);
+
+  const user = await authenticatedUser(request, env);
+  if (offset > 0 && !user) {
+    throw new HttpError(401, "GitHub sign-in is required to browse older messages.");
+  }
+  if (sort === "mine" && !user) {
+    throw new HttpError(401, "GitHub sign-in is required to browse your messages.");
+  }
+
+  let statement = env.DB.prepare(
+    `SELECT wall_messages.id, wall_messages.github_id, wall_messages.body,
+            wall_messages.created_at, users.login, users.avatar_url, users.profile_url,
+            (SELECT COUNT(*) FROM wall_message_likes
+             WHERE wall_message_likes.message_id = wall_messages.id) AS like_count,
+            EXISTS(SELECT 1 FROM wall_message_likes
+                   WHERE wall_message_likes.message_id = wall_messages.id
+                     AND wall_message_likes.github_id = ?) AS liked_by_me,
+            (SELECT COUNT(*) FROM wall_messages AS replies
+             WHERE replies.parent_id = wall_messages.id) AS reply_count
+     FROM wall_messages
+     JOIN users ON users.github_id = wall_messages.github_id
+     WHERE wall_messages.parent_id IS NULL
+     ${sort === "likes" ? "AND wall_messages.created_at >= ?" : ""}
+     ${sort === "mine" ? "AND wall_messages.github_id = ?" : ""}
+     ORDER BY ${sort === "likes" ? "like_count DESC," : ""} wall_messages.id DESC
+     LIMIT ? OFFSET ?`,
+  );
+  if (sort === "mine") {
+    statement = statement.bind(
+      user.github_id,
+      user.github_id,
+      MESSAGE_PAGE_SIZE + 1,
+      offset,
+    );
+  } else if (sort === "likes") {
+    statement = statement.bind(
+      user?.github_id ?? -1,
+      messageLikesCutoff(),
+      MESSAGE_PAGE_SIZE + 1,
+      offset,
+    );
+  } else {
+    statement = statement.bind(
+      user?.github_id ?? -1,
+      MESSAGE_PAGE_SIZE + 1,
+      offset,
+    );
+  }
+  const rows = await statement.all();
+  const hasMore = rows.results.length > MESSAGE_PAGE_SIZE;
+  const page = rows.results.slice(0, MESSAGE_PAGE_SIZE);
+
+  return json({
+    messages: page.map((row) => ({
+      id: Number(row.id),
+      body: row.body,
+      created_at: Number(row.created_at),
+      author: {
+        login: row.login,
+        avatar_url: row.avatar_url,
+        profile_url: row.profile_url,
+      },
+      can_delete: Boolean(user && Number(row.github_id) === Number(user.github_id)),
+      like_count: Number(row.like_count),
+      liked_by_me: Boolean(Number(row.liked_by_me)),
+      parent_id: null,
+      reply_count: Number(row.reply_count),
+    })),
+    next_cursor: user && hasMore ? offset + MESSAGE_PAGE_SIZE : null,
+  });
+}
+
+async function listMessageReplies(request, env, url, messageId) {
+  if (!Number.isSafeInteger(messageId) || messageId < 1) {
+    throw new HttpError(400, "Invalid message ID.");
+  }
+  const parent = await env.DB.prepare(
+    "SELECT parent_id FROM wall_messages WHERE id = ?",
+  )
+    .bind(messageId)
+    .first();
+  if (!parent) {
+    throw new HttpError(404, "Message not found.");
+  }
+  if (parent.parent_id !== null) {
+    throw new HttpError(400, "Replies can only be listed for a top-level message.");
+  }
+
+  const offset = parseMessageOffset(url);
+  const user = await authenticatedUser(request, env);
+  if (offset > 0 && !user) {
+    throw new HttpError(401, "GitHub sign-in is required to browse older replies.");
+  }
+
+  const rows = await env.DB.prepare(
+    `SELECT wall_messages.id, wall_messages.github_id, wall_messages.body,
+            wall_messages.created_at, users.login, users.avatar_url, users.profile_url,
+            (SELECT COUNT(*) FROM wall_message_likes
+             WHERE wall_message_likes.message_id = wall_messages.id) AS like_count,
+            EXISTS(SELECT 1 FROM wall_message_likes
+                   WHERE wall_message_likes.message_id = wall_messages.id
+                     AND wall_message_likes.github_id = ?) AS liked_by_me
+     FROM wall_messages
+     JOIN users ON users.github_id = wall_messages.github_id
+     WHERE wall_messages.parent_id = ?
+     ORDER BY wall_messages.id DESC
+     LIMIT ? OFFSET ?`,
+  )
+    .bind(
+      user?.github_id ?? -1,
+      messageId,
+      MESSAGE_REPLY_PAGE_SIZE + 1,
+      offset,
+    )
+    .all();
+  const hasMore = rows.results.length > MESSAGE_REPLY_PAGE_SIZE;
+  const page = rows.results.slice(0, MESSAGE_REPLY_PAGE_SIZE);
+
+  return json({
+    messages: page.map((row) => ({
+      id: Number(row.id),
+      body: row.body,
+      created_at: Number(row.created_at),
+      author: {
+        login: row.login,
+        avatar_url: row.avatar_url,
+        profile_url: row.profile_url,
+      },
+      can_delete: Boolean(user && Number(row.github_id) === Number(user.github_id)),
+      like_count: Number(row.like_count),
+      liked_by_me: Boolean(Number(row.liked_by_me)),
+      parent_id: messageId,
+      reply_count: 0,
+    })),
+    next_cursor: user && hasMore ? offset + MESSAGE_REPLY_PAGE_SIZE : null,
+  });
+}
+
+function parseMessageOffset(url) {
+  const value = url.searchParams.get("offset");
+  if (value === null) return 0;
+  if (!/^\d+$/.test(value)) {
+    throw new HttpError(400, "Invalid message cursor.");
+  }
+  const offset = Number(value);
+  if (!Number.isSafeInteger(offset) || offset < 0) {
+    throw new HttpError(400, "Invalid message cursor.");
+  }
+  return offset;
+}
+
+async function createMessage(request, env) {
+  const user = await authenticatedUser(request, env);
+  if (!user) {
+    return json({ error: "GitHub sign-in is required." }, 401);
+  }
+
+  let payload;
+  try {
+    payload = await request.json();
+  } catch {
+    throw new HttpError(400, "Invalid JSON body.");
+  }
+  const body = normalizeWallMessage(payload?.body);
+  if (!body) {
+    throw new HttpError(
+      400,
+      `Messages must contain 1-${MESSAGE_MAX_CHARACTERS} characters and at most ${MESSAGE_MAX_LINES} lines.`,
+    );
+  }
+
+  const parentId = payload?.parent_id ?? null;
+  if (
+    parentId !== null &&
+    (!Number.isSafeInteger(parentId) || parentId < 1)
+  ) {
+    throw new HttpError(400, "Invalid parent message ID.");
+  }
+  if (parentId !== null) {
+    const parent = await env.DB.prepare(
+      "SELECT parent_id FROM wall_messages WHERE id = ?",
+    )
+      .bind(parentId)
+      .first();
+    if (!parent) {
+      throw new HttpError(404, "Parent message not found.");
+    }
+    if (parent.parent_id !== null) {
+      throw new HttpError(400, "Replies can only target a top-level message.");
+    }
+  }
+
+  const now = unixTime();
+  const dayStart = utcDayStart(now);
+  const lastMessage = await env.DB.prepare(
+    `SELECT created_at FROM wall_messages
+     WHERE github_id = ?
+     ORDER BY created_at DESC
+     LIMIT 1`,
+  )
+    .bind(user.github_id)
+    .first();
+  if (
+    lastMessage &&
+    now - Number(lastMessage.created_at) < MESSAGE_COOLDOWN_SECONDS
+  ) {
+    throw new HttpError(429, "Please wait before posting another message.");
+  }
+
+  const quota = await env.DB.prepare(
+    `INSERT INTO wall_daily_post_counts (github_id, day_start, post_count)
+     VALUES (?, ?, 1)
+     ON CONFLICT(github_id, day_start) DO UPDATE SET
+       post_count = wall_daily_post_counts.post_count + 1
+     WHERE wall_daily_post_counts.post_count < ?
+     RETURNING post_count`,
+  )
+    .bind(user.github_id, dayStart, MESSAGE_DAILY_LIMIT)
+    .first();
+  if (!quota) {
+    throw new HttpError(
+      429,
+      `Each GitHub account can post up to ${MESSAGE_DAILY_LIMIT} messages per UTC day.`,
+    );
+  }
+
+  const result = await env.DB.prepare(
+    "INSERT INTO wall_messages (github_id, body, created_at, parent_id) VALUES (?, ?, ?, ?)",
+  )
+    .bind(user.github_id, body, now, parentId)
+    .run();
+
+  return json(
+    {
+      message: {
+        id: Number(result.meta.last_row_id),
+        body,
+        created_at: now,
+        author: {
+          login: user.login,
+          avatar_url: user.avatar_url,
+          profile_url: user.profile_url,
+        },
+        can_delete: true,
+        like_count: 0,
+        liked_by_me: false,
+        parent_id: parentId,
+        reply_count: 0,
+      },
+    },
+    201,
+  );
+}
+
+async function mutateMessageLike(request, env, messageId) {
+  if (!Number.isSafeInteger(messageId) || messageId < 1) {
+    throw new HttpError(400, "Invalid message ID.");
+  }
+  const user = await authenticatedUser(request, env);
+  if (!user) {
+    throw new HttpError(401, "GitHub sign-in is required.");
+  }
+
+  const message = await env.DB.prepare(
+    "SELECT github_id FROM wall_messages WHERE id = ?",
+  )
+    .bind(messageId)
+    .first();
+  if (!message) {
+    throw new HttpError(404, "Message not found.");
+  }
+
+  if (request.method === "PUT") {
+    await env.DB.prepare(
+      "INSERT OR IGNORE INTO wall_message_likes (message_id, github_id, created_at) VALUES (?, ?, ?)",
+    )
+      .bind(messageId, user.github_id, unixTime())
+      .run();
+  } else {
+    await env.DB.prepare(
+      "DELETE FROM wall_message_likes WHERE message_id = ? AND github_id = ?",
+    )
+      .bind(messageId, user.github_id)
+      .run();
+  }
+
+  const row = await env.DB.prepare(
+    "SELECT COUNT(*) AS count FROM wall_message_likes WHERE message_id = ?",
+  )
+    .bind(messageId)
+    .first();
+  return json({
+    count: Number(row?.count ?? 0),
+    liked: request.method === "PUT",
+  });
+}
+
+async function deleteMessage(request, env, url) {
+  const user = await authenticatedUser(request, env);
+  if (!user) {
+    return json({ error: "GitHub sign-in is required." }, 401);
+  }
+
+  const rawId = url.pathname.slice("/api/messages/".length);
+  if (!/^\d+$/.test(rawId)) {
+    throw new HttpError(400, "Invalid message ID.");
+  }
+  const messageId = Number(rawId);
+  if (!Number.isSafeInteger(messageId) || messageId < 1) {
+    throw new HttpError(400, "Invalid message ID.");
+  }
+
+  const result = await env.DB.prepare(
+    "DELETE FROM wall_messages WHERE id = ? AND github_id = ?",
+  )
+    .bind(messageId, user.github_id)
+    .run();
+  if (Number(result.meta.changes) === 0) {
+    throw new HttpError(404, "Message not found.");
+  }
+
+  return new Response(null, {
+    status: 204,
+    headers: { "Cache-Control": "no-store" },
+  });
+}
+
 async function logout(request, env) {
   const token = parseCookies(request.headers.get("Cookie"))[SESSION_COOKIE];
   if (token) {
@@ -328,6 +693,30 @@ export function isValidConferenceKey(value) {
     value.length <= 100 &&
     /^[A-Za-z0-9][A-Za-z0-9._&+'-]*$/.test(value)
   );
+}
+
+export function normalizeWallMessage(value) {
+  if (typeof value !== "string") return null;
+  const message = value.replace(/\r\n?/g, "\n").trim();
+  const characterCount = Array.from(message).length;
+  const lineCount = message ? message.split("\n").length : 0;
+  const hasControlCharacters = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(
+    message,
+  );
+  return characterCount >= 1 &&
+    characterCount <= MESSAGE_MAX_CHARACTERS &&
+    lineCount <= MESSAGE_MAX_LINES &&
+    !hasControlCharacters
+    ? message
+    : null;
+}
+
+export function utcDayStart(timestamp) {
+  return timestamp - (timestamp % (24 * 60 * 60));
+}
+
+export function messageLikesCutoff(timestamp = unixTime()) {
+  return timestamp - MESSAGE_LIKES_WINDOW_SECONDS;
 }
 
 async function signPayload(payload, secret) {
