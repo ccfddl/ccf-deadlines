@@ -9,7 +9,7 @@
   confs:
     - year: 2021
       id: eurovis2021
-      link: https://files.ifi.uzh.ch/webarchives/eurovis21.ifi.uzh.ch/index.html%3Fp%3D57.html
+      link: https://files.ifi.uzh.ch/webarchives/eurovis21.ifi.uzh.ch/index.html
       timeline:
         - abstract_deadline: '2020-11-25 23:59:00'
           deadline: '2020-12-04 23:59:00'
@@ -27,7 +27,7 @@
       place: Rome, Italy
     - year: 2023
       id: eurovis2023
-      link: https://conferences.eg.org/eurovis2023/for-submitters/full-papers/
+      link: https://conferences.eg.org/eurovis2023/
       timeline:
         - abstract_deadline: '2022-11-25 23:59:00'
           deadline: '2022-12-02 23:59:00'
