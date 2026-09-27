@@ -35,6 +35,7 @@ pub fn Home() -> impl IntoView {
     let use_english = RwSignal::new(
         stored_language.unwrap_or_else(|| !browser_language.to_ascii_lowercase().starts_with("zh")),
     );
+    let show_favorites_timeline = RwSignal::new(false);
     Effect::new(move |_| {
         if let Some(root) = web_sys::window()
             .and_then(|window| window.document())
@@ -69,8 +70,8 @@ pub fn Home() -> impl IntoView {
     view! {
         <ConfigProvider theme>
             <div class="home">
-                <Header use_english />
-                <ShowTable use_english />
+                <Header use_english show_favorites_timeline />
+                <ShowTable use_english show_favorites_timeline />
             </div>
         </ConfigProvider>
     }

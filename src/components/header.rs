@@ -19,7 +19,10 @@ struct CommitInfo {
 }
 
 #[component]
-pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
+pub fn Header(
+    use_english: RwSignal<bool>,
+    show_favorites_timeline: RwSignal<bool>,
+) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     let (show_latest_conf, set_show_latest_conf) = signal(false);
     let (show_str, set_show_str) = signal(String::new());
@@ -81,6 +84,17 @@ pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
                                     <img src=user.avatar_url alt="" aria-hidden="true" />
                                     <span>{format!("@{}", user.login)}</span>
                                 </a>
+                                <button
+                                    type="button"
+                                    class="github-favorites-button"
+                                    on:click=move |_| show_favorites_timeline.set(true)
+                                >
+                                    {move || if use_english.get() {
+                                        "My Favorites"
+                                    } else {
+                                        "我的收藏"
+                                    }}
+                                </button>
                                 <button
                                     type="button"
                                     class="github-logout-button"

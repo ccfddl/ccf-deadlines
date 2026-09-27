@@ -3,6 +3,7 @@ use crate::components::conf::ConfItem;
 use crate::components::conf::*;
 use crate::components::countdown::{CountDown, urgency_class_for, use_interval};
 use crate::components::favorites::FavoritesContext;
+use crate::components::favorites_timeline::FavoritesTimelineModal;
 use crate::components::message_wall::MessageWallModal;
 use crate::components::subscription_modal::*;
 use crate::components::timeline::TimeLine;
@@ -21,7 +22,10 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::{console, window};
 
 #[component]
-pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
+pub fn ShowTable(
+    use_english: RwSignal<bool>,
+    show_favorites_timeline: RwSignal<bool>,
+) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     // mobile
     let is_mobile = RwSignal::new(is_narrow_viewport());
@@ -772,6 +776,14 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             />
 
             <MessageWallModal show=show_message_wall use_english=use_english />
+
+            <FavoritesTimelineModal
+                show=show_favorites_timeline
+                use_english=use_english
+                conferences=all_conf_list
+                reference_time=base_time
+                display_timezone=time_zone
+            />
 
             <Dialog open=show_conf_detail>
                 <DialogSurface class="conference-detail-dialog">
