@@ -1,0 +1,44 @@
+- title: FORTE
+  accept_rates:
+    # All competitive submissions: 9 regular + 4 short; invited tutorials excluded.
+    - year: 2021
+      submitted: 26
+      accepted: 13
+      str: "50.0%(13/26 21')"
+      rate: 0.5
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-78089-0/1
+    # All competitive submissions; 12 selected papers, invited keynote abstract excluded.
+    - year: 2022
+      submitted: 28
+      accepted: 12
+      str: "42.9%(12/28 22')"
+      rate: 0.42857142857142855
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-08679-3/1
+    # All competitive paper categories; 3/4 artifact descriptions are an additional evaluation.
+    - year: 2023
+      submitted: 26
+      accepted: 13
+      str: "50.0%(13/26 23')"
+      rate: 0.5
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-35355-0/1
+    # All competitive submissions: 11 full + 2 short; invited keynote abstract excluded.
+    - year: 2024
+      submitted: 33
+      accepted: 13
+      str: "39.4%(13/33 24')"
+      rate: 0.3939393939393939
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-62645-6/1
+    # All competitive submissions: 8 regular + 5 short; invited tutorial excluded.
+    - year: 2025
+      submitted: 25
+      accepted: 13
+      str: "52.0%(13/25 25')"
+      rate: 0.52
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-95497-9/1
+    # All competitive submissions: 12 regular + 2 tool + 1 short; invited talks excluded.
+    - year: 2026
+      submitted: 27
+      accepted: 15
+      str: "55.6%(15/27 26')"
+      rate: 0.5555555555555556
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-28187-6/1
