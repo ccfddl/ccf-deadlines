@@ -11,11 +11,19 @@
       id: raid21
       link: https://raid2021.org/
       timeline:
-        - deadline: '2021-08-01 23:59:59'
+        - deadline: '2021-04-01 23:59:59'
           comment: Paper Submission Deadline
       timezone: AoE
       date: October 6-8, 2021
       place: Donostia / San Sebastian, Spain
+    - year: 2022
+      id: raid22
+      link: https://raid2022.cs.ucy.ac.cy/
+      timeline:
+        - deadline: '2022-04-07 23:59:59'
+      timezone: AoE
+      date: October 26-28, 2022
+      place: Limassol, Cyprus
     - year: 2023
       id: raid23
       link: https://raid2023.org/
