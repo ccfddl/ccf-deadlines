@@ -16,10 +16,10 @@
           comment: Research papers; all deadlines are midnight, 23:59 UTC.
       timezone: UTC+0
       date: June 29 - July 2, 2021
-      place: Saarbrucken, Germany & Virtual
+      place: Saarbrücken, Germany & Virtual
     - year: 2023
       id: egsr2023
-      link: https://conferences.eg.org/egsr2023/call-for-papers/
+      link: https://conferences.eg.org/egsr2023/
       timeline:
         - abstract_deadline: '2023-04-05 23:59:59'
           deadline: '2023-04-12 23:59:59'
@@ -29,7 +29,7 @@
       place: Delft, Netherlands
     - year: 2024
       id: egsr2024
-      link: https://www.egsr2024.uk/call-for-submissions/
+      link: https://www.egsr2024.uk/
       timeline:
         - abstract_deadline: '2024-04-09 23:59:59'
           deadline: '2024-04-15 23:59:59'
