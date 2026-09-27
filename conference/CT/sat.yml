@@ -7,6 +7,55 @@
     thcpl: B
   dblp: sat
   confs:
+    - year: 2021
+      id: sat21
+      link: https://iiia.csic.es/sat2021/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular/long papers: abstract March 15, 2021; paper March 19, 2021 (AoE); exact cutoff time not specified.'
+      timezone: AoE
+      date: July 5-9, 2021
+      place: Barcelona, Spain (hybrid)
+    - year: 2022
+      id: sat22
+      link: https://satisfiability.org/SAT22/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular/long papers: abstract February 21, 2022; paper February 28, 2022 (AoE); exact cutoff time not specified.'
+      timezone: AoE
+      date: August 2-5, 2022
+      place: Haifa, Israel
+    - year: 2023
+      id: sat23
+      link: https://satisfiability.org/SAT23/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular/long papers: abstract March 10, 2023; paper March 17, 2023 (AoE); exact cutoff time not specified.'
+      timezone: AoE
+      date: July 4-8, 2023
+      place: Alghero, Italy
+    - year: 2024
+      id: sat24
+      link: https://satisfiability.org/SAT24/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular/long papers: abstract March 8, 2024; paper March 17, 2024 (AoE); exact cutoff time not specified.'
+      timezone: AoE
+      date: August 21-24, 2024
+      place: Pune, India
+    - year: 2025
+      id: sat25
+      link: https://satisfiability.org/SAT25/
+      timeline:
+        - abstract_deadline: '2025-03-24 23:59:00'
+          deadline: '2025-04-03 23:59:00'
+      timezone: AoE
+      date: August 12-15, 2025
+      place: Glasgow, Scotland
     - year: 2026
       id: sat26
       link: https://satisfiability.org/SAT26/
