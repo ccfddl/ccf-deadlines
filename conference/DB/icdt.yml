@@ -7,19 +7,6 @@
     thcpl: B
   dblp: icdt
   confs:
-    - year: 2021
-      id: icdt21
-      link: https://edbticdt2021.cs.ucy.ac.cy/
-      timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular papers, cycle 1; abstract April 2 and paper April 9, 2020; exact time and timezone unverified (UTC+0 is a schema placeholder).
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular papers, cycle 2; abstract September 21 and paper September 28, 2020; exact time and timezone unverified (UTC+0 is a schema placeholder).
-      timezone: UTC+0
-      date: March 23-26, 2021
-      place: Online
     - year: 2022
       id: icdt22
       link: https://conferences.inf.ed.ac.uk/edbticdt2022/
@@ -37,12 +24,12 @@
       id: icdt23
       link: http://edbticdt2023.cs.uoi.gr/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular papers, cycle 1; abstract March 14 and paper March 21, 2022 (AoE); exact cutoff time unverified.
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular papers, cycle 2; abstract September 14 and paper September 21, 2022 (AoE); exact cutoff time unverified.
+        - abstract_deadline: '2022-03-14 23:59:59'
+          deadline: '2022-03-21 23:59:59'
+          comment: Regular papers, cycle 1.
+        - abstract_deadline: '2022-09-14 23:59:59'
+          deadline: '2022-09-21 23:59:59'
+          comment: Regular papers, cycle 2.
       timezone: AoE
       date: March 28-31, 2023
       place: Ioannina, Greece (Hybrid)
@@ -50,12 +37,12 @@
       id: icdt24
       link: https://dastlab.github.io/edbticdt2024/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular papers, cycle 1; abstract March 20 and paper March 27, 2023 (AoE); exact cutoff time unverified.
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular papers, cycle 2; abstract September 13 and paper September 20, 2023 (AoE); exact cutoff time unverified.
+        - abstract_deadline: '2023-03-20 23:59:59'
+          deadline: '2023-03-27 23:59:59'
+          comment: Regular papers, cycle 1.
+        - abstract_deadline: '2023-09-13 23:59:59'
+          deadline: '2023-09-20 23:59:59'
+          comment: Regular papers, cycle 2.
       timezone: AoE
       date: March 25-28, 2024
       place: Paestum, Italy
