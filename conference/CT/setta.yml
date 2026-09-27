@@ -7,6 +7,36 @@
     thcpl: N
   dblp: setta
   confs:
+    - year: 2021
+      id: setta21
+      link: https://lcs.ios.ac.cn/setta2021/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular research papers: abstract 2021-07-30, paper 2021-07-30 AoE (extended); exact time not published'
+      timezone: AoE
+      date: Nov. 25-27, 2021
+      place: Online
+    - year: 2022
+      id: setta22
+      link: https://lcs.ios.ac.cn/setta2022/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular research papers: abstract 2022-08-06, paper 2022-08-13 AoE (extended); exact time not published'
+      timezone: AoE
+      date: Oct. 27-29, 2022
+      place: Online
+    - year: 2023
+      id: setta23
+      link: https://lcs.ios.ac.cn/setta2023/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular research papers: abstract 2023-08-21, paper 2023-08-28 AoE (extended); exact time not published; abstract optional'
+      timezone: AoE
+      date: Nov. 27-29, 2023
+      place: Nanjing, China
     - year: 2024
       id: setta24
       link: https://setta2024.cs.cityu.edu.hk
@@ -23,7 +53,7 @@
       timeline:
         - deadline: '2025-04-30 23:59:59'
           comment: 'Round 1 Paper Submission'
-        - deadline: '2025-08-20 23:59:59'
+        - deadline: '2025-08-30 23:59:59'
           comment: 'Round 2 Paper Submission'
       timezone: AoE
       date: Dec, 2025
