@@ -7,6 +7,15 @@
     thcpl: B
   dblp: ccs
   confs:
+    - year: 2021
+      id: asiaccs21
+      link: https://asiaccs21.hotcrp.com/
+      timeline:
+        - deadline: '2020-12-11 23:59:00'
+          comment: '2nd round regular paper; linked HotCRP cutoff December 12, 2020 at 07:59 EST; first-round primary source unavailable'
+      timezone: AoE
+      date: June 7-10, 2021
+      place: Virtual
     - year: 2022
       id: asiaccs22
       link: https://asiaccs2022.conferenceservice.jp/
@@ -18,6 +27,17 @@
       timezone: AoE
       date: May 30-June 3, 2022
       place: Nagasaki, Japan
+    - year: 2023
+      id: asiaccs23
+      link: https://asiaccs2023.org/
+      timeline:
+        - deadline: '2022-09-01 23:59:00'
+          comment: 1st round regular paper
+        - deadline: '2022-12-15 23:59:00'
+          comment: 2nd round regular paper
+      timezone: AoE
+      date: July 10-14, 2023
+      place: Melbourne, Australia
     - year: 2024
       id: asiaccs24
       link: https://asiaccs2024.sutd.edu.sg/
