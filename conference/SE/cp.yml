@@ -35,7 +35,7 @@
           deadline: TBD
           comment: 'Regular full papers: extended abstract April 28 / submission May 5, 2023; exact clocks unpublished'
       timezone: AoE
-      date: August 27-31, 2023
+      date: August 28-31, 2023
       place: Toronto, Canada
     - year: 2024
       id: cp24
@@ -45,7 +45,7 @@
           deadline: TBD
           comment: 'Regular full papers: abstract April 18 / extended submission April 26, 2024; exact clocks unpublished'
       timezone: AoE
-      date: September 2-6, 2024
+      date: September 3-6, 2024
       place: Girona, Catalonia, Spain
     - year: 2025
       id: cp25
