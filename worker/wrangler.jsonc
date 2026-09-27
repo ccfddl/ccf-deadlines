@@ -3,6 +3,11 @@
   "name": "ccfddl-api",
   "main": "src/index.js",
   "compatibility_date": "2026-09-26",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": { "invocation_logs": false }
+  },
   "routes": [
     {
       "pattern": "ccfddl.com/api/*",
@@ -16,17 +21,17 @@
     {
       "name": "API_RATE_LIMITER",
       "namespace_id": "22101",
-      "simple": { "limit": 600, "period": 60 }
+      "simple": { "limit": 10000, "period": 60 }
     },
     {
       "name": "AUTH_RATE_LIMITER",
       "namespace_id": "22102",
-      "simple": { "limit": 30, "period": 60 }
+      "simple": { "limit": 300, "period": 60 }
     },
     {
       "name": "USER_WRITE_LIMITER",
       "namespace_id": "22103",
-      "simple": { "limit": 60, "period": 60 }
+      "simple": { "limit": 600, "period": 60 }
     }
   ],
   "d1_databases": [
