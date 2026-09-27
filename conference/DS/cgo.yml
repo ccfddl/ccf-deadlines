@@ -7,11 +7,43 @@
     thcpl: B
   dblp: cgo
   confs:
+    - year: 2021
+      id: cgo2021
+      link: https://conf.researchr.org/home/cgo-2021
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: CFP lists abstract August 25 and paper September 1, 2020; HotCRP lists registration August 30 and paper September 2, 2020 (AoE); final deadlines need confirmation
+      timezone: AoE
+      date: February 27-March 3, 2021
+      place: Virtual
+    - year: 2022
+      id: cgo2022
+      link: https://conf.researchr.org/home/cgo-2022
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract August 27 and paper September 3, 2021 (AoE); exact times unpublished
+      timezone: AoE
+      date: April 2-6, 2022
+      place: Virtual
+    - year: 2023
+      id: cgo2023
+      link: https://conf.researchr.org/home/cgo-2023
+      timeline:
+        - deadline: TBD
+          comment: Paper submission September 2, 2022 (AoE); exact time unpublished
+      timezone: AoE
+      date: February 25-March 1, 2023
+      place: Montreal, Canada
     - year: 2024
       id: cgo2024
       link: https://conf.researchr.org/home/cgo-2024
       timeline:
         - deadline: '2023-05-19 23:59:59'
+          comment: First submission round
+        - deadline: TBD
+          comment: Second submission round September 1, 2023 (AoE); exact time unpublished
       timezone: AoE
       date: March 2-6, 2024
       place: Edinburgh, United Kingdom
@@ -20,6 +52,9 @@
       link: https://conf.researchr.org/home/cgo-2025
       timeline:
         - deadline: '2024-05-30 23:59:59'
+          comment: First submission round
+        - deadline: TBD
+          comment: Second submission round September 12, 2024 (AoE); exact time unpublished
       timezone: AoE
       date: March 1-5, 2025
       place: Las Vegas, Nevada, United States
