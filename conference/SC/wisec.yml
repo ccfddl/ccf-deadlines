@@ -23,7 +23,7 @@
         - deadline: '2022-02-12 23:59:00'
           comment: Extended regular paper deadline
       timezone: AoE
-      date: May 16 - 19, 2022
+      date: May 16 - 18, 2022
       place: San Antonio, Texas, United States
     - year: 2023
       id: wisec23
@@ -34,7 +34,7 @@
         - deadline: '2023-02-17 23:59:00'
           comment: Second submission round
       timezone: AoE
-      date: May 29 - June 1, 2023
+      date: May 29 - 31, 2023
       place: Guildford, United Kingdom
     - year: 2024
       id: wisec24
