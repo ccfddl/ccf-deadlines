@@ -1,5 +1,14 @@
 - title: IMC
   accept_rates:
+    # Overall full + short paper decisions in the official submission system.
+    # Camera-ready publication additionally required explicit shepherd approval.
+    # Desk rejections/withdrawals are not separately quantified by the source.
+    - year: 2021
+      submitted: 197
+      accepted: 55
+      str: 27.9%(55/197 21')
+      rate: 0.27918781725888325
+      source: https://imc2021.hotcrp.com/
     - year: 2022
       submitted: 143
       accepted: 38
