@@ -51,8 +51,7 @@
       id: colt26
       link: https://learningtheory.org/colt2026/
       timeline:
-        - deadline: TBD
-          comment: 'Paper submission: February 4, 2026 AoE; exact clock not published in CFP'
+        - deadline: '2026-02-04 23:59:59'
       timezone: AoE
       date: June 29 - July 3, 2026
       place: San Diego, California
