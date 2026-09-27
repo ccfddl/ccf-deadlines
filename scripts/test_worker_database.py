@@ -100,6 +100,15 @@ class MessageLimitTests(unittest.TestCase):
             post(self.db, 1000 + index * 30)
             self.assertEqual(self.db.execute("SELECT post_count FROM wall_post_quotas").fetchone()[0], index + 1)
 
+    def test_retry_migration_preserves_counters_and_cooldown(self):
+        post(self.db, 1000)
+        self.db.executescript((MIGRATIONS / "0006_atomic_message_limits.sql").read_text())
+        self.assertEqual(self.db.execute("SELECT post_count, last_post_at FROM wall_post_quotas").fetchone(), (1, 1000))
+        with self.assertRaisesRegex(sqlite3.IntegrityError, "wall_post_cooldown"):
+            post(self.db, 1001)
+        post(self.db, 1030)
+        self.assertEqual(self.db.execute("SELECT post_count FROM wall_post_quotas").fetchone()[0], 2)
+
 
 if __name__ == "__main__":
     unittest.main()
