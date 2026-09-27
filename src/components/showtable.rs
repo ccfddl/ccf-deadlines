@@ -658,7 +658,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                         on_click=move |_| show_message_wall.set(true)
                     >
                         <Icon icon=icondata::BsChatDots style="margin-right: 4px;" />
-                        {move || if use_english.get() { "Message Wall" } else { "漂流墙" }}
+                        {move || if use_english.get() { "Wall" } else { "漂流墙" }}
                     </Button>
                     <Button
                         size=ButtonSize::Small
