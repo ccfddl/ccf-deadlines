@@ -11,8 +11,8 @@
       id: eurogp21
       link: https://www.evostar.org/2021/eurogp/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers; extended deadline 2020-11-19 AoE; exact time unverified'
+        - deadline: '2020-11-19 23:59:59'
+          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 7-9, 2021
       place: Online
@@ -20,8 +20,8 @@
       id: eurogp22
       link: https://www.evostar.org/2022/eurogp/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers; extended deadline 2021-11-24 AoE; exact time unverified'
+        - deadline: '2021-11-24 23:59:59'
+          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 20-22, 2022
       place: Madrid, Spain
@@ -29,17 +29,17 @@
       id: eurogp23
       link: https://www.evostar.org/2023/eurogp/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers; extended deadline 2022-11-16 AoE; exact time unverified'
+        - deadline: '2022-11-16 23:59:59'
+          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 12-14, 2023
       place: Brno, Czech Republic (Hybrid)
     - year: 2024
       id: eurogp24
-      link: https://www.evostar.org/2024/eurogp/
+      link: https://www.evostar.org/2024/wp-content/uploads/2023/10/evo2024-conf-flyers-extended-deadline-eurogp-261023.pdf
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers; extended deadline 2023-11-15 AoE; exact time unverified'
+        - deadline: '2023-11-15 23:59:59'
+          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 3-5, 2024
       place: Aberystwyth, Wales, UK
@@ -47,17 +47,17 @@
       id: eurogp25
       link: https://www.evostar.org/2025/eurogp/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers; extended deadline 2024-11-15; time and timezone unverified (timezone is a placeholder)'
-      timezone: UTC+0
+        - deadline: '2024-11-15 23:59:59'
+          comment: 'Regular papers; extended deadline'
+      timezone: AoE
       date: April 23-25, 2025
       place: Trieste, Italy (Hybrid)
     - year: 2026
       id: eurogp26
       link: https://www.evostar.org/2026/eurogp/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers; extended deadline 2025-11-15 AoE; exact time unverified'
+        - deadline: '2025-11-15 23:59:59'
+          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 8-10, 2026
       place: Toulouse, France (Hybrid)
