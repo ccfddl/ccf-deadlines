@@ -1,0 +1,10 @@
+- title: SIGCSE
+  accept_rates:
+    # Main papers across CER, ERT and PCI; separate Student Research Competition acceptances excluded.
+    # Signed symposium recap; no quantified desk-rejection or withdrawal partition.
+    - year: 2026
+      submitted: 547
+      accepted: 174
+      str: "31.8%(174/547 26')"
+      rate: 0.3180987202925046
+      source: https://sigcse.org/about/bulletin/bulletin.58.2/index.html
