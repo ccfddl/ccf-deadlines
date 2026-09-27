@@ -30,9 +30,8 @@
       id: aistats23
       link: https://aistats.org/aistats2023/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Abstract: October 6, 2022; paper: October 13, 2022; official CFP states AoE but no exact clock'
+        - abstract_deadline: '2022-10-06 23:59:59'
+          deadline: '2022-10-13 23:59:59'
       timezone: UTC-12
       date: April 25-27, 2023
       place: Valencia, Spain
@@ -40,9 +39,8 @@
       id: aistats24
       link: https://aistats.org/aistats2024/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2023-10-06 23:59:59'
           deadline: '2023-10-16 23:59:59'
-          comment: 'Abstract: October 6, 2023 AoE; exact clock not published in CFP'
       timezone: UTC-12
       date: May 2-4, 2024
       place: Valencia, Spain
