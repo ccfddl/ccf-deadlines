@@ -7,6 +7,46 @@
     thcpl: N
   dblp: ncmmsc
   confs:
+    - year: 2022
+      id: ncmmsc22
+      link: https://www.ncmmsc.org.cn/2022/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular full papers: October 17, 2022 (extended); exact time and timezone unverified'
+      timezone: UTC+0
+      date: December 15-18, 2022
+      place: Online
+    - year: 2023
+      id: ncmmsc23
+      link: https://www.ncmmsc.org.cn/2023/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular full papers: October 23, 2023, Beijing time; official clock wording incomplete; October 29 is updates only'
+      timezone: UTC+8
+      date: December 8-10, 2023
+      place: Suzhou, China
+    - year: 2024
+      id: ncmmsc24
+      link: https://www.ncmmsc.org.cn/2024/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular full papers, round 1: abstract April 29, full paper May 6, 2024; exact time and timezone unverified'
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular full papers, round 2: abstract June 14, full paper June 23, 2024 at 08:00 (extended); timezone unverified'
+      timezone: UTC+0
+      date: August 15-18, 2024
+      place: Urumqi, China
+    - year: 2025
+      id: ncmmsc25
+      link: https://www.ncmmsc.org.cn/2025/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular full papers: July 15, 2025 (extended); exact time and timezone unverified'
+      timezone: UTC+0
+      date: October 16-19, 2025
+      place: Zhenjiang, China
     - year: 2026
       id: ncmmsc26
       link: https://www.ncmmsc.org.cn/
