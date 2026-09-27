@@ -1,5 +1,13 @@
 - title: IPSN
   accept_rates:
+    # Original main system decisions; final/publication removals unquantified.
+    # IoTDI cross-venue publication transfers possible; not proceedings census.
+    - year: 2021
+      submitted: 105
+      accepted: 26
+      str: 24.8%(26/105 21')
+      rate: 0.24761904761904763
+      source: https://ipsn2021.hotcrp.com/
     # Main research-paper system accept decisions; not proceedings counts.
     # Final shepherd approval required; post-selection removals unquantified.
     # Separate poster/demo/PhD pools excluded; IoTDI transfers not quantified.
