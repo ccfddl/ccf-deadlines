@@ -1,0 +1,32 @@
+- title: CSFW
+  accept_rates:
+    # IEEE TCSP conference aggregates; revision, desk-rejection and withdrawal
+    # breakdowns are not reported. Submissions are not asserted to be unique papers.
+    # TCSP business report, PDF/printed page 9.
+    - year: 2021
+      submitted: 172
+      accepted: 43
+      str: 25.0%(43/172 21')
+      rate: 0.25
+      source: https://www.ieee-security.org/TC/Reports/2022/2022-ieee-sp-tc-business-2022.pdf
+    # TCSP business report, PDF/printed page 8.
+    - year: 2022
+      submitted: 165
+      accepted: 32
+      str: 19.4%(32/165 22')
+      rate: 0.19393939393939394
+      source: https://www.ieee-security.org/TC/Reports/2023/ieee-sp-tc-business-2023-final.pdf
+    # TCSP business report, PDF/printed page 7.
+    - year: 2023
+      submitted: 187
+      accepted: 38
+      str: 20.3%(38/187 23')
+      rate: 0.20320855614973263
+      source: https://www.ieee-security.org/TC/Reports/2024/ieee-sp-tc-business-2024.pdf
+    # TCSP business report, PDF/printed page 9.
+    - year: 2024
+      submitted: 205
+      accepted: 45
+      str: 22.0%(45/205 24')
+      rate: 0.21951219512195122
+      source: https://www.ieee-security.org/TC/Reports/2025/ieee-sp-tc-business-2025.pdf
