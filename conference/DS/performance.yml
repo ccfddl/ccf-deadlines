@@ -5,12 +5,72 @@
     ccf: B
   dblp: performance
   confs:
+    - year: 2021
+      id: performance21
+      link: https://www.performance2021.deib.polimi.it/
+      timeline:
+        - abstract_deadline: '2021-05-17 23:59:59'
+          deadline: '2021-05-24 23:59:59'
+      timezone: UTC-4
+      date: November 8-12, 2021
+      place: Virtual
+    - year: 2022
+      id: performance22
+      link: https://www.sigmetrics.org/sigmetrics2022/
+      timeline:
+        - abstract_deadline: '2021-08-04 15:59:00'
+          deadline: '2021-08-11 15:59:00'
+          comment: Summer cycle; 11:59 AM New York time converted to UTC
+        - abstract_deadline: '2021-10-13 15:59:00'
+          deadline: '2021-10-20 15:59:00'
+          comment: Fall cycle; 11:59 AM New York time converted to UTC
+        - abstract_deadline: '2022-01-26 16:59:00'
+          deadline: '2022-02-03 16:59:00'
+          comment: Winter cycle; extended full-paper deadline; 11:59 AM New York time converted to UTC
+      timezone: UTC+0
+      date: June 6-10, 2022
+      place: Mumbai, India
+    - year: 2023
+      id: performance23
+      link: https://performance2023.sciencesconf.org/
+      timeline:
+        - abstract_deadline: '2023-05-28 23:59:59'
+          deadline: '2023-06-04 23:59:59'
+      timezone: UTC-4
+      date: November 14-17, 2023
+      place: Chicago, Illinois, USA
+    - year: 2024
+      id: performance24
+      link: https://www.sigmetrics.org/sigmetrics2024/
+      timeline:
+        - abstract_deadline: '2023-08-02 23:59:00'
+          deadline: '2023-08-09 23:59:00'
+          comment: Summer cycle
+        - abstract_deadline: '2023-10-04 23:59:00'
+          deadline: '2023-10-11 23:59:00'
+          comment: Fall cycle
+        - abstract_deadline: '2024-01-24 23:59:00'
+          deadline: '2024-01-31 23:59:00'
+          comment: Winter cycle
+      timezone: AoE
+      date: June 10-14, 2024
+      place: Venice, Italy
+    - year: 2025
+      id: performance25
+      link: https://performance2025.sciencesconf.org/
+      timeline:
+        - abstract_deadline: '2025-06-08 23:59:59'
+          deadline: '2025-06-15 23:59:59'
+      timezone: AoE
+      date: November 11-13, 2025
+      place: Amsterdam, Netherlands
     - year: 2026
       id: performance26
       link: https://performance2026.github.io/call/
       timeline:
-        - abstract_deadline: '2026-05-15 23:59:59'
-          deadline: '2026-05-22 23:59:59'
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstract date May 15, 2026 (exact cutoff time and timezone unconfirmed); full-paper date conflict between CFP May 22 and HotCRP May 30 AoE
       timezone: AoE
       date: November 3-5, 2026
       place: Ghent, Belgium
