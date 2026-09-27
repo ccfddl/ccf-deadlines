@@ -16,6 +16,15 @@
       timezone: AoE
       date: September 6-9, 2021
       place: Canterbury, Great Britain(online)
+    - year: 2022
+      id: securecomm22
+      link: https://securecomm.eai-conferences.org/2022/
+      timeline:
+        - deadline: TBD
+          comment: 'Main track full paper submission: April 17, 2022; time and timezone unverified.'
+      timezone: UTC
+      date: October 17-19, 2022
+      place: Virtual
     - year: 2023
       id: securecomm23
       link: https://securecomm.eai-conferences.org/2023/
