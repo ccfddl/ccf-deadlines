@@ -7,12 +7,48 @@
     thcpl: N
   dblp: pdcat
   confs:
+    - year: 2021
+      id: pdcat2021
+      link: http://cse.sysu.edu.cn/pdcat2021
+      timeline:
+        - deadline: TBD
+          comment: Regular paper submission date November 8, 2021; exact cutoff time and timezone unconfirmed
+      timezone: UTC+0
+      date: December 17-19, 2021
+      place: Guangzhou, China
+    - year: 2022
+      id: pdcat2022
+      link: https://www.hpc.is.tohoku.ac.jp/pdcat2022/
+      timeline:
+        - abstract_deadline: '2022-09-20 23:59:00'
+          deadline: '2022-09-30 23:59:00'
+      timezone: AoE
+      date: December 7-9, 2022
+      place: Sendai, Japan
+    - year: 2023
+      id: pdcat2023
+      link: http://kips-cswrg.org/pdcat2023/
+      timeline:
+        - deadline: TBD
+          comment: Regular paper submission date July 9, 2023 (final extension); exact cutoff time and timezone unconfirmed
+      timezone: UTC+0
+      date: August 16-18, 2023
+      place: Jeju, Korea
+    - year: 2024
+      id: pdcat2024
+      link: https://hpcc.siat.ac.cn/meeting/pdcat2024/index.html
+      timeline:
+        - deadline: TBD
+          comment: Regular paper submission date September 30, 2024 (extended); exact cutoff time and timezone unconfirmed
+      timezone: UTC+0
+      date: December 13-15, 2024
+      place: Hong Kong, China
     - year: 2025
       id: pdcat2025
-      link: https://www.pd-cat.org/
+      link: https://www.pd-cat.org/2025/
       timeline:
-        - deadline: '2025-08-15 23:59:00'
-      timezone: UTC+10
+        - deadline: '2025-08-15 23:59:59'
+      timezone: AoE
       date: November 22-November 24, 2025
       place: Gold Coast, Australia
     - year: 2026
