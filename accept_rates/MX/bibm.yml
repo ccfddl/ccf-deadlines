@@ -1,0 +1,14 @@
+- title: BIBM
+  accept_rates:
+    - year: 2021
+      submitted: 727
+      accepted: 143
+      rate: 0.19669876203576342
+      str: "19.7%(143/727 21')"
+      source: https://biomine.cs.vcu.edu/papers/Preface_BIBM2021.pdf
+    - year: 2022
+      submitted: 842
+      accepted: 167
+      rate: 0.19833729216152018
+      str: "19.8%(167/842 22')"
+      source: https://mailman.zih.tu-dresden.de/groups/public/dl/2022/004790.html
