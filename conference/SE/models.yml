@@ -7,14 +7,56 @@
     thcpl: B
   dblp: models
   confs:
+    - year: 2021
+      id: models21
+      link: https://conf.researchr.org/home/models-2021
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular research papers: abstract April 30, 2021; full paper May 7, 2021 AoE; exact time unpublished'
+      timezone: AoE
+      date: October 10-16, 2021
+      place: Online
     - year: 2022
       id: models22
       link: https://conf.researchr.org/home/models-2022
       timeline:
-        - deadline: '2022-05-18 23:59:59'
+        - abstract_deadline: TBD
+          deadline: '2022-05-18 23:59:59'
+          comment: 'Regular research papers: mandatory abstract May 18, 2022 AoE; exact abstract time unpublished'
       timezone: AoE
       date: October 23-28, 2022
       place: Montréal, Canada
+    - year: 2023
+      id: models23
+      link: https://conf.researchr.org/home/models-2023
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular research papers: abstract April 7, 2023; full paper April 14, 2023 AoE; exact time unpublished'
+      timezone: AoE
+      date: October 1-6, 2023
+      place: Västerås, Sweden
+    - year: 2024
+      id: models24
+      link: https://conf.researchr.org/home/models-2024
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular research papers: abstract March 21, 2024; full paper March 28, 2024 AoE; exact time unpublished'
+      timezone: AoE
+      date: September 22-27, 2024
+      place: Linz, Austria
+    - year: 2025
+      id: models25
+      link: https://conf.researchr.org/home/models-2025
+      timeline:
+        - abstract_deadline: '2025-03-27 23:59:00'
+          deadline: '2025-04-03 23:59:00'
+          comment: Regular research papers
+      timezone: AoE
+      date: October 5-10, 2025
+      place: Grand Rapids, Michigan, USA
     - year: 2026
       id: models26
       link: https://conf.researchr.org/home/models-2026
