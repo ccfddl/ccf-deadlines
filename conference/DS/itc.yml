@@ -7,6 +7,46 @@
     thcpl: N
   dblp: itc
   confs:
+    - year: 2022
+      id: itc2022
+      link: https://www.itctestweek.org/wp-content/uploads/2021/10/ITC_2022_CFP_v2-2021-10-19instructionshort-paper.pdf
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular paper: abstract 2022-03-14; paper 2022-03-28. Exact time and timezone not published.'
+      timezone: UTC+0
+      date: September 26-29, 2022
+      place: Disneyland, CA, USA
+    - year: 2023
+      id: itc2023
+      link: https://www.itctestweek.org/wp-content/uploads/2022/02/ITC_2023_CFP_March2023_final-paper-delay.pdf
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular paper: abstract 2023-04-03; paper 2023-04-17. Exact time and timezone not published.'
+      timezone: UTC+0
+      date: October 8-13, 2023
+      place: Disneyland, CA, USA
+    - year: 2024
+      id: itc2024
+      link: https://www.itctestweek.org/wp-content/uploads/2024/01/ITC_2024_CFP-006.pdf
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular paper: abstract 2024-04-26; paper 2024-05-13. Exact time and timezone not published.'
+      timezone: UTC+0
+      date: November 3-8, 2024
+      place: San Diego, CA, USA
+    - year: 2025
+      id: itc2025
+      link: https://www.itctestweek.org/wp-content/uploads/2024/11/ITC_2025_CFP_extended.pdf
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular paper: abstract 2025-03-07; paper 2025-04-02. Exact time and timezone not published.'
+      timezone: UTC+0
+      date: September 21-26, 2025
+      place: San Diego, CA, USA
     - year: 2026
       id: itc2026
       link: https://www.itctestweek.org/
