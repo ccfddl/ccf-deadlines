@@ -7,14 +7,21 @@
     thcpl: N
   dblp: icfem
   confs:
+    - year: 2022
+      id: icfem22
+      link: https://maude.ucm.es/ICFEM22/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Extended regular paper submission: May 7, 2022 AoE. Official clock not published; previous separate abstract deadline withdrawn.'
+      timezone: AoE
+      date: October 24-27, 2022
+      place: Madrid, Spain
     - year: 2023
       id: icfem23
       link: https://formal-analysis.com/icfem/2023/
       timeline:
-        - deadline: '2023-05-21 23:59:59'
-          comment: Abstract Submission
-        - deadline: '2023-05-28 23:59:59'
-          comment: Full Paper Submission
+        - abstract_deadline: '2023-05-21 23:59:59'
+          deadline: '2023-05-28 23:59:59'
       timezone: AoE
       date: November 21 - November 24, 2023
       place: Brisbane, Australia
@@ -22,8 +29,8 @@
       id: icfem24
       link: https://icfem2024.info/
       timeline:
-        - deadline: '2024-06-24 23:59:59'
-          comment: Paper Submission
+        - deadline: 'TBD'
+          comment: 'Extended regular paper submission: July 8, 2024. Official clock and timezone not published.'
       timezone: AoE
       date: December 02 - December 06, 2024
       place: Hiroshima, Japan
@@ -31,8 +38,8 @@
       id: icfem25
       link: https://icfem2025.github.io/
       timeline:
-        - abstract_deadline: '2025-05-25 23:59:59'
-          deadline: '2025-06-01 23:59:59'
+        - abstract_deadline: '2025-06-11 23:59:00'
+          deadline: '2025-06-15 23:59:00'
       timezone: AoE
       date: November 10 - 13, 2025
       place: Hangzhou, China
