@@ -7,6 +7,21 @@
     thcpl: A
   dblp: sp
   confs:
+    - year: 2021
+      id: sp21
+      link: https://www.ieee-security.org/TC/SP2021/
+      timeline:
+        - deadline: '2020-03-05 23:59:59'
+          comment: Spring cycle
+        - deadline: '2020-06-04 23:59:59'
+          comment: Summer cycle
+        - deadline: '2020-09-03 23:59:59'
+          comment: Fall cycle
+        - deadline: '2020-12-03 23:59:59'
+          comment: Winter cycle
+      timezone: UTC-12
+      date: May 24-26, 2021
+      place: Virtual
     - year: 2022
       id: sp22
       link: https://www.ieee-security.org/TC/SP2022/
