@@ -7,6 +7,26 @@
     thcpl: B
   dblp: issre
   confs:
+    - year: 2021
+      id: issre21
+      link: https://2021.issre.net/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Extended REG abstract and full-paper submission: May 14, 2021 AoE; exact clock unpublished'
+      timezone: AoE
+      date: October 25-28, 2021
+      place: Wuhan, China
+    - year: 2022
+      id: issre22
+      link: https://issre2022.github.io/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'REG abstract: May 13, 2022; extended full paper: May 22, 2022 AoE; exact clocks and abstract timezone unpublished'
+      timezone: AoE
+      date: October 31 - November 3, 2022
+      place: Charlotte, North Carolina, USA
     - year: 2023
       id: issre23
       link: https://issre.github.io/2023/index.html
