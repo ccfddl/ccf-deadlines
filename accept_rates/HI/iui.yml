@@ -1,0 +1,11 @@
+- title: IUI
+  accept_rates:
+    # Unified main-paper track; official post-conference report, printed page 5.
+    # Excludes 5 invited TiiS 2023 papers, posters, demos and doctoral consortium.
+    # Report does not separately quantify withdrawals or desk rejections.
+    - year: 2024
+      submitted: 250
+      accepted: 61
+      rate: 0.244
+      str: "24.4%(61/250 24')"
+      source: https://sigai.acm.org/static/aimatters/10-3/AIMatters-10-3-02-Dennis.pdf
