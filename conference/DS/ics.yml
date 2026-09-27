@@ -7,6 +7,33 @@
     thcpl: B
   dblp: ics
   confs:
+    - year: 2021
+      id: ics21
+      link: https://ics21.github.io/
+      timeline:
+        - abstract_deadline: '2021-01-28 23:59:59'
+          deadline: '2021-02-04 23:59:59'
+      timezone: AoE
+      date: June 14-18, 2021
+      place: Virtual
+    - year: 2022
+      id: ics22
+      link: https://ics2022.github.io/
+      timeline:
+        - abstract_deadline: '2022-01-28 23:59:00'
+          deadline: '2022-02-04 23:59:00'
+      timezone: AoE
+      date: June 27-30, 2022
+      place: Virtual
+    - year: 2023
+      id: ics23
+      link: https://nschiele.github.io/ICS2023/
+      timeline:
+        - abstract_deadline: '2023-01-27 23:59:59'
+          deadline: '2023-02-03 23:59:59'
+      timezone: AoE
+      date: June 21-23, 2023
+      place: Orlando, Florida, USA
     - year: 2024
       id: ics24
       link: https://ics2024.github.io/
