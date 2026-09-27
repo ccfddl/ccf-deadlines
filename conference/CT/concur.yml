@@ -11,29 +11,26 @@
       id: concur21
       link: https://qonfest2021.lacl.fr/concur21.php
       timeline:
-        - deadline: TBD
-          abstract_deadline: TBD
-          comment: 'Regular papers: abstract 2021-04-23; submission 2021-04-30 (AoE); exact cutoff time not specified'
+        - deadline: '2021-04-30 23:59:59'
+          abstract_deadline: '2021-04-23 23:59:59'
       timezone: AoE
-      date: Aug 23-27, 2021
+      date: Aug 24-27, 2021
       place: Online
     - year: 2022
       id: concur22
-      link: https://concur2022.mimuw.edu.pl/
+      link: http://concur2022.mimuw.edu.pl/
       timeline:
-        - deadline: TBD
-          abstract_deadline: TBD
-          comment: 'Regular papers: abstract 2022-04-18; submission 2022-04-25 (AoE); exact cutoff time not specified'
+        - deadline: '2022-04-25 23:59:59'
+          abstract_deadline: '2022-04-18 23:59:59'
       timezone: AoE
       date: Sep 13-16, 2022
       place: Warsaw, Poland
     - year: 2023
       id: concur23
-      link: https://www.uantwerpen.be/en/conferences/confest-2023/concur/call/
+      link: https://lics.siglog.org/newsletters/236.html
       timeline:
-        - deadline: TBD
-          abstract_deadline: TBD
-          comment: 'Regular papers: abstract 2023-04-24; submission 2023-05-02 (AoE); exact cutoff time not specified'
+        - deadline: '2023-05-02 23:59:59'
+          abstract_deadline: '2023-04-24 23:59:59'
       timezone: AoE
       date: Sep 19-22, 2023
       place: Antwerp, Belgium
@@ -41,10 +38,9 @@
       id: concur24
       link: https://confest2024.github.io/CONCUR_call_for_papers.html
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers: submission 2024-04-26 (AoE); exact cutoff time not specified'
+        - deadline: '2024-04-26 23:59:59'
       timezone: AoE
-      date: Sep 9-13, 2024
+      date: Sep 10-13, 2024
       place: Calgary, Canada
     - year: 2025
       id: concur25
