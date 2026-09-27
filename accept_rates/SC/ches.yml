@@ -1,5 +1,13 @@
 - title: CHES
   accept_rates:
+    # Annual preface II/PDF2: reviewed submission events, including resubmissions.
+    # 192 new manuscripts; artifacts/invited talks separate; withdrawals unreported.
+    - year: 2021
+      submitted: 250
+      accepted: 78
+      str: "31.2%(78/250 21')"
+      rate: 0.312
+      source: https://tches.iacr.org/index.php/TCHES/article/download/9444/8981/7351
     # Four TCHES cycles; submissions include major revisions and reject/resubmit.
     # Report PDF pp. 3, 7-8: 101 accepted / 373 received submission events.
     # Not a rate over unique new manuscripts; desk/withdrawal counts unreported.
