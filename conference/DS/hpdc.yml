@@ -7,6 +7,42 @@
     thcpl: B
   dblp: hpdc
   confs:
+    - year: 2021
+      id: hpdc2021
+      link: https://hpdc.org/2021/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Abstracts due January 18, 2021; papers due January 24, 2021 (AoE); exact times unpublished
+      timezone: AoE
+      date: June 21-25, 2021
+      place: Virtual
+    - year: 2022
+      id: hpdc2022
+      link: https://hpdc.org/2022/
+      timeline:
+        - abstract_deadline: '2022-01-20 23:59:00'
+          deadline: '2022-01-27 23:59:00'
+      timezone: AoE
+      date: June 27-July 1, 2022
+      place: Minneapolis, MN, USA
+    - year: 2023
+      id: hpdc2023
+      link: https://hpdc.org/2023/
+      timeline:
+        - deadline: '2023-01-27 23:59:00'
+      timezone: AoE
+      date: June 20-23, 2023
+      place: Orlando, FL, USA
+    - year: 2024
+      id: hpdc2024
+      link: https://hpdc.sci.utah.edu/2024/
+      timeline:
+        - deadline: TBD
+          comment: CFP lists January 25, 2024 (AoE); HotCRP lists January 28, 2024 23:59:59 AoE; final deadline needs confirmation
+      timezone: AoE
+      date: June 3-7, 2024
+      place: Pisa, Italy
     - year: 2025
       id: hpdc2025
       link: https://hpdc.sci.utah.edu/2025/
@@ -20,10 +56,8 @@
       id: hpdc2026
       link: https://hpdc.sci.utah.edu/2026/
       timeline:
-        - deadline: '2026-01-29 23:59:59'
-          comment: abstract registration deadline
-        - deadline: '2026-02-05 23:59:59'
-          comment: paper submission deadline
+        - abstract_deadline: '2026-01-29 23:59:59'
+          deadline: '2026-02-05 23:59:59'
       timezone: AoE
       date: July 13-16, 2026
       place: Cleveland, OH, USA
