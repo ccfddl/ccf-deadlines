@@ -1,8 +1,11 @@
 use gloo_net::http::Request;
 use leptos::prelude::*;
+use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde::{Deserialize, Serialize};
 use std::time::Duration;
+use wasm_bindgen::JsCast;
 use wasm_bindgen_futures::spawn_local;
+use web_sys::window;
 
 use crate::components::favorites::{FavoritesContext, start_github_login};
 use crate::components::gitbutton::GitButton;
@@ -26,6 +29,23 @@ pub fn Header(
     let favorites = expect_context::<FavoritesContext>();
     let (show_latest_conf, set_show_latest_conf) = signal(false);
     let (show_str, set_show_str) = signal(String::new());
+    let outside_listener = window_event_listener(ev::click, move |event| {
+        let Some(details) = window()
+            .and_then(|browser| browser.document())
+            .and_then(|document| document.get_element_by_id("github-account-menu"))
+        else {
+            return;
+        };
+        let clicked_inside = event
+            .target()
+            .and_then(|target| target.dyn_into::<web_sys::Element>().ok())
+            .and_then(|target| target.closest("#github-account-menu").ok().flatten())
+            .is_some();
+        if !clicked_inside {
+            let _ = details.remove_attribute("open");
+        }
+    });
+    on_cleanup(move || outside_listener.remove());
 
     // Effect to fetch GitHub commits data on mount
     Effect::new(move |_| {
@@ -82,34 +102,33 @@ pub fn Header(
                                 .into_any()
                         } else if let Some(user) = favorites.user.get() {
                             view! {
-                                <a
-                                    class="github-user-link"
-                                    href=user.profile_url
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    title="View GitHub profile"
-                                >
-                                    <img src=user.avatar_url alt="" aria-hidden="true" />
-                                    <span>{format!("@{}", user.login)}</span>
-                                </a>
-                                <button
-                                    type="button"
-                                    class="github-favorites-button"
-                                    on:click=move |_| show_favorites_timeline.set(true)
-                                >
-                                    {move || if use_english.get() {
-                                        "My Favorites"
-                                    } else {
-                                        "我的收藏"
-                                    }}
-                                </button>
-                                <button
-                                    type="button"
-                                    class="github-logout-button"
-                                    on:click=move |_| favorites.logout()
-                                >
-                                    {move || if use_english.get() { "Sign out" } else { "退出" }}
-                                </button>
+                                <details id="github-account-menu" class="github-account-menu">
+                                    <summary class="github-account-trigger">
+                                        <img src=user.avatar_url alt="" aria-hidden="true" />
+                                        <span class="github-account-name">{user.login}</span>
+                                        <span class="github-account-chevron" aria-hidden="true"></span>
+                                    </summary>
+                                    <div class="github-account-options">
+                                        <button
+                                            type="button"
+                                            on:click=move |_| {
+                                                close_account_menu();
+                                                show_favorites_timeline.set(true);
+                                            }
+                                        >
+                                            {move || if use_english.get() { "My Favorites" } else { "我的收藏" }}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            on:click=move |_| {
+                                                close_account_menu();
+                                                favorites.logout();
+                                            }
+                                        >
+                                            {move || if use_english.get() { "Sign out" } else { "退出" }}
+                                        </button>
+                                    </div>
+                                </details>
                             }
                                 .into_any()
                         } else if favorites.error.get().is_some() {
@@ -163,6 +182,15 @@ pub fn Header(
                 "*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only."
             </div>
         </section>
+    }
+}
+
+fn close_account_menu() {
+    if let Some(details) = window()
+        .and_then(|browser| browser.document())
+        .and_then(|document| document.get_element_by_id("github-account-menu"))
+    {
+        let _ = details.remove_attribute("open");
     }
 }
 
