@@ -67,6 +67,8 @@ pub struct TimePoint {
     pub timepoint: DateTime<FixedOffset>,
     pub r#type: i32,
     pub round: usize,
+    #[serde(default)]
+    pub comment: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]

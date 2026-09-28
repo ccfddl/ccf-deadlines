@@ -462,6 +462,7 @@ mod tests {
                         .fixed_offset(),
                     r#type: 1,
                     round: 1,
+                    comment: None,
                 })
                 .collect(),
             estimated_deadlines: Vec::new(),

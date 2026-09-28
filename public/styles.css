@@ -2970,6 +2970,7 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 }
 
 .conference-detail-actions button.conference-detail-calendar-link {
+  display: inline-flex;
   cursor: pointer;
 }
 

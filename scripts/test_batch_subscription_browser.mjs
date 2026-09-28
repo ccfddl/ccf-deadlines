@@ -98,9 +98,9 @@ async function evaluate(expression) {
 
 async function state() {
   return evaluate(`(() => ({
-    checked: Object.fromEntries(Array.from(document.querySelectorAll('.batch-subscription-option'))
-      .map(row => [row.textContent.trim().split(' ')[0], row.querySelector('input').checked])),
-    count: document.querySelector('.batch-subscription-actions span')?.textContent.trim(),
+    checked: Object.fromEntries(Array.from(document.querySelectorAll('.batch-subscription-list > .favorites-timeline-legend'))
+      .slice(1).map(button => [button.textContent.trim().split(' ')[0], button.classList.contains('favorites-timeline-legend--active')])),
+    count: document.querySelector('.batch-subscription-count')?.textContent.trim(),
     ids: new URL(document.querySelector('.batch-subscription-url')?.value ?? 'https://example.com')
       .searchParams.getAll('id'),
   }))()`);
@@ -135,11 +135,21 @@ try {
   await evaluate("document.querySelector('#github-account-menu summary').click()");
   await evaluate("Array.from(document.querySelectorAll('.github-account-options button')).find(button => button.textContent.includes('Batch Subscribe')).click()");
   await until(async () => (await state()).count === "2 / 2", "selected editions");
-  assert.deepEqual((await state()).checked, { CVPR: true, ICLR: true });
+  assert.deepEqual(await state(), {
+    checked: { CVPR: true, ICLR: true },
+    count: "2 / 2",
+    ids: ["cvpr27", "iclr27"],
+  });
+  assert.ok(["flex", "inline-flex"].includes(await evaluate("getComputedStyle(document.querySelector('.batch-subscription-submit .conference-detail-calendar-link')).display")));
 
-  await evaluate("Array.from(document.querySelectorAll('.batch-subscription-option')).find(row => row.textContent.includes('ICLR')).querySelector('input').click()");
+  await evaluate("Array.from(document.querySelectorAll('.batch-subscription-list > .favorites-timeline-legend')).find(button => button.textContent.includes('ICLR')).click()");
   await until(async () => (await state()).count === "1 / 2", "manual uncheck");
-  await evaluate("document.querySelector('.batch-subscription-actions button:first-child').click()");
+  assert.deepEqual(await state(), {
+    checked: { CVPR: true, ICLR: false },
+    count: "1 / 2",
+    ids: ["cvpr27"],
+  });
+  await evaluate("document.querySelector('.batch-subscription-list > .favorites-timeline-legend').click()");
   await until(async () => (await state()).count === "2 / 2", "Select all");
   assert.deepEqual(await state(), {
     checked: { CVPR: true, ICLR: true },
@@ -147,16 +157,28 @@ try {
     ids: ["cvpr27", "iclr27"],
   });
 
-  await evaluate("Array.from(document.querySelectorAll('.batch-subscription-option')).find(row => row.textContent.includes('ICLR')).querySelector('input').click()");
-  await evaluate("Array.from(document.querySelectorAll('.batch-subscription-option')).find(row => row.textContent.includes('ICLR')).querySelector('input').click()");
-  await evaluate("document.querySelector('.batch-subscription-actions button:nth-child(2)').click()");
+  await evaluate("Array.from(document.querySelectorAll('.batch-subscription-list > .favorites-timeline-legend')).find(button => button.textContent.includes('ICLR')).click()");
+  await until(async () => (await state()).count === "1 / 2", "manual toggle");
+  assert.deepEqual(await state(), {
+    checked: { CVPR: true, ICLR: false },
+    count: "1 / 2",
+    ids: ["cvpr27"],
+  });
+  await evaluate("Array.from(document.querySelectorAll('.batch-subscription-list > .favorites-timeline-legend')).find(button => button.textContent.includes('ICLR')).click()");
+  await until(async () => (await state()).count === "2 / 2", "manual re-toggle");
+  assert.deepEqual(await state(), {
+    checked: { CVPR: true, ICLR: true },
+    count: "2 / 2",
+    ids: ["cvpr27", "iclr27"],
+  });
+  await evaluate("document.querySelector('.batch-subscription-clear').click()");
   await until(async () => (await state()).count === "0 / 2", "Clear");
   assert.deepEqual(await state(), {
     checked: { CVPR: false, ICLR: false },
     count: "0 / 2",
     ids: [],
   });
-  console.log("Batch subscription checkbox browser regression passed");
+  console.log("Batch subscription chip browser regression passed");
 } finally {
   socket?.close();
   browser.kill();

@@ -1907,6 +1907,7 @@ fn build_conf_items(
                         timepoint: value.with_timezone(&display_offset),
                         r#type: kind,
                         round: round_index + 1,
+                        comment: timeline_item.comment.clone(),
                     });
 
                     let candidate = (
@@ -2132,7 +2133,7 @@ fn build_calendar_urls(conf: &ConfItem) -> (Vec<(String, String)>, Option<String
             encode(&title),
             start.format("%Y%m%dT%H%M%SZ"),
             end.format("%Y%m%dT%H%M%SZ"),
-            encode(&format!("{}\n{}", conf.description, conf.link)),
+            encode(&calendar_event_description(conf, point)),
             encode(&conf.place),
         );
         (label, url)
@@ -2142,6 +2143,19 @@ fn build_calendar_urls(conf: &ConfItem) -> (Vec<(String, String)>, Option<String
         encode(&build_conference_ical(conf))
     );
     (google, Some(icloud))
+}
+
+fn calendar_event_description(conf: &ConfItem, point: &TimePoint) -> String {
+    [
+        point.comment.as_deref(),
+        Some(conf.description.as_str()),
+        Some(conf.link.as_str()),
+    ]
+    .into_iter()
+    .flatten()
+    .filter(|part| !part.trim().is_empty())
+    .collect::<Vec<_>>()
+    .join("\n")
 }
 
 fn build_conference_ical(conf: &ConfItem) -> String {
@@ -2178,7 +2192,7 @@ fn build_conference_ical(conf: &ConfItem) -> String {
             ),
             format!(
                 "DESCRIPTION:{}",
-                escape_ical_text(&format!("{}\n{}", conf.description, conf.link))
+                escape_ical_text(&calendar_event_description(conf, point))
             ),
             format!("LOCATION:{}", escape_ical_text(&conf.place)),
             "END:VEVENT".to_string(),
@@ -2548,8 +2562,8 @@ mod historical_deadline_tests {
             "confs": [{
                 "year": 2027, "id": "iclr27", "link": "https://iclr.cc/",
                 "timeline": [
-                    {"abstract_deadline": "2026-09-18 23:59:59", "deadline": "2026-09-25 23:59:59"},
-                    {"deadline": "2026-10-25 23:59:59", "rebuttal_deadline": "2026-11-18 23:59:59", "decision_deadline": "2026-12-16 23:59:59"}
+                    {"abstract_deadline": "2026-09-18 23:59:59", "deadline": "2026-09-25 23:59:59", "comment": "Track A"},
+                    {"deadline": "2026-10-25 23:59:59", "rebuttal_deadline": "2026-11-18 23:59:59", "decision_deadline": "2026-12-16 23:59:59", "comment": "Track B"}
                 ],
                 "timezone": "AoE", "date": "April 2027", "place": "San Francisco"
             }]
@@ -2573,6 +2587,13 @@ mod historical_deadline_tests {
             label == "Round 2 Rebuttal Submission"
                 && url.contains("dates=20261119T115959Z/20261119T120059Z")
         }));
+        for (label, comment) in [
+            ("Round 1 Paper Submission Deadline", "Track A"),
+            ("Round 2 Paper Submission Deadline", "Track B"),
+        ] {
+            let url = &google.iter().find(|(event, _)| event == label).unwrap().1;
+            assert!(urlencoding::decode(url).unwrap().contains(comment));
+        }
         let icloud = icloud.unwrap();
         let encoded = icloud
             .strip_prefix("data:text/calendar;charset=utf-8,")
@@ -2589,5 +2610,7 @@ mod historical_deadline_tests {
             assert!(calendar.contains(&format!("SUMMARY:{summary}\r\n")));
         }
         assert!(calendar.contains("DTSTART:20261119T115959Z\r\n"));
+        assert!(calendar.contains("DESCRIPTION:Track A\\nTest conference"));
+        assert!(calendar.contains("DESCRIPTION:Track B\\nTest conference"));
     }
 }
