@@ -131,9 +131,6 @@ a {
 }
 
 .github-login-button,
-.github-user-link,
-.github-favorites-button,
-.github-logout-button,
 .github-auth-retry {
   display: inline-flex;
   align-items: center;
@@ -172,41 +169,91 @@ a {
   height: 16px;
 }
 
-.github-user-link {
-  gap: 6px;
-  padding: 0 8px 0 4px;
-}
-
-.github-user-link img {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-.github-logout-button {
-  padding: 0 8px;
-  border-color: transparent;
-  background: transparent;
-  color: #75808b;
-  cursor: pointer;
-}
-
-.github-favorites-button {
-  padding: 0 5px;
-  border-color: transparent;
-  background: transparent;
-  color: #536273;
-  cursor: pointer;
-}
-
 .github-login-button:hover,
-.github-user-link:hover,
-.github-favorites-button:hover,
-.github-logout-button:hover {
+.github-auth-retry:hover {
   border-color: #bfc8d1;
   background: #f7f9fb;
   color: #29394b;
   text-decoration: none;
+}
+
+.github-account-menu {
+  position: relative;
+  font-size: 12px;
+}
+
+.github-account-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  padding: 3px 10px 3px 4px;
+  box-sizing: border-box;
+  border: 1px solid #d9d3cb;
+  border-radius: 9px;
+  background: #fff;
+  color: #3f4751;
+  cursor: pointer;
+  list-style: none;
+}
+
+.github-account-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.github-account-trigger img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.github-account-name {
+  max-width: 145px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.github-account-chevron {
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+}
+
+.github-account-menu[open] .github-account-chevron {
+  transform: rotate(225deg) translateY(-2px);
+}
+
+.github-account-options {
+  position: absolute;
+  z-index: 100;
+  top: calc(100% + 6px);
+  right: 0;
+  display: grid;
+  min-width: 165px;
+  padding: 5px;
+  border: 1px solid #d9d3cb;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(44, 62, 80, 0.13);
+}
+
+.github-account-options button {
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #3f4751;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.github-account-options button:hover,
+.github-account-options button:focus-visible {
+  background: #f5f7fa;
 }
 
 .github-star-link {
@@ -3139,13 +3186,11 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
     justify-self: end;
   }
 
-  .github-login-button span,
-  .github-user-link span {
+  .github-login-button span {
     display: none;
   }
 
-  .github-login-button,
-  .github-user-link {
+  .github-login-button {
     width: 30px;
     padding: 0;
   }
@@ -3157,6 +3202,10 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 
   .github-login-button--checking span {
     display: inline;
+  }
+
+  .github-account-name {
+    max-width: min(28vw, 110px);
   }
 
   .header-main .title {
