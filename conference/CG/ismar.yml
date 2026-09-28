@@ -7,6 +7,26 @@
     thcpl: B
   dblp: ismar
   confs:
+    - year: 2021
+      id: ismar2021
+      link: https://ismar2021.ismar.net/
+      timeline:
+        - abstract_deadline: '2021-05-24 23:59:00'
+          deadline: '2021-05-28 23:59:00'
+          comment: Conference papers
+      timezone: AoE
+      date: October 4-8, 2021
+      place: Online
+    - year: 2022
+      id: ismar2022
+      link: https://ismar2022.ismar.net/
+      timeline:
+        - abstract_deadline: '2022-05-27 23:59:00'
+          deadline: '2022-06-03 23:59:00'
+          comment: Conference papers
+      timezone: AoE
+      date: October 17-21, 2022
+      place: Singapore
     - year: 2023
       id: ismar2023
       link: https://ismar23.org/
