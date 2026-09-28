@@ -282,6 +282,77 @@ a {
   overflow-y: auto;
 }
 
+.conference-detail-dialog.email-reminder-dialog {
+  width: min(520px, 94vw);
+  max-width: 520px;
+  height: auto;
+  max-height: 88dvh;
+}
+
+.email-reminder-dialog .thaw-dialog-content {
+  overflow-y: auto;
+}
+
+.email-reminder-intro,
+.email-reminder-notice,
+.email-reminder-message {
+  color: #66717c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.email-reminder-notice {
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #fff8ec;
+  color: #87633a;
+}
+
+.email-reminder-settings {
+  display: grid;
+  gap: 12px;
+}
+
+.email-reminder-settings label {
+  display: grid;
+  gap: 5px;
+  color: #586573;
+  font-size: 12px;
+}
+
+.email-reminder-settings select {
+  width: 100%;
+  padding: 7px 9px;
+  border: 1px solid #dcd6cf;
+  border-radius: 6px;
+  background: #fff;
+  color: #304458;
+  font: inherit;
+}
+
+.email-reminder-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.email-reminder-actions button,
+.email-reminder-enable {
+  padding: 7px 11px;
+  border: 1px solid #d8d2ca;
+  border-radius: 6px;
+  background: #f5f2ee;
+  color: #304458;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+
+.email-reminder-actions button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
 .batch-subscription-title svg {
   flex: 0 0 auto;
   color: #6f9fca;

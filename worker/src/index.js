@@ -1,3 +1,11 @@
+import {
+  runScheduledEmailDigests,
+  unsubscribeSignature,
+  validReminderLanguage,
+  validReminderTimezone,
+  verifiedPrimaryEmail,
+} from "./email_reminders.js";
+
 const OAUTH_COOKIE = "__Host-ccfddl_oauth";
 const SESSION_COOKIE = "__Host-ccfddl_session";
 const OAUTH_TTL_SECONDS = 10 * 60;
@@ -26,9 +34,14 @@ export default {
     }
     response.headers.set("X-Content-Type-Options", "nosniff");
     response.headers.set("Referrer-Policy", "no-referrer");
-    response.headers.set("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'");
+    if (!response.headers.has("Content-Security-Policy")) {
+      response.headers.set("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'");
+    }
     if (response.status === 429) response.headers.set("Retry-After", "60");
     return response;
+  },
+  async scheduled(controller, env) {
+    return runScheduledEmailDigests(env, controller.scheduledTime);
   },
 };
 
@@ -53,6 +66,20 @@ async function route(request, env) {
   }
   if (request.method === "GET" && url.pathname === "/api/calendar/favorites.ics") {
     return favoritesCalendar(url, env);
+  }
+  if (url.pathname === "/api/email/reminders") {
+    if (request.method === "GET") return emailReminderSettings(request, env);
+    if (request.method === "PUT") {
+      assertTrustedOrigin(request, env);
+      return updateEmailReminderSettings(request, env);
+    }
+    if (request.method === "DELETE") {
+      assertTrustedOrigin(request, env);
+      return deleteEmailReminderSettings(request, env);
+    }
+  }
+  if (url.pathname === "/api/email/unsubscribe" && ["GET", "POST"].includes(request.method)) {
+    return unsubscribeEmail(request, env, url);
   }
   if (request.method === "GET" && url.pathname === "/api/messages") {
     return listMessages(request, env, url);
@@ -92,12 +119,26 @@ async function route(request, env) {
 
 async function beginGithubLogin(request, env, url) {
   requireConfiguration(env);
+  const purpose = url.searchParams.get("purpose");
+  if (purpose && purpose !== "email") throw new HttpError(400, "Invalid GitHub authorization purpose.");
+  let emailRequest = null;
+  if (purpose === "email") {
+    if (!env.RESEND_API_KEY || !env.EMAIL_FROM) throw new HttpError(503, "Email reminders are unavailable.");
+    const user = await authenticatedUser(request, env);
+    if (!user) throw new HttpError(401, "GitHub sign-in is required.");
+    const timezone = url.searchParams.get("timezone");
+    const language = url.searchParams.get("language");
+    if (!validReminderTimezone(timezone) || !validReminderLanguage(language)) {
+      throw new HttpError(400, "Invalid email reminder settings.");
+    }
+    emailRequest = { requester_id: user.github_id, timezone, language };
+  }
   const state = randomToken(24);
   const verifier = randomToken(48);
   const challenge = await sha256Base64Url(verifier);
   const returnTo = sanitizeReturnTo(url.searchParams.get("return_to"));
   const payload = await signPayload(
-    JSON.stringify({ state, verifier, returnTo, issued_at: unixTime() }),
+    JSON.stringify({ state, verifier, returnTo, issued_at: unixTime(), emailRequest }),
     env.SESSION_SECRET,
   );
   const callback = `${env.PUBLIC_ORIGIN}/api/auth/github/callback`;
@@ -107,6 +148,7 @@ async function beginGithubLogin(request, env, url) {
   authorize.searchParams.set("state", state);
   authorize.searchParams.set("code_challenge", challenge);
   authorize.searchParams.set("code_challenge_method", "S256");
+  if (emailRequest) authorize.searchParams.set("scope", "user:email");
 
   return redirect(authorize.toString(), [
     serializeCookie(OAUTH_COOKIE, payload, OAUTH_TTL_SECONDS, request),
@@ -129,9 +171,15 @@ async function finishGithubLogin(request, env, url) {
   }
   const state = url.searchParams.get("state");
   const code = url.searchParams.get("code");
-  if (!code || !state || !safeEqual(state, oauth.state)) {
+  if (!state || !safeEqual(state, oauth.state)) {
     return json({ error: "Invalid GitHub OAuth state." }, 400);
   }
+  if (url.searchParams.get("error") === "access_denied" && oauth.emailRequest) {
+    return redirect(emailReturnUrl(env, oauth.returnTo, "denied"), [
+      serializeCookie(OAUTH_COOKIE, "", 0, request),
+    ]);
+  }
+  if (!code) return json({ error: "Invalid GitHub OAuth state." }, 400);
 
   const tokenResponse = await githubLoginStep("token_request", () => fetchGithubWithoutRedirects("https://github.com/login/oauth/access_token", {
     method: "POST",
@@ -169,10 +217,40 @@ async function finishGithubLogin(request, env, url) {
     return json({ error: "Unable to read the GitHub profile." }, 502);
   }
 
+  let reminderEmail = null;
+  if (oauth.emailRequest) {
+    const settings = oauth.emailRequest;
+    if (githubUser.id !== settings.requester_id || !validReminderTimezone(settings.timezone)
+      || !validReminderLanguage(settings.language)) {
+      return redirect(emailReturnUrl(env, oauth.returnTo, "account_mismatch"), [
+        serializeCookie(OAUTH_COOKIE, "", 0, request),
+      ]);
+    }
+    const emailResponse = await githubLoginStep("email_request", () => fetchGithubWithoutRedirects(
+      "https://api.github.com/user/emails?per_page=100", {
+        signal: AbortSignal.timeout(10_000),
+        headers: {
+          Accept: "application/vnd.github+json",
+          Authorization: `Bearer ${token.access_token}`,
+          "User-Agent": "ccfddl-api",
+          "X-GitHub-Api-Version": "2022-11-28",
+        },
+      },
+    ));
+    const addresses = emailResponse.ok
+      ? await githubLoginStep("email_response", () => emailResponse.json()) : null;
+    reminderEmail = verifiedPrimaryEmail(addresses);
+    if (!reminderEmail) {
+      return redirect(emailReturnUrl(env, oauth.returnTo, "email_unavailable"), [
+        serializeCookie(OAUTH_COOKIE, "", 0, request),
+      ]);
+    }
+  }
+
   const now = unixTime();
   const sessionToken = randomToken(32);
   const sessionHash = await sha256Hex(sessionToken);
-  await githubLoginStep("session_storage", () => env.DB.batch([
+  const statements = [
     env.DB.prepare("DELETE FROM sessions WHERE expires_at <= ?").bind(now),
     env.DB.prepare(
       `DELETE FROM sessions WHERE github_id = ? AND token_hash NOT IN (
@@ -199,12 +277,35 @@ async function finishGithubLogin(request, env, url) {
     env.DB.prepare(
       "INSERT INTO sessions (token_hash, github_id, expires_at, created_at) VALUES (?, ?, ?, ?)",
     ).bind(sessionHash, githubUser.id, now + SESSION_TTL_SECONDS, now),
-  ]));
+  ];
+  if (reminderEmail) {
+    statements.push(env.DB.prepare(
+      "DELETE FROM email_digest_sends WHERE github_id = ? AND status = 'pending'",
+    ).bind(githubUser.id));
+    statements.push(env.DB.prepare(
+      `INSERT INTO email_reminders (github_id, email, timezone, language, created_at, updated_at)
+       VALUES (?, ?, ?, ?, ?, ?)
+       ON CONFLICT(github_id) DO UPDATE SET
+         email = excluded.email,
+         timezone = excluded.timezone,
+         language = excluded.language,
+         updated_at = excluded.updated_at`,
+    ).bind(githubUser.id, reminderEmail, oauth.emailRequest.timezone, oauth.emailRequest.language, now, now));
+  }
+  await githubLoginStep("session_storage", () => env.DB.batch(statements));
 
-  return redirect(`${env.PUBLIC_ORIGIN}${sanitizeReturnTo(oauth.returnTo)}`, [
+  return redirect(reminderEmail
+    ? emailReturnUrl(env, oauth.returnTo, "enabled")
+    : `${env.PUBLIC_ORIGIN}${sanitizeReturnTo(oauth.returnTo)}`, [
     serializeCookie(OAUTH_COOKIE, "", 0, request),
     serializeCookie(SESSION_COOKIE, sessionToken, SESSION_TTL_SECONDS, request),
   ]);
+}
+
+function emailReturnUrl(env, returnTo, status) {
+  const destination = new URL(sanitizeReturnTo(returnTo), env.PUBLIC_ORIGIN);
+  destination.searchParams.set("email_status", status);
+  return destination.toString();
 }
 
 async function fetchGithubWithoutRedirects(url, options) {
@@ -284,6 +385,76 @@ async function favoritesCalendar(url, env) {
       "Content-Type": "text/calendar; charset=utf-8",
       "Content-Disposition": 'inline; filename="ccfddl-favorites.ics"',
       "Cache-Control": "public, max-age=3600",
+    },
+  });
+}
+
+async function emailReminderSettings(request, env) {
+  const user = await authenticatedUser(request, env);
+  if (!user) throw new HttpError(401, "GitHub sign-in is required.");
+  const settings = await env.DB.prepare(
+    "SELECT email, timezone, language FROM email_reminders WHERE github_id = ?",
+  ).bind(user.github_id).first();
+  return json({
+    available: Boolean(env.RESEND_API_KEY && env.EMAIL_FROM),
+    enabled: Boolean(settings),
+    email: settings?.email ?? null,
+    timezone: settings?.timezone ?? null,
+    language: settings?.language ?? null,
+    reminder_days: [7, 1],
+    send_hour: 9,
+  });
+}
+
+async function updateEmailReminderSettings(request, env) {
+  const user = await authenticatedUser(request, env);
+  if (!user) throw new HttpError(401, "GitHub sign-in is required.");
+  const body = await readJsonBody(request);
+  if (!validReminderTimezone(body?.timezone) || !validReminderLanguage(body?.language)) {
+    throw new HttpError(400, "Invalid email reminder settings.");
+  }
+  const results = await env.DB.batch([
+    env.DB.prepare(
+      "UPDATE email_reminders SET timezone = ?, language = ?, updated_at = ? WHERE github_id = ?",
+    ).bind(body.timezone, body.language, unixTime(), user.github_id),
+    env.DB.prepare(
+      "DELETE FROM email_digest_sends WHERE github_id = ? AND status = 'pending'",
+    ).bind(user.github_id),
+  ]);
+  if (results[0].meta?.changes !== 1) throw new HttpError(404, "Enable email reminders first.");
+  return emailReminderSettings(request, env);
+}
+
+async function deleteEmailReminderSettings(request, env) {
+  const user = await authenticatedUser(request, env);
+  if (!user) throw new HttpError(401, "GitHub sign-in is required.");
+  await env.DB.prepare("DELETE FROM email_reminders WHERE github_id = ?").bind(user.github_id).run();
+  return json({ enabled: false });
+}
+
+async function unsubscribeEmail(request, env, url) {
+  const githubId = Number(url.searchParams.get("id"));
+  const token = url.searchParams.get("token");
+  if (!Number.isSafeInteger(githubId) || githubId <= 0 || !/^[A-Za-z0-9_-]{43}$/.test(token ?? "")) {
+    throw new HttpError(404, "Subscription not found.");
+  }
+  const row = await env.DB.prepare("SELECT email FROM email_reminders WHERE github_id = ?")
+    .bind(githubId).first();
+  if (!row || !safeEqual(token, await unsubscribeSignature(githubId, row.email, env.SESSION_SECRET))) {
+    throw new HttpError(404, "Subscription not found.");
+  }
+  if (request.method === "POST") {
+    await env.DB.prepare("DELETE FROM email_reminders WHERE github_id = ?").bind(githubId).run();
+  }
+  const body = request.method === "POST"
+    ? "<p>Email reminders are now off. / 邮件提醒已关闭。</p>"
+    : `<p>Stop CCFDDL email reminders? / 关闭 CCFDDL 邮件提醒？</p>
+       <form method="post" action="${url.pathname}${url.search}"><button type="submit">Unsubscribe / 取消订阅</button></form>`;
+  return new Response(`<!doctype html><html><meta charset="utf-8"><title>CCFDDL email reminders</title><body>${body}</body></html>`, {
+    headers: {
+      "Content-Type": "text/html; charset=utf-8",
+      "Cache-Control": "no-store",
+      "Content-Security-Policy": "default-src 'none'; form-action 'self'; base-uri 'none'; frame-ancestors 'none'",
     },
   });
 }

@@ -17,6 +17,9 @@
   "vars": {
     "PUBLIC_ORIGIN": "https://ccfddl.com"
   },
+  "triggers": {
+    "crons": ["*/15 * * * *"]
+  },
   "ratelimits": [
     {
       "name": "API_RATE_LIMITER",

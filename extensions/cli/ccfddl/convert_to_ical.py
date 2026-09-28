@@ -1,9 +1,11 @@
 import yaml
 import re
 import uuid
+import json
 from collections import defaultdict
 from itertools import combinations
 from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 from icalendar import Calendar, Event, Timezone, TimezoneStandard
 
 
@@ -184,6 +186,7 @@ def convert_to_ical(
                             ),
                         )
                         event.add("X-CCFDDL-ID", conf["id"])
+                        event.add("X-CCFDDL-CONFERENCE", f"{title} {year}")
                         event.add("dtstamp", datetime.now(tz))
 
                         # 处理时间字段
@@ -254,6 +257,34 @@ def convert_to_ical(
         f.write(cal.to_ical())
 
 
+def write_deadline_events_index(calendar_path: str, output_path: str):
+    """Expose the same parsed deadline instants to the email reminder Worker."""
+    calendar = Calendar.from_ical(Path(calendar_path).read_bytes())
+    events = []
+    for event in calendar.walk("VEVENT"):
+        start = event.decoded("DTSTART")
+        all_day = isinstance(start, date) and not isinstance(start, datetime)
+        if all_day:
+            deadline_at = datetime.combine(start, datetime.min.time(), timezone.utc)
+        else:
+            deadline_at = start.astimezone(timezone.utc)
+        events.append(
+            {
+                "id": str(event["X-CCFDDL-ID"]),
+                "conference": str(event["X-CCFDDL-CONFERENCE"]),
+                "uid": str(event["UID"]),
+                "title": str(event["SUMMARY"]),
+                "deadline_at": deadline_at.isoformat().replace("+00:00", "Z"),
+                "all_day": all_day,
+                "url": str(event.get("URL", "")),
+            }
+        )
+    events.sort(key=lambda item: (item["deadline_at"], item["id"], item["uid"]))
+    Path(output_path).write_text(
+        json.dumps(events, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+
+
 def add_index_entry(index, key: str, file_path: str):
     index[key].add(file_path)
 
@@ -299,6 +330,10 @@ if __name__ == "__main__":
     index = reverse_index(paths, list(SUB_MAPPING.keys()))
     for lang in ["zh", "en"]:
         convert_to_ical(paths, f"deadlines_{lang}.ics", lang, SUB_MAPPING)
+        if lang == "en":
+            write_deadline_events_index(
+                "deadlines_en.ics", "public/conference/deadline_events.json"
+            )
         f = lambda key: (
             len(index[key]) > 0,
             convert_to_ical(

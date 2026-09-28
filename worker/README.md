@@ -10,7 +10,7 @@ Create an OAuth app in GitHub with:
 - Authorization callback URL: `https://ccfddl.com/api/auth/github/callback`
 - Application logo: upload [`assets/ccfddl-oauth-logo.png`](assets/ccfddl-oauth-logo.png)
 
-No OAuth scope is requested. The Worker only reads the signed-in user's public GitHub identity and does not store the GitHub access token.
+Normal sign-in requests no OAuth scope. When a signed-in user explicitly enables email reminders, a separate GitHub authorization requests `user:email` to read their verified primary email address. The Worker does not store the GitHub access token.
 
 GitHub setup references: [creating an OAuth app](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app) and [the web application flow](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow).
 
@@ -41,6 +41,15 @@ npx wrangler secret put SESSION_SECRET
 
 Use a cryptographically random value of at least 32 bytes for `SESSION_SECRET`.
 
+To enable email reminders, verify a sending domain with [Resend](https://resend.com/domains) and configure:
+
+```bash
+npx wrangler secret put RESEND_API_KEY
+npx wrangler secret put EMAIL_FROM
+```
+
+`EMAIL_FROM` is a verified sender, for example `CCFDDL <reminders@ccfddl.com>`. Keep both values in Worker secrets, not in the repository.
+
 ## 4. Deploy
 
 The `ccfddl.com` DNS record must be proxied through Cloudflare so the Worker route can intercept `/api/*` while GitHub Pages continues to serve every other path.
@@ -52,7 +61,7 @@ npm run deploy
 
 After deployment, verify `https://ccfddl.com/api/health` returns `{"ok":true}` before publishing the static frontend changes.
 
-When a new migration is added, apply the migration before deploying the Worker version that uses it. The message wall requires migrations `0002` through `0006`. Migration `0006` enforces posting limits atomically in D1; deploy it before this Worker version to keep message posting working. It preserves existing daily quotas in a separate counter, avoiding double-counting while the previous Worker is still running.
+When a new migration is added, apply the migration before deploying the Worker version that uses it. The message wall requires migrations `0002` through `0006`. Migration `0006` enforces posting limits atomically in D1; deploy it before this Worker version to keep message posting working. It preserves existing daily quotas in a separate counter, avoiding double-counting while the previous Worker is still running. Email reminders require migration `0007`; deploy the static site with `/conference/deadline_events.json` before enabling the sender secrets and deploying this Worker version.
 
 ## Security configuration
 
@@ -91,6 +100,12 @@ Signed-in users can select up to 100 starred conference editions from **Batch Su
 
 Deploy the static site with the updated calendar generator before enabling this Worker endpoint: new calendar events carry an `X-CCFDDL-ID` field that the Worker uses to select editions. In conference details, Google Calendar provides a direct event link for each known deadline, while iCloud Calendar downloads a one-time ICS containing all known deadlines for that edition. Only the batch link is a refreshing feed. Google Calendar requires adding the subscription HTTPS link from **Other calendars → From URL** on a computer; iCloud/Apple Calendar can open the batch `webcal://` link directly.
 
+## Email reminders
+
+The account menu offers an optional **Email Reminders** setting. Enabling it starts a separate GitHub OAuth authorization for `user:email`. The Worker reads the verified primary address from GitHub, stores that address and the chosen time zone/language in D1, and discards the access token. Users can change the time zone/language, reauthorize to refresh the address, or turn reminders off. Every email also includes a signed unsubscribe link.
+
+The static deployment generates `/conference/deadline_events.json` from the same English ICS calendar used for subscriptions. A Cron Trigger runs every 15 minutes in UTC and sends one combined email per user's local date at or shortly after 09:00 when a starred conference edition has deadlines 7 or 1 local calendar days away. D1 records each daily send, and Resend receives an idempotency key so a retry cannot intentionally send a duplicate. If the sender secrets are absent, the job skips sending and the UI reports reminders unavailable. Monitor Worker logs for delivery errors and the [Resend dashboard](https://resend.com/emails) for accepted messages. Sender quota and verified-domain limits depend on the Resend account plan.
+
 ## Stored data
 
-D1 stores the GitHub numeric user ID, login, avatar/profile URLs, hashed site sessions, one row per user/conference-edition favorite, message wall content, likes, and timestamps. Each edition uses its existing unique conference `id`, such as `iclr27`, so different years have independent totals.
+D1 stores the GitHub numeric user ID, login, avatar/profile URLs, hashed site sessions, one row per user/conference-edition favorite, message wall content, likes, and timestamps. Email reminders additionally store the verified primary email, chosen time zone/language, and send history until unsubscribed. Each edition uses its existing unique conference `id`, such as `iclr27`, so different years have independent totals.

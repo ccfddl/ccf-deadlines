@@ -3,6 +3,7 @@ use crate::components::checkbox_button::*;
 use crate::components::conf::ConfItem;
 use crate::components::conf::*;
 use crate::components::countdown::{CountDown, urgency_class_for, use_interval};
+use crate::components::email_reminders::EmailReminderModal;
 use crate::components::favorites::FavoritesContext;
 use crate::components::favorites_timeline::FavoritesTimelineModal;
 use crate::components::message_wall::MessageWallModal;
@@ -27,6 +28,7 @@ pub fn ShowTable(
     use_english: RwSignal<bool>,
     show_favorites_timeline: RwSignal<bool>,
     show_batch_subscription: RwSignal<bool>,
+    show_email_reminders: RwSignal<bool>,
 ) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     // mobile
@@ -864,6 +866,8 @@ pub fn ShowTable(
                 use_english=use_english
                 conferences=raw_conferences
             />
+
+            <EmailReminderModal show=show_email_reminders use_english=use_english />
 
             <Dialog open=show_conf_detail>
                 <DialogSurface class="conference-detail-dialog">

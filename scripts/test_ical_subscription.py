@@ -1,6 +1,7 @@
 import tempfile
 import unittest
 import importlib.util
+import json
 from pathlib import Path
 
 import yaml
@@ -11,6 +12,7 @@ SPEC = importlib.util.spec_from_file_location("convert_to_ical", CONVERTER)
 MODULE = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(MODULE)
 convert_to_ical = MODULE.convert_to_ical
+write_deadline_events_index = MODULE.write_deadline_events_index
 
 
 class FavoriteCalendarTests(unittest.TestCase):
@@ -84,6 +86,30 @@ class FavoriteCalendarTests(unittest.TestCase):
                 "ICLR 2027 Rebuttal Submission",
                 "ICLR 2027 Final Decisions",
             })
+
+    def test_email_index_reuses_calendar_instants_and_edition_ids(self):
+        conference = [{
+            "title": "ICLR", "description": "Conference", "sub": "AI",
+            "rank": {"ccf": "A"}, "dblp": "iclr",
+            "confs": [{
+                "year": 2027, "id": "iclr27", "link": "https://iclr.cc/",
+                "timeline": [{"deadline": "2026-10-05 09:00:00"}],
+                "timezone": "UTC+8", "date": "2027", "place": "Singapore",
+            }],
+        }]
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "conference.yml"
+            source.write_text(yaml.safe_dump(conference), encoding="utf-8")
+            calendar = Path(directory) / "deadlines_en.ics"
+            index = Path(directory) / "deadline_events.json"
+            convert_to_ical([str(source)], str(calendar), "en")
+            write_deadline_events_index(str(calendar), str(index))
+            events = json.loads(index.read_text(encoding="utf-8"))
+            self.assertEqual(len(events), 1)
+            self.assertEqual(events[0]["id"], "iclr27")
+            self.assertEqual(events[0]["conference"], "ICLR 2027")
+            self.assertEqual(events[0]["deadline_at"], "2026-10-05T01:00:00Z")
+            self.assertEqual(events[0]["title"], "ICLR 2027 Deadline")
 
 
 if __name__ == "__main__":
