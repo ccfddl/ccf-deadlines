@@ -25,6 +25,7 @@ struct CommitInfo {
 pub fn Header(
     use_english: RwSignal<bool>,
     show_favorites_timeline: RwSignal<bool>,
+    show_batch_subscription: RwSignal<bool>,
 ) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     let (show_latest_conf, set_show_latest_conf) = signal(false);
@@ -117,6 +118,15 @@ pub fn Header(
                                             }
                                         >
                                             {move || if use_english.get() { "My Favorites" } else { "我的收藏" }}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            on:click=move |_| {
+                                                close_account_menu();
+                                                show_batch_subscription.set(true);
+                                            }
+                                        >
+                                            {move || if use_english.get() { "Batch Subscribe" } else { "批量订阅" }}
                                         </button>
                                         <button
                                             type="button"

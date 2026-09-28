@@ -51,6 +51,9 @@ async function route(request, env) {
   if (request.method === "GET" && url.pathname === "/api/bootstrap") {
     return bootstrap(request, env);
   }
+  if (request.method === "GET" && url.pathname === "/api/calendar/favorites.ics") {
+    return favoritesCalendar(url, env);
+  }
   if (request.method === "GET" && url.pathname === "/api/messages") {
     return listMessages(request, env, url);
   }
@@ -262,6 +265,53 @@ async function bootstrap(request, env) {
     ),
     starred,
   });
+}
+
+async function favoritesCalendar(url, env) {
+  const ids = url.searchParams.getAll("id");
+  const lang = url.searchParams.get("lang") ?? "en";
+  if (ids.length === 0 || ids.length > 100 || !ids.every(isValidConferenceKey) || !["en", "zh"].includes(lang)) {
+    throw new HttpError(400, "Select 1 to 100 valid conference editions.");
+  }
+  const sourceUrl = `${env.PUBLIC_ORIGIN}/conference/deadlines_${lang}.ics`;
+  const source = await fetch(sourceUrl, { redirect: "manual" });
+  if (!source.ok || source.status >= 300) {
+    throw new HttpError(503, "Conference calendar is temporarily unavailable.");
+  }
+  const calendar = filterFavoritesCalendar(await source.text(), new Set(ids));
+  return new Response(calendar, {
+    headers: {
+      "Content-Type": "text/calendar; charset=utf-8",
+      "Content-Disposition": 'inline; filename="ccfddl-favorites.ics"',
+      "Cache-Control": "public, max-age=3600",
+    },
+  });
+}
+
+export function filterFavoritesCalendar(calendar, selectedIds) {
+  const lines = calendar.split(/\r?\n/);
+  if (lines[0] !== "BEGIN:VCALENDAR" || !lines.includes("END:VCALENDAR") || !calendar.includes("X-CCFDDL-ID:")) {
+    throw new HttpError(503, "Conference calendar is invalid.");
+  }
+  const filtered = [];
+  let event = null;
+  for (const line of lines) {
+    if (line === "BEGIN:VEVENT") {
+      event = [line];
+    } else if (event) {
+      event.push(line);
+      if (line === "END:VEVENT") {
+        if (event.some((item) => item.startsWith("X-CCFDDL-ID:") && selectedIds.has(item.slice(12)))) {
+          filtered.push(...event);
+        }
+        event = null;
+      }
+    } else {
+      filtered.push(line);
+    }
+  }
+  if (event) throw new HttpError(503, "Conference calendar is invalid.");
+  return filtered.join("\r\n");
 }
 
 async function mutateStar(request, env, url) {

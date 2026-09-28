@@ -99,7 +99,7 @@ def convert_to_ical(
                 place = conf["place"]
                 date = conf["date"]
 
-                for entry in timeline:
+                for round_index, entry in enumerate(timeline):
                     try:
                         get_timezone(timezone_str)
                     except ValueError:
@@ -176,7 +176,14 @@ def convert_to_ical(
 
                         # 创建事件对象
                         event = Event()
-                        event.add("uid", uuid.uuid4())
+                        event.add(
+                            "uid",
+                            uuid.uuid5(
+                                uuid.NAMESPACE_URL,
+                                f"ccfddl:{conf['id']}:{round_index}:{deadline_type[1]}",
+                            ),
+                        )
+                        event.add("X-CCFDDL-ID", conf["id"])
                         event.add("dtstamp", datetime.now(tz))
 
                         # 处理时间字段

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import worker, {
+  filterFavoritesCalendar,
   isValidConferenceKey,
   isFreshOAuthPayload,
   messageLikesCutoff,
@@ -11,6 +12,65 @@ import worker, {
   sanitizeReturnTo,
   utcDayStart,
 } from "../src/index.js";
+
+test("filters a live calendar to selected conference editions", () => {
+  const calendar = [
+    "BEGIN:VCALENDAR", "VERSION:2.0", "BEGIN:VTIMEZONE", "TZID:UTC+00:00", "END:VTIMEZONE",
+    "BEGIN:VEVENT", "UID:iclr", "X-CCFDDL-ID:iclr27", "SUMMARY:ICLR", "END:VEVENT",
+    "BEGIN:VEVENT", "UID:cvpr", "X-CCFDDL-ID:cvpr27", "SUMMARY:CVPR", "END:VEVENT",
+    "END:VCALENDAR", "",
+  ].join("\r\n");
+  const filtered = filterFavoritesCalendar(calendar, new Set(["cvpr27"]));
+  assert.match(filtered, /UID:cvpr/);
+  assert.doesNotMatch(filtered, /UID:iclr/);
+  assert.match(filtered, /TZID:UTC\+00:00/);
+});
+
+test("rejects a calendar from before edition markers were deployed", () => {
+  assert.throws(
+    () => filterFavoritesCalendar("BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n", new Set(["iclr27"])),
+    /Conference calendar is invalid/,
+  );
+});
+
+test("rejects invalid batch subscription selections before fetching the calendar", async () => {
+  for (const query of ["", "?id=../iclr27", "?id=iclr27&lang=invalid"]) {
+    const response = await worker.fetch(
+      new Request(`https://ccfddl.com/api/calendar/favorites.ics${query}`),
+      { PUBLIC_ORIGIN: "https://ccfddl.com" },
+    );
+    assert.equal(response.status, 400);
+  }
+});
+
+test("serves one public calendar feed for multiple selected editions", async () => {
+  const originalFetch = globalThis.fetch;
+  const source = [
+    "BEGIN:VCALENDAR", "VERSION:2.0",
+    "BEGIN:VEVENT", "UID:iclr", "X-CCFDDL-ID:iclr27", "END:VEVENT",
+    "BEGIN:VEVENT", "UID:cvpr", "X-CCFDDL-ID:cvpr27", "END:VEVENT",
+    "BEGIN:VEVENT", "UID:vldb", "X-CCFDDL-ID:vldb27", "END:VEVENT",
+    "END:VCALENDAR", "",
+  ].join("\r\n");
+  try {
+    globalThis.fetch = async (url) => {
+      assert.equal(url, "https://ccfddl.com/conference/deadlines_en.ics");
+      return new Response(source);
+    };
+    const response = await worker.fetch(
+      new Request("https://ccfddl.com/api/calendar/favorites.ics?lang=en&id=iclr27&id=cvpr27"),
+      { PUBLIC_ORIGIN: "https://ccfddl.com" },
+    );
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get("Content-Type"), /text\/calendar/);
+    const body = await response.text();
+    assert.match(body, /UID:iclr/);
+    assert.match(body, /UID:cvpr/);
+    assert.doesNotMatch(body, /UID:vldb/);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
 
 test("limits the most-liked view to messages from the last 30 days", () => {
   const now = 2_000_000_000;
