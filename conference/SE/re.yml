@@ -7,14 +7,23 @@
     thcpl: N
   dblp: re
   confs:
+    - year: 2021
+      id: re21
+      link: https://conf.researchr.org/home/RE-2021
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Regular research abstract due March 12, 2021; full submission due March 19, 2021; exact time not published
+      timezone: AoE
+      date: September 20-24, 2021
+      place: Online
     - year: 2022
       id: re22
       link: https://conf.researchr.org/home/RE-2022
       timeline:
-        - deadline: '2022-02-17 23:59:59'
-          comment: Abstract Submission Deadline
-        - deadline: '2022-02-24 23:59:59'
-          comment: Paper Submission Deadline
+        - abstract_deadline: '2022-02-17 23:59:59'
+          deadline: '2022-02-24 23:59:59'
+          comment: Regular research papers
       timezone: AoE
       date: August 15-19, 2022
       place: Melbourne, Australia
@@ -27,6 +36,26 @@
       timezone: AoE
       date: September 4-8, 2023
       place: Hannover, Germany
+    - year: 2024
+      id: re24
+      link: https://conf.researchr.org/home/RE-2024
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Regular research abstract due January 19, 2024; full submission due January 26, 2024; exact time not published
+      timezone: AoE
+      date: June 24-28, 2024
+      place: Reykjavik, Iceland
+    - year: 2025
+      id: re25
+      link: https://conf.researchr.org/home/RE-2025
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: Regular research abstract due March 3, 2025; full submission due March 10, 2025; exact time not published
+      timezone: AoE
+      date: September 1-5, 2025
+      place: Valencia, Spain
     - year: 2026
       id: re26
       link: https://conf.researchr.org/home/RE-2026

@@ -7,6 +7,51 @@
     thcpl: B
   dblp: sat
   confs:
+    - year: 2021
+      id: sat21
+      link: https://iiia.csic.es/sat2021/
+      timeline:
+        - abstract_deadline: '2021-03-15 23:59:59'
+          deadline: '2021-03-19 23:59:59'
+      timezone: AoE
+      date: July 7-9, 2021
+      place: Barcelona, Spain (hybrid)
+    - year: 2022
+      id: sat22
+      link: https://satisfiability.org/SAT22/
+      timeline:
+        - abstract_deadline: '2022-02-21 23:59:59'
+          deadline: '2022-02-28 23:59:59'
+      timezone: AoE
+      date: August 2-5, 2022
+      place: Haifa, Israel
+    - year: 2023
+      id: sat23
+      link: https://satisfiability.org/SAT23/
+      timeline:
+        - abstract_deadline: '2023-03-10 23:59:59'
+          deadline: '2023-03-17 23:59:59'
+      timezone: AoE
+      date: July 5-8, 2023
+      place: Alghero, Italy
+    - year: 2024
+      id: sat24
+      link: https://satisfiability.org/SAT24/
+      timeline:
+        - abstract_deadline: '2024-03-08 23:59:59'
+          deadline: '2024-03-17 23:59:59'
+      timezone: AoE
+      date: August 21-24, 2024
+      place: Pune, India
+    - year: 2025
+      id: sat25
+      link: https://satisfiability.org/SAT25/
+      timeline:
+        - abstract_deadline: '2025-03-24 23:59:00'
+          deadline: '2025-04-03 23:59:00'
+      timezone: AoE
+      date: August 12-15, 2025
+      place: Glasgow, Scotland
     - year: 2026
       id: sat26
       link: https://satisfiability.org/SAT26/

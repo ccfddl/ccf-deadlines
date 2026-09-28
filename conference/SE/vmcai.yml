@@ -7,6 +7,15 @@
     thcpl: B
   dblp: vmcai
   confs:
+    - year: 2021
+      id: vmcai21
+      link: https://popl21.sigplan.org/home/VMCAI-2021
+      timeline:
+        - deadline: TBD
+          comment: 'Regular research papers: extended October 11, 2020; exact clock unpublished'
+      timezone: AoE
+      date: January 17-19, 2021
+      place: Online
     - year: 2022
       id: vmcai22
       link: https://popl22.sigplan.org/home/VMCAI-2022
@@ -16,6 +25,33 @@
       timezone: AoE
       date: January 16-28, 2022
       place: Philadelphia, Pennsylvania, United States
+    - year: 2023
+      id: vmcai23
+      link: https://popl23.sigplan.org/home/VMCAI-2023
+      timeline:
+        - deadline: TBD
+          comment: 'Regular research papers: extended September 15, 2022; exact clock unpublished'
+      timezone: AoE
+      date: January 16-17, 2023
+      place: Boston, Massachusetts, USA
+    - year: 2024
+      id: vmcai24
+      link: https://popl24.sigplan.org/home/VMCAI-2024
+      timeline:
+        - deadline: TBD
+          comment: 'Regular research papers: extended September 7, 2023; exact clock unpublished'
+      timezone: AoE
+      date: January 15-16, 2024
+      place: London, United Kingdom
+    - year: 2025
+      id: vmcai25
+      link: https://conf.researchr.org/home/VMCAI-2025
+      timeline:
+        - deadline: TBD
+          comment: 'Regular research papers: extended October 1, 2024; exact clock unpublished'
+      timezone: AoE
+      date: January 20-21, 2025
+      place: Denver, Colorado, USA
     - year: 2026
       id: vmcai26
       link: https://conf.researchr.org/home/VMCAI-2026

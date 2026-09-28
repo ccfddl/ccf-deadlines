@@ -5,6 +5,54 @@
     ccf: B
   dblp: coco
   confs:
+    - year: 2021
+      id: ccc21
+      link: https://computationalcomplexity.org/Archive/2021/cfp.html
+      timeline:
+        - deadline: '2021-02-15 17:00:00'
+      timezone: UTC-8
+      date: July 20-22, 2021
+      place: Online
+    - year: 2022
+      id: ccc22
+      link: https://computationalcomplexity.org/Archive/2022/cfp.html
+      timeline:
+        - deadline: '2022-02-14 17:00:00'
+      timezone: UTC-8
+      date: July 20-23, 2022
+      place: Philadelphia, Pennsylvania, USA
+    - year: 2023
+      id: ccc23
+      link: https://computationalcomplexity.org/Archive/2023/cfp.html
+      timeline:
+        - deadline: '2023-02-10 23:59:00'
+      timezone: AoE
+      date: July 17-20, 2023
+      place: Warwick, UK
+    - year: 2024
+      id: ccc24
+      link: https://computationalcomplexity.org/Archive/2024/cfp.html
+      timeline:
+        - deadline: '2024-02-16 23:59:00'
+      timezone: AoE
+      date: July 22-25, 2024
+      place: Ann Arbor, Michigan, USA
+    - year: 2025
+      id: ccc25
+      link: https://computationalcomplexity.org/Archive/2025/cfp.html
+      timeline:
+        - deadline: '2025-02-07 23:59:00'
+      timezone: AoE
+      date: August 5-8, 2025
+      place: Toronto, Canada
+    - year: 2026
+      id: ccc26
+      link: https://computationalcomplexity.org/Archive/2026/cfp.html
+      timeline:
+        - deadline: '2026-02-06 23:59:00'
+      timezone: AoE
+      date: August 3-6, 2026
+      place: Lisbon, Portugal
     - year: 2027
       id: ccc27
       link: https://computationalcomplexity.org/

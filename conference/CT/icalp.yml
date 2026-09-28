@@ -7,6 +7,38 @@
     thcpl: A
   dblp: icalp
   confs:
+    - year: 2021
+      id: icalp21
+      link: https://easyconferences.eu/icalp2021/cfp/
+      timeline:
+        - deadline: '2021-02-12 23:59:00'
+      timezone: AoE
+      date: July 12-16, 2021
+      place: Online
+    - year: 2022
+      id: icalp22
+      link: https://icalp2022.irif.fr/
+      timeline:
+        - deadline: '2022-02-10 23:59:59'
+      timezone: AoE
+      date: July 5-8, 2022
+      place: Paris, France (hybrid)
+    - year: 2023
+      id: icalp23
+      link: https://icalp2023.cs.upb.de/
+      timeline:
+        - deadline: '2023-02-11 11:00:00'
+      timezone: UTC+1
+      date: July 11-14, 2023
+      place: Paderborn, Germany
+    - year: 2024
+      id: icalp24
+      link: https://compose.ioc.ee/icalp2024/
+      timeline:
+        - deadline: '2024-02-14 13:00:00'
+      timezone: UTC+1
+      date: July 8-12, 2024
+      place: Tallinn, Estonia
     - year: 2025
       id: icalp25
       link: https://conferences.au.dk/icalp2025

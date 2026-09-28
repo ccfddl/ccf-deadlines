@@ -11,8 +11,9 @@
       id: wisa2026
       link: https://conf.ccf.org.cn/WISA2026
       timeline:
-        - abstract_deadline: '2026-04-21 23:59:59'
-          deadline: '2026-04-28 23:59:59'
+        - abstract_deadline: '2026-05-18 23:59:59'
+          deadline: '2026-05-18 23:59:59'
+          comment: 'Regular papers; final abstract and paper cutoffs from the official submission-platform API'
       timezone: UTC+8
       date: August 07-09, 2026
       place: Kunming, China

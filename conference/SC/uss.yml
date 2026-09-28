@@ -7,6 +7,19 @@
     thcpl: A
   dblp: uss
   confs:
+    - year: 2021
+      id: uss21
+      link: https://www.usenix.org/conference/usenixsecurity21
+      timeline:
+        - deadline: '2020-06-18 23:59:00'
+          comment: Summer Deadline (Extended)
+        - deadline: '2020-10-15 23:59:00'
+          comment: Fall Deadline
+        - deadline: '2021-02-04 23:59:00'
+          comment: Winter Deadline
+      timezone: UTC-12
+      date: August 11 - 13, 2021
+      place: Virtual
     - year: 2022
       id: uss22
       link: https://www.usenix.org/conference/usenixsecurity22

@@ -1,0 +1,33 @@
+# Full papers only; invited contributions are not included.
+- title: TCC
+  accept_rates:
+    - year: 2021
+      submitted: 161
+      accepted: 66
+      str: 41.0%(66/161 21')
+      rate: 0.409937888198758
+      source: https://link.springer.com/book/10.1007/978-3-030-90459-3
+    - year: 2022
+      submitted: 139
+      accepted: 60
+      str: 43.2%(60/139 22')
+      rate: 0.431654676258993
+      source: https://link.springer.com/book/10.1007/978-3-031-22318-1
+    - year: 2023
+      submitted: 168
+      accepted: 68
+      str: 40.5%(68/168 23')
+      rate: 0.404761904761905
+      source: https://link.springer.com/book/10.1007/978-3-031-48615-9
+    - year: 2024
+      submitted: 172
+      accepted: 68
+      str: 39.5%(68/172 24')
+      rate: 0.395348837209302
+      source: https://link.springer.com/book/10.1007/978-3-031-78011-0
+    - year: 2025
+      submitted: 242
+      accepted: 70
+      str: 28.9%(70/242 25')
+      rate: 0.289256198347107
+      source: https://link.springer.com/book/10.1007/978-3-032-12287-2

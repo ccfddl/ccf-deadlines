@@ -16,12 +16,34 @@
       timezone: AoE
       date: June 28 - July 2, 2021
       place: Abu Dhabi, UAE
+    - year: 2022
+      id: wisec22
+      link: https://wisec2022.cs.utsa.edu/
+      timeline:
+        - deadline: '2022-02-12 23:59:00'
+          comment: Extended regular paper deadline
+      timezone: AoE
+      date: May 16 - 18, 2022
+      place: San Antonio, Texas, United States
+    - year: 2023
+      id: wisec23
+      link: https://wisec2023.surrey.ac.uk/
+      timeline:
+        - deadline: '2022-11-17 23:59:00'
+          comment: First submission round
+        - deadline: '2023-02-17 23:59:00'
+          comment: Second submission round
+      timezone: AoE
+      date: May 29 - 31, 2023
+      place: Guildford, United Kingdom
     - year: 2024
       id: wisec24
       link: https://wisec2024.kaist.ac.kr/
       timeline:
-        - deadline: '2024-02-08 23:59:59'
-          comment: Paper Submission Deadline
+        - deadline: TBD
+          comment: First round submission on November 9, 2023; exact time and timezone unverified
+        - deadline: '2024-02-12 23:59:59'
+          comment: Second round (Extended)
       timezone: AoE
       date: May 27 - 30, 2024
       place: Seoul, Korea
@@ -31,7 +53,7 @@
       timeline:
         - deadline: '2024-11-21 23:59:59'
           comment: First Cycle deadline
-        - deadline: '2025-03-12 23:59:59'
+        - deadline: '2025-03-16 23:59:59'
           comment: Second Cycle deadline
       timezone: AoE
       date: June 30 - July 3, 2025

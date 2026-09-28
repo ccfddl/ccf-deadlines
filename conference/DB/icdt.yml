@@ -11,11 +11,41 @@
       id: icdt22
       link: https://conferences.inf.ed.ac.uk/edbticdt2022/
       timeline:
-        - abstract_deadline: '2021-09-06 23:59:59'
-          deadline: '2021-09-13 23:59:59'
+        - abstract_deadline: '2021-04-03 23:59:00'
+          deadline: '2021-04-10 23:59:00'
+          comment: Regular papers, cycle 1.
+        - abstract_deadline: '2021-09-13 23:59:59'
+          deadline: '2021-09-20 23:59:59'
+          comment: Regular papers, cycle 2; extended deadline.
       timezone: AoE
       date: Mar 29-April 01, 2022
       place: Edinburgh, UK
+    - year: 2023
+      id: icdt23
+      link: http://edbticdt2023.cs.uoi.gr/
+      timeline:
+        - abstract_deadline: '2022-03-14 23:59:59'
+          deadline: '2022-03-21 23:59:59'
+          comment: Regular papers, cycle 1.
+        - abstract_deadline: '2022-09-14 23:59:59'
+          deadline: '2022-09-21 23:59:59'
+          comment: Regular papers, cycle 2.
+      timezone: AoE
+      date: March 28-31, 2023
+      place: Ioannina, Greece (Hybrid)
+    - year: 2024
+      id: icdt24
+      link: https://dastlab.github.io/edbticdt2024/
+      timeline:
+        - abstract_deadline: '2023-03-20 23:59:59'
+          deadline: '2023-03-27 23:59:59'
+          comment: Regular papers, cycle 1.
+        - abstract_deadline: '2023-09-13 23:59:59'
+          deadline: '2023-09-20 23:59:59'
+          comment: Regular papers, cycle 2.
+      timezone: AoE
+      date: March 25-28, 2024
+      place: Paestum, Italy
     - year: 2025
       id: icdt25
       link: https://edbticdt2025.upc.edu/

@@ -3,6 +3,8 @@ use crate::components::conf::ConfItem;
 use crate::components::conf::*;
 use crate::components::countdown::{CountDown, urgency_class_for, use_interval};
 use crate::components::favorites::FavoritesContext;
+use crate::components::favorites_timeline::FavoritesTimelineModal;
+use crate::components::message_wall::MessageWallModal;
 use crate::components::subscription_modal::*;
 use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
@@ -10,6 +12,7 @@ use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate, Utc};
 use leptos::prelude::*;
 use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde_json;
+use std::cmp::Reverse;
 use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
 use thaw::*;
@@ -19,7 +22,10 @@ use wasm_bindgen_futures::spawn_local;
 use web_sys::{console, window};
 
 #[component]
-pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
+pub fn ShowTable(
+    use_english: RwSignal<bool>,
+    show_favorites_timeline: RwSignal<bool>,
+) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     // mobile
     let is_mobile = RwSignal::new(is_narrow_viewport());
@@ -78,12 +84,19 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
     let like_list = favorites.starred;
 
     let show_subscription_modal = RwSignal::new(false);
+    let show_message_wall = RwSignal::new(false);
     let show_conf_detail = RwSignal::new(false);
     let selected_conf = RwSignal::new(None::<ConfItem>);
     let is_list_view = RwSignal::new(
         get_from_local_storage("conference_view")
             .as_deref()
             .map(|view| view == "list")
+            .unwrap_or(false),
+    );
+    let sort_by_stars = RwSignal::new(
+        get_from_local_storage("sort_by_stars")
+            .as_deref()
+            .and_then(|value| value.parse::<bool>().ok())
             .unwrap_or(false),
     );
 
@@ -95,8 +108,15 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
 
     // table
     let raw_conferences = RwSignal::new(Vec::<Conference>::new());
+    let conference_load_attempt = RwSignal::new(0u32);
+    let conferences_loading = RwSignal::new(true);
+    let conference_load_failed = RwSignal::new(false);
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
     let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
+    let acceptance_buckets_loaded = RwSignal::new(HashSet::<u32>::new());
+    let acceptance_buckets_pending = RwSignal::new(HashSet::<u32>::new());
+    let archive_path = RwSignal::new(None::<String>);
+    let archive_requested = RwSignal::new(false);
     let base_time = RwSignal::new(None::<DateTime<Utc>>);
     let base_time_input = RwSignal::new(String::new());
     let base_time_editing = RwSignal::new(false);
@@ -126,6 +146,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         let _ = core_rank_list.get();
         let _ = thcpl_rank_list.get();
         let _ = show_past.get();
+        let _ = sort_by_stars.get();
 
         if is_filter_change.get_untracked() {
             page.set(1);
@@ -173,34 +194,117 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         );
     });
 
+    Effect::new(move |_| {
+        set_in_local_storage("sort_by_stars", &sort_by_stars.get().to_string());
+    });
+
     Effect::new(move || {
+        let _ = conference_load_attempt.get();
+        conferences_loading.set(true);
+        conference_load_failed.set(false);
         spawn_local(async move {
             let Some(base_url) = browser_origin() else {
+                conference_load_failed.set(true);
+                conferences_loading.set(false);
                 return;
             };
-            match fetch_all_conf(&base_url).await {
-                Ok(conferences) => {
-                    raw_conferences.set(conferences);
+            match fetch_initial_conf(&base_url).await {
+                Ok(data) => {
+                    raw_conferences.set(data.conferences);
+                    archive_path.set(data.archive);
                 }
                 Err(error) => {
                     console::error_1(&format!("Error: {error:?}").into());
+                    conference_load_failed.set(true);
                 }
             }
+            conferences_loading.set(false);
         });
+    });
 
+    Effect::new(move |_| {
+        let path = archive_path.get();
+        let needs_history = show_past.get()
+            || base_time.get().is_some()
+            || raw_conferences.with(|conferences| {
+                like_list.with(|likes| {
+                    likes.iter().any(|id| {
+                        !conferences.iter().any(|conference| {
+                            conference.confs.iter().any(|edition| &edition.id == id)
+                        })
+                    })
+                })
+            });
+        let Some(path) = path else {
+            return;
+        };
+        if !needs_history || archive_requested.get_untracked() {
+            return;
+        }
+        archive_requested.set(true);
         spawn_local(async move {
             let Some(base_url) = browser_origin() else {
                 return;
             };
-            match fetch_all_acc(&base_url).await {
+            match fetch_archive_conf(&base_url, &path).await {
+                Ok(conferences) => {
+                    raw_conferences.update(|current| merge_conferences(current, conferences));
+                    archive_path.set(None);
+                }
+                Err(error) => {
+                    archive_requested.set(false);
+                    console::error_1(
+                        &format!("Error loading conference history: {error:?}").into(),
+                    );
+                }
+            }
+        });
+    });
+
+    Effect::new(move |_| {
+        if !show_conf_detail.get() {
+            return;
+        }
+        let Some(conference) = selected_conf.get() else {
+            return;
+        };
+        let bucket = acceptance_bucket(&conference.title);
+        if acceptance_buckets_loaded.with_untracked(|loaded| loaded.contains(&bucket))
+            || acceptance_buckets_pending.with_untracked(|pending| pending.contains(&bucket))
+        {
+            return;
+        }
+        acceptance_buckets_pending.update(|pending| {
+            pending.insert(bucket);
+        });
+        spawn_local(async move {
+            let Some(base_url) = browser_origin() else {
+                acceptance_buckets_pending.update(|pending| {
+                    pending.remove(&bucket);
+                });
+                return;
+            };
+            match fetch_conference_acc(&base_url, &conference.title).await {
                 Ok(all_acc) => {
-                    let rates = build_acceptance_rate_map(all_acc);
-                    acceptance_rates.set(rates);
+                    acceptance_rates
+                        .update(|rates| rates.extend(build_acceptance_rate_map(all_acc)));
+                    let rates = acceptance_rates.get_untracked();
+                    acceptance_buckets_loaded.update(|loaded| {
+                        loaded.insert(bucket);
+                    });
+                    selected_conf.update(|selected| {
+                        if let Some(item) = selected {
+                            apply_acceptance_rate(item, &rates);
+                        }
+                    });
                 }
                 Err(error) => {
                     console::error_1(&format!("Error loading acceptance rates: {error:?}").into());
                 }
             }
+            acceptance_buckets_pending.update(|pending| {
+                pending.remove(&bucket);
+            });
         });
     });
 
@@ -217,7 +321,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
         let items = build_conf_items(
             conferences,
             &sub_list.get_untracked(),
-            &like_list.get(),
+            &like_list.get_untracked(),
             &acceptance_rates.get(),
             &selected_timezone.get(),
             base_time.get().unwrap_or_else(Utc::now),
@@ -227,6 +331,20 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             selected_conf.set(items.iter().find(|item| item.id == selected_id).cloned());
         }
         all_conf_list.set(items);
+    });
+
+    Effect::new(move |_| {
+        let likes = like_list.get();
+        all_conf_list.update(|items| {
+            for item in items {
+                item.is_like = likes.contains(&item.id);
+            }
+        });
+        selected_conf.update(|selected| {
+            if let Some(item) = selected {
+                item.is_like = likes.contains(&item.id);
+            }
+        });
     });
 
     let paginated_list = Memo::new(move |_| {
@@ -295,12 +413,18 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
             all_list.extend(run_list);
             all_list.extend(tbd_list);
             all_list.extend(fin_list);
-
-            let (liked_list, unliked_list): (Vec<_>, Vec<_>) =
-                all_list.into_iter().partition(|conf| conf.is_like);
-
-            let mut final_list = liked_list;
-            final_list.extend(unliked_list);
+            if sort_by_stars.get() {
+                let counts = favorites.counts.get();
+                all_list.sort_by_key(|conf| {
+                    star_count_sort_key(
+                        &conf.status,
+                        counts.get(&conf.id).copied().unwrap_or_default(),
+                    )
+                });
+            } else {
+                all_list.sort_by_key(|conf| favorite_sort_group(&conf.status, conf.is_like));
+            }
+            let final_list = all_list;
 
             // Pagination
             let total_count = final_list.len();
@@ -479,9 +603,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                         />
                     </div>
                     <div class="toolbar-timezone">
-                        <span>
-                            {move || if use_english.get() { "Deadlines are shown in" } else { "截止时间按" }}
-                        </span>
+                        <span>{move || if use_english.get() { "(" } else { "（" }}</span>
                         <div class="toolbar-timezone-picker">
                             <button
                                 type="button"
@@ -538,7 +660,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                 </div>
                             </Show>
                         </div>
-                        <span>{move || if use_english.get() { "time" } else { "时区显示" }}</span>
+                        <span>{move || if use_english.get() { " time)" } else { " 时间）" }}</span>
                     </div>
                     <div class="toolbar-search">
                         <Input
@@ -557,20 +679,33 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                 </div>
 
                 <div class="toolbar-actions">
+                    <span class="star-sort-control" class:is-active=move || sort_by_stars.get()>
+                        <Button
+                            class="star-sort-toggle"
+                            size=ButtonSize::Small
+                            appearance=ButtonAppearance::Subtle
+                            on_click=move |_| sort_by_stars.update(|value| *value = !*value)
+                            attr:aria-pressed=move || sort_by_stars.get().to_string()
+                            attr:title=move || if use_english.get() {
+                                "Sort by star count, highest first"
+                            } else {
+                                "按收藏星数从高到低排序"
+                            }
+                        >
+                            <Icon icon=icondata::BsStarFill style="margin-right: 4px;" />
+                            {move || if use_english.get() { "Most starred" } else { "最多收藏" }}
+                        </Button>
+                    </span>
                     <Button
                         class="view-mode-toggle"
                         size=ButtonSize::Small
                         appearance=ButtonAppearance::Subtle
                         on_click=move |_| is_list_view.update(|value| *value = !*value)
                         attr:title=move || {
-                            if is_list_view.get() {
-                                if use_english.get() {
-                                    "switch UI 2.0"
-                                } else {
-                                    "切换新版UI"
-                                }
-                            } else if use_english.get() {
-                                "switch UI 1.0"
+                            if use_english.get() {
+                                "switch UI"
+                            } else if is_list_view.get() {
+                                "切换新版UI"
                             } else {
                                 "切换旧版UI"
                             }
@@ -586,14 +721,22 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                             }
                         }}
                         {move || {
-                            if is_list_view.get() {
-                                if use_english.get() { "switch UI 2.0" } else { "切换新版UI" }
-                            } else if use_english.get() {
-                                "switch UI 1.0"
+                            if use_english.get() {
+                                "switch UI"
+                            } else if is_list_view.get() {
+                                "切换新版UI"
                             } else {
                                 "切换旧版UI"
                             }
                         }}
+                    </Button>
+                    <Button
+                        size=ButtonSize::Small
+                        appearance=ButtonAppearance::Subtle
+                        on_click=move |_| show_message_wall.set(true)
+                    >
+                        <Icon icon=icondata::BsChatDots style="margin-right: 4px;" />
+                        {move || if use_english.get() { "Wall" } else { "吹水墙" }}
                     </Button>
                     <Button
                         size=ButtonSize::Small
@@ -708,6 +851,16 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                 rank_list=rank_list
                 core_rank_list=core_rank_list
                 thcpl_rank_list=thcpl_rank_list
+            />
+
+            <MessageWallModal show=show_message_wall use_english=use_english />
+
+            <FavoritesTimelineModal
+                show=show_favorites_timeline
+                use_english=use_english
+                conferences=all_conf_list
+                reference_time=base_time
+                display_timezone=time_zone
             />
 
             <Dialog open=show_conf_detail>
@@ -1083,12 +1236,33 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                         <TableCell>
                                             <div class="no-data-message">
                                                 {move || {
-                                                    if use_english.get() {
+                                                    if conferences_loading.get() {
+                                                        if use_english.get() {
+                                                            "Loading conference deadlines..."
+                                                        } else {
+                                                            "正在加载会议截止日期…"
+                                                        }
+                                                    } else if conference_load_failed.get() {
+                                                        if use_english.get() {
+                                                            "Unable to load conference deadlines. Please retry."
+                                                        } else {
+                                                            "会议数据加载失败，请重试。"
+                                                        }
+                                                    } else if use_english.get() {
                                                         "No data available."
                                                     } else {
                                                         "暂无数据"
                                                     }
                                                 }}
+                                                <Show when=move || conference_load_failed.get()>
+                                                    <button
+                                                        type="button"
+                                                        class="conference-load-retry"
+                                                        on:click=move |_| conference_load_attempt.update(|attempt| *attempt += 1)
+                                                    >
+                                                        {move || if use_english.get() { "Retry" } else { "重试" }}
+                                                    </button>
+                                                </Show>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -1185,6 +1359,7 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                     {
                                                                         let conference_key = conf.id.clone();
                                                                         let pending_key = conference_key.clone();
+                                                                        let count_key = conference_key.clone();
                                                                         let is_liked = conf.is_like;
                                                                         let label = move || {
                                                                             let english = use_english.get();
@@ -1224,6 +1399,9 @@ pub fn ShowTable(use_english: RwSignal<bool>) -> impl IntoView {
                                                                                 } else {
                                                                                     icondata::BsStar
                                                                                 } />
+                                                                                <span class="conference-like-count">
+                                                                                    {move || favorites.count(&count_key)}
+                                                                                </span>
                                                                             </button>
                                                                         }
                                                                     }
@@ -1841,6 +2019,18 @@ fn build_conf_items(
     }
 
     items
+}
+
+fn favorite_sort_group(status: &str, is_like: bool) -> u8 {
+    match (status == "FIN", is_like) {
+        (false, true) => 0,
+        (false, false) => 1,
+        (true, _) => 2,
+    }
+}
+
+fn star_count_sort_key(status: &str, count: u64) -> (bool, Reverse<u64>) {
+    (status == "FIN", Reverse(count))
 }
 
 fn estimate_deadlines(conference: &Conference, edition: &ConferenceYear) -> Vec<EstimatedDeadline> {
@@ -2499,6 +2689,22 @@ mod historical_deadline_tests {
                 assert!(!unknown.estimated_deadlines.is_empty());
             }
         }
+    }
+
+    #[test]
+    fn favorites_only_receive_priority_before_the_conference_ends() {
+        assert_eq!(favorite_sort_group("RUN", true), 0);
+        assert_eq!(favorite_sort_group("TBD", true), 0);
+        assert_eq!(favorite_sort_group("RUN", false), 1);
+        assert_eq!(favorite_sort_group("FIN", true), 2);
+        assert_eq!(favorite_sort_group("FIN", false), 2);
+    }
+
+    #[test]
+    fn star_count_sort_keeps_active_conferences_before_finished_ones() {
+        assert!(star_count_sort_key("RUN", 2) < star_count_sort_key("RUN", 1));
+        assert!(star_count_sort_key("TBD", 0) < star_count_sort_key("FIN", 100));
+        assert_eq!(star_count_sort_key("FIN", 5), star_count_sort_key("FIN", 5));
     }
 }
 

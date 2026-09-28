@@ -1,8 +1,39 @@
+# Full-paper counts and submission totals as reported by the official proceedings descriptions.
 - title: EUROCRYPT
   accept_rates:
+    - year: 2021
+      submitted: 400
+      accepted: 78
+      str: 19.5%(78/400 21')
+      rate: 0.195000000000000
+      source: https://link.springer.com/book/10.1007/978-3-030-77870-5
     - year: 2022
       submitted: 372
       accepted: 85
       str: 22.8%(85/372 22')
       rate: 0.228494623655914
-      source: https://github.com/emeryberger/csconferences
+      source: https://link.springer.com/book/10.1007/978-3-031-06944-4
+    - year: 2023
+      submitted: 415
+      accepted: 109
+      str: 26.3%(109/415 23')
+      rate: 0.262650602409639
+      source: https://link.springer.com/book/10.1007/978-3-031-30545-0
+    - year: 2024
+      submitted: 500
+      accepted: 105
+      str: 21.0%(105/500 24')
+      rate: 0.210000000000000
+      source: https://link.springer.com/book/10.1007/978-3-031-58716-0
+    - year: 2025
+      submitted: 602
+      accepted: 123
+      str: 20.4%(123/602 25')
+      rate: 0.204318936877076
+      source: https://link.springer.com/book/10.1007/978-3-031-91107-1
+    - year: 2026
+      submitted: 675
+      accepted: 142
+      str: 21.0%(142/675 26')
+      rate: 0.210370370370370
+      source: https://link.springer.com/book/10.1007/978-3-032-25291-3

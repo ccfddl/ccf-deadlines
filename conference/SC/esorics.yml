@@ -22,13 +22,26 @@
       timezone: AoE
       date: September 26-30, 2022
       place: Copenhagen, Denmark
+    - year: 2023
+      id: esorics23
+      link: https://esorics2023.org/
+      timeline:
+        - deadline: '2023-01-22 23:59:00'
+          comment: Cycle 1 regular paper submission deadline
+        - deadline: '2023-06-04 23:59:00'
+          comment: Cycle 2 regular paper submission deadline (extended)
+      timezone: AoE
+      date: September 25-27, 2023
+      place: The Hague, The Netherlands
     - year: 2024
       id: esorics24
       link: https://esorics2024.org/
       timeline:
-        - deadline: '2024-01-08 23:59:59'
+        - abstract_deadline: '2024-01-08 23:59:00'
+          deadline: '2024-01-08 23:59:00'
           comment: First Submission deadline
-        - deadline: '2024-04-19 23:59:59'
+        - abstract_deadline: '2024-04-19 23:59:00'
+          deadline: '2024-04-19 23:59:00'
           comment: Second Submission deadline
       timezone: AoE
       date: September 16-20, 2024

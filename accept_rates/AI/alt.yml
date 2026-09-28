@@ -1,0 +1,32 @@
+- title: ALT
+  accept_rates:
+    - year: 2021
+      submitted: 157
+      accepted: 46
+      str: 29.3%(46/157 21')
+      rate: 0.2929936305732484
+      source: https://proceedings.mlr.press/v132/feldman21a/feldman21a.pdf
+    - year: 2022
+      submitted: 115
+      accepted: 42
+      str: 36.5%(42/115 22')
+      rate: 0.3652173913043478
+      source: https://proceedings.mlr.press/v167/dasgupta22a/dasgupta22a.pdf
+    - year: 2023
+      submitted: 133
+      accepted: 48
+      str: 36.1%(48/133 23')
+      rate: 0.3609022556390977
+      source: https://proceedings.mlr.press/v201/agrawal23a/agrawal23a.pdf
+    - year: 2024
+      submitted: 124
+      accepted: 44
+      str: 35.5%(44/124 24')
+      rate: 0.3548387096774194
+      source: https://proceedings.mlr.press/v237/vernade24a/vernade24a.pdf
+    - year: 2025
+      submitted: 144
+      accepted: 51
+      str: 35.4%(51/144 25')
+      rate: 0.3541666666666667
+      source: https://raw.githubusercontent.com/mlresearch/v272/main/assets/kamath25a/kamath25a.pdf

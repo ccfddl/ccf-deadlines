@@ -1,8 +1,33 @@
+# Full papers only; short papers, posters, and co-located workshops are excluded.
 - title: ESORICS
   accept_rates:
+    - year: 2021
+      submitted: 351
+      accepted: 71
+      str: 20.2%(71/351 21')
+      rate: 0.202279202279202
+      source: https://link.springer.com/book/10.1007/978-3-030-88418-5
+    - year: 2022
+      submitted: 562
+      accepted: 104
+      str: 18.5%(104/562 22')
+      rate: 0.185053380782918
+      source: https://link.springer.com/book/10.1007/978-3-031-17140-6
+    - year: 2023
+      submitted: 478
+      accepted: 93
+      str: 19.5%(93/478 23')
+      rate: 0.194560669456067
+      source: https://link.springer.com/book/10.1007/978-3-031-50594-2
     - year: 2024
       submitted: 535
       accepted: 86
       str: 16.1%(86/535 24')
-      rate: 0.1607476635514019
-      source: https://esorics2024.org/accepted_papers-en
+      rate: 0.160747663551402
+      source: https://link.springer.com/book/10.1007/978-3-031-70879-4
+    - year: 2025
+      submitted: 600
+      accepted: 100
+      str: 16.7%(100/600 25')
+      rate: 0.166666666666667
+      source: https://link.springer.com/book/10.1007/978-3-032-07884-1

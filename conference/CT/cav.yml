@@ -7,6 +7,14 @@
     thcpl: A
   dblp: cav
   confs:
+    - year: 2021
+      id: cav21
+      link: https://ucl-pplv.github.io/CAV21/
+      timeline:
+        - deadline: '2021-01-28 23:59:59'
+      timezone: AoE
+      date: July 20-23, 2021
+      place: Online
     - year: 2022
       id: cav22
       link: http://i-cav.org/2022/

@@ -7,21 +7,53 @@
     thcpl: A
   dblp: visualization
   confs:
+    - year: 2021
+      id: vis21
+      link: https://ieeevis.org/year/2021/welcome
+      timeline:
+        - abstract_deadline: '2021-03-21 17:00:00'
+          deadline: '2021-03-31 17:00:00'
+          comment: Regular full papers; mandatory abstract and initial submission
+      timezone: UTC-7
+      date: October 24-29, 2021
+      place: Online
+    - year: 2022
+      id: vis22
+      link: https://ieeevis.org/year/2022/welcome
+      timeline:
+        - abstract_deadline: '2022-03-21 17:00:00'
+          deadline: '2022-03-31 17:00:00'
+          comment: Regular full papers; mandatory abstract and initial submission
+      timezone: UTC-7
+      date: October 16-21, 2022
+      place: Oklahoma City, USA
     - year: 2023
       id: vis23
       link: https://ieeevis.org/year/2023/welcome
       timeline:
         - abstract_deadline: '2023-03-21 23:59:59'
           deadline: '2023-03-31 23:59:59'
+          comment: Regular full papers; mandatory abstract and initial submission
       timezone: AoE
       date: October 22-27, 2023
       place: Melbourne, Australia
+    - year: 2024
+      id: vis24
+      link: https://ieeevis.org/year/2024/welcome
+      timeline:
+        - abstract_deadline: '2024-03-21 23:59:00'
+          deadline: '2024-03-31 23:59:00'
+          comment: Regular full papers; mandatory abstract and initial submission
+      timezone: AoE
+      date: October 13-18, 2024
+      place: Online
     - year: 2025
       id: vis25
       link: https://ieeevis.org/year/2025/welcome
       timeline:
         - abstract_deadline: '2025-03-21 23:59:59'
           deadline: '2025-03-31 23:59:59'
+          comment: Regular full papers; mandatory abstract and initial submission
       timezone: AoE
       date: November 2-7, 2025
       place: Vienna, Austria
@@ -31,6 +63,7 @@
       timeline:
         - abstract_deadline: '2026-03-21 23:59:59'
           deadline: '2026-03-31 23:59:59'
+          comment: Regular full papers; mandatory abstract and initial submission
       timezone: AoE
       date: November 9-13, 2026
       place: Boston, Massachusetts, USA

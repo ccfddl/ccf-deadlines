@@ -2,16 +2,18 @@ name: MergeCheck
 on:
   pull_request:
     branches: [main]
+permissions:
+  contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v4
       - name: Setup Node.js environment
-        uses: actions/setup-node@main
+        uses: actions/setup-node@v4
         with:
-          node-version: '15.x'
+          node-version: '24'
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -22,6 +24,10 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Assemble yml files
         run: python scripts/build_data.py
+      - name: Test data loading and database limits
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Test Worker security
+        run: node --test worker/test/*.test.js scripts/test_startup.mjs
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly

@@ -1,3 +1,4 @@
+# Research papers only; the separately reviewed Open Problems track is excluded.
 - title: COLT
   accept_rates:
     - year: 2020
@@ -6,9 +7,34 @@
       str: 30.9%(120/388 20')
       rate: 0.309278350515464
       source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2021
+      submitted: 387
+      accepted: 136
+      str: 35.1%(136/387 21')
+      rate: 0.351421188630491
+      source: https://proceedings.mlr.press/v134/belkin21a/belkin21a.pdf
+    - year: 2022
+      submitted: 470
+      accepted: 155
+      str: 33.0%(155/470 22')
+      rate: 0.329787234042553
+      source: https://proceedings.mlr.press/v178/preface-loh22a/preface-loh22a.pdf
+    - year: 2023
+      submitted: 474
+      accepted: 164
+      str: 34.6%(164/474 23')
+      rate: 0.345991561181435
+      source: https://proceedings.mlr.press/v195/neu23a/neu23a.pdf
     - year: 2024
       submitted: 448
       accepted: 160
       str: 35.7%(160/448 24')
-      rate: 0.3571429
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.357142857142857
+      source: https://proceedings.mlr.press/v247/agrawal24a/agrawal24a.pdf
+    # Main research papers; five open problems (three invited) are separately reported.
+    - year: 2026
+      submitted: 657
+      accepted: 191
+      str: 29.1%(191/657 26')
+      rate: 0.2907153729071537
+      source: https://raw.githubusercontent.com/mlresearch/v336/main/assets/hanneke26a/hanneke26a.pdf

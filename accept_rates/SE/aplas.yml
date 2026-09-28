@@ -1,0 +1,33 @@
+# Selected conference papers only; invited contributions and corrigenda are excluded.
+- title: APLAS
+  accept_rates:
+    - year: 2021
+      submitted: 43
+      accepted: 17
+      str: 39.5%(17/43 21')
+      rate: 0.395348837209302
+      source: https://link.springer.com/book/10.1007/978-3-030-89051-3
+    - year: 2022
+      submitted: 22
+      accepted: 10
+      str: 45.5%(10/22 22')
+      rate: 0.454545454545455
+      source: https://link.springer.com/book/10.1007/978-3-031-21037-2
+    - year: 2023
+      submitted: 32
+      accepted: 15
+      str: 46.9%(15/32 23')
+      rate: 0.468750000000000
+      source: https://link.springer.com/book/10.1007/978-981-99-8311-7
+    - year: 2024
+      submitted: 37
+      accepted: 18
+      str: 48.6%(18/37 24')
+      rate: 0.486486486486487
+      source: https://link.springer.com/book/10.1007/978-981-97-8943-6
+    - year: 2025
+      submitted: 28
+      accepted: 13
+      str: 46.4%(13/28 25')
+      rate: 0.464285714285714
+      source: https://link.springer.com/book/10.1007/978-981-95-3585-9

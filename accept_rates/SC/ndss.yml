@@ -6,3 +6,9 @@
       str: 16.2%(83/513 22')
       rate: 0.161793372319688
       source: https://github.com/emeryberger/csconferences
+    - year: 2024
+      submitted: 694
+      accepted: 140
+      str: 20.2%(140/694 24')
+      rate: 0.201729106628242
+      source: https://www.ndss-symposium.org/ndss-2024/ndss-2024-largest-ndss-signals-continued-importance-of-distributed-systems-security/

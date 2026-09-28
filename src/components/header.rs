@@ -19,7 +19,10 @@ struct CommitInfo {
 }
 
 #[component]
-pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
+pub fn Header(
+    use_english: RwSignal<bool>,
+    show_favorites_timeline: RwSignal<bool>,
+) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     let (show_latest_conf, set_show_latest_conf) = signal(false);
     let (show_str, set_show_str) = signal(String::new());
@@ -70,7 +73,15 @@ pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
                 }}
                 <div class="header-auth">
                     {move || {
-                        if let Some(user) = favorites.user.get() {
+                        if !favorites.loaded.get() {
+                            view! {
+                                <button type="button" class="github-login-button github-login-button--checking" disabled aria-busy="true">
+                                    <Icon icon=icondata::BsGithub />
+                                    <span>{move || if use_english.get() { "Signing in with GitHub..." } else { "GitHub登陆中" }}</span>
+                                </button>
+                            }
+                                .into_any()
+                        } else if let Some(user) = favorites.user.get() {
                             view! {
                                 <a
                                     class="github-user-link"
@@ -88,10 +99,36 @@ pub fn Header(use_english: RwSignal<bool>) -> impl IntoView {
                                 </a>
                                 <button
                                     type="button"
+                                    class="github-favorites-button"
+                                    on:click=move |_| show_favorites_timeline.set(true)
+                                >
+                                    {move || if use_english.get() {
+                                        "My Favorites"
+                                    } else {
+                                        "我的收藏"
+                                    }}
+                                </button>
+                                <button
+                                    type="button"
                                     class="github-logout-button"
                                     on:click=move |_| favorites.logout()
                                 >
                                     {move || if use_english.get() { "Sign out" } else { "退出" }}
+                                </button>
+                            }
+                                .into_any()
+                        } else if favorites.error.get().is_some() {
+                            view! {
+                                <button
+                                    type="button"
+                                    class="github-auth-retry"
+                                    on:click=move |_| favorites.load()
+                                >
+                                    {move || if use_english.get() {
+                                        "Sign-in check failed · Retry"
+                                    } else {
+                                        "登录状态检查失败 · 重试"
+                                    }}
                                 </button>
                             }
                                 .into_any()

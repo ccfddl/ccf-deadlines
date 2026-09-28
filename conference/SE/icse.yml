@@ -7,6 +7,15 @@
     thcpl: A
   dblp: icse
   confs:
+    - year: 2021
+      id: icse21
+      link: https://conf.researchr.org/home/icse-2021
+      timeline:
+        - deadline: TBD
+          comment: 'Technical papers: August 28, 2020, AoE; exact clock unverified'
+      timezone: AoE
+      date: May 25-28, 2021
+      place: Virtual
     - year: 2022
       id: icse22
       link: https://conf.researchr.org/home/icse-2022
@@ -57,7 +66,7 @@
           comment: 'First Cycle: Submission'
         - abstract_deadline: '2025-07-11 23:59:59'
           deadline: '2025-07-18 23:59:59'
-          comment: 'Second Cycle: Submission'
+          comment: 'Second Cycle: Submission; optional abstract registration'
       timezone: AoE
       date: April 12-18, 2026
       place: Rio De Janeiro, Brazil

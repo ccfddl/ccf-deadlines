@@ -1,0 +1,44 @@
+- title: SOCG
+  accept_rates:
+    # Original chairs preface PDF page 11; research papers only.
+    - year: 2021
+      submitted: 164
+      accepted: 58
+      str: 35.4%(58/164 21')
+      rate: 0.35365853658536583
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol189-socg2021/LIPIcs.SoCG.2021.0/LIPIcs.SoCG.2021.0.pdf
+    # Original chairs preface PDF page 11; research papers only.
+    - year: 2022
+      submitted: 174
+      accepted: 64
+      str: 36.8%(64/174 22')
+      rate: 0.367816091954023
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol224-socg2022/LIPIcs.SoCG.2022.0/LIPIcs.SoCG.2022.0.pdf
+    # Original chairs preface PDF page 11; research papers only.
+    - year: 2023
+      submitted: 175
+      accepted: 61
+      str: 34.9%(61/175 23')
+      rate: 0.3485714285714286
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol258-socg2023/LIPIcs.SoCG.2023.0/LIPIcs.SoCG.2023.0.pdf
+    # Original chairs preface PDF page 11; research papers only. 82 accepted papers; two submissions merged into one presentation paper.
+    - year: 2024
+      submitted: 235
+      accepted: 82
+      str: 34.9%(82/235 24')
+      rate: 0.34893617021276596
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol293-socg2024/LIPIcs.SoCG.2024.0/LIPIcs.SoCG.2024.0.pdf
+    # Original chairs preface PDF page 11; research papers only.
+    - year: 2025
+      submitted: 225
+      accepted: 78
+      str: 34.7%(78/225 25')
+      rate: 0.3466666666666667
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol332-socg2025/LIPIcs.SoCG.2025.0/LIPIcs.SoCG.2025.0.pdf
+    # Original chairs preface PDF page 13; research papers only. Theory, Practice and in-between; all 272 received including one later withdrawn.
+    - year: 2026
+      submitted: 272
+      accepted: 95
+      str: 34.9%(95/272 26')
+      rate: 0.3492647058823529
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol367-socg2026/LIPIcs.SoCG.2026.0/LIPIcs.SoCG.2026.0.pdf

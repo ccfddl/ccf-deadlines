@@ -7,6 +7,15 @@
     thcpl: B
   dblp: etaps
   confs:
+    - year: 2021
+      id: etaps21
+      link: https://etaps.org/2021/
+      timeline:
+        - deadline: '2020-10-15 23:59:00'
+          comment: Regular research paper submission
+      timezone: AoE
+      date: March 27-April 1, 2021
+      place: Virtual
     - year: 2022
       id: etaps22
       link: https://etaps.org/2022/
@@ -16,6 +25,35 @@
       timezone: AoE
       date: April 2-7, 2022
       place: Munich, Germany
+    - year: 2023
+      id: etaps23
+      link: https://etaps.org/2023/
+      timeline:
+        - deadline: '2022-10-13 23:59:00'
+          comment: Regular research paper submission
+      timezone: AoE
+      date: April 22-27, 2023
+      place: Paris, France
+    - year: 2024
+      id: etaps24
+      link: https://etaps.org/2024/
+      timeline:
+        - deadline: '2023-10-12 23:59:00'
+          comment: Regular research paper submission
+      timezone: AoE
+      date: April 6-11, 2024
+      place: Luxembourg City, Luxembourg
+    - year: 2025
+      id: etaps25
+      link: https://etaps.org/2025/
+      timeline:
+        - deadline: '2024-05-30 23:59:00'
+          comment: Regular research ESOP round 1
+        - deadline: '2024-10-10 23:59:00'
+          comment: Regular research ESOP round 2, FASE, FoSSaCS, TACAS
+      timezone: AoE
+      date: May 3-8, 2025
+      place: Hamilton, Canada
     - year: 2026
       id: etaps26
       link: https://etaps.org/2026

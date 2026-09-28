@@ -7,11 +7,46 @@
     thcpl: N
   dblp: aplas
   confs:
+    - year: 2021
+      id: aplas21
+      link: https://conf.researchr.org/home/aplas-2021
+      timeline:
+        - abstract_deadline: '2021-06-16 23:59:59'
+          deadline: '2021-06-19 23:59:59'
+      timezone: AoE
+      date: October 17 - 18, 2021
+      place: Chicago, Illinois, United States (Hybrid)
+    - year: 2022
+      id: aplas22
+      link: https://conf.researchr.org/home/aplas-2022
+      timeline:
+        - deadline: TBD
+          comment: Paper submission on June 16, 2022 AoE; exact time unverified
+      timezone: AoE
+      date: December 5, 2022
+      place: Auckland, New Zealand
+    - year: 2023
+      id: aplas23
+      link: https://conf.researchr.org/home/aplas-2023
+      timeline:
+        - deadline: '2023-06-18 23:59:59'
+          comment: Extended regular paper deadline
+      timezone: AoE
+      date: November 27 - 29, 2023
+      place: Taipei, China
+    - year: 2024
+      id: aplas24
+      link: https://conf.researchr.org/home/aplas-2024
+      timeline:
+        - deadline: '2024-05-31 23:59:59'
+      timezone: AoE
+      date: October 22 - 24, 2024
+      place: Kyoto, Japan
     - year: 2025
       id: aplas25
       link: https://conf.researchr.org/home/aplas-2025
       timeline:
-        - deadline: '2025-05-31 23:59:59'
+        - deadline: '2025-06-07 23:59:59'
       timezone: AoE
       date: October 27-30, 2025
       place: Bengaluru, India

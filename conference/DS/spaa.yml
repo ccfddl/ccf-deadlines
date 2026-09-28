@@ -7,6 +7,33 @@
     thcpl: B
   dblp: spaa
   confs:
+    - year: 2021
+      id: spaa21
+      link: https://spaa.acm.org/spaa-2021/
+      timeline:
+        - abstract_deadline: '2021-02-08 23:59:00'
+          deadline: '2021-02-11 23:59:00'
+      timezone: AoE
+      date: July 6-8, 2021
+      place: Virtual
+    - year: 2022
+      id: spaa22
+      link: https://spaa.acm.org/spaa-2022/
+      timeline:
+        - abstract_deadline: '2022-02-21 23:59:00'
+          deadline: '2022-02-28 23:59:00'
+      timezone: AoE
+      date: July 12-14, 2022
+      place: Philadelphia, PA, USA
+    - year: 2023
+      id: spaa23
+      link: https://spaa.acm.org/spaa-2023/
+      timeline:
+        - abstract_deadline: '2023-01-12 23:59:00'
+          deadline: '2023-01-17 23:59:00'
+      timezone: AoE
+      date: June 17-19, 2023
+      place: Orlando, FL, USA
     - year: 2024
       id: spaa24
       link: https://spaa.acm.org/

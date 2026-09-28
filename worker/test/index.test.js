@@ -3,9 +3,19 @@ import test from "node:test";
 
 import worker, {
   isValidConferenceKey,
+  isFreshOAuthPayload,
+  messageLikesCutoff,
+  normalizeWallMessage,
   parseCookies,
+  readJsonBody,
   sanitizeReturnTo,
+  utcDayStart,
 } from "../src/index.js";
+
+test("limits the most-liked view to messages from the last 30 days", () => {
+  const now = 2_000_000_000;
+  assert.equal(messageLikesCutoff(now), now - 30 * 24 * 60 * 60);
+});
 
 test("accepts conference edition ids used by the dataset", () => {
   assert.equal(isValidConferenceKey("iclr27"), true);
@@ -32,6 +42,26 @@ test("parses cookie values containing equals signs", () => {
   });
 });
 
+test("normalizes valid wall messages", () => {
+  assert.equal(normalizeWallMessage("  hello\r\nworld  "), "hello\nworld");
+  assert.equal(normalizeWallMessage("你好 🌊"), "你好 🌊");
+  assert.equal(normalizeWallMessage("a".repeat(500)), "a".repeat(500));
+});
+
+test("rejects invalid wall messages", () => {
+  assert.equal(normalizeWallMessage("   "), null);
+  assert.equal(normalizeWallMessage("a".repeat(501)), null);
+  assert.equal(normalizeWallMessage("1\n2\n3\n4\n5\n6\n7\n8\n9"), null);
+  assert.equal(normalizeWallMessage("hello\u0000world"), null);
+});
+
+test("calculates UTC day boundaries for daily posting limits", () => {
+  assert.equal(utcDayStart(0), 0);
+  assert.equal(utcDayStart(86_399), 0);
+  assert.equal(utcDayStart(86_400), 86_400);
+  assert.equal(utcDayStart(100_000), 86_400);
+});
+
 test("serves a health response without database access", async () => {
   const response = await worker.fetch(new Request("https://ccfddl.com/api/health"), {});
   assert.equal(response.status, 200);
@@ -47,4 +77,265 @@ test("rejects cross-origin favorite mutations", async () => {
     { PUBLIC_ORIGIN: "https://ccfddl.com" },
   );
   assert.equal(response.status, 403);
+});
+
+test("rejects cross-origin wall message mutations", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages", {
+      method: "POST",
+      headers: { Origin: "https://example.com" },
+    }),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 403);
+});
+
+test("requires GitHub sign-in to post wall messages", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Origin: "https://ccfddl.com",
+      },
+      body: JSON.stringify({ body: "hello" }),
+    }),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 401);
+});
+
+test("requires GitHub sign-in to browse older wall messages", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages?offset=50"),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 401);
+});
+
+test("rejects malformed wall message cursors", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages?offset=not-a-number"),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 400);
+});
+
+test("requires GitHub sign-in to browse personal wall messages", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages?sort=mine"),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 401);
+});
+
+test("rejects invalid wall message sorting", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages?sort=oldest"),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 400);
+});
+
+test("requires GitHub sign-in to like wall messages", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages/1/like", {
+      method: "PUT",
+      headers: { Origin: "https://ccfddl.com" },
+    }),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 401);
+});
+
+test("rejects cross-origin wall message likes", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages/1/like", {
+      method: "PUT",
+      headers: { Origin: "https://example.com" },
+    }),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 403);
+});
+
+test("rejects invalid wall message reply targets", async () => {
+  const response = await worker.fetch(
+    new Request("https://ccfddl.com/api/messages/0/replies"),
+    { PUBLIC_ORIGIN: "https://ccfddl.com" },
+  );
+  assert.equal(response.status, 400);
+});
+
+test("rejects backslash and control-character OAuth redirect paths", () => {
+  for (const path of ["/\\evil.example", "/path\n", "/path\r", "/ path"]) {
+    assert.equal(sanitizeReturnTo(path), "/");
+  }
+});
+
+test("rejects mutations without Origin or with cross-site fetch metadata", async () => {
+  for (const headers of [{}, { Origin: "https://ccfddl.com", "Sec-Fetch-Site": "cross-site" }]) {
+    const response = await worker.fetch(new Request("https://ccfddl.com/api/auth/logout", {
+      method: "POST", headers,
+    }), { PUBLIC_ORIGIN: "https://ccfddl.com" });
+    assert.equal(response.status, 403);
+  }
+});
+
+test("adds protective headers to successful and error responses", async () => {
+  for (const path of ["health", "not-found"]) {
+    const response = await worker.fetch(new Request(`https://ccfddl.com/api/${path}`), {});
+    assert.equal(response.headers.get("X-Content-Type-Options"), "nosniff");
+    assert.equal(response.headers.get("Referrer-Policy"), "no-referrer");
+    assert.match(response.headers.get("Content-Security-Policy"), /frame-ancestors 'none'/);
+  }
+});
+
+test("rate limits API requests before accessing the database", async () => {
+  let calls = 0;
+  const response = await worker.fetch(new Request("https://ccfddl.com/api/bootstrap", {
+    headers: { "CF-Connecting-IP": "192.0.2.1" },
+  }), { API_RATE_LIMITER: { async limit({ key }) {
+    assert.equal(key, "192.0.2.1"); calls++; return { success: false };
+  } } });
+  assert.equal(calls, 1);
+  assert.equal(response.status, 429);
+  assert.equal(response.headers.get("Retry-After"), "60");
+});
+
+test("uses a separate login limiter", async () => {
+  const response = await worker.fetch(new Request("https://ccfddl.com/api/auth/github", {
+    headers: { "CF-Connecting-IP": "192.0.2.1" },
+  }), { AUTH_RATE_LIMITER: { async limit() { return { success: false }; } } });
+  assert.equal(response.status, 429);
+});
+
+test("rejects message offsets outside the safe integer range", async () => {
+  const response = await worker.fetch(new Request("https://ccfddl.com/api/messages?offset=9007199254740992"), {});
+  assert.equal(response.status, 400);
+});
+
+test("expires OAuth state on the server and rejects malformed payloads", () => {
+  const payload = { state: "a".repeat(32), verifier: "b".repeat(64), issued_at: 1000 };
+  assert.equal(isFreshOAuthPayload(payload, 1599), true);
+  assert.equal(isFreshOAuthPayload(payload, 1600), false);
+  assert.equal(isFreshOAuthPayload({ ...payload, issued_at: 2000 }, 1000), false);
+  assert.equal(isFreshOAuthPayload({ ...payload, issued_at: undefined }, 1000), false);
+  assert.equal(isFreshOAuthPayload({ ...payload, state: 1 }, 1000), false);
+});
+
+test("requires JSON content type and validates body size independently of Content-Length", async () => {
+  await assert.rejects(readJsonBody(new Request("https://ccfddl.com/api/messages", {
+    method: "POST", body: "{}",
+  })), (error) => error.status === 415);
+  await assert.rejects(readJsonBody(new Request("https://ccfddl.com/api/messages", {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: "x".repeat(8193),
+  })), (error) => error.status === 413);
+  await assert.rejects(readJsonBody(new Request("https://ccfddl.com/api/messages", {
+    method: "POST", headers: { "Content-Type": "application/json" }, body: "{bad json",
+  })), (error) => error.status === 400);
+  assert.deepEqual(await readJsonBody(new Request("https://ccfddl.com/api/messages", {
+    method: "POST", headers: { "Content-Type": "application/json; charset=utf-8" }, body: '{"body":"你好"}',
+  })), { body: "你好" });
+});
+
+test("cancels an oversized streamed body with a forged Content-Length", async () => {
+  let cancelled = false;
+  const stream = new ReadableStream({
+    start(controller) { controller.enqueue(new Uint8Array(8193)); },
+    cancel() { cancelled = true; },
+  });
+  await assert.rejects(readJsonBody(new Request("https://ccfddl.com/api/messages", {
+    method: "POST", duplex: "half", body: stream,
+    headers: { "Content-Type": "application/json", "Content-Length": "1" },
+  })), (error) => error.status === 413);
+  assert.equal(cancelled, true);
+});
+
+test("issues host-bound HTTPS OAuth cookies and supports local HTTP", async () => {
+  for (const origin of ["https://ccfddl.com", "http://localhost:8787"]) {
+    const response = await worker.fetch(new Request(`${origin}/api/auth/github?return_to=%2Fconference`), {
+      PUBLIC_ORIGIN: origin, GITHUB_CLIENT_ID: "test-client", GITHUB_CLIENT_SECRET: "test-secret",
+      SESSION_SECRET: "s".repeat(32),
+    });
+    assert.equal(response.status, 302);
+    const cookie = response.headers.get("Set-Cookie");
+    assert.match(cookie, /HttpOnly; SameSite=Lax/);
+    assert.match(cookie, /Path=\//);
+    if (origin.startsWith("https")) {
+      assert.match(cookie, /^__Host-ccfddl_oauth=/);
+      assert.match(cookie, /; Secure$/);
+    } else {
+      assert.match(cookie, /^ccfddl_oauth=/);
+      assert.doesNotMatch(cookie, /; Secure/);
+    }
+    const location = new URL(response.headers.get("Location"));
+    assert.equal(location.searchParams.get("code_challenge_method"), "S256");
+    assert.equal(location.searchParams.get("redirect_uri"), `${origin}/api/auth/github/callback`);
+  }
+});
+
+test("rejects a weak signing secret before beginning OAuth", async () => {
+  const response = await worker.fetch(new Request("https://ccfddl.com/api/auth/github"), {
+    PUBLIC_ORIGIN: "https://ccfddl.com", GITHUB_CLIENT_ID: "test-client",
+    GITHUB_CLIENT_SECRET: "test-secret", SESSION_SECRET: "short",
+  });
+  assert.equal(response.status, 500);
+  assert.deepEqual(await response.json(), { error: "Internal server error" });
+});
+
+test("completes OAuth and identifies upstream versus session-storage failures safely", async (t) => {
+  let failure = null;
+  const logs = [];
+  t.mock.method(console, "error", (...args) => logs.push(args));
+  t.mock.method(globalThis, "fetch", async (url, options) => {
+    assert.equal(options.redirect, "manual");
+    if (failure === "network") throw new TypeError("sensitive upstream details");
+    if (failure === "json") return new Response("not JSON");
+    if (failure === "redirect" || (failure === "profile_redirect" && url.includes("api.github.com"))) {
+      return new Response(null, { status: 307, headers: { Location: "https://example.com/collect" } });
+    }
+    return Response.json(url.includes("access_token")
+      ? { access_token: "private-access-token" }
+      : { id: 1, login: "test-user", avatar_url: "https://example.com/avatar", html_url: "https://github.com/test-user" });
+  });
+  const env = {
+    PUBLIC_ORIGIN: "https://ccfddl.com", GITHUB_CLIENT_ID: "test-client",
+    GITHUB_CLIENT_SECRET: "private-client-secret", SESSION_SECRET: "s".repeat(32),
+    DB: {
+      prepare(sql) { return { bind(...parameters) { return { sql, parameters }; } }; },
+      async batch(statements) {
+        if (failure === "database") throw new Error("private database details");
+        assert.equal(statements.length, 4);
+      },
+    },
+  };
+  const start = await worker.fetch(new Request(`${env.PUBLIC_ORIGIN}/api/auth/github`), env);
+  const state = new URL(start.headers.get("Location")).searchParams.get("state");
+  const cookie = start.headers.get("Set-Cookie").split(";")[0];
+  for (const mode of [null, "network", "json", "redirect", "profile_redirect", "database"]) {
+    failure = mode;
+    const response = await worker.fetch(new Request(
+      `${env.PUBLIC_ORIGIN}/api/auth/github/callback?code=private-code&state=${state}`,
+      { headers: { Cookie: cookie } },
+    ), env);
+    if (mode === null) {
+      assert.equal(response.status, 302);
+      assert.equal(response.headers.get("Location"), `${env.PUBLIC_ORIGIN}/`);
+      assert.match(response.headers.get("Set-Cookie"), /__Host-ccfddl_session=/);
+    } else {
+      assert.equal(response.status, mode === "database" ? 500 : 502);
+      const body = await response.json();
+      assert.match(body.error, mode === "database" ? /save.*session/ : /contact GitHub/);
+      assert.equal(body.code, {
+        network: "github_token_request_network_error",
+        json: "github_token_response_invalid_json",
+        redirect: "github_token_request_redirect_rejected",
+        profile_redirect: "github_profile_request_redirect_rejected",
+        database: "github_session_storage_failed",
+      }[mode]);
+    }
+  }
+  assert.deepEqual(logs.map((entry) => entry[1]), ["token_request", "token_response", "token_request", "profile_request", "session_storage"]);
+  assert.doesNotMatch(JSON.stringify(logs), /private|sensitive/);
 });

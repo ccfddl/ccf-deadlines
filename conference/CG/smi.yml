@@ -7,13 +7,53 @@
     thcpl: N
   dblp: smi
   confs:
+    - year: 2021
+      id: smi21
+      link: https://smi2021.github.io/
+      timeline:
+        - deadline: 'TBD'
+          comment: Regular full papers; June 30, 2021 date verified; clock and timezone unverified
+      timezone: UTC+0
+      date: November 14-16, 2021
+      place: Online
+    - year: 2022
+      id: smi22
+      link: https://smiconf.github.io/2022/
+      timeline:
+        - abstract_deadline: '2022-03-12 23:59:00'
+          deadline: '2022-03-15 23:59:00'
+          comment: Regular full papers; extended abstract and initial full submission
+      timezone: UTC+0
+      date: June 27-29, 2022
+      place: Online
+    - year: 2023
+      id: smi23
+      link: https://smiconf.github.io/2023/
+      timeline:
+        - abstract_deadline: '2023-03-23 23:59:00'
+          deadline: '2023-03-30 23:59:00'
+          comment: Regular full papers; extended initial abstract and submission
+      timezone: UTC+0
+      date: July 4-6, 2023
+      place: Genoa, Italy
+    - year: 2024
+      id: smi24
+      link: https://smiconf.github.io/2024/
+      timeline:
+        - abstract_deadline: '2024-03-29 23:59:00'
+          deadline: '2024-04-02 23:59:00'
+          comment: Regular full papers; extended initial abstract and submission
+      timezone: UTC+0
+      date: July 12-14, 2024
+      place: Detroit, Michigan, USA
     - year: 2025
       id: smi25
       link: https://smiconf.github.io/2025/
       timeline:
-        - abstract_deadline: '2025-04-14 23:59:59'
-          deadline: '2025-04-22 23:59:59'
-      timezone: AoE
+        - abstract_deadline: '2025-04-14 23:59:00'
+          deadline: '2025-04-22 23:59:00'
+          comment: Regular full papers; extended initial abstract and submission
+      timezone: UTC+0
       date: October 29 - November 2, 2025
       place: Hangzhou, Zhejiang, P.R. China
     - year: 2026

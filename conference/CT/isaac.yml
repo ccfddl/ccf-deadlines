@@ -7,6 +7,46 @@
     thcpl: N
   dblp: isaac
   confs:
+    - year: 2021
+      id: isaac21
+      link: https://tcs.inf.kyushu-u.ac.jp/isaac2021/
+      timeline:
+        - deadline: '2021-07-05 23:59:59'
+      timezone: AoE
+      date: December 6-8, 2021
+      place: Fukuoka, Japan (Hybrid)
+    - year: 2022
+      id: isaac22
+      link: http://isa.hanyang.ac.kr/isaac2022/
+      timeline:
+        - deadline: '2022-06-27 23:59:59'
+      timezone: AoE
+      date: December 19-21, 2022
+      place: Seoul, Korea (Hybrid)
+    - year: 2023
+      id: isaac23
+      link: https://www.kurims.kyoto-u.ac.jp/isaac/isaac2023/index.html
+      timeline:
+        - deadline: '2023-06-30 23:59:59'
+      timezone: AoE
+      date: December 4-6, 2023
+      place: Kyoto, Japan
+    - year: 2024
+      id: isaac24
+      link: https://sites.google.com/view/isaac2024/
+      timeline:
+        - deadline: '2024-06-28 23:59:00'
+      timezone: AoE
+      date: December 9-11, 2024
+      place: Sydney, Australia
+    - year: 2025
+      id: isaac25
+      link: https://isaac2025.csie.ncku.edu.tw/
+      timeline:
+        - deadline: '2025-06-30 23:59:00'
+      timezone: AoE
+      date: December 8-10, 2025
+      place: Tainan, Taiwan
     - year: 2026
       id: isaac26
       link: https://www.algo-door.com/isaac2026/index.html
