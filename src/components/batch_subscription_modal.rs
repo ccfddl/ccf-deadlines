@@ -117,7 +117,7 @@ pub fn BatchSubscriptionModal(
                                             <label class="batch-subscription-option">
                                                 <input
                                                     type="checkbox"
-                                                    checked=move || selected.with(|ids| ids.contains(&checked_id))
+                                                    prop:checked=move || selected.with(|ids| ids.contains(&checked_id))
                                                     on:change=move |event| {
                                                         let checked = event_target_checked(&event);
                                                         selected.update(|ids| {
