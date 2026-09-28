@@ -133,7 +133,8 @@ a {
 .github-login-button,
 .github-user-link,
 .github-favorites-button,
-.github-logout-button {
+.github-logout-button,
+.github-auth-retry {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -154,6 +155,16 @@ a {
   gap: 6px;
   padding: 0 10px;
   cursor: pointer;
+}
+
+.github-auth-retry {
+  padding: 0 10px;
+  color: #75808b;
+  cursor: pointer;
+}
+
+.github-login-button--checking {
+  cursor: wait;
 }
 
 .github-login-button svg {
@@ -3137,6 +3148,15 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .github-user-link {
     width: 30px;
     padding: 0;
+  }
+
+  .github-login-button--checking {
+    width: auto;
+    padding: 0 8px;
+  }
+
+  .github-login-button--checking span {
+    display: inline;
   }
 
   .header-main .title {

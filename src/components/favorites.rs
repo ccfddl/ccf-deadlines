@@ -2,8 +2,9 @@ use gloo_net::http::Request;
 use leptos::prelude::*;
 use serde::Deserialize;
 use std::collections::{HashMap, HashSet};
+use wasm_bindgen::{JsCast, closure::Closure};
 use wasm_bindgen_futures::spawn_local;
-use web_sys::window;
+use web_sys::{AbortController, window};
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Eq)]
 pub struct GithubUser {
@@ -48,6 +49,7 @@ impl FavoritesContext {
     }
 
     pub fn load(self) {
+        self.loaded.set(false);
         spawn_local(async move {
             match fetch_bootstrap().await {
                 Ok(snapshot) => {
@@ -177,14 +179,33 @@ pub fn start_github_login() {
 }
 
 async fn fetch_bootstrap() -> Result<FavoritesBootstrap, String> {
-    let response = Request::get(&api_url("/api/bootstrap"))
-        .send()
-        .await
-        .map_err(|error| error.to_string())?;
-    if !response.ok() {
-        return Err(format!("Favorites API returned HTTP {}", response.status()));
+    let browser = window().ok_or("Browser unavailable")?;
+    let controller = AbortController::new().map_err(|_| "Unable to check GitHub sign-in")?;
+    let timeout_controller = controller.clone();
+    let abort = Closure::wrap(Box::new(move || timeout_controller.abort()) as Box<dyn FnMut()>);
+    let timeout = browser
+        .set_timeout_with_callback_and_timeout_and_arguments_0(
+            abort.as_ref().unchecked_ref(),
+            10_000,
+        )
+        .map_err(|_| "Unable to start GitHub sign-in check")?;
+    let result = async {
+        let response = Request::get(&api_url("/api/bootstrap"))
+            .abort_signal(Some(&controller.signal()))
+            .send()
+            .await
+            .map_err(|error| error.to_string())?;
+        if !response.ok() {
+            return Err(format!("Favorites API returned HTTP {}", response.status()));
+        }
+        response.json().await.map_err(|error| error.to_string())
     }
-    response.json().await.map_err(|error| error.to_string())
+    .await;
+    browser.clear_timeout_with_handle(timeout);
+    if controller.signal().aborted() {
+        return Err("GitHub sign-in check timed out".to_string());
+    }
+    result
 }
 
 async fn mutate_star(conference_key: &str, should_star: bool) -> Result<StarMutation, String> {
