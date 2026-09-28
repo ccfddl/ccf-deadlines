@@ -243,6 +243,9 @@ a {
 }
 
 .github-account-options button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 8px 10px;
   border: 0;
   border-radius: 6px;
@@ -254,6 +257,12 @@ a {
   text-align: left;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.github-account-options button svg {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
 }
 
 .github-account-options button:hover,

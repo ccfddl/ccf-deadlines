@@ -117,6 +117,7 @@ pub fn Header(
                                                 show_favorites_timeline.set(true);
                                             }
                                         >
+                                            <Icon icon=icondata::BsStar />
                                             {move || if use_english.get() { "My Favorites" } else { "我的收藏" }}
                                         </button>
                                         <button
@@ -126,6 +127,7 @@ pub fn Header(
                                                 show_batch_subscription.set(true);
                                             }
                                         >
+                                            <Icon icon=icondata::BsCalendarPlus />
                                             {move || if use_english.get() { "Batch Subscribe" } else { "批量订阅" }}
                                         </button>
                                         <button
