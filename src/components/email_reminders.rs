@@ -204,7 +204,7 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                                             }
                                                             busy.set(false);
                                                         });
-                                                    }>{move || if use_english.get() { "Save" } else { "保存" }}</button>
+                                                    }>{move || if use_english.get() { "Save time zone and language" } else { "保存时区和语言" }}</button>
                                                     <button type="button" disabled=move || busy.get() on:click=move |_| {
                                                         authorize_email(&timezone.get_untracked(), &language.get_untracked());
                                                     }>{move || if use_english.get() { "Refresh GitHub email" } else { "更新 GitHub 邮箱" }}</button>
@@ -235,7 +235,7 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                 }
                             })}
                         </Show>
-                        <Show when=move || saved.get()><p class="email-reminder-message">{move || if use_english.get() { "Saved." } else { "已保存。" }}</p></Show>
+                        <Show when=move || saved.get()><p class="email-reminder-message">{move || if use_english.get() { "Time zone and email language saved." } else { "时区和邮件语言已保存。" }}</p></Show>
                         {move || error.get().map(|message| view! { <p class="email-reminder-message" role="alert">{message}</p> })}
                     </DialogContent>
                 </DialogBody>
