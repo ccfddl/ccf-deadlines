@@ -232,8 +232,10 @@ a {
   top: calc(100% + 6px);
   right: 0;
   display: grid;
-  min-width: 165px;
-  padding: 5px;
+  width: max-content;
+  min-width: 132px;
+  max-width: calc(100vw - 24px);
+  padding: 4px;
   border: 1px solid #d9d3cb;
   border-radius: 9px;
   background: #fff;
@@ -241,13 +243,16 @@ a {
 }
 
 .github-account-options button {
-  padding: 10px 12px;
+  padding: 8px 10px;
   border: 0;
   border-radius: 6px;
   background: transparent;
   color: #3f4751;
   font: inherit;
+  font-size: 14px;
+  font-weight: 600;
   text-align: left;
+  white-space: nowrap;
   cursor: pointer;
 }
 
