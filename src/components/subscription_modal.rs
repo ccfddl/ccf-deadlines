@@ -187,7 +187,7 @@ pub fn generate_rss_urls(
     )
 }
 
-fn copy_text_to_clipboard(text: &str) {
+pub(crate) fn copy_text_to_clipboard(text: &str) {
     if let Some(w) = window() {
         let nav: JsValue = w.navigator().into();
         if let Ok(clipboard) = js_sys::Reflect::get(&nav, &JsValue::from_str("clipboard")) {

@@ -1,3 +1,4 @@
+use crate::components::batch_subscription_modal::BatchSubscriptionModal;
 use crate::components::checkbox_button::*;
 use crate::components::conf::ConfItem;
 use crate::components::conf::*;
@@ -25,6 +26,7 @@ use web_sys::{console, window};
 pub fn ShowTable(
     use_english: RwSignal<bool>,
     show_favorites_timeline: RwSignal<bool>,
+    show_batch_subscription: RwSignal<bool>,
 ) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     // mobile
@@ -855,6 +857,12 @@ pub fn ShowTable(
                 conferences=all_conf_list
                 reference_time=base_time
                 display_timezone=time_zone
+            />
+
+            <BatchSubscriptionModal
+                show=show_batch_subscription
+                use_english=use_english
+                conferences=raw_conferences
             />
 
             <Dialog open=show_conf_detail>
