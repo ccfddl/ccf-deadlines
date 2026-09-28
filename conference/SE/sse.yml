@@ -7,6 +7,44 @@
     thcpl: B
   dblp: IEEEscc
   confs:
+    - year: 2021
+      id: sse21
+      link: https://conferences.computer.org/scc/2021/
+      timeline:
+        - deadline: '2021-03-01 05:00:00'
+          comment: 'IEEE SCC regular papers (predecessor of SSE); optional early submission'
+        - deadline: '2021-04-30 05:00:00'
+          comment: 'IEEE SCC regular papers (predecessor of SSE); extended normal submission'
+      timezone: UTC+0
+      date: September 5-10, 2021
+      place: Online
+    - year: 2022
+      id: sse22
+      link: https://conferences.computer.org/scc/2022/
+      timeline:
+        - deadline: TBD
+          comment: 'IEEE SCC regular papers (predecessor of SSE): April 1, 2022; exact clock unpublished'
+      timezone: AoE
+      date: July 11-16, 2022
+      place: Barcelona, Spain
+    - year: 2023
+      id: sse23
+      link: https://conferences.computer.org/sse/2023/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular papers: March 25, 2023 hard submission deadline; exact clock unpublished'
+      timezone: AoE
+      date: July 2-8, 2023
+      place: Chicago, Illinois, USA
+    - year: 2024
+      id: sse24
+      link: https://sse.conferences.computer.org/2024/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular papers: April 7, 2024 extended deadline accepts new papers; exact clock and timezone unpublished'
+      timezone: UTC+0
+      date: July 7-13, 2024
+      place: Shenzhen, China
     - year: 2025
       id: sse25
       link: https://services.conferences.computer.org/2025/sse/
