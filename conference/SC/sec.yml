@@ -16,6 +16,33 @@
       timezone: AoE
       date: June 22-24, 2021
       place: Oslo, Norway
+    - year: 2022
+      id: sec22
+      link: https://ifipsec2022.compute.dtu.dk/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper submission: February 3, 2022 (firm, AoE); time unverified.'
+      timezone: AoE
+      date: June 13-15, 2022
+      place: Copenhagen, Denmark (Hybrid)
+    - year: 2023
+      id: sec23
+      link: https://ifipsec2023.psnc.pl/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper submission extended to March 12, 2023; time and timezone unverified.'
+      timezone: UTC
+      date: June 14-16, 2023
+      place: Poznan, Poland
+    - year: 2024
+      id: sec24
+      link: https://history.ifipsec.org/archive/2024/
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper submission extended to March 1, 2024; time and timezone unverified.'
+      timezone: UTC
+      date: June 12-14, 2024
+      place: Edinburgh, UK
     - year: 2025
       id: sec25
       link: https://sec2025.um.si/
