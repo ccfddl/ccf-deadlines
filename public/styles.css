@@ -2975,8 +2975,16 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   letter-spacing: 0.08em;
 }
 
+.conference-detail-timeline .line_time .sel_dot:hover::after {
+  opacity: 0;
+}
+
 .conference-detail-timeline .line_time .sel_dot em {
   display: none;
+}
+
+.conference-detail-timeline .line_time .sel_dot:hover em {
+  display: inline-block;
 }
 
 .conference-detail-timeline-range {
