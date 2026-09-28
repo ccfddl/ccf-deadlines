@@ -7,6 +7,24 @@
     thcpl: N
   dblp: slt
   confs:
+    - year: 2021
+      id: slt21
+      link: https://slt2021.signalprocessingsociety.org/
+      timeline:
+        - deadline: '2020-08-14 23:59:59'
+          comment: Regular papers; initial submission
+      timezone: AoE
+      date: January 19-22, 2021
+      place: Online
+    - year: 2022
+      id: slt22
+      link: https://www.slt2022.signalprocessingsociety.org/SLT%202022/slt2022.org/index.html
+      timeline:
+        - deadline: '2022-07-15 23:59:59'
+          comment: Regular papers; initial submission
+      timezone: AoE
+      date: January 9-12, 2023
+      place: Doha, Qatar
     - year: 2026
       id: slt26
       link: https://attend.ieee.org/slt-2026/
