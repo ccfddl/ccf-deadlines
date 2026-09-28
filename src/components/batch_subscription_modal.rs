@@ -1,5 +1,5 @@
 use crate::components::conf::Conference;
-use crate::components::favorites::FavoritesContext;
+use crate::components::favorites::{FavoritesContext, start_github_login};
 use crate::components::subscription_modal::copy_text_to_clipboard;
 use leptos::prelude::*;
 use std::collections::{HashMap, HashSet};
@@ -40,13 +40,19 @@ pub fn BatchSubscriptionModal(
             google_help.set(false);
         }
     });
+    Effect::new(move |_| {
+        use_english.get();
+        copied.set(false);
+        google_help.set(false);
+    });
 
     view! {
         <Dialog open=show>
             <DialogSurface class="conference-detail-dialog batch-subscription-dialog">
                 <DialogBody>
-                    <DialogTitle class="conference-detail-title">
-                        {move || if use_english.get() { "Batch Subscribe" } else { "批量订阅" }}
+                    <DialogTitle class="conference-detail-title batch-subscription-title">
+                        <Icon icon=icondata::BsCalendarPlus />
+                        <span>{move || if use_english.get() { "Batch Subscribe" } else { "批量订阅" }}</span>
                     </DialogTitle>
                     <button
                         type="button"
@@ -62,14 +68,14 @@ pub fn BatchSubscriptionModal(
                                 "选择收藏的会议，只需订阅一次；网站更新截止日期后，日历应用会在刷新订阅时同步。"
                             }}
                         </p>
-                        <p class="batch-subscription-intro">
-                            {move || if use_english.get() {
-                                "Anyone with the subscription link can see the selected conference editions."
-                            } else {
-                                "任何持有订阅链接的人都能看到你选中的会议。"
-                            }}
-                        </p>
                         {move || {
+                            if favorites.user.get().is_none() {
+                                return view! {
+                                    <button type="button" class="batch-subscription-login" on:click=move |_| start_github_login()>
+                                        {if use_english.get() { "Sign in with GitHub to create a calendar link" } else { "使用 GitHub 登录后生成订阅链接" }}
+                                    </button>
+                                }.into_any();
+                            }
                             let starred = favorites.starred.get();
                             if starred.is_empty() {
                                 return view! {
@@ -92,49 +98,54 @@ pub fn BatchSubscriptionModal(
                                 .collect();
                             entries.sort();
                             view! {
-                                <div class="batch-subscription-actions">
-                                    <button type="button" on:click=move |_| {
-                                        selected.set(favorites.starred.get_untracked());
-                                        copied.set(false);
-                                        google_help.set(false);
-                                    }>
-                                        {move || if use_english.get() { "Select all" } else { "全选" }}
-                                    </button>
-                                    <button type="button" on:click=move |_| {
-                                        selected.set(HashSet::new());
-                                        copied.set(false);
-                                        google_help.set(false);
-                                    }>
-                                        {move || if use_english.get() { "Clear" } else { "清空" }}
-                                    </button>
-                                    <span>{move || format!("{} / {}", selected.get().len(), favorites.starred.get().len())}</span>
-                                </div>
-                                <div class="batch-subscription-list">
-                                    {entries.into_iter().map(|(label, id)| {
-                                        let checked_id = id.clone();
-                                        let change_id = id.clone();
-                                        view! {
-                                            <label class="batch-subscription-option">
-                                                <input
-                                                    type="checkbox"
-                                                    prop:checked=move || selected.with(|ids| ids.contains(&checked_id))
-                                                    on:change=move |event| {
-                                                        let checked = event_target_checked(&event);
+                                <div class="batch-subscription-toolbar">
+                                    <div class="batch-subscription-list" role="group" aria-label=move || if use_english.get() { "Select conferences" } else { "选择会议" }>
+                                        <button
+                                            type="button"
+                                            class="favorites-timeline-legend"
+                                            class:favorites-timeline-legend--active=move || selected.get() == favorites.starred.get()
+                                            aria-pressed=move || selected.get() == favorites.starred.get()
+                                            on:click=move |_| {
+                                                selected.set(favorites.starred.get_untracked());
+                                                copied.set(false);
+                                                google_help.set(false);
+                                            }
+                                        >
+                                            {move || if use_english.get() { "All conferences" } else { "全部会议" }}
+                                        </button>
+                                        {entries.into_iter().map(|(label, id)| {
+                                            let checked_id = id.clone();
+                                            let pressed_id = id.clone();
+                                            let change_id = id.clone();
+                                            view! {
+                                                <button
+                                                    type="button"
+                                                    class="favorites-timeline-legend"
+                                                    class:favorites-timeline-legend--active=move || selected.with(|ids| ids.contains(&checked_id))
+                                                    aria-pressed=move || selected.with(|ids| ids.contains(&pressed_id))
+                                                    on:click=move |_| {
                                                         selected.update(|ids| {
-                                                            if checked {
-                                                                ids.insert(change_id.clone());
-                                                            } else {
+                                                            if !ids.insert(change_id.clone()) {
                                                                 ids.remove(&change_id);
                                                             }
                                                         });
                                                         copied.set(false);
                                                         google_help.set(false);
                                                     }
-                                                />
-                                                <span>{label}</span>
-                                            </label>
-                                        }
-                                    }).collect_view()}
+                                                >
+                                                    {label}
+                                                </button>
+                                            }
+                                        }).collect_view()}
+                                    </div>
+                                    <span class="batch-subscription-count">{move || format!("{} / {}", selected.get().len(), favorites.starred.get().len())}</span>
+                                    <button type="button" class="batch-subscription-clear" on:click=move |_| {
+                                        selected.set(HashSet::new());
+                                        copied.set(false);
+                                        google_help.set(false);
+                                    }>
+                                        {move || if use_english.get() { "Clear" } else { "清空" }}
+                                    </button>
                                 </div>
                                 {move || {
                                     let count = selected.get().len();

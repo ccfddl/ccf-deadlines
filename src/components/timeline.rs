@@ -495,11 +495,13 @@ fn initialize_timeline(
         timepoint: deadlines.last().unwrap().timepoint,
         r#type: 1,
         round: deadlines.last().map(|point| point.round).unwrap_or(1),
+        comment: None,
     });
     all_incremental.push(TimePoint {
         timepoint: now,
         r#type: 1,
         round: 1,
+        comment: None,
     });
     set_all_incre.set(all_incremental);
 

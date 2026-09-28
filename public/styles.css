@@ -270,32 +270,72 @@ a {
   background: #f5f7fa;
 }
 
-.batch-subscription-dialog {
-  width: min(560px, calc(100vw - 24px));
+.conference-detail-dialog.batch-subscription-dialog {
+  width: min(720px, 94vw);
+  max-width: 720px;
+  height: auto;
+  max-height: 88vh;
+  max-height: 88dvh;
+}
+
+.batch-subscription-dialog .thaw-dialog-content {
+  overflow-y: auto;
+}
+
+.batch-subscription-title svg {
+  flex: 0 0 auto;
+  color: #6f9fca;
+  font-size: 24px;
 }
 
 .batch-subscription-intro,
 .batch-subscription-empty {
-  color: #66717c;
-  line-height: 1.55;
+  margin: 0 0 12px;
+  color: #6d7883;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
-.batch-subscription-actions,
+.batch-subscription-toolbar,
 .batch-subscription-submit {
   display: flex;
   align-items: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.batch-subscription-toolbar {
+  min-width: 0;
+}
+
+.batch-subscription-count {
+  flex: 0 0 auto;
+  color: #8a949e;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.batch-subscription-clear {
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #6d7883;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+}
+
+.batch-subscription-clear:hover {
+  color: #294a67;
+}
+
+.batch-subscription-submit {
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 14px 0;
+  padding-top: 12px;
+  border-top: 1px solid #e6e0d9;
 }
 
-.batch-subscription-actions span {
-  margin-left: auto;
-  color: #75808b;
-  font-size: 13px;
-}
-
-.batch-subscription-actions button,
 .batch-subscription-submit button,
 .batch-subscription-submit a {
   padding: 7px 12px;
@@ -321,6 +361,17 @@ a {
   color: #586573;
 }
 
+.batch-subscription-login {
+  border: 1px solid #7fa9cf;
+  border-radius: 7px;
+  background: #eaf4fc;
+  color: #294a67;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  padding: 7px 12px;
+}
+
 .batch-subscription-help {
   color: #66717c;
   font-size: 13px;
@@ -340,25 +391,14 @@ a {
 }
 
 .batch-subscription-list {
-  display: grid;
-  gap: 4px;
-  max-height: min(45vh, 360px);
-  overflow-y: auto;
-  padding: 4px;
-}
-
-.batch-subscription-option {
   display: flex;
+  flex: 1 1 auto;
   align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
-  border: 1px solid #e6e2dc;
-  border-radius: 7px;
-  cursor: pointer;
-}
-
-.batch-subscription-option input {
-  flex: 0 0 auto;
+  gap: 6px;
+  min-width: 0;
+  padding-bottom: 2px;
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
 .batch-subscription-warning {
@@ -2879,9 +2919,11 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 }
 
 .conference-detail-tags span,
-.conference-detail-actions a {
+.conference-detail-actions a,
+.conference-detail-actions button.conference-detail-calendar-link {
   display: inline-block;
   padding: 5px 8px;
+  border: 0;
   border-radius: var(--radius-sm);
   background: #f3f0ec;
   color: #586573;
@@ -2922,8 +2964,37 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   object-fit: contain;
 }
 
-.conference-detail-actions a:hover {
+.conference-detail-actions a:hover,
+.conference-detail-actions button.conference-detail-calendar-link:hover {
   color: #24557e;
+}
+
+.conference-detail-actions button.conference-detail-calendar-link {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.conference-detail-calendar-events {
+  display: grid;
+  gap: 5px;
+  max-height: 180px;
+  margin-top: 8px;
+  overflow-y: auto;
+}
+
+.conference-detail-calendar-events a {
+  display: block;
+  padding: 6px 8px;
+  border: 1px solid #e6e1da;
+  border-radius: 5px;
+  color: #356d9e;
+  font-size: 11px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.conference-detail-calendar-events a:hover {
+  background: #f3f8fc;
 }
 
 @media (max-width: 767px) {

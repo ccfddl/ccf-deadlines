@@ -45,6 +45,46 @@ class FavoriteCalendarTests(unittest.TestCase):
                 snapshots.append(sorted(str(item["UID"]) for item in events))
             self.assertEqual(snapshots[0], snapshots[1])
 
+    def test_chinese_feed_keeps_event_titles_in_english(self):
+        conference = [{
+            "title": "ICLR",
+            "description": "International Conference on Learning Representations",
+            "sub": "AI",
+            "rank": {"ccf": "A", "core": "A*", "thcpl": "A"},
+            "dblp": "iclr",
+            "confs": [{
+                "year": 2027,
+                "id": "iclr27",
+                "link": "https://iclr.cc/",
+                "timeline": [{
+                    "abstract_deadline": "2026-09-19 23:59:00",
+                    "deadline": "2026-09-26 23:59:00",
+                    "rebuttal_deadline": "2026-10-01 23:59:00",
+                    "decision_deadline": "2026-10-10 23:59:00",
+                }],
+                "timezone": "UTC+0",
+                "date": "April 2027",
+                "place": "USA",
+            }],
+        }]
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "conference.yml"
+            source.write_text(yaml.safe_dump(conference), encoding="utf-8")
+            output = Path(directory) / "conference.ics"
+            convert_to_ical([str(source)], str(output), "zh")
+            calendar = Calendar.from_ical(output.read_bytes())
+            summaries = {
+                str(item["SUMMARY"])
+                for item in calendar.walk()
+                if item.name == "VEVENT"
+            }
+            self.assertEqual(summaries, {
+                "ICLR 2027 Abstract Deadline",
+                "ICLR 2027 Deadline",
+                "ICLR 2027 Rebuttal Submission",
+                "ICLR 2027 Final Decisions",
+            })
+
 
 if __name__ == "__main__":
     unittest.main()

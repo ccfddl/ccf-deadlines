@@ -954,11 +954,9 @@ pub fn ShowTable(
                                             }
                                         });
                                     let ics_filename = format!("{}-{}.ics", conf.title, conf.year);
-                                    let (google_calendar_url, icloud_calendar_url) =
-                                        build_calendar_urls(
-                                            &conf,
-                                            &browser_time_zone.get_untracked(),
-                                        );
+                                    let google_calendar_open = RwSignal::new(false);
+                                    let (google_calendar_links, icloud_calendar_url) =
+                                        build_calendar_urls(&conf);
                                     let core_rank = conf.corerank.as_deref().unwrap_or("N");
                                     let core_label = if core_rank == "N" {
                                         "Non-CORE".to_string()
@@ -1163,15 +1161,17 @@ pub fn ShowTable(
                                             </div>
                                             <div class="conference-detail-actions">
                                                 <a class="conference-detail-website" href=conf.link.clone() target="_blank">"Visit website ↗"</a>
-                                                {google_calendar_url.map(|url| view! {
-                                                    <a class="conference-detail-calendar-link" href=url target="_blank">
+                                                {(!google_calendar_links.is_empty()).then(|| view! {
+                                                    <button type="button" class="conference-detail-calendar-link" aria-expanded=move || google_calendar_open.get() on:click=move |_| {
+                                                        google_calendar_open.update(|open| *open = !*open);
+                                                    }>
                                                         <img
                                                             src="https://ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_31_2x.png"
                                                             alt=""
                                                             aria-hidden="true"
                                                         />
                                                         <span>"Google Calendar"</span>
-                                                    </a>
+                                                    </button>
                                                 })}
                                                 {icloud_calendar_url.map(|url| view! {
                                                     <a class="conference-detail-calendar-link" href=url download=ics_filename.clone()>
@@ -1184,6 +1184,13 @@ pub fn ShowTable(
                                                     </a>
                                                 })}
                                             </div>
+                                            <Show when=move || google_calendar_open.get()>
+                                                <div class="conference-detail-calendar-events">
+                                                    {google_calendar_links.clone().into_iter().map(|(label, url)| view! {
+                                                        <a href=url target="_blank" rel="noopener noreferrer">{label}</a>
+                                                    }).collect_view()}
+                                                </div>
+                                            </Show>
                                         </DialogContent>
                                     }
                                 })
@@ -1900,6 +1907,7 @@ fn build_conf_items(
                         timepoint: value.with_timezone(&display_offset),
                         r#type: kind,
                         round: round_index + 1,
+                        comment: timeline_item.comment.clone(),
                     });
 
                     let candidate = (
@@ -2105,51 +2113,118 @@ fn recent_acceptance_rates(
     (!recent_rates.is_empty()).then(|| recent_rates.join("  ·  "))
 }
 
-fn build_calendar_urls(
-    conf: &ConfItem,
-    browser_timezone: &str,
-) -> (Option<String>, Option<String>) {
-    let Some(deadline_time) = parse_deadline_to_rfc3339(&conf.deadline, &conf.timezone)
-        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
-    else {
-        return (None, None);
-    };
-    let (_, current_timezone) = get_browser_time_and_timezone();
-    let iso_string = deadline_time
-        .with_timezone(&current_timezone)
-        .format("%Y%m%dT%H%M%S")
-        .to_string();
-    let google = format!(
-        "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location=Online&ctz={}&sf=true&output=xml",
-        encode(&format!("{} {}", conf.title, conf.year)),
-        iso_string,
-        iso_string,
-        encode(&format!(
-            "{} provided by @ccfddl",
-            conf.comment.as_deref().unwrap_or("")
-        )),
-        browser_timezone,
-    );
+fn build_calendar_urls(conf: &ConfItem) -> (Vec<(String, String)>, Option<String>) {
+    if conf.ddls.is_empty() {
+        return (Vec::new(), None);
+    }
+    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1);
+    let google = conf.ddls.iter().map(|point| {
+        let label = deadline_detail_label(point.r#type);
+        let label = if multiple_rounds {
+            format!("Round {} {label}", point.round)
+        } else {
+            label.to_string()
+        };
+        let start = point.timepoint.with_timezone(&Utc);
+        let end = start + Duration::minutes(1);
+        let title = format!("{} {} {label}", conf.title, conf.year);
+        let url = format!(
+            "https://calendar.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location={}",
+            encode(&title),
+            start.format("%Y%m%dT%H%M%SZ"),
+            end.format("%Y%m%dT%H%M%SZ"),
+            encode(&calendar_event_description(conf, point)),
+            encode(&conf.place),
+        );
+        (label, url)
+    }).collect();
     let icloud = format!(
-        "data:text/calendar;charset=utf8,BEGIN:VCALENDAR\n\
-        VERSION:2.0\n\
-        BEGIN:VEVENT\n\
-        URL:{}\n\
-        DTSTART:{}\n\
-        DTEND:{}\n\
-        SUMMARY:{}\n\
-        DESCRIPTION:{}\n\
-        LOCATION:{}\n\
-        END:VEVENT\n\
-        END:VCALENDAR",
-        encode("https://ccfddl.github.io/"),
-        iso_string,
-        iso_string,
-        encode(&format!("{} {} Deadline", conf.title, conf.year)),
-        encode(conf.comment.as_deref().unwrap_or("")),
-        encode(""),
+        "data:text/calendar;charset=utf-8,{}",
+        encode(&build_conference_ical(conf))
     );
-    (Some(google), Some(icloud))
+    (google, Some(icloud))
+}
+
+fn calendar_event_description(conf: &ConfItem, point: &TimePoint) -> String {
+    [
+        point.comment.as_deref(),
+        Some(conf.description.as_str()),
+        Some(conf.link.as_str()),
+    ]
+    .into_iter()
+    .flatten()
+    .filter(|part| !part.trim().is_empty())
+    .collect::<Vec<_>>()
+    .join("\n")
+}
+
+fn build_conference_ical(conf: &ConfItem) -> String {
+    let mut lines = vec![
+        "BEGIN:VCALENDAR".to_string(),
+        "VERSION:2.0".to_string(),
+        "PRODID:-//CCFDDL//Conference Deadlines//EN".to_string(),
+        "CALSCALE:GREGORIAN".to_string(),
+    ];
+    let timestamp = Utc::now().format("%Y%m%dT%H%M%SZ").to_string();
+    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1);
+
+    for point in &conf.ddls {
+        let start = point.timepoint.with_timezone(&Utc);
+        let end = start + Duration::minutes(1);
+        let label = deadline_detail_label(point.r#type);
+        let label = if multiple_rounds {
+            format!("Round {} {label}", point.round)
+        } else {
+            label.to_string()
+        };
+        lines.extend([
+            "BEGIN:VEVENT".to_string(),
+            format!(
+                "UID:{}-{}-{}@ccfddl.com",
+                conf.id, point.round, point.r#type
+            ),
+            format!("DTSTAMP:{timestamp}"),
+            format!("DTSTART:{}", start.format("%Y%m%dT%H%M%SZ")),
+            format!("DTEND:{}", end.format("%Y%m%dT%H%M%SZ")),
+            format!(
+                "SUMMARY:{}",
+                escape_ical_text(&format!("{} {} {label}", conf.title, conf.year))
+            ),
+            format!(
+                "DESCRIPTION:{}",
+                escape_ical_text(&calendar_event_description(conf, point))
+            ),
+            format!("LOCATION:{}", escape_ical_text(&conf.place)),
+            "END:VEVENT".to_string(),
+        ]);
+    }
+    lines.push("END:VCALENDAR".to_string());
+    lines.iter().map(|line| fold_ical_line(line)).collect()
+}
+
+fn escape_ical_text(text: &str) -> String {
+    text.replace("\r\n", "\n")
+        .replace('\r', "\n")
+        .replace('\\', "\\\\")
+        .replace('\n', "\\n")
+        .replace(',', "\\,")
+        .replace(';', "\\;")
+}
+
+fn fold_ical_line(line: &str) -> String {
+    let mut folded = String::new();
+    let mut octets = 0;
+    for character in line.chars() {
+        let width = character.len_utf8();
+        if octets + width > 75 {
+            folded.push_str("\r\n ");
+            octets = 1;
+        }
+        folded.push(character);
+        octets += width;
+    }
+    folded.push_str("\r\n");
+    folded
 }
 
 fn normalize_timezone(tz: &str) -> String {
@@ -2392,28 +2467,6 @@ fn get_utc_map() -> &'static HashMap<String, String> {
     })
 }
 
-#[cfg(target_arch = "wasm32")]
-fn get_browser_time_and_timezone() -> (DateTime<FixedOffset>, FixedOffset) {
-    let utc_now = chrono::Utc::now();
-    let js_date = web_sys::js_sys::Date::new_0();
-    let offset_minutes = -(js_date.get_timezone_offset() as i32);
-
-    let timezone = FixedOffset::east_opt(offset_minutes * 60)
-        .unwrap_or_else(|| FixedOffset::east_opt(0).unwrap());
-
-    let current_time = utc_now.with_timezone(&timezone);
-
-    (current_time, timezone)
-}
-
-#[cfg(not(target_arch = "wasm32"))]
-fn get_browser_time_and_timezone() -> (DateTime<FixedOffset>, FixedOffset) {
-    use chrono::Local;
-    let local_time = Local::now();
-    let timezone = *local_time.offset();
-    (local_time.with_timezone(&timezone), timezone)
-}
-
 fn is_narrow_viewport() -> bool {
     window()
         .and_then(|browser| browser.inner_width().ok())
@@ -2499,5 +2552,65 @@ mod historical_deadline_tests {
         assert!(star_count_sort_key("RUN", 2) < star_count_sort_key("RUN", 1));
         assert!(star_count_sort_key("TBD", 0) < star_count_sort_key("FIN", 100));
         assert_eq!(star_count_sort_key("FIN", 5), star_count_sort_key("FIN", 5));
+    }
+
+    #[test]
+    fn conference_calendar_includes_every_known_deadline_across_rounds() {
+        let conference: Conference = serde_json::from_value(serde_json::json!({
+            "title": "ICLR", "description": "Test conference", "sub": "AI",
+            "rank": {"ccf": "A"}, "dblp": "iclr",
+            "confs": [{
+                "year": 2027, "id": "iclr27", "link": "https://iclr.cc/",
+                "timeline": [
+                    {"abstract_deadline": "2026-09-18 23:59:59", "deadline": "2026-09-25 23:59:59", "comment": "Track A"},
+                    {"deadline": "2026-10-25 23:59:59", "rebuttal_deadline": "2026-11-18 23:59:59", "decision_deadline": "2026-12-16 23:59:59", "comment": "Track B"}
+                ],
+                "timezone": "AoE", "date": "April 2027", "place": "San Francisco"
+            }]
+        }))
+        .unwrap();
+        let items = build_conf_items(
+            vec![conference],
+            &[],
+            &HashSet::new(),
+            &HashMap::new(),
+            "Asia/Shanghai",
+            Utc::now(),
+        );
+        let conf = items.iter().find(|item| item.id == "iclr27").unwrap();
+        let (google, icloud) = build_calendar_urls(conf);
+        assert_eq!(google.len(), 5);
+        assert!(google.iter().all(|(_, url)| {
+            url.starts_with("https://calendar.google.com/calendar/render?action=TEMPLATE&")
+        }));
+        assert!(google.iter().any(|(label, url)| {
+            label == "Round 2 Rebuttal Submission"
+                && url.contains("dates=20261119T115959Z/20261119T120059Z")
+        }));
+        for (label, comment) in [
+            ("Round 1 Paper Submission Deadline", "Track A"),
+            ("Round 2 Paper Submission Deadline", "Track B"),
+        ] {
+            let url = &google.iter().find(|(event, _)| event == label).unwrap().1;
+            assert!(urlencoding::decode(url).unwrap().contains(comment));
+        }
+        let icloud = icloud.unwrap();
+        let encoded = icloud
+            .strip_prefix("data:text/calendar;charset=utf-8,")
+            .unwrap();
+        let calendar = urlencoding::decode(encoded).unwrap();
+        assert_eq!(calendar.matches("BEGIN:VEVENT\r\n").count(), 5);
+        for summary in [
+            "ICLR 2027 Round 1 Abstract Submission Deadline",
+            "ICLR 2027 Round 1 Paper Submission Deadline",
+            "ICLR 2027 Round 2 Paper Submission Deadline",
+            "ICLR 2027 Round 2 Rebuttal Submission",
+            "ICLR 2027 Round 2 Final Decisions",
+        ] {
+            assert!(calendar.contains(&format!("SUMMARY:{summary}\r\n")));
+        }
+        assert!(calendar.contains("DTSTART:20261119T115959Z\r\n"));
+        assert!(calendar.contains("DESCRIPTION:Track A\\nTest conference"));
+        assert!(calendar.contains("DESCRIPTION:Track B\\nTest conference"));
     }
 }
