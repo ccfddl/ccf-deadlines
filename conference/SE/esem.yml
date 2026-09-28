@@ -15,7 +15,7 @@
           deadline: TBD
           comment: 'Regular technical abstract: 2021-05-08; full paper: 2021-05-15; AoE, exact time unpublished.'
       timezone: AoE
-      date: October 11-15, 2021
+      date: October 12-15, 2021
       place: Virtual
     - year: 2022
       id: esem22
@@ -33,7 +33,7 @@
         - abstract_deadline: '2023-04-24 23:59:59'
           deadline: '2023-05-02 23:59:59'
       timezone: AoE
-      date: October 22-27, 2023
+      date: October 26-27, 2023
       place: New Orleans, Louisiana, USA
     - year: 2024
       id: esem24
@@ -42,7 +42,7 @@
         - abstract_deadline: '2024-05-02 23:59:59'
           deadline: '2024-05-06 23:59:59'
       timezone: AoE
-      date: October 20-25, 2024
+      date: October 24-25, 2024
       place: Barcelona, Spain
     - year: 2025
       id: esem25
