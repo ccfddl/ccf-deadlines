@@ -7,19 +7,6 @@
     thcpl: B
   dblp: esorics
   confs:
-    - year: 2021
-      id: esorics21
-      link: https://esorics2021.athene-center.de/
-      timeline:
-        - abstract_deadline: '2021-01-05 22:59:00'
-          deadline: '2021-01-12 22:59:00'
-          comment: Winter regular paper deadline; 23:59 Berlin time (CET), converted to UTC
-        - abstract_deadline: '2021-05-05 21:59:00'
-          deadline: '2021-05-12 21:59:00'
-          comment: Spring regular paper deadline; 23:59 Berlin time (CEST), converted to UTC
-      timezone: UTC
-      date: October 4-8, 2021
-      place: Virtual
     - year: 2022
       id: esorics22
       link: https://esorics2022.compute.dtu.dk/
@@ -44,17 +31,17 @@
         - deadline: '2023-06-04 23:59:00'
           comment: Cycle 2 regular paper submission deadline (extended)
       timezone: AoE
-      date: September 25-29, 2023
+      date: September 25-27, 2023
       place: The Hague, The Netherlands
     - year: 2024
       id: esorics24
       link: https://esorics2024.org/
       timeline:
         - abstract_deadline: '2024-01-08 23:59:00'
-          deadline: '2024-01-08 23:59:59'
+          deadline: '2024-01-08 23:59:00'
           comment: First Submission deadline
         - abstract_deadline: '2024-04-19 23:59:00'
-          deadline: '2024-04-19 23:59:59'
+          deadline: '2024-04-19 23:59:00'
           comment: Second Submission deadline
       timezone: AoE
       date: September 16-20, 2024
