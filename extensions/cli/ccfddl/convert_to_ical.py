@@ -111,20 +111,20 @@ def convert_to_ical(
                     if "abstract_deadline" in entry:
                         deadlines_to_process.append(
                             (
-                                ("摘要截稿", "Abstract Deadline"),
+                                "Abstract Deadline",
                                 entry["abstract_deadline"],
                             )
                         )
 
                     if "deadline" in entry:
                         deadlines_to_process.append(
-                            (("截稿日期", "Deadline"), entry["deadline"])
+                            ("Deadline", entry["deadline"])
                         )
 
                     if "rebuttal_deadline" in entry:
                         deadlines_to_process.append(
                             (
-                                ("答辩提交", "Rebuttal Submission"),
+                                "Rebuttal Submission",
                                 entry["rebuttal_deadline"],
                             )
                         )
@@ -132,7 +132,7 @@ def convert_to_ical(
                     if "decision_deadline" in entry:
                         deadlines_to_process.append(
                             (
-                                ("最终决定", "Final Decisions"),
+                                "Final Decisions",
                                 entry["decision_deadline"],
                             )
                         )
@@ -180,7 +180,7 @@ def convert_to_ical(
                             "uid",
                             uuid.uuid5(
                                 uuid.NAMESPACE_URL,
-                                f"ccfddl:{conf['id']}:{round_index}:{deadline_type[1]}",
+                                f"ccfddl:{conf['id']}:{round_index}:{deadline_type}",
                             ),
                         )
                         event.add("X-CCFDDL-ID", conf["id"])
@@ -195,11 +195,8 @@ def convert_to_ical(
                             event.add("dtstart", aware_dt)
                             event.add("dtend", aware_dt + timedelta(minutes=1))
 
-                        # 构建中英双语摘要
-                        if lang == "en":
-                            summary = f"{title} {year} {deadline_type[1]}"
-                        else:
-                            summary = f"{title} {year} {deadline_type[0]}"
+                        # 两种订阅语言都使用英文事件标题；说明保留所选语言。
+                        summary = f"{title} {year} {deadline_type}"
 
                         # 添加注释信息
                         if "comment" in entry:
