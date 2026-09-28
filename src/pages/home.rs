@@ -37,6 +37,11 @@ pub fn Home() -> impl IntoView {
     );
     let show_favorites_timeline = RwSignal::new(false);
     let show_batch_subscription = RwSignal::new(false);
+    let show_email_reminders = RwSignal::new(
+        web_sys::window()
+            .and_then(|browser| browser.location().search().ok())
+            .is_some_and(|query| query.contains("email_reminders=1")),
+    );
     Effect::new(move |_| {
         if let Some(root) = web_sys::window()
             .and_then(|window| window.document())
@@ -71,8 +76,8 @@ pub fn Home() -> impl IntoView {
     view! {
         <ConfigProvider theme>
             <div class="home">
-                <Header use_english show_favorites_timeline show_batch_subscription />
-                <ShowTable use_english show_favorites_timeline show_batch_subscription />
+                <Header use_english show_favorites_timeline show_batch_subscription show_email_reminders />
+                <ShowTable use_english show_favorites_timeline show_batch_subscription show_email_reminders />
             </div>
         </ConfigProvider>
     }

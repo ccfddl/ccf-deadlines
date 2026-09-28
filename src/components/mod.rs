@@ -2,6 +2,7 @@ pub mod batch_subscription_modal;
 pub mod checkbox_button;
 pub mod conf;
 pub mod countdown;
+pub mod email_reminders;
 pub mod favorites;
 pub mod favorites_timeline;
 pub mod gitbutton;

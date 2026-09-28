@@ -26,6 +26,7 @@ pub fn Header(
     use_english: RwSignal<bool>,
     show_favorites_timeline: RwSignal<bool>,
     show_batch_subscription: RwSignal<bool>,
+    show_email_reminders: RwSignal<bool>,
 ) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     let (show_latest_conf, set_show_latest_conf) = signal(false);
@@ -129,6 +130,16 @@ pub fn Header(
                                         >
                                             <Icon icon=icondata::BsCalendarPlus />
                                             {move || if use_english.get() { "Batch Subscribe" } else { "批量订阅" }}
+                                        </button>
+                                        <button
+                                            type="button"
+                                            on:click=move |_| {
+                                                close_account_menu();
+                                                show_email_reminders.set(true);
+                                            }
+                                        >
+                                            <Icon icon=icondata::BsEnvelope />
+                                            {move || if use_english.get() { "Email Reminders" } else { "邮件提醒" }}
                                         </button>
                                         <button
                                             type="button"
