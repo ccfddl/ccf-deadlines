@@ -413,10 +413,15 @@ async function updateEmailReminderSettings(request, env) {
   if (!validReminderTimezone(body?.timezone) || !validReminderLanguage(body?.language)) {
     throw new HttpError(400, "Invalid email reminder settings.");
   }
-  const result = await env.DB.prepare(
-    "UPDATE email_reminders SET timezone = ?, language = ?, updated_at = ? WHERE github_id = ?",
-  ).bind(body.timezone, body.language, unixTime(), user.github_id).run();
-  if (result.meta?.changes !== 1) throw new HttpError(404, "Enable email reminders first.");
+  const results = await env.DB.batch([
+    env.DB.prepare(
+      "UPDATE email_reminders SET timezone = ?, language = ?, updated_at = ? WHERE github_id = ?",
+    ).bind(body.timezone, body.language, unixTime(), user.github_id),
+    env.DB.prepare(
+      "DELETE FROM email_digest_sends WHERE github_id = ? AND status = 'pending'",
+    ).bind(user.github_id),
+  ]);
+  if (results[0].meta?.changes !== 1) throw new HttpError(404, "Enable email reminders first.");
   return emailReminderSettings(request, env);
 }
 

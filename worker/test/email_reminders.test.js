@@ -83,6 +83,46 @@ test("email authorization stores the verified address and discards the GitHub to
   assert.doesNotMatch(JSON.stringify(statements), /sensitive-oauth-token/);
 });
 
+test("changing reminder settings clears pending digests in the same D1 batch", async () => {
+  let statements;
+  const env = {
+    PUBLIC_ORIGIN: "https://ccfddl.com",
+    DB: {
+      prepare(sql) { return {
+        bind(...parameters) { return {
+          sql, parameters,
+          async first() {
+            if (sql.includes("FROM sessions")) return { github_id: 42 };
+            if (sql.includes("FROM email_reminders")) {
+              return { email: "reader@example.com", timezone: "Europe/Paris", language: "en" };
+            }
+            throw new Error(sql);
+          },
+        }; },
+      }; },
+      async batch(values) {
+        statements = values;
+        return [{ meta: { changes: 1 } }, { meta: { changes: 1 } }];
+      },
+    },
+  };
+  const response = await worker.fetch(new Request("https://ccfddl.com/api/email/reminders", {
+    method: "PUT",
+    headers: {
+      Origin: "https://ccfddl.com",
+      Cookie: `__Host-ccfddl_session=${"a".repeat(43)}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ timezone: "Europe/Paris", language: "en" }),
+  }), env);
+  assert.equal(response.status, 200);
+  assert.equal(statements.length, 2);
+  assert.match(statements[0].sql, /UPDATE email_reminders SET timezone/);
+  assert.deepEqual(statements[0].parameters.slice(0, 2), ["Europe/Paris", "en"]);
+  assert.match(statements[1].sql, /DELETE FROM email_digest_sends WHERE github_id = \? AND status = 'pending'/);
+  assert.deepEqual(statements[1].parameters, [42]);
+});
+
 test("signed unsubscribe link requires a POST to remove the reminder", async () => {
   let deleted = false;
   const secret = "s".repeat(32);
