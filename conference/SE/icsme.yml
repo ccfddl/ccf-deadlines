@@ -7,6 +7,15 @@
     thcpl: B
   dblp: icsm
   confs:
+    - year: 2021
+      id: icsme21
+      link: https://icsme2021.github.io/
+      timeline:
+        - abstract_deadline: '2021-04-26 23:59:00'
+          deadline: '2021-04-29 23:59:00'
+      timezone: AoE
+      date: September 27-October 1, 2021
+      place: Virtual
     - year: 2022
       id: icsme22
       link: https://cyprusconferences.org/icsme2022/
@@ -30,7 +39,8 @@
       link: https://conf.researchr.org/home/icsme-2024
       timeline:
         - abstract_deadline: '2024-04-04 23:59:59'
-          deadline: '2024-04-11 23:59:59'
+          deadline: TBD
+          comment: 'Research track paper clock conflict: CFP April 11, 2024 23:59 AoE; Important Dates table April 11, 2024 23:39 AoE.'
       timezone: AoE
       date: October 06-11, 2024
       place: Flagstaff, Arizona, USA
