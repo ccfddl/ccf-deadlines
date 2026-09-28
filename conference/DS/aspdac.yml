@@ -14,7 +14,7 @@
         - deadline: '2020-07-26 17:00:00'
           comment: Initial paper registration/submission; later PDF update excluded
       timezone: AoE
-      date: January 18-21, 2021
+      date: January 19-21, 2021
       place: Virtual
     - year: 2022
       id: aspdac22
@@ -23,7 +23,7 @@
         - deadline: '2021-07-21 17:00:00'
           comment: Initial manuscript required; later PDF update excluded
       timezone: AoE
-      date: January 17-20, 2022
+      date: January 18-20, 2022
       place: Virtual
     - year: 2023
       id: aspdac23
@@ -32,7 +32,7 @@
         - abstract_deadline: '2022-07-24 17:00:00'
           deadline: '2022-07-29 17:00:00'
       timezone: AoE
-      date: January 16-19, 2023
+      date: January 17-19, 2023
       place: Tokyo Odaiba Miraikan, Japan
     - year: 2024
       id: aspdac24
