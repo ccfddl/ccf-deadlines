@@ -7,6 +7,26 @@
     thcpl: N
   dblp: rt
   confs:
+    - year: 2023
+      id: egsr2023
+      link: https://conferences.eg.org/egsr2023/
+      timeline:
+        - abstract_deadline: '2023-04-05 23:59:59'
+          deadline: '2023-04-12 23:59:59'
+          comment: Research papers; all deadlines are midnight, 23:59 UTC.
+      timezone: UTC+0
+      date: June 28-30, 2023
+      place: Delft, Netherlands
+    - year: 2024
+      id: egsr2024
+      link: https://www.egsr2024.uk/
+      timeline:
+        - abstract_deadline: '2024-04-09 23:59:59'
+          deadline: '2024-04-15 23:59:59'
+          comment: Research papers; all deadlines are midnight, 23:59 UTC.
+      timezone: UTC+0
+      date: July 3-5, 2024
+      place: London, UK
     - year: 2025
       id: egsr2025
       link: https://conferences.eg.org/egsr2025/
