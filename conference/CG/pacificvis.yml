@@ -7,6 +7,16 @@
     thcpl: B
   dblp: pacificvis
   confs:
+    - year: 2022
+      id: pacificvis22
+      link: https://pvis2022.github.io/pvis2022/
+      timeline:
+        - abstract_deadline: '2021-10-15 21:00:00'
+          deadline: '2021-10-22 21:00:00'
+          comment: 'Regular full papers; 21:00 Pacific Time (PDT)'
+      timezone: UTC-7
+      date: April 11-14, 2022
+      place: Online
     - year: 2025
       id: pacificvis25
       link: https://pacificvis2025.github.io/pages/index.html
