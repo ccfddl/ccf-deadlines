@@ -72,7 +72,15 @@ pub fn Header(
                 }}
                 <div class="header-auth">
                     {move || {
-                        if let Some(user) = favorites.user.get() {
+                        if !favorites.loaded.get() {
+                            view! {
+                                <button type="button" class="github-login-button github-login-button--checking" disabled aria-busy="true">
+                                    <Icon icon=icondata::BsGithub />
+                                    <span>{move || if use_english.get() { "Signing in with GitHub..." } else { "GitHub登陆中" }}</span>
+                                </button>
+                            }
+                                .into_any()
+                        } else if let Some(user) = favorites.user.get() {
                             view! {
                                 <a
                                     class="github-user-link"
@@ -101,6 +109,21 @@ pub fn Header(
                                     on:click=move |_| favorites.logout()
                                 >
                                     {move || if use_english.get() { "Sign out" } else { "退出" }}
+                                </button>
+                            }
+                                .into_any()
+                        } else if favorites.error.get().is_some() {
+                            view! {
+                                <button
+                                    type="button"
+                                    class="github-auth-retry"
+                                    on:click=move |_| favorites.load()
+                                >
+                                    {move || if use_english.get() {
+                                        "Sign-in check failed · Retry"
+                                    } else {
+                                        "登录状态检查失败 · 重试"
+                                    }}
                                 </button>
                             }
                                 .into_any()
