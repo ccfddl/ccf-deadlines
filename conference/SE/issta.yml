@@ -11,9 +11,10 @@
       id: issta21
       link: https://conf.researchr.org/home/issta-2021
       timeline:
-        - deadline: '2021-01-29 23:59:00'
+        - deadline: TBD
+          comment: 'Technical papers: January 29, 2021, AoE; exact clock unverified'
       timezone: AoE
-      date: July 11-17, 2021
+      date: July 14-17, 2021
       place: Virtual
     - year: 2022
       id: issta22
