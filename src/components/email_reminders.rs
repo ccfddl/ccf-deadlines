@@ -186,7 +186,32 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                 view! {
                                     <div class="email-reminder-settings">
                                         {enabled.then(|| view! {
-                                            <p>{move || if use_english.get() { "Sending to" } else { "发送到" }} " " <strong>{current.email.clone().unwrap_or_default()}</strong></p>
+                                            <div class="email-reminder-recipient-row">
+                                                <p>{move || if use_english.get() { "Sending to" } else { "发送到" }} " " <strong>{current.email.clone().unwrap_or_default()}</strong></p>
+                                                <button type="button" class=if daily_enabled { "email-reminder-daily-toggle email-reminder-daily-toggle--active" } else { "email-reminder-daily-toggle" }
+                                                    role="switch" aria-checked=if daily_enabled { "true" } else { "false" }
+                                                    aria-describedby="email-reminder-daily-description" disabled=move || busy.get()
+                                                    on:click=move |_| {
+                                                        busy.set(true);
+                                                        error.set(None);
+                                                        saved.set(false);
+                                                        spawn_local(async move {
+                                                            match save_settings(&timezone.get_untracked(), &language.get_untracked(), !daily_enabled).await {
+                                                                Ok(value) => settings.set(Some(value)),
+                                                                Err(message) => error.set(Some(message)),
+                                                            }
+                                                            busy.set(false);
+                                                        });
+                                                    }>
+                                                    <span class="email-reminder-daily-track" aria-hidden="true"><span class="email-reminder-daily-thumb"></span></span>
+                                                    <span>{move || if use_english.get() { "Daily reminders" } else { "🔥每日催我" }}</span>
+                                                </button>
+                                            </div>
+                                            <p id="email-reminder-daily-description" class="email-reminder-daily-description">{move || if use_english.get() {
+                                                "When on, one email each morning at 9 AM in your selected time zone lists all upcoming deadlines from starred conferences."
+                                            } else {
+                                                "开启后，每天按所选时区上午 9 点汇总收藏会议所有尚未截止的节点，每天最多一封。"
+                                            }}</p>
                                         })}
                                         <label>
                                             {move || if use_english.get() { "Time zone" } else { "时区" }}
@@ -216,26 +241,6 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                                             busy.set(false);
                                                         });
                                                     }>{move || if use_english.get() { "Save time zone and language" } else { "保存时区和语言" }}</button>
-                                                    <button type="button" disabled=move || busy.get()
-                                                        class=if daily_enabled { "email-reminder-daily-active" } else { "" }
-                                                        aria-pressed=if daily_enabled { "true" } else { "false" }
-                                                        on:click=move |_| {
-                                                            busy.set(true);
-                                                            error.set(None);
-                                                            saved.set(false);
-                                                            spawn_local(async move {
-                                                                match save_settings(&timezone.get_untracked(), &language.get_untracked(), !daily_enabled).await {
-                                                                    Ok(value) => settings.set(Some(value)),
-                                                                    Err(message) => error.set(Some(message)),
-                                                                }
-                                                                busy.set(false);
-                                                            });
-                                                        }>{move || match (use_english.get(), daily_enabled) {
-                                                            (true, true) => "Turn off daily reminders",
-                                                            (false, true) => "关闭🔥每日催我",
-                                                            (true, false) => "Turn on daily reminders",
-                                                            (false, false) => "开启🔥每日催我",
-                                                        }}</button>
                                                     <button type="button" disabled=move || busy.get() on:click=move |_| {
                                                         authorize_email(&timezone.get_untracked(), &language.get_untracked());
                                                     }>{move || if use_english.get() { "Refresh GitHub email" } else { "更新 GitHub 邮箱" }}</button>
@@ -252,7 +257,7 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                                             }
                                                             busy.set(false);
                                                         });
-                                                    }>{move || if use_english.get() { "Turn off" } else { "关闭提醒" }}</button>
+                                                    }>{move || if use_english.get() { "Turn off all email reminders" } else { "关闭所有邮件提醒" }}</button>
                                                 </div>
                                             }.into_any()
                                         } else if current.available {
