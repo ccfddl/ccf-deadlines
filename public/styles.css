@@ -353,10 +353,79 @@ a {
   opacity: 0.55;
 }
 
-.email-reminder-actions .email-reminder-daily-active {
-  border-color: #76a6d0;
-  background: #eaf4fc;
-  color: #245b88;
+.email-reminder-recipient-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+
+.email-reminder-recipient-row p {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.email-reminder-daily-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #304458;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.email-reminder-daily-toggle:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.email-reminder-daily-toggle:focus-visible {
+  outline: 2px solid #245b88;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.email-reminder-daily-track {
+  display: inline-flex;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  padding: 3px;
+  border-radius: 999px;
+  background: #a3a8af;
+  transition: background 0.2s ease;
+}
+
+.email-reminder-daily-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px #0002;
+  transition: transform 0.2s ease;
+}
+
+.email-reminder-daily-toggle--active .email-reminder-daily-track {
+  background: #d44f3f;
+}
+
+.email-reminder-daily-toggle--active .email-reminder-daily-thumb {
+  transform: translateX(20px);
+}
+
+.email-reminder-daily-description {
+  margin: -4px 0 2px;
+  color: #66717c;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .batch-subscription-title svg {
