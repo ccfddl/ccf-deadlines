@@ -4,6 +4,7 @@ import worker from "../src/index.js";
 
 import {
   buildEmailDigest,
+  renderEmailDigestHtml,
   runScheduledEmailDigests,
   validReminderTimezone,
   verifiedPrimaryEmail,
@@ -155,14 +156,19 @@ test("combines the 7-day and 1-day events in the recipient's local calendar day"
   ];
   const now = Date.parse("2026-09-28T01:00:00Z"); // 09:00 in Shanghai.
   const digest = buildEmailDigest(events, new Set(["iclr27", "cvpr27"]), "Asia/Shanghai", "zh", now);
-  assert.equal(digest.subject, "[CCFDDL] CVPR 2027、ICLR 2027 截止日期提醒 · 2026/09/28");
+  assert.equal(digest.subject, "[ccf-deadlines] CVPR 2027、ICLR 2027 截止日期提醒");
   assert.match(digest.text, /距截止 7 天.*ICLR/);
   assert.match(digest.text, /距截止 1 天.*CVPR/);
   assert.doesNotMatch(digest.text, /Other Deadline/);
-  assert.equal(
-    buildEmailDigest(events, new Set(["cvpr27"]), "Asia/Shanghai", "en", now).subject,
-    "[CCFDDL] CVPR 2027 Deadline reminders · 2026/09/28",
-  );
+  assert.doesNotMatch(digest.text, /你好|你收藏的会议/);
+  const english = buildEmailDigest(events, new Set(["cvpr27"]), "Asia/Shanghai", "en", now);
+  assert.equal(english.subject, "[ccf-deadlines] CVPR 2027 Deadline reminders");
+  assert.doesNotMatch(english.text, /Hello|The following deadlines/);
+  const englishHtml = renderEmailDigestHtml(english, "en",
+    "https://ccfddl.com/unsubscribe", "https://ccfddl.com");
+  assert.match(englishHtml, /Email preferences/);
+  assert.match(englishHtml, /Good luck with your submissions!<br>The CCFDDL maintainer team/);
+  assert.doesNotMatch(englishHtml, /Hello|The following deadlines/);
   assert.equal(buildEmailDigest(events, new Set(["iclr27"]), "UTC", "en", now), null);
 });
 
@@ -173,8 +179,28 @@ test("limits conference names in a combined subject", () => {
   }));
   const digest = buildEmailDigest(events, new Set(events.map((event) => event.id)),
     "Asia/Shanghai", "zh", Date.parse("2026-09-28T01:00:00Z"));
-  assert.equal(digest.subject, "[CCFDDL] A 2027、B 2027、C 2027 等 1 个会议 截止日期提醒 · 2026/09/28");
+  assert.equal(digest.subject, "[ccf-deadlines] A 2027、B 2027、C 2027 等 1 个会议 截止日期提醒");
   assert.match(digest.text, /D Deadline/);
+});
+
+test("HTML reminder uses the card layout and escapes conference content", () => {
+  const digest = buildEmailDigest([{
+    id: "ecir27", conference: "ECIR 2027", title: "ECIR <2027> Paper Submission",
+    deadline_at: "2026-10-05T00:00:00Z", url: "javascript:alert(1)",
+  }], new Set(["ecir27"]), "Asia/Shanghai", "zh", Date.parse("2026-09-28T01:00:00Z"));
+  assert.equal(digest.subject, "[ccf-deadlines] ECIR 2027 截止日期提醒");
+  const html = renderEmailDigestHtml(digest, "zh",
+    "https://ccfddl.com/api/email/unsubscribe?id=1&token=abc", "https://ccfddl.com");
+  assert.match(html, /background:#f2f2f2/);
+  assert.match(html, /border-top:3px solid #d44f3f/);
+  assert.match(html, /截稿时间提醒/);
+  assert.match(html, /ECIR &lt;2027&gt; Paper Submission/);
+  assert.match(html, /祝投稿顺利！<br>The CCFDDL maintainer team/);
+  assert.match(html, /@CCFDDL<\/span>&nbsp;·&nbsp;\s*<a href="https:\/\/ccfddl\.com\/api\/email\/unsubscribe/);
+  assert.doesNotMatch(html, /你好|你收藏的会议/);
+  assert.doesNotMatch(html, /<2027>|javascript:alert/);
+  assert.match(html, /unsubscribe\?id=1&amp;token=abc/);
+  assert.match(html, /\?email_reminders=1/);
 });
 
 test("cron sends one digest and does not send it again on a later tick", async (t) => {
@@ -216,6 +242,10 @@ test("cron sends one digest and does not send it again on a later tick", async (
   assert.match(outgoing[0].body.text, /ICLR Deadline/);
   assert.match(outgoing[0].body.text, /CVPR Deadline/);
   assert.match(outgoing[0].body.text, /api\/email\/unsubscribe/);
+  assert.match(outgoing[0].body.html, /ICLR Deadline/);
+  assert.match(outgoing[0].body.html, /CVPR Deadline/);
+  assert.match(outgoing[0].body.html, /href="https:\/\/iclr\.cc\/"/);
+  assert.match(outgoing[0].body.html, /api\/email\/unsubscribe/);
   assert.deepEqual(await runScheduledEmailDigests(env, atNine + 15 * 60_000), { sent: 0, failed: 0 });
   assert.equal(outgoing.length, 1);
 });
