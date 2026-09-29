@@ -364,6 +364,7 @@ a {
   color: var(--color-text-secondary);
   cursor: default;
   font-size: var(--font-size-sm);
+  font-weight: 400;
   pointer-events: none;
 }
 
