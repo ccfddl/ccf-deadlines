@@ -341,7 +341,7 @@ async function githubLoginStep(stage, operation) {
 
 async function bootstrap(request, env) {
   const user = await authenticatedUser(request, env);
-  const counts = await starCounts(env);
+  const counts = await starCounts(env, Boolean(user));
   let starred = [];
   if (user) {
     const starredRows = await env.DB.prepare(
@@ -369,8 +369,8 @@ function starCountsCacheKey(env) {
   return new Request(`${env.PUBLIC_ORIGIN}/__ccfddl_cache/star-counts`);
 }
 
-async function starCounts(env) {
-  const cache = globalThis.caches?.default;
+async function starCounts(env, fresh = false) {
+  const cache = fresh ? null : globalThis.caches?.default;
   if (cache) {
     try {
       const cached = await cache.match(starCountsCacheKey(env));
@@ -394,14 +394,6 @@ async function starCounts(env) {
     }
   }
   return counts;
-}
-
-async function invalidateStarCountsCache(env) {
-  try {
-    await globalThis.caches?.default?.delete(starCountsCacheKey(env));
-  } catch (error) {
-    console.error("Star count cache invalidation failed", error?.name ?? "Error");
-  }
 }
 
 async function favoritesCalendar(url, env) {
@@ -554,7 +546,6 @@ async function mutateStar(request, env, url) {
       .run();
   }
 
-  await invalidateStarCountsCache(env);
   const row = await env.DB.prepare(
     "SELECT star_count FROM conference_star_counts WHERE conference_key = ?",
   )
