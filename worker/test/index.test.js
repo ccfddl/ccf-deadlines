@@ -72,6 +72,74 @@ test("serves one public calendar feed for multiple selected editions", async () 
   }
 });
 
+test("caches shared star counts and invalidates them after a star changes", async (t) => {
+  const originalCaches = globalThis.caches;
+  const entries = new Map();
+  globalThis.caches = { default: {
+    async match(key) { return entries.get(key.url)?.clone(); },
+    async put(key, response) { entries.set(key.url, response.clone()); },
+    async delete(key) { return entries.delete(key.url); },
+  } };
+  t.after(() => { globalThis.caches = originalCaches; });
+
+  let count = 4;
+  let countReads = 0;
+  const env = {
+    PUBLIC_ORIGIN: "https://ccfddl.com",
+    DB: { prepare(sql) { return {
+      async all() {
+        if (sql.includes("FROM conference_star_counts")) {
+          countReads++;
+          return { results: [{ conference_key: "iclr27", star_count: count }] };
+        }
+        throw new Error(sql);
+      },
+      bind(...parameters) { return {
+      async all() {
+        if (sql.includes("FROM conference_star_counts")) {
+          countReads++;
+          return { results: [{ conference_key: "iclr27", star_count: count }] };
+        }
+        throw new Error(sql);
+      },
+      async first() {
+        if (sql.includes("FROM sessions JOIN users")) {
+          return { github_id: 42, login: "reader", avatar_url: "", profile_url: "" };
+        }
+        if (sql.includes("FROM conference_star_counts")) {
+          assert.deepEqual(parameters, ["iclr27"]);
+          return { star_count: count };
+        }
+        throw new Error(sql);
+      },
+      async run() {
+        if (sql.includes("INSERT OR IGNORE INTO conference_stars")) {
+          count++;
+          return { meta: { changes: 1 } };
+        }
+        throw new Error(sql);
+      },
+    }; } }; } },
+  };
+  const bootstrap = () => worker.fetch(new Request("https://ccfddl.com/api/bootstrap"), env);
+  assert.deepEqual((await (await bootstrap()).json()).counts, { iclr27: 4 });
+  assert.deepEqual((await (await bootstrap()).json()).counts, { iclr27: 4 });
+  assert.equal(countReads, 1);
+  assert.equal(entries.values().next().value.headers.get("Cache-Control"), "public, max-age=300");
+
+  const star = await worker.fetch(new Request("https://ccfddl.com/api/stars/iclr27", {
+    method: "PUT",
+    headers: {
+      Origin: "https://ccfddl.com",
+      Cookie: `__Host-ccfddl_session=${"a".repeat(43)}`,
+    },
+  }), env);
+  assert.equal(star.status, 200);
+  assert.equal((await star.json()).count, 5);
+  assert.deepEqual((await (await bootstrap()).json()).counts, { iclr27: 5 });
+  assert.equal(countReads, 2);
+});
+
 test("limits the most-liked view to messages from the last 30 days", () => {
   const now = 2_000_000_000;
   assert.equal(messageLikesCutoff(now), now - 30 * 24 * 60 * 60);
