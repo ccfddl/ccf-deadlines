@@ -96,7 +96,7 @@ npm test
 
 ## Favorites calendar subscription
 
-Favorite totals are read from `conference_star_counts`, maintained by triggers on `conference_stars`. The shared totals are cached at the edge for five minutes to avoid reading D1 on every page load. A favorite change invalidates the cache in the current edge location; other locations can show totals up to five minutes old. The user's own favorite state is still read from D1.
+Favorite totals are read from `conference_star_counts`, maintained by triggers on `conference_stars`. Guest requests use a five-minute edge cache to avoid reading D1 on every page load and can show totals up to five minutes old. Signed-in requests read fresh totals from D1, as well as the user's own favorite state.
 
 Signed-in users can select up to 100 starred conference editions from **Batch Subscribe** in the account menu. The resulting public `webcal://`/HTTPS link contains only the selected edition IDs and can be added once to a calendar app. The Worker filters the static `/conference/deadlines_en.ics` or `deadlines_zh.ics` feed when the calendar app refreshes; the deployment workflow regenerates those files from conference YAML. No new D1 migration or secret is needed. Anyone with a subscription link can see its selected conference IDs. To change the selection, copy a new link and replace the old subscription.
 
