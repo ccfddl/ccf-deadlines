@@ -183,35 +183,11 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                             {move || settings.get().map(|current| {
                                 let enabled = current.enabled;
                                 let daily_enabled = current.daily_enabled;
+                                let daily_switch = RwSignal::new(daily_enabled);
                                 view! {
                                     <div class="email-reminder-settings">
                                         {enabled.then(|| view! {
-                                            <div class="email-reminder-recipient-row">
-                                                <p>{move || if use_english.get() { "Sending to" } else { "发送到" }} " " <strong>{current.email.clone().unwrap_or_default()}</strong></p>
-                                                <button type="button" class=if daily_enabled { "email-reminder-daily-toggle email-reminder-daily-toggle--active" } else { "email-reminder-daily-toggle" }
-                                                    role="switch" aria-checked=if daily_enabled { "true" } else { "false" }
-                                                    aria-describedby="email-reminder-daily-description" disabled=move || busy.get()
-                                                    on:click=move |_| {
-                                                        busy.set(true);
-                                                        error.set(None);
-                                                        saved.set(false);
-                                                        spawn_local(async move {
-                                                            match save_settings(&timezone.get_untracked(), &language.get_untracked(), !daily_enabled).await {
-                                                                Ok(value) => settings.set(Some(value)),
-                                                                Err(message) => error.set(Some(message)),
-                                                            }
-                                                            busy.set(false);
-                                                        });
-                                                    }>
-                                                    <span class="email-reminder-daily-track" aria-hidden="true"><span class="email-reminder-daily-thumb"></span></span>
-                                                    <span>{move || if use_english.get() { "Daily reminders" } else { "🔥每日催我" }}</span>
-                                                </button>
-                                            </div>
-                                            <p id="email-reminder-daily-description" class="email-reminder-daily-description">{move || if use_english.get() {
-                                                "When on, one email each morning at 9 AM in your selected time zone lists all upcoming deadlines from starred conferences."
-                                            } else {
-                                                "开启后，每天按所选时区上午 9 点汇总收藏会议所有尚未截止的节点，每天最多一封。"
-                                            }}</p>
+                                            <p>{move || if use_english.get() { "Sending to" } else { "发送到" }} " " <strong>{current.email.clone().unwrap_or_default()}</strong></p>
                                         })}
                                         <label>
                                             {move || if use_english.get() { "Time zone" } else { "时区" }}
@@ -226,6 +202,34 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                                 <option value="zh">"中文"</option>
                                             </select>
                                         </label>
+                                        {enabled.then(|| view! {
+                                            <div class="email-reminder-daily-option">
+                                                <div class="el-switch email-reminder-daily-control"
+                                                    class:email-reminder-daily-control--busy=move || busy.get()
+                                                    on:change=move |_| {
+                                                        if busy.get_untracked() {
+                                                            daily_switch.set(daily_enabled);
+                                                            return;
+                                                        }
+                                                        busy.set(true);
+                                                        error.set(None);
+                                                        saved.set(false);
+                                                        spawn_local(async move {
+                                                            match save_settings(&timezone.get_untracked(), &language.get_untracked(), !daily_enabled).await {
+                                                                Ok(value) => settings.set(Some(value)),
+                                                                Err(message) => {
+                                                                    daily_switch.set(daily_enabled);
+                                                                    error.set(Some(message));
+                                                                }
+                                                            }
+                                                            busy.set(false);
+                                                        });
+                                                    }>
+                                                    <Switch checked=daily_switch />
+                                                    <span class="past-label">{move || if use_english.get() { "Daily reminders (force a daily email when enabled)" } else { "🔥每日催我 (开启后强制每日邮件提醒)" }}</span>
+                                                </div>
+                                            </div>
+                                        })}
                                         {if enabled {
                                             view! {
                                                 <div class="email-reminder-actions">
