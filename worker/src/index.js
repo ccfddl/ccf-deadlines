@@ -17,6 +17,7 @@ const MESSAGE_REPLY_PAGE_SIZE = 20;
 const MESSAGE_DAILY_LIMIT = 10;
 const MESSAGE_LIKES_WINDOW_SECONDS = 30 * 24 * 60 * 60;
 const MAX_JSON_BYTES = 8 * 1024;
+const STAR_COUNTS_CACHE_SECONDS = 300;
 
 export default {
   async fetch(request, env) {
@@ -340,9 +341,7 @@ async function githubLoginStep(stage, operation) {
 
 async function bootstrap(request, env) {
   const user = await authenticatedUser(request, env);
-  const countRows = await env.DB.prepare(
-    "SELECT conference_key, COUNT(*) AS count FROM conference_stars GROUP BY conference_key",
-  ).all();
+  const counts = await starCounts(env, Boolean(user));
   let starred = [];
   if (user) {
     const starredRows = await env.DB.prepare(
@@ -361,11 +360,40 @@ async function bootstrap(request, env) {
           profile_url: user.profile_url,
         }
       : null,
-    counts: Object.fromEntries(
-      countRows.results.map((row) => [row.conference_key, Number(row.count)]),
-    ),
+    counts,
     starred,
   });
+}
+
+function starCountsCacheKey(env) {
+  return new Request(`${env.PUBLIC_ORIGIN}/__ccfddl_cache/star-counts`);
+}
+
+async function starCounts(env, fresh = false) {
+  const cache = fresh ? null : globalThis.caches?.default;
+  if (cache) {
+    try {
+      const cached = await cache.match(starCountsCacheKey(env));
+      if (cached) return await cached.json();
+    } catch (error) {
+      console.error("Star count cache read failed", error?.name ?? "Error");
+    }
+  }
+
+  const rows = await env.DB.prepare(
+    "SELECT conference_key, star_count FROM conference_star_counts",
+  ).all();
+  const counts = Object.fromEntries(rows.results.map((row) => [row.conference_key, Number(row.star_count)]));
+  if (cache) {
+    try {
+      await cache.put(starCountsCacheKey(env), new Response(JSON.stringify(counts), {
+        headers: { "Cache-Control": `public, max-age=${STAR_COUNTS_CACHE_SECONDS}` },
+      }));
+    } catch (error) {
+      console.error("Star count cache write failed", error?.name ?? "Error");
+    }
+  }
+  return counts;
 }
 
 async function favoritesCalendar(url, env) {
@@ -519,12 +547,12 @@ async function mutateStar(request, env, url) {
   }
 
   const row = await env.DB.prepare(
-    "SELECT COUNT(*) AS count FROM conference_stars WHERE conference_key = ?",
+    "SELECT star_count FROM conference_star_counts WHERE conference_key = ?",
   )
     .bind(conferenceKey)
     .first();
   return json({
-    count: Number(row?.count ?? 0),
+    count: Number(row?.star_count ?? 0),
     starred: request.method === "PUT",
   });
 }
