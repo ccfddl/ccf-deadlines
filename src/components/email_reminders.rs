@@ -35,6 +35,8 @@ struct ReminderSettings {
     email: Option<String>,
     timezone: Option<String>,
     language: Option<String>,
+    #[serde(default)]
+    daily_enabled: bool,
 }
 
 async fn load_settings() -> Result<ReminderSettings, String> {
@@ -48,9 +50,13 @@ async fn load_settings() -> Result<ReminderSettings, String> {
     response.json().await.map_err(|error| error.to_string())
 }
 
-async fn save_settings(timezone: &str, language: &str) -> Result<ReminderSettings, String> {
+async fn save_settings(
+    timezone: &str,
+    language: &str,
+    daily_enabled: bool,
+) -> Result<ReminderSettings, String> {
     let response = Request::put(&api_url("/api/email/reminders"))
-        .json(&serde_json::json!({ "timezone": timezone, "language": language }))
+        .json(&serde_json::json!({ "timezone": timezone, "language": language, "daily_enabled": daily_enabled }))
         .map_err(|error| error.to_string())?
         .send()
         .await
@@ -152,15 +158,19 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                         aria-label=move || if use_english.get() { "Close" } else { "关闭" }
                         on:click=move |_| show.set(false)>"×"</button>
                     <DialogContent>
-                        <p class="email-reminder-intro">{move || if use_english.get() {
-                            "Get one combined email at 9:00 AM in your selected time zone, 7 and 1 days before deadlines in your GitHub favorites."
-                        } else {
-                            "收藏会议的截止节点会在提前 7 天和 1 天、按所选时区上午 9 点合并为一封邮件提醒。"
+                        <p class="email-reminder-intro">{move || {
+                            let daily = settings.get().is_some_and(|value| value.daily_enabled);
+                            match (use_english.get(), daily) {
+                                (true, true) => "One email each day at 9 AM (selected time zone) with all upcoming deadlines from starred conferences.",
+                                (false, true) => "每天上午 9 点（所选时区）汇总发送收藏会议所有尚未截止的节点。",
+                                (true, false) => "One email at 9 AM (selected time zone), 7 and 1 days before starred deadlines.",
+                                (false, false) => "收藏会议截止前 7 天、1 天，所选时区上午 9 点合并发送邮件。",
+                            }
                         }}</p>
                         <p class="email-reminder-notice">{move || if use_english.get() {
-                            "Free email delivery is limited, so some reminders may not be sent. If you need reliable delivery, you can set up your own email subscription service."
+                            "Free email delivery is limited, so some reminders may not be sent."
                         } else {
-                            "邮件通知的免费额度有限，可能出现提醒未发出的情况。如有需要，可自行搭建邮件订阅服务。"
+                            "邮件通知的免费额度有限，可能出现提醒未发出的情况。"
                         }}</p>
                         {move || if status.contains("email_status=denied") {
                             Some(view! { <p class="email-reminder-message">{if use_english.get() { "GitHub email access was not granted." } else { "未授予 GitHub 邮箱权限。" }}</p> })
@@ -172,6 +182,7 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                         <Show when=move || !loading.get() fallback=move || view! { <p>{move || if use_english.get() { "Loading..." } else { "加载中……" }}</p> }>
                             {move || settings.get().map(|current| {
                                 let enabled = current.enabled;
+                                let daily_enabled = current.daily_enabled;
                                 view! {
                                     <div class="email-reminder-settings">
                                         {enabled.then(|| view! {
@@ -198,13 +209,33 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                                         error.set(None);
                                                         saved.set(false);
                                                         spawn_local(async move {
-                                                            match save_settings(&timezone.get_untracked(), &language.get_untracked()).await {
+                                                            match save_settings(&timezone.get_untracked(), &language.get_untracked(), daily_enabled).await {
                                                                 Ok(value) => { settings.set(Some(value)); saved.set(true); }
                                                                 Err(message) => error.set(Some(message)),
                                                             }
                                                             busy.set(false);
                                                         });
                                                     }>{move || if use_english.get() { "Save time zone and language" } else { "保存时区和语言" }}</button>
+                                                    <button type="button" disabled=move || busy.get()
+                                                        class=if daily_enabled { "email-reminder-daily-active" } else { "" }
+                                                        aria-pressed=if daily_enabled { "true" } else { "false" }
+                                                        on:click=move |_| {
+                                                            busy.set(true);
+                                                            error.set(None);
+                                                            saved.set(false);
+                                                            spawn_local(async move {
+                                                                match save_settings(&timezone.get_untracked(), &language.get_untracked(), !daily_enabled).await {
+                                                                    Ok(value) => settings.set(Some(value)),
+                                                                    Err(message) => error.set(Some(message)),
+                                                                }
+                                                                busy.set(false);
+                                                            });
+                                                        }>{move || match (use_english.get(), daily_enabled) {
+                                                            (true, true) => "Turn off daily reminders",
+                                                            (false, true) => "关闭🔥每日催我",
+                                                            (true, false) => "Turn on daily reminders",
+                                                            (false, false) => "开启🔥每日催我",
+                                                        }}</button>
                                                     <button type="button" disabled=move || busy.get() on:click=move |_| {
                                                         authorize_email(&timezone.get_untracked(), &language.get_untracked());
                                                     }>{move || if use_english.get() { "Refresh GitHub email" } else { "更新 GitHub 邮箱" }}</button>

@@ -95,7 +95,7 @@ test("changing reminder settings clears pending digests in the same D1 batch", a
           async first() {
             if (sql.includes("FROM sessions")) return { github_id: 42 };
             if (sql.includes("FROM email_reminders")) {
-              return { email: "reader@example.com", timezone: "Europe/Paris", language: "en" };
+              return { email: "reader@example.com", timezone: "Europe/Paris", language: "en", daily_enabled: 1 };
             }
             throw new Error(sql);
           },
@@ -114,14 +114,78 @@ test("changing reminder settings clears pending digests in the same D1 batch", a
       Cookie: `__Host-ccfddl_session=${"a".repeat(43)}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ timezone: "Europe/Paris", language: "en" }),
+    body: JSON.stringify({ timezone: "Europe/Paris", language: "en", daily_enabled: true }),
   }), env);
   assert.equal(response.status, 200);
   assert.equal(statements.length, 2);
   assert.match(statements[0].sql, /UPDATE email_reminders SET timezone/);
-  assert.deepEqual(statements[0].parameters.slice(0, 2), ["Europe/Paris", "en"]);
+  assert.deepEqual(statements[0].parameters.slice(0, 3), ["Europe/Paris", "en", 1]);
   assert.match(statements[1].sql, /DELETE FROM email_digest_sends WHERE github_id = \? AND status = 'pending'/);
   assert.deepEqual(statements[1].parameters, [42]);
+  assert.equal((await response.json()).daily_enabled, true);
+});
+
+test("rejects a non-boolean daily reminder setting", async () => {
+  const env = {
+    PUBLIC_ORIGIN: "https://ccfddl.com",
+    DB: { prepare(sql) { return { bind() { return { async first() {
+      if (sql.includes("FROM sessions")) return { github_id: 42 };
+      throw new Error(sql);
+    } }; } }; } },
+  };
+  const response = await worker.fetch(new Request("https://ccfddl.com/api/email/reminders", {
+    method: "PUT",
+    headers: { Origin: "https://ccfddl.com", Cookie: `__Host-ccfddl_session=${"a".repeat(43)}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ timezone: "UTC", language: "en", daily_enabled: "yes" }),
+  }), env);
+  assert.equal(response.status, 400);
+});
+
+test("older settings requests preserve daily mode and allow turning it off", async () => {
+  let dailyEnabled = 1;
+  const updates = [];
+  const env = {
+    PUBLIC_ORIGIN: "https://ccfddl.com",
+    DB: {
+      prepare(sql) {
+        return {
+          bind(...args) {
+            return {
+              sql,
+              parameters: args,
+              async first() {
+                if (sql.includes("FROM sessions")) return { github_id: 42 };
+                if (sql.includes("FROM email_reminders")) {
+                  return { email: "reader@example.com", timezone: "UTC", language: "en", daily_enabled: dailyEnabled };
+                }
+                throw new Error(sql);
+              },
+              async run() { throw new Error(sql); },
+            };
+          },
+        };
+      },
+      async batch(statements) {
+        updates.push(statements[0]);
+        if (statements[0].parameters[2] !== null) dailyEnabled = statements[0].parameters[2];
+        return [{ meta: { changes: 1 } }, { meta: { changes: 0 } }];
+      },
+    },
+  };
+  for (const [body, expected] of [
+    [{ timezone: "UTC", language: "en" }, true],
+    [{ timezone: "UTC", language: "en", daily_enabled: false }, false],
+  ]) {
+    const response = await worker.fetch(new Request("https://ccfddl.com/api/email/reminders", {
+      method: "PUT",
+      headers: { Origin: "https://ccfddl.com", Cookie: `__Host-ccfddl_session=${"a".repeat(43)}`, "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    }), env);
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).daily_enabled, expected);
+  }
+  assert.equal(updates[0].parameters[2], null);
+  assert.equal(updates[1].parameters[2], 0);
 });
 
 test("signed unsubscribe link requires a POST to remove the reminder", async () => {
@@ -172,6 +236,33 @@ test("combines the 7-day and 1-day events in the recipient's local calendar day"
   assert.equal(buildEmailDigest(events, new Set(["iclr27"]), "UTC", "en", now), null);
 });
 
+test("daily reminders include every future starred deadline and skip expired nodes", () => {
+  const now = Date.parse("2026-09-28T01:00:00Z");
+  const events = [
+    { id: "iclr27", conference: "ICLR 2027", title: "Due Today", deadline_at: "2026-09-28T15:00:00Z" },
+    { id: "iclr27", conference: "ICLR 2027", title: "Future Deadline", deadline_at: "2026-12-01T00:00:00Z" },
+    { id: "iclr27", conference: "ICLR 2027", title: "Already Passed", deadline_at: "2026-09-28T00:00:00Z" },
+    { id: "other27", conference: "Other 2027", title: "Not Starred", deadline_at: "2026-10-01T00:00:00Z" },
+  ];
+  const digest = buildEmailDigest(events, new Set(["iclr27"]), "Asia/Shanghai", "zh", now, { daily: true });
+  assert.equal(digest.subject, "[ccf-deadlines] ICLR 2027 每日截止提醒");
+  assert.match(digest.text, /今天截止 · Due Today/);
+  assert.match(digest.text, /Future Deadline/);
+  assert.doesNotMatch(digest.text, /Already Passed|Not Starred/);
+  assert.equal(buildEmailDigest(events.slice(2), new Set(["iclr27"]), "Asia/Shanghai", "zh", now, { daily: true }), null);
+});
+
+test("daily reminders use the calendar date for all-day deadlines", () => {
+  const now = Date.parse("2026-09-28T01:00:00Z"); // 09:00 in Shanghai.
+  const events = [
+    { id: "iclr27", title: "Today All Day", deadline_at: "2026-09-28T00:00:00Z", all_day: true },
+    { id: "iclr27", title: "Yesterday All Day", deadline_at: "2026-09-27T00:00:00Z", all_day: true },
+  ];
+  const digest = buildEmailDigest(events, new Set(["iclr27"]), "Asia/Shanghai", "en", now, { daily: true });
+  assert.match(digest.text, /Due today · Today All Day · 2026\/09\/28/);
+  assert.doesNotMatch(digest.text, /Yesterday All Day/);
+});
+
 test("limits conference names in a combined subject", () => {
   const events = ["A", "B", "C", "D"].map((name) => ({
     id: name.toLowerCase(), conference: `${name} 2027`, title: `${name} Deadline`,
@@ -207,11 +298,13 @@ test("cron sends one digest and does not send it again on a later tick", async (
   const originalFetch = globalThis.fetch;
   const sends = new Map();
   const outgoing = [];
+  let dailyEnabled = false;
   t.after(() => { globalThis.fetch = originalFetch; });
   globalThis.fetch = async (url, options) => {
     if (url.endsWith("deadline_events.json")) return Response.json([
       { id: "iclr27", title: "ICLR Deadline", deadline_at: "2026-10-05T00:00:00Z", url: "https://iclr.cc/" },
       { id: "cvpr27", title: "CVPR Deadline", deadline_at: "2026-09-29T00:00:00Z", url: "https://cvpr.thecvf.com/" },
+      { id: "vldb27", title: "VLDB Later Deadline", deadline_at: "2026-12-01T00:00:00Z", url: "https://vldb.org/" },
     ]);
     assert.equal(url, "https://api.resend.com/emails");
     outgoing.push({ headers: options.headers, body: JSON.parse(options.body) });
@@ -222,8 +315,8 @@ test("cron sends one digest and does not send it again on a later tick", async (
     RESEND_API_KEY: "test", EMAIL_FROM: "CCFDDL <reminders@example.com>",
     DB: { prepare(sql) { return { bind(...args) { return {
       async all() {
-        if (sql.includes("FROM email_reminders")) return { results: [{ github_id: 1, email: "reader@example.com", timezone: "Asia/Shanghai", language: "en" }] };
-        if (sql.includes("FROM conference_stars")) return { results: [{ conference_key: "iclr27" }, { conference_key: "cvpr27" }] };
+        if (sql.includes("FROM email_reminders")) return { results: [{ github_id: 1, email: "reader@example.com", timezone: "Asia/Shanghai", language: "en", daily_enabled: Number(dailyEnabled) }] };
+        if (sql.includes("FROM conference_stars")) return { results: [{ conference_key: "iclr27" }, { conference_key: "cvpr27" }, { conference_key: "vldb27" }] };
         throw new Error(sql);
       },
       async first() { return sends.get(`${args[0]}:${args[1]}`) ?? null; },
@@ -246,6 +339,13 @@ test("cron sends one digest and does not send it again on a later tick", async (
   assert.match(outgoing[0].body.html, /CVPR Deadline/);
   assert.match(outgoing[0].body.html, /href="https:\/\/iclr\.cc\/"/);
   assert.match(outgoing[0].body.html, /api\/email\/unsubscribe/);
+  assert.doesNotMatch(outgoing[0].body.text, /VLDB Later Deadline/);
   assert.deepEqual(await runScheduledEmailDigests(env, atNine + 15 * 60_000), { sent: 0, failed: 0 });
   assert.equal(outgoing.length, 1);
+  dailyEnabled = true;
+  assert.deepEqual(await runScheduledEmailDigests(env, atNine + 24 * 60 * 60_000), { sent: 1, failed: 0 });
+  assert.equal(outgoing.length, 2);
+  assert.match(outgoing[1].body.subject, /Daily deadline reminders/);
+  assert.match(outgoing[1].body.text, /VLDB Later Deadline/);
+  assert.deepEqual(await runScheduledEmailDigests(env, atNine + 24 * 60 * 60_000 + 15 * 60_000), { sent: 0, failed: 0 });
 });
