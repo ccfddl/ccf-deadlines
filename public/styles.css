@@ -353,6 +353,12 @@ a {
   opacity: 0.55;
 }
 
+.email-reminder-actions .email-reminder-daily-active {
+  border-color: #76a6d0;
+  background: #eaf4fc;
+  color: #245b88;
+}
+
 .batch-subscription-title svg {
   flex: 0 0 auto;
   color: #6f9fca;

@@ -393,7 +393,7 @@ async function emailReminderSettings(request, env) {
   const user = await authenticatedUser(request, env);
   if (!user) throw new HttpError(401, "GitHub sign-in is required.");
   const settings = await env.DB.prepare(
-    "SELECT email, timezone, language FROM email_reminders WHERE github_id = ?",
+    "SELECT email, timezone, language, daily_enabled FROM email_reminders WHERE github_id = ?",
   ).bind(user.github_id).first();
   return json({
     available: Boolean(env.RESEND_API_KEY && env.EMAIL_FROM),
@@ -401,6 +401,7 @@ async function emailReminderSettings(request, env) {
     email: settings?.email ?? null,
     timezone: settings?.timezone ?? null,
     language: settings?.language ?? null,
+    daily_enabled: Boolean(settings?.daily_enabled),
     reminder_days: [7, 1],
     send_hour: 9,
   });
@@ -410,13 +411,15 @@ async function updateEmailReminderSettings(request, env) {
   const user = await authenticatedUser(request, env);
   if (!user) throw new HttpError(401, "GitHub sign-in is required.");
   const body = await readJsonBody(request);
-  if (!validReminderTimezone(body?.timezone) || !validReminderLanguage(body?.language)) {
+  if (!validReminderTimezone(body?.timezone) || !validReminderLanguage(body?.language)
+    || (body?.daily_enabled !== undefined && typeof body.daily_enabled !== "boolean")) {
     throw new HttpError(400, "Invalid email reminder settings.");
   }
+  const dailyEnabled = body.daily_enabled === undefined ? null : Number(body.daily_enabled);
   const results = await env.DB.batch([
     env.DB.prepare(
-      "UPDATE email_reminders SET timezone = ?, language = ?, updated_at = ? WHERE github_id = ?",
-    ).bind(body.timezone, body.language, unixTime(), user.github_id),
+      "UPDATE email_reminders SET timezone = ?, language = ?, daily_enabled = COALESCE(?, daily_enabled), updated_at = ? WHERE github_id = ?",
+    ).bind(body.timezone, body.language, dailyEnabled, unixTime(), user.github_id),
     env.DB.prepare(
       "DELETE FROM email_digest_sends WHERE github_id = ? AND status = 'pending'",
     ).bind(user.github_id),

@@ -53,7 +53,7 @@ function safeHttpUrl(value) {
   }
 }
 
-export function buildEmailDigest(events, starredIds, timezone, language, now) {
+export function buildEmailDigest(events, starredIds, timezone, language, now, { daily = false } = {}) {
   const today = zonedParts(now, timezone);
   const matches = [];
   const seen = new Set();
@@ -68,7 +68,11 @@ export function buildEmailDigest(events, starredIds, timezone, language, now) {
       ? { year: event.deadline_at.slice(0, 4), month: event.deadline_at.slice(5, 7), day: event.deadline_at.slice(8, 10) }
       : zonedParts(deadline, timezone);
     const days = dayNumber(local) - dayNumber(today);
-    if (!REMINDER_DAYS.has(days)) continue;
+    if (daily) {
+      if (days < 0 || (!event.all_day && deadline <= now)) continue;
+    } else if (!REMINDER_DAYS.has(days)) {
+      continue;
+    }
     matches.push({ ...event, days, local, deadline });
   }
   if (matches.length === 0) return null;
@@ -82,11 +86,15 @@ export function buildEmailDigest(events, starredIds, timezone, language, now) {
   const names = remaining > 0
     ? `${shown}${language === "zh" ? ` 等 ${remaining} 个会议` : ` +${remaining} more`}`
     : shown;
-  const heading = language === "zh" ? `${names} 截止日期提醒` : `${names} Deadline reminders`;
+  const heading = daily
+    ? (language === "zh" ? `${names} 每日截止提醒` : `${names} Daily deadline reminders`)
+    : (language === "zh" ? `${names} 截止日期提醒` : `${names} Deadline reminders`);
   const subject = `[ccf-deadlines] ${heading}`;
   const items = matches.map((event) => {
     const when = `${event.local.year}/${event.local.month}/${event.local.day}${event.all_day ? "" : ` ${event.local.hour}:${event.local.minute}`}`;
-    const lead = language === "zh" ? `距截止 ${event.days} 天` : `${event.days} day${event.days === 1 ? "" : "s"} left`;
+    const lead = event.days === 0
+      ? (language === "zh" ? "今天截止" : "Due today")
+      : (language === "zh" ? `距截止 ${event.days} 天` : `${event.days} day${event.days === 1 ? "" : "s"} left`);
     return { title: event.title, when, lead, url: event.url, timezone };
   });
   const lines = items.map((item) =>
@@ -164,7 +172,7 @@ export async function runScheduledEmailDigests(env, now = Date.now()) {
   let failed = 0;
   while (true) {
     const page = await env.DB.prepare(
-      "SELECT github_id, email, timezone, language FROM email_reminders WHERE github_id > ? ORDER BY github_id LIMIT ?",
+      "SELECT github_id, email, timezone, language, daily_enabled FROM email_reminders WHERE github_id > ? ORDER BY github_id LIMIT ?",
     ).bind(afterId, PAGE_SIZE).all();
     if (page.results.length === 0) break;
     for (const recipient of page.results) {
@@ -193,6 +201,7 @@ export async function runScheduledEmailDigests(env, now = Date.now()) {
           const digest = buildEmailDigest(
             events, new Set(stars.results.map((row) => row.conference_key)),
             recipient.timezone, recipient.language, now,
+            { daily: Boolean(recipient.daily_enabled) },
           );
           if (!digest) continue;
           const token = await unsubscribeSignature(recipient.github_id, recipient.email, env.SESSION_SECRET);
