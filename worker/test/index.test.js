@@ -72,13 +72,12 @@ test("serves one public calendar feed for multiple selected editions", async () 
   }
 });
 
-test("caches shared star counts and invalidates them after a star changes", async (t) => {
+test("caches guest star counts and reads fresh totals for signed-in users", async (t) => {
   const originalCaches = globalThis.caches;
   const entries = new Map();
   globalThis.caches = { default: {
     async match(key) { return entries.get(key.url)?.clone(); },
     async put(key, response) { entries.set(key.url, response.clone()); },
-    async delete(key) { return entries.delete(key.url); },
   } };
   t.after(() => { globalThis.caches = originalCaches; });
 
@@ -96,9 +95,8 @@ test("caches shared star counts and invalidates them after a star changes", asyn
       },
       bind(...parameters) { return {
       async all() {
-        if (sql.includes("FROM conference_star_counts")) {
-          countReads++;
-          return { results: [{ conference_key: "iclr27", star_count: count }] };
+        if (sql.includes("FROM conference_stars WHERE github_id")) {
+          return { results: [{ conference_key: "iclr27" }] };
         }
         throw new Error(sql);
       },
@@ -136,7 +134,12 @@ test("caches shared star counts and invalidates them after a star changes", asyn
   }), env);
   assert.equal(star.status, 200);
   assert.equal((await star.json()).count, 5);
-  assert.deepEqual((await (await bootstrap()).json()).counts, { iclr27: 5 });
+  assert.deepEqual((await (await bootstrap()).json()).counts, { iclr27: 4 });
+  assert.equal(countReads, 1);
+  const signedIn = await worker.fetch(new Request("https://ccfddl.com/api/bootstrap", {
+    headers: { Cookie: `__Host-ccfddl_session=${"a".repeat(43)}` },
+  }), env);
+  assert.deepEqual((await signedIn.json()).counts, { iclr27: 5 });
   assert.equal(countReads, 2);
 });
 
