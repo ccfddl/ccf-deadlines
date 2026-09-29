@@ -354,11 +354,17 @@ a {
 }
 
 .email-reminder-daily-control {
-  gap: 7px;
   min-height: 28px;
   border-bottom: 0;
   font-size: var(--font-size-sm);
   line-height: 20px;
+}
+
+.email-reminder-daily-control .thaw-switch__label {
+  color: var(--color-text-secondary);
+  cursor: default;
+  font-size: var(--font-size-sm);
+  pointer-events: none;
 }
 
 .email-reminder-daily-control--busy .thaw-switch {

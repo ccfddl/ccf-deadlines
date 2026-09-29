@@ -225,8 +225,11 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                                             busy.set(false);
                                                         });
                                                     }>
-                                                    <Switch checked=daily_switch />
-                                                    <span class="past-label">{move || if use_english.get() { "Daily reminders (force a daily email when enabled)" } else { "🔥每日催我 (开启后强制每日邮件提醒)" }}</span>
+                                                    <Switch checked=daily_switch label=Signal::derive(move || if use_english.get() {
+                                                        "Daily reminders (force a daily email when enabled)".to_string()
+                                                    } else {
+                                                        "🔥每日催我 (开启后强制每日邮件提醒)".to_string()
+                                                    }) />
                                                 </div>
                                             </div>
                                         })}
