@@ -48,7 +48,7 @@
       link: https://wcnc2025.ieee-wcnc.org/
       timeline:
         - deadline: '2024-10-14 23:59:00'
-          comment: 'Regular papers; final or extended deadline. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+          comment: 'Regular papers; firm deadline. Cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
       date: March 24-27, 2025
       place: Milan, Italy
@@ -57,7 +57,7 @@
       link: https://wcnc2026.ieee-wcnc.org/group/21
       timeline:
         - deadline: '2025-10-26 23:59:00'
-          comment: 'Regular papers; final or extended deadline. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+          comment: 'Regular papers; final deadline. Cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
       date: April 13-16, 2026
       place: Kuala Lumpur, Malaysia
