@@ -11,49 +11,49 @@
       id: lcn21
       link: https://www.ieeelcn.org/prior/LCN46/index.html
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Regular-paper registration and submission: 2021-05-31; explicit clock and timezone not published in the verified source.'
-      timezone: UTC
+        - abstract_deadline: '2021-05-31 23:59:00'
+          deadline: '2021-05-31 23:59:00'
+          comment: 'Regular-paper registration and submission; 23:59:00 and AoE are repository defaults because the source publishes dates only.'
+      timezone: AoE
       date: October 4-7, 2021
       place: Virtual
     - year: 2022
       id: lcn22
       link: https://www.ieeelcn.org/prior/LCN47/index.html
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Regular-paper registration and submission: 2022-04-24; explicit clock and timezone not published in the verified source.'
-      timezone: UTC
+        - abstract_deadline: '2022-04-24 23:59:00'
+          deadline: '2022-04-24 23:59:00'
+          comment: 'Regular-paper registration and submission; 23:59:00 and AoE are repository defaults because the source publishes dates only.'
+      timezone: AoE
       date: September 26-29, 2022
-      place: Edmonton, Canada
+      place: Edmonton, Canada / Hybrid
     - year: 2023
       id: lcn23
       link: https://www.ieeelcn.org/prior/LCN48/index.html
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Regular-paper registration and submission: 2023-04-28; explicit clock and timezone not published in the verified source.'
-      timezone: UTC
-      date: October 1-5, 2023
+        - abstract_deadline: '2023-04-28 23:59:00'
+          deadline: '2023-04-28 23:59:00'
+          comment: 'Regular-paper registration and submission; 23:59:00 and AoE are repository defaults because the source publishes dates only.'
+      timezone: AoE
+      date: October 2-4, 2023
       place: Daytona Beach, FL, USA
     - year: 2024
       id: lcn24
       link: https://www.ieeelcn.org/prior/LCN49/index.html
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Regular-paper registration and submission: 2024-05-03; explicit clock and timezone not published in the verified source.'
-      timezone: UTC
+        - abstract_deadline: '2024-05-03 23:59:00'
+          deadline: '2024-05-03 23:59:00'
+          comment: 'Regular-paper registration and submission; 23:59:00 and AoE are repository defaults because the source publishes dates only.'
+      timezone: AoE
       date: October 8-10, 2024
       place: Caen, France
     - year: 2025
       id: lcn25
       link: https://www.ieeelcn.org/prior/LCN50/index.html
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Regular-paper registration and submission: 2025-05-11 AoE; explicit clock not published in the verified source.'
+        - abstract_deadline: '2025-05-11 23:59:00'
+          deadline: '2025-05-11 23:59:00'
+          comment: 'Regular-paper registration and submission; source specifies AoE; 23:59:00 is the repository default for unpublished clock.'
       timezone: AoE
       date: October 14-16, 2025
       place: Sydney, Australia
