@@ -33,8 +33,8 @@
       id: middleware24
       link: https://middleware-conf.github.io/2024/
       timeline:
-        - deadline: TBD
-          comment: 'Round 1: December 1, 2023 AoE; exact time unpublished'
+        - deadline: '2023-12-01 23:59:00'
+          comment: 'Round 1: official AoE date; 23:59 is the default convention because the source omits the clock'
         - deadline: '2024-05-31 23:59:59'
           comment: Round 2
       timezone: AoE
