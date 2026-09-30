@@ -7,6 +7,42 @@
     thcpl: N
   dblp: wcnc
   confs:
+    - year: 2021
+      id: wcnc21
+      link: https://wcnc2021.ieee-wcnc.org/
+      timeline:
+        - deadline: '2020-10-30 23:59:00'
+          comment: 'Regular papers; final or extended deadline. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
+      date: March 30-April 1, 2021
+      place: Nanjing, China / Hybrid
+    - year: 2022
+      id: wcnc22
+      link: https://wcnc2022.ieee-wcnc.org/
+      timeline:
+        - deadline: '2021-10-15 23:59:00'
+          comment: 'Regular papers; final or extended deadline. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
+      date: April 11-13, 2022
+      place: Austin, TX, USA / Hybrid
+    - year: 2023
+      id: wcnc23
+      link: https://wcnc2023.ieee-wcnc.org/
+      timeline:
+        - deadline: '2022-09-30 23:59:00'
+          comment: 'Regular papers; final or extended deadline. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
+      date: March 27-29, 2023
+      place: Glasgow, Scotland, UK
+    - year: 2024
+      id: wcnc24
+      link: https://wcnc2024.ieee-wcnc.org/
+      timeline:
+        - deadline: '2023-10-25 23:59:00'
+          comment: 'Regular papers; final or extended deadline. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
+      date: April 22-24, 2024
+      place: Dubai, United Arab Emirates
     - year: 2025
       id: wcnc25
       link: https://wcnc2025.ieee-wcnc.org/
