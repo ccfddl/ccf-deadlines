@@ -7,6 +7,25 @@
     thcpl: N
   dblp: accv
   confs:
+    - year: 2016
+      id: accv16
+      link: https://accv2016.org/
+      timeline:
+        - deadline: '2016-05-27 23:59:00'
+          comment: 'Final author instructions specify PDT (GMT-7), no extension; no separate abstract cutoff was found.'
+      timezone: UTC-7
+      date: November 21-23, 2016
+      place: Taipei, Taiwan
+    - year: 2020
+      id: accv20
+      link: https://accv2020.github.io/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: '2020-07-08 23:59:00'
+          comment: 'Author guidelines require title/abstract registration but do not state its cutoff; full-paper deadline is explicitly 11:59 PM UTC.'
+      timezone: UTC+0
+      date: November 30 - December 2, 2020
+      place: Virtual
     - year: 2024
       id: accv24
       link: https://minhhoai.net/accv24/index.html
