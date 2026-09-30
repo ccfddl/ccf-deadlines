@@ -370,9 +370,11 @@ fn build_favorite_timeline(
     for conference in favorites {
         let mut without_clock = conference.clone();
         without_clock.date_only_ddls.retain(|point| !date_only_expired(point.date, &conference.timezone, reference_time));
-        if !without_clock.date_only_ddls.is_empty()
+        if conference.status != "FIN" && (
+            conference.status == "TBD"
+            || !without_clock.date_only_ddls.is_empty()
             || (conference.ddls.is_empty() && conference.date_only_ddls.is_empty())
-        {
+        ) {
             awaiting_dates.push(without_clock);
         }
         if conference.ddls.is_empty() {
@@ -524,6 +526,32 @@ mod tests {
         assert_eq!(data.awaiting_dates[0].date_only_ddls.len(), 1);
         let after = DateTime::parse_from_rfc3339("2027-03-01T12:00:00Z").unwrap().with_timezone(&Utc);
         assert!(build_favorite_timeline(vec![conference], after).awaiting_dates.is_empty());
+    }
+
+
+    #[test]
+    fn unresolved_round_remains_visible_after_known_nodes_pass() {
+        let now = DateTime::parse_from_rfc3339("2027-03-01T12:00:00Z").unwrap().with_timezone(&Utc);
+        for precise in [true, false] {
+            let mut conference = favorite("rounds27", "Rounds", if precise { &[200] } else { &[] });
+            conference.status = "TBD".to_string();
+            if !precise {
+                conference.date_only_ddls.push(crate::components::conf::DateOnlyPoint {
+                    date: chrono::NaiveDate::from_ymd_opt(2027, 2, 28).unwrap(),
+                    r#type: 1, round: 1, comment: None,
+                });
+            }
+            let pending = build_favorite_timeline(vec![conference.clone()], now);
+            assert!(pending.events.is_empty());
+            assert_eq!(pending.awaiting_dates.len(), 1);
+            assert_eq!(pending.awaiting_dates[0].status, "TBD");
+            assert!(pending.awaiting_dates[0].date_only_ddls.is_empty());
+            conference.status = "FIN".to_string();
+            assert!(build_favorite_timeline(vec![conference], now).awaiting_dates.is_empty());
+        }
+        let mut historical = favorite("old", "Old", &[]);
+        historical.status = "FIN".to_string();
+        assert!(build_favorite_timeline(vec![historical], now).awaiting_dates.is_empty());
     }
 
 }

@@ -48,3 +48,20 @@ historical-date estimates. Precise and TBD behavior remains supported.
 
 This support does not migrate conference records automatically. Each data change
 still needs an official source for its date, stage, and timezone qualifications.
+
+## Rollout dependency
+
+The `Deploy` workflow publishes the static site and generated exports only. It
+**does not deploy** the API/reminder Worker or the separate MCP Worker. Their
+`npm run deploy` releases are separate operational actions; CI bundling is not a
+production release.
+
+Release and verify the updated existing Worker consumers before publishing
+calendar-only data. The new consumers accept existing precise/legacy data, so
+consumer-first rollout is supported. An old reminder Worker skips a date-only
+row whose `deadline_at` is null, and an old MCP upcoming query skips bare dates.
+Do not claim production email/MCP support based only on this repository's tests.
+Use the existing configured services and deployment permissions; this feature
+requires no new credentials, OAuth grants, domains, database migration, or plugin
+marketplace submission. If a configured deployment environment is unavailable,
+hold dependent date-only data migrations and obtain an authorized operator rollout.
