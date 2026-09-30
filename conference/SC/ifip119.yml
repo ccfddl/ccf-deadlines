@@ -11,44 +11,44 @@
       id: ifip119'22
       link: http://www.ifip119.org/Conferences/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper deadline: November 12, 2021; exact time and timezone not published.'
+        - deadline: '2021-11-12 23:59:00'
+          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
-      date: January 3 - 5, 2022
-      place: New Delhi, India
+      date: January 3-4, 2022
+      place: Virtual
     - year: 2023
       id: ifip119'23
       link: https://www.ifip119.org/Conferences/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper deadline: November 15, 2022; exact time and timezone not published.'
-      timezone: UTC
+        - deadline: '2022-11-15 23:59:00'
+          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
+      timezone: AoE
       date: January 30-31, 2023
       place: Arlington, Virginia, USA
     - year: 2024
       id: ifip119'24
       link: https://www.ifip119.org/Conferences/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper deadline: October 31, 2023; exact time and timezone not published.'
-      timezone: UTC
+        - deadline: '2023-10-31 23:59:00'
+          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
+      timezone: AoE
       date: January 4-5, 2024
       place: New Delhi, India
     - year: 2025
       id: ifip119'25
       link: https://www.ifip119.org/Conferences/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper deadline: September 30, 2024; exact time and timezone not published.'
-      timezone: UTC
+        - deadline: '2024-09-30 23:59:00'
+          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
+      timezone: AoE
       date: January 6-7, 2025
       place: New Delhi, India
     - year: 2026
       id: ifip119'26
       link: http://www.ifip119.org/Conferences/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper deadline: October 31, 2025; exact time and timezone not published.'
+        - deadline: '2025-10-31 23:59:00'
+          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
       date: January 5 - 6, 2026
       place: New Delhi, India
