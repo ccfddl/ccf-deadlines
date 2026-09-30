@@ -1,8 +1,38 @@
 - title: ACSAC
+  # Technical-paper totals; annual denominator and decision-stage qualifications below.
   accept_rates:
+    - year: 2021
+      # 2022 PC report p. 4 explicitly reports 2021 total submissions and accepted papers.
+      submitted: 326
+      accepted: 80
+      str: 24.5%(80/326 21')
+      rate: 0.24539877300613497
+      source: https://www.acsac.org/2022/program/ACSAC22-ProgramChairs-Opening.pdf
+    - year: 2022
+      # PC report p. 4: total submissions and accepted; rebuttal and shepherding.
+      submitted: 303
+      accepted: 73
+      str: 24.1%(73/303 22')
+      rate: 0.24092409240924093
+      source: https://www.acsac.org/2022/program/ACSAC22-ProgramChairs-Opening.pdf
+    - year: 2023
+      # Valid submissions; 59 accepted includes 30 conditionally accepted with minor revision/shepherding.
+      submitted: 246
+      accepted: 59
+      str: 24.0%(59/246 23')
+      rate: 0.23983739837398374
+      source: https://www.acsac.org/2023/files/web/acsac23-programchairs-opening.pdf
+    - year: 2024
+      # Valid submissions after desk rejects (424 received); 83 includes 51 conditional acceptances; main R+R scope.
+      submitted: 381
+      accepted: 83
+      str: 21.8%(83/381 24')
+      rate: 0.2178477690288714
+      source: https://www.acsac.org/2024/files/web/acsac24-opening-programchairs.pdf
     - year: 2025
+      # Preserved received-submission cohort: 446 received, 408 valid; 84 accepted incl. 3 R+R, 39 minor revisions.
       submitted: 446
       accepted: 84
       str: 18.8%(84/446 25')
-      rate: 0.18834081
-      source: https://papers.submit.acsac.org/
+      rate: 0.18834080717488788
+      source: https://www.acsac.org/2025/files/web/acsac25-welcome-awards.pdf
