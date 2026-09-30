@@ -7,6 +7,52 @@
     thcpl: A
   dblp: sensys
   confs:
+    - year: 2021
+      id: sensys21
+      link: https://sensys.acm.org/2021/
+      timeline:
+        - abstract_deadline: '2021-05-28 23:59:00'
+          deadline: '2021-06-04 23:59:00'
+      timezone: AoE
+      date: November 15-17, 2021
+      place: Coimbra, Portugal
+    - year: 2022
+      id: sensys22
+      link: https://sensys.acm.org/2022/
+      timeline:
+        - abstract_deadline: '2022-06-14 23:59:00'
+          deadline: '2022-06-21 23:59:00'
+      timezone: AoE
+      date: November 7-9, 2022
+      place: Boston, MA, USA
+    - year: 2023
+      id: sensys23
+      link: https://sensys.acm.org/2023/
+      timeline:
+        - abstract_deadline: '2023-06-22 23:59:00'
+          deadline: '2023-06-29 23:59:00'
+      timezone: AoE
+      date: November 13-15, 2023
+      place: Istanbul, Turkiye
+    - year: 2024
+      id: sensys24
+      link: https://sensys.acm.org/2024/
+      timeline:
+        - abstract_deadline: '2024-06-24 23:59:00'
+          deadline: '2024-07-01 23:59:00'
+      timezone: AoE
+      date: November 5-7, 2024
+      place: Hangzhou, China
+    - year: 2025
+      id: sensys25
+      link: https://sensys.acm.org/2025/
+      timeline:
+        - abstract_deadline: '2024-11-14 23:59:00'
+          deadline: '2024-11-14 23:59:00'
+          comment: 'Abstract registration is optional; final registration and submission deadlines coincide.'
+      timezone: AoE
+      date: May 7-9, 2025
+      place: Irvine, CA, USA
     - year: 2026
       id: sensys26
       link: https://sensys.acm.org/2026/
