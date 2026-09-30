@@ -13,24 +13,32 @@
       str: 22.8%(85/372 22')
       rate: 0.228494623655914
       source: https://link.springer.com/book/10.1007/978-3-031-06944-4
+    # 2023: 415 received, including four desk rejections; 109 accepted decisions.
     - year: 2023
       submitted: 415
       accepted: 109
       str: 26.3%(109/415 23')
       rate: 0.262650602409639
       source: https://link.springer.com/book/10.1007/978-3-031-30545-0
+    # Preserve the existing publisher-reported 105/500 cohort; the discrepancy is unresolved.
+    # Original PC preface instead reports 501 received, 469 reviewed and 105 accepted.
+    # https://link.springer.com/content/pdf/bfm:978-3-031-58716-0/1
     - year: 2024
       submitted: 500
       accepted: 105
       str: 21.0%(105/500 24')
       rate: 0.210000000000000
       source: https://link.springer.com/book/10.1007/978-3-031-58716-0
+    # 2025: 602 reviewed of 607 received; 123 selected, including three soft-merge pairs.
+    # The preface does not separately quantify withdrawal/desk exclusions.
     - year: 2025
       submitted: 602
       accepted: 123
       str: 20.4%(123/602 25')
       rate: 0.204318936877076
       source: https://link.springer.com/book/10.1007/978-3-031-91107-1
+    # 2026: 675 reviewed of 701 received after six withdrawals and 20 desk rejections.
+    # 142 selected for acceptance include four conditional acceptances with shepherding.
     - year: 2026
       submitted: 675
       accepted: 142
