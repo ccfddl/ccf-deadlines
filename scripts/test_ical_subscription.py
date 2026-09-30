@@ -1,15 +1,18 @@
 import tempfile
 import unittest
-import sys
+import importlib.util
 import json
 from pathlib import Path
 
 import yaml
 from icalendar import Calendar
 
-CLI_ROOT = Path(__file__).resolve().parents[1] / "extensions/cli"
-sys.path.insert(0, str(CLI_ROOT))
-from ccfddl.convert_to_ical import convert_to_ical, write_deadline_events_index
+CONVERTER = Path(__file__).resolve().parents[1] / "extensions/cli/ccfddl/convert_to_ical.py"
+SPEC = importlib.util.spec_from_file_location("convert_to_ical", CONVERTER)
+MODULE = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(MODULE)
+convert_to_ical = MODULE.convert_to_ical
+write_deadline_events_index = MODULE.write_deadline_events_index
 
 
 class FavoriteCalendarTests(unittest.TestCase):

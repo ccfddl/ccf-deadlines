@@ -46,29 +46,6 @@ function pacificOffset(raw) {
   return offset;
 }
 
-// Calendar-day bounds are filtering keys, not asserted deadline timestamps.
-export function dateOnly(raw) {
-  if (typeof raw !== "string" || !/^[1-9]\d{3}-\d{2}-\d{2}$/.test(raw)) return null;
-  const value = Date.parse(`${raw}T00:00:00Z`);
-  return Number.isFinite(value) && new Date(value).toISOString().slice(0, 10) === raw ? raw : null;
-}
-
-function dateBounds(raw, timezone) {
-  if (!dateOnly(raw)) return null;
-  const next = new Date(Date.parse(`${raw}T00:00:00Z`) + 86_400_000).toISOString().slice(0, 10);
-  if (timezone === "Unknown") {
-    return [Date.parse(`${raw}T00:00:00Z`) - 14 * 3_600_000,
-      Date.parse(`${next}T00:00:00Z`) + 12 * 3_600_000];
-  }
-  const start = deadlineToUtc(`${raw} 00:00:00`, timezone);
-  const end = deadlineToUtc(`${next} 00:00:00`, timezone);
-  return start && end ? [Date.parse(start), Date.parse(end)] : null;
-}
-
-function deadlinePrecision(raw, timezone) {
-  return dateOnly(raw) ? "date" : deadlineToUtc(raw, timezone) ? "datetime" : "unknown";
-}
-
 export function deadlineToUtc(raw, timezone) {
   if (typeof raw !== "string" || !/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(raw)) return null;
   const offset = timezone === "AoE" ? -12
@@ -77,7 +54,7 @@ export function deadlineToUtc(raw, timezone) {
     : /^UTC[+-]\d{1,2}$/.test(timezone ?? "") ? Number(timezone.slice(3)) : null;
   if (offset === null || offset < -12 || offset > 14) return null;
   const local = Date.parse(`${raw.replace(" ", "T")}Z`);
-  if (!Number.isFinite(local) || new Date(local).toISOString().slice(0, 19) !== raw.replace(" ", "T")) return null;
+  if (!Number.isFinite(local)) return null;
   const utc = new Date(local - offset * 3_600_000);
   return utc.toISOString();
 }
@@ -137,8 +114,6 @@ export function getConference(conferences, nameOrId) {
           local_time: round[kind],
           timezone: edition.timezone,
           utc_time: deadlineToUtc(round[kind], edition.timezone),
-          deadline_date: dateOnly(round[kind]),
-          precision: deadlinePrecision(round[kind], edition.timezone),
           note: round.comment ?? null,
         }))),
     })),
@@ -163,24 +138,18 @@ export function upcomingDeadlines(conferences, {
           const raw = round[kind];
           const utcTime = deadlineToUtc(raw, edition.timezone);
           const instant = utcTime && Date.parse(utcTime);
-          const bounds = dateBounds(raw, edition.timezone);
-          if (bounds ? bounds[1] <= now || bounds[0] > until
-            : instant === null || instant < now || instant > until) continue;
+          if (instant === null || instant < now || instant > until) continue;
           results.push({
-            sortKey: bounds ? bounds[0] : instant,
             ...editionSummary(conference, edition),
             kind,
             round: index + 1,
             local_time: raw,
             utc_time: utcTime,
-            deadline_date: dateOnly(raw),
-            precision: bounds ? "date" : "datetime",
             note: round.comment ?? null,
           });
         }
       }
     }
   }
-  return results.sort((a, b) => a.sortKey - b.sortKey).slice(0, limit)
-    .map(({ sortKey, ...result }) => result);
+  return results.sort((a, b) => a.utc_time.localeCompare(b.utc_time)).slice(0, limit);
 }

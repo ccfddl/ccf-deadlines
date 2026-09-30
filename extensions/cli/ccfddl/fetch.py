@@ -11,7 +11,7 @@ import requests
 import yaml
 
 from ccfddl.models import Conference, get_category_by_sub
-from ccfddl.utils import deadline_has_passed, deadline_sort_key, parse_deadline
+from ccfddl.utils import parse_datetime_with_tz
 
 
 def extract_alpha_id(with_digits: str) -> str:
@@ -62,13 +62,10 @@ def process_conference_deadlines(
                     continue
 
                 try:
-                    cur_d = parse_deadline(deadline_str, conf_year.timezone)
-                    if deadline_has_passed(cur_d, now, conf_year.timezone):
+                    cur_d = parse_datetime_with_tz(deadline_str, conf_year.timezone)
+                    if cur_d < now:
                         continue
-                    if time_obj is None or (
-                        deadline_sort_key(cur_d, conf_year.timezone)
-                        < deadline_sort_key(time_obj, conf_year.timezone)
-                    ):
+                    if time_obj is None or cur_d < time_obj:
                         time_obj = cur_d
                 except ValueError:
                     continue
@@ -81,11 +78,7 @@ def process_conference_deadlines(
                     "id": conf_year.id,
                     "link": conf_year.link,
                     "deadline": time_obj,
-                    "deadline_str": (
-                        time_obj.strftime("%Y-%m-%d %H:%M:%S %Z")
-                        if isinstance(time_obj, datetime) else time_obj.isoformat()
-                    ),
-                    "precision": "datetime" if isinstance(time_obj, datetime) else "date",
+                    "deadline_str": time_obj.strftime("%Y-%m-%d %H:%M:%S %Z"),
                     "timezone": conf_year.timezone,
                     "date": conf_year.date,
                     "place": conf_year.place,
@@ -94,7 +87,7 @@ def process_conference_deadlines(
                 }
                 results.append(result)
 
-    results.sort(key=lambda x: deadline_sort_key(x["deadline"], x["timezone"]))
+    results.sort(key=lambda x: x["deadline"])
     return results
 
 

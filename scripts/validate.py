@@ -11,7 +11,6 @@ $ pip install PyYAML jsonschema
 
 import os
 import sys
-from datetime import date
 
 from io import StringIO
 from pprint import pprint
@@ -25,19 +24,6 @@ import yaml
 ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 DATA_ROOT = os.path.join(ROOT, 'conference')
 YAML_SCHEMA = None
-DEADLINE_FORMAT_CHECKER = jsonschema.FormatChecker()
-
-
-@DEADLINE_FORMAT_CHECKER.checks("deadline")
-def valid_deadline_calendar_date(value):
-    """Validate date-only calendar values without altering legacy clock validation."""
-    if not isinstance(value, str) or len(value) != 10:
-        return True
-    try:
-        return date.fromisoformat(value).isoformat() == value
-    except ValueError:
-        return False
-
 
 def load_conference_yaml_schema():
     global YAML_SCHEMA
@@ -64,7 +50,7 @@ class ConferenceTest(TestCase):
                             except Exception:
                                 self.fail(msg=f'Conference \033[1;31m{conf}\033[m contains invalid YAML')
                             try:
-                                jsonschema.validate(conference_yml, YAML_SCHEMA, format_checker=DEADLINE_FORMAT_CHECKER)
+                                jsonschema.validate(conference_yml, YAML_SCHEMA)
                             except jsonschema.exceptions.ValidationError:
                                 self.fail(msg=f'Conference \033[1;31m{conf}\033[m contains invalid properties')
 

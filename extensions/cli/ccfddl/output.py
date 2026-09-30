@@ -5,7 +5,7 @@ in various formats (table, JSON).
 """
 
 import json
-from datetime import date, datetime, timezone
+from datetime import datetime
 
 from tabulate import tabulate
 from termcolor import colored
@@ -14,11 +14,9 @@ from ccfddl.models import CATEGORIES
 from ccfddl.utils import format_duration
 
 
-def format_colored_duration(ddl_time: date | datetime, now: datetime) -> str:
+def format_colored_duration(ddl_time: datetime, now: datetime) -> str:
     """Format duration with color coding."""
     duration_str = format_duration(ddl_time, now)
-    if not isinstance(ddl_time, datetime):
-        return duration_str
     days = (ddl_time - now).days
 
     if days < 1:
@@ -55,8 +53,6 @@ def output_json(results: list[dict[str, any]]) -> None:
     """Output results as JSON."""
     output = []
     for item in results:
-        deadline = item["deadline"]
-        precise = isinstance(deadline, datetime)
         output.append({
             "title": item["title"],
             "year": item["year"],
@@ -66,12 +62,6 @@ def output_json(results: list[dict[str, any]]) -> None:
             "subname_en": item["subname_en"],
             "rank": item["rank"],
             "deadline": item["deadline_str"],
-            "precision": "datetime" if precise else "date",
-            "deadline_at": (
-                deadline.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-                if precise else None
-            ),
-            "deadline_date": None if precise else deadline.isoformat(),
             "timezone": item["timezone"],
             "date": item["date"],
             "place": item["place"],

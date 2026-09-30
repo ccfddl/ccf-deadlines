@@ -53,72 +53,30 @@ function safeHttpUrl(value) {
   }
 }
 
-function validCalendarDate(value) {
-  if (typeof value !== "string" || !/^[1-9]\d{3}-\d{2}-\d{2}$/.test(value)) return false;
-  const key = Date.parse(`${value}T00:00:00Z`);
-  return Number.isFinite(key) && new Date(key).toISOString().slice(0, 10) === value;
-}
-
-function sourceCalendarDay(now, timezone) {
-  if (timezone === "PT") return zonedParts(now, "America/Los_Angeles");
-  const offset = timezone === "Unknown" || timezone === "AoE" ? -12
-    : timezone === "UTC" ? 0
-    : /^UTC[+-]\d{1,2}$/.test(timezone ?? "") ? Number(timezone.slice(3)) : null;
-  if (offset === null || offset < -12 || offset > 14) return null;
-  const date = new Date(Number(now) + offset * 3_600_000).toISOString();
-  return { year: date.slice(0, 4), month: date.slice(5, 7), day: date.slice(8, 10) };
-}
-
-// Only an internal ordering bound. Do not expose this as a deadline timestamp.
-function calendarSortBound(raw, timezone) {
-  const base = Date.parse(`${raw}T00:00:00Z`);
-  let offset = timezone === "Unknown" ? 14 : timezone === "AoE" ? -12
-    : timezone === "UTC" ? 0 : Number(timezone.slice(3));
-  if (timezone === "PT") {
-    const formatter = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", timeZoneName: "shortOffset" });
-    offset = -8;
-    for (let attempt = 0; attempt < 2; attempt++) {
-      const name = formatter.formatToParts(new Date(base - offset * 3_600_000))
-        .find((part) => part.type === "timeZoneName")?.value;
-      offset = Number(/^GMT([+-]\d{1,2})$/.exec(name ?? "")?.[1]);
-    }
-  }
-  return base - offset * 3_600_000;
-}
-
 export function buildEmailDigest(events, starredIds, timezone, language, now, { daily = false } = {}) {
   const today = zonedParts(now, timezone);
   const matches = [];
   const seen = new Set();
   for (const event of events) {
-    if (!starredIds.has(event.id)) continue;
-    const datePrecision = event.precision === "date";
-    if (!datePrecision && event.timezone === "Unknown") continue;
-    if (datePrecision ? !validCalendarDate(event.deadline_date) : typeof event.deadline_at !== "string") continue;
-    const eventKey = event.uid ?? `${event.id}:${event.title}:${datePrecision ? event.deadline_date : event.deadline_at}`;
+    if (!starredIds.has(event.id) || typeof event.deadline_at !== "string") continue;
+    const eventKey = event.uid ?? `${event.id}:${event.title}:${event.deadline_at}`;
     if (seen.has(eventKey)) continue;
     seen.add(eventKey);
-    // Legacy all_day timestamp entries remain supported. New date-only entries
-    // never manufacture a deadline instant or convert the published date.
-    const deadline = datePrecision ? null : Date.parse(event.deadline_at);
-    if (!datePrecision && !Number.isFinite(deadline)) continue;
-    const rawDate = datePrecision ? event.deadline_date : event.deadline_at;
-    const local = datePrecision || event.all_day
-      ? { year: rawDate.slice(0, 4), month: rawDate.slice(5, 7), day: rawDate.slice(8, 10) }
+    const deadline = Date.parse(event.deadline_at);
+    if (!Number.isFinite(deadline)) continue;
+    const local = event.all_day
+      ? { year: event.deadline_at.slice(0, 4), month: event.deadline_at.slice(5, 7), day: event.deadline_at.slice(8, 10) }
       : zonedParts(deadline, timezone);
-    const dateToday = datePrecision ? sourceCalendarDay(now, event.timezone) : today;
-    if (!dateToday) continue;
-    const days = dayNumber(local) - dayNumber(dateToday);
+    const days = dayNumber(local) - dayNumber(today);
     if (daily) {
-      if (days < 0 || (!datePrecision && !event.all_day && deadline <= now)) continue;
+      if (days < 0 || (!event.all_day && deadline <= now)) continue;
     } else if (!REMINDER_DAYS.has(days)) {
       continue;
     }
-    const sortKey = datePrecision ? calendarSortBound(event.deadline_date, event.timezone) : deadline;
-    matches.push({ ...event, days, local, deadline, sortKey, datePrecision });
+    matches.push({ ...event, days, local, deadline });
   }
   if (matches.length === 0) return null;
-  matches.sort((left, right) => left.sortKey - right.sortKey || left.title.localeCompare(right.title));
+  matches.sort((left, right) => left.deadline - right.deadline || left.title.localeCompare(right.title));
   const conferences = [...new Set(matches.map((event) =>
     typeof event.conference === "string" && event.conference.trim()
       ? event.conference.trim() : event.id.toUpperCase(),
@@ -133,14 +91,11 @@ export function buildEmailDigest(events, starredIds, timezone, language, now, { 
     : (language === "zh" ? `${names} 截止日期提醒` : `${names} Deadline reminders`);
   const subject = `[ccf-deadlines] ${heading}`;
   const items = matches.map((event) => {
-    const when = `${event.local.year}/${event.local.month}/${event.local.day}${event.datePrecision || event.all_day ? "" : ` ${event.local.hour}:${event.local.minute}`}`;
+    const when = `${event.local.year}/${event.local.month}/${event.local.day}${event.all_day ? "" : ` ${event.local.hour}:${event.local.minute}`}`;
     const lead = event.days === 0
       ? (language === "zh" ? "今天截止" : "Due today")
       : (language === "zh" ? `距截止 ${event.days} 天` : `${event.days} day${event.days === 1 ? "" : "s"} left`);
-    const uncertainty = event.datePrecision ? (language === "zh" ? " · 时刻未知，请核对官网" : " · time unknown; check the official website") : "";
-    const sourceZone = event.timezone === "Unknown" ? (language === "zh" ? "时区未知" : "timezone unknown") : event.timezone;
-    return { title: event.title, when: when + uncertainty, lead, url: event.url,
-      timezone: event.datePrecision ? sourceZone : timezone };
+    return { title: event.title, when, lead, url: event.url, timezone };
   });
   const lines = items.map((item) =>
     `${item.lead} · ${item.title} · ${item.when} (${item.timezone})\n${item.url ?? ""}`.trimEnd());
