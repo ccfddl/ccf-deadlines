@@ -26,15 +26,15 @@
       str: 16.1%(86/535 24')
       rate: 0.160747663551402
       source: https://link.springer.com/book/10.1007/978-3-031-70879-4
-    # Original PC preface and organizer program report 605 unique received submissions.
-    # Previous publisher About-based row: 100/600 (16.7%); discrepancy unexplained.
-    # 150 first-round + 475 second-round - 20 invited resubmissions = 605 unique.
+    # Preserve the existing publisher-reported 100/600 cohort while the denominator conflict remains.
+    # Original PC preface and organizer program instead report 100/605 unique received.
+    # https://esorics2025.sciencesconf.org/data/detailed_program.pdf
     - year: 2025
-      submitted: 605
+      submitted: 600
       accepted: 100
-      str: 16.5%(100/605 25')
-      rate: 0.165289256198347
-      source: https://esorics2025.sciencesconf.org/data/detailed_program.pdf
+      str: 16.7%(100/600 25')
+      rate: 0.166666666666667
+      source: https://link.springer.com/book/10.1007/978-3-032-07884-1
     # 2026: publisher-announced full-paper proceedings selection across four volumes.
     # Received/reviewed distinction, resubmission uniqueness and withdrawals unspecified.
     - year: 2026
