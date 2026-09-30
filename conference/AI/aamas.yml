@@ -7,6 +7,60 @@
     thcpl: B
   dblp: ifaamas
   confs:
+    - year: 2015
+      id: aamas15
+      link: https://www.ifaamas.org/AAMAS/aamas2015/
+      timeline:
+        - abstract_deadline: '2014-11-12 23:59:00'
+          deadline: '2014-11-17 23:59:00'
+      timezone: UTC-12
+      date: May 6-8, 2015
+      place: Istanbul, Turkey
+    - year: 2016
+      id: aamas16
+      link: https://www.ifaamas.org/AAMAS/aamas2016/
+      timeline:
+        - abstract_deadline: '2015-11-13 23:59:00'
+          deadline: '2015-11-17 23:59:00'
+      timezone: UTC-12
+      date: May 11-13, 2016
+      place: Singapore
+    - year: 2017
+      id: aamas17
+      link: https://www.ifaamas.org/AAMAS/aamas2017/
+      timeline:
+        - abstract_deadline: '2016-11-11 23:59:00'
+          deadline: '2016-11-15 23:59:00'
+      timezone: UTC-12
+      date: May 10-12, 2017
+      place: São Paulo, Brazil
+    - year: 2018
+      id: aamas18
+      link: https://www.ifaamas.org/AAMAS/aamas2018/
+      timeline:
+        - abstract_deadline: '2017-11-10 23:59:00'
+          deadline: '2017-11-14 23:59:00'
+      timezone: UTC-12
+      date: July 11-13, 2018
+      place: Stockholm, Sweden
+    - year: 2019
+      id: aamas19
+      link: https://www.ifaamas.org/AAMAS/aamas2019/
+      timeline:
+        - abstract_deadline: '2018-11-12 23:59:00'
+          deadline: '2018-11-16 23:59:00'
+      timezone: UTC-12
+      date: May 15-17, 2019
+      place: Montreal, Canada
+    - year: 2020
+      id: aamas20
+      link: https://www.ifaamas.org/AAMAS/aamas2020/
+      timeline:
+        - abstract_deadline: '2019-11-12 23:59:00'
+          deadline: '2019-11-15 23:59:00'
+      timezone: UTC-12
+      date: May 11-13, 2020
+      place: Virtual
     - year: 2021
       id: aamas21
       link: https://www.ifaamas.org/AAMAS/aamas2021/
@@ -14,7 +68,7 @@
         - abstract_deadline: '2020-10-02 23:59:59'
           deadline: '2020-10-09 23:59:59'
       timezone: UTC-12
-      date: May 3-7, 2021
+      date: May 5-7, 2021
       place: Virtual
     - year: 2022
       id: aamas22
