@@ -50,8 +50,8 @@
       link: https://conf.researchr.org/home/atva-2025
       timeline:
         - abstract_deadline: '2025-04-25 23:59:00'
-          deadline: '2025-04-25 23:59:59'
-          comment: Joint abstract and full submission on April 25, 2025 AoE; abstract missing clock uses repository default 23:59:00
+          deadline: '2025-04-25 23:59:00'
+          comment: Joint abstract and full submission on April 25, 2025 AoE; both clocks use repository default 23:59:00
       timezone: AoE
       date: October 28-30, 2025
       place: Bengaluru, India
