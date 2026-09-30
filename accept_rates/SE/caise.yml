@@ -1,6 +1,13 @@
 # Main-conference papers only; workshops and the separate Forum are excluded.
 - title: CAiSE
   accept_rates:
+    # Main-conference full papers; 172 received and 33 selected (preface p. v).
+    - year: 2021
+      submitted: 172
+      accepted: 33
+      str: 19.2%(33/172 21')
+      rate: 0.191860465116279
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-79382-1/1
     - year: 2022
       submitted: 203
       accepted: 31
