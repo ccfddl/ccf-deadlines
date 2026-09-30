@@ -9,22 +9,13 @@
   confs:
     - year: 2021
       id: prcv21
-      link: https://www.ccf.org.cn/Media_list/TC/2021-04-25/726888.shtml
+      link: https://tc.ccf.org.cn/ccfcv/zyhd/jsjsjdh/2021-08-28/735102.shtml
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers: original CFP date April 30, 2021; final extension status, clock and timezone unverified. UTC+0 is a schema placeholder.'
-      timezone: UTC+0
+        - deadline: '2021-04-30 23:59:00'
+          comment: 'Published regular-paper CFP date; 23:59:00 and AoE are repository defaults. A later extension has not been independently verified.'
+      timezone: AoE
       date: Dec 19-21, 2021
       place: Zhuhai, China
-    - year: 2022
-      id: prcv22
-      link: https://www.caa.org.cn/article/192/2647.html
-      timeline:
-        - deadline: TBD
-          comment: 'Regular papers: original CFP date April 15, 2022; final extension status, clock and timezone unverified. UTC+0 is a schema placeholder.'
-      timezone: UTC+0
-      date: Dec 23-26, 2022
-      place: Shenzhen, China
     - year: 2023
       id: prcv23
       link: https://prcv2023.xmu.edu.cn/
