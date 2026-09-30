@@ -11,9 +11,9 @@
       id: issre21
       link: https://2021.issre.net/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Extended REG abstract and full-paper submission: May 14, 2021 AoE; exact clock unpublished'
+        - abstract_deadline: '2021-05-14 23:59:00'
+          deadline: '2021-05-14 23:59:00'
+          comment: 'Extended REG abstract and full-paper submission: May 14, 2021 AoE; missing clock uses repository default 23:59:00'
       timezone: AoE
       date: October 26-29, 2021
       place: Wuhan, China / Hybrid
@@ -21,9 +21,9 @@
       id: issre22
       link: https://issre2022.github.io/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'REG abstract: May 13, 2022; extended full paper: May 22, 2022 AoE; exact clocks and abstract timezone unpublished'
+        - abstract_deadline: '2022-05-13 23:59:00'
+          deadline: '2022-05-22 23:59:00'
+          comment: 'REG abstract: May 13, 2022; extended full paper: May 22, 2022 AoE; unpublished clocks use repository default 23:59:00; abstract timezone uses repository default AoE'
       timezone: AoE
       date: November 1-3, 2022
       place: Charlotte, North Carolina, USA
