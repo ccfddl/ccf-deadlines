@@ -11,10 +11,10 @@
       id: acns21
       link: https://sulab-sever.u-aizu.ac.jp/ACNS2021/
       timeline:
-        - deadline: 'TBD'
-          comment: 'First regular paper final deadline: September 7, 2020 AoE; exact cutoff time not specified'
-        - deadline: 'TBD'
-          comment: 'Second regular paper final deadline: January 15, 2021 AoE; exact cutoff time not specified'
+        - deadline: '2020-09-07 23:59:00'
+          comment: 'First regular paper final deadline; 23:59:00 is the repository default for unspecified cutoff time'
+        - deadline: '2021-01-15 23:59:00'
+          comment: 'Second regular paper final deadline; 23:59:00 is the repository default for unspecified cutoff time'
       timezone: AoE
       date: June 21-24, 2021
       place: Virtual
