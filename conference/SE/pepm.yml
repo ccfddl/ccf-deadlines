@@ -5,6 +5,59 @@
     ccf: C
   dblp: pepm
   confs:
+    - year: 2021
+      id: pepm21
+      link: https://popl21.sigplan.org/home/pepm-2021
+      timeline:
+        - deadline: '2020-10-08 23:59:00'
+          comment: 'Regular research papers: October 8, 2020 AoE; 23:59 is the repository default because the official source omits the clock'
+      timezone: AoE
+      date: January 18-19, 2021
+      place: Online
+    - year: 2022
+      id: pepm22
+      link: https://popl22.sigplan.org/home/pepm-2022
+      timeline:
+        - deadline: '2021-10-07 23:59:59'
+      timezone: AoE
+      date: January 17-18, 2022
+      place: Online
+    - year: 2023
+      id: pepm23
+      link: https://popl23.sigplan.org/home/pepm-2023
+      timeline:
+        - deadline: '2022-10-18 23:59:00'
+          comment: 'Regular research papers: extended October 18, 2022 AoE; 23:59 is the repository default because the official source omits the clock'
+      timezone: AoE
+      date: January 17, 2023
+      place: Boston, Massachusetts, USA
+    - year: 2024
+      id: pepm24
+      link: https://popl24.sigplan.org/home/pepm-2024
+      timeline:
+        - deadline: '2023-10-20 23:59:00'
+          comment: 'Regular research papers: extended October 20, 2023 AoE; 23:59 is the repository default because the official source omits the clock'
+      timezone: AoE
+      date: January 16, 2024
+      place: London, United Kingdom
+    - year: 2025
+      id: pepm25
+      link: https://popl25.sigplan.org/home/pepm-2025
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Regular research papers: official CFP abstract October 14 / full October 18, 2024 conflicts with HotCRP registration October 18 / full October 21 at 23:59 AoE; unresolved dates'
+      timezone: AoE
+      date: January 21, 2025
+      place: Denver, Colorado, USA
+    - year: 2026
+      id: pepm26
+      link: https://popl26.sigplan.org/home/pepm-2026
+      timeline:
+        - deadline: '2025-10-24 23:59:59'
+      timezone: AoE
+      date: January 13, 2026
+      place: Rennes, France
     - year: 2027
       id: pepm27
       link: https://popl27.sigplan.org/home/pepm-2027
