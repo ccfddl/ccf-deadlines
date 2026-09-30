@@ -1,36 +1,54 @@
 # Paper-submission and acceptance totals from the official DSN historical statistics.
 - title: DSN
   accept_rates:
+    # Research-track selections: 42 regular + 3 practical experience + 3 tool papers.
+    # PC preface p. xiv: https://doi.org/10.1109/DSN48987.2021.00006
     - year: 2021
       submitted: 295
       accepted: 48
       str: 16.3%(48/295 21')
       rate: 0.162711864406780
       source: https://www.dependability.org/?page_id=808
+    # Unresolved primary-source conflict: archive gives 49/269; PC preface gives 49/262.
+    # Preface p. xiv: 39 regular + 5 practical experience + 5 tool papers; all shepherded.
+    # https://doi.org/10.1109/DSN53405.2022.00064
+    # Preserve archive figures until the unexplained seven-submission difference is reconciled.
     - year: 2022
       submitted: 269
       accepted: 49
       str: 18.2%(49/269 22')
       rate: 0.182156133828996
       source: https://www.dependability.org/?page_id=808
+    # 240 complete submissions; 47 accepted = 40 research + 5 practical experience + 2 tools.
+    # PC preface pp. xv-xvi: https://doi.org/10.1109/DSN58367.2023.00006
     - year: 2023
       submitted: 240
       accepted: 47
       str: 19.6%(47/240 23')
       rate: 0.195833333333333
       source: https://www.dependability.org/?page_id=808
+    # 204 complete submissions; 42 accepted = 34 research + 4 practical experience + 4 tools.
+    # Original PC preface pp. xiii-xiv: https://dsn2024uq.github.io/Proceedings/pdfs/DSN2024-6rvE3SSpzFYmysif75Dkid/410500z013/410500z013.pdf
     - year: 2024
       submitted: 204
       accepted: 42
       str: 20.6%(42/204 24')
       rate: 0.205882352941176
       source: https://www.dependability.org/?page_id=808
+    # 277 complete submissions include 25 desk rejections for double-blind violations.
+    # 56 accepted = 47 research + 5 practical experience + 4 tools; all shepherded.
+    # PC preface pp. xv-xvi: https://doi.org/10.1109/DSN64029.2025.00006
     - year: 2025
       submitted: 277
       accepted: 56
       str: 20.2%(56/277 25')
       rate: 0.202166064981949
       source: https://www.dependability.org/?page_id=808
+    # Unresolved primary-source conflict: archive gives 65/329; PC preface gives 65/331.
+    # Preface submission categories sum to 314 (275 regular + 23 practical experience + 16 tools).
+    # Accepted program: 57 regular + 5 practical experience + 3 tools = 65.
+    # PC preface pp. xvii-xviii: https://doi.org/10.1109/DSN69566.2026.00006
+    # Preserve archive figures; neither 331 nor 314 is a reconciled replacement denominator.
     - year: 2026
       submitted: 329
       accepted: 65
