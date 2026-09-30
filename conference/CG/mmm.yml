@@ -19,7 +19,8 @@
       id: mmm26
       link: https://mmm2026.cz/
       timeline:
-        - deadline: '2025-08-19 23:59:59'
+        - deadline: '2025-09-02 23:59:00'
+          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: January 29-31, 2026
       place: Prague, Czech Republic
