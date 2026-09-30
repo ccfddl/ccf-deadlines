@@ -7,16 +7,6 @@
     thcpl: B
   dblp: caise
   confs:
-    - year: 2021
-      id: caise21
-      link: https://easychair.org/cfp/caise2021
-      timeline:
-        - abstract_deadline: '2020-11-28 23:59:00'
-          deadline: '2020-12-04 23:59:00'
-          comment: Abstract on November 28 and full paper on December 4, 2020; 23:59:00 and AoE are repository defaults
-      timezone: AoE
-      date: June 28 - July 2, 2021
-      place: Virtual
     - year: 2022
       id: caise22
       link: https://caise22.ugent.be/
