@@ -7,20 +7,11 @@
     thcpl: N
   dblp: systor
   confs:
-    - year: 2021
-      id: systor21
-      link: https://www.systor.org/2021/
-      timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: March 9, 2021; CFP says 23:59 AoE, but HotCRP says March 10 06:00 EST (March 9 23:00 AoE); exact deadline unresolved'
-      timezone: AoE
-      date: June 14-16, 2021
-      place: Virtual
     - year: 2022
       id: systor22
       link: https://www.systor.org/2022/
       timeline:
-        - deadline: '2022-03-01 23:59:59'
+        - deadline: '2022-03-01 23:59:00'
           comment: Regular full papers
       timezone: AoE
       date: June 13-15, 2022
