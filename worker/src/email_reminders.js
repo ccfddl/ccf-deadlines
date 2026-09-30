@@ -87,7 +87,7 @@ export function buildEmailDigest(events, starredIds, timezone, language, now, { 
     ? `${shown}${language === "zh" ? ` 等 ${remaining} 个会议` : ` +${remaining} more`}`
     : shown;
   const heading = daily
-    ? (language === "zh" ? `${names} 每日截止提醒` : `${names} Daily deadline reminders`)
+    ? (language === "zh" ? `${names} 截止日期提醒` : `${names} Daily deadline reminders`)
     : (language === "zh" ? `${names} 截止日期提醒` : `${names} Deadline reminders`);
   const subject = `[ccf-deadlines] ${heading}`;
   const items = matches.map((event) => {
