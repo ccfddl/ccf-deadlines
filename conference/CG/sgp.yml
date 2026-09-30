@@ -58,7 +58,7 @@
           deadline: '2025-04-11 23:59:00'
           comment: 'Second (traditional) round'
       timezone: UTC+0
-      date: June 30 - July 4, 2025
+      date: July 2-4, 2025
       place: BILBAO, SPAIN
     - year: 2026
       id: sgp26
@@ -66,10 +66,10 @@
       timeline:
         - abstract_deadline: '2026-02-02 23:59:59'
           deadline: '2026-02-04 23:59:59'
-          comment: 'First round: abstract February 2 at 23:59 UTC verified; full date February 4 verified, legacy clock retained but initial full cutoff clock unverified.'
-        - abstract_deadline: TBD
+          comment: 'First round'
+        - abstract_deadline: '2026-04-13 23:59:59'
           deadline: '2026-04-15 23:59:59'
-          comment: 'Second round: abstract date conflicts, April 13 on CFP vs April 12 at 23:59 UTC on SRM; full date April 15 verified, legacy clock retained but initial full cutoff clock unverified.'
+          comment: 'Second round'
       timezone: UTC+0
       date: July 1 - 3, 2026
       place: Bern, Switzerland
