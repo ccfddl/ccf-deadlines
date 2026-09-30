@@ -7,6 +7,15 @@
     thcpl: B
   dblp: icassp
   confs:
+    - year: 2021
+      id: icassp21
+      link: https://www.2021.ieeeicassp.org/2021.ieeeicassp.org/index.html
+      timeline:
+        - deadline: '2020-10-21 23:59:00'
+          comment: 'Regular full-paper date verified; 23:59:00 and AoE are repository defaults for the unpublished time and zone.'
+      timezone: AoE
+      date: June 8-11, 2021
+      place: Online
     - year: 2022
       id: icassp22
       link: https://2022.ieeeicassp.org
