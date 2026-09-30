@@ -21,9 +21,9 @@
       id: models22
       link: https://conf.researchr.org/home/models-2022
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2022-05-18 23:59:00'
           deadline: '2022-05-18 23:59:59'
-          comment: 'Regular research papers: mandatory abstract May 18, 2022 AoE; exact abstract time unpublished'
+          comment: 'Regular research papers: official abstract date and AoE; abstract 23:59 is the default convention because the source omits its clock'
       timezone: AoE
       date: October 23-28, 2022
       place: Montréal, Canada
@@ -31,9 +31,9 @@
       id: models23
       link: https://conf.researchr.org/home/models-2023
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular research papers: abstract April 7, 2023; full paper April 14, 2023 AoE; exact time unpublished'
+        - abstract_deadline: '2023-04-07 23:59:00'
+          deadline: '2023-04-14 23:59:00'
+          comment: 'Regular research papers: official dates and AoE; 23:59 is the default convention because the source omits the clock'
       timezone: AoE
       date: October 4-6, 2023
       place: Västerås, Sweden
@@ -41,9 +41,9 @@
       id: models24
       link: https://conf.researchr.org/home/models-2024
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular research papers: abstract March 21, 2024; full paper March 28, 2024 AoE; exact time unpublished'
+        - abstract_deadline: '2024-03-21 23:59:00'
+          deadline: '2024-03-28 23:59:00'
+          comment: 'Regular research papers: official dates and AoE; 23:59 is the default convention because the source omits the clock'
       timezone: AoE
       date: September 25-27, 2024
       place: Linz, Austria
