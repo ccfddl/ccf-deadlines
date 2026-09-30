@@ -14,7 +14,7 @@
         - abstract_deadline: TBD
           deadline: TBD
           comment: 'Regular paper: abstract 2023-05-05; paper 2023-05-12. Exact time and timezone not published.'
-      timezone: UTC+0
+      timezone: Unknown
       date: September 13-14, 2023
       place: Kunibiki Messe, Matsue, Shimane, Japan
     - year: 2024
@@ -24,7 +24,7 @@
         - abstract_deadline: TBD
           deadline: TBD
           comment: 'Regular paper: abstract 2024-05-01; paper 2024-05-01. Exact time and timezone not published.'
-      timezone: UTC+0
+      timezone: Unknown
       date: August 19-20, 2024
       place: Changsha, China
     - year: 2025
@@ -33,7 +33,7 @@
       timeline:
         - deadline: TBD
           comment: 'Regular paper: paper 2025-08-12. Exact time and timezone not published.'
-      timezone: UTC+0
+      timezone: Unknown
       date: December 17-19, 2025
       place: Conference Tower of Tokyo Big Sight, Tokyo, Japan
     - year: 2026
