@@ -20,8 +20,8 @@
       id: ncmmsc23
       link: https://www.ncmmsc.org.cn/2023/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: October 23, 2023, Beijing time; official clock wording incomplete; October 29 is updates only'
+        - deadline: '2023-10-23 23:59:00'
+          comment: 'Regular full papers; Beijing time. Source clock omits the hour, so 23:59:00 uses the repository default; October 29 is for updates only.'
       timezone: UTC+8
       date: December 9-10, 2023
       place: Suzhou, China
