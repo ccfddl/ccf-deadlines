@@ -11,19 +11,19 @@
       id: pact21
       link: http://pact21.snu.ac.kr/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2021-04-15 23:59:00'
           deadline: '2021-04-19 23:59:59'
-          comment: Abstract registration date April 15, 2021; exact abstract cutoff time and timezone unconfirmed
+          comment: Abstract calendar date verified; 23:59:00 and AoE are repository defaults for the unpublished abstract time and timezone
       timezone: AoE
-      date: September 26-29, 2021
+      date: September 27-29, 2021
       place: Virtual
     - year: 2022
       id: pact22
       link: https://pact22.cs.illinois.edu/
       timeline:
         - abstract_deadline: '2022-04-18 23:59:59'
-          deadline: TBD
-          comment: Full paper submission date April 25, 2022; exact full-paper cutoff time and timezone unconfirmed
+          deadline: '2022-04-25 23:59:00'
+          comment: Full-paper calendar date verified; 23:59:00 and AoE are repository defaults for its unpublished time and timezone
       timezone: AoE
       date: October 10-12, 2022
       place: Chicago, Illinois, USA
