@@ -11,9 +11,9 @@
       id: mswim26
       link: https://mswimconf.com/2026/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Extended abstract registration: June 14, 2026; full paper: June 15, 2026. Exact times and timezone TBD (UTC+1 below is an unverified schema placeholder).'
-      timezone: UTC+1
+        - abstract_deadline: '2026-06-14 23:59:00'
+          deadline: '2026-06-15 23:59:00'
+          comment: 'Regular papers; extended abstract registration and full-paper dates. Cutoff clocks and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: October 26-30, 2026
       place: Paris, France
