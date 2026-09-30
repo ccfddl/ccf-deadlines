@@ -20,15 +20,13 @@ export async function loadCatalog(fetcher = fetch, now = Date.now()) {
     snapshot = { conferences, source: SOURCE_URL, fetched_at: new Date(now).toISOString() };
     expiresAt = now + TTL_MS;
     return snapshot;
-  })();
-  try {
-    return await loading;
-  } catch (error) {
+  })().catch((error) => {
     if (snapshot) return snapshot;
     throw error;
-  } finally {
+  }).finally(() => {
     loading = undefined;
-  }
+  });
+  return loading;
 }
 
 function pacificOffset(raw) {

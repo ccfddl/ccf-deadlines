@@ -58,3 +58,33 @@ test("loads and reuses the public dataset without a database", async () => {
   assert.equal(first, second);
   assert.equal(calls, 1);
 });
+
+test("shares stale fallback with concurrent callers and retries after a failed refresh", async () => {
+  const initialTime = Date.parse("2026-09-30T01:00:00Z");
+  const cached = await loadCatalog(async () => Response.json(conferences), initialTime);
+  let refreshCalls = 0;
+  let rejectRefresh;
+  const failingFetcher = () => {
+    refreshCalls++;
+    return new Promise((_, reject) => { rejectRefresh = reject; });
+  };
+  const expiredTime = initialTime + 16 * 60 * 1000;
+  const first = loadCatalog(failingFetcher, expiredTime);
+  const second = loadCatalog(failingFetcher, expiredTime);
+  const responses = Promise.all([first, second]);
+  rejectRefresh(new Error("Simulated upstream outage"));
+
+  const [firstResult, secondResult] = await responses;
+  assert.equal(refreshCalls, 1);
+  assert.equal(firstResult, cached);
+  assert.equal(secondResult, cached);
+
+  let recoveryCalls = 0;
+  const recovered = await loadCatalog(async () => {
+    recoveryCalls++;
+    return Response.json(conferences);
+  }, expiredTime + 1000);
+  assert.equal(recoveryCalls, 1);
+  assert.notEqual(recovered, cached);
+  assert.equal(recovered.fetched_at, new Date(expiredTime + 1000).toISOString());
+});
