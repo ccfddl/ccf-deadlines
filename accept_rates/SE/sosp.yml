@@ -6,6 +6,9 @@
       str: 15.5%(54/348 21')
       rate: 0.155172413793103
       source: https://sosp21.hotcrp.com/
+    # The inherited 65/368 pair has no traceable source and remains unverified.
+    # Official SOSP 2025 HotCRP reports 66/369; cohort/stage differences are unresolved.
+    # https://sosp25.hotcrp.com/ is conflict evidence, not support for this preserved pair.
     - year: 2025
       submitted: 368
       accepted: 65
