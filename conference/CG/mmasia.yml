@@ -23,14 +23,14 @@
         - deadline: '2022-08-05 23:59:00'
           comment: Regular full papers
       timezone: AoE
-      date: December 13-16, 2022
+      date: December 14-16, 2022
       place: Tokyo, Japan
     - year: 2023
       id: mmasia23
-      link: http://www.mmasia2023.org/
+      link: https://www.acmmmasia.org/2023/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: extended to August 12, 2023 AoE; exact time unverified'
+        - deadline: '2023-08-12 23:59:00'
+          comment: 'Regular full-paper date and AoE verified; 23:59:00 is the repository default for the unpublished cutoff time.'
       timezone: AoE
       date: December 06-08, 2023
       place: Tainan, Taiwan
