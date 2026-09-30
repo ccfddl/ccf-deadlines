@@ -7,6 +7,69 @@
     thcpl: N
   dblp: hotstorage
   confs:
+    - year: 2015
+      id: hotstorage2015
+      link: https://www.usenix.org/conference/hotstorage15/
+      timeline:
+        - deadline: '2015-03-17 23:59:00'
+          comment: Main research papers; clock and zone unstated, using repository defaults 23:59 AoE.
+      timezone: AoE
+      date: July 6-7, 2015
+      place: Santa Clara, CA, USA
+    - year: 2016
+      id: hotstorage2016
+      link: https://www.usenix.org/conference/hotstorage16/
+      timeline:
+        - deadline: '2016-03-10 23:59:00'
+          comment: Main research papers; clock and zone unstated, using repository defaults 23:59 AoE.
+      timezone: AoE
+      date: June 20-21, 2016
+      place: Denver, CO, USA
+    - year: 2017
+      id: hotstorage2017
+      link: https://www.usenix.org/conference/hotstorage17/
+      timeline:
+        - deadline: '2017-03-16 23:59:00'
+          comment: Regular research papers; explicit PDT; separate WACI abstracts excluded.
+      timezone: UTC-7
+      date: July 10-11, 2017
+      place: Santa Clara, CA, USA
+    - year: 2018
+      id: hotstorage2018
+      link: https://www.usenix.org/conference/hotstorage18/
+      timeline:
+        - deadline: '2018-03-15 20:59:59'
+          comment: Regular research papers; explicit PDT and seconds; separate breakout abstracts excluded.
+      timezone: UTC-7
+      date: July 9-10, 2018
+      place: Boston, MA, USA
+    - year: 2019
+      id: hotstorage2019
+      link: https://www.usenix.org/conference/hotstorage19/
+      timeline:
+        - deadline: '2019-03-13 20:59:59'
+          comment: Main research papers; explicit PDT and seconds.
+      timezone: UTC-7
+      date: July 8-9, 2019
+      place: Renton, WA, USA
+    - year: 2020
+      id: hotstorage2020
+      link: https://www.usenix.org/conference/hotstorage20/
+      timeline:
+        - deadline: '2020-03-26 20:59:00'
+          comment: Main research papers; extended from March 19; explicit PDT.
+      timezone: UTC-7
+      date: July 13-14, 2020
+      place: Virtual
+    - year: 2021
+      id: hotstorage2021
+      link: https://www.hotstorage.org/2021/
+      timeline:
+        - deadline: '2021-04-30 23:59:00'
+          comment: Regular and position papers; explicit AoE; clock unstated, using repository default 23:59.
+      timezone: AoE
+      date: July 27-28, 2021
+      place: Virtual
     - year: 2026
       id: hotstorage2026
       link: https://www.hotstorage.org/2026/
