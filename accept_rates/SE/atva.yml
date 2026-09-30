@@ -13,12 +13,13 @@
       str: 32.1%(26/81 22')
       rate: 0.320987654320988
       source: https://link.springer.com/book/10.1007/978-3-031-19992-9
+    # Preface p. v: 115 received; 30 regular + 7 tool accepted.
     - year: 2023
-      submitted: 150
+      submitted: 115
       accepted: 37
-      str: 24.7%(37/150 23')
-      rate: 0.246666666666667
-      source: https://link.springer.com/book/10.1007/978-3-031-45329-8
+      str: 32.2%(37/115 23')
+      rate: 0.321739130434783
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-45329-8/1
     - year: 2024
       submitted: 73
       accepted: 24
