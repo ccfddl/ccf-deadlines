@@ -1,12 +1,5 @@
 - title: WWW
   accept_rates:
-    # Main research acceptances / received submissions; organizer report PDF page 3.
-    - year: 2021
-      submitted: 1736
-      accepted: 355
-      str: "20.4%(355/1736 21')"
-      rate: 0.20449308755760368
-      source: https://sigir.org/wp-content/uploads/2021/09/p13.pdf
     - year: 2023
       submitted: 1900
       accepted: 365
