@@ -44,3 +44,11 @@ jobs:
         # relatively as favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
         # will obviously return error 404 not found.
         run: ./trunk build --release
+      - name: Verify public MCP pages
+        run: |
+          test -s dist/mcp-support.html
+          grep -Fq '<h1>CCFDDL Plugin Support</h1>' dist/mcp-support.html
+          test -s dist/mcp-privacy.html
+          grep -Fq '<h1>CCFDDL Plugin Privacy Policy</h1>' dist/mcp-privacy.html
+          test -s dist/mcp-terms.html
+          grep -Fq '<h1>CCFDDL Plugin Terms</h1>' dist/mcp-terms.html
