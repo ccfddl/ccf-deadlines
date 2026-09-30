@@ -11,42 +11,12 @@
       id: qrs21
       link: https://qrs21.techconf.org/
       timeline:
-        - abstract_deadline: '2021-08-15 23:59:59'
-          deadline: TBD
-          comment: Regular paper full submission extended to September 1, 2021; exact time and timezone not published
+        - abstract_deadline: '2021-08-15 23:59:00'
+          deadline: '2021-09-01 23:59:00'
+          comment: 'Regular papers; official full-paper extension. Clock 23:59:00 and timezone AoE use repository defaults because neither is published.'
       timezone: AoE
       date: December 6-10, 2021
       place: Hainan Island, China
-    - year: 2022
-      id: qrs22
-      link: https://qrs22.techconf.org/
-      timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular paper abstract due August 31, 2022; full submission due September 10, 2022; exact time and timezone not published
-      timezone: UTC+0
-      date: December 5-9, 2022
-      place: Online
-    - year: 2023
-      id: qrs23
-      link: https://qrs23.techconf.org/
-      timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular paper abstract due July 31, 2023; full submission due August 7, 2023; exact time and timezone not published
-      timezone: UTC+0
-      date: October 22-26, 2023
-      place: Chiang Mai, Thailand
-    - year: 2024
-      id: qrs24
-      link: https://qrs24.techconf.org/
-      timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular paper abstract due March 18, 2024; full submission due March 25, 2024; exact time and timezone not published
-      timezone: UTC+0
-      date: July 1-5, 2024
-      place: Cambridge, United Kingdom
     - year: 2025
       id: qrs25
       link: https://qrs25.techconf.org/
