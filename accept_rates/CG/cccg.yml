@@ -1,0 +1,40 @@
+# Regular-paper acceptance decisions / received submissions; excludes invited and dissertation-award contributions.
+- title: CCCG
+  accept_rates:
+    - year: 2021
+      submitted: 56
+      accepted: 43
+      str: 76.8%(43/56 21')
+      rate: 0.767857142857143
+      source: https://cccg.ca/proceedings/2021/CCCG2021.pdf
+    - year: 2022
+      submitted: 65
+      accepted: 45
+      str: 69.2%(45/65 22')
+      rate: 0.692307692307692
+      source: https://cccg.ca/proceedings/2022/CCCG2022.pdf
+    # Received total includes one withdrawn submission; 48 remained for review.
+    - year: 2023
+      submitted: 49
+      accepted: 36
+      str: 73.5%(36/49 23')
+      rate: 0.734693877551020
+      source: https://cccg.ca/proceedings/2023/CCCG2023.pdf
+    - year: 2024
+      submitted: 49
+      accepted: 39
+      str: 79.6%(39/49 24')
+      rate: 0.795918367346939
+      source: https://cccg.ca/proceedings/2024/CCCG_2024_proceedings.pdf
+    - year: 2025
+      submitted: 69
+      accepted: 44
+      str: 63.8%(44/69 25')
+      rate: 0.637681159420290
+      source: https://cccg.ca/proceedings/2025/CCCG2025-Proceedings.pdf
+    - year: 2026
+      submitted: 65
+      accepted: 50
+      str: 76.9%(50/65 26')
+      rate: 0.769230769230769
+      source: https://drive.google.com/file/d/1M9pgpm5fKLCY0QVYJPiVnQM--ReVsrVV/view
