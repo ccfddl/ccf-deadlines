@@ -25,7 +25,7 @@
           deadline: '2023-04-17 23:59:59'
           comment: 'Regular papers; mandatory abstract registration; no extensions'
       timezone: UTC-4
-      date: October 23 - 26, 2023
+      date: October 24-26, 2023
       place: Koblenz, Germany
     - year: 2024
       id: sosp24
@@ -43,14 +43,15 @@
         - abstract_deadline: '2025-04-10 23:59:59'
           deadline: '2025-04-17 23:59:59'
       timezone: UTC-7
-      date: October 13 - 16, 2025
+      date: October 14-16, 2025
       place: Lotte Hotel World, Seoul, Republic of Korea
     - year: 2026
       id: sosp26
       link: https://sigops.org/s/conferences/sosp/2026/index.html
       timeline:
-        - abstract_deadline: '2026-03-26 23:59:59'
-          deadline: '2026-04-01 23:59:59'
+        - abstract_deadline: '2026-03-26 23:59:00'
+          deadline: '2026-04-01 23:59:00'
+          comment: 'Regular papers; source dates and AoE explicit; clocks use repository default 23:59:00.'
       timezone: AoE
-      date: September 29 - October 2, 2026
+      date: September 30 - October 2, 2026
       place: Clarion Congress Hotel Prague, Prague, Czechia
