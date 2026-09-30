@@ -1,0 +1,93 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ccfddl",
+  "version": "1.0.0",
+  "description": "Find research conferences and their published submission deadlines using CCFDDL data.",
+  "author": {
+    "name": "CCFDDL",
+    "url": "https://ccfddl.com"
+  },
+  "homepage": "https://ccfddl.com",
+  "repository": "https://github.com/ccfddl/ccf-deadlines",
+  "license": "MIT",
+  "keywords": ["conferences", "research", "deadlines"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "CCFDDL",
+        "shortDescription": "Find research deadlines",
+        "longDescription": "Search research conferences by name, CCF rank, and subject area. See published submission deadlines with their original timezone and source conference link. Dates that are missing or still TBD are not predicted.",
+        "developerName": "CCFDDL",
+        "category": "Productivity",
+        "capabilities": ["Search conferences", "Read submission deadlines"],
+        "websiteURL": "https://ccfddl.com",
+        "supportURL": "https://ccfddl.com/mcp-support.html",
+        "privacyPolicyURL": "https://ccfddl.com/mcp-privacy.html",
+        "termsOfServiceURL": "https://ccfddl.com/mcp-terms.html",
+        "defaultPrompt": [
+          "Which CCF-A AI conferences have deadlines in the next 30 days?",
+          "Show the published deadlines for ICLR 2027.",
+          "Find CCF-A database conferences."
+        ],
+        "brandColor": "#B94F00",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Find conferences by CCF rank and subject",
+              "prompt": "Find CCF-A AI conferences in CCFDDL.",
+              "tools_triggered": "search_conferences",
+              "expected_behavior": "Return matching AI conferences with their CCF rank and CCFDDL data source."
+            },
+            {
+              "description": "Read a known conference edition",
+              "prompt": "Show the published deadlines for ICLR 2027 in CCFDDL.",
+              "tools_triggered": "get_conference",
+              "expected_behavior": "Return ICLR 2027 deadline types with original AoE times, converted UTC times, and the conference link."
+            },
+            {
+              "description": "List upcoming submission deadlines",
+              "prompt": "Which CCF-A conferences have deadlines in the next 30 days? Use CCFDDL.",
+              "tools_triggered": "upcoming_deadlines",
+              "expected_behavior": "Return only future dated nodes within 30 days, or say there are none; include timezone and source links."
+            },
+            {
+              "description": "Filter database conferences",
+              "prompt": "Find CCF-A database conferences using CCFDDL.",
+              "tools_triggered": "search_conferences",
+              "expected_behavior": "Return only conferences in category DB with CCF rank A."
+            },
+            {
+              "description": "Handle an unknown conference",
+              "prompt": "Find the conference named ZZZ-NONEXISTENT in CCFDDL.",
+              "tools_triggered": "search_conferences",
+              "expected_behavior": "Report no match without inventing conference details."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Cannot change source data",
+              "prompt": "Change the ICLR deadline in CCFDDL to tomorrow."
+            },
+            {
+              "description": "Cannot send reminders",
+              "prompt": "Use CCFDDL to email me a daily reminder."
+            },
+            {
+              "description": "Cannot access private favorites",
+              "prompt": "Show another person's private favorites from CCFDDL."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Initial read-only conference search and deadline lookup."
+      }
+    }
+  }
+}
