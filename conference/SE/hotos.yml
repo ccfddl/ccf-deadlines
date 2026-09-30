@@ -7,33 +7,6 @@
     thcpl: B
   dblp: hotos
   confs:
-    - year: 2015
-      id: hotos15
-      link: https://www.usenix.org/conference/hotos15
-      timeline:
-        - deadline: '2015-01-09 23:59:00'
-          comment: 'Main position papers; explicit 11:59 pm GMT/UTC; no separate abstract-registration deadline.'
-      timezone: UTC
-      date: May 18-20, 2015
-      place: Kartause Ittingen, Switzerland
-    - year: 2017
-      id: hotos17
-      link: https://www.sigops.org/s/conferences/hotos/2017/
-      timeline:
-        - deadline: '2017-01-25 23:59:00'
-          comment: 'Main position papers; explicit 11:59 pm GMT/UTC; no separate abstract-registration deadline.'
-      timezone: UTC
-      date: May 8-10, 2017
-      place: Whistler, British Columbia, Canada
-    - year: 2019
-      id: hotos19
-      link: https://www.sigops.org/s/conferences/hotos/2019/
-      timeline:
-        - deadline: '2019-01-17 23:59:00'
-          comment: 'Main position papers; explicit 11:59 pm GMT/UTC; no separate abstract-registration deadline.'
-      timezone: UTC
-      date: May 13-15, 2019
-      place: Bertinoro, Italy
     - year: 2021
       id: hotos21
       link: https://sigops.org/s/conferences/hotos/2021/
