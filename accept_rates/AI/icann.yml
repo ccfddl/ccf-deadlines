@@ -1,6 +1,9 @@
 # Full-paper acceptances over the publisher's submission totals; short papers and abstracts are excluded.
 - title: ICANN
   accept_rates:
+    # Publisher metadata says 496 submissions; the original preface says 557 received and 64 excluded before review.
+    # This unreconciled denominator is preserved, not independently recertified.
+    # Preface: https://link.springer.com/content/pdf/bfm:978-3-030-86362-3/1 (PDF page 5).
     - year: 2021
       submitted: 496
       accepted: 265
