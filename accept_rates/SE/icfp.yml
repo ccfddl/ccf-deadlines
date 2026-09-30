@@ -1,8 +1,19 @@
+# Main PACMPL paper categories include regular papers, pearls and experience reports.
 - title: ICFP
   accept_rates:
+    # Current public system cohort; not certified as all received/reviewed.
+    # Secondary 35/107 differs; no unsupported denominator adjustment inferred.
+    - year: 2021
+      submitted: 106
+      accepted: 35
+      str: 33.0%(35/106 21')
+      rate: 0.330188679245283
+      source: https://icfp21.hotcrp.com/
+    # Chair report: 10 unconditional + 23 conditional; current system also 33/90.
+    # Includes 24 regular + 5 experience reports + 4 functional pearls.
     - year: 2023
       submitted: 90
       accepted: 33
       str: 36.7%(33/90 23')
       rate: 0.366666666666667
-      source: https://github.com/emeryberger/csconferences
+      source: https://icfp23.sigplan.org/details/icfp-2023-papers/44/PC-Chair-s-report
