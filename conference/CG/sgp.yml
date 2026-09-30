@@ -7,18 +7,58 @@
     thcpl: B
   dblp: sgp
   confs:
+    - year: 2021
+      id: sgp21
+      link: https://sgp2021.github.io/
+      timeline:
+        - abstract_deadline: '2021-04-19 23:59:00'
+          deadline: '2021-04-24 23:59:00'
+          comment: Regular technical papers; recommended abstract registration
+      timezone: UTC+0
+      date: July 12-14, 2021
+      place: Online
+    - year: 2022
+      id: sgp22
+      link: https://sgp2022.github.io/
+      timeline:
+        - abstract_deadline: '2022-04-07 23:59:00'
+          deadline: '2022-04-11 23:59:00'
+          comment: Regular technical papers; recommended abstract registration
+      timezone: UTC+0
+      date: July 4-6, 2022
+      place: Online
+    - year: 2023
+      id: sgp23
+      link: https://sgp2023.github.io/
+      timeline:
+        - abstract_deadline: '2023-04-07 23:59:00'
+          deadline: '2023-04-12 23:59:00'
+          comment: Regular technical papers; recommended abstract registration
+      timezone: UTC+0
+      date: July 3-5, 2023
+      place: Genoa, Italy
+    - year: 2024
+      id: sgp24
+      link: https://sgp2024.github.io/
+      timeline:
+        - abstract_deadline: '2024-04-10 23:59:00'
+          deadline: '2024-04-12 23:59:00'
+          comment: Regular technical papers; recommended abstract registration
+      timezone: UTC+0
+      date: June 24-26, 2024
+      place: Cambridge, MA, USA
     - year: 2025
       id: sgp25
       link: https://sgp2025.my.canva.site/
       timeline:
-        - abstract_deadline: '2025-02-04 23:59:59'
-          deadline: '2025-02-07 23:59:59'
+        - abstract_deadline: '2025-02-04 23:59:00'
+          deadline: '2025-02-07 23:59:00'
           comment: 'First (visa-friendly) round'
-        - abstract_deadline: '2025-04-08 23:59:59'
-          deadline: '2025-04-11 23:59:59'
+        - abstract_deadline: '2025-04-08 23:59:00'
+          deadline: '2025-04-11 23:59:00'
           comment: 'Second (traditional) round'
-      timezone: AoE
-      date: June 30 - July 4, 2025
+      timezone: UTC+0
+      date: July 2-4, 2025
       place: BILBAO, SPAIN
     - year: 2026
       id: sgp26
