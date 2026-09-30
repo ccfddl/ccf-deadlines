@@ -1,0 +1,14 @@
+- title: ACCV
+  accept_rates:
+    - year: 2022
+      submitted: 836
+      accepted: 277
+      str: 33.1%(277/836 22')
+      rate: 0.33133971291866027
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-26319-4/1
+    - year: 2024
+      submitted: 839
+      accepted: 269
+      str: 32.1%(269/839 24')
+      rate: 0.3206197854588796
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-0908-6/1
