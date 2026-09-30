@@ -1,0 +1,17 @@
+- title: DFRWS APAC
+  accept_rates:
+    # Full research papers accepted after peer review; excludes other contribution tracks.
+    - year: 2025
+      submitted: 49
+      accepted: 14
+      str: 28.6%(14/49 25')
+      rate: 0.2857142857142857
+      source: https://dfrws.org/apac-2025-program/
+    # Full research papers accepted after peer review; excludes other contribution tracks.
+    # Announced before the conference; not a final published-paper count.
+    - year: 2026
+      submitted: 76
+      accepted: 15
+      str: 19.7%(15/76 26')
+      rate: 0.19736842105263158
+      source: https://dfrws.org/apac-2026-program/
