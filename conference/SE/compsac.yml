@@ -11,36 +11,36 @@
       id: compsac21
       link: https://ieeecompsac.computer.org/2021/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full paper extended deadline: 2021-02-18; exact time and timezone unpublished.'
-      timezone: UTC
-      date: July 12-16, 2021
+        - deadline: '2021-02-18 23:59:00'
+          comment: 'Regular full paper extended deadline: 2021-02-18; 23:59:00 and AoE are repository defaults.'
+      timezone: AoE
+      date: July 13-16, 2021
       place: Virtual
     - year: 2022
       id: compsac22
       link: https://ieeecompsac.computer.org/2022/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full paper extended deadline: 2022-02-18; exact time and timezone unpublished.'
-      timezone: UTC
+        - deadline: '2022-02-18 23:59:00'
+          comment: 'Regular full paper extended deadline: 2022-02-18; 23:59:00 and AoE are repository defaults.'
+      timezone: AoE
       date: June 27-July 1, 2022
       place: Virtual
     - year: 2023
       id: compsac23
       link: https://ieeecompsac.computer.org/2023/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full paper extended deadline: 2023-02-15; exact time and timezone unpublished.'
-      timezone: UTC
+        - deadline: '2023-02-15 23:59:00'
+          comment: 'Regular full paper extended deadline: 2023-02-15; 23:59:00 and AoE are repository defaults.'
+      timezone: AoE
       date: June 27-29, 2023
       place: Torino, Italy
     - year: 2024
       id: compsac24
       link: https://ieeecompsac.computer.org/2024/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full paper extended deadline: 2024-02-28; exact time and timezone unpublished.'
-      timezone: UTC
+        - deadline: '2024-02-28 23:59:00'
+          comment: 'Regular full paper extended deadline: 2024-02-28; 23:59:00 and AoE are repository defaults.'
+      timezone: AoE
       date: July 2-4, 2024
       place: Osaka, Japan
     - year: 2025
