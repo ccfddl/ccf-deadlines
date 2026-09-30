@@ -19,7 +19,8 @@
       id: icpads26
       link: https://www.cloud-conf.net/icpads2026
       timeline:
-        - deadline: '2026-06-30 23:59:59'
+        - deadline: '2026-08-15 23:59:00'
+          comment: 'Research papers; extended firm deadline. Cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
       date: November 22-26 2026
       place: Tokyo, Japan
