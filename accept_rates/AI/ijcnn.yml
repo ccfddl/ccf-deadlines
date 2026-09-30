@@ -1,17 +1,18 @@
 - title: IJCNN
   accept_rates:
+    # Received cohort includes 38 later withdrawals.
+    - year: 2021
+      submitted: 2032
+      accepted: 1183
+      str: 58.2%(1183/2032 21')
+      rate: 0.5821850393700787
+      source: https://www.inns.org/assets/docs/INNSNewsletterSept2021Sent.pdf
     - year: 2023
       submitted: 1888
       accepted: 1034
       str: 54.8%(1034/1888 23')
       rate: 0.547669491525424
       source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10191349
-    - year: 2024
-      submitted: 3272
-      accepted: 1701
-      str: 52.0%(1701/3272 24')
-      rate: 0.519865525672371638
-      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10650734
     # All archival tracks, including Workshop, Competitions, and Position Papers.
     # Excludes nonarchival short, J2C, and poster tracks; main-only cohort is 2023/5304.
     - year: 2025
