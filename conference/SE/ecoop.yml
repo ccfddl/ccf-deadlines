@@ -7,6 +7,14 @@
     thcpl: B
   dblp: ecoop
   confs:
+    - year: 2021
+      id: ecoop21
+      link: https://2021.ecoop.org/
+      timeline:
+        - deadline: '2021-01-11 23:59:59'
+      timezone: AoE
+      date: July 14-17, 2021
+      place: Virtual
     - year: 2022
       id: ecoop22
       link: https://2022.ecoop.org/
@@ -18,6 +26,28 @@
       timezone: AoE
       date: June 6-10, 2022
       place: Berlin, Germany
+    - year: 2023
+      id: ecoop23
+      link: https://2023.ecoop.org/
+      timeline:
+        - deadline: '2022-12-01 23:59:00'
+          comment: 'Regular submission R1: 2022-12-01 AoE; missing clock uses repository default 23:59:00.'
+        - deadline: '2023-03-01 23:59:59'
+          comment: Submission R2
+      timezone: AoE
+      date: July 19-21, 2023
+      place: Seattle, Washington, USA
+    - year: 2024
+      id: ecoop24
+      link: https://2024.ecoop.org/
+      timeline:
+        - deadline: '2024-01-17 23:59:59'
+          comment: Submission R1
+        - deadline: '2024-04-17 23:59:59'
+          comment: Submission R2
+      timezone: AoE
+      date: September 16-18, 2024
+      place: Vienna, Austria
     - year: 2025
       id: ecoop25
       link: https://2025.ecoop.org/
