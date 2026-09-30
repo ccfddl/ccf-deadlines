@@ -7,11 +7,33 @@
     thcpl: B
   dblp: cgo
   confs:
+    - year: 2022
+      id: cgo2022
+      link: https://conf.researchr.org/home/cgo-2022
+      timeline:
+        - abstract_deadline: '2021-08-27 23:59:00'
+          deadline: '2021-09-03 23:59:00'
+          comment: Calendar dates and AoE verified; 23:59:00 is the repository default for unpublished times
+      timezone: AoE
+      date: April 4-6, 2022
+      place: Virtual
+    - year: 2023
+      id: cgo2023
+      link: https://conf.researchr.org/home/cgo-2023
+      timeline:
+        - deadline: '2022-09-02 23:59:00'
+          comment: Calendar date and AoE verified; 23:59:00 is the repository default for the unpublished time
+      timezone: AoE
+      date: February 27-March 1, 2023
+      place: Montreal, Canada
     - year: 2024
       id: cgo2024
       link: https://conf.researchr.org/home/cgo-2024
       timeline:
         - deadline: '2023-05-19 23:59:59'
+          comment: First submission round
+        - deadline: '2023-09-01 23:59:00'
+          comment: Second initial submission round; 23:59:00 is the repository default for the unpublished time (AoE verified)
       timezone: AoE
       date: March 2-6, 2024
       place: Edinburgh, United Kingdom
@@ -20,6 +42,9 @@
       link: https://conf.researchr.org/home/cgo-2025
       timeline:
         - deadline: '2024-05-30 23:59:59'
+          comment: First submission round
+        - deadline: '2024-09-12 23:59:00'
+          comment: Second initial submission round; 23:59:00 is the repository default for the unpublished time (AoE verified)
       timezone: AoE
       date: March 1-5, 2025
       place: Las Vegas, Nevada, United States
