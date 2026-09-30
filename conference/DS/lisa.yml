@@ -7,11 +7,21 @@
     thcpl: N
   dblp: lisa
   confs:
+    - year: 2015
+      id: lisa15
+      link: https://www.usenix.org/conference/lisa15/
+      timeline:
+        - deadline: '2015-04-20 23:59:00'
+          comment: Refereed research papers; extended from April 17; explicit PDT; separate poster abstracts excluded.
+      timezone: UTC-7
+      date: November 11-13, 2015
+      place: Washington, DC, USA
     - year: 2021
       id: lisa21
       link: https://www.usenix.org/conference/lisa21
       timeline:
         - deadline: '2021-02-23 20:59:59'
+          comment: Talk proposals; no regular research-paper route in this edition.
       timezone: PT
       date: June 1-3, 2021
       place: Virtual Event
