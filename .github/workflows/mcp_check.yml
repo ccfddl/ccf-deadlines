@@ -1,0 +1,22 @@
+name: MCP Check
+on:
+  pull_request:
+    paths:
+      - "mcp/**"
+      - ".github/workflows/mcp_check.yml"
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install MCP dependencies
+        run: npm ci --no-audit --no-fund
+        working-directory: mcp
+      - name: Test and bundle MCP Worker
+        run: npm run check
+        working-directory: mcp

@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ccfddl-mcp",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "routes": [{ "pattern": "mcp.ccfddl.com", "custom_domain": true }],
+  "observability": { "enabled": true, "logs": { "invocation_logs": false } }
+}
