@@ -1,0 +1,42 @@
+- title: ISMB
+  accept_rates:
+    # Full research Proceedings track; final decisions after revision.
+    # Odd years include the joint ISMB/ECCB meeting.
+    # 2025: 395 submissions, 371 reviewed, 69 provisional, 67 final decisions.
+    # One further 2025 post-acceptance withdrawal; 67 is not publication census.
+    - year: 2021
+      submitted: 289
+      accepted: 55
+      rate: 0.1903114186851211
+      str: "19.0%(55/289 21')"
+      source: https://academic.oup.com/bioinformatics/article/37/Supplement_1/i7/6319708
+    - year: 2022
+      submitted: 243
+      accepted: 48
+      rate: 0.19753086419753085
+      str: "19.8%(48/243 22')"
+      source: https://academic.oup.com/bioinformatics/article/38/Supplement_1/i8/6617496
+    - year: 2023
+      submitted: 336
+      accepted: 60
+      rate: 0.17857142857142858
+      str: "17.9%(60/336 23')"
+      source: https://academic.oup.com/bioinformatics/article/39/Supplement_1/i1/7210454
+    - year: 2024
+      submitted: 318
+      accepted: 58
+      rate: 0.18238993710691823
+      str: "18.2%(58/318 24')"
+      source: https://academic.oup.com/bioinformatics/article/40/Supplement_1/i1/7700873
+    - year: 2025
+      submitted: 395
+      accepted: 67
+      rate: 0.16962025316455695
+      str: "17.0%(67/395 25')"
+      source: https://academic.oup.com/bioinformatics/article/41/Supplement_1/i1/8199417
+    - year: 2026
+      submitted: 408
+      accepted: 65
+      rate: 0.15931372549019607
+      str: "15.9%(65/408 26')"
+      source: https://academic.oup.com/bioinformatics/article/42/Supplement_1/btag279/8726347
