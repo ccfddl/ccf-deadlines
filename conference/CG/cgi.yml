@@ -7,24 +7,6 @@
     thcpl: N
   dblp: cgi
   confs:
-    - year: 2021
-      id: cgi21
-      link: https://cgs-network.org/legacy/cgi21/CGI21-Home.html
-      timeline:
-        - deadline: '2021-06-01 23:59:00'
-          comment: 'Regular full conference papers (LNCS proceedings)'
-      timezone: UTC
-      date: September 6-10, 2021
-      place: Online
-    - year: 2022
-      id: cgi22
-      link: https://cgs-network.org/legacy/cgi22/CGI22-Home.html
-      timeline:
-        - deadline: TBD
-          comment: 'Regular full conference papers (LNCS proceedings): official prose says June 5, 2022 but official table says June 12, 2022; 23:59 CET (UTC+1); conflicting dates unresolved'
-      timezone: UTC+1
-      date: September 12-16, 2022
-      place: Online
     - year: 2023
       id: cgi23
       link: https://cgs-network.org/legacy/cgi23/CGI23-Home.html
@@ -32,7 +14,7 @@
         - deadline: '2023-06-19 23:59:00'
           comment: 'Regular full conference papers (LNCS proceedings; extended)'
       timezone: UTC
-      date: August 28-September 1, 2023
+      date: August 29-September 1, 2023
       place: Shanghai, China
     - year: 2024
       id: cgi24
