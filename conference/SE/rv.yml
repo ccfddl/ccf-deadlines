@@ -7,13 +7,52 @@
     thcpl: N
   dblp: rv
   confs:
+    - year: 2021
+      id: rv21
+      link: https://uva-mcps-lab.github.io/RV21/
+      timeline:
+        - abstract_deadline: '2021-05-24 23:59:00'
+          deadline: '2021-05-31 23:59:00'
+          comment: 'Regular papers: official dates and AoE; 23:59 is the repository default because cutoff clocks are unpublished'
+      timezone: AoE
+      date: October 11-14, 2021
+      place: Online
+    - year: 2022
+      id: rv22
+      link: https://rv22.gitlab.io/
+      timeline:
+        - abstract_deadline: '2022-05-16 23:59:00'
+          deadline: '2022-05-19 23:59:00'
+          comment: 'Regular papers: chair-authored extension explicitly gives both dates at 23:59 AoE'
+      timezone: AoE
+      date: September 28-30, 2022
+      place: Tbilisi, Georgia
+    - year: 2023
+      id: rv23
+      link: https://rv23.csd.auth.gr/
+      timeline:
+        - deadline: '2023-06-04 23:59:00'
+          comment: 'Regular papers: extended date verified; 23:59 and AoE are repository defaults where the recovered CFP omits clock and zone'
+      timezone: AoE
+      date: October 3-5, 2023
+      place: Thessaloniki, Greece
+    - year: 2024
+      id: rv24
+      link: https://cmpe.bogazici.edu.tr/rv24/
+      timeline:
+        - deadline: '2024-05-28 23:59:00'
+          comment: 'Regular papers: extended date verified; 23:59 and AoE are repository defaults because clock and zone are unpublished'
+      timezone: AoE
+      date: October 15-17, 2024
+      place: Istanbul, Turkey
     - year: 2025
       id: rv25
       link: https://rv25.isec.tugraz.at/
       timeline:
-        - deadline: '2025-05-30 23:59:59'
+        - deadline: '2025-06-06 23:59:00'
+          comment: 'Regular papers: initial submission; June 10 update-only grace excluded; 23:59 is the default clock, AoE is official'
       timezone: AoE
-      date: September 15-19, 2025
+      date: September 16-19, 2025
       place: Graz, Austria
     - year: 2026
       id: rv26
