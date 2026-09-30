@@ -11,38 +11,11 @@
       id: wowmom21
       link: https://wowmom2021.iit.cnr.it/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Regular paper deadline: December 31, 2020; exact cutoff time and timezone not specified'
-      timezone: UTC
-      date: June 7-10, 2021
+        - deadline: '2020-12-31 23:59:00'
+          comment: 'Verified calendar date; 23:59:00 and AoE are repository defaults because the source does not specify time or timezone.'
+      timezone: AoE
+      date: June 8-10, 2021
       place: Virtual
-    - year: 2022
-      id: wowmom22
-      link: https://computing.ulster.ac.uk/WoWMoM2022/index.html
-      timeline:
-        - deadline: 'TBD'
-          comment: 'Regular paper extended deadline: January 15, 2022; exact cutoff time and timezone not specified'
-      timezone: UTC
-      date: June 14-17, 2022
-      place: Belfast, Northern Ireland, UK
-    - year: 2023
-      id: wowmom23
-      link: https://coe.northeastern.edu/Groups/wowmom2023/
-      timeline:
-        - deadline: 'TBD'
-          comment: 'Regular paper extended deadline: January 19, 2023; exact cutoff time and timezone not specified'
-      timezone: UTC
-      date: June 12-15, 2023
-      place: Boston, MA, USA
-    - year: 2024
-      id: wowmom24
-      link: https://cgi.cse.unsw.edu.au/~wowmom/2024/
-      timeline:
-        - deadline: 'TBD'
-          comment: 'Regular paper extended deadline: December 17, 2023; exact cutoff time and timezone not specified'
-      timezone: UTC
-      date: June 4-7, 2024
-      place: Perth, Western Australia, Australia
     - year: 2025
       id: wowmom25
       link: https://wowmomconference.uta.edu/index.html
