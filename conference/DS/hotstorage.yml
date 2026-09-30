@@ -16,12 +16,48 @@
       timezone: AoE
       date: July 27-28, 2021
       place: Virtual
+    - year: 2022
+      id: hotstorage2022
+      link: https://www.hotstorage.org/2022/
+      timeline:
+        - deadline: '2022-03-29 23:59:00'
+          comment: Regular and position papers; explicit AoE; clock unstated, using repository default 23:59.
+      timezone: AoE
+      date: June 27-28, 2022
+      place: Virtual
+    - year: 2023
+      id: hotstorage2023
+      link: https://www.hotstorage.org/2023/
+      timeline:
+        - deadline: '2023-03-30 23:59:00'
+          comment: Regular and position papers; explicit AoE; clock unstated, using repository default 23:59.
+      timezone: AoE
+      date: July 9, 2023
+      place: Boston, MA, USA
+    - year: 2024
+      id: hotstorage2024
+      link: https://www.hotstorage.org/2024/
+      timeline:
+        - deadline: '2024-04-05 23:59:00'
+          comment: Regular and position papers; explicit 23:59 AoE.
+      timezone: AoE
+      date: July 8-9, 2024
+      place: Santa Clara, CA, USA
+    - year: 2025
+      id: hotstorage2025
+      link: https://www.hotstorage.org/2025/
+      timeline:
+        - deadline: '2025-04-04 23:59:00'
+          comment: Regular and position papers; extended deadline; explicit AoE; clock unstated, using repository default 23:59.
+      timezone: AoE
+      date: July 10-11, 2025
+      place: Boston, MA, USA
     - year: 2026
       id: hotstorage2026
       link: https://www.hotstorage.org/2026/
       timeline:
-        - deadline: '2026-06-12 23:59:59'
-          comment: 'Regular paper submission (extended)'
+        - deadline: '2026-06-12 23:59:00'
+          comment: Regular and position papers; extended from June 5; explicit AoE; clock unstated, using repository default 23:59.
       timezone: AoE
       date: September 28-29, 2026
       place: Prague, Czechia
