@@ -430,6 +430,7 @@ mod tests {
 
     fn favorite(id: &str, title: &str, timestamps: &[i64]) -> ConfItem {
         ConfItem {
+            conference_key: None,
             title: title.to_string(),
             description: String::new(),
             sub: "AI".to_string(),

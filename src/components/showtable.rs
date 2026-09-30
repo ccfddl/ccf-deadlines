@@ -291,7 +291,12 @@ pub fn ShowTable(
             match fetch_conference_acc(&base_url, &conference.title).await {
                 Ok(all_acc) => {
                     acceptance_rates
-                        .update(|rates| rates.extend(build_acceptance_rate_map(all_acc)));
+                        .update(|rates| {
+                            rates.extend(build_acceptance_rate_map(
+                                all_acc,
+                                &raw_conferences.get_untracked(),
+                            ));
+                        });
                     let rates = acceptance_rates.get_untracked();
                     acceptance_buckets_loaded.update(|loaded| {
                         loaded.insert(bucket);
@@ -1956,6 +1961,7 @@ fn build_conf_items(
                 .unwrap_or("Non-CCF")
                 .to_string();
             let mut item = ConfItem {
+                conference_key: conference.conference_key.clone(),
                 title: conference.title.clone(),
                 description: conference.description.clone(),
                 sub: conference.sub.clone(),
@@ -1981,7 +1987,13 @@ fn build_conf_items(
                 subname_en: category
                     .map(|value| value.name_en.clone())
                     .unwrap_or_default(),
-                acc_str: recent_acceptance_rates(&conference.title, edition.year, acceptance_rates),
+                acc_str: recent_acceptance_rates(
+                    conference.conference_key.as_deref(),
+                    &conference.sub,
+                    &conference.title,
+                    edition.year,
+                    acceptance_rates,
+                ),
                 ddls: deadlines,
                 estimated_deadlines: Vec::new(),
             };
@@ -2084,30 +2096,87 @@ fn shift_deadline_one_year(deadline: &str) -> Option<String> {
     })
 }
 
-fn build_acceptance_rate_map(all_acc: Vec<ConfAccRate>) -> AcceptanceRateMap {
+fn acceptance_lookup_key(key: Option<&str>, category: &str, title: &str) -> String {
+    key.map(str::to_owned)
+        .unwrap_or_else(|| format!("legacy:{category}:{title}"))
+}
+
+fn build_acceptance_rate_map(
+    all_acc: Vec<ConfAccRate>,
+    conferences: &[Conference],
+) -> AcceptanceRateMap {
     let mut rates = AcceptanceRateMap::new();
-    for conference in all_acc {
-        let conference_rates = rates.entry(conference.title).or_default();
-        for rate in conference.accept_rates {
-            conference_rates.push((rate.year, rate.label));
-        }
+    let mut title_counts = HashMap::<String, usize>::new();
+    for acceptance in &all_acc {
+        *title_counts.entry(acceptance.title.clone()).or_default() += 1;
+    }
+    for acceptance in all_acc {
+        let key = if let Some(key) = &acceptance.conference_key {
+            key.clone()
+        } else {
+            // Old cached payloads lack source identities. Never guess if either
+            // the payload or the complete conference catalog has a title collision.
+            let candidates = conferences
+                .iter()
+                .filter(|conference| conference.title == acceptance.title)
+                .collect::<Vec<_>>();
+            if title_counts.get(&acceptance.title) != Some(&1) || candidates.len() != 1 {
+                continue;
+            }
+            let conference = candidates[0];
+            acceptance_lookup_key(
+                conference.conference_key.as_deref(),
+                &conference.sub,
+                &conference.title,
+            )
+        };
+        let mut conference_rates = acceptance.accept_rates
+            .into_iter()
+            .map(|rate| (rate.year, rate.label))
+            .collect::<Vec<_>>();
         conference_rates.sort_by(|left, right| right.0.cmp(&left.0));
         conference_rates.dedup_by(|left, right| left.0 == right.0);
+
+        // A cached conference catalog can predate the key field while the rates
+        // are fresh. A category-qualified alias keeps it usable without mixing
+        // conferences with the same title in different categories.
+        if let Some((category, _)) = key.split_once('/') {
+            let candidates = conferences
+                .iter()
+                .filter(|conference| {
+                    conference.conference_key.is_none()
+                        && conference.sub == category
+                        && conference.title == acceptance.title
+                })
+                .collect::<Vec<_>>();
+            if candidates.len() == 1 {
+                rates.insert(
+                    acceptance_lookup_key(None, category, &acceptance.title),
+                    conference_rates.clone(),
+                );
+            }
+        }
+        rates.insert(key, conference_rates);
     }
     rates
 }
 
 fn apply_acceptance_rate(item: &mut ConfItem, rates: &AcceptanceRateMap) {
-    item.acc_str = recent_acceptance_rates(&item.title, item.year, rates);
+    item.acc_str = recent_acceptance_rates(
+        item.conference_key.as_deref(), &item.sub, &item.title, item.year, rates,
+    );
 }
 
 fn recent_acceptance_rates(
+    conference_key: Option<&str>,
+    category: &str,
     conference_title: &str,
     conference_year: i32,
     rates: &AcceptanceRateMap,
 ) -> Option<String> {
+    let key = acceptance_lookup_key(conference_key, category, conference_title);
     let recent_rates = rates
-        .get(conference_title)?
+        .get(&key)?
         .iter()
         .filter(|(year, _)| *year <= conference_year)
         .take(2)
@@ -2617,4 +2686,135 @@ mod historical_deadline_tests {
         assert!(calendar.contains("DESCRIPTION:Track A\\nTest conference"));
         assert!(calendar.contains("DESCRIPTION:Track B\\nTest conference"));
     }
+
+    fn acceptance_catalog(key: Option<&str>, title: &str, sub: &str) -> Conference {
+        serde_json::from_value(serde_json::json!({
+            "conference_key": key, "title": title, "description": "Test conference",
+            "sub": sub, "rank": {"ccf": "A"}, "dblp": "test", "confs": []
+        })).unwrap()
+    }
+
+    fn acceptance_record(key: Option<&str>, title: &str, year: i32, label: &str) -> ConfAccRate {
+        serde_json::from_value(serde_json::json!({
+            "conference_key": key, "title": title,
+            "accept_rates": [{"year": year, "str": label}]
+        })).unwrap()
+    }
+
+    #[test]
+    fn acceptance_collisions_preserve_sec_and_fse_datasets() {
+        let catalog = vec![
+            acceptance_catalog(Some("DS/sec"), "SEC", "DS"),
+            acceptance_catalog(Some("SC/sec"), "SEC", "SC"),
+            acceptance_catalog(Some("SC/fse"), "FSE", "SC"),
+            acceptance_catalog(Some("SE/fse"), "FSE", "SE"),
+        ];
+        let records = vec![
+            acceptance_record(Some("DS/sec"), "SEC", 2023, "25.4%(18/71 23')"),
+            acceptance_record(Some("SC/sec"), "SEC", 2026, "23.8%(39/164 26')"),
+            acceptance_record(Some("SC/fse"), "FSE", 2026, "28.1%(55/196 26')"),
+            acceptance_record(Some("SE/fse"), "FSE", 2026, "26.4%(211/799 26')"),
+        ];
+        let rates = build_acceptance_rate_map(records, &catalog);
+        for (conference, expected) in catalog.iter().zip([
+            "25.4%(18/71 23')", "23.8%(39/164 26')",
+            "28.1%(55/196 26')", "26.4%(211/799 26')",
+        ]) {
+            assert_eq!(recent_acceptance_rates(
+                conference.conference_key.as_deref(), &conference.sub, &conference.title, 2026, &rates,
+            ).as_deref(), Some(expected));
+        }
+        assert!(recent_acceptance_rates(Some("SC/sec"), "SC", "SEC", 2023, &rates).is_none());
+    }
+
+    #[test]
+    fn acceptance_legacy_title_payload_rejects_catalog_collisions_even_with_one_record() {
+        let catalog = vec![
+            acceptance_catalog(Some("SC/fse"), "FSE", "SC"),
+            acceptance_catalog(Some("SE/fse"), "FSE", "SE"),
+        ];
+        let rates = build_acceptance_rate_map(vec![
+            acceptance_record(None, "FSE", 2026, "26.4%(211/799 26')"),
+        ], &catalog);
+        assert!(rates.is_empty());
+    }
+
+    #[test]
+    fn acceptance_legacy_duplicate_payload_does_not_choose_a_winner() {
+        let catalog = vec![acceptance_catalog(None, "FSE", "SE")];
+        let rates = build_acceptance_rate_map(vec![
+            acceptance_record(None, "FSE", 2026, "28.1%(55/196 26')"),
+            acceptance_record(None, "FSE", 2026, "26.4%(211/799 26')"),
+        ], &catalog);
+        assert!(rates.is_empty());
+    }
+
+    #[test]
+    fn acceptance_fresh_rates_work_with_legacy_catalog_by_category() {
+        let catalog = vec![
+            acceptance_catalog(None, "FSE", "SC"),
+            acceptance_catalog(None, "FSE", "SE"),
+        ];
+        let rates = build_acceptance_rate_map(vec![
+            acceptance_record(Some("SC/fse"), "FSE", 2026, "28.1%(55/196 26')"),
+            acceptance_record(Some("SE/fse"), "FSE", 2026, "26.4%(211/799 26')"),
+        ], &catalog);
+        assert_eq!(recent_acceptance_rates(None, "SC", "FSE", 2026, &rates).as_deref(), Some("28.1%(55/196 26')"));
+        assert_eq!(recent_acceptance_rates(None, "SE", "FSE", 2026, &rates).as_deref(), Some("26.4%(211/799 26')"));
+    }
+
+    #[test]
+    fn acceptance_unique_legacy_payload_and_srt_alias_keep_historical_rates() {
+        for key in [Some("CG/eusipco"), None] {
+            let catalog = vec![acceptance_catalog(key, "EUSIPCO", "CG")];
+            let record = serde_json::from_value(serde_json::json!({
+                "title": "EUSIPCO", "accept_rates": [
+                    {"year": 2017, "str": "63.2%(461/730 17')"},
+                    {"year": 2020, "srt": "60.2%(499/829 20')"},
+                    {"year": 2018, "str": "57.7%(409/709 18')"}
+                ]
+            })).unwrap();
+            let rates = build_acceptance_rate_map(vec![record], &catalog);
+            assert_eq!(recent_acceptance_rates(key, "CG", "EUSIPCO", 2026, &rates).as_deref(),
+                       Some("60.2%(499/829 20')  ·  57.7%(409/709 18')"));
+            assert_eq!(recent_acceptance_rates(key, "CG", "EUSIPCO", 2017, &rates).as_deref(),
+                       Some("63.2%(461/730 17')"));
+        }
+    }
+
+    #[test]
+    fn acceptance_stable_key_survives_title_rename() {
+        let catalog = vec![acceptance_catalog(Some("AI/nips"), "NeurIPS", "AI")];
+        let rates = build_acceptance_rate_map(vec![
+            acceptance_record(Some("AI/nips"), "NIPS", 2025, "Test label"),
+        ], &catalog);
+        assert_eq!(recent_acceptance_rates(Some("AI/nips"), "AI", "NeurIPS", 2026, &rates).as_deref(), Some("Test label"));
+    }
+
+
+    #[test]
+    fn acceptance_recent_history_stays_with_its_own_conference() {
+        let catalog = vec![
+            acceptance_catalog(Some("SC/fse"), "FSE", "SC"),
+            acceptance_catalog(Some("SE/fse"), "FSE", "SE"),
+        ];
+        let records = serde_json::from_value(serde_json::json!([
+            {"conference_key": "SC/fse", "title": "FSE", "accept_rates": [
+                {"year": 2024, "str": "27.4%(48/175 24')"},
+                {"year": 2026, "str": "28.1%(55/196 26')"}
+            ]},
+            {"conference_key": "SE/fse", "title": "FSE", "accept_rates": [
+                {"year": 2025, "str": "26.2%(135/515 25')"},
+                {"year": 2026, "str": "26.4%(211/799 26')"}
+            ]}
+        ])).unwrap();
+        let rates = build_acceptance_rate_map(records, &catalog);
+        assert_eq!(recent_acceptance_rates(Some("SC/fse"), "SC", "FSE", 2026, &rates).as_deref(),
+                   Some("28.1%(55/196 26')  ·  27.4%(48/175 24')"));
+        assert_eq!(recent_acceptance_rates(Some("SE/fse"), "SE", "FSE", 2026, &rates).as_deref(),
+                   Some("26.4%(211/799 26')  ·  26.2%(135/515 25')"));
+        assert_eq!(recent_acceptance_rates(Some("SC/fse"), "SC", "FSE", 2025, &rates).as_deref(),
+                   Some("27.4%(48/175 24')"));
+    }
+
 }

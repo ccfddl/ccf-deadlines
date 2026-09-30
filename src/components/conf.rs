@@ -7,6 +7,8 @@ use web_sys::{AbortController, RequestCache};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Conference {
+    #[serde(default)]
+    pub conference_key: Option<String>,
     pub title: String,
     pub description: String,
     pub sub: String,
@@ -35,6 +37,8 @@ pub struct ConferenceYear {
 
 #[derive(Debug, Deserialize)]
 pub struct ConfAccRate {
+    #[serde(default)]
+    pub conference_key: Option<String>,
     pub title: String,
     pub accept_rates: Vec<AccYear>,
 }
@@ -73,6 +77,8 @@ pub struct TimePoint {
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 pub struct ConfItem {
+    #[serde(default)]
+    pub conference_key: Option<String>,
     pub title: String,
     pub description: String,
     pub sub: String,
