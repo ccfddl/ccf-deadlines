@@ -9,13 +9,13 @@
   confs:
     - year: 2023
       id: itc-asia2023
-      link: https://www.itc-asia.info.hiroshima-cu.ac.jp/2023/call-for-papers/
+      link: https://www.itc-asia.info.hiroshima-cu.ac.jp/2023/
       timeline:
         - abstract_deadline: TBD
           deadline: TBD
           comment: 'Regular paper: abstract 2023-05-05; paper 2023-05-12. Exact time and timezone not published.'
       timezone: UTC+0
-      date: September 12-14, 2023
+      date: September 13-14, 2023
       place: Kunibiki Messe, Matsue, Shimane, Japan
     - year: 2024
       id: itc-asia2024
@@ -25,16 +25,16 @@
           deadline: TBD
           comment: 'Regular paper: abstract 2024-05-01; paper 2024-05-01. Exact time and timezone not published.'
       timezone: UTC+0
-      date: August 18-20, 2024
+      date: August 19-20, 2024
       place: Changsha, China
     - year: 2025
       id: itc-asia2025
-      link: https://www.itc-asia.info.hiroshima-cu.ac.jp/2025/call-for-papers/
+      link: https://www.itc-asia.info.hiroshima-cu.ac.jp/2025/
       timeline:
         - deadline: TBD
           comment: 'Regular paper: paper 2025-08-12. Exact time and timezone not published.'
       timezone: UTC+0
-      date: December 16-19, 2025
+      date: December 17-19, 2025
       place: Conference Tower of Tokyo Big Sight, Tokyo, Japan
     - year: 2026
       id: itc-asia2026
