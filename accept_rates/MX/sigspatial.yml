@@ -1,0 +1,21 @@
+- title: SIGSPATIAL
+  accept_rates:
+    # Full 10-page acceptances / received research and systems/industrial submissions.
+    # ACM FY23 SIGSPATIAL report, section 5; indexed original text checked, PDF pages unavailable.
+    # Short/poster, demo, vision, GISCup and SRC outcomes excluded; no quantified desk/withdrawal partition.
+    - year: 2022
+      submitted: 192
+      accepted: 49
+      str: "25.5%(49/192 22')"
+      rate: 0.2552083333333333
+      source: https://www.acm.org/binaries/content/assets/about/annual-reports/appendix-d-fy23-sgb-annual-report-.pdf
+    # Full 10-page acceptances / received research and systems/industrial submissions.
+    # ACM FY24 SIGSPATIAL report, section 5; indexed original text checked, PDF pages unavailable.
+    # Separate short/demo/GISCup/SRC outcomes excluded; no quantified desk/withdrawal partition.
+    # Report's claim that 2022 was online conflicts with the original 2022 homepage; see PR qualifications.
+    - year: 2023
+      submitted: 189
+      accepted: 38
+      str: "20.1%(38/189 23')"
+      rate: 0.20105820105820105
+      source: https://www.acm.org/binaries/content/assets/about/annual-reports/appendix-d-fy24-sig-annual-reports.pdf
