@@ -11,8 +11,8 @@
       id: icfp21
       link: https://icfp21.sigplan.org/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Regular research paper submission: March 2, 2021 AoE. Exact cutoff time unverified.'
+        - deadline: '2021-03-02 23:59:00'
+          comment: 'Regular research paper submission: March 2 AoE; clock uses repository default 23:59:00.'
       timezone: AoE
       date: August 23-25, 2021
       place: Virtual
@@ -20,10 +20,10 @@
       id: icfp22
       link: https://icfp22.sigplan.org/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Regular paper submission: March 2, 2022 AoE; exact cutoff time unverified'
+        - deadline: '2022-03-02 23:59:00'
+          comment: 'Regular research paper submission: March 2 AoE; clock uses repository default 23:59:00.'
       timezone: AoE
-      date: September 11-16, 2022
+      date: September 12-14, 2022
       place: Ljubljana, Slovenia
     - year: 2023
       id: icfp23
@@ -47,18 +47,19 @@
       id: icfp25
       link: https://icfp25.sigplan.org/
       timeline:
-        - deadline: '2025-02-27 23:59:59'
-          comment: Submission Deadline
+        - deadline: '2025-02-27 23:59:00'
+          comment: 'Regular research paper submission: February 27 AoE; clock uses repository default 23:59:00.'
       timezone: AoE
-      date: October 12-18, 2025
+      date: October 13-15, 2025
       place: Singapore
     - year: 2026
       id: icfp26
       link: https://icfp26.sigplan.org/
       timeline:
-        - deadline: '2026-02-19 23:59:59'
+        - deadline: '2026-02-19 23:59:00'
+          comment: 'Regular research paper submission: February 19 AoE; clock uses repository default 23:59:00.'
       timezone: AoE
-      date: August 24 - 29, 2026
+      date: August 25-27, 2026
       place: Indiana University Indianapolis, United States
     - year: 2027
       id: icfp27
