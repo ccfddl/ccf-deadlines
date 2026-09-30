@@ -1,0 +1,29 @@
+# Unified full-paper conference selection, finally accepted/published in TVCG.
+# Independent journal presentations, short papers and affiliated events excluded.
+# Denominators are completed full-paper submissions; 2025 includes 25 desk rejects.
+- title: IEEE VIS
+  accept_rates:
+    - year: 2022
+      submitted: 460
+      accepted: 119
+      str: 25.9%(119/460 22')
+      rate: 0.25869565217391305
+      source: https://ieeexplore.ieee.org/document/9991004
+    - year: 2023
+      submitted: 539
+      accepted: 133
+      str: 24.7%(133/539 23')
+      rate: 0.24675324675324675
+      source: https://ieeexplore.ieee.org/document/10373681
+    - year: 2024
+      submitted: 557
+      accepted: 124
+      str: 22.3%(124/557 24')
+      rate: 0.22262118491921004
+      source: https://ieeevis.org/year/2024/blog/vis-2024-OPC-blog-decisions_2
+    - year: 2025
+      submitted: 537
+      accepted: 131
+      str: 24.4%(131/537 25')
+      rate: 0.24394785847299813
+      source: https://ieeexplore.ieee.org/document/11382181
