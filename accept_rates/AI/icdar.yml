@@ -1,0 +1,34 @@
+# Main conference papers; journal-track papers and competition reports excluded.
+- title: ICDAR
+  accept_rates:
+    - year: 2021
+      submitted: 340
+      accepted: 182
+      str: 53.5%(182/340 21')
+      rate: 0.5352941176470588
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-86549-8/1
+    - year: 2023
+      submitted: 316
+      accepted: 154
+      str: 48.7%(154/316 23')
+      rate: 0.4873417721518987
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-41676-7/1
+    - year: 2024
+      submitted: 263
+      accepted: 144
+      str: 54.8%(144/263 24')
+      rate: 0.5475285171102662
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-70533-5/1
+    - year: 2025
+      submitted: 314
+      accepted: 142
+      str: 45.2%(142/314 25')
+      rate: 0.45222929936305734
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-04614-7/1
+    # Valid submissions; publisher About gives 300 without this validity qualification.
+    - year: 2026
+      submitted: 295
+      accepted: 140
+      str: 47.5%(140/295 26')
+      rate: 0.4745762711864407
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-36023-6/1
