@@ -1,8 +1,3 @@
 - title: FSE
-  accept_rates:
-    - year: 2021
-      submitted: 407
-      accepted: 97
-      str: 23.8%(97/407 21')
-      rate: 0.238329238329238
-      source: https://github.com/emeryberger/csconferences
+  # FSE 2021 was cancelled. The former 97/407 row belonged to ACM ESEC/FSE, not Fast Software Encryption.
+  accept_rates: []
