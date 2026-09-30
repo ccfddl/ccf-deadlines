@@ -7,6 +7,15 @@
     thcpl: B
   dblp: wowmom
   confs:
+    - year: 2021
+      id: wowmom21
+      link: https://wowmom2021.iit.cnr.it/
+      timeline:
+        - deadline: '2020-12-31 23:59:00'
+          comment: 'Verified calendar date; 23:59:00 and AoE are repository defaults because the source does not specify time or timezone.'
+      timezone: AoE
+      date: June 8-10, 2021
+      place: Virtual
     - year: 2025
       id: wowmom25
       link: https://wowmomconference.uta.edu/index.html
