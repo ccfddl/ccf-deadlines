@@ -1,0 +1,10 @@
+- title: SC
+  accept_rates:
+    # Technical Papers acceptance announcement, September 10, 2025.
+    # Withdrawal, desk rejection and shepherding breakdowns are not stated.
+    - year: 2025
+      submitted: 623
+      accepted: 137
+      str: 22.0%(137/623 25')
+      rate: 0.21990369181380418
+      source: https://sc25.supercomputing.org/2025/09/you-asked-we-listened-minimizing-overlap-in-papers-scheduling/
