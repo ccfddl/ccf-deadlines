@@ -7,6 +7,34 @@
     thcpl: N
   dblp: apsys
   confs:
+    - year: 2021
+      id: apsys2021
+      link: https://i.cs.hku.hk/apsys2021/
+      timeline:
+        - abstract_deadline: '2021-05-20 23:59:59'
+          deadline: '2021-05-27 23:59:59'
+      timezone: UTC-4
+      date: August 24-25, 2021
+      place: Virtual
+    - year: 2022
+      id: apsys2022
+      link: https://apsys2022.comp.nus.edu.sg/
+      timeline:
+        - abstract_deadline: '2022-04-29 20:59:59'
+          deadline: '2022-05-06 20:59:59'
+      timezone: UTC-7
+      date: August 23-24, 2022
+      place: Virtual
+    - year: 2023
+      id: apsys2023
+      link: https://apsys23.skku.edu/
+      timeline:
+        - abstract_deadline: '2023-04-28 23:59:00'
+          deadline: '2023-05-05 23:59:59'
+          comment: 'Regular papers; abstract date is AoE with no published clock. Full-paper cutoff from official HotCRP. 23:59:00 uses the repository default where the source gives no clear cutoff clock.'
+      timezone: AoE
+      date: August 24-25, 2023
+      place: Seoul, South Korea
     - year: 2024
       id: apsys2024
       link: https://apsys2024.github.io/
