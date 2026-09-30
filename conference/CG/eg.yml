@@ -7,12 +7,41 @@
     thcpl: B
   dblp: eurographics
   confs:
+    - year: 2021
+      id: eg21
+      link: https://conferences.eg.org/eg2021/
+      timeline:
+        - abstract_deadline: '2020-09-28 23:59:00'
+          deadline: '2020-10-05 23:59:00'
+      timezone: UTC+0
+      date: May 3-7, 2021
+      place: Online
+    - year: 2022
+      id: eg22
+      link: https://eg2022.univ-reims.fr/
+      timeline:
+        - abstract_deadline: '2021-09-26 23:59:00'
+          deadline: '2021-10-03 23:59:00'
+      timezone: UTC+0
+      date: April 25-29, 2022
+      place: Reims, France
+    - year: 2023
+      id: eg23
+      link: https://eg2023.saarland-informatics-campus.de/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: '2022-09-30 23:59:00'
+          comment: Mandatory abstract date conflicts between the official CFP (September 23, 2022) and SRM (September 22, 2022); both specify 23:59 UTC.
+      timezone: UTC+0
+      date: May 8-12, 2023
+      place: Saarbrücken, Germany
     - year: 2024
       id: eg24
       link: https://eg2024.cyens.org.cy/
       timeline:
         - abstract_deadline: '2023-09-28 23:59:59'
-          deadline: '2023-10-05 23:59:59'
+          deadline: '2023-10-06 23:59:00'
+          comment: Regular full-paper deadline extended from October 5 to October 6.
       timezone: UTC
       date: April 22-26, 2024
       place: Limassol, Cyprus
