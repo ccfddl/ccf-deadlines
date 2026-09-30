@@ -44,7 +44,7 @@ function createServer() {
 
   server.registerTool("get_conference", {
     title: "Get conference details",
-    description: "Get published deadline nodes by conference name (for example ICLR), name and year (ICLR 2027), or edition ID (iclr27). TBD dates retain their literal text with no UTC instant.",
+    description: "Get published deadline nodes by conference name (for example ICLR), name and year (ICLR 2027), or edition ID (iclr27). Date-only and TBD values retain their precision and have no UTC instant.",
     inputSchema: { name_or_id: z.string().trim().min(1).max(100) },
     annotations,
   }, ({ name_or_id }) => withCatalog(({ conferences, source, fetched_at }) => ({
@@ -53,7 +53,7 @@ function createServer() {
 
   server.registerTool("upcoming_deadlines", {
     title: "Upcoming conference deadlines",
-    description: "List future conference deadline nodes in the next 1 to 365 days, with their original timezone and UTC instant. Can filter by CCF rank and subject category.",
+    description: "List future conference deadline nodes in the next 1 to 365 days, with original timezone and precision. Date-only nodes have deadline_date and no UTC instant; their possible calendar-day range overlaps the requested window. Can filter by CCF rank and subject category.",
     inputSchema: {
       days: z.number().int().min(1).max(365).optional(),
       category: z.string().max(10).optional(),

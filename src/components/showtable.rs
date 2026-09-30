@@ -876,6 +876,7 @@ pub fn ShowTable(
                             {move || {
                                 selected_conf.get().map(|conf| {
                                     let is_tbd = conf.status == "TBD";
+                                    let is_date_only = parse_date_only(&conf.deadline).is_some();
                                     let display_timezone = time_zone.get();
                                     let estimated_next_labels = conf
                                         .estimated_deadlines
@@ -925,9 +926,9 @@ pub fn ShowTable(
                                     let custom_base_time = base_time.get();
                                     let countdown_running = custom_base_time.is_none();
                                     let now = custom_base_time.unwrap_or_else(Utc::now);
-                                    let next_index = deadlines
-                                        .iter()
-                                        .position(|point| point.timepoint > now);
+                                    let next_index = if is_date_only { None } else {
+                                        deadlines.iter().position(|point| point.timepoint > now)
+                                    };
                                     let next_remain = next_index.map(|index| {
                                         deadlines[index]
                                             .timepoint
@@ -1092,10 +1093,13 @@ pub fn ShowTable(
                                                 </div>
                                             })}
                                             <div class="conference-detail-next">
-                                                <span class="conference-detail-label">"NEXT DEADLINE IN"</span>
+                                                <span class="conference-detail-label">{if is_date_only { "DEADLINE DATE" } else { "NEXT DEADLINE IN" }}</span>
                                                 <strong>
                                                     {if is_tbd {
                                                         view! { "TBD" }.into_any()
+                                                    } else if is_date_only {
+                                                        let label = format_deadline_display(&conf.deadline, &conf.timezone);
+                                                        view! { {if conf.status == "FIN" { format!("Date passed: {label}") } else { label }} }.into_any()
                                                     } else if let Some(remain) = next_remain {
                                                         view! { <CountDown remain detailed=true running=countdown_running /> }.into_any()
                                                     } else {
@@ -1127,6 +1131,19 @@ pub fn ShowTable(
                                                     </div>
                                                 })}
                                                 {deadline_cards}
+                                                {conf.date_only_ddls.iter().map(|point| {
+                                                    let label = format!("Round {} {}", point.round, deadline_detail_label(point.r#type));
+                                                    let date = format_deadline_display(&point.date.to_string(), &conf.timezone);
+                                                    let passed = date_only_expired(point.date, &conf.timezone, now);
+                                                    view! {
+                                                        <div class="conference-detail-deadline">
+                                                            <div>{label}</div>
+                                                            <div>{date}</div>
+                                                            <small>{if passed { "Date passed" } else { "Clock time unknown; check the official website" }}</small>
+                                                            {point.comment.clone().map(|comment| view! { <small>{comment}</small> })}
+                                                        </div>
+                                                    }
+                                                }).collect_view()}
                                                 {is_tbd.then(|| {
                                                     if estimated_details.is_empty() {
                                                         view! {
@@ -1270,6 +1287,7 @@ pub fn ShowTable(
                                         children=move |conf| {
                                             let is_finished = conf.status == "FIN";
                                             let is_tbd = conf.status == "TBD";
+                                            let is_date_only = parse_date_only(&conf.deadline).is_some();
                                             let conf_for_detail = conf.clone();
                                             let ccf_rank_value = conf.rank.clone();
                                             let ccf_rank_label = conf.displayrank.clone();
@@ -1528,6 +1546,10 @@ pub fn ShowTable(
                                                                                     </div>
                                                                                 }
                                                                                     .into_any()
+                                                                            } else if is_date_only {
+                                                                                view! {
+                                                                                    <div class="countdown-container"><span>"Time unknown"</span></div>
+                                                                                }.into_any()
                                                                             } else {
                                                                                 view! {
                                                                                     <div class="countdown-container">
@@ -1885,6 +1907,7 @@ fn build_conf_items(
             let mut abstract_deadline = None;
             let mut comment = last_timeline.comment.clone();
             let mut deadlines = Vec::<TimePoint>::new();
+            let mut date_only_deadlines = Vec::<DateOnlyPoint>::new();
             let mut upcoming_deadlines = Vec::new();
             let mut latest_deadline = None;
 
@@ -1900,45 +1923,58 @@ fn build_conf_items(
                     let Some(raw_deadline) = raw_deadline else {
                         continue;
                     };
-                    let Some(value) = parse_deadline_to_rfc3339(raw_deadline, &edition.timezone)
+                    // Bounds are only for ordering and conservative classification. A date
+                    // is kept separately and never exposed as a fabricated timestamp.
+                    let (sort_key, expired) = if let Some(date) = parse_date_only(raw_deadline) {
+                        let Some((start, end)) = date_only_bounds(date, &edition.timezone) else {
+                            continue;
+                        };
+                        date_only_deadlines.push(DateOnlyPoint {
+                            date,
+                            r#type: kind,
+                            round: round_index + 1,
+                            comment: timeline_item.comment.clone(),
+                        });
+                        (start.fixed_offset(), reference_time >= end)
+                    } else if let Some(value) = parse_deadline_to_rfc3339(raw_deadline, &edition.timezone)
                         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
-                    else {
+                    {
+                        let display_offset = display_timezone_offset_at(display_timezone, value.timestamp_millis());
+                        deadlines.push(TimePoint {
+                            timepoint: value.with_timezone(&display_offset),
+                            r#type: kind,
+                            round: round_index + 1,
+                            comment: timeline_item.comment.clone(),
+                        });
+                        (value, value <= current_time)
+                    } else {
                         continue;
                     };
-                    let display_offset =
-                        display_timezone_offset_at(display_timezone, value.timestamp_millis());
-                    deadlines.push(TimePoint {
-                        timepoint: value.with_timezone(&display_offset),
-                        r#type: kind,
-                        round: round_index + 1,
-                        comment: timeline_item.comment.clone(),
-                    });
-
-                    let candidate = (
-                        value,
-                        raw_deadline.to_string(),
-                        kind,
-                        timeline_item.comment.clone(),
-                    );
+                    let candidate = (sort_key, raw_deadline.to_string(), kind, timeline_item.comment.clone());
                     if latest_deadline.as_ref().is_none_or(
-                        |latest: &(DateTime<FixedOffset>, String, i32, Option<String>)| {
-                            candidate.0 > latest.0
-                        },
+                        |latest: &(DateTime<FixedOffset>, String, i32, Option<String>)| candidate.0 > latest.0,
                     ) {
                         latest_deadline = Some(candidate.clone());
                     }
-                    if value > current_time {
+                    if !expired {
                         upcoming_deadlines.push(candidate);
                     }
                 }
             }
 
             deadlines.sort_by_key(|point| point.timepoint);
+            date_only_deadlines.sort_by_key(|point| (point.date, point.round, point.r#type));
 
-            let selected_deadline = upcoming_deadlines
-                .into_iter()
-                .min_by(|left, right| left.0.cmp(&right.0))
-                .or(latest_deadline);
+            // An announced later round without a date must not be hidden by an
+            // earlier completed round. Historical editions retain FIN behavior.
+            let unresolved_later_round = upcoming_deadlines.is_empty()
+                && last_timeline.deadline == "TBD"
+                && edition.year >= current_time.year();
+            let selected_deadline = if unresolved_later_round { None } else {
+                upcoming_deadlines.into_iter()
+                    .min_by(|left, right| left.0.cmp(&right.0))
+                    .or(latest_deadline)
+            };
             if let Some((_, next_deadline, next_type, next_comment)) = selected_deadline {
                 deadline = next_deadline.clone();
                 deadline_type = next_type;
@@ -1983,6 +2019,7 @@ fn build_conf_items(
                     .unwrap_or_default(),
                 acc_str: recent_acceptance_rates(&conference.title, edition.year, acceptance_rates),
                 ddls: deadlines,
+                date_only_ddls: date_only_deadlines,
                 estimated_deadlines: Vec::new(),
             };
 
@@ -1992,7 +2029,19 @@ fn build_conf_items(
                     item.status = "FIN".to_string();
                 } else {
                     item.status = "TBD".to_string();
-                    item.estimated_deadlines = estimate_deadlines(&conference, edition);
+                    if item.ddls.is_empty() && item.date_only_ddls.is_empty() {
+                        item.estimated_deadlines = estimate_deadlines(&conference, edition);
+                    }
+                }
+                items.push(item);
+                continue;
+            }
+
+            if let Some(date) = parse_date_only(&item.deadline) {
+                if let Some((start, end)) = date_only_bounds(date, &item.timezone) {
+                    item.status = if reference_time >= end { "FIN" } else { "RUN" }.to_string();
+                    // Sorting aid only: date-only cards never render a seconds countdown.
+                    item.remain = start.signed_duration_since(reference_time).num_milliseconds().max(0) as u64;
                 }
                 items.push(item);
                 continue;
@@ -2041,7 +2090,8 @@ fn estimate_deadlines(conference: &Conference, edition: &ConferenceYear) -> Vec<
         .timeline
         .iter()
         .filter_map(|timeline| timeline.abstract_deadline.as_deref())
-        .filter(|deadline| *deadline != "TBD")
+        .filter(|deadline| parse_date_only(deadline).is_some()
+            || parse_deadline_to_rfc3339(deadline, &previous.timezone).is_some())
         .filter_map(shift_deadline_one_year)
         .min()
         .map(|deadline| EstimatedDeadline {
@@ -2053,7 +2103,8 @@ fn estimate_deadlines(conference: &Conference, edition: &ConferenceYear) -> Vec<
         .timeline
         .iter()
         .map(|timeline| timeline.deadline.as_str())
-        .filter(|deadline| *deadline != "TBD")
+        .filter(|deadline| parse_date_only(deadline).is_some()
+            || parse_deadline_to_rfc3339(deadline, &previous.timezone).is_some())
         .filter_map(shift_deadline_one_year)
         .min()
         .map(|deadline| EstimatedDeadline {
@@ -2118,11 +2169,12 @@ fn recent_acceptance_rates(
 }
 
 fn build_calendar_urls(conf: &ConfItem) -> (Vec<(String, String)>, Option<String>) {
-    if conf.ddls.is_empty() {
+    if conf.ddls.is_empty() && conf.date_only_ddls.is_empty() {
         return (Vec::new(), None);
     }
-    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1);
-    let google = conf.ddls.iter().map(|point| {
+    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1)
+        || conf.date_only_ddls.iter().any(|point| point.round > 1);
+    let mut google: Vec<(String, String)> = conf.ddls.iter().map(|point| {
         let label = deadline_detail_label(point.r#type);
         let label = if multiple_rounds {
             format!("Round {} {label}", point.round)
@@ -2142,6 +2194,16 @@ fn build_calendar_urls(conf: &ConfItem) -> (Vec<(String, String)>, Option<String
         );
         (label, url)
     }).collect();
+    for point in &conf.date_only_ddls {
+        let Some(end) = point.date.succ_opt() else { continue; };
+        let label = format!("Round {} {} (time unknown)", point.round, deadline_detail_label(point.r#type));
+        let title = format!("{} {} {label}", conf.title, conf.year);
+        let details = date_only_calendar_description(conf, point);
+        google.push((label, format!(
+            "https://calendar.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location={}",
+            encode(&title), point.date.format("%Y%m%d"), end.format("%Y%m%d"), encode(&details), encode(&conf.place),
+        )));
+    }
     let icloud = format!(
         "data:text/calendar;charset=utf-8,{}",
         encode(&build_conference_ical(conf))
@@ -2162,6 +2224,11 @@ fn calendar_event_description(conf: &ConfItem, point: &TimePoint) -> String {
     .join("\n")
 }
 
+fn date_only_calendar_description(conf: &ConfItem, point: &DateOnlyPoint) -> String {
+    format!("Time unknown; source timezone: {}. Check the official website.\n{}\n{}\n{}",
+        conf.timezone, point.comment.as_deref().unwrap_or(""), conf.description, conf.link)
+}
+
 fn build_conference_ical(conf: &ConfItem) -> String {
     let mut lines = vec![
         "BEGIN:VCALENDAR".to_string(),
@@ -2170,7 +2237,8 @@ fn build_conference_ical(conf: &ConfItem) -> String {
         "CALSCALE:GREGORIAN".to_string(),
     ];
     let timestamp = Utc::now().format("%Y%m%dT%H%M%SZ").to_string();
-    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1);
+    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1)
+        || conf.date_only_ddls.iter().any(|point| point.round > 1);
 
     for point in &conf.ddls {
         let start = point.timepoint.with_timezone(&Utc);
@@ -2198,6 +2266,21 @@ fn build_conference_ical(conf: &ConfItem) -> String {
                 "DESCRIPTION:{}",
                 escape_ical_text(&calendar_event_description(conf, point))
             ),
+            format!("LOCATION:{}", escape_ical_text(&conf.place)),
+            "END:VEVENT".to_string(),
+        ]);
+    }
+    for point in &conf.date_only_ddls {
+        let Some(end) = point.date.succ_opt() else { continue; };
+        let label = format!("Round {} {} (time unknown)", point.round, deadline_detail_label(point.r#type));
+        lines.extend([
+            "BEGIN:VEVENT".to_string(),
+            format!("UID:{}-{}-{}@ccfddl.com", conf.id, point.round, point.r#type),
+            format!("DTSTAMP:{timestamp}"),
+            format!("DTSTART;VALUE=DATE:{}", point.date.format("%Y%m%d")),
+            format!("DTEND;VALUE=DATE:{}", end.format("%Y%m%d")),
+            format!("SUMMARY:{}", escape_ical_text(&format!("{} {} {label}", conf.title, conf.year))),
+            format!("DESCRIPTION:{}", escape_ical_text(&date_only_calendar_description(conf, point))),
             format!("LOCATION:{}", escape_ical_text(&conf.place)),
             "END:VEVENT".to_string(),
         ]);
@@ -2329,6 +2412,10 @@ fn format_estimated_deadline_date(deadline: &str) -> String {
 }
 
 fn format_deadline_display(deadline: &str, timezone: &str) -> String {
+    if let Some(date) = parse_date_only(deadline) {
+        let zone = if timezone == "Unknown" { "timezone unknown" } else { timezone };
+        return format!("{} · time unknown ({zone})", date.format("%b %-d, %Y"));
+    }
     parse_deadline_to_rfc3339(deadline, timezone)
         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
         .map(|value| format!("{} ({})", value.format("%H:%M, %b %-d, %Y"), timezone))
@@ -2344,7 +2431,7 @@ fn format_legacy_deadline_display(
     let Some(origin_time) = parse_deadline_to_rfc3339(deadline, timezone)
         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
     else {
-        return format!("{} ({})", deadline, normalize_timezone(timezone));
+        return format_deadline_display(deadline, timezone);
     };
 
     let selected_offset =
@@ -2427,19 +2514,49 @@ fn resolve_tz_offset(tz: &str, date: &str) -> Option<String> {
     get_utc_map().get(&tz_str).cloned()
 }
 
+pub(super) fn parse_date_only(raw: &str) -> Option<NaiveDate> {
+    if raw.len() != 10 {
+        return None;
+    }
+    let date = NaiveDate::parse_from_str(raw, "%Y-%m-%d").ok()?;
+    (date.year() >= 1000 && date.format("%Y-%m-%d").to_string() == raw).then_some(date)
+}
+
+/// Possible calendar-day bounds, never a claimed deadline instant. An unknown
+/// zone spans UTC+14 through UTC-12, so it expires only after the date everywhere.
+fn date_only_bounds(date: NaiveDate, timezone: &str) -> Option<(DateTime<Utc>, DateTime<Utc>)> {
+    let next = date.succ_opt()?;
+    // US DST changes at 02:00, so midnight still uses the preceding day's
+    // offset on the transition date. Precise-time legacy parsing is unchanged.
+    let midnight_offset = |day: NaiveDate| {
+        let day = if timezone == "PT" { day.pred_opt()? } else { day };
+        resolve_tz_offset(timezone, &day.to_string())
+    };
+    let start_offset = if timezone == "Unknown" { "+14:00".to_string() }
+        else { midnight_offset(date)? };
+    let end_offset = if timezone == "Unknown" { "-12:00".to_string() }
+        else { midnight_offset(next)? };
+    let start_offset = start_offset.parse::<FixedOffset>().ok()?;
+    let end_offset = end_offset.parse::<FixedOffset>().ok()?;
+    let start = date.and_hms_opt(0, 0, 0)?.and_local_timezone(start_offset).single()?;
+    let end = next.and_hms_opt(0, 0, 0)?.and_local_timezone(end_offset).single()?;
+    Some((start.with_timezone(&Utc), end.with_timezone(&Utc)))
+}
+
+pub(super) fn date_only_expired(date: NaiveDate, timezone: &str, now: DateTime<Utc>) -> bool {
+    date_only_bounds(date, timezone).is_some_and(|(_, end)| now >= end)
+}
+
 fn parse_deadline_to_rfc3339(deadline: &str, tz: &str) -> Option<String> {
-    let date_part = deadline.split(' ').nth(0).unwrap_or(deadline);
-    let tz_offset = resolve_tz_offset(tz, date_part)?;
-    Some(if deadline.contains(' ') {
-        format!(
-            "{}T{}{}",
-            date_part,
-            deadline.split(' ').nth(1).unwrap_or("00:00:00"),
-            tz_offset
-        )
-    } else {
-        format!("{}T23:59:59{}", deadline, tz_offset)
-    })
+    if deadline.len() != 19 {
+        return None;
+    }
+    let value = chrono::NaiveDateTime::parse_from_str(deadline, "%Y-%m-%d %H:%M:%S").ok()?;
+    if value.format("%Y-%m-%d %H:%M:%S").to_string() != deadline {
+        return None;
+    }
+    let tz_offset = resolve_tz_offset(tz, &value.date().to_string())?;
+    Some(format!("{}{tz_offset}", value.format("%Y-%m-%dT%H:%M:%S")))
 }
 
 const RANK_OPTIONS: &[(&str, &str)] = &[
@@ -2617,4 +2734,102 @@ mod historical_deadline_tests {
         assert!(calendar.contains("DESCRIPTION:Track A\\nTest conference"));
         assert!(calendar.contains("DESCRIPTION:Track B\\nTest conference"));
     }
+
+    fn precision_fixture(timezone: &str, timeline: serde_json::Value, now: &str) -> ConfItem {
+        let conference: Conference = serde_json::from_value(serde_json::json!({
+            "title": "DATE", "description": "Precision fixture", "sub": "AI", "rank": {"ccf": "A"}, "dblp": "date",
+            "confs": [{"year": 2027, "id": "date27", "link": "https://example.org", "timeline": timeline,
+                "timezone": timezone, "date": "TBD", "place": "TBD"}]
+        })).unwrap();
+        build_conf_items(vec![conference], &[], &HashSet::new(), &HashMap::new(), "Asia/Shanghai",
+            DateTime::parse_from_rfc3339(now).unwrap().with_timezone(&Utc)).remove(0)
+    }
+
+    #[test]
+    fn calendar_precision_is_strict_and_never_an_instant() {
+        assert!(parse_date_only("2028-02-29").is_some());
+        for invalid in ["2027-02-29", "2028-02-30", "2028-2-29", "0000-01-01", "TBD"] {
+            assert!(parse_date_only(invalid).is_none());
+        }
+        assert!(parse_deadline_to_rfc3339("2028-02-29", "AoE").is_none());
+        assert!(parse_deadline_to_rfc3339("2028-02-29 12:00:00", "Unknown").is_none());
+        assert!(remaining_until_deadline("2028-02-29", "UTC", Utc::now()).is_none());
+    }
+
+    #[test]
+    fn unknown_zone_date_expires_only_after_the_date_everywhere() {
+        let timeline = serde_json::json!([{"deadline": "2027-02-28"}]);
+        let pending = precision_fixture("Unknown", timeline.clone(), "2027-03-01T11:59:59Z");
+        assert_eq!(pending.status, "RUN");
+        assert!(pending.ddls.is_empty());
+        assert_eq!(pending.date_only_ddls.len(), 1);
+        assert!(pending.estimated_deadlines.is_empty());
+        assert!(format_deadline_display(&pending.deadline, &pending.timezone).contains("time unknown"));
+        assert!(!serde_json::to_string(&pending.date_only_ddls).unwrap().contains("timepoint"));
+        assert_eq!(precision_fixture("Unknown", timeline, "2027-03-01T12:00:00Z").status, "FIN");
+        assert_eq!(precision_fixture("UTC+8", serde_json::json!([{"deadline": "2027-02-28"}]),
+            "2027-02-28T16:00:00Z").status, "FIN");
+    }
+
+    #[test]
+    fn mixed_rounds_select_a_future_node_and_export_both_precisions() {
+        let timeline = serde_json::json!([
+            {"deadline": "2026-09-01"},
+            {"deadline": "2026-10-01", "comment": "clock not announced"},
+            {"deadline": "2026-10-02 09:00:00", "decision_deadline": "2026-10-03"}
+        ]);
+        let pending = precision_fixture("UTC+8", timeline.clone(), "2026-10-01T15:59:59Z");
+        assert_eq!(pending.deadline, "2026-10-01");
+        let next = precision_fixture("UTC+8", timeline, "2026-10-01T16:00:00Z");
+        assert_eq!(next.deadline, "2026-10-02 09:00:00");
+        assert_eq!(next.status, "RUN");
+        let calendar = build_conference_ical(&next);
+        assert_eq!(calendar.matches("BEGIN:VEVENT").count(), 4);
+        assert!(calendar.contains("DTSTART;VALUE=DATE:20261001\r\n"));
+        assert!(calendar.contains("DTEND;VALUE=DATE:20261002\r\n"));
+        assert!(calendar.contains("DTSTART:20261002T010000Z\r\n"));
+        assert!(calendar.contains("Time unknown"));
+        let (google, _) = build_calendar_urls(&next);
+        assert!(google.iter().any(|(_, url)| url.contains("dates=20261001/20261002")));
+    }
+
+    #[test]
+    fn pacific_date_boundaries_use_midnight_before_dst_switches() {
+        let before = DateTime::parse_from_rfc3339("2027-03-14T07:59:59Z").unwrap().with_timezone(&Utc);
+        let after = DateTime::parse_from_rfc3339("2027-03-14T08:00:00Z").unwrap().with_timezone(&Utc);
+        let day = parse_date_only("2027-03-13").unwrap();
+        assert!(!date_only_expired(day, "PT", before));
+        assert!(date_only_expired(day, "PT", after));
+    }
+
+    #[test]
+    fn later_tbd_round_is_not_hidden_by_a_completed_known_round() {
+        for past in ["2026-09-01", "2026-09-01 12:00:00"] {
+            let item = precision_fixture("UTC", serde_json::json!([
+                {"deadline": past}, {"deadline": "TBD", "comment": "Round 2 date not announced"}
+            ]), "2026-10-01T12:00:00Z");
+            assert_eq!(item.status, "TBD");
+            assert_eq!(item.deadline, "TBD");
+            assert_eq!(item.comment.as_deref(), Some("Round 2 date not announced"));
+            assert!(item.estimated_deadlines.is_empty());
+        }
+        let item = precision_fixture("UTC", serde_json::json!([
+            {"deadline": "2026-09-01"}, {"abstract_deadline": "2026-09-15", "deadline": "TBD"}
+        ]), "2026-10-01T12:00:00Z");
+        assert_eq!(item.status, "TBD");
+        assert!(item.estimated_deadlines.is_empty());
+    }
+
+    #[test]
+    fn unknown_zone_clocks_cannot_seed_estimates() {
+        let conference: Conference = serde_json::from_value(serde_json::json!({
+            "title": "TEST", "description": "Test", "sub": "AI", "rank": {"ccf": "A"}, "dblp": "test",
+            "confs": [
+                {"year": 2026, "id": "old", "link": "https://example.org", "timeline": [{"deadline": "2026-01-01 12:00:00"}], "timezone": "Unknown", "date": "TBD", "place": "TBD"},
+                {"year": 2027, "id": "new", "link": "https://example.org", "timeline": [{"deadline": "TBD"}], "timezone": "Unknown", "date": "TBD", "place": "TBD"}
+            ]
+        })).unwrap();
+        assert!(estimate_deadlines(&conference, &conference.confs[1]).is_empty());
+    }
+
 }

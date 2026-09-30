@@ -71,6 +71,16 @@ pub struct TimePoint {
     pub comment: Option<String>,
 }
 
+/// A published calendar date whose clock time is unknown. Never an instant.
+#[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
+pub struct DateOnlyPoint {
+    pub date: NaiveDate,
+    pub r#type: i32,
+    pub round: usize,
+    #[serde(default)]
+    pub comment: Option<String>,
+}
+
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 pub struct ConfItem {
     pub title: String,
@@ -98,6 +108,8 @@ pub struct ConfItem {
     pub subname_en: String,
     pub acc_str: Option<String>,
     pub ddls: Vec<TimePoint>,
+    #[serde(default)]
+    pub date_only_ddls: Vec<DateOnlyPoint>,
     pub estimated_deadlines: Vec<EstimatedDeadline>,
 }
 

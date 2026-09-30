@@ -1,4 +1,5 @@
 use crate::components::conf::ConfItem;
+use crate::components::showtable::date_only_expired;
 use crate::components::countdown::CountDown;
 use crate::components::favorites::{FavoritesContext, start_github_login};
 use chrono::{DateTime, FixedOffset, Utc};
@@ -149,7 +150,8 @@ pub fn FavoritesTimelineModal(
                                                     || selected.contains(&conference.id)
                                             })
                                             .collect::<Vec<_>>();
-                                        let has_future_events = !visible_events.is_empty();
+                                        let has_future_events = !visible_events.is_empty()
+                                            || visible_awaiting_dates.iter().any(|conference| !conference.date_only_ddls.is_empty());
                                         let has_awaiting_dates = !visible_awaiting_dates.is_empty();
                                         view! {
                                             <div class="favorites-timeline-toolbar">
@@ -291,9 +293,9 @@ pub fn FavoritesTimelineModal(
                                                 <Show when=move || has_awaiting_dates>
                                                     <section class="favorites-timeline-tbd">
                                                         <h3>{move || if use_english.get() {
-                                                            "Awaiting dates"
+                                                            "Dates without exact times"
                                                         } else {
-                                                            "日期待定"
+                                                            "日期或时刻待定"
                                                         }}</h3>
                                                         <div>
                                                             {visible_awaiting_dates
@@ -307,7 +309,13 @@ pub fn FavoritesTimelineModal(
                                                                     >
                                                                         <Icon icon=icondata::BsStarFill />
                                                                         {format!("{} {}", conference.title, conference.year)}
-                                                                        <small>"TBD"</small>
+                                                                        <small>{if conference.date_only_ddls.is_empty() {
+                                                                            "TBD".to_string()
+                                                                        } else {
+                                                                            conference.date_only_ddls.iter().map(|point| {
+                                                                                format!("Round {} {}: {} · time unknown ({})", point.round, deadline_label(point.r#type, point.round, false), point.date, conference.timezone)
+                                                                            }).collect::<Vec<_>>().join("; ")
+                                                                        }}</small>
                                                                     </a>
                                                                 })
                                                                 .collect_view()}
@@ -360,8 +368,14 @@ fn build_favorite_timeline(
     let mut awaiting_dates = Vec::new();
     let mut events = Vec::new();
     for conference in favorites {
+        let mut without_clock = conference.clone();
+        without_clock.date_only_ddls.retain(|point| !date_only_expired(point.date, &conference.timezone, reference_time));
+        if !without_clock.date_only_ddls.is_empty()
+            || (conference.ddls.is_empty() && conference.date_only_ddls.is_empty())
+        {
+            awaiting_dates.push(without_clock);
+        }
         if conference.ddls.is_empty() {
-            awaiting_dates.push(conference);
             continue;
         }
         let multi_round = conference
@@ -465,6 +479,7 @@ mod tests {
                     comment: None,
                 })
                 .collect(),
+            date_only_ddls: Vec::new(),
             estimated_deadlines: Vec::new(),
         }
     }
@@ -494,4 +509,21 @@ mod tests {
         assert_eq!(data.awaiting_dates.len(), 1);
         assert!(data.events.is_empty());
     }
+
+    #[test]
+    fn date_only_favorites_are_visible_without_a_precise_graph_position() {
+        let mut conference = favorite("date27", "Date", &[]);
+        conference.timezone = "Unknown".to_string();
+        conference.date_only_ddls = vec![crate::components::conf::DateOnlyPoint {
+            date: chrono::NaiveDate::from_ymd_opt(2027, 2, 28).unwrap(),
+            r#type: 1, round: 1, comment: None,
+        }];
+        let before = DateTime::parse_from_rfc3339("2027-03-01T11:59:59Z").unwrap().with_timezone(&Utc);
+        let data = build_favorite_timeline(vec![conference.clone()], before);
+        assert!(data.events.is_empty());
+        assert_eq!(data.awaiting_dates[0].date_only_ddls.len(), 1);
+        let after = DateTime::parse_from_rfc3339("2027-03-01T12:00:00Z").unwrap().with_timezone(&Utc);
+        assert!(build_favorite_timeline(vec![conference], after).awaiting_dates.is_empty());
+    }
+
 }

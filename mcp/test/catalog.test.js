@@ -88,3 +88,35 @@ test("shares stale fallback with concurrent callers and retries after a failed r
   assert.notEqual(recovered, cached);
   assert.equal(recovered.fetched_at, new Date(expiredTime + 1000).toISOString());
 });
+
+test("date-only values preserve precision, reject invalid dates, and never invent UTC", () => {
+  for (const raw of ["2028-02-29", "2027-02-28"]) assert.equal(deadlineToUtc(raw, "AoE"), null);
+  assert.equal(deadlineToUtc("2026-10-01 17:00:00", "Unknown"), null);
+  assert.equal(deadlineToUtc("2027-02-29 17:00:00", "UTC"), null);
+  const data = [{ ...conferences[0], confs: [{ year: 2028, id: "dates28", timezone: "Unknown", timeline: [
+    { deadline: "2028-02-29" }, { deadline: "2027-02-29" }, { deadline: "2028-2-29" },
+  ] }] }];
+  const nodes = getConference(data, "dates28").editions[0].deadlines;
+  assert.equal(nodes[0].precision, "date");
+  assert.equal(nodes[0].deadline_date, "2028-02-29");
+  assert.equal(nodes[0].utc_time, null);
+  assert.equal(nodes[1].precision, "unknown");
+  assert.equal(nodes[2].precision, "unknown");
+  const result = upcomingDeadlines(data, { now: Date.parse("2028-03-01T11:59:59Z"), days: 1 });
+  assert.equal(result.length, 1);
+  assert.equal(result[0].utc_time, null);
+  assert.equal(Object.hasOwn(result[0], "sortKey"), false);
+  assert.equal(upcomingDeadlines(data, { now: Date.parse("2028-03-01T12:00:00Z") }).length, 0);
+});
+
+test("mixed rounds keep later future nodes and date-only bounds respect the source zone", () => {
+  const data = [{ ...conferences[0], confs: [{ year: 2027, id: "mixed27", timezone: "UTC+8", timeline: [
+    { deadline: "2026-09-01" }, { deadline: "2026-10-01" },
+    { deadline: "2026-10-02 09:00:00", decision_deadline: "2026-10-03" }, { deadline: "TBD" },
+  ] }] }];
+  const results = upcomingDeadlines(data, { now: Date.parse("2026-10-01T15:59:59Z") });
+  assert.deepEqual(results.map((node) => node.round), [2, 3, 3]);
+  assert.deepEqual(results.map((node) => node.precision), ["date", "datetime", "date"]);
+  assert.deepEqual(upcomingDeadlines(data, { now: Date.parse("2026-10-01T16:00:00Z") })
+    .map((node) => node.round), [3, 3]);
+});
