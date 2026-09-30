@@ -14,7 +14,7 @@
         - deadline: TBD
           comment: 'Regular paper deadline: November 5, 2020 AoE; exact time not verified.'
       timezone: UTC-12
-      date: September 6-10, 2021
+      date: September 8-10, 2021
       place: Virtual
     - year: 2022
       id: eurosp22
@@ -22,7 +22,7 @@
       timeline:
         - deadline: '2021-09-22 23:59:59'
       timezone: UTC-12
-      date: June 6-10, 2022
+      date: June 7-9, 2022
       place: Genoa, Italy
     - year: 2023
       id: eurosp23
@@ -31,7 +31,7 @@
         - deadline: TBD
           comment: 'Regular paper deadline: October 26, 2022 AoE; exact time not verified.'
       timezone: UTC-12
-      date: July 3-7, 2023
+      date: July 4-6, 2023
       place: Delft, Netherlands
     - year: 2024
       id: eurosp24
