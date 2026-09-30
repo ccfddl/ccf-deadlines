@@ -13,7 +13,7 @@
       timeline:
         - deadline: 'TBD'
           comment: 'Regular paper firm deadline: August 3, 2021; exact cutoff time and timezone not specified'
-      timezone: UTC
+      timezone: Unknown
       date: December 14-15, 2021
       place: Virtual
     - year: 2022
@@ -31,7 +31,7 @@
       timeline:
         - deadline: 'TBD'
           comment: 'Latest published regular paper extension: August 5, 2023 (now struck through); final cutoff time and timezone not verified'
-      timezone: UTC
+      timezone: Unknown
       date: December 14-16, 2023
       place: Nanjing, China
     - year: 2024
