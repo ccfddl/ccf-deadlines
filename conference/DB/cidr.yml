@@ -7,42 +7,6 @@
     thcpl: N
   dblp: cidr
   confs:
-    - year: 2015
-      id: cidr15
-      link: https://www.cidrdb.org/cidr2015/
-      timeline:
-        - deadline: '2014-08-19 23:59:00'
-          comment: Regular papers; explicit Pacific Time; separate gong-show abstracts are excluded.
-      timezone: UTC-7
-      date: January 5-7, 2015
-      place: Asilomar, CA, USA
-    - year: 2017
-      id: cidr17
-      link: https://www.cidrdb.org/cidr2017/
-      timeline:
-        - deadline: '2016-08-21 23:59:00'
-          comment: Regular papers; explicit Pacific Time; separate gong-show abstracts are excluded.
-      timezone: UTC-7
-      date: January 9-11, 2017
-      place: Chaminade, Santa Cruz, CA, USA
-    - year: 2019
-      id: cidr19
-      link: https://www.cidrdb.org/cidr2019/
-      timeline:
-        - deadline: '2018-08-24 23:59:00'
-          comment: Regular papers; explicit Pacific Time; separate gong-show abstracts are excluded.
-      timezone: UTC-7
-      date: January 14-16, 2019
-      place: Asilomar, CA, USA
-    - year: 2020
-      id: cidr20
-      link: https://www.cidrdb.org/cidr2020/
-      timeline:
-        - deadline: '2019-08-25 23:59:00'
-          comment: Regular papers; explicit Pacific Time; separate gong-show abstracts are excluded.
-      timezone: UTC-7
-      date: January 13-15, 2020
-      place: Amsterdam, The Netherlands
     - year: 2021
       id: cidr21
       link: https://www.cidrdb.org/cidr2021/
