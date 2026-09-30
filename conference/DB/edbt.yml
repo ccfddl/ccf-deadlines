@@ -59,11 +59,10 @@
       id: edbt27
       link: https://edbticdt2027.github.io/
       timeline:
-        - deadline: '2026-02-04 17:00:00'
-        - deadline: TBD
-          comment: 'Regular papers, June 10, 2026 at 17:00; CFP says PST, important dates says PT; summer UTC offset unresolved'
-        - deadline: TBD
-          comment: 'Regular papers, October 7, 2026 at 17:00; CFP says PST, important dates says PT; summer UTC offset unresolved'
-      timezone: UTC-8
+        - deadline: '2026-02-04 13:00:00'
+          comment: 'Official February cutoff is 17:00 PST (UTC-8), represented as the equivalent 13:00 AoE.'
+        - deadline: '2026-06-10 23:59:59'
+        - deadline: '2026-10-07 23:59:59'
+      timezone: AoE
       date: April 6-9, 2027
       place: Lille, France
