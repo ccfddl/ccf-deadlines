@@ -9,22 +9,13 @@
   confs:
     - year: 2021
       id: casa2021
-      link: https://www.easychair.org/cfp/casa2021
+      link: https://casa2021.ca/
       timeline:
         - deadline: '2021-03-06 23:59:00'
           comment: 'Regular full papers: extended initial conference submission'
       timezone: AoE
       date: July 15-17, 2021
       place: Online
-    - year: 2022
-      id: casa2022
-      link: https://easychair.org/cfp/CASA2022
-      timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: April 7, 2022 initial conference submission; exact clock and timezone unpublished; UTC+0 is a schema placeholder'
-      timezone: UTC+0
-      date: July 5-7, 2022
-      place: Nanjing, China
     - year: 2023
       id: casa2023
       link: https://cyprusconferences.org/casa2023/
