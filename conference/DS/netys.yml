@@ -16,6 +16,15 @@
       timezone: AoE
       date: May 29-31, 2024
       place: Rabat, Morocco
+    - year: 2025
+      id: netys2025
+      link: https://netys.net/history/netys2025/index.html
+      timeline:
+        - abstract_deadline: '2025-03-15 23:59:00'
+          deadline: '2025-03-15 23:59:00'
+      timezone: AoE
+      date: May 21-23, 2025
+      place: Rabat, Morocco
     - year: 2026
       id: netys2026
       link: https://netys.net/
