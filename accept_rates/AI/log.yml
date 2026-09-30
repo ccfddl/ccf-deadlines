@@ -1,0 +1,15 @@
+# Full proceedings papers only; non-archival extended abstracts are excluded.
+- title: LOG
+  accept_rates:
+    - year: 2022
+      submitted: 195
+      accepted: 56
+      str: 28.7%(56/195 22')
+      rate: 0.28717948717948716
+      source: https://proceedings.mlr.press/v198/rieck22a/rieck22a.pdf
+    - year: 2023
+      submitted: 122
+      accepted: 38
+      str: 31.1%(38/122 23')
+      rate: 0.3114754098360656
+      source: https://proceedings.mlr.press/v231/villar24a/villar24a.pdf
