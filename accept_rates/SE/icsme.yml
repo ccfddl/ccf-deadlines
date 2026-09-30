@@ -1,0 +1,38 @@
+# Research track accepted papers / received full-paper submissions, including pre-review exclusions.
+- title: ICSME
+  accept_rates:
+    # 179 reviewed; row uses 201 received.
+    - year: 2021
+      submitted: 201
+      accepted: 43
+      str: 21.4%(43/201 21')
+      rate: 0.213930348258706
+      source: https://doi.org/10.1109/ICSME52107.2021.00005
+    # 135 reviewed; row uses 136 received.
+    - year: 2022
+      submitted: 136
+      accepted: 31
+      str: 22.8%(31/136 22')
+      rate: 0.227941176470588
+      source: https://doi.org/10.1109/ICSME55016.2022.00005
+    # 116 reviewed; row uses 119 received.
+    - year: 2023
+      submitted: 119
+      accepted: 27
+      str: 22.7%(27/119 23')
+      rate: 0.226890756302521
+      source: https://doi.org/10.1109/ICSME58846.2023.00006
+    # 188 reviewed; row uses 192 received.
+    - year: 2024
+      submitted: 192
+      accepted: 49
+      str: 25.5%(49/192 24')
+      rate: 0.255208333333333
+      source: https://doi.org/10.1109/ICSME58944.2024.00006
+    # 146 reviewed; row uses 188 received.
+    - year: 2025
+      submitted: 188
+      accepted: 45
+      str: 23.9%(45/188 25')
+      rate: 0.239361702127660
+      source: https://doi.org/10.1109/ICSME64153.2025.00006
