@@ -15,7 +15,7 @@
           deadline: TBD
           comment: 'Research papers: abstract October 5, 2020; extended full paper October 19, 2020 (AoE); exact clock unpublished.'
       timezone: AoE
-      date: April 12-16, 2021
+      date: April 13-15, 2021
       place: Virtual
     - year: 2022
       id: icst2022
@@ -25,7 +25,7 @@
           deadline: TBD
           comment: 'Research papers: abstract September 27, 2021; full paper October 4, 2021 (AoE); exact clock unpublished.'
       timezone: AoE
-      date: April 4-13, 2022
+      date: April 5-7, 2022
       place: Virtual
     - year: 2023
       id: icst2023
@@ -34,7 +34,7 @@
         - deadline: TBD
           comment: 'Research papers: November 3, 2022 (AoE); exact clock unpublished; no separate earlier abstract deadline published.'
       timezone: AoE
-      date: April 16-20, 2023
+      date: April 17-19, 2023
       place: Dublin, Ireland
     - year: 2024
       id: icst2024
@@ -44,7 +44,7 @@
           deadline: TBD
           comment: 'Research papers: abstract October 18, 2023; full paper October 25, 2023 (AoE); exact clock unpublished.'
       timezone: AoE
-      date: May 27-31, 2024
+      date: May 29-31, 2024
       place: Toronto, Canada
     - year: 2025
       id: icst2025
@@ -53,7 +53,7 @@
         - abstract_deadline: '2024-09-25 23:59:59'
           deadline: '2024-10-02 23:59:59'
       timezone: AoE
-      date: March 31-April 4, 2025
+      date: April 2-4, 2025
       place: Naples, Italy
     - year: 2026
       id: icst2026
