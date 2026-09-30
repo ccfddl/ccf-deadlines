@@ -11,9 +11,9 @@
       id: ncmmsc22
       link: https://www.ncmmsc.org.cn/2022/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: October 17, 2022 (extended); exact time and timezone unverified'
-      timezone: UTC+0
+        - deadline: '2022-10-17 23:59:00'
+          comment: 'Regular full papers; extended deadline, cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: December 16-17, 2022
       place: Online
     - year: 2023
@@ -29,31 +29,31 @@
       id: ncmmsc24
       link: https://www.ncmmsc.org.cn/2024/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular full papers, round 1: abstract April 29, full paper May 6, 2024; exact time and timezone unverified'
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular full papers, round 2: abstract June 14, full paper June 23, 2024 at 08:00 (extended); timezone unverified'
-      timezone: UTC+0
+        - abstract_deadline: '2024-04-29 23:59:00'
+          deadline: '2024-05-06 23:59:00'
+          comment: 'Regular full papers, round 1; cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+        - abstract_deadline: '2024-06-14 23:59:00'
+          deadline: '2024-06-23 08:00:00'
+          comment: 'Regular full papers, round 2; full paper extended to 08:00, timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: August 17-18, 2024
       place: Urumqi, China
     - year: 2025
       id: ncmmsc25
       link: https://www.ncmmsc.org.cn/2025/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: July 15, 2025 (extended); exact time and timezone unverified'
-      timezone: UTC+0
+        - deadline: '2025-07-15 23:59:00'
+          comment: 'Regular full papers; extended deadline, cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: October 18-19, 2025
       place: Zhenjiang, China
     - year: 2026
       id: ncmmsc26
       link: https://www.ncmmsc.org.cn/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Abstract: July 5, 2026; full paper: July 12, 2026 (extended). Exact times and timezone TBD; UTC+8 is a schema placeholder.'
-      timezone: UTC+8
+        - abstract_deadline: '2026-07-05 23:59:00'
+          deadline: '2026-07-12 23:59:00'
+          comment: 'Regular full papers; full-paper extension. Cutoff clocks and timezone unpublished; special sessions excluded. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: Nov 5-8, 2026
       place: Hengqin, China
