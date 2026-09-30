@@ -41,8 +41,8 @@ The portable plugin package is under `plugin/ccfddl/`. After deployment, verify 
 
 ```bash
 mkdir -p dist
-cd plugin
-zip -r ../dist/ccfddl-plugin.zip ccfddl
+cd plugin/ccfddl
+zip -r ../../dist/ccfddl-plugin.zip plugin.json mcp.json assets
 ```
 
 Upload the ZIP in the OpenAI Platform Plugins portal, connect the MCP URL, complete domain verification, and run the tool scan. The manifest contains five positive and three negative review cases. Record a demonstration video and add its URL in the portal. Select the verified publisher identity and review the public listing before submitting; approval and publishing are separate actions.
