@@ -1,8 +1,38 @@
 - title: MMSys
   accept_rates:
+    - year: 2021
+      submitted: 55
+      accepted: 18
+      str: 32.7%(18/55 21')
+      rate: 0.32727272727272727
+      source: https://acmmmsys.org/
+    - year: 2022
+      submitted: 46
+      accepted: 16
+      str: 34.8%(16/46 22')
+      rate: 0.34782608695652173
+      source: https://acmmmsys.org/
+    - year: 2023
+      submitted: 112
+      accepted: 27
+      str: 24.1%(27/112 23')
+      rate: 0.24107142857142858
+      source: https://acmmmsys.org/
+    - year: 2024
+      submitted: 56
+      accepted: 22
+      str: 39.3%(22/56 24')
+      rate: 0.39285714285714285
+      source: https://acmmmsys.org/
     - year: 2025
       submitted: 79
       accepted: 19
       str: 24.1%(19/79 25')
-      rate: 0.240506
+      rate: 0.24050632911392406
       source: https://dl.acm.org/doi/proceedings/10.1145/3712676#acceptance-rates
+    - year: 2026
+      submitted: 94
+      accepted: 24
+      str: 25.5%(24/94 26')
+      rate: 0.2553191489361702
+      source: https://acmmmsys.org/
