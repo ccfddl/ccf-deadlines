@@ -1,0 +1,8 @@
+- title: GROUP
+  accept_rates:
+    - year: 2023
+      submitted: 193
+      accepted: 69
+      str: 35.8%(69/193 23')
+      rate: 0.35751295336787564
+      source: https://group.acm.org/conferences/group25/Group%20Bylaws_SC%20Rules%20%26%20Procedures.pdf
