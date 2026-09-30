@@ -1,0 +1,14 @@
+- title: CSCWD
+  accept_rates:
+    - year: 2023
+      submitted: 380
+      accepted: 321
+      str: 84.5%(321/380 23')
+      rate: 0.844736842
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10152776
+    - year: 2026
+      submitted: 1042
+      accepted: 741
+      str: 71.1%(741/1042 26')
+      rate: 0.7111324376199616
+      source: https://fyust.edu.cn/gjhyqk/cscwd2026/program.pdf
