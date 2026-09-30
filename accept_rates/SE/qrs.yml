@@ -1,0 +1,39 @@
+# Organizer-reported regular-paper acceptance; short-paper submissions are excluded from denominators.
+- title: QRS
+  accept_rates:
+    - year: 2021
+      submitted: 243
+      accepted: 61
+      str: 25.1%(61/243 21')
+      rate: 0.25102880658436216
+      source: https://qrs26.techconf.org/
+    - year: 2022
+      submitted: 273
+      accepted: 75
+      str: 27.5%(75/273 22')
+      rate: 0.27472527472527475
+      source: https://qrs26.techconf.org/
+    - year: 2023
+      submitted: 230
+      accepted: 54
+      str: 23.5%(54/230 23')
+      rate: 0.23478260869565218
+      source: https://qrs26.techconf.org/
+    - year: 2024
+      submitted: 189
+      accepted: 50
+      str: 26.5%(50/189 24')
+      rate: 0.26455026455026454
+      source: https://qrs26.techconf.org/
+    - year: 2025
+      submitted: 269
+      accepted: 65
+      str: 24.2%(65/269 25')
+      rate: 0.241635687732342
+      source: https://qrs26.techconf.org/
+    - year: 2026
+      submitted: 278
+      accepted: 71
+      str: 25.5%(71/278 26')
+      rate: 0.25539568345323743
+      source: https://qrs26.techconf.org/
