@@ -1,0 +1,21 @@
+# Combined regular and nonarchival short-paper system decisions; not a proceedings-only rate.
+- title: PEPM
+  accept_rates:
+    - year: 2021
+      submitted: 18
+      accepted: 10
+      str: 55.6%(10/18 21')
+      rate: 0.5555555555555556
+      source: https://pepm21.hotcrp.com/
+    - year: 2022
+      submitted: 8
+      accepted: 6
+      str: 75.0%(6/8 22')
+      rate: 0.75
+      source: https://pepm22.hotcrp.com/
+    - year: 2023
+      submitted: 14
+      accepted: 7
+      str: 50.0%(7/14 23')
+      rate: 0.5
+      source: https://pepm23.hotcrp.com/
