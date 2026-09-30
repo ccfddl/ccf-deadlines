@@ -1,0 +1,9 @@
+- title: CVC
+  accept_rates:
+    # Accepted decisions / received submissions; distinct from 91 final proceedings papers.
+    - year: 2026
+      submitted: 267
+      accepted: 105
+      str: 39.3%(105/267 26')
+      rate: 0.39325842696629215
+      source: https://saiconference.com/Conferences/CVC2026
