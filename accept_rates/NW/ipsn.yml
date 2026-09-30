@@ -1,0 +1,31 @@
+- title: IPSN
+  accept_rates:
+    # Original main system decisions; final/publication removals unquantified.
+    # IoTDI cross-venue publication transfers possible; not proceedings census.
+    - year: 2021
+      submitted: 105
+      accepted: 26
+      str: 24.8%(26/105 21')
+      rate: 0.24761904761904763
+      source: https://ipsn2021.hotcrp.com/
+    # Main research-paper system accept decisions; not proceedings counts.
+    # Final shepherd approval required; post-selection removals unquantified.
+    # Separate poster/demo/PhD pools excluded; IoTDI transfers not quantified.
+    - year: 2022
+      submitted: 126
+      accepted: 38
+      str: 30.2%(38/126 22')
+      rate: 0.30158730158730157
+      source: https://ipsn2022.hotcrp.com/
+    - year: 2023
+      submitted: 83
+      accepted: 22
+      str: 26.5%(22/83 23')
+      rate: 0.26506024096385544
+      source: https://ipsn2023.hotcrp.com/
+    - year: 2024
+      submitted: 93
+      accepted: 20
+      str: 21.5%(20/93 24')
+      rate: 0.21505376344086022
+      source: https://ipsn2024.hotcrp.com/
