@@ -7,14 +7,23 @@
     thcpl: N
   dblp: fccm
   confs:
+    - year: 2021
+      id: fccm21
+      link: https://www.fccm.org/past/2021/
+      timeline:
+        - abstract_deadline: '2021-01-11 23:59:00'
+          deadline: '2021-01-18 23:59:00'
+          comment: 'Final dates and AoE verified; 23:59:00 is the repository default for unpublished cutoff times.'
+      timezone: AoE
+      date: May 10-11, 2021
+      place: Virtual
     - year: 2022
       id: fccm22
       link: https://www.fccm.org/
       timeline:
-        - deadline: '2022-01-03 23:59:59'
-          comment: abstract deadline
-        - deadline: '2022-01-10 23:59:59'
-          comment: full paper deadline
+        - abstract_deadline: '2022-01-10 23:59:00'
+          deadline: '2022-01-17 23:59:00'
+          comment: 'Final dates and AoE verified; 23:59:00 is the repository default for unpublished cutoff times.'
       timezone: AoE
       date: May 15-18, 2022
       place: New York City, USA
@@ -22,10 +31,8 @@
       id: fccm24
       link: https://www.fccm.org/
       timeline:
-        - deadline: '2024-01-09 23:59:59'
-          comment: abstract deadline
-        - deadline: '2024-01-15 23:59:59'
-          comment: full paper deadline
+        - abstract_deadline: '2024-01-09 23:59:59'
+          deadline: '2024-01-15 23:59:59'
       timezone: AoE
       date: May 5-8, 2024
       place: Orlando, USA
@@ -33,8 +40,9 @@
       id: fccm25
       link: https://www.fccm.org/
       timeline:
-        - abstract_deadline: '2025-01-10 23:59:59'
-          deadline: '2025-01-17 23:59:59'
+        - abstract_deadline: '2025-01-10 23:59:00'
+          deadline: '2025-01-19 19:59:00'
+          comment: 'Abstract clock defaults to 23:59:00 AoE; paper cutoff is 11:59 PM PST, converted to AoE.'
       timezone: AoE
       date: May 4-7, 2025
       place: Fayetteville, Arkansas, USA
