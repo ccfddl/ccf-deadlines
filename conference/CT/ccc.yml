@@ -5,6 +5,54 @@
     ccf: B
   dblp: coco
   confs:
+    - year: 2015
+      id: ccc15
+      link: https://computationalcomplexity.org/Archive/2015/cfp.html
+      timeline:
+        - deadline: '2014-11-26 19:00:00'
+      timezone: UTC-8
+      date: June 17-19, 2015
+      place: Portland, Oregon, USA
+    - year: 2016
+      id: ccc16
+      link: https://computationalcomplexity.org/Archive/2016/cfp.html
+      timeline:
+        - deadline: '2015-11-23 17:00:00'
+      timezone: UTC-5
+      date: May 29-June 1, 2016
+      place: Tokyo, Japan
+    - year: 2017
+      id: ccc17
+      link: https://computationalcomplexity.org/Archive/2017/cfp.html
+      timeline:
+        - deadline: '2017-02-15 17:00:00'
+      timezone: UTC-5
+      date: July 6-9, 2017
+      place: Riga, Latvia
+    - year: 2018
+      id: ccc18
+      link: https://computationalcomplexity.org/Archive/2018/cfp.html
+      timeline:
+        - deadline: '2018-01-24 17:00:00'
+      timezone: UTC-5
+      date: June 22-24, 2018
+      place: San Diego, California, USA
+    - year: 2019
+      id: ccc19
+      link: https://computationalcomplexity.org/Archive/2019/cfp.html
+      timeline:
+        - deadline: '2019-02-19 17:00:00'
+      timezone: UTC-5
+      date: July 18-20, 2019
+      place: New Brunswick, New Jersey, USA
+    - year: 2020
+      id: ccc20
+      link: https://computationalcomplexity.org/Archive/2020/cfp.html
+      timeline:
+        - deadline: '2020-02-17 17:00:00'
+      timezone: UTC-5
+      date: July 28-30, 2020
+      place: Online
     - year: 2021
       id: ccc21
       link: https://computationalcomplexity.org/Archive/2021/cfp.html
