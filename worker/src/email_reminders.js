@@ -1,6 +1,7 @@
 const REMINDER_DAYS = new Set([1, 7]);
 const SEND_HOUR = 9;
 const PAGE_SIZE = 100;
+const SEND_RECORD_RETENTION_DAYS = 7;
 
 export function verifiedPrimaryEmail(addresses) {
   if (!Array.isArray(addresses)) return null;
@@ -165,6 +166,15 @@ export async function unsubscribeSignature(githubId, email, secret) {
 }
 
 export async function runScheduledEmailDigests(env, now = Date.now()) {
+  const utc = new Date(now);
+  if (utc.getUTCHours() === 0 && utc.getUTCMinutes() === 0) {
+    const cutoff = new Date(now - SEND_RECORD_RETENTION_DAYS * 86_400_000).toISOString().slice(0, 10);
+    try {
+      await env.DB.prepare("DELETE FROM email_digest_sends WHERE local_date < ?").bind(cutoff).run();
+    } catch (error) {
+      console.error("Email send record cleanup failed", error?.message ?? "Error");
+    }
+  }
   if (!env.RESEND_API_KEY || !env.EMAIL_FROM) return { skipped: "Email sender is not configured" };
   let afterId = 0;
   let events;

@@ -349,3 +349,17 @@ test("cron sends one digest and does not send it again on a later tick", async (
   assert.match(outgoing[1].body.text, /VLDB Later Deadline/);
   assert.deepEqual(await runScheduledEmailDigests(env, atNine + 24 * 60 * 60_000 + 15 * 60_000), { sent: 0, failed: 0 });
 });
+
+test("cron removes send records older than seven days once at UTC midnight", async () => {
+  const cutoffs = [];
+  const env = {
+    DB: { prepare(sql) {
+      assert.equal(sql, "DELETE FROM email_digest_sends WHERE local_date < ?");
+      return { bind(cutoff) { return { async run() { cutoffs.push(cutoff); } }; } };
+    } },
+  };
+  const midnight = Date.parse("2026-10-01T00:00:00Z");
+  assert.deepEqual(await runScheduledEmailDigests(env, midnight), { skipped: "Email sender is not configured" });
+  assert.deepEqual(await runScheduledEmailDigests(env, midnight + 15 * 60_000), { skipped: "Email sender is not configured" });
+  assert.deepEqual(cutoffs, ["2026-09-24"]);
+});
