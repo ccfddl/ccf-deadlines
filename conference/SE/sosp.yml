@@ -7,36 +7,6 @@
     thcpl: A
   dblp: sosp
   confs:
-    - year: 2015
-      id: sosp15
-      link: https://sigops.org/s/conferences/sosp/2015/website/index.html
-      timeline:
-        - abstract_deadline: '2015-03-19 23:59:00'
-          deadline: '2015-03-26 23:59:00'
-          comment: 'Regular papers; official hard cutoffs at 11:59 pm GMT, encoded at source minute precision.'
-      timezone: UTC
-      date: October 5-7, 2015
-      place: Monterey, CA, USA
-    - year: 2017
-      id: sosp17
-      link: https://sigops.org/s/conferences/sosp/2017/
-      timeline:
-        - abstract_deadline: '2017-04-14 23:59:00'
-          deadline: '2017-04-21 23:59:00'
-          comment: 'Regular papers; official hard cutoffs at 11:59 pm UTC, encoded at source minute precision.'
-      timezone: UTC
-      date: October 29-31, 2017
-      place: Shanghai, China
-    - year: 2019
-      id: sosp19
-      link: https://www.sigops.org/s/conferences/sosp/2019/
-      timeline:
-        - abstract_deadline: '2019-04-17 23:59:00'
-          deadline: '2019-04-24 23:59:00'
-          comment: 'Regular papers; official hard cutoffs at 11:59 pm UTC, encoded at source minute precision.'
-      timezone: UTC
-      date: October 28-30, 2019
-      place: Huntsville, Ontario, Canada
     - year: 2021
       id: sosp21
       link: https://sosp2021.mpi-sws.org/
