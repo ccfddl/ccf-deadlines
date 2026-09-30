@@ -1,14 +1,26 @@
 - title: MobiHoc
   accept_rates:
+    - year: 2022
+      submitted: 121
+      accepted: 24
+      str: 19.8%(24/121 22')
+      rate: 0.19834710743801653
+      source: https://mobihoc22.hotcrp.com/
+    - year: 2023
+      submitted: 136
+      accepted: 30
+      str: 22.1%(30/136 23')
+      rate: 0.22058823529411764
+      source: https://mobihoc23.hotcrp.com/
     - year: 2024
       submitted: 155
       accepted: 38
       str: 24.5%(38/155 24')
-      rate: 0.245161
+      rate: 0.24516129032258063
       source: https://dlnext.acm.org/doi/proceedings/10.1145/3641512
     - year: 2025
       submitted: 169
       accepted: 39
       str: 23.1%(39/169 25')
-      rate: 0.230769
+      rate: 0.23076923076923078
       source: https://dlnext.acm.org/doi/proceedings/10.1145/3704413
