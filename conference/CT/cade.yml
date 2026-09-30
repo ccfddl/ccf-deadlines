@@ -17,12 +17,23 @@
       timezone: AoE
       date: July 12-15, 2021
       place: Online
+    - year: 2023
+      id: cade23
+      link: https://easyconferences.eu/cade2023/
+      timeline:
+        - abstract_deadline: '2023-02-27 23:59:00'
+          deadline: '2023-03-06 23:59:00'
+          comment: 'Regular papers; clock 23:59:00 and AoE are repository defaults'
+      timezone: AoE
+      date: July 1-4, 2023
+      place: Rome, Italy
     - year: 2025
       id: cade25
       link: https://www.dhbw-stuttgart.de/cade-30/
       timeline:
-        - abstract_deadline: '2025-02-17 23:59:59'
-          deadline: '2025-02-24 23:59:59'
+        - abstract_deadline: '2025-02-17 23:59:00'
+          deadline: '2025-02-24 23:59:00'
+          comment: 'Regular papers; clock 23:59:00 and AoE are repository defaults'
       timezone: AoE
       date: July 28-31, 2025
       place: DHBW Stuttgart, Stuttgart, Germany
