@@ -11,10 +11,10 @@
       id: ets2021
       link: https://www.ieee-ets.org/past_events/ets21/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Abstract December 10 and paper December 17, 2020; exact times and timezone unpublished (UTC+0 placeholder)
-      timezone: UTC+0
+        - abstract_deadline: '2020-12-10 23:59:00'
+          deadline: '2020-12-17 23:59:00'
+          comment: 'Regular research papers. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: May 24-27, 2021
       place: Virtual
     - year: 2022
@@ -31,9 +31,9 @@
       id: ets2024
       link: https://ets24.ewi.tudelft.nl/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2023-12-15 23:59:00'
           deadline: '2023-12-23 00:00:00'
-          comment: 'Abstract December 15, 2023, cutoff clock unpublished. Full paper December 22 at 24:00 AoE, normalized exactly to December 23 at 00:00; final extensions.'
+          comment: 'Regular papers; full-paper cutoff explicitly December 22 at 24:00 AoE, normalized to December 23 at 00:00. 23:59:00 uses the repository default where the source gives no clear cutoff clock.'
       timezone: AoE
       date: May 20-24, 2024
       place: The Hague, Netherlands
@@ -59,9 +59,9 @@
       id: ets2027
       link: https://www.ets2027.co.uk/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: Official CFP lists Dec 8 / Dec 15, 2026; exact time and timezone are not specified
+        - abstract_deadline: '2026-12-08 23:59:00'
+          deadline: '2026-12-15 23:59:00'
+          comment: 'Regular papers; official CFP dates. Clock 23:59:00 and timezone AoE are repository defaults, not published cutoff precision.'
       timezone: AoE
       date: May 24-28, 2027
       place: London, UK
