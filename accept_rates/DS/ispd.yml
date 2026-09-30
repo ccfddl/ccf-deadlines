@@ -1,0 +1,29 @@
+- title: ISPD
+  accept_rates:
+    # Competitive accepted papers / manuscripts reviewed; abstract registrations are separate.
+    # Invited talks, keynotes, commemorative contributions and contest entries are excluded.
+    # Desk rejection, withdrawal and post-acceptance attrition are not separately quantified.
+    - year: 2023
+      submitted: 25
+      accepted: 13
+      str: 52.0%(13/25 reviewed 23')
+      rate: 0.52
+      source: https://ispd.cc/ispd2027/slides/2023/protected/ISPD2023-Session-01/1_1_DavidChinnery.pdf
+    - year: 2024
+      submitted: 48
+      accepted: 18
+      str: 37.5%(18/48 reviewed 24')
+      rate: 0.375
+      source: https://ispd.cc/ispd2027/slides/2024/protected/1_0_slides_final.pdf
+    - year: 2025
+      submitted: 48
+      accepted: 18
+      str: 37.5%(18/48 reviewed 25')
+      rate: 0.375
+      source: https://ispd.cc/ispd2027/slides/2025/protected/1_1_slides.pdf
+    - year: 2026
+      submitted: 41
+      accepted: 14
+      str: 34.1%(14/41 reviewed 26')
+      rate: 0.34146341463414637
+      source: https://ispd.cc/ispd2027/slides/2026/protected/slides_1_1.pdf
