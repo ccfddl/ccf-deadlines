@@ -13,9 +13,9 @@
       timeline:
         - abstract_deadline: TBD
           deadline: TBD
-          comment: 'Regular research papers: abstract April 30, 2021; full paper May 7, 2021 AoE; exact time unpublished'
+          comment: 'Regular research papers: CFP prose gives abstract April 30 / full May 7, 2021, but the same page''s Important Dates widget gives May 3 / May 14; AoE; date conflict unresolved'
       timezone: AoE
-      date: October 10-16, 2021
+      date: October 13-16, 2021
       place: Online
     - year: 2022
       id: models22
@@ -35,7 +35,7 @@
           deadline: TBD
           comment: 'Regular research papers: abstract April 7, 2023; full paper April 14, 2023 AoE; exact time unpublished'
       timezone: AoE
-      date: October 1-6, 2023
+      date: October 4-6, 2023
       place: Västerås, Sweden
     - year: 2024
       id: models24
@@ -45,7 +45,7 @@
           deadline: TBD
           comment: 'Regular research papers: abstract March 21, 2024; full paper March 28, 2024 AoE; exact time unpublished'
       timezone: AoE
-      date: September 22-27, 2024
+      date: September 25-27, 2024
       place: Linz, Austria
     - year: 2025
       id: models25
