@@ -11,8 +11,8 @@
       id: icmla22
       link: https://www.icmla-conference.org/icmla22/
       timeline:
-          - deadline: '2022-07-18 23:59:00'
-            comment: Main Conference Papers DDL.
+        - deadline: '2022-07-18 23:59:00'
+          comment: Main Conference Papers DDL.
       timezone: UTC-5
       date: December 12-14, 2022
       place: Atlantis Hotel, Bahamas
