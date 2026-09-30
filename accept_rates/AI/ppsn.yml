@@ -12,10 +12,11 @@
       accepted: 101
       str: 34.4%(101/294 24')
       rate: 0.3435374149659864
-      source: https://link.springer.com/book/10.1007/978-3-031-70055-2
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-70055-2/1
+    # Accepted full papers / all received submissions; 443 of 527 were sent for review.
     - year: 2026
       submitted: 527
       accepted: 165
       str: 31.3%(165/527 26')
       rate: 0.3130929791271347
-      source: https://link.springer.com/book/10.1007/978-3-032-36214-8
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-36214-8/1
