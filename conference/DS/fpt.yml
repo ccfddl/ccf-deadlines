@@ -48,8 +48,9 @@
       id: fpt2025
       link: https://fpt2025.shanghaitech.edu.cn
       timeline:
-        - abstract_deadline: '2025-07-20 23:59:59'
-          deadline: '2025-08-01 23:59:59'
+        - abstract_deadline: '2025-07-20 23:59:00'
+          deadline: '2025-08-01 23:59:00'
+          comment: 'Regular papers; official CFP specifies 23:59 AoE, superseding its struck-out UTC+8 label.'
       timezone: AoE
       date: December 02 - December 05, 2025
       place: Shanghai, China
