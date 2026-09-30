@@ -11,21 +11,41 @@
       id: caise22
       link: https://caise22.ugent.be/
       timeline:
-        - deadline: '2021-11-22 23:59:59'
-          comment: Abstract Submission
-        - deadline: '2021-11-29 23:59:59'
-          comment: Paper Submission
+        - abstract_deadline: '2021-11-22 23:59:00'
+          deadline: '2021-11-29 23:59:00'
+          comment: 'Official November 22/29 AoE dates; cutoff clocks use repository default 23:59:00.'
       timezone: AoE
       date: June 06-10, 2022
       place: Leuven
+    - year: 2023
+      id: caise23
+      link: https://caise23.svit.usj.es/
+      timeline:
+        - abstract_deadline: '2022-11-22 23:59:00'
+          deadline: '2022-11-29 23:59:00'
+          comment: Abstract on November 22 and full paper on November 29, 2022 AoE; clock uses repository default 23:59:00
+      timezone: AoE
+      date: June 14-16, 2023
+      place: Zaragoza, Spain
+    - year: 2024
+      id: caise24
+      link: https://cyprusconferences.org/caise2024/
+      timeline:
+        - abstract_deadline: '2023-12-01 23:59:00'
+          deadline: '2023-12-08 23:59:00'
+          comment: Extended abstract on December 1 and full paper on December 8, 2023 AoE; clock uses repository default 23:59:00
+      timezone: AoE
+      date: June 5-7, 2024
+      place: Limassol, Cyprus
     - year: 2025
       id: caise25
       link: https://conferences.big.tuwien.ac.at/caise2025/
       timeline:
-        - abstract_deadline: '2024-11-22 23:59:59'
-          deadline: '2024-12-01 23:59:59'
+        - abstract_deadline: '2024-11-29 23:59:00'
+          deadline: '2024-12-06 23:59:00'
+          comment: Extended mandatory abstract on November 29 and full paper on December 6, 2024 AoE; clock uses repository default 23:59:00
       timezone: AoE
-      date: June 16-20, 2025
+      date: June 18-20, 2025
       place: Vienna, Austria
     - year: 2026
       id: caise26
