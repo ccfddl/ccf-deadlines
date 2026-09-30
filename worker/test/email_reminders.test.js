@@ -245,7 +245,7 @@ test("daily reminders include every future starred deadline and skip expired nod
     { id: "other27", conference: "Other 2027", title: "Not Starred", deadline_at: "2026-10-01T00:00:00Z" },
   ];
   const digest = buildEmailDigest(events, new Set(["iclr27"]), "Asia/Shanghai", "zh", now, { daily: true });
-  assert.equal(digest.subject, "[ccf-deadlines] ICLR 2027 每日截止提醒");
+  assert.equal(digest.subject, "[ccf-deadlines] ICLR 2027 截止日期提醒");
   assert.match(digest.text, /今天截止 · Due Today/);
   assert.match(digest.text, /Future Deadline/);
   assert.doesNotMatch(digest.text, /Already Passed|Not Starred/);
