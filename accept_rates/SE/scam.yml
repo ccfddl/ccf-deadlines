@@ -1,0 +1,25 @@
+# Main research-track accepted papers / received full submissions.
+# Separate Engineering, NIER and RENE tracks are excluded.
+- title: SCAM
+  accept_rates:
+    # Main research track: 48 received including 5 desk rejects; 43 reviewed and 14 accepted. Separate Engineering, NIER and RENE tracks excluded.
+    - year: 2021
+      submitted: 48
+      accepted: 14
+      str: 29.2%(14/48 21')
+      rate: 0.2916666666666667
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9610665
+    # Main research track: 45 received including 1 desk reject; 44 reviewed and 17 accepted. Report prints 39 percent based on reviewed submissions; this row explicitly uses received submissions. Other tracks excluded.
+    - year: 2022
+      submitted: 45
+      accepted: 17
+      str: 37.8%(17/45 22')
+      rate: 0.37777777777777777
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10006856
+    # Main research track: 52 received, 5 desk rejects and 2 withdrawals, leaving 45 reviewed; 21 accepted. Other tracks excluded.
+    - year: 2023
+      submitted: 52
+      accepted: 21
+      str: 40.4%(21/52 23')
+      rate: 0.40384615384615385
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10356679
