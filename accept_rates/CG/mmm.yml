@@ -1,0 +1,45 @@
+- title: MMM
+  accept_rates:
+    # Regular full papers, oral and poster; separate tracks excluded.
+    - year: 2021
+      submitted: 166
+      accepted: 73
+      str: 44.0%(73/166 21')
+      rate: 0.439759036144578
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-67832-6/1
+    # Regular full papers, oral and poster; separate tracks excluded.
+    - year: 2022
+      submitted: 163
+      accepted: 71
+      str: 43.6%(71/163 22')
+      rate: 0.435582822085890
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-98358-1/1
+    # Regular full papers, oral and poster; separate tracks excluded.
+    - year: 2023
+      submitted: 218
+      accepted: 86
+      str: 39.4%(86/218 23')
+      rate: 0.394495412844037
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-27077-2/1
+    # Regular full papers, oral and poster; separate tracks excluded.
+    - year: 2024
+      submitted: 238
+      accepted: 113
+      str: 47.5%(113/238 24')
+      rate: 0.474789915966387
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-53305-1/1
+    # Regular full papers, oral and poster; separate tracks excluded.
+    - year: 2025
+      submitted: 277
+      accepted: 122
+      str: 44.0%(122/277 25')
+      rate: 0.440433212996390
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-2054-8/1
+    # Regular full papers, oral and poster; separate tracks excluded.
+    # Denominator is valid regular submissions.
+    - year: 2026
+      submitted: 251
+      accepted: 137
+      str: 54.6%(137/251 26')
+      rate: 0.545816733067729
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-6957-1/1
