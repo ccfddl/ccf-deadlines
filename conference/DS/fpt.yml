@@ -14,7 +14,7 @@
         - abstract_deadline: '2021-07-26 23:59:00'
           deadline: '2021-08-04 23:59:00'
       timezone: AoE
-      date: December 6-10, 2021
+      date: December 8-10, 2021
       place: Virtual
     - year: 2022
       id: fpt2022
@@ -23,7 +23,7 @@
         - abstract_deadline: '2022-07-29 23:59:00'
           deadline: '2022-08-05 23:59:00'
       timezone: AoE
-      date: December 5-9, 2022
+      date: December 7-9, 2022
       place: Hong Kong SAR, China (Hybrid)
     - year: 2023
       id: fpt2023
@@ -32,7 +32,7 @@
         - abstract_deadline: '2023-07-21 23:59:00'
           deadline: '2023-07-30 23:59:00'
       timezone: AoE
-      date: December 11-14, 2023
+      date: December 12-14, 2023
       place: Yokohama, Japan
     - year: 2024
       id: fpt2024
