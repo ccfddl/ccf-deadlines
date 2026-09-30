@@ -7,51 +7,6 @@
     thcpl: A
   dblp: cav
   confs:
-    - year: 2016
-      id: cav16
-      link: https://i-cav.org/2016/
-      timeline:
-        - abstract_deadline: '2016-01-24 16:00:00'
-          deadline: '2016-01-29 16:00:00'
-      timezone: UTC-5
-      date: July 20-23, 2016
-      place: Toronto, Ontario, Canada
-    - year: 2017
-      id: cav17
-      link: https://i-cav.org/2017/
-      timeline:
-        - deadline: '2017-01-24 23:59:00'
-          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
-      timezone: AoE
-      date: July 25-28, 2017
-      place: Heidelberg, Germany
-    - year: 2018
-      id: cav18
-      link: https://i-cav.org/2018/
-      timeline:
-        - deadline: '2018-01-31 23:59:00'
-          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
-      timezone: AoE
-      date: July 14-17, 2018
-      place: Oxford, UK
-    - year: 2019
-      id: cav19
-      link: https://i-cav.org/2019/
-      timeline:
-        - deadline: '2019-02-07 23:59:00'
-          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
-      timezone: AoE
-      date: July 15-18, 2019
-      place: New York City, USA
-    - year: 2020
-      id: cav20
-      link: https://i-cav.org/2020/
-      timeline:
-        - deadline: '2020-01-28 23:59:00'
-          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
-      timezone: AoE
-      date: July 21-24, 2020
-      place: Online
     - year: 2021
       id: cav21
       link: https://ucl-pplv.github.io/CAV21/
