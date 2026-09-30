@@ -7,24 +7,6 @@
     thcpl: B
   dblp: mir
   confs:
-    - year: 2021
-      id: icmr21
-      link: http://icmr2021.org/index.html
-      timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: February 21, 2021; exact time and timezone unverified'
-      timezone: UTC+0
-      date: November 16-19, 2021
-      place: Online
-    - year: 2022
-      id: icmr22
-      link: https://www.icmr2022.org/
-      timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: extended to January 30, 2022; exact time and timezone unverified'
-      timezone: UTC+0
-      date: June 27-30, 2022
-      place: Newark, NJ, USA
     - year: 2023
       id: icmr23
       link: https://icmr2023.org/
@@ -32,14 +14,13 @@
         - deadline: '2023-02-12 23:59:00'
           comment: Regular full papers
       timezone: UTC-12
-      date: June 12-15, 2023
+      date: June 13-15, 2023
       place: Thessaloniki, Greece
     - year: 2024
       id: icmr24
       link: https://icmr2024.org/index.html
       timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: extended to February 16, 2024 AoE; exact time unverified'
+        - deadline: '2024-02-01 23:59:59'
       timezone: UTC-12
       date: June 11-13, 2024
       place: Phuket, Thailand
