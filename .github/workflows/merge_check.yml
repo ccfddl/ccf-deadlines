@@ -33,6 +33,8 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: clippy, rustfmt
+      - name: Test acceptance identity and cache compatibility
+        run: cargo test --lib acceptance_
       - name: Add WASM target
         run: rustup target add wasm32-unknown-unknown
       - name: Download and install Trunk binary

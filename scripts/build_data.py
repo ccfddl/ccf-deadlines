@@ -16,7 +16,7 @@ MERGE_SCRIPT = ROOT / "scripts" / "merge.py"
 
 
 def merge(source: Path, output: Path, exclude: str | None = None) -> None:
-    command = [sys.executable, str(MERGE_SCRIPT), str(source)]
+    command = [sys.executable, str(MERGE_SCRIPT), str(source), "--include-conference-key"]
     if exclude is not None:
         command.extend(["--exclude", exclude])
     temporary = output.with_name(f".{output.name}.tmp")
@@ -76,6 +76,39 @@ def acceptance_bucket(title: str) -> int:
     return value % 16
 
 
+def resolve_acceptance_keys(conferences: list, acceptances: list) -> list:
+    """Join source identities, preserving unambiguous historical path aliases.
+
+    Titles alone are not identities: SEC and FSE each name two conferences.
+    Prefer the exact category/slug; a relocated legacy acceptance file (such as
+    DB/eusipco) may use its title only if there is exactly one catalog match.
+    """
+    by_key, by_title = {}, {}
+    for conference in conferences:
+        key = conference["conference_key"]
+        if key in by_key:
+            raise ValueError(f"Duplicate conference identity: {key}")
+        by_key[key] = conference
+        by_title.setdefault(conference["title"], []).append(conference)
+
+    resolved, seen = [], set()
+    for acceptance in acceptances:
+        key = acceptance["conference_key"]
+        conference = by_key.get(key)
+        if conference is None:
+            candidates = by_title.get(acceptance["title"], [])
+            if len(candidates) != 1:
+                raise ValueError(f"Unknown or ambiguous acceptance identity: {key}")
+            conference = candidates[0]
+        key = conference["conference_key"]
+        if key in seen:
+            raise ValueError(f"Duplicate acceptance identity: {key}")
+        seen.add(key)
+        # Use the catalog title for bucket selection even after a historical rename.
+        resolved.append({**acceptance, "conference_key": key, "title": conference["title"]})
+    return resolved
+
+
 def write_loading_data(conferences: list, acceptances: list, output_dir: Path) -> None:
     initial, archive = split_conferences(conferences, date.today())
     encoded = json.dumps(archive, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
@@ -100,6 +133,10 @@ def main() -> None:
     merge(ROOT / "accept_rates", OUTPUT_DIR / "allacc.yml")
     conferences = yaml.safe_load((OUTPUT_DIR / "allconf.yml").read_text(encoding="utf-8"))
     acceptances = yaml.safe_load((OUTPUT_DIR / "allacc.yml").read_text(encoding="utf-8"))
+    acceptances = resolve_acceptance_keys(conferences, acceptances)
+    (OUTPUT_DIR / "allacc.yml").write_text(
+        yaml.safe_dump(acceptances, allow_unicode=True, sort_keys=False), encoding="utf-8",
+    )
     write_json_atomic(OUTPUT_DIR / "allconf.json", conferences)
     write_json_atomic(OUTPUT_DIR / "allacc.json", acceptances)
     write_loading_data(conferences, acceptances, OUTPUT_DIR)

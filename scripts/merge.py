@@ -45,6 +45,9 @@ def main():
     parser.add_argument('--exclude', default='types.yml',
                        help='Filename pattern to exclude (default: types.yml)')
 
+    parser.add_argument('--include-conference-key', action='store_true',
+                        help='Include the category/slug source identity in every record')
+
     args = parser.parse_args()
 
     # Configuration
@@ -72,6 +75,14 @@ def main():
             with open(yml_file, 'r', encoding='utf-8') as file:
                 # Load YAML content
                 data = yaml.safe_load(file)
+
+                if args.include_conference_key:
+                    records = data if isinstance(data, list) else [data]
+                    key = yml_file.relative_to(search_path).with_suffix('').as_posix()
+                    for record in records:
+                        if not isinstance(record, dict):
+                            raise ValueError(f'{yml_file}: expected conference objects')
+                        record['conference_key'] = key
 
                 # Handle different YAML structures
                 if isinstance(data, list):
