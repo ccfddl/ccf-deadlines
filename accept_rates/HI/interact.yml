@@ -1,0 +1,11 @@
+- title: INTERACT
+  accept_rates:
+    # Main full-paper track: 71 accepted from 220 full-paper submissions.
+    # Organizer Crossmark metadata separates 220 full and 186 short submissions (406 total reviewed).
+    # Its template's 17% uses 71/406 across tracks; this row uses the explicit full-track denominator.
+    - year: 2023
+      submitted: 220
+      accepted: 71
+      str: 32.3%(71/220 23')
+      rate: 0.32272727272727275
+      source: https://crossmark.crossref.org/dialog/?doi=10.1007%2F978-3-031-42293-5_36
