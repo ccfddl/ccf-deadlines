@@ -21,8 +21,8 @@
       link: http://pg2024.hsu.edu.cn/
       timeline:
         - abstract_deadline: '2024-05-31 23:59:00'
-          deadline: TBD
-          comment: 'Conference full papers: June 7, 2024 AoE; exact full-paper clock unverified; abstract clock verified via SRM'
+          deadline: '2024-06-07 23:59:00'
+          comment: 'Initial full-paper dates and AoE verified; 23:59:00 is the repository default where the clock is unpublished.'
       timezone: AoE
       date: October 13-16, 2024
       place: Huangshan, China
@@ -32,7 +32,6 @@
       timeline:
         - abstract_deadline: '2025-05-30 23:59:59'
           deadline: '2025-06-06 23:59:59'
-          comment: 'Conference full papers; shared initial submission deadline'
       timezone: AoE
       date: October 14-17, 2025
       place: National Chengchi University, Taipei, Taiwan
@@ -42,7 +41,6 @@
       timeline:
         - abstract_deadline: '2026-06-01 23:59:59'
           deadline: '2026-06-08 23:59:59'
-          comment: 'Conference full papers; shared initial submission deadline'
       timezone: AoE
       date: October 6-9, 2026
       place: Singapore Management University, Singapore
