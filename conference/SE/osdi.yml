@@ -7,6 +7,36 @@
     thcpl: A
   dblp: osdi
   confs:
+    - year: 2016
+      id: osdi2016
+      link: https://www.usenix.org/conference/osdi16
+      timeline:
+        - abstract_deadline: '2016-05-03 18:00:00'
+          deadline: '2016-05-10 18:00:00'
+          comment: 'Official regular-paper CFP: both cutoffs at 6:00 pm EDT; no extensions.'
+      timezone: UTC-4
+      date: November 2-4, 2016
+      place: Savannah, GA, USA
+    - year: 2018
+      id: osdi2018
+      link: https://www.usenix.org/conference/osdi18
+      timeline:
+        - abstract_deadline: '2018-04-26 15:00:00'
+          deadline: '2018-05-03 15:00:00'
+          comment: 'Official regular-paper CFP: both cutoffs at 3:00 pm PDT; no extensions.'
+      timezone: UTC-7
+      date: October 8-10, 2018
+      place: Carlsbad, CA, USA
+    - year: 2020
+      id: osdi2020
+      link: https://www.usenix.org/conference/osdi20
+      timeline:
+        - abstract_deadline: '2020-05-20 15:00:00'
+          deadline: '2020-05-27 15:00:00'
+          comment: 'Official final extended regular-paper deadlines; both at 3:00 pm PDT.'
+      timezone: UTC-7
+      date: November 4-6, 2020
+      place: Virtual
     - year: 2021
       id: osdi2021
       link: https://www.usenix.org/conference/osdi21
