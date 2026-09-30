@@ -9,10 +9,10 @@
   confs:
     - year: 2021
       id: sac21
-      link: https://www.sac2021.ca/
+      link: https://www.sacworkshop.org/SAC21/call-for-papers.html
       timeline:
-        - abstract_deadline: '2021-07-07 23:59:59'
-          deadline: '2021-07-12 23:59:59'
+        - abstract_deadline: '2021-07-07 23:59:00'
+          deadline: '2021-07-12 23:59:00'
       timezone: UTC
       date: September 29 - October 01, 2021
       place: Virtual
@@ -31,8 +31,8 @@
       timeline:
         - abstract_deadline: TBD
           deadline: TBD
-          comment: 'Abstract registration extended to May 16, 2023, time unverified; original May 16 paper cutoff struck through without a replacement date.'
-      timezone: UTC
+          comment: 'Abstract registration extended to May 16, 2023, time unverified; original May 16 paper cutoff and GMT clock struck through without a replacement date or confirmed timezone.'
+      timezone: Unknown
       date: August 16-18, 2023
       place: Fredericton, New Brunswick, Canada
     - year: 2024
