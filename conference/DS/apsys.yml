@@ -29,9 +29,9 @@
       id: apsys2023
       link: https://apsys23.skku.edu/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2023-04-28 23:59:00'
           deadline: '2023-05-05 23:59:59'
-          comment: Abstract due April 28, 2023 AoE; exact abstract clock unpublished
+          comment: 'Regular papers; abstract date is AoE with no published clock. Full-paper cutoff from official HotCRP. 23:59:00 uses the repository default where the source gives no clear cutoff clock.'
       timezone: AoE
       date: August 24-25, 2023
       place: Seoul, South Korea
