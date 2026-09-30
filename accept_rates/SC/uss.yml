@@ -1,7 +1,7 @@
 - title: USENIX Security
   # Technical papers only. Annual revision and denominator accounting differs by year.
   # 2022-2023 follow the chairs' reported annual proceedings statistics.
-  # 2024-2025 use final original-submission cohorts, including desk rejections.
+  # 2024-2026 use final original-submission cohorts, including desk rejections.
   accept_rates:
     - year: 2022
       # Official annual proceedings/reviewed-submission statistic, including revision traffic.
@@ -32,3 +32,11 @@
       str: 17.1%(407/2385 25')
       rate: 0.1706498951781971
       source: https://www.usenix.org/sites/default/files/sec25_message.pdf
+    - year: 2026
+      # Received submissions include 278 desk rejects; 2750 valid submissions are a separate denominator.
+      # Final accepted papers: 121 direct + 241 shepherded; no major-revision option in 2026.
+      submitted: 3028
+      accepted: 362
+      str: 12.0%(362/3028 26')
+      rate: 0.11955085865257596
+      source: https://www.usenix.org/sites/default/files/sec26_message.pdf
