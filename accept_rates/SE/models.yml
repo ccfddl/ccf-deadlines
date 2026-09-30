@@ -1,0 +1,31 @@
+# Foundations and Practice main tracks; annual category scope is qualified below.
+- title: MODELS
+  accept_rates:
+    # Received Foundations and Practice submissions, including new-ideas/vision papers and one desk reject. 15 full, 3 new-ideas and 13 Practice papers accepted.
+    - year: 2021
+      submitted: 113
+      accepted: 31
+      str: 27.4%(31/113 21')
+      rate: 0.2743362831858407
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9592399
+    # Received Foundations and Practice submissions, including new-ideas/vision papers and three desk rejects. 13 technical, 2 new-ideas and 15 Practice papers accepted.
+    - year: 2023
+      submitted: 122
+      accepted: 30
+      str: 24.6%(30/122 23')
+      rate: 0.2459016393442623
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10343765
+    # Reviewed Foundations and Practice pool: 124 received, 111 reviewed, 26 accepted. The original printed 23.5% is approximate; exact division gives 23.4% to one decimal.
+    - year: 2024
+      submitted: 111
+      accepted: 26
+      str: 23.4%(26/111 24')
+      rate: 0.23423423423423423
+      source: https://pure.tudelft.nl/ws/portalfiles/portal/235392696/3640310.fm.pdf
+    # Foundations and Practice full submissions: 103 abstracts produced 80 full papers; 14 Foundations and 6 Practice accepted. Separate NIER 7/28 excluded.
+    - year: 2025
+      submitted: 80
+      accepted: 20
+      str: 25.0%(20/80 25')
+      rate: 0.25
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11245370
