@@ -11,8 +11,7 @@
       id: aft19
       link: https://aft.ifca.ai/aft19/index.html
       timeline:
-        - deadline: '2019-05-24 23:59:00'
-          comment: Regular papers; date-only source, 23:59 and AoE are repository defaults.
+        - deadline: '2019-05-24 23:59:59'
       timezone: UTC-12
       date: October 21-23, 2019
       place: Zurich, Switzerland
@@ -20,8 +19,7 @@
       id: aft20
       link: https://aft.ifca.ai/aft20/index.html
       timeline:
-        - deadline: '2020-06-11 23:59:00'
-          comment: Regular papers; date-only source, 23:59 and AoE are repository defaults.
+        - deadline: '2020-06-11 23:59:59'
       timezone: UTC-12
       date: October 21-23, 2020
       place: Online
