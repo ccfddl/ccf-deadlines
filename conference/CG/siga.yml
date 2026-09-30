@@ -16,6 +16,16 @@
       timezone: UTC+0
       date: December 14-17, 2021
       place: Tokyo, Japan
+    - year: 2022
+      id: siggrapha22
+      link: https://sa2022.siggraph.org/
+      timeline:
+        - abstract_deadline: '2022-05-19 23:59:00'
+          deadline: '2022-05-20 23:59:00'
+          comment: Regular Conference Papers; initial submission form and full paper
+      timezone: UTC-12
+      date: December 6-9, 2022
+      place: EXCO, Daegu, South Korea
     - year: 2023
       id: siggrapha23
       link: https://asia.siggraph.org/2023/
