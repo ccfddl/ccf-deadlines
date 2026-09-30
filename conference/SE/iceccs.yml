@@ -7,16 +7,6 @@
     thcpl: N
   dblp: iceccs
   confs:
-    - year: 2022
-      id: iceccs22
-      link: http://iceccs2022.xsrv.jp/
-      timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Optional abstract: October 1, 2021; extended regular paper submission: October 15, 2021. Calendar dates could not be independently reverified because the original site has a certificate error; clocks remain unresolved and AoE is the repository default.'
-      timezone: AoE
-      date: March 26-30, 2022
-      place: Virtual
     - year: 2023
       id: iceccs23
       link: https://www.irit.fr/iceccs2023/
