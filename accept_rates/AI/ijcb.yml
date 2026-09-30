@@ -1,0 +1,27 @@
+# Main track only; special sessions, competition reports and journal carry-ins excluded.
+- title: IJCB
+  accept_rates:
+    - year: 2021
+      submitted: 164
+      accepted: 66
+      str: 40.2%(66/164 21')
+      rate: 0.4024390243902439
+      source: https://iapr.org/archives/ijcb2021/index.html%3Fp=1403.html
+    - year: 2023
+      submitted: 199
+      accepted: 72
+      str: 36.2%(72/199 23')
+      rate: 0.36180904522613067
+      source: https://ijcb2023.ieee-biometrics.org/accepted-papers/
+    - year: 2024
+      submitted: 174
+      accepted: 56
+      str: 32.2%(56/174 24')
+      rate: 0.3218390804597701
+      source: https://iapr.org/archives/ijcb2024/wp-content/uploads/sites/604/2024/09/ijcb_frontmatter.pdf
+    - year: 2025
+      submitted: 243
+      accepted: 95
+      str: 39.1%(95/243 25')
+      rate: 0.39094650205761317
+      source: https://iapr.org/archives/ijcb2025/wp-content/uploads/sites/696/2025/09/IJCB2025_booklet_V5.pdf
