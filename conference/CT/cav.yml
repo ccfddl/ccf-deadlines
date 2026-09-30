@@ -20,7 +20,8 @@
       id: cav22
       link: http://i-cav.org/2022/
       timeline:
-        - deadline: '2022-01-21 23:59:59'
+        - deadline: '2022-01-21 23:59:00'
+          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
       timezone: AoE
       date: Aug 7-10, 2022
       place: Technion, Haifa, Israel
@@ -28,15 +29,17 @@
       id: cav25
       link: https://conferences.i-cav.org/2025/
       timeline:
-        - deadline: '2025-01-31 23:59:59'
+        - deadline: '2025-01-31 23:59:00'
+          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
       timezone: AoE
-      date: July 21-25, 2025
+      date: July 23-25, 2025
       place: Zagreb, Croatia
     - year: 2026
       id: cav26
       link: https://conferences.i-cav.org/2026/
       timeline:
-        - deadline: '2026-01-28 23:59:59'
+        - deadline: '2026-01-28 23:59:00'
+          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
       timezone: AoE
       date: July 26-29, 2026
       place: Lisbon, Portugal
