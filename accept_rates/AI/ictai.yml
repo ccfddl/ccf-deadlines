@@ -1,0 +1,15 @@
+# Accepted full and short papers from the same initial conference submission pool.
+- title: ICTAI
+  accept_rates:
+    - year: 2021
+      submitted: 545
+      accepted: 235
+      str: 43.1%(235/545 21')
+      rate: 0.43119266055045874
+      source: https://doi.org/10.1142/S0218213023020037
+    - year: 2025
+      submitted: 633
+      accepted: 209
+      str: 33.0%(209/633 25')
+      rate: 0.330173775671406
+      source: https://ieeexplore.ieee.org/document/11272841/
