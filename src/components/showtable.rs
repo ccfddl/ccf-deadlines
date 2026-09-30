@@ -410,7 +410,7 @@ pub fn ShowTable(
                 .filter(|item| item.status == "FIN")
                 .collect();
 
-            run_list.sort_by(|a, b| a.remain.cmp(&b.remain));
+            run_list.sort_by_key(|item| deadline_order_key(item));
             fin_list.sort_by(|a, b| b.year.cmp(&a.year));
 
             let mut all_list = Vec::new();
@@ -2038,11 +2038,10 @@ fn build_conf_items(
             }
 
             if let Some(date) = parse_date_only(&item.deadline) {
-                if let Some((start, end)) = date_only_bounds(date, &item.timezone) {
+                if let Some((_, end)) = date_only_bounds(date, &item.timezone) {
                     item.status = if reference_time >= end { "FIN" } else { "RUN" }.to_string();
-                    // Sorting aid only: date-only cards never render a seconds countdown.
-                    item.remain = start.signed_duration_since(reference_time).num_milliseconds().max(0) as u64;
                 }
+                // No countdown duration is assigned to a date-only deadline.
                 items.push(item);
                 continue;
             }
@@ -2063,6 +2062,16 @@ fn build_conf_items(
     }
 
     items
+}
+
+fn deadline_order_key(item: &ConfItem) -> i64 {
+    if let Some(date) = parse_date_only(&item.deadline) {
+        return date_only_bounds(date, &item.timezone)
+            .map(|(start, _)| start.timestamp_millis()).unwrap_or(i64::MAX);
+    }
+    parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+        .map(|time| time.timestamp_millis()).unwrap_or(i64::MAX)
 }
 
 fn favorite_sort_group(status: &str, is_like: bool) -> u8 {
@@ -2818,6 +2827,17 @@ mod historical_deadline_tests {
         ]), "2026-10-01T12:00:00Z");
         assert_eq!(item.status, "TBD");
         assert!(item.estimated_deadlines.is_empty());
+    }
+
+    #[test]
+    fn pending_calendar_days_keep_order_when_their_lower_bounds_are_in_the_past() {
+        let older = precision_fixture("Unknown", serde_json::json!([{"deadline": "2026-09-29"}]), "2026-09-30T00:00:00Z");
+        let newer = precision_fixture("UTC+8", serde_json::json!([{"deadline": "2026-09-30"}]), "2026-09-30T00:00:00Z");
+        assert_eq!(older.status, "RUN");
+        assert_eq!(newer.status, "RUN");
+        assert_eq!(older.remain, 0);
+        assert_eq!(newer.remain, 0);
+        assert!(deadline_order_key(&older) < deadline_order_key(&newer));
     }
 
     #[test]
