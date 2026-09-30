@@ -1,0 +1,23 @@
+- title: CICAI
+  accept_rates:
+    # Selected conference presentations, including demo papers in 2022–2023.
+    - year: 2021
+      submitted: 307
+      accepted: 105
+      str: 34.2%(105/307 21')
+      rate: 0.34201954397394135
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-93046-2/1
+    # Selected conference presentations, including demo papers in 2022–2023.
+    - year: 2022
+      submitted: 521
+      accepted: 164
+      str: 31.5%(164/521 22')
+      rate: 0.31477927063339733
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-20497-5/1
+    # Selected conference presentations, including demo papers in 2022–2023.
+    - year: 2023
+      submitted: 376
+      accepted: 101
+      str: 26.9%(101/376 23')
+      rate: 0.26861702127659576
+      source: https://link.springer.com/content/pdf/bfm:978-981-99-8850-1/1
