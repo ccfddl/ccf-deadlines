@@ -11,8 +11,8 @@
       id: eurosp21
       link: https://www.ieee-security.org/TC/EuroSP2021/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper deadline: November 5, 2020 AoE; exact time not verified.'
+        - deadline: '2020-11-05 23:59:00'
+          comment: 'Regular paper deadline: November 5, 2020 AoE; exact time not verified.; 23:59:00 is the repository default'
       timezone: UTC-12
       date: September 8-10, 2021
       place: Virtual
@@ -28,8 +28,8 @@
       id: eurosp23
       link: https://eurosp2023.ieee-security.org/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper deadline: October 26, 2022 AoE; exact time not verified.'
+        - deadline: '2022-10-26 23:59:00'
+          comment: 'Regular paper deadline: October 26, 2022 AoE; exact time not verified.; 23:59:00 is the repository default'
       timezone: UTC-12
       date: July 4-6, 2023
       place: Delft, Netherlands
