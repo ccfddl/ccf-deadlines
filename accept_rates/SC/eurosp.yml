@@ -1,0 +1,48 @@
+- title: EuroS&P
+  accept_rates:
+    # Final main-program acceptance decisions, including SoK; denominator is received submissions.
+    # Includes administrative/desk rejects.
+    - year: 2021
+      submitted: 124
+      accepted: 40
+      str: 32.3%(40/124 21')
+      rate: 0.3225806451612903
+      source: https://doi.org/10.1109/EuroSP51992.2021.00006
+    # Final main-program acceptance decisions, including SoK; denominator is received submissions.
+    - year: 2022
+      submitted: 141
+      accepted: 42
+      str: 29.8%(42/141 22')
+      rate: 0.2978723404255319
+      source: https://doi.org/10.1109/EuroSP57164.2023.00006
+    # Final main-program acceptance decisions, including SoK; denominator is received submissions.
+    - year: 2023
+      submitted: 180
+      accepted: 63
+      str: 35.0%(63/180 23')
+      rate: 0.35
+      source: https://doi.org/10.1109/EuroSP57164.2023.00006
+    # Final main-program acceptance decisions, including SoK; denominator is received submissions.
+    # Includes administrative/desk rejects and withdrawals.
+    - year: 2024
+      submitted: 208
+      accepted: 45
+      str: 21.6%(45/208 24')
+      rate: 0.21634615384615385
+      source: https://doi.org/10.1109/EuroSP60621.2024.00005
+    # Final main-program acceptance decisions, including SoK; denominator is received submissions.
+    # Includes administrative/desk rejects.
+    - year: 2025
+      submitted: 300
+      accepted: 60
+      str: 20.0%(60/300 25')
+      rate: 0.2
+      source: https://doi.org/10.1109/EuroSP63326.2025.00006
+    # Final main-program acceptance decisions, including SoK; denominator is received submissions.
+    # Includes administrative/desk rejects.
+    - year: 2026
+      submitted: 460
+      accepted: 82
+      str: 17.8%(82/460 26')
+      rate: 0.1782608695652174
+      source: https://doi.org/10.1109/EuroSP68448.2026.00006
