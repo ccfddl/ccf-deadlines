@@ -11,18 +11,18 @@
       id: ksem21
       link: https://www.cloud-conf.net/ksem21/index.html
       timeline:
-        - deadline: TBD
-          comment: 'Paper submission: April 30, 2021 (firm); exact time and timezone unverified'
-      timezone: UTC+0 # Placeholder only; the deadline is TBD
+        - deadline: '2021-04-30 23:59:00'
+          comment: 'Regular papers; firm deadline. Cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: August 14-16, 2021
       place: Online
     - year: 2022
       id: ksem22
       link: https://ksem22.smart-conf.net/
       timeline:
-        - deadline: TBD
-          comment: 'Paper submission: April 25, 2022 (firm extension); exact time and timezone unverified'
-      timezone: UTC+0 # Placeholder only; the deadline is TBD
+        - deadline: '2022-04-25 23:59:00'
+          comment: 'Regular papers; firm extension. Cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: August 6-8, 2022
       place: Online
     - year: 2023
@@ -53,8 +53,8 @@
       id: ksem26
       link: https://ksem2026.rosc.org.cn/
       timeline:
-        - deadline: TBD
-          comment: 'Paper submission: February 28, 2026; exact time and timezone unverified'
-      timezone: UTC+0 # Placeholder only; the deadline is TBD
+        - deadline: '2026-02-28 23:59:00'
+          comment: 'Regular papers; cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: July 17-19, 2026
       place: Beijing, China
