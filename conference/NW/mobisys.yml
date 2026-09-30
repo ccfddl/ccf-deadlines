@@ -15,7 +15,7 @@
           deadline: '2021-01-15 23:59:59'
           comment: Regular papers
       timezone: AoE
-      date: June 24-July 2, 2021
+      date: June 28-July 2, 2021
       place: Virtual
     - year: 2022
       id: mobisys22
@@ -33,7 +33,7 @@
         - deadline: '2022-12-09 23:59:59'
           comment: Regular papers; no independent abstract-registration deadline
       timezone: AoE
-      date: June 18-22, 2023
+      date: June 20-22, 2023
       place: Helsinki, Finland
     - year: 2024
       id: mobisys24
@@ -43,7 +43,7 @@
           deadline: '2023-11-30 23:59:00'
           comment: Regular papers
       timezone: AoE
-      date: June 3-7, 2024
+      date: June 4-6, 2024
       place: Tokyo, Japan
     - year: 2025
       id: mobisys25
@@ -53,7 +53,7 @@
           deadline: '2024-12-09 23:59:00'
           comment: Regular papers
       timezone: AoE
-      date: June 23-27, 2025
+      date: June 24-26, 2025
       place: Anaheim, California, USA
     - year: 2026
       id: mobisys26
