@@ -1,0 +1,54 @@
+- title: ICMLA
+  description: International Conference on Machine Learning and Applications
+  sub: AI
+  rank:
+    ccf: N
+    core: C
+    thcpl: N
+  dblp: icmla
+  confs:
+    - year: 2022
+      id: icmla22
+      link: https://www.icmla-conference.org/icmla22/
+      timeline:
+          - deadline: '2022-07-18 23:59:00'
+            comment: Main Conference Papers DDL.
+      timezone: UTC-5
+      date: December 12-14, 2022
+      place: Atlantis Hotel, Bahamas
+    - year: 2023
+      id: icmla23
+      link: https://www.icmla-conference.org/icmla23/
+      timeline:
+        - deadline: '2023-07-31 23:59:00'
+          comment: Main Conference Papers DDL.
+      timezone: PT
+      date: December 15-17, 2023
+      place: Hyatt Regency Jacksonville Riverfront, Florida, USA
+    - year: 2024
+      id: icmla24
+      link: https://www.icmla-conference.org/icmla24/
+      timeline:
+        - deadline: '2024-07-31 23:59:00'
+          comment: Main Conference Papers DDL.
+      timezone: PT
+      date: December 18-20, 2024
+      place: Hyatt Regency Coral Gables, Miami, Florida, USA
+    - year: 2025
+      id: icmla25
+      link: https://www.icmla-conference.org/icmla25/
+      timeline:
+        - deadline: '2025-07-28 23:59:00'
+          comment: Main Conference Papers DDL.
+      timezone: PT
+      date: December 3-5, 2025
+      place: Boca Raton Marriot at Boca Center, Florida, USA
+    - year: 2026
+      id: icmla26
+      link: https://www.icmla-conference.org/icmla26/
+      timeline:
+        - deadline: '2026-05-31 23:59:00'
+          comment: Main Conference Papers DDL.
+      timezone: PT
+      date: October 5-7, 2026
+      place: Oakland Center, Rochester, Michigan, USA
