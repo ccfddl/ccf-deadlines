@@ -1,3 +1,4 @@
+# 2022 includes regular and linked RA-L submissions; 2023 and 2025 exclude journal transfers.
 - title: IROS
   accept_rates:
     - year: 2022
@@ -5,10 +6,23 @@
       accepted: 1716
       str: 47.9%(1716/3579 22')
       rate: 0.479463537300922
-      source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+      source: https://iros2022.org/cms/wp-content/uploads/2022/10/IROS2022_ConferenceDigest_Web.pdf
+    - year: 2023
+      submitted: 2760
+      accepted: 1196
+      str: 43.3%(1196/2760 23')
+      rate: 0.43333333333333335
+      source: https://ieeexplore.ieee.org/document/10557219
+    - year: 2025
+      submitted: 4306
+      accepted: 1991
+      str: 46.2%(1991/4306 25')
+      rate: 0.4623780771017185
+      source: https://ieeexplore.ieee.org/document/11246706
+    # Existing secondary-source row retained; original decision-letter aggregate remains unverified.
     - year: 2026
       submitted: 4348
       accepted: 1585
       str: 36.5%(1585/4348 26')
-      rate: 0.364535
+      rate: 0.36453541858325667
       source: https://www.xiaohongshu.com/explore/6a31fd4600000000070201ae?xsec_token=ABSd6qmeYxHvw1BGgCCqULOvOsyDchtfb9pi_i4qQvGSc=&xsec_source=pc_search&source=web_explore_feed
