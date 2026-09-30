@@ -21,7 +21,7 @@
           deadline: '2021-02-05 16:59:00'
           comment: Winter cycle; 11:59 AM New York time converted to UTC
       timezone: UTC+0
-      date: June 14-18, 2021
+      date: June 15-17, 2021
       place: Virtual
     - year: 2022
       id: sigmetrics22
@@ -37,7 +37,7 @@
           deadline: '2022-02-03 16:59:00'
           comment: Winter cycle; extended full-paper deadline; 11:59 AM New York time converted to UTC
       timezone: UTC+0
-      date: June 6-10, 2022
+      date: June 7-9, 2022
       place: Mumbai, India
     - year: 2023
       id: sigmetrics23
@@ -53,7 +53,7 @@
           deadline: '2023-02-01 23:59:59'
           comment: Winter cycle
       timezone: AoE
-      date: June 19-22, 2023
+      date: June 20-22, 2023
       place: Orlando, Florida, USA
     - year: 2024
       id: sigmetrics24
@@ -69,7 +69,7 @@
           deadline: '2024-01-31 23:59:00'
           comment: Winter cycle
       timezone: AoE
-      date: June 10-14, 2024
+      date: June 11-13, 2024
       place: Venice, Italy
     - year: 2025
       id: sigmetrics25
