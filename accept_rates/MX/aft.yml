@@ -1,0 +1,32 @@
+- title: AFT
+  accept_rates:
+    - year: 2021
+      submitted: 80
+      accepted: 16
+      rate: 0.2
+      str: "20.0%(16/80 21')"
+      source: https://aft21.hotcrp.com/
+    - year: 2022
+      submitted: 79
+      accepted: 22
+      rate: 0.27848101265822783
+      str: "27.8%(22/79 22')"
+      source: https://aft22.hotcrp.com/
+    - year: 2023
+      submitted: 100
+      accepted: 31
+      rate: 0.31
+      str: "31.0%(31/100 23')"
+      source: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.AFT.2023.0
+    - year: 2024
+      submitted: 106
+      accepted: 30
+      rate: 0.2830188679245283
+      str: "28.3%(30/106 24')"
+      source: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.AFT.2024.0
+    - year: 2025
+      submitted: 135
+      accepted: 35
+      rate: 0.25925925925925924
+      str: "25.9%(35/135 25')"
+      source: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.AFT.2025.0
