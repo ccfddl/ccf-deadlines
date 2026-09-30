@@ -7,6 +7,16 @@
     thcpl: N
   dblp: appt
   confs:
+    - year: 2025
+      id: appt2025
+      link: https://www.appt-conference.com/2025
+      timeline:
+        - abstract_deadline: '2025-04-06 23:59:00'
+          deadline: '2025-04-13 23:59:00'
+          comment: 'Regular papers; 23:59:00 and AoE are repository defaults because the official archive gives dates only.'
+      timezone: AoE
+      date: July 15-16, 2025
+      place: Athens, Greece
     - year: 2026
       id: appt2026
       link: https://www.appt-conference.com/2026
