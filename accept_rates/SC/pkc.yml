@@ -16,14 +16,15 @@
       str: 29.2%(40/137 22')
       rate: 0.291970802919708
       source: https://link.springer.com/book/10.1007/978-3-030-97121-2
-    # Original PC preface: 50 selected from 183 received submissions.
-    # Previous publisher About-based row: 49/183 (26.8%); final-publication difference unexplained.
+    # Preserve the publisher's 49 included papers / 183 submissions publication cohort.
+    # Original PC preface reports 50 selected; the stage difference is unexplained.
+    # https://link.springer.com/content/pdf/bfm:978-3-031-31368-4/1
     - year: 2023
       submitted: 183
-      accepted: 50
-      str: 27.3%(50/183 23')
-      rate: 0.273224043715847
-      source: https://link.springer.com/content/pdf/bfm:978-3-031-31368-4/1
+      accepted: 49
+      str: 26.8%(49/183 23')
+      rate: 0.267759562841530
+      source: https://link.springer.com/book/10.1007/978-3-031-31368-4
     - year: 2024
       submitted: 176
       accepted: 54
