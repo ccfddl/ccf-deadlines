@@ -11,9 +11,9 @@
       id: icst2021
       link: https://icst2021.icmc.usp.br/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Research papers: abstract October 5, 2020; extended full paper October 19, 2020 (AoE); exact clock unpublished.'
+        - abstract_deadline: '2020-10-05 23:59:00'
+          deadline: '2020-10-19 23:59:00'
+          comment: 'Research papers: abstract October 5, 2020; extended full paper October 19, 2020 (AoE); clock uses repository default 23:59:00.'
       timezone: AoE
       date: April 13-15, 2021
       place: Virtual
@@ -21,9 +21,9 @@
       id: icst2022
       link: https://icst2022.vrain.upv.es/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Research papers: abstract September 27, 2021; full paper October 4, 2021 (AoE); exact clock unpublished.'
+        - abstract_deadline: '2021-09-27 23:59:00'
+          deadline: '2021-10-04 23:59:00'
+          comment: 'Research papers: abstract September 27, 2021; full paper October 4, 2021 (AoE); clock uses repository default 23:59:00.'
       timezone: AoE
       date: April 5-7, 2022
       place: Virtual
@@ -31,8 +31,8 @@
       id: icst2023
       link: https://conf.researchr.org/home/icst-2023
       timeline:
-        - deadline: TBD
-          comment: 'Research papers: November 3, 2022 (AoE); exact clock unpublished; no separate earlier abstract deadline published.'
+        - deadline: '2022-11-03 23:59:00'
+          comment: 'Research papers: November 3, 2022 (AoE); clock uses repository default 23:59:00; no separate earlier abstract deadline published.'
       timezone: AoE
       date: April 17-19, 2023
       place: Dublin, Ireland
@@ -40,9 +40,9 @@
       id: icst2024
       link: https://conf.researchr.org/home/icst-2024
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Research papers: abstract October 18, 2023; full paper October 25, 2023 (AoE); exact clock unpublished.'
+        - abstract_deadline: '2023-10-18 23:59:00'
+          deadline: '2023-10-25 23:59:00'
+          comment: 'Research papers: abstract October 18, 2023; full paper October 25, 2023 (AoE); clock uses repository default 23:59:00.'
       timezone: AoE
       date: May 29-31, 2024
       place: Toronto, Canada
