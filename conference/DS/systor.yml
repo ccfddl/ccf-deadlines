@@ -7,6 +7,24 @@
     thcpl: N
   dblp: systor
   confs:
+    - year: 2022
+      id: systor22
+      link: https://www.systor.org/2022/
+      timeline:
+        - deadline: '2022-03-01 23:59:00'
+          comment: Regular full papers
+      timezone: AoE
+      date: June 13-15, 2022
+      place: Haifa, Israel
+    - year: 2023
+      id: systor23
+      link: https://www.systor.org/2023/
+      timeline:
+        - deadline: '2023-03-02 23:59:59'
+          comment: Regular full papers
+      timezone: UTC+1
+      date: June 5-7, 2023
+      place: Haifa, Israel
     - year: 2024
       id: systor24
       link: https://www.systor.org/2024/
