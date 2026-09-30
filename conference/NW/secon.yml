@@ -24,7 +24,7 @@
         - abstract_deadline: 'TBD'
           deadline: 'TBD'
           comment: 'Regular paper registration: May 9, 2022; submission: May 16, 2022; exact cutoff time and timezone not specified'
-      timezone: UTC
+      timezone: Unknown
       date: September 20-22, 2022
       place: Virtual
     - year: 2023
@@ -34,7 +34,7 @@
         - abstract_deadline: 'TBD'
           deadline: 'TBD'
           comment: 'Regular paper registration and submission extended to April 5, 2023; exact cutoff time and timezone not specified'
-      timezone: UTC
+      timezone: Unknown
       date: September 12-14, 2023
       place: Madrid, Spain
     - year: 2024
@@ -44,7 +44,7 @@
         - abstract_deadline: 'TBD'
           deadline: 'TBD'
           comment: 'Regular paper registration and submission extended to August 30, 2024; exact cutoff time and timezone not specified'
-      timezone: UTC
+      timezone: Unknown
       date: December 3-4, 2024
       place: Phoenix, AZ, USA
     - year: 2026
