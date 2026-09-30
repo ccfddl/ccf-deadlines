@@ -1,0 +1,25 @@
+- title: EMSOFT
+  accept_rates:
+    # Journal track, final selection after the second review round.
+    # WiP, late-breaking, artifacts, and abstract registrations excluded.
+    # 2023 chair report prints 21%; the exact 21/90 pair gives 23.3%.
+    - year: 2023
+      submitted: 90
+      accepted: 21
+      rate: 0.23333333333333334
+      str: "23.3%(21/90 23')"
+      source: https://sigbed.org/2023/10/16/emsoft23-report/
+    - year: 2025
+      submitted: 100
+      accepted: 27
+      rate: 0.27
+      str: "27.0%(27/100 25')"
+      source: https://ieee-ceda.org/files/ieeeceda/2026-02/to-post-master_october-2025-ec-meeting-ieee-ceda-presentation.pptx.pdf
+    # Public journal-submission portal decisions before the conference.
+    # Withdrawal/desk rejection treatment is not separately reported.
+    - year: 2026
+      submitted: 184
+      accepted: 49
+      rate: 0.266304347826087
+      str: "26.6%(49/184 26')"
+      source: https://emsoft26.hotcrp.com/
