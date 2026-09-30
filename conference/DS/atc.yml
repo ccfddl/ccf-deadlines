@@ -7,11 +7,67 @@
     thcpl: A
   dblp: usenix
   confs:
+    - year: 2015
+      id: atc2015
+      link: https://www.usenix.org/conference/atc15/
+      timeline:
+        - abstract_deadline: '2015-01-27 10:59:00'
+          deadline: '2015-02-03 10:59:00'
+          comment: Regular papers; title and abstract registration required; explicit PST.
+      timezone: UTC-8
+      date: July 8-10, 2015
+      place: Santa Clara, CA, USA
+    - year: 2016
+      id: atc2016
+      link: https://www.usenix.org/conference/atc16/
+      timeline:
+        - deadline: '2016-02-01 23:59:00'
+          comment: Regular papers; explicit GMT; no separate abstract cutoff published in the CFP.
+      timezone: UTC
+      date: June 22-24, 2016
+      place: Denver, CO, USA
+    - year: 2017
+      id: atc2017
+      link: https://www.usenix.org/conference/atc17/
+      timeline:
+        - deadline: '2017-02-07 23:59:00'
+          comment: Regular papers; explicit GMT; no separate abstract cutoff published in the CFP.
+      timezone: UTC
+      date: July 12-14, 2017
+      place: Santa Clara, CA, USA
+    - year: 2018
+      id: atc2018
+      link: https://www.usenix.org/conference/atc18/
+      timeline:
+        - abstract_deadline: '2018-01-31 03:59:00'
+          deadline: '2018-02-06 23:59:00'
+          comment: 'Regular papers; abstract date January 30 has no clock/zone: repository default 23:59 AoE, converted to PST; full-paper time explicitly 23:59 PST.'
+      timezone: UTC-8
+      date: July 11-13, 2018
+      place: Boston, MA, USA
+    - year: 2019
+      id: atc2019
+      link: https://www.usenix.org/conference/atc19/
+      timeline:
+        - deadline: '2019-01-10 15:00:00'
+          comment: Regular papers; explicit PST; no separate abstract registration.
+      timezone: UTC-8
+      date: July 10-12, 2019
+      place: Renton, WA, USA
+    - year: 2020
+      id: atc2020
+      link: https://www.usenix.org/conference/atc20/
+      timeline:
+        - deadline: '2020-01-15 23:59:00'
+          comment: Regular papers; explicit EST; no separate abstract registration.
+      timezone: UTC-5
+      date: July 15-17, 2020
+      place: Virtual
     - year: 2021
       id: atc2021
       link: https://www.usenix.org/conference/atc21/
       timeline:
-        - deadline: '2021-01-12 23:59:59'
+        - deadline: '2021-01-12 23:59:00'
       timezone: UTC
       date: July 14-16, 2021
       place: Virtual
