@@ -6,3 +6,17 @@
       str: 29.5%(265/899 24')
       rate: 0.2947719688542825
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3680528
+    # Integrated Technical Papers committee-selection stage, before final publication.
+    - year: 2025
+      submitted: 1106
+      accepted: 301
+      str: 27.2%(301/1106 25')
+      rate: 0.2721518987341772
+      source: https://www.linkedin.com/posts/acm-siggraph_siggraph-asia-2025-technical-papers-program-activity-7360522611312783360-ekZJ
+    # Integrated Technical Papers committee-selection stage, before final publication.
+    - year: 2026
+      submitted: 1315
+      accepted: 322
+      str: 24.5%(322/1315 26')
+      rate: 0.24486692015209124
+      source: https://www.linkedin.com/posts/jarahlachica_siggraph2026-siggraphasia2026-siggraph2026-activity-7487346567704838144-RAPg
