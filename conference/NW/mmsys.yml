@@ -7,6 +7,17 @@
     thcpl: N
   dblp: mmsys
   confs:
+    - year: 2023
+      id: mmsys23
+      link: https://2023.acmmmsys.org/
+      timeline:
+        - deadline: '2022-11-18 23:59:00'
+          comment: 'Round 1'
+        - deadline: '2023-01-27 23:59:00'
+          comment: 'Round 2; CFP publishes the date; 23:59:00 and AoE are repository defaults for unspecified cutoff precision.'
+      timezone: AoE
+      date: June 7-9, 2023
+      place: Vancouver, Canada
     - year: 2026
       id: mmsys26
       link: https://2026.acmmmsys.org
