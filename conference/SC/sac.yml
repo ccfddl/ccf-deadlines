@@ -29,10 +29,10 @@
       id: sac23
       link: https://sacworkshop.org/SAC23/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2023-05-16 23:59:00'
           deadline: TBD
-          comment: 'Abstract registration extended to May 16, 2023, time unverified; original May 16 paper cutoff and GMT clock struck through without a replacement date or confirmed timezone.'
-      timezone: Unknown
+          comment: 'Abstract date May 16, 2023; 23:59:00 and AoE are repository defaults. Full-paper date and GMT clock are struck through with no replacement; full deadline remains unresolved.'
+      timezone: AoE
       date: August 16-18, 2023
       place: Fredericton, New Brunswick, Canada
     - year: 2024
