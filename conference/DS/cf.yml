@@ -11,9 +11,9 @@
       id: cf2021
       link: https://www.computingfrontiers.org/2021/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Abstract January 28 and paper February 4, 2021 (AoE); exact times unpublished
+        - abstract_deadline: '2021-01-28 23:59:00'
+          deadline: '2021-02-04 23:59:00'
+          comment: Final extended calendar dates and AoE verified; 23:59:00 is the repository default for unpublished times
       timezone: AoE
       date: May 11-13, 2021
       place: Virtual
@@ -21,21 +21,12 @@
       id: cf2022
       link: https://www.computingfrontiers.org/2022/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Abstract February 6 and paper February 13, 2022 (AoE); exact times unpublished
+        - abstract_deadline: '2022-02-06 23:59:00'
+          deadline: '2022-02-13 23:59:00'
+          comment: Final extended calendar dates and AoE verified; 23:59:00 is the repository default for unpublished times
       timezone: AoE
       date: May 17-19, 2022
       place: Turin, Italy (Hybrid)
-    - year: 2023
-      id: cf2023
-      link: https://www.computingfrontiers.org/2023/
-      timeline:
-        - deadline: TBD
-          comment: CFP February 10, 2023 (AoE) conflicts with HotCRP February 14, 2023 at 07:59:59 EST
-      timezone: AoE
-      date: May 9-11, 2023
-      place: Bologna, Italy
     - year: 2024
       id: cf2024
       link: https://www.computingfrontiers.org/2024/
@@ -44,16 +35,6 @@
       timezone: AoE
       date: May 7-9, 2024
       place: Ischia, Italy
-    - year: 2025
-      id: cf2025
-      link: https://www.computingfrontiers.org/2025/
-      timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Abstract January 20, 2025 (AoE), exact time unpublished; CFP paper January 27 (AoE) conflicts with HotCRP January 26 at 23:59:59 AoE
-      timezone: AoE
-      date: May 28-30, 2025
-      place: Cagliari, Italy
     - year: 2026
       id: cf2026
       link: https://www.computingfrontiers.org/2026/
