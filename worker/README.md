@@ -112,4 +112,4 @@ At 00:00 UTC each day, the Cron Trigger deletes `email_digest_sends` rows whose 
 
 ## Stored data
 
-D1 stores the GitHub numeric user ID, login, avatar/profile URLs, hashed site sessions, one row per user/conference-edition favorite, message wall content, likes, and timestamps. Email reminders additionally store the verified primary email, chosen time zone/language, daily-mode setting, and send history until unsubscribed. Each edition uses its existing unique conference `id`, such as `iclr27`, so different years have independent totals.
+D1 stores the GitHub numeric user ID, login, avatar/profile URLs, hashed site sessions, one row per user/conference-edition favorite, message wall content, likes, and timestamps. Email reminders additionally store the verified primary email, chosen time zone/language, daily-mode setting, and recent send records for about seven days. Each edition uses its existing unique conference `id`, such as `iclr27`, so different years have independent totals.
