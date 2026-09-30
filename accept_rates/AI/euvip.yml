@@ -1,0 +1,9 @@
+- title: EUVIP
+  accept_rates:
+    # Technical-program paper acceptances / submitted papers; oral and poster presentations included.
+    - year: 2023
+      submitted: 60
+      accepted: 33
+      str: 55.0%(33/60 23')
+      rate: 0.55
+      source: https://www.euvip2023.org/wp-content/uploads/2023/09/EUVIP2023_Program_Proceedings2023.pdf
