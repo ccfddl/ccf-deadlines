@@ -13,7 +13,7 @@
       timeline:
         - deadline: '2021-01-11 23:59:59'
       timezone: AoE
-      date: July 11-17, 2021
+      date: July 14-16, 2021
       place: Virtual
     - year: 2022
       id: ecoop22
@@ -35,7 +35,7 @@
         - deadline: '2023-03-01 23:59:59'
           comment: Submission R2
       timezone: AoE
-      date: July 17-21, 2023
+      date: July 19-21, 2023
       place: Seattle, Washington, USA
     - year: 2024
       id: ecoop24
@@ -46,7 +46,7 @@
         - deadline: '2024-04-17 23:59:59'
           comment: Submission R2
       timezone: AoE
-      date: September 16-20, 2024
+      date: September 16-18, 2024
       place: Vienna, Austria
     - year: 2025
       id: ecoop25
