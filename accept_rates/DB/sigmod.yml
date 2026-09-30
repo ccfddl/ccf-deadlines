@@ -12,3 +12,9 @@
       str: 27.7%(213/768 24')
       rate: 0.27734375
       source: https://dl.acm.org/doi/10.1145/3654917
+    - year: 2025
+      submitted: 1008
+      accepted: 250
+      str: 24.8%(250/1008 25')
+      rate: 0.24801587301587302
+      source: https://2025.sigmod.org/SigmodPods25-welcome.pdf
