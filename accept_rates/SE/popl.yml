@@ -1,8 +1,29 @@
 - title: POPL
   accept_rates:
+    # Official public HotCRP main research-track aggregate; desk/withdrawal exclusions and conditional/final stage not separately specified.
+    - year: 2022
+      submitted: 286
+      accepted: 65
+      str: 22.7%(65/286 22')
+      rate: 0.22727272727272727
+      source: https://popl22.hotcrp.com/
     - year: 2023
       submitted: 275
       accepted: 74
       str: 26.9%(74/275 23')
       rate: 0.269090909090909
       source: https://github.com/emeryberger/csconferences
+    # Official public HotCRP main research-track aggregate; desk/withdrawal exclusions and conditional/final stage not separately specified.
+    - year: 2025
+      submitted: 288
+      accepted: 79
+      str: 27.4%(79/288 25')
+      rate: 0.2743055555555556
+      source: https://popl2025.hotcrp.com/
+    # Official public HotCRP main research-track aggregate; desk/withdrawal exclusions and conditional/final stage not separately specified.
+    - year: 2026
+      submitted: 371
+      accepted: 91
+      str: 24.5%(91/371 26')
+      rate: 0.24528301886792453
+      source: https://popl26.hotcrp.com/
