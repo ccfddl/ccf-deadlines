@@ -1,0 +1,9 @@
+- title: CoRL
+  accept_rates:
+    # Official board acceptance decisions / active submissions, not all initial submissions.
+    - year: 2026
+      submitted: 2094
+      accepted: 687
+      str: 32.8%(687/2094 26')
+      rate: 0.32808022922636104
+      source: https://www.linkedin.com/posts/guanya_corl-2026-decisions-are-out-congrats-to-activity-7501745165179691010-aPb6
