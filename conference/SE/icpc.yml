@@ -41,7 +41,7 @@
       timeline:
         - abstract_deadline: '2023-10-30 23:59:59'
           deadline: TBD
-          comment: 'Research track paper deadline conflict: CFP November 3, 2023 AoE; public HotCRP November 6, 2023 07:59:59 EST (November 5, 2023 23:59:59 AoE).'
+          comment: 'Research track paper deadline conflict: CFP November 3, 2023 AoE; public HotCRP November 6, 2023 07:59:59 EST (November 6, 2023 00:59:59 AoE).'
       timezone: AoE
       date: April 14-20, 2024
       place: Lisbon, Portugal
