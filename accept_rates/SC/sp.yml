@@ -1,0 +1,23 @@
+- title: S&P
+  accept_rates:
+    # Annual submission events including revision resubmissions; 55 direct + 92 revised accepts.
+    - year: 2022
+      submitted: 1012
+      accepted: 147
+      str: 14.5%(147/1012 22')
+      rate: 0.14525691699604742
+      source: https://www.ieee-security.org/TC/Reports/2022/SP22_PC_Chairs-Welcome.pptx
+    # Acceptance decisions; one withdrawal and one deferral leave 255 proceedings papers.
+    - year: 2025
+      submitted: 1740
+      accepted: 257
+      str: 14.8%(257/1740 25')
+      rate: 0.14770114942528736
+      source: https://doi.org/10.1109/SP61157.2025.00261
+    # Reviewed submissions; excludes desk rejects and the paper accepted in 2025.
+    - year: 2026
+      submitted: 1995
+      accepted: 253
+      str: 12.7%(253/1995 26')
+      rate: 0.1268170426065163
+      source: https://doi.org/10.1109/SP63933.2026.00248
