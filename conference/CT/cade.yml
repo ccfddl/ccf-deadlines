@@ -7,26 +7,6 @@
     thcpl: B
   dblp: cade
   confs:
-    - year: 2015
-      id: cade15
-      link: https://conference.imp.fu-berlin.de/cade-25/
-      timeline:
-        - abstract_deadline: '2015-02-16 23:59:00'
-          deadline: '2015-02-23 23:59:00'
-          comment: 'Regular papers; clock 23:59:00 and AoE are repository defaults'
-      timezone: AoE
-      date: August 4-7, 2015
-      place: Berlin, Germany
-    - year: 2019
-      id: cade19
-      link: https://www.mat.ufrn.br/CADE-27/
-      timeline:
-        - abstract_deadline: '2019-02-20 23:59:00'
-          deadline: '2019-02-27 23:59:00'
-          comment: 'Extended regular-paper deadlines; clock 23:59:00 and AoE are repository defaults'
-      timezone: AoE
-      date: August 27-30, 2019
-      place: Natal, Brazil
     - year: 2021
       id: cade21
       link: https://www.cs.cmu.edu/~mheule/CADE28/
