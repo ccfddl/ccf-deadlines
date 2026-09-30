@@ -8,11 +8,6 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from icalendar import Calendar, Event, Timezone, TimezoneStandard
 
-if __package__:
-    from .utils import deadline_sort_key, parse_deadline
-else:
-    from utils import deadline_sort_key, parse_deadline
-
 
 # 中英类别映射表
 def load_mapping(path: str = "conference/types.yml"):
@@ -104,9 +99,14 @@ def convert_to_ical(
                 timeline = conf["timeline"]
                 timezone_str = conf["timezone"]
                 place = conf["place"]
-                conference_date = conf["date"]
+                date = conf["date"]
 
                 for round_index, entry in enumerate(timeline):
+                    try:
+                        get_timezone(timezone_str)
+                    except ValueError:
+                        continue
+
                     # 收集所有需要处理的截止日期
                     deadlines_to_process = []
 
@@ -148,22 +148,33 @@ def convert_to_ical(
                         if deadline_str == "TBD":
                             continue  # 忽略待定日期
 
+                        # 解析日期和时间
+                        is_all_day = False
                         try:
-                            deadline_dt = parse_deadline(deadline_str, timezone_str)
+                            deadline_dt = datetime.strptime(
+                                deadline_str, "%Y-%m-%d %H:%M:%S"
+                            )
                         except ValueError:
-                            continue
-                        is_all_day = not isinstance(deadline_dt, datetime)
+                            try:
+                                deadline_dt = datetime.strptime(
+                                    deadline_str, "%Y-%m-%d"
+                                )
+                                is_all_day = True
+                            except ValueError:
+                                continue  # 无效日期格式
 
-                        # Calendar dates have no clock or timezone conversion.
-                        # DTSTAMP below is the generation instant, not the deadline.
-                        if not is_all_day:
-                            tz = deadline_dt.tzinfo
-                            tz_offset = tz.utcoffset(deadline_dt)
-                            offset_hours = tz_offset.total_seconds() // 3600
-                            tzid = f"UTC{offset_hours:+03.0f}:00"
-                            if tzid not in added_tzids:
-                                cal.add_component(create_vtimezone(tz))
-                                added_tzids.add(tzid)
+                        # 按截止日期解析时区 (PT 需要按日期判断夏令时)
+                        tz = get_timezone(timezone_str, deadline_dt.date())
+
+                        # 添加VTIMEZONE组件
+                        tz_offset = tz.utcoffset(datetime.now())
+                        offset_hours = tz_offset.total_seconds() // 3600
+                        tzid = f"UTC{offset_hours:+03.0f}:00"
+
+                        if tzid not in added_tzids:
+                            vtz = create_vtimezone(tz)
+                            cal.add_component(vtz)
+                            added_tzids.add(tzid)
 
                         # 创建事件对象
                         event = Event()
@@ -176,20 +187,16 @@ def convert_to_ical(
                         )
                         event.add("X-CCFDDL-ID", conf["id"])
                         event.add("X-CCFDDL-CONFERENCE", f"{title} {year}")
-                        event.add("X-CCFDDL-TIMEZONE", timezone_str)
-                        event.add("X-CCFDDL-PRECISION", "date" if is_all_day else "datetime")
-                        event.add("dtstamp", datetime.now(timezone.utc))
+                        event.add("dtstamp", datetime.now(tz))
 
                         # 处理时间字段
                         if is_all_day:
-                            event.add("dtstart", deadline_dt)
-                            if deadline_dt < date.max:
-                                event.add("dtend", deadline_dt + timedelta(days=1))
-                            else:
-                                event.add("duration", timedelta(days=1))
+                            event.add("dtstart", deadline_dt.date())
+                            event.add("dtend", (deadline_dt + timedelta(days=1)).date())
                         else:
-                            event.add("dtstart", deadline_dt)
-                            event.add("dtend", deadline_dt + timedelta(minutes=1))
+                            aware_dt = deadline_dt.replace(tzinfo=tz)
+                            event.add("dtstart", aware_dt)
+                            event.add("dtend", aware_dt + timedelta(minutes=1))
 
                         # 两种订阅语言都使用英文事件标题；说明保留所选语言。
                         summary = f"{title} {year} {deadline_type}"
@@ -217,7 +224,7 @@ def convert_to_ical(
                         if lang == "en":
                             description = [
                                 f"{conf_data['description']}",
-                                f"🗓️ Date: {conference_date}",
+                                f"🗓️ Date: {date}",
                                 f"📍 Location: {place}",
                                 f"⏰ Original Deadline ({timezone_str}): {deadline_str}",
                                 f"Category: {sub_chinese} ({sub})",
@@ -228,7 +235,7 @@ def convert_to_ical(
                         else:
                             description = [
                                 f"{conf_data['description']}",
-                                f"🗓️ 会议时间: {conference_date}",
+                                f"🗓️ 会议时间: {date}",
                                 f"📍 会议地点: {place}",
                                 f"⏰ 原始截止时间 ({timezone_str}): {deadline_str}",
                                 f"分类: {sub_chinese} ({sub})",
@@ -236,11 +243,6 @@ def convert_to_ical(
                                 f"会议官网: {link}",
                                 f"DBLP索引: https://dblp.org/db/conf/{dblp}",
                             ]
-                        if is_all_day:
-                            description.append(
-                                "Time of day is unknown; this is a calendar date, not an instant."
-                                if lang == "en" else "具体时刻未知；此条目仅表示日期，不表示精确时间。"
-                            )
                         description = [line for line in description if line]
                         event.add("description", "\n".join(description))
 
@@ -256,45 +258,28 @@ def convert_to_ical(
 
 
 def write_deadline_events_index(calendar_path: str, output_path: str):
-    """Expose exact instants or date-only metadata to the reminder Worker."""
+    """Expose the same parsed deadline instants to the email reminder Worker."""
     calendar = Calendar.from_ical(Path(calendar_path).read_bytes())
     events = []
     for event in calendar.walk("VEVENT"):
         start = event.decoded("DTSTART")
         all_day = isinstance(start, date) and not isinstance(start, datetime)
-        if not all_day and (
-            start.tzinfo is None
-            or str(event.get("X-CCFDDL-TIMEZONE", "")) == "Unknown"
-        ):
-            raise ValueError("Precise reminders require a known timezone")
-        # A calendar date is never converted into midnight for reminders.
-        deadline_at = (
-            None if all_day
-            else start.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-        )
+        if all_day:
+            deadline_at = datetime.combine(start, datetime.min.time(), timezone.utc)
+        else:
+            deadline_at = start.astimezone(timezone.utc)
         events.append(
             {
                 "id": str(event["X-CCFDDL-ID"]),
                 "conference": str(event["X-CCFDDL-CONFERENCE"]),
                 "uid": str(event["UID"]),
                 "title": str(event["SUMMARY"]),
-                "deadline_at": deadline_at,
-                "deadline_date": start.isoformat() if all_day else None,
-                "precision": "date" if all_day else "datetime",
-                "timezone": str(event.get("X-CCFDDL-TIMEZONE", "Unknown")),
+                "deadline_at": deadline_at.isoformat().replace("+00:00", "Z"),
                 "all_day": all_day,
                 "url": str(event.get("URL", "")),
             }
         )
-    def sort_key(item):
-        value = (
-            date.fromisoformat(item["deadline_date"]) if item["all_day"]
-            else datetime.fromisoformat(item["deadline_at"].replace("Z", "+00:00"))
-        )
-        # The source-zone lower bound orders output but is never serialized.
-        return deadline_sort_key(value, item["timezone"]), item["id"], item["uid"]
-
-    events.sort(key=sort_key)
+    events.sort(key=lambda item: (item["deadline_at"], item["id"], item["uid"]))
     Path(output_path).write_text(
         json.dumps(events, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )

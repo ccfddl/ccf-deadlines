@@ -1,13 +1,8 @@
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
 
-if __package__:
-    from .convert_to_ical import load_mapping, reverse_index
-    from .utils import parse_deadline
-else:
-    from convert_to_ical import load_mapping, reverse_index
-    from utils import parse_deadline
+from convert_to_ical import load_mapping, get_timezone, reverse_index
 
 import yaml
 
@@ -55,6 +50,11 @@ def convert_to_rss(
                 date = conf["date"]
 
                 for entry in timeline:
+                    try:
+                        get_timezone(timezone_str)
+                    except ValueError:
+                        continue
+
                     deadlines_to_process = []
 
                     if "abstract_deadline" in entry:
@@ -97,10 +97,20 @@ def convert_to_rss(
                             continue
 
                         try:
-                            deadline_dt = parse_deadline(deadline_str, timezone_str)
+                            deadline_dt = datetime.strptime(
+                                deadline_str, "%Y-%m-%d %H:%M:%S"
+                            )
                         except ValueError:
-                            continue
-                        is_date_only = not isinstance(deadline_dt, datetime)
+                            try:
+                                deadline_dt = datetime.strptime(
+                                    deadline_str, "%Y-%m-%d"
+                                )
+                            except ValueError:
+                                continue
+
+                        # 按截止日期解析时区 (PT 需要按日期判断夏令时)
+                        tz = get_timezone(timezone_str, deadline_dt.date())
+                        aware_dt = deadline_dt.replace(tzinfo=tz)
 
                         item = ET.SubElement(channel, "item")
 
@@ -150,16 +160,10 @@ def convert_to_rss(
                                 f"会议官网: {link}",
                                 f"DBLP索引: https://dblp.org/db/conf/{dblp}",
                             ]
-                        if is_date_only:
-                            desc_lines.append(
-                                "Time of day is unknown; this is a calendar date, not an instant."
-                                if lang == "en" else "具体时刻未知；此条目仅表示日期，不表示精确时间。"
-                            )
                         desc_lines = [x for x in desc_lines if x]
                         ET.SubElement(item, "description").text = "\n".join(desc_lines)
 
-                        if not is_date_only:
-                            ET.SubElement(item, "pubDate").text = format_datetime(deadline_dt)
+                        ET.SubElement(item, "pubDate").text = format_datetime(aware_dt)
 
                         guid = ET.SubElement(
                             item, "guid", isPermaLink="false"

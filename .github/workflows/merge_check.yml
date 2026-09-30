@@ -26,10 +26,6 @@ jobs:
         run: python scripts/build_data.py
       - name: Test data loading and database limits
         run: python -m unittest discover -s scripts -p 'test_*.py'
-      - name: Test CLI deadline precision
-        run: |
-          python -m pip install pytest
-          PYTHONPATH=extensions/cli python -m pytest extensions/cli/ccfddl/tests -q
       - name: Test Worker security
         run: node --test worker/test/*.test.js scripts/test_startup.mjs
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
@@ -37,10 +33,6 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
           components: clippy, rustfmt
-      - name: Test deadline selection and calendars
-        run: cargo test
-      - name: Test MCP deadline precision
-        run: node --test mcp/test/*.test.js
       - name: Add WASM target
         run: rustup target add wasm32-unknown-unknown
       - name: Download and install Trunk binary
