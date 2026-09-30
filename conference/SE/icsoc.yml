@@ -11,48 +11,48 @@
       id: icsoc21
       link: https://icsoc2021.servtech.info/icsoc2021.josueonline.com/index.html
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Early regular papers: title/abstract June 4, 2021; full paper grace period June 6, 2021 for registered papers only (AoE); exact clock unpublished.'
-        - deadline: TBD
-          comment: 'Normal regular papers: extended deadline August 22, 2021 (AoE); exact clock and effective separate abstract date unverified.'
+        - abstract_deadline: '2021-06-04 23:59:00'
+          deadline: '2021-06-06 23:59:00'
+          comment: 'Early regular papers: title/abstract June 4, 2021; full paper grace period June 6, 2021 for registered papers only (AoE); clock uses repository default 23:59:00.'
+        - deadline: '2021-08-22 23:59:00'
+          comment: 'Normal regular papers: extended deadline August 22, 2021 (AoE); clock uses repository default 23:59:00; separate normal abstract date remains unverified.'
       timezone: AoE
-      date: November 22-25, 2021
+      date: November 23-25, 2021
       place: Virtual
     - year: 2022
       id: icsoc22
       link: https://icsoc2022.servtech.info/index.html
       timeline:
-        - deadline: TBD
-          comment: 'Early regular papers: May 5, 2022 (AoE); exact clock unpublished.'
-        - deadline: TBD
-          comment: 'Normal regular papers: extended final deadline July 7, 2022 (AoE); exact clock unpublished.'
+        - deadline: '2022-05-05 23:59:00'
+          comment: 'Early regular papers: May 5, 2022 (AoE); clock uses repository default 23:59:00.'
+        - deadline: '2022-07-07 23:59:00'
+          comment: 'Normal regular papers: extended final deadline July 7, 2022 (AoE); clock uses repository default 23:59:00.'
       timezone: AoE
-      date: May 26-27, 2022
-      place: Barcelona, Spain
+      date: November 30 - December 2, 2022
+      place: Sevilla, Spain
     - year: 2024
       id: icsoc24
       link: https://icsoc2024.redcad.tn/
       timeline:
-        - deadline: TBD
-          comment: 'Early regular papers: May 9, 2024 (AoE); exact clock unpublished.'
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: abstract July 10, 2024; full paper July 24, 2024 (firm dates, AoE); exact clock unpublished.'
+        - deadline: '2024-05-09 23:59:00'
+          comment: 'Early regular papers: May 9, 2024 (AoE); clock uses repository default 23:59:00.'
+        - abstract_deadline: '2024-07-10 23:59:00'
+          deadline: '2024-07-24 23:59:00'
+          comment: 'Regular papers: abstract July 10, 2024; full paper July 24, 2024 (firm dates, AoE); clock uses repository default 23:59:00.'
       timezone: AoE
-      date: December 3-6, 2024
+      date: December 4-6, 2024
       place: Tunis, Tunisia
     - year: 2025
       id: icsoc25
       link: https://icsoc2025.hit.edu.cn/main.htm
       timeline:
-        - deadline: '2025-05-09 23:59:59'
+        - deadline: '2025-05-09 23:59:00'
           comment: Early paper submissions
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: extended abstract July 14, 2025; full paper July 21, 2025 (AoE); exact clock unpublished.'
+        - abstract_deadline: '2025-07-14 23:59:00'
+          deadline: '2025-07-21 23:59:00'
+          comment: 'Regular papers: extended abstract July 14, 2025; full paper July 21, 2025 (AoE); clock uses repository default 23:59:00.'
       timezone: AoE
-      date: December 1-4, 2025
+      date: December 2-4, 2025
       place: Shenzhen, China
     - year: 2026
       id: icsoc26
