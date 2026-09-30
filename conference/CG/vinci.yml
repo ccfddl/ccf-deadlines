@@ -7,6 +7,15 @@
     thcpl: N
   dblp: vinci
   confs:
+    - year: 2022
+      id: vinci2022
+      link: https://vinci-conf.github.io/website/
+      timeline:
+        - deadline: '2022-05-06 23:59:00'
+          comment: Regular technical full papers; extended initial submission
+      timezone: AoE
+      date: August 16-18, 2022
+      place: Chur, Switzerland
     - year: 2025
       id: vinci2025
       link: https://vinci2025.games.cg.jku.at
