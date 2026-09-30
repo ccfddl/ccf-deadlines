@@ -1,5 +1,12 @@
 - title: MICRO
   accept_rates:
+    # 2021 received full papers include 4 desk rejections and 5 later withdrawals.
+    - year: 2021
+      submitted: 430
+      accepted: 94
+      str: 21.9%(94/430 21')
+      rate: 0.2186046511627907
+      source: https://microarch.org/micro54/papers/pcchairs.pdf
     - year: 2022
       submitted: 348
       accepted: 83
@@ -12,9 +19,17 @@
       str: 23.3%(101/434 23')
       rate: 0.232718894009217
       source: https://github.com/emeryberger/csconferences
+    # 2024 organizers report received submissions; historical 485 is unreconciled.
     - year: 2024
-      submitted: 485
+      submitted: 497
       accepted: 113
-      str: 23.3%(113/485 24')
-      rate: 0.232989690721649
-      source: https://github.com/emeryberger/csconferences
+      str: 22.7%(113/497 24')
+      rate: 0.22736418511066397
+      source: https://engineering.tamu.edu/news/2024/12/texas-am-leads-record-breaking-symposium-showcasing-global-advances-in-microarchitecture-research.html
+    # 2025 public HotCRP acceptance decisions, not independently certified published count.
+    - year: 2025
+      submitted: 597
+      accepted: 124
+      str: 20.8%(124/597 25')
+      rate: 0.20770519262981574
+      source: https://micro2025.hotcrp.com/
