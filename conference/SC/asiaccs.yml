@@ -9,12 +9,12 @@
   confs:
     - year: 2021
       id: asiaccs21
-      link: https://asiaccs21.hotcrp.com/
+      link: https://asiaccs2021.comp.polyu.edu.hk/
       timeline:
-        - deadline: '2020-12-11 23:59:00'
+        - deadline: '2020-12-12 07:59:00'
           comment: '2nd round regular paper; linked HotCRP cutoff December 12, 2020 at 07:59 EST; first-round primary source unavailable'
-      timezone: AoE
-      date: June 7-10, 2021
+      timezone: UTC-5
+      date: June 8-10, 2021
       place: Virtual
     - year: 2022
       id: asiaccs22
@@ -36,7 +36,7 @@
         - deadline: '2022-12-15 23:59:00'
           comment: 2nd round regular paper
       timezone: AoE
-      date: July 10-14, 2023
+      date: July 11-14, 2023
       place: Melbourne, Australia
     - year: 2024
       id: asiaccs24
