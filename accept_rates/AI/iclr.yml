@@ -1,6 +1,13 @@
 # Main-conference review statistics; Tiny Papers, blog posts and workshops are excluded.
 - title: ICLR
   accept_rates:
+    # Full submissions received, including later withdrawals; January acceptance decisions.
+    - year: 2021
+      submitted: 2997
+      accepted: 860
+      str: 28.7%(860/2997 21')
+      rate: 0.28695362028695365
+      source: https://iclr-conf.medium.com/the-iclr-2021-reviewing-process-and-accepted-papers-7dc65002668e
     - year: 2022
       submitted: 3391
       accepted: 1095
@@ -25,6 +32,8 @@
       str: 31.9%(3704/11603 25')
       rate: 0.319227785917435
       source: https://media.iclr.cc/Conferences/ICLR2025/ICLR2025_Fact_Sheet.pdf
+    # March 31 PC review decisions: 5355/19525 valid format-compliant submissions.
+    # Final media fact sheet reports 5357/19525 without reconciling the two-paper difference.
     - year: 2026
       submitted: 19525
       accepted: 5355
