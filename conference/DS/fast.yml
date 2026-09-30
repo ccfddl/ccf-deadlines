@@ -7,11 +7,65 @@
     thcpl: A
   dblp: fast
   confs:
+    - year: 2015
+      id: fast15
+      link: https://www.usenix.org/conference/fast15/
+      timeline:
+        - deadline: '2014-09-23 21:00:00'
+          comment: Regular papers; hard deadline, no extensions; explicit PDT.
+      timezone: UTC-7
+      date: February 17-19, 2015
+      place: Santa Clara, CA, USA
+    - year: 2016
+      id: fast16
+      link: https://www.usenix.org/conference/fast16/
+      timeline:
+        - deadline: '2015-09-21 21:00:00'
+          comment: Regular papers; explicit PDT; no separate abstract cutoff published in the CFP.
+      timezone: UTC-7
+      date: February 23-25, 2016
+      place: Santa Clara, CA, USA
+    - year: 2017
+      id: fast17
+      link: https://www.usenix.org/conference/fast17/
+      timeline:
+        - deadline: '2016-09-27 21:00:00'
+          comment: Regular papers; explicit PDT; no separate abstract cutoff published in the CFP.
+      timezone: UTC-7
+      date: February 28 - March 2, 2017
+      place: Santa Clara, CA, USA
+    - year: 2018
+      id: fast18
+      link: https://www.usenix.org/conference/fast18/
+      timeline:
+        - deadline: '2017-09-28 23:59:00'
+          comment: Regular papers; explicit PDT; no separate abstract deadline.
+      timezone: UTC-7
+      date: February 13-15, 2018
+      place: Oakland, CA, USA
+    - year: 2019
+      id: fast19
+      link: https://www.usenix.org/conference/fast19/
+      timeline:
+        - deadline: '2018-09-26 20:59:00'
+          comment: Regular papers; explicit PDT; no separate abstract deadline.
+      timezone: UTC-7
+      date: February 26-28, 2019
+      place: Boston, MA, USA
+    - year: 2020
+      id: fast20
+      link: https://www.usenix.org/conference/fast20/
+      timeline:
+        - deadline: '2019-09-26 23:59:00'
+          comment: Regular papers; explicit AoE; no separate abstract deadline.
+      timezone: AoE
+      date: February 25-27, 2020
+      place: Santa Clara, CA, USA
     - year: 2021
       id: fast21
       link: https://www.usenix.org/conference/fast21/
       timeline:
-        - deadline: '2020-09-24 23:59:59'
+        - deadline: '2020-09-24 23:59:00'
       timezone: UTC-7
       date: February 23-25, 2021
       place: Virtual
