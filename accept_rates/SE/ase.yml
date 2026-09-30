@@ -1,8 +1,36 @@
 - title: ASE
   accept_rates:
+    # Research track; final selected papers / received submissions.
+    - year: 2021
+      submitted: 440
+      accepted: 82
+      str: 18.6%(82/440 21')
+      rate: 0.186363636363636
+      source: https://doi.org/10.1109/ASE51524.2021.9678694
     - year: 2022
       submitted: 531
       accepted: 116
       str: 21.8%(116/531 22')
       rate: 0.218455743879473
       source: https://github.com/emeryberger/csconferences
+    # Research track; final selected papers / received submissions.
+    - year: 2023
+      submitted: 633
+      accepted: 134
+      str: 21.2%(134/633 23')
+      rate: 0.211690363349131
+      source: https://doi.org/10.1109/ASE56229.2023.00005
+    # Research track; final selected papers / received submissions.
+    - year: 2024
+      submitted: 587
+      accepted: 155
+      str: 26.4%(155/587 24')
+      rate: 0.264054514480409
+      source: https://www.computer.org/csdl/proceedings-article/ase/2024/124800z039/22gEsWwlsek
+    # Research track; final selected papers / received submissions.
+    - year: 2025
+      submitted: 1190
+      accepted: 247
+      str: 20.8%(247/1190 25')
+      rate: 0.207563025210084
+      source: https://doi.org/10.1109/ASE63991.2025.00005
