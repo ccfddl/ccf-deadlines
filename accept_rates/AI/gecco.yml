@@ -1,0 +1,30 @@
+- title: GECCO
+  accept_rates:
+    # Regular full-paper acceptances / full-paper submissions; companion/poster categories excluded.
+    - year: 2021
+      submitted: 362
+      accepted: 134
+      str: 37.0%(134/362 21')
+      rate: 0.3701657458563536
+      source: https://evolution.sigevo.org/issues/HTML/sigevolution-14-3/home.html
+    # Regular full-paper acceptances / full-paper submissions; companion/poster categories excluded.
+    - year: 2022
+      submitted: 427
+      accepted: 158
+      str: 37.0%(158/427 22')
+      rate: 0.3700234192037471
+      source: https://researchmgt.monash.edu/ws/portalfiles/portal/607701324/605243465.pdf
+    # Regular full-paper acceptances / full-paper submissions; companion/poster categories excluded.
+    - year: 2023
+      submitted: 519
+      accepted: 180
+      str: 34.7%(180/519 23')
+      rate: 0.3468208092485549
+      source: https://evolution.sigevo.org/issues/HTML/sigevolution-16-4/index.htm
+    # Regular full-paper acceptances / full-paper submissions; companion/poster categories excluded.
+    - year: 2025
+      submitted: 501
+      accepted: 181
+      str: 36.1%(181/501 25')
+      rate: 0.36127744510978044
+      source: https://gecco-2025.sigevo.org/display1863
