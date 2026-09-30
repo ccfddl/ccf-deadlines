@@ -7,19 +7,6 @@
     thcpl: B
   dblp: middleware
   confs:
-    - year: 2021
-      id: middleware21
-      link: https://middleware-conf.github.io/2021/
-      timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Round 1: abstract November 20, 2020; full paper December 1, 2020; exact time and timezone unpublished'
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Round 2: extended abstract May 22, 2021; full paper June 1, 2021; exact time and timezone unpublished'
-      timezone: UTC+0
-      date: December 6-10, 2021
-      place: Online
     - year: 2022
       id: middleware22
       link: https://middleware-conf.github.io/2022/
@@ -53,17 +40,6 @@
       timezone: AoE
       date: December 4-6, 2024
       place: Hong Kong, China
-    - year: 2025
-      id: middleware25
-      link: https://middleware-conf.github.io/2025/
-      timeline:
-        - deadline: '2024-12-13 23:59:59'
-          comment: Round 1
-        - deadline: '2025-06-06 23:59:59'
-          comment: Round 2 (extended)
-      timezone: AoE
-      date: December 15-19, 2025
-      place: Nashville, TN, USA
     - year: 2026
       id: middleware26
       link: https://middleware-conf.github.io/2026/
