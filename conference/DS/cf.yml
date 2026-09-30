@@ -7,6 +7,26 @@
     thcpl: N
   dblp: cf
   confs:
+    - year: 2021
+      id: cf2021
+      link: https://www.computingfrontiers.org/2021/
+      timeline:
+        - abstract_deadline: '2021-01-28 23:59:00'
+          deadline: '2021-02-04 23:59:00'
+          comment: Final extended calendar dates and AoE verified; 23:59:00 is the repository default for unpublished times
+      timezone: AoE
+      date: May 11-13, 2021
+      place: Virtual
+    - year: 2022
+      id: cf2022
+      link: https://www.computingfrontiers.org/2022/
+      timeline:
+        - abstract_deadline: '2022-02-06 23:59:00'
+          deadline: '2022-02-13 23:59:00'
+          comment: Final extended calendar dates and AoE verified; 23:59:00 is the repository default for unpublished times
+      timezone: AoE
+      date: May 17-19, 2022
+      place: Turin, Italy (Hybrid)
     - year: 2024
       id: cf2024
       link: https://www.computingfrontiers.org/2024/
