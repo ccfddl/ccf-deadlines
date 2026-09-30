@@ -50,6 +50,17 @@ class LoadingDataTests(unittest.TestCase):
         ], date(2026, 9, 27))
         self.assertEqual([item["year"] for item in initial[0]["confs"]], [2026, 2027])
 
+    def test_date_only_rounds_are_preserved_without_tbd_estimation(self):
+        older = edition(2024, "2023-10-01")
+        older["timeline"].append({"deadline": "2026-09-26", "decision_deadline": "2026-10-01"})
+        current = edition(2027, "2026-10-15")
+        initial, archive = split_conferences([
+            {"title": "Example", "confs": [older, edition(2026, "2025-01-01"), current]},
+        ], date(2026, 9, 27))
+        self.assertEqual([item["year"] for item in initial[0]["confs"]], [2024, 2027])
+        self.assertEqual(initial[0]["confs"][0]["timeline"][1]["deadline"], "2026-09-26")
+        self.assertEqual(archive[0]["confs"][0]["year"], 2026)
+
     def test_bucket_is_stable_for_ascii_and_unicode(self):
         self.assertEqual(acceptance_bucket("ICLR"), 11)
         self.assertEqual(acceptance_bucket("VLDB"), 9)

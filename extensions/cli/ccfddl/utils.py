@@ -8,6 +8,7 @@ import re
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from itertools import combinations
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -100,16 +101,95 @@ def parse_datetime_with_tz(
     return dt.replace(tzinfo=tz)
 
 
-def format_duration(ddl_time: datetime, now: datetime) -> str:
+def parse_deadline(value: str | date, tz_str: str) -> date | datetime:
+    """Preserve a valid ISO calendar date without assigning it a clock time.
+
+    PyYAML may already have converted an unquoted date to ``date``. Precise
+    timestamps still require a known source timezone; ``Unknown`` is never UTC.
+    TBD and invalid values raise ValueError so callers can keep skipping them.
+    """
+    if isinstance(value, datetime):
+        if value.tzinfo is not None:
+            raise ValueError("Deadline timestamps must use the source timezone field")
+        return value.replace(tzinfo=get_timezone(tz_str, value.date()))
+    if isinstance(value, date):
+        day = value
+    elif isinstance(value, str) and re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", value):
+        day = date.fromisoformat(value)
+    elif isinstance(value, str):
+        return parse_datetime_with_tz(value, tz_str)
+    else:
+        raise ValueError(f"Invalid deadline: {value!r}")
+    if tz_str != "Unknown":
+        get_timezone(tz_str, day)
+    return day
+
+
+def deadline_has_passed(deadline: date | datetime, now: datetime, tz_str: str) -> bool:
+    """Expire dates only after their whole source-zone calendar day has passed.
+
+    For an unknown zone, UTC-12 is the last place that can still be on that
+    date. This is an expiry policy, not an inferred deadline time or timezone.
+    """
+    if now.tzinfo is None:
+        raise ValueError("Current time must be timezone-aware")
+    if isinstance(deadline, datetime):
+        if deadline.tzinfo is None:
+            raise ValueError("Precise deadlines must be timezone-aware")
+        return deadline < now
+    tz = (
+        ZoneInfo("America/Los_Angeles") if tz_str == "PT"
+        else get_timezone("AoE" if tz_str == "Unknown" else tz_str, deadline)
+    )
+    return now.astimezone(tz).date() > deadline
+
+
+def deadline_sort_key(deadline: date | datetime, tz_str: str) -> int:
+    """Internal lower-bound ordering; never an inferred or exported deadline.
+
+    Precise values sort chronologically. Calendar dates sort by the beginning
+    of the source-zone day; Unknown uses its earliest possible start (UTC+14).
+    The integer key avoids attaching a fabricated time to a date object and
+    supports valid ISO boundary dates without UTC conversion overflow.
+    """
+    if isinstance(deadline, datetime):
+        if deadline.tzinfo is None:
+            raise ValueError("Precise deadlines must be timezone-aware")
+        offset = deadline.utcoffset()
+        seconds = deadline.hour * 3600 + deadline.minute * 60 + deadline.second
+        microseconds = deadline.microsecond
+    else:
+        seconds = microseconds = 0
+        if tz_str == "Unknown":
+            offset = timedelta(hours=14)
+        elif tz_str == "PT":
+            # Midnight is used only to query the offset of this calendar bound.
+            offset = datetime.combine(
+                deadline, datetime.min.time(), ZoneInfo("America/Los_Angeles")
+            ).utcoffset()
+        else:
+            offset = get_timezone(tz_str, deadline).utcoffset(None)
+    if offset is None:
+        raise ValueError("Precise deadlines must have a UTC offset")
+    return (
+        (deadline.toordinal() * 86400 + seconds) * 1_000_000
+        + microseconds - int(offset.total_seconds() * 1_000_000)
+    )
+
+
+def format_duration(ddl_time: date | datetime, now: datetime) -> str:
     """Format the remaining duration until deadline.
 
     Args:
-        ddl_time: Deadline datetime (timezone-aware)
+        ddl_time: Calendar date or timezone-aware deadline datetime
         now: Current datetime (timezone-aware)
 
     Returns:
         Formatted duration string
     """
+    if not isinstance(ddl_time, datetime):
+        return f"{ddl_time.isoformat()} (time unknown)"
+
     duration = ddl_time - now
     months, days = duration.days // 30, duration.days
     hours, remainder = divmod(duration.seconds, 3600)

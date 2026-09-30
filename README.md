@@ -140,7 +140,7 @@ Description of the fields:
    </tr>
    <tr>
       <td><code>deadline</code>*</td>
-      <td>Deadline, in the format of <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
+      <td>Deadline as <code>yyyy-mm-dd hh:mm:ss</code>, quoted <code>yyyy-mm-dd</code> (time unknown), or <code>TBD</code></td>
    </tr>
    <tr>
       <td><code>rebuttal_deadline</code></td>
@@ -156,7 +156,7 @@ Description of the fields:
    </tr>
    <tr>
       <td colspan="2"><code>timezone</code>*</td>
-      <td>Timezone of deadline, currently support <code>UTC-12</code> ~ <code>UTC+12</code>, <code>AoE</code> & <code>PT</code> (US Pacific Time, auto-adjusts for daylight saving)</td>
+      <td>Timezone of deadline, currently support <code>UTC-12</code> ~ <code>UTC+12</code>, <code>AoE</code> & <code>PT</code> (US Pacific Time, auto-adjusts for daylight saving). Use <code>Unknown</code> only for date-only/TBD values when the source does not state a zone</td>
    </tr>
    <tr>
       <td colspan="2"><code>date</code>*</td>
@@ -169,6 +169,9 @@ Description of the fields:
 </table>
 
 Fields marked with asterisk (*) are required.
+
+For all four deadline fields, quote date-only YAML values and never invent a clock
+or timezone. See [deadline precision and export behavior](docs/deadline-precision.md).
 
 The matching table:
 
