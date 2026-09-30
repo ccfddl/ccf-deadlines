@@ -7,58 +7,30 @@
     thcpl: N
   dblp: cig
   confs:
-    - year: 2021
-      id: cog21
-      link: https://ieee-cog.org/2021/
-      timeline:
-        - deadline: '2021-04-16 23:59:59'
-          comment: 'Regular full technical papers (extended; midnight AoE)'
-      timezone: AoE
-      date: August 17-20, 2021
-      place: Online
     - year: 2022
       id: cog22
       link: https://ieee-cog.org/2022/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full technical papers: March 1, 2022 AoE; exact clock unpublished'
+        - deadline: '2022-03-01 23:59:00'
+          comment: 'Regular full technical papers; official AoE date. Clock 23:59:00 uses the repository default because no exact clock is published.'
       timezone: AoE
       date: August 21-24, 2022
       place: Online
-    - year: 2023
-      id: cog23
-      link: https://2023.ieee-cog.org/
-      timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular full technical papers: abstract registration March 17, 2023; first full upload March 24, 2023; AoE; exact clock unpublished'
-      timezone: AoE
-      date: August 21-24, 2023
-      place: Boston, USA
-    - year: 2024
-      id: cog24
-      link: https://2024.ieee-cog.org/
-      timeline:
-        - deadline: TBD
-          comment: 'Regular full technical papers: March 1, 2024 AoE; exact clock unpublished'
-      timezone: AoE
-      date: August 5-8, 2024
-      place: Milan, Italy
     - year: 2025
       id: cog25
       link: https://cog2025.inesc-id.pt/
       timeline:
-        - deadline: TBD
-          comment: 'Regular full technical papers: March 15, 2025 AoE; exact clock unpublished'
+        - deadline: '2025-03-15 23:59:00'
+          comment: 'Regular full technical papers; official AoE date. Clock 23:59:00 uses the repository default because no exact clock is published.'
       timezone: AoE
-      date: August 26-29, 2025
+      date: August 27-29, 2025
       place: Lisbon, Portugal
     - year: 2026
       id: cog26
       link: https://cog2026.org/
       timeline:
-        - deadline: '2026-03-17 23:59:59'
-          comment: 'Regular Paper'
+        - deadline: '2026-03-17 23:59:00'
+          comment: 'Regular full technical papers; official AoE date. Clock 23:59:00 uses the repository default because no exact clock is published.'
       timezone: AoE
       date: September 1-4, 2026
       place: Madrid, Spain
@@ -68,6 +40,8 @@
       timeline:
         - deadline: '2027-03-01 23:59:59'
           comment: 'Full Technical Paper'
+        - deadline: '2027-05-15 23:59:59'
+          comment: 'Auxiliary Paper'
       timezone: AoE
       date: August 2-5, 2027
       place: Aizuwakamatsu, Japan
