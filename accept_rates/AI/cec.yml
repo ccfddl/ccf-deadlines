@@ -1,0 +1,9 @@
+- title: IEEE CEC
+  accept_rates:
+    # Competitive regular/special-session papers; excludes late-breaking and journal-to-conference talks.
+    - year: 2024
+      submitted: 665
+      accepted: 350
+      str: 52.6%(350/665 24')
+      rate: 0.5263157894736842
+      source: https://confcats-siteplex.s3.us-east-1.amazonaws.com/wcci24/IEEE_WCCI_2024_Program_d597587f62.pdf
