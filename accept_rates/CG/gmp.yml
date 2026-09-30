@@ -1,0 +1,41 @@
+- title: GMP
+  accept_rates:
+    # Full-length conference-paper acceptance for the CAGD proceedings route.
+    # Excludes invited journal presentations, posters and fast-track referrals.
+    - year: 2021
+      submitted: 48
+      accepted: 17
+      str: 35.4%(17/48 21')
+      rate: 0.354166666666667
+      source: https://asiagraphics.org/docs/AG-Newsletter-Issue1.pdf
+    - year: 2022
+      submitted: 42
+      accepted: 14
+      str: 33.3%(14/42 22')
+      rate: 0.333333333333333
+      source: https://asiagraphics.org/GMPConferences
+    - year: 2023
+      submitted: 36
+      accepted: 12
+      str: 33.3%(12/36 23')
+      rate: 0.333333333333333
+      source: https://asiagraphics.org/docs/AG-Newsletter-Issue9.pdf
+    # Regular-paper acceptance decisions / valid submissions; not presentation count.
+    - year: 2024
+      submitted: 140
+      accepted: 40
+      str: 28.6%(40/140 24')
+      rate: 0.285714285714286
+      source: https://asiagraphics.org/docs/GMP-2024-Summary-Report.pdf
+    - year: 2025
+      submitted: 56
+      accepted: 15
+      str: 26.8%(15/56 25')
+      rate: 0.267857142857143
+      source: https://asiagraphics.org/docs/GMP-2025-Summary-Report.pdf
+    - year: 2026
+      submitted: 60
+      accepted: 21
+      str: 35.0%(21/60 26')
+      rate: 0.350000000000000
+      source: https://asiagraphics.org/GMPConferences
