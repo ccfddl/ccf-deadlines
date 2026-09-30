@@ -1,20 +1,44 @@
 - title: ACM SIGGRAPH
   accept_rates:
+    # Technical Papers competitive selection; excludes 28 independently published TOG presentations. Numerator: Adobe Research interview with the program chair.
+    - year: 2021
+      submitted: 444
+      accepted: 149
+      str: 33.6%(149/444 21')
+      rate: 0.3355855855855856
+      source: https://www.siggraph.org/wp-content/uploads/2023/02/ACM-SIGGRAPH-Annual-Report-2021_2022.pdf
+    # Preserved journal-selection cohort / all journal-eligible submissions; excludes 61 conference-paper acceptances. Not the integrated acceptance ratio.
     - year: 2022
       submitted: 610
       accepted: 133
       str: 21.8%(133/610 22')
       rate: 0.218032786885246
-      source: https://github.com/emeryberger/csconferences
+      source: https://www.siggraph.org/wp-content/uploads/2023/02/ACM-SIGGRAPH-Annual-Report-2021_2022.pdf
+    # Existing row preserved without numerical change; original source remains inaccessible in this audit.
     - year: 2023
       submitted: 611
       accepted: 212
       str: 34.7%(212/611 23', 126 journal papers, 86 conference papers)
       rate: 0.3469721767594108
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3588432
+    # Integrated journal + conference selection; excludes 27 independently published TOG presentations.
     - year: 2024
       submitted: 844
       accepted: 252
       str: 29.9%(252/844 24')
       rate: 0.2985781990521327
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3641519
+    # Integrated Technical Papers selection, as reported by the Technical Papers Chair on 15 August 2025.
+    - year: 2025
+      submitted: 972
+      accepted: 306
+      str: 31.5%(306/972 25')
+      rate: 0.3148148148148148
+      source: https://www.cs.sfu.ca/~haoz/news.html
+    # Integrated selection / complete submissions: 132 journal + 195 conference papers. Includes accepted papers with deferred presentations.
+    - year: 2026
+      submitted: 1177
+      accepted: 327
+      str: 27.8%(327/1177 26')
+      rate: 0.2778249787595582
+      source: https://doi.org/10.1145/3815597
