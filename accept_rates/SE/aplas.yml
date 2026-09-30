@@ -31,3 +31,11 @@
       str: 46.4%(13/28 25')
       rate: 0.464285714285714
       source: https://link.springer.com/book/10.1007/978-981-95-3585-9
+
+    # Public HotCRP accepted-decision/submission cohort; not a proceedings census.
+    - year: 2026
+      submitted: 34
+      accepted: 15
+      str: 44.1%(15/34 26')
+      rate: 0.441176470588235
+      source: https://aplas26.hotcrp.com/
