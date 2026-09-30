@@ -10,7 +10,7 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
 
 <table>
   <tr>
-    <td align="center"><b><a href="https://ccfddl.github.io/">🌐 Website Portal<br></a>Main Site</b></td>
+    <td align="center"><b><a href="https://ccfddl.com/">🌐 Website Portal<br></a>Main Site</b></td>
     <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg">📱 Wechat Applet</a><br>Available Now</b></td>
     <td align="center"><b><a href="https://ccfddl.top/">🌐 Tabular Portal</a><br>No Ladder Required</b></td>
   </tr>
