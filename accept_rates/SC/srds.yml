@@ -1,0 +1,37 @@
+- title: SRDS
+  accept_rates:
+    # Main technical program: research + PER; includes three research selections with shepherding.
+    - year: 2021
+      submitted: 106
+      accepted: 31
+      str: 29.2%(31/106 21')
+      rate: 0.29245283018867924
+      source: https://doi.org/10.1109/SRDS53918.2021.00006
+    # Received submissions include five desk rejections and one withdrawal.
+    - year: 2022
+      submitted: 105
+      accepted: 24
+      str: 22.9%(24/105 22')
+      rate: 0.22857142857142856
+      source: https://doi.org/10.1109/SRDS55811.2022.00006
+    # Completed full-paper submissions; 89 abstract registrations are not the denominator.
+    - year: 2023
+      submitted: 61
+      accepted: 23
+      str: 37.7%(23/61 23')
+      rate: 0.3770491803278688
+      source: https://doi.org/10.1109/SRDS60354.2023.00006
+    # Final program after one of 27 accepted papers withdrew.
+    - year: 2024
+      submitted: 87
+      accepted: 26
+      str: 29.9%(26/87 24')
+      rate: 0.2988505747126437
+      source: https://doi.org/10.1109/SRDS64841.2024.00006
+    # Current CFP-linked main technical-program submission system cohort.
+    - year: 2026
+      submitted: 114
+      accepted: 35
+      str: 30.7%(35/114 26')
+      rate: 0.30701754385964913
+      source: https://hotcrp.inesctec.pt/srds26/
