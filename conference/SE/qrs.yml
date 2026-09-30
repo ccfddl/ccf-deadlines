@@ -11,8 +11,9 @@
       id: qrs21
       link: https://qrs21.techconf.org/
       timeline:
-        - abstract_deadline: '2021-08-15 23:59:59'
-          deadline: '2021-08-22 23:59:59'
+        - abstract_deadline: '2021-08-15 23:59:00'
+          deadline: '2021-09-01 23:59:00'
+          comment: 'Regular papers; official full-paper extension. Clock 23:59:00 and timezone AoE use repository defaults because neither is published.'
       timezone: AoE
       date: December 6-10, 2021
       place: Hainan Island, China
