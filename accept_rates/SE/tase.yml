@@ -1,0 +1,44 @@
+- title: TASE
+  accept_rates:
+    # 24 accepted from59 full submissions;2–4reviews (mostly3);3invited keynotes separate.
+    - year: 2021
+      submitted: 59
+      accepted: 24
+      str: 40.7%(24/59 21')
+      rate: 0.4067796610169492
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9546735
+    # 21long+5short accepted from71received;4keynotes and affiliatedworkshop excluded.
+    - year: 2022
+      submitted: 71
+      accepted: 26
+      str: 36.6%(26/71 22')
+      rate: 0.36619718309859156
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-10363-6/1
+    # 19long+2short accepted from49received;3keynotes excluded.
+    - year: 2023
+      submitted: 49
+      accepted: 21
+      str: 42.9%(21/49 23')
+      rate: 0.42857142857142855
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-35257-7/1
+    # 24long+2short accepted from76received;2keynotes excluded. Publisherchapter total28 notcompetitive count.
+    - year: 2024
+      submitted: 76
+      accepted: 26
+      str: 34.2%(26/76 24')
+      rate: 0.34210526315789475
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-64626-3/1
+    # 20long+1short accepted from66received;2invited keynotes excluded. Publishermixedwording notused.
+    - year: 2025
+      submitted: 66
+      accepted: 21
+      str: 31.8%(21/66 25')
+      rate: 0.3181818181818182
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-98208-8/1
+    # 23long+5short accepted from64effective submissions.3keynotes excluded; effective/valid denominator, not unqualifiedgross received; desk/withdrawal total unstated.
+    - year: 2026
+      submitted: 64
+      accepted: 28
+      str: 43.8%(28/64 26')
+      rate: 0.4375
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-30693-7/1
