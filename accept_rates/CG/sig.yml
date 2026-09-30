@@ -1,6 +1,7 @@
 - title: ACM SIGGRAPH
   accept_rates:
     # Technical Papers competitive selection; excludes 28 independently published TOG presentations. Numerator: Adobe Research interview with the program chair.
+    # Accepted count: https://research.adobe.com/news/siggraph-2021-technical-paper-program-sylvain-paris/
     - year: 2021
       submitted: 444
       accepted: 149
