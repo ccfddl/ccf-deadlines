@@ -15,7 +15,7 @@
           deadline: TBD
           comment: 'Regular full papers; abstract 2021-01-28, paper 2021-02-04; cutoff clock and timezone unverified; timezone is a schema placeholder'
       timezone: UTC+0
-      date: July 10-14, 2021
+      date: July 12-14, 2021
       place: Online
     - year: 2022
       id: gecco22
@@ -25,7 +25,7 @@
           deadline: TBD
           comment: 'Regular full papers; abstract 2022-01-27, paper 2022-02-03; cutoff clock and timezone unverified; timezone is a schema placeholder'
       timezone: UTC+0
-      date: July 9-13, 2022
+      date: July 11-13, 2022
       place: Boston, USA (Hybrid)
     - year: 2024
       id: gecco24
@@ -35,7 +35,7 @@
           deadline: TBD
           comment: 'Regular full papers; abstract 2024-01-25, paper 2024-02-01; cutoff clock and timezone unverified; timezone is a schema placeholder'
       timezone: UTC+0
-      date: July 14-18, 2024
+      date: July 16-18, 2024
       place: Melbourne, Australia (Hybrid)
     - year: 2025
       id: gecco25
