@@ -15,7 +15,7 @@
           deadline: TBD
           comment: Abstract December 10 and paper December 17, 2020; exact times and timezone unpublished (UTC+0 placeholder)
       timezone: UTC+0
-      date: May 24-28, 2021
+      date: May 24-27, 2021
       place: Virtual
     - year: 2022
       id: ets2022
@@ -23,17 +23,17 @@
       timeline:
         - abstract_deadline: TBD
           deadline: TBD
-          comment: Abstract December 14 and paper December 31, 2021, final extensions; exact times and timezone unpublished (UTC+0 placeholder)
-      timezone: UTC+0
-      date: May 23-27, 2022
+          comment: 'Abstract December 14 and paper December 31, 2021, final extensions. Source says Midnight, AoE; day-boundary interpretation is unresolved.'
+      timezone: AoE
+      date: May 24-26, 2022
       place: Barcelona, Spain (hybrid)
     - year: 2024
       id: ets2024
       link: https://ets24.ewi.tudelft.nl/
       timeline:
         - abstract_deadline: TBD
-          deadline: '2023-12-22 23:59:59'
-          comment: Abstract December 15, 2023, exact time unpublished; paper December 22, 2023 at 24:00 AoE, final extensions
+          deadline: '2023-12-23 00:00:00'
+          comment: 'Abstract December 15, 2023, cutoff clock unpublished. Full paper December 22 at 24:00 AoE, normalized exactly to December 23 at 00:00; final extensions.'
       timezone: AoE
       date: May 20-24, 2024
       place: The Hague, Netherlands
