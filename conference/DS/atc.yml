@@ -11,7 +11,7 @@
       id: atc2021
       link: https://www.usenix.org/conference/atc21/
       timeline:
-        - deadline: '2021-01-12 23:59:59'
+        - deadline: '2021-01-12 23:59:00'
       timezone: UTC
       date: July 14-16, 2021
       place: Virtual
