@@ -14,7 +14,7 @@
         - abstract_deadline: '2020-10-02 23:59:59'
           deadline: '2020-10-09 23:59:59'
       timezone: UTC-12
-      date: May 3-7, 2021
+      date: May 5-7, 2021
       place: Virtual
     - year: 2022
       id: aamas22
