@@ -7,6 +7,24 @@
     thcpl: N
   dblp: ca
   confs:
+    - year: 2021
+      id: casa2021
+      link: https://casa2021.ca/
+      timeline:
+        - deadline: '2021-03-06 23:59:00'
+          comment: 'Regular full papers: extended initial conference submission'
+      timezone: AoE
+      date: July 15-17, 2021
+      place: Online
+    - year: 2023
+      id: casa2023
+      link: https://cyprusconferences.org/casa2023/
+      timeline:
+        - deadline: '2023-03-12 23:59:00'
+          comment: 'Regular full papers: extended initial conference submission'
+      timezone: AoE
+      date: May 29-31, 2023
+      place: Limassol, Cyprus
     - year: 2024
       id: casa2024
       link: https://casa2024.wtu.edu.cn/index.htm
