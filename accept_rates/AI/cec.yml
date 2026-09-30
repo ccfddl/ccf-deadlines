@@ -1,5 +1,12 @@
 - title: IEEE CEC
   accept_rates:
+    # Regular papers after both review cycles; excludes late-breaking and journal-to-conference presentations.
+    - year: 2023
+      submitted: 230
+      accepted: 130
+      str: 56.5%(130/230 23')
+      rate: 0.5652173913043478
+      source: https://ieeexplore.ieee.org/abstract/document/10268824
     # Competitive regular/special-session papers; excludes late-breaking and journal-to-conference talks.
     - year: 2024
       submitted: 665
