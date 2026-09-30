@@ -1,0 +1,30 @@
+- title: SSE
+  accept_rates:
+    # Original chairs PDF1: 20regular+2short+1WIP accepted from43submissions;2invited papers excluded.
+    - year: 2023
+      submitted: 43
+      accepted: 23
+      str: 53.5%(23/43 23')
+      rate: 0.5348837209302325
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10234355
+    # Original chairs PDF1: 13full+7short+2WIP accepted from58received,including1desk reject;4invited excluded.
+    - year: 2024
+      submitted: 58
+      accepted: 22
+      str: 37.9%(22/58 24')
+      rate: 0.3793103448275862
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10664320
+    # Original chairs PDF1: 14full+5short accepted from53received,including1desk reject;keynotes excluded.
+    - year: 2025
+      submitted: 53
+      accepted: 19
+      str: 35.8%(19/53 25')
+      rate: 0.3584905660377358
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11120385
+    # Original chairs PDF1: 30full+10short accepted from100received,including23desk rejects;77reviewed not substituted. Excludes separate invited/symposia contributions.
+    - year: 2026
+      submitted: 100
+      accepted: 40
+      str: 40.0%(40/100 26')
+      rate: 0.4
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11664965
