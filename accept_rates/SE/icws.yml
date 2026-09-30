@@ -9,6 +9,15 @@
       str: 23.7%(46/194 21')
       rate: 0.237113402061856
       source: https://conferences.computer.org/services/2021/programs/2021ServicesProgram_final.pdf
+    # Regular-length selections from the explicitly reported 170 received submissions.
+    # The original chair report prints 14%, inconsistent with the exact 21/170 integers.
+    # The 24 short-paper selections and one separate invited paper are excluded.
+    - year: 2022
+      submitted: 170
+      accepted: 21
+      str: 12.4%(21/170 22')
+      rate: 0.12352941176470589
+      source: https://doi.org/10.1109/ICWS55610.2022.00011
     # Regular-length selection from received conference submissions; 22 short and one invited paper excluded from numerator.
     - year: 2023
       submitted: 268
