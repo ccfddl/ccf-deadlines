@@ -1,0 +1,34 @@
+# Full-paper decisions in the main symposia; short papers, workshops, and fast abstracts excluded.
+- title: COMPSAC
+  accept_rates:
+    - year: 2022
+      submitted: 264
+      accepted: 61
+      str: 23.1%(61/264 22')
+      rate: 0.231060606060606
+      source: https://doi.org/10.1109/COMPSAC54236.2022.00007
+    - year: 2023
+      submitted: 235
+      accepted: 62
+      str: 26.4%(62/235 23')
+      rate: 0.263829787234043
+      source: https://ieeecompsac.computer.org/2023/wp-content/uploads/sites/13/2023/06/COMPSAC2023_PROGRAM.pdf
+    - year: 2024
+      submitted: 296
+      accepted: 71
+      str: 24.0%(71/296 24')
+      rate: 0.239864864864865
+      source: https://ieeecompsac.computer.org/2024/wp-content/uploads/sites/14/2024/06/COMPSAC2024_webprogram.pdf
+    - year: 2025
+      submitted: 295
+      accepted: 81
+      str: 27.5%(81/295 25')
+      rate: 0.274576271186441
+      source: https://ieeecompsac.computer.org/2025/wp-content/uploads/sites/15/2025/07/WEB_COMPSAC2025_program-1.pdf
+    # 437 received; 424 reviewed after 13 desk rejections. Reported 28.5% uses 424.
+    - year: 2026
+      submitted: 437
+      accepted: 121
+      str: 27.7%(121/437 26')
+      rate: 0.276887871853547
+      source: https://ieeecompsac.computer.org/2026/wp-content/uploads/sites/18/2026/07/compsac2026_program7_8.pdf
