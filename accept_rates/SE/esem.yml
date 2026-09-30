@@ -1,0 +1,23 @@
+- title: ESEM
+  accept_rates:
+    # Technical papers / received submissions.
+    - year: 2021
+      submitted: 124
+      accepted: 24
+      str: 19.4%(24/124 21')
+      rate: 0.193548387096774
+      source: https://conf.researchr.org/home/esem-2021
+    # Combined competitive tracks, excluding 24 additional journal-first presentations.
+    - year: 2023
+      submitted: 129
+      accepted: 42
+      str: 32.6%(42/129 23')
+      rate: 0.325581395348837
+      source: https://doi.org/10.1109/ESEM56168.2023.10304848
+    # Technical papers / valid submissions after desk rejections.
+    - year: 2025
+      submitted: 145
+      accepted: 28
+      str: 19.3%(28/145 25')
+      rate: 0.193103448275862
+      source: https://doi.org/10.1109/ESEM64174.2025.00005
