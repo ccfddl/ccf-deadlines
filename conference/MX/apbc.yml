@@ -19,8 +19,8 @@
       id: apbc26
       link: https://www.apbc2026.com/home
       timeline:
-        - deadline: TBD
-          comment: 'Final extended paper deadline: July 17, 2026; exact time and timezone TBD (UTC+0 below is an unverified schema placeholder).'
-      timezone: UTC+0
+        - deadline: '2026-07-17 23:59:00'
+          comment: 'Regular full papers; extended submission deadline in the organizer EasyChair CFP. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
       date: October 21-24, 2026
       place: Hsinchu, Taiwan， China
