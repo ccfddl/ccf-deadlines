@@ -1,0 +1,46 @@
+- title: PacificVis
+  accept_rates:
+    # Unified full-paper track; final acceptances / received submissions.
+    - year: 2021
+      submitted: 80
+      accepted: 20
+      str: 25.0%(20/80 21')
+      rate: 0.250000000000000
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9438718
+    # Unified full-paper track; final acceptances / received submissions.
+    - year: 2022
+      submitted: 75
+      accepted: 21
+      str: 28.0%(21/75 22')
+      rate: 0.280000000000000
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9787871
+    # Unified full-paper track; final acceptances / received submissions.
+    - year: 2023
+      submitted: 80
+      accepted: 23
+      str: 28.8%(23/80 23')
+      rate: 0.287500000000000
+      source: https://pure.rug.nl/ws/portalfiles/portal/916842874/Welcome_Message_from_the_IEEE_PacificVis_2023_Chairs.pdf
+    # Conference full-paper track; final acceptances / received submissions.
+    - year: 2024
+      submitted: 90
+      accepted: 27
+      str: 30.0%(27/90 24')
+      rate: 0.300000000000000
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10541638
+    # Journal full-paper track; final acceptances / received submissions.
+    # Conference-track figures unavailable; major-revision referrals excluded.
+    - year: 2025
+      submitted: 123
+      accepted: 14
+      str: 11.4%(14/123 25')
+      rate: 0.113821138211382
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11030230
+    # Journal full-paper track; final acceptances / received submissions.
+    # Conference-track figures unavailable; major-revision referrals excluded.
+    - year: 2026
+      submitted: 99
+      accepted: 19
+      str: 19.2%(19/99 26')
+      rate: 0.191919191919192
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11570241
