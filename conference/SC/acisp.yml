@@ -16,6 +16,24 @@
       timezone: AoE
       date: December 1-3, 2021
       place: Perth, Australia
+    - year: 2022
+      id: acisp22
+      link: https://uow-ic2.github.io/acisp2022/
+      timeline:
+        - deadline: '2022-02-21 23:59:00'
+          comment: Regular paper submission (extended)
+      timezone: AoE
+      date: November 28-30, 2022
+      place: Wollongong, Australia
+    - year: 2023
+      id: acisp23
+      link: https://www.qut.edu.au/about/faculty-of-science/school-of-computer-science/acisp
+      timeline:
+        - deadline: '2023-02-13 23:59:00'
+          comment: Regular paper submission (extended)
+      timezone: AoE
+      date: July 5-7, 2023
+      place: Brisbane, Australia
     - year: 2024
       id: acisp24
       link: https://www.acisp24.com/
@@ -24,7 +42,7 @@
           comment: 1st round Deadline
         - deadline: '2024-02-19 23:59:59'
           comment: 2nd round Deadline
-      timezone: AoE
+      timezone: UTC+10
       date: July 15-17, 2024
       place: Australia
     - year: 2025
@@ -33,8 +51,8 @@
       timeline:
         - deadline: '2024-11-06 23:59:59'
           comment: 1st round Deadline
-        - deadline: '2025-02-19 23:59:59'
-          comment: 2nd round Deadline
+        - deadline: TBD
+          comment: '2nd round regular paper; official CFP lists February 19, 2025, but homepage lists February 9, 2025 at 23:59 AoE; unresolved date conflict'
       timezone: AoE
       date: July 14-16, 2025
       place: Wollongong, Australia
