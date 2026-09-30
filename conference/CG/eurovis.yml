@@ -14,16 +14,16 @@
         - abstract_deadline: '2020-11-25 23:59:00'
           deadline: '2020-12-04 23:59:00'
       timezone: UTC+0
-      date: June 14-18, 2021
+      date: June 15-18, 2021
       place: Online
     - year: 2022
       id: eurovis2022
-      link: https://listserv.uni-tuebingen.de/pipermail/ieee_vis/2021/002067.html
+      link: https://conferences.eg.org/eurovis2022/
       timeline:
         - abstract_deadline: '2021-11-24 23:59:00'
           deadline: '2021-12-02 23:59:00'
       timezone: UTC+0
-      date: June 13-17, 2022
+      date: June 14-17, 2022
       place: Rome, Italy
     - year: 2023
       id: eurovis2023
@@ -36,12 +36,12 @@
       place: Leipzig, Germany
     - year: 2024
       id: eurovis2024
-      link: https://listserv.uni-tuebingen.de/pipermail/ieee_vis/2023/002610.html
+      link: https://www.eg.org/wp/event/eurovis-2024/
       timeline:
         - abstract_deadline: '2023-11-23 23:59:00'
           deadline: '2023-11-30 23:59:00'
       timezone: UTC+0
-      date: May 27-31, 2024
+      date: May 28-31, 2024
       place: Odense, Denmark
     - year: 2025
       id: eurovis2025
