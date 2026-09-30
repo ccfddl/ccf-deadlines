@@ -1,0 +1,32 @@
+- title: DATE
+  accept_rates:
+    - year: 2021
+      submitted: 766
+      accepted: 183
+      str: 23.9%(183/766 21')
+      rate: 0.238903394255875
+      source: https://past.date-conference.com/proceedings-archive/2021/html/wel.html
+    - year: 2023
+      submitted: 834
+      accepted: 205
+      str: 24.6%(205/834 23')
+      rate: 0.245803357314149
+      source: https://past.date-conference.com/proceedings-archive/2023/DATA/frontmatter.pdf
+    - year: 2024
+      submitted: 996
+      accepted: 244
+      str: 24.5%(244/996 24')
+      rate: 0.244979919678715
+      source: https://past.date-conference.com/proceedings-archive/2024/DATA/frontmatter.pdf
+    - year: 2025
+      submitted: 1213
+      accepted: 302
+      str: 24.9%(302/1213 25')
+      rate: 0.248969497114592
+      source: https://past.date-conference.com/proceedings-archive/2025/START.pdf
+    - year: 2026
+      submitted: 1310
+      accepted: 325
+      str: 24.8%(325/1310 26')
+      rate: 0.248091603053435
+      source: https://www.linkedin.com/posts/date-conference_author-notification-for-d-a-t-and-e-tracks-activity-7391795205781499904-JE32
