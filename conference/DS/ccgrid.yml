@@ -7,6 +7,26 @@
     thcpl: B
   dblp: ccgrid
   confs:
+    - year: 2021
+      id: ccgrid21
+      link: https://clouds.cis.unimelb.edu.au/ccgrid2021/
+      timeline:
+        - abstract_deadline: '2020-12-08 23:59:00'
+          deadline: '2020-12-15 23:59:00'
+          comment: Calendar dates and AoE verified; 23:59:00 is the repository default for unpublished times
+      timezone: AoE
+      date: May 11-13, 2021
+      place: Virtual
+    - year: 2024
+      id: ccgrid24
+      link: https://2024.ccgrid-conference.org/
+      timeline:
+        - abstract_deadline: '2023-12-04 23:59:00'
+          deadline: '2023-12-11 23:59:00'
+          comment: Final extended dates and AoE verified; 23:59:00 is the repository default for unpublished times
+      timezone: AoE
+      date: May 7-9, 2024
+      place: Philadelphia, USA
     - year: 2026
       id: ccgrid26
       link: https://www.ccgrid2026.org/
