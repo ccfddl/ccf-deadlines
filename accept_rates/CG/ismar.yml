@@ -1,0 +1,38 @@
+- title: ISMAR
+  accept_rates:
+    # Separate conference-paper track; excludes journal-track and poster acceptances.
+    - year: 2021
+      submitted: 237
+      accepted: 56
+      str: 23.6%(56/237 21')
+      rate: 0.236286919831224
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9583817
+    # Separate conference-paper track; excludes journal-track and poster acceptances.
+    - year: 2022
+      submitted: 441
+      accepted: 93
+      str: 21.1%(93/441 22')
+      rate: 0.210884353741497
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9995263
+    # Separate conference-paper track; excludes journal-track and poster acceptances.
+    - year: 2023
+      submitted: 397
+      accepted: 128
+      str: 32.2%(128/397 23')
+      rate: 0.322418136020151
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10316409
+    # Conference-stage pool: 369 direct + 68 prior journal resubmissions.
+    # Not unique submissions across the whole event; posters and journal acceptances excluded.
+    - year: 2024
+      submitted: 437
+      accepted: 133
+      str: 30.4%(133/437 24')
+      rate: 0.304347826086957
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10765389
+    # Unified pool: 157 conference + 60 journal paper acceptances; posters excluded.
+    - year: 2025
+      submitted: 763
+      accepted: 217
+      str: 28.4%(217/763 25')
+      rate: 0.284403669724771
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11220286
