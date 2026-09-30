@@ -39,8 +39,8 @@
       link: https://fpt2024.org/
       timeline:
         - abstract_deadline: '2024-07-21 23:59:59'
-          deadline: TBD
-          comment: Regular paper; CFP July 28, 2024 vs HotCRP July 30, 2024 23:59:59 AoE
+          deadline: 'TBD'
+          comment: 'Official HotCRP abstract cutoff. Full-paper date conflicts: CFP July 28 versus HotCRP July 30 AoE; no date selected.'
       timezone: AoE
       date: December 10 - December 12, 2024
       place: Sydney, Australia
