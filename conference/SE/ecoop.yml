@@ -30,8 +30,8 @@
       id: ecoop23
       link: https://2023.ecoop.org/
       timeline:
-        - deadline: TBD
-          comment: 'Regular submission R1: 2022-12-01 AoE; exact time unpublished.'
+        - deadline: '2022-12-01 23:59:00'
+          comment: 'Regular submission R1: 2022-12-01 AoE; missing clock uses repository default 23:59:00.'
         - deadline: '2023-03-01 23:59:59'
           comment: Submission R2
       timezone: AoE
