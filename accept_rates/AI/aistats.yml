@@ -1,5 +1,12 @@
 - title: AISTATS
   accept_rates:
+    # Original program-chair opening remarks, slide 2 at 00:55; accepted decisions.
+    - year: 2021
+      submitted: 1527
+      accepted: 455
+      str: 29.8%(455/1527 21')
+      rate: 0.297969875573019
+      source: https://slideslive.com/38955708/opening-remarks
     - year: 2024
       submitted: 1980
       accepted: 546
