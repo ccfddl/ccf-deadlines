@@ -23,7 +23,7 @@
         - abstract_deadline: '2022-06-14 23:59:00'
           deadline: '2022-06-21 23:59:00'
       timezone: AoE
-      date: November 6-9, 2022
+      date: November 7-9, 2022
       place: Boston, MA, USA
     - year: 2023
       id: sensys23
@@ -41,7 +41,7 @@
         - abstract_deadline: '2024-06-24 23:59:00'
           deadline: '2024-07-01 23:59:00'
       timezone: AoE
-      date: November 4-7, 2024
+      date: November 5-7, 2024
       place: Hangzhou, China
     - year: 2025
       id: sensys25
@@ -51,7 +51,7 @@
           deadline: '2024-11-14 23:59:00'
           comment: 'Abstract registration is optional; final registration and submission deadlines coincide.'
       timezone: AoE
-      date: May 6-9, 2025
+      date: May 7-9, 2025
       place: Irvine, CA, USA
     - year: 2026
       id: sensys26
