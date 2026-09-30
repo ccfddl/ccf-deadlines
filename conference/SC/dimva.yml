@@ -13,21 +13,28 @@
       timeline:
         - deadline: '2021-03-01 23:59:59'
           comment: Paper submission deadline
-        - deadline: '2021-05-14 23:59:59'
-          comment: Final paper submission deadline
       timezone: AoE
       date: July 14-16, 2021
       place: Virtual
+    - year: 2022
+      id: dimva22
+      link: https://sites.unica.it/dimva2022/
+      timeline:
+        - deadline: '2022-03-17 23:59:59'
+          comment: Regular full paper submission deadline (extended)
+      timezone: AoE
+      date: June 29-July 1, 2022
+      place: Cagliari, Italy
     - year: 2024
       id: dimva24
       link: https://dimva.org/dimva2024/
       timeline:
         - deadline: '2023-12-19 23:59:59'
           comment: Paper submission deadline
-        - deadline: '2024-02-14 23:59:59'
-          comment: Final paper submission deadline
+        - deadline: '2024-02-21 23:59:59'
+          comment: Cycle 2 regular full paper submission deadline (extended)
       timezone: AoE
-      date: July 17-19, 2024
+      date: July 18-19, 2024
       place: Lausanne, Switzerland
     - year: 2025
       id: dimva25
@@ -35,10 +42,10 @@
       timeline:
         - deadline: '2024-12-10 23:59:59'
           comment: Paper submission deadline
-        - deadline: '2025-02-12 23:59:59'
-          comment: Final paper submission deadline
+        - deadline: '2025-02-19 23:59:00'
+          comment: Cycle 2 regular full paper submission deadline (extended); linked HotCRP confirms 2025, homepage year is a typo
       timezone: AoE
-      date: July 9-11, 2025
+      date: July 10-11, 2025
       place: Graz University of Technology, Graz, Austria
     - year: 2026
       id: dimva26
