@@ -1,0 +1,39 @@
+# Federation totals for ESOP, FASE, FoSSaCS and TACAS, as reported in ETAPS forewords.
+- title: ETAPS
+  accept_rates:
+    - year: 2021
+      submitted: 260
+      accepted: 115
+      str: 44.2%(115/260 21')
+      rate: 0.442307692307692
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-71500-7/1
+    - year: 2022
+      submitted: 362
+      accepted: 111
+      str: 30.7%(111/362 22')
+      rate: 0.306629834254144
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-99429-7/1
+    - year: 2023
+      submitted: 361
+      accepted: 124
+      str: 34.3%(124/361 23')
+      rate: 0.343490304709141
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-30826-0/1
+    - year: 2024
+      submitted: 352
+      accepted: 117
+      str: 33.2%(117/352 24')
+      rate: 0.332386363636364
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-57259-3/1
+    - year: 2025
+      submitted: 329
+      accepted: 106
+      str: 32.2%(106/329 25')
+      rate: 0.322188449848024
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-90900-9/1
+    - year: 2026
+      submitted: 456
+      accepted: 138
+      str: 30.3%(138/456 26')
+      rate: 0.302631578947368
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-22774-4/1
