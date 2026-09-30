@@ -1,8 +1,46 @@
+# Technical/research track only; yearly denominator and decision stages differ as noted.
 - title: ICSE
   accept_rates:
+    # 138 accepted / 615 received; 13 desk rejects, 602 reviewed.
+    - year: 2021
+      submitted: 615
+      accepted: 138
+      str: 22.4%(138/615 21')
+      rate: 0.224390243902439
+      source: https://speakerdeck.com/avandeursen/opening-icse-2021-technical-track
+    # 197 accepted / 691 reported technical-track submissions.
+    - year: 2022
+      submitted: 691
+      accepted: 197
+      str: 28.5%(197/691 22')
+      rate: 0.285094066570188
+      source: https://www.computer.org/csdl/proceedings-article/icse/2022/922100z031/1EmrWHZ7Sc8
+    # 208 final acceptances / 797 received; 780 reviewed, one later withdrawal -> 207 published.
+    - year: 2023
+      submitted: 797
+      accepted: 208
+      str: 26.1%(208/797 23')
+      rate: 0.260978670012547
+      source: https://doi.org/10.1109/ICSE48619.2023.00006
+    # Official announcement: 234 accepted / 1051 received across both cycles.
+    # Later chair report gives 234/1049 excluding desk rejects; no desk count inferred.
     - year: 2024
       submitted: 1051
       accepted: 234
       str: 22.3%(234/1051 24')
       rate: 0.2226451
       source: https://twitter.com/ICSEconf/status/1738152138608406742
+    # Both cycles reviewed after desk/early withdrawals: 508 + 642; final 112 + 133 accepted.
+    - year: 2025
+      submitted: 1150
+      accepted: 245
+      str: 21.3%(245/1150 25')
+      rate: 0.213043478260870
+      source: http://www.mysmu.edu/faculty/davidlo/talks/ICSE2025-Opening-v2.4.pdf
+    # Both cycles received: 660 + 809; 321 final acceptances include completed major revisions.
+    - year: 2026
+      submitted: 1469
+      accepted: 321
+      str: 21.9%(321/1469 26')
+      rate: 0.218515997277059
+      source: https://icse2026.hotcrp.com/
