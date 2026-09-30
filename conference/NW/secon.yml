@@ -21,30 +21,30 @@
       id: secon22
       link: https://secon2022.ieee-secon.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Regular paper registration: May 9, 2022; submission: May 16, 2022; exact cutoff time and timezone not specified'
-      timezone: Unknown
+        - abstract_deadline: '2022-05-09 23:59:00'
+          deadline: '2022-05-16 23:59:00'
+          comment: 'Regular paper registration: May 9, 2022; submission: May 16, 2022; exact cutoff time and timezone not specified; 23:59:00 is the repository default; AoE is the repository default for unspecified timezone'
+      timezone: AoE
       date: September 20-22, 2022
       place: Virtual
     - year: 2023
       id: secon23
       link: https://secon2023.ieee-secon.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Regular paper registration and submission extended to April 5, 2023; exact cutoff time and timezone not specified'
-      timezone: Unknown
+        - abstract_deadline: '2023-04-05 23:59:00'
+          deadline: '2023-04-05 23:59:00'
+          comment: 'Regular paper registration and submission extended to April 5, 2023; exact cutoff time and timezone not specified; 23:59:00 is the repository default; AoE is the repository default for unspecified timezone'
+      timezone: AoE
       date: September 12-14, 2023
       place: Madrid, Spain
     - year: 2024
       id: secon24
       link: https://secon2024.ieee-secon.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Regular paper registration and submission extended to August 30, 2024; exact cutoff time and timezone not specified'
-      timezone: Unknown
+        - abstract_deadline: '2024-08-30 23:59:00'
+          deadline: '2024-08-30 23:59:00'
+          comment: 'Regular paper registration and submission extended to August 30, 2024; exact cutoff time and timezone not specified; 23:59:00 is the repository default; AoE is the repository default for unspecified timezone'
+      timezone: AoE
       date: December 3-4, 2024
       place: Phoenix, AZ, USA
     - year: 2026
