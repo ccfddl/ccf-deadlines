@@ -11,29 +11,29 @@
       id: itc-asia2023
       link: https://www.itc-asia.info.hiroshima-cu.ac.jp/2023/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular paper: abstract 2023-05-05; paper 2023-05-12. Exact time and timezone not published.'
-      timezone: Unknown
+        - abstract_deadline: '2023-05-05 23:59:00'
+          deadline: '2023-05-12 23:59:00'
+          comment: 'Calendar dates verified; 23:59:00 and AoE are repository defaults because source time and timezone are unpublished.'
+      timezone: AoE
       date: September 13-14, 2023
       place: Kunibiki Messe, Matsue, Shimane, Japan
     - year: 2024
       id: itc-asia2024
       link: https://www.castest.com.cn/itcasia2024
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular paper: abstract 2024-05-01; paper 2024-05-01. Exact time and timezone not published.'
-      timezone: Unknown
+        - abstract_deadline: '2024-05-01 23:59:00'
+          deadline: '2024-05-01 23:59:00'
+          comment: 'Calendar dates verified; 23:59:00 and AoE are repository defaults because source time and timezone are unpublished.'
+      timezone: AoE
       date: August 19-20, 2024
       place: Changsha, China
     - year: 2025
       id: itc-asia2025
       link: https://www.itc-asia.info.hiroshima-cu.ac.jp/2025/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper: paper 2025-08-12. Exact time and timezone not published.'
-      timezone: Unknown
+        - deadline: '2025-08-12 23:59:00'
+          comment: 'Calendar dates verified; 23:59:00 and AoE are repository defaults because source time and timezone are unpublished.'
+      timezone: AoE
       date: December 17-19, 2025
       place: Conference Tower of Tokyo Big Sight, Tokyo, Japan
     - year: 2026
