@@ -7,6 +7,42 @@
     thcpl: B
   dblp: emsoft
   confs:
+    - year: 2021
+      id: emsoft21
+      link: https://esweek.org/wp-content/uploads/2020/12/EMSOFT_2021_CfP.pdf
+      timeline:
+        - abstract_deadline: '2021-04-02 23:59:00'
+          deadline: '2021-04-09 23:59:00'
+      timezone: AoE
+      date: October 11-13, 2021
+      place: Virtual
+    - year: 2022
+      id: emsoft22
+      link: https://esweek.org/wp-content/uploads/2022/02/PDF-EMSOFT_2022_CFP.pdf
+      timeline:
+        - abstract_deadline: '2022-03-31 23:59:00'
+          deadline: '2022-04-07 23:59:00'
+      timezone: AoE
+      date: October 10-12, 2022
+      place: Shanghai, China; Phoenix, USA; Virtual
+    - year: 2023
+      id: emsoft23
+      link: https://esweek.org/wp-content/uploads/2023/01/CFP-EMSOFT-ESWEEK2023.pdf
+      timeline:
+        - abstract_deadline: '2023-03-16 23:59:00'
+          deadline: '2023-03-23 23:59:00'
+      timezone: AoE
+      date: September 18-20, 2023
+      place: Hamburg, Germany
+    - year: 2024
+      id: emsoft24
+      link: https://2024.esweek.org/
+      timeline:
+        - abstract_deadline: '2024-03-24 23:59:00'
+          deadline: '2024-03-31 23:59:00'
+      timezone: AoE
+      date: September 30 - October 2, 2024
+      place: Raleigh, NC, USA
     - year: 2025
       id: emsoft25
       link: https://esweek.org/emsoft/
@@ -14,7 +50,7 @@
         - abstract_deadline: '2025-03-23 23:59:59'
           deadline: '2025-03-30 23:59:59'
       timezone: AoE
-      date: September 28 - October 3, 2025
+      date: September 29 - October 1, 2025
       place: TAIPEI, TAIWAN
     - year: 2026
       id: emsoft26
@@ -23,5 +59,5 @@
         - abstract_deadline: '2026-03-23 23:59:59'
           deadline: '2026-03-30 23:59:59'
       timezone: AoE
-      date: October 4 - 9, 2026
+      date: October 5-7, 2026
       place: Barcelona, Spain
