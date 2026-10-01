@@ -43,7 +43,7 @@ def text(value: object) -> str:
 def format_deadline(value: object, timezone: str) -> str:
     raw = str(value or "").strip()
     if not KNOWN_DATE.fullmatch(raw):
-        return "To be announced"
+        return "Not listed"
     shown = raw[:-3] if len(raw) == 19 else raw
     return f"{text(shown)} <span class=\"timezone\">{text(timezone)}</span>"
 
@@ -85,7 +85,7 @@ def deadline_rows(edition: dict) -> str:
             rows.append(
                 f"<tr><th scope=\"row\">{label}</th><td>{format_deadline(point[field], edition.get('timezone', ''))}{note}</td></tr>"
             )
-    return "".join(rows) or '<tr><td colspan="2">No deadline announced yet.</td></tr>'
+    return "".join(rows) or '<tr><td colspan="2">No deadline listed for this edition.</td></tr>'
 
 
 def edition_page(conference: dict, edition: dict, categories: dict[str, str]) -> str:
@@ -93,8 +93,8 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str]) ->
     path = edition_path(conference, edition)
     canonical = BASE_URL + path
     known = [str(point.get("deadline")) for point in edition.get("timeline", []) if KNOWN_DATE.fullmatch(str(point.get("deadline", "")))]
-    deadline_summary = f"paper deadline {min(known)[:16]} {edition.get('timezone', '')}" if known else "paper deadline to be announced"
-    description = f"{name} {year}: {deadline_summary}; {edition.get('date') or 'conference dates TBA'}; {edition.get('place') or 'location TBA'}. Deadlines and past editions on CCFDDL."
+    deadline_summary = f"paper deadline {min(known)[:16]} {edition.get('timezone', '')}" if known else "paper deadline not listed"
+    description = f"{name} {year}: {deadline_summary}; {edition.get('date') or 'conference dates not listed'}; {edition.get('place') or 'location not listed'}. Deadlines and past editions on CCFDDL."
     title = f"{name} {year} Deadline and Conference Dates | CCFDDL"
     category = categories.get(conference["sub"], conference["sub"])
     ranks = conference.get("rank") or {}
@@ -108,7 +108,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str]) ->
     <p class="eyebrow">{text(category)}{(' · ' + rank_text) if rank_text else ''}</p>
     <h1>{text(name)} {year} deadlines</h1>
     <p class="lead">{text(conference.get('description') or name)}</p>
-    <div class="facts"><div><strong>Conference dates / 会议时间</strong><span>{text(edition.get('date') or 'To be announced')}</span></div><div><strong>Location / 地点</strong><span>{text(edition.get('place') or 'To be announced')}</span></div></div>
+    <div class="facts"><div><strong>Conference dates / 会议时间</strong><span>{text(edition.get('date') or 'Not listed')}</span></div><div><strong>Location / 地点</strong><span>{text(edition.get('place') or 'Not listed')}</span></div></div>
     <section><h2>Submission deadlines / 投稿时间</h2><table><tbody>{deadline_rows(edition)}</tbody></table><p class="hint">Times use the conference's stated time zone. Check the official site before submitting.</p>{official_link}</section>
     <section><h2>Other editions</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
     """
