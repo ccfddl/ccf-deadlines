@@ -7,14 +7,39 @@
     thcpl: N
   dblp: uic
   confs:
+    - year: 2022
+      id: uic22
+      link: https://www.ieee-smart-world.org/2022/uic/
+      timeline:
+        - deadline: '2022-09-20 23:59:00'
+      timezone: AoE
+      date: December 15-18, 2022
+      place: Haikou, China (Hybrid)
+    - year: 2023
+      id: uic23
+      link: https://ieee-smart-world-congress.org/program/uic2023/overview
+      timeline:
+        - deadline: '2023-04-14 23:59:00'
+      timezone: UTC-8
+      date: August 28-31, 2023
+      place: Portsmouth, United Kingdom
+    - year: 2024
+      id: uic24
+      link: https://www.ieee-smart-world.org/2024/uic/
+      timeline:
+        - deadline: TBD
+          comment: Conflicting regular-paper dates (August 15 / August 20)
+      timezone: AoE
+      date: December 3-6, 2024
+      place: Nadi, Fiji (Hybrid)
     - year: 2025
       id: uic25
-      link: https://www.ieee-smart-world.org/2025/
+      link: https://ieee-swc-2025.github.io/uic/
       timeline:
         - deadline: '2025-05-01 23:59:59'
           comment: 'Conference Papers'
       timezone: UTC-4
-      date: Aug 18 - 22, 2025
+      date: August 20-22, 2025
       place: Calgary, Alberta, Canada
     - year: 2026
       id: uic26
@@ -22,5 +47,5 @@
       timeline:
         - deadline: '2026-05-31 23:59:59'
       timezone: UTC+2
-      date: Sept 7 - 11, 2026
+      date: September 8-11, 2026
       place: Rende, Italy
