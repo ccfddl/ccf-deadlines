@@ -5,6 +5,41 @@
     ccf: C
   dblp: acmidc
   confs:
+    - year: 2021
+      id: idc21
+      link: https://idc.acm.org/2021/
+      timeline:
+        - abstract_deadline: '2021-01-26 00:00:00'
+          deadline: '2021-02-02 00:00:00'
+      timezone: AoE
+      date: June 28-30, 2021
+      place: Virtual
+    - year: 2022
+      id: idc22
+      link: https://idc.acm.org/2022/
+      timeline:
+        - abstract_deadline: '2022-01-15 00:00:00'
+          deadline: '2022-01-22 00:00:00'
+      timezone: AoE
+      date: June 28-30, 2022
+      place: Braga, Portugal
+    - year: 2023
+      id: idc23
+      link: https://idc.acm.org/2023/
+      timeline:
+        - deadline: '2023-01-24 23:59:00'
+      timezone: AoE
+      date: June 20-22, 2023
+      place: Chicago, Illinois, USA
+    - year: 2024
+      id: idc24
+      link: https://idc.acm.org/2024/
+      timeline:
+        - abstract_deadline: '2024-01-18 00:00:00'
+          deadline: '2024-01-25 00:00:00'
+      timezone: AoE
+      date: June 18-20, 2024
+      place: Delft, Netherlands
     - year: 2025
       id: idc25
       link: https://idc.acm.org/2025/
