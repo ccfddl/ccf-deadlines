@@ -11,8 +11,7 @@
       id: icfem22
       link: https://maude.ucm.es/ICFEM22/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Extended regular paper submission: May 7, 2022 AoE. Official clock not published; previous separate abstract deadline withdrawn.'
+        - deadline: '2022-05-07 23:59:00'
       timezone: AoE
       date: October 25-27, 2022
       place: Madrid, Spain
@@ -23,16 +22,15 @@
         - abstract_deadline: '2023-05-21 23:59:59'
           deadline: '2023-05-28 23:59:59'
       timezone: AoE
-      date: November 21 - November 24, 2023
+      date: November 22-24, 2023
       place: Brisbane, Australia
     - year: 2024
       id: icfem24
       link: https://icfem2024.info/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Extended regular paper submission: July 8, 2024. Official clock and timezone not published.'
+        - deadline: '2024-07-08 23:59:00'
       timezone: AoE
-      date: December 02 - December 06, 2024
+      date: December 4-6, 2024
       place: Hiroshima, Japan
     - year: 2025
       id: icfem25
@@ -41,13 +39,14 @@
         - abstract_deadline: '2025-06-11 23:59:00'
           deadline: '2025-06-15 23:59:00'
       timezone: AoE
-      date: November 10 - 13, 2025
+      date: November 11-13, 2025
       place: Hangzhou, China
     - year: 2026
       id: icfem26
       link: https://icfem2026.github.io/
       timeline:
-        - deadline: '2026-06-22 23:59:59'
+        - abstract_deadline: '2026-06-22 23:59:00'
+          deadline: '2026-06-22 23:59:59'
       timezone: AoE
-      date: November 17-20, 2026
+      date: November 18-20, 2026
       place: Southampton, UK
