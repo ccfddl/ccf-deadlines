@@ -7,13 +7,38 @@
     thcpl: N
   dblp: wasa
   confs:
+    - year: 2021
+      id: wasa21
+      link: http://wasa-conference.org/WASA2021/
+      timeline:
+        - deadline: '2021-04-10 23:59:00'
+      timezone: AoE
+      date: June 25-26, 2021
+      place: Nanjing, China
+    - year: 2022
+      id: wasa22
+      link: http://wasa-conference.org/WASA2022/
+      timeline:
+        - deadline: '2022-05-24 23:59:00'
+          comment: '2022 edition postponed to April 2023'
+      timezone: AoE
+      date: April 7-9, 2023
+      place: Dalian, China
+    - year: 2024
+      id: wasa24
+      link: http://wasa-conference.org/WASA2024/
+      timeline:
+        - deadline: '2024-04-01 23:59:00'
+      timezone: AoE
+      date: June 21-23, 2024
+      place: Qingdao, China
     - year: 2025
       id: wasa25
       link: http://wasa-conference.org/WASA2025/index.html
       timeline:
-        - deadline: '2025-01-15 23:59:59'
+        - deadline: '2025-02-15 23:59:59'
       timezone: AoE
-      date: June 24-26, 2025
+      date: June 25-26, 2025
       place: Tokyo, Japan
     - year: 2026
       id: wasa26
@@ -21,5 +46,5 @@
       timeline:
         - deadline: '2026-04-10 23:59:59'
       timezone: AoE
-      date: June 26-29, 2026
+      date: June 27-29, 2026
       place: Xi'an, China
