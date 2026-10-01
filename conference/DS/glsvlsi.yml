@@ -7,9 +7,41 @@
     thcpl: N
   dblp: glvlsi
   confs:
+    - year: 2021
+      id: glsvlsi2021
+      link: https://www.glsvlsi.org/archive/glsvlsi21/index.html
+      timeline:
+        - deadline: '2021-02-28 21:00:00'
+      timezone: UTC-5
+      date: June 22-25, 2021
+      place: Virtual
+    - year: 2022
+      id: glsvlsi2022
+      link: https://www.glsvlsi.org/archive/glsvlsi22/index.html
+      timeline:
+        - deadline: '2022-02-22 23:59:00'
+      timezone: UTC-5
+      date: June 6-8, 2022
+      place: Irvine, California, USA
+    - year: 2023
+      id: glsvlsi2023
+      link: https://www.glsvlsi.org/archive/glsvlsi23/index.html
+      timeline:
+        - deadline: '2023-02-27 23:59:00'
+      timezone: UTC-5
+      date: June 5-7, 2023
+      place: Knoxville, Tennessee, USA
+    - year: 2024
+      id: glsvlsi2024
+      link: https://www.glsvlsi.org/archive/glsvlsi24/index.html
+      timeline:
+        - deadline: '2024-03-08 23:59:00'
+      timezone: UTC-5
+      date: June 12-14, 2024
+      place: Clearwater Beach, Florida, USA
     - year: 2025
       id: glsvlsi2025
-      link: https://www.glsvlsi.org/
+      link: https://www.glsvlsi.org/archive/glsvlsi25/index.html
       timeline:
         - deadline: '2025-03-17 23:59:00'
       timezone: UTC-5
