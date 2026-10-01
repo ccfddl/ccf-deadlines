@@ -640,13 +640,14 @@ fn render_deadlines(deadlines: Vec<DeadlineCell>, english: bool) -> AnyView {
                 deadline.place
             };
             if deadline.link.starts_with("https://") || deadline.link.starts_with("http://") {
+                let tooltip = place.clone();
                 view! {
-                    <a class="tabular-date" href=deadline.link target="_blank" rel="noopener noreferrer" title=place>
-                        <span>{date}</span>
+                    <a class="tabular-date" href=deadline.link target="_blank" rel="noopener noreferrer" title=tooltip>
+                        <span>{date}</span><small>{place}</small>
                     </a>
                 }.into_any()
             } else {
-                view! { <span class="tabular-date tabular-date-plain" title=place><span>{date}</span></span> }.into_any()
+                view! { <span class="tabular-date tabular-date-plain"><span>{date}</span><small>{place}</small></span> }.into_any()
             }
         })
         .collect_view()
