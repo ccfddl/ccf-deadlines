@@ -29,8 +29,8 @@
       id: cav23
       link: http://www.i-cav.org/2023/
       timeline:
-        - deadline: '2023-02-03 23:59:00'
-          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
+        - deadline: TBD
+          comment: 'Initial regular-paper deadline unresolved: CFP February 3, 2023 AoE; public HotCRP closes February 6 at 11:59:59 UTC; whether the later close allowed initial papers is unverified.'
       timezone: AoE
       date: July 19-22, 2023
       place: Paris, France
@@ -47,8 +47,8 @@
       id: cav25
       link: https://conferences.i-cav.org/2025/
       timeline:
-        - deadline: '2025-01-31 23:59:00'
-          comment: 'Regular papers; clock defaults to 23:59:00, AoE is explicit'
+        - deadline: TBD
+          comment: 'Initial regular-paper deadline unresolved: CFP January 31, 2025 firm AoE; public HotCRP closes February 6 at 13:00 UTC; whether the later close allowed initial papers is unverified.'
       timezone: AoE
       date: July 23-25, 2025
       place: Zagreb, Croatia
