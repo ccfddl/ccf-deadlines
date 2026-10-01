@@ -36,8 +36,8 @@
       id: mlsys24
       link: https://mlsys.org/Conferences/2024
       timeline:
-        - deadline: '2023-10-27 20:00:00'
-          comment: 'Initial research submission: CFP and submission venue agree on 20:00 UTC; Dates page lists conflicting 04:00 UTC.'
+        - deadline: TBD
+          comment: 'Initial research submission clock conflict on October 27, 2023: CFP gives 4pm ET (20:00 UTC), Dates page gives 04:00 UTC; submission-venue evidence remains unverified.'
       timezone: UTC
       date: May 14-16, 2024
       place: Santa Clara, USA
