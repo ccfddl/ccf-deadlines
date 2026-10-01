@@ -30,9 +30,9 @@
       id: srds23
       link: https://srds-conference.org/2023/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2023-04-16 12:59:59'
           deadline: TBD
-          comment: CFP and submission-system dates conflict
+          comment: Full-paper dates conflict between CFP and submission system
       timezone: UTC+1
       date: September 27-29, 2023
       place: Marrakech, Morocco
