@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2021-06-11 23:59:00'
           deadline: '2021-06-11 23:59:00'
-          comment: Final extended regular-paper deadlines
       timezone: AoE
       date: October 24-27, 2021
       place: Virtual
@@ -23,45 +22,42 @@
       timeline:
         - abstract_deadline: '2022-06-18 23:59:00'
           deadline: '2022-06-18 23:59:00'
-          comment: Final extended regular-paper deadlines
       timezone: AoE
-      date: October 23-26, 2022
+      date: October 24-26, 2022
       place: Lake Tahoe, USA
     - year: 2023
       id: iccd23
-      link: https://www.iccd-conf.com/Call_for_papers.html
+      link: https://iccd-conf.com/2023/Home.html
       timeline:
         - abstract_deadline: '2023-06-25 23:59:00'
           deadline: '2023-06-27 23:59:00'
-          comment: abstract and full paper deadline
       timezone: AoE
       date: November 6-8, 2023
       place: Washington DC, USA
     - year: 2024
       id: iccd24
-      link: https://www.iccd-conf.com/Call_for_papers.html
+      link: https://iccd-conf.com/2024/Home.html
       timeline:
         - abstract_deadline: '2024-05-20 23:59:00'
           deadline: '2024-05-20 23:59:00'
-          comment: abstract and full paper deadline
       timezone: AoE
-      date: November, 2024
+      date: November 18-20, 2024
       place: Milan, Italy
     - year: 2025
       id: iccd25
-      link: https://www.iccd-conf.com/home.html
+      link: https://iccd-conf.com/2025/home.html
       timeline:
-        - deadline: '2025-05-25 23:59:00'
+        - abstract_deadline: '2025-05-25 23:59:00'
+          deadline: '2025-05-25 23:59:00'
       timezone: AoE
       date: November 10-12, 2025
-      place: Dallas, USA
+      place: Richardson, Texas, USA
     - year: 2026
       id: iccd26
       link: https://www.iccd-conf.com/2026/home.html
       timeline:
         - abstract_deadline: '2026-06-03 23:59:00'
           deadline: '2026-06-10 23:59:00'
-          comment: abstract and full paper deadline
       timezone: AoE
       date: November 16-18, 2026
       place: Hong Kong SAR, China
