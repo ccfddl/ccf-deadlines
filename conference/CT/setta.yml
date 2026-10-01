@@ -41,7 +41,7 @@
       timeline:
         - abstract_deadline: '2024-08-16 23:59:59'
           deadline: '2024-08-28 23:59:59'
-          comment: 'deadline is extended from Aug. 23'
+          comment: 'Optional abstract; full deadline extended from Aug. 23'
       timezone: AoE
       date: Nov 26-28, 2024
       place: Hong Kong, China
