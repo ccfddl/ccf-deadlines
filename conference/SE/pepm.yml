@@ -10,7 +10,6 @@
       link: https://popl21.sigplan.org/home/pepm-2021
       timeline:
         - deadline: '2020-10-08 23:59:00'
-          comment: 'Regular research papers: October 8, 2020 AoE; 23:59 is the repository default because the official source omits the clock'
       timezone: AoE
       date: January 18-19, 2021
       place: Online
@@ -27,7 +26,6 @@
       link: https://popl23.sigplan.org/home/pepm-2023
       timeline:
         - deadline: '2022-10-18 23:59:00'
-          comment: 'Regular research papers: extended October 18, 2022 AoE; 23:59 is the repository default because the official source omits the clock'
       timezone: AoE
       date: January 17, 2023
       place: Boston, Massachusetts, USA
@@ -36,7 +34,6 @@
       link: https://popl24.sigplan.org/home/pepm-2024
       timeline:
         - deadline: '2023-10-20 23:59:00'
-          comment: 'Regular research papers: extended October 20, 2023 AoE; 23:59 is the repository default because the official source omits the clock'
       timezone: AoE
       date: January 16, 2024
       place: London, United Kingdom
@@ -44,9 +41,9 @@
       id: pepm25
       link: https://popl25.sigplan.org/home/pepm-2025
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2024-10-18 23:59:00'
           deadline: TBD
-          comment: 'Regular research papers: official CFP abstract October 14 / full October 18, 2024 conflicts with HotCRP registration October 18 / full October 21 at 23:59 AoE; unresolved dates'
+          comment: 'Full-paper window eligibility unclear'
       timezone: AoE
       date: January 21, 2025
       place: Denver, Colorado, USA
