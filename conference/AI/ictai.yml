@@ -12,7 +12,6 @@
       link: https://ictai.computer.org/2021/
       timeline:
         - deadline: '2021-07-26 23:59:00'
-          comment: 'Extended paper deadline; 23:59:00 and AoE are repository defaults because the official source specifies neither clock nor timezone.'
       timezone: AoE
       date: November 01-03, 2021
       place: Virtual
@@ -21,7 +20,6 @@
       link: https://ictai.computer.org/2022/
       timeline:
         - deadline: '2022-08-08 23:59:00'
-          comment: 'Extended paper deadline; 23:59:00 and AoE are repository defaults because the submission cutoff specifies neither clock nor timezone.'
       timezone: AoE
       date: October 31 - November 2, 2022
       place: Virtual
@@ -30,7 +28,7 @@
       link: https://ictai.computer.org/2023/
       timeline:
         - deadline: 'TBD'
-          comment: 'Paper deadline unresolved: homepage July 21, 2023; linked CFP June 25, 2023. AoE is the repository default for an unspecified timezone.'
+          comment: 'Paper deadline conflict: homepage July 21; CFP June 25.'
       timezone: AoE
       date: November 6-8, 2023
       place: Atlanta, GA, USA
@@ -39,7 +37,6 @@
       link: https://ictai.computer.org/2024/
       timeline:
         - deadline: '2024-07-21 23:59:00'
-          comment: 'Final extended paper deadline, AoE; 23:59:00 is the repository default for an unspecified clock.'
       timezone: AoE
       date: October 28-30, 2024
       place: Herndon, VA, USA
@@ -48,7 +45,6 @@
       link: https://easyconferences.eu/ictai2025/
       timeline:
         - deadline: '2025-07-15 23:59:00'
-          comment: 'Extended paper deadline, AoE; 23:59:00 is the repository default for an unspecified clock.'
       timezone: AoE
       date: November 3-5, 2025
       place: Athens, Greece
@@ -57,7 +53,6 @@
       link: https://ictai.computer.org/2026/
       timeline:
         - deadline: '2026-07-21 23:59:00'
-          comment: 'Final extended paper deadline, AoE; 23:59:00 is the repository default for an unspecified clock.'
       timezone: AoE
       date: November 02-04, 2026
       place: Boca Raton FL, USA
