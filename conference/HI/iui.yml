@@ -7,6 +7,24 @@
     thcpl: B
   dblp: iui
   confs:
+    - year: 2022
+      id: iui22
+      link: https://iui.acm.org/2022/
+      timeline:
+        - abstract_deadline: '2021-10-01 23:59:00'
+          deadline: '2021-10-08 23:59:00'
+      timezone: AoE
+      date: March 22-25, 2022
+      place: Virtual
+    - year: 2023
+      id: iui23
+      link: https://iui.acm.org/2023/
+      timeline:
+        - abstract_deadline: '2022-10-07 23:59:00'
+          deadline: '2022-10-14 23:59:00'
+      timezone: AoE
+      date: March 28-31, 2023
+      place: Sydney, Australia
     - year: 2024
       id: iui24
       link: https://iui.acm.org/2024/
