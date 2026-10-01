@@ -13,8 +13,8 @@
       timeline:
         - deadline: '2022-03-07 11:59:00'
       timezone: UTC-8
-      date: October 23 - October 27, 2022
-      place: Tel-Aviv, Israel
+      date: October 25-27, 2022
+      place: Tel-Aviv, Israel (Hybrid)
     - year: 2024
       id: eccv24
       link: https://eccv.ecva.net/Conferences/2024
@@ -22,7 +22,7 @@
         - abstract_deadline: '2024-02-29 13:00:00'
           deadline: '2024-03-07 13:00:00'
       timezone: UTC-8
-      date: September 29 - October 4, 2024
+      date: October 1-4, 2024
       place: MiCo Milano, Italy
     - year: 2026
       id: eccv26
@@ -31,5 +31,5 @@
         - abstract_deadline: '2026-02-26 14:00:00'
           deadline: '2026-03-05 14:00:00'
       timezone: UTC-8
-      date: September 8 - 12, 2026
+      date: September 10-12, 2026
       place: Malmö, Sweden
