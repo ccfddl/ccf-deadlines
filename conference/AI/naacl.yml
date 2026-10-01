@@ -19,8 +19,10 @@
       id: naacl22
       link: https://2022.naacl.org/
       timeline:
+        - deadline: TBD
+          comment: 'ARR December cycle: December 15/16 conflict'
         - deadline: '2022-01-15 23:59:59'
-          comment: 'ARR Submission'
+          comment: 'ARR January cycle'
         - deadline: '2022-03-06 23:59:00'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
