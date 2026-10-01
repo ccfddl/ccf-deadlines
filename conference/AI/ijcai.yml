@@ -14,7 +14,7 @@
         - abstract_deadline: '2021-01-13 23:59:00'
           deadline: '2021-01-20 23:59:00'
       timezone: UTC-12
-      date: August 19-26, 2021
+      date: August 23-26, 2021
       place: Virtual conference
     - year: 2022
       id: ijcai22
@@ -24,7 +24,7 @@
           deadline: '2022-01-14 23:59:59'
           comment: 'Abstract: January 7, 23:59 AoE (UTC-12), converted to CET (UTC+1); full paper: January 14, 23:59 CET'
       timezone: UTC+1
-      date: July 23-29, 2022
+      date: July 26-29, 2022
       place: Vienna, Austria.
     - year: 2023
       id: ijcai23
@@ -33,7 +33,7 @@
         - abstract_deadline: '2023-01-11 23:59:59'
           deadline: '2023-01-18 23:59:59'
       timezone: UTC-12
-      date: August 19-25, 2023
+      date: August 22-25, 2023
       place: Macao, China
     - year: 2024
       id: ijcai24
@@ -42,7 +42,7 @@
         - abstract_deadline: '2024-01-10 23:59:59'
           deadline: '2024-01-17 23:59:59'
       timezone: UTC-12
-      date: August 3-9, 2024
+      date: August 6-9, 2024
       place: Jeju Island, South Korea.
     - year: 2025
       id: ijcai25
@@ -52,7 +52,7 @@
           deadline: '2025-01-23 23:59:59'
           comment: 'Separate satellite event: August 29-31, 2025, Guangzhou, China'
       timezone: UTC-12
-      date: August 16-22, 2025
+      date: August 19-22, 2025
       place: Montreal, Canada.
     - year: 2026
       id: ijcai26
@@ -61,7 +61,7 @@
         - abstract_deadline: '2026-01-12 23:59:59'
           deadline: '2026-01-19 23:59:59'
       timezone: UTC-12
-      date: August 15-21, 2026
+      date: August 18-21, 2026
       place: Bremen, Germany
     - year: 2027
       id: ijcai27
