@@ -41,7 +41,7 @@
         - abstract_deadline: '2024-01-11 23:59:59'
           deadline: '2024-01-18 23:59:59'
       timezone: AoE
-      date: June 4-7, 2024
+      date: June 5-7, 2024
       place: Kyoto University, Kyoto, Japan
     - year: 2025
       id: ics25
@@ -54,7 +54,7 @@
           deadline: '2025-02-27 23:59:59'
           comment: 'Cycle 2'
       timezone: AoE
-      date: June 8-11, 2025
+      date: June 9-11, 2025
       place: Salt Lake City, U.S.A.
     - year: 2026
       id: ics26
@@ -67,7 +67,7 @@
           deadline: '2026-02-09 23:59:59'
           comment: 'Cycle 2'
       timezone: AoE
-      date: July 6-9, 2026
+      date: July 7-9, 2026
       place: Belfast, Northern Ireland, United Kingdom
     - year: 2027
       id: ics27
