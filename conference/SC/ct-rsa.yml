@@ -11,8 +11,8 @@
       id: ct-rsa21
       link: https://sites.google.com/site/ctrsa2021/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper date: December 1, 2020 AoE; clock not specified'
+        - deadline: '2020-12-01 23:59:00'
+          comment: 'Regular paper submission; time defaults to 23:59:00 (not specified by source)'
       timezone: UTC-12
       date: May 17-20, 2021
       place: Virtual
@@ -56,8 +56,8 @@
       id: ct-rsa26
       link: https://conference.wsu.edu/ct-rsa-2026/
       timeline:
-        - deadline: '2025-10-24 23:59:59'
-          comment: Paper submission deadline
+        - deadline: '2025-10-24 23:59:00'
+          comment: 'Regular paper submission; time defaults to 23:59:00 (not specified by source)'
       timezone: UTC-12
       date: March 23-26, 2026
       place: San Francisco, California, USA
