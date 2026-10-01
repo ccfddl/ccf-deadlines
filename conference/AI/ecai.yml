@@ -13,7 +13,7 @@
       timeline:
         - abstract_deadline: '2022-01-08 12:59:00'
           deadline: '2022-01-14 23:59:00'
-          comment: 'Joint IJCAI-ECAI; abstract January 7 23:59 AoE, paper January 14 23:59 CET'
+          comment: 'Joint IJCAI-ECAI'
       timezone: UTC+1
       date: July 25-29, 2022
       place: Vienna, Austria
