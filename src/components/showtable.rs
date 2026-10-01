@@ -1744,9 +1744,23 @@ fn conference_page_url(conf: &ConfItem) -> String {
         .chars()
         .map(|character| if character.is_ascii_alphanumeric() { character } else { '-' })
         .collect::<String>();
-    let slug = slug.trim_matches('-').split('-').filter(|part| !part.is_empty()).collect::<Vec<_>>().join("-");
-    let slug = if slug.is_empty() { conf.id.to_ascii_lowercase() } else { slug };
-    format!("/conferences/{}/{}-{}/", conf.sub.to_ascii_lowercase(), slug, conf.year)
+    let slug = slug
+        .trim_matches('-')
+        .split('-')
+        .filter(|part| !part.is_empty())
+        .collect::<Vec<_>>()
+        .join("-");
+    let slug = if slug.is_empty() {
+        conf.id.to_ascii_lowercase()
+    } else {
+        slug
+    };
+    format!(
+        "/conferences/{}/{}-{}/",
+        conf.sub.to_ascii_lowercase(),
+        slug,
+        conf.year
+    )
 }
 
 fn browser_origin() -> Option<String> {
