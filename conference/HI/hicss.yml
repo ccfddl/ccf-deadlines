@@ -7,6 +7,38 @@
     thcpl: N
   dblp: hicss
   confs:
+    - year: 2022
+      id: hicss22
+      link: https://hicss.hawaii.edu/
+      timeline:
+        - deadline: '2021-06-15 23:59:00'
+      timezone: UTC-10
+      date: January 3-7, 2022
+      place: Virtual
+    - year: 2024
+      id: hicss24
+      link: https://hicss.hawaii.edu/
+      timeline:
+        - deadline: '2023-06-15 23:59:00'
+      timezone: UTC-10
+      date: January 4-6, 2024
+      place: Honolulu, Hawaii, USA
+    - year: 2025
+      id: hicss25
+      link: https://hicss.hawaii.edu/
+      timeline:
+        - deadline: '2024-06-15 23:59:00'
+      timezone: UTC-10
+      date: January 8-10, 2025
+      place: Waikoloa, Hawaii, USA
+    - year: 2026
+      id: hicss26
+      link: https://hicss.hawaii.edu/
+      timeline:
+        - deadline: '2025-06-15 23:59:00'
+      timezone: UTC-10
+      date: January 7-9, 2026
+      place: Maui, Hawaii, USA
     - year: 2027
       id: hicss27
       link: https://hicss.hawaii.edu/
