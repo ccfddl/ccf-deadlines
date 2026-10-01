@@ -20,8 +20,7 @@
       id: aplas22
       link: https://conf.researchr.org/home/aplas-2022
       timeline:
-        - deadline: TBD
-          comment: Paper submission on June 16, 2022 AoE; exact time unverified
+        - deadline: '2022-06-16 23:59:59'
       timezone: AoE
       date: December 5, 2022
       place: Auckland, New Zealand
@@ -30,7 +29,6 @@
       link: https://conf.researchr.org/home/aplas-2023
       timeline:
         - deadline: '2023-06-18 23:59:59'
-          comment: Extended regular paper deadline
       timezone: AoE
       date: November 27 - 29, 2023
       place: Taipei, China
@@ -48,7 +46,7 @@
       timeline:
         - deadline: '2025-06-07 23:59:59'
       timezone: AoE
-      date: October 27-30, 2025
+      date: October 28-29, 2025
       place: Bengaluru, India
     - year: 2026
       id: aplas26
