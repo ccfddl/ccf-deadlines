@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2020-12-12 23:59:00'
           deadline: '2020-12-19 23:59:00'
-          comment: Regular papers
       timezone: UTC-5
       date: July 27-29, 2021
       place: Shanghai, China
@@ -21,10 +20,11 @@
       id: mobihoc22
       link: https://www.sigmobile.org/mobihoc/2022/
       timeline:
-        - abstract_deadline: '2022-03-04 23:59:59'
-          deadline: '2022-03-11 23:59:59'
+        - abstract_deadline: '2022-03-05 06:59:59'
+          deadline: TBD
+          comment: Registration verified; full cutoff unresolved
       timezone: UTC-5
-      date: October 17-22, 2022
+      date: October 18-20, 2022
       place: Seoul, South Korea
     - year: 2023
       id: mobihoc23
@@ -32,7 +32,6 @@
       timeline:
         - abstract_deadline: '2023-03-10 23:59:00'
           deadline: '2023-03-10 23:59:00'
-          comment: Regular papers; firm deadline
       timezone: UTC-5
       date: October 24-26, 2023
       place: Washington, DC, USA
@@ -42,7 +41,6 @@
       timeline:
         - abstract_deadline: '2024-04-14 23:59:00'
           deadline: '2024-04-14 23:59:00'
-          comment: Regular papers; extended deadline
       timezone: UTC-4
       date: October 15-17, 2024
       place: Athens, Greece
@@ -52,7 +50,6 @@
       timeline:
         - abstract_deadline: '2025-03-30 23:59:00'
           deadline: '2025-04-06 23:59:00'
-          comment: Regular papers; final extended deadlines
       timezone: UTC-4
       date: October 27-29, 2025
       place: Houston, Texas, USA
@@ -61,7 +58,8 @@
       link: https://www.sigmobile.org/mobihoc/2026/
       timeline:
         - abstract_deadline: '2026-04-13 23:59:59'
-          deadline: '2026-04-20 23:59:59'
+          deadline: TBD
+          comment: Registration per CFP; full cutoff unresolved
       timezone: AoE
-      date: November 23-26, 2026
+      date: November 23-25, 2026
       place: Tokyo, Japan
