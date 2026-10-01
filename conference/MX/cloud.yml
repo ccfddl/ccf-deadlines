@@ -24,7 +24,7 @@
       timeline:
         - abstract_deadline: '2022-03-22 23:59:00'
           deadline: '2022-04-01 23:59:00'
-          comment: Abstract submission is optional
+          comment: Abstract optional; full required
       timezone: AoE
       date: July 11-15, 2022
       place: Barcelona, Spain
