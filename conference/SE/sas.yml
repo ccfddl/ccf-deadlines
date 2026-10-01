@@ -11,8 +11,7 @@
       id: sas21
       link: https://conf.researchr.org/home/sas-2021
       timeline:
-        - deadline: TBD
-          comment: Regular paper submission due April 30, 2021 (extended); exact time not published
+        - deadline: '2021-04-30 23:59:00'
       timezone: AoE
       date: October 17-19, 2021
       place: Online
@@ -21,7 +20,6 @@
       link: https://conf.researchr.org/home/sas-2022
       timeline:
         - deadline: '2022-05-04 23:59:59'
-          comment: Submission deadline
       timezone: AoE
       date: December 5-7, 2022
       place: Auckland, New Zealand
@@ -29,8 +27,9 @@
       id: sas23
       link: https://conf.researchr.org/home/sas-2023
       timeline:
-        - deadline: TBD
-          comment: Regular paper submission due May 1, 2023 (new papers accepted without prior April 24 registration); exact time not published
+        - abstract_deadline: '2023-04-24 23:59:00'
+          deadline: '2023-05-01 23:59:00'
+          comment: Optional abstract
       timezone: AoE
       date: October 22-24, 2023
       place: Cascais, Portugal
@@ -38,8 +37,7 @@
       id: sas24
       link: https://2024.splashcon.org/home/sas-2024
       timeline:
-        - deadline: TBD
-          comment: Regular paper submission due May 19, 2024 (extended); exact time not published
+        - deadline: '2024-05-19 23:59:00'
       timezone: AoE
       date: October 20-22, 2024
       place: Pasadena, California, USA
@@ -48,9 +46,8 @@
       link: https://2025.splashcon.org/home/sas-2025
       timeline:
         - deadline: '2025-05-11 23:59:59'
-          comment: Paper Submission
       timezone: AoE
-      date: October 12-18, 2025
+      date: October 13-14, 2025
       place: Singapore
     - year: 2026
       id: sas26
