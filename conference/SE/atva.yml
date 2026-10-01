@@ -12,7 +12,6 @@
       link: https://formal-analysis.com/atva/2021/
       timeline:
         - deadline: '2021-04-26 23:59:00'
-          comment: Extended full paper submission on April 26, 2021 AoE; missing clock uses repository default 23:59:00
       timezone: AoE
       date: October 19-22, 2021
       place: Virtual
@@ -22,7 +21,6 @@
       timeline:
         - abstract_deadline: '2022-05-08 23:59:00'
           deadline: '2022-05-15 23:59:00'
-          comment: Extended abstract on May 8 and full paper on May 15, 2022 AoE; missing clock uses repository default 23:59:00
       timezone: AoE
       date: October 26-28, 2022
       place: Virtual
@@ -32,7 +30,6 @@
       timeline:
         - abstract_deadline: '2023-05-11 23:59:00'
           deadline: '2023-05-11 23:59:00'
-          comment: Extended abstract and full paper submission on May 11, 2023 AoE; missing clock uses repository default 23:59:00
       timezone: AoE
       date: October 25-27, 2023
       place: Singapore
@@ -41,7 +38,7 @@
       link: https://atva-conference.org/2024/
       timeline:
         - deadline: '2024-04-25 23:59:00'
-          comment: Extended initial paper submission on April 25, 2024 AoE; April 28 update-only cutoff excluded; missing clock uses repository default 23:59:00
+          comment: April 28 updates only
       timezone: AoE
       date: October 22-24, 2024
       place: Kyoto, Japan
@@ -51,7 +48,6 @@
       timeline:
         - abstract_deadline: '2025-04-25 23:59:00'
           deadline: '2025-04-25 23:59:00'
-          comment: Joint abstract and full submission on April 25, 2025 AoE; both clocks use repository default 23:59:00
       timezone: AoE
       date: October 28-30, 2025
       place: Bengaluru, India
