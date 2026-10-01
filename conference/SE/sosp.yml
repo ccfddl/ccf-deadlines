@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2021-04-30 14:59:00'
           deadline: '2021-05-07 14:59:00'
-          comment: 'Official regular-paper cutoffs: 2:59 pm US/Pacific, encoded at source minute precision.'
       timezone: UTC-7
       date: October 26-29, 2021
       place: Virtual
@@ -51,7 +50,6 @@
       timeline:
         - abstract_deadline: '2026-03-26 23:59:00'
           deadline: '2026-04-01 23:59:00'
-          comment: 'Regular papers; source dates and AoE explicit; clocks use repository default 23:59:00.'
       timezone: AoE
       date: September 30 - October 2, 2026
       place: Clarion Congress Hotel Prague, Prague, Czechia
