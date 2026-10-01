@@ -9,8 +9,8 @@
       id: idc25
       link: https://idc.acm.org/2025/
       timeline:
-        - abstract_deadline: '2025-01-21 23:59:00'
-          deadline: '2025-01-28 23:59:00'
+        - abstract_deadline: '2025-01-22 00:00:00'
+          deadline: '2025-01-29 00:00:00'
       timezone: AoE
       date: TBD
       place: Reykjavik, Iceland
@@ -18,8 +18,8 @@
       id: idc26
       link: https://idc.acm.org/2026/
       timeline:
-        - abstract_deadline: '2026-01-20 23:59:00'
-          deadline: '2026-01-27 23:59:00'
+        - abstract_deadline: '2026-01-21 00:00:00'
+          deadline: '2026-01-28 00:00:00'
       timezone: AoE
       date: TBD
       place: Brighton, UK
