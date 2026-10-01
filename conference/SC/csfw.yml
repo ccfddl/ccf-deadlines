@@ -12,11 +12,11 @@
       link: https://www.ieee-security.org/TC/CSF2021/
       timeline:
         - deadline: '2020-05-08 23:59:00'
-          comment: 'Spring regular paper submission; time defaults to 23:59:00 (not specified by source)'
+          comment: Spring
         - deadline: '2020-10-02 23:59:00'
-          comment: 'Fall regular paper submission; time defaults to 23:59:00 (not specified by source)'
-        - deadline: '2021-02-08 23:59:00'
-          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
+          comment: Fall
+        - deadline: TBD
+          comment: 'Winter: CFP February 8 AoE conflicts with submission portal February 9 AoE'
       timezone: UTC-12
       date: June 21-24, 2021
       place: Virtual
@@ -29,7 +29,7 @@
         - deadline: '2021-10-01 23:59:59'
           comment: fall
         - deadline: '2022-02-04 23:59:00'
-          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
+          comment: Winter
       timezone: UTC-12
       date: August, 2022
       place: Haifa, Israel
