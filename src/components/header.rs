@@ -27,6 +27,7 @@ pub fn Header(
     show_favorites_timeline: RwSignal<bool>,
     show_batch_subscription: RwSignal<bool>,
     show_email_reminders: RwSignal<bool>,
+    table_view: bool,
 ) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
     let (show_latest_conf, set_show_latest_conf) = signal(false);
@@ -192,14 +193,12 @@ pub fn Header(
                 </div>
             </div>
             <div class="el-row subtitle">
-                "Worldwide Conference Deadline Countdowns. To add/edit a conference,\u{00a0}"
-                <a
-                    style="color: #666666"
-                    href="https://github.com/ccfddl/ccf-deadlines/pulls"
-                    target="_blank"
-                >
-                    "send a pull request"
-                </a> "."
+                "Worldwide Conference Deadline Countdowns."
+                {(!table_view).then(|| view! {
+                    " "
+                    <a style="color: #666666" href="/?view=table" target="_blank" rel="noopener noreferrer">"Tabular preview"</a>
+                    "."
+                })}
             </div>
             <div class="el-row subtitle">
                 "*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only."
