@@ -11,29 +11,29 @@
       id: ease21
       link: https://conf.researchr.org/home/ease-2021
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular research abstract: 2021-03-05; full paper: 2021-03-12; exact time and timezone unpublished.'
-      timezone: UTC
+        - abstract_deadline: '2021-03-05 23:59:00'
+          deadline: '2021-03-12 23:59:00'
+          comment: Regular research papers; clock and timezone default to 23:59:00 AoE by repository convention
+      timezone: AoE
       date: June 21-23, 2021
       place: Virtual
     - year: 2022
       id: ease22
       link: https://conf.researchr.org/home/ease-2022
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular research abstract: 2022-01-24; full paper: 2022-01-31; exact time and timezone unpublished.'
-      timezone: UTC
+        - abstract_deadline: '2022-01-24 23:59:00'
+          deadline: '2022-01-31 23:59:00'
+          comment: Regular research papers; clock and timezone default to 23:59:00 AoE by repository convention
+      timezone: AoE
       date: June 14-15, 2022
       place: Gothenburg, Sweden (Hybrid)
     - year: 2023
       id: ease23
       link: https://conf.researchr.org/home/ease-2023
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular research abstract: 2023-01-13; full paper: 2023-01-20; exact time unpublished.'
+        - abstract_deadline: '2023-01-13 23:59:00'
+          deadline: '2023-01-20 23:59:00'
+          comment: Regular research papers; clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: June 14-15, 2023
       place: Oulu, Finland
@@ -41,9 +41,9 @@
       id: ease24
       link: https://conf.researchr.org/home/ease-2024
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular research abstract: 2024-01-11; full paper: 2024-01-18; exact time unpublished.'
+        - abstract_deadline: '2024-01-11 23:59:00'
+          deadline: '2024-01-18 23:59:00'
+          comment: Regular research papers; clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: June 19-20, 2024
       place: Salerno, Italy
@@ -51,9 +51,9 @@
       id: ease25
       link: https://conf.researchr.org/home/ease-2025
       timeline:
-        - abstract_deadline: '2025-01-24 23:59:59'
-          deadline: '2025-01-31 23:59:59'
-          comment: 'Research Papers'
+        - abstract_deadline: '2025-01-24 23:59:00'
+          deadline: '2025-01-31 23:59:00'
+          comment: Regular research papers; clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: June 17 - 20, 2025
       place: Istanbul, Turkey
@@ -61,9 +61,9 @@
       id: ease26
       link: https://conf.researchr.org/home/ease-2026
       timeline:
-        - abstract_deadline: '2026-01-16 23:59:59'
-          deadline: '2026-01-23 23:59:59'
-          comment: 'Research Papers'
+        - abstract_deadline: '2026-01-16 23:59:00'
+          deadline: '2026-01-23 23:59:00'
+          comment: Regular research papers; clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: June 9 - 12, 2026
       place: Glasgow, United Kingdom
