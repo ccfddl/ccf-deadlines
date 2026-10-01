@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2021-06-21 23:59:00'
           deadline: '2021-06-28 23:59:00'
-          comment: Regular papers
       timezone: UTC+2
       date: December 8-10, 2021
       place: Virtual
@@ -23,7 +22,7 @@
       timeline:
         - abstract_deadline: TBD
           deadline: TBD
-          comment: 'Regular papers: registration June 23-29 and submission June 29, 2022; CFP says 23:59 CET but HotCRP says 23:59 CEST; timezone unresolved; AoE is an unused repository placeholder for TBD fields'
+          comment: CFP CET vs system CEST
       timezone: AoE
       date: December 6-8, 2022
       place: Rome, Italy
@@ -32,9 +31,9 @@
       link: https://conferences.sigcomm.org/co-next/2023/#!/home
       timeline:
         - deadline: '2022-11-30 23:59:00'
-          comment: Regular papers; November cycle
+          comment: November cycle
         - deadline: '2023-06-28 00:00:00'
-          comment: 'Regular papers; June 27 at 24:00 AoE normalized to June 28 at 00:00.'
+          comment: June cycle
       timezone: AoE
       date: December 5-7, 2023
       place: Paris, France
@@ -44,10 +43,10 @@
       timeline:
         - abstract_deadline: '2023-11-28 00:00:00'
           deadline: '2023-12-05 00:00:00'
-          comment: 'Regular papers; published November 27 / December 4 at 24:00 AoE normalized to next-day 00:00.'
+          comment: December cycle
         - abstract_deadline: '2024-06-08 00:00:00'
           deadline: '2024-06-15 00:00:00'
-          comment: 'Regular papers; published June 7 / June 14 at 24:00 AoE normalized to next-day 00:00.'
+          comment: June cycle
       timezone: AoE
       date: December 10-12, 2024
       place: Los Angeles, California, USA
@@ -62,7 +61,7 @@
           deadline: '2025-06-05 23:59:59'
           comment: 'June submission'
       timezone: AoE
-      date: Dec 1-4, 2025
+      date: December 2-4, 2025
       place: HKUST, Hong Kong
     - year: 2026
       id: conext26
