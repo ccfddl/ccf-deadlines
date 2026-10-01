@@ -27,7 +27,7 @@
           comment: Abstract optional; full required
       timezone: AoE
       date: July 11-15, 2022
-      place: Barcelona, Spain
+      place: Barcelona, Spain (Hybrid)
     - year: 2023
       id: cloud23
       link: https://conferences.computer.org/cloud/2023/
@@ -35,7 +35,7 @@
         - deadline: '2023-03-25 23:59:00'
       timezone: AoE
       date: July 3-8, 2023
-      place: Chicago, USA
+      place: Chicago, USA (Hybrid)
     - year: 2024
       id: cloud24
       link: https://cloud.conferences.computer.org/2024/
