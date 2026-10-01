@@ -11,9 +11,14 @@
       id: icde21
       link: https://icde2021.gr/
       timeline:
-        - deadline: '2020-10-01 23:59:59'
+        - abstract_deadline: '2020-06-10 23:59:00'
+          deadline: '2020-06-17 23:59:00'
+          comment: first round
+        - abstract_deadline: '2020-10-07 23:59:00'
+          deadline: '2020-10-14 23:59:00'
+          comment: second round
       timezone: AoE
-      date: April 19-22, 2021
+      date: April 20-22, 2021
       place: Virtual
     - year: 2022
       id: icde22
@@ -24,8 +29,8 @@
         - deadline: '2021-11-19 23:59:59'
           comment: second round
       timezone: UTC-8
-      date: May 9-12, 2022
-      place: Kuala Lumpur, Malaysia
+      date: May 10-12, 2022
+      place: Virtual
     - year: 2023
       id: icde23
       link: https://icde2023.ics.uci.edu/
@@ -37,7 +42,7 @@
         - deadline: '2022-10-08 23:59:59'
           comment: third round
       timezone: PT
-      date: April 3-7, 2023
+      date: April 4-7, 2023
       place: Anaheim, California, USA
     - year: 2024
       id: icde24
@@ -48,7 +53,7 @@
         - deadline: '2023-12-03 23:59:59'
           comment: second round
       timezone: AoE
-      date: April 16-19, 2024
+      date: May 14-17, 2024
       place: Utrecht, Netherlands
     - year: 2025
       id: icde25
@@ -59,7 +64,7 @@
         - deadline: '2024-11-25 23:59:59'
           comment: second round
       timezone: AoE
-      date: May 19-23, 2025
+      date: May 20-23, 2025
       place: Hong Kong, China
     - year: 2026
       id: icde26
@@ -70,7 +75,7 @@
         - deadline: '2025-10-27 17:00:00'
           comment: second round
       timezone: UTC-7
-      date: May 4-8, 2026
+      date: May 5-8, 2026
       place: Montréal, Canada
     - year: 2027
       id: icde27
