@@ -11,12 +11,12 @@
       id: csfw21
       link: https://www.ieee-security.org/TC/CSF2021/
       timeline:
-        - deadline: TBD
-          comment: 'Spring regular paper date: May 8, 2020 AoE; clock not specified'
-        - deadline: TBD
-          comment: 'Fall regular paper date: October 2, 2020 AoE; clock not specified'
-        - deadline: TBD
-          comment: 'Winter regular paper date: February 8, 2021 AoE; clock not specified'
+        - deadline: '2020-05-08 23:59:00'
+          comment: 'Spring regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2020-10-02 23:59:00'
+          comment: 'Fall regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2021-02-08 23:59:00'
+          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
       timezone: UTC-12
       date: June 21-24, 2021
       place: Virtual
@@ -24,12 +24,12 @@
       id: csfw22
       link: https://www.ieee-security.org/TC/CSF2022/
       timeline:
-        - deadline: '2021-05-14 23:59:59'
-          comment: spring
-        - deadline: '2021-10-01 23:59:59'
-          comment: fall
-        - deadline: TBD
-          comment: 'Winter regular paper date: February 4, 2022 AoE; clock not specified'
+        - deadline: '2021-05-14 23:59:00'
+          comment: 'Spring regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2021-10-01 23:59:00'
+          comment: 'Fall regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2022-02-04 23:59:00'
+          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
       timezone: UTC-12
       date: August, 2022
       place: Haifa, Israel
@@ -37,12 +37,12 @@
       id: csfw23
       link: https://www.ieee-security.org/TC/CSF2023/
       timeline:
-        - deadline: '2022-05-13 23:59:59'
-          comment: spring
-        - deadline: '2022-09-30 23:59:59'
-          comment: fall
-        - deadline: '2023-02-03 23:59:59'
-          comment: winter
+        - deadline: '2022-05-13 23:59:00'
+          comment: 'Spring regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2022-09-30 23:59:00'
+          comment: 'Fall regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2023-02-03 23:59:00'
+          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
       timezone: UTC-12
       date: July, 2023
       place: Dubrovnik, Croatia
@@ -50,12 +50,12 @@
       id: csfw24
       link: https://www.ieee-security.org/TC/CSF2024/
       timeline:
-        - deadline: '2023-05-15 23:59:59'
-          comment: spring
-        - deadline: '2023-09-30 23:59:59'
-          comment: fall
-        - deadline: '2024-02-03 23:59:59'
-          comment: winter
+        - deadline: '2023-05-15 23:59:00'
+          comment: 'Spring regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2023-09-30 23:59:00'
+          comment: 'Fall regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2024-02-03 23:59:00'
+          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
       timezone: UTC-12
       date: July 8-12, 2024
       place: Enschede, The Netherlands
@@ -63,12 +63,12 @@
       id: csfw25
       link: https://csf2025.ieee-security.org/
       timeline:
-        - deadline: '2024-05-28 23:59:59'
-          comment: spring
-        - deadline: '2024-10-01 23:59:59'
-          comment: fall
-        - deadline: '2025-02-04 23:59:59'
-          comment: winter
+        - deadline: '2024-05-28 23:59:00'
+          comment: 'Spring regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2024-10-01 23:59:00'
+          comment: 'Fall regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2025-02-04 23:59:00'
+          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
       timezone: UTC-12
       date: June 16-20, 2025
       place: Santa Cruz, CA, USA
@@ -76,12 +76,12 @@
       id: csfw26
       link: https://csf2026.ieee-security.org/
       timeline:
-        - deadline: '2025-07-24 23:59:59'
-          comment: Summer
-        - deadline: '2025-10-09 23:59:59'
-          comment: Fall
-        - deadline: '2026-01-29 23:59:59'
-          comment: Winter
+        - deadline: '2025-07-24 23:59:00'
+          comment: 'Summer regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2025-10-09 23:59:00'
+          comment: 'Fall regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2026-01-29 23:59:00'
+          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
       timezone: UTC-12
       date: July 26-29, 2026
       place: Lisbon, Portugal
