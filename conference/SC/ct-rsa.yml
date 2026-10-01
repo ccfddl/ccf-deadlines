@@ -56,8 +56,8 @@
       id: ct-rsa26
       link: https://conference.wsu.edu/ct-rsa-2026/
       timeline:
-        - deadline: '2025-10-24 23:59:00'
-          comment: 'Regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2025-10-24 23:59:59'
+          comment: Paper submission deadline
       timezone: UTC-12
       date: March 23-26, 2026
       place: San Francisco, California, USA
