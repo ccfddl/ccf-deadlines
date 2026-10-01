@@ -11,9 +11,9 @@
       id: tase21
       link: https://tase2021.github.io/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: optional abstract February 28, 2021; extended submission March 21, 2021 AoE; exact clocks and abstract timezone unpublished'
+        - abstract_deadline: '2021-02-28 23:59:00'
+          deadline: '2021-03-21 23:59:00'
+          comment: Optional abstract
       timezone: AoE
       date: August 25-27, 2021
       place: Online
@@ -21,9 +21,9 @@
       id: tase22
       link: https://www.cs.ubbcluj.ro/tase2022/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: optional abstract February 14, 2022; extended submission February 27, 2022; exact clocks unpublished'
+        - abstract_deadline: '2022-02-14 23:59:00'
+          deadline: '2022-02-27 23:59:00'
+          comment: Optional abstract
       timezone: AoE
       date: July 8-10, 2022
       place: Cluj-Napoca, Romania
@@ -31,9 +31,9 @@
       id: tase23
       link: https://plrg-bristol.github.io/tase2023/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: optional abstract February 17, 2023; extended submission February 24, 2023; exact clocks unpublished'
+        - abstract_deadline: '2023-02-17 23:59:00'
+          deadline: '2023-02-24 23:59:00'
+          comment: Optional abstract
       timezone: AoE
       date: July 4-6, 2023
       place: Bristol, United Kingdom
@@ -41,19 +41,17 @@
       id: tase24
       link: https://tase2024.github.io/index.html
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: mandatory abstract February 27, 2024; extended submission March 5, 2024; exact clocks unpublished'
+        - abstract_deadline: '2024-02-27 23:59:00'
+          deadline: '2024-03-05 23:59:00'
       timezone: AoE
-      date: July 29-August 1, 2024
+      date: July 29-31, 2024
       place: Guiyang, China
     - year: 2025
       id: tase25
       link: https://cyprusconferences.org/tase2025/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Regular papers: extended abstract March 1, 2025; extended submission March 8, 2025; exact clocks unpublished'
+        - abstract_deadline: '2025-03-01 23:59:00'
+          deadline: '2025-03-08 23:59:00'
       timezone: AoE
       date: July 14-16, 2025
       place: Limassol, Cyprus
@@ -63,7 +61,6 @@
       timeline:
         - abstract_deadline: '2026-03-01 23:59:59'
           deadline: '2026-03-07 23:59:59'
-          comment: Extended deadlines
       timezone: AoE
       date: July 4-6, 2026
       place: Shanghai, China
