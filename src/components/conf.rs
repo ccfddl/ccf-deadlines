@@ -136,6 +136,10 @@ pub async fn fetch_initial_conf(
     }
 }
 
+pub async fn fetch_all_conf(base_url: &str) -> Result<Vec<Conference>, Box<dyn std::error::Error>> {
+    fetch_json_with_cache_recovery(&format!("{base_url}/conference/allconf.json")).await
+}
+
 pub async fn fetch_archive_conf(
     base_url: &str,
     archive: &str,

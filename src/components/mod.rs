@@ -10,5 +10,6 @@ pub mod header;
 pub mod message_wall;
 pub mod showtable;
 pub mod subscription_modal;
+pub mod tabular_view;
 pub mod timeline;
 pub mod timezone;

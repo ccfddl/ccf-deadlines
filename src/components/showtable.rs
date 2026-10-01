@@ -173,14 +173,6 @@ pub fn ShowTable(
         );
     });
 
-    Effect::new(move |previous: Option<bool>| {
-        let english = use_english.get();
-        if previous.is_some() {
-            set_in_local_storage("language_preference", if english { "en" } else { "zh" });
-        }
-        english
-    });
-
     Effect::new(move |_| {
         let selection = selected_timezone.get();
         set_in_local_storage("display_timezone", &selection);
