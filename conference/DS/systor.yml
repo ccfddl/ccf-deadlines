@@ -7,12 +7,20 @@
     thcpl: N
   dblp: systor
   confs:
+    - year: 2021
+      id: systor21
+      link: https://www.systor.org/2021/
+      timeline:
+        - deadline: TBD
+          comment: 'Full clock conflict: CFP 23:59 AoE; portal 23:00 AoE'
+      timezone: AoE
+      date: June 14-16, 2021
+      place: Virtual
     - year: 2022
       id: systor22
       link: https://www.systor.org/2022/
       timeline:
         - deadline: '2022-03-01 23:59:00'
-          comment: Regular full papers
       timezone: AoE
       date: June 13-15, 2022
       place: Haifa, Israel
@@ -21,7 +29,6 @@
       link: https://www.systor.org/2023/
       timeline:
         - deadline: '2023-03-02 23:59:59'
-          comment: Regular full papers
       timezone: UTC+1
       date: June 5-7, 2023
       place: Haifa, Israel
@@ -30,7 +37,6 @@
       link: https://www.systor.org/2024/
       timeline:
         - deadline: '2024-06-24 23:59:59'
-          comment: Regular full papers
       timezone: UTC+2
       date: September 23-24, 2024
       place: Virtual
@@ -39,7 +45,6 @@
       link: https://www.systor.org/2025/
       timeline:
         - deadline: '2025-05-26 23:59:59'
-          comment: Regular full papers
       timezone: AoE
       date: September 8-9, 2025
       place: Virtual
@@ -48,7 +53,6 @@
       link: https://www.systor.org/2026/
       timeline:
         - deadline: '2026-05-25 23:59:59'
-          comment: Regular full papers
       timezone: AoE
       date: September 8-9, 2026
       place: Virtual
