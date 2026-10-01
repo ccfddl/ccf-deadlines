@@ -130,6 +130,24 @@ a {
   border: 0;
 }
 
+.tabular-filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.tabular-search {
+  flex: 0 1 160px;
+  min-width: 0;
+}
+
+.tabular-search .thaw-input,
+.tabular-search .thaw-input__input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .tabular-rank-filters {
   display: flex;
   flex-wrap: wrap;
@@ -137,6 +155,16 @@ a {
   justify-content: flex-end;
   gap: 12px;
   margin-left: auto;
+}
+
+@media (max-width: 600px) {
+  .tabular-filter-controls {
+    flex-wrap: wrap;
+  }
+
+  .tabular-search {
+    flex-basis: 100%;
+  }
 }
 
 .tabular-table {

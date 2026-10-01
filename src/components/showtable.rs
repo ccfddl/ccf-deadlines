@@ -64,7 +64,8 @@ pub fn ShowTable(
     };
     let check_list = RwSignal::new(cached_check_list);
     // input
-    let input_value = RwSignal::new(String::new());
+    let input_value =
+        RwSignal::new(get_from_local_storage("conference_search").unwrap_or_default());
 
     // checkboxbutton
     let mut cached_rank_list: HashSet<String> = get_from_local_storage("ranks")
@@ -171,6 +172,10 @@ pub fn ShowTable(
             "thcpl_ranks",
             &serde_json::to_string(&thcpl_rank_list.get()).unwrap(),
         );
+    });
+
+    Effect::new(move |_| {
+        set_in_local_storage("conference_search", &input_value.get());
     });
 
     Effect::new(move |_| {
