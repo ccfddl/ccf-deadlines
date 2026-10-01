@@ -7,15 +7,23 @@
     thcpl: B
   dblp: caise
   confs:
+    - year: 2021
+      id: caise21
+      link: https://web.archive.org/web/20210725073223/https://caise21.org/
+      timeline:
+        - abstract_deadline: '2020-11-28 23:59:00'
+          deadline: '2020-12-04 23:59:00'
+      timezone: AoE
+      date: June 30-July 2, 2021
+      place: Online
     - year: 2022
       id: caise22
       link: https://caise22.ugent.be/
       timeline:
         - abstract_deadline: '2021-11-22 23:59:00'
           deadline: '2021-11-29 23:59:00'
-          comment: 'Official November 22/29 AoE dates; cutoff clocks use repository default 23:59:00.'
       timezone: AoE
-      date: June 06-10, 2022
+      date: June 8-10, 2022
       place: Leuven
     - year: 2023
       id: caise23
@@ -23,7 +31,6 @@
       timeline:
         - abstract_deadline: '2022-11-22 23:59:00'
           deadline: '2022-11-29 23:59:00'
-          comment: Abstract on November 22 and full paper on November 29, 2022 AoE; clock uses repository default 23:59:00
       timezone: AoE
       date: June 14-16, 2023
       place: Zaragoza, Spain
@@ -33,7 +40,6 @@
       timeline:
         - abstract_deadline: '2023-12-01 23:59:00'
           deadline: '2023-12-08 23:59:00'
-          comment: Extended abstract on December 1 and full paper on December 8, 2023 AoE; clock uses repository default 23:59:00
       timezone: AoE
       date: June 5-7, 2024
       place: Limassol, Cyprus
@@ -43,7 +49,6 @@
       timeline:
         - abstract_deadline: '2024-11-29 23:59:00'
           deadline: '2024-12-06 23:59:00'
-          comment: Extended mandatory abstract on November 29 and full paper on December 6, 2024 AoE; clock uses repository default 23:59:00
       timezone: AoE
       date: June 18-20, 2025
       place: Vienna, Austria
@@ -54,7 +59,7 @@
         - abstract_deadline: '2025-11-21 23:59:59'
           deadline: '2025-11-28 23:59:59'
       timezone: AoE
-      date: June 8-12, 2026
+      date: June 10-12, 2026
       place: Verona, Italy
     - year: 2027
       id: caise27
