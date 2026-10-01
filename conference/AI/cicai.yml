@@ -7,6 +7,22 @@
     thcpl: N
   dblp: cicai
   confs:
+    - year: 2021
+      id: cicai21
+      link: https://web.archive.org/web/20210613022624/https://cicai.caai.cn/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: TBD
+      place: Hangzhou, China and Online
+    - year: 2022
+      id: cicai22
+      link: https://cicai2022.caai.cn/
+      timeline:
+        - deadline: '2022-06-21 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Beijing, China and Online
     - year: 2023
       id: cicai23
       link: https://cicai.caai.cn/
