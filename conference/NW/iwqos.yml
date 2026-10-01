@@ -7,12 +7,23 @@
     thcpl: B
   dblp: iwqos
   confs:
+    - year: 2021
+      id: iwqos21
+      link: https://iwqos2021.ieee-iwqos.org/
+      timeline:
+        - abstract_deadline: '2021-02-15 23:59:00'
+          deadline: '2021-03-01 23:59:00'
+          comment: Registration / full paper
+      timezone: AoE
+      date: June 25-28, 2021
+      place: Virtual
     - year: 2022
       id: iwqos22
       link: https://iwqos2022.ieee-iwqos.org/
       timeline:
-        - abstract_deadline: '2022-02-01 23:59:59'
-          deadline: '2022-02-07 23:59:59'
+        - abstract_deadline: '2022-02-07 23:59:00'
+          deadline: '2022-02-16 23:59:00'
+          comment: Registration / full paper
       timezone: UTC-12
       date: June 10-12, 2022
       place: Virtual
@@ -20,11 +31,22 @@
       id: iwqos23
       link: https://iwqos2023.ieee-iwqos.org/
       timeline:
-        - abstract_deadline: '2023-01-29 23:59:59'
-          deadline: '2023-02-07 23:59:59'
+        - abstract_deadline: '2023-02-07 00:00:00'
+          deadline: '2023-02-12 23:59:00'
+          comment: Registration / full paper
       timezone: UTC-12
       date: June 19-21, 2023
       place: Orlando, FL, USA
+    - year: 2024
+      id: iwqos24
+      link: https://iwqos2024.ieee-iwqos.org/
+      timeline:
+        - abstract_deadline: '2024-02-19 23:59:00'
+          deadline: '2024-02-24 23:59:00'
+          comment: Registration / full paper
+      timezone: AoE
+      date: June 19-21, 2024
+      place: Guangzhou, China
     - year: 2025
       id: iwqos25
       link: https://iwqos2025.ieee-iwqos.org/
@@ -41,5 +63,5 @@
         - abstract_deadline: '2026-02-16 23:59:59'
           deadline: '2026-02-23 23:59:59'
       timezone: AoE
-      date: 29 June - 2 July, 2026
+      date: June 30 - July 2, 2026
       place: Istanbul, Türkiye
