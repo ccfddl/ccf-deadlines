@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2021-03-05 23:59:00'
           deadline: '2021-03-12 23:59:00'
-          comment: Regular research papers; clock and timezone default to 23:59:00 AoE by repository convention
       timezone: AoE
       date: June 21-23, 2021
       place: Virtual
@@ -23,7 +22,6 @@
       timeline:
         - abstract_deadline: '2022-01-24 23:59:00'
           deadline: '2022-01-31 23:59:00'
-          comment: Regular research papers; clock and timezone default to 23:59:00 AoE by repository convention
       timezone: AoE
       date: June 14-15, 2022
       place: Gothenburg, Sweden (Hybrid)
@@ -33,7 +31,6 @@
       timeline:
         - abstract_deadline: '2023-01-13 23:59:00'
           deadline: '2023-01-20 23:59:00'
-          comment: Regular research papers; clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: June 14-15, 2023
       place: Oulu, Finland
@@ -43,7 +40,6 @@
       timeline:
         - abstract_deadline: '2024-01-11 23:59:00'
           deadline: '2024-01-18 23:59:00'
-          comment: Regular research papers; clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: June 19-20, 2024
       place: Salerno, Italy
