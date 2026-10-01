@@ -7,23 +7,50 @@
     thcpl: N
   dblp: sigspatial
   confs:
+    - year: 2021
+      id: sigspatial21
+      link: https://sigspatial2021.sigspatial.org/
+      timeline:
+        - abstract_deadline: '2021-05-27 23:59:00'
+          deadline: '2021-06-10 23:59:00'
+      timezone: UTC-7
+      date: November 2-5, 2021
+      place: Virtual
+    - year: 2022
+      id: sigspatial22
+      link: https://sigspatial2022.sigspatial.org/
+      timeline:
+        - abstract_deadline: '2022-06-10 23:59:00'
+          deadline: '2022-06-17 23:59:00'
+      timezone: UTC-7
+      date: November 2-4, 2022
+      place: Seattle, Washington, USA
     - year: 2023
       id: sigspatial23
       link: http://sigspatial2023.sigspatial.org/
       timeline:
         - abstract_deadline: '2023-06-09 23:59:59'
-          deadline: '2023-06-16 23:59:59'
+          deadline: '2023-06-23 23:59:59'
       timezone: UTC-7
-      date: November 13-16, 2023
+      date: November 14-16, 2023
       place: Hamburg, Germany
+    - year: 2024
+      id: sigspatial24
+      link: https://sigspatial2024.sigspatial.org/
+      timeline:
+        - abstract_deadline: '2024-05-31 23:59:00'
+          deadline: '2024-06-07 23:59:00'
+      timezone: UTC-7
+      date: October 30 - November 1, 2024
+      place: Atlanta, Georgia, USA
     - year: 2025
       id: sigspatial25
       link: https://sigspatial2025.sigspatial.org/
       timeline:
-        - abstract_deadline: '2025-05-23 23:59:59'
-          deadline: '2025-05-30 23:59:59'
+        - abstract_deadline: '2025-05-30 23:59:59'
+          deadline: '2025-06-06 23:59:59'
       timezone: UTC-7
-      date: November 3-6, 2025
+      date: November 4-6, 2025
       place: Minneapolis, MN, USA
     - year: 2026
       id: sigspatial26
