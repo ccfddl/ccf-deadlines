@@ -79,6 +79,22 @@ class SeoPageTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Duplicate conference page"):
                 generate([conference, conference], {}, Path(temporary))
 
+    def test_directory_and_sitemap_include_every_conference(self):
+        conferences = [
+            {"title": "ACL", "sub": "AI", "confs": [{"year": 2027, "id": "acl27", "timeline": []}]},
+            {"title": "VLDB", "sub": "DB", "confs": [{"year": 2027, "id": "vldb27", "timeline": []}]},
+        ]
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            generate(conferences, {"AI": "Artificial Intelligence", "DB": "Database"}, output)
+            directory = (output / "conferences/index.html").read_text()
+            urls = [node.text for node in ElementTree.parse(output / "sitemap.xml").iter() if node.tag.endswith("loc")]
+            for path in ("ai/acl-2027", "db/vldb-2027"):
+                self.assertTrue((output / f"conferences/{path}/index.html").exists())
+                self.assertIn(f'href="/conferences/{path}/"', directory)
+                self.assertIn(f"https://ccfddl.com/conferences/{path}/", urls)
+            self.assertEqual(len(urls), 4)
+
     def test_unknown_deadline_uses_announced_later_state(self):
         conference = {
             "title": "ACL", "sub": "AI",

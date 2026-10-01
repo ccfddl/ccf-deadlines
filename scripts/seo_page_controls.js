@@ -12,10 +12,6 @@
     core: new Set(['A*', 'A', 'B', 'C', 'N']),
     thcpl: new Set(['A', 'B', 'N']),
   };
-  const storageKey = {
-    categories: 'types', ccf: 'ranks', core: 'core_ranks', thcpl: 'thcpl_ranks',
-  };
-
   function stored(key) {
     try { return localStorage.getItem(key); } catch (_) { return null; }
   }
@@ -25,13 +21,7 @@
   }
 
   function selection(key, allowed) {
-    let values;
-    if (hasUrlFilters) {
-      values = (params.get(key) || '').split(',');
-    } else {
-      try { values = JSON.parse(stored(storageKey[key]) || '[]'); } catch (_) { values = []; }
-    }
-    if (!Array.isArray(values)) values = [];
+    const values = (params.get(key) || '').split(',');
     const selected = new Set(values.filter((value) => allowed.has(value)));
     if (key !== 'categories' && selected.has('N') && selected.size > 1) selected.delete('N');
     if (key === 'categories' && selected.size === allowed.size) selected.clear();
@@ -43,7 +33,7 @@
     ccf: selection('ccf', rankValues.ccf),
     core: selection('core', rankValues.core),
     thcpl: selection('thcpl', rankValues.thcpl),
-    q: hasUrlFilters ? params.get('q') || '' : stored('conference_search') || '',
+    q: params.get('q') || '',
     tz: hasUrlFilters ? params.get('tz') : stored('display_timezone'),
   };
 
@@ -99,12 +89,6 @@
   }
 
   function persist() {
-    if (directory) {
-      for (const key of ['categories', 'ccf', 'core', 'thcpl']) {
-        store(storageKey[key], JSON.stringify([...state[key]]));
-      }
-      store('conference_search', state.q);
-    }
     store('display_timezone', state.tz);
   }
 
