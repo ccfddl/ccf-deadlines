@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2020-11-09 23:59:00'
           deadline: '2020-11-16 23:59:00'
-          comment: Regular research papers; clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: April 12-15, 2021
       place: Online
@@ -23,7 +22,6 @@
       timeline:
         - abstract_deadline: '2021-10-25 23:59:00'
           deadline: '2021-11-01 23:59:00'
-          comment: Regular research papers; clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: March 21-24, 2022
       place: Aston, Birmingham, United Kingdom
@@ -33,7 +31,7 @@
       timeline:
         - abstract_deadline: '2022-11-11 23:59:00'
           deadline: '2022-11-18 23:59:00'
-          comment: Regular research papers; abstract submission is optional; clock defaults to 23:59:00 by repository convention
+          comment: Optional abstract
       timezone: AoE
       date: April 17-20, 2023
       place: Barcelona, Spain
@@ -43,7 +41,7 @@
       timeline:
         - abstract_deadline: '2023-11-03 23:59:00'
           deadline: '2023-11-10 23:59:00'
-          comment: Regular research papers; abstract submission is optional; clock defaults to 23:59:00 by repository convention
+          comment: Optional abstract
       timezone: AoE
       date: April 8-11, 2024
       place: Winterthur, Switzerland
