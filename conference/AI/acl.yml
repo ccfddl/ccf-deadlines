@@ -20,6 +20,8 @@
       id: acl22
       link: https://2022.aclweb.org/
       timeline:
+        - deadline: '2021-05-15 23:59:00'
+          comment: 'ARR May cycle'
         - deadline: '2021-06-15 23:59:00'
           comment: 'ARR June cycle'
         - deadline: '2021-07-15 23:59:00'
