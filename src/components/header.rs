@@ -195,8 +195,8 @@ pub fn Header(
             <div class="el-row subtitle">
                 "Worldwide Conference Deadline Countdowns."
                 {(!table_view).then(|| view! {
-                    " "
-                    <a style="color: #666666" href="/?view=table" target="_blank" rel="noopener noreferrer">"Preview tabular form"</a>
+                    " Preview in "
+                    <a style="color: #666666" href="/?view=table" target="_blank" rel="noopener noreferrer">"tabular form"</a>
                     "."
                 })}
             </div>
