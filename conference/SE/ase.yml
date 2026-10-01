@@ -38,7 +38,7 @@
       id: ase24
       link: https://conf.researchr.org/home/ase-2024
       timeline:
-        - abstract_deadline: '2024-05-31 23:59:59'
+        - abstract_deadline: '2024-06-03 23:59:59'
           deadline: '2024-06-07 23:59:59'
       timezone: AoE
       date: October 29-31, 2024
@@ -56,6 +56,7 @@
       link: https://conf.researchr.org/home/ase-2026
       timeline:
         - deadline: '2026-03-26 23:59:59'
+          comment: March 30 updates only
       timezone: AoE
       date: October 13-15, 2026
       place: Munich, Germany
