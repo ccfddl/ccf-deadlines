@@ -7,15 +7,22 @@
     thcpl: N
   dblp: accv
   confs:
+    - year: 2022
+      id: accv22
+      link: https://web.archive.org/web/20221219093710/https://accv2022.org/en/
+      timeline:
+        - deadline: '2022-07-06 23:59:00'
+      timezone: UTC-7
+      date: December 6-8, 2022
+      place: Macau, China and Online
     - year: 2024
       id: accv24
       link: https://minhhoai.net/accv24/index.html
       timeline:
         - abstract_deadline: '2024-07-03 13:00:00'
           deadline: '2024-07-05 13:00:00'
-          comment: 'Extended deadlines; official author guidelines explicitly state 1:00 PM PST.'
       timezone: UTC-8
-      date: December 8-12, 2024
+      date: December 10-12, 2024
       place: Hanoi, Vietnam
     - year: 2026
       id: accv26
@@ -24,5 +31,5 @@
         - abstract_deadline: '2026-07-03 23:59:59'
           deadline: '2026-07-05 23:59:59'
       timezone: UTC+0
-      date: December 14-18, 2026
+      date: December 16-18, 2026
       place: Osaka, Japan
