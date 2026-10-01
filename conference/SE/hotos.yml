@@ -11,8 +11,8 @@
       id: hotos21
       link: https://sigops.org/s/conferences/hotos/2021/
       timeline:
-        - deadline: '2021-02-03 23:59:00'
-          comment: 'Main research/position papers: February 3 AoE; clock uses repository default 23:59:00.'
+        - deadline: '2021-02-03 23:59:59'
+          comment: 'Main research/position papers; exact public HotCRP cutoff: February 4, 2021 06:59:59 EST = February 3 23:59:59 AoE.'
       timezone: AoE
       date: June 1-3, 2021
       place: Virtual
@@ -20,8 +20,8 @@
       id: hotos23
       link: https://sigops.org/s/conferences/hotos/2023/
       timeline:
-        - deadline: '2023-02-02 23:59:00'
-          comment: 'Main research/position papers; AoE is explicit, clock uses repository default 23:59:00.'
+        - deadline: '2023-02-02 23:59:59'
+          comment: 'Main research/position papers; exact public HotCRP cutoff: February 3, 2023 06:59:59 EST = February 2 23:59:59 AoE.'
       timezone: AoE
       date: June 22-24, 2023
       place: Providence, Rhode Island, USA
@@ -29,8 +29,8 @@
       id: hotos25
       link: https://sigops.org/s/conferences/hotos/2025/
       timeline:
-        - deadline: '2025-01-15 23:59:00'
-          comment: 'Main research/position papers; AoE is explicit, clock uses repository default 23:59:00.'
+        - deadline: '2025-01-15 23:59:59'
+          comment: 'Main research/position papers; exact public HotCRP cutoff: January 16, 2025 06:59:59 EST = January 15 23:59:59 AoE.'
       timezone: AoE
       date: May 14-16, 2025
       place: Banff, Alberta, Canada
