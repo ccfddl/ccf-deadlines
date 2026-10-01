@@ -13,10 +13,10 @@
       timeline:
         - abstract_deadline: '2020-04-10 23:59:00'
           deadline: '2020-04-17 23:59:00'
-          comment: Regular papers; spring deadline
-        - abstract_deadline: '2020-09-10 23:59:00'
+          comment: Spring round
+        - abstract_deadline: '2020-09-16 23:59:00'
           deadline: '2020-09-17 23:59:00'
-          comment: Regular papers; fall deadline
+          comment: Fall round
       timezone: UTC-4
       date: April 12-14, 2021
       place: Virtual
