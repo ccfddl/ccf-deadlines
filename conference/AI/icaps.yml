@@ -51,9 +51,8 @@
       id: icaps25
       link: https://icaps25.icaps-conference.org/
       timeline:
-        - abstract_deadline: '2024-10-25 23:59:00'
-          deadline: '2024-11-01 23:59:00'
-          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
+        - abstract_deadline: '2024-10-25 23:59:59'
+          deadline: '2024-11-01 23:59:59'
       timezone: UTC-12
       date: November 9-14, 2025
       place: Melbourne, Victoria, Australia
@@ -61,9 +60,8 @@
       id: icaps26
       link: https://icaps26.icaps-conference.org/
       timeline:
-        - abstract_deadline: '2025-12-02 23:59:00'
-          deadline: '2025-12-08 23:59:00'
-          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
+        - abstract_deadline: '2025-12-02 23:59:59'
+          deadline: '2025-12-08 23:59:59'
       timezone: UTC-12
       date: June 27 - July 2, 2026
       place: Dublin, Ireland
