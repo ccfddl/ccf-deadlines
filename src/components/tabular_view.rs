@@ -10,7 +10,7 @@ use crate::components::showtable::{
     parse_deadline_to_rfc3339,
 };
 use crate::components::timezone::get_timezone_name;
-use chrono::{DateTime, Datelike, Local};
+use chrono::{DateTime, Datelike, Utc};
 use leptos::prelude::*;
 use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use std::collections::HashSet;
@@ -439,7 +439,9 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                     };
                     let query = search.get();
                     let timezone = selected_timezone.get();
-                    let year = leading_year(&data, &selected_categories, &ranks, &query, &timezone, Local::now().year());
+                    let now = Utc::now();
+                    let current_year = now.with_timezone(&display_timezone_offset_at(&timezone, now.timestamp_millis())).year();
+                    let year = leading_year(&data, &selected_categories, &ranks, &query, &timezone, current_year);
                     let groups = build_table(&data, &selected_categories, &ranks, &query, &timezone, year);
                     render_table(year, groups, use_english.get()).into_any()
                 } else {
