@@ -22,7 +22,7 @@
       timeline:
         - deadline: '2022-02-27 23:59:00'
       timezone: AoE
-      date: June 27-28, 2022
+      date: TBD
       place: Santa Barbara, CA, USA
     - year: 2023
       id: ih&mmsec23
@@ -30,7 +30,7 @@
       timeline:
         - deadline: '2023-03-05 23:59:00'
       timezone: AoE
-      date: June 28-30, 2023
+      date: TBD
       place: Chicago, IL, USA
     - year: 2024
       id: ih&mmsec24
