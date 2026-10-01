@@ -34,7 +34,7 @@
         - abstract_deadline: '2025-04-06 23:59:00'
           deadline: '2025-04-13 23:59:00'
       timezone: AoE
-      date: July 15-16, 2025
+      date: July 14-16, 2025
       place: Athens, Greece
     - year: 2026
       id: appt2026
@@ -45,3 +45,4 @@
       timezone: AoE
       date: July 27-30, 2026
       place: Brussels, Belgium
+
