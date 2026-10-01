@@ -20,7 +20,6 @@
       link: https://mlsys.org/Conferences/2022
       timeline:
         - deadline: '2021-10-15 20:00:00'
-          comment: Regular papers; extended from October 8.
       timezone: UTC
       date: August 29-31, 2022
       place: Santa Clara, USA
@@ -37,7 +36,7 @@
       link: https://mlsys.org/Conferences/2024
       timeline:
         - deadline: TBD
-          comment: 'Initial research submission clock conflict on October 27, 2023: CFP gives 4pm ET (20:00 UTC), Dates page gives 04:00 UTC; submission-venue evidence remains unverified.'
+          comment: 'October 27, 2023 clock conflict: CFP 20:00 UTC; Dates page 04:00 UTC.'
       timezone: UTC
       date: May 14-16, 2024
       place: Santa Clara, USA
