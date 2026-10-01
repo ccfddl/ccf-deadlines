@@ -21,7 +21,6 @@
       link: https://ifipsec2022.compute.dtu.dk/
       timeline:
         - deadline: '2022-02-03 23:59:00'
-          comment: 'Regular paper submission (firm); time defaults to 23:59:00 (not specified by source)'
       timezone: AoE
       date: June 13-15, 2022
       place: Copenhagen, Denmark (Hybrid)
@@ -30,7 +29,6 @@
       link: https://ifipsec2023.psnc.pl/
       timeline:
         - deadline: '2023-03-12 23:59:00'
-          comment: 'Regular paper submission (extended); time/timezone default to 23:59:00 AoE (not specified by source)'
       timezone: AoE
       date: June 14-16, 2023
       place: Poznan, Poland
@@ -39,7 +37,6 @@
       link: https://history.ifipsec.org/archive/2024/
       timeline:
         - deadline: '2024-03-01 23:59:00'
-          comment: 'Regular paper submission (extended); time/timezone default to 23:59:00 AoE (not specified by source)'
       timezone: AoE
       date: June 12-14, 2024
       place: Edinburgh, UK
