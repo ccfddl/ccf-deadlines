@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2021-04-12 23:59:00'
           deadline: '2021-04-19 23:59:00'
-          comment: Regular research papers
       timezone: AoE
       date: October 24-28, 2021
       place: Online
@@ -23,10 +22,9 @@
       timeline:
         - abstract_deadline: '2022-04-28 23:59:59'
           deadline: '2022-05-05 23:59:59'
-          comment: Regular research papers
       timezone: AoE
-      date: October 23-27, 2022
-      place: Hangzhou, China
+      date: October 25-27, 2022
+      place: Online
     - year: 2023
       id: iswc23
       link: https://iswc2023.semanticweb.org
@@ -34,7 +32,7 @@
         - abstract_deadline: '2023-05-02 23:59:59'
           deadline: '2023-05-09 23:59:59'
       timezone: AoE
-      date: November 6-10, 2023
+      date: November 8-10, 2023
       place: Athens, Greece
     - year: 2024
       id: iswc24
@@ -43,23 +41,27 @@
         - abstract_deadline: '2024-04-10 23:59:59'
           deadline: '2024-04-17 23:59:59'
       timezone: AoE
-      date: November 11-15, 2024
+      date: November 13-15, 2024
       place: Baltimore, USA
     - year: 2025
       id: iswc25
       link: https://iswc2025.semanticweb.org
       timeline:
         - abstract_deadline: '2025-05-06 23:59:59'
-          deadline: '2025-05-13 23:59:59'
+          deadline: '2025-05-14 23:59:00'
       timezone: AoE
-      date: November 2-6, 2025
+      date: November 4-6, 2025
       place: Nara, Japan
     - year: 2026
       id: iswc26
       link: https://iswc2026.semanticweb.org/
       timeline:
+        - abstract_deadline: '2026-04-11 23:59:00'
+          deadline: '2026-05-07 23:59:00'
+          comment: ESWC transfer
         - abstract_deadline: '2026-05-02 23:59:59'
           deadline: '2026-05-07 23:59:59'
+          comment: Regular route
       timezone: AoE
-      date: October 25-29, 2026
+      date: October 27-29, 2026
       place: Bari, Italy
