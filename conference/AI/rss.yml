@@ -12,7 +12,6 @@
       link: https://roboticsconference.org/2021/
       timeline:
         - deadline: '2021-03-01 23:59:00'
-          comment: 'Main paper submission; official date is AoE; 23:59:00 is the repository default for an unspecified clock.'
       timezone: AoE
       date: July 12-16, 2021
       place: Virtual
