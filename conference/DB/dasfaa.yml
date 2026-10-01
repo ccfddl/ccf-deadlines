@@ -11,19 +11,20 @@
       id: dasfaa21
       link: http://dm.iis.sinica.edu.tw/DASFAA2021/
       timeline:
-        - deadline: '2020-10-28 23:59:59'
+        - abstract_deadline: '2020-10-28 23:59:00'
+          deadline: '2020-11-11 23:59:00'
       timezone: UTC-7
-      date: April 11-14, 2021
-      place: Taipei, China
+      date: April 12-14, 2021
+      place: Online
     - year: 2022
       id: dasfaa22
       link: https://www.dasfaa2022.org/
       timeline:
-        - abstract_deadline: '2021-10-28 23:59:59'
-          deadline: '2021-11-04 23:59:59'
+        - abstract_deadline: '2021-10-31 23:59:00'
+          deadline: '2021-11-07 23:59:00'
       timezone: AoE
-      date: April 11-14, 2022
-      place: Hyderabad, India
+      date: April 12-14, 2022
+      place: Online
     - year: 2023
       id: dasfaa23
       link: http://www.tjudb.cn/dasfaa2023/
@@ -31,7 +32,7 @@
         - abstract_deadline: '2022-11-04 23:59:59'
           deadline: '2022-11-11 23:59:59'
       timezone: AoE
-      date: April 17-20, 2023
+      date: April 18-20, 2023
       place: Tianjin, China
     - year: 2024
       id: dasfaa24
@@ -48,7 +49,7 @@
       timeline:
         - deadline: '2024-11-25 23:59:59'
       timezone: AoE
-      date: May 25-28, 2025
+      date: May 27-29, 2025
       place: Singapore
     - year: 2026
       id: dasfaa26
@@ -57,7 +58,7 @@
         - abstract_deadline: '2025-10-20 23:59:59'
           deadline: '2025-10-27 23:59:59'
       timezone: AoE
-      date: April 21-24, 2026
+      date: April 28-30, 2026
       place: Jeju Island, South Korea
     - year: 2027
       id: dasfaa27
