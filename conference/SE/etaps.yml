@@ -12,58 +12,56 @@
       link: https://etaps.org/2021/
       timeline:
         - deadline: '2020-10-15 23:59:00'
-          comment: Regular research paper submission
+          comment: Main start conflicts between programme and news
       timezone: AoE
-      date: March 27-April 1, 2021
+      date: TBD
       place: Virtual
     - year: 2022
       id: etaps22
       link: https://etaps.org/2022/
       timeline:
         - deadline: '2021-10-14 23:59:59'
-          comment: Paper submission deadline
       timezone: AoE
-      date: April 2-7, 2022
+      date: April 4-7, 2022
       place: Munich, Germany
     - year: 2023
       id: etaps23
       link: https://etaps.org/2023/
       timeline:
         - deadline: '2022-10-13 23:59:00'
-          comment: Regular research paper submission
       timezone: AoE
-      date: April 22-27, 2023
+      date: April 24-27, 2023
       place: Paris, France
     - year: 2024
       id: etaps24
       link: https://etaps.org/2024/
       timeline:
         - deadline: '2023-10-12 23:59:00'
-          comment: Regular research paper submission
+          comment: October 16 updates only
       timezone: AoE
-      date: April 6-11, 2024
+      date: April 8-11, 2024
       place: Luxembourg City, Luxembourg
     - year: 2025
       id: etaps25
       link: https://etaps.org/2025/
       timeline:
         - deadline: '2024-05-30 23:59:00'
-          comment: Regular research ESOP round 1
+          comment: ESOP round 1
         - deadline: '2024-10-10 23:59:00'
-          comment: Regular research ESOP round 2, FASE, FoSSaCS, TACAS
+          comment: ESOP round 2, FASE, FoSSaCS, TACAS; October 14 updates only
       timezone: AoE
-      date: May 3-8, 2025
+      date: May 5-8, 2025
       place: Hamilton, Canada
     - year: 2026
       id: etaps26
       link: https://etaps.org/2026
       timeline:
         - deadline: '2025-06-03 23:59:59'
-          comment: Submission deadline ESOP round 1
+          comment: ESOP round 1
         - deadline: '2025-10-16 23:59:59'
-          comment: Submission deadline ESOP round 2
+          comment: ESOP round 2, FASE, FoSSaCS, TACAS
       timezone: AoE
-      date: April 11-16, 2026
+      date: April 13-16, 2026
       place: Torino, Italy
     - year: 2027
       id: etaps27
