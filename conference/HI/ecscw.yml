@@ -7,21 +7,51 @@
     thcpl: N
   dblp: ecscw
   confs:
+    - year: 2021
+      id: ecscw21
+      link: https://ecscw.eusset.eu/2021/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: June 9-11, 2021
+      place: Online
+    - year: 2022
+      id: ecscw22
+      link: https://ecscw.eusset.eu/2022/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: June 29 - July 1, 2022
+      place: Coimbra, Portugal
+    - year: 2023
+      id: ecscw23
+      link: https://ecscw.eusset.eu/2023/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: June 7-9, 2023
+      place: Trondheim, Norway
+    - year: 2024
+      id: ecscw24
+      link: https://ecscw.eusset.eu/2024/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: June 19-21, 2024
+      place: Rimini, Italy
     - year: 2025
       id: ecscw25
       link: https://ecscw.eusset.eu/2025/
       timeline:
         - deadline: '2025-02-25 23:59:59'
-          comment: 'Conference Papers'
       timezone: AoE
-      date: June 30 - July 4, 2025
+      date: July 2-4, 2025
       place: Newcastle upon Tyne, UK
     - year: 2026
       id: ecscw26
       link: https://ecscw.eusset.eu/2026
       timeline:
         - deadline: '2026-03-06 23:59:59'
-          comment: 'Conference Papers'
       timezone: AoE
-      date: 29 June - 3 July, 2026
+      date: July 1-3, 2026
       place: Munich, Germany
