@@ -49,10 +49,10 @@
       timeline:
         - abstract_deadline: '2024-11-14 23:59:59'
           deadline: '2024-11-21 23:59:59'
-          comment: 'Fall deadline'
+          comment: Fall round
         - abstract_deadline: '2025-05-08 23:59:59'
           deadline: '2025-05-15 23:59:59'
-          comment: 'Spring deadline'
+          comment: Spring round
       timezone: AoE
       date: Oct 28-31, 2025
       place: Madison, Wisconsin, USA
@@ -62,12 +62,12 @@
       timeline:
         - abstract_deadline: '2025-11-13 23:59:59'
           deadline: '2025-11-20 23:59:59'
-          comment: 'Cycle 1 Deadline'
+          comment: Cycle 1
         - abstract_deadline: '2026-04-22 23:59:59'
           deadline: '2026-04-29 23:59:59'
-          comment: 'Cycle 2 Deadline'
+          comment: Cycle 2
       timezone: AoE
-      date: Oct 12-16, 2026
+      date: October 13-16, 2026
       place: Karlsruhe, Germany
     - year: 2027
       id: imc27
