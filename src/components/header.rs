@@ -197,6 +197,8 @@ pub fn Header(
                 {(!table_view).then(|| view! {
                     " Preview in "
                     <a style="color: #666666" href="/?view=table" target="_blank" rel="noopener noreferrer">"tabular form"</a>
+                    " or "
+                    <a style="color: #666666" href="/conferences/">"directory"</a>
                     "."
                 })}
             </div>
