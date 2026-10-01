@@ -52,7 +52,7 @@ class SeoPageTests(unittest.TestCase):
             self.assertIn('data-zh="Artificial Intelligence"', page)
             self.assertIn('href="/conferences/ai/acl-2026/"', page)
             self.assertIn('<a href="https://ccfddl.com/">Main site</a>', page)
-            self.assertIn('or <a href="https://ccfddl.com/conferences/">directory</a>.', page)
+            self.assertIn('or <a href="https://ccfddl.com/conferences/" target="_blank" rel="noopener noreferrer">directory</a>.', page)
             self.assertLess(page.index('class="breadcrumb"'), page.index('id="display-timezone"'))
             directory = (output / "conferences/index.html").read_text()
             self.assertIn('href="/conferences/ai/acl-2027/"', directory)
