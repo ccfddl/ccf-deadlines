@@ -1415,6 +1415,17 @@ a {
   white-space: nowrap;
 }
 
+.conference-card-heading .conf-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.conference-card-heading .conf-title a:hover,
+.conference-card-heading .conf-title a:focus-visible {
+  color: #409eff;
+  text-decoration: underline;
+}
+
 .conference-list:not(.conference-list--rows) .conference-card-heading .conf-title {
   flex: 0 1 auto;
   max-width: calc(100% - 76px);
