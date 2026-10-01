@@ -633,20 +633,20 @@ fn render_deadlines(deadlines: Vec<DeadlineCell>, english: bool) -> AnyView {
     deadlines
         .into_iter()
         .map(|deadline| {
+            let date = deadline.date[..10].to_string();
             let place = if deadline.place.trim().is_empty() {
                 if english { "Location TBA" } else { "地点待公布" }.to_string()
             } else {
                 deadline.place
             };
             if deadline.link.starts_with("https://") || deadline.link.starts_with("http://") {
-                let tooltip = place.clone();
                 view! {
-                    <a class="tabular-date" href=deadline.link target="_blank" rel="noopener noreferrer" title=tooltip>
-                        <span>{deadline.date}</span><small>{place}</small>
+                    <a class="tabular-date" href=deadline.link target="_blank" rel="noopener noreferrer" title=place>
+                        <span>{date}</span>
                     </a>
                 }.into_any()
             } else {
-                view! { <span class="tabular-date tabular-date-plain"><span>{deadline.date}</span><small>{place}</small></span> }.into_any()
+                view! { <span class="tabular-date tabular-date-plain" title=place><span>{date}</span></span> }.into_any()
             }
         })
         .collect_view()
