@@ -7,6 +7,52 @@
     thcpl: N
   dblp: wise
   confs:
+    - year: 2021
+      id: wise21
+      link: https://www.wise-conferences.org/2021/
+      timeline:
+        - abstract_deadline: '2021-06-24 23:59:00'
+          deadline: '2021-07-01 23:59:00'
+      timezone: AoE
+      date: October 26-28, 2021
+      place: Virtual
+    - year: 2022
+      id: wise22
+      link: https://web.archive.org/web/20220809222604/https://wise2022.sigappfr.org/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: '2022-06-07 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Biarritz, France / Online
+    - year: 2023
+      id: wise23
+      link: https://www.wise-conferences.org/2023/
+      timeline:
+        - abstract_deadline: '2023-06-16 23:59:00'
+          deadline: '2023-06-20 23:59:00'
+      timezone: AoE
+      date: October 25-27, 2023
+      place: Melbourne, Australia / Online
+    - year: 2024
+      id: wise24
+      link: https://web.archive.org/web/20241206053713/https://wise2024-qatar.com/
+      timeline:
+        - abstract_deadline: '2024-06-30 23:59:00'
+          deadline: '2024-07-15 23:59:00'
+          comment: Abstract optional
+      timezone: AoE
+      date: December 2-5, 2024
+      place: Doha, Qatar
+    - year: 2025
+      id: wise25
+      link: https://www.ficloud.org/wise2025/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: '2025-07-17 23:59:00'
+      timezone: AoE
+      date: December 15-17, 2025
+      place: Marrakech, Morocco / Online
     - year: 2026
       id: wise26
       link: https://conferences.sigappfr.org/wise2026/
