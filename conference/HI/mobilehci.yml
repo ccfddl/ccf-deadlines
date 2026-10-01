@@ -5,6 +5,57 @@
     ccf: B
   dblp: mhci
   confs:
+    - year: 2021
+      id: mobilehci21
+      link: https://mobilehci.acm.org/2021/
+      timeline:
+        - deadline: '2021-02-04 23:59:00'
+      timezone: AoE
+      date: September 28 - October 1, 2021
+      place: Virtual
+    - year: 2022
+      id: mobilehci22
+      link: https://mobilehci.acm.org/2022/
+      timeline:
+        - deadline: '2022-02-03 23:59:00'
+      timezone: AoE
+      date: September 28-30, 2022
+      place: Vancouver, Canada
+    - year: 2023
+      id: mobilehci23
+      link: https://mobilehci.acm.org/2023/
+      timeline:
+        - abstract_deadline: '2023-01-20 23:59:00'
+          deadline: '2023-01-27 23:59:00'
+      timezone: AoE
+      date: September 27-29, 2023
+      place: Athens, Greece
+    - year: 2024
+      id: mobilehci24
+      link: https://mobilehci.acm.org/2024/
+      timeline:
+        - abstract_deadline: '2024-02-14 23:59:00'
+          deadline: '2024-02-21 23:59:00'
+      timezone: AoE
+      date: October 1-3, 2024
+      place: Melbourne, Australia
+    - year: 2025
+      id: mobilehci25
+      link: https://mobilehci.acm.org/2025/
+      timeline:
+        - abstract_deadline: '2025-01-30 23:59:00'
+          deadline: '2025-02-06 23:59:00'
+      timezone: AoE
+      date: September 23-25, 2025
+      place: Sharm El-Sheikh, Egypt
+    - year: 2026
+      id: mobilehci26
+      link: https://mobilehci.acm.org/2026/
+      timeline:
+        - deadline: '2026-01-29 23:59:00'
+      timezone: AoE
+      date: September 1-3, 2026
+      place: Swansea, Wales, UK
     - year: 2027
       id: mobilehci27
       link: https://mobilehci.acm.org/2027/
