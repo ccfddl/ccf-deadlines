@@ -12,7 +12,6 @@
       link: https://www.evostar.org/2021/evomusart/
       timeline:
         - deadline: '2020-11-19 23:59:59'
-          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 7-9, 2021
       place: Online
@@ -21,25 +20,30 @@
       link: https://www.evostar.org/2022/evomusart/
       timeline:
         - deadline: '2021-11-24 23:59:59'
-          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 20-22, 2022
-      place: Madrid, Spain
+      place: Madrid, Spain (Hybrid)
     - year: 2023
       id: evomusart23
       link: https://www.evostar.org/2023/evomusart/
       timeline:
         - deadline: '2022-11-16 23:59:59'
-          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 12-14, 2023
       place: Brno, Czech Republic (Hybrid)
+    - year: 2024
+      id: evomusart24
+      link: https://easychair.org/cfp/EvoMUSART2024
+      timeline:
+        - deadline: '2023-11-15 23:59:00'
+      timezone: AoE
+      date: April 3-5, 2024
+      place: Aberystwyth, Wales, UK
     - year: 2025
       id: evomusart25
       link: https://www.evostar.org/2025/evomusart/
       timeline:
         - deadline: '2024-11-15 23:59:59'
-          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 23-25, 2025
       place: Trieste, Italy (Hybrid)
@@ -48,7 +52,6 @@
       link: https://www.evostar.org/2026/evomusart/
       timeline:
         - deadline: '2025-11-15 23:59:59'
-          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: April 8-10, 2026
       place: Toulouse, France (Hybrid)
