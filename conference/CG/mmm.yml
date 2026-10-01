@@ -7,20 +7,52 @@
     thcpl: N
   dblp: mmm
   confs:
+    - year: 2021
+      id: mmm21
+      link: https://mmm2021.cz/
+      timeline:
+        - deadline: '2020-08-31 23:59:00'
+      timezone: AoE
+      date: June 22-24, 2021
+      place: Virtual
+    - year: 2022
+      id: mmm22
+      link: https://mmm2022.org/
+      timeline:
+        - deadline: '2021-09-13 23:59:00'
+      timezone: AoE
+      date: June 6-9, 2022
+      place: Phu Quoc, Vietnam
+    - year: 2023
+      id: mmm23
+      link: https://www.mmm2023.no/
+      timeline:
+        - deadline: '2022-09-12 23:59:00'
+      timezone: AoE
+      date: January 9-12, 2023
+      place: Bergen, Norway
+    - year: 2024
+      id: mmm24
+      link: https://mmm2024.org/
+      timeline:
+        - deadline: TBD
+          comment: Midnight cutoff date boundary unconfirmed
+      timezone: UTC-11
+      date: January 29-February 1, 2024
+      place: Amsterdam, Netherlands and Online
     - year: 2025
       id: mmm25
       link: https://mmm2025.net/
       timeline:
         - deadline: '2024-08-19 23:59:59'
       timezone: AoE
-      date: January 7-10, 2025
+      date: January 8-10, 2025
       place: Nara, Japan
     - year: 2026
       id: mmm26
       link: https://mmm2026.cz/
       timeline:
         - deadline: '2025-09-02 23:59:00'
-          comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: January 29-31, 2026
       place: Prague, Czech Republic
