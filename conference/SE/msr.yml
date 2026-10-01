@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2021-01-05 23:59:59'
           deadline: '2021-01-12 23:59:59'
-          comment: Regular full research papers
       timezone: AoE
       date: May 17-19, 2021
       place: Online
@@ -23,7 +22,6 @@
       timeline:
         - abstract_deadline: '2022-01-17 23:59:59'
           deadline: '2022-01-20 23:59:59'
-          comment: Regular full research papers
       timezone: AoE
       date: May 18-20 (virtual) and May 23-24 (in-person), 2022
       place: Pittsburgh, PA, USA and Online
@@ -33,7 +31,6 @@
       timeline:
         - abstract_deadline: '2023-01-16 23:59:59'
           deadline: '2023-01-19 23:59:59'
-          comment: Regular full research papers
       timezone: AoE
       date: May 15-16, 2023
       place: Melbourne, Australia
