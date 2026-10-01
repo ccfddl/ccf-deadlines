@@ -31,7 +31,6 @@
       timeline:
         - abstract_deadline: '2023-04-28 23:59:00'
           deadline: '2023-05-05 23:59:59'
-          comment: 'Regular papers; abstract date is AoE with no published clock. Full-paper cutoff from official HotCRP. 23:59:00 uses the repository default where the source gives no clear cutoff clock.'
       timezone: AoE
       date: August 24-25, 2023
       place: Seoul, South Korea
@@ -39,9 +38,8 @@
       id: apsys2024
       link: https://apsys2024.github.io/
       timeline:
-        - abstract_deadline: '2024-04-25 23:59:00'
+        - abstract_deadline: '2024-04-26 23:59:00'
           deadline: '2024-05-02 23:59:00'
-          comment: call for papers
       timezone: AoE
       date: September 4-5, 2024
       place: Kyoto, Japan
