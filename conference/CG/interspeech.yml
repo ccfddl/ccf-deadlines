@@ -51,7 +51,7 @@
       id: interspeech26
       link: https://interspeech2026.org/
       timeline:
-        - deadline: '2026-02-25 23:59:59'
+        - deadline: '2026-02-25 23:59:00'
       timezone: AoE
       date: September 28 - October 1, 2026
       place: Sydney, Australia
