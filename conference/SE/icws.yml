@@ -12,9 +12,9 @@
       link: https://conferences.computer.org/icws/2021/
       timeline:
         - deadline: '2021-03-01 05:00:00'
-          comment: Optional early regular-paper submission
+          comment: Optional early round
         - deadline: '2021-04-30 05:00:00'
-          comment: Extended normal regular-paper submission
+          comment: Normal round
       timezone: UTC
       date: September 6-10, 2021
       place: Virtual
@@ -23,7 +23,6 @@
       link: https://conferences.computer.org/icws/2022/
       timeline:
         - deadline: '2022-04-01 23:59:00'
-          comment: 'Regular-paper date April 1, 2022 AoE; clock uses repository default 23:59:00.'
       timezone: AoE
       date: July 11-15, 2022
       place: Barcelona, Spain / Hybrid
@@ -40,7 +39,6 @@
       link: https://icws.conferences.computer.org/2024/
       timeline:
         - deadline: '2024-03-31 23:59:00'
-          comment: 'Final new-or-revised regular-paper date March 31, 2024; 23:59:00 and AoE are repository defaults.'
       timezone: AoE
       date: July 8-13, 2024
       place: Shenzhen, China
@@ -51,7 +49,7 @@
         - abstract_deadline: '2025-02-24 23:59:59'
           deadline: '2025-03-10 23:00:00'
       timezone: AoE
-      date: July 7-12, 2025
+      date: July 8-12, 2025
       place: Helsinki, Finland
     - year: 2026
       id: icws26
