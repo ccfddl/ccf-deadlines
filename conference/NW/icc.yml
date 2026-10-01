@@ -7,21 +7,52 @@
     thcpl: B
   dblp: icc
   confs:
+    - year: 2021
+      id: icc21
+      link: https://icc2021.ieee-icc.org/
+      timeline:
+        - deadline: '2020-10-30 23:59:00'
+      timezone: AoE
+      date: June 15-23, 2021
+      place: Virtual
+    - year: 2022
+      id: icc22
+      link: https://icc2022.ieee-icc.org/
+      timeline:
+        - deadline: '2021-11-14 23:59:00'
+      timezone: AoE
+      date: May 17-19, 2022
+      place: Seoul, South Korea / Hybrid
+    - year: 2023
+      id: icc23
+      link: https://icc2023.ieee-icc.org/
+      timeline:
+        - deadline: '2022-11-13 23:59:00'
+      timezone: AoE
+      date: May 29-31, 2023
+      place: Rome, Italy
+    - year: 2024
+      id: icc24
+      link: https://icc2024.ieee-icc.org/
+      timeline:
+        - deadline: '2023-11-12 23:59:00'
+      timezone: UTC-4
+      date: June 10-12, 2024
+      place: Denver, CO, USA
     - year: 2025
       id: icc25
       link: https://icc2025.ieee-icc.org
       timeline:
         - deadline: '2024-11-08 23:59:00'
-          comment: 'Extended regular paper deadline; unpublished clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
-      date: June 8-12, 2025
+      date: June 9-11, 2025
       place: Palais des congrès de Montréal in Montreal, Quebec, Canada
     - year: 2026
       id: icc26
       link: https://icc2026.ieee-icc.org
       timeline:
-        - deadline: '2025-10-31 00:59:59'
-      timezone: UTC-4
+        - deadline: '2025-11-10 23:59:00'
+      timezone: AoE
       date: May 24-28, 2026
       place: Glasgow, Scotland, UK
     - year: 2027
