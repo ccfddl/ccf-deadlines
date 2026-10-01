@@ -12,7 +12,6 @@
       link: https://www.cidrdb.org/cidr2021/
       timeline:
         - deadline: '2020-08-28 23:59:00'
-          comment: Regular research papers; extended deadline.
       timezone: UTC-7
       date: January 11-15, 2021
       place: Online
@@ -21,18 +20,16 @@
       link: https://www.cidrdb.org/cidr2022/
       timeline:
         - deadline: '2021-08-31 23:59:00'
-          comment: Regular research papers; extended deadline.
       timezone: UTC-7
-      date: January 9-12, 2022
+      date: January 10-12, 2022
       place: Chaminade, CA, USA
     - year: 2023
       id: cidr23
       link: https://www.cidrdb.org/cidr2023/
       timeline:
         - deadline: '2022-09-02 23:59:00'
-          comment: Regular research papers; extended deadline.
       timezone: UTC-7
-      date: January 8-11, 2023
+      date: January 9-11, 2023
       place: Amsterdam, The Netherlands
     - year: 2024
       id: cidr24
@@ -40,7 +37,7 @@
       timeline:
         - deadline: '2023-07-31 23:59:59'
       timezone: UTC-7
-      date: Jan 14-17, 2024
+      date: January 15-17, 2024
       place: Chaminade, USA
     - year: 2025
       id: cidr25
@@ -48,7 +45,7 @@
       timeline:
         - deadline: '2024-08-02 23:59:59'
       timezone: UTC-7
-      date: Jan 19-22, 2025
+      date: January 20-22, 2025
       place: Amsterdam, The Netherlands
     - year: 2026
       id: cidr26
@@ -56,7 +53,7 @@
       timeline:
         - deadline: '2025-08-05 23:59:59'
       timezone: UTC-7
-      date: Jan 18-21, 2026
+      date: January 19-21, 2026
       place: Chaminade Resort & Spa, Santa Cruz, California, USA
     - year: 2027
       id: cidr27
@@ -66,3 +63,4 @@
       timezone: UTC-7
       date: January 24-27, 2027
       place: Amsterdam, The Netherlands
+
