@@ -21,7 +21,6 @@
       link: https://securecomm.eai-conferences.org/2022/
       timeline:
         - deadline: '2022-04-17 23:59:00'
-          comment: 'Main track full paper submission; time/timezone default to 23:59:00 AoE (not specified by source)'
       timezone: AoE
       date: October 17-19, 2022
       place: Virtual
@@ -30,7 +29,6 @@
       link: https://securecomm.eai-conferences.org/2023/
       timeline:
         - deadline: '2023-05-20 23:59:59'
-          comment: 'Main track full paper submission'
       timezone: AoE
       date: October 19-21, 2023
       place: Hong Kong SAR, Hong Kong
