@@ -11,8 +11,7 @@
       id: vmcai21
       link: https://popl21.sigplan.org/home/VMCAI-2021
       timeline:
-        - deadline: TBD
-          comment: 'Regular research papers: extended October 11, 2020; exact clock unpublished'
+        - deadline: '2020-10-11 23:59:00'
       timezone: AoE
       date: January 17-19, 2021
       place: Online
@@ -21,16 +20,14 @@
       link: https://popl22.sigplan.org/home/VMCAI-2022
       timeline:
         - deadline: '2021-09-09 23:59:59'
-          comment: Submission deadline
       timezone: AoE
-      date: January 16-28, 2022
+      date: January 16-18, 2022
       place: Philadelphia, Pennsylvania, United States
     - year: 2023
       id: vmcai23
       link: https://popl23.sigplan.org/home/VMCAI-2023
       timeline:
-        - deadline: TBD
-          comment: 'Regular research papers: extended September 15, 2022; exact clock unpublished'
+        - deadline: '2022-09-15 23:59:00'
       timezone: AoE
       date: January 16-17, 2023
       place: Boston, Massachusetts, USA
@@ -38,8 +35,7 @@
       id: vmcai24
       link: https://popl24.sigplan.org/home/VMCAI-2024
       timeline:
-        - deadline: TBD
-          comment: 'Regular research papers: extended September 7, 2023; exact clock unpublished'
+        - deadline: '2023-09-07 23:59:00'
       timezone: AoE
       date: January 15-16, 2024
       place: London, United Kingdom
@@ -47,8 +43,7 @@
       id: vmcai25
       link: https://conf.researchr.org/home/VMCAI-2025
       timeline:
-        - deadline: TBD
-          comment: 'Regular research papers: extended October 1, 2024; exact clock unpublished'
+        - deadline: '2024-10-01 23:59:00'
       timezone: AoE
       date: January 20-21, 2025
       place: Denver, Colorado, USA
