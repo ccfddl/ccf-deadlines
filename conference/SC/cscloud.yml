@@ -11,43 +11,39 @@
       id: cscloud2021
       link: https://www.cloud-conf.net/cscloud/2021/cscloud/
       timeline:
-        - deadline: TBD
-          comment: Regular paper submission deadline (firm); April 20, 2021, clock and timezone not published
-      timezone: UTC
+        - deadline: '2021-04-20 23:59:00'
+      timezone: AoE
       date: June 26-27, 2021
       place: Online
     - year: 2022
       id: cscloud2022
       link: https://www.cloud-conf.net/cscloud/2022/cscloud/
       timeline:
-        - deadline: TBD
-          comment: Regular paper submission deadline (firm); April 15, 2022, clock and timezone not published
-      timezone: UTC
+        - deadline: '2022-04-15 23:59:00'
+      timezone: AoE
       date: June 25-26, 2022
       place: Online
     - year: 2024
       id: cscloud2024
       link: https://www.cloud-conf.net/cscloud/2024/cscloud/
       timeline:
-        - deadline: TBD
-          comment: Regular paper submission deadline (firm); May 5, 2024, clock and timezone not published
-      timezone: UTC
+        - deadline: '2024-05-05 23:59:00'
+      timezone: AoE
       date: June 29, 2024
       place: Shanghai, China (Hybrid)
     - year: 2025
       id: cscloud2025
       link: https://www.cloud-conf.net/cscloud/2025/cscloud/
       timeline:
-        - deadline: TBD
-          comment: Regular paper submission deadline (firm); September 8, 2025, clock and timezone not published
-      timezone: UTC
+        - deadline: '2025-09-08 23:59:00'
+      timezone: AoE
       date: November 8-9, 2025
       place: New York City, USA (Hybrid)
     - year: 2026
       id: cscloud2026
       link: https://www.cloud-conf.net/cscloud/2026/cscloud/
       timeline:
-        - deadline: '2026-08-01 23:59:59'
+        - deadline: '2026-09-15 23:59:00'
       timezone: AoE
       date: December 19-21, 2026
       place: Shanghai, China
