@@ -12,25 +12,42 @@
       link: https://2021.corl.org/
       timeline:
         - deadline: '2021-06-18 23:59:59'
-          comment: Regular Papers
       timezone: UTC-7
       date: November 8-11, 2021
       place: London, UK (Hybrid)
+    - year: 2022
+      id: corl22
+      link: https://web.archive.org/web/20221215143549/https://corl2022.org/
+      timeline:
+        - deadline: 'TBD'
+          comment: Conflicting official submission cutoffs.
+      timezone: UTC-7
+      date: December 15-18, 2022
+      place: Auckland, New Zealand (Hybrid)
+    - year: 2023
+      id: corl23
+      link: https://www.corl2023.org/
+      timeline:
+        - deadline: '2023-06-08 23:59:00'
+      timezone: UTC-7
+      date: November 7-9, 2023
+      place: Atlanta, Georgia, USA (Hybrid)
     - year: 2024
       id: corl24
       link: https://2024.corl.org/
       timeline:
         - deadline: '2024-06-06 23:59:59'
       timezone: AoE
-      date: November 6-9, 2024
-      place: Munich, Germany
+      date: November 6-8, 2024
+      place: Munich, Germany (Hybrid)
     - year: 2025
       id: corl25
       link: https://2025.corl.org/
       timeline:
-        - deadline: '2025-04-30 23:59:59'
+        - abstract_deadline: '2025-04-23 23:59:00'
+          deadline: '2025-04-30 23:59:59'
       timezone: AoE
-      date: September 27-30, 2025
+      date: September 28-30, 2025
       place: Seoul, Korea
     - year: 2026
       id: corl26
@@ -39,5 +56,5 @@
         - abstract_deadline: '2026-05-25 23:59:59'
           deadline: '2026-05-28 23:59:59'
       timezone: AoE
-      date: November 9-12, 2026
+      date: November 9-11, 2026
       place: Austin, Texas, USA
