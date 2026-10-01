@@ -13,7 +13,7 @@
       timeline:
         - abstract_deadline: '2021-07-30 23:59:00'
           deadline: '2021-07-30 23:59:00'
-          comment: 'Regular-paper registration and full submission; registration extended to July 30'
+          comment: Registration / full paper
       timezone: UTC-7
       date: December 1-3, 2021
       place: Online
@@ -23,7 +23,7 @@
       timeline:
         - abstract_deadline: '2022-06-02 23:59:00'
           deadline: '2022-06-02 23:59:00'
-          comment: 'Regular-paper registration and full submission; registration extended to June 2'
+          comment: Registration / full paper
       timezone: UTC-7
       date: September 13-15, 2022
       place: Prague, Czechia and Online
