@@ -49,7 +49,7 @@
       timeline:
         - abstract_deadline: '2024-11-14 23:59:00'
           deadline: '2024-11-14 23:59:00'
-          comment: 'Abstract registration is optional; final registration and submission deadlines coincide.'
+          comment: Registration optional; full required
       timezone: AoE
       date: May 7-9, 2025
       place: Irvine, CA, USA
@@ -57,14 +57,14 @@
       id: sensys26
       link: https://sensys.acm.org/2026/
       timeline:
-        - abstract_deadline: '2025-06-24 23:59:00'
+        - abstract_deadline: '2025-07-01 23:59:00'
           deadline: '2025-07-01 23:59:00'
           comment: '1st deadline'
         - abstract_deadline: '2025-11-06 23:59:00'
           deadline: '2025-11-13 23:59:00'
           comment: '2nd deadline'
       timezone: AoE
-      date: May 11-14, 2026
+      date: May 12-14, 2026
       place: Saint-Malo, France
     - year: 2027
       id: sensys27
