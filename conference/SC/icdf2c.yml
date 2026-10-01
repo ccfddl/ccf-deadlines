@@ -16,12 +16,27 @@
       timezone: UTC-12
       date: December 7-9, 2021
       place: Singapore, Singapore
+    - year: 2022
+      id: icdf2c22
+      link: https://icdf2c.eai-conferences.org/2022/
+      timeline:
+        - deadline: '2022-07-15 23:59:00'
+      timezone: AoE
+      date: November 17-18, 2022
+      place: Boston, MA, USA
+    - year: 2023
+      id: icdf2c23
+      link: https://icdf2c.eai-conferences.org/2023/
+      timeline:
+        - deadline: '2023-04-15 23:59:00'
+      timezone: AoE
+      date: November 30-December 1, 2023
+      place: New York City, NY, USA
     - year: 2024
       id: icdf2c24
       link: https://icdf2c.eai-conferences.org/2024/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Regular full-paper submission: May 15, 2024; exact cutoff time and timezone unverified'
+        - deadline: '2024-05-15 23:59:00'
       timezone: UTC-12
       date: October 9-10, 2024
       place: Dubrovnik, Croatia
