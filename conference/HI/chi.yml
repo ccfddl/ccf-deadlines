@@ -7,6 +7,15 @@
     thcpl: A
   dblp: chi
   confs:
+    - year: 2021
+      id: chi21
+      link: https://chi2021.acm.org/
+      timeline:
+        - abstract_deadline: '2020-09-10 12:00:00'
+          deadline: '2020-09-17 12:00:00'
+      timezone: UTC-7
+      date: May 10-14, 2021
+      place: Virtual
     - year: 2022
       id: chi22
       link: https://chi2022.acm.org/
