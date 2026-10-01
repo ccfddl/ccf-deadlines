@@ -16,8 +16,8 @@
         - deadline: '2020-09-22 17:00:00'
           comment: second round
       timezone: PT
-      date: June 20-25, 2021
-      place: Xi'an, China
+      date: June 22-24, 2021
+      place: Online / Xi'an, China (local event)
     - year: 2022
       id: sigmod22
       link: http://2022.sigmod.org/
@@ -27,8 +27,8 @@
         - deadline: '2021-09-15 17:00:00'
           comment: second round
       timezone: PT
-      date: June 12-17, 2022
-      place: Philadelphia, PA, USA
+      date: June 14-16, 2022
+      place: Philadelphia, PA, USA / Online
     - year: 2023
       id: sigmod23
       link: http://2023.sigmod.org/
@@ -40,7 +40,7 @@
         - deadline: '2022-10-15 23:59:00'
           comment: third round
       timezone: PT
-      date: June 18-23, 2023
+      date: June 20-22, 2023
       place: Seattle, WA, USA
     - year: 2024
       id: sigmod24
@@ -55,7 +55,7 @@
         - deadline: '2023-10-15 23:59:00'
           comment: round 4
       timezone: PT
-      date: June 11-16, 2024
+      date: June 11-13, 2024
       place: Santiago, Chile
     - year: 2025
       id: sigmod25
@@ -74,7 +74,7 @@
           deadline: '2024-10-17 23:59:00'
           comment: round 4
       timezone: AoE
-      date: June 22-27, 2025
+      date: June 22 and June 24-26, 2025
       place: Berlin, Germany
     - year: 2026
       id: sigmod26
@@ -93,7 +93,7 @@
           deadline: '2025-10-17 23:59:00'
           comment: round 4
       timezone: AoE
-      date: May 31-June 5, 2026
+      date: May 31 and June 2-4, 2026
       place: Bangalore, India
     - year: 2027
       id: sigmod27
