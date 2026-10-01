@@ -22,8 +22,8 @@
       link: https://cp2022.a4cp.org/
       timeline:
         - abstract_deadline: '2022-02-18 23:59:00'
-          deadline: '2022-02-25 23:59:00'
-          comment: Regular full papers; abstract and full-paper deadlines extended; clock defaults to 23:59:00 by repository convention
+          deadline: '2022-02-25 23:59:59'
+          comment: Regular full papers; abstract and full-paper deadlines extended; abstract clock defaults to 23:59:00 by repository convention
       timezone: AoE
       date: July 31-August 8, 2022
       place: HAIFA, ISRAEL
