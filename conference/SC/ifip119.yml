@@ -7,12 +7,19 @@
     thcpl: N
   dblp: NO DBLP
   confs:
+    - year: 2021
+      id: ifip119'21
+      link: https://www.ifip119.org/Conferences/
+      timeline:
+        - deadline: '2020-10-18 23:59:00'
+      timezone: AoE
+      date: February 1-2, 2021
+      place: Virtual
     - year: 2022
       id: ifip119'22
       link: http://www.ifip119.org/Conferences/
       timeline:
         - deadline: '2021-11-12 23:59:00'
-          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
       date: January 3-4, 2022
       place: Virtual
@@ -21,7 +28,6 @@
       link: https://www.ifip119.org/Conferences/
       timeline:
         - deadline: '2022-11-15 23:59:00'
-          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
       date: January 30-31, 2023
       place: Arlington, Virginia, USA
@@ -30,7 +36,6 @@
       link: https://www.ifip119.org/Conferences/
       timeline:
         - deadline: '2023-10-31 23:59:00'
-          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
       date: January 4-5, 2024
       place: New Delhi, India
@@ -39,7 +44,6 @@
       link: https://www.ifip119.org/Conferences/
       timeline:
         - deadline: '2024-09-30 23:59:00'
-          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
       date: January 6-7, 2025
       place: New Delhi, India
@@ -48,7 +52,6 @@
       link: http://www.ifip119.org/Conferences/
       timeline:
         - deadline: '2025-10-31 23:59:00'
-          comment: 'Regular paper submission; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
       date: January 5 - 6, 2026
       place: New Delhi, India
