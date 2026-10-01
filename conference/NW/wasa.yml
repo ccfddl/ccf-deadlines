@@ -36,7 +36,7 @@
       id: wasa25
       link: http://wasa-conference.org/WASA2025/index.html
       timeline:
-        - deadline: '2025-02-15 23:59:59'
+        - deadline: '2025-02-15 23:59:00'
       timezone: AoE
       date: June 25-26, 2025
       place: Tokyo, Japan
