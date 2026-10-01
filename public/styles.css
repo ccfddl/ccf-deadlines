@@ -133,8 +133,18 @@ a {
 .tabular-filter-controls {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   width: 100%;
+}
+
+.tabular-timezone {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #666;
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
 }
 
 .tabular-search {
@@ -238,6 +248,7 @@ a {
 .tabular-date > span {
   text-decoration: underline;
   text-underline-offset: 2px;
+  white-space: nowrap;
 }
 
 .tabular-date small {

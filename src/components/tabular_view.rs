@@ -5,7 +5,12 @@ use crate::components::checkbox_button::{
 use crate::components::conf::{
     Category, Conference, ConferenceYear, Timeline, fetch_all_conf, get_categories,
 };
-use chrono::{Datelike, Local, NaiveDate};
+use crate::components::showtable::{
+    display_timezone_offset_at, display_timezone_options, is_supported_display_timezone,
+    parse_deadline_to_rfc3339,
+};
+use crate::components::timezone::get_timezone_name;
+use chrono::{DateTime, Datelike, Utc};
 use leptos::prelude::*;
 use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use std::collections::HashSet;
@@ -87,6 +92,7 @@ fn filter_query(
     core: &HashSet<String>,
     thcpl: &HashSet<String>,
     search: &str,
+    timezone: &str,
 ) -> String {
     let mut query = "?view=table".to_string();
     for (name, values) in [
@@ -111,6 +117,8 @@ fn filter_query(
         query.push_str("&q=");
         query.push_str(&urlencoding::encode(search));
     }
+    query.push_str("&tz=");
+    query.push_str(&urlencoding::encode(timezone));
     query
 }
 
@@ -120,7 +128,7 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
         .and_then(|browser| browser.location().search().ok())
         .and_then(|search| UrlSearchParams::new_with_str(&search).ok());
     let url_has_filters = query.as_ref().is_some_and(|query| {
-        ["categories", "ccf", "core", "thcpl", "filters", "q"]
+        ["categories", "ccf", "core", "thcpl", "filters", "q", "tz"]
             .iter()
             .any(|key| query.has(key))
     });
@@ -177,6 +185,18 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
             .and_then(|storage| storage.get_item("conference_search").ok().flatten())
             .unwrap_or_default()
     });
+    let browser_timezone = get_timezone_name().unwrap_or_else(|| "UTC".to_string());
+    let stored_timezone = window()
+        .and_then(|browser| browser.local_storage().ok().flatten())
+        .and_then(|storage| storage.get_item("display_timezone").ok().flatten());
+    let initial_timezone = if url_has_filters {
+        query.as_ref().and_then(|query| query.get("tz"))
+    } else {
+        stored_timezone
+    }
+    .filter(|value| is_supported_display_timezone(value, &browser_timezone))
+    .unwrap_or_else(|| browser_timezone.clone());
+    let selected_timezone = RwSignal::new(initial_timezone);
     let open_dropdown = RwSignal::new(None::<String>);
     let conferences = RwSignal::new(None::<Vec<Conference>>);
     let loading = RwSignal::new(true);
@@ -210,12 +230,19 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
     });
 
     Effect::new(move |_| {
+        if let Some(storage) = window().and_then(|browser| browser.local_storage().ok().flatten()) {
+            let _ = storage.set_item("display_timezone", &selected_timezone.get());
+        }
+    });
+
+    Effect::new(move |_| {
         let query = filter_query(
             &selected.get(),
             &rank_list.get(),
             &core_rank_list.get(),
             &thcpl_rank_list.get(),
             &search.get(),
+            &selected_timezone.get(),
         );
         if let Some(browser) = window() {
             let location = browser.location();
@@ -301,6 +328,53 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                     </CheckboxGroup>
                 </div>
                 <div class="tabular-filter-controls">
+                <div class="tabular-timezone">
+                    <span>{move || if use_english.get() { "Times in" } else { "显示时区" }}</span>
+                    <div class="toolbar-timezone-picker">
+                        <button
+                            type="button"
+                            class="toolbar-timezone-trigger"
+                            aria-label=move || if use_english.get() { "Select display timezone" } else { "选择显示时区" }
+                            aria-haspopup="listbox"
+                            aria-expanded=move || open_dropdown.get().as_deref() == Some("timezone")
+                            on:click=move |_| {
+                                if open_dropdown.get_untracked().as_deref() == Some("timezone") {
+                                    open_dropdown.set(None);
+                                } else {
+                                    open_dropdown.set(Some("timezone".to_string()));
+                                }
+                            }
+                        >
+                            <span>{move || selected_timezone.get()}</span>
+                            <span class="toolbar-timezone-arrow" aria-hidden="true">"⌄"</span>
+                        </button>
+                        <Show when=move || open_dropdown.get().as_deref() == Some("timezone")>
+                            <div class="toolbar-timezone-backdrop" on:click=move |_| open_dropdown.set(None)></div>
+                            <div class="toolbar-timezone-menu" role="listbox">
+                                {display_timezone_options(&browser_timezone)
+                                    .into_iter()
+                                    .map(|timezone| {
+                                        let selected_value = timezone.clone();
+                                        view! {
+                                            <button
+                                                type="button"
+                                                class="toolbar-timezone-option"
+                                                role="option"
+                                                aria-selected=move || selected_timezone.get() == selected_value
+                                                on:click=move |_| {
+                                                    selected_timezone.set(timezone.clone());
+                                                    open_dropdown.set(None);
+                                                }
+                                            >
+                                                {timezone.clone()}
+                                            </button>
+                                        }
+                                    })
+                                    .collect_view()}
+                            </div>
+                        </Show>
+                    </div>
+                </div>
                 <div class="tabular-search">
                     <Input
                         value=search
@@ -364,8 +438,11 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                         thcpl: thcpl_rank_list.get(),
                     };
                     let query = search.get();
-                    let year = leading_year(&data, &selected_categories, &ranks, &query, Local::now().year());
-                    let groups = build_table(&data, &selected_categories, &ranks, &query, year);
+                    let timezone = selected_timezone.get();
+                    let now = Utc::now();
+                    let current_year = now.with_timezone(&display_timezone_offset_at(&timezone, now.timestamp_millis())).year();
+                    let year = leading_year(&data, &selected_categories, &ranks, &query, &timezone, current_year);
+                    let groups = build_table(&data, &selected_categories, &ranks, &query, &timezone, year);
                     render_table(year, groups, use_english.get()).into_any()
                 } else {
                     view! { <p class="tabular-status">"—"</p> }.into_any()
@@ -396,6 +473,7 @@ fn leading_year(
     selected: &HashSet<String>,
     ranks: &RankFilters,
     search: &str,
+    timezone: &str,
     current_year: i32,
 ) -> i32 {
     conferences
@@ -406,13 +484,11 @@ fn leading_year(
                 && matches_search(conference, search)
         })
         .flat_map(|conference| &conference.confs)
-        .flat_map(|edition| &edition.timeline)
-        .filter(|point| is_full_submission_deadline(point))
-        .filter_map(|point| {
-            NaiveDate::parse_from_str(point.deadline.get(..10)?, "%Y-%m-%d")
-                .ok()
-                .map(|date| date.year())
+        .flat_map(|edition| {
+            (0..edition.timeline.len())
+                .filter_map(move |round| round_deadline(edition, round, timezone))
         })
+        .map(|deadline| deadline.year)
         .max()
         .unwrap_or(current_year)
         .max(current_year)
@@ -458,14 +534,17 @@ fn is_full_submission_deadline(point: &Timeline) -> bool {
         || comment.starts_with("original abstract registration:"))
 }
 
-fn round_deadline(edition: &ConferenceYear, round: usize) -> Option<DeadlineCell> {
+fn round_deadline(edition: &ConferenceYear, round: usize, timezone: &str) -> Option<DeadlineCell> {
     let point = edition.timeline.get(round)?;
     if !is_full_submission_deadline(point) {
         return None;
     }
-    let date = NaiveDate::parse_from_str(point.deadline.get(..10)?, "%Y-%m-%d").ok()?;
+    let origin = parse_deadline_to_rfc3339(&point.deadline, &edition.timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())?;
+    let offset = display_timezone_offset_at(timezone, origin.timestamp_millis());
+    let date = origin.with_timezone(&offset);
     Some(DeadlineCell {
-        date: date.format("%Y-%m-%d").to_string(),
+        date: date.format("%Y-%m-%d %H:%M:%S").to_string(),
         year: date.year(),
         month: date.month(),
         place: edition.place.clone(),
@@ -478,6 +557,7 @@ fn build_table(
     selected: &HashSet<String>,
     ranks: &RankFilters,
     search: &str,
+    timezone: &str,
     year: i32,
 ) -> Vec<MonthGroup> {
     let mut monthly_rows: [Vec<TabularRow>; 12] = std::array::from_fn(|_| Vec::new());
@@ -492,21 +572,22 @@ fn build_table(
             .confs
             .iter()
             .filter(|edition| {
-                (0..edition.timeline.len()).any(|round| round_deadline(edition, round).is_some())
+                (0..edition.timeline.len())
+                    .any(|round| round_deadline(edition, round, timezone).is_some())
             })
             .max_by_key(|edition| edition.year)
         else {
             continue;
         };
         for round in 0..latest_edition.timeline.len() {
-            if round_deadline(latest_edition, round).is_none() {
+            if round_deadline(latest_edition, round, timezone).is_none() {
                 continue;
             }
             let deadlines: Vec<_> = conference
                 .confs
                 .iter()
                 .filter_map(|edition| {
-                    round_deadline(edition, round).map(|date| (edition.year, date))
+                    round_deadline(edition, round, timezone).map(|date| (edition.year, date))
                 })
                 .filter(|(_, date)| (year - 3..=year).contains(&date.year))
                 .collect();
@@ -640,8 +721,8 @@ mod tests {
         let ccf = HashSet::from(["B".to_string(), "A".to_string()]);
         let core = HashSet::from(["A*".to_string()]);
         assert_eq!(
-            filter_query(&categories, &ccf, &core, &HashSet::new(), ""),
-            "?view=table&categories=AI,DB&ccf=A,B&core=A*"
+            filter_query(&categories, &ccf, &core, &HashSet::new(), "", "UTC"),
+            "?view=table&categories=AI,DB&ccf=A,B&core=A*&tz=UTC"
         );
         assert_eq!(
             filter_query(
@@ -649,13 +730,21 @@ mod tests {
                 &HashSet::new(),
                 &HashSet::new(),
                 &HashSet::new(),
-                ""
+                "",
+                "UTC"
             ),
-            "?view=table&filters=all"
+            "?view=table&filters=all&tz=UTC"
         );
         assert_eq!(
-            filter_query(&categories, &ccf, &core, &HashSet::new(), "VLDB 2027"),
-            "?view=table&categories=AI,DB&ccf=A,B&core=A*&q=VLDB%202027"
+            filter_query(
+                &categories,
+                &ccf,
+                &core,
+                &HashSet::new(),
+                "VLDB 2027",
+                "Asia/Shanghai"
+            ),
+            "?view=table&categories=AI,DB&ccf=A,B&core=A*&q=VLDB%202027&tz=Asia%2FShanghai"
         );
         assert_eq!(
             parse_filter_values(Some("AI,INVALID,DB".to_string()), &categories),
@@ -690,15 +779,59 @@ mod tests {
             &HashSet::new(),
             &RankFilters::default(),
             "",
+            "America/Los_Angeles",
             2026,
         );
         let dates: Vec<_> = groups
             .iter()
             .flat_map(|group| &group.rows)
             .flat_map(|row| &row.cells)
-            .flat_map(|cell| cell.iter().map(|deadline| deadline.date.as_str()))
+            .flat_map(|cell| cell.iter().map(|deadline| deadline.date[..10].to_string()))
             .collect();
-        assert_eq!(dates, ["2026-10-08"]);
+        assert_eq!(dates, ["2026-10-09"]);
+    }
+
+    #[test]
+    fn timezone_conversion_moves_deadlines_between_months_and_years() {
+        let conferences: Vec<Conference> = serde_json::from_value(json!([{
+            "title": "BoundaryConf", "description": "Boundary conference", "sub": "AI",
+            "rank": {"ccf": "A"}, "dblp": "boundary",
+            "confs": [{
+                "year": 2027, "id": "boundary27", "link": "https://example.com/",
+                "timeline": [{"deadline": "2027-01-01 00:30:00"}],
+                "timezone": "UTC", "date": "June 2027", "place": "Paris"
+            }]
+        }]))
+        .unwrap();
+        let ranks = RankFilters::default();
+        assert_eq!(
+            leading_year(&conferences, &HashSet::new(), &ranks, "", "UTC", 2026),
+            2027
+        );
+        assert_eq!(
+            leading_year(
+                &conferences,
+                &HashSet::new(),
+                &ranks,
+                "",
+                "Pacific/Honolulu",
+                2026
+            ),
+            2026
+        );
+        let utc = build_table(&conferences, &HashSet::new(), &ranks, "", "UTC", 2027);
+        assert_eq!(utc[0].month, 1);
+        assert_eq!(utc[0].rows[0].cells[0][0].date, "2027-01-01 00:30:00");
+        let honolulu = build_table(
+            &conferences,
+            &HashSet::new(),
+            &ranks,
+            "",
+            "Pacific/Honolulu",
+            2026,
+        );
+        assert_eq!(honolulu[0].month, 12);
+        assert_eq!(honolulu[0].rows[0].cells[0][0].date, "2026-12-31 14:30:00");
     }
 
     #[test]
@@ -737,33 +870,68 @@ mod tests {
 
         let all_ranks = RankFilters::default();
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &all_ranks, "", 2026),
+            leading_year(
+                &conferences,
+                &HashSet::new(),
+                &all_ranks,
+                "",
+                "America/Los_Angeles",
+                2026
+            ),
             2027
         );
         let ai_only = HashSet::from(["AI".to_string()]);
         assert_eq!(
-            leading_year(&conferences, &ai_only, &all_ranks, "", 2026),
+            leading_year(
+                &conferences,
+                &ai_only,
+                &all_ranks,
+                "",
+                "America/Los_Angeles",
+                2026
+            ),
             2026
         );
-        let ai_february = build_table(&conferences, &ai_only, &all_ranks, "", 2027)
-            .into_iter()
-            .find(|group| group.month == 2)
-            .unwrap();
+        let ai_february = build_table(
+            &conferences,
+            &ai_only,
+            &all_ranks,
+            "",
+            "America/Los_Angeles",
+            2027,
+        )
+        .into_iter()
+        .find(|group| group.month == 2)
+        .unwrap();
         assert!(ai_february.rows[0].cells[0].is_empty());
-        assert_eq!(ai_february.rows[0].cells[1][0].date, "2026-02-03");
+        assert_eq!(&ai_february.rows[0].cells[1][0].date[..10], "2026-02-03");
         let b_only = RankFilters {
             ccf: HashSet::from(["B".to_string()]),
             ..Default::default()
         };
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &b_only, "", 2026),
+            leading_year(
+                &conferences,
+                &HashSet::new(),
+                &b_only,
+                "",
+                "America/Los_Angeles",
+                2026
+            ),
             2026
         );
         assert_eq!(
-            build_table(&conferences, &HashSet::new(), &b_only, "", 2027)
-                .iter()
-                .map(|group| group.rows.len())
-                .sum::<usize>(),
+            build_table(
+                &conferences,
+                &HashSet::new(),
+                &b_only,
+                "",
+                "America/Los_Angeles",
+                2027
+            )
+            .iter()
+            .map(|group| group.rows.len())
+            .sum::<usize>(),
             1
         );
         let matching_ranks = RankFilters {
@@ -772,14 +940,28 @@ mod tests {
             thcpl: HashSet::from(["A".to_string()]),
         };
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &matching_ranks, "", 2026),
+            leading_year(
+                &conferences,
+                &HashSet::new(),
+                &matching_ranks,
+                "",
+                "America/Los_Angeles",
+                2026
+            ),
             2027
         );
         assert_eq!(
-            build_table(&conferences, &HashSet::new(), &matching_ranks, "", 2027)
-                .iter()
-                .map(|group| group.rows.len())
-                .sum::<usize>(),
+            build_table(
+                &conferences,
+                &HashSet::new(),
+                &matching_ranks,
+                "",
+                "America/Los_Angeles",
+                2027
+            )
+            .iter()
+            .map(|group| group.rows.len())
+            .sum::<usize>(),
             2
         );
         let non_core = RankFilters {
@@ -787,20 +969,34 @@ mod tests {
             ..Default::default()
         };
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &non_core, "", 2026),
+            leading_year(
+                &conferences,
+                &HashSet::new(),
+                &non_core,
+                "",
+                "America/Los_Angeles",
+                2026
+            ),
             2026
         );
-        let future_groups = build_table(&conferences, &HashSet::new(), &all_ranks, "", 2027);
+        let future_groups = build_table(
+            &conferences,
+            &HashSet::new(),
+            &all_ranks,
+            "",
+            "America/Los_Angeles",
+            2027,
+        );
         let future_january = future_groups.iter().find(|group| group.month == 1).unwrap();
-        assert_eq!(future_january.rows[0].cells[0][0].date, "2027-01-01");
+        assert_eq!(&future_january.rows[0].cells[0][0].date[..10], "2027-01-01");
         assert_eq!(future_january.rows[0].cells[1].len(), 1);
-        assert_eq!(future_january.rows[0].cells[1][0].date, "2026-01-01");
-        assert_eq!(future_january.rows[0].cells[2][0].date, "2025-01-01");
+        assert_eq!(&future_january.rows[0].cells[1][0].date[..10], "2026-01-01");
+        assert_eq!(&future_january.rows[0].cells[2][0].date[..10], "2025-01-01");
         let future_april = future_groups.iter().find(|group| group.month == 4).unwrap();
         assert!(future_april.rows[0].cells[0].is_empty());
-        assert_eq!(future_april.rows[0].cells[1][0].date, "2026-04-01");
-        assert_eq!(future_april.rows[0].cells[2][0].date, "2025-04-01");
-        assert_eq!(future_april.rows[0].cells[3][0].date, "2024-04-01");
+        assert_eq!(&future_april.rows[0].cells[1][0].date[..10], "2026-04-01");
+        assert_eq!(&future_april.rows[0].cells[2][0].date[..10], "2025-04-01");
+        assert_eq!(&future_april.rows[0].cells[3][0].date[..10], "2024-04-01");
         assert_eq!(
             future_groups
                 .iter()
@@ -809,29 +1005,50 @@ mod tests {
             3
         );
 
-        let groups = build_table(&conferences, &HashSet::new(), &all_ranks, "", 2026);
+        let groups = build_table(
+            &conferences,
+            &HashSet::new(),
+            &all_ranks,
+            "",
+            "America/Los_Angeles",
+            2026,
+        );
         let january = groups.iter().find(|group| group.month == 1).unwrap();
         assert_eq!(january.rows[0].cells[0].len(), 1);
-        assert_eq!(january.rows[0].cells[0][0].date, "2026-01-01");
+        assert_eq!(&january.rows[0].cells[0][0].date[..10], "2026-01-01");
         assert_eq!(january.rows[0].cells[1].len(), 1);
-        assert_eq!(january.rows[0].cells[1][0].date, "2025-01-01");
+        assert_eq!(&january.rows[0].cells[1][0].date[..10], "2025-01-01");
         let april = groups.iter().find(|group| group.month == 4).unwrap();
-        assert_eq!(april.rows[0].cells[0][0].date, "2026-04-01");
+        assert_eq!(&april.rows[0].cells[0][0].date[..10], "2026-04-01");
         assert_eq!(april.rows[0].cells[0][0].place, "Athens");
-        assert_eq!(april.rows[0].cells[1][0].date, "2025-04-01");
+        assert_eq!(&april.rows[0].cells[1][0].date[..10], "2025-04-01");
         assert_eq!(april.rows[0].cells[1][0].place, "Boston");
 
         assert!(matches_search(&conferences[0], "VLDB27"));
         assert!(!matches_search(&conferences[1], "VLDB27"));
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &all_ranks, "aiconf26", 2026),
+            leading_year(
+                &conferences,
+                &HashSet::new(),
+                &all_ranks,
+                "aiconf26",
+                "America/Los_Angeles",
+                2026
+            ),
             2026
         );
         assert_eq!(
-            build_table(&conferences, &HashSet::new(), &all_ranks, "aiconf26", 2026)
-                .iter()
-                .map(|group| group.rows.len())
-                .sum::<usize>(),
+            build_table(
+                &conferences,
+                &HashSet::new(),
+                &all_ranks,
+                "aiconf26",
+                "America/Los_Angeles",
+                2026
+            )
+            .iter()
+            .map(|group| group.rows.len())
+            .sum::<usize>(),
             1
         );
     }
