@@ -1318,7 +1318,6 @@ pub fn ShowTable(
                                                 &display_timezone,
                                             );
                                             let list_website = conf.link.clone();
-                                            let conference_page = conference_page_url(&conf);
                                             let list_timeline = conf.ddls.clone();
                                             let timeline_reference = base_time
                                                 .get_untracked()
@@ -1370,11 +1369,9 @@ pub fn ShowTable(
                                                             <div class=("conf-fin", is_finished)>
                                                                 <div class="conference-card-heading">
                                                                     <div class="conf-title">
-                                                                        <a href=conference_page on:click=move |event| event.stop_propagation()>
-                                                                            {conf.title.clone()}
-                                                                            " "
-                                                                            {conf.year.clone()}
-                                                                        </a>
+                                                                        {conf.title.clone()}
+                                                                        " "
+                                                                        {conf.year.clone()}
                                                                     </div>
                                                                     <a
                                                                         class="conference-card-website"
@@ -1734,32 +1731,6 @@ pub fn ShowTable(
 
 static UTC_MAP: OnceLock<HashMap<String, String>> = OnceLock::new();
 type AcceptanceRateMap = HashMap<String, Vec<(i32, String)>>;
-
-fn conference_page_url(conf: &ConfItem) -> String {
-    let slug = conf
-        .title
-        .to_ascii_lowercase()
-        .chars()
-        .map(|character| if character.is_ascii_alphanumeric() { character } else { '-' })
-        .collect::<String>();
-    let slug = slug
-        .trim_matches('-')
-        .split('-')
-        .filter(|part| !part.is_empty())
-        .collect::<Vec<_>>()
-        .join("-");
-    let slug = if slug.is_empty() {
-        conf.id.to_ascii_lowercase()
-    } else {
-        slug
-    };
-    format!(
-        "/conferences/{}/{}-{}/",
-        conf.sub.to_ascii_lowercase(),
-        slug,
-        conf.year
-    )
-}
 
 fn browser_origin() -> Option<String> {
     window().and_then(|browser| browser.location().origin().ok())
