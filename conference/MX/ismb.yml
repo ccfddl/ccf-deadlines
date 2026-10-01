@@ -5,6 +5,54 @@
     ccf: B
   dblp: ismb
   confs:
+    - year: 2021
+      id: ismb21
+      link: https://www.iscb.org/ismbeccb2021/
+      timeline:
+        - deadline: '2021-01-28 23:59:00'
+      timezone: AoE
+      date: July 25-30, 2021
+      place: Virtual
+    - year: 2022
+      id: ismb22
+      link: https://www.iscb.org/ismb2022/
+      timeline:
+        - deadline: '2022-01-13 23:59:00'
+      timezone: AoE
+      date: July 10-14, 2022
+      place: Madison, WI, USA (Hybrid)
+    - year: 2023
+      id: ismb23
+      link: https://www.iscb.org/ismbeccb2023/
+      timeline:
+        - deadline: '2023-01-19 23:59:00'
+      timezone: AoE
+      date: July 23-27, 2023
+      place: Lyon, France (Hybrid)
+    - year: 2024
+      id: ismb24
+      link: https://www.iscb.org/ismb2024/
+      timeline:
+        - deadline: '2024-01-25 23:59:00'
+      timezone: AoE
+      date: July 12-16, 2024
+      place: Montreal, Canada (Hybrid)
+    - year: 2025
+      id: ismb25
+      link: https://www.iscb.org/ismbeccb2025/
+      timeline:
+        - deadline: '2025-01-23 23:59:00'
+      timezone: AoE
+      date: July 20-24, 2025
+      place: Liverpool, UK (Hybrid)
+    - year: 2026
+      id: ismb26
+      link: https://www.iscb.org/ismb2026/
+      timeline:
+        - deadline: '2026-01-20 23:59:00'
+      timezone: AoE
+      date: July 12-16, 2026
+      place: Washington, DC, USA (Hybrid)
     - year: 2027
       id: ismb27
       link: https://www.iscb.org/ismbeccb2027/
@@ -14,3 +62,4 @@
       timezone: AoE
       date: July 18-22, 2027
       place: Copenhagen, Denmark
+
