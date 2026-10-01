@@ -11,9 +11,9 @@
       id: icaps21
       link: https://icaps21.icaps-conference.org/Calls/main-track.html
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Abstract: 2020-12-11; paper: 2020-12-18; official CFP gives UTC-12 calendar dates without an explicit clock.'
+        - abstract_deadline: '2020-12-11 23:59:00'
+          deadline: '2020-12-18 23:59:00'
+          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: August 2-13, 2021
       place: Virtual
@@ -21,9 +21,9 @@
       id: icaps22
       link: https://icaps22.icaps-conference.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Abstract: 2021-12-10; paper: 2021-12-15; official CFP gives UTC-12 calendar dates without an explicit clock.'
+        - abstract_deadline: '2021-12-10 23:59:00'
+          deadline: '2021-12-15 23:59:00'
+          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: June 13-24, 2022
       place: Virtual
@@ -31,9 +31,9 @@
       id: icaps23
       link: https://icaps23.icaps-conference.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Abstract: 2022-11-25; paper: 2022-11-30; official CFP gives UTC-12 calendar dates without an explicit clock.'
+        - abstract_deadline: '2022-11-25 23:59:00'
+          deadline: '2022-11-30 23:59:00'
+          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: July 8-13, 2023
       place: Prague, Czech Republic
@@ -41,9 +41,9 @@
       id: icaps24
       link: https://icaps24.icaps-conference.org/
       timeline:
-        - abstract_deadline: 'TBD'
-          deadline: 'TBD'
-          comment: 'Abstract: 2023-12-07; paper: 2023-12-13; official CFP gives UTC-12 calendar dates without an explicit clock.'
+        - abstract_deadline: '2023-12-07 23:59:00'
+          deadline: '2023-12-13 23:59:00'
+          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: June 1-6, 2024
       place: Banff, Alberta, Canada
@@ -51,8 +51,9 @@
       id: icaps25
       link: https://icaps25.icaps-conference.org/
       timeline:
-        - abstract_deadline: '2024-10-25 23:59:59'
-          deadline: '2024-11-01 23:59:59'
+        - abstract_deadline: '2024-10-25 23:59:00'
+          deadline: '2024-11-01 23:59:00'
+          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: November 9-14, 2025
       place: Melbourne, Victoria, Australia
@@ -60,8 +61,9 @@
       id: icaps26
       link: https://icaps26.icaps-conference.org/
       timeline:
-        - abstract_deadline: '2025-12-02 23:59:59'
-          deadline: '2025-12-08 23:59:59'
+        - abstract_deadline: '2025-12-02 23:59:00'
+          deadline: '2025-12-08 23:59:00'
+          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: June 27 - July 2, 2026
       place: Dublin, Ireland
