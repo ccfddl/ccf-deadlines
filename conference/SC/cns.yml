@@ -7,12 +7,27 @@
     thcpl: N
   dblp: cns
   confs:
+    - year: 2021
+      id: cns21
+      link: https://cns2021.ieee-cns.org/
+      timeline:
+        - deadline: '2021-06-17 23:59:00'
+      timezone: UTC-4
+      date: October 4-5, 2021
+      place: Online
+    - year: 2022
+      id: cns22
+      link: https://cns2022.ieee-cns.org/
+      timeline:
+        - deadline: '2022-06-10 23:59:00'
+      timezone: AoE
+      date: October 3-4, 2022
+      place: Austin, TX, USA (Hybrid)
     - year: 2023
       id: cns23
       link: https://cns2023.ieee-cns.org/
       timeline:
         - deadline: '2023-06-18 23:59:00'
-          comment: 'Regular papers; official AoE date. The 23:59:00 cutoff uses the repository default because no clock is published.'
       timezone: AoE
       date: October 2-4, 2023
       place: Orlando, FL, USA
@@ -21,7 +36,6 @@
       link: https://cns2024.ieee-cns.org/
       timeline:
         - deadline: '2024-06-24 23:59:00'
-          comment: 'Regular papers; official hard extension in AoE. The 23:59:00 cutoff uses the repository default because no clock is published.'
       timezone: AoE
       date: September 30-October 2, 2024
       place: Taipei, Taiwan
@@ -30,7 +44,6 @@
       link: https://cns2025.ieee-cns.org/
       timeline:
         - deadline: '2025-05-30 23:59:00'
-          comment: 'Regular papers; official firm extension. Clock 23:59:00 and timezone AoE are repository defaults because neither is published.'
       timezone: AoE
       date: September 8-10, 2025
       place: Avignon, France
@@ -39,7 +52,6 @@
       link: https://cns2026.ieee-cns.org/
       timeline:
         - deadline: '2026-05-18 23:59:00'
-          comment: 'Regular papers; official extended deadline. Clock 23:59:00 and timezone AoE are repository defaults because neither is published.'
       timezone: AoE
       date: September 14-16, 2026
       place: Newark, Delaware, USA
