@@ -9,7 +9,7 @@ use chrono::{Datelike, Local, NaiveDate};
 use leptos::prelude::*;
 use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use std::collections::HashSet;
-use thaw::{Checkbox, CheckboxGroup, CheckboxSize, Switch};
+use thaw::{Checkbox, CheckboxGroup, CheckboxSize, Icon, Input, InputPrefix, InputSize, Switch};
 use wasm_bindgen::JsValue;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::{UrlSearchParams, window};
@@ -86,6 +86,7 @@ fn filter_query(
     ccf: &HashSet<String>,
     core: &HashSet<String>,
     thcpl: &HashSet<String>,
+    search: &str,
 ) -> String {
     let mut query = "?view=table".to_string();
     for (name, values) in [
@@ -106,6 +107,10 @@ fn filter_query(
     if query == "?view=table" {
         query.push_str("&filters=all");
     }
+    if !search.is_empty() {
+        query.push_str("&q=");
+        query.push_str(&urlencoding::encode(search));
+    }
     query
 }
 
@@ -115,7 +120,7 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
         .and_then(|browser| browser.location().search().ok())
         .and_then(|search| UrlSearchParams::new_with_str(&search).ok());
     let url_has_filters = query.as_ref().is_some_and(|query| {
-        ["categories", "ccf", "core", "thcpl", "filters"]
+        ["categories", "ccf", "core", "thcpl", "filters", "q"]
             .iter()
             .any(|key| query.has(key))
     });
@@ -161,6 +166,17 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
     let rank_list = RwSignal::new(ccf);
     let core_rank_list = RwSignal::new(core);
     let thcpl_rank_list = RwSignal::new(thcpl);
+    let search = RwSignal::new(if url_has_filters {
+        query
+            .as_ref()
+            .and_then(|query| query.get("q"))
+            .unwrap_or_default()
+    } else {
+        window()
+            .and_then(|browser| browser.local_storage().ok().flatten())
+            .and_then(|storage| storage.get_item("conference_search").ok().flatten())
+            .unwrap_or_default()
+    });
     let open_dropdown = RwSignal::new(None::<String>);
     let conferences = RwSignal::new(None::<Vec<Conference>>);
     let loading = RwSignal::new(true);
@@ -188,11 +204,18 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
     });
 
     Effect::new(move |_| {
+        if let Some(storage) = window().and_then(|browser| browser.local_storage().ok().flatten()) {
+            let _ = storage.set_item("conference_search", &search.get());
+        }
+    });
+
+    Effect::new(move |_| {
         let query = filter_query(
             &selected.get(),
             &rank_list.get(),
             &core_rank_list.get(),
             &thcpl_rank_list.get(),
+            &search.get(),
         );
         if let Some(browser) = window() {
             let location = browser.location();
@@ -277,6 +300,19 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                         </div>
                     </CheckboxGroup>
                 </div>
+                <div class="tabular-filter-controls">
+                <div class="tabular-search">
+                    <Input
+                        value=search
+                        placeholder=Memo::new(move |_| if use_english.get() { "search conference" } else { "搜索会议" }.to_string())
+                        size=InputSize::Small
+                        class="custom-search-input"
+                    >
+                        <InputPrefix slot>
+                            <Icon icon=icondata::FiSearch style="color: lightgray;" />
+                        </InputPrefix>
+                    </Input>
+                </div>
                 <div class="tabular-rank-filters" role="group" aria-label=move || if use_english.get() { "Conference rankings" } else { "会议评级筛选" }>
                 <MultiSelectDropdown
                     dropdown_id="ccf".to_string()
@@ -306,6 +342,7 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                     open_dropdown=open_dropdown
                 />
                 </div>
+                </div>
             </div>
             {move || {
                 if loading.get() {
@@ -326,8 +363,9 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                         core: core_rank_list.get(),
                         thcpl: thcpl_rank_list.get(),
                     };
-                    let year = leading_year(&data, &selected_categories, &ranks, Local::now().year());
-                    let groups = build_table(&data, &selected_categories, &ranks, year);
+                    let query = search.get();
+                    let year = leading_year(&data, &selected_categories, &ranks, &query, Local::now().year());
+                    let groups = build_table(&data, &selected_categories, &ranks, &query, year);
                     render_table(year, groups, use_english.get()).into_any()
                 } else {
                     view! { <p class="tabular-status">"—"</p> }.into_any()
@@ -357,12 +395,15 @@ fn leading_year(
     conferences: &[Conference],
     selected: &HashSet<String>,
     ranks: &RankFilters,
+    search: &str,
     current_year: i32,
 ) -> i32 {
     conferences
         .iter()
         .filter(|conference| {
-            (selected.is_empty() || selected.contains(&conference.sub)) && ranks.matches(conference)
+            (selected.is_empty() || selected.contains(&conference.sub))
+                && ranks.matches(conference)
+                && matches_search(conference, search)
         })
         .flat_map(|conference| &conference.confs)
         .flat_map(|edition| &edition.timeline)
@@ -375,6 +416,18 @@ fn leading_year(
         .max()
         .unwrap_or(current_year)
         .max(current_year)
+}
+
+fn matches_search(conference: &Conference, search: &str) -> bool {
+    if search.is_empty() {
+        return true;
+    }
+    let search = search.to_lowercase();
+    conference.title.to_lowercase().contains(&search)
+        || conference
+            .confs
+            .iter()
+            .any(|edition| edition.id.to_lowercase().contains(&search))
 }
 
 fn is_full_submission_deadline(point: &Timeline) -> bool {
@@ -424,12 +477,14 @@ fn build_table(
     conferences: &[Conference],
     selected: &HashSet<String>,
     ranks: &RankFilters,
+    search: &str,
     year: i32,
 ) -> Vec<MonthGroup> {
     let mut monthly_rows: [Vec<TabularRow>; 12] = std::array::from_fn(|_| Vec::new());
     for conference in conferences {
         if (!selected.is_empty() && !selected.contains(&conference.sub))
             || !ranks.matches(conference)
+            || !matches_search(conference, search)
         {
             continue;
         }
@@ -519,7 +574,7 @@ fn render_deadlines(deadlines: Vec<DeadlineCell>, english: bool) -> AnyView {
 
 fn render_table(year: i32, groups: Vec<MonthGroup>, english: bool) -> AnyView {
     if groups.is_empty() {
-        return view! { <p class="tabular-status">{if english { "No known submission deadlines match these categories." } else { "没有符合条件的已知投稿截止日期。" }}</p> }.into_any();
+        return view! { <p class="tabular-status">{if english { "No known submission deadlines match these filters." } else { "没有符合条件的已知投稿截止日期。" }}</p> }.into_any();
     }
     let months_zh = [
         "一月",
@@ -585,7 +640,7 @@ mod tests {
         let ccf = HashSet::from(["B".to_string(), "A".to_string()]);
         let core = HashSet::from(["A*".to_string()]);
         assert_eq!(
-            filter_query(&categories, &ccf, &core, &HashSet::new()),
+            filter_query(&categories, &ccf, &core, &HashSet::new(), ""),
             "?view=table&categories=AI,DB&ccf=A,B&core=A*"
         );
         assert_eq!(
@@ -593,9 +648,14 @@ mod tests {
                 &HashSet::new(),
                 &HashSet::new(),
                 &HashSet::new(),
-                &HashSet::new()
+                &HashSet::new(),
+                ""
             ),
             "?view=table&filters=all"
+        );
+        assert_eq!(
+            filter_query(&categories, &ccf, &core, &HashSet::new(), "VLDB 2027"),
+            "?view=table&categories=AI,DB&ccf=A,B&core=A*&q=VLDB%202027"
         );
         assert_eq!(
             parse_filter_values(Some("AI,INVALID,DB".to_string()), &categories),
@@ -625,7 +685,13 @@ mod tests {
                 "place": "Paris"
             }]
         }])).unwrap();
-        let groups = build_table(&conferences, &HashSet::new(), &RankFilters::default(), 2026);
+        let groups = build_table(
+            &conferences,
+            &HashSet::new(),
+            &RankFilters::default(),
+            "",
+            2026,
+        );
         let dates: Vec<_> = groups
             .iter()
             .flat_map(|group| &group.rows)
@@ -671,12 +737,15 @@ mod tests {
 
         let all_ranks = RankFilters::default();
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &all_ranks, 2026),
+            leading_year(&conferences, &HashSet::new(), &all_ranks, "", 2026),
             2027
         );
         let ai_only = HashSet::from(["AI".to_string()]);
-        assert_eq!(leading_year(&conferences, &ai_only, &all_ranks, 2026), 2026);
-        let ai_february = build_table(&conferences, &ai_only, &all_ranks, 2027)
+        assert_eq!(
+            leading_year(&conferences, &ai_only, &all_ranks, "", 2026),
+            2026
+        );
+        let ai_february = build_table(&conferences, &ai_only, &all_ranks, "", 2027)
             .into_iter()
             .find(|group| group.month == 2)
             .unwrap();
@@ -687,11 +756,11 @@ mod tests {
             ..Default::default()
         };
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &b_only, 2026),
+            leading_year(&conferences, &HashSet::new(), &b_only, "", 2026),
             2026
         );
         assert_eq!(
-            build_table(&conferences, &HashSet::new(), &b_only, 2027)
+            build_table(&conferences, &HashSet::new(), &b_only, "", 2027)
                 .iter()
                 .map(|group| group.rows.len())
                 .sum::<usize>(),
@@ -703,11 +772,11 @@ mod tests {
             thcpl: HashSet::from(["A".to_string()]),
         };
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &matching_ranks, 2026),
+            leading_year(&conferences, &HashSet::new(), &matching_ranks, "", 2026),
             2027
         );
         assert_eq!(
-            build_table(&conferences, &HashSet::new(), &matching_ranks, 2027)
+            build_table(&conferences, &HashSet::new(), &matching_ranks, "", 2027)
                 .iter()
                 .map(|group| group.rows.len())
                 .sum::<usize>(),
@@ -718,10 +787,10 @@ mod tests {
             ..Default::default()
         };
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &non_core, 2026),
+            leading_year(&conferences, &HashSet::new(), &non_core, "", 2026),
             2026
         );
-        let future_groups = build_table(&conferences, &HashSet::new(), &all_ranks, 2027);
+        let future_groups = build_table(&conferences, &HashSet::new(), &all_ranks, "", 2027);
         let future_january = future_groups.iter().find(|group| group.month == 1).unwrap();
         assert_eq!(future_january.rows[0].cells[0][0].date, "2027-01-01");
         assert_eq!(future_january.rows[0].cells[1].len(), 1);
@@ -740,7 +809,7 @@ mod tests {
             3
         );
 
-        let groups = build_table(&conferences, &HashSet::new(), &all_ranks, 2026);
+        let groups = build_table(&conferences, &HashSet::new(), &all_ranks, "", 2026);
         let january = groups.iter().find(|group| group.month == 1).unwrap();
         assert_eq!(january.rows[0].cells[0].len(), 1);
         assert_eq!(january.rows[0].cells[0][0].date, "2026-01-01");
@@ -751,5 +820,19 @@ mod tests {
         assert_eq!(april.rows[0].cells[0][0].place, "Athens");
         assert_eq!(april.rows[0].cells[1][0].date, "2025-04-01");
         assert_eq!(april.rows[0].cells[1][0].place, "Boston");
+
+        assert!(matches_search(&conferences[0], "VLDB27"));
+        assert!(!matches_search(&conferences[1], "VLDB27"));
+        assert_eq!(
+            leading_year(&conferences, &HashSet::new(), &all_ranks, "aiconf26", 2026),
+            2026
+        );
+        assert_eq!(
+            build_table(&conferences, &HashSet::new(), &all_ranks, "aiconf26", 2026)
+                .iter()
+                .map(|group| group.rows.len())
+                .sum::<usize>(),
+            1
+        );
     }
 }

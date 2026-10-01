@@ -196,7 +196,7 @@ pub fn Header(
                 "Worldwide Conference Deadline Countdowns."
                 {(!table_view).then(|| view! {
                     " "
-                    <a style="color: #666666" href="/?view=table" target="_blank" rel="noopener noreferrer">"Tabular preview"</a>
+                    <a style="color: #666666" href="/?view=table" target="_blank" rel="noopener noreferrer">"Preview tabular form"</a>
                     "."
                 })}
             </div>
