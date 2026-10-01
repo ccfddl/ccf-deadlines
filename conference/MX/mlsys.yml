@@ -11,17 +11,18 @@
       id: mlsys21
       link: https://mlsys.org/Conferences/2021
       timeline:
-        - deadline: '2020-10-11 23:59:59'
-      timezone: AoE
-      date: April 5-9, 2021
+        - deadline: '2020-10-11 00:00:00'
+      timezone: UTC
+      date: April 6-8, 2021
       place: virtual
     - year: 2022
       id: mlsys22
       link: https://mlsys.org/Conferences/2022
       timeline:
         - deadline: '2021-10-15 20:00:00'
+          comment: Regular papers; extended from October 8.
       timezone: UTC
-      date: August 29-September 1, 2022
+      date: August 29-31, 2022
       place: Santa Clara, USA
     - year: 2023
       id: mlsys23
@@ -29,31 +30,32 @@
       timeline:
         - deadline: '2022-10-28 20:00:00'
       timezone: UTC
-      date: June 5-8, 2023
+      date: June 5-7, 2023
       place: Miami, USA
     - year: 2024
       id: mlsys24
       link: https://mlsys.org/Conferences/2024
       timeline:
-        - deadline: '2023-10-27 04:00:00'
-      timezone: AoE
-      date: May 12-16, 2024
+        - deadline: TBD
+          comment: 'Initial research submission clock conflict on October 27, 2023: CFP gives 4pm ET (20:00 UTC), Dates page gives 04:00 UTC; submission-venue evidence remains unverified.'
+      timezone: UTC
+      date: May 14-16, 2024
       place: Santa Clara, USA
     - year: 2025
       id: mlsys25
-      link: https://mlsys.org/
+      link: https://mlsys.org/Conferences/2025
       timeline:
         - deadline: '2024-10-31 20:00:00'
       timezone: UTC
-      date: May 12-15, 2025
+      date: May 13-15, 2025
       place: Santa Clara, USA
     - year: 2026
       id: mlsys26
-      link: https://mlsys.org/
+      link: https://mlsys.org/Conferences/2026
       timeline:
         - deadline: '2025-10-30 20:00:00'
       timezone: UTC
-      date: May 17-22, 2026
+      date: May 19-21, 2026
       place: Bellevue, Washington, USA
     - year: 2027
       id: mlsys27
