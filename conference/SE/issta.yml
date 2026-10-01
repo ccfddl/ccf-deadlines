@@ -11,8 +11,7 @@
       id: issta21
       link: https://conf.researchr.org/home/issta-2021
       timeline:
-        - deadline: TBD
-          comment: 'Technical papers: January 29, 2021, AoE; exact clock unverified'
+        - deadline: '2021-01-29 23:59:00'
       timezone: AoE
       date: July 14-17, 2021
       place: Virtual
@@ -21,40 +20,38 @@
       link: https://conf.researchr.org/home/issta-2022
       timeline:
         - deadline: '2022-01-28 23:59:59'
-          comment: Technical Papers due
       timezone: AoE
-      date: July 18-22, 2022
+      date: July 20-22, 2022
       place: Daejeon, South Korea
     - year: 2023
       id: issta23
       link: https://conf.researchr.org/home/issta-2023
       timeline:
         - deadline: '2022-11-10 23:59:59'
-          comment: Technical Papers First round submission deadline
+          comment: Round 1
         - deadline: '2023-02-16 23:59:59'
-          comment: Technical Papers Second round submission deadline
+          comment: Round 2
       timezone: AoE
-      date: July 17-21, 2023
+      date: July 18-20, 2023
       place: Seattle, United States
     - year: 2024
       id: issta24
       link: https://conf.researchr.org/home/issta-2024
       timeline:
         - deadline: '2023-12-15 23:59:59'
-          comment: Technical Papers Submission deadline (Round 1)
+          comment: Round 1
         - deadline: '2024-04-12 23:59:59'
-          comment: Technical Papers Submission deadline (Round 2)
+          comment: Round 2
       timezone: AoE
-      date: September 16-20, 2024
+      date: September 18-20, 2024
       place: Vienna, Austria
     - year: 2025
       id: issta25
       link: https://conf.researchr.org/home/issta-2025
       timeline:
         - deadline: '2024-10-31 23:59:59'
-          comment: Research Papers Full Paper Submission
       timezone: AoE
-      date: June 25-28, 2025
+      date: June 25-27, 2025
       place: Trondheim, Norway
     - year: 2026
       id: issta26
@@ -62,7 +59,7 @@
       timeline:
         - deadline: '2026-01-29 23:59:59'
       timezone: AoE
-      date: October 3-9, 2026
+      date: October 7-9, 2026
       place: Oakland, California, United States
     - year: 2027
       id: issta27
