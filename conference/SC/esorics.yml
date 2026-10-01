@@ -7,64 +7,73 @@
     thcpl: B
   dblp: esorics
   confs:
+    - year: 2021
+      id: esorics21
+      link: https://esorics2021.athene-center.de/
+      timeline:
+        - abstract_deadline: '2021-01-05 22:59:00'
+          deadline: '2021-01-12 22:59:00'
+          comment: Winter
+        - abstract_deadline: '2021-05-05 21:59:00'
+          deadline: '2021-05-12 21:59:00'
+          comment: Spring
+      timezone: UTC
+      date: October 5-7, 2021
+      place: Online
     - year: 2022
       id: esorics22
       link: https://esorics2022.compute.dtu.dk/
       timeline:
-        - deadline: '2022-01-31 23:59:59'
-          comment: Winter Cycle Title and Abstract
-        - deadline: '2022-01-31 23:59:59'
-          comment: Winter Cycle Full Paper Submission
-        - deadline: '2022-05-22 23:59:59'
-          comment: Spring Cycle Title and Abstract
-        - deadline: '2022-05-29 23:59:59'
-          comment: Spring Cycle Full Paper Submission
+        - abstract_deadline: '2022-01-31 23:59:59'
+          deadline: '2022-01-31 23:59:59'
+          comment: Winter
+        - abstract_deadline: '2022-05-22 23:59:59'
+          deadline: '2022-05-29 23:59:59'
+          comment: Spring
       timezone: AoE
-      date: September 26-30, 2022
+      date: September 26-28, 2022
       place: Copenhagen, Denmark
     - year: 2023
       id: esorics23
       link: https://esorics2023.org/
       timeline:
         - deadline: '2023-01-22 23:59:00'
-          comment: Cycle 1 regular paper submission deadline
+          comment: Winter
         - deadline: '2023-06-04 23:59:00'
-          comment: Cycle 2 regular paper submission deadline (extended)
+          comment: Spring
       timezone: AoE
       date: September 25-27, 2023
       place: The Hague, The Netherlands
     - year: 2024
       id: esorics24
-      link: https://esorics2024.org/
+      link: https://web.archive.org/web/20241007075853/https://esorics2024.org/
       timeline:
-        - abstract_deadline: '2024-01-08 23:59:00'
-          deadline: '2024-01-08 23:59:00'
-          comment: First Submission deadline
-        - abstract_deadline: '2024-04-19 23:59:00'
-          deadline: '2024-04-19 23:59:00'
-          comment: Second Submission deadline
+        - deadline: '2024-01-08 23:59:00'
+          comment: Winter
+        - deadline: '2024-04-19 23:59:00'
+          comment: Spring
       timezone: AoE
-      date: September 16-20, 2024
+      date: September 16-18, 2024
       place: Bydgoszcz, Poland
     - year: 2025
       id: esorics25
       link: https://esorics2025.sciencesconf.org/
       timeline:
         - deadline: '2025-01-10 23:59:59'
-          comment: First Submission deadline
+          comment: Winter
         - deadline: '2025-04-29 23:59:59'
-          comment: Second Submission deadline
+          comment: Spring
       timezone: AoE
-      date: September 22-26, 2025
+      date: September 22-24, 2025
       place: Toulouse, France
     - year: 2026
       id: esorics26
       link: https://sites.google.com/di.uniroma1.it/esorics2026/home
       timeline:
         - deadline: '2026-01-09 23:59:59'
-          comment: First Submission deadline
+          comment: Winter
         - deadline: '2026-04-21 23:59:59'
-          comment: Second Submission deadline
+          comment: Spring
       timezone: AoE
-      date: September 14-18, 2026
+      date: September 14-16, 2026
       place: Rome, Italy
