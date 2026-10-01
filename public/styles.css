@@ -251,15 +251,6 @@ a {
   white-space: nowrap;
 }
 
-.tabular-date small {
-  display: block;
-  overflow: hidden;
-  color: #666;
-  font-size: 11px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .tabular-date-plain,
 .tabular-date-plain:hover,
 .tabular-empty {
