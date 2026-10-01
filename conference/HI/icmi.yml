@@ -7,14 +7,39 @@
     thcpl: B
   dblp: icmi
   confs:
+    - year: 2021
+      id: icmi21
+      link: https://icmi.acm.org/2021/
+      timeline:
+        - deadline: '2021-06-02 23:59:00'
+      timezone: UTC-7
+      date: October 19-21, 2021
+      place: Montreal, Canada (Hybrid)
+    - year: 2022
+      id: icmi22
+      link: https://icmi.acm.org/2022/
+      timeline:
+        - deadline: '2022-05-27 23:59:00'
+      timezone: UTC-7
+      date: November 8-10, 2022
+      place: Bengaluru, India
+    - year: 2023
+      id: icmi23
+      link: https://icmi.acm.org/2023/
+      timeline:
+        - abstract_deadline: '2023-05-01 23:59:00'
+          deadline: '2023-05-08 23:59:00'
+      timezone: UTC-7
+      date: October 10-12, 2023
+      place: Paris, France
     - year: 2024
       id: icmi24
       link: https://icmi.acm.org/2024/
       timeline:
         - abstract_deadline: '2024-04-26 23:59:59'
           deadline: '2024-05-10 23:59:59'
-      timezone: UTC+7
-      date: Nov 4 - 8, 2024
+      timezone: UTC-7
+      date: November 5-7, 2024
       place: San José, Costa Rica
     - year: 2025
       id: icmi25
@@ -23,7 +48,7 @@
         - abstract_deadline: '2025-04-25 23:59:59'
           deadline: '2025-05-02 23:59:59'
       timezone: UTC+7
-      date: Oct 13 - 17, 2025
+      date: October 14-16, 2025
       place: Canberra, Australia
     - year: 2026
       id: icmi26
@@ -33,5 +58,5 @@
           deadline: '2026-04-24 04:59:59'
           comment: 'Paper deadline extended to Apr 23, 23:59 AoE; normalized to UTC-7'
       timezone: UTC-7
-      date: Oct 5 - 9, 2026
+      date: October 6-8, 2026
       place: Napoli, Italy
