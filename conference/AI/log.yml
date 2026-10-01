@@ -11,18 +11,19 @@
       id: log2022
       link: https://proceedings.mlr.press/v198/
       timeline:
-        - deadline: TBD
-          comment: 'Regular proceedings papers; original submission deadline unverified'
-      timezone: UTC+0 # Placeholder only; the deadline is TBD
+        - abstract_deadline: '2022-09-10 00:00:00'
+          deadline: TBD
+          comment: 'Abstract registration verified; full-paper cutoff unresolved'
+      timezone: AoE
       date: December 9-12, 2022
       place: Online
     - year: 2023
       id: log2023
       link: https://log2023.logconference.org/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2023-08-18 23:59:00'
           deadline: TBD
-          comment: 'Regular papers: abstract August 18, paper August 21, 2023 (AoE); exact time unverified'
+          comment: 'Abstract registration verified; conflicting full-paper cutoff'
       timezone: AoE
       date: November 27-30, 2023
       place: Online
@@ -30,9 +31,9 @@
       id: log2024
       link: https://log2024.logconference.org/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2024-09-05 00:59:00'
           deadline: TBD
-          comment: 'Regular papers: abstract September 4, paper September 11, 2024 (AoE); exact time unverified'
+          comment: 'Abstract registration verified; conflicting full-paper cutoff'
       timezone: AoE
       date: November 26-29, 2024
       place: Online
@@ -40,9 +41,8 @@
       id: log2025
       link: https://log2025.logconference.org/
       timeline:
-        - abstract_deadline: TBD
+        - abstract_deadline: '2025-08-25 23:59:00'
           deadline: '2025-08-29 23:59:59'
-          comment: 'Regular papers: abstract August 24, 2025 (AoE), exact abstract time unverified; existing paper time still needs primary confirmation'
       timezone: AoE
       date: December 10-12, 2025
       place: Arizona State University, Phoenix, USA
