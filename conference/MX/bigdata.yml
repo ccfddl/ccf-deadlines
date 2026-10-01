@@ -7,13 +7,45 @@
     thcpl: N
   dblp: bigdataconf
   confs:
+    - year: 2021
+      id: bigdata21
+      link: https://bigdataieee.org/BigData2021/
+      timeline:
+        - deadline: '2021-09-05 23:59:00'
+      timezone: AoE
+      date: December 15-18, 2021
+      place: Virtual
+    - year: 2022
+      id: bigdata22
+      link: https://bigdataieee.org/BigData2022/
+      timeline:
+        - deadline: '2022-09-03 23:59:00'
+      timezone: AoE
+      date: December 18-20, 2022
+      place: Osaka, Japan
+    - year: 2023
+      id: bigdata23
+      link: https://bigdataieee.org/BigData2023/
+      timeline:
+        - deadline: '2023-09-03 23:59:00'
+      timezone: AoE
+      date: December 15-18, 2023
+      place: Sorrento, Italy
+    - year: 2024
+      id: bigdata24
+      link: https://bigdataieee.org/BigData2024/
+      timeline:
+        - deadline: '2024-09-08 23:59:00'
+      timezone: AoE
+      date: December 16-18, 2024
+      place: Washington DC, USA
     - year: 2025
       id: bigdata25
       link: https://conferences.cis.um.edu.mo/ieeebigdata2025/
       timeline:
         - deadline: '2025-08-29 23:59:59'
       timezone: AoE
-      date: December 8-11, 2025
+      date: December 9-11, 2025
       place: Macau SAR, China
     - year: 2026
       id: bigdata26
