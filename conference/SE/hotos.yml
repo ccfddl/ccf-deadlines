@@ -20,8 +20,8 @@
       id: hotos23
       link: https://sigops.org/s/conferences/hotos/2023/
       timeline:
-        - deadline: TBD
-          comment: 'Research paper submission: February 2, 2023, AoE; exact clock unverified'
+        - deadline: '2023-02-02 23:59:00'
+          comment: 'Main research/position papers; AoE is explicit, clock uses repository default 23:59:00.'
       timezone: AoE
       date: June 22-24, 2023
       place: Providence, Rhode Island, USA
@@ -29,8 +29,8 @@
       id: hotos25
       link: https://sigops.org/s/conferences/hotos/2025/
       timeline:
-        - deadline: '2025-01-15 23:59:59'
-          comment: Submission Deadline
+        - deadline: '2025-01-15 23:59:00'
+          comment: 'Main research/position papers; AoE is explicit, clock uses repository default 23:59:00.'
       timezone: AoE
       date: May 14-16, 2025
       place: Banff, Alberta, Canada
