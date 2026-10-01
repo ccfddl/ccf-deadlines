@@ -13,16 +13,22 @@
       timeline:
         - deadline: '2021-03-31 23:59:59'
           comment: Main Track Full Paper Submission deadline
-        - deadline: '2021-05-04 23:59:59'
-          comment: Late Track Full Paper Submission deadline
       timezone: AoE
       date: September 6-9, 2021
       place: Canterbury, Great Britain(online)
+    - year: 2022
+      id: securecomm22
+      link: https://securecomm.eai-conferences.org/2022/
+      timeline:
+        - deadline: '2022-04-17 23:59:00'
+      timezone: AoE
+      date: October 17-19, 2022
+      place: Virtual
     - year: 2023
       id: securecomm23
       link: https://securecomm.eai-conferences.org/2023/
       timeline:
-        - deadline: '2023-05-06 23:59:59'
+        - deadline: '2023-05-20 23:59:00'
       timezone: AoE
       date: October 19-21, 2023
       place: Hong Kong SAR, Hong Kong
@@ -39,24 +45,29 @@
       link: https://securecomm.eai-conferences.org/2025/
       timeline:
         - deadline: '2025-03-01 23:59:59'
-          comment: Full Paper Submission deadline
-      timezone: AoE
+          comment: 'Main track'
+      timezone: UTC
       date: July 4-6, 2025
       place: Xiangtan, China
     - year: 2026
       id: securecomm26
       link: https://securecomm.eai-conferences.org/2026/
       timeline:
-        - deadline: '2025-12-15 23:59:59'
-      timezone: AoE
+        - deadline: '2026-01-15 23:59:59'
+          comment: 'Cycle 1'
+        - deadline: '2026-02-15 23:59:59'
+          comment: 'Cycle 2'
+      timezone: UTC
       date: July 21-24, 2026
       place: Lancaster, UK and hybrid
     - year: 2027
       id: securecomm27
       link: https://securecomm.eai-conferences.org/2027/
       timeline:
-        - deadline: '2027-03-01 23:59:59'
-          comment: Full Paper Submission deadline
+        - deadline: '2027-02-01 23:59:59'
+          comment: Full Paper Submission deadline (Cycle 1)
+        - deadline: '2027-04-15 23:59:59'
+          comment: Full Paper Submission deadline (Cycle 2)
       timezone: AoE
       date: October 15-18, 2027
       place: Hefei, China

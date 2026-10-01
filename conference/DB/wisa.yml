@@ -7,12 +7,58 @@
     thcpl: N
   dblp: wisa
   confs:
+    - year: 2021
+      id: wisa21
+      link: https://tc.ccf.org.cn/tcis/xwdt/2021-05-08/730448.shtml
+      timeline:
+        - abstract_deadline: '2021-05-22 23:59:00'
+          deadline: '2021-05-22 23:59:00'
+      timezone: UTC+8
+      date: December 11-12, 2021
+      place: Online
+    - year: 2022
+      id: wisa22
+      link: https://tc.ccf.org.cn/tcis/qkjhy/2022-04-30/761581.shtml
+      timeline:
+        - abstract_deadline: '2022-05-22 23:59:00'
+          deadline: '2022-05-22 23:59:00'
+      timezone: UTC+8
+      date: December 3-4, 2022
+      place: Online
+    - year: 2023
+      id: wisa23
+      link: https://tc.ccf.org.cn/tcis/qkjhy/2023-05-08/794114.shtml
+      timeline:
+        - abstract_deadline: '2023-05-22 23:59:00'
+          deadline: '2023-05-22 23:59:00'
+      timezone: UTC+8
+      date: TBD
+      place: Chengdu, China
+    - year: 2024
+      id: wisa24
+      link: https://tc.ccf.org.cn/tcis/qkjhy/2024-02-07/823461.shtml
+      timeline:
+        - abstract_deadline: '2024-04-15 23:59:00'
+          deadline: '2024-04-22 23:59:00'
+      timezone: UTC+8
+      date: TBD
+      place: Yinchuan, China
+    - year: 2025
+      id: wisa25
+      link: https://conf.ccf.org.cn/web/html7/index.html?globalId=m1368277325078204416174626433566&type=1
+      timeline:
+        - abstract_deadline: TBD
+          deadline: '2025-06-15 23:59:00'
+          comment: Abstract dates conflict
+      timezone: UTC+8
+      date: November 1-2, 2025
+      place: Xi'an, China
     - year: 2026
       id: wisa2026
       link: https://conf.ccf.org.cn/WISA2026
       timeline:
-        - abstract_deadline: '2026-04-21 23:59:59'
-          deadline: '2026-04-28 23:59:59'
+        - abstract_deadline: '2026-05-18 23:59:59'
+          deadline: '2026-05-18 23:59:59'
       timezone: UTC+8
       date: August 07-09, 2026
       place: Kunming, China

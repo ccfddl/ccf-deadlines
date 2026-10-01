@@ -7,12 +7,38 @@
     thcpl: A
   dblp: focs
   confs:
+    - year: 2021
+      id: focs21
+      link: https://focs2021.cs.colorado.edu/
+      timeline:
+        - deadline: '2021-06-03 17:00:00'
+          abstract_deadline: '2021-05-31 17:00:00'
+      timezone: UTC-4
+      date: February 7-10, 2022
+      place: Online
+    - year: 2022
+      id: focs22
+      link: https://ieee-focs.org/focs2022/
+      timeline:
+        - deadline: '2022-04-04 16:59:00'
+      timezone: UTC-7
+      date: October 31-November 3, 2022
+      place: Denver, Colorado, USA
+    - year: 2023
+      id: focs23
+      link: https://focs.computer.org/2023/call-for-papers/
+      timeline:
+        - deadline: '2023-04-03 16:59:00'
+          abstract_deadline: '2023-03-28 16:59:00'
+      timezone: UTC-7
+      date: November 6-9, 2023
+      place: Santa Cruz, California, USA
     - year: 2024
       id: focs24
       link: https://focs.computer.org/2024/
       timeline:
         - deadline: '2024-04-04 20:00:00'
-      timezone: UTC-5
+      timezone: UTC-4
       date: October 27-30, 2024
       place: Chicago, IL, USA
     - year: 2025
@@ -20,7 +46,7 @@
       link: https://focs.computer.org/2025/
       timeline:
         - deadline: '2025-04-03 20:00:00'
-      timezone: UTC-5
+      timezone: UTC-4
       date: December 14-17, 2025
       place: Sydney, Australia
     - year: 2026

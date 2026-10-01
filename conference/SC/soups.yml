@@ -11,43 +11,61 @@
       id: soups21
       link: https://www.usenix.org/conference/soups2021
       timeline:
-        - deadline: '2021-02-18 23:59:59'
-          comment: Mandatory Paper Registration Deadline
-        - deadline: '2021-02-25 23:59:59'
-          comment: Paper Submission Deadline
+        - abstract_deadline: '2021-02-18 23:59:59'
+          deadline: '2021-02-25 23:59:59'
       timezone: AoE
       date: AUGUST 8-10, 2021
-      place: Co-located withUSENIX Security '21
+      place: Virtual
+    - year: 2022
+      id: soups22
+      link: https://www.usenix.org/conference/soups2022
+      timeline:
+        - abstract_deadline: '2022-02-11 23:59:00'
+          deadline: '2022-02-17 23:59:00'
+      timezone: AoE
+      date: August 8-9, 2022
+      place: Boston, MA, USA
+    - year: 2023
+      id: soups23
+      link: https://www.usenix.org/conference/soups2023
+      timeline:
+        - abstract_deadline: '2023-02-10 23:59:00'
+          deadline: '2023-02-16 23:59:00'
+      timezone: AoE
+      date: August 7-8, 2023
+      place: Anaheim, CA, USA
     - year: 2024
       id: soups24
       link: https://www.usenix.org/conference/soups2024
       timeline:
-        - deadline: '2024-02-08 23:59:59'
-          comment: Mandatory Paper Registration Deadline
-        - deadline: '2024-02-15 23:59:59'
-          comment: Paper Submission Deadline
+        - abstract_deadline: '2024-02-08 23:59:59'
+          deadline: '2024-02-15 23:59:59'
       timezone: AoE
-      date: AUGUST 11-13, 2024
+      date: August 12-13, 2024
       place: Philadelphia, USA
     - year: 2025
       id: soups25
       link: https://www.usenix.org/conference/soups2025
       timeline:
-        - deadline: '2025-02-06 23:59:59'
-          comment: Mandatory Paper Registration Deadline
-        - deadline: '2025-02-13 23:59:59'
-          comment: Paper Submission Deadline
+        - abstract_deadline: '2025-02-06 23:59:59'
+          deadline: '2025-02-13 23:59:59'
       timezone: AoE
-      date: August 10-12, 2025
+      date: August 11-12, 2025
       place: Seattle, WA, USA
     - year: 2026
       id: soups26
       link: https://soups.page/
       timeline:
-        - deadline: '2026-02-12 23:59:59'
-          comment: Mandatory Paper Registration Deadline
-        - deadline: '2026-02-19 23:59:59'
-          comment: Paper Submission Deadline
+        - abstract_deadline: '2026-02-12 23:59:59'
+          deadline: '2026-02-19 23:59:59'
       timezone: AoE
-      date: August 23-26, 2026
+      date: August 24-26, 2026
       place: Hannover, Germany
+    - year: 2027
+      id: soups27
+      link: https://www.usenix.org/conference/soups2027
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: August 8-10, 2027
+      place: Denver, Colorado, USA

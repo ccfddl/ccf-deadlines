@@ -7,6 +7,46 @@
     thcpl: B
   dblp: hybrid
   confs:
+    - year: 2021
+      id: hscc21
+      link: https://hscc.acm.org/2021/
+      timeline:
+        - deadline: '2020-10-26 23:59:59'
+      timezone: AoE
+      date: May 19-21, 2021
+      place: Online
+    - year: 2022
+      id: hscc22
+      link: https://hscc.acm.org/2022/
+      timeline:
+        - deadline: '2021-10-29 23:59:59'
+      timezone: AoE
+      date: May 4-6, 2022
+      place: Online
+    - year: 2023
+      id: hscc23
+      link: https://hscc.acm.org/2023/
+      timeline:
+        - deadline: '2022-10-31 23:59:59'
+      timezone: AoE
+      date: May 10-12, 2023
+      place: San Antonio, Texas, USA
+    - year: 2024
+      id: hscc24
+      link: https://hscc.acm.org/2024/
+      timeline:
+        - deadline: '2023-10-31 23:59:59'
+      timezone: AoE
+      date: May 14-16, 2024
+      place: Hong Kong, China
+    - year: 2025
+      id: hscc25
+      link: https://hscc.acm.org/2025/
+      timeline:
+        - deadline: '2024-11-14 23:59:59'
+      timezone: AoE
+      date: May 7-9, 2025
+      place: Irvine, California, USA
     - year: 2026
       id: hscc26
       link: https://www.isis.vanderbilt.edu/events/hscciccps-2026
@@ -16,3 +56,12 @@
       timezone: AoE
       date: May 11-14, 2026
       place: Saint Malo, France
+    - year: 2027
+      id: hscc27
+      link: https://hscc.acm.org/2027/
+      timeline:
+        - abstract_deadline: '2026-10-29 23:59:59'
+          deadline: '2026-11-05 23:59:59'
+      timezone: AoE
+      date: May 17-20, 2027
+      place: Boulder, Colorado, USA

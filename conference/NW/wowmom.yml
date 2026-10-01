@@ -7,6 +7,15 @@
     thcpl: B
   dblp: wowmom
   confs:
+    - year: 2021
+      id: wowmom21
+      link: https://wowmom2021.iit.cnr.it/
+      timeline:
+        - deadline: '2020-12-31 23:59:00'
+          comment: 'Verified calendar date; 23:59:00 and AoE are repository defaults because the source does not specify time or timezone.'
+      timezone: AoE
+      date: June 8-10, 2021
+      place: Virtual
     - year: 2025
       id: wowmom25
       link: https://wowmomconference.uta.edu/index.html
@@ -19,8 +28,16 @@
       id: wowmom26
       link: https://www.cs.unibo.it/wowmom2026/
       timeline:
-        - abstract_deadline: '2025-11-18 23:59:59'
-          deadline: '2025-12-05 23:59:59'
-      timezone: AoE
+        - abstract_deadline: '2025-12-05 23:59:59'
+          deadline: '2025-12-15 23:59:59'
+      timezone: UTC-5
       date: June 16-19, 2026
       place: Bologna, Italy
+    - year: 2027
+      id: wowmom27
+      link: https://wowmom2027.dii.unipi.it/index.html
+      timeline:
+        - deadline: '2026-12-01 23:59:59'
+      timezone: AoE
+      date: June 21-24, 2027
+      place: Irvine, California, USA

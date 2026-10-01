@@ -7,17 +7,34 @@
     thcpl: N
   dblp: group
   confs:
+    - year: 2023
+      id: group23
+      link: https://group.acm.org/conferences/group22/
+      timeline:
+        - abstract_deadline: '2020-08-10 23:59:00'
+          deadline: '2020-08-17 23:59:00'
+          comment: First wave
+        - abstract_deadline: '2021-05-14 23:59:00'
+          deadline: '2021-05-21 23:59:00'
+          comment: Second wave
+        - abstract_deadline: '2022-05-13 23:59:00'
+          deadline: '2022-05-20 23:59:00'
+          comment: Third wave
+      timezone: AoE
+      date: January 9-11, 2023
+      place: Hilton Head Island, SC, USA
     - year: 2025
       id: group25
       link: https://group.acm.org/conferences/group25
       timeline:
-        - deadline: '2023-06-07 23:59:59'
+        - abstract_deadline: '2023-05-31 23:59:00'
+          deadline: '2023-06-07 23:59:59'
           comment: 'Full Paper First Wave Submissions'
         - abstract_deadline: '2024-05-01 23:59:59'
           deadline: '2024-05-08 23:59:59'
           comment: 'Full Paper Second Wave Submissions'
       timezone: AoE
-      date: January 12-15, 2025
+      date: January 13-15, 2025
       place: Omni Hilton Head Oceanfront Resort, Hilton Head Island, South Carolina, USA
     - year: 2027
       id: group27
@@ -26,6 +43,9 @@
         - abstract_deadline: '2025-07-08 23:59:59'
           deadline: '2025-07-15 23:59:59'
           comment: 'Full Paper First Wave Submissions'
+        - abstract_deadline: '2026-03-24 23:59:59'
+          deadline: '2026-03-31 23:59:59'
+          comment: 'Full Paper Second Wave Submissions (extended)'
       timezone: AoE
       date: January 10-13, 2027
       place: St Simons Island, Georgia, USA

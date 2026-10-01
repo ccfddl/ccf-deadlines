@@ -7,6 +7,23 @@
     thcpl: B
   dblp: nossdav
   confs:
+    - year: 2022
+      id: nossdav22
+      link: https://nossdav.org/2022/
+      timeline:
+        - deadline: '2022-03-18 23:59:59'
+      timezone: AoE
+      date: June 17, 2022
+      place: Athlone, Ireland
+    - year: 2023
+      id: nossdav23
+      link: https://nossdav.org/2023/
+      timeline:
+        - deadline: '2023-03-10 23:59:00'
+          comment: 'CFP date verified; 23:59:00 and AoE are repository defaults for unpublished cutoff time and timezone.'
+      timezone: AoE
+      date: June 10, 2023
+      place: Vancouver, Canada
     - year: 2025
       id: nossdav25
       link: https://nossdav.org/2025/
@@ -23,3 +40,11 @@
       timezone: AoE
       date: April 8, 2026
       place: Hong Kong, China
+    - year: 2027
+      id: nossdav27
+      link: https://nossdav.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Ghent, Belgium

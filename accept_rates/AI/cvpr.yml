@@ -1,26 +1,35 @@
+# Main-conference selected papers; precise annual review/reporting stages are documented in sources.
 - title: CVPR
   accept_rates:
+    # Original chair message reports 1661/7093; recompute 23.4% rather than its inconsistent 23.6% prose.
+    - year: 2021
+      submitted: 7093
+      accepted: 1661
+      str: 23.4%(1661/7093 21')
+      rate: 0.2341745382771747
+      source: https://ieeexplore.ieee.org/document/9577391
     - year: 2023
       submitted: 9155
-      accepted: 2360
-      str: 25.8%(2360/9155 23')
-      rate: 0.257782632441289
-      source: https://github.com/emeryberger/csconferences
+      accepted: 2359
+      str: 25.8%(2359/9155 23')
+      rate: 0.2576734025122884
+      source: https://cvpr.thecvf.com/Conferences/2023/AcceptedPapers
     - year: 2024
       submitted: 11532
       accepted: 2719
       str: 23.6%(2719/11532 24')
-      rate: 0.2357787
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.23577870274020118
+      source: https://media.eventhosts.cc/Conferences/CVPR2024/CVPR_main_conf_2024.pdf
     - year: 2025
       submitted: 13008
       accepted: 2878
       str: 22.1%(2878/13008 25')
-      rate: 0,2212484625
-      source: https://mp.weixin.qq.com/s?__biz=Mzg4OTEwNjMzMA==&mid=2247663029&idx=1&sn=f36b388a84d4319f4b47930b3750cc3c&chksm=cec06fc2f86f6c080876f53860d9992f7fe5a3571ad1ef06474397fb01e4a5151ec7a0559f91&mpshare=1&scene=1&srcid=0318MpQJ3yoMi2832NjrF0oX&sharer_shareinfo=5f66e1303d9fb0f8fed93ef4736ebcdd&sharer_shareinfo_first=5f66e1303d9fb0f8fed93ef4736ebcdd#rd
+      rate: 0.221248462484625
+      source: https://media.eventhosts.cc/Conferences/CVPR2025/CVPR_main_conf_2025.pdf
+    # 4089 accepted at end of review; same source separately lists 4072 invited poster papers.
     - year: 2026
       submitted: 16092
-      accepted: 4090
-      str: 25.4%(4090/16092 26')
-      rate: 0.2541636
-      source: https://www.ithome.com/0/922/931.htm
+      accepted: 4089
+      str: 25.4%(4089/16092 26')
+      rate: 0.25410141685309473
+      source: https://media.eventhosts.cc/Conferences/CVPR2026/CVPR_main_conf_2026_15.pdf

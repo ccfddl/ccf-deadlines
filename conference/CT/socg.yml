@@ -7,11 +7,47 @@
     thcpl: B
   dblp: compgeom
   confs:
+    - year: 2021
+      id: socg21
+      link: https://cse.buffalo.edu/socg21/
+      timeline:
+        - abstract_deadline: '2020-11-25 23:59:00'
+          deadline: '2020-12-02 23:59:00'
+      timezone: AoE
+      date: June 7-11, 2021
+      place: Online
+    - year: 2022
+      id: socg22
+      link: https://www.inf.fu-berlin.de/inst/ag-ti/socg22/
+      timeline:
+        - abstract_deadline: '2021-11-25 23:59:00'
+          deadline: '2021-12-02 23:59:00'
+      timezone: AoE
+      date: June 7-10, 2022
+      place: Berlin, Germany
+    - year: 2023
+      id: socg23
+      link: https://cs.utdallas.edu/SOCG23/index.html
+      timeline:
+        - abstract_deadline: '2022-11-25 23:59:00'
+          deadline: '2022-12-02 23:59:00'
+      timezone: AoE
+      date: June 12-15, 2023
+      place: Dallas, Texas, USA
+    - year: 2024
+      id: socg24
+      link: https://socg24.athenarc.gr/socg.html
+      timeline:
+        - abstract_deadline: '2023-11-24 23:59:00'
+          deadline: '2023-12-01 23:59:00'
+      timezone: AoE
+      date: June 11-14, 2024
+      place: Athens, Greece
     - year: 2025
       id: socg25
       link: https://socg25.github.io/
       timeline:
-        - abstract_deadline: '2024-11-06 23:59:00'
+        - abstract_deadline: '2024-11-26 23:59:00'
           deadline: '2024-12-03 23:59:00'
       timezone: AoE
       date: June 23-27, 2025
@@ -25,3 +61,11 @@
       timezone: AoE
       date: June 2-5, 2026
       place: New Brunswick, New Jersey, USA
+    - year: 2027
+      id: socg27
+      link: https://cgweek27.computational-geometry.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 21-25, 2027
+      place: Bengaluru, India

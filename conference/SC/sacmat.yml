@@ -12,16 +12,48 @@
       link: http://sacmat.dista.uninsubria.it/2021/
       timeline:
         - deadline: '2021-02-25 23:59:59'
-          comment: Paper Submission Deadline
       timezone: AoE
       date: June 16-18, 2021
       place: Virtual
+    - year: 2022
+      id: sacmat22
+      link: https://www.sacmat.org/2022/
+      timeline:
+        - deadline: '2021-11-15 23:59:00'
+          comment: Cycle 1
+        - deadline: '2022-02-25 23:59:00'
+          comment: Cycle 2
+      timezone: AoE
+      date: June 8-10, 2022
+      place: Virtual
+    - year: 2023
+      id: sacmat23
+      link: https://www.sacmat.org/2023/
+      timeline:
+        - deadline: '2022-12-15 23:59:00'
+          comment: Cycle 1
+        - abstract_deadline: '2023-02-23 23:59:00'
+          deadline: '2023-03-02 23:59:00'
+          comment: Cycle 2; optional abstract
+      timezone: AoE
+      date: June 7-9, 2023
+      place: Trento, Italy
+    - year: 2024
+      id: sacmat24
+      link: https://www.sacmat.org/2024/
+      timeline:
+        - abstract_deadline: '2024-02-01 23:59:00'
+          deadline: '2024-02-18 23:59:00'
+          comment: Optional abstract
+      timezone: AoE
+      date: May 15-17, 2024
+      place: San Antonio, TX, USA
     - year: 2025
       id: sacmat25
       link: https://www.sacmat.org/2025/index.php
       timeline:
-        - deadline: '2025-03-24 23:59:59'
-          comment: Paper Submission Deadline
+        - abstract_deadline: '2025-03-31 23:59:00'
+          deadline: '2025-03-31 23:59:59'
       timezone: AoE
       date: July 8-10, 2025
       place: Stony Brook, NY, USA
@@ -29,10 +61,10 @@
       id: sacmat26
       link: https://www.sacmat.org/2026/index.php
       timeline:
-        - deadline: '2025-10-27 23:59:59'
-          comment: 'First Cycle'
-        - deadline: '2026-03-02 23:59:59'
-          comment: 'Second Cycle'
+        - deadline: '2025-10-31 23:59:59'
+          comment: Cycle 1
+        - deadline: '2026-03-06 23:59:59'
+          comment: Cycle 2
       timezone: AoE
       date: July 8-10, 2026
       place: Waterloo, Canada

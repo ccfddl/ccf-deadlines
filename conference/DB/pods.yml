@@ -7,6 +7,58 @@
     thcpl: A
   dblp: pods
   confs:
+    - year: 2021
+      id: pods21
+      link: https://2021.sigmod.org/
+      timeline:
+        - abstract_deadline: '2020-07-02 17:00:00'
+          deadline: '2020-07-07 17:00:00'
+          comment: First submission cycle; abstract and paper deadlines extended
+        - abstract_deadline: '2020-12-13 17:00:00'
+          deadline: '2020-12-20 17:00:00'
+          comment: Second submission cycle
+      timezone: PT
+      date: June 20-25, 2021
+      place: Online (with a local event in Xi'an, China)
+    - year: 2022
+      id: pods22
+      link: https://2022.sigmod.org/
+      timeline:
+        - abstract_deadline: '2021-06-11 17:00:00'
+          deadline: '2021-06-18 17:00:00'
+          comment: First submission cycle
+        - abstract_deadline: '2021-12-10 17:00:00'
+          deadline: '2021-12-17 17:00:00'
+          comment: Second submission cycle
+      timezone: PT
+      date: June 12-17, 2022
+      place: Philadelphia, PA, USA
+    - year: 2023
+      id: pods23
+      link: https://2023.sigmod.org/
+      timeline:
+        - abstract_deadline: '2022-05-30 17:00:00'
+          deadline: '2022-06-06 17:00:00'
+          comment: First submission cycle
+        - abstract_deadline: '2022-11-28 17:00:00'
+          deadline: '2022-12-05 17:00:00'
+          comment: Second submission cycle
+      timezone: PT
+      date: June 18-23, 2023
+      place: Seattle, WA, USA
+    - year: 2024
+      id: pods24
+      link: https://2024.sigmod.org/
+      timeline:
+        - abstract_deadline: '2023-06-06 17:00:00'
+          deadline: '2023-06-12 17:00:00'
+          comment: First submission cycle
+        - abstract_deadline: '2023-12-04 17:00:00'
+          deadline: '2023-12-11 17:00:00'
+          comment: Second submission cycle
+      timezone: PT
+      date: June 9-14, 2024
+      place: Santiago, Chile
     - year: 2025
       id: pods25
       link: https://2025.sigmod.org/
@@ -17,9 +69,22 @@
         - abstract_deadline: '2024-12-02 17:00:00'
           deadline: '2024-12-09 17:00:00'
           comment: 'SECOND SUBMISSION CYCLE'
-      timezone: UTC-7
+      timezone: PT
       date: June 22-27, 2025
       place: Berlin, Germany
+    - year: 2026
+      id: pods26
+      link: https://2026.sigmod.org/
+      timeline:
+        - abstract_deadline: '2025-06-03 23:59:00'
+          deadline: '2025-06-10 23:59:00'
+          comment: First submission cycle
+        - abstract_deadline: '2025-12-03 23:59:00'
+          deadline: '2025-12-10 23:59:00'
+          comment: Second submission cycle
+      timezone: AoE
+      date: May 31 - June 5, 2026
+      place: Bengaluru, India
     - year: 2027
       id: pods27
       link: https://2027.sigmod.org/

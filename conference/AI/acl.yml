@@ -7,14 +7,24 @@
     thcpl: A
   dblp: acl
   confs:
+    - year: 2021
+      id: acl21
+      link: https://2021.aclweb.org/
+      timeline:
+        - abstract_deadline: '2021-01-25 23:59:59'
+          deadline: '2021-02-02 23:59:59'
+          comment: ACL-IJCNLP 2021; extended full-paper deadline
+      timezone: UTC-12
+      date: August 1-6, 2021
+      place: Virtual
     - year: 2022
       id: acl22
-      link: https://www.2022.aclweb.org/
+      link: https://2022.aclweb.org/
       timeline:
         - deadline: '2021-09-15 23:59:59'
         - deadline: '2021-10-15 23:59:59'
         - deadline: '2021-11-15 23:59:59'
-          comment: final submission deadline
+          comment: 'Final ARR submission deadline; ACL commitment deadline: January 15, 2022.'
       timezone: UTC-12
       date: May 22-27, 2022
       place: Dublin, Ireland
@@ -22,8 +32,11 @@
       id: acl23
       link: https://2023.aclweb.org/
       timeline:
+        - deadline: '2022-12-15 23:59:59'
+          comment: ARR submission
         - abstract_deadline: '2023-01-13 23:59:59'
           deadline: '2023-01-20 23:59:59'
+          comment: 'Direct submission; ARR commitment deadline: March 17, 2023.'
       timezone: UTC-12
       date: July 9-14, 2023
       place: Toronto, Canada
@@ -32,6 +45,7 @@
       link: https://2024.aclweb.org/
       timeline:
         - deadline: '2024-02-15 23:59:59'
+          comment: 'ARR submission; ACL commitment deadline: April 20, 2024.'
       timezone: UTC-12
       date: August 11-16, 2024
       place: Bangkok, Thailand
@@ -40,6 +54,7 @@
       link: https://2025.aclweb.org/
       timeline:
         - deadline: '2025-02-15 23:59:59'
+          comment: 'ARR submission; ACL commitment deadline: April 20, 2025.'
       timezone: UTC-12
       date: July 27 - August 1, 2025
       place: Vienna, Austria
@@ -48,6 +63,7 @@
       link: https://2026.aclweb.org/
       timeline:
         - deadline: '2026-01-05 23:59:59'
+          comment: 'ARR submission; ACL commitment deadline: March 14, 2026.'
       timezone: UTC-12
       date: July 2 - 7, 2026
       place: San Diego, California, United States

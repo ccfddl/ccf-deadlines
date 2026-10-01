@@ -7,17 +7,42 @@
     thcpl: B
   dblp: esem
   confs:
+    - year: 2021
+      id: esem21
+      link: https://conf.researchr.org/home/esem-2021
+      timeline:
+        - abstract_deadline: '2021-05-08 23:59:00'
+          deadline: '2021-05-15 23:59:00'
+      timezone: AoE
+      date: October 12-15, 2021
+      place: Virtual
     - year: 2022
       id: esem22
       link: https://conf.researchr.org/home/esem-2022
       timeline:
-        - deadline: '2022-04-25 23:59:59'
-          comment: Abstract
-        - deadline: '2022-05-02 23:59:59'
-          comment: Submission
+        - abstract_deadline: '2022-04-25 23:59:59'
+          deadline: '2022-05-02 23:59:59'
       timezone: AoE
-      date: September 19-23, 2022
+      date: September 22-23, 2022
       place: Helsinki, Finland
+    - year: 2023
+      id: esem23
+      link: https://conf.researchr.org/home/esem-2023
+      timeline:
+        - abstract_deadline: '2023-04-24 23:59:59'
+          deadline: '2023-05-02 23:59:59'
+      timezone: AoE
+      date: October 26-27, 2023
+      place: New Orleans, Louisiana, USA
+    - year: 2024
+      id: esem24
+      link: https://conf.researchr.org/home/esem-2024
+      timeline:
+        - abstract_deadline: '2024-05-02 23:59:59'
+          deadline: '2024-05-06 23:59:59'
+      timezone: AoE
+      date: October 24-25, 2024
+      place: Barcelona, Spain
     - year: 2025
       id: esem25
       link: https://conf.researchr.org/home/esem-2025
@@ -25,7 +50,7 @@
         - abstract_deadline: '2025-04-18 23:59:59'
           deadline: '2025-04-25 23:59:59'
       timezone: AoE
-      date: September 29 - October 3, 2025
+      date: October 2-3, 2025
       place: Honolulu, Hawai, USA
     - year: 2026
       id: esem26
@@ -34,5 +59,5 @@
         - abstract_deadline: '2026-05-11 23:59:59'
           deadline: '2026-05-18 23:59:59'
       timezone: AoE
-      date: October 4 - 9, 2026
+      date: October 8-9, 2026
       place: München, Germany

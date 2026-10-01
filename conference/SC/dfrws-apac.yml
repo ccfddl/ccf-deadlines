@@ -7,6 +7,40 @@
     thcpl: N
   dblp: di
   confs:
+    - year: 2021
+      id: dfrws-apac21
+      link: https://dfrws.org/conferences/dfrws-apac-2021/
+      timeline:
+        - abstract_deadline: '2020-01-31 23:59:00'
+          deadline: '2020-03-16 23:59:00'
+      timezone: AoE
+      date: January 27-29, 2021
+      place: Online
+    - year: 2022
+      id: dfrws-apac22
+      link: https://dfrws.org/conferences/dfrws-apac-2022/
+      timeline:
+        - deadline: '2022-05-16 23:59:00'
+      timezone: AoE
+      date: September 28-30, 2022
+      place: Adelaide, Australia (Hybrid)
+    - year: 2023
+      id: dfrws-apac23
+      link: https://dfrws.org/conferences/dfrws-apac-2023/
+      timeline:
+        - deadline: '2023-05-15 23:59:00'
+      timezone: AoE
+      date: October 18-20, 2023
+      place: Singapore and Hong Kong
+    - year: 2024
+      id: dfrws-apac24
+      link: https://dfrws.org/conferences/dfrws-apac-2024/
+      timeline:
+        - abstract_deadline: '2024-05-27 23:59:00'
+          deadline: '2024-06-03 23:59:00'
+      timezone: AoE
+      date: October 22-24, 2024
+      place: Brisbane, Australia
     - year: 2025
       id: dfrws-apac25
       link: https://dfrws.org/conferences/dfrws-apac-2025/
@@ -15,3 +49,12 @@
       timezone: AoE
       date: November 10-12, 2025
       place: Seoul, South Korea
+    - year: 2026
+      id: dfrws-apac26
+      link: https://dfrws.org/conferences/dfrws-apac-2026/
+      timeline:
+        - abstract_deadline: '2026-05-29 23:59:59'
+          deadline: '2026-06-05 23:59:59'
+      timezone: AoE
+      date: October 19-22, 2026
+      place: Singapore

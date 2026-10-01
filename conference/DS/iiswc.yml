@@ -29,7 +29,8 @@
       id: iiswc2026
       link: https://iiswc.org/iiswc2026/
       timeline:
-        - deadline: '2026-05-14 00:00:00'
-      timezone: UTC
+        - abstract_deadline: '2026-05-14 23:59:59'
+          deadline: '2026-05-21 23:59:59'
+      timezone: AoE
       date: September 27-29, 2026
       place: Boulder, USA

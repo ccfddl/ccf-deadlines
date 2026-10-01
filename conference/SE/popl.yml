@@ -7,6 +7,15 @@
     thcpl: A
   dblp: popl
   confs:
+    - year: 2021
+      id: popl21
+      link: https://popl21.sigplan.org/
+      timeline:
+        - deadline: '2020-07-09 23:59:59'
+          comment: Regular research submission
+      timezone: AoE
+      date: January 20-22, 2021
+      place: Online
     - year: 2022
       id: popl22
       link: https://popl22.sigplan.org/

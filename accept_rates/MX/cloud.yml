@@ -1,0 +1,16 @@
+- title: Cloud
+  accept_rates:
+    # Normal tracks, full papers only; special tracks excluded.
+    - year: 2021
+      submitted: 105
+      accepted: 25
+      rate: 0.23809523809523808
+      str: "23.8%(25/105 21')"
+      source: https://conferences.computer.org/services/2021/programs/2021ServicesProgram_final.pdf
+    # Research track full papers only; short, WIP and invited excluded.
+    - year: 2022
+      submitted: 192
+      accepted: 43
+      rate: 0.22395833333333334
+      str: "22.4%(43/192 22')"
+      source: https://conferences.computer.org/services/2022/2022_services_program.pdf

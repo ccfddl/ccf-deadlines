@@ -174,6 +174,10 @@ pub fn MultiSelectDropdown(
             </button>
 
             <Show when=move || is_open.get()>
+                <div
+                    class="filter-dropdown-backdrop"
+                    on:click=move |_| open_dropdown.set(None)
+                ></div>
                 <div class="filter-dropdown-panel">
                     <div class="filter-dropdown-panel-header">
                         <span>{title_for_panel.clone()}</span>
@@ -238,6 +242,12 @@ pub fn MultiSelectDropdown(
             .filter-dropdown {
               position: relative;
             }
+
+                        .filter-dropdown-backdrop {
+                            position: fixed;
+                            inset: 0;
+                            z-index: 10;
+                        }
 
             .filter-dropdown-trigger {
               display: inline-flex;

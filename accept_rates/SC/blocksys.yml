@@ -1,0 +1,33 @@
+- title: BlockSys
+  accept_rates:
+    # Peer-reviewed main papers; keynote/invited speeches are separate.
+    # Desk rejects, withdrawals and initial conditional decisions are not reported.
+    # Main conference: 38 regular + 12 short accepted from 98 received; PDF5/v.
+    - year: 2021
+      submitted: 98
+      accepted: 50
+      str: 51.0%(50/98 21')
+      rate: 0.5102040816326531
+      source: https://link.springer.com/content/pdf/bfm:978-981-16-7993-3/1
+    # Main conference: 26 regular accepted from 56 received; PDF5/v.
+    - year: 2022
+      submitted: 56
+      accepted: 26
+      str: 46.4%(26/56 22')
+      rate: 0.4642857142857143
+      source: https://link.springer.com/content/pdf/bfm:978-981-19-8043-5/1
+    # Main conference: 45 regular accepted from 93 received across both volumes; PDF5/v.
+    - year: 2023
+      submitted: 93
+      accepted: 45
+      str: 48.4%(45/93 23')
+      rate: 0.4838709677419355
+      source: https://link.springer.com/content/pdf/bfm:978-981-99-8101-4/1
+    # Main conference: 34 full papers across both volumes; preface PDF5/v confirms accepted.
+    # 2024 denominator 74 is explicit in publisher About, not in the preface.
+    - year: 2024
+      submitted: 74
+      accepted: 34
+      str: 45.9%(34/74 24')
+      rate: 0.4594594594594595
+      source: https://link.springer.com/book/10.1007/978-981-96-1411-0

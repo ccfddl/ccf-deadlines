@@ -1,0 +1,71 @@
+- title: ISPD
+  description: International Symposium on Physical Design
+  sub: DS
+  rank:
+    ccf: C
+  dblp: ispd
+  confs:
+    - year: 2021
+      id: ispd21
+      link: https://web.archive.org/web/20201101101949/http://www.ispd.cc/
+      timeline:
+        - abstract_deadline: '2020-10-05 23:59:00'
+          deadline: TBD
+          comment: Full cutoff depends on submitter local time
+      timezone: AoE
+      date: March 22-24, 2021
+      place: Virtual
+    - year: 2022
+      id: ispd22
+      link: https://web.archive.org/web/20220227084514/https://ispd.cc/ispd2022/index.php
+      timeline:
+        - abstract_deadline: '2021-10-08 23:59:00'
+          deadline: '2021-10-12 12:00:00'
+      timezone: AoE
+      date: March 28-30, 2022
+      place: Virtual
+    - year: 2023
+      id: ispd23
+      link: https://easychair.org/cfp/ispd2023
+      timeline:
+        - abstract_deadline: '2022-09-30 23:59:00'
+          deadline: '2022-10-07 23:59:00'
+      timezone: AoE
+      date: March 27-29, 2023
+      place: Virtual
+    - year: 2024
+      id: ispd24
+      link: https://web.archive.org/web/20240304191516/https://ispd.cc/ispd2024/index.php
+      timeline:
+        - abstract_deadline: '2023-09-24 23:59:00'
+          deadline: '2023-09-30 23:59:00'
+      timezone: AoE
+      date: March 13-15, 2024
+      place: Taipei, Taiwan
+    - year: 2025
+      id: ispd25
+      link: https://web.archive.org/web/20250218065927/https://ispd.cc/ispd2025/index.php
+      timeline:
+        - abstract_deadline: '2024-09-22 23:59:00'
+          deadline: '2024-09-29 23:59:00'
+      timezone: AoE
+      date: March 17-19, 2025
+      place: Austin, TX, USA
+    - year: 2026
+      id: ispd26
+      link: https://web.archive.org/web/20260225192034/https://ispd.cc/ispd2026/index.php
+      timeline:
+        - abstract_deadline: '2025-09-21 23:59:00'
+          deadline: '2025-09-28 23:59:00'
+      timezone: AoE
+      date: March 16-18, 2026
+      place: Bonn, Germany
+    - year: 2027
+      id: ispd27
+      link: https://ispd.cc/ispd2027/
+      timeline:
+        - abstract_deadline: '2026-09-21 23:59:59'
+          deadline: '2026-09-28 23:59:59'
+      timezone: AoE
+      date: March 30 - April 2, 2027
+      place: Taipei, Taiwan

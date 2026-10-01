@@ -7,29 +7,56 @@
     thcpl: N
   dblp: eurosp
   confs:
+    - year: 2021
+      id: eurosp21
+      link: https://www.ieee-security.org/TC/EuroSP2021/
+      timeline:
+        - deadline: '2020-11-05 23:59:00'
+      timezone: UTC-12
+      date: September 8-10, 2021
+      place: Virtual
+    - year: 2022
+      id: eurosp22
+      link: https://www.ieee-security.org/TC/EuroSP2022/
+      timeline:
+        - deadline: '2021-09-22 23:59:59'
+      timezone: UTC-12
+      date: June 7-9, 2022
+      place: Genoa, Italy
+    - year: 2023
+      id: eurosp23
+      link: https://eurosp2023.ieee-security.org/
+      timeline:
+        - deadline: '2022-10-26 23:59:00'
+      timezone: UTC-12
+      date: July 4-6, 2023
+      place: Delft, Netherlands
     - year: 2024
       id: eurosp24
       link: https://eurosp2024.ieee-security.org/
       timeline:
-        - deadline: '2023-11-02 23:59:59'
+        - abstract_deadline: '2023-10-30 23:59:59'
+          deadline: '2023-11-02 23:59:59'
       timezone: UTC-12
-      date: July 8-12, 2024
+      date: July 9-11, 2024
       place: Vienna, Austria
     - year: 2025
       id: eurosp25
       link: https://eurosp2025.ieee-security.org/
       timeline:
-        - deadline: '2024-10-24 23:59:59'
+        - abstract_deadline: '2024-10-21 23:59:59'
+          deadline: '2024-10-24 23:59:59'
       timezone: UTC-12
-      date: June 30-July 4, 2025
+      date: July 1-3, 2025
       place: Venice, Italy
     - year: 2026
       id: eurosp26
       link: https://eurosp2026.ieee-security.org/
       timeline:
-        - deadline: '2025-11-20 23:59:59'
+        - abstract_deadline: '2025-11-13 23:59:59'
+          deadline: '2025-11-20 23:59:59'
       timezone: UTC-12
-      date: July 6 - 10, 2026
+      date: July 7-9, 2026
       place: Lisbon, Portugal
     - year: 2027
       id: eurosp27

@@ -13,7 +13,7 @@
       timeline:
         - abstract_deadline: '2020-10-01 23:59:59'
           deadline: '2020-10-09 23:59:59'
-      timezone: AoE
+      timezone: UTC
       date: April 26-29, 2021
       place: Edinburgh, UK
     - year: 2022
@@ -22,18 +22,18 @@
       timeline:
         - abstract_deadline: '2021-10-01 23:59:59'
           deadline: '2021-10-09 23:59:59'
-      timezone: AoE
+      timezone: UTC
       date: April 5-8, 2022
       place: Rennes, France
     - year: 2023
       id: eurosys2023
       link: https://2023.eurosys.org/
       timeline:
-        - abstract_deadline: '2022-05-10 23:59:59'
-          deadline: '2022-05-17 23:59:59'
+        - abstract_deadline: '2022-05-11 23:59:59'
+          deadline: '2022-05-18 23:59:59'
           comment: Spring Submission Deadline
-        - abstract_deadline: '2022-10-11 23:59:59'
-          deadline: '2022-10-18 23:59:59'
+        - abstract_deadline: '2022-10-12 23:59:59'
+          deadline: '2022-10-19 23:59:59'
           comment: Fall Submission Deadline
       timezone: AoE
       date: May 9-12, 2023
@@ -42,7 +42,7 @@
       id: eurosys2024
       link: https://www.eurosys.org/news/eurosys-2024
       timeline:
-        - deadline: '2023-05-18 00:00:00'
+        - deadline: '2023-05-24 23:59:59'
           comment: Spring Submission Deadline
         - deadline: '2023-10-19 23:59:59'
           comment: Fall Submission Deadline
@@ -86,5 +86,5 @@
           deadline: '2026-09-24 23:59:59'
           comment: Fall Submission Deadline
       timezone: AoE
-      date: April 19-24, 2027
+      date: April 19-23, 2027
       place: Rabat, Morocco

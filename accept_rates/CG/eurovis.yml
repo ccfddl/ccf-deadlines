@@ -1,0 +1,40 @@
+- title: EuroVis
+  accept_rates:
+    # Full-paper track final decisions; independent STAR, short-paper and poster tracks excluded.
+    - year: 2021
+      submitted: 173
+      accepted: 44
+      str: 25.4%(44/173 21')
+      rate: 0.254335260115607
+      source: https://diglib.eg.org/bitstream/handle/10.1111/cgf14328/000_eurovis2021_frontmatter.pdf
+    - year: 2022
+      submitted: 178
+      accepted: 44
+      str: 24.7%(44/178 22')
+      rate: 0.247191011235955
+      source: https://onlinelibrary.wiley.com/doi/10.1111/cgf.14562
+    - year: 2023
+      submitted: 134
+      accepted: 36
+      str: 26.9%(36/134 23')
+      rate: 0.268656716417910
+      source: https://diglib.eg.org/bitstream/handle/10.1111/cgf14843/000_eurovis2023_frontmatter.pdf
+    - year: 2024
+      submitted: 134
+      accepted: 35
+      str: 26.1%(35/134 24')
+      rate: 0.261194029850746
+      source: https://onlinelibrary.wiley.com/doi/10.1111/cgf.15068
+    - year: 2025
+      submitted: 167
+      accepted: 46
+      str: 27.5%(46/167 25')
+      rate: 0.275449101796407
+      source: https://onlinelibrary.wiley.com/doi/10.1111/cgf.70143
+    # Reviewed submissions; ten desk rejections excluded.
+    - year: 2026
+      submitted: 195
+      accepted: 52
+      str: 26.7%(52/195 26')
+      rate: 0.266666666666667
+      source: https://diglib.eg.org/bitstreams/d1b7061b-a8ce-45ed-b0f4-2b67c0364f7b/download

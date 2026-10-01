@@ -7,18 +7,41 @@
     thcpl: A
   dblp: huc
   confs:
+    - year: 2021
+      id: ubicomp21
+      link: https://www.ubicomp.org/ubicomp2021/
+      timeline:
+        - deadline: '2020-08-15 23:59:00'
+          comment: 'August 2020 cycle'
+        - deadline: '2020-11-15 23:59:00'
+          comment: 'November 2020 cycle'
+        - deadline: '2021-02-15 23:59:00'
+          comment: 'February 2021 cycle'
+        - deadline: '2021-05-15 23:59:00'
+          comment: 'May 2021 cycle'
+      timezone: AoE
+      date: September 21-24, 2021
+      place: Virtual
+    - year: 2022
+      id: ubicomp22
+      link: https://www.ubicomp.org/ubicomp2022/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: September 12-14, 2022
+      place: Atlanta, USA and Cambridge, UK
     - year: 2023
       id: huc23
       link: https://www.ubicomp.org/ubicomp-iswc-2023
       timeline:
+        - deadline: '2022-08-16 06:59:00'
+          comment: 'August 2022 cycle'
+        - deadline: '2022-11-16 06:59:00'
+          comment: 'November 2022 cycle'
         - deadline: '2023-02-15 23:59:59'
-          comment: first round
+          comment: 'February 2023 cycle'
         - deadline: '2023-05-15 23:59:59'
-          comment: second round
-        - deadline: '2023-08-15 23:59:59'
-          comment: third round
-        - deadline: '2023-11-15 23:59:59'
-          comment: fourth round
+          comment: 'May 2023 cycle'
       timezone: UTC-5
       date: October 8-12, 2023
       place: Cancún, Mexico
@@ -26,14 +49,12 @@
       id: huc24
       link: https://www.ubicomp.org/ubicomp-iswc-2024
       timeline:
+        - deadline: '2023-11-15 16:59:59'
+          comment: 'November 2023 cycle'
         - deadline: '2024-02-01 23:59:59'
-          comment: first round
+          comment: 'February 2024 cycle'
         - deadline: '2024-05-01 23:59:59'
-          comment: second round
-        - deadline: '2024-08-01 23:59:59'
-          comment: third round (only for revised paper)
-        - deadline: '2024-11-01 23:59:59'
-          comment: fourth round
+          comment: 'May 2024 cycle'
       timezone: AoE
       date: October 5-9, 2024
       place: Melbourne, Australia
@@ -45,10 +66,6 @@
           comment: first round
         - deadline: '2025-05-01 23:59:59'
           comment: second round
-        - deadline: '2025-08-01 23:59:59'
-          comment: third round (only for resubmissions after major revisions)
-        - deadline: '2025-11-01 23:59:59'
-          comment: fourth round
       timezone: AoE
       date: October 12-16, 2025
       place: Espoo, Finland
@@ -60,10 +77,6 @@
           comment: first round
         - deadline: '2026-05-01 23:59:59'
           comment: second round
-        - deadline: '2026-08-01 23:59:59'
-          comment: third round (only for resubmissions after major revisions)
-        - deadline: '2026-11-01 23:59:59'
-          comment: fourth round
       timezone: AoE
       date: October 11-15, 2026
       place: Shanghai, China

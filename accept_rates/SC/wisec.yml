@@ -1,20 +1,34 @@
 - title: WiSec
   accept_rates:
+    # Final main-paper decisions: 27 full + 6 short + 1 SoK; excludes posters/demos.
+    # Received denominator includes 6 desk rejects; 115 proceeded to review.
+    # All 18 conditional accepts passed shepherding; 16 were accepted directly.
+    # Official chairs' report PDF pp. 3, 5-6; withdrawal handling is not reported.
+    - year: 2021
+      submitted: 121
+      accepted: 34
+      str: 28.1%(34/121 21')
+      rate: 0.2809917355371901
+      source: https://sites.nyuad.nyu.edu/wisec21/PC%2BGeneralChairs-Report_ACM_WiSec_2021.pdf
+    # Existing historical pair preserved; original preface not reverified in this audit.
     - year: 2024
       submitted: 144
       accepted: 29
-      srt: 20.1(29/144 24')
-      rate: 0.20138889
+      str: 20.1%(29/144 24')
+      rate: 0.2013888888888889
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3643833
+    # Existing historical pair preserved; cycle-2 26/100 is not an annual aggregate.
     - year: 2025
       submitted: 123
       accepted: 28
-      str: 22.8(28/123 25')
-      rate: 0.22764228
+      str: 22.8%(28/123 25')
+      rate: 0.2276422764227642
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3734477
+    # Existing pair preserved pending conflict resolution: ACM metadata reports 31/145.
+    # Original preface/cohort and decision-stage reconciliation remain unavailable.
     - year: 2026
       submitted: 121
       accepted: 23
-      str: 19.0(23/121 26')
-      rate: 0.19008264
+      str: 19.0%(23/121 26')
+      rate: 0.19008264462809918
       source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3765613

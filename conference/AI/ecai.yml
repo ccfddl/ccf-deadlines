@@ -7,6 +7,16 @@
     thcpl: N
   dblp: ecai
   confs:
+    - year: 2022
+      id: ecai22
+      link: https://ijcai-22.org/
+      timeline:
+        - abstract_deadline: '2022-01-08 12:59:00'
+          deadline: '2022-01-14 23:59:00'
+          comment: 'Joint IJCAI-ECAI; abstract: January 7, 23:59 AoE (UTC-12), converted to CET (UTC+1)'
+      timezone: UTC+1
+      date: July 23-29, 2022
+      place: Vienna, Austria
     - year: 2023
       id: ecai23
       link: https://ecai2023.eu/
@@ -14,7 +24,7 @@
         - abstract_deadline: '2023-05-02 23:59:59'
           deadline: '2023-05-08 23:59:59'
       timezone: UTC-12
-      date: October 2-5, 2023
+      date: September 30 - October 4, 2023
       place: Kraków, Poland
     - year: 2024
       id: ecai24
@@ -34,3 +44,20 @@
       timezone: UTC-12
       date: October 25-30, 2025
       place: Bologna, ITALY
+    - year: 2026
+      id: ecai26
+      link: https://2026.ijcai.org/
+      timeline:
+        - abstract_deadline: '2026-01-12 23:59:59'
+          deadline: '2026-01-19 23:59:59'
+      timezone: UTC-12
+      date: August 15-21, 2026
+      place: Bremen, Germany
+    - year: 2027
+      id: ecai27
+      link: https://ecai2027.org/
+      timeline:
+        - deadline: '2027-04-14 23:59:59'
+      timezone: AoE
+      date: October 2-7, 2027
+      place: Athens, Greece

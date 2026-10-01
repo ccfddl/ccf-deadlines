@@ -7,12 +7,23 @@
     thcpl: N
   dblp: ets
   confs:
+    - year: 2021
+      id: ets2021
+      link: https://www.ieee-ets.org/past_events/ets21/
+      timeline:
+        - abstract_deadline: '2020-12-10 23:59:00'
+          deadline: '2020-12-17 23:59:00'
+          comment: 'Regular research papers. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
+      timezone: AoE
+      date: May 24-27, 2021
+      place: Virtual
     - year: 2024
       id: ets2024
       link: https://ets24.ewi.tudelft.nl/
       timeline:
-        - abstract_deadline: '2023-12-08 23:59:59'
-          deadline: '2023-12-16 23:59:59'
+        - abstract_deadline: '2023-12-15 23:59:00'
+          deadline: '2023-12-23 00:00:00'
+          comment: 'Regular papers; full-paper cutoff explicitly December 22 at 24:00 AoE, normalized to December 23 at 00:00. 23:59:00 uses the repository default where the source gives no clear cutoff clock.'
       timezone: AoE
       date: May 20-24, 2024
       place: The Hague, Netherlands
@@ -29,8 +40,19 @@
       id: ets2026
       link: https://ets2026.uniwa.gr/
       timeline:
-        - abstract_deadline: '2025-12-15 23:59:59'
-          deadline: '2026-01-12 23:59:59'
+        - abstract_deadline: '2025-12-15 23:59:00'
+          deadline: '2026-01-14 23:59:00'
+          comment: 'Regular research papers; full-paper extension. Cutoff clocks and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
       date: May 25-29, 2026
-      place: Chania, Greec
+      place: Chania, Greece
+    - year: 2027
+      id: ets2027
+      link: https://www.ets2027.co.uk/
+      timeline:
+        - abstract_deadline: '2026-12-08 23:59:00'
+          deadline: '2026-12-15 23:59:00'
+          comment: 'Regular papers; official CFP dates. Clock 23:59:00 and timezone AoE are repository defaults, not published cutoff precision.'
+      timezone: AoE
+      date: May 24-28, 2027
+      place: London, UK

@@ -7,6 +7,15 @@
     thcpl: N
   dblp: prcv
   confs:
+    - year: 2021
+      id: prcv21
+      link: https://tc.ccf.org.cn/ccfcv/zyhd/jsjsjdh/2021-08-28/735102.shtml
+      timeline:
+        - deadline: '2021-04-30 23:59:00'
+          comment: 'Published regular-paper CFP date; 23:59:00 and AoE are repository defaults. A later extension has not been independently verified.'
+      timezone: AoE
+      date: Dec 19-21, 2021
+      place: Zhuhai, China
     - year: 2023
       id: prcv23
       link: https://prcv2023.xmu.edu.cn/

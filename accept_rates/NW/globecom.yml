@@ -1,5 +1,15 @@
 - title: GLOBECOM
   accept_rates:
+    # Main technical symposia; workshops, tutorials and industry program excluded.
+    # Organizer report: July 2024 Global Communications Newsletter, pp. 1-4, counts p. 2.
+    # Received submissions and accepted for presentation/publication; not a final Xplore census.
+    # Eligible-review total is separate; desk rejections/withdrawals/no-shows are not quantified.
+    - year: 2023
+      submitted: 3217
+      accepted: 1262
+      str: 39.2%(1262/3217 23')
+      rate: 0.39229095430525335
+      source: https://www.comsoc.org/media/22581/download?attachment=
     - year: 2024
       submitted: 2295
       accepted: 911

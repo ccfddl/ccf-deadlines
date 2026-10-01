@@ -7,21 +7,54 @@
     thcpl: N
   dblp: sas
   confs:
+    - year: 2021
+      id: sas21
+      link: https://conf.researchr.org/home/sas-2021
+      timeline:
+        - deadline: '2021-04-30 23:59:00'
+      timezone: AoE
+      date: October 17-19, 2021
+      place: Online
     - year: 2022
       id: sas22
-      link: https://2022.splashcon.org/home/sas-2022
+      link: https://conf.researchr.org/home/sas-2022
       timeline:
         - deadline: '2022-05-04 23:59:59'
-          comment: Submission deadline
       timezone: AoE
       date: December 5-7, 2022
       place: Auckland, New Zealand
+    - year: 2023
+      id: sas23
+      link: https://conf.researchr.org/home/sas-2023
+      timeline:
+        - abstract_deadline: '2023-04-24 23:59:00'
+          deadline: '2023-05-01 23:59:00'
+          comment: Optional abstract
+      timezone: AoE
+      date: October 22-24, 2023
+      place: Cascais, Portugal
+    - year: 2024
+      id: sas24
+      link: https://2024.splashcon.org/home/sas-2024
+      timeline:
+        - deadline: '2024-05-19 23:59:00'
+      timezone: AoE
+      date: October 20-22, 2024
+      place: Pasadena, California, USA
     - year: 2025
       id: sas25
       link: https://2025.splashcon.org/home/sas-2025
       timeline:
-        - deadline: '2025-05-04 23:59:59'
-          comment: Paper Submission
+        - deadline: '2025-05-11 23:59:59'
       timezone: AoE
-      date: October 12-18, 2025
+      date: October 13-14, 2025
       place: Singapore
+    - year: 2026
+      id: sas26
+      link: https://conf.researchr.org/home/splash-issta-2026/sas-2026
+      timeline:
+        - abstract_deadline: '2026-05-01 23:59:59'
+          deadline: '2026-05-07 23:59:59'
+      timezone: AoE
+      date: October 6-8, 2026
+      place: Oakland, California, USA

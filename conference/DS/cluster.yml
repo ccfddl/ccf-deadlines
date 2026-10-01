@@ -7,41 +7,46 @@
     thcpl: B
   dblp: cluster
   confs:
+    - year: 2021
+      id: cluster21
+      link: https://clustercomp.org/2021/
+      timeline:
+        - abstract_deadline: '2021-05-10 23:59:00'
+          deadline: '2021-05-24 23:59:00'
+      timezone: AoE
+      date: September 8-10, 2021
+      place: Virtual
     - year: 2022
       id: cluster22
       link: https://clustercomp.org/2022
       timeline:
-        - deadline: '2022-05-13 23:59:59'
-          comment: Full Paper Deadline
+        - deadline: '2022-05-20 23:59:00'
       timezone: UTC-12
-      date: September 6-9, 2022
+      date: September 7-9, 2022
       place: Heidelberg, Germany
     - year: 2023
       id: cluster23
       link: https://clustercomp.org/2023
       timeline:
-        - deadline: '2023-05-11 23:59:59'
-          comment: Full Paper Deadline
+        - deadline: '2023-05-15 23:59:00'
       timezone: AoE
-      date: October 31-November 3, 2023
+      date: November 1-3, 2023
       place: Santa Fe, New Mexico, USA
     - year: 2024
       id: cluster24
       link: https://clustercomp.org/2024
       timeline:
         - deadline: '2024-05-09 23:59:59'
-          comment: Full Paper Deadline
       timezone: AoE
-      date: September 24-27, 2024
+      date: September 25-27, 2024
       place: Kobe, Japan
     - year: 2025
       id: cluster25
       link: https://clustercomp.org/2025
       timeline:
-        - deadline: '2025-05-02 23:59:59'
-          comment: Full Paper Deadline
+        - deadline: '2025-05-06 23:59:00'
       timezone: AoE
-      date: September 2-5, 2025
+      date: September 3-5, 2025
       place: Edinburgh, United Kingdom
     - year: 2026
       id: cluster26
@@ -50,5 +55,5 @@
         - abstract_deadline: '2026-05-07 23:59:59'
           deadline: '2026-05-07 23:59:59'
       timezone: AoE
-      date: September 22-25, 2026
+      date: September 23-25, 2026
       place: Alexandria, Virginia, USA

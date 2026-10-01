@@ -11,7 +11,7 @@
       id: msst2024
       link: https://storageconference.us/index.html
       timeline:
-        - deadline: '2024-01-07 04:59:59'
+        - deadline: '2024-01-18 07:59:00'
       timezone: UTC
       date: June 3-7, 2024
       place: Santa Clara, CA
@@ -23,3 +23,11 @@
       timezone: UTC
       date: June 1-5, 2026
       place: Santa Clara University, Santa Clara, CA, USA
+    - year: 2027
+      id: msst2027
+      link: https://www.msstconference.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: May 17-21, 2027
+      place: TBD

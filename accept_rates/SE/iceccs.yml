@@ -1,0 +1,33 @@
+# Competitive regular/long and short papers; invited contributions excluded.
+- title: ICECCS
+  accept_rates:
+    # 15 regular + 9 short; received submissions.
+    - year: 2022
+      submitted: 55
+      accepted: 24
+      str: 43.6%(24/55 22')
+      rate: 0.436363636363636
+      source: https://doi.org/10.1109/ICECCS54210.2022.00005
+    # 19 long + 3 short; received submissions.
+    # Original preface says 58, not the secondary 52-submission figure.
+    - year: 2023
+      submitted: 58
+      accepted: 22
+      str: 37.9%(22/58 23')
+      rate: 0.379310344827586
+      source: https://doi.org/10.1109/ICECCS59891.2023.00005
+    # 18 regular + 4 short; received submissions.
+    - year: 2024
+      submitted: 68
+      accepted: 22
+      str: 32.4%(22/68 24')
+      rate: 0.323529411764706
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-66456-4/1
+    # 21 regular + 3 short; separate position-paper track excluded; received submissions.
+    # Publisher About includes 8 position papers; original preface pairs 24 with 70.
+    - year: 2025
+      submitted: 70
+      accepted: 24
+      str: 34.3%(24/70 25')
+      rate: 0.342857142857143
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-00828-2/1

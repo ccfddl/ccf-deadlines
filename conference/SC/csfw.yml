@@ -7,6 +7,19 @@
     thcpl: B
   dblp: csfw
   confs:
+    - year: 2021
+      id: csfw21
+      link: https://www.ieee-security.org/TC/CSF2021/
+      timeline:
+        - deadline: '2020-05-08 23:59:00'
+          comment: Spring
+        - deadline: '2020-10-02 23:59:00'
+          comment: Fall
+        - deadline: TBD
+          comment: 'Winter: CFP February 8 AoE conflicts with submission portal February 9 AoE'
+      timezone: UTC-12
+      date: June 21-24, 2021
+      place: Virtual
     - year: 2022
       id: csfw22
       link: https://www.ieee-security.org/TC/CSF2022/
@@ -15,6 +28,8 @@
           comment: spring
         - deadline: '2021-10-01 23:59:59'
           comment: fall
+        - deadline: '2022-02-04 23:59:00'
+          comment: Winter
       timezone: UTC-12
       date: August, 2022
       place: Haifa, Israel

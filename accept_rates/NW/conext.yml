@@ -1,0 +1,16 @@
+- title: CoNEXT
+  accept_rates:
+    # Main long papers only; excludes 9/38 short papers.
+    - year: 2021
+      submitted: 120
+      accepted: 27
+      str: "22.5%(27/120 21')"
+      rate: 0.225
+      source: https://www.sigcomm.org/events/conext-conference
+    # Explicit annual total for both November and June deadlines; excludes 6/32 short papers.
+    - year: 2023
+      submitted: 157
+      accepted: 29
+      str: "18.5%(29/157 23')"
+      rate: 0.18471337579617833
+      source: https://www.sigcomm.org/events/conext-conference

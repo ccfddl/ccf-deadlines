@@ -7,6 +7,19 @@
     thcpl: A
   dblp: mobicom
   confs:
+    - year: 2021
+      id: mobicom21
+      link: https://www.sigmobile.org/mobicom/2021/
+      timeline:
+        - abstract_deadline: '2020-08-14 23:59:00'
+          deadline: '2020-08-21 23:59:00'
+          comment: 'Summer cycle'
+        - abstract_deadline: '2021-03-19 23:59:00'
+          deadline: '2021-03-26 23:59:00'
+          comment: 'Winter cycle'
+      timezone: UTC-4
+      date: March 29 - April 1, 2022
+      place: New Orleans, LA, USA
     - year: 2022
       id: mobicom22
       link: https://www.sigmobile.org/mobicom/2022/
@@ -22,6 +35,9 @@
       id: mobicom23
       link: https://www.sigmobile.org/mobicom/2023/
       timeline:
+        - abstract_deadline: '2022-08-12 23:59:59'
+          deadline: '2022-08-19 23:59:59'
+          comment: 'Summer cycle'
         - abstract_deadline: '2023-03-10 23:59:59'
           deadline: '2023-03-17 23:59:59'
       timezone: UTC-7
@@ -33,6 +49,10 @@
       timeline:
         - abstract_deadline: '2023-08-18 23:59:59'
           deadline: '2023-08-25 23:59:59'
+          comment: 'Summer cycle'
+        - abstract_deadline: '2024-03-08 23:59:59'
+          deadline: '2024-03-15 23:59:59'
+          comment: 'Winter cycle'
       timezone: UTC-12
       date: October, 2024
       place: Washington, D.C., USA

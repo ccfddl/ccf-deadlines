@@ -6,3 +6,9 @@
       str: 26.1%(289/1107 18')
       rate: 0.2610659
       source: https://csconfstats.xoveexu.com/
+    - year: 2026
+      submitted: 637
+      accepted: 194
+      str: 30.5%(194/637 26')
+      rate: 0.304552590266876
+      source: https://cscw.acm.org/2026/blog/finaldecisions.html

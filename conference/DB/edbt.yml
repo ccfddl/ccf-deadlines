@@ -59,7 +59,8 @@
       id: edbt27
       link: https://edbticdt2027.github.io/
       timeline:
-        - deadline: '2026-02-04 23:59:59'
+        - deadline: '2026-02-04 13:00:00'
+          comment: 'Official February cutoff is 17:00 PST (UTC-8), represented as the equivalent 13:00 AoE.'
         - deadline: '2026-06-10 23:59:59'
         - deadline: '2026-10-07 23:59:59'
       timezone: AoE

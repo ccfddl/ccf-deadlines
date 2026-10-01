@@ -7,49 +7,71 @@
     thcpl: B
   dblp: ccs
   confs:
+    - year: 2021
+      id: asiaccs21
+      link: https://asiaccs2021.comp.polyu.edu.hk/
+      timeline:
+        - deadline: '2020-08-22 06:59:00'
+          comment: Round 1
+        - deadline: '2020-12-12 07:59:00'
+          comment: Round 2
+      timezone: UTC-5
+      date: June 8-10, 2021
+      place: Virtual
     - year: 2022
       id: asiaccs22
       link: https://asiaccs2022.conferenceservice.jp/
       timeline:
         - deadline: '2021-07-30 23:59:59'
-          comment: 1st round Deadline
+          comment: Round 1
         - deadline: '2021-11-19 23:59:59'
-          comment: 2nd round Deadline
+          comment: Round 2
       timezone: AoE
-      date: May 30-June 3, 2022
+      date: May 31 - June 2, 2022
       place: Nagasaki, Japan
+    - year: 2023
+      id: asiaccs23
+      link: https://asiaccs2023.org/
+      timeline:
+        - deadline: '2022-09-01 23:59:00'
+          comment: Round 1
+        - deadline: '2022-12-15 23:59:00'
+          comment: Round 2
+      timezone: AoE
+      date: July 11-14, 2023
+      place: Melbourne, Australia
     - year: 2024
       id: asiaccs24
       link: https://asiaccs2024.sutd.edu.sg/
       timeline:
         - deadline: '2023-08-21 23:59:59'
-          comment: 1st round Deadline
+          comment: Round 1
         - deadline: '2023-12-07 23:59:59'
-          comment: 2nd round Deadline
+          comment: Round 2
       timezone: AoE
-      date: July 1-5, 2024
+      date: July 3-5, 2024
       place: Singapore
     - year: 2025
       id: asiaccs25
       link: https://asiaccs2025.hust.edu.vn/
       timeline:
         - deadline: '2024-09-20 23:59:59'
-          comment: 1st round Deadline
+          comment: Round 1
         - deadline: '2025-01-20 23:59:59'
-          comment: 2nd round Deadline
+          comment: Round 2
       timezone: AoE
-      date: August 25-29, 2025
+      date: August 27-29, 2025
       place: Hanoi, Vietnam
     - year: 2026
       id: asiaccs26
       link: https://asiaccs2026.cse.iitkgp.ac.in/
       timeline:
         - deadline: '2025-08-25 23:59:59'
-          comment: 1st round Deadline
+          comment: Round 1
         - deadline: '2025-12-12 23:59:59'
-          comment: 2nd round Deadline
+          comment: Round 2
       timezone: AoE
-      date: June 1-5, 2026
+      date: June 3-5, 2026
       place: Bangalore, India
     - year: 2027
       id: asiaccs27

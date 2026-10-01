@@ -7,13 +7,41 @@
     thcpl: N
   dblp: setta
   confs:
+    - year: 2021
+      id: setta21
+      link: https://lcs.ios.ac.cn/setta2021/
+      timeline:
+        - abstract_deadline: '2021-07-30 23:59:59'
+          deadline: '2021-07-30 23:59:59'
+      timezone: AoE
+      date: Nov. 25-27, 2021
+      place: Online
+    - year: 2022
+      id: setta22
+      link: https://lcs.ios.ac.cn/setta2022/
+      timeline:
+        - abstract_deadline: '2022-08-06 23:59:59'
+          deadline: '2022-08-13 23:59:59'
+      timezone: AoE
+      date: Oct. 27-29, 2022
+      place: Online
+    - year: 2023
+      id: setta23
+      link: https://lcs.ios.ac.cn/setta2023/
+      timeline:
+        - abstract_deadline: '2023-08-21 23:59:59'
+          deadline: '2023-08-28 23:59:59'
+          comment: 'Abstract submission is optional'
+      timezone: AoE
+      date: Nov. 27-29, 2023
+      place: Nanjing, China
     - year: 2024
       id: setta24
       link: https://setta2024.cs.cityu.edu.hk
       timeline:
         - abstract_deadline: '2024-08-16 23:59:59'
           deadline: '2024-08-28 23:59:59'
-          comment: 'deadline is extended from Aug. 23'
+          comment: 'Optional abstract; full deadline extended from Aug. 23'
       timezone: AoE
       date: Nov 26-28, 2024
       place: Hong Kong, China
@@ -23,8 +51,19 @@
       timeline:
         - deadline: '2025-04-30 23:59:59'
           comment: 'Round 1 Paper Submission'
-        - deadline: '2025-08-20 23:59:59'
+        - deadline: '2025-08-30 23:59:59'
           comment: 'Round 2 Paper Submission'
       timezone: AoE
       date: Dec, 2025
       place: Oxford, UK
+    - year: 2026
+      id: setta26
+      link: https://www.setta2026.sg/
+      timeline:
+        - deadline: '2026-05-24 23:59:59'
+          comment: Round 1 (extended)
+        - deadline: '2026-08-24 23:59:59'
+          comment: Round 2 (extended)
+      timezone: AoE
+      date: December 2-4, 2026
+      place: Singapore

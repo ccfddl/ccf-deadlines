@@ -1,0 +1,45 @@
+# Annual proceedings-selection cohorts differ; each row states its exact included paper categories.
+- title: KSEM
+  accept_rates:
+    # 164 full papers.
+    - year: 2021
+      submitted: 492
+      accepted: 164
+      str: 33.3%(164/492 21')
+      rate: 0.3333333333333333
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-82136-4/1
+    # 150 regular + 19 special-track papers.
+    - year: 2022
+      submitted: 498
+      accepted: 169
+      str: 33.9%(169/498 22')
+      rate: 0.3393574297188755
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-10983-6/1
+    # 114 regular + 30 short papers.
+    - year: 2023
+      submitted: 395
+      accepted: 144
+      str: 36.5%(144/395 23')
+      rate: 0.36455696202531646
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-40283-8/1
+    # 132 regular + 28 special-track papers.
+    - year: 2024
+      submitted: 495
+      accepted: 160
+      str: 32.3%(160/495 24')
+      rate: 0.32323232323232326
+      source: https://link.springer.com/content/pdf/bfm:978-981-97-5492-2/1
+    # 106 regular + 66 short papers; 16 workshop papers excluded (publisher selection pair).
+    - year: 2025
+      submitted: 354
+      accepted: 172
+      str: 48.6%(172/354 25')
+      rate: 0.4858757062146893
+      source: https://link.springer.com/book/10.1007/978-981-95-3001-4
+    # 186 regular + 99 special-track papers.
+    - year: 2026
+      submitted: 695
+      accepted: 285
+      str: 41.0%(285/695 26')
+      rate: 0.41007194244604317
+      source: https://link.springer.com/content/pdf/bfm:978-981-92-2856-0/1

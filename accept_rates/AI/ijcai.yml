@@ -1,14 +1,38 @@
+# Cohorts and reporting stages vary; read each annual comment.
 - title: IJCAI
   accept_rates:
+    # Main-track accepted papers over valid full submissions, including 144 later desk rejects.
+    - year: 2021
+      submitted: 4204
+      accepted: 587
+      str: 14.0%(587/4204 21')
+      rate: 0.1396289248334919
+      source: https://ijcai-21.org/opening-and-closing-ceremonies/index.html
+    # Main-track selected papers over full submissions.
     - year: 2022
       submitted: 4537
       accepted: 679
       str: 15.0%(679/4537 22')
       rate: 0.149658364558078
-      source: https://github.com/emeryberger/csconferences
+      source: https://www.ijcai.org/proceedings/2022/preface.pdf
+    # Historical 2023 main-track program papers over full submissions, as reported by the 2025 PC.
+    - year: 2023
+      submitted: 4566
+      accepted: 643
+      str: 14.1%(643/4566 23')
+      rate: 0.14082347787998248
+      source: https://2025.ijcai.org/video-recording/?id=1
+    # Historical 2024 main-track program papers over full submissions, as reported by the 2025 PC.
     - year: 2024
       submitted: 5651
       accepted: 791
       str: 14.0%(791/5651 24')
-      rate: 0.1399752
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.1399752256237834
+      source: https://2025.ijcai.org/video-recording/?id=1
+    # Main-track program-paper selection over full submissions in the opening PC report.
+    - year: 2025
+      submitted: 5806
+      accepted: 1023
+      str: 17.6%(1023/5806 25')
+      rate: 0.1761970375473648
+      source: https://2025.ijcai.org/video-recording/?id=1

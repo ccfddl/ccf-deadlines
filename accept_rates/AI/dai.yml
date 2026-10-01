@@ -1,0 +1,9 @@
+- title: DAI
+  accept_rates:
+    # Final acceptances include five initially conditional papers accepted after revision and re-review.
+    - year: 2021
+      submitted: 31
+      accepted: 15
+      str: 48.4%(15/31 21')
+      rate: 0.4838709677419355
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-94662-3/1

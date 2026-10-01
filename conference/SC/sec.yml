@@ -13,11 +13,33 @@
       timeline:
         - deadline: '2021-02-15 23:59:59'
           comment: Submission Deadline
-        - deadline: '2021-04-15 23:59:59'
-          comment: Submission of the camera-ready papers
       timezone: AoE
       date: June 22-24, 2021
       place: Oslo, Norway
+    - year: 2022
+      id: sec22
+      link: https://ifipsec2022.compute.dtu.dk/
+      timeline:
+        - deadline: '2022-02-03 23:59:00'
+      timezone: AoE
+      date: June 13-15, 2022
+      place: Copenhagen, Denmark (Hybrid)
+    - year: 2023
+      id: sec23
+      link: https://ifipsec2023.psnc.pl/
+      timeline:
+        - deadline: '2023-03-12 23:59:00'
+      timezone: AoE
+      date: June 14-16, 2023
+      place: Poznan, Poland
+    - year: 2024
+      id: sec24
+      link: https://history.ifipsec.org/archive/2024/
+      timeline:
+        - deadline: '2024-03-01 23:59:00'
+      timezone: AoE
+      date: June 12-14, 2024
+      place: Edinburgh, UK
     - year: 2025
       id: sec25
       link: https://sec2025.um.si/
@@ -36,3 +58,11 @@
       timezone: AoE
       date: June 09 - 11, 2026
       place: Perth, Australia
+    - year: 2027
+      id: sec27
+      link: https://ifipsec.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: TBD
+      place: Linköping, Sweden

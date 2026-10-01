@@ -7,12 +7,51 @@
     thcpl: N
   dblp: refsq
   confs:
+    - year: 2021
+      id: refsq21
+      link: https://2021.refsq.org/
+      timeline:
+        - abstract_deadline: '2020-11-09 23:59:00'
+          deadline: '2020-11-16 23:59:00'
+      timezone: AoE
+      date: April 12-15, 2021
+      place: Online
+    - year: 2022
+      id: refsq22
+      link: https://2022.refsq.org/
+      timeline:
+        - abstract_deadline: '2021-10-25 23:59:00'
+          deadline: '2021-11-01 23:59:00'
+      timezone: AoE
+      date: March 21-24, 2022
+      place: Aston, Birmingham, United Kingdom
+    - year: 2023
+      id: refsq23
+      link: https://2023.refsq.org/
+      timeline:
+        - abstract_deadline: '2022-11-11 23:59:00'
+          deadline: '2022-11-18 23:59:00'
+          comment: Optional abstract
+      timezone: AoE
+      date: April 17-20, 2023
+      place: Barcelona, Spain
+    - year: 2024
+      id: refsq24
+      link: https://2024.refsq.org/
+      timeline:
+        - abstract_deadline: '2023-11-03 23:59:00'
+          deadline: '2023-11-10 23:59:00'
+          comment: Optional abstract
+      timezone: AoE
+      date: April 8-11, 2024
+      place: Winterthur, Switzerland
     - year: 2025
       id: refsq25
       link: https://2025.refsq.org/
       timeline:
         - abstract_deadline: '2024-11-01 23:59:59'
           deadline: '2024-11-08 23:59:59'
+          comment: Regular research papers; abstract submission is optional
       timezone: AoE
       date: April 7-10, 2025
       place: Barcelona, Spain
@@ -22,6 +61,7 @@
       timeline:
         - abstract_deadline: '2025-10-10 23:59:59'
           deadline: '2025-10-17 23:59:59'
+          comment: Regular research papers; abstract submission is optional
       timezone: AoE
       date: March 23-26, 2026
       place: Poznań, Poland
@@ -31,6 +71,7 @@
       timeline:
         - abstract_deadline: '2026-11-05 23:59:59'
           deadline: '2026-11-12 23:59:59'
+          comment: Regular research papers; abstract submission is optional
       timezone: AoE
       date: April 12-15, 2027
       place: Basel, Switzerland

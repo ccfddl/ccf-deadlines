@@ -9,19 +9,33 @@
   confs:
     - year: 2021
       id: hotos21
-      link: https://www.usenix.org/conference/hotos15
+      link: https://sigops.org/s/conferences/hotos/2021/
       timeline:
         - deadline: '2021-02-03 23:59:59'
-          comment: Submission Deadline
       timezone: AoE
-      date: May 31-Jun 02, 2021
+      date: June 1-3, 2021
       place: Virtual
+    - year: 2023
+      id: hotos23
+      link: https://sigops.org/s/conferences/hotos/2023/
+      timeline:
+        - deadline: '2023-02-02 23:59:59'
+      timezone: AoE
+      date: June 22-24, 2023
+      place: Providence, Rhode Island, USA
     - year: 2025
       id: hotos25
       link: https://sigops.org/s/conferences/hotos/2025/
       timeline:
         - deadline: '2025-01-15 23:59:59'
-          comment: Submission Deadline
       timezone: AoE
       date: May 14-16, 2025
       place: Banff, Alberta, Canada
+    - year: 2027
+      id: hotos27
+      link: https://sigops.org/s/conferences/hotos/2027/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: May 24-26, 2027
+      place: Burghausen, Bavaria, Germany

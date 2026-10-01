@@ -9,15 +9,32 @@
   confs:
     - year: 2021
       id: sac21
-      link: https://www.sac2021.ca/
+      link: https://www.sacworkshop.org/SAC21/call-for-papers.html
       timeline:
-        - deadline: '2021-07-07 23:59:59'
-          comment: Abstract submission
-        - deadline: '2021-07-12 23:59:59'
-          comment: final paper submission
-      timezone: UTC+1
+        - abstract_deadline: '2021-07-07 23:59:00'
+          deadline: '2021-07-12 23:59:00'
+      timezone: UTC
       date: September 29 - October 01, 2021
       place: Virtual
+    - year: 2022
+      id: sac22
+      link: https://sacworkshop.org/SAC22/home.html
+      timeline:
+        - abstract_deadline: '2022-06-01 23:59:00'
+          deadline: '2022-06-08 23:59:00'
+      timezone: UTC
+      date: August 24-26, 2022
+      place: Windsor, Ontario, Canada
+    - year: 2023
+      id: sac23
+      link: https://sacworkshop.org/SAC23/
+      timeline:
+        - abstract_deadline: '2023-05-16 23:59:00'
+          deadline: TBD
+          comment: 'Abstract date May 16, 2023; 23:59:00 and AoE are repository defaults. Full-paper date and GMT clock are struck through with no replacement; full deadline remains unresolved.'
+      timezone: AoE
+      date: August 16-18, 2023
+      place: Fredericton, New Brunswick, Canada
     - year: 2024
       id: sac24
       link: https://sacworkshop.org/SAC24/
@@ -46,8 +63,8 @@
       timeline:
         - deadline: '2026-02-02 23:59:59'
           comment: Paper submission deadline (cycle 1)
-        - deadline: '2025-05-11 23:59:59'
+        - deadline: '2026-05-11 23:59:59'
           comment: Paper submission deadline (cycle 2)
       timezone: AoE
-      date: August 24-28, 2026
+      date: August 26-28, 2026
       place: Ottawa, Ontario, Canada

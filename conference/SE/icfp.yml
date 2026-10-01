@@ -7,33 +7,59 @@
     thcpl: B
   dblp: icfp
   confs:
+    - year: 2021
+      id: icfp21
+      link: https://icfp21.sigplan.org/
+      timeline:
+        - deadline: '2021-03-02 23:59:00'
+      timezone: AoE
+      date: August 23-25, 2021
+      place: Virtual
     - year: 2022
       id: icfp22
       link: https://icfp22.sigplan.org/
       timeline:
-        - deadline: '2021-03-02 23:59:59'
-          comment: Submission Deadline
-        - deadline: '2021-06-16 23:59:59'
-          comment: Submission of revised papers
+        - deadline: '2022-03-02 23:59:00'
       timezone: AoE
-      date: September 11-16, 2022
+      date: September 12-14, 2022
       place: Ljubljana, Slovenia
+    - year: 2023
+      id: icfp23
+      link: https://icfp23.sigplan.org/
+      timeline:
+        - deadline: '2023-03-01 23:59:00'
+      timezone: AoE
+      date: September 5-7, 2023
+      place: Seattle, Washington, USA
+    - year: 2024
+      id: icfp24
+      link: https://icfp24.sigplan.org/
+      timeline:
+        - deadline: '2024-02-28 23:59:00'
+      timezone: AoE
+      date: September 3-5, 2024
+      place: Milan, Italy
     - year: 2025
       id: icfp25
       link: https://icfp25.sigplan.org/
       timeline:
-        - deadline: '2025-02-27 23:59:59'
-          comment: Submission Deadline
-        - deadline: '2025-06-12 23:59:59'
-          comment: Submission of revised papers
+        - deadline: '2025-02-27 23:59:00'
       timezone: AoE
-      date: October 12-18, 2025
+      date: October 13-15, 2025
       place: Singapore
     - year: 2026
       id: icfp26
       link: https://icfp26.sigplan.org/
       timeline:
-        - deadline: '2026-02-19 23:59:59'
+        - deadline: '2026-02-19 23:59:00'
       timezone: AoE
-      date: August 24 - 29, 2026
+      date: August 25-27, 2026
       place: Indiana University Indianapolis, United States
+    - year: 2027
+      id: icfp27
+      link: https://icfp27.sigplan.org/
+      timeline:
+        - deadline: '2027-02-25 23:59:59'
+      timezone: AoE
+      date: September 26 - October 1, 2027
+      place: Nijmegen, Netherlands

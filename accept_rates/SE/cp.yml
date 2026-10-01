@@ -1,0 +1,41 @@
+# Competitive papers across all research tracks, including regular/full and short papers.
+- title: CP
+  accept_rates:
+    - year: 2021
+      submitted: 129
+      accepted: 57
+      str: 44.2%(57/129 21')
+      rate: 0.441860465116279
+      source: https://doi.org/10.4230/LIPIcs.CP.2021.0
+    - year: 2022
+      submitted: 78
+      accepted: 40
+      str: 51.3%(40/78 22')
+      rate: 0.512820512820513
+      source: https://doi.org/10.4230/LIPIcs.CP.2022.0
+    - year: 2023
+      submitted: 109
+      accepted: 44
+      str: 40.4%(44/109 23')
+      rate: 0.403669724770642
+      source: https://doi.org/10.4230/LIPIcs.CP.2023.0
+    - year: 2024
+      submitted: 95
+      accepted: 38
+      str: 40.0%(38/95 24')
+      rate: 0.400000000000000
+      source: https://doi.org/10.4230/LIPIcs.CP.2024.0
+    # Received submissions; 101 proceeded to review.
+    - year: 2025
+      submitted: 106
+      accepted: 41
+      str: 38.7%(41/106 25')
+      rate: 0.386792452830189
+      source: https://doi.org/10.4230/LIPIcs.CP.2025.0
+    # Received submissions; 136 proceeded to review.
+    - year: 2026
+      submitted: 138
+      accepted: 62
+      str: 44.9%(62/138 26')
+      rate: 0.449275362318841
+      source: https://doi.org/10.4230/LIPIcs.CP.2026.0

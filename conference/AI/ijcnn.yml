@@ -14,12 +14,13 @@
         - deadline: '2024-01-29 23:59:59'
       timezone: UTC-12
       date: June 30 - July 5, 2024
-      place: Yokohama, Japan
+      place: Yokohama, Japan and Online
     - year: 2025
       id: ijcnn2025
       link: https://2025.ijcnn.org/
       timeline:
         - deadline: '2025-02-05 23:59:59'
+          comment: Regular papers; final extension requires further verification
       timezone: UTC-12
       date: June 30 - July 5, 2025
       place: Rome, Italy

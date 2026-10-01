@@ -7,17 +7,24 @@
     thcpl: A
   dblp: kbse
   confs:
+    - year: 2021
+      id: ase21
+      link: https://conf.researchr.org/home/ase-2021
+      timeline:
+        - abstract_deadline: '2021-04-20 17:00:00'
+          deadline: '2021-04-23 23:59:59'
+      timezone: AoE
+      date: November 16 - 18, 2021
+      place: Virtual
     - year: 2022
       id: ase22
       link: https://conf.researchr.org/home/ase-2022
       timeline:
-        - deadline: '2022-04-29 23:59:59'
-          comment: Abstract Submission
-        - deadline: '2022-05-06 23:59:59'
-          comment: Paper Submission
+        - abstract_deadline: '2022-04-29 23:59:59'
+          deadline: '2022-05-06 23:59:59'
       timezone: AoE
-      date: September 26- October 01, 2022
-      place: Ann Arbor, Michigan, United States
+      date: October 11-13, 2022
+      place: Oakland Center, Michigan, USA
     - year: 2023
       id: ase23
       link: https://conf.researchr.org/home/ase-2023
@@ -25,16 +32,16 @@
         - abstract_deadline: '2023-04-28 23:59:59'
           deadline: '2023-05-05 23:59:59'
       timezone: AoE
-      date: September 11-15, 2023
+      date: September 12-14, 2023
       place: Kirchberg, Luxembourg
     - year: 2024
       id: ase24
       link: https://conf.researchr.org/home/ase-2024
       timeline:
-        - abstract_deadline: '2024-05-31 23:59:59'
+        - abstract_deadline: '2024-06-03 23:59:59'
           deadline: '2024-06-07 23:59:59'
       timezone: AoE
-      date: October 27- November 01, 2024
+      date: October 29-31, 2024
       place: Sacramento, California, United States
     - year: 2025
       id: ase25
@@ -42,13 +49,14 @@
       timeline:
         - deadline: '2025-05-30 23:59:59'
       timezone: AoE
-      date: November 16 - November 20, 2025
+      date: November 17-19, 2025
       place: Seoul, South Korea
     - year: 2026
       id: ase26
       link: https://conf.researchr.org/home/ase-2026
       timeline:
         - deadline: '2026-03-26 23:59:59'
+          comment: March 30 updates only
       timezone: AoE
-      date: October 12 - 16, 2026
+      date: October 13-15, 2026
       place: Munich, Germany

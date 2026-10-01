@@ -7,13 +7,47 @@
     thcpl: N
   dblp: cec
   confs:
+    - year: 2021
+      id: cec2021
+      link: https://cec2021.mini.pw.edu.pl/en/index.html
+      timeline:
+        - deadline: '2021-02-23 23:59:00'
+      timezone: UTC-12
+      date: June 28 - July 1, 2021
+      place: Virtual
+    - year: 2022
+      id: cec2022
+      link: https://wcci2022.org/
+      timeline:
+        - abstract_deadline: '2022-01-31 23:59:00'
+          deadline: '2022-02-14 23:59:00'
+      timezone: AoE
+      date: July 19-23, 2022
+      place: Padua, Italy
+    - year: 2023
+      id: cec2023
+      link: https://2023.ieee-cec.org/
+      timeline:
+        - deadline: '2023-01-27 23:59:00'
+      timezone: AoE
+      date: July 3-5, 2023
+      place: Chicago, USA
+    - year: 2024
+      id: cec2024
+      link: https://2024.ieeewcci.org/
+      timeline:
+        - deadline: '2024-01-29 23:59:00'
+      timezone: AoE
+      date: July 1-5, 2024
+      place: Yokohama, Japan (Hybrid)
     - year: 2025
       id: cec2025
       link: https://www.cec2025.org/
       timeline:
-        - deadline: '2025-01-15 23:59:59'
+        - deadline: 'TBD'
+          comment: 'Jan 31/Feb 10 source conflict'
       timezone: UTC-12
-      date: June 8-12, 2025
+      date: June 9-12, 2025
       place: Hangzhou, China
     - year: 2026
       id: cec2026

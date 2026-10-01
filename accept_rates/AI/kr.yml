@@ -1,0 +1,46 @@
+# Main technical-program selections, including named special tracks; excludes Recently Published Research and video tracks.
+- title: KR
+  accept_rates:
+    # Main technical program, including Applications and Systems and special sessions; 60 full + 15 short.
+    - year: 2021
+      submitted: 287
+      accepted: 75
+      str: 26.1%(75/287 21')
+      rate: 0.2613240418118467
+      source: https://proceedings.kr.org/2021/kr2021-preface.pdf
+    # Main technical program, including Applications and Systems and special sessions; 51 full + 7 short.
+    - year: 2022
+      submitted: 218
+      accepted: 58
+      str: 26.6%(58/218 22')
+      rate: 0.26605504587155965
+      source: https://proceedings.kr.org/2022/kr2022-preface.pdf
+    # Main technical program, including Applications and Systems and special sessions; 69 full + 11 short.
+    - year: 2023
+      submitted: 339
+      accepted: 80
+      str: 23.6%(80/339 23')
+      rate: 0.2359882005899705
+      source: https://proceedings.kr.org/2023/kr2023-preface.pdf
+    # Main technical program, including Main Track and two special tracks.
+    - year: 2024
+      submitted: 372
+      accepted: 91
+      str: 24.5%(91/372 24')
+      rate: 0.2446236559139785
+      source: https://proceedings.kr.org/2024/kr2024-preface.pdf
+    # Main technical program, including Main Track and special tracks.
+    - year: 2025
+      submitted: 245
+      accepted: 85
+      str: 34.7%(85/245 25')
+      rate: 0.3469387755102041
+      source: https://proceedings.kr.org/2025/kr2025-preface.pdf
+    # Three technical tracks: Main, KR in the Wild, and KR Meets Machine Learning & Explanation.
+    # Includes 92 desk rejects in 459; 112 accepted decisions precede 1 post-acceptance withdrawal.
+    - year: 2026
+      submitted: 459
+      accepted: 112
+      str: 24.4%(112/459 26')
+      rate: 0.2440087145969499
+      source: https://proceedings.kr.org/2026/kr2026-preface.pdf

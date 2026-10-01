@@ -1,14 +1,23 @@
 - title: ECCV
   accept_rates:
+    # Accepted for publication / valid submissions after desk rejections and withdrawals; includes oral papers.
     - year: 2022
       submitted: 5804
       accepted: 1645
       str: 28.3%(1645/5804 22')
       rate: 0.28342522398346
-      source: https://github.com/emeryberger/csconferences
+      source: https://eccv2022.ecva.net/files/2021/12/ECCV_2022_MainConference_ProgramGuide_Final_full.pdf
+    # Accepted papers / valid submissions, as reported in the opening ceremony; oral papers are a subset.
     - year: 2024
       submitted: 8585
-      accepted: 2395
-      str: 27.9%(2395/8585 24')
-      rate: 0.278975
-      source: https://csconfstats.xoveexu.com/
+      accepted: 2387
+      str: 27.8%(2387/8585 24')
+      rate: 0.2780430984274898
+      source: https://eccv2024.ecva.net/media/eccv-2024/Slides/2822.pdf
+    # Ultimately accepted for publication / valid submissions; excludes provisional acceptances not published.
+    - year: 2026
+      submitted: 10473
+      accepted: 2834
+      str: 27.1%(2834/10473 26')
+      rate: 0.27060059199847225
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-36984-0/1

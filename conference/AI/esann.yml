@@ -7,20 +7,59 @@
     thcpl: N
   dblp: esann
   confs:
+    - year: 2021
+      id: esann21
+      link: https://www.esann.org/
+      timeline:
+        - deadline: '2021-05-17 23:59:00'
+      timezone: AoE
+      date: October 6-8, 2021
+      place: Virtual
+    - year: 2022
+      id: esann22
+      link: https://www.esann.org/
+      timeline:
+        - deadline: '2022-05-09 23:59:00'
+      timezone: AoE
+      date: October 5-7, 2022
+      place: Bruges, Belgium and Online
+    - year: 2023
+      id: esann23
+      link: https://www.esann.org/
+      timeline:
+        - deadline: '2023-05-05 23:59:00'
+      timezone: AoE
+      date: October 4-6, 2023
+      place: Bruges, Belgium and Online
+    - year: 2024
+      id: esann24
+      link: https://www.esann.org/
+      timeline:
+        - deadline: '2024-05-06 23:59:00'
+      timezone: AoE
+      date: October 9-11, 2024
+      place: Bruges, Belgium and Online
     - year: 2025
       id: esann25
       link: https://www.esann.org/
       timeline:
-        - abstract_deadline: '2024-11-20 00:00:00'
-          deadline: '2024-11-20 00:00:00'
-      timezone: UTC-8
+        - deadline: '2024-11-27 23:59:00'
+      timezone: AoE
       date: April 23 - April 25, 2025
-      place: Bruges, Belgium
+      place: Bruges, Belgium and Online
     - year: 2026
       id: esann26
       link: https://www.esann.org/
       timeline:
-        - deadline: '2025-11-19 23:59:59'
-      timezone: UTC-8
+        - deadline: '2025-11-26 23:59:00'
+      timezone: AoE
       date: April 22 - 24, 2026
+      place: Bruges, Belgium and Online
+    - year: 2027
+      id: esann27
+      link: https://www.esann.org/
+      timeline:
+        - deadline: '2026-11-18 23:59:59'
+      timezone: UTC-8
+      date: April 21 - 23, 2027
       place: Bruges, Belgium and Online

@@ -27,7 +27,7 @@
       id: aft21
       link: https://aft.ifca.ai/aft21/index.html
       timeline:
-        - deadline: '2021-05-27 23:59:59'
+        - deadline: '2021-05-27 23:59:00'
       timezone: UTC-12
       date: September 26-28, 2021
       place: Online
@@ -36,7 +36,7 @@
       link: https://aft.ifca.ai/aft22/index.html
       timeline:
         - deadline: '2022-05-13 23:59:59'
-      timezone: UTC-12
+      timezone: UTC-7
       date: September 19-21, 2022
       place: Cambridge, MA, USA
     - year: 2023

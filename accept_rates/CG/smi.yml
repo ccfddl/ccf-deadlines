@@ -1,0 +1,15 @@
+- title: SMI
+  accept_rates:
+    # Full papers published from the received conference submissions.
+    - year: 2021
+      submitted: 40
+      accepted: 14
+      str: 35.0%(14/40 21')
+      rate: 0.35
+      source: https://doi.org/10.1016/j.cag.2022.03.001
+    - year: 2022
+      submitted: 24
+      accepted: 10
+      str: 41.7%(10/24 22')
+      rate: 0.4166666666666667
+      source: https://doi.org/10.1016/j.cag.2022.08.011

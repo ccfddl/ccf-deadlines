@@ -1,8 +1,30 @@
 - title: ISSTA
   accept_rates:
+    # Current public technical-paper submission-system cohort. The separate 233 received-submission lead is unreconciled; this row does not label 219 as all originally received papers.
+    - year: 2021
+      submitted: 219
+      accepted: 51
+      str: 23.3%(51/219 21')
+      rate: 0.2328767123287671
+      source: https://issta2021.hotcrp.com/
+    # Existing secondary row retained; original paired evidence remains unrecovered.
     - year: 2022
       submitted: 250
       accepted: 61
       str: 24.4%(61/250 22')
       rate: 0.244
       source: https://github.com/emeryberger/csconferences
+    # Original opening statistics, PDF p.5: 143 accepted, 494 rejected and 57 withdrawn sum to 694. Two submission rounds, as qualified on p.3.
+    - year: 2024
+      submitted: 694
+      accepted: 143
+      str: 20.6%(143/694 24')
+      rate: 0.20605187319884727
+      source: https://mariachris.github.io/ISSTA2024/stats.pdf
+    # Original explicit paired announcement by research co-chair Marcel Böhme; official committee page verifies his role. No inferred rounding or paper census.
+    - year: 2026
+      submitted: 888
+      accepted: 210
+      str: 23.6%(210/888 26')
+      rate: 0.23648648648648649
+      source: https://www.linkedin.com/posts/marcelboehme1_issta-issta-issta-activity-7477276219525386240-Tt3s

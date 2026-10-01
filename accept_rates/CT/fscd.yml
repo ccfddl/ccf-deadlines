@@ -1,0 +1,37 @@
+- title: FSCD
+  accept_rates:
+    # Proceedings preface, PDF page 9; contributed papers, excludes invited talks and workshops.
+    - year: 2021
+      submitted: 72
+      accepted: 28
+      str: 38.9%(28/72 21')
+      rate: 0.3888888888888889
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol195-fscd2021/LIPIcs.FSCD.2021.0/LIPIcs.FSCD.2021.0.pdf
+    # Conference-stage selection in chairs' special-issue preface; excludes journal-stage six papers.
+    - year: 2022
+      submitted: 59
+      accepted: 31
+      str: 52.5%(31/59 22')
+      rate: 0.5254237288135594
+      source: https://lmcs.episciences.org/volume/view/id/682
+    # Proceedings preface, PDF page 9; contributed papers, excludes invited talks and workshops.
+    - year: 2024
+      submitted: 57
+      accepted: 30
+      str: 52.6%(30/57 24')
+      rate: 0.5263157894736842
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol299-fscd2024/LIPIcs.FSCD.2024.0/LIPIcs.FSCD.2024.0.pdf
+    # Proceedings preface, PDF page 9; contributed papers, excludes invited talks and workshops.
+    - year: 2025
+      submitted: 77
+      accepted: 31
+      str: 40.3%(31/77 25')
+      rate: 0.4025974025974026
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol337-fscd2025/LIPIcs.FSCD.2025.0/LIPIcs.FSCD.2025.0.pdf
+    # Proceedings preface, PDF page 11; contributed papers, excludes invited talks and workshops.
+    - year: 2026
+      submitted: 76
+      accepted: 32
+      str: 42.1%(32/76 26')
+      rate: 0.42105263157894735
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol378-fscd2026/LIPIcs.FSCD.2026.0/LIPIcs.FSCD.2026.0.pdf

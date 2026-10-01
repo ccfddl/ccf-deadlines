@@ -1,0 +1,41 @@
+# Main-conference acceptance totals; historical denominator exclusions are unspecified.
+- title: BMVC
+  accept_rates:
+    - year: 2021
+      submitted: 1206
+      accepted: 435
+      str: 36.1%(435/1206 21')
+      rate: 0.36069651741293535
+      source: https://www.bmva.org/bmvc/statistics/
+    - year: 2022
+      submitted: 967
+      accepted: 365
+      str: 37.7%(365/967 22')
+      rate: 0.37745604963805585
+      source: https://www.bmva.org/bmvc/statistics/
+    - year: 2023
+      submitted: 815
+      accepted: 267
+      str: 32.8%(267/815 23')
+      rate: 0.3276073619631902
+      source: https://www.bmva.org/bmvc/statistics/
+    # Annual acceptance announcement gives 264; retrospective BMVA table gives 263.
+    # Use the contemporary acceptance-decision statement; discrepancy remains unexplained.
+    - year: 2024
+      submitted: 1020
+      accepted: 264
+      str: 25.9%(264/1020 24')
+      rate: 0.25882352941176473
+      source: https://bmvc2024.org/programme/accepted_papers/
+    - year: 2025
+      submitted: 865
+      accepted: 276
+      str: 31.9%(276/865 25')
+      rate: 0.3190751445086705
+      source: https://bmvc2025.bmva.org/programme/accepted_papers/
+    - year: 2026
+      submitted: 1448
+      accepted: 404
+      str: 27.9%(404/1448 26')
+      rate: 0.27900552486187846
+      source: https://www.bmva.org/bmvc/statistics/

@@ -7,6 +7,36 @@
     thcpl: B
   dblp: fg
   confs:
+    - year: 2021
+      id: fg21
+      link: https://iab-rubric.org/fg2021/
+      timeline:
+        - deadline: '2021-05-01 23:59:00'
+          comment: 'Round 1'
+        - deadline: '2021-08-20 23:59:00'
+          comment: 'Round 2'
+      timezone: UTC-7
+      date: December 15-18, 2021
+      place: Virtual
+    - year: 2023
+      id: fg23
+      link: https://fg2023.ieee-biometrics.org/
+      timeline:
+        - deadline: '2022-07-15 23:59:00'
+      timezone: AoE
+      date: January 7-8, 2023
+      place: Waikoloa, Hawaii, USA (Hybrid)
+    - year: 2024
+      id: fg24
+      link: https://fg2024.ieee-biometrics.org/
+      timeline:
+        - deadline: '2023-10-02 23:59:00'
+          comment: 'Round 1'
+        - deadline: '2024-01-26 23:59:00'
+          comment: 'Round 2'
+      timezone: UTC-8
+      date: May 28-30, 2024
+      place: Istanbul, Turkey
     - year: 2025
       id: fg25
       link: https://fg2025.ieee-biometrics.org/
@@ -16,20 +46,20 @@
         - deadline: '2025-01-31 23:59:59'
           comment: 'Round 2'
       timezone: UTC-8
-      date: May 26-30, 2025
+      date: May 27-29, 2025
       place: Clearwater, USA
     - year: 2026
       id: fg26
       link: https://fg2026.ieee-biometrics.org/
       timeline:
         - abstract_deadline: '2025-09-25 23:59:59'
-          deadline: '2025-10-02 23:59:59'
+          deadline: '2025-10-06 23:59:59'
           comment: 'Round 1'
-        - abstract_deadline: '2026-01-09 23:59:59'
-          deadline: '2026-01-15 23:59:59'
+        - abstract_deadline: '2026-01-25 23:59:00'
+          deadline: '2026-01-25 23:59:59'
           comment: 'Round 2'
-      timezone: UTC-8
-      date: May 25-29, 2026
+      timezone: AoE
+      date: May 26-28, 2026
       place: Kyoto, Japan
     - year: 2027
       id: fg27

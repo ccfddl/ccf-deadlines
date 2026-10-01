@@ -11,10 +11,36 @@
       id: stoc21
       link: http://acm-stoc.org/stoc2021/
       timeline:
-        - deadline: '2020-11-06 11:59:59'
+        - deadline: '2020-11-06 23:59:59'
       timezone: UTC-5
       date: June 21-25, 2021
       place: Virtual
+    - year: 2022
+      id: stoc22
+      link: https://acm-stoc.org/stoc2022/
+      timeline:
+        - deadline: '2021-11-04 16:59:00'
+      timezone: UTC-4
+      date: June 20-24, 2022
+      place: Rome, Italy
+    - year: 2023
+      id: stoc23
+      link: https://acm-stoc.org/stoc2023/
+      timeline:
+        - deadline: '2022-11-07 16:59:00'
+          abstract_deadline: '2022-11-04 16:59:00'
+      timezone: UTC-4
+      date: June 20-23, 2023
+      place: Orlando, Florida, USA
+    - year: 2024
+      id: stoc24
+      link: https://acm-stoc.org/stoc2024/
+      timeline:
+        - deadline: '2023-11-13 16:59:00'
+          abstract_deadline: '2023-11-10 16:59:00'
+      timezone: UTC-5
+      date: June 24-28, 2024
+      place: Vancouver, Canada
     - year: 2025
       id: stoc25
       link: http://acm-stoc.org/stoc2025/
@@ -29,7 +55,7 @@
       timeline:
         - deadline: '2025-11-04 16:59:59'
       timezone: UTC-5
-      date: June 22-26, 2026
+      date: June 22-27, 2026
       place: Salt Lake City, Utah, USA
     - year: 2027
       id: stoc27

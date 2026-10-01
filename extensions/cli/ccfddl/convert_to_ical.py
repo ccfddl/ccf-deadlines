@@ -1,9 +1,11 @@
 import yaml
 import re
 import uuid
+import json
 from collections import defaultdict
 from itertools import combinations
 from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 from icalendar import Calendar, Event, Timezone, TimezoneStandard
 
 
@@ -99,7 +101,7 @@ def convert_to_ical(
                 place = conf["place"]
                 date = conf["date"]
 
-                for entry in timeline:
+                for round_index, entry in enumerate(timeline):
                     try:
                         get_timezone(timezone_str)
                     except ValueError:
@@ -111,14 +113,30 @@ def convert_to_ical(
                     if "abstract_deadline" in entry:
                         deadlines_to_process.append(
                             (
-                                ("摘要截稿", "Abstract Deadline"),
+                                "Abstract Deadline",
                                 entry["abstract_deadline"],
                             )
                         )
 
                     if "deadline" in entry:
                         deadlines_to_process.append(
-                            (("截稿日期", "Deadline"), entry["deadline"])
+                            ("Deadline", entry["deadline"])
+                        )
+
+                    if "rebuttal_deadline" in entry:
+                        deadlines_to_process.append(
+                            (
+                                "Rebuttal Submission",
+                                entry["rebuttal_deadline"],
+                            )
+                        )
+
+                    if "decision_deadline" in entry:
+                        deadlines_to_process.append(
+                            (
+                                "Final Decisions",
+                                entry["decision_deadline"],
+                            )
                         )
 
                     # 如果没有任何截止日期，跳过
@@ -160,7 +178,15 @@ def convert_to_ical(
 
                         # 创建事件对象
                         event = Event()
-                        event.add("uid", uuid.uuid4())
+                        event.add(
+                            "uid",
+                            uuid.uuid5(
+                                uuid.NAMESPACE_URL,
+                                f"ccfddl:{conf['id']}:{round_index}:{deadline_type}",
+                            ),
+                        )
+                        event.add("X-CCFDDL-ID", conf["id"])
+                        event.add("X-CCFDDL-CONFERENCE", f"{title} {year}")
                         event.add("dtstamp", datetime.now(tz))
 
                         # 处理时间字段
@@ -172,11 +198,8 @@ def convert_to_ical(
                             event.add("dtstart", aware_dt)
                             event.add("dtend", aware_dt + timedelta(minutes=1))
 
-                        # 构建中英双语摘要
-                        if lang == "en":
-                            summary = f"{title} {year} {deadline_type[1]}"
-                        else:
-                            summary = f"{title} {year} {deadline_type[0]}"
+                        # 两种订阅语言都使用英文事件标题；说明保留所选语言。
+                        summary = f"{title} {year} {deadline_type}"
 
                         # 添加注释信息
                         if "comment" in entry:
@@ -234,6 +257,34 @@ def convert_to_ical(
         f.write(cal.to_ical())
 
 
+def write_deadline_events_index(calendar_path: str, output_path: str):
+    """Expose the same parsed deadline instants to the email reminder Worker."""
+    calendar = Calendar.from_ical(Path(calendar_path).read_bytes())
+    events = []
+    for event in calendar.walk("VEVENT"):
+        start = event.decoded("DTSTART")
+        all_day = isinstance(start, date) and not isinstance(start, datetime)
+        if all_day:
+            deadline_at = datetime.combine(start, datetime.min.time(), timezone.utc)
+        else:
+            deadline_at = start.astimezone(timezone.utc)
+        events.append(
+            {
+                "id": str(event["X-CCFDDL-ID"]),
+                "conference": str(event["X-CCFDDL-CONFERENCE"]),
+                "uid": str(event["UID"]),
+                "title": str(event["SUMMARY"]),
+                "deadline_at": deadline_at.isoformat().replace("+00:00", "Z"),
+                "all_day": all_day,
+                "url": str(event.get("URL", "")),
+            }
+        )
+    events.sort(key=lambda item: (item["deadline_at"], item["id"], item["uid"]))
+    Path(output_path).write_text(
+        json.dumps(events, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+
+
 def add_index_entry(index, key: str, file_path: str):
     index[key].add(file_path)
 
@@ -279,6 +330,10 @@ if __name__ == "__main__":
     index = reverse_index(paths, list(SUB_MAPPING.keys()))
     for lang in ["zh", "en"]:
         convert_to_ical(paths, f"deadlines_{lang}.ics", lang, SUB_MAPPING)
+        if lang == "en":
+            write_deadline_events_index(
+                "deadlines_en.ics", "public/conference/deadline_events.json"
+            )
         f = lambda key: (
             len(index[key]) > 0,
             convert_to_ical(

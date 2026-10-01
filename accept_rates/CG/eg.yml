@@ -1,0 +1,42 @@
+# Technical full-paper minor-revision selections; second review precedes final acceptance.
+# Independent short/STAR/poster tracks, journal-first papers and major-revision referrals excluded.
+- title: Eurographics
+  accept_rates:
+    - year: 2021
+      submitted: 129
+      accepted: 47
+      str: 36.4%(47/129 21')
+      rate: 0.364341085271318
+      source: https://diglib.eg.org/bitstream/handle/10.1111/cgf142657/preface_eg2021.pdf
+    - year: 2022
+      submitted: 119
+      accepted: 40
+      str: 33.6%(40/119 22')
+      rate: 0.336134453781513
+      source: https://diglib.eg.org/bitstream/handle/10.1111/cgf14494/preface_eg2022.pdf
+    - year: 2023
+      submitted: 111
+      accepted: 34
+      str: 30.6%(34/111 23')
+      rate: 0.306306306306306
+      source: https://diglib.eg.org/bitstream/handle/10.1111/cgf14773/preface_eg2023.pdf
+    - year: 2024
+      submitted: 161
+      accepted: 53
+      str: 32.9%(53/161 24')
+      rate: 0.329192546583851
+      source: https://diglib.eg.org/bitstream/handle/10.1111/cgf15058/preface_eg2024.pdf
+    # Valid submissions; desk rejects excluded, author withdrawals included.
+    - year: 2025
+      submitted: 205
+      accepted: 75
+      str: 36.6%(75/205 25')
+      rate: 0.365853658536585
+      source: https://diglib.eg.org/server/api/core/bitstreams/e46842dc-2a07-4b26-8c5b-e894085fed4c/content
+    # Valid submissions; desk rejects excluded, author withdrawals included.
+    - year: 2026
+      submitted: 253
+      accepted: 96
+      str: 37.9%(96/253 26')
+      rate: 0.379446640316206
+      source: https://diglib.eg.org/bitstreams/b76dd320-c50b-4029-808f-8e8a7d6d50d2/download

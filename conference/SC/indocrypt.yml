@@ -7,19 +7,54 @@
     thcpl: N
   dblp: indocrypt
   confs:
+    - year: 2021
+      id: indocrypt21
+      link: https://indocrypt2021.lnmiit.ac.in/
+      timeline:
+        - deadline: '2021-09-07 11:59:00'
+      timezone: UTC
+      date: December 13-15, 2021
+      place: Jaipur, India
+    - year: 2022
+      id: indocrypt22
+      link: https://www.tcgcrest.org/indocrypt-2022/
+      timeline:
+        - abstract_deadline: '2022-09-01 23:59:00'
+          deadline: '2022-09-07 23:59:00'
+      timezone: UTC-12
+      date: December 12-14, 2022
+      place: Kolkata, India
     - year: 2023
       id: indocrypt23
       link: https://crsind.in/indocrypt2023/
       timeline:
-        - deadline: '2023-09-01 23:59:59'
+        - abstract_deadline: '2023-09-11 23:59:59'
+          deadline: '2023-09-11 23:59:59'
       timezone: UTC-12
       date: December 10-13, 2023
       place: BITS Pilani Goa, India
+    - year: 2024
+      id: indocrypt24
+      link: https://setsindia.in/indocrypt2024/indocrypt
+      timeline:
+        - deadline: '2024-09-20 23:59:59'
+      timezone: UTC-12
+      date: December 19-21, 2024
+      place: Chennai, India
     - year: 2025
       id: indocrypt25
       link: https://www.indocrypt2025.in/
       timeline:
-        - deadline: '2025-09-01 23:59:59'
+        - deadline: '2025-09-10 23:59:59'
       timezone: UTC-12
       date: December 14-17, 2025
       place: IIIT Bhubaneswar, Odisha, India
+    - year: 2026
+      id: indocrypt26
+      link: https://indocrypt2026.cdacb.in/
+      timeline:
+        - deadline: '2026-08-27 23:59:59'
+          comment: Extended submission deadline
+      timezone: AoE
+      date: December 13-16, 2026
+      place: Bengaluru, India

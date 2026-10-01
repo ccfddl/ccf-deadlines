@@ -7,12 +7,31 @@
     thcpl: B
   dblp: icip
   confs:
+    - year: 2021
+      id: icip21
+      link: https://www.2021.ieeeicip.org/www.2021.ieeeicip.org/index.html
+      timeline:
+        - deadline: '2021-01-25 23:59:00'
+          comment: 'Final extended regular-paper date verified; 23:59:00 and AoE are repository defaults for the unpublished time and zone.'
+      timezone: AoE
+      date: September 20-22, 2021
+      place: Online
+    - year: 2022
+      id: icip22
+      link: https://2022.ieeeicip.org/
+      timeline:
+        - deadline: '2022-02-25 23:59:00'
+          comment: 'Final extended regular-paper date verified; 23:59:00 and AoE are repository defaults for the unpublished time and zone.'
+      timezone: AoE
+      date: October 17-19, 2022
+      place: Bordeaux, France
     - year: 2023
       id: icip23
       link: https://2023.ieeeicip.org/
       timeline:
-        - deadline: '2023-02-15 23:59:59'
-      timezone: UTC+0
+        - deadline: '2023-02-24 23:59:00'
+          comment: 'Final extended regular-paper date verified; 23:59:00 and AoE are repository defaults for the unpublished time and zone.'
+      timezone: AoE
       date: Oct 8-11, 2023
       place: Kuala Lumpur, Malaysia
     - year: 2024
@@ -36,6 +55,6 @@
       link: https://2026.ieeeicip.org/
       timeline:
         - deadline: '2026-02-04 23:59:59'
-      timezone: UTC+0
+      timezone: AoE
       date: Sep 13-17, 2026
       place: Tampere, Finland

@@ -1,0 +1,38 @@
+# Regular/full papers; separate posters and keynotes excluded.
+- title: ISPASS
+  accept_rates:
+    # Regular paper selection after two review rounds; shepherded papers included.
+    - year: 2021
+      submitted: 65
+      accepted: 24
+      str: 36.9%(24/65 21')
+      rate: 0.36923076923076925
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9408201
+    # Regular papers; separate poster solicitation and posters invited from unsuccessful papers excluded.
+    - year: 2022
+      submitted: 83
+      accepted: 24
+      str: 28.9%(24/83 22')
+      rate: 0.2891566265060241
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9804621
+    # Full-paper decisions, including four accepted with shepherding; 19 poster offers and separate poster submissions excluded.
+    - year: 2024
+      submitted: 70
+      accepted: 24
+      str: 34.3%(24/70 24')
+      rate: 0.34285714285714286
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10590026
+    # Regular paper decisions, including five accepted with shepherding; 20 posters and two keynotes excluded.
+    - year: 2025
+      submitted: 99
+      accepted: 28
+      str: 28.3%(28/99 25')
+      rate: 0.2828282828282828
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11096389
+    # Regular papers received; all eight shepherded selections eventually accepted. Eleven posters and two keynotes excluded.
+    - year: 2026
+      submitted: 138
+      accepted: 54
+      str: 39.1%(54/138 26')
+      rate: 0.391304347826087
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11527309

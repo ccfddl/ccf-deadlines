@@ -1,0 +1,31 @@
+# Research track only, using valid complete submissions after desk rejection/withdrawal.
+- title: ICPC
+  accept_rates:
+    # 116 initial abstracts; 102 valid complete papers after exclusions.
+    - year: 2022
+      submitted: 102
+      accepted: 48
+      str: 47.1%(48/102 22')
+      rate: 0.470588235294118
+      source: https://www.computer.org/csdl/proceedings-article/icpc/2022/929800z014/1EpKMs4iwKI
+    # 87 initial abstracts; 67 valid complete papers after exclusions.
+    - year: 2023
+      submitted: 67
+      accepted: 22
+      str: 32.8%(22/67 23')
+      rate: 0.328358208955224
+      source: https://doi.org/10.1109/ICPC58990.2023.00005
+    # 121 initial abstracts; 82 valid complete papers after exclusions.
+    - year: 2024
+      submitted: 82
+      accepted: 30
+      str: 36.6%(30/82 24')
+      rate: 0.365853658536585
+      source: https://www.computer.org/csdl/proceedings-article/icpc/2024/058600z012/1XSnOZHwebe
+    # 131 initial abstracts; 92 valid complete papers after exclusions.
+    - year: 2025
+      submitted: 92
+      accepted: 38
+      str: 41.3%(38/92 25')
+      rate: 0.413043478260870
+      source: https://doi.org/10.1109/ICPC66645.2025.00005

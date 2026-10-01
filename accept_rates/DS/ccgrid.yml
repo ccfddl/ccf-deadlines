@@ -1,0 +1,12 @@
+- title: CCGRID
+  accept_rates:
+    # 2021 GC and PC messages, PDF pages 20 and 22 (printed xx and xxii): 60 / 230 full submissions.
+    # 2020 authors joined the virtual event but belong to a separate, previously published cohort.
+    # Main research selections; workshops/posters/doctoral/SCALE/industry excluded.
+    # Withdrawal/desk exclusions unspecified; decision selection, not final-publication count.
+    - year: 2021
+      submitted: 230
+      accepted: 60
+      str: 26.1%(60/230 21')
+      rate: 0.2608695652173913
+      source: https://clouds.cis.unimelb.edu.au/ccgrid2021/CCGrid%202021-Proceeding-FrontMatter.pdf

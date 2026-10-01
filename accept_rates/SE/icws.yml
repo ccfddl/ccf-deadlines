@@ -1,0 +1,41 @@
+# IEEE ICWS regular/full-paper selection from received conference submissions.
+# Short, WIP, invited and symposium acceptances are excluded from the numerator.
+- title: ICWS
+  accept_rates:
+    # Regular-length selection from received early and regular submission stages; 25 short, three WIP and six invited papers excluded from numerator.
+    - year: 2021
+      submitted: 194
+      accepted: 46
+      str: 23.7%(46/194 21')
+      rate: 0.237113402061856
+      source: https://conferences.computer.org/services/2021/programs/2021ServicesProgram_final.pdf
+    # Regular-length selections from the explicitly reported 170 received submissions.
+    # The original chair report prints 14%, inconsistent with the exact 21/170 integers.
+    # The 24 short-paper selections and one separate invited paper are excluded.
+    - year: 2022
+      submitted: 170
+      accepted: 21
+      str: 12.4%(21/170 22')
+      rate: 0.12352941176470589
+      source: https://doi.org/10.1109/ICWS55610.2022.00011
+    # Regular-length selection from received conference submissions; 22 short and one invited paper excluded from numerator.
+    - year: 2023
+      submitted: 268
+      accepted: 53
+      str: 19.8%(53/268 23')
+      rate: 0.197761194029851
+      source: https://doi.org/10.1109/ICWS60048.2023.00009
+    # Full-paper selection from received conference submissions; 26 short and 25 WIP papers excluded from numerator. Symposia and workshops described separately.
+    - year: 2024
+      submitted: 409
+      accepted: 80
+      str: 19.6%(80/409 24')
+      rate: 0.195599022004890
+      source: https://doi.org/10.1109/ICWS62655.2024.00009
+    # Full-paper selection from received conference submissions; 43 short and 34 WIP papers excluded from numerator. Five symposium papers are explicitly separate. Printed 23.53% and congress-program 23.88% disagree with the explicit integers; rate recalculated without reconstructing a denominator.
+    - year: 2025
+      submitted: 346
+      accepted: 64
+      str: 18.5%(64/346 25')
+      rate: 0.184971098265896
+      source: https://doi.org/10.1109/ICWS67624.2025.00008

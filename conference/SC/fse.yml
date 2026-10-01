@@ -7,17 +7,28 @@
     thcpl: B
   dblp: fse
   confs:
+    - year: 2022
+      id: iacr-fse22
+      link: https://fse.iacr.org/2022/
+      timeline:
+        - deadline: '2021-03-01 12:00:00'
+        - deadline: '2021-06-01 12:00:00'
+        - deadline: '2021-09-01 12:00:00'
+        - deadline: '2021-11-23 12:00:00'
+      timezone: UTC+0
+      date: March 21-25, 2022
+      place: Athens, Greece
     - year: 2023
       id: iacr-fse23
       link: https://fse.iacr.org/2023/
       timeline:
-        - deadline: '2022-03-01 11:59:59'
+        - deadline: '2022-03-01 12:00:00'
           comment: Submission deadline
-        - deadline: '2022-06-01 11:59:59'
+        - deadline: '2022-06-01 12:00:00'
           comment: Submission deadline
-        - deadline: '2022-09-01 11:59:59'
+        - deadline: '2022-09-01 12:00:00'
           comment: Submission deadline
-        - deadline: '2022-11-23 11:59:59'
+        - deadline: '2022-11-23 12:00:00'
           comment: Submission deadline
       timezone: UTC+0
       date: March 20-24, 2023
@@ -26,13 +37,13 @@
       id: iacr-fse24
       link: https://fse.iacr.org/2024/
       timeline:
-        - deadline: '2023-03-01 11:59:59'
+        - deadline: '2023-03-01 12:00:00'
           comment: Submission deadline
-        - deadline: '2023-06-01 11:59:59'
+        - deadline: '2023-06-01 12:00:00'
           comment: Submission deadline
-        - deadline: '2023-09-01 11:59:59'
+        - deadline: '2023-09-01 12:00:00'
           comment: Submission deadline
-        - deadline: '2023-11-23 11:59:59'
+        - deadline: '2023-11-23 12:00:00'
           comment: Submission deadline
       timezone: UTC+0
       date: March 25-29, 2024
@@ -67,3 +78,14 @@
       timezone: UTC-12
       date: March 23-27, 2026
       place: Singapore, Singapore
+    - year: 2027
+      id: iacr-fse27
+      link: https://fse.iacr.org/2027/
+      timeline:
+        - deadline: '2026-09-01 23:59:59'
+          comment: 'ToSC, Volume 2026, Issue 4 Submission deadline'
+        - deadline: '2026-12-01 23:59:59'
+          comment: 'ToSC, Volume 2027, Issue 1 Submission deadline'
+      timezone: UTC-12
+      date: May 24-28, 2027
+      place: Maastricht, Netherlands

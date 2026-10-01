@@ -7,6 +7,14 @@
     thcpl: N
   dblp: cscwd
   confs:
+    - year: 2021
+      id: cscwd21
+      link: http://2021.cscwd.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: May 5-7, 2021
+      place: Dalian, China (hybrid)
     - year: 2022
       id: cscwd22
       link: http://8.131.80.51/cscwd2022/index.html
@@ -19,10 +27,19 @@
       id: cscwd23
       link: http://2023.cscwd.org
       timeline:
-        - deadline: '2022-10-31 23:59:59'
+        - deadline: '2022-11-30 23:59:00'
+          comment: 'Regular papers; new deadline on official homepage. Cutoff clock and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
       date: May 24-26, 2023
       place: Rio de Janeiro, Brazil
+    - year: 2024
+      id: cscwd24
+      link: http://2024.cscwd.org
+      timeline:
+        - deadline: '2023-11-20 23:59:59'
+      timezone: AoE
+      date: May 8-10, 2024
+      place: Tianjin, China
     - year: 2025
       id: cscwd25
       link: http://2025.cscwd.org

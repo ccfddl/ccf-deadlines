@@ -7,13 +7,47 @@
     thcpl: N
   dblp: icb
   confs:
+    - year: 2021
+      id: ijcb2021
+      link: https://ijcb2021.iapr-tc4.org/
+      timeline:
+        - deadline: '2021-04-06 23:59:00'
+      timezone: UTC-8
+      date: August 5-7, 2021
+      place: Online
+    - year: 2022
+      id: ijcb2022
+      link: https://iapr.org/archives/ijcb2022/
+      timeline:
+        - deadline: '2022-05-16 23:59:59'
+      timezone: UTC-7
+      date: October 11-13, 2022
+      place: Abu Dhabi, United Arab Emirates (Hybrid)
+    - year: 2023
+      id: ijcb2023
+      link: https://ijcb2023.ieee-biometrics.org/
+      timeline:
+        - deadline: '2023-05-08 23:59:00'
+      timezone: UTC-7
+      date: September 26-28, 2023
+      place: Ljubljana, Slovenia
+    - year: 2024
+      id: ijcb2024
+      link: https://iapr.org/archives/ijcb2024/index.html
+      timeline:
+        - abstract_deadline: '2024-04-30 23:59:00'
+          deadline: '2024-04-30 23:59:00'
+      timezone: UTC-7
+      date: September 16-18, 2024
+      place: Buffalo, New York, USA
     - year: 2025
       id: ijcb2025
-      link: https://ijcb2025.ieee-biometrics.org/
+      link: https://iapr.org/archives/ijcb2025/index.html
       timeline:
-        - deadline: '2025-04-11 23:59:59'
+        - abstract_deadline: '2025-05-05 23:59:59'
+          deadline: '2025-05-05 23:59:59'
       timezone: UTC-7
-      date: September 8-11, 2025
+      date: September 9-11, 2025
       place: Osaka, Japan
     - year: 2026
       id: ijcb2026

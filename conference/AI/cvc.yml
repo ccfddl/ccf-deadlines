@@ -5,11 +5,27 @@
     ccf: N
   dblp: cvc
   confs:
+    - year: 2026
+      id: cvc26
+      link: https://saiconference.com/Conferences/CVC2026
+      timeline:
+        - deadline: '2025-10-01 23:59:00'
+          comment: 'Round 1'
+        - deadline: '2026-02-01 23:59:00'
+          comment: 'Round 2'
+        - deadline: '2026-03-01 23:59:00'
+          comment: 'Late-breaking round'
+      timezone: AoE
+      date: May 21-22, 2026
+      place: Amsterdam, Netherlands
     - year: 2027
       id: cvc27
       link: https://saiconference.com/CVC
       timeline:
-        - deadline: '2026-10-01 23:59:00'
+        - deadline: '2026-09-01 23:59:59'
+          comment: 'Round 1'
+        - deadline: '2026-10-01 23:59:59'
+          comment: 'Round 2'
       timezone: AoE
       date: April 15-16, 2027
       place: Amsterdam, Netherlands

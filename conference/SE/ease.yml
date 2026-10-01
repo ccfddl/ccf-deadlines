@@ -7,6 +7,42 @@
     thcpl: B
   dblp: ease
   confs:
+    - year: 2021
+      id: ease21
+      link: https://conf.researchr.org/home/ease-2021
+      timeline:
+        - abstract_deadline: '2021-03-05 23:59:00'
+          deadline: '2021-03-12 23:59:00'
+      timezone: AoE
+      date: June 21-23, 2021
+      place: Virtual
+    - year: 2022
+      id: ease22
+      link: https://conf.researchr.org/home/ease-2022
+      timeline:
+        - abstract_deadline: '2022-01-24 23:59:00'
+          deadline: '2022-01-31 23:59:00'
+      timezone: AoE
+      date: June 14-15, 2022
+      place: Gothenburg, Sweden (Hybrid)
+    - year: 2023
+      id: ease23
+      link: https://conf.researchr.org/home/ease-2023
+      timeline:
+        - abstract_deadline: '2023-01-13 23:59:00'
+          deadline: '2023-01-20 23:59:00'
+      timezone: AoE
+      date: June 14-15, 2023
+      place: Oulu, Finland
+    - year: 2024
+      id: ease24
+      link: https://conf.researchr.org/home/ease-2024
+      timeline:
+        - abstract_deadline: '2024-01-11 23:59:00'
+          deadline: '2024-01-18 23:59:00'
+      timezone: AoE
+      date: June 19-20, 2024
+      place: Salerno, Italy
     - year: 2025
       id: ease25
       link: https://conf.researchr.org/home/ease-2025
@@ -27,3 +63,13 @@
       timezone: AoE
       date: June 9 - 12, 2026
       place: Glasgow, United Kingdom
+    - year: 2027
+      id: ease27
+      link: https://conf.researchr.org/home/ease-2027
+      timeline:
+        - abstract_deadline: '2027-01-15 23:59:59'
+          deadline: '2027-01-22 23:59:59'
+          comment: 'Research Papers'
+      timezone: AoE
+      date: June 15 - 18, 2027
+      place: Hanoi, Vietnam

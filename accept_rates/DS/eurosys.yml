@@ -1,8 +1,26 @@
 - title: EuroSys
   accept_rates:
+    # PC opening slides 17,18,21: reviewed pool excludes 10 desk rejects/withdrawals from 191.
+    - year: 2021
+      submitted: 181
+      accepted: 38
+      str: 21.0%(38/181 21')
+      rate: 0.20994475138121546
+      source: https://docs.google.com/presentation/d/1YC04_5dLhhf0zuq27PDQ6pXlx6ZW6bXe1fdnEfhjNBk/htmlpresent
+    # Official program p3: 161 received,42 initial accepts plus3 successful revisions.
+    # Its reported 27.6% differs from the exact integer pair; display is calculated.
     - year: 2022
       submitted: 161
       accepted: 45
       str: 28.0%(45/161 22')
       rate: 0.279503105590062
-      source: https://github.com/emeryberger/csconferences
+      source: https://2022.eurosys.org/files/2022/04/ProgEuroSys22.pdf
+    # Original ACM chairs welcome pp ix-x: annual received submission events, not unique papers.
+    # Includes 9 prior-year and14 same-year revised entries; final versions require shepherd approval.
+    # Its reported 12.4% differs from 85/696; withdrawal/desk counts are not quantified.
+    - year: 2025
+      submitted: 696
+      accepted: 85
+      str: 12.2%(85/696 25')
+      rate: 0.1221264367816092
+      source: https://pure.tudelft.nl/ws/portalfiles/portal/243149497/3689031.fm.pdf

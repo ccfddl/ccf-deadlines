@@ -7,20 +7,58 @@
     thcpl: N
   dblp: cf
   confs:
+    - year: 2021
+      id: cf2021
+      link: https://www.computingfrontiers.org/2021/
+      timeline:
+        - abstract_deadline: '2021-01-28 23:59:00'
+          deadline: '2021-02-04 23:59:00'
+      timezone: AoE
+      date: May 11-13, 2021
+      place: Virtual
+    - year: 2022
+      id: cf2022
+      link: https://www.computingfrontiers.org/2022/
+      timeline:
+        - abstract_deadline: '2022-02-06 23:59:00'
+          deadline: '2022-02-13 23:59:00'
+      timezone: AoE
+      date: May 17-19, 2022
+      place: Turin, Italy (Hybrid)
+    - year: 2023
+      id: cf2023
+      link: https://www.computingfrontiers.org/2023/
+      timeline:
+        - abstract_deadline: '2023-02-10 23:59:59'
+          deadline: TBD
+          comment: CFP February 10 conflicts with later portal full-upload close; initial cutoff unresolved
+      timezone: AoE
+      date: May 9-11, 2023
+      place: Bologna, Italy
     - year: 2024
       id: cf2024
       link: https://www.computingfrontiers.org/2024/
       timeline:
-        - deadline: '2024-01-08 23:59:59'
+        - deadline: '2024-01-11 23:59:59'
       timezone: AoE
       date: May 7-9, 2024
       place: Ischia, Italy
+    - year: 2025
+      id: cf2025
+      link: https://www.computingfrontiers.org/2025/
+      timeline:
+        - abstract_deadline: '2025-01-20 23:59:00'
+          deadline: TBD
+          comment: CFP January 27 AoE conflicts with portal January 26 AoE
+      timezone: AoE
+      date: May 28-30, 2025
+      place: Cagliari, Sardinia, Italy
     - year: 2026
       id: cf2026
       link: https://www.computingfrontiers.org/2026/
       timeline:
-        - abstract_deadline: '2026-01-12 23:59:59'
-          deadline: '2026-01-19 23:59:59'
+        - abstract_deadline: '2026-02-01 23:59:59'
+          deadline: '2026-02-01 23:59:59'
       timezone: AoE
       date: May 19-21, 2026
       place: Catania, Sicily, Italy

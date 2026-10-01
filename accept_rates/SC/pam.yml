@@ -1,0 +1,43 @@
+# PC-selected papers / received submissions; long and short papers are combined.
+- title: PAM
+  accept_rates:
+    - year: 2021
+      submitted: 75
+      accepted: 33
+      str: 44.0%(33/75 21')
+      rate: 0.440000000000000
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-72582-2/1
+    - year: 2022
+      submitted: 62
+      accepted: 30
+      str: 48.4%(30/62 22')
+      rate: 0.483870967741935
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-98785-5/1
+    # Includes the replication track (4 accepted from 8 submissions).
+    - year: 2023
+      submitted: 80
+      accepted: 27
+      str: 33.8%(27/80 23')
+      rate: 0.337500000000000
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-28486-1/1
+    # Annual total across Parts I and II: 14 long and 13 short papers; count once.
+    - year: 2024
+      submitted: 64
+      accepted: 27
+      str: 42.2%(27/64 24')
+      rate: 0.421875000000000
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-56249-5/1
+    # 67 received; 59 admissible for review. 13 long and 7 short papers selected.
+    - year: 2025
+      submitted: 67
+      accepted: 20
+      str: 29.9%(20/67 25')
+      rate: 0.298507462686567
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-85960-1/1
+    # 57 received; 51 admissible for review. 9 long and 9 short papers selected.
+    - year: 2026
+      submitted: 57
+      accepted: 18
+      str: 31.6%(18/57 26')
+      rate: 0.315789473684211
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-18268-5/1

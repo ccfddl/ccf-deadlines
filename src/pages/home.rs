@@ -1,3 +1,4 @@
+use crate::components::favorites::FavoritesContext;
 use crate::components::header::Header;
 use crate::components::showtable::ShowTable;
 use leptos::prelude::*;
@@ -7,6 +8,48 @@ use thaw::*;
 /// Default Home Page
 #[component]
 pub fn Home() -> impl IntoView {
+    let favorites = FavoritesContext::new();
+    provide_context(favorites);
+    favorites.load();
+
+    let storage = web_sys::window().and_then(|window| window.local_storage().ok().flatten());
+    let stored_language = storage
+        .as_ref()
+        .and_then(|storage| storage.get_item("language_preference").ok().flatten())
+        .and_then(|value| match value.as_str() {
+            "en" => Some(true),
+            "zh" => Some(false),
+            _ => None,
+        })
+        .or_else(|| {
+            storage
+                .as_ref()
+                .and_then(|storage| storage.get_item("use_english").ok().flatten())
+                .filter(|value| value == "true")
+                .map(|_| true)
+        });
+    let browser_language = web_sys::window()
+        .map(|window| window.navigator().language())
+        .flatten()
+        .unwrap_or_default();
+    let use_english = RwSignal::new(
+        stored_language.unwrap_or_else(|| !browser_language.to_ascii_lowercase().starts_with("zh")),
+    );
+    let show_favorites_timeline = RwSignal::new(false);
+    let show_batch_subscription = RwSignal::new(false);
+    let show_email_reminders = RwSignal::new(
+        web_sys::window()
+            .and_then(|browser| browser.location().search().ok())
+            .is_some_and(|query| query.contains("email_reminders=1")),
+    );
+    Effect::new(move |_| {
+        if let Some(root) = web_sys::window()
+            .and_then(|window| window.document())
+            .and_then(|document| document.document_element())
+        {
+            let _ = root.set_attribute("lang", if use_english.get() { "en" } else { "zh-CN" });
+        }
+    });
     // theme
     let theme = RwSignal::new(Theme::light());
     theme.update(|theme| {
@@ -33,8 +76,8 @@ pub fn Home() -> impl IntoView {
     view! {
         <ConfigProvider theme>
             <div class="home">
-                <Header />
-                <ShowTable />
+                <Header use_english show_favorites_timeline show_batch_subscription show_email_reminders />
+                <ShowTable use_english show_favorites_timeline show_batch_subscription show_email_reminders />
             </div>
         </ConfigProvider>
     }

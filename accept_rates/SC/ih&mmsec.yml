@@ -1,8 +1,15 @@
 - title: IH&MMSec
   accept_rates:
+    # Combined full/short technical papers, excluding invited/keynote talks.
+    - year: 2022
+      submitted: 38
+      accepted: 18
+      str: 47.4%(18/38 22')
+      rate: 0.47368421052631576
+      source: https://publicatio.bibl.u-szeged.hu/24585/3/32904551_c%C3%ADmlap_tartalom.pdf
     - year: 2025
       submitted: 40
       accepted: 20
-      str: 50%(20/40 25')
+      str: 50.0%(20/40 25')
       rate: 0.5
-      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3733102
+      source: https://www.ihmmsec.org/cms/upload/2025/Closing_Summary.pdf

@@ -4,17 +4,17 @@
       submitted: 780
       accepted: 211
       str: 27.1%(211/780 22')
-      rate: 0.27051282051282
-      source: https://github.com/emeryberger/csconferences
+      rate: 0.2705128205128205
+      source: https://icde2022.ieeecomputer.my/message-chairs-icde2022/
     - year: 2023
       submitted: 748
       accepted: 229
-      str: 30.1%(229/748 23')
+      str: 30.6%(229/748 23')
       rate: 0.3061497326203209
-      source: https://ieeexplore.ieee.org/document/10184584
+      source: https://ir.cwi.nl/pub/33313/33313.pdf
     - year: 2024
       submitted: 1481
       accepted: 376
       str: 25.4%(376/1481 24')
-      rate: 0.2538825
+      rate: 0.2538825118163403
       source: https://csconfstats.xoveexu.com/

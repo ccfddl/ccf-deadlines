@@ -7,12 +7,39 @@
     thcpl: N
   dblp: cidr
   confs:
+    - year: 2021
+      id: cidr21
+      link: https://www.cidrdb.org/cidr2021/
+      timeline:
+        - deadline: '2020-08-28 23:59:00'
+          comment: Regular research papers; extended deadline.
+      timezone: UTC-7
+      date: January 11-15, 2021
+      place: Online
+    - year: 2022
+      id: cidr22
+      link: https://www.cidrdb.org/cidr2022/
+      timeline:
+        - deadline: '2021-08-31 23:59:00'
+          comment: Regular research papers; extended deadline.
+      timezone: UTC-7
+      date: January 9-12, 2022
+      place: Chaminade, CA, USA
+    - year: 2023
+      id: cidr23
+      link: https://www.cidrdb.org/cidr2023/
+      timeline:
+        - deadline: '2022-09-02 23:59:00'
+          comment: Regular research papers; extended deadline.
+      timezone: UTC-7
+      date: January 8-11, 2023
+      place: Amsterdam, The Netherlands
     - year: 2024
       id: cidr24
       link: https://www.cidrdb.org/cidr2024/
       timeline:
-        - deadline: '2023-07-27 23:59:59'
-      timezone: UTC-8
+        - deadline: '2023-07-31 23:59:59'
+      timezone: UTC-7
       date: Jan 14-17, 2024
       place: Chaminade, USA
     - year: 2025

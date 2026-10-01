@@ -11,7 +11,8 @@
       id: iscc26
       link: https://ieee-iscc.computer.org/2026/
       timeline:
-        - deadline: '2026-02-15 23:59:59'
+        - deadline: TBD
+          comment: 'Paper submission: February 27, 2026 (firm); exact time and timezone not published'
       timezone: UTC+0
       date: June 23-26, 2026
       place: Vilamoura, Algarve, Portugal

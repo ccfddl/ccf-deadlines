@@ -1,0 +1,37 @@
+- title: SecureComm
+  accept_rates:
+    # Main conference only; excludes workshops and PhD/poster tracks.
+    - year: 2021
+      submitted: 126
+      accepted: 43
+      str: 34.1%(43/126 21')
+      rate: 0.341269841269841
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-90019-9/1
+    # Main conference only; excludes 3 S/P-IoT workshop papers.
+    - year: 2022
+      submitted: 126
+      accepted: 40
+      str: 31.7%(40/126 22')
+      rate: 0.317460317460317
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-25538-0/1
+    # Conference paper cohort; main versus late submission breakdown is not reported.
+    - year: 2024
+      submitted: 225
+      accepted: 81
+      str: 36.0%(81/225 24')
+      rate: 0.360000000000000
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-94445-1/1
+    # Conference paper cohort; main versus late submission breakdown is not reported.
+    - year: 2025
+      submitted: 341
+      accepted: 119
+      str: 34.9%(119/341 25')
+      rate: 0.348973607038123
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-23447-6/1
+    # Research track across two cycles; excludes 5 Work-in-Progress papers and 1 demo.
+    - year: 2026
+      submitted: 143
+      accepted: 45
+      str: 31.5%(45/143 26')
+      rate: 0.314685314685315
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-32764-2/1

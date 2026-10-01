@@ -1,0 +1,34 @@
+- title: RAID
+  accept_rates:
+    - year: 2022
+      submitted: 139
+      accepted: 35
+      str: 25.2%(35/139 22')
+      rate: 0.2517985611510791
+      source: https://raid2022.hotcrp.com/
+    - year: 2023
+      submitted: 213
+      accepted: 50
+      str: 23.5%(50/213 23')
+      rate: 0.2347417840375587
+      source: https://raid2023.hotcrp.com/
+    - year: 2024
+      submitted: 172
+      accepted: 43
+      str: 25.0%(43/172 24')
+      rate: 0.25
+      source: https://raid2024.hotcrp.com/
+    # All 43 initially conditional papers completed shepherding and are included in the 62.
+    - year: 2025
+      submitted: 281
+      accepted: 62
+      str: 22.1%(62/281 25')
+      rate: 0.2206405693950178
+      source: https://doi.org/10.1109/RAID67961.2025.00006
+    # Full papers across all three forthcoming volumes of the 2026 conference.
+    - year: 2026
+      submitted: 307
+      accepted: 59
+      str: 19.2%(59/307 26')
+      rate: 0.19218241042345277
+      source: https://link.springer.com/book/9783032429384

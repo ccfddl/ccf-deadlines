@@ -1,0 +1,30 @@
+- title: ICNP
+  accept_rates:
+    # Main research-paper submission-system decisions; workshops/posters excluded.
+    # CFPs specify provisional acceptance subject to shepherding.
+    # Desk/withdrawal partitions and later no-show removals are unquantified.
+    # These are not final published-paper counts; the 2026 event is upcoming.
+    - year: 2023
+      submitted: 181
+      accepted: 34
+      rate: 0.1878453038674033
+      str: "18.8%(34/181 23')"
+      source: https://icnp23.hotcrp.com/
+    - year: 2024
+      submitted: 205
+      accepted: 50
+      rate: 0.24390243902439024
+      str: "24.4%(50/205 24')"
+      source: https://icnp24.hotcrp.com/
+    - year: 2025
+      submitted: 238
+      accepted: 60
+      rate: 0.25210084033613445
+      str: "25.2%(60/238 25')"
+      source: https://icnp2025.hotcrp.com/
+    - year: 2026
+      submitted: 277
+      accepted: 67
+      rate: 0.24187725631768953
+      str: "24.2%(67/277 26')"
+      source: https://icnp26.hotcrp.com/

@@ -1,0 +1,12 @@
+- title: ATS
+  accept_rates:
+    # Nirma University 2024–25 annual report: 33 full + 9 short selected from 193 research submissions.
+    # Excludes 12 special-session papers and 3 invited + 2 accepted industry papers; not full-only.
+    # Selection, not final publication; withdrawal/desk exclusions unspecified.
+    # Original publisher-indexed passage checked; direct PDF download incomplete, page unverified.
+    - year: 2024
+      submitted: 193
+      accepted: 42
+      str: 21.8%(42/193 24')
+      rate: 0.21761658031088082
+      source: https://nirmawebsite.s3.ap-south-1.amazonaws.com/wp-content/uploads/2026/01/Annual-Report-2024-25.pdf

@@ -1,0 +1,45 @@
+# Main research track only; denominator stage is qualified per year.
+- title: ICST
+  accept_rates:
+    # Complete research submissions; 24 accepted for publication.
+    - year: 2021
+      submitted: 87
+      accepted: 24
+      str: 27.6%(24/87 21')
+      rate: 0.275862068965517
+      source: https://doi.org/10.1109/ICST49551.2021.00006
+    # 85 finalized full submissions from 92 abstracts; 21 direct acceptances plus four successfully shepherded papers.
+    - year: 2022
+      submitted: 85
+      accepted: 25
+      str: 29.4%(25/85 22')
+      rate: 0.294117647058824
+      source: https://doi.org/10.1109/ICST53961.2022.00006
+    # Received research submissions, including seven desk rejections.
+    - year: 2023
+      submitted: 90
+      accepted: 26
+      str: 28.9%(26/90 23')
+      rate: 0.288888888888889
+      source: https://doi.org/10.1109/ICST57152.2023.00005
+    # Received research submissions, including four desk rejections; 108 reviewed.
+    - year: 2024
+      submitted: 112
+      accepted: 28
+      str: 25.0%(28/112 24')
+      rate: 0.250000000000000
+      source: https://doi.org/10.1109/ICST60714.2024.00006
+    # Main research track: 107 received and 32 accepted.
+    - year: 2025
+      submitted: 107
+      accepted: 32
+      str: 29.9%(32/107 25')
+      rate: 0.299065420560748
+      source: https://doi.org/10.1109/ICST62969.2025.10989040
+    # Main research track: 151 received and 44 accepted. Secondary CV reports 163; original chair report takes precedence. Unrelated keynote introduction contains a 2025 typo, while heading, ordinal, signature and DOI identify 2026.
+    - year: 2026
+      submitted: 151
+      accepted: 44
+      str: 29.1%(44/151 26')
+      rate: 0.291390728476821
+      source: https://doi.org/10.1109/ICST69053.2026.00006

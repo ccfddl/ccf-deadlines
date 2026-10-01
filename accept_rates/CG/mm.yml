@@ -1,8 +1,37 @@
 - title: ACM MM
   accept_rates:
+    # Main research-track submissions that underwent review; desk rejects excluded.
+    - year: 2021
+      submitted: 1942
+      accepted: 542
+      str: 27.9%(542/1942 21')
+      rate: 0.279093717816684
+      source: https://ir.cwi.nl/pub/31197/31197.pdf
+    # Main research-track submissions that underwent review; desk rejects excluded.
+    - year: 2022
+      submitted: 2472
+      accepted: 691
+      str: 28.0%(691/2472 22')
+      rate: 0.279530744336570
+      source: https://acmmm.hosting2.acm.org/
+    # Received main-track submissions, including desk rejects.
     - year: 2023
       submitted: 3669
       accepted: 902
       str: 24.6%(902/3669 23')
       rate: 0.245843554101935
-      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3581783
+      source: https://www.acmmm2023.org/
+    # Main research-track submissions that underwent review; desk rejects excluded.
+    - year: 2024
+      submitted: 4385
+      accepted: 1150
+      str: 26.2%(1150/4385 24')
+      rate: 0.262257696693273
+      source: https://ir.cwi.nl/pub/34576/34576.pdf
+    # Main research-track submissions that underwent review; desk rejects excluded.
+    - year: 2025
+      submitted: 5330
+      accepted: 1250
+      str: 23.5%(1250/5330 25')
+      rate: 0.234521575984991
+      source: https://acmmm.hosting2.acm.org/

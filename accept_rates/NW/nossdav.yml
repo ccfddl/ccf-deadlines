@@ -1,0 +1,32 @@
+- title: NOSSDAV
+  accept_rates:
+    - year: 2022
+      submitted: 38
+      accepted: 12
+      str: 31.6%(12/38 22')
+      rate: 0.3157894736842105
+      source: https://nossdav2022.hotcrp.com/
+    - year: 2023
+      submitted: 35
+      accepted: 10
+      str: 28.6%(10/35 23')
+      rate: 0.2857142857142857
+      source: https://nossdav2023.hotcrp.com/
+    - year: 2024
+      submitted: 29
+      accepted: 10
+      str: 34.5%(10/29 24')
+      rate: 0.3448275862068966
+      source: https://nossdav2024.hotcrp.com/
+    - year: 2025
+      submitted: 36
+      accepted: 14
+      str: 38.9%(14/36 25')
+      rate: 0.3888888888888889
+      source: https://nossdav2025.hotcrp.com/
+    - year: 2026
+      submitted: 59
+      accepted: 23
+      str: 39.0%(23/59 26')
+      rate: 0.3898305084745763
+      source: https://nossdav26.hotcrp.com/

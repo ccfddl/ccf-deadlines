@@ -1,0 +1,44 @@
+- title: IEEE VR
+  accept_rates:
+    # Conference-paper track only; received completed submissions, including desk/quick rejects. The separate journal-paper track is not combined.
+    - year: 2021
+      submitted: 389
+      accepted: 92
+      str: 23.7%(92/389 21')
+      rate: 0.2365038560411311
+      source: https://ieeexplore.ieee.org/document/9417726
+    # Conference-paper track only; received completed submissions, including desk/quick rejects and review-continuity resubmissions from the separate journal track.
+    - year: 2022
+      submitted: 418
+      accepted: 90
+      str: 21.5%(90/418 22')
+      rate: 0.215311004784689
+      source: https://ieeexplore.ieee.org/document/9756832
+    # Unified main-paper submission pool; combined final TVCG-special-issue and conference-proceedings acceptances.
+    - year: 2023
+      submitted: 612
+      accepted: 130
+      str: 21.2%(130/612 23')
+      rate: 0.21241830065359477
+      source: https://ieeexplore.ieee.org/document/10108431
+    # Unified main-paper submission pool; combined final TVCG-special-issue and conference-proceedings acceptances.
+    - year: 2024
+      submitted: 627
+      accepted: 180
+      str: 28.7%(180/627 24')
+      rate: 0.28708133971291866
+      source: https://ieeexplore.ieee.org/document/10494088
+    # Unified main-paper submission pool; combined final TVCG-special-issue and conference-proceedings acceptances.
+    - year: 2025
+      submitted: 785
+      accepted: 211
+      str: 26.9%(211/785 25')
+      rate: 0.26878980891719745
+      source: https://ieeexplore.ieee.org/document/10937405
+    # Unified main-paper submission pool; combined final TVCG-special-issue and conference-proceedings acceptances.
+    - year: 2026
+      submitted: 775
+      accepted: 228
+      str: 29.4%(228/775 26')
+      rate: 0.29419354838709677
+      source: https://ieeexplore.ieee.org/document/11457554

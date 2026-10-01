@@ -7,27 +7,55 @@
     thcpl: A
   dblp: cav
   confs:
+    - year: 2021
+      id: cav21
+      link: https://ucl-pplv.github.io/CAV21/
+      timeline:
+        - deadline: '2021-01-28 23:59:00'
+          comment: 'February 4 was updates only'
+      timezone: AoE
+      date: July 20-23, 2021
+      place: Online
     - year: 2022
       id: cav22
       link: http://i-cav.org/2022/
       timeline:
-        - deadline: '2022-01-21 23:59:59'
+        - deadline: '2022-01-21 23:59:00'
       timezone: AoE
       date: Aug 7-10, 2022
       place: Technion, Haifa, Israel
+    - year: 2023
+      id: cav23
+      link: http://www.i-cav.org/2023/
+      timeline:
+        - deadline: TBD
+          comment: 'Initial cutoff unresolved: CFP February 3 AoE; HotCRP February 6 11:59:59 UTC.'
+      timezone: AoE
+      date: July 19-22, 2023
+      place: Paris, France
+    - year: 2024
+      id: cav24
+      link: http://www.i-cav.org/2024/
+      timeline:
+        - deadline: '2024-01-19 23:59:00'
+          comment: 'January 26 was updates only'
+      timezone: AoE
+      date: July 24-27, 2024
+      place: Montreal, Canada
     - year: 2025
       id: cav25
       link: https://conferences.i-cav.org/2025/
       timeline:
-        - deadline: '2025-01-31 23:59:59'
+        - deadline: TBD
+          comment: 'Initial cutoff unresolved: CFP January 31 AoE; HotCRP February 6 13:00 UTC.'
       timezone: AoE
-      date: July 21-25, 2025
+      date: July 23-25, 2025
       place: Zagreb, Croatia
     - year: 2026
       id: cav26
       link: https://conferences.i-cav.org/2026/
       timeline:
-        - deadline: '2026-01-28 23:59:59'
+        - deadline: '2026-01-28 23:59:00'
       timezone: AoE
       date: July 26-29, 2026
       place: Lisbon, Portugal

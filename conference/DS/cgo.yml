@@ -7,21 +7,54 @@
     thcpl: B
   dblp: cgo
   confs:
+    - year: 2021
+      id: cgo2021
+      link: https://conf.researchr.org/home/cgo-2021
+      timeline:
+        - abstract_deadline: '2020-08-30 23:59:59'
+          deadline: TBD
+          comment: CFP September 1 conflicts with portal September 2; initial full-paper cutoff unresolved
+      timezone: AoE
+      date: March 1-3, 2021
+      place: Virtual
+    - year: 2022
+      id: cgo2022
+      link: https://conf.researchr.org/home/cgo-2022
+      timeline:
+        - abstract_deadline: '2021-08-27 23:59:00'
+          deadline: '2021-09-03 23:59:00'
+      timezone: AoE
+      date: April 4-6, 2022
+      place: Virtual
+    - year: 2023
+      id: cgo2023
+      link: https://conf.researchr.org/home/cgo-2023
+      timeline:
+        - deadline: '2022-09-02 23:59:00'
+      timezone: AoE
+      date: February 27-March 1, 2023
+      place: Montreal, Canada
     - year: 2024
       id: cgo2024
       link: https://conf.researchr.org/home/cgo-2024
       timeline:
         - deadline: '2023-05-19 23:59:59'
+          comment: First submission round
+        - deadline: '2023-09-01 23:59:00'
+          comment: Second submission round
       timezone: AoE
-      date: March 2-6, 2024
+      date: March 4-6, 2024
       place: Edinburgh, United Kingdom
     - year: 2025
       id: cgo2025
       link: https://conf.researchr.org/home/cgo-2025
       timeline:
         - deadline: '2024-05-30 23:59:59'
+          comment: First submission round
+        - deadline: '2024-09-12 23:59:00'
+          comment: Second submission round
       timezone: AoE
-      date: March 1-5, 2025
+      date: March 3-5, 2025
       place: Las Vegas, Nevada, United States
     - year: 2026
       id: cgo2026
@@ -32,7 +65,7 @@
         - deadline: '2025-09-11 23:59:59'
           comment: 'Second Submission'
       timezone: AoE
-      date: January 31 - 4 February, 2026
+      date: February 2-4, 2026
       place: Sydney, Australia
     - year: 2027
       id: cgo2027

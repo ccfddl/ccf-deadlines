@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="CCFDDL calendar">
+  <rect width="128" height="128" rx="28" fill="#B94F00"/>
+  <rect x="22" y="32" width="84" height="76" rx="11" fill="#fff"/>
+  <rect x="22" y="32" width="84" height="22" rx="11" fill="#FFE8D6"/>
+  <path d="M45 24v19M83 24v19" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+  <path d="M42 76h44M42 89h29" stroke="#B94F00" stroke-width="8" stroke-linecap="round"/>
+</svg>

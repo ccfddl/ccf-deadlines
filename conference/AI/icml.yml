@@ -7,6 +7,15 @@
     thcpl: A
   dblp: icml
   confs:
+    - year: 2021
+      id: icml21
+      link: https://icml.cc/Conferences/2021
+      timeline:
+        - abstract_deadline: '2021-01-28 23:59:00'
+          deadline: '2021-02-04 23:59:00'
+      timezone: UTC-12
+      date: July 18-24, 2021
+      place: Virtual conference
     - year: 2022
       id: icml22
       link: https://icml.cc/Conferences/2022
@@ -21,9 +30,8 @@
       id: icml23
       link: https://icml.cc/Conferences/2023
       timeline:
-        - abstract_deadline: '2023-01-09 07:59:59'
-          deadline: '2023-01-26 07:59:59'
-          comment: Paper Submissions Open on OpenReview Jan 09 2023 02:00 PM UTC
+        - deadline: '2023-01-26 07:59:59'
+          comment: Single paper deadline at 15:00 EST; no separate abstract deadline.
       timezone: UTC-12
       date: July 23-29, 2023
       place: Hawaii Convention Center,Hawaii, USA
@@ -44,7 +52,7 @@
           deadline: '2025-01-30 23:59:59'
           comment: Paper Submissions Open on OpenReview Jan 08 2025 11:59 PM UTC
       timezone: UTC-12
-      date: July 11-19, 2025
+      date: July 13-19, 2025
       place: Vancouver Convention Center, Vancouver, Canada
     - year: 2026
       id: icml26
@@ -54,5 +62,5 @@
           deadline: '2026-01-29 11:59:59'
           comment: Paper Submissions Open on OpenReview Jan 08 2026 12:00AM UTC-0
       timezone: UTC+0
-      date: July 6-12, 2026
+      date: July 6-11, 2026
       place: Seoul, Korea

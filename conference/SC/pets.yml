@@ -7,6 +7,21 @@
     thcpl: B
   dblp: pet
   confs:
+    - year: 2021
+      id: pets21
+      link: https://petsymposium.org/cfp21.php
+      timeline:
+        - deadline: '2020-05-31 23:59:59'
+          comment: Issue 1 Paper Submission Deadline
+        - deadline: '2020-08-31 23:59:59'
+          comment: Issue 2 Paper Submission Deadline
+        - deadline: '2020-11-30 23:59:59'
+          comment: Issue 3 Paper Submission Deadline
+        - deadline: '2021-02-28 23:59:59'
+          comment: Issue 4 Paper Submission Deadline
+      timezone: AoE
+      date: July 12-15, 2021
+      place: Virtual
     - year: 2022
       id: pets22
       link: https://petsymposium.org/cfp22.php
@@ -22,6 +37,21 @@
       timezone: AoE
       date: July 18-23, 2022
       place: Sydney, Australia
+    - year: 2023
+      id: pets23
+      link: https://petsymposium.org/cfp23.php
+      timeline:
+        - deadline: '2022-05-31 23:59:59'
+          comment: Issue 1 Paper Submission Deadline
+        - deadline: '2022-08-31 23:59:59'
+          comment: Issue 2 Paper Submission Deadline
+        - deadline: '2022-11-30 23:59:59'
+          comment: Issue 3 Paper Submission Deadline
+        - deadline: '2023-02-28 23:59:59'
+          comment: Issue 4 Paper Submission Deadline
+      timezone: AoE
+      date: July 10-13, 2023
+      place: Lausanne, Switzerland and Online
     - year: 2024
       id: pets24
       link: https://www.petsymposium.org/cfp24.php

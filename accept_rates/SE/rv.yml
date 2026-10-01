@@ -1,0 +1,38 @@
+# Final selected peer-reviewed papers; invited talks and tutorial proposals excluded.
+- title: RV
+  accept_rates:
+    # 11 regular and 7 short/tool/benchmark papers selected from 40 submissions. Separate keynotes and tutorial excluded.
+    - year: 2021
+      submitted: 40
+      accepted: 18
+      str: 45.0%(18/40 21')
+      rate: 0.45
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-88494-9/1
+    # 12 regular and 5 short/tool papers initially selected, plus 5 originally unselected regular submissions accepted as short papers after a final review: 22 final papers from the same 40 submissions, including 1 desk reject. Keynotes excluded.
+    - year: 2022
+      submitted: 40
+      accepted: 22
+      str: 55.0%(22/40 22')
+      rate: 0.55
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-17196-3/1
+    # 13 regular and 7 short/tool/benchmark papers selected from 39 submissions. Two invited papers and four tutorials excluded.
+    - year: 2023
+      submitted: 39
+      accepted: 20
+      str: 51.3%(20/39 23')
+      rate: 0.5128205128205128
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-44267-4/1
+    # 11 regular, 5 short and 2 tool papers selected from 31 submissions. Invited keynote abstract and tool showcase excluded.
+    - year: 2024
+      submitted: 31
+      accepted: 18
+      str: 58.1%(18/31 24')
+      rate: 0.5806451612903226
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-74234-7/1
+    # 22 regular, 1 short and 2 tool papers selected from 62 paper submissions. The separately reported 2 tutorial proposals and 1 accepted tutorial paper are excluded from both sides.
+    - year: 2025
+      submitted: 62
+      accepted: 25
+      str: 40.3%(25/62 25')
+      rate: 0.4032258064516129
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-05435-7/1

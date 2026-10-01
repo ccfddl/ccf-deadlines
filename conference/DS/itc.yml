@@ -7,6 +7,36 @@
     thcpl: N
   dblp: itc
   confs:
+    - year: 2022
+      id: itc2022
+      link: https://www.itctestweek.org/
+      timeline:
+        - abstract_deadline: '2022-03-14 23:59:00'
+          deadline: '2022-03-28 23:59:00'
+          comment: 'Regular paper initial submission; 23:59:00 and AoE are repository defaults because the CFP publishes dates only.'
+      timezone: AoE
+      date: September 27-29, 2022
+      place: Anaheim, CA, USA
+    - year: 2023
+      id: itc2023
+      link: https://www.itctestweek.org/
+      timeline:
+        - abstract_deadline: '2023-04-03 23:59:00'
+          deadline: '2023-04-17 23:59:00'
+          comment: 'Regular paper initial submission; 23:59:00 and AoE are repository defaults because the CFP publishes dates only.'
+      timezone: AoE
+      date: October 10-12, 2023
+      place: Anaheim, CA, USA
+    - year: 2024
+      id: itc2024
+      link: https://www.itctestweek.org/
+      timeline:
+        - abstract_deadline: '2024-04-26 23:59:00'
+          deadline: '2024-05-13 23:59:00'
+          comment: 'Regular paper initial submission; 23:59:00 and AoE are repository defaults because the CFP publishes dates only.'
+      timezone: AoE
+      date: November 5-7, 2024
+      place: San Diego, CA, USA
     - year: 2026
       id: itc2026
       link: https://www.itctestweek.org/

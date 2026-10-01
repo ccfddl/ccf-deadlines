@@ -7,6 +7,24 @@
     thcpl: N
   dblp: eusipco
   confs:
+    - year: 2022
+      id: eusipco2022
+      link: https://2022.eusipco.org/
+      timeline:
+        - deadline: '2022-03-07 23:59:00'
+          comment: Regular full-paper deadline extended to March 7, 23:59 Hawaii Standard Time.
+      timezone: UTC-10
+      date: August 29 - September 2, 2022
+      place: Belgrade, Serbia (Hybrid)
+    - year: 2023
+      id: eusipco2023
+      link: https://eusipco2023.org/
+      timeline:
+        - deadline: '2023-03-10 23:59:00'
+          comment: 'Regular full-paper extension to March 10. Clock 23:59:00 and timezone AoE use repository defaults because neither is published.'
+      timezone: AoE
+      date: September 4-8, 2023
+      place: Helsinki, Finland
     - year: 2024
       id: eusipco2024
       link: https://eusipcolyon.sciencesconf.org/
@@ -32,3 +50,11 @@
       timezone: AoE
       date: August 31 - September 4, 2026
       place: Bruges, Belgium
+    - year: 2027
+      id: eusipco27
+      link: https://eusipco2027.de/
+      timeline:
+        - deadline: '2027-02-06 23:59:59'
+      timezone: AoE
+      date: August 30 - September 3, 2027
+      place: Darmstadt, Germany

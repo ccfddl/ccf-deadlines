@@ -1,0 +1,30 @@
+- title: SETTA
+  accept_rates:
+    # Original chairs preface PDF page 5. Main track only; excludes journal-first14eligible submissions with no matched accepted count.
+    - year: 2021
+      submitted: 39
+      accepted: 16
+      str: 41.0%(16/39 21')
+      rate: 0.41025641025641024
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-91265-9/1
+    # Original chairs preface PDF page 5. 11 full + 3 short; excludes keynote abstracts.
+    - year: 2022
+      submitted: 29
+      accepted: 14
+      str: 48.3%(14/29 22')
+      rate: 0.4827586206896552
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-21213-0/1
+    # Original chairs preface PDF page 5. 21 selected contributed papers /47 complete submissions; excludes invited contribution.
+    - year: 2024
+      submitted: 47
+      accepted: 21
+      str: 44.7%(21/47 24')
+      rate: 0.44680851063829785
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-0602-3/1
+    # Original chairs preface PDF page 5. 18 selected contributed papers; excludes invited contribution. Edition2025, copyright2026.
+    - year: 2025
+      submitted: 46
+      accepted: 18
+      str: 39.1%(18/46 25')
+      rate: 0.391304347826087
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-7826-9/1

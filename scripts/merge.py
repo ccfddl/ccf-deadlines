@@ -45,6 +45,9 @@ def main():
     parser.add_argument('--exclude', default='types.yml',
                        help='Filename pattern to exclude (default: types.yml)')
 
+    parser.add_argument('--include-conference-key', action='store_true',
+                        help='Include the category/slug source identity in every record')
+
     args = parser.parse_args()
 
     # Configuration
@@ -64,6 +67,7 @@ def main():
 
     # Collect all data
     all_data = []
+    errors = 0
 
     for yml_file in yml_files:
         print(f"Processing: {yml_file}", file=sys.stderr)
@@ -71,6 +75,14 @@ def main():
             with open(yml_file, 'r', encoding='utf-8') as file:
                 # Load YAML content
                 data = yaml.safe_load(file)
+
+                if args.include_conference_key:
+                    records = data if isinstance(data, list) else [data]
+                    key = yml_file.relative_to(search_path).with_suffix('').as_posix()
+                    for record in records:
+                        if not isinstance(record, dict):
+                            raise ValueError(f'{yml_file}: expected conference objects')
+                        record['conference_key'] = key
 
                 # Handle different YAML structures
                 if isinstance(data, list):
@@ -89,9 +101,14 @@ def main():
                     all_data.append(data_entry)
 
         except yaml.YAMLError as e:
+            errors += 1
             print(f"❌ YAML parsing error in {yml_file}: {e}", file=sys.stderr)
         except Exception as e:
+            errors += 1
             print(f"❌ Error reading {yml_file}: {e}", file=sys.stderr)
+
+    if errors:
+        sys.exit(1)
 
     # Output merged YAML to stdout
     yaml.dump(all_data, sys.stdout,

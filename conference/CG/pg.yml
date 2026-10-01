@@ -20,9 +20,10 @@
       id: pg24
       link: http://pg2024.hsu.edu.cn/
       timeline:
-        - abstract_deadline: '2024-05-31 21:59:00'
-          deadline: '2024-06-07 21:59:00'
-      timezone: UTC
+        - abstract_deadline: '2024-05-31 23:59:00'
+          deadline: '2024-06-07 23:59:00'
+          comment: 'Initial full-paper dates and AoE verified; 23:59:00 is the repository default where the clock is unpublished.'
+      timezone: AoE
       date: October 13-16, 2024
       place: Huangshan, China
     - year: 2025

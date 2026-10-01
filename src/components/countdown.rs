@@ -21,6 +21,15 @@ fn get_urgency(remaining_secs: u64) -> UrgencyLevel {
     }
 }
 
+pub fn urgency_class_for(remaining_secs: u64) -> &'static str {
+    match get_urgency(remaining_secs) {
+        UrgencyLevel::Normal => "countdown-normal",
+        UrgencyLevel::Attention => "countdown-attention",
+        UrgencyLevel::Warning => "countdown-warning",
+        UrgencyLevel::Urgent => "countdown-urgent",
+    }
+}
+
 pub fn use_interval<T, F>(interval_millis: T, f: F)
 where
     F: Fn() + Clone + 'static,
@@ -39,16 +48,20 @@ where
 #[component]
 pub fn CountDown(
     remain: u64,
+    #[prop(default = false)] detailed: bool,
+    #[prop(default = false)] legacy: bool,
+    #[prop(default = true)] running: bool,
 ) -> impl IntoView {
     let remaining_time = RwSignal::new(remain / 1000);
-    let urgency = Memo::new(move |_| get_urgency(remaining_time.get()));
 
     use_interval(1000, move || {
-        remaining_time.update(|r| {
-            if *r > 0 {
-                *r -= 1;
-            }
-        });
+        if running {
+            remaining_time.update(|r| {
+                if *r > 0 {
+                    *r -= 1;
+                }
+            });
+        }
     });
 
     let display_time = move || {
@@ -58,34 +71,57 @@ pub fn CountDown(
         let hours = secs / 3600;
         secs %= 3600;
         let minutes = secs / 60;
-        let seconds = secs % 60;
 
-        (days, hours, minutes, seconds)
+        (days, hours, minutes)
     };
 
-    let urgency_class = move || {
-        match urgency.get() {
-            UrgencyLevel::Normal => "countdown-normal",
-            UrgencyLevel::Attention => "countdown-attention",
-            UrgencyLevel::Warning => "countdown-warning",
-            UrgencyLevel::Urgent => "countdown-urgent",
-        }
-    };
+    let urgency_class = move || urgency_class_for(remaining_time.get());
 
     view! {
         <span class=urgency_class>
-            <span class="countdown-value">
-                {move || {
-                    let (days, hours, minutes, seconds) = display_time();
-                    if days > 0 {
-                        format!("{:02}d {:02}h {:02}m {:02}s", days, hours, minutes, seconds)
-                    } else if hours > 0 {
-                        format!("{:02}h {:02}m {:02}s", hours, minutes, seconds)
-                    } else {
-                        format!("{:02}m {:02}s", minutes, seconds)
-                    }
-                }}
-            </span>
+            {if legacy {
+                view! {
+                    <span class="countdown-legacy-value">
+                        {move || {
+                            let (days, hours, minutes) = display_time();
+                            let seconds = remaining_time.get() % 60;
+                            let day_label = if days == 1 { "day" } else { "days" };
+                            format!(
+                                "{:02} {} {:02} h {:02} m {:02} s",
+                                days, day_label, hours, minutes, seconds,
+                            )
+                        }}
+                    </span>
+                }
+                    .into_any()
+            } else if detailed {
+                view! {
+                    <span class="countdown-detailed-value">
+                        {move || {
+                            let (days, hours, minutes) = display_time();
+                            format!("{}d {:02}h {:02}m {:02}s", days, hours, minutes, remaining_time.get() % 60)
+                        }}
+                    </span>
+                }.into_any()
+            } else {
+                view! {
+                    <span class="countdown-value">
+                        {move || {
+                            let (days, hours, minutes) = display_time();
+                            if days > 0 {
+                                format!("in {}d {}h", days, hours)
+                            } else if hours > 0 {
+                                format!("in {:02}h {:02}m", hours, minutes)
+                            } else if minutes > 0 {
+                                let seconds = remaining_time.get() % 60;
+                                format!("in {:02}m {:02}s", minutes, seconds)
+                            } else {
+                                format!("in {}s", remaining_time.get() % 60)
+                            }
+                        }}
+                    </span>
+                }.into_any()
+            }}
         </span>
     }
 }

@@ -1,0 +1,16 @@
+- title: ISMB
+  description: International Conference on Intelligent Systems for Molecular Biology
+  sub: MX
+  rank:
+    ccf: B
+  dblp: ismb
+  confs:
+    - year: 2027
+      id: ismb27
+      link: https://www.iscb.org/ismbeccb2027/
+      timeline:
+        - deadline: 'TBD'
+          comment: 'Proceedings'
+      timezone: AoE
+      date: July 18-22, 2027
+      place: Copenhagen, Denmark

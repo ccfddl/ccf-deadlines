@@ -7,11 +7,31 @@
     thcpl: N
   dblp: pdcat
   confs:
+    - year: 2022
+      id: pdcat2022
+      link: https://www.hpc.is.tohoku.ac.jp/pdcat2022/
+      timeline:
+        - abstract_deadline: '2022-09-20 23:59:00'
+          deadline: '2022-09-30 23:59:00'
+      timezone: AoE
+      date: December 7-9, 2022
+      place: Sendai, Japan
     - year: 2025
       id: pdcat2025
-      link: https://www.pd-cat.org/
+      link: https://www.pd-cat.org/2025/
       timeline:
-        - deadline: '2025-08-15 23:59:00'
-      timezone: UTC+10
+        - deadline: '2025-08-15 23:59:59'
+      timezone: AoE
       date: November 22-November 24, 2025
       place: Gold Coast, Australia
+    - year: 2026
+      id: pdcat2026
+      link: https://www.pd-cat.org/2026/
+      timeline:
+        - deadline: '2026-09-21 23:59:59'
+          comment: First Cycle
+        - deadline: '2026-10-20 23:59:59'
+          comment: Second Cycle
+      timezone: AoE
+      date: December 4-6, 2026
+      place: Changsha, China

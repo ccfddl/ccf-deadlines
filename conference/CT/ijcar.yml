@@ -7,12 +7,29 @@
     thcpl: B
   dblp: ijcar
   confs:
+    - year: 2022
+      id: ijcar22
+      link: https://easychair.org/smart-program/FLoC2022/IJCAR-index.html
+      timeline:
+        - deadline: '2022-02-18 23:59:59'
+      timezone: AoE
+      date: August 8-10, 2022
+      place: Haifa, Israel
+    - year: 2024
+      id: ijcar24
+      link: https://merz.gitlabpages.inria.fr/2024-ijcar/
+      timeline:
+        - abstract_deadline: '2024-01-29 23:59:00'
+          deadline: '2024-02-05 23:59:59'
+      timezone: AoE
+      date: July 3-6, 2024
+      place: Nancy, France
     - year: 2026
       id: ijcar26
       link: https://www.floc26.org/ijcar
       timeline:
         - abstract_deadline: '2026-02-06 23:59:59'
-          deadline: '2025-02-15 23:59:59'
+          deadline: '2026-02-15 23:59:59'
       timezone: AoE
       date: July 26-29, 2026
       place: Lisbon, Portugal

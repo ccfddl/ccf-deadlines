@@ -1,0 +1,9 @@
+# Full research papers only; denominator is papers reviewed by the PC.
+- title: EDBT
+  accept_rates:
+    - year: 2021
+      submitted: 108
+      accepted: 27
+      str: 25.0%(27/108 21')
+      rate: 0.25
+      source: https://openproceedings.org/2021/conf/edbt/frontmatter.pdf

@@ -7,20 +7,52 @@
     thcpl: B
   dblp: noms
   confs:
+    - year: 2022
+      id: noms22
+      link: https://noms2022.ieee-noms.org/
+      timeline:
+        - deadline: '2021-11-01 23:59:00'
+      timezone: AoE
+      date: April 26-28, 2022
+      place: Budapest, Hungary / Hybrid
+    - year: 2023
+      id: noms23
+      link: https://noms2023.ieee-noms.org/
+      timeline:
+        - deadline: '2022-10-21 23:59:00'
+      timezone: AoE
+      date: May 9-11, 2023
+      place: Miami, FL, USA
+    - year: 2024
+      id: noms24
+      link: https://noms2024.ieee-noms.org/
+      timeline:
+        - deadline: '2023-10-27 23:59:00'
+      timezone: AoE
+      date: May 7-9, 2024
+      place: Seoul, South Korea
     - year: 2025
       id: noms25
       link: https://noms2025.ieee-noms.org/
       timeline:
-        - abstract_deadline: '2024-09-07 19:59:59'
-          deadline: '2024-09-14 19:59:59'
-      timezone: UTC+10
-      date: May 12-16, 2025
+        - abstract_deadline: TBD
+          deadline: '2024-10-25 23:59:00'
+      timezone: AoE
+      date: May 13-15, 2025
       place: Honolulu, HI, USA
     - year: 2026
       id: noms26
       link: https://noms2026.ieee-noms.org/
       timeline:
-        - deadline: '2025-10-13 19:59:59'
-      timezone: UTC+10
+        - deadline: '2025-11-10 23:59:00'
+      timezone: AoE
       date: May 18-22, 2026
       place: Rome, Italy
+    - year: 2027
+      id: noms27
+      link: https://noms2027.ieee-noms.org/
+      timeline:
+        - deadline: '2026-11-09 23:59:59'
+      timezone: AoE
+      date: May 10-14, 2027
+      place: Montreal, Canada

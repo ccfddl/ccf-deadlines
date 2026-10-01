@@ -12,38 +12,58 @@
       link: https://sites.nyuad.nyu.edu/wisec21/
       timeline:
         - deadline: '2021-03-25 23:59:59'
-          comment: Paper Submission Deadline
       timezone: AoE
-      date: June 28 - July 2, 2021
-      place: Abu Dhabi, UAE
+      date: June 28 - July 1, 2021
+      place: Virtual
+    - year: 2022
+      id: wisec22
+      link: https://wisec2022.cs.utsa.edu/
+      timeline:
+        - deadline: '2022-02-12 23:59:00'
+      timezone: AoE
+      date: May 16 - 18, 2022
+      place: San Antonio, Texas, United States
+    - year: 2023
+      id: wisec23
+      link: https://wisec2023.surrey.ac.uk/
+      timeline:
+        - deadline: '2022-11-17 23:59:00'
+          comment: Round 1
+        - deadline: '2023-02-17 23:59:00'
+          comment: Round 2
+      timezone: AoE
+      date: May 29 - 31, 2023
+      place: Guildford, United Kingdom
     - year: 2024
       id: wisec24
       link: https://wisec2024.kaist.ac.kr/
       timeline:
-        - deadline: '2024-02-08 23:59:59'
-          comment: Paper Submission Deadline
+        - deadline: '2023-11-09 23:59:00'
+          comment: Round 1
+        - deadline: '2024-02-12 23:59:59'
+          comment: Round 2
       timezone: AoE
-      date: May 27 - 30, 2024
+      date: May 27 - 29, 2024
       place: Seoul, Korea
     - year: 2025
       id: wisec25
       link: https://wisec2025.gmu.edu/
       timeline:
         - deadline: '2024-11-21 23:59:59'
-          comment: First Cycle deadline
-        - deadline: '2025-03-12 23:59:59'
-          comment: Second Cycle deadline
+          comment: Round 1
+        - deadline: '2025-03-16 23:59:59'
+          comment: Round 2
       timezone: AoE
-      date: June 30 - July 3, 2025
+      date: June 30 - July 2, 2025
       place: Arlington, Virginia, USA
     - year: 2026
       id: wisec26
       link: https://wisec26.events.cispa.de/
       timeline:
         - deadline: '2025-11-18 23:59:59'
-          comment: First Cycle deadline
+          comment: Round 1
         - deadline: '2026-03-03 23:59:59'
-          comment: Second Cycle deadline
+          comment: Round 2
       timezone: AoE
-      date: June 30 - July 3, 2026
+      date: June 30 - July 2, 2026
       place: Saarbrücken, Germany

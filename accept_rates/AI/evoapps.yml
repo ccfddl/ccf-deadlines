@@ -1,0 +1,30 @@
+- title: EvoApplications
+  accept_rates:
+    # Main and eight special sessions; long and short presentations published as full papers.
+    - year: 2021
+      submitted: 78
+      accepted: 51
+      str: 65.4%(51/78 21')
+      rate: 0.6538461538461539
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-72699-7/1
+    # Main, joint EML track and ten special sessions, as included in the preface aggregate.
+    - year: 2022
+      submitted: 67
+      accepted: 46
+      str: 68.7%(46/67 22')
+      rate: 0.6865671641791045
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-02462-7/1
+    # General conference and nine special sessions; excludes the separately reported joint EML pool.
+    - year: 2025
+      submitted: 96
+      accepted: 63
+      str: 65.6%(63/96 25')
+      rate: 0.65625
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-90065-5/1
+    # Preface aggregate: 40 long and 27 short presentations / 106 submissions; do not add separate EML figures.
+    - year: 2026
+      submitted: 106
+      accepted: 67
+      str: 63.2%(67/106 26')
+      rate: 0.6320754716981132
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-23604-3/1

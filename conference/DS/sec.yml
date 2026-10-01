@@ -7,12 +7,65 @@
     thcpl: N
   dblp: ieeesec
   confs:
+    - year: 2021
+      id: sec2021
+      link: https://acm-ieee-sec.org/2021/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: '2021-01-21 16:59:00'
+          comment: Round 1
+        - abstract_deadline: '2021-06-22 15:59:59'
+          deadline: '2021-06-24 15:59:59'
+          comment: Round 2
+      timezone: AoE
+      date: December 14-16, 2021
+      place: San Jose, CA, USA
+    - year: 2022
+      id: sec2022
+      link: https://acm-ieee-sec.org/2022/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: '2022-01-31 16:59:59'
+          comment: Round 1
+        - abstract_deadline: '2022-06-19 23:59:59'
+          deadline: '2022-06-26 23:59:59'
+          comment: Round 2
+      timezone: AoE
+      date: December 5-7, 2022
+      place: Seattle, WA, USA
+    - year: 2023
+      id: sec2023
+      link: https://acm-ieee-sec.org/2023/
+      timeline:
+        - abstract_deadline: '2023-06-30 23:59:00'
+          deadline: '2023-07-07 09:00:00'
+      timezone: AoE
+      date: December 6-8, 2023
+      place: Wilmington, DE, USA
+    - year: 2024
+      id: sec2024
+      link: https://acm-ieee-sec.org/2024/
+      timeline:
+        - abstract_deadline: '2024-07-05 23:59:59'
+          deadline: TBD
+          comment: Initial full-paper cutoff conflicts with later upload close
+      timezone: AoE
+      date: December 4-6, 2024
+      place: Rome, Italy
+    - year: 2025
+      id: sec2025
+      link: https://acm-ieee-sec.org/2025/
+      timeline:
+        - deadline: '2025-06-20 23:59:00'
+      timezone: AoE
+      date: December 3-5, 2025
+      place: Washington, D.C., USA
     - year: 2026
       id: sec2026
       link: https://acm-ieee-sec.org/2026/
       timeline:
-        - abstract_deadline: '2026-04-24 23:59:59'
-          deadline: '2026-05-01 23:59:59'
+        - abstract_deadline: '2026-05-08 23:59:59'
+          deadline: '2026-05-08 23:59:59'
       timezone: AoE
       date: Oct 13-16, 2026
       place: Santa Clara University, CA, USA

@@ -1,33 +1,47 @@
-use crate::components::calendar_popover::*;
+use crate::components::batch_subscription_modal::BatchSubscriptionModal;
 use crate::components::checkbox_button::*;
 use crate::components::conf::ConfItem;
 use crate::components::conf::*;
-use crate::components::countdown::CountDown;
+use crate::components::countdown::{CountDown, urgency_class_for, use_interval};
+use crate::components::email_reminders::EmailReminderModal;
+use crate::components::favorites::FavoritesContext;
+use crate::components::favorites_timeline::FavoritesTimelineModal;
+use crate::components::message_wall::MessageWallModal;
 use crate::components::subscription_modal::*;
-use crate::components::timeline::*;
+use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
-use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate};
+use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate, Utc};
 use leptos::prelude::*;
+use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde_json;
-use std::collections::HashMap;
-use std::collections::HashSet;
+use std::cmp::Reverse;
+use std::collections::{HashMap, HashSet};
 use std::sync::OnceLock;
 use thaw::*;
 use urlencoding::encode;
-use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::{console, window};
 
 #[component]
-pub fn ShowTable() -> impl IntoView {
+pub fn ShowTable(
+    use_english: RwSignal<bool>,
+    show_favorites_timeline: RwSignal<bool>,
+    show_batch_subscription: RwSignal<bool>,
+    show_email_reminders: RwSignal<bool>,
+) -> impl IntoView {
+    let favorites = expect_context::<FavoritesContext>();
     // mobile
-    let is_mobile = RwSignal::new(false);
+    let is_mobile = RwSignal::new(is_narrow_viewport());
     let show_filters = RwSignal::new(false);
+    let resize_listener = window_event_listener(ev::resize, move |_| {
+        is_mobile.set(is_narrow_viewport());
+    });
+    on_cleanup(move || resize_listener.remove());
 
     // switch
-    let cached_use_english = get_from_local_storage("use_english");
-    let use_english = RwSignal::new(
-        cached_use_english
+    let show_past = RwSignal::new(
+        get_from_local_storage("show_past")
             .as_deref()
             .and_then(|s| s.parse::<bool>().ok())
             .unwrap_or(false),
@@ -35,35 +49,20 @@ pub fn ShowTable() -> impl IntoView {
 
     // checkbox
     let sub_list = RwSignal::new(get_categories());
-    let cached_check_list: HashSet<String> = get_from_local_storage("types")
+    let stored_check_list: HashSet<String> = get_from_local_storage("types")
         .and_then(|data| serde_json::from_str(&data).ok())
-        .unwrap_or_else(|| HashSet::new());
-    let check_list = RwSignal::new(cached_check_list);
-    let is_all_checked_memo = Memo::new(move |_| {
-        let total_count = sub_list.get().len();
-        let checked_count = check_list.get().len();
-        total_count > 0 && checked_count == total_count
-    });
-
-    let is_all_checked = RwSignal::new(false);
-
-    Effect::new(move |_| {
-        is_all_checked.set(is_all_checked_memo.get());
-    });
-
-    let handle_check_all = move |_| {
-        if is_all_checked_memo.get_untracked() {
-            check_list.set(HashSet::new());
-        } else {
-            let all_subs: HashSet<String> = sub_list
-                .get_untracked()
-                .iter()
-                .map(|s| s.sub.clone())
-                .collect();
-            check_list.set(all_subs);
-        }
+        .unwrap_or_default();
+    let all_categories: HashSet<String> = sub_list
+        .get_untracked()
+        .iter()
+        .map(|item| item.sub.clone())
+        .collect();
+    let cached_check_list = if stored_check_list == all_categories {
+        HashSet::new()
+    } else {
+        stored_check_list
     };
-
+    let check_list = RwSignal::new(cached_check_list);
     // input
     let input_value = RwSignal::new(String::new());
 
@@ -85,25 +84,64 @@ pub fn ShowTable() -> impl IntoView {
     let thcpl_rank_list = RwSignal::new(cached_thcpl_rank_list);
     let open_dropdown = RwSignal::new(None::<String>);
 
-    // liked
-    let cached_like_list: HashSet<String> = get_from_local_storage("likes")
-        .and_then(|data| serde_json::from_str(&data).ok())
-        .unwrap_or_else(|| HashSet::new());
-    let like_list = RwSignal::new(cached_like_list);
+    // Favorites are account-scoped and loaded from the Cloudflare D1 API.
+    let like_list = favorites.starred;
 
     let show_subscription_modal = RwSignal::new(false);
+    let show_message_wall = RwSignal::new(false);
+    let show_conf_detail = RwSignal::new(false);
+    let selected_conf = RwSignal::new(None::<ConfItem>);
+    let is_list_view = RwSignal::new(
+        get_from_local_storage("conference_view")
+            .as_deref()
+            .map(|view| view == "list")
+            .unwrap_or(false),
+    );
+    let sort_by_stars = RwSignal::new(
+        get_from_local_storage("sort_by_stars")
+            .as_deref()
+            .and_then(|value| value.parse::<bool>().ok())
+            .unwrap_or(false),
+    );
 
     // pagination
     let page = RwSignal::new(1);
-    let page_size = RwSignal::new(10);
+    let page_size = RwSignal::new(12);
     let page_count = RwSignal::new(1);
     let is_filter_change = RwSignal::new(false);
 
     // table
+    let raw_conferences = RwSignal::new(Vec::<Conference>::new());
+    let conference_load_attempt = RwSignal::new(0u32);
+    let conferences_loading = RwSignal::new(true);
+    let conference_load_failed = RwSignal::new(false);
     let all_conf_list = RwSignal::new(Vec::<ConfItem>::new());
+    let acceptance_rates = RwSignal::new(AcceptanceRateMap::new());
+    let acceptance_buckets_loaded = RwSignal::new(HashSet::<u32>::new());
+    let acceptance_buckets_pending = RwSignal::new(HashSet::<u32>::new());
+    let archive_path = RwSignal::new(None::<String>);
+    let archive_requested = RwSignal::new(false);
+    let base_time = RwSignal::new(None::<DateTime<Utc>>);
+    let base_time_input = RwSignal::new(String::new());
+    let base_time_editing = RwSignal::new(false);
+    let base_time_input_ref = NodeRef::<leptos::html::Input>::new();
 
     // timezone
-    let time_zone = RwSignal::new(String::new());
+    let browser_time_zone = RwSignal::new(get_timezone_name().unwrap_or_else(|| "UTC".to_string()));
+    let stored_timezone = get_from_local_storage("display_timezone")
+        .filter(|value| is_supported_display_timezone(value, &browser_time_zone.get_untracked()))
+        .unwrap_or_else(|| browser_time_zone.get_untracked());
+    let selected_timezone = RwSignal::new(stored_timezone.clone());
+    let time_zone = RwSignal::new(stored_timezone);
+
+    use_interval(1_000, move || {
+        if base_time.get_untracked().is_none() && !base_time_editing.get_untracked() {
+            base_time_input.set(format_datetime_local(
+                Utc::now(),
+                &selected_timezone.get_untracked(),
+            ));
+        }
+    });
 
     Effect::new(move |_| {
         let _ = check_list.get();
@@ -111,6 +149,8 @@ pub fn ShowTable() -> impl IntoView {
         let _ = rank_list.get();
         let _ = core_rank_list.get();
         let _ = thcpl_rank_list.get();
+        let _ = show_past.get();
+        let _ = sort_by_stars.get();
 
         if is_filter_change.get_untracked() {
             page.set(1);
@@ -120,7 +160,7 @@ pub fn ShowTable() -> impl IntoView {
     });
 
     Effect::new(move |_| {
-        set_in_local_storage("use_english", &use_english.get().to_string());
+        set_in_local_storage("show_past", &show_past.get().to_string());
         set_in_local_storage("types", &serde_json::to_string(&check_list.get()).unwrap());
         set_in_local_storage("ranks", &serde_json::to_string(&rank_list.get()).unwrap());
         set_in_local_storage(
@@ -133,411 +173,314 @@ pub fn ShowTable() -> impl IntoView {
         );
     });
 
-    Effect::new(move |_| {
-        set_in_local_storage("likes", &serde_json::to_string(&like_list.get()).unwrap());
+    Effect::new(move |previous: Option<bool>| {
+        let english = use_english.get();
+        if previous.is_some() {
+            set_in_local_storage("language_preference", if english { "en" } else { "zh" });
+        }
+        english
     });
 
     Effect::new(move |_| {
-        let _ = check_list.get();
-        let _ = input_value.get();
-        let _ = rank_list.get();
-        let _ = core_rank_list.get();
-        let _ = thcpl_rank_list.get();
-        let _ = page.get();
+        let selection = selected_timezone.get();
+        set_in_local_storage("display_timezone", &selection);
+        time_zone.set(selection.clone());
+        base_time_input.set(format_datetime_local(
+            base_time.get_untracked().unwrap_or_else(Utc::now),
+            &selection,
+        ));
+    });
 
-        let (current_time, _) = get_browser_time_and_timezone();
+    Effect::new(move |_| {
+        set_in_local_storage(
+            "conference_view",
+            if is_list_view.get() { "list" } else { "cards" },
+        );
+    });
 
-        all_conf_list.update(|conferences| {
-            for item in conferences.iter_mut() {
-                if item.deadline != "TBD" {
-                    if let Some(ddl_str) =
-                        parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
-                    {
-                        if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                            let diff = ddl_datetime.signed_duration_since(current_time);
-                            if diff.num_milliseconds() <= 0 {
-                                item.remain = 0;
-                                item.status = "FIN".to_string();
-                            } else {
-                                item.remain = diff.num_milliseconds() as u64;
-                                item.status = "RUN".to_string();
-                            }
-                        }
-                    }
+    Effect::new(move |_| {
+        set_in_local_storage("sort_by_stars", &sort_by_stars.get().to_string());
+    });
+
+    Effect::new(move || {
+        let _ = conference_load_attempt.get();
+        conferences_loading.set(true);
+        conference_load_failed.set(false);
+        spawn_local(async move {
+            let Some(base_url) = browser_origin() else {
+                conference_load_failed.set(true);
+                conferences_loading.set(false);
+                return;
+            };
+            match fetch_initial_conf(&base_url).await {
+                Ok(data) => {
+                    raw_conferences.set(data.conferences);
+                    archive_path.set(data.archive);
+                }
+                Err(error) => {
+                    console::error_1(&format!("Error: {error:?}").into());
+                    conference_load_failed.set(true);
+                }
+            }
+            conferences_loading.set(false);
+        });
+    });
+
+    Effect::new(move |_| {
+        let path = archive_path.get();
+        let needs_history = show_past.get()
+            || base_time.get().is_some()
+            || raw_conferences.with(|conferences| {
+                like_list.with(|likes| {
+                    likes.iter().any(|id| {
+                        !conferences.iter().any(|conference| {
+                            conference.confs.iter().any(|edition| &edition.id == id)
+                        })
+                    })
+                })
+            });
+        let Some(path) = path else {
+            return;
+        };
+        if !needs_history || archive_requested.get_untracked() {
+            return;
+        }
+        archive_requested.set(true);
+        spawn_local(async move {
+            let Some(base_url) = browser_origin() else {
+                return;
+            };
+            match fetch_archive_conf(&base_url, &path).await {
+                Ok(conferences) => {
+                    raw_conferences.update(|current| merge_conferences(current, conferences));
+                    archive_path.set(None);
+                }
+                Err(error) => {
+                    archive_requested.set(false);
+                    console::error_1(
+                        &format!("Error loading conference history: {error:?}").into(),
+                    );
                 }
             }
         });
     });
 
-    Effect::new(move || {
-        // mobile check
-        is_mobile.set(is_mobile_device());
-
-        // timezone
-        time_zone.set(get_timezone_name().unwrap());
-
+    Effect::new(move |_| {
+        if !show_conf_detail.get() {
+            return;
+        }
+        let Some(conference) = selected_conf.get() else {
+            return;
+        };
+        let bucket = acceptance_bucket(&conference.title);
+        if acceptance_buckets_loaded.with_untracked(|loaded| loaded.contains(&bucket))
+            || acceptance_buckets_pending.with_untracked(|pending| pending.contains(&bucket))
+        {
+            return;
+        }
+        acceptance_buckets_pending.update(|pending| {
+            pending.insert(bucket);
+        });
         spawn_local(async move {
-            let rank_options: HashMap<&str, &str> = RANK_OPTIONS.iter().cloned().collect();
-
-            let (current_time, current_timezone) = get_browser_time_and_timezone();
-
-            // base_url
-            let window = web_sys::window().unwrap();
-            let location = window.location();
-            let base_url = location.origin().unwrap();
-
-            match fetch_all_conf(&base_url).await {
-                Ok(conferences) => {
-                    let mut conf_vec = Vec::new();
-
-                    for conf in conferences {
-                        let conf_items = conf.confs.iter().map(|year_conf| {
-                            let mut flag = false;
-                            let len = year_conf.timeline.len();
-                            let mut cur_deadline = year_conf.timeline[len - 1].deadline.clone();
-                            let mut cur_abstract_deadline =
-                                year_conf.timeline[len - 1].abstract_deadline.clone();
-                            let mut cur_comment = year_conf.timeline[len - 1].comment.clone();
-                            let mut ddl_vec = Vec::<TimePoint>::new();
-
-                            for timeline_item in year_conf.timeline.iter() {
-                                let tz = &year_conf.timezone;
-
-                                // abstract type:0 submission type:1
-                                if let Some(abs_ddl) = timeline_item.abstract_deadline.clone() {
-                                    if let Some(abs_ddl_str) =
-                                        parse_deadline_to_rfc3339(&abs_ddl, tz)
-                                    {
-                                        if let Ok(abs_ddl_datetime) =
-                                            DateTime::parse_from_rfc3339(&abs_ddl_str)
-                                        {
-                                            ddl_vec.push(TimePoint {
-                                                timepoint: abs_ddl_datetime
-                                                    .with_timezone(&current_timezone)
-                                                    .clone(),
-                                                r#type: 0,
-                                            });
-                                        }
-                                    }
-                                }
-
-                                let ddl_str = match parse_deadline_to_rfc3339(
-                                    &timeline_item.deadline,
-                                    tz,
-                                ) {
-                                    Some(s) => s,
-                                    None => continue,
-                                };
-
-                                if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                                    ddl_vec.push(TimePoint {
-                                        timepoint: ddl_datetime
-                                            .with_timezone(&current_timezone)
-                                            .clone(),
-                                        r#type: 1,
-                                    });
-
-                                    let diff = ddl_datetime.signed_duration_since(current_time);
-                                    if !flag && diff.num_milliseconds() > 0 {
-                                        cur_deadline = timeline_item.deadline.clone();
-                                        cur_abstract_deadline =
-                                            timeline_item.abstract_deadline.clone();
-                                        cur_comment = timeline_item.comment.clone();
-                                        flag = true;
-                                    }
-                                }
-                            }
-
-                            ConfItem {
-                                title: conf.title.clone(),
-                                description: conf.description.clone(),
-                                sub: conf.sub.clone(),
-                                rank: conf.rank.ccf.clone(),
-                                corerank: conf.rank.core.clone(),
-                                thcplrank: conf.rank.thcpl.clone(),
-                                displayrank: rank_options
-                                    .get(conf.rank.ccf.as_str())
-                                    .unwrap()
-                                    .to_string(),
-                                dblp: conf.dblp.clone(),
-                                year: year_conf.year,
-                                id: year_conf.id.clone(),
-                                link: year_conf.link.clone(),
-                                abstract_deadline: cur_abstract_deadline,
-                                deadline: cur_deadline,
-                                comment: cur_comment,
-                                timezone: year_conf.timezone.clone(),
-                                date: year_conf.date.clone(),
-                                place: year_conf.place.clone(),
-                                status: "".to_string(), // Placeholder, should be determined based on current date
-                                is_like: like_list.get_untracked().contains(&year_conf.id),
-                                remain: 0,
-                                local_ddl: None,
-                                origin_ddl: None,
-                                subname: "".to_string(),
-                                subname_en: "".to_string(),
-                                google_calendar_url: None,
-                                icloud_calendar_url: None,
-                                acc_str: None,
-                                ddls: ddl_vec,
-                            }
+            let Some(base_url) = browser_origin() else {
+                acceptance_buckets_pending.update(|pending| {
+                    pending.remove(&bucket);
+                });
+                return;
+            };
+            match fetch_conference_acc(&base_url, &conference.title).await {
+                Ok(all_acc) => {
+                    acceptance_rates
+                        .update(|rates| {
+                            rates.extend(build_acceptance_rate_map(
+                                all_acc,
+                                &raw_conferences.get_untracked(),
+                            ));
                         });
-                        conf_vec.extend(conf_items);
-                    }
-
-                    for item in conf_vec.iter_mut() {
-                        // subname
-                        if let Some(matched_category) = sub_list
-                            .get_untracked()
-                            .iter()
-                            .find(|sub_item| sub_item.sub == item.sub)
-                        {
-                            item.subname = matched_category.name.clone();
-                            item.subname_en = matched_category.name_en.clone();
+                    let rates = acceptance_rates.get_untracked();
+                    acceptance_buckets_loaded.update(|loaded| {
+                        loaded.insert(bucket);
+                    });
+                    selected_conf.update(|selected| {
+                        if let Some(item) = selected {
+                            apply_acceptance_rate(item, &rates);
                         }
-
-                        if item.deadline == "TBD" {
-                            item.remain = 0;
-                            item.status = "TBD".to_string();
-                            continue;
-                        }
-
-                        // 4. Calculate deadlines and remaining time
-                        if let Some(ddl_str) =
-                            parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
-                        {
-                            if let Ok(ddl_datetime) = DateTime::parse_from_rfc3339(&ddl_str) {
-                                // Convert to browser local time and format
-                                let local_ddl_datetime =
-                                    ddl_datetime.with_timezone(&current_timezone);
-                                let formatted_date_time =
-                                    local_ddl_datetime.format("%Y-%m-%d %H:%M:%S").to_string();
-                                let offset_seconds = local_ddl_datetime.offset().local_minus_utc();
-                                let offset_hours = offset_seconds / 3600;
-                                let formatted_timezone = format!("UTC{:+}", offset_hours);
-
-                                item.local_ddl =
-                                    Some(format!("{} {}", formatted_date_time, formatted_timezone));
-                                item.origin_ddl =
-                                    Some(format!("{} {}", item.deadline, item.timezone));
-
-                                // Handle abstract deadline
-                                if let Some(abs_ddl) = &item.abstract_deadline {
-                                    if let Some(abs_ddl_str) =
-                                        parse_deadline_to_rfc3339(abs_ddl, &item.timezone)
-                                    {
-                                    if let Ok(abs_datetime) =
-                                        DateTime::parse_from_rfc3339(&abs_ddl_str)
-                                    {
-                                        let formatted_abs_ddl = abs_datetime
-                                            .with_timezone(&current_timezone)
-                                            .format("%b %e, %Y")
-                                            .to_string();
-                                        let abs_note =
-                                            format!("abstract deadline on {}", formatted_abs_ddl);
-                                        item.comment = Some(match &item.comment {
-                                            Some(existing) if !existing.is_empty() => {
-                                                format!("{} ({}).", existing, abs_note)
-                                            }
-                                            _ => format!("{}.", abs_note),
-                                        });
-                                    }
-                                    }
-                                }
-
-                                let diff = ddl_datetime.signed_duration_since(current_time);
-                                if diff.num_milliseconds() <= 0 {
-                                    item.remain = 0;
-                                    item.status = "FIN".to_string();
-                                } else {
-                                    item.remain = diff.num_milliseconds() as u64;
-                                    item.status = "RUN".to_string();
-                                }
-
-                                let iso_string =
-                                    local_ddl_datetime.format("%Y%m%dT%H%M%S").to_string();
-
-                                item.google_calendar_url = Some(format!(
-                                    "https://www.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location=Online&ctz={}&sf=true&output=xml",
-                                    encode(&format!("{} {}", item.title, item.year)),
-                                    iso_string,
-                                    iso_string,
-                                    encode(&format!(
-                                        "{} {}",
-                                        item.comment.as_ref().map_or("".to_string(), |c| c.clone()),
-                                        "provided by @ccfddl".to_string()
-                                    )),
-                                    time_zone.get_untracked(),
-                                ));
-
-                                item.icloud_calendar_url = Some(format!(
-                                    "data:text/calendar;charset=utf8,BEGIN:VCALENDAR\n\
-                                    VERSION:2.0\n\
-                                    BEGIN:VEVENT\n\
-                                    URL:{}\n\
-                                    DTSTART:{}\n\
-                                    DTEND:{}\n\
-                                    SUMMARY:{}\n\
-                                    DESCRIPTION:{}\n\
-                                    LOCATION:{}\n\
-                                    END:VEVENT\n\
-                                    END:VCALENDAR",
-                                    encode("https://ccfddl.github.io/"),
-                                    iso_string,
-                                    iso_string,
-                                    encode(&format!("{} {} Deadline", item.title, item.year)),
-                                    encode(item.comment.as_ref().map_or("", |c| c.as_str())),
-                                    encode(""),
-                                ));
-                            }
-                        }
-                    }
-                    all_conf_list.set(conf_vec);
+                    });
                 }
-                Err(e) => {
-                    console::error_1(&format!("Error: {:?}", e).into());
+                Err(error) => {
+                    console::error_1(&format!("Error loading acceptance rates: {error:?}").into());
                 }
             }
+            acceptance_buckets_pending.update(|pending| {
+                pending.remove(&bucket);
+            });
+        });
+    });
 
-            match fetch_all_acc(&base_url).await {
-                Ok(all_acc) => {
-                    for acc_item in all_acc {
-                        for cur_acc in &acc_item.accept_rates {
-                            all_conf_list.update(|conferences| {
-                                for item in conferences.iter_mut() {
-                                    for y in 1..=3 {
-                                        if item.title == acc_item.title
-                                            && item.year == cur_acc.year + y
-                                        {
-                                            item.acc_str = Some(cur_acc.str.clone());
-                                        }
-                                    }
-                                }
-                            });
-                        }
-                    }
-                }
-                Err(e) => {
-                    console::error_1(&format!("Error: {:?}", e).into());
-                }
+    Effect::new(move |_| {
+        let conferences = raw_conferences.get();
+        if conferences.is_empty() {
+            return;
+        }
+
+        let selected_id = selected_conf
+            .get_untracked()
+            .as_ref()
+            .map(|item| item.id.clone());
+        let items = build_conf_items(
+            conferences,
+            &sub_list.get_untracked(),
+            &like_list.get_untracked(),
+            &acceptance_rates.get(),
+            &selected_timezone.get(),
+            base_time.get().unwrap_or_else(Utc::now),
+        );
+
+        if let Some(selected_id) = selected_id {
+            selected_conf.set(items.iter().find(|item| item.id == selected_id).cloned());
+        }
+        all_conf_list.set(items);
+    });
+
+    Effect::new(move |_| {
+        let likes = like_list.get();
+        all_conf_list.update(|items| {
+            for item in items {
+                item.is_like = likes.contains(&item.id);
+            }
+        });
+        selected_conf.update(|selected| {
+            if let Some(item) = selected {
+                item.is_like = likes.contains(&item.id);
             }
         });
     });
 
     let paginated_list = Memo::new(move |_| {
-        let mut filtered_list = all_conf_list.get();
+        all_conf_list.with(|conferences| {
+            let mut filtered_list: Vec<&ConfItem> = conferences.iter().collect();
 
-        // Filtering
-        let checkbox_val = check_list.get();
-        if !checkbox_val.is_empty() {
-            filtered_list.retain(|item| checkbox_val.contains(&item.sub.to_uppercase()));
-        }
+            if !show_past.get() {
+                filtered_list.retain(|item| item.status != "FIN");
+            }
 
-        let rank_val = rank_list.get();
-        if !rank_val.is_empty() {
-            filtered_list.retain(|item| rank_val.contains(&item.rank));
-        }
-        let core_rank_val = core_rank_list.get();
-        if !core_rank_val.is_empty() {
-            filtered_list.retain(|item| {
-                let core_rank = item.corerank.as_deref().unwrap_or("N");
-                core_rank_val.contains(core_rank)
-            });
-        }
-        let thcpl_rank_val = thcpl_rank_list.get();
-        if !thcpl_rank_val.is_empty() {
-            filtered_list.retain(|item| {
-                let thcpl_rank = item.thcplrank.as_deref().unwrap_or("N");
-                thcpl_rank_val.contains(thcpl_rank)
-            });
-        }
+            // Filtering
+            let checkbox_val = check_list.get();
+            if !checkbox_val.is_empty() {
+                filtered_list.retain(|item| checkbox_val.contains(&item.sub.to_uppercase()));
+            }
 
-        let input_val = input_value.get();
-        if !input_val.is_empty() {
-            let input_lower = input_val.to_lowercase();
-            filtered_list.retain(|item| {
-                item.id.to_lowercase().contains(&input_lower)
-                    || item.title.to_lowercase().contains(&input_lower)
-            });
-        }
+            let rank_val = rank_list.get();
+            if !rank_val.is_empty() {
+                filtered_list.retain(|item| rank_val.contains(&item.rank));
+            }
+            let core_rank_val = core_rank_list.get();
+            if !core_rank_val.is_empty() {
+                filtered_list.retain(|item| {
+                    let core_rank = item.corerank.as_deref().unwrap_or("N");
+                    core_rank_val.contains(core_rank)
+                });
+            }
+            let thcpl_rank_val = thcpl_rank_list.get();
+            if !thcpl_rank_val.is_empty() {
+                filtered_list.retain(|item| {
+                    let thcpl_rank = item.thcplrank.as_deref().unwrap_or("N");
+                    thcpl_rank_val.contains(thcpl_rank)
+                });
+            }
 
-        // Sorting and Grouping
-        let mut run_list: Vec<_> = filtered_list
-            .iter()
-            .filter(|item| item.status == "RUN".to_string())
-            .cloned()
-            .collect();
-        let tbd_list: Vec<_> = filtered_list
-            .iter()
-            .filter(|item| item.status == "TBD".to_string())
-            .cloned()
-            .collect();
-        let mut fin_list: Vec<_> = filtered_list
-            .iter()
-            .filter(|item| item.status == "FIN".to_string())
-            .cloned()
-            .collect();
+            let input_val = input_value.get();
+            if !input_val.is_empty() {
+                let input_lower = input_val.to_lowercase();
+                filtered_list.retain(|item| {
+                    item.id.to_lowercase().contains(&input_lower)
+                        || item.title.to_lowercase().contains(&input_lower)
+                });
+            }
 
-        run_list.sort_by(|a, b| a.remain.cmp(&b.remain));
-        fin_list.sort_by(|a, b| b.year.cmp(&a.year));
+            // Sorting and Grouping
+            let mut run_list: Vec<_> = filtered_list
+                .iter()
+                .copied()
+                .filter(|item| item.status == "RUN")
+                .collect();
+            let tbd_list: Vec<_> = filtered_list
+                .iter()
+                .copied()
+                .filter(|item| item.status == "TBD")
+                .collect();
+            let mut fin_list: Vec<_> = filtered_list
+                .iter()
+                .copied()
+                .filter(|item| item.status == "FIN")
+                .collect();
 
-        let mut all_list = Vec::new();
-        all_list.extend(run_list);
-        all_list.extend(tbd_list);
-        all_list.extend(fin_list);
+            run_list.sort_by(|a, b| a.remain.cmp(&b.remain));
+            fin_list.sort_by(|a, b| b.year.cmp(&a.year));
 
-        let (liked_list, unliked_list): (Vec<_>, Vec<_>) =
-            all_list.into_iter().partition(|conf| conf.is_like);
+            let mut all_list = Vec::new();
+            all_list.extend(run_list);
+            all_list.extend(tbd_list);
+            all_list.extend(fin_list);
+            if sort_by_stars.get() {
+                let counts = favorites.counts.get();
+                all_list.sort_by_key(|conf| {
+                    star_count_sort_key(
+                        &conf.status,
+                        counts.get(&conf.id).copied().unwrap_or_default(),
+                    )
+                });
+            } else {
+                all_list.sort_by_key(|conf| favorite_sort_group(&conf.status, conf.is_like));
+            }
+            let final_list = all_list;
 
-        let mut final_list = liked_list;
-        final_list.extend(unliked_list);
+            // Pagination
+            let total_count = final_list.len();
+            let page_val = page.get();
+            let page_size_val = page_size.get();
+            let start = (page_val - 1) as usize * page_size_val as usize;
+            let end = (start + page_size_val as usize).min(total_count);
+            page_count.set((total_count + page_size_val - 1) / page_size_val);
 
-        // Pagination
-        let total_count = final_list.len();
-        let page_val = page.get();
-        let page_size_val = page_size.get();
-        let start = (page_val - 1) as usize * page_size_val as usize;
-        let end = (start + page_size_val as usize).min(total_count);
-        page_count.set((total_count + page_size_val - 1) / page_size_val);
+            let paginated_list: Vec<ConfItem> = if start < total_count {
+                final_list[start..end]
+                    .iter()
+                    .map(|item| (*item).clone())
+                    .collect()
+            } else {
+                Vec::new()
+            };
 
-        let paginated_list: Vec<ConfItem> = if start < total_count {
-            final_list[start..end].to_vec()
-        } else {
-            Vec::new()
-        };
-
-        paginated_list
-    });
-
-    let select_all_name = Memo::new(move |_| {
-        if use_english.get() {
-            "Select All".to_string()
-        } else {
-            "全选".to_string()
-        }
+            paginated_list
+        })
     });
 
     view! {
         <section>
-            <div class="el-switch">
-                <span class=("is_active", move || !use_english.get())>"中文"</span>
-                <Switch checked=use_english />
-                <span class=("is_active", move || use_english.get())>"English"</span>
-            </div>
-
-            <div class="checkbox-item">
-                <label>
-                    <Checkbox
-                        size=CheckboxSize::Large
-                        checked=is_all_checked
-                        on:change=handle_check_all
-                        label=select_all_name
-                    />
-                </label>
+            <div class="language-switches">
+                <div class="el-switch">
+                    <span class=("is_active", move || !use_english.get())>"中文"</span>
+                    <Switch checked=use_english />
+                    <span class=("is_active", move || use_english.get())>"English"</span>
+                </div>
+                <div
+                    class="el-switch past-switch"
+                    on:click=move |_| show_past.update(|value| *value = !*value)
+                >
+                    <Switch checked=show_past />
+                    <span class="past-label">
+                        {move || if use_english.get() {
+                            "Show past conferences"
+                        } else {
+                            "显示往期会议"
+                        }}
+                    </span>
+                </div>
             </div>
 
             <CheckboxGroup value=check_list>
-                <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                <div class="category-filter-grid">
                     <For
                         each=move || {
                             sub_list
@@ -549,6 +492,7 @@ pub fn ShowTable() -> impl IntoView {
                         key=|(_, item)| item.sub.clone()
                         children=move |(_, item)| {
                             let sub = item.sub.clone();
+                            let selected_sub = sub.clone();
                             let label = Memo::new(move |_| {
                                 if is_mobile.get() {
                                     sub.clone()
@@ -560,7 +504,13 @@ pub fn ShowTable() -> impl IntoView {
                             });
 
                             view! {
-                                <div class="checkbox-item">
+                                <div class=move || {
+                                    if check_list.get().contains(&selected_sub) {
+                                        "checkbox-item filter-selected"
+                                    } else {
+                                        "checkbox-item"
+                                    }
+                                }>
                                     <label>
                                         <Checkbox
                                             size=CheckboxSize::Large
@@ -572,20 +522,152 @@ pub fn ShowTable() -> impl IntoView {
                             }
                         }
                     />
+                    {move || {
+                        if check_list.get().is_empty() {
+                            view! {}.into_any()
+                        } else {
+                            view! {
+                                <button
+                                    type="button"
+                                    class="clear-filter"
+                                    on:click=move |_| check_list.set(HashSet::new())
+                                >
+                                    {move || if use_english.get() { "Clear ×" } else { "清除 ×" }}
+                                </button>
+                            }
+                                .into_any()
+                        }
+                    }}
                 </div>
             </CheckboxGroup>
 
-            <div
-                class="timezone"
-                style="padding-top: 15px; color: #666666; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;"
-            >
-                <div
-                    style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1 1 420px; min-width: 260px;"
-                >
-                    <div style="font-size: 16px; line-height: 1.4;">
-                        "Deadlines are shown in "{move || time_zone.get()}" time."
+            <div class="timezone toolbar">
+                <div class="toolbar-main">
+                    <div class=move || {
+                        if base_time.get().is_some() {
+                            "toolbar-base-time is-custom"
+                        } else {
+                            "toolbar-base-time"
+                        }
+                    }>
+                        <button
+                            type="button"
+                            class="toolbar-base-time-trigger"
+                            aria-label=move || if use_english.get() {
+                                "Set countdown base time"
+                            } else {
+                                "设置倒计时基准时间"
+                            }
+                            on:click=move |_| {
+                                if let Some(input) = base_time_input_ref.get() {
+                                    let element: &web_sys::HtmlElement = input.unchecked_ref();
+                                    let _ = element.focus();
+                                    if input.show_picker().is_err() {
+                                        base_time_editing.set(false);
+                                    }
+                                }
+                            }
+                        >
+                            <strong class="toolbar-base-time-value">
+                                {move || format_base_time_display(&base_time_input.get())}
+                            </strong>
+                        </button>
+                        <input
+                            node_ref=base_time_input_ref
+                            id="base-time-input"
+                            type="datetime-local"
+                            step="1"
+                            tabindex="-1"
+                            lang=move || if use_english.get() { "en" } else { "zh-CN" }
+                            prop:value=move || base_time_input.get()
+                            aria-label=move || if use_english.get() {
+                                "Set countdown base time"
+                            } else {
+                                "设置倒计时基准时间"
+                            }
+                            on:focus=move |_| base_time_editing.set(true)
+                            on:input=move |event| {
+                                base_time_input.set(event_target_value(&event));
+                            }
+                            on:change=move |event| {
+                                base_time_editing.set(false);
+                                let value = event_target_value(&event);
+                                if value.trim().is_empty() {
+                                    base_time.set(None);
+                                    base_time_input.set(format_datetime_local(
+                                        Utc::now(),
+                                        &selected_timezone.get_untracked(),
+                                    ));
+                                    page.set(1);
+                                } else if let Some(parsed) = parse_datetime_local(
+                                    &value,
+                                    &selected_timezone.get_untracked(),
+                                ) {
+                                    base_time_input.set(value);
+                                    base_time.set(Some(parsed));
+                                    page.set(1);
+                                }
+                            }
+                            on:blur=move |_| base_time_editing.set(false)
+                        />
                     </div>
-                    <div style="flex: 1 1 240px; min-width: 220px; max-width: 320px;">
+                    <div class="toolbar-timezone">
+                        <span>"("</span>
+                        <div class="toolbar-timezone-picker">
+                            <button
+                                type="button"
+                                class="toolbar-timezone-trigger"
+                                aria-label="Select display timezone"
+                                aria-haspopup="listbox"
+                                aria-expanded=move || {
+                                    open_dropdown.get().as_deref() == Some("timezone")
+                                }
+                                on:click=move |_| {
+                                    if open_dropdown.get_untracked().as_deref() == Some("timezone") {
+                                        open_dropdown.set(None);
+                                    } else {
+                                        open_dropdown.set(Some("timezone".to_string()));
+                                    }
+                                }
+                            >
+                                <span>{move || time_zone.get()}</span>
+                                <span class="toolbar-timezone-arrow" aria-hidden="true">"⌄"</span>
+                            </button>
+                            <Show when=move || open_dropdown.get().as_deref() == Some("timezone")>
+                                <div
+                                    class="toolbar-timezone-backdrop"
+                                    on:click=move |_| open_dropdown.set(None)
+                                ></div>
+                                <div class="toolbar-timezone-menu" role="listbox">
+                                    {display_timezone_options(&browser_time_zone.get_untracked())
+                                        .into_iter()
+                                        .map(|timezone| {
+                                            let value = timezone.clone();
+                                            let selected_value = timezone.clone();
+                                            view! {
+                                                <button
+                                                    type="button"
+                                                    class="toolbar-timezone-option"
+                                                    role="option"
+                                                    aria-selected=move || {
+                                                        selected_timezone.get() == selected_value
+                                                    }
+                                                    on:click=move |_| {
+                                                        selected_timezone.set(value.clone());
+                                                        open_dropdown.set(None);
+                                                    }
+                                                >
+                                                    {timezone}
+                                                </button>
+                                            }
+                                        })
+                                        .collect_view()}
+                                </div>
+                            </Show>
+                        </div>
+                        <span>" time)"</span>
+                    </div>
+                    <div class="toolbar-search">
                         <Input
                             value=input_value
                             placeholder="search conference"
@@ -599,9 +681,66 @@ pub fn ShowTable() -> impl IntoView {
                     </div>
                 </div>
 
-                <div
-                    style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; margin-left: auto;"
-                >
+                <div class="toolbar-actions">
+                    <span class="star-sort-control" class:is-active=move || sort_by_stars.get()>
+                        <Button
+                            class="star-sort-toggle"
+                            size=ButtonSize::Small
+                            appearance=ButtonAppearance::Subtle
+                            on_click=move |_| sort_by_stars.update(|value| *value = !*value)
+                            attr:aria-pressed=move || sort_by_stars.get().to_string()
+                            attr:title=move || if use_english.get() {
+                                "Sort by star count, highest first"
+                            } else {
+                                "按收藏星数从高到低排序"
+                            }
+                        >
+                            <Icon icon=icondata::BsStarFill style="margin-right: 4px;" />
+                            {move || if use_english.get() { "Most starred" } else { "最多收藏" }}
+                        </Button>
+                    </span>
+                    <Button
+                        class="view-mode-toggle"
+                        size=ButtonSize::Small
+                        appearance=ButtonAppearance::Subtle
+                        on_click=move |_| is_list_view.update(|value| *value = !*value)
+                        attr:title=move || {
+                            if use_english.get() {
+                                "switch UI"
+                            } else if is_list_view.get() {
+                                "切换新版UI"
+                            } else {
+                                "切换旧版UI"
+                            }
+                        }
+                    >
+                        {move || {
+                            if is_list_view.get() {
+                                view! { <Icon icon=icondata::BsGrid style="margin-right: 4px;" /> }
+                                    .into_any()
+                            } else {
+                                view! { <Icon icon=icondata::BsList style="margin-right: 4px;" /> }
+                                    .into_any()
+                            }
+                        }}
+                        {move || {
+                            if use_english.get() {
+                                "switch UI"
+                            } else if is_list_view.get() {
+                                "切换新版UI"
+                            } else {
+                                "切换旧版UI"
+                            }
+                        }}
+                    </Button>
+                    <Button
+                        size=ButtonSize::Small
+                        appearance=ButtonAppearance::Subtle
+                        on_click=move |_| show_message_wall.set(true)
+                    >
+                        <Icon icon=icondata::BsChatDots style="margin-right: 4px;" />
+                        {move || if use_english.get() { "Wall" } else { "吹水墙" }}
+                    </Button>
                     <Button
                         size=ButtonSize::Small
                         appearance=ButtonAppearance::Subtle
@@ -620,7 +759,11 @@ pub fn ShowTable() -> impl IntoView {
                                 >
                                     <Icon icon=icondata::FiFilter style="margin-right: 4px;" />
                                     {move || if use_english.get() { "Filters" } else { "筛选" }}
-                                    <Icon icon=if show_filters.get() { icondata::BsChevronUp } else { icondata::BsChevronDown } style="margin-left: 4px;" />
+                                    {move || if show_filters.get() {
+                                        view! { <Icon icon=icondata::BsChevronUp style="margin-left: 4px;" /> }.into_any()
+                                    } else {
+                                        view! { <Icon icon=icondata::BsChevronDown style="margin-left: 4px;" /> }.into_any()
+                                    }}
                                 </Button>
                                 {move || {
                                     if show_filters.get() {
@@ -713,17 +856,405 @@ pub fn ShowTable() -> impl IntoView {
                 thcpl_rank_list=thcpl_rank_list
             />
 
-            <div class="zonedivider" />
-            <div style="width: 100%">
+            <MessageWallModal show=show_message_wall use_english=use_english />
+
+            <FavoritesTimelineModal
+                show=show_favorites_timeline
+                use_english=use_english
+                conferences=all_conf_list
+                reference_time=base_time
+                display_timezone=time_zone
+            />
+
+            <BatchSubscriptionModal
+                show=show_batch_subscription
+                use_english=use_english
+                conferences=raw_conferences
+            />
+
+            <EmailReminderModal show=show_email_reminders use_english=use_english />
+
+            <Dialog open=show_conf_detail>
+                <DialogSurface class="conference-detail-dialog">
+                    <DialogBody>
+                        <Show when=move || selected_conf.get().is_some()>
+                            {move || {
+                                selected_conf.get().map(|conf| {
+                                    let is_tbd = conf.status == "TBD";
+                                    let display_timezone = time_zone.get();
+                                    let estimated_next_labels = conf
+                                        .estimated_deadlines
+                                        .iter()
+                                        .map(|estimate| {
+                                            let kind = if estimate.is_abstract {
+                                                "abstract"
+                                            } else {
+                                                "paper"
+                                            };
+                                            format!(
+                                                "Est. {}: {} · {}",
+                                                if kind == "abstract" {
+                                                    "Abstract"
+                                                } else {
+                                                    "Paper"
+                                                },
+                                                format_estimated_deadline_date(&estimate.deadline),
+                                                conf.timezone,
+                                            )
+                                        })
+                                        .collect::<Vec<_>>();
+                                    let estimated_details = conf
+                                        .estimated_deadlines
+                                        .iter()
+                                        .map(|estimate| {
+                                            let kind = if estimate.is_abstract {
+                                                "abstract"
+                                            } else {
+                                                "paper"
+                                            };
+                                            (
+                                                format!("Estimated {kind} submission deadline"),
+                                                format!(
+                                                    "{} · {}",
+                                                    format_estimated_deadline_date(
+                                                        &estimate.deadline,
+                                                    ),
+                                                    conf.timezone,
+                                                ),
+                                                format!("based on {}", estimate.source_year),
+                                            )
+                                        })
+                                        .collect::<Vec<_>>();
+                                    let mut deadlines = conf.ddls.clone();
+                                    deadlines.sort_by_key(|point| point.timepoint);
+                                    let custom_base_time = base_time.get();
+                                    let countdown_running = custom_base_time.is_none();
+                                    let now = custom_base_time.unwrap_or_else(Utc::now);
+                                    let next_index = deadlines
+                                        .iter()
+                                        .position(|point| point.timepoint > now);
+                                    let next_remain = next_index.map(|index| {
+                                        deadlines[index]
+                                            .timepoint
+                                            .signed_duration_since(now)
+                                            .num_milliseconds()
+                                            .max(0) as u64
+                                    });
+                                    let first_timeline_date = deadlines
+                                        .first()
+                                        .map(|point| {
+                                            if point.timepoint > now {
+                                                now.with_timezone(point.timepoint.offset())
+                                                    .format("%b %-d, %Y")
+                                                    .to_string()
+                                            } else {
+                                                point.timepoint.format("%b %-d, %Y").to_string()
+                                            }
+                                        });
+                                    let last_timeline_date = deadlines
+                                        .last()
+                                        .map(|point| {
+                                            if point.timepoint < now {
+                                                now.with_timezone(point.timepoint.offset())
+                                                    .format("%b %-d, %Y")
+                                                    .to_string()
+                                            } else {
+                                                point.timepoint.format("%b %-d, %Y").to_string()
+                                            }
+                                        });
+                                    let ics_filename = format!("{}-{}.ics", conf.title, conf.year);
+                                    let google_calendar_open = RwSignal::new(false);
+                                    let (google_calendar_links, icloud_calendar_url) =
+                                        build_calendar_urls(&conf);
+                                    let core_rank = conf.corerank.as_deref().unwrap_or("N");
+                                    let core_label = if core_rank == "N" {
+                                        "Non-CORE".to_string()
+                                    } else {
+                                        format!("CORE {core_rank}")
+                                    };
+                                    let thcpl_rank = conf.thcplrank.as_deref().unwrap_or("N");
+                                    let thcpl_label = if thcpl_rank == "N" {
+                                        "Non-THCPL".to_string()
+                                    } else {
+                                        format!("THCPL {thcpl_rank}")
+                                    };
+                                    let show_round = deadlines
+                                        .iter()
+                                        .map(|point| point.round)
+                                        .max()
+                                        .unwrap_or_default()
+                                        > 1;
+                                    let deadline_cards = deadlines
+                                        .iter()
+                                        .enumerate()
+                                        .map(|(index, point)| {
+                                            let label = deadline_detail_label(point.r#type);
+                                            let label = if show_round {
+                                                format!("Round {} {label}", point.round)
+                                            } else {
+                                                label.to_string()
+                                            };
+                                            let is_next = next_index == Some(index);
+                                            let is_passed = point.timepoint <= now;
+                                            let remaining = point.timepoint.signed_duration_since(now);
+                                            let remaining_ms = remaining.num_milliseconds().max(0) as u64;
+                                            let days = remaining.num_days();
+                                            let status_class = format!(
+                                                "conference-detail-deadline-status {}",
+                                                urgency_class_for(remaining_ms / 1000),
+                                            );
+                                            let date = format!(
+                                                "{} · {}",
+                                                point.timepoint.format("%H:%M, %b %-d, %Y"),
+                                                display_timezone,
+                                            );
+                                            view! {
+                                                <div class=if is_next { "conference-detail-deadline is-next" } else if is_passed { "conference-detail-deadline is-passed" } else { "conference-detail-deadline" }>
+                                                    <div class="conference-detail-deadline-main">
+                                                        <div class="conference-detail-deadline-name">
+                                                            {label}
+                                                            {is_next.then(|| view! { <small>"NEXT"</small> })}
+                                                        </div>
+                                                        <div class="conference-detail-deadline-date">{date}</div>
+                                                    </div>
+                                                    <span class=status_class>
+                                                        {if is_passed {
+                                                            view! { "passed" }.into_any()
+                                                        } else if days < 1 {
+                                                            view! { <CountDown remain=remaining_ms running=countdown_running /> }.into_any()
+                                                        } else if days == 1 {
+                                                            view! { "1 day" }.into_any()
+                                                        } else {
+                                                            view! { {format!("{days} days")} }.into_any()
+                                                        }}
+                                                    </span>
+                                                </div>
+                                            }
+                                        })
+                                        .collect_view();
+                                    view! {
+                                        <DialogTitle class="conference-detail-title">
+                                            <span class="conference-detail-title-text">
+                                                {conf.title.clone()} " " {conf.year}
+                                            </span>
+                                            {
+                                                let conference_key = conf.id.clone();
+                                                view! {
+                                                    <span
+                                                        class="conference-detail-star-count"
+                                                        title="GitHub user favorites"
+                                                        aria-label="GitHub user favorites"
+                                                    >
+                                                        <Icon icon=icondata::BsStarFill />
+                                                        <span>{move || favorites.count(&conference_key)}</span>
+                                                    </span>
+                                                }
+                                            }
+                                        </DialogTitle>
+                                        <button
+                                            type="button"
+                                            class="conference-detail-close"
+                                            aria-label="Close"
+                                            on:click=move |_| show_conf_detail.set(false)
+                                        >"×"</button>
+                                        <DialogContent>
+                                            <div class="conference-detail-description">
+                                                <span>{conf.description.clone()}</span>
+                                                <a
+                                                    class="conference-detail-dblp"
+                                                    href=format!(
+                                                        "https://dblp.org/db/conf/{}",
+                                                        conf.dblp,
+                                                    )
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    title="View on DBLP"
+                                                    aria-label="View conference on DBLP"
+                                                >
+                                                    <img
+                                                        src="https://dblp.org/img/favicon.ico"
+                                                        alt=""
+                                                        aria-hidden="true"
+                                                    />
+                                                </a>
+                                            </div>
+                                            {conf.acc_str.clone().map(|rate| view! {
+                                                <div class="conference-detail-acceptance">
+                                                    "Acc. Rate: " {rate}
+                                                </div>
+                                            })}
+                                            <div class="conference-detail-section">
+                                                <span class="conference-detail-label">"DATES"</span>
+                                                <div>{conf.date.clone()}</div>
+                                            </div>
+                                            <div class="conference-detail-section">
+                                                <span class="conference-detail-label">"VENUE"</span>
+                                                <div>{conf.place.clone()}</div>
+                                            </div>
+                                            {conf.comment.clone().map(|comment| view! {
+                                                <div class="conference-detail-note">
+                                                    "NOTE: " {comment}
+                                                </div>
+                                            })}
+                                            <div class="conference-detail-next">
+                                                <span class="conference-detail-label">"NEXT DEADLINE IN"</span>
+                                                <strong>
+                                                    {if is_tbd {
+                                                        view! { "TBD" }.into_any()
+                                                    } else if let Some(remain) = next_remain {
+                                                        view! { <CountDown remain detailed=true running=countdown_running /> }.into_any()
+                                                    } else {
+                                                        view! { "Passed" }.into_any()
+                                                    }}
+                                                </strong>
+                                                {estimated_next_labels
+                                                    .into_iter()
+                                                    .map(|label| view! {
+                                                        <small class="conference-detail-next-estimate">
+                                                            {label}
+                                                        </small>
+                                                    })
+                                                    .collect_view()}
+                                            </div>
+                                            <div class="conference-detail-section">
+                                                <span class="conference-detail-label">"IMPORTANT DEADLINES"</span>
+                                                {(!is_tbd && conf.status != "FIN" && !conf.ddls.is_empty()).then(|| view! {
+                                                    <div class="conference-detail-timeline">
+                                                        <TimeLine
+                                                            time_points=conf.ddls.clone()
+                                                            reference_time=now
+                                                            custom_reference=!countdown_running
+                                                        />
+                                                        <div class="conference-detail-timeline-range">
+                                                            <span>{first_timeline_date.clone()}</span>
+                                                            <span>{last_timeline_date.clone()}</span>
+                                                        </div>
+                                                    </div>
+                                                })}
+                                                {deadline_cards}
+                                                {is_tbd.then(|| {
+                                                    if estimated_details.is_empty() {
+                                                        view! {
+                                                            <div class="conference-detail-deadline">
+                                                                "Dates to be announced"
+                                                            </div>
+                                                        }
+                                                            .into_any()
+                                                    } else {
+                                                        estimated_details
+                                                            .into_iter()
+                                                            .map(|(label, date, source)| view! {
+                                                                <div class="conference-detail-deadline is-estimated">
+                                                                    <div class="conference-detail-deadline-main">
+                                                                        <div class="conference-detail-deadline-name">
+                                                                            {label}
+                                                                            <small>"EST."</small>
+                                                                        </div>
+                                                                        <div class="conference-detail-deadline-date">{date}</div>
+                                                                    </div>
+                                                                    <span class="conference-detail-deadline-status conference-detail-estimate-source">
+                                                                        {source}
+                                                                    </span>
+                                                                </div>
+                                                            })
+                                                            .collect_view()
+                                                            .into_any()
+                                                    }
+                                                })}
+                                            </div>
+                                            <div class="conference-detail-tags">
+                                                <span>{conf.displayrank.clone()}</span>
+                                                <span>{core_label}</span>
+                                                <span>{thcpl_label}</span>
+                                                <span>{conf.subname.clone()}</span>
+                                            </div>
+                                            <div class="conference-detail-actions">
+                                                <a class="conference-detail-website" href=conf.link.clone() target="_blank">"Visit website ↗"</a>
+                                                {(!google_calendar_links.is_empty()).then(|| view! {
+                                                    <button type="button" class="conference-detail-calendar-link" aria-expanded=move || google_calendar_open.get() on:click=move |_| {
+                                                        google_calendar_open.update(|open| *open = !*open);
+                                                    }>
+                                                        <img
+                                                            src="https://ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_31_2x.png"
+                                                            alt=""
+                                                            aria-hidden="true"
+                                                        />
+                                                        <span>"Google Calendar"</span>
+                                                    </button>
+                                                })}
+                                                {icloud_calendar_url.map(|url| view! {
+                                                    <a class="conference-detail-calendar-link" href=url download=ics_filename.clone()>
+                                                        <img
+                                                            src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png"
+                                                            alt=""
+                                                            aria-hidden="true"
+                                                        />
+                                                        <span>"iCloud Calendar"</span>
+                                                    </a>
+                                                })}
+                                            </div>
+                                            <Show when=move || google_calendar_open.get()>
+                                                <div class="conference-detail-calendar-events">
+                                                    {google_calendar_links.clone().into_iter().map(|(label, url)| view! {
+                                                        <a href=url target="_blank" rel="noopener noreferrer">{label}</a>
+                                                    }).collect_view()}
+                                                </div>
+                                            </Show>
+                                        </DialogContent>
+                                    }
+                                })
+                            }}
+                        </Show>
+                    </DialogBody>
+                </DialogSurface>
+            </Dialog>
+
+            <div class=move || {
+                if is_list_view.get() {
+                    "conference-list conference-list--rows"
+                } else {
+                    "conference-list"
+                }
+            }>
+                <div class="conference-list-hint">
+                    {move || if use_english.get() {
+                        "Click over cells for more information"
+                    } else {
+                        "点击卡片查看详情"
+                    }}
+                </div>
                 <Table>
                     <TableBody>
                         {move || {
                             if paginated_list.get().is_empty() {
                                 view! {
-                                    <TableRow>
+                                    <TableRow class="no-data-row">
                                         <TableCell>
-                                            <div style="color: #909399; text-align: center;">
-                                                "No data available."
+                                            <div class="no-data-message">
+                                                {move || {
+                                                    if conferences_loading.get() {
+                                                        "Loading conference deadlines..."
+                                                    } else if conference_load_failed.get() {
+                                                        if use_english.get() {
+                                                            "Unable to load conference deadlines. Please retry."
+                                                        } else {
+                                                            "会议数据加载失败，请重试。"
+                                                        }
+                                                    } else if use_english.get() {
+                                                        "No data available."
+                                                    } else {
+                                                        "暂无数据"
+                                                    }
+                                                }}
+                                                <Show when=move || conference_load_failed.get()>
+                                                    <button
+                                                        type="button"
+                                                        class="conference-load-retry"
+                                                        on:click=move |_| conference_load_attempt.update(|attempt| *attempt += 1)
+                                                    >
+                                                        {move || if use_english.get() { "Retry" } else { "重试" }}
+                                                    </button>
+                                                </Show>
                                             </div>
                                         </TableCell>
                                     </TableRow>
@@ -733,12 +1264,18 @@ pub fn ShowTable() -> impl IntoView {
                                 view! {
                                     <For
                                         each=move || paginated_list.get()
-                                        key=|conf| {
-                                            format!("{}{}", conf.title.clone(), conf.year.clone())
+                                        key=move |conf| {
+                                            (
+                                                conf.id.clone(),
+                                                conf.is_like,
+                                                selected_timezone.get(),
+                                                base_time.get().map(|value| value.timestamp_millis()),
+                                            )
                                         }
                                         children=move |conf| {
                                             let is_finished = conf.status == "FIN";
                                             let is_tbd = conf.status == "TBD";
+                                            let conf_for_detail = conf.clone();
                                             let ccf_rank_value = conf.rank.clone();
                                             let ccf_rank_label = conf.displayrank.clone();
                                             let core_rank_value = conf
@@ -759,97 +1296,149 @@ pub fn ShowTable() -> impl IntoView {
                                             } else {
                                                 format!("THCPL {}", thcpl_rank_value.clone())
                                             };
-                                            let show_ddl_str = if is_tbd {
-                                                "TBD".to_string()
-                                            } else {
-                                                format!(
-                                                    "{} ({})",
-                                                    conf.local_ddl.clone().unwrap(),
-                                                    conf.origin_ddl.clone().unwrap(),
-                                                )
-                                            };
+                                            let deadline_kind =
+                                                deadline_summary_label(conf.deadline_type);
+                                            let list_deadline_kind =
+                                                deadline_short_label(conf.deadline_type);
+                                            let deadline_date = conf.deadline.clone();
+                                            let deadline_timezone = conf.timezone.clone();
+                                            let countdown_remain = remaining_until_deadline(
+                                                &deadline_date,
+                                                &deadline_timezone,
+                                                base_time.get_untracked().unwrap_or_else(Utc::now),
+                                            )
+                                            .unwrap_or(conf.remain);
+                                            let countdown_running = base_time.get_untracked().is_none();
+                                            let list_deadline = deadline_date.clone();
+                                            let list_timezone = deadline_timezone.clone();
+                                            let timezone_selection =
+                                                selected_timezone.get_untracked();
+                                            let display_timezone = time_zone.get_untracked();
+                                            let list_deadline_display = format_legacy_deadline_display(
+                                                &list_deadline,
+                                                &list_timezone,
+                                                &timezone_selection,
+                                                &display_timezone,
+                                            );
+                                            let list_website = conf.link.clone();
+                                            let list_timeline = conf.ddls.clone();
+                                            let timeline_reference = base_time
+                                                .get_untracked()
+                                                .unwrap_or_else(Utc::now);
+                                            let estimated_deadline_display = conf
+                                                .estimated_deadlines
+                                                .iter()
+                                                .map(|estimate| {
+                                                    let kind = if estimate.is_abstract {
+                                                        "abstract"
+                                                    } else {
+                                                        "paper"
+                                                    };
+                                                    let date = format_estimated_deadline_date(
+                                                        &estimate.deadline,
+                                                    );
+                                                    (
+                                                        format!(
+                                                            "Est. {}: {date}",
+                                                            if kind == "abstract" {
+                                                                "Abstract"
+                                                            } else {
+                                                                "Paper"
+                                                            },
+                                                        ),
+                                                        format!(
+                                                            "Estimated from the {} deadline schedule",
+                                                            estimate.source_year,
+                                                        ),
+                                                    )
+                                                })
+                                                .collect::<Vec<_>>();
+                                            let estimated_deadline_card =
+                                                estimated_deadline_display.clone();
+                                            let estimated_deadline_list =
+                                                estimated_deadline_display.clone();
                                             view! {
-                                                <TableRow>
+                                                <TableRow
+                                                    on:click=move |_| {
+                                                        let mut detail_conf = conf_for_detail.clone();
+                                                        let rates = acceptance_rates.get_untracked();
+                                                        apply_acceptance_rate(&mut detail_conf, &rates);
+                                                        selected_conf.set(Some(detail_conf));
+                                                        show_conf_detail.set(true);
+                                                    }
+                                                >
                                                     <TableCell>
                                                         <TableCellLayout>
                                                             <div class=("conf-fin", is_finished)>
-                                                                <div class="conf-title">
-                                                                    <a
-                                                                        href=format!(
-                                                                            "https://dblp.org/db/conf/{}",
-                                                                            conf.dblp,
-                                                                        )
-                                                                        style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"
-                                                                        target="_blank"
-                                                                    >
+                                                                <div class="conference-card-heading">
+                                                                    <div class="conf-title">
                                                                         {conf.title.clone()}
+                                                                        " "
+                                                                        {conf.year.clone()}
+                                                                    </div>
+                                                                    <a
+                                                                        class="conference-card-website"
+                                                                        href=conf.link.clone()
+                                                                        on:click=move |event| event.stop_propagation()
+                                                                        target="_blank"
+                                                                        aria-label="Visit conference website"
+                                                                        title="Visit conference website"
+                                                                    >
+                                                                        <Icon icon=icondata::FiExternalLink />
                                                                     </a>
-                                                                    " "
-                                                                    {conf.year.clone()}
-                                                                    {move || {
-                                                                        let conf_title = conf.title.clone();
-                                                                        let conf_year = conf.year.clone();
-                                                                        let current_like = conf.is_like;
-                                                                        if !current_like {
-                                                                            view! {
-                                                                             <div
-                                                                                     style="display: inline; cursor: pointer; transition: transform 0.15s ease;"
-                                                                                     on:click=move |_| {
-                                                                                         all_conf_list
-                                                                                             .update(|conferences| {
-                                                                                                 for item in conferences.iter_mut() {
-                                                                                                     if item.title == conf_title && item.year == conf_year {
-                                                                                                         item.is_like = true;
-                                                                                                         like_list
-                                                                                                             .update(|mut list| {
-                                                                                                                 list.insert(item.id.clone());
-                                                                                                             });
-                                                                                                         break;
-                                                                                                     }
-                                                                                                 }
-                                                                                             });
-                                                                                     }
-                                                                                 >
-                                                                                     <Icon icon=icondata::BsStar style="margin-left: 5px; font-size: 18px; color: #909399;" />
-                                                                                 </div>
-                                                                            }
-                                                                                .into_any()
+                                                                    {
+                                                                        let conference_key = conf.id.clone();
+                                                                        let pending_key = conference_key.clone();
+                                                                        let count_key = conference_key.clone();
+                                                                        let is_liked = conf.is_like;
+                                                                        let label = if !favorites.loaded.get_untracked() {
+                                                                            "Loading favorites"
+                                                                        } else if is_liked {
+                                                                            "Remove from favorites"
+                                                                        } else if favorites.user.get_untracked().is_some() {
+                                                                            "Add to favorites"
                                                                         } else {
-                                                                            view! {
-                                                                             <div
-                                                                                     style="display: inline; cursor: pointer; transition: transform 0.15s ease;"
-                                                                                     on:click=move |_| {
-                                                                                         all_conf_list
-                                                                                             .update(|conferences| {
-                                                                                                 for item in conferences.iter_mut() {
-                                                                                                     if item.title == conf_title && item.year == conf_year {
-                                                                                                         item.is_like = false;
-                                                                                                         like_list
-                                                                                                             .update(|mut list| {
-                                                                                                                 list.remove(&item.id.clone());
-                                                                                                             });
-                                                                                                         break;
-                                                                                                     }
-                                                                                                 }
-                                                                                             });
-                                                                                     }
-                                                                                 >
-                                                                                     <Icon
-                                                                                         icon=icondata::BsStarFill
-                                                                                         style="color: rgb(251, 202, 4); margin-left: 5px; font-size: 18px;"
-                                                                                     />
-                                                                                 </div>
-                                                                            }
-                                                                                .into_any()
+                                                                            "Sign in with GitHub to favorite"
+                                                                        };
+                                                                        view! {
+                                                                            <button
+                                                                                type="button"
+                                                                                class=if is_liked {
+                                                                                    "conference-like-toggle is-liked"
+                                                                                } else {
+                                                                                    "conference-like-toggle"
+                                                                                }
+                                                                                disabled=move || {
+                                                                                    !favorites.loaded.get()
+                                                                                        || favorites.is_pending(&pending_key)
+                                                                                }
+                                                                                aria-label=label
+                                                                                title=label
+                                                                                on:click=move |event| {
+                                                                                    event.stop_propagation();
+                                                                                    favorites.toggle(conference_key.clone());
+                                                                                }
+                                                                            >
+                                                                                <Icon icon=if is_liked {
+                                                                                    icondata::BsStarFill
+                                                                                } else {
+                                                                                    icondata::BsStar
+                                                                                } />
+                                                                                <span class="conference-like-count">
+                                                                                    {move || favorites.count(&count_key)}
+                                                                                </span>
+                                                                            </button>
                                                                         }
-                                                                    }}
+                                                                    }
                                                                 </div>
 
-                                                                <div style="font-size: 14px; color: #606266; margin-top: 3px;">
-                                                                    {conf.date.clone()} " " {conf.place.clone()}
+                                                                <div class="conference-card-date" style="font-size: 13px; color: #606266; margin-top: 3px;">
+                                                                    <div>{conf.date.clone()}</div>
+                                                                    <div class="conference-card-place">{display_place(&conf.place)}</div>
+                                                                    <div class="conference-list-place">{conf.place.clone()}</div>
                                                                 </div>
 
-                                                                <div style="font-size: 14px; color: #606266; margin-top: 3px;">
+                                                                <div class="conference-list-description">
                                                                     {conf.description.clone()}
                                                                 </div>
 
@@ -890,29 +1479,21 @@ pub fn ShowTable() -> impl IntoView {
                                                                         </Tag>
                                                                     </span>
                                                                     " "
-                                                                    {move || {
-                                                                        conf.comment
-                                                                            .as_ref()
-                                                                            .map(|comment| {
-                                                                                view! {
-                                                                                    <span style="color: #409eff">
-                                                                                        <b>"NOTE: "</b>
-                                                                                        {comment.clone()}
-                                                                                    </span>
-                                                                                }
-                                                                            })
-                                                                    }}
+                                                                    {conf.comment.clone().map(|comment| view! {
+                                                                        <span class="conference-list-note">
+                                                                            <b>"NOTE: "</b>{comment}
+                                                                        </span>
+                                                                    })}
                                                                 </div>
 
-                                                                <div style="padding-top: 5px; font-size: 14px; color: #606266;">
-                                                                    {move || {
-                                                                        if let Some(ref acc) = conf.acc_str {
-                                                                            format!("Acc. Rate: {} ", acc)
+                                                                <div class="conference-card-acceptance">
+                                                                    <span class=move || {
+                                                                        if check_list.get().contains(&conf.sub) {
+                                                                            "conference-card-category category-highlight"
                                                                         } else {
-                                                                            "".to_string()
+                                                                            "conference-card-category"
                                                                         }
-                                                                    }}
-                                                                    <span style="color: rgb(36, 101, 191); background: rgba(236, 240, 241, 0.7); font-size: 13px; padding: 3px 5px;">
+                                                                    }>
                                                                         {move || {
                                                                             if use_english.get() {
                                                                                 conf.subname_en.clone()
@@ -933,76 +1514,179 @@ pub fn ShowTable() -> impl IntoView {
                                                                 "conf-fin",
                                                                 is_finished,
                                                             )>
-
-                                                                {move || {
-                                                                    if is_tbd {
-                                                                        view! {
-                                                                            <div class="countdown-container">
-                                                                                <div class="countdown-display">
-                                                                                    <span class="countdown-value">"TBD"</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        }
-                                                                            .into_any()
-                                                                    } else {
-                                                                        view! {
-                                                                            <div class="countdown-container">
-                                                                                <div class="countdown-display">
-                                                                                    <span class="countdown-value">
-                                                                                        <CountDown remain=conf.remain.clone() />
-                                                                                        // <Icon icon=icondata::VsCalendar style="margin-left: 5px"/>
-                                                                                        <CalendarPopover
-                                                                                            google_calendar_url=conf.google_calendar_url.clone()
-                                                                                            icloud_calendar_url=conf.icloud_calendar_url.clone()
-                                                                                            is_mobile
-                                                                                        />
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                        }
-                                                                            .into_any()
+                                                                {if is_finished {
+                                                                    view! {
+                                                                        <div class="conference-card-passed">
+                                                                            "Deadline passed"
+                                                                        </div>
                                                                     }
+                                                                        .into_any()
+                                                                } else {
+                                                                    view! {
+                                                                        <div class="conference-card-deadline-row">
+                                                                            {if is_tbd {
+                                                                                view! {
+                                                                                    <div class="countdown-container">
+                                                                                        <div class="countdown-display">
+                                                                                            <span class="countdown-value">"TBD"</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                }
+                                                                                    .into_any()
+                                                                            } else {
+                                                                                view! {
+                                                                                    <div class="countdown-container">
+                                                                                        <div class="countdown-display">
+                                                                                            <span class="countdown-value">
+                                                                                                {move || {
+                                                                                                    if is_list_view.get() {
+                                                                                                        view! {
+                                                                                                            <CountDown remain=countdown_remain legacy=true running=countdown_running />
+                                                                                                        }
+                                                                                                            .into_any()
+                                                                                                    } else {
+                                                                                                        view! {
+                                                                                                            <CountDown remain=countdown_remain running=countdown_running />
+                                                                                                        }
+                                                                                                            .into_any()
+                                                                                                    }
+                                                                                                }}
+                                                                                                {move || {
+                                                                                                    if is_list_view.get() {
+                                                                                                        view! {
+                                                                                                            <span class="conference-list-calendar" aria-hidden="true">
+                                                                                                                <Icon icon=icondata::VsCalendar />
+                                                                                                            </span>
+                                                                                                        }
+                                                                                                            .into_any()
+                                                                                                    } else {
+                                                                                                        view! {}.into_any()
+                                                                                                    }
+                                                                                                }}
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                }
+                                                                                    .into_any()
+                                                                            }}
+                                                                            <div class="conference-card-deadline" style="font-size: 11px; color: #606266; margin-top: 3px;">
+                                                                                {if is_tbd {
+                                                                                    if estimated_deadline_card.is_empty() {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                <a
+                                                                                                    href="https://github.com/ccfddl/ccf-deadlines/pulls"
+                                                                                                    on:click=move |event| event.stop_propagation()
+                                                                                                    target="_blank"
+                                                                                                >
+                                                                                                    "pull request to update"
+                                                                                                </a>
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    } else {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                {estimated_deadline_card
+                                                                                                    .into_iter()
+                                                                                                    .map(|(label, title)| view! {
+                                                                                                        <span class="conference-card-estimate" title=title>
+                                                                                                            {label}
+                                                                                                        </span>
+                                                                                                    })
+                                                                                                    .collect_view()}
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    }
+                                                                                } else {
+                                                                                    view! {
+                                                                                        <span>
+                                                                                            <b>{deadline_kind}</b>
+                                                                                            <small>{format_deadline_display(
+                                                                                                &deadline_date,
+                                                                                                &deadline_timezone,
+                                                                                            )}</small>
+                                                                                        </span>
+                                                                                    }
+                                                                                        .into_any()
+                                                                                }}
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                        .into_any()
                                                                 }}
-                                                                <div style="font-size: 14px; color: #606266; margin-top: 3px;">
-                                                                    {move || {
-                                                                        if is_tbd {
-                                                                            view! {
-                                                                                <span>
-                                                                                    "Deadline: "
-                                                                                    <a
-                                                                                        href="https://github.com/ccfddl/ccf-deadlines/pulls"
-                                                                                        style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit;"
-                                                                                        target="_blank"
-                                                                                    >
-                                                                                        "pull request to update"
-                                                                                    </a>
-                                                                                </span>
-                                                                            }
-                                                                                .into_any()
+                                                                {move || {
+                                                                    if is_list_view.get() {
+                                                                        let timeline = if is_finished || is_tbd {
+                                                                            view! {}.into_any()
                                                                         } else {
                                                                             view! {
-                                                                                <span>{format!("Deadline: {}", show_ddl_str)}</span>
+                                                                                <TimeLine
+                                                                                    time_points=list_timeline.clone()
+                                                                                    reference_time=timeline_reference
+                                                                                    custom_reference=!countdown_running
+                                                                                />
                                                                             }
                                                                                 .into_any()
+                                                                        };
+                                                                        view! {
+                                                                            <div class="conference-list-deadline-meta">
+                                                                                {if is_tbd {
+                                                                                    if estimated_deadline_list.is_empty() {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                <a
+                                                                                                    href="https://github.com/ccfddl/ccf-deadlines/pulls"
+                                                                                                    on:click=move |event| event.stop_propagation()
+                                                                                                    target="_blank"
+                                                                                                >
+                                                                                                    "pull request to update"
+                                                                                                </a>
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    } else {
+                                                                                        view! {
+                                                                                            <span>
+                                                                                                {estimated_deadline_list
+                                                                                                    .clone()
+                                                                                                    .into_iter()
+                                                                                                    .map(|(label, title)| view! {
+                                                                                                        <span class="conference-card-estimate" title=title>
+                                                                                                            {label}
+                                                                                                        </span>
+                                                                                                    })
+                                                                                                    .collect_view()}
+                                                                                            </span>
+                                                                                        }
+                                                                                            .into_any()
+                                                                                    }
+                                                                                } else {
+                                                                                    view! {
+                                                                                        <span>
+                                                                                            {list_deadline_kind}": "
+                                                                                            {list_deadline_display.clone()}
+                                                                                        </span>
+                                                                                    }
+                                                                                        .into_any()
+                                                                                }}
+                                                                            </div>
+                                                                            <div class="conference-list-website">
+                                                                                "Website: "
+                                                                                <a
+                                                                                    href=list_website.clone()
+                                                                                    on:click=move |event| event.stop_propagation()
+                                                                                    target="_blank"
+                                                                                >
+                                                                                    {list_website.clone()}
+                                                                                </a>
+                                                                            </div>
+                                                                            {timeline}
                                                                         }
-                                                                    }}
-                                                                </div>
-                                                                <div style="font-size: 14px; color: #606266; margin-top: 3px;">
-                                                                    "website: "
-                                                                    <a
-                                                                        href=conf.link.clone()
-                                                                        style="text-decoration: none; border-bottom: 1px solid #ccc; color: inherit; word-wrap: break-word;"
-                                                                        target="_blank"
-                                                                    >
-                                                                        {conf.link.clone()}
-                                                                    </a>
-                                                                </div>
-                                                                {move || {
-                                                                    if is_finished || is_tbd {
-                                                                        view! {}.into_any()
-                                                                    } else {
-                                                                        view! { <TimeLine time_points=conf.ddls.clone() /> }
                                                                             .into_any()
+                                                                    } else {
+                                                                        view! {}.into_any()
                                                                     }
                                                                 }}
                                                             </div>
@@ -1022,7 +1706,7 @@ pub fn ShowTable() -> impl IntoView {
 
             <div class="footer">
                 <div class="footer-text">
-                    <span>
+                    <span class="footer-credit">
                         "Maintained by @ccfddl. If you find it useful, star or follow "
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank">
                             "@ccfddl"
@@ -1037,9 +1721,9 @@ pub fn ShowTable() -> impl IntoView {
             <style>
                 {r#"
                 .tag-container .tag-highlight .plain-tag {
-                  background: #ecf5ff !important;
-                  color: #1d4ed8 !important;
-                  border: 1px solid #93c5fd !important;
+                                    background: #e9f2fa !important;
+                                    color: #356d9e !important;
+                                    border: 1px solid #b8d2e8 !important;
                   font-weight: 600;
                 }
                 "#}
@@ -1049,12 +1733,732 @@ pub fn ShowTable() -> impl IntoView {
 }
 
 static UTC_MAP: OnceLock<HashMap<String, String>> = OnceLock::new();
+type AcceptanceRateMap = HashMap<String, Vec<(i32, String)>>;
+
+fn browser_origin() -> Option<String> {
+    window().and_then(|browser| browser.location().origin().ok())
+}
+
+const DISPLAY_TIMEZONES: &[&str] = &[
+    "Pacific/Honolulu",
+    "America/Los_Angeles",
+    "America/Denver",
+    "America/Chicago",
+    "America/New_York",
+    "America/Sao_Paulo",
+    "Europe/London",
+    "Europe/Paris",
+    "Europe/Berlin",
+    "Africa/Cairo",
+    "Asia/Dubai",
+    "Asia/Kolkata",
+    "Asia/Bangkok",
+    "Asia/Shanghai",
+    "Asia/Tokyo",
+    "Australia/Sydney",
+    "Pacific/Auckland",
+];
+
+#[cfg(target_arch = "wasm32")]
+fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
+    use wasm_bindgen::JsCast;
+    use web_sys::js_sys::Array;
+
+    let mut options =
+        web_sys::js_sys::eval("Intl.supportedValuesOf ? Intl.supportedValuesOf('timeZone') : []")
+            .ok()
+            .and_then(|value| value.dyn_into::<Array>().ok())
+            .map(|values| {
+                values
+                    .iter()
+                    .filter_map(|value| value.as_string())
+                    .collect()
+            })
+            .unwrap_or_else(|| fallback_display_timezone_options());
+    options.retain(|timezone| timezone != browser_timezone);
+    options.insert(0, browser_timezone.to_string());
+    options
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
+    let mut options = fallback_display_timezone_options();
+    options.retain(|timezone| timezone != browser_timezone);
+    options.insert(0, browser_timezone.to_string());
+    options
+}
+
+fn fallback_display_timezone_options() -> Vec<String> {
+    DISPLAY_TIMEZONES
+        .iter()
+        .map(|timezone| (*timezone).to_string())
+        .collect()
+}
+
+fn is_supported_display_timezone(value: &str, browser_timezone: &str) -> bool {
+    display_timezone_options(browser_timezone)
+        .iter()
+        .any(|timezone| timezone == value)
+}
+
+#[cfg(target_arch = "wasm32")]
+fn display_timezone_offset_at(timezone: &str, timestamp_millis: i64) -> FixedOffset {
+    timezone_offset_from_intl(timezone, timestamp_millis)
+        .unwrap_or_else(|| FixedOffset::east_opt(0).expect("UTC offset is valid"))
+}
+
+#[cfg(target_arch = "wasm32")]
+fn timezone_offset_from_intl(timezone: &str, timestamp_millis: i64) -> Option<FixedOffset> {
+    use web_sys::js_sys::{Array, Date, Intl, Object, Reflect};
+
+    let locales = Array::new();
+    locales.push(&"en-US".into());
+    let options = Object::new();
+    for (key, value) in [
+        ("timeZone", timezone),
+        ("year", "numeric"),
+        ("month", "2-digit"),
+        ("day", "2-digit"),
+        ("hour", "2-digit"),
+        ("minute", "2-digit"),
+        ("second", "2-digit"),
+        ("hourCycle", "h23"),
+    ] {
+        Reflect::set(&options, &key.into(), &value.into()).ok()?;
+    }
+
+    let formatter = Intl::DateTimeFormat::new(&locales, &options);
+    let date = Date::new(&wasm_bindgen::JsValue::from_f64(timestamp_millis as f64));
+    let parts = formatter.format_to_parts(&date);
+    let mut values = HashMap::new();
+    for part in parts.iter() {
+        let kind = Reflect::get(&part, &"type".into()).ok()?.as_string()?;
+        let value = Reflect::get(&part, &"value".into()).ok()?.as_string()?;
+        values.insert(kind, value);
+    }
+
+    let number = |name: &str| values.get(name)?.parse::<u32>().ok();
+    let local_time =
+        NaiveDate::from_ymd_opt(number("year")? as i32, number("month")?, number("day")?)?
+            .and_hms_opt(number("hour")?, number("minute")?, number("second")?)?;
+    let instant_millis = timestamp_millis.div_euclid(1000) * 1000;
+    let offset_minutes =
+        (local_time.and_utc().timestamp_millis() - instant_millis).div_euclid(60_000);
+    FixedOffset::east_opt((offset_minutes * 60) as i32)
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+fn display_timezone_offset_at(timezone: &str, _timestamp_millis: i64) -> FixedOffset {
+    let seconds = match timezone {
+        "Pacific/Honolulu" => -10 * 3600,
+        "America/Los_Angeles" => -8 * 3600,
+        "America/Denver" => -7 * 3600,
+        "America/Chicago" => -6 * 3600,
+        "America/New_York" => -5 * 3600,
+        "America/Sao_Paulo" => -3 * 3600,
+        "Europe/Paris" | "Europe/Berlin" | "Africa/Cairo" => 3600,
+        "Asia/Dubai" => 4 * 3600,
+        "Asia/Kolkata" => 5 * 3600 + 1800,
+        "Asia/Bangkok" => 7 * 3600,
+        "Asia/Shanghai" => 8 * 3600,
+        "Asia/Tokyo" => 9 * 3600,
+        "Australia/Sydney" => 10 * 3600,
+        "Pacific/Auckland" => 12 * 3600,
+        _ => 0,
+    };
+    FixedOffset::east_opt(seconds).expect("display timezone offset is valid")
+}
+
+fn build_conf_items(
+    conferences: Vec<Conference>,
+    categories: &[Category],
+    likes: &HashSet<String>,
+    acceptance_rates: &AcceptanceRateMap,
+    display_timezone: &str,
+    reference_time: DateTime<Utc>,
+) -> Vec<ConfItem> {
+    let current_time = reference_time.fixed_offset();
+    let mut items = Vec::new();
+
+    for conference in conferences {
+        for edition in &conference.confs {
+            let Some(last_timeline) = edition.timeline.last() else {
+                continue;
+            };
+            let mut deadline = last_timeline.deadline.clone();
+            let mut deadline_type = 1;
+            let mut abstract_deadline = None;
+            let mut comment = last_timeline.comment.clone();
+            let mut deadlines = Vec::<TimePoint>::new();
+            let mut upcoming_deadlines = Vec::new();
+            let mut latest_deadline = None;
+
+            for (round_index, timeline_item) in edition.timeline.iter().enumerate() {
+                let timeline_deadlines = [
+                    (0, timeline_item.abstract_deadline.as_deref()),
+                    (1, Some(timeline_item.deadline.as_str())),
+                    (2, timeline_item.rebuttal_deadline.as_deref()),
+                    (3, timeline_item.decision_deadline.as_deref()),
+                ];
+
+                for (kind, raw_deadline) in timeline_deadlines {
+                    let Some(raw_deadline) = raw_deadline else {
+                        continue;
+                    };
+                    let Some(value) = parse_deadline_to_rfc3339(raw_deadline, &edition.timezone)
+                        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+                    else {
+                        continue;
+                    };
+                    let display_offset =
+                        display_timezone_offset_at(display_timezone, value.timestamp_millis());
+                    deadlines.push(TimePoint {
+                        timepoint: value.with_timezone(&display_offset),
+                        r#type: kind,
+                        round: round_index + 1,
+                        comment: timeline_item.comment.clone(),
+                    });
+
+                    let candidate = (
+                        value,
+                        raw_deadline.to_string(),
+                        kind,
+                        timeline_item.comment.clone(),
+                    );
+                    if latest_deadline.as_ref().is_none_or(
+                        |latest: &(DateTime<FixedOffset>, String, i32, Option<String>)| {
+                            candidate.0 > latest.0
+                        },
+                    ) {
+                        latest_deadline = Some(candidate.clone());
+                    }
+                    if value > current_time {
+                        upcoming_deadlines.push(candidate);
+                    }
+                }
+            }
+
+            deadlines.sort_by_key(|point| point.timepoint);
+
+            let selected_deadline = upcoming_deadlines
+                .into_iter()
+                .min_by(|left, right| left.0.cmp(&right.0))
+                .or(latest_deadline);
+            if let Some((_, next_deadline, next_type, next_comment)) = selected_deadline {
+                deadline = next_deadline.clone();
+                deadline_type = next_type;
+                abstract_deadline = (next_type == 0).then_some(next_deadline);
+                comment = next_comment;
+            }
+
+            let category = categories
+                .iter()
+                .find(|category| category.sub == conference.sub);
+            let display_rank = RANK_OPTIONS
+                .iter()
+                .find(|(rank, _)| *rank == conference.rank.ccf)
+                .map(|(_, label)| *label)
+                .unwrap_or("Non-CCF")
+                .to_string();
+            let mut item = ConfItem {
+                conference_key: conference.conference_key.clone(),
+                title: conference.title.clone(),
+                description: conference.description.clone(),
+                sub: conference.sub.clone(),
+                rank: conference.rank.ccf.clone(),
+                corerank: conference.rank.core.clone(),
+                thcplrank: conference.rank.thcpl.clone(),
+                displayrank: display_rank,
+                dblp: conference.dblp.clone(),
+                year: edition.year,
+                id: edition.id.clone(),
+                link: edition.link.clone(),
+                abstract_deadline,
+                deadline,
+                deadline_type,
+                comment,
+                timezone: edition.timezone.clone(),
+                date: edition.date.clone(),
+                place: edition.place.clone(),
+                status: String::new(),
+                is_like: likes.contains(&edition.id),
+                remain: 0,
+                subname: category.map(|value| value.name.clone()).unwrap_or_default(),
+                subname_en: category
+                    .map(|value| value.name_en.clone())
+                    .unwrap_or_default(),
+                acc_str: recent_acceptance_rates(
+                    conference.conference_key.as_deref(),
+                    &conference.sub,
+                    &conference.title,
+                    edition.year,
+                    acceptance_rates,
+                ),
+                ddls: deadlines,
+                estimated_deadlines: Vec::new(),
+            };
+
+            if item.deadline == "TBD" {
+                if edition.year < current_time.year() {
+                    // Missing historical clock precision does not make an old edition upcoming.
+                    item.status = "FIN".to_string();
+                } else {
+                    item.status = "TBD".to_string();
+                    item.estimated_deadlines = estimate_deadlines(&conference, edition);
+                }
+                items.push(item);
+                continue;
+            }
+
+            if let Some(deadline_time) = parse_deadline_to_rfc3339(&item.deadline, &item.timezone)
+                .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+            {
+                let remaining = deadline_time.signed_duration_since(current_time);
+                if remaining.num_milliseconds() <= 0 {
+                    item.status = "FIN".to_string();
+                } else {
+                    item.remain = remaining.num_milliseconds() as u64;
+                    item.status = "RUN".to_string();
+                }
+            }
+            items.push(item);
+        }
+    }
+
+    items
+}
+
+fn favorite_sort_group(status: &str, is_like: bool) -> u8 {
+    match (status == "FIN", is_like) {
+        (false, true) => 0,
+        (false, false) => 1,
+        (true, _) => 2,
+    }
+}
+
+fn star_count_sort_key(status: &str, count: u64) -> (bool, Reverse<u64>) {
+    (status == "FIN", Reverse(count))
+}
+
+fn estimate_deadlines(conference: &Conference, edition: &ConferenceYear) -> Vec<EstimatedDeadline> {
+    let Some(previous) = conference
+        .confs
+        .iter()
+        .find(|candidate| candidate.year == edition.year - 1)
+    else {
+        return Vec::new();
+    };
+
+    let abstract_deadline = previous
+        .timeline
+        .iter()
+        .filter_map(|timeline| timeline.abstract_deadline.as_deref())
+        .filter(|deadline| *deadline != "TBD")
+        .filter_map(shift_deadline_one_year)
+        .min()
+        .map(|deadline| EstimatedDeadline {
+            deadline,
+            is_abstract: true,
+            source_year: previous.year,
+        });
+    let paper_deadline = previous
+        .timeline
+        .iter()
+        .map(|timeline| timeline.deadline.as_str())
+        .filter(|deadline| *deadline != "TBD")
+        .filter_map(shift_deadline_one_year)
+        .min()
+        .map(|deadline| EstimatedDeadline {
+            deadline,
+            is_abstract: false,
+            source_year: previous.year,
+        });
+
+    [abstract_deadline, paper_deadline]
+        .into_iter()
+        .flatten()
+        .collect()
+}
+
+fn shift_deadline_one_year(deadline: &str) -> Option<String> {
+    let (date_value, time_value) = deadline
+        .split_once(' ')
+        .map_or((deadline, None), |(date, time)| (date, Some(time)));
+    let date = NaiveDate::parse_from_str(date_value, "%Y-%m-%d").ok()?;
+    let next_year = date.year() + 1;
+    let shifted = date
+        .with_year(next_year)
+        .or_else(|| date.with_day(28)?.with_year(next_year))?;
+
+    Some(match time_value {
+        Some(time) => format!("{} {time}", shifted.format("%Y-%m-%d")),
+        None => shifted.format("%Y-%m-%d").to_string(),
+    })
+}
+
+fn acceptance_lookup_key(key: Option<&str>, category: &str, title: &str) -> String {
+    key.map(str::to_owned)
+        .unwrap_or_else(|| format!("legacy:{category}:{title}"))
+}
+
+fn build_acceptance_rate_map(
+    all_acc: Vec<ConfAccRate>,
+    conferences: &[Conference],
+) -> AcceptanceRateMap {
+    let mut rates = AcceptanceRateMap::new();
+    let mut title_counts = HashMap::<String, usize>::new();
+    for acceptance in &all_acc {
+        *title_counts.entry(acceptance.title.clone()).or_default() += 1;
+    }
+    for acceptance in all_acc {
+        let key = if let Some(key) = &acceptance.conference_key {
+            key.clone()
+        } else {
+            // Old cached payloads lack source identities. Never guess if either
+            // the payload or the complete conference catalog has a title collision.
+            let candidates = conferences
+                .iter()
+                .filter(|conference| conference.title == acceptance.title)
+                .collect::<Vec<_>>();
+            if title_counts.get(&acceptance.title) != Some(&1) || candidates.len() != 1 {
+                continue;
+            }
+            let conference = candidates[0];
+            acceptance_lookup_key(
+                conference.conference_key.as_deref(),
+                &conference.sub,
+                &conference.title,
+            )
+        };
+        let mut conference_rates = acceptance.accept_rates
+            .into_iter()
+            .map(|rate| (rate.year, rate.label))
+            .collect::<Vec<_>>();
+        conference_rates.sort_by(|left, right| right.0.cmp(&left.0));
+        conference_rates.dedup_by(|left, right| left.0 == right.0);
+
+        // A cached conference catalog can predate the key field while the rates
+        // are fresh. A category-qualified alias keeps it usable without mixing
+        // conferences with the same title in different categories.
+        if let Some((category, _)) = key.split_once('/') {
+            let candidates = conferences
+                .iter()
+                .filter(|conference| {
+                    conference.conference_key.is_none()
+                        && conference.sub == category
+                        && conference.title == acceptance.title
+                })
+                .collect::<Vec<_>>();
+            if candidates.len() == 1 {
+                rates.insert(
+                    acceptance_lookup_key(None, category, &acceptance.title),
+                    conference_rates.clone(),
+                );
+            }
+        }
+        rates.insert(key, conference_rates);
+    }
+    rates
+}
+
+fn apply_acceptance_rate(item: &mut ConfItem, rates: &AcceptanceRateMap) {
+    item.acc_str = recent_acceptance_rates(
+        item.conference_key.as_deref(), &item.sub, &item.title, item.year, rates,
+    );
+}
+
+fn recent_acceptance_rates(
+    conference_key: Option<&str>,
+    category: &str,
+    conference_title: &str,
+    conference_year: i32,
+    rates: &AcceptanceRateMap,
+) -> Option<String> {
+    let key = acceptance_lookup_key(conference_key, category, conference_title);
+    let recent_rates = rates
+        .get(&key)?
+        .iter()
+        .filter(|(year, _)| *year <= conference_year)
+        .take(2)
+        .map(|(_, label)| label.as_str())
+        .collect::<Vec<_>>();
+
+    (!recent_rates.is_empty()).then(|| recent_rates.join("  ·  "))
+}
+
+fn build_calendar_urls(conf: &ConfItem) -> (Vec<(String, String)>, Option<String>) {
+    if conf.ddls.is_empty() {
+        return (Vec::new(), None);
+    }
+    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1);
+    let google = conf.ddls.iter().map(|point| {
+        let label = deadline_detail_label(point.r#type);
+        let label = if multiple_rounds {
+            format!("Round {} {label}", point.round)
+        } else {
+            label.to_string()
+        };
+        let start = point.timepoint.with_timezone(&Utc);
+        let end = start + Duration::minutes(1);
+        let title = format!("{} {} {label}", conf.title, conf.year);
+        let url = format!(
+            "https://calendar.google.com/calendar/render?action=TEMPLATE&text={}&dates={}/{}&details={}&location={}",
+            encode(&title),
+            start.format("%Y%m%dT%H%M%SZ"),
+            end.format("%Y%m%dT%H%M%SZ"),
+            encode(&calendar_event_description(conf, point)),
+            encode(&conf.place),
+        );
+        (label, url)
+    }).collect();
+    let icloud = format!(
+        "data:text/calendar;charset=utf-8,{}",
+        encode(&build_conference_ical(conf))
+    );
+    (google, Some(icloud))
+}
+
+fn calendar_event_description(conf: &ConfItem, point: &TimePoint) -> String {
+    [
+        point.comment.as_deref(),
+        Some(conf.description.as_str()),
+        Some(conf.link.as_str()),
+    ]
+    .into_iter()
+    .flatten()
+    .filter(|part| !part.trim().is_empty())
+    .collect::<Vec<_>>()
+    .join("\n")
+}
+
+fn build_conference_ical(conf: &ConfItem) -> String {
+    let mut lines = vec![
+        "BEGIN:VCALENDAR".to_string(),
+        "VERSION:2.0".to_string(),
+        "PRODID:-//CCFDDL//Conference Deadlines//EN".to_string(),
+        "CALSCALE:GREGORIAN".to_string(),
+    ];
+    let timestamp = Utc::now().format("%Y%m%dT%H%M%SZ").to_string();
+    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1);
+
+    for point in &conf.ddls {
+        let start = point.timepoint.with_timezone(&Utc);
+        let end = start + Duration::minutes(1);
+        let label = deadline_detail_label(point.r#type);
+        let label = if multiple_rounds {
+            format!("Round {} {label}", point.round)
+        } else {
+            label.to_string()
+        };
+        lines.extend([
+            "BEGIN:VEVENT".to_string(),
+            format!(
+                "UID:{}-{}-{}@ccfddl.com",
+                conf.id, point.round, point.r#type
+            ),
+            format!("DTSTAMP:{timestamp}"),
+            format!("DTSTART:{}", start.format("%Y%m%dT%H%M%SZ")),
+            format!("DTEND:{}", end.format("%Y%m%dT%H%M%SZ")),
+            format!(
+                "SUMMARY:{}",
+                escape_ical_text(&format!("{} {} {label}", conf.title, conf.year))
+            ),
+            format!(
+                "DESCRIPTION:{}",
+                escape_ical_text(&calendar_event_description(conf, point))
+            ),
+            format!("LOCATION:{}", escape_ical_text(&conf.place)),
+            "END:VEVENT".to_string(),
+        ]);
+    }
+    lines.push("END:VCALENDAR".to_string());
+    lines.iter().map(|line| fold_ical_line(line)).collect()
+}
+
+fn escape_ical_text(text: &str) -> String {
+    text.replace("\r\n", "\n")
+        .replace('\r', "\n")
+        .replace('\\', "\\\\")
+        .replace('\n', "\\n")
+        .replace(',', "\\,")
+        .replace(';', "\\;")
+}
+
+fn fold_ical_line(line: &str) -> String {
+    let mut folded = String::new();
+    let mut octets = 0;
+    for character in line.chars() {
+        let width = character.len_utf8();
+        if octets + width > 75 {
+            folded.push_str("\r\n ");
+            octets = 1;
+        }
+        folded.push(character);
+        octets += width;
+    }
+    folded.push_str("\r\n");
+    folded
+}
 
 fn normalize_timezone(tz: &str) -> String {
     match tz {
         "AoE" => "UTC-12".to_string(),
         "UTC" => "UTC+0".to_string(),
         _ => tz.to_string(),
+    }
+}
+
+fn display_place(place: &str) -> String {
+    if place.chars().count() <= 28 {
+        return place.to_string();
+    }
+
+    place
+        .split(',')
+        .last()
+        .map(str::trim)
+        .filter(|segment| !segment.is_empty())
+        .unwrap_or(place)
+        .to_string()
+}
+
+fn format_datetime_local(time: DateTime<Utc>, timezone: &str) -> String {
+    let offset = display_timezone_offset_at(timezone, time.timestamp_millis());
+    time.with_timezone(&offset)
+        .format("%Y-%m-%dT%H:%M:%S")
+        .to_string()
+}
+
+fn parse_datetime_local(value: &str, timezone: &str) -> Option<DateTime<Utc>> {
+    let local_time = chrono::NaiveDateTime::parse_from_str(value, "%Y-%m-%dT%H:%M:%S")
+        .or_else(|_| chrono::NaiveDateTime::parse_from_str(value, "%Y-%m-%dT%H:%M"))
+        .ok()?;
+    let tentative_utc = local_time.and_utc();
+    let offset = display_timezone_offset_at(timezone, tentative_utc.timestamp_millis());
+    Some(tentative_utc - Duration::seconds(offset.local_minus_utc().into()))
+}
+
+fn format_base_time_display(value: &str) -> String {
+    let mut display = value.replace('-', "/").replace('T', " ");
+    if display.matches(':').count() == 1 {
+        display.push_str(":00");
+    }
+    display
+}
+
+fn remaining_until_deadline(
+    deadline: &str,
+    timezone: &str,
+    reference_time: DateTime<Utc>,
+) -> Option<u64> {
+    let deadline_time = parse_deadline_to_rfc3339(deadline, timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())?;
+    Some(
+        deadline_time
+            .signed_duration_since(reference_time)
+            .num_milliseconds()
+            .max(0) as u64,
+    )
+}
+
+fn deadline_summary_label(deadline_type: i32) -> &'static str {
+    match deadline_type {
+        0 => "Abstract Submission",
+        2 => "Rebuttal Submission",
+        3 => "Final Decisions",
+        _ => "Paper Submission",
+    }
+}
+
+fn deadline_short_label(deadline_type: i32) -> &'static str {
+    match deadline_type {
+        0 => "Abstract Deadline",
+        2 => "Rebuttal Submission",
+        3 => "Final Decisions",
+        _ => "Paper Deadline",
+    }
+}
+
+fn deadline_detail_label(deadline_type: i32) -> &'static str {
+    match deadline_type {
+        0 => "Abstract Submission Deadline",
+        2 => "Rebuttal Submission",
+        3 => "Final Decisions",
+        _ => "Paper Submission Deadline",
+    }
+}
+
+fn format_estimated_deadline_date(deadline: &str) -> String {
+    deadline
+        .split_whitespace()
+        .next()
+        .and_then(|date| NaiveDate::parse_from_str(date, "%Y-%m-%d").ok())
+        .map(|date| date.format("%b %-d, %Y").to_string())
+        .unwrap_or_else(|| deadline.to_string())
+}
+
+fn format_deadline_display(deadline: &str, timezone: &str) -> String {
+    parse_deadline_to_rfc3339(deadline, timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+        .map(|value| format!("{} ({})", value.format("%H:%M, %b %-d, %Y"), timezone))
+        .unwrap_or_else(|| format!("{} ({})", deadline, timezone))
+}
+
+fn format_legacy_deadline_display(
+    deadline: &str,
+    timezone: &str,
+    display_timezone: &str,
+    display_timezone_label: &str,
+) -> String {
+    let Some(origin_time) = parse_deadline_to_rfc3339(deadline, timezone)
+        .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+    else {
+        return format!("{} ({})", deadline, normalize_timezone(timezone));
+    };
+
+    let selected_offset =
+        display_timezone_offset_at(display_timezone, origin_time.timestamp_millis());
+    let local_time = origin_time.with_timezone(&selected_offset);
+    let day = local_time.day();
+    let suffix = match day % 100 {
+        11..=13 => "th",
+        _ => match day % 10 {
+            1 => "st",
+            2 => "nd",
+            3 => "rd",
+            _ => "th",
+        },
+    };
+    let local_timezone = match display_timezone_label {
+        "Asia/Shanghai" | "Asia/Chongqing" => "CST".to_string(),
+        "UTC" | "Etc/UTC" | "Etc/GMT" => "UTC".to_string(),
+        "" => format_utc_offset(selected_offset.local_minus_utc()),
+        value => value.to_string(),
+    };
+
+    format!(
+        "{} {} {}{} {} {} {} ({} {})",
+        local_time.format("%a"),
+        local_time.format("%b"),
+        day,
+        suffix,
+        local_time.year(),
+        local_time.format("%H:%M:%S"),
+        local_timezone,
+        origin_time.format("%Y-%m-%d %H:%M:%S"),
+        normalize_timezone(timezone),
+    )
+}
+
+fn format_utc_offset(offset_seconds: i32) -> String {
+    let sign = if offset_seconds >= 0 { '+' } else { '-' };
+    let total_minutes = offset_seconds.unsigned_abs() / 60;
+    let hours = total_minutes / 60;
+    let minutes = total_minutes % 60;
+    if minutes == 0 {
+        format!("UTC{sign}{hours}")
+    } else {
+        format!("UTC{sign}{hours}:{minutes:02}")
     }
 }
 
@@ -1107,18 +2511,17 @@ fn parse_deadline_to_rfc3339(deadline: &str, tz: &str) -> Option<String> {
     })
 }
 
-const RANK_OPTIONS: &[(&str, &str)] = &[("A", "CCF A"), ("B", "CCF B"), ("C", "CCF C"), ("N", "Non-CCF")];
-
-const MOBILE_KEYWORDS: &[&str] = &[
-    "phone", "pad", "pod", "iphone", "ipod", "ios", "ipad", "android", "mobile",
-    "blackberry", "iemobile", "mqqbrowser", "juc", "fennec", "wosbrowser",
-    "browserng", "webos", "symbian", "windows phone",
+const RANK_OPTIONS: &[(&str, &str)] = &[
+    ("A", "CCF A"),
+    ("B", "CCF B"),
+    ("C", "CCF C"),
+    ("N", "Non-CCF"),
 ];
 
 fn get_utc_map() -> &'static HashMap<String, String> {
     UTC_MAP.get_or_init(|| {
         let mut utc_map = HashMap::new();
-        for i in -12..=12 {
+        for i in -12..=14 {
             let offset_str = if i >= 0 {
                 format!("+{:02}:00", i)
             } else {
@@ -1137,63 +2540,281 @@ fn get_utc_map() -> &'static HashMap<String, String> {
     })
 }
 
-#[cfg(target_arch = "wasm32")]
-fn get_browser_time_and_timezone() -> (DateTime<FixedOffset>, FixedOffset) {
-    let utc_now = chrono::Utc::now();
-    let js_date = web_sys::js_sys::Date::new_0();
-    let offset_minutes = -(js_date.get_timezone_offset() as i32);
-
-    let timezone = FixedOffset::east_opt(offset_minutes * 60)
-        .unwrap_or_else(|| FixedOffset::east_opt(0).unwrap());
-
-    let current_time = utc_now.with_timezone(&timezone);
-
-    (current_time, timezone)
-}
-
-#[cfg(not(target_arch = "wasm32"))]
-fn get_browser_time_and_timezone() -> (DateTime<FixedOffset>, FixedOffset) {
-    use chrono::Local;
-    let local_time = Local::now();
-    let timezone = *local_time.offset();
-    (local_time.with_timezone(&timezone), timezone)
-}
-
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_namespace = navigator, getter, js_name = userAgent)]
-    fn user_agent() -> String;
-}
-
-fn is_client_device() -> bool {
-    web_sys::window().is_some()
-}
-
-fn is_mobile_device() -> bool {
-    if !is_client_device() {
-        return false;
-    }
-
-    let window = web_sys::window().expect("no global window exists");
-    let navigator = window.navigator();
-    let user_agent = navigator
-        .user_agent()
-        .expect("user agent not available")
-        .to_lowercase();
-
-    MOBILE_KEYWORDS
-        .iter()
-        .any(|&keyword| user_agent.contains(keyword))
+fn is_narrow_viewport() -> bool {
+    window()
+        .and_then(|browser| browser.inner_width().ok())
+        .and_then(|width| width.as_f64())
+        .is_some_and(|width| width <= 768.0)
 }
 
 fn get_from_local_storage(key: &str) -> Option<String> {
-    let window = window().unwrap();
-    let local_storage = window.local_storage().ok().flatten().unwrap();
-    local_storage.get_item(key).unwrap()
+    window()
+        .and_then(|window| window.local_storage().ok().flatten())
+        .and_then(|storage| storage.get_item(key).ok().flatten())
 }
 
 fn set_in_local_storage(key: &str, value: &str) {
-    let window = window().unwrap();
-    let local_storage = window.local_storage().ok().flatten().unwrap();
-    local_storage.set_item(key, value).unwrap();
+    if let Some(storage) = window().and_then(|window| window.local_storage().ok().flatten()) {
+        let _ = storage.set_item(key, value);
+    }
+}
+
+#[cfg(test)]
+mod historical_deadline_tests {
+    use super::*;
+
+    #[test]
+    fn unknown_historical_deadlines_stay_out_of_the_active_list() {
+        let current_year = chrono::Utc::now().year();
+        for edition_year in [current_year - 1, current_year, current_year + 1] {
+            let conference: Conference = serde_json::from_value(serde_json::json!({
+                "title": "TEST", "description": "Test conference", "sub": "AI",
+                "rank": {"ccf": "A"}, "dblp": "test",
+                "confs": [
+                    {
+                        "year": edition_year - 1, "id": "previous", "link": "https://example.org",
+                        "timeline": [{"deadline": format!("{}-01-15 23:59:59", edition_year - 1)}],
+                        "timezone": "AoE", "date": "Unknown", "place": "Virtual"
+                    },
+                    {
+                        "year": edition_year, "id": "unknown", "link": "https://example.org",
+                        "timeline": [{"deadline": "TBD", "comment": "Clock not published"}],
+                        "timezone": "AoE", "date": "Unknown", "place": "Virtual"
+                    }
+                ]
+            }))
+            .unwrap();
+            let items = build_conf_items(
+                vec![conference],
+                &[],
+                &HashSet::new(),
+                &HashMap::new(),
+                "UTC",
+                chrono::Utc::now(),
+            );
+            let unknown = items.iter().find(|item| item.id == "unknown").unwrap();
+            assert_eq!(unknown.deadline, "TBD");
+            assert_eq!(unknown.comment.as_deref(), Some("Clock not published"));
+            if edition_year < current_year {
+                assert_eq!(unknown.status, "FIN");
+                assert!(unknown.estimated_deadlines.is_empty());
+                assert!(
+                    !items
+                        .iter()
+                        .filter(|item| item.status != "FIN")
+                        .any(|item| item.id == "unknown")
+                );
+            } else {
+                assert_eq!(unknown.status, "TBD");
+                assert!(!unknown.estimated_deadlines.is_empty());
+            }
+        }
+    }
+
+    #[test]
+    fn favorites_only_receive_priority_before_the_conference_ends() {
+        assert_eq!(favorite_sort_group("RUN", true), 0);
+        assert_eq!(favorite_sort_group("TBD", true), 0);
+        assert_eq!(favorite_sort_group("RUN", false), 1);
+        assert_eq!(favorite_sort_group("FIN", true), 2);
+        assert_eq!(favorite_sort_group("FIN", false), 2);
+    }
+
+    #[test]
+    fn star_count_sort_keeps_active_conferences_before_finished_ones() {
+        assert!(star_count_sort_key("RUN", 2) < star_count_sort_key("RUN", 1));
+        assert!(star_count_sort_key("TBD", 0) < star_count_sort_key("FIN", 100));
+        assert_eq!(star_count_sort_key("FIN", 5), star_count_sort_key("FIN", 5));
+    }
+
+    #[test]
+    fn conference_calendar_includes_every_known_deadline_across_rounds() {
+        let conference: Conference = serde_json::from_value(serde_json::json!({
+            "title": "ICLR", "description": "Test conference", "sub": "AI",
+            "rank": {"ccf": "A"}, "dblp": "iclr",
+            "confs": [{
+                "year": 2027, "id": "iclr27", "link": "https://iclr.cc/",
+                "timeline": [
+                    {"abstract_deadline": "2026-09-18 23:59:59", "deadline": "2026-09-25 23:59:59", "comment": "Track A"},
+                    {"deadline": "2026-10-25 23:59:59", "rebuttal_deadline": "2026-11-18 23:59:59", "decision_deadline": "2026-12-16 23:59:59", "comment": "Track B"}
+                ],
+                "timezone": "AoE", "date": "April 2027", "place": "San Francisco"
+            }]
+        }))
+        .unwrap();
+        let items = build_conf_items(
+            vec![conference],
+            &[],
+            &HashSet::new(),
+            &HashMap::new(),
+            "Asia/Shanghai",
+            Utc::now(),
+        );
+        let conf = items.iter().find(|item| item.id == "iclr27").unwrap();
+        let (google, icloud) = build_calendar_urls(conf);
+        assert_eq!(google.len(), 5);
+        assert!(google.iter().all(|(_, url)| {
+            url.starts_with("https://calendar.google.com/calendar/render?action=TEMPLATE&")
+        }));
+        assert!(google.iter().any(|(label, url)| {
+            label == "Round 2 Rebuttal Submission"
+                && url.contains("dates=20261119T115959Z/20261119T120059Z")
+        }));
+        for (label, comment) in [
+            ("Round 1 Paper Submission Deadline", "Track A"),
+            ("Round 2 Paper Submission Deadline", "Track B"),
+        ] {
+            let url = &google.iter().find(|(event, _)| event == label).unwrap().1;
+            assert!(urlencoding::decode(url).unwrap().contains(comment));
+        }
+        let icloud = icloud.unwrap();
+        let encoded = icloud
+            .strip_prefix("data:text/calendar;charset=utf-8,")
+            .unwrap();
+        let calendar = urlencoding::decode(encoded).unwrap();
+        assert_eq!(calendar.matches("BEGIN:VEVENT\r\n").count(), 5);
+        for summary in [
+            "ICLR 2027 Round 1 Abstract Submission Deadline",
+            "ICLR 2027 Round 1 Paper Submission Deadline",
+            "ICLR 2027 Round 2 Paper Submission Deadline",
+            "ICLR 2027 Round 2 Rebuttal Submission",
+            "ICLR 2027 Round 2 Final Decisions",
+        ] {
+            assert!(calendar.contains(&format!("SUMMARY:{summary}\r\n")));
+        }
+        assert!(calendar.contains("DTSTART:20261119T115959Z\r\n"));
+        assert!(calendar.contains("DESCRIPTION:Track A\\nTest conference"));
+        assert!(calendar.contains("DESCRIPTION:Track B\\nTest conference"));
+    }
+
+    fn acceptance_catalog(key: Option<&str>, title: &str, sub: &str) -> Conference {
+        serde_json::from_value(serde_json::json!({
+            "conference_key": key, "title": title, "description": "Test conference",
+            "sub": sub, "rank": {"ccf": "A"}, "dblp": "test", "confs": []
+        })).unwrap()
+    }
+
+    fn acceptance_record(key: Option<&str>, title: &str, year: i32, label: &str) -> ConfAccRate {
+        serde_json::from_value(serde_json::json!({
+            "conference_key": key, "title": title,
+            "accept_rates": [{"year": year, "str": label}]
+        })).unwrap()
+    }
+
+    #[test]
+    fn acceptance_collisions_preserve_sec_and_fse_datasets() {
+        let catalog = vec![
+            acceptance_catalog(Some("DS/sec"), "SEC", "DS"),
+            acceptance_catalog(Some("SC/sec"), "SEC", "SC"),
+            acceptance_catalog(Some("SC/fse"), "FSE", "SC"),
+            acceptance_catalog(Some("SE/fse"), "FSE", "SE"),
+        ];
+        let records = vec![
+            acceptance_record(Some("DS/sec"), "SEC", 2023, "25.4%(18/71 23')"),
+            acceptance_record(Some("SC/sec"), "SEC", 2026, "23.8%(39/164 26')"),
+            acceptance_record(Some("SC/fse"), "FSE", 2026, "28.1%(55/196 26')"),
+            acceptance_record(Some("SE/fse"), "FSE", 2026, "26.4%(211/799 26')"),
+        ];
+        let rates = build_acceptance_rate_map(records, &catalog);
+        for (conference, expected) in catalog.iter().zip([
+            "25.4%(18/71 23')", "23.8%(39/164 26')",
+            "28.1%(55/196 26')", "26.4%(211/799 26')",
+        ]) {
+            assert_eq!(recent_acceptance_rates(
+                conference.conference_key.as_deref(), &conference.sub, &conference.title, 2026, &rates,
+            ).as_deref(), Some(expected));
+        }
+        assert!(recent_acceptance_rates(Some("SC/sec"), "SC", "SEC", 2023, &rates).is_none());
+    }
+
+    #[test]
+    fn acceptance_legacy_title_payload_rejects_catalog_collisions_even_with_one_record() {
+        let catalog = vec![
+            acceptance_catalog(Some("SC/fse"), "FSE", "SC"),
+            acceptance_catalog(Some("SE/fse"), "FSE", "SE"),
+        ];
+        let rates = build_acceptance_rate_map(vec![
+            acceptance_record(None, "FSE", 2026, "26.4%(211/799 26')"),
+        ], &catalog);
+        assert!(rates.is_empty());
+    }
+
+    #[test]
+    fn acceptance_legacy_duplicate_payload_does_not_choose_a_winner() {
+        let catalog = vec![acceptance_catalog(None, "FSE", "SE")];
+        let rates = build_acceptance_rate_map(vec![
+            acceptance_record(None, "FSE", 2026, "28.1%(55/196 26')"),
+            acceptance_record(None, "FSE", 2026, "26.4%(211/799 26')"),
+        ], &catalog);
+        assert!(rates.is_empty());
+    }
+
+    #[test]
+    fn acceptance_fresh_rates_work_with_legacy_catalog_by_category() {
+        let catalog = vec![
+            acceptance_catalog(None, "FSE", "SC"),
+            acceptance_catalog(None, "FSE", "SE"),
+        ];
+        let rates = build_acceptance_rate_map(vec![
+            acceptance_record(Some("SC/fse"), "FSE", 2026, "28.1%(55/196 26')"),
+            acceptance_record(Some("SE/fse"), "FSE", 2026, "26.4%(211/799 26')"),
+        ], &catalog);
+        assert_eq!(recent_acceptance_rates(None, "SC", "FSE", 2026, &rates).as_deref(), Some("28.1%(55/196 26')"));
+        assert_eq!(recent_acceptance_rates(None, "SE", "FSE", 2026, &rates).as_deref(), Some("26.4%(211/799 26')"));
+    }
+
+    #[test]
+    fn acceptance_unique_legacy_payload_and_srt_alias_keep_historical_rates() {
+        for key in [Some("CG/eusipco"), None] {
+            let catalog = vec![acceptance_catalog(key, "EUSIPCO", "CG")];
+            let record = serde_json::from_value(serde_json::json!({
+                "title": "EUSIPCO", "accept_rates": [
+                    {"year": 2017, "str": "63.2%(461/730 17')"},
+                    {"year": 2020, "srt": "60.2%(499/829 20')"},
+                    {"year": 2018, "str": "57.7%(409/709 18')"}
+                ]
+            })).unwrap();
+            let rates = build_acceptance_rate_map(vec![record], &catalog);
+            assert_eq!(recent_acceptance_rates(key, "CG", "EUSIPCO", 2026, &rates).as_deref(),
+                       Some("60.2%(499/829 20')  ·  57.7%(409/709 18')"));
+            assert_eq!(recent_acceptance_rates(key, "CG", "EUSIPCO", 2017, &rates).as_deref(),
+                       Some("63.2%(461/730 17')"));
+        }
+    }
+
+    #[test]
+    fn acceptance_stable_key_survives_title_rename() {
+        let catalog = vec![acceptance_catalog(Some("AI/nips"), "NeurIPS", "AI")];
+        let rates = build_acceptance_rate_map(vec![
+            acceptance_record(Some("AI/nips"), "NIPS", 2025, "Test label"),
+        ], &catalog);
+        assert_eq!(recent_acceptance_rates(Some("AI/nips"), "AI", "NeurIPS", 2026, &rates).as_deref(), Some("Test label"));
+    }
+
+
+    #[test]
+    fn acceptance_recent_history_stays_with_its_own_conference() {
+        let catalog = vec![
+            acceptance_catalog(Some("SC/fse"), "FSE", "SC"),
+            acceptance_catalog(Some("SE/fse"), "FSE", "SE"),
+        ];
+        let records = serde_json::from_value(serde_json::json!([
+            {"conference_key": "SC/fse", "title": "FSE", "accept_rates": [
+                {"year": 2024, "str": "27.4%(48/175 24')"},
+                {"year": 2026, "str": "28.1%(55/196 26')"}
+            ]},
+            {"conference_key": "SE/fse", "title": "FSE", "accept_rates": [
+                {"year": 2025, "str": "26.2%(135/515 25')"},
+                {"year": 2026, "str": "26.4%(211/799 26')"}
+            ]}
+        ])).unwrap();
+        let rates = build_acceptance_rate_map(records, &catalog);
+        assert_eq!(recent_acceptance_rates(Some("SC/fse"), "SC", "FSE", 2026, &rates).as_deref(),
+                   Some("28.1%(55/196 26')  ·  27.4%(48/175 24')"));
+        assert_eq!(recent_acceptance_rates(Some("SE/fse"), "SE", "FSE", 2026, &rates).as_deref(),
+                   Some("26.4%(211/799 26')  ·  26.2%(135/515 25')"));
+        assert_eq!(recent_acceptance_rates(Some("SC/fse"), "SC", "FSE", 2025, &rates).as_deref(),
+                   Some("27.4%(48/175 24')"));
+    }
+
 }

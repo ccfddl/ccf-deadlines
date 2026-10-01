@@ -1,14 +1,38 @@
 - title: NSDI
   accept_rates:
+    - year: 2021
+      submitted: 369
+      accepted: 59
+      str: 16.0%(59/369 21')
+      rate: 0.159891598915989
+      source: https://www.usenix.org/sites/default/files/nsdi21_message.pdf
     - year: 2022
-      submitted: 402
+      submitted: 396
       accepted: 78
-      str: 19.4%(78/402 22')
-      rate: 0.194029850746269
-      source: https://github.com/emeryberger/csconferences
+      str: 19.7%(78/396 22')
+      rate: 0.196969696969697
+      source: https://www.usenix.org/sites/default/files/nsdi22_message.pdf
+    - year: 2023
+      submitted: 560
+      accepted: 96
+      str: 17.1%(96/560 23')
+      rate: 0.171428571428571
+      source: https://www.usenix.org/sites/default/files/nsdi23_message.pdf
     - year: 2024
       submitted: 601
       accepted: 112
       str: 18.6%(112/601 24')
-      rate: 0.1863561
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.186356073211314
+      source: https://www.usenix.org/sites/default/files/nsdi24-message.pdf
+    - year: 2025
+      submitted: 666
+      accepted: 83
+      str: 12.5%(83/666 25')
+      rate: 0.124624624624625
+      source: https://www.usenix.org/sites/default/files/nsdi25-message.pdf
+    - year: 2026
+      submitted: 659
+      accepted: 150
+      str: 22.8%(150/659 26')
+      rate: 0.227617602427921
+      source: https://www.usenix.org/sites/default/files/nsdi26-message.pdf

@@ -1,8 +1,36 @@
 - title: LICS
   accept_rates:
+    # Original IEEE foreword, PDF p2 (printed i); contributed papers selected from submissions.
+    - year: 2021
+      submitted: 227
+      accepted: 91
+      str: 40.1%(91/227 21')
+      rate: 0.4008810572687225
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9470530
     - year: 2022
       submitted: 181
       accepted: 63
       str: 34.8%(63/181 22')
       rate: 0.348066298342541
       source: https://github.com/emeryberger/csconferences
+    # Original IEEE foreword, PDF p2 (printed i); contributed papers selected from submissions.
+    - year: 2023
+      submitted: 192
+      accepted: 63
+      str: 32.8%(63/192 23')
+      rate: 0.328125
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10175826
+    # Original IEEE foreword, PDF p1 (printed xi); contributed papers selected from submissions.
+    - year: 2025
+      submitted: 215
+      accepted: 66
+      str: 30.7%(66/215 25')
+      rate: 0.30697674418604654
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11186295
+    # Original chairs preface PDF page 11. All 293 received, including 7 desk-rejected papers.
+    - year: 2026
+      submitted: 293
+      accepted: 82
+      str: 28.0%(82/293 26')
+      rate: 0.27986348122866894
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol380-lics2026/LIPIcs.LICS.2026.0/LIPIcs.LICS.2026.0.pdf

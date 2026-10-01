@@ -7,6 +7,15 @@
     thcpl: N
   dblp: corl
   confs:
+    - year: 2021
+      id: corl21
+      link: https://2021.corl.org/
+      timeline:
+        - deadline: '2021-06-18 23:59:59'
+          comment: Regular Papers
+      timezone: UTC-7
+      date: November 8-11, 2021
+      place: London, UK (Hybrid)
     - year: 2024
       id: corl24
       link: https://2024.corl.org/
@@ -17,7 +26,7 @@
       place: Munich, Germany
     - year: 2025
       id: corl25
-      link: https://www.corl.org/
+      link: https://2025.corl.org/
       timeline:
         - deadline: '2025-04-30 23:59:59'
       timezone: AoE
@@ -30,5 +39,5 @@
         - abstract_deadline: '2026-05-25 23:59:59'
           deadline: '2026-05-28 23:59:59'
       timezone: AoE
-      date: November 10-12, 2026
+      date: November 9-12, 2026
       place: Austin, Texas, USA

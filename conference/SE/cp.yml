@@ -7,21 +7,48 @@
     thcpl: B
   dblp: cp
   confs:
+    - year: 2021
+      id: cp21
+      link: https://cp2021.a4cp.org/
+      timeline:
+        - abstract_deadline: '2021-05-21 23:59:00'
+          deadline: '2021-05-30 23:59:00'
+      timezone: AoE
+      date: October 26-29, 2021
+      place: Online
     - year: 2022
       id: cp22
       link: https://cp2022.a4cp.org/
       timeline:
-        - deadline: '2022-02-25 23:59:59'
-          comment: Full Paper Submission
+        - abstract_deadline: '2022-02-18 23:59:00'
+          deadline: '2022-02-25 23:59:59'
       timezone: AoE
       date: July 31-August 8, 2022
       place: HAIFA, ISRAEL
+    - year: 2023
+      id: cp23
+      link: https://cp2023.a4cp.org/
+      timeline:
+        - abstract_deadline: '2023-04-28 23:59:00'
+          deadline: '2023-05-05 23:59:00'
+      timezone: AoE
+      date: August 28-31, 2023
+      place: Toronto, Canada
+    - year: 2024
+      id: cp24
+      link: https://cp2024.a4cp.org/
+      timeline:
+        - abstract_deadline: '2024-04-18 23:59:00'
+          deadline: '2024-04-26 23:59:00'
+      timezone: AoE
+      date: September 3-6, 2024
+      place: Girona, Catalonia, Spain
     - year: 2025
       id: cp25
       link: https://cp2025.a4cp.org/
       timeline:
-        - abstract_deadline: '2025-03-20 22:59:59'
-          deadline: '2025-03-27 22:59:59'
+        - abstract_deadline: '2025-03-24 23:00:00'
+          deadline: '2025-04-03 23:00:00'
       timezone: AoE
       date: August 10-15, 2025
       place: Glasgow, Scotland
@@ -29,8 +56,8 @@
       id: cp26
       link: https://cp2026.a4cp.org/
       timeline:
-        - abstract_deadline: '2026-03-02 23:59:59'
-          deadline: '2026-03-14 23:59:59'
+        - abstract_deadline: '2026-03-02 23:00:00'
+          deadline: '2026-03-14 23:00:00'
       timezone: AoE
       date: July 20-23, 2026
       place: Lisbon, Portugal

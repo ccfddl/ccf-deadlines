@@ -7,6 +7,42 @@
     thcpl: B
   dblp: ACMdis
   confs:
+    - year: 2021
+      id: dis21
+      link: https://dis.acm.org/2021/
+      timeline:
+        - abstract_deadline: '2021-02-04 17:00:00'
+          deadline: '2021-02-11 17:00:00'
+      timezone: UTC-8
+      date: June 28 - July 2, 2021
+      place: Virtual
+    - year: 2022
+      id: dis22
+      link: https://dis.acm.org/2022/
+      timeline:
+        - abstract_deadline: '2022-02-11 23:59:00'
+          deadline: '2022-02-18 23:59:00'
+      timezone: AoE
+      date: June 13-17, 2022
+      place: Virtual
+    - year: 2023
+      id: dis23
+      link: https://dis.acm.org/2023/
+      timeline:
+        - abstract_deadline: '2023-02-03 00:00:00'
+          deadline: '2023-02-14 00:00:00'
+      timezone: AoE
+      date: July 12-14, 2023
+      place: Pittsburgh, Pennsylvania, USA
+    - year: 2024
+      id: dis24
+      link: https://dis.acm.org/2024/
+      timeline:
+        - abstract_deadline: '2024-02-01 23:59:00'
+          deadline: '2024-02-08 23:59:00'
+      timezone: AoE
+      date: July 3-5, 2024
+      place: Copenhagen, Denmark
     - year: 2025
       id: dis25
       link: https://dis.acm.org/2025/
@@ -25,3 +61,12 @@
       timezone: AoE
       date: June 13 - 17, 2026
       place: Singapore
+    - year: 2027
+      id: dis27
+      link: https://dis.acm.org/2027/
+      timeline:
+        - abstract_deadline: '2027-01-11 23:59:59'
+          deadline: '2027-01-18 23:59:59'
+      timezone: AoE
+      date: June 28 - July 2, 2027
+      place: Stockholm, Sweden

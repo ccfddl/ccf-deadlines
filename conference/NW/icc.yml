@@ -11,7 +11,8 @@
       id: icc25
       link: https://icc2025.ieee-icc.org
       timeline:
-        - deadline: '2024-10-11 23:59:59'
+        - deadline: '2024-11-08 23:59:00'
+          comment: 'Extended regular paper deadline; unpublished clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
       date: June 8-12, 2025
       place: Palais des congrès de Montréal in Montreal, Quebec, Canada

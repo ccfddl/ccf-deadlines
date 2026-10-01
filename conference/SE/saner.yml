@@ -7,47 +7,59 @@
     thcpl: B
   dblp: wcre
   confs:
+    - year: 2021
+      id: saner2021
+      link: https://saner2021.shidler.hawaii.edu/
+      timeline:
+        - abstract_deadline: '2020-10-22 23:59:00'
+          deadline: '2020-10-29 23:59:00'
+      timezone: AoE
+      date: March 10-12, 2021
+      place: Online
     - year: 2022
       id: saner2022
       link: https://saner2022.uom.gr/
       timeline:
-        - deadline: '2021-10-14 23:59:59'
-          comment: abstract submission deadline
-        - deadline: '2021-10-21 23:59:59'
-          comment: full paper submission deadline
+        - abstract_deadline: '2021-10-14 23:59:59'
+          deadline: '2021-10-21 23:59:59'
       timezone: AoE
-      date: March 15-18, 2022
-      place: University of Hawaii in Honolulu, Hawaii
+      date: March 15-17, 2022
+      place: Online
+    - year: 2023
+      id: saner2023
+      link: https://saner2023.must.edu.mo/
+      timeline:
+        - abstract_deadline: '2022-10-14 23:59:00'
+          deadline: '2022-10-21 23:59:00'
+      timezone: AoE
+      date: March 22-24, 2023
+      place: Macao, China
     - year: 2024
       id: saner2024
       link: https://conf.researchr.org/home/saner-2024
       timeline:
         - abstract_deadline: '2023-10-13 23:59:59'
           deadline: '2023-10-29 23:59:59'
-          comment: Research Papers Paper Submission
       timezone: AoE
-      date: March 12-15, 2024
+      date: March 13-15, 2024
       place: Rovaniemi, Finland
     - year: 2025
       id: saner2025
       link: https://conf.researchr.org/home/saner-2025
       timeline:
         - abstract_deadline: '2024-10-04 23:59:59'
-          deadline: '2024-10-11 23:59:59'
-          comment: Research Papers Paper Submission
+          deadline: '2024-10-13 23:59:59'
       timezone: AoE
-      date: March 4-7, 2025
+      date: March 5-7, 2025
       place: Montréal, Québec, Canada
     - year: 2026
       id: saner2026
       link: https://conf.researchr.org/home/saner-2026
       timeline:
-        - deadline: '2025-10-09 23:59:59'
-          comment: Research Track Abstract submission (mandatory)
-        - deadline: '2025-10-16 23:59:59'
-          comment: Research Track Paper submission deadline
+        - abstract_deadline: '2025-10-09 23:59:59'
+          deadline: '2025-10-16 23:59:59'
       timezone: AoE
-      date: March 17-20, 2026
+      date: March 18-20, 2026
       place: Limassol, Cyprus
     - year: 2027
       id: saner2027

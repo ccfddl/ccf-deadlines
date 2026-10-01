@@ -1,20 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr" data-theme="light">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RY374M6FJ8"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'; form-action 'self' https://github.com" />
+  <meta name="description" content="CCFDDL Open Deadlines helps researchers track worldwide conference deadlines through agentic collaboration." />
+  <meta name="keywords" content="conference deadlines" />
+  <link rel="canonical" href="https://ccfddl.com/" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"CCFDDL","alternateName":"ccf-deadlines","url":"https://ccfddl.com/"}</script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>ccf-deadlines</title>
+  <style>
+    body { background: #faf9f7; font-family: Helvetica, Arial, sans-serif; }
+    .initial-loading { display: flex; flex-direction: column; gap: 12px; min-height: 55vh; align-items: center; justify-content: center; padding: 24px; color: #75808b; font-size: 16px; text-align: center; }
+    .initial-loading button { padding: 6px 14px; border: 1px solid #d9dfe5; border-radius: 6px; color: #4d5d6d; background: #fffefa; font: inherit; cursor: pointer; }
+  </style>
+  <script id="startup-recovery">
+    (function () {
+      var timer;
+      var finished = false;
+      var started = false;
+      var failedBeforeReady = false;
+      function stop() {
+        finished = true;
+        window.clearTimeout(timer);
+        window.removeEventListener('error', onError, true);
+        window.removeEventListener('unhandledrejection', recover);
+        window.removeEventListener('InitialLoadingReady', start);
+      }
+      function recover() {
+        if (finished) return;
+        var loading = document.getElementById('initial-loading');
+        if (!loading) {
+          if (document.readyState === 'loading') failedBeforeReady = true;
+          else stop();
+          return;
+        }
+        loading.querySelector('span').textContent = 'Unable to finish loading. Please retry.';
+        loading.querySelector('button').hidden = false;
+        window.clearTimeout(timer);
+      }
+      function onError(event) {
+        var source = event.filename || (event.target && event.target.src);
+        if (source && new URL(source, window.location.href).origin !== window.location.origin) return;
+        if (event.error || (event.target && event.target.tagName === 'SCRIPT')) recover();
+      }
+      function start() {
+        if (finished || started) return;
+        var loading = document.getElementById('initial-loading');
+        if (!loading) return;
+        started = true;
+        loading.querySelector('button').addEventListener('click', function () {
+          window.location.reload();
+        });
+        if (failedBeforeReady) recover();
+        else timer = window.setTimeout(recover, 30000);
+      }
+      window.addEventListener('error', onError, true);
+      window.addEventListener('unhandledrejection', recover);
+      window.addEventListener('TrunkApplicationStarted', stop, { once: true });
+      window.addEventListener('InitialLoadingReady', start, { once: true });
+      document.addEventListener('DOMContentLoaded', start, { once: true });
+    }());
+  </script>
+  <!-- Load analytics after the app's critical resources and first paint. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-RY374M6FJ8');
+    window.addEventListener('load', function () {
+      var loadAnalytics = function () {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-RY374M6FJ8';
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-RY374M6FJ8');
+      };
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(loadAnalytics, { timeout: 3000 });
+      } else {
+        window.setTimeout(loadAnalytics, 1000);
+      }
+    }, { once: true });
   </script>
 
-  <!-- Add a plain CSS file: see https://trunkrs.dev/assets/#css -->
-  <!-- If using Tailwind with Leptos CSR, see https://trunkrs.dev/assets/#tailwind instead-->
-  <link data-trunk rel="css" href="public/styles.css" />
+  <!-- Keep the initial loading screen visible while the full stylesheet downloads. -->
+  <link data-trunk rel="css" href="public/styles.css" media="print" fetchpriority="high" onload="this.media='all'" />
+  <link rel="preload" href="/conference/initial.json" as="fetch" type="application/json" crossorigin="anonymous" fetchpriority="high" />
 
   <!-- Include favicon in dist output: see https://trunkrs.dev/assets/#icon -->
   <link data-trunk rel="icon" href="public/favicon.ico" />
@@ -25,9 +99,22 @@
   <link rel="alternate" type="application/rss+xml" title="CCF Conference Deadlines (RSS)" href="https://ccfddl.com/conference/deadlines_en.xml" />
 
   <link data-trunk rel="copy-dir" href="public/conference">
+  <link data-trunk rel="copy-file" href="public/mcp-support.html">
+  <link data-trunk rel="copy-file" href="public/mcp-privacy.html">
+  <link data-trunk rel="copy-file" href="public/mcp-terms.html">
+  <link data-trunk rel="copy-file" href="public/robots.txt">
+  <link data-trunk rel="copy-file" href="public/sitemap.xml">
 </head>
 
 
-<body></body>
+<body>
+  <div id="initial-loading" class="initial-loading" role="status" aria-live="polite">
+    <h1>ccf-deadlines</h1>
+    <p>CCFDDL Open Deadlines helps researchers track worldwide conference deadlines through agentic collaboration.</p>
+    <span>Loading conference deadlines...</span>
+    <button type="button" hidden>Retry</button>
+  </div>
+  <script>window.dispatchEvent(new Event('InitialLoadingReady'));</script>
+</body>
 
 </html>

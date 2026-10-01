@@ -1,0 +1,10 @@
+- title: ISS
+  accept_rates:
+    # PACMHCI ISS articles: explicit final total across winter and summer rounds.
+    # Submission events may include revised manuscripts; not unique initial papers.
+    - year: 2021
+      submitted: 77
+      accepted: 23
+      rate: 0.2987012987012987
+      str: "29.9%(23/77 21')"
+      source: https://research.chalmers.se/publication/527128/file/527128_Fulltext.pdf

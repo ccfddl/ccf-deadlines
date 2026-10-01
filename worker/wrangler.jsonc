@@ -1,0 +1,48 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ccfddl-api",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-26",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1,
+    "logs": { "invocation_logs": false }
+  },
+  "routes": [
+    {
+      "pattern": "ccfddl.com/api/*",
+      "zone_name": "ccfddl.com"
+    }
+  ],
+  "vars": {
+    "PUBLIC_ORIGIN": "https://ccfddl.com"
+  },
+  "triggers": {
+    "crons": ["*/15 * * * *"]
+  },
+  "ratelimits": [
+    {
+      "name": "API_RATE_LIMITER",
+      "namespace_id": "22101",
+      "simple": { "limit": 10000, "period": 60 }
+    },
+    {
+      "name": "AUTH_RATE_LIMITER",
+      "namespace_id": "22102",
+      "simple": { "limit": 300, "period": 60 }
+    },
+    {
+      "name": "USER_WRITE_LIMITER",
+      "namespace_id": "22103",
+      "simple": { "limit": 600, "period": 60 }
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ccfddl",
+      "database_id": "bd7f9241-7c08-4b9a-bfd8-f2687b31d929",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

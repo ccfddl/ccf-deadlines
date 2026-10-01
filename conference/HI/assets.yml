@@ -7,6 +7,38 @@
     thcpl: B
   dblp: assets
   confs:
+    - year: 2021
+      id: assets21
+      link: https://assets21.sigaccess.org/
+      timeline:
+        - deadline: '2021-04-14 17:00:00'
+      timezone: PT
+      date: October 18-22, 2021
+      place: Virtual
+    - year: 2022
+      id: assets22
+      link: https://assets22.sigaccess.org/
+      timeline:
+        - deadline: '2022-04-14 17:00:00'
+      timezone: UTC-8
+      date: October 24-26, 2022
+      place: Athens, Greece
+    - year: 2023
+      id: assets23
+      link: https://assets23.sigaccess.org/
+      timeline:
+        - deadline: '2023-05-03 23:59:00'
+      timezone: AoE
+      date: October 23-25, 2023
+      place: New York, NY, USA
+    - year: 2024
+      id: assets24
+      link: https://assets24.sigaccess.org/
+      timeline:
+        - deadline: '2024-04-24 23:59:00'
+      timezone: AoE
+      date: October 28-30, 2024
+      place: St. John's, Newfoundland and Labrador, Canada
     - year: 2025
       id: assets25
       link: https://assets25.sigaccess.org/
@@ -15,3 +47,11 @@
       timezone: AoE
       date: Oct 26 - 29, 2025
       place: Denver, Colorado
+    - year: 2026
+      id: assets26
+      link: https://assets26.sigaccess.org/
+      timeline:
+        - deadline: '2026-04-22 23:59:59'
+      timezone: AoE
+      date: October 25-28, 2026
+      place: Porto, Portugal

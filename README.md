@@ -1,6 +1,6 @@
 # CCF-Deadlines
 
-> Helping researchers track worldwide conference ddls through collaboration.
+> Helping researchers track worldwide conference ddls through (agentic) collaboration.
 
 [![LICENSE](https://img.shields.io/github/license/ccfddl/ccf-deadlines)](https://github.com/ccfddl/ccf-deadlines/blob/main/LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/ccfddl/ccf-deadlines/.github/workflows/deploy.yml?branch=main)](https://github.com/ccfddl/ccf-deadlines/commits/main)
@@ -10,7 +10,7 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
 
 <table>
   <tr>
-    <td align="center"><b><a href="https://ccfddl.github.io/">🌐 Website Portal<br></a>Main Site</b></td>
+    <td align="center"><b><a href="https://ccfddl.com/">🌐 Website Portal<br></a>Main Site</b></td>
     <td align="center"><b><a href="https://github.com/ccfddl/ccf-deadlines/tree/main/.readme_assets/applet_qrcode.jpg">📱 Wechat Applet</a><br>Available Now</b></td>
     <td align="center"><b><a href="https://ccfddl.top/">🌐 Tabular Portal</a><br>No Ladder Required</b></td>
   </tr>
@@ -20,8 +20,6 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
     <td align="center"><img src=".readme_assets/screenshot_tabular.png" width="280px"/></td>
   </tr>
 </table>
-
-**No More Finding and Time Conversion on Your Own!**
 
 ### Extensions
 <table>
@@ -60,7 +58,7 @@ To add or update information:
 - Add/Update the yml file of conference/conf_type/conf_name.yml
 - Send a [pull request](https://github.com/ccfddl/ccf-deadlines/pulls)
 
-Tips: check [conferences recommended](https://www.ccf.org.cn/Academic_Evaluation/By_category/) or review [pdf](.readme_assets/ccf_recommended_2022.pdf)
+Tips: check [conferences recommended](https://www.ccf.org.cn/Academic_Evaluation/By_category/) or review [pdf](.readme_assets/ccf_recommended_2026.pdf)
 ## Conference Entry File
 Example file: conference/DB/sigmod.yml
 
@@ -123,7 +121,7 @@ Description of the fields:
       <td>The suffix in dblp url, e.g., <code>iccv</code> in https://dblp.org/db/conf/iccv</td>
    </tr>
    <tr>
-      <td rowspan="9"><code>confs</code></td>
+      <td rowspan="11"><code>confs</code></td>
       <td colspan="2"><code>year</code>*</td>
       <td>Year the conference is happening</td>
    </tr>
@@ -136,13 +134,21 @@ Description of the fields:
       <td>URL to the conference home page</td>
    </tr>
    <tr>
-      <td rowspan="3"><code>timeline</code>*</td>
+      <td rowspan="5"><code>timeline</code>*</td>
       <td><code>abstract_deadline</code></td>
       <td>Abstract deadline if applicable, optional</td>
    </tr>
    <tr>
       <td><code>deadline</code>*</td>
       <td>Deadline, in the format of <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
+   </tr>
+   <tr>
+      <td><code>rebuttal_deadline</code></td>
+      <td>Rebuttal or author-response deadline for this round, optional</td>
+   </tr>
+   <tr>
+      <td><code>decision_deadline</code></td>
+      <td>Final decision deadline for this round, optional</td>
    </tr>
    <tr>
       <td><code>comment</code></td>
@@ -163,6 +169,13 @@ Description of the fields:
 </table>
 
 Fields marked with asterisk (*) are required.
+
+Deadline defaults are repository conventions: when an official source gives a
+calendar date but no clock time, use `23:59:00` on that date. When the source does
+not specify a timezone, use `AoE`. Document these defaults in comments where
+appropriate; do not present them as times or zones stated by the source. A truly
+unpublished date remains `TBD`. Resolve explicit conflicting dates from reliable
+official evidence rather than choosing one arbitrarily.
 
 The matching table:
 

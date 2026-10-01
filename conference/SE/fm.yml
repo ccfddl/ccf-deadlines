@@ -11,27 +11,28 @@
       id: fm21
       link: http://lcs.ios.ac.cn/fm2021/
       timeline:
-        - deadline: '2021-04-30 23:59:59'
-          comment: Abstract submission
-        - deadline: '2021-05-06 23:59:59'
-          comment: Full paper submission
+        - abstract_deadline: '2021-04-30 23:59:59'
+          deadline: '2021-05-06 23:59:59'
       timezone: AoE
-      date: November 20-26, 2021
-      place: Beijng, China
+      date: November 22-26, 2021
+      place: Online
+    - year: 2023
+      id: fm23
+      link: https://fm2023.isp.uni-luebeck.de/
+      timeline:
+        - abstract_deadline: '2022-09-04 23:59:00'
+          deadline: '2022-09-11 23:59:00'
+      timezone: AoE
+      date: March 7-9, 2023
+      place: Lübeck, Germany
     - year: 2024
       id: fm24
       link: https://www.fm24.polimi.it/
       timeline:
-        - deadline: '2024-04-15 23:59:00'
-          comment: Abstract Submission
-        - deadline: '2024-04-19 23:59:00'
-          comment: Full Paper Submission
-        - deadline: '2024-06-10 23:59:00'
-          comment: Paper Notification
-        - deadline: '2024-07-01 23:59:00'
-          comment: Final Version
+        - abstract_deadline: '2024-04-19 23:59:00'
+          deadline: '2024-04-19 23:59:00'
       timezone: AoE
-      date: September 09-13, 2024
+      date: September 11-13, 2024
       place: Milan, Italy
     - year: 2026
       id: fm26
@@ -39,6 +40,15 @@
       timeline:
         - abstract_deadline: '2025-11-25 23:59:00'
           deadline: '2025-12-02 23:59:00'
+          comment: Optional abstract registration
       timezone: AoE
-      date: May 18-22, 2026
+      date: May 20-22, 2026
       place: Tokyo, Japan
+    - year: 2027
+      id: fm27
+      link: https://www.fmeurope.org/feature/upcoming_conferences/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: October 18-22, 2027
+      place: Athens, Greece

@@ -1,0 +1,8 @@
+- title: DIS
+  accept_rates:
+    - year: 2022
+      submitted: 469
+      accepted: 101
+      str: 21.5%(101/469 22')
+      rate: 0.21535181236673773
+      source: https://dis.acm.org/2022/

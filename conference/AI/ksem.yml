@@ -7,35 +7,51 @@
     thcpl: N
   dblp: ksem
   confs:
+    - year: 2021
+      id: ksem21
+      link: https://www.cloud-conf.net/ksem21/index.html
+      timeline:
+        - deadline: '2021-04-30 23:59:00'
+      timezone: AoE
+      date: August 14-16, 2021
+      place: Online
+    - year: 2022
+      id: ksem22
+      link: https://ksem22.smart-conf.net/
+      timeline:
+        - deadline: '2022-04-25 23:59:00'
+      timezone: AoE
+      date: August 6-8, 2022
+      place: Online
     - year: 2023
       id: ksem23
       link: https://www.ksem2023.conferences.academy/
       timeline:
-        - deadline: '2023-04-28 23:59:00'
-      timezone: UTC-8
+        - deadline: '2023-05-05 23:59:00'
+      timezone: AoE
       date: Aug 16-18, 2023
       place: Guangzhou, China
     - year: 2024
       id: ksem24
-      link: https://ai-edge.net/
+      link: https://ksem24.ai-edge.net/
       timeline:
-        - deadline: '2024-02-15 23:59:00'
-      timezone: UTC+0
-      date: Aug 16-18, 2024
-      place: Birmingham
+        - deadline: '2024-04-15 23:59:00'
+      timezone: AoE
+      date: August 16-17, 2024
+      place: Birmingham, UK
     - year: 2025
       id: ksem25
       link: https://ksem2025.scimeeting.cn/
       timeline:
         - deadline: '2025-03-20 23:59:59'
-      timezone: UTC+0
-      date: August 4-6, 2025
+      timezone: AoE
+      date: August 5-7, 2025
       place: Macao SAR, China
     - year: 2026
       id: ksem26
       link: https://ksem2026.rosc.org.cn/
       timeline:
-        - deadline: '2026-01-15 23:59:59'
-      timezone: UTC+0
-      date: July 17-19, 2026
+        - deadline: '2026-02-28 23:59:00'
+      timezone: AoE
+      date: July 17-18, 2026
       place: Beijing, China

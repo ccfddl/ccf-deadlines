@@ -12,10 +12,25 @@
       link: https://isc2021.petra.ac.id/
       timeline:
         - deadline: '2021-07-23 23:59:59'
-          comment: Submission Deadline
-      timezone: UTC-12
+      timezone: UTC
       date: November 9 - 13, 2021
-      place: Bali, Indonesia
+      place: Online
+    - year: 2022
+      id: isc22
+      link: https://isc2022.petra.ac.id/
+      timeline:
+        - deadline: '2022-08-05 23:59:59'
+      timezone: UTC
+      date: TBD
+      place: Bali, Indonesia (Hybrid)
+    - year: 2023
+      id: isc23
+      link: https://isc23.cs.rug.nl/
+      timeline:
+        - deadline: '2023-08-03 23:59:00'
+      timezone: UTC-12
+      date: November 15-17, 2023
+      place: Groningen, Netherlands
     - year: 2024
       id: isc24
       link: https://isc24.cs.gmu.edu/
@@ -29,8 +44,7 @@
       id: isc25
       link: https://isc25.skku.edu/
       timeline:
-        - deadline: '2025-06-04 23:59:59'
-          comment: Submission Deadline
+        - deadline: '2025-06-11 23:59:00'
       timezone: AoE
       date: October 20-22, 2025
       place: Seoul, South Korea
@@ -38,7 +52,7 @@
       id: isc26
       link: https://isc2026.github.io/
       timeline:
-        - deadline: '2026-06-22 23:59:59'
+        - deadline: '2026-07-02 23:59:59'
       timezone: AoE
       date: October 28-30, 2026
       place: Rennes, France
