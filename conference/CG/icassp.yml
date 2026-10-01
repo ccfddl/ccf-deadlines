@@ -12,7 +12,6 @@
       link: https://www.2021.ieeeicassp.org/2021.ieeeicassp.org/index.html
       timeline:
         - deadline: '2020-10-21 23:59:00'
-          comment: 'Regular full-paper date verified; 23:59:00 and AoE are repository defaults for the unpublished time and zone.'
       timezone: AoE
       date: June 8-11, 2021
       place: Online
@@ -22,15 +21,15 @@
       timeline:
         - deadline: '2021-10-06 23:59:59'
       timezone: UTC+0
-      date: May 22-27, 2022
-      place: Singapore
+      date: May 7-13 (Virtual) and May 24-27 (In-person), 2022
+      place: Singapore and Online
     - year: 2023
       id: icassp23
       link: https://2023.ieeeicassp.org
       timeline:
         - deadline: '2022-10-26 23:59:59'
       timezone: UTC-12
-      date: June 4-9, 2023
+      date: June 6-9, 2023
       place: Rhodes Island, Greece
     - year: 2024
       id: icassp24
@@ -38,15 +37,15 @@
       timeline:
         - deadline: '2023-09-06 23:59:59'
       timezone: UTC-12
-      date: April 14-19, 2024
+      date: April 15-19, 2024
       place: COEX, Seoul, Korea
     - year: 2025
       id: icassp25
       link: https://2025.ieeeicassp.org/
       timeline:
-        - deadline: '2024-09-12 23:59:59'
-      timezone: UTC-7
-      date: April 6-11, 2025
+        - deadline: '2024-09-09 23:59:00'
+      timezone: UTC-8
+      date: April 8-11, 2025
       place: Hyderabad, India
     - year: 2026
       id: icassp26
@@ -54,7 +53,7 @@
       timeline:
         - deadline: '2025-09-17 23:59:59'
       timezone: UTC-12
-      date: May 4-8, 2026
+      date: May 5-8, 2026
       place: Barcelona, Spain
     - year: 2027
       id: icassp27
