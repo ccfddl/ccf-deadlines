@@ -7,6 +7,43 @@
     thcpl: B
   dblp: isit
   confs:
+    - year: 2021
+      id: isit21
+      link: http://2021.ieee-isit.org/
+      timeline:
+        - abstract_deadline: '2021-01-27 23:59:00'
+          deadline: '2021-02-03 23:59:00'
+          comment: Paper registration
+      timezone: UTC-10
+      date: July 12-21, 2021
+      place: Online
+    - year: 2022
+      id: isit22
+      link: https://www.isit2022.org/
+      timeline:
+        - deadline: '2022-02-06 23:59:00'
+      timezone: UTC-5
+      date: June 27 - July 1, 2022
+      place: Espoo, Finland
+    - year: 2023
+      id: isit23
+      link: https://isit2023.org/
+      timeline:
+        - deadline: '2023-01-03 23:59:00'
+          comment: Virtual track
+        - deadline: '2023-02-05 23:59:00'
+          comment: In-person track
+      timezone: UTC+8
+      date: TBD
+      place: Taipei, Taiwan
+    - year: 2024
+      id: isit24
+      link: https://2024.ieee-isit.org/
+      timeline:
+        - deadline: '2024-01-29 23:59:00'
+      timezone: AoE
+      date: July 8-12, 2024
+      place: Athens, Greece
     - year: 2025
       id: isit25
       link: https://2025.ieee-isit.org/
