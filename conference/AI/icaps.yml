@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2020-12-11 23:59:00'
           deadline: '2020-12-18 23:59:00'
-          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: August 2-13, 2021
       place: Virtual
@@ -23,7 +22,6 @@
       timeline:
         - abstract_deadline: '2021-12-10 23:59:00'
           deadline: '2021-12-15 23:59:00'
-          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: June 13-24, 2022
       place: Virtual
@@ -33,7 +31,6 @@
       timeline:
         - abstract_deadline: '2022-11-25 23:59:00'
           deadline: '2022-11-30 23:59:00'
-          comment: 'Main track; official dates in UTC-12; 23:59:00 is the repository default for an unspecified clock.'
       timezone: UTC-12
       date: July 8-13, 2023
       place: Prague, Czech Republic
@@ -43,7 +40,6 @@
       timeline:
         - abstract_deadline: '2023-12-07 23:59:00'
           deadline: '2023-12-13 23:59:00'
-          comment: 'Main track; OpenReview gives December 8 and 14 at 11:59 UTC, converted to the preceding dates at 23:59 UTC-12.'
       timezone: UTC-12
       date: June 1-6, 2024
       place: Banff, Alberta, Canada
