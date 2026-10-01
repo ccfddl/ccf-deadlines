@@ -12,30 +12,32 @@
       link: https://coling2022.org/
       timeline:
         - deadline: '2022-05-17 23:59:00'
-          comment: Papers Due
       timezone: AoE
-      date: October 12-17, 2022
-      place: Gyeongju, Republic of Korea
+      date: October 12-15, 2022
+      place: Gyeongju, Republic of Korea (Hybrid)
     - year: 2024
       id: coling24
       link: https://lrec-coling-2024.lrec-conf.org/
       timeline:
         - deadline: '2023-10-20 23:59:59'
-          comment: Regular full papers due
       timezone: UTC-12
-      date: May 20 - May 25, 2024
-      place: Torino, Italy
+      date: May 22-24, 2024
+      place: Torino, Italy (Hybrid)
     - year: 2025
       id: coling25
       link: https://coling2025.org/
       timeline:
+        - deadline: '2024-06-15 23:59:00'
+          comment: 'ARR June cycle'
+        - deadline: '2024-08-15 23:59:00'
+          comment: 'ARR August cycle'
         - deadline: '2024-09-16 23:59:59'
           comment: 'Direct submission'
         - deadline: '2024-10-20 23:59:00'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
-      date: Jan 19 - Jan 24, 2025
-      place: Abu Dhabi, UAE
+      date: January 21-24 (in-person) and 27-28 (virtual), 2025
+      place: Abu Dhabi, UAE / Online
     - year: 2027
       id: coling27
       link: https://2027.coling-iccl.org/
