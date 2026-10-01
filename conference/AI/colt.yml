@@ -13,16 +13,16 @@
       timeline:
         - deadline: '2021-01-29 16:00:00'
       timezone: UTC-8
-      date: August 4-5 (Virtual) and August 15-19 (Hybrid), 2021
+      date: August 4-5 (Virtual) and August 16-19 (Hybrid), 2021
       place: Boulder, Colorado, USA (Hybrid)
     - year: 2022
       id: colt22
       link: https://learningtheory.org/colt2022/index.html
       timeline:
-        - deadline: '2022-02-09 15:59:59'
+        - deadline: '2022-02-09 16:00:00'
       timezone: UTC-8
       date: July 2-5, 2022
-      place: London, UK
+      place: London, UK (Hybrid)
     - year: 2023
       id: colt23
       link: https://learningtheory.org/colt2023/
@@ -35,7 +35,7 @@
       id: colt24
       link: https://learningtheory.org/colt2024/
       timeline:
-        - deadline: '2024-02-09 15:59:59'
+        - deadline: '2024-02-09 16:00:00'
       timezone: UTC-5
       date: June 30 - July 3, 2024
       place: Edmonton, Canada
@@ -43,9 +43,9 @@
       id: colt25
       link: https://learningtheory.org/colt2025/
       timeline:
-        - deadline: '2025-02-06 16:59:59'
+        - deadline: '2025-02-06 17:00:00'
       timezone: UTC-5
-      date: June 30 - July 4, 2025
+      date: July 1-4, 2025
       place: Lyon, France
     - year: 2026
       id: colt26
@@ -53,7 +53,7 @@
       timeline:
         - deadline: '2026-02-04 23:59:59'
       timezone: AoE
-      date: June 29 - July 3, 2026
+      date: June 30 - July 3, 2026
       place: San Diego, California
     - year: 2027
       id: colt27
