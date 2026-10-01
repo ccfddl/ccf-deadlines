@@ -24,7 +24,7 @@
           deadline: '2022-01-14 23:59:59'
           comment: 'Abstract: January 7, 23:59 AoE (UTC-12), converted to CET (UTC+1); full paper: January 14, 23:59 CET'
       timezone: UTC+1
-      date: July 26-29, 2022
+      date: July 25-29, 2022
       place: Vienna, Austria.
     - year: 2023
       id: ijcai23
