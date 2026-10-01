@@ -12,7 +12,6 @@
       link: https://www.nspw.org/2021
       timeline:
         - deadline: '2021-06-04 23:59:59'
-          comment: Submission deadline
       timezone: UTC-11
       date: October 26-28, 2021
       place: Virtual
@@ -22,7 +21,7 @@
       timeline:
         - deadline: '2022-05-30 23:59:59'
       timezone: UTC-12
-      date: October 24-27, 2022
+      date: October 25-27, 2022
       place: North Conway, New Hampshire, USA
     - year: 2023
       id: nspw23
@@ -30,7 +29,7 @@
       timeline:
         - deadline: '2023-05-26 23:59:59'
       timezone: UTC-11
-      date: September 18-21, 2023
+      date: September 19-21, 2023
       place: Parador de Segovia, Segovia, Spain
     - year: 2024
       id: nspw24
@@ -38,7 +37,7 @@
       timeline:
         - deadline: '2024-04-28 23:59:00'
       timezone: UTC-11
-      date: September 16-19, 2024
+      date: September 17-19, 2024
       place: Bedford, PA USA
     - year: 2025
       id: nspw25
