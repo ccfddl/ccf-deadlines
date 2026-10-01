@@ -51,9 +51,9 @@
       id: refsq25
       link: https://2025.refsq.org/
       timeline:
-        - abstract_deadline: '2024-11-01 23:59:00'
-          deadline: '2024-11-08 23:59:00'
-          comment: Regular research papers; abstract submission is optional; clock defaults to 23:59:00 by repository convention
+        - abstract_deadline: '2024-11-01 23:59:59'
+          deadline: '2024-11-08 23:59:59'
+          comment: Regular research papers; abstract submission is optional
       timezone: AoE
       date: April 7-10, 2025
       place: Barcelona, Spain
@@ -61,9 +61,9 @@
       id: refsq26
       link: https://2026.refsq.org/
       timeline:
-        - abstract_deadline: '2025-10-10 23:59:00'
-          deadline: '2025-10-17 23:59:00'
-          comment: Regular research papers; abstract submission is optional; clock defaults to 23:59:00 by repository convention
+        - abstract_deadline: '2025-10-10 23:59:59'
+          deadline: '2025-10-17 23:59:59'
+          comment: Regular research papers; abstract submission is optional
       timezone: AoE
       date: March 23-26, 2026
       place: Poznań, Poland
