@@ -24,7 +24,7 @@
           deadline: '2024-04-17 23:59:59'
           comment: 'First round'
         - deadline: '2024-07-08 23:59:59'
-          comment: 'Second round (new papers; no separate abstract deadline)'
+          comment: 'Second round'
       timezone: UTC-7
       date: December 2-5, 2024
       place: Kolkata, India
