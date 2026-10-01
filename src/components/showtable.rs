@@ -1757,7 +1757,7 @@ const DISPLAY_TIMEZONES: &[&str] = &[
 ];
 
 #[cfg(target_arch = "wasm32")]
-fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
+pub(crate) fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
     use wasm_bindgen::JsCast;
     use web_sys::js_sys::Array;
 
@@ -1778,7 +1778,7 @@ fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
 }
 
 #[cfg(not(target_arch = "wasm32"))]
-fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
+pub(crate) fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
     let mut options = fallback_display_timezone_options();
     options.retain(|timezone| timezone != browser_timezone);
     options.insert(0, browser_timezone.to_string());
@@ -1792,14 +1792,14 @@ fn fallback_display_timezone_options() -> Vec<String> {
         .collect()
 }
 
-fn is_supported_display_timezone(value: &str, browser_timezone: &str) -> bool {
+pub(crate) fn is_supported_display_timezone(value: &str, browser_timezone: &str) -> bool {
     display_timezone_options(browser_timezone)
         .iter()
         .any(|timezone| timezone == value)
 }
 
 #[cfg(target_arch = "wasm32")]
-fn display_timezone_offset_at(timezone: &str, timestamp_millis: i64) -> FixedOffset {
+pub(crate) fn display_timezone_offset_at(timezone: &str, timestamp_millis: i64) -> FixedOffset {
     timezone_offset_from_intl(timezone, timestamp_millis)
         .unwrap_or_else(|| FixedOffset::east_opt(0).expect("UTC offset is valid"))
 }
@@ -1845,7 +1845,7 @@ fn timezone_offset_from_intl(timezone: &str, timestamp_millis: i64) -> Option<Fi
 }
 
 #[cfg(not(target_arch = "wasm32"))]
-fn display_timezone_offset_at(timezone: &str, _timestamp_millis: i64) -> FixedOffset {
+pub(crate) fn display_timezone_offset_at(timezone: &str, _timestamp_millis: i64) -> FixedOffset {
     let seconds = match timezone {
         "Pacific/Honolulu" => -10 * 3600,
         "America/Los_Angeles" => -8 * 3600,
@@ -2493,7 +2493,7 @@ fn resolve_tz_offset(tz: &str, date: &str) -> Option<String> {
     get_utc_map().get(&tz_str).cloned()
 }
 
-fn parse_deadline_to_rfc3339(deadline: &str, tz: &str) -> Option<String> {
+pub(crate) fn parse_deadline_to_rfc3339(deadline: &str, tz: &str) -> Option<String> {
     let date_part = deadline.split(' ').nth(0).unwrap_or(deadline);
     let tz_offset = resolve_tz_offset(tz, date_part)?;
     Some(if deadline.contains(' ') {
