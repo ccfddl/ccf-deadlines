@@ -24,14 +24,14 @@
           deadline: '2021-10-03 23:59:00'
       timezone: UTC+0
       date: April 25-29, 2022
-      place: Reims, France
+      place: Reims, France and Online
     - year: 2023
       id: eg23
       link: https://eg2023.saarland-informatics-campus.de/
       timeline:
         - abstract_deadline: TBD
           deadline: '2022-09-30 23:59:00'
-          comment: Mandatory abstract date conflicts between the official CFP (September 23, 2022) and SRM (September 22, 2022); both specify 23:59 UTC.
+          comment: Abstract cutoff unresolved / full paper
       timezone: UTC+0
       date: May 8-12, 2023
       place: Saarbrücken, Germany
@@ -41,7 +41,6 @@
       timeline:
         - abstract_deadline: '2023-09-28 23:59:59'
           deadline: '2023-10-06 23:59:00'
-          comment: Regular full-paper deadline extended from October 5 to October 6.
       timezone: UTC
       date: April 22-26, 2024
       place: Limassol, Cyprus
@@ -49,8 +48,8 @@
       id: eg25
       link: https://eg25.cs.ucl.ac.uk/main/home.html
       timeline:
-        - abstract_deadline: '2024-10-01 23:59:59'
-          deadline: '2024-10-03 23:59:59'
+        - abstract_deadline: '2024-10-03 23:59:00'
+          deadline: '2024-10-04 23:59:00'
       timezone: UTC
       date: May 12-16, 2025
       place: London, UK
