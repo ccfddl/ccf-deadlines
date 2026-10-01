@@ -29,9 +29,10 @@
       id: bmvc23
       link: https://www.bmvc2023.org/
       timeline:
-        - deadline: '2023-05-12 23:59:59'
+        - abstract_deadline: '2023-05-05 23:59:00'
+          deadline: '2023-05-12 23:59:59'
       timezone: UTC+1
-      date: November 20-24, 2023
+      date: November 20-23, 2023
       place: Aberdeen, UK
     - year: 2024
       id: bmvc24
@@ -49,7 +50,7 @@
         - abstract_deadline: '2025-05-13 23:59:59'
           deadline: '2025-05-16 23:59:59'
       timezone: UTC+0
-      date: November 24-27, 2025
+      date: November 24-26, 2025
       place: Sheffield, UK
     - year: 2026
       id: bmvc26
