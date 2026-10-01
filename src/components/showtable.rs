@@ -1711,8 +1711,6 @@ pub fn ShowTable(
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank">
                             "@ccfddl"
                         </a> " on Github."
-                        " · "
-                        <a style="color: #666666" href="/conferences/">"Conference directory"</a>
                     </span>
                 </div>
                 <div class="footer-pagination">
