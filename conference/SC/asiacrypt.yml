@@ -13,8 +13,8 @@
       timeline:
         - deadline: '2021-05-27 11:59:59'
       timezone: UTC
-      date: December 5-9, 2021
-      place: Singapore
+      date: December 6-10, 2021
+      place: Virtual
     - year: 2022
       id: asiacrypt22
       link: https://asiacrypt.iacr.org/2022/
