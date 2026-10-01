@@ -31,7 +31,7 @@
       timeline:
         - abstract_deadline: '2023-05-16 23:59:00'
           deadline: TBD
-          comment: 'Abstract date May 16, 2023; 23:59:00 and AoE are repository defaults. Full-paper date and GMT clock are struck through with no replacement; full deadline remains unresolved.'
+          comment: Full-paper extension unconfirmed
       timezone: AoE
       date: August 16-18, 2023
       place: Fredericton, New Brunswick, Canada
@@ -40,9 +40,9 @@
       link: https://sacworkshop.org/SAC24/
       timeline:
         - deadline: '2024-02-07 23:59:59'
-          comment: 1st round Deadline
+          comment: Cycle 1
         - deadline: '2024-05-07 23:59:59'
-          comment: 2nd round Deadline
+          comment: Cycle 2
       timezone: AoE
       date: August 28 - 30, 2024
       place: Montreal, Canada
@@ -51,9 +51,9 @@
       link: https://sacworkshop.org/SAC25/
       timeline:
         - deadline: '2025-01-27 23:59:59'
-          comment: Paper submission deadline (cycle 1)
+          comment: Cycle 1
         - deadline: '2025-05-07 23:59:59'
-          comment: Paper submission deadline (cycle 2)
+          comment: Cycle 2
       timezone: AoE
       date: August 13-15, 2025
       place: Toronto, Ontario, Canada
@@ -62,9 +62,9 @@
       link: https://sacworkshop.org/SAC26/
       timeline:
         - deadline: '2026-02-02 23:59:59'
-          comment: Paper submission deadline (cycle 1)
+          comment: Cycle 1
         - deadline: '2026-05-11 23:59:59'
-          comment: Paper submission deadline (cycle 2)
+          comment: Cycle 2
       timezone: AoE
       date: August 26-28, 2026
       place: Ottawa, Ontario, Canada
