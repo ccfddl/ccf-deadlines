@@ -7,6 +7,15 @@
     thcpl: A
   dblp: ipsn
   confs:
+    - year: 2021
+      id: ipsn21
+      link: https://ipsn.acm.org/2021/
+      timeline:
+        - abstract_deadline: '2020-10-19 23:59:59'
+          deadline: '2020-10-26 23:59:59'
+      timezone: AoE
+      date: May 19-21, 2021
+      place: Virtual
     - year: 2022
       id: ipsn22
       link: https://ipsn.acm.org/2022/
@@ -23,7 +32,7 @@
         - abstract_deadline: '2022-10-31 23:59:59'
           deadline: '2022-10-31 23:59:59'
       timezone: UTC-12
-      date: May 9-12, 2023
+      date: May 10-12, 2023
       place: San Antonio, Texas, USA
     - year: 2024
       id: ipsn24
@@ -32,5 +41,5 @@
         - abstract_deadline: '2023-10-24 23:59:59'
           deadline: '2023-10-31 23:59:59'
       timezone: UTC-12
-      date: May 13-16, 2024
+      date: May 14-16, 2024
       place: Hong Kong, China
