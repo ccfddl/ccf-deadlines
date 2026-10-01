@@ -26,10 +26,12 @@
       timeline:
         - abstract_deadline: '2021-08-13 23:59:59'
           deadline: '2021-08-20 23:59:59'
+          comment: Summer cycle
         - abstract_deadline: '2022-03-18 23:59:59'
           deadline: '2022-03-25 23:59:59'
+          comment: Winter cycle
       timezone: UTC-7
-      date: October 17-21, 2022
+      date: October 18-20, 2022
       place: Sydney, Australia
     - year: 2023
       id: mobicom23
@@ -38,10 +40,11 @@
         - abstract_deadline: '2022-08-12 23:59:59'
           deadline: '2022-08-19 23:59:59'
           comment: 'Summer cycle'
-        - abstract_deadline: '2023-03-10 23:59:59'
+        - abstract_deadline: '2023-03-11 00:59:59'
           deadline: '2023-03-17 23:59:59'
+          comment: Winter registration / full paper
       timezone: UTC-7
-      date: Oct 2-6, 2023
+      date: October 2-5, 2023
       place: Madrid, Spain
     - year: 2024
       id: mobicom24
@@ -54,7 +57,7 @@
           deadline: '2024-03-15 23:59:59'
           comment: 'Winter cycle'
       timezone: UTC-12
-      date: October, 2024
+      date: November 19-22, 2024
       place: Washington, D.C., USA
     - year: 2025
       id: mobicom25
@@ -67,7 +70,7 @@
           deadline: '2025-03-18 23:59:59'
           comment: Winter Deadlines
       timezone: UTC-12
-      date: November, 2025
+      date: November 4-7, 2025
       place: Hong Kong, China
     - year: 2026
       id: mobicom26
@@ -80,7 +83,7 @@
           deadline: '2026-03-13 23:59:59'
           comment: Winter Deadlines
       timezone: AoE
-      date: November, 2026
+      date: October 26-29, 2026
       place: Austin, Texas, USA
     - year: 2027
       id: mobicom27
