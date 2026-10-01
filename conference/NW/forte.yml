@@ -7,6 +7,33 @@
     thcpl: N
   dblp: forte
   confs:
+    - year: 2021
+      id: forte21
+      link: https://www.discotec.org/2021/forte
+      timeline:
+        - abstract_deadline: '2021-02-12 23:59:00'
+          deadline: '2021-02-19 23:59:00'
+      timezone: AoE
+      date: June 15-17, 2021
+      place: Virtual
+    - year: 2022
+      id: forte22
+      link: https://www.discotec.org/2022/forte
+      timeline:
+        - abstract_deadline: '2022-02-11 23:59:00'
+          deadline: '2022-02-18 23:59:00'
+      timezone: AoE
+      date: June 14-16, 2022
+      place: Lucca, Italy (Hybrid)
+    - year: 2023
+      id: forte23
+      link: https://www.discotec.org/2023/forte
+      timeline:
+        - abstract_deadline: '2023-02-24 23:59:00'
+          deadline: '2023-03-04 23:59:00'
+      timezone: AoE
+      date: June 20-22, 2023
+      place: Lisbon, Portugal
     - year: 2024
       id: forte24
       link: https://www.discotec.org/2024/forte
@@ -14,7 +41,7 @@
         - abstract_deadline: '2024-02-16 23:59:59'
           deadline: '2024-02-23 23:59:59'
       timezone: AoE
-      date: June 17-21, 2024
+      date: June 18-20, 2024
       place: Groningen, The Netherlands
     - year: 2025
       id: forte25
@@ -23,7 +50,7 @@
         - abstract_deadline: '2025-02-14 23:59:59'
           deadline: '2025-02-21 23:59:59'
       timezone: AoE
-      date: June 16-20, 2025
+      date: June 17-19, 2025
       place: Lille, France
     - year: 2026
       id: forte26
@@ -32,5 +59,5 @@
         - abstract_deadline: '2026-02-13 23:59:59'
           deadline: '2026-02-20 23:59:59'
       timezone: AoE
-      date: June 8-12, 2026
+      date: June 9-11, 2026
       place: Urbino, Italy
