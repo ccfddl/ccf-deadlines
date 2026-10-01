@@ -7,6 +7,37 @@
     thcpl: N
   dblp: APWeb
   confs:
+    - year: 2021
+      id: apweb21
+      link: https://tc.ccf.org.cn/tcis/qkjhy/2021-03-12/730450.shtml
+      timeline:
+        - abstract_deadline: '2021-03-31 23:59:00'
+          deadline: '2021-03-31 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Guangzhou, China
+    - year: 2022
+      id: apweb22
+      link: https://tc.ccf.org.cn/tcis/xwdt/2022-03-16/761566.shtml
+      timeline:
+        - abstract_deadline: '2022-03-29 23:59:00'
+          deadline: '2022-04-05 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Nanjing, China
+    - year: 2023
+      id: apweb23
+      link: https://web.archive.org/web/20230927013851/http://www.apweb-waim2023.com/
+      timeline:
+        - abstract_deadline: '2023-03-13 23:59:00'
+          deadline: '2023-03-20 23:59:00'
+          comment: First round
+        - abstract_deadline: '2023-06-03 23:59:00'
+          deadline: '2023-06-10 23:59:00'
+          comment: Second round
+      timezone: UTC-8
+      date: October 7-8, 2023
+      place: Wuhan, China
     - year: 2024
       id: apweb24
       link: https://apweb2024.zjnu.edu.cn/
@@ -16,18 +47,18 @@
         - deadline: '2024-05-23 23:59:59'
           comment: second round
       timezone: UTC-12
-      date: August 30 - Septemper 1, 2024
+      date: August 30 - September 1, 2024
       place: Jinhua, China
     - year: 2025
       id: apweb25
       link: https://apweb2025.sau.edu.cn/
       timeline:
-        - deadline: '2025-03-02 23:59:59'
+        - deadline: '2025-03-09 23:59:00'
           comment: first round
-        - deadline: '2025-05-04 23:59:59'
+        - deadline: '2025-05-18 23:59:00'
           comment: second round
-      timezone: UTC-8
-      date: August 28-30, 2025
+      timezone: UTC-7
+      date: August 29-30, 2025
       place: Shenyang, China
     - year: 2026
       id: apweb26
@@ -39,4 +70,4 @@
           comment: second round
       timezone: AoE
       date: September 7-9, 2026
-      place: Danang, Vietnam
+      place: Danang, Vietnam / Online
