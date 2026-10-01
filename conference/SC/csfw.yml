@@ -76,12 +76,12 @@
       id: csfw26
       link: https://csf2026.ieee-security.org/
       timeline:
-        - deadline: '2025-07-24 23:59:00'
-          comment: 'Summer regular paper submission; time defaults to 23:59:00 (not specified by source)'
-        - deadline: '2025-10-09 23:59:00'
-          comment: 'Fall regular paper submission; time defaults to 23:59:00 (not specified by source)'
-        - deadline: '2026-01-29 23:59:00'
-          comment: 'Winter regular paper submission; time defaults to 23:59:00 (not specified by source)'
+        - deadline: '2025-07-24 23:59:59'
+          comment: Summer
+        - deadline: '2025-10-09 23:59:59'
+          comment: Fall
+        - deadline: '2026-01-29 23:59:59'
+          comment: Winter
       timezone: UTC-12
       date: July 26-29, 2026
       place: Lisbon, Portugal
