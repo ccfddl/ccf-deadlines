@@ -5,6 +5,24 @@
     ccf: C
   dblp: acmidc
   confs:
+    - year: 2025
+      id: idc25
+      link: https://idc.acm.org/2025/
+      timeline:
+        - abstract_deadline: '2025-01-21 23:59:00'
+          deadline: '2025-01-28 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Reykjavik, Iceland
+    - year: 2026
+      id: idc26
+      link: https://idc.acm.org/2026/
+      timeline:
+        - abstract_deadline: '2026-01-20 23:59:00'
+          deadline: '2026-01-27 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Brighton, UK
     - year: 2027
       id: idc27
       link: https://idc.acm.org/2027/
