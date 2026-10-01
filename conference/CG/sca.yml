@@ -20,35 +20,33 @@
       id: sca22
       link: https://computeranimation.org/2022/instructions.html
       timeline:
-        - deadline: TBD
-          comment: 'Regular full papers: extended to May 24, 2022; clock and timezone unverified. UTC+0 is a schema placeholder.'
-      timezone: UTC+0
+        - deadline: '2022-05-24 23:59:00'
+          comment: Regular full papers, extended
+      timezone: AoE
       date: September 13-15, 2022
       place: Durham, UK and Online
     - year: 2023
       id: sca23
       link: https://computeranimation.org/2023/
       timeline:
-        - deadline: TBD
-          comment: 'Regular papers: April 12, 2023; clock and timezone unverified. UTC+0 is a schema placeholder.'
-      timezone: UTC+0
+        - deadline: '2023-04-12 23:59:00'
+          comment: Regular papers, extended
+      timezone: AoE
       date: August 4-6, 2023
       place: Los Angeles, USA
     - year: 2024
       id: sca24
-      link: https://computeranimation.org/
+      link: https://computeranimation.org/2024/
       timeline:
         - deadline: '2024-04-29 23:59:59'
-          comment: Submission deadline (regular papers)
       timezone: UTC
       date: August 21-23, 2024
       place: McGill University, Montreal, Canada
     - year: 2025
       id: sca25
-      link: https://computeranimation.org/
+      link: https://computeranimation.org/2025/
       timeline:
         - deadline: '2025-04-07 23:59:59'
-          comment: Submission deadline (papers)
       timezone: AoE
       date: August 8-10, 2025
       place: Vancouver, Canada
@@ -58,7 +56,6 @@
       timeline:
         - abstract_deadline: '2026-04-10 23:59:00'
           deadline: '2026-04-17 23:59:00'
-          comment: Submission deadline (papers)
       timezone: UTC+0
       date: July 8-10, 2026
       place: Barcelona, Spain
