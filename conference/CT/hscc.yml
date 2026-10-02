@@ -62,6 +62,8 @@
       timeline:
         - abstract_deadline: '2026-10-29 23:59:59'
           deadline: '2026-11-05 23:59:59'
+          rebuttal_deadline: '2027-01-15 23:59:00'
+          decision_deadline: '2027-01-28 23:59:00'
       timezone: AoE
       date: May 17-20, 2027
       place: Boulder, Colorado, USA
