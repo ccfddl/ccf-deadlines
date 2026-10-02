@@ -76,6 +76,8 @@
       timeline:
         - abstract_deadline: '2026-10-01 23:59:59'
           deadline: '2026-10-08 23:59:59'
+          rebuttal_deadline: '2026-11-24 23:59:00'
+          decision_deadline: '2026-12-21 23:59:00'
       timezone: AoE
       date: May 3-7, 2027
       place: Hanoi, Vietnam
