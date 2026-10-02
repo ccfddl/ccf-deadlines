@@ -60,6 +60,7 @@
       link: https://interspeech2027.org/
       timeline:
         - deadline: '2027-02-09 23:59:59'
+          decision_deadline: '2027-06-03 11:59:00'
       timezone: UTC+0
       date: August 29 - September 2, 2027
       place: São Paulo, Brazil
