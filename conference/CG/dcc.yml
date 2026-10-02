@@ -11,7 +11,7 @@
       id: dcc2021
       link: https://dcc2019.signalprocessingsociety.org/www.cs.brandeis.edu/_dcc/index.html
       timeline:
-          - deadline: '2020-11-02 23:59:00'
+        - deadline: '2020-11-02 23:59:00'
       timezone: PT
       date: March 23-26, 2021
       place: Online
@@ -27,7 +27,7 @@
       id: dcc2023
       link: https://datacompressionconference.org/
       timeline:
-          - deadline: '2022-11-08 23:59:00'
+        - deadline: '2022-11-08 23:59:00'
       timezone: PT
       date: March 22-24, 2023
       place: Snowbird, Utah, United States
@@ -43,7 +43,7 @@
       id: dcc2025
       link: https://datacompressionconference.org/
       timeline:
-          - deadline: '2024-10-11 23:59:59'
+        - deadline: '2024-10-11 23:59:59'
       timezone: PT
       date: March 19-21, 2025
       place: Snowbird, Utah, United States
@@ -51,7 +51,7 @@
       id: dcc2026
       link: https://datacompressionconference.org/
       timeline:
-          - deadline: '2025-10-03 23:59:00'
+        - deadline: '2025-10-03 23:59:00'
       timezone: AoE
       date: March 25-27, 2026
       place: Snowbird, Utah, United States
@@ -59,7 +59,7 @@
       id: dcc2027
       link: https://datacompressionconference.org/
       timeline:
-          - deadline: '2026-10-02 23:59:59'
+        - deadline: '2026-10-02 23:59:59'
       timezone: PT
       date: March 23-26, 2027
       place: Snowbird, Utah, United States
