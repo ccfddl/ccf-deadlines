@@ -79,6 +79,7 @@
       timeline:
         - abstract_deadline: '2026-11-02 23:59:59'
           deadline: '2026-11-09 23:59:59'
+          decision_deadline: '2027-01-25 23:59:00'
           comment: 'Conference track'
       timezone: AoE
       date: April 19-22, 2027
