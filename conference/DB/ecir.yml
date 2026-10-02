@@ -64,8 +64,9 @@
       id: ecir27
       link: https://ecir2027.co.uk/
       timeline:
-        - abstract_deadline: '2026-09-21 23:59:59'
-          deadline: '2026-10-05 23:59:59'
+        - abstract_deadline: '2026-09-22 11:59:59'
+          deadline: '2026-10-06 11:59:59'
+          decision_deadline: '2026-12-08 11:59:00'
       timezone: UTC+0
       date: March 21-25, 2027
       place: Southampton, UK
