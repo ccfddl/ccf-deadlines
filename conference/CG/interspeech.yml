@@ -12,52 +12,48 @@
       link: https://www.interspeech2021.org/
       timeline:
         - deadline: '2021-03-26 23:59:00'
-          comment: Regular papers; later paper updates excluded
       timezone: UTC-12
-      date: August 30 - September 3, 2021
-      place: Brno, Czech Republic
+      date: August 31 - September 3, 2021
+      place: Brno, Czech Republic and Online
     - year: 2022
       id: interspeech22
       link: https://www.interspeech2022.org/
       timeline:
         - deadline: '2022-03-21 23:59:59'
       timezone: UTC-12
-      date: September 18-22, 2022
-      place: Incheon, South Korea
+      date: September 19-22, 2022
+      place: Incheon, South Korea and Online
     - year: 2023
       id: interspeech23
       link: https://www.interspeech2023.org/
       timeline:
         - deadline: '2023-03-01 23:59:00'
-          comment: Regular papers; March 8 updates excluded
       timezone: UTC-12
-      date: August 20-24, 2023
+      date: August 21-24, 2023
       place: Dublin, Ireland
     - year: 2024
       id: interspeech24
       link: https://www.interspeech2024.org/
       timeline:
         - deadline: '2024-03-02 23:59:00'
-          comment: Regular papers; later paper updates excluded
       timezone: UTC-12
-      date: September 1-5, 2024
+      date: September 2-5, 2024
       place: Greece
     - year: 2025
       id: interspeech25
       link: https://www.interspeech2025.org/home
       timeline:
         - deadline: '2025-02-12 23:59:00'
-          comment: Regular papers; February 19 updates excluded
       timezone: UTC-12
-      date: August 17-22, 2025
+      date: August 18-21, 2025
       place: Rotterdam, Netherlands
     - year: 2026
       id: interspeech26
       link: https://interspeech2026.org/
       timeline:
-        - deadline: '2026-02-25 23:59:59'
-      timezone: UTC+0
-      date: September 27 - October 1, 2026
+        - deadline: '2026-02-25 23:59:00'
+      timezone: AoE
+      date: September 28 - October 1, 2026
       place: Sydney, Australia
     - year: 2027
       id: interspeech27
