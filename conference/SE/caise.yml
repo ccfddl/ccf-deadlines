@@ -65,7 +65,9 @@
       id: caise27
       link: https://deal.us.es/caise27/
       timeline:
-        - deadline: 'TBD'
+        - abstract_deadline: '2026-11-04 23:59:00'
+          deadline: '2026-11-15 23:59:00'
+          decision_deadline: '2027-02-10 23:59:00'
       timezone: AoE
       date: June 7-11, 2027
       place: Seville, Spain
