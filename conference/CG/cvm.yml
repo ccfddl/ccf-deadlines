@@ -67,6 +67,7 @@
       timeline:
         - abstract_deadline: '2026-10-23 23:59:59'
           deadline: '2026-10-26 23:59:59'
+          decision_deadline: '2026-12-15 23:59:00'
       timezone: UTC+0
       date: April 9-11, 2027
       place: Nanyang Technological University, Singapore
