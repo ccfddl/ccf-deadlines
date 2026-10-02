@@ -62,7 +62,7 @@
       timeline:
         - deadline: '2025-05-28 23:59:59'
       timezone: UTC-12
-      date: October 7-10, 2025
+      date: October 8-10, 2025
       place: Pittsburgh, PA, USA
     - year: 2026
       id: aft26
@@ -71,5 +71,5 @@
         - abstract_deadline: '2026-05-20 23:59:59'
           deadline: '2026-05-27 23:59:59'
       timezone: UTC-12
-      date: October 6-9, 2026
+      date: October 7-9, 2026
       place: London, UK
