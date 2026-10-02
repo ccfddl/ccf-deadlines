@@ -65,6 +65,7 @@
       link: https://2027.ieee-isit.org/
       timeline:
         - deadline: '2027-01-10 23:59:59'
+          decision_deadline: '2027-03-27 23:59:00'
       timezone: AoE
       date: June 27 - July 2, 2027
       place: Sorrento, Italy
