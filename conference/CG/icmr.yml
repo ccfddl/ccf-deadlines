@@ -60,6 +60,7 @@
       link: https://www.icmr2027.org/
       timeline:
         - deadline: '2027-01-31 23:59:59'
+          decision_deadline: '2027-04-01 23:59:59'
       timezone: UTC-12
       date: June 7-10, 2027
       place: Singapore
