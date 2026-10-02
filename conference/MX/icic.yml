@@ -7,6 +7,30 @@
     thcpl: N
   dblp: icic
   confs:
+    - year: 2021
+      id: icic2021
+      link: http://www.ic-icc.cn/2021/
+      timeline:
+        - deadline: '2021-05-05 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Shenzhen, China
+    - year: 2022
+      id: icic2022
+      link: http://www.ic-icc.cn/2022/
+      timeline:
+        - deadline: '2022-05-15 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Xi'an, China
+    - year: 2023
+      id: icic2023
+      link: http://www.ic-icc.cn/2023/
+      timeline:
+        - deadline: '2023-04-15 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Zhengzhou, China
     - year: 2024
       id: icic24
       link: http://www.ic-icc.cn/2024/index.htm
@@ -30,4 +54,4 @@
         - deadline: '2026-04-04 11:59:59'
       timezone: UTC+8
       date: July 22-26, 2026
-      place: Toronto, Canada
+      place: Toronto, Canada (Hybrid)
