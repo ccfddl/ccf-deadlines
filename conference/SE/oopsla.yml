@@ -75,8 +75,12 @@
       link: https://2027.splashcon.org/track/splashoopsla2027
       timeline:
         - deadline: '2026-10-14 23:59:59'
+          rebuttal_deadline: '2026-12-05 23:59:00'
+          decision_deadline: '2027-02-12 23:59:00'
           comment: Submission Deadline Round 1
         - deadline: '2027-04-07 23:59:59'
+          rebuttal_deadline: '2027-06-19 23:59:00'
+          decision_deadline: '2027-08-13 23:59:00'
           comment: Submission Deadline Round 2
       timezone: AoE
       date: October 10-15, 2027
