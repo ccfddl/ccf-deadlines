@@ -60,6 +60,7 @@
       link: https://www.esann.org/
       timeline:
         - deadline: '2026-11-18 23:59:59'
+          decision_deadline: '2027-01-23 03:59:00'
       timezone: UTC-8
       date: April 21 - 23, 2027
       place: Bruges, Belgium and Online
