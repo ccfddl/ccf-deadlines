@@ -3842,17 +3842,28 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .toolbar-rank-filters { display: none; }
   .toolbar-rank-filters.is-open {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 6px);
     right: 0;
     z-index: 100;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     gap: 8px;
-    min-width: 200px;
-    padding: 12px;
+    width: 180px;
+    min-width: 0;
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+    padding: 10px;
     border: 1px solid #dcdfe6;
     border-radius: 4px;
     background: white;
     box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  }
+  .toolbar-rank-filters .filter-dropdown-trigger {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    min-height: 36px;
+    box-sizing: border-box;
   }
 }
