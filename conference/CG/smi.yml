@@ -65,7 +65,10 @@
       id: smi27
       link: https://smiconf.github.io/2027/
       timeline:
-        - deadline: 'TBD'
+        - abstract_deadline: '2027-03-01 23:59:00'
+          deadline: '2027-03-08 23:59:00'
+          decision_deadline: '2027-05-03 23:59:00'
+          comment: 'Abstract submission is a soft deadline'
       timezone: UTC
       date: June 21-25, 2027
       place: Singapore
