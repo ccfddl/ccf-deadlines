@@ -65,8 +65,10 @@
       link: https://securecomm.eai-conferences.org/2027/
       timeline:
         - deadline: '2027-02-01 23:59:59'
+          decision_deadline: '2027-03-15 23:59:00'
           comment: Full Paper Submission deadline (Cycle 1)
         - deadline: '2027-04-15 23:59:59'
+          decision_deadline: '2027-06-01 23:59:00'
           comment: Full Paper Submission deadline (Cycle 2)
       timezone: AoE
       date: October 15-18, 2027
