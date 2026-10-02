@@ -55,8 +55,8 @@
       id: itc-asia2026
       link: https://www.castest.com.cn/itcasia_2026
       timeline:
-        - abstract_deadline: '2026-04-25 23:59:59'
-          deadline: '2026-05-02 23:59:59'
-      timezone: UTC+8
+        - abstract_deadline: '2026-04-25 23:59:00'
+          deadline: '2026-05-02 23:59:00'
+      timezone: AoE
       date: August 20-21, 2026
       place: Ningbo Qianhu Hotel, Ningbo, China
