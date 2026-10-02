@@ -63,8 +63,12 @@
       link: https://www.usenix.org/conference/fast27
       timeline:
         - deadline: '2026-03-17 23:59:00'
+          rebuttal_deadline: '2026-05-20 23:59:00'
+          decision_deadline: '2026-06-04 23:59:00'
           comment: Spring deadline
         - deadline: '2026-09-15 23:59:00'
+          rebuttal_deadline: '2026-11-19 23:59:00'
+          decision_deadline: '2026-12-08 23:59:00'
           comment: Fall deadline
       timezone: AoE
       date: FEBRUARY 23-25, 2027
