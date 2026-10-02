@@ -55,8 +55,10 @@
       link: https://2027.naacl.org/
       timeline:
         - deadline: '2026-10-12 23:59:59'
+          rebuttal_deadline: '2026-11-30 23:59:00'
           comment: 'ARR Submission'
         - deadline: '2026-12-23 23:59:59'
+          decision_deadline: '2027-02-10 23:59:00'
           comment: 'NAACL commitment after ARR meta-reviews; reviewed papers only'
       timezone: UTC-12
       date: June 1-5, 2027
