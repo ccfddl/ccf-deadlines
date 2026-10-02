@@ -12,10 +12,17 @@
       link: https://tc.ccf.org.cn/ccfcv/zyhd/jsjsjdh/2021-08-28/735102.shtml
       timeline:
         - deadline: '2021-04-30 23:59:00'
-          comment: 'Published regular-paper CFP date; 23:59:00 and AoE are repository defaults. A later extension has not been independently verified.'
       timezone: AoE
       date: Dec 19-21, 2021
       place: Zhuhai, China
+    - year: 2022
+      id: prcv22
+      link: https://cse.sustech.edu.cn/news/1658.html
+      timeline:
+        - deadline: '2022-05-20 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Shenzhen, China (Hybrid)
     - year: 2023
       id: prcv23
       link: https://prcv2023.xmu.edu.cn/
@@ -26,7 +33,7 @@
       place: Xiamen, China
     - year: 2024
       id: prcv24
-      link: http://www.prcv.cn/
+      link: https://it.xju.edu.cn/info/1112/3222.htm
       timeline:
         - abstract_deadline: '2024-04-18 23:59:59'
           deadline: '2024-04-28 23:59:59'
@@ -39,7 +46,7 @@
       timeline:
         - deadline: '2025-06-30 23:59:59'
       timezone: UTC+8
-      date: Oct 16-19, 2025
+      date: October 15-18, 2025
       place: Shanghai, China
     - year: 2026
       id: prcv26
@@ -47,5 +54,5 @@
       timeline:
         - deadline: '2026-05-30 23:59:59'
       timezone: AoE
-      date: Aug 22-25, 2026
+      date: August 23-24, 2026
       place: Harbin, China

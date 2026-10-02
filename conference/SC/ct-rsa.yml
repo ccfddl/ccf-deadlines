@@ -11,8 +11,7 @@
       id: ct-rsa21
       link: https://sites.google.com/site/ctrsa2021/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper date: December 1, 2020 AoE; clock not specified'
+        - deadline: '2020-12-01 23:59:00'
       timezone: UTC-12
       date: May 17-20, 2021
       place: Virtual

@@ -23,7 +23,7 @@
         - abstract_deadline: '2021-10-01 23:59:59'
           deadline: '2021-10-08 23:59:59'
       timezone: UTC-12
-      date: May 9-13, 2022
+      date: May 11-13, 2022
       place: Virtual
     - year: 2023
       id: aamas23
@@ -32,7 +32,7 @@
         - abstract_deadline: '2022-10-21 23:59:59'
           deadline: '2022-10-28 23:59:59'
       timezone: UTC-12
-      date: May 29 - June 2, 2023
+      date: May 31-June 2, 2023
       place: London, UK
     - year: 2024
       id: aamas24
@@ -40,8 +40,11 @@
       timeline:
         - abstract_deadline: '2023-10-02 23:59:59'
           deadline: '2023-10-09 23:59:59'
+          comment: 'Main track'
+        - deadline: '2024-01-08 23:59:00'
+          comment: 'AAAI track'
       timezone: UTC-12
-      date: May 6-10, 2024
+      date: May 8-10, 2024
       place: Auckland, New Zealand
     - year: 2025
       id: aamas25
@@ -49,8 +52,11 @@
       timeline:
         - abstract_deadline: '2024-10-09 23:59:59'
           deadline: '2024-10-16 23:59:59'
+          comment: 'Main track'
+        - deadline: '2025-01-08 23:59:00'
+          comment: 'AAAI track'
       timezone: UTC-12
-      date: May 19-23, 2025
+      date: May 21-23, 2025
       place: Detroit, Michigan, USA
     - year: 2026
       id: aamas26
@@ -58,8 +64,11 @@
       timeline:
         - abstract_deadline: '2025-10-01 23:59:59'
           deadline: '2025-10-08 23:59:59'
+          comment: 'Main track'
+        - deadline: '2025-11-17 23:59:00'
+          comment: 'AAAI track'
       timezone: UTC-12
-      date: May 25-29, 2026
+      date: May 27-29, 2026
       place: Paphos, Cyprus
     - year: 2027
       id: aamas27
@@ -67,6 +76,8 @@
       timeline:
         - abstract_deadline: '2026-10-01 23:59:59'
           deadline: '2026-10-08 23:59:59'
+          rebuttal_deadline: '2026-11-24 23:59:00'
+          decision_deadline: '2026-12-21 23:59:00'
       timezone: AoE
       date: May 3-7, 2027
       place: Hanoi, Vietnam

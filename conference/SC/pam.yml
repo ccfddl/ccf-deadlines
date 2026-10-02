@@ -29,9 +29,7 @@
       id: pam23
       link: https://pam2023.networks.imdea.org/
       timeline:
-        - abstract_deadline: TBD
-          deadline: '2022-11-01 23:59:59'
-          comment: 'Original abstract registration: October 21, 2022; final registration cutoff and exact time not verified.'
+        - deadline: '2022-11-01 23:59:59'
       timezone: AoE
       date: March 21-23, 2023
       place: Virtual

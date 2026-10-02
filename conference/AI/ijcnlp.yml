@@ -13,18 +13,17 @@
       timeline:
         - abstract_deadline: '2021-01-25 23:59:00'
           deadline: '2021-02-02 23:59:00'
-          comment: 'Regular papers; final one-day extension due to submission-system outage'
       timezone: UTC-12
-      date: August 1-6, 2021
+      date: August 2-4, 2021
       place: Online
     - year: 2022
       id: ijcnlp2022
       link: https://www.aacl2022.org/
       timeline:
         - deadline: '2022-07-15 23:59:00'
-          comment: 'Regular papers, direct submission'
+          comment: 'Direct submission'
         - deadline: '2022-08-21 23:59:00'
-          comment: 'Regular papers, ARR commitment'
+          comment: 'Reviewed-paper commitment'
       timezone: UTC-12
       date: November 20-23, 2022
       place: Online
@@ -33,29 +32,33 @@
       link: https://www.afnlp.org/conferences/ijcnlp2023/wp/
       timeline:
         - deadline: '2023-05-23 23:59:00'
-          comment: 'Regular papers, direct submission'
+          comment: 'Direct submission'
         - deadline: '2023-08-15 23:59:00'
-          comment: 'Regular papers, ARR commitment'
+          comment: 'Reviewed-paper commitment'
       timezone: UTC-12
-      date: November 1-4, 2023
+      date: November 2-4, 2023
       place: Bali, Indonesia
     - year: 2025
       id: ijcnlp2025
       link: https://www.afnlp.org/conferences/ijcnlp2025/
       timeline:
         - deadline: '2025-07-28 23:59:59'
-          comment: 'Regular papers, ACL Rolling Review'
+          comment: 'ARR initial submission'
         - deadline: '2025-10-10 23:59:00'
-          comment: 'Regular papers, ARR commitment'
+          comment: 'Reviewed-paper commitment'
       timezone: UTC-12
-      date: Dec 20-24, 2025
-      place: Mumbai, India
+      date: December 20-22, 2025
+      place: Mumbai, India (Hybrid)
     - year: 2026
       id: ijcnlp2026
       link: https://2026.aaclnet.org/
       timeline:
         - deadline: '2026-05-25 23:59:59'
-          comment: 'ARR Submission; commitment deadline: 2026-08-07; second-round commitment: 2026-08-25; AACL-IJCNLP 2026 (the 5th AACL & 15th IJCNLP)'
+          comment: 'ARR initial submission'
+        - deadline: '2026-08-07 23:59:00'
+          comment: 'Reviewed-paper commitment, round 1'
+        - deadline: '2026-08-25 23:59:00'
+          comment: 'Reviewed-paper commitment, round 2'
       timezone: UTC-12
       date: Nov 6-10, 2026
-      place: Hengqin, Zhuhai, China
+      place: Hengqin, Zhuhai, China (Hybrid)

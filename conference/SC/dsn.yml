@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2020-12-11 23:59:00'
           deadline: '2020-12-11 23:59:59'
-          comment: Regular paper submission; abstract date and AoE are official, abstract 23:59 is the default convention because its clock is unpublished
       timezone: AoE
       date: June 22-24, 2021
       place: Virtual
@@ -23,16 +22,14 @@
       timeline:
         - abstract_deadline: '2021-12-03 23:59:00'
           deadline: '2021-12-10 23:59:00'
-          comment: Paper submission deadline
       timezone: AoE
-      date: June 27-30, 2022
+      date: June 28-30, 2022
       place: Baltimore, Maryland, USA
     - year: 2023
       id: dsn23
       link: https://dsn2023.dei.uc.pt/
       timeline:
         - deadline: '2022-12-07 00:00:00'
-          comment: 'Regular paper submission; linked official HotCRP explicitly displays December 7, 2022 at 12 AM AoE (start of day)'
       timezone: AoE
       date: June 28-30, 2023
       place: Porto, Portugal
@@ -43,7 +40,7 @@
         - abstract_deadline: '2023-11-29 23:59:59'
           deadline: '2023-12-06 23:59:59'
       timezone: AoE
-      date: June 24-27, 2024
+      date: June 25-27, 2024
       place: Brisbane, Australia
     - year: 2025
       id: dsn25
@@ -52,7 +49,7 @@
         - abstract_deadline: '2024-11-27 23:59:59'
           deadline: '2024-12-04 23:59:59'
       timezone: AoE
-      date: June 23-26, 2025
+      date: June 24-26, 2025
       place: Naples, Italy
     - year: 2026
       id: dsn26
@@ -61,7 +58,7 @@
         - abstract_deadline: '2025-11-27 23:59:59'
           deadline: '2025-12-04 23:59:59'
       timezone: AoE
-      date: June 22-25, 2026
+      date: June 23-25, 2026
       place: Charlotte, USA
     - year: 2027
       id: dsn27
@@ -69,6 +66,8 @@
       timeline:
         - abstract_deadline: '2026-11-25 23:59:59'
           deadline: '2026-12-02 23:59:59'
+          rebuttal_deadline: '2027-02-26 23:59:00'
+          decision_deadline: '2027-03-18 23:59:00'
       timezone: AoE
       date: June 22-25, 2027
       place: Berlin, Germany

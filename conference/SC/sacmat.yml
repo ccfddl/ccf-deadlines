@@ -12,7 +12,6 @@
       link: http://sacmat.dista.uninsubria.it/2021/
       timeline:
         - deadline: '2021-02-25 23:59:59'
-          comment: Paper Submission Deadline
       timezone: AoE
       date: June 16-18, 2021
       place: Virtual
@@ -20,10 +19,10 @@
       id: sacmat22
       link: https://www.sacmat.org/2022/
       timeline:
-        - deadline: TBD
-          comment: 'Cycle 1 originally November 15, 2021, now struck through on the CFP; final cutoff unverified.'
+        - deadline: '2021-11-15 23:59:00'
+          comment: Cycle 1
         - deadline: '2022-02-25 23:59:00'
-          comment: Second cycle
+          comment: Cycle 2
       timezone: AoE
       date: June 8-10, 2022
       place: Virtual
@@ -32,10 +31,10 @@
       link: https://www.sacmat.org/2023/
       timeline:
         - deadline: '2022-12-15 23:59:00'
-          comment: First cycle
-        - abstract_deadline: TBD
+          comment: Cycle 1
+        - abstract_deadline: '2023-02-23 23:59:00'
           deadline: '2023-03-02 23:59:00'
-          comment: 'Second cycle; recommended, non-mandatory abstract registration February 23, 2023, time unverified.'
+          comment: Cycle 2; optional abstract
       timezone: AoE
       date: June 7-9, 2023
       place: Trento, Italy
@@ -43,9 +42,9 @@
       id: sacmat24
       link: https://www.sacmat.org/2024/
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: 'Recommended, non-mandatory abstract registration February 1, 2024; full submission extended to February 18, 2024, final time unverified.'
+        - abstract_deadline: '2024-02-01 23:59:00'
+          deadline: '2024-02-18 23:59:00'
+          comment: Optional abstract
       timezone: AoE
       date: May 15-17, 2024
       place: San Antonio, TX, USA
@@ -53,8 +52,8 @@
       id: sacmat25
       link: https://www.sacmat.org/2025/index.php
       timeline:
-        - deadline: '2025-03-31 23:59:59'
-          comment: Paper Submission Deadline
+        - abstract_deadline: '2025-03-31 23:59:00'
+          deadline: '2025-03-31 23:59:59'
       timezone: AoE
       date: July 8-10, 2025
       place: Stony Brook, NY, USA
@@ -63,9 +62,9 @@
       link: https://www.sacmat.org/2026/index.php
       timeline:
         - deadline: '2025-10-31 23:59:59'
-          comment: 'First Cycle'
+          comment: Cycle 1
         - deadline: '2026-03-06 23:59:59'
-          comment: 'Second Cycle'
+          comment: Cycle 2
       timezone: AoE
       date: July 8-10, 2026
       place: Waterloo, Canada

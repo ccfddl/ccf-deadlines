@@ -13,7 +13,7 @@
       timeline:
         - deadline: '2020-11-13 23:59:59'
       timezone: UTC-12
-      date: May 10, 2021
+      date: May 10-13, 2021
       place: Virtual
     - year: 2022
       id: pkc22
@@ -27,9 +27,8 @@
       id: pkc23
       link: https://pkc.iacr.org/2023/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper submission: November 1, 2022; time and timezone unverified.'
-      timezone: UTC
+        - deadline: '2022-11-01 23:59:00'
+      timezone: AoE
       date: May 7-10, 2023
       place: Atlanta, USA
     - year: 2024

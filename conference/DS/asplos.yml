@@ -23,13 +23,13 @@
         - abstract_deadline: '2021-08-06 14:59:59'
           deadline: '2021-08-13 14:59:59'
       timezone: UTC-7
-      date: Feb 28-March 4, 2022
-      place: Virtual
+      date: March 2-4, 2022
+      place: Lausanne, Switzerland
     - year: 2023
       id: asplos23
       link: https://asplos-conference.org/asplos-2023-cfp/
       timeline:
-        - abstract_deadline: '2022-03-24 18:00:00'
+        - abstract_deadline: '2022-03-24 19:59:59'
           deadline: '2022-03-31 18:00:00'
           comment: Spring Submission Deadline
         - abstract_deadline: '2022-06-30 18:00:00'
@@ -37,9 +37,9 @@
           comment: Summer Submission Deadline
         - abstract_deadline: '2022-10-13 18:00:00'
           deadline: '2022-10-20 18:00:00'
-          comment: Fall Submission Deadline
+          comment: Fall; later portal upload cutoff has unconfirmed scope
       timezone: UTC-4
-      date: March 25-March 29, 2023
+      date: March 27-29, 2023
       place: Vancouver, Canada
     - year: 2024
       id: asplos24
@@ -55,8 +55,8 @@
           deadline: '2023-12-01 04:00:00'
           comment: Fall Submission Deadline
       timezone: UTC+8
-      date: April, 2024
-      place: California, U.S.A.
+      date: April 28-May 1, 2024
+      place: San Diego, CA, USA
     - year: 2025
       id: asplos25
       link: https://www.asplos-conference.org/asplos2025/cfp/
@@ -64,13 +64,13 @@
         - abstract_deadline: '2024-02-23 23:59:59'
           deadline: '2024-03-01 23:59:59'
           comment: Spring Submission Deadline
-        - abstract_deadline: '2024-06-17 23:59:59'
+        - abstract_deadline: '2024-06-18 02:59:00'
           deadline: '2024-06-24 23:59:59'
           comment: Summer Submission Deadline
         - deadline: '2024-10-18 23:59:59'
           comment: Fall Submission Deadline
       timezone: AoE
-      date: March 30 - April 3, 2025
+      date: April 1-3, 2025
       place: Rotterdam, The Netherlands
     - year: 2026
       id: asplos26
@@ -78,20 +78,22 @@
       timeline:
         - abstract_deadline: '2025-03-06 00:59:59'
           deadline: '2025-03-12 23:59:59'
-          comment: Spring Submission Deadline
-        - abstract_deadline: '2025-08-13 23:59:59'
+          comment: Spring; later portal upload cutoff has unconfirmed scope
+        - abstract_deadline: '2025-08-14 07:59:00'
           deadline: '2025-08-20 23:59:59'
-          comment: Summer Submission Deadline
+          comment: Summer; later portal upload cutoff has unconfirmed scope
       timezone: UTC-4
-      date: March 22-26, 2026
+      date: March 23-26, 2026
       place: Pittsburgh, PA, USA
     - year: 2027
       id: asplos27
       link: https://www.asplos-conference.org/asplos2027/cfp/
       timeline:
         - deadline: '2026-04-15 23:59:59'
+          rebuttal_deadline: '2026-07-09 23:59:00'
           comment: April Cycle Submission Deadline
         - deadline: '2026-09-09 23:59:59'
+          rebuttal_deadline: '2026-12-04 23:59:00'
           comment: September Cycle Submission Deadline
       timezone: AoE
       date: April 11-15, 2027

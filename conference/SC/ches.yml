@@ -12,13 +12,13 @@
       link: https://ches.iacr.org/2021/
       timeline:
         - deadline: '2020-07-15 23:59:59'
-          comment: Main conference paper submission, cycle 1
+          comment: TCHES 2021/1
         - deadline: '2020-10-15 23:59:59'
-          comment: Main conference paper submission, cycle 2
+          comment: TCHES 2021/2
         - deadline: '2021-01-15 23:59:59'
-          comment: Main conference paper submission, cycle 3
+          comment: TCHES 2021/3
         - deadline: '2021-04-15 23:59:59'
-          comment: Main conference paper submission, cycle 4
+          comment: TCHES 2021/4
       timezone: AoE
       date: September 13-17, 2021
       place: Virtual
@@ -27,28 +27,28 @@
       link: https://ches.iacr.org/2022/
       timeline:
         - deadline: '2021-07-15 23:59:59'
-          comment: Schedule for TCHES Volume 2022/1
+          comment: TCHES 2022/1
         - deadline: '2021-10-15 23:59:59'
-          comment: Schedule for TCHES Volume 2022/2
+          comment: TCHES 2022/2
         - deadline: '2022-01-15 23:59:59'
-          comment: Schedule for TCHES Volume 2022/3
+          comment: TCHES 2022/3
         - deadline: '2022-04-15 23:59:59'
-          comment: Schedule for TCHES Volume 2022/4
+          comment: TCHES 2022/4
       timezone: AoE
       date: September , 2022
-      place: Beijing, China
+      place: Leuven, Belgium
     - year: 2023
       id: ches23
       link: https://ches.iacr.org/2023/
       timeline:
         - deadline: '2022-07-15 23:59:59'
-          comment: Schedule for TCHES Volume 2023/1
+          comment: TCHES 2023/1
         - deadline: '2022-10-15 23:59:59'
-          comment: Schedule for TCHES Volume 2023/2
+          comment: TCHES 2023/2
         - deadline: '2023-01-15 23:59:59'
-          comment: Schedule for TCHES Volume 2023/3
+          comment: TCHES 2023/3
         - deadline: '2023-04-15 23:59:59'
-          comment: Schedule for TCHES Volume 2023/4
+          comment: TCHES 2023/4
       timezone: AoE
       date: September 10-14, 2023
       place: Prague, Czech Republic
@@ -57,13 +57,13 @@
       link: https://ches.iacr.org/2024/
       timeline:
         - deadline: '2023-07-15 23:59:59'
-          comment: Schedule for TCHES Volume 2024/1
+          comment: TCHES 2024/1
         - deadline: '2023-10-15 23:59:59'
-          comment: Schedule for TCHES Volume 2024/2
+          comment: TCHES 2024/2
         - deadline: '2024-01-15 23:59:59'
-          comment: Schedule for TCHES Volume 2024/3
+          comment: TCHES 2024/3
         - deadline: '2024-04-15 23:59:59'
-          comment: Schedule for TCHES Volume 2024/4
+          comment: TCHES 2024/4
       timezone: AoE
       date: September, 2024
       place: Halifax, Canada
@@ -72,13 +72,13 @@
       link: https://ches.iacr.org/2025/
       timeline:
         - deadline: '2024-07-15 23:59:59'
-          comment: Schedule for TCHES Volume 2025/1
+          comment: TCHES 2025/1
         - deadline: '2024-10-15 23:59:59'
-          comment: Schedule for TCHES Volume 2025/2
+          comment: TCHES 2025/2
         - deadline: '2025-01-15 23:59:59'
-          comment: Schedule for TCHES Volume 2025/3
+          comment: TCHES 2025/3
         - deadline: '2025-04-15 23:59:59'
-          comment: Schedule for TCHES Volume 2025/4
+          comment: TCHES 2025/4
       timezone: AoE
       date: September 14-18, 2025
       place: Kuala Lumpur, Malaysia
@@ -87,13 +87,13 @@
       link: https://ches.iacr.org/2026/
       timeline:
         - deadline: '2025-07-15 23:59:59'
-          comment: Schedule for TCHES Volume 2026/1
+          comment: TCHES 2026/1
         - deadline: '2025-10-15 23:59:59'
-          comment: Schedule for TCHES Volume 2026/2
+          comment: TCHES 2026/2
         - deadline: '2026-01-15 23:59:59'
-          comment: Schedule for TCHES Volume 2026/3
+          comment: TCHES 2026/3
         - deadline: '2026-04-15 23:59:59'
-          comment: Schedule for TCHES Volume 2026/4
+          comment: TCHES 2026/4
       timezone: AoE
       date: October 11-15, 2026
       place: Antalya, Türkiye

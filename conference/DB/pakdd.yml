@@ -9,13 +9,12 @@
   confs:
     - year: 2021
       id: pakdd21
-      link: https://archive.dbsj.org/dbjapan/2020/pdfaCLcph6ncB.pdf
+      link: https://web.archive.org/web/20210506055903/https://www.pakdd2021.org/Call/calls
       timeline:
-        - abstract_deadline: '2020-11-23 23:59:00'
-          deadline: '2020-11-30 23:59:00'
-          comment: Regular research papers; dates from the archived official CFP.
+        - abstract_deadline: '2020-12-07 23:59:00'
+          deadline: '2020-12-07 23:59:00'
       timezone: UTC-8
-      date: May 11-14, 2021
+      date: May 12-14, 2021
       place: Online
     - year: 2022
       id: pakdd22
@@ -23,15 +22,15 @@
       timeline:
         - deadline: '2021-11-15 23:59:59'
       timezone: UTC-8
-      date: May 16-19, 2022
-      place: Chengdu, China
+      date: May 17-19, 2022
+      place: Chengdu, China / Online
     - year: 2023
       id: pakdd23
       link: https://pakdd23.pakdd.org/
       timeline:
         - deadline: '2022-12-07 23:59:59'
       timezone: UTC-8
-      date: May 25-28, 2023
+      date: May 26-28, 2023
       place: Osaka, Japan
     - year: 2024
       id: pakdd24
@@ -39,7 +38,7 @@
       timeline:
         - deadline: '2023-11-29 23:59:59'
       timezone: UTC-8
-      date: May 7-10, 2024
+      date: May 8-10, 2024
       place: Taipei, Taiwan
     - year: 2025
       id: pakdd25
@@ -47,7 +46,7 @@
       timeline:
         - deadline: '2024-12-14 23:59:59'
       timezone: UTC-8
-      date: June 10-13, 2025
+      date: June 11-13, 2025
       place: Sydney, Australia
     - year: 2026
       id: pakdd26
@@ -62,6 +61,7 @@
       link: https://www.pakdd2027.org/
       timeline:
         - deadline: '2026-11-20 23:59:59'
+          decision_deadline: '2027-02-26 23:59:00'
       timezone: AoE
       date: June 29-July 2, 2027
       place: Wellington, New Zealand

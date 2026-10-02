@@ -5,12 +5,40 @@
     ccf: C
   dblp: interact
   confs:
+    - year: 2021
+      id: interact21
+      link: https://interact.ifip-tc13.org/editions/2021/www.interact2021.org/index.html
+      timeline:
+        - abstract_deadline: '2021-01-20 23:59:00'
+          deadline: '2021-01-27 13:00:00'
+          comment: 'Optional abstract'
+      timezone: AoE
+      date: August 31-September 3, 2021
+      place: Bari, Italy (hybrid)
+    - year: 2023
+      id: interact23
+      link: https://interact.ifip-tc13.org/editions/2023/
+      timeline:
+        - deadline: '2023-02-01 23:59:00'
+      timezone: AoE
+      date: August 30-September 1, 2023
+      place: York, UK (hybrid)
+    - year: 2025
+      id: interact25
+      link: https://interact.ifip-tc13.org/editions/2025/
+      timeline:
+        - abstract_deadline: '2025-02-17 23:59:00'
+          deadline: '2025-02-24 23:59:00'
+      timezone: AoE
+      date: September 10-12, 2025
+      place: Belo Horizonte, Brazil
     - year: 2027
       id: interact27
       link: https://interact2027.org/
       timeline:
         - abstract_deadline: '2027-01-25 23:59:59'
           deadline: '2027-02-01 23:59:59'
+          rebuttal_deadline: '2027-03-22 23:59:00'
       timezone: AoE
       date: August 23-27, 2027
       place: Tallinn, Estonia

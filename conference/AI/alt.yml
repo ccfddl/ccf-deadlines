@@ -12,7 +12,6 @@
       link: https://algorithmiclearningtheory.org/alt2021/
       timeline:
         - deadline: '2020-09-30 17:00:00'
-          comment: 'Official CFP and submission instructions specify 5:00 PM EST (UTC-5)'
       timezone: UTC-5
       date: March 16-19, 2021
       place: Virtual
@@ -21,7 +20,7 @@
       link: https://algorithmiclearningtheory.org/alt2022/
       timeline:
         - deadline: TBD
-          comment: 'October 5, 2021 at 5 PM; CFP says EST, submission instructions say ET; exact UTC offset unresolved'
+          comment: '2021-10-05 17:00: EST/ET conflict'
       timezone: UTC-5
       date: March 29 - April 1, 2022
       place: Paris, France (Hybrid)
@@ -30,7 +29,7 @@
       link: https://algorithmiclearningtheory.org/alt2023/
       timeline:
         - deadline: TBD
-          comment: 'September 30, 2022 at 5 PM; CFP says EST, submission instructions say ET; exact UTC offset unresolved'
+          comment: '2022-09-30 17:00: EST/ET conflict'
       timezone: UTC-5
       date: February 20-23, 2023
       place: Singapore
@@ -38,8 +37,7 @@
       id: alt2024
       link: http://algorithmiclearningtheory.org/alt2024/
       timeline:
-        - deadline: TBD
-          comment: 'Paper submission: September 26, 2023 AoE; exact clock not published'
+        - deadline: '2023-09-26 23:59:00'
       timezone: AoE
       date: February 25-28, 2024
       place: San Diego, California
@@ -64,6 +62,8 @@
       link: https://algorithmiclearningtheory.org/alt2027/
       timeline:
         - deadline: '2026-10-12 23:59:59'
+          rebuttal_deadline: '2026-12-06 23:59:00'
+          decision_deadline: '2027-01-05 23:59:00'
       timezone: AoE
       date: March 9-12, 2027
       place: Leiden, Netherlands

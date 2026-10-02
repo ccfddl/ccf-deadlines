@@ -105,6 +105,120 @@ a {
   margin-right: auto;
 }
 
+.conference-divider {
+  margin: 12px 0;
+  border: 0;
+  border-top: 1px solid #e8e3dc;
+}
+
+.tabular-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabular-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 13px;
+}
+
+.tabular-table thead th {
+  padding: 3px 6px;
+  background: #f2efeb;
+  color: #2c3e50;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.tabular-table thead th:first-child {
+  width: 44px;
+}
+
+.tabular-table thead th:nth-child(2) {
+  width: 125px;
+}
+
+.tabular-table tbody th,
+.tabular-table tbody td {
+  padding: 2px 6px;
+  vertical-align: top;
+}
+
+.tabular-table tr.tabular-month-start:not(:first-child) > * {
+  border-top: 1px solid #e6e0d8;
+}
+
+.tabular-table tr.tabular-odd {
+  background: #fffefa;
+}
+
+.tabular-table tr.tabular-even {
+  background: #f5f2ee;
+}
+
+.tabular-month,
+.tabular-venue {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.tabular-month {
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tabular-date {
+  display: block;
+  margin-bottom: 1px;
+  color: #409eff;
+  font-size: 11px;
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+.tabular-date:hover {
+  color: #d9554f;
+}
+
+.tabular-date > span {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+
+.tabular-date small {
+  display: block;
+  overflow: hidden;
+  color: #666;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tabular-date-plain,
+.tabular-date-plain:hover,
+.tabular-empty {
+  color: #2c3e50;
+}
+
+.tabular-date-plain > span {
+  text-decoration: none;
+}
+
+.tabular-status {
+  padding: 20px;
+  color: #666;
+  text-align: center;
+}
+
+.tabular-status button {
+  margin-left: 8px;
+}
+
 .header-main {
   position: relative;
   display: flex;
@@ -817,8 +931,15 @@ a {
   line-height: 16px;
 }
 
-.custom-search-input {
+.conference-controls .toolbar-search > .thaw-input {
   border: 1px solid var(--color-text-placeholder) !important;
+}
+
+.conference-controls .toolbar-search .thaw-input__input {
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  box-shadow: none;
 }
 
 * input::placeholder {
@@ -3701,5 +3822,65 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .favorites-timeline-tbd {
     margin-right: 4px;
     margin-left: 4px;
+  }
+}
+
+/* Shared conference controls: the same DOM and breakpoints in all views. */
+.thaw-config-provider.conference-controls-provider { min-height: 0; }
+.conference-controls { font-family: "Roboto Mono", "SF Mono", Monaco, monospace; }
+.toolbar-clock {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.toolbar-rank-control { position: relative; }
+.toolbar-rank-filters { display: flex; align-items: center; gap: 6px; }
+@media (max-width: 768px) {
+  .conference-controls {
+    --toolbar-control-height: 30px;
+  }
+  .conference-controls .toolbar-search > .thaw-input {
+    min-height: var(--toolbar-control-height);
+  }
+  .toolbar-actions {
+    flex-basis: 100%;
+    width: 100%;
+  }
+  .toolbar-rank-control {
+    flex: 1 0 100%;
+    min-width: 0;
+    width: 100%;
+  }
+  .toolbar-rank-filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .toolbar-rank-filters .filter-dropdown {
+    min-width: 0;
+  }
+  .toolbar-rank-filters .filter-dropdown-trigger {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    min-height: var(--toolbar-control-height);
+    box-sizing: border-box;
+    padding: 4px 8px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .toolbar-rank-filters .filter-dropdown-trigger-icon {
+    font-size: 14px;
+    line-height: 1;
+  }
+  .toolbar-rank-filters .filter-dropdown:first-child .filter-dropdown-panel {
+    left: 0;
+    right: auto;
+  }
+  .toolbar-rank-filters .filter-dropdown:nth-of-type(2) .filter-dropdown-panel {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
   }
 }

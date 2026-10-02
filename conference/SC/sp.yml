@@ -12,13 +12,13 @@
       link: https://www.ieee-security.org/TC/SP2021/
       timeline:
         - deadline: '2020-03-05 23:59:59'
-          comment: Spring cycle
+          comment: Spring
         - deadline: '2020-06-04 23:59:59'
-          comment: Summer cycle
+          comment: Summer
         - deadline: '2020-09-03 23:59:59'
-          comment: Fall cycle
+          comment: Fall
         - deadline: '2020-12-03 23:59:59'
-          comment: Winter cycle
+          comment: Winter
       timezone: UTC-12
       date: May 24-26, 2021
       place: Virtual
@@ -27,50 +27,50 @@
       link: https://www.ieee-security.org/TC/SP2022/
       timeline:
         - deadline: '2021-04-15 23:59:59'
-          comment: First Paper submission deadline
+          comment: Cycle 1
         - deadline: '2021-08-19 23:59:59'
-          comment: Second Paper submission deadline
+          comment: Cycle 2
         - deadline: '2021-12-02 23:59:59'
-          comment: Third Paper submission deadline
+          comment: Cycle 3
       timezone: UTC-12
-      date: May 23-26, 2022
+      date: May 23-25, 2022
       place: SAN FRANCISCO, CA
     - year: 2023
       id: sp23
       link: https://www.ieee-security.org/TC/SP2023/
       timeline:
         - deadline: '2022-04-01 23:59:59'
-          comment: First Paper submission deadline
+          comment: Cycle 1
         - deadline: '2022-08-19 23:59:59'
-          comment: Second Paper submission deadline
+          comment: Cycle 2
         - deadline: '2022-12-02 23:59:59'
-          comment: Third Paper submission deadline
+          comment: Cycle 3
       timezone: UTC-12
-      date: May 22-26, 2023
+      date: May 22-24, 2023
       place: SAN FRANCISCO, CA
     - year: 2024
       id: sp24
       link: https://www.ieee-security.org/TC/SP2024/
       timeline:
         - deadline: '2023-04-13 23:59:59'
-          comment: First Paper submission deadline
+          comment: Cycle 1
         - deadline: '2023-08-03 23:59:59'
-          comment: Second Paper submission deadline
+          comment: Cycle 2
         - deadline: '2023-12-06 23:59:59'
-          comment: Third Paper submission deadline
+          comment: Cycle 3
       timezone: UTC-12
-      date: MAY 20-23, 2024
+      date: May 20-22, 2024
       place: SAN FRANCISCO, CA
     - year: 2025
       id: sp25
       link: https://www.ieee-security.org/TC/SP2025/
       timeline:
         - deadline: '2024-06-06 23:59:59'
-          comment: First Paper submission deadline
+          comment: Cycle 1
         - deadline: '2024-11-14 23:59:59'
-          comment: Second Paper submission deadline
+          comment: Cycle 2
       timezone: UTC-12
-      date: MAY 12-15, 2025
+      date: May 12-14, 2025
       place: SAN FRANCISCO, CA
     - year: 2026
       id: sp26
@@ -78,12 +78,12 @@
       timeline:
         - abstract_deadline: '2025-05-29 23:59:59'
           deadline: '2025-06-05 23:59:59'
-          comment: First Paper submission deadline
+          comment: Cycle 1
         - abstract_deadline: '2025-11-06 23:59:59'
           deadline: '2025-11-13 23:59:59'
-          comment: Second Paper submission deadline
+          comment: Cycle 2
       timezone: UTC-12
-      date: MAY 18-21, 2026
+      date: May 18-20, 2026
       place: SAN FRANCISCO, CA
     - year: 2027
       id: sp27
@@ -91,9 +91,13 @@
       timeline:
         - abstract_deadline: '2026-06-04 23:59:59'
           deadline: '2026-06-11 23:59:59'
+          rebuttal_deadline: '2026-08-27 23:59:59'
+          decision_deadline: '2026-09-11 23:59:59'
           comment: First Paper submission deadline
         - abstract_deadline: '2026-11-10 23:59:59'
           deadline: '2026-11-17 23:59:59'
+          rebuttal_deadline: '2027-02-16 23:59:59'
+          decision_deadline: '2027-03-05 23:59:59'
           comment: Second Paper submission deadline
       timezone: UTC-12
       date: May 17-19, 2027

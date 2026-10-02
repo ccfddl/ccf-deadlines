@@ -36,40 +36,43 @@
       place: Orlando, FL, USA
     - year: 2024
       id: spaa24
-      link: https://spaa.acm.org/
+      link: https://spaa.acm.org/spaa-2024-2/
       timeline:
         - abstract_deadline: '2024-01-19 23:59:00'
           deadline: '2024-01-24 23:59:00'
       timezone: AoE
-      date: June 17-21, 2024
+      date: June 18-20, 2024
       place: Nantes, France
     - year: 2025
       id: spaa25
       link: https://spaa.acm.org/call-for-papers/
       timeline:
-        - abstract_deadline: '2025-02-21 23:59:59'
+        - abstract_deadline: '2025-02-27 23:59:00'
           deadline: '2025-02-28 23:59:59'
       timezone: AoE
-      date: July 28 - August 1, 2025
+      date: July 29 - August 1, 2025
       place: Portland, Oregon
     - year: 2026
       id: spaa26
-      link: https://spaa.acm.org/
+      link: https://spaa.acm.org/spaa-2026/
       timeline:
         - abstract_deadline: '2026-02-20 23:59:59'
           deadline: '2026-02-27 23:59:59'
       timezone: AoE
-      date: July 6 - July 10, 2026
-      place: London, UK
+      date: July 7-9, 2026
+      place: Egham, England
     - year: 2027
       id: spaa27
       link: https://spaa.acm.org/
       timeline:
         - abstract_deadline: '2026-09-18 23:59:59'
           deadline: '2026-09-25 23:59:59'
+          rebuttal_deadline: '2026-11-18 23:59:00'
+          decision_deadline: '2026-12-05 23:59:00'
           comment: 'Cycle 1'
         - abstract_deadline: '2027-01-22 23:59:59'
           deadline: '2027-01-29 23:59:59'
+          rebuttal_deadline: '2027-03-24 23:59:00'
           comment: 'Cycle 2'
       timezone: AoE
       date: June 5 - June 11, 2027

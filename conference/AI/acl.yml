@@ -13,21 +13,30 @@
       timeline:
         - abstract_deadline: '2021-01-25 23:59:59'
           deadline: '2021-02-02 23:59:59'
-          comment: ACL-IJCNLP 2021; extended full-paper deadline
       timezone: UTC-12
-      date: August 1-6, 2021
+      date: August 2-4, 2021
       place: Virtual
     - year: 2022
       id: acl22
       link: https://2022.aclweb.org/
       timeline:
+        - deadline: '2021-05-15 23:59:00'
+          comment: 'ARR May cycle'
+        - deadline: '2021-06-15 23:59:00'
+          comment: 'ARR June cycle'
+        - deadline: '2021-07-15 23:59:00'
+          comment: 'ARR July cycle'
+        - deadline: '2021-08-15 23:59:00'
+          comment: 'ARR August cycle'
         - deadline: '2021-09-15 23:59:59'
         - deadline: '2021-10-15 23:59:59'
         - deadline: '2021-11-15 23:59:59'
-          comment: 'Final ARR submission deadline; ACL commitment deadline: January 15, 2022.'
+          comment: 'Final ARR submission'
+        - deadline: '2022-01-15 23:59:00'
+          comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
-      date: May 22-27, 2022
-      place: Dublin, Ireland
+      date: May 23-25, 2022
+      place: Dublin, Ireland (Hybrid)
     - year: 2023
       id: acl23
       link: https://2023.aclweb.org/
@@ -36,42 +45,52 @@
           comment: ARR submission
         - abstract_deadline: '2023-01-13 23:59:59'
           deadline: '2023-01-20 23:59:59'
-          comment: 'Direct submission; ARR commitment deadline: March 17, 2023.'
+          comment: 'Direct submission'
+        - deadline: '2023-03-17 23:59:00'
+          comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
-      date: July 9-14, 2023
-      place: Toronto, Canada
+      date: July 10-12, 2023
+      place: Toronto, Canada (Hybrid)
     - year: 2024
       id: acl24
       link: https://2024.aclweb.org/
       timeline:
         - deadline: '2024-02-15 23:59:59'
-          comment: 'ARR submission; ACL commitment deadline: April 20, 2024.'
+          comment: 'ARR submission'
+        - deadline: '2024-04-20 23:59:00'
+          comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
-      date: August 11-16, 2024
+      date: August 12-14, 2024
       place: Bangkok, Thailand
     - year: 2025
       id: acl25
       link: https://2025.aclweb.org/
       timeline:
         - deadline: '2025-02-15 23:59:59'
-          comment: 'ARR submission; ACL commitment deadline: April 20, 2025.'
+          comment: 'ARR submission'
+        - deadline: '2025-04-20 23:59:00'
+          comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
-      date: July 27 - August 1, 2025
-      place: Vienna, Austria
+      date: July 28-30, 2025
+      place: Vienna, Austria (Hybrid)
     - year: 2026
       id: acl26
       link: https://2026.aclweb.org/
       timeline:
+        - deadline: '2025-10-06 23:59:00'
+          comment: 'ARR October cycle'
         - deadline: '2026-01-05 23:59:59'
-          comment: 'ARR submission; ACL commitment deadline: March 14, 2026.'
+          comment: 'ARR January cycle'
+        - deadline: '2026-03-14 23:59:00'
+          comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
-      date: July 2 - 7, 2026
-      place: San Diego, California, United States
+      date: July 5-7, 2026
+      place: San Diego, California, United States (Hybrid)
     - year: 2027
       id: acl27
       link: https://2027.aclweb.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2027-01-04 23:59:59'
           comment: 'ARR Submission'
       timezone: UTC-12
       date: August 17-22, 2027

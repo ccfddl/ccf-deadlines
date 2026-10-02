@@ -7,14 +7,29 @@
     thcpl: N
   dblp: pricai
   confs:
+    - year: 2021
+      id: pricai2021
+      link: https://easychair.org/cfp/pricai-2021
+      timeline:
+        - deadline: '2021-05-23 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Hanoi, Vietnam (Online)
+    - year: 2022
+      id: pricai2022
+      link: https://2022.pricai.org/
+      timeline:
+        - deadline: '2022-06-29 23:59:00'
+      timezone: UTC-12
+      date: November 11-13, 2022
+      place: Shanghai, China (Hybrid)
     - year: 2023
       id: pricai2023
       link: https://www.pricai.org/2023/
       timeline:
         - deadline: '2023-06-12 23:59:00'
-          comment: Regular papers
       timezone: UTC-12
-      date: Nov 15-19, 2023
+      date: November 17-19, 2023
       place: Jakarta, Indonesia (Hybrid)
     - year: 2024
       id: pricai2024
@@ -22,7 +37,7 @@
       timeline:
         - deadline: '2024-06-26 23:59:59'
       timezone: UTC-12
-      date: Nov 18-24, 2024
+      date: November 19-24, 2024
       place: Kyoto, Japan
     - year: 2025
       id: pricai2025
@@ -30,7 +45,7 @@
       timeline:
         - deadline: '2025-06-27 23:59:59'
       timezone: UTC-12
-      date: Nov 17-21, 2025
+      date: November 19-21, 2025
       place: Wellington, New Zealand
     - year: 2026
       id: pricai2026
@@ -38,5 +53,5 @@
       timeline:
         - deadline: '2026-06-27 23:59:59'
       timezone: UTC-12
-      date: Nov 16-20, 2026
+      date: November 18-20, 2026
       place: Guangzhou, China

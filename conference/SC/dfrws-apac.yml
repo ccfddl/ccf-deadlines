@@ -7,12 +7,20 @@
     thcpl: N
   dblp: di
   confs:
+    - year: 2021
+      id: dfrws-apac21
+      link: https://dfrws.org/conferences/dfrws-apac-2021/
+      timeline:
+        - abstract_deadline: '2020-01-31 23:59:00'
+          deadline: '2020-03-16 23:59:00'
+      timezone: AoE
+      date: January 27-29, 2021
+      place: Online
     - year: 2022
       id: dfrws-apac22
       link: https://dfrws.org/conferences/dfrws-apac-2022/
       timeline:
         - deadline: '2022-05-16 23:59:00'
-          comment: Regular full research paper submission deadline
       timezone: AoE
       date: September 28-30, 2022
       place: Adelaide, Australia (Hybrid)
@@ -20,10 +28,9 @@
       id: dfrws-apac23
       link: https://dfrws.org/conferences/dfrws-apac-2023/
       timeline:
-        - deadline: TBD
-          comment: Regular full research paper submission deadline; May 15, 2023, clock and timezone not published
-      timezone: UTC
-      date: October 17-20, 2023
+        - deadline: '2023-05-15 23:59:00'
+      timezone: AoE
+      date: October 18-20, 2023
       place: Singapore and Hong Kong
     - year: 2024
       id: dfrws-apac24
@@ -31,7 +38,6 @@
       timeline:
         - abstract_deadline: '2024-05-27 23:59:00'
           deadline: '2024-06-03 23:59:00'
-          comment: Regular full research paper submission deadline
       timezone: AoE
       date: October 22-24, 2024
       place: Brisbane, Australia

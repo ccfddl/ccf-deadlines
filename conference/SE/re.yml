@@ -11,9 +11,8 @@
       id: re21
       link: https://conf.researchr.org/home/RE-2021
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular research abstract due March 12, 2021; full submission due March 19, 2021; exact time not published
+        - abstract_deadline: '2021-03-12 23:59:00'
+          deadline: '2021-03-19 23:59:00'
       timezone: AoE
       date: September 20-24, 2021
       place: Online
@@ -40,9 +39,8 @@
       id: re24
       link: https://conf.researchr.org/home/RE-2024
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular research abstract due January 19, 2024; full submission due January 26, 2024; exact time not published
+        - abstract_deadline: '2024-01-19 23:59:00'
+          deadline: '2024-01-26 23:59:00'
       timezone: AoE
       date: June 24-28, 2024
       place: Reykjavik, Iceland
@@ -50,9 +48,8 @@
       id: re25
       link: https://conf.researchr.org/home/RE-2025
       timeline:
-        - abstract_deadline: TBD
-          deadline: TBD
-          comment: Regular research abstract due March 3, 2025; full submission due March 10, 2025; exact time not published
+        - abstract_deadline: '2025-03-03 23:59:00'
+          deadline: '2025-03-10 23:59:00'
       timezone: AoE
       date: September 1-5, 2025
       place: Valencia, Spain

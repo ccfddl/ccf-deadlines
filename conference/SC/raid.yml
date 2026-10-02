@@ -9,10 +9,9 @@
   confs:
     - year: 2021
       id: raid21
-      link: https://raid2021.org/
+      link: https://web.archive.org/web/20211129235053/https://raid2021.org/
       timeline:
         - deadline: '2021-04-01 23:59:59'
-          comment: Paper Submission Deadline
       timezone: AoE
       date: October 6-8, 2021
       place: Donostia / San Sebastian, Spain
@@ -46,7 +45,7 @@
       timeline:
         - deadline: '2025-04-24 23:59:59'
       timezone: AoE
-      date: October 19-22, 2025
+      date: October 20-22, 2025
       place: Gold Coast, Australia
     - year: 2026
       id: raid26
@@ -54,5 +53,5 @@
       timeline:
         - deadline: '2026-04-16 23:59:59'
       timezone: AoE
-      date: October 11-14, 2026
+      date: October 12-14, 2026
       place: Lancaster, UK

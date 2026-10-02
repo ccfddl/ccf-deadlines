@@ -7,23 +7,29 @@
     thcpl: N
   dblp: adma
   confs:
+    - year: 2021
+      id: adma21
+      link: https://adma21.webflow.io/
+      timeline:
+        - deadline: '2021-08-15 23:59:00'
+      timezone: AoE
+      date: February 2-4, 2022
+      place: Online
     - year: 2022
       id: adma22
       link: https://adma2022.uqcloud.net/
       timeline:
         - deadline: '2022-07-15 23:59:59'
-          comment: Regular papers; extended deadline.
       timezone: AoE
       date: November 28-30, 2022
-      place: Brisbane, Australia
+      place: Brisbane, Australia / Online
     - year: 2023
       id: adma23
       link: https://adma2023.uqcloud.net/index.html
       timeline:
-        - abstract_deadline: '2023-04-08 23:59:59'
-          deadline: '2023-04-30 23:59:59'
+        - deadline: '2023-04-30 23:59:59'
       timezone: UTC-7
-      date: August 21 - 23, 2023
+      date: August 21-22, 2023
       place: Shenyang, China
     - year: 2024
       id: adma24
@@ -35,7 +41,7 @@
           comment: 'Main track'
       timezone: AoE
       date: December 3 - 5, 2024
-      place: Sydney, Australia
+      place: Sydney, Australia / Online
     - year: 2025
       id: adma25
       link: https://adma2025.github.io
@@ -49,7 +55,6 @@
       link: https://adma2026.github.io/
       timeline:
         - deadline: '2026-07-17 23:59:59'
-          comment: Main Track
       timezone: AoE
       date: November 13 - 15, 2026
       place: Hong Kong, China

@@ -32,7 +32,7 @@
         - abstract_deadline: '2022-01-24 23:59:59'
           deadline: '2022-01-31 23:59:59'
       timezone: UTC-5
-      date: July 10-13, 2022
+      date: July 11-13, 2022
       place: Bologna, Italy
     - year: 2023
       id: icdcs23
@@ -41,7 +41,7 @@
         - abstract_deadline: '2023-01-14 23:59:59'
           deadline: '2023-01-21 23:59:59'
       timezone: UTC-5
-      date: July 18-21, 2023
+      date: July 19-21, 2023
       place: Hong Kong, China
     - year: 2024
       id: icdcs24
@@ -54,10 +54,10 @@
       place: Jersey City, New Jersey, USA
     - year: 2025
       id: icdcs25
-      link: https://www.icdcs2025.com
+      link: https://icdcs2025.icdcs.org/
       timeline:
-        - abstract_deadline: '2024-12-04 23:59:59'
-          deadline: '2024-12-11 23:59:59'
+        - abstract_deadline: '2024-12-11 23:59:00'
+          deadline: '2024-12-18 23:59:00'
       timezone: UTC-12
       date: July 21-23, 2025
       place: Glasgow, Scotland, UK
@@ -68,7 +68,7 @@
         - abstract_deadline: '2026-01-21 23:59:59'
           deadline: '2026-01-21 23:59:59'
       timezone: AoE
-      date: June 22-25, 2026
+      date: June 22-24, 2026
       place: Seoul, South Korea
     - year: 2027
       id: icdcs27

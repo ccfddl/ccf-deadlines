@@ -7,6 +7,50 @@
     thcpl: N
   dblp: tabletop
   confs:
+    - year: 2021
+      id: iss21
+      link: https://iss.acm.org/2021/
+      timeline:
+        - deadline: '2021-02-28 23:59:00'
+          comment: Winter round
+        - deadline: '2021-07-05 23:59:00'
+          comment: Summer round
+      timezone: AoE
+      date: November 15-17, 2021
+      place: Łódź, Poland (Hybrid)
+    - year: 2022
+      id: iss22
+      link: https://iss2022.acm.org/
+      timeline:
+        - deadline: '2022-02-28 23:59:00'
+          comment: Winter round
+        - deadline: '2022-07-05 23:59:00'
+          comment: Summer round
+      timezone: AoE
+      date: November 21-23, 2022
+      place: Wellington, New Zealand (Hybrid)
+    - year: 2023
+      id: iss23
+      link: https://iss2023.acm.org/
+      timeline:
+        - deadline: '2023-02-15 23:59:00'
+          comment: Winter round
+        - deadline: '2023-07-01 23:59:00'
+          comment: Summer round
+      timezone: AoE
+      date: November 6-8, 2023
+      place: Pittsburgh, PA, USA (Hybrid)
+    - year: 2024
+      id: iss24
+      link: https://iss2024.acm.org/
+      timeline:
+        - deadline: '2024-02-22 23:59:00'
+          comment: Winter round
+        - deadline: '2024-07-01 23:59:00'
+          comment: Summer round
+      timezone: AoE
+      date: October 28-30, 2024
+      place: Vancouver, Canada (Hybrid)
     - year: 2026
       id: iss26
       link: https://iss.acm.org/2026/

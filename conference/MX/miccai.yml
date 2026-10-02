@@ -7,23 +7,41 @@
     thcpl: B
   dblp: miccai
   confs:
+    - year: 2021
+      id: miccai21
+      link: https://miccai2021.org/en/default.asp
+      timeline:
+        - abstract_deadline: '2021-02-22 23:59:00'
+          deadline: '2021-03-03 23:59:00'
+      timezone: UTC-8
+      date: September 28-30, 2021
+      place: Online
+    - year: 2022
+      id: miccai22
+      link: https://conferences.miccai.org/2022/en/
+      timeline:
+        - abstract_deadline: '2022-02-15 23:59:00'
+          deadline: '2022-03-01 23:59:00'
+      timezone: UTC-8
+      date: September 19-21, 2022
+      place: Singapore (Hybrid)
     - year: 2023
       id: miccai23
       link: https://conferences.miccai.org/2023/en/
       timeline:
-        - deadline: '2023-03-09 23:59:59'
-          comment: Paper submission deadline
-      timezone: UTC+0
-      date: Oct 8-12, 2023
-      place: Vancouver, Canada
+        - abstract_deadline: '2023-02-23 23:59:00'
+          deadline: '2023-03-09 23:59:59'
+      timezone: UTC-8
+      date: Oct 9-11, 2023
+      place: Vancouver, Canada (Hybrid)
     - year: 2024
       id: miccai24
       link: https://conferences.miccai.org/2024/en/
       timeline:
-        - deadline: '2024-03-07 23:59:59'
-          comment: Main conference papers
+        - abstract_deadline: '2024-02-22 23:59:00'
+          deadline: '2024-03-07 23:59:59'
       timezone: UTC-8
-      date: Oct 6-10, 2024
+      date: Oct 7-9, 2024
       place: Marrakesh, Morocco
     - year: 2025
       id: miccai25
@@ -32,7 +50,7 @@
         - abstract_deadline: '2025-02-13 23:59:00'
           deadline: '2025-02-27 23:59:00'
       timezone: UTC-8
-      date: Sep 23-27, 2025
+      date: Sep 24-26, 2025
       place: Daejeon, Republic of Korea
     - year: 2026
       id: miccai26
@@ -41,7 +59,7 @@
         - abstract_deadline: '2026-02-12 23:59:00'
           deadline: '2026-02-26 23:59:00'
       timezone: UTC-8
-      date: September 27 - October 1, 2026
+      date: September 28-30, 2026
       place: Strasbourg, France
     - year: 2027
       id: miccai27

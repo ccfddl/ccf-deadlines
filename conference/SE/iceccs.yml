@@ -7,13 +7,22 @@
     thcpl: N
   dblp: iceccs
   confs:
+    - year: 2022
+      id: iceccs22
+      link: http://iceccs2022.xsrv.jp/
+      timeline:
+        - abstract_deadline: '2021-10-01 23:59:00'
+          deadline: '2021-10-15 23:59:00'
+          comment: Optional abstract
+      timezone: AoE
+      date: March 28-30, 2022
+      place: Online
     - year: 2023
       id: iceccs23
       link: https://www.irit.fr/iceccs2023/
       timeline:
         - abstract_deadline: '2023-01-16 23:59:00'
           deadline: '2023-01-16 23:59:00'
-          comment: 'Extended abstract and regular paper submission: January 16, 2023. 23:59:00 and AoE are repository defaults; the official source publishes dates only.'
       timezone: AoE
       date: June 14-16, 2023
       place: Toulouse, France
@@ -23,7 +32,6 @@
       timeline:
         - abstract_deadline: '2023-12-29 23:59:00'
           deadline: '2024-01-05 23:59:00'
-          comment: 'Official December 29/January 5 AoE dates; clock uses repository default 23:59:00.'
       timezone: AoE
       date: June 19-21, 2024
       place: Limassol, Cyprus
@@ -33,7 +41,7 @@
       timeline:
         - abstract_deadline: '2025-01-28 23:59:00'
           deadline: '2025-02-11 23:59:00'
-          comment: 'Optional abstract: January 28, 2025 AoE; extended regular paper submission: February 11, 2025 AoE. Clock uses repository default 23:59:00.'
+          comment: Optional abstract
       timezone: AoE
       date: July 2-4, 2025
       place: Hangzhou, China
@@ -41,8 +49,8 @@
       id: iceccs26
       link: https://formal-analysis.com/iceccs/2026/
       timeline:
-        - deadline: '2026-07-20 23:59:59'
-          comment: Abstract and full paper submission
+        - abstract_deadline: '2026-07-20 23:59:00'
+          deadline: '2026-07-20 23:59:59'
       timezone: AoE
       date: November 23-24, 2026
       place: Brisbane, Australia

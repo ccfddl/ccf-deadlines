@@ -7,6 +7,14 @@
     thcpl: N
   dblp: cscwd
   confs:
+    - year: 2021
+      id: cscwd21
+      link: http://2021.cscwd.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: May 5-7, 2021
+      place: Dalian, China (hybrid)
     - year: 2022
       id: cscwd22
       link: http://8.131.80.51/cscwd2022/index.html
@@ -53,6 +61,7 @@
       link: http://2027.cscwd.org
       timeline:
         - deadline: '2026-10-31 23:59:59'
+          decision_deadline: '2027-01-31 23:59:00'
       timezone: AoE
       date: May 26-28, 2027
       place: Brisbane, Australia

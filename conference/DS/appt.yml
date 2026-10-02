@@ -7,15 +7,34 @@
     thcpl: N
   dblp: appt
   confs:
+    - year: 2021
+      id: appt2021
+      link: https://appt2021.github.io/
+      timeline:
+        - deadline: '2021-05-07 23:59:00'
+          comment: First submission round
+        - deadline: '2021-05-31 23:59:00'
+          comment: Second submission round
+      timezone: UTC+8
+      date: TBD
+      place: Online / Hangzhou, China (format unconfirmed)
+    - year: 2023
+      id: appt2023
+      link: https://conf.ccf.org.cn/CCFSys2023
+      timeline:
+        - abstract_deadline: '2023-06-18 23:59:00'
+          deadline: '2023-06-18 23:59:00'
+      timezone: UTC+8
+      date: August 4-5, 2023
+      place: Nanchang, China
     - year: 2025
       id: appt2025
       link: https://www.appt-conference.com/2025
       timeline:
         - abstract_deadline: '2025-04-06 23:59:00'
           deadline: '2025-04-13 23:59:00'
-          comment: 'Regular papers; 23:59:00 and AoE are repository defaults because the official archive gives dates only.'
       timezone: AoE
-      date: July 15-16, 2025
+      date: July 14-16, 2025
       place: Athens, Greece
     - year: 2026
       id: appt2026
@@ -24,5 +43,5 @@
         - abstract_deadline: '2026-04-03 23:59:59'
           deadline: '2026-04-10 23:59:59'
       timezone: AoE
-      date: July 27-31, 2026
+      date: July 27-30, 2026
       place: Brussels, Belgium

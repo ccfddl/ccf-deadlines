@@ -7,13 +7,29 @@
     thcpl: N
   dblp: wine
   confs:
+    - year: 2021
+      id: wine2021
+      link: https://hpi.de/wine2021/
+      timeline:
+        - deadline: '2021-07-12 23:59:00'
+      timezone: UTC-7
+      date: December 14-17, 2021
+      place: Online
+    - year: 2022
+      id: wine2022
+      link: https://www.cs.rpi.edu/wine2022/
+      timeline:
+        - deadline: '2022-07-07 23:59:00'
+      timezone: UTC-7
+      date: TBD
+      place: Troy, NY, USA (Hybrid)
     - year: 2023
       id: wine2023
       link: https://wine2023.shanghaitech.edu.cn/
       timeline:
         - deadline: '2023-07-07 23:59:59'
       timezone: AoE
-      date: Dec 04-08, 2023
+      date: December 5-7, 2023
       place: Shanghai, China
     - year: 2024
       id: wine2024
@@ -21,7 +37,7 @@
       timeline:
         - deadline: '2024-07-15 23:59:59'
       timezone: AoE
-      date: December 2-5, 2024
+      date: December 3-5, 2024
       place: Edinburgh, United Kingdom
     - year: 2025
       id: wine2025
@@ -29,7 +45,7 @@
       timeline:
         - deadline: '2025-07-03 23:59:59'
       timezone: AoE
-      date: December 8-11, 2025
+      date: December 9-11, 2025
       place: New Brunswick, USA
     - year: 2026
       id: wine2026

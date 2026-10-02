@@ -13,7 +13,7 @@
       timeline:
         - deadline: '2021-05-25 21:00:00'
       timezone: UTC
-      date: Nov 8, 2021
+      date: November 8-11, 2021
       place: Raleigh, United States
     - year: 2022
       id: tcc22
@@ -29,15 +29,15 @@
       timeline:
         - deadline: '2023-06-01 15:00:00'
       timezone: UTC-4
-      date: Nov 29 - Dec 12, 2023
-      place: Taipei, China
+      date: November 29 - December 2, 2023
+      place: Taipei, Taiwan
     - year: 2024
       id: tcc24
       link: https://tcc.iacr.org/2024/
       timeline:
         - deadline: '2024-05-20 20:00:00'
       timezone: UTC+2
-      date: Dec 2 - 6, 2024
+      date: December 3-6, 2024
       place: Milan, Italy
     - year: 2025
       id: tcc25

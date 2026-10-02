@@ -7,21 +7,35 @@
     thcpl: B
   dblp: iros
   confs:
+    - year: 2021
+      id: iros21
+      link: https://www.iros2021.org/
+      timeline:
+        - deadline: '2021-02-24 23:59:00'
+          comment: 'RA-L with IROS option'
+        - deadline: '2021-03-05 23:59:00'
+          comment: 'Conference papers'
+      timezone: UTC-8
+      date: September 28-30, 2021
+      place: Virtual
     - year: 2022
       id: iros22
       link: https://iros2022.org/
       timeline:
+        - deadline: '2022-02-24 23:59:00'
+          comment: 'RA-L with IROS option'
         - deadline: '2022-03-01 23:59:00'
+          comment: 'Conference papers'
       timezone: UTC-8
-      date: October 23-27, 2022
+      date: October 23-26, 2022
       place: Kyoto, Japan (Hybrid)
     - year: 2023
       id: iros23
-      link: https://ieee-iros.org/
+      link: https://2023.ieee-iros.org/
       timeline:
-        - deadline: '2023-03-01 23:59:59'
+        - deadline: '2023-03-02 23:59:00'
       timezone: UTC-8
-      date: October 1-5, 2023
+      date: October 2-4, 2023
       place: Detroit, Michigan, USA
     - year: 2024
       id: iros24
@@ -29,7 +43,7 @@
       timeline:
         - deadline: '2024-03-15 23:59:59'
       timezone: UTC-8
-      date: October 13-17, 2024
+      date: October 15-18, 2024
       place: Abu Dhabi, UAE
     - year: 2025
       id: iros25
@@ -37,7 +51,7 @@
       timeline:
         - deadline: '2025-03-01 23:59:59'
       timezone: UTC-8
-      date: October 19-25, 2025
+      date: October 21-23, 2025
       place: Hangzhou, China
     - year: 2026
       id: iros26
@@ -51,7 +65,7 @@
       id: iros27
       link: https://2027.ieee-iros.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2027-03-01 23:59:00'
           comment: 'Paper submission deadline: March 1, 2027; exact cutoff time and timezone not specified on the official IEEE RAS event page'
       timezone: AoE
       date: September 26 - October 1, 2027

@@ -11,3 +11,5 @@ use crate::pages::home::Home;
 pub fn App() -> impl IntoView {
     view! { <Home /> }
 }
+
+pub use components::directory_controls::DirectoryControls;

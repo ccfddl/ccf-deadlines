@@ -1,7 +1,9 @@
 pub mod batch_subscription_modal;
 pub mod checkbox_button;
 pub mod conf;
+pub mod conference_controls;
 pub mod countdown;
+pub mod directory_controls;
 pub mod email_reminders;
 pub mod favorites;
 pub mod favorites_timeline;
@@ -10,5 +12,6 @@ pub mod header;
 pub mod message_wall;
 pub mod showtable;
 pub mod subscription_modal;
+pub mod tabular_view;
 pub mod timeline;
 pub mod timezone;

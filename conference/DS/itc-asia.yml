@@ -7,13 +7,30 @@
     thcpl: N
   dblp: itc-asia
   confs:
+    - year: 2021
+      id: itc-asia2021
+      link: https://sse.tongji.edu.cn/ITC-Asia2021/
+      timeline:
+        - deadline: TBD
+          comment: 'Official TTTC CFP lists May 17, while the linked conference platform lists May 10; extension chronology unresolved.'
+      timezone: AoE
+      date: August 19-20, 2021
+      place: Online
+    - year: 2022
+      id: itc-asia2022
+      link: http://www.itc-asia2022.org/
+      timeline:
+        - abstract_deadline: '2022-04-25 23:59:00'
+          deadline: '2022-05-02 23:59:00'
+      timezone: AoE
+      date: August 25-26, 2022
+      place: Taipei, Taiwan (Hybrid)
     - year: 2023
       id: itc-asia2023
       link: https://www.itc-asia.info.hiroshima-cu.ac.jp/2023/
       timeline:
         - abstract_deadline: '2023-05-05 23:59:00'
           deadline: '2023-05-12 23:59:00'
-          comment: 'Calendar dates verified; 23:59:00 and AoE are repository defaults because source time and timezone are unpublished.'
       timezone: AoE
       date: September 13-14, 2023
       place: Kunibiki Messe, Matsue, Shimane, Japan
@@ -23,7 +40,6 @@
       timeline:
         - abstract_deadline: '2024-05-01 23:59:00'
           deadline: '2024-05-01 23:59:00'
-          comment: 'Calendar dates verified; 23:59:00 and AoE are repository defaults because source time and timezone are unpublished.'
       timezone: AoE
       date: August 19-20, 2024
       place: Changsha, China
@@ -32,7 +48,6 @@
       link: https://www.itc-asia.info.hiroshima-cu.ac.jp/2025/
       timeline:
         - deadline: '2025-08-12 23:59:00'
-          comment: 'Calendar dates verified; 23:59:00 and AoE are repository defaults because source time and timezone are unpublished.'
       timezone: AoE
       date: December 17-19, 2025
       place: Conference Tower of Tokyo Big Sight, Tokyo, Japan
@@ -40,8 +55,8 @@
       id: itc-asia2026
       link: https://www.castest.com.cn/itcasia_2026
       timeline:
-        - abstract_deadline: '2026-04-18 23:59:59'
-          deadline: '2026-04-25 23:59:59'
-      timezone: UTC+8
-      date: August 19-21, 2026
-      place: Ningbo International Conference Center, Ningbo, China
+        - abstract_deadline: '2026-04-25 23:59:00'
+          deadline: '2026-05-02 23:59:00'
+      timezone: AoE
+      date: August 20-21, 2026
+      place: Ningbo Qianhu Hotel, Ningbo, China

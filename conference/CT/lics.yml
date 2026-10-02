@@ -11,8 +11,8 @@
       id: lics21
       link: https://lics.siglog.org/lics21/
       timeline:
-        - abstract_deadline: '2021-01-20 23:59:59'
-          deadline: '2021-01-25 23:59:59'
+        - abstract_deadline: '2021-01-20 23:59:00'
+          deadline: '2021-01-25 23:59:00'
       timezone: AoE
       date: June 29 - July 2, 2021
       place: Online
@@ -20,8 +20,8 @@
       id: lics22
       link: https://lics.siglog.org/lics22/
       timeline:
-        - abstract_deadline: '2022-01-17 23:59:59'
-          deadline: '2022-01-21 23:59:59'
+        - abstract_deadline: '2022-01-17 23:59:00'
+          deadline: '2022-01-21 23:59:00'
       timezone: AoE
       date: August 2-5, 2022
       place: Haifa, Israel
@@ -29,8 +29,8 @@
       id: lics
       link: https://lics.siglog.org/lics23/
       timeline:
-        - abstract_deadline: '2023-01-18 23:59:59'
-          deadline: '2023-01-23 23:59:59'
+        - abstract_deadline: '2023-01-18 23:59:00'
+          deadline: '2023-01-23 23:59:00'
       timezone: AoE
       date: June 26-29, 2023
       place: Boston University, USA
@@ -38,8 +38,8 @@
       id: lics24
       link: https://lics.siglog.org/lics24/
       timeline:
-        - abstract_deadline: '2024-01-21 23:59:59'
-          deadline: '2024-01-26 23:59:59'
+        - abstract_deadline: '2024-01-21 23:59:00'
+          deadline: '2024-01-26 23:59:00'
       timezone: AoE
       date: July 8-11, 2024
       place: Tallinn, Estonia
@@ -47,8 +47,8 @@
       id: lics25
       link: https://lics.siglog.org/lics25/
       timeline:
-        - abstract_deadline: '2025-01-16 23:59:59'
-          deadline: '2025-01-23 23:59:59'
+        - abstract_deadline: '2025-01-16 23:59:00'
+          deadline: '2025-01-23 23:59:00'
       timezone: AoE
       date: June 23-26, 2025
       place: Singapore
@@ -56,8 +56,8 @@
       id: lics26
       link: https://lics.siglog.org/lics26/
       timeline:
-        - abstract_deadline: '2026-01-15 23:59:59'
-          deadline: '2026-01-22 23:59:59'
+        - abstract_deadline: '2026-01-15 23:59:00'
+          deadline: '2026-01-22 23:59:00'
       timezone: AoE
       date: July 20-23, 2026
       place: Lisbon, Portugal

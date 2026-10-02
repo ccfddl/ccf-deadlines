@@ -21,44 +21,44 @@
       link: https://www.sigsac.org/ccs/CCS2021/
       timeline:
         - deadline: '2021-01-20 23:59:59'
-          comment: 2 review cycles
+          comment: Cycle 1
         - deadline: '2021-05-06 23:59:59'
-          comment: spring
+          comment: Cycle 2
       timezone: UTC-12
-      date: November 15-19, 2021
-      place: Seoul, South Korea
+      date: November 16-18, 2021
+      place: Virtual
     - year: 2022
       id: ccs22
       link: https://www.sigsac.org/ccs/CCS2022/
       timeline:
         - deadline: '2022-01-14 23:59:59'
-          comment: 2 review cycles
+          comment: Cycle 1
         - deadline: '2022-05-02 23:59:59'
-          comment: the second review cycle
+          comment: Cycle 2
       timezone: UTC-12
-      date: November 14-19, 2022
+      date: TBD
       place: Los Angeles, U.S.A.
     - year: 2023
       id: ccs23
       link: https://www.sigsac.org/ccs/CCS2023/
       timeline:
         - deadline: '2023-01-19 23:59:59'
-          comment: First Round Submission
+          comment: Cycle 1
         - deadline: '2023-05-04 23:59:59'
-          comment: Second Round Submission
+          comment: Cycle 2
       timezone: UTC-12
-      date: November 26-30, 2023
+      date: November 27-29, 2023
       place: Copenhagen, Denmark
     - year: 2024
       id: ccs24
       link: https://www.sigsac.org/ccs/CCS2024/
       timeline:
         - deadline: '2024-01-28 23:59:59'
-          comment: First Round Submission
+          comment: Cycle 1
         - deadline: '2024-04-29 23:59:59'
-          comment: Second Round Submission
+          comment: Cycle 2
       timezone: UTC-12
-      date: October 14-18, 2024
+      date: October 15-17, 2024
       place: Salt Lake City, U.S.A
     - year: 2025
       id: ccs25
@@ -66,23 +66,25 @@
       timeline:
         - abstract_deadline: '2025-01-02 23:59:00'
           deadline: '2025-01-09 23:59:59'
-          comment: First Review Cycle
+          comment: Cycle 1
         - abstract_deadline: '2025-04-07 23:59:00'
           deadline: '2025-04-14 23:59:59'
-          comment: Second Review Cycle
+          comment: Cycle 2
       timezone: UTC-12
-      date: October 13-17, 2025
+      date: October 14-16, 2025
       place: TICC, Taipei, Taiwan
     - year: 2026
       id: ccs26
       link: https://www.sigsac.org/ccs/CCS2026/
       timeline:
-        - deadline: '2026-01-14 23:59:59'
-          comment: First Review Cycle
-        - deadline: '2026-04-29 23:59:59'
-          comment: Second Review Cycle
+        - abstract_deadline: '2026-01-07 23:59:59'
+          deadline: '2026-01-14 23:59:59'
+          comment: Cycle 1
+        - abstract_deadline: '2026-04-22 23:59:59'
+          deadline: '2026-04-29 23:59:59'
+          comment: Cycle 2
       timezone: UTC-12
-      date: November 15-19, 2026
+      date: November 16-18, 2026
       place: World Forum, Hague, Netherlands
     - year: 2027
       id: ccs27

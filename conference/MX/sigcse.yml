@@ -7,6 +7,42 @@
     thcpl: N
   dblp: sigcse
   confs:
+    - year: 2021
+      id: sigcse21
+      link: https://sigcse2021.sigcse.org/
+      timeline:
+        - abstract_deadline: '2020-08-21 23:59:00'
+          deadline: '2020-08-28 23:59:00'
+      timezone: UTC-12
+      date: March 15-20, 2021
+      place: Online
+    - year: 2022
+      id: sigcse22
+      link: https://sigcse2022.sigcse.org/
+      timeline:
+        - abstract_deadline: '2021-08-06 23:59:00'
+          deadline: '2021-08-13 23:59:00'
+      timezone: UTC-12
+      date: March 3-5, 2022
+      place: Providence, Rhode Island, USA (Hybrid)
+    - year: 2023
+      id: sigcse23
+      link: https://sigcse2023.sigcse.org/
+      timeline:
+        - abstract_deadline: '2022-08-12 23:59:00'
+          deadline: '2022-08-19 23:59:00'
+      timezone: UTC-12
+      date: March 16-18, 2023
+      place: Toronto, Canada (Hybrid)
+    - year: 2024
+      id: sigcse24
+      link: https://sigcse2024.sigcse.org/
+      timeline:
+        - abstract_deadline: '2023-08-11 23:59:00'
+          deadline: '2023-08-18 23:59:00'
+      timezone: UTC-12
+      date: March 21-23, 2024
+      place: Portland, Oregon, USA (Hybrid)
     - year: 2025
       id: sigcse25
       link: https://sigcse2025.sigcse.org/
@@ -14,8 +50,8 @@
         - abstract_deadline: '2024-07-14 23:59:59'
           deadline: '2024-07-21 23:59:59'
       timezone: UTC-12
-      date: February 26 - March 1, 2025
-      place: Pittsburgh, Pennsylvania, USA
+      date: February 27 - March 1, 2025
+      place: Pittsburgh, Pennsylvania, USA (Hybrid)
     - year: 2026
       id: sigcse26
       link: https://sigcse2026.sigcse.org/
@@ -23,8 +59,8 @@
         - abstract_deadline: '2025-06-26 23:59:59'
           deadline: '2025-07-03 23:59:59'
       timezone: UTC-12
-      date: February 18-21, 2026
-      place: St. Louis, Missouri, USA
+      date: February 19-21, 2026
+      place: St. Louis, Missouri, USA (Hybrid)
     - year: 2027
       id: sigcse27
       link: https://2027.sigcse-ts.acm.org/

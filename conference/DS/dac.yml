@@ -7,27 +7,32 @@
     thcpl: A
   dblp: dac
   confs:
+    - year: 2021
+      id: dac21
+      link: https://dac.com/58th-dac
+      timeline:
+        - abstract_deadline: '2020-11-16 17:00:00'
+          deadline: '2020-11-23 17:00:00'
+      timezone: UTC-8
+      date: December 6-9, 2021
+      place: San Francisco, CA, USA / Hybrid
     - year: 2022
       id: dac22
       link: https://www.dac.com/DAC-2022
       timeline:
-        - deadline: '2021-11-15 17:00:00'
-          comment: abstract deadline
-        - deadline: '2021-11-22 17:00:00'
-          comment: full paper deadline
+        - abstract_deadline: '2021-11-15 17:00:00'
+          deadline: '2021-11-22 17:00:00'
       timezone: UTC-8
-      date: July 10-14, 2022
+      date: July 11-14, 2022
       place: San Francisco, CA
     - year: 2023
       id: dac23
       link: https://www.dac.com/Conference/2023-Call-for-Contributions
       timeline:
-        - deadline: '2022-11-14 17:00:00'
-          comment: abstract deadline
-        - deadline: '2022-11-21 17:00:00'
-          comment: full paper deadline
+        - abstract_deadline: '2022-11-14 17:00:00'
+          deadline: '2022-11-21 17:00:00'
       timezone: UTC-8
-      date: July 9-13, 2023
+      date: July 10-13, 2023
       place: San Francisco, CA
     - year: 2024
       id: dac24
@@ -43,7 +48,7 @@
       link: https://www.dac.com/Conference/2025-Call-for-Contributions
       timeline:
         - abstract_deadline: '2024-11-12 17:00:00'
-          deadline: '2024-11-19 17:00:00'
+          deadline: '2024-11-20 17:00:00'
       timezone: UTC-8
       date: June 22-25, 2025
       place: San Francisco, CA
@@ -52,7 +57,7 @@
       link: https://dac.com/2026/call-for-contributions
       timeline:
         - abstract_deadline: '2025-11-11 17:00:00'
-          deadline: '2025-11-18 17:00:00'
+          deadline: '2025-11-19 17:00:00'
       timezone: UTC-8
       date: July 26-29, 2026
       place: Long Beach, CA
@@ -62,6 +67,7 @@
       timeline:
         - abstract_deadline: '2026-11-11 17:00:00'
           deadline: '2026-11-18 17:00:00'
+          decision_deadline: '2027-03-09 03:59:00'
       timezone: UTC-8
       date: July 11-14, 2027
       place: San Jose, CA

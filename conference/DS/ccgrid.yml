@@ -13,20 +13,46 @@
       timeline:
         - abstract_deadline: '2020-12-08 23:59:00'
           deadline: '2020-12-15 23:59:00'
-          comment: Calendar dates and AoE verified; 23:59:00 is the repository default for unpublished times
       timezone: AoE
       date: May 11-13, 2021
       place: Virtual
+    - year: 2022
+      id: ccgrid22
+      link: https://fcrlab.unime.it/ccgrid22/
+      timeline:
+        - abstract_deadline: '2021-12-19 23:59:00'
+          deadline: '2021-12-19 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Taormina, Sicily, Italy
+    - year: 2023
+      id: ccgrid23
+      link: https://ccgrid2023.iisc.ac.in/
+      timeline:
+        - abstract_deadline: '2022-12-05 23:59:00'
+          deadline: '2022-12-12 23:59:00'
+      timezone: AoE
+      date: May 1-4, 2023
+      place: Bangalore, India
     - year: 2024
       id: ccgrid24
       link: https://2024.ccgrid-conference.org/
       timeline:
         - abstract_deadline: '2023-12-04 23:59:00'
           deadline: '2023-12-11 23:59:00'
-          comment: Final extended dates and AoE verified; 23:59:00 is the repository default for unpublished times
       timezone: AoE
       date: May 7-9, 2024
       place: Philadelphia, USA
+    - year: 2025
+      id: ccgrid25
+      link: https://site.uit.no/ccgrid2025/
+      timeline:
+        - abstract_deadline: '2024-12-09 23:59:00'
+          deadline: '2024-12-23 23:59:00'
+          comment: 'Abstract optional; full required'
+      timezone: AoE
+      date: May 20-22, 2025
+      place: Tromsø, Norway
     - year: 2026
       id: ccgrid26
       link: https://www.ccgrid2026.org/
@@ -34,7 +60,7 @@
         - abstract_deadline: '2025-12-21 23:59:59'
           deadline: '2025-12-21 23:59:59'
       timezone: AoE
-      date: May 18-21, 2026
+      date: May 19-21, 2026
       place: Sydney, Australia
     - year: 2027
       id: ccgrid27
@@ -42,6 +68,7 @@
       timeline:
         - abstract_deadline: '2026-11-24 23:59:59'
           deadline: '2026-12-01 23:59:59'
+          decision_deadline: '2027-02-01 23:59:00'
       timezone: AoE
       date: May 24-27, 2027
       place: Dallas-Fort Worth, Texas, USA

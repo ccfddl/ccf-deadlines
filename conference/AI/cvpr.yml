@@ -14,7 +14,7 @@
         - abstract_deadline: '2020-11-09 23:59:00'
           deadline: '2020-11-16 23:59:00'
       timezone: UTC-8
-      date: June 19-25, 2021
+      date: June 21-24, 2021
       place: Virtual
     - year: 2022
       id: cvpr22
@@ -23,28 +23,26 @@
         - abstract_deadline: '2021-11-09 23:59:00'
           deadline: '2021-11-18 11:59:00'
       timezone: UTC-8
-      date: June 19 - June 24, 2022
-      place: New Orleans, Louisiana
+      date: June 21-24 and 28 (virtual posters), 2022
+      place: New Orleans, Louisiana (Hybrid)
     - year: 2023
       id: cvpr23
       link: https://cvpr.thecvf.com/Conferences/2023
       timeline:
         - abstract_deadline: '2022-11-04 22:59:00'
           deadline: '2022-11-11 23:59:59'
-          comment: 'Registration: November 4, 23:59 Pacific (PDT, UTC-7), converted to UTC-8'
       timezone: UTC-8
-      date: June 18-22, 2023
-      place: Vancouver, Canada
+      date: June 20-22, 2023
+      place: Vancouver, Canada (Hybrid)
     - year: 2024
       id: cvpr24
       link: https://cvpr.thecvf.com/Conferences/2024
       timeline:
         - abstract_deadline: '2023-11-03 22:59:00'
           deadline: '2023-11-17 23:59:59'
-          comment: 'Registration: November 3, 23:59 Pacific (PDT, UTC-7), converted to UTC-8'
       timezone: UTC-8
-      date: June 17-21, 2024
-      place: Seattle, USA
+      date: June 19-21, 2024
+      place: Seattle, USA (Hybrid)
     - year: 2025
       id: cvpr25
       link: https://cvpr.thecvf.com/Conferences/2025/CallForPapers
@@ -52,8 +50,8 @@
         - abstract_deadline: '2024-11-07 23:59:00'
           deadline: '2024-11-14 23:59:00'
       timezone: UTC-8
-      date: June 11-15, 2025
-      place: Nashville, Tennessee, USA
+      date: June 13-15, 2025
+      place: Nashville, Tennessee, USA (Hybrid)
     - year: 2026
       id: cvpr26
       link: https://cvpr.thecvf.com/Conferences/2026
@@ -61,14 +59,16 @@
         - abstract_deadline: '2025-11-07 23:59:00'
           deadline: '2025-11-13 23:59:00'
       timezone: UTC-12
-      date: June 3-7, 2026
-      place: Denver, Colorado, United States
+      date: June 5-7, 2026
+      place: Denver, Colorado, United States (Hybrid)
     - year: 2027
       id: cvpr27
       link: https://cvpr.thecvf.com/Conferences/2027
       timeline:
         - abstract_deadline: '2026-11-10 23:59:00'
           deadline: '2026-11-16 23:59:00'
+          rebuttal_deadline: '2027-02-01 23:59:00'
+          decision_deadline: '2027-02-25 23:59:00'
       timezone: UTC-12
       date: June 20-25, 2027
       place: Seattle, WA, United States

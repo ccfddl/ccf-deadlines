@@ -13,7 +13,7 @@
       timeline:
         - deadline: '2020-10-07 23:59:00'
       timezone: UTC-12
-      date: April 19-23, 2021
+      date: April 21-23, 2021
       place: Virtual
     - year: 2023
       id: eacl23
@@ -22,10 +22,12 @@
         - abstract_deadline: '2022-10-13 23:59:00'
           deadline: '2022-10-20 23:59:00'
           comment: 'Direct submission'
+        - deadline: '2022-10-15 23:59:00'
+          comment: 'ARR submission'
         - deadline: TBD
-          comment: 'ARR commitment: January 8, 2023 in official date tables; January 9 in CFP prose'
+          comment: 'ARR commitment: January 8/9 conflict'
       timezone: UTC-12
-      date: May 2-6, 2023
+      date: May 2-4, 2023
       place: Dubrovnik, Croatia (Hybrid)
     - year: 2024
       id: eacl24
@@ -36,7 +38,7 @@
         - deadline: '2023-12-20 23:59:00'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
-      date: March 17-22, 2024
+      date: March 18-20, 2024
       place: St. Julians, Malta (Hybrid)
     - year: 2026
       id: eacl26
@@ -47,15 +49,17 @@
         - deadline: '2025-12-14 23:59:00'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: AoE
-      date: March 24-29, 2026
-      place: Rabat, Morocco
+      date: March 25-27, 2026
+      place: Rabat, Morocco (Hybrid)
     - year: 2027
       id: eacl27
       link: https://2027.eacl.org/
       timeline:
         - deadline: '2026-08-03 23:59:59'
+          rebuttal_deadline: '2026-09-19 23:59:00'
           comment: 'ARR Submission'
         - deadline: '2026-10-11 23:59:59'
+          decision_deadline: '2026-11-12 23:59:00'
           comment: 'EACL commitment after ARR meta-reviews; reviewed papers only'
       timezone: UTC-12
       date: March 9-14, 2027

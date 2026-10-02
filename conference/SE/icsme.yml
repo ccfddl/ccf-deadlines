@@ -14,7 +14,7 @@
         - abstract_deadline: '2021-04-26 23:59:00'
           deadline: '2021-04-29 23:59:00'
       timezone: AoE
-      date: September 27-October 1, 2021
+      date: September 29-October 1, 2021
       place: Virtual
     - year: 2022
       id: icsme22
@@ -23,7 +23,7 @@
         - abstract_deadline: '2022-03-25 23:59:59'
           deadline: '2022-04-01 23:59:59'
       timezone: AoE
-      date: October 03-07, 2022
+      date: October 5-7, 2022
       place: Limassol, Cyprus
     - year: 2023
       id: icsme23
@@ -32,7 +32,7 @@
         - abstract_deadline: '2023-04-20 23:59:59'
           deadline: '2023-04-27 23:59:59'
       timezone: AoE
-      date: October 01-06, 2023
+      date: October 4-6, 2023
       place: Bogota, Colombia
     - year: 2024
       id: icsme24
@@ -40,9 +40,9 @@
       timeline:
         - abstract_deadline: '2024-04-04 23:59:59'
           deadline: TBD
-          comment: 'Research track paper clock conflict: CFP April 11, 2024 23:59 AoE; Important Dates table April 11, 2024 23:39 AoE.'
+          comment: CFP 23:59 vs date table 23:39
       timezone: AoE
-      date: October 06-11, 2024
+      date: October 9-11, 2024
       place: Flagstaff, Arizona, USA
     - year: 2025
       id: icsme25
@@ -51,7 +51,7 @@
         - abstract_deadline: '2025-03-06 23:59:59'
           deadline: '2025-03-13 23:59:59'
       timezone: AoE
-      date: September 07-12, 2025
+      date: September 10-12, 2025
       place: Auckland, New Zealand
     - year: 2026
       id: icsme26
@@ -59,15 +59,16 @@
       timeline:
         - abstract_deadline: '2026-02-27 23:59:59'
           deadline: '2026-03-06 23:59:59'
-          comment: 'Research Papers Track'
       timezone: AoE
-      date: September 14-18, 2026
+      date: September 16-18, 2026
       place: Benevento, Italy
     - year: 2027
       id: icsme27
       link: https://conf.researchr.org/home/icsme-2027
       timeline:
         - deadline: '2027-03-05 23:59:59'
+          rebuttal_deadline: '2027-05-07 23:59:00'
+          decision_deadline: '2027-05-28 23:59:00'
           comment: 'Research Papers Track'
       timezone: AoE
       date: September 7-11, 2027

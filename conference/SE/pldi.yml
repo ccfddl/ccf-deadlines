@@ -21,7 +21,7 @@
       timeline:
         - deadline: '2021-11-19 23:59:59'
       timezone: AoE
-      date: June 20-24, 2022
+      date: June 15-17, 2022
       place: San Diego, California, United States
     - year: 2023
       id: pldi23
@@ -37,7 +37,7 @@
       timeline:
         - deadline: '2023-11-16 23:59:59'
       timezone: AoE
-      date: June 24-28, 2024
+      date: June 26-28, 2024
       place: Copenhagen, Denmark
     - year: 2025
       id: pldi25
@@ -45,7 +45,7 @@
       timeline:
         - deadline: '2024-11-14 23:59:59'
       timezone: AoE
-      date: June 16-20, 2025
+      date: June 18-20, 2025
       place: Seoul, South Korea
     - year: 2026
       id: pldi26
@@ -53,13 +53,15 @@
       timeline:
         - deadline: '2025-11-13 23:59:59'
       timezone: AoE
-      date: June 15-19, 2026
+      date: June 17-19, 2026
       place: Boulder, Colorado, United States
     - year: 2027
       id: pldi27
       link: https://pldi27.sigplan.org/
       timeline:
         - deadline: '2026-11-12 23:59:59'
+          rebuttal_deadline: '2027-02-18 23:59:00'
+          decision_deadline: '2027-04-01 23:59:00'
       timezone: AoE
       date: June 5-11, 2027
       place: Atlanta, Georgia, USA

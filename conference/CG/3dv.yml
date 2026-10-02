@@ -13,7 +13,7 @@
       timeline:
         - abstract_deadline: '2021-07-30 23:59:00'
           deadline: '2021-07-30 23:59:00'
-          comment: 'Regular-paper registration and full submission; registration extended to July 30'
+          comment: Registration / full paper
       timezone: UTC-7
       date: December 1-3, 2021
       place: Online
@@ -23,17 +23,17 @@
       timeline:
         - abstract_deadline: '2022-06-02 23:59:00'
           deadline: '2022-06-02 23:59:00'
-          comment: 'Regular-paper registration and full submission; registration extended to June 2'
+          comment: Registration / full paper
       timezone: UTC-7
       date: September 13-15, 2022
-      place: Prague, Czechia
+      place: Prague, Czechia and Online
     - year: 2024
       id: 3dv2024
       link: https://3dvconf.github.io/2024/
       timeline:
         - deadline: '2023-08-07 23:59:59'
       timezone: UTC-7
-      date: March 18-21, 2024
+      date: March 19-21, 2024
       place: Davos, Switzerland
     - year: 2025
       id: 3dv2025
@@ -49,8 +49,8 @@
       timeline:
         - deadline: '2025-08-18 23:59:59'
       timezone: UTC-7
-      date: March 24-27, 2026
-      place: Metro Vancouver, BC, Canada
+      date: March 20-23, 2026
+      place: Vancouver, BC, Canada
     - year: 2027
       id: 3dv2027
       link: https://3dvconf.github.io/2027/

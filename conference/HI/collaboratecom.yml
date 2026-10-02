@@ -7,11 +7,55 @@
     thcpl: N
   dblp: colcom
   confs:
+    - year: 2021
+      id: collaboratecom21
+      link: https://collaboratecom.eai-conferences.org/2021/
+      timeline:
+        - deadline: '2021-08-30 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Online
+    - year: 2022
+      id: collaboratecom22
+      link: https://collaboratecom.eai-conferences.org/2022/
+      timeline:
+        - deadline: '2022-06-15 23:59:00'
+          comment: Round 1
+        - deadline: '2022-08-20 23:59:00'
+          comment: Round 2
+      timezone: AoE
+      date: October 15-16, 2022
+      place: Hangzhou, China (Hybrid)
+    - year: 2023
+      id: collaboratecom23
+      link: https://collaboratecom.eai-conferences.org/2023/
+      timeline:
+        - deadline: '2023-06-01 23:59:00'
+          comment: Round 1
+        - deadline: '2023-08-15 23:59:00'
+          comment: Round 2
+      timezone: AoE
+      date: October 4-6, 2023
+      place: Corfu, Greece (Hybrid)
+    - year: 2024
+      id: collaboratecom24
+      link: https://collaboratecom.eai-conferences.org/2024/
+      timeline:
+        - deadline: '2024-05-01 23:59:00'
+          comment: Round 1
+        - deadline: '2024-06-30 23:59:00'
+          comment: Round 2
+      timezone: AoE
+      date: November 16-17, 2024
+      place: Wuzhen, China
     - year: 2025
       id: collaboratecom25
       link: https://collaboratecom.eai-conferences.org/2025/
       timeline:
         - deadline: '2025-05-01 23:59:59'
+          comment: Round 1
+        - deadline: '2025-07-31 03:59:00'
+          comment: Round 2
       timezone: UTC-8
       date: November 15-16, 2025
       place: Shanghai, China
@@ -20,7 +64,6 @@
       link: https://collaboratecom.eai-conferences.org/2026/
       timeline:
         - deadline: '2026-05-01 23:59:00'
-          comment: 'Regular track; cutoff clock and timezone unpublished. Separate late track excluded. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
       date: November 14-15, 2026
       place: Hong Kong SAR, China

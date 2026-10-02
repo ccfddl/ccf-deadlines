@@ -20,7 +20,6 @@
       link: https://eurocrypt.iacr.org/2022/
       timeline:
         - deadline: '2021-10-01 16:00:00'
-          comment: Regular paper submission deadline
       timezone: UTC+2
       date: May 30-June 3, 2022
       place: Trondheim, Norway
@@ -29,7 +28,6 @@
       link: https://eurocrypt.iacr.org/2023/
       timeline:
         - deadline: '2022-10-06 23:59:59'
-          comment: Regular paper submission deadline
       timezone: AoE
       date: April 24-27, 2023
       place: Lyon, France
@@ -62,6 +60,8 @@
       link: https://eurocrypt.iacr.org/2027/
       timeline:
         - deadline: '2026-09-17 23:59:59'
+          rebuttal_deadline: '2026-12-05 23:59:00'
+          decision_deadline: '2027-01-18 23:59:00'
       timezone: AoE
       date: April 11-15, 2027
       place: Eindhoven, Netherlands

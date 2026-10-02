@@ -7,6 +7,31 @@
     thcpl: B
   dblp: ijcnn
   confs:
+    - year: 2021
+      id: ijcnn2021
+      link: https://neural.memberclicks.net/ijcnn-2021-sessions
+      timeline:
+        - deadline: '2021-02-10 23:59:00'
+      timezone: UTC-8
+      date: TBD
+      place: Virtual
+    - year: 2022
+      id: ijcnn2022
+      link: https://wcci2022.org/
+      timeline:
+        - abstract_deadline: '2022-01-31 23:59:00'
+          deadline: '2022-02-14 23:59:00'
+      timezone: AoE
+      date: July 19-23, 2022
+      place: Padua, Italy
+    - year: 2023
+      id: ijcnn2023
+      link: https://2023.ijcnn.org/
+      timeline:
+        - deadline: '2023-02-07 23:59:00'
+      timezone: AoE
+      date: June 19-22, 2023
+      place: Gold Coast, Queensland, Australia
     - year: 2024
       id: ijcnn2024
       link: https://2024.ieeewcci.org/
@@ -20,9 +45,9 @@
       link: https://2025.ijcnn.org/
       timeline:
         - deadline: '2025-02-05 23:59:59'
-          comment: Regular papers; final extension requires further verification
+          comment: Final extension unverified
       timezone: UTC-12
-      date: June 30 - July 5, 2025
+      date: July 1-5, 2025
       place: Rome, Italy
     - year: 2026
       id: ijcnn2026
@@ -31,12 +56,13 @@
         - deadline: '2026-01-31 23:59:59'
       timezone: UTC-12
       date: June 21 - 26, 2026
-      place: Maastricht Exhibition & Congress Center, Maastricht, The Netherlands
+      place: Maastricht Exhibition & Congress Center, Maastricht, The Netherlands (Hybrid)
     - year: 2027
       id: ijcnn2027
       link: https://ijcnn.org/2027
       timeline:
         - deadline: '2027-01-31 23:59:59'
+          decision_deadline: '2027-03-15 23:59:00'
       timezone: UTC-12
       date: June 14 - 18, 2027
       place: Cape Town, South Africa

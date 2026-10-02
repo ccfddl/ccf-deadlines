@@ -14,14 +14,14 @@
         - deadline: '2021-02-08 23:59:59'
       timezone: AoE
       date: August 14-18, 2021
-      place: Singapore
+      place: Online
     - year: 2022
       id: sigkdd22
       link: https://www.kdd.org/kdd2022/
       timeline:
         - deadline: '2022-02-10 23:59:59'
       timezone: AoE
-      date: August 14-18, 2022
+      date: August 15-18, 2022
       place: Washington DC Convention Center, USA
     - year: 2023
       id: sigkdd23
@@ -29,7 +29,7 @@
       timeline:
         - deadline: '2023-02-02 23:59:59'
       timezone: AoE
-      date: August 6-10, 2023
+      date: August 7-10, 2023
       place: Long Beach Convention & Entertainment Center, USA
     - year: 2024
       id: sigkdd24
@@ -37,7 +37,6 @@
       timeline:
         - abstract_deadline: '2024-02-01 23:59:59'
           deadline: '2024-02-08 23:59:59'
-          # comment: '1st deadline'
       timezone: AoE
       date: August 25-29, 2024
       place: Barcelona, Spain
@@ -47,10 +46,10 @@
       timeline:
         - abstract_deadline: '2024-08-01 23:59:59'
           deadline: '2024-08-08 23:59:59'
-          comment: 1st round of 2 total rounds
+          comment: first round
         - abstract_deadline: '2025-02-03 23:59:59'
           deadline: '2025-02-10 23:59:59'
-          comment: 2nd round of 2 total rounds
+          comment: second round
       timezone: AoE
       date: August 3-7, 2025
       place: Toronto, ON, Canada
@@ -60,12 +59,12 @@
       timeline:
         - abstract_deadline: '2025-07-24 23:59:59'
           deadline: '2025-07-31 23:59:59'
-          comment: 1st round of 2 total rounds
+          comment: first round
         - abstract_deadline: '2026-02-01 23:59:59'
           deadline: '2026-02-08 23:59:59'
-          comment: 2nd round of 2 total rounds
+          comment: second round
       timezone: AoE
-      date: August 9-13, 2026
+      date: August 10-13, 2026
       place: Jeju, Korea
     - year: 2027
       id: sigkdd27
@@ -73,6 +72,8 @@
       timeline:
         - abstract_deadline: '2026-07-19 23:59:59'
           deadline: '2026-07-26 23:59:59'
+          rebuttal_deadline: '2026-10-13 23:59:00'
+          decision_deadline: '2026-11-14 23:59:00'
           comment: 1st round of 2 total rounds
       timezone: AoE
       date: August 1-5, 2027

@@ -7,6 +7,46 @@
     thcpl: N
   dblp: probml
   confs:
+    - year: 2021
+      id: probml2021
+      link: https://probml.cc/archives/2021/index.html
+      timeline:
+        - deadline: '2020-11-13 23:59:00'
+      timezone: AoE
+      date: January 13 - February 17, 2021
+      place: Virtual
+    - year: 2022
+      id: probml2022
+      link: https://probml.cc/archives/2022/index.html
+      timeline:
+        - deadline: '2021-11-19 23:59:00'
+      timezone: AoE
+      date: February 1-2, 2022
+      place: Virtual
+    - year: 2023
+      id: probml2023
+      link: https://probml.cc/archives/2023/index.html
+      timeline:
+        - deadline: '2023-04-14 23:59:00'
+      timezone: AoE
+      date: July 23, 2023
+      place: Honolulu, Hawaii, USA
+    - year: 2024
+      id: probml2024
+      link: https://probml.cc/archives/2024/index.html
+      timeline:
+        - deadline: '2024-03-29 23:59:00'
+      timezone: AoE
+      date: July 21, 2024
+      place: Vienna, Austria
+    - year: 2025
+      id: probml2025
+      link: https://probml.cc/archives/2025/index.html
+      timeline:
+        - deadline: '2025-02-14 23:59:00'
+      timezone: AoE
+      date: April 29, 2025
+      place: Singapore
     - year: 2026
       id: probml2026
       link: https://probml.cc

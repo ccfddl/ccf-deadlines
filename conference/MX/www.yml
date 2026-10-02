@@ -15,7 +15,7 @@
           deadline: '2020-10-19 23:59:59'
       timezone: AoE
       date: April 19-23, 2021
-      place: Ljubljana, Slovenia
+      place: Virtual
     - year: 2022
       id: www22
       link: https://www2022.thewebconf.org/
@@ -23,8 +23,8 @@
         - abstract_deadline: '2021-10-14 23:59:59'
           deadline: '2021-10-21 23:59:59'
       timezone: AoE
-      date: April 25-29, 2022
-      place: Lyon, France
+      date: April 27-29, 2022
+      place: Virtual
     - year: 2023
       id: www23
       link: https://www2023.thewebconf.org/
@@ -32,7 +32,7 @@
         - abstract_deadline: '2022-10-06 23:59:59'
           deadline: '2022-10-13 23:59:59'
       timezone: AoE
-      date: May 1-5, 2023
+      date: May 2-4, 2023
       place: Austin, Texas, USA
     - year: 2024
       id: www24
@@ -41,7 +41,7 @@
         - abstract_deadline: '2023-10-05 23:59:59'
           deadline: '2023-10-12 23:59:59'
       timezone: AoE
-      date: May 13-17, 2024
+      date: May 15-17, 2024
       place: Singapore
     - year: 2025
       id: www25
@@ -50,7 +50,7 @@
         - abstract_deadline: '2024-10-07 23:59:59'
           deadline: '2024-10-14 23:59:59'
       timezone: AoE
-      date: April 28 - May 2, 2025
+      date: April 30 - May 2, 2025
       place: Sydney, Australia
     - year: 2026
       id: www26
@@ -59,7 +59,7 @@
         - abstract_deadline: '2025-09-30 23:59:59'
           deadline: '2025-10-07 23:59:59'
       timezone: AoE
-      date: April 13 - 17, 2026
+      date: July 1-3, 2026
       place: Dubaï, UAE
     - year: 2027
       id: www27
@@ -67,6 +67,7 @@
       timeline:
         - abstract_deadline: '2026-10-18 23:59:59'
           deadline: '2026-10-25 23:59:59'
+          decision_deadline: '2027-01-04 23:59:00'
       timezone: AoE
       date: May 10 - 14, 2027
       place: Dublin, Ireland
