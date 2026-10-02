@@ -75,7 +75,8 @@
       id: gi27
       link: https://conferences.graphicsinterface.org/2027
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2027-02-05 23:59:00'
+          decision_deadline: '2027-04-30 23:59:00'
       timezone: AoE
       date: June 15-18, 2027
       place: Winnipeg, Canada
