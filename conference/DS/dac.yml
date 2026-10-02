@@ -67,6 +67,7 @@
       timeline:
         - abstract_deadline: '2026-11-11 17:00:00'
           deadline: '2026-11-18 17:00:00'
+          decision_deadline: '2027-03-09 03:59:00'
       timezone: UTC-8
       date: July 11-14, 2027
       place: San Jose, CA
