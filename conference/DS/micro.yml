@@ -50,7 +50,7 @@
         - abstract_deadline: '2025-04-04 23:59:59'
           deadline: '2025-04-11 23:59:59'
       timezone: UTC-4
-      date: October 19-22, 2025
+      date: October 20-22, 2025
       place: Seoul, Korea
     - year: 2026
       id: micro26
