@@ -140,7 +140,7 @@ Description of the fields:
    </tr>
    <tr>
       <td><code>deadline</code>*</td>
-      <td>Deadline, in the format of <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
+      <td>Submission Deadline, in the format of <code>yyyy-mm-dd hh:mm:ss</code> or <code>TBD</code></td>
    </tr>
    <tr>
       <td><code>rebuttal_deadline</code></td>
