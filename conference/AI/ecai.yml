@@ -58,6 +58,8 @@
       link: https://ecai2027.org/
       timeline:
         - deadline: '2027-04-14 23:59:59'
+          rebuttal_deadline: '2027-06-18 23:59:00'
+          decision_deadline: '2027-07-15 23:59:00'
       timezone: AoE
       date: October 2-7, 2027
       place: Athens, Greece
