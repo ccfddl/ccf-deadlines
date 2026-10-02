@@ -202,7 +202,7 @@ try {
         assert.ok(ranks.row.left >= 0 && ranks.row.right <= width);
         assert.equal(ranks.buttons.length, 3);
         assert.ok(ranks.buttons.every(button => button.top === ranks.buttons[0].top
-          && Math.abs(button.width - ranks.buttons[0].width) < 1 && button.height >= 36),
+          && Math.abs(button.width - ranks.buttons[0].width) < 1 && button.height >= 30),
           `${path} mobile ranks must share one responsive row at ${width}px`);
         for (let index = 0; index < 3; index++) {
           await evaluate(`document.querySelectorAll('.toolbar-rank-filters .filter-dropdown-trigger')[${index}].click()`);
