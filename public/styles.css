@@ -3858,9 +3858,15 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
     width: 100%;
     min-width: 0;
     max-width: none;
-    min-height: 36px;
+    min-height: 30px;
     box-sizing: border-box;
+    padding: 4px 8px;
     font-size: 12px;
+    line-height: 18px;
+  }
+  .toolbar-rank-filters .filter-dropdown-trigger-icon {
+    font-size: 14px;
+    line-height: 1;
   }
   .toolbar-rank-filters .filter-dropdown:first-child .filter-dropdown-panel {
     left: 0;
