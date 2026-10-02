@@ -64,6 +64,7 @@
       link: https://roboticsconference.org/
       timeline:
         - deadline: '2026-12-04 23:59:00'
+          rebuttal_deadline: '2027-02-12 23:59:00'
           comment: 'Stage 1: initial 6-page extended abstract submission'
       timezone: AoE
       date: July 6-11, 2027
