@@ -7,6 +7,45 @@
     thcpl: N
   dblp: wicon
   confs:
+    - year: 2021
+      id: wicon2021
+      link: https://wicon.eai-conferences.org/2021/
+      timeline:
+        - deadline: '2021-08-02 23:59:00'
+          comment: 'Main and early-review track'
+        - deadline: '2021-09-06 23:59:00'
+          comment: 'Late track'
+      timezone: UTC-12
+      date: November 9, 2021
+      place: Online
+    - year: 2022
+      id: wicon2022
+      link: https://wicon.eai-conferences.org/2022/
+      timeline:
+        - deadline: '2022-07-17 23:59:00'
+      timezone: UTC-12
+      date: November 17, 2022
+      place: Online
+    - year: 2023
+      id: wicon2023
+      link: https://wicon.eai-conferences.org/2023/
+      timeline:
+        - deadline: TBD
+          comment: 'Main track'
+        - deadline: '2023-11-07 23:59:00'
+          comment: 'Late track'
+      timezone: UTC-12
+      date: December 15-16, 2023
+      place: Piraeus, Greece (Hybrid)
+    - year: 2024
+      id: wicon2024
+      link: https://web.archive.org/web/20241202110730/https://wicon.eai-conferences.org/2024/
+      timeline:
+        - deadline: TBD
+          comment: 'CFP September 15; homepage October 15, extension unverified'
+      timezone: UTC-12
+      date: TBD
+      place: Perth, Australia
     - year: 2025
       id: wicon2025
       link: https://wicon.eai-conferences.org/2025/
@@ -22,4 +61,4 @@
         - deadline: '2026-09-30 23:59:59'
       timezone: UTC+0
       date: December 2-4, 2026
-      place: Bratislava, Slovakia
+      place: Bratislava, Slovakia (Hybrid)
