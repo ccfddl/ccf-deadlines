@@ -13,19 +13,35 @@
       timeline:
         - abstract_deadline: '2020-12-10 23:59:00'
           deadline: '2020-12-17 23:59:00'
-          comment: 'Regular research papers. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
       date: May 24-27, 2021
       place: Virtual
+    - year: 2022
+      id: ets2022
+      link: https://ets2022.upc.edu/en
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Abstract and full midnight boundary unclear'
+      timezone: AoE
+      date: May 24-26, 2022
+      place: Barcelona, Spain / Hybrid
+    - year: 2023
+      id: ets2023
+      link: https://cas.polito.it/ETS23/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: TBD
+      place: Venice, Italy / Hybrid
     - year: 2024
       id: ets2024
       link: https://ets24.ewi.tudelft.nl/
       timeline:
         - abstract_deadline: '2023-12-15 23:59:00'
           deadline: '2023-12-23 00:00:00'
-          comment: 'Regular papers; full-paper cutoff explicitly December 22 at 24:00 AoE, normalized to December 23 at 00:00. 23:59:00 uses the repository default where the source gives no clear cutoff clock.'
       timezone: AoE
-      date: May 20-24, 2024
+      date: May 21-23, 2024
       place: The Hague, Netherlands
     - year: 2025
       id: ets2025
@@ -34,7 +50,7 @@
         - abstract_deadline: '2024-12-09 23:59:59'
           deadline: '2024-12-15 23:59:59'
       timezone: AoE
-      date: May 26-30, 2025
+      date: May 27-29, 2025
       place: Tallinn, Estonia
     - year: 2026
       id: ets2026
@@ -42,9 +58,8 @@
       timeline:
         - abstract_deadline: '2025-12-15 23:59:00'
           deadline: '2026-01-14 23:59:00'
-          comment: 'Regular research papers; full-paper extension. Cutoff clocks and timezone unpublished. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
-      date: May 25-29, 2026
+      date: May 26-28, 2026
       place: Chania, Greece
     - year: 2027
       id: ets2027
