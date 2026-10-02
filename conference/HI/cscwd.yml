@@ -61,6 +61,7 @@
       link: http://2027.cscwd.org
       timeline:
         - deadline: '2026-10-31 23:59:59'
+          decision_deadline: '2027-01-31 23:59:00'
       timezone: AoE
       date: May 26-28, 2027
       place: Brisbane, Australia
