@@ -72,6 +72,7 @@
       link: https://conf.researchr.org/home/cgo-2027
       timeline:
         - deadline: '2026-06-11 23:59:59'
+          rebuttal_deadline: '2026-07-23 23:59:00'
           comment: 'First Submission'
         - deadline: '2026-09-10 23:59:59'
           comment: 'Second Submission'
