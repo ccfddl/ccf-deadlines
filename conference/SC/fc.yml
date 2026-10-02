@@ -7,22 +7,30 @@
     thcpl: B
   dblp: fc
   confs:
+    - year: 2021
+      id: fc21
+      link: https://fc21.ifca.ai/
+      timeline:
+        - abstract_deadline: '2020-09-17 23:59:59'
+          deadline: '2020-09-24 23:59:59'
+          comment: Registration / full paper
+      timezone: UTC-12
+      date: March 1-4, 2021
+      place: Virtual
     - year: 2022
       id: fc22
       link: https://fc22.ifca.ai/
       timeline:
         - abstract_deadline: '2021-09-02 23:59:59'
           deadline: '2021-09-13 23:59:00'
-          comment: Regular paper submission deadline; final randomized extension confirmed by official CFP
       timezone: UTC-12
-      date: February 14-18, 2022
+      date: May 2-5, 2022
       place: Radisson Grenada Beach Resort Grenada
     - year: 2023
       id: fc23
       link: https://fc23.ifca.ai/
       timeline:
         - deadline: '2022-10-19 23:59:00'
-          comment: Regular paper submission deadline
       timezone: UTC-12
       date: May 1-4, 2023
       place: Bol, Brac, Croatia
@@ -31,27 +39,24 @@
       link: https://fc24.ifca.ai/
       timeline:
         - deadline: '2023-09-20 23:59:00'
-          comment: Regular paper submission deadline; final randomized extension confirmed by official CFP
       timezone: UTC-12
-      date: March 4-8, 2024
+      date: March 4-7, 2024
       place: Willemstad, Curaçao
     - year: 2025
       id: fc25
       link: https://fc25.ifca.ai/
       timeline:
         - deadline: '2024-10-11 23:59:59'
-          comment: Submission deadline
       timezone: UTC-12
-      date: April 14-18, 2025
+      date: April 14-17, 2025
       place: Miyakojima, Japan
     - year: 2026
       id: fc26
       link: https://fc26.ifca.ai/
       timeline:
         - deadline: '2025-09-20 23:59:59'
-          comment: Submission deadline
       timezone: UTC-12
-      date: March 2-6, 2026
+      date: March 2-5, 2026
       place: St. Kitts
     - year: 2027
       id: fc27
