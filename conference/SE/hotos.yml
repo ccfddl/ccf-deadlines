@@ -35,7 +35,8 @@
       id: hotos27
       link: https://sigops.org/s/conferences/hotos/2027/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2027-02-01 23:59:00'
+          decision_deadline: '2027-04-09 23:59:00'
       timezone: AoE
       date: May 24-26, 2027
       place: Burghausen, Bavaria, Germany
