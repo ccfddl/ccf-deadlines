@@ -67,9 +67,12 @@
       timeline:
         - abstract_deadline: '2026-09-18 23:59:59'
           deadline: '2026-09-25 23:59:59'
+          rebuttal_deadline: '2026-11-18 23:59:00'
+          decision_deadline: '2026-12-05 23:59:00'
           comment: 'Cycle 1'
         - abstract_deadline: '2027-01-22 23:59:59'
           deadline: '2027-01-29 23:59:59'
+          rebuttal_deadline: '2027-03-24 23:59:00'
           comment: 'Cycle 2'
       timezone: AoE
       date: June 5 - June 11, 2027
