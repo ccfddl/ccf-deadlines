@@ -15,14 +15,6 @@
       timezone: AoE
       date: September 30-October 3, 2021
       place: New York, USA
-    - year: 2022
-      id: ispa22
-      link: http://www.swinflow.org/confs/2022/ispa/
-      timeline:
-        - deadline: '2022-10-07 23:59:00'
-      timezone: UTC-10
-      date: TBD
-      place: Virtual
     - year: 2023
       id: ispa23
       link: http://www.ieee-hust-ncc.org/2023/ISPA/index.html
