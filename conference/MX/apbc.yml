@@ -7,11 +7,27 @@
     thcpl: N
   dblp: apbc
   confs:
+    - year: 2021
+      id: apbc2021
+      link: https://www.binfo.ncku.edu.tw/APBC2021/
+      timeline:
+        - deadline: '2020-10-15 23:59:00'
+      timezone: AoE
+      date: February 3-5, 2021
+      place: Online
+    - year: 2022
+      id: apbc2022
+      link: https://www.masbic.org/apbc2022/
+      timeline:
+        - deadline: '2021-10-31 23:59:00'
+      timezone: AoE
+      date: TBD
+      place: Online
     - year: 2025
       id: apbc25
       link: https://bioinfo.nuaa.edu.cn/apbc2025/main.psp
       timeline:
-        - deadline: '2025-06-15 23:59:59'
+        - deadline: '2025-07-15 23:59:00'
       timezone: UTC+0
       date: September 19-22, 2025
       place: Nanjing， China
@@ -20,7 +36,6 @@
       link: https://www.apbc2026.com/home
       timeline:
         - deadline: '2026-07-17 23:59:00'
-          comment: 'Regular full papers; extended submission deadline in the organizer EasyChair CFP. 23:59:00 uses the repository default where the source gives no clear cutoff clock. AoE uses the repository default because the source gives no timezone.'
       timezone: AoE
-      date: October 21-24, 2026
+      date: October 22-24, 2026
       place: Hsinchu, Taiwan， China
