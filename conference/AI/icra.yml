@@ -66,6 +66,7 @@
       link: https://2027.ieee-icra.org/
       timeline:
         - deadline: '2026-09-16 23:59:59'
+          decision_deadline: '2027-02-01 03:59:00'
           comment: Extended submission deadline
       timezone: UTC-8
       date: May 24-28, 2027
