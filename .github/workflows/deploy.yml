@@ -4,6 +4,9 @@ on:
     branches: [main]
 permissions:
   contents: read
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
