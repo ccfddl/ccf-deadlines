@@ -57,22 +57,46 @@ class SeoPageTests(unittest.TestCase):
             directory = (output / "conferences/index.html").read_text()
             self.assertIn('href="/conferences/ai/acl-2027/"', directory)
             self.assertIn('<a href="https://ccfddl.com/">Main site</a>', directory)
-            self.assertIn('id="language-switch"', directory)
-            self.assertLess(directory.index('class="breadcrumb"'), directory.index('id="language-switch"'))
+            self.assertIn('id="directory-controls-root"', directory)
+            self.assertLess(directory.index('class="breadcrumb"'), directory.index('id="directory-controls-root"'))
             self.assertIn('data-ccf="A"', directory)
             self.assertIn('data-search="ACL Annual Meeting', directory)
-            self.assertIn('id="conference-search"', directory)
-            self.assertIn('id="display-clock"', directory)
-            self.assertIn('placeholder="search conference"', directory)
-            self.assertIn('data-rank-key="ccf"', directory)
-            self.assertIn('class="category-filter-grid"', directory)
-            self.assertIn('function filterDirectory()', (output / "conferences/controls.js").read_text())
+            # Controls are rendered by the shared Leptos island, not copied here.
+            self.assertNotIn('id="language-switch"', directory)
+            self.assertNotIn('id="conference-search"', directory)
+            self.assertNotIn('data-rank-key="ccf"', directory)
+            self.assertIn('class="directory-categories"', directory)
+            self.assertNotIn('.rank-filter{', (output / "conferences/style.css").read_text())
             self.assertNotIn("Conference deadlines / 会议截稿时间", directory)
             self.assertNotIn("Browse the latest edition", directory)
             sitemap = ElementTree.parse(output / "sitemap.xml")
             urls = [node.text for node in sitemap.iter() if node.tag.endswith("loc")]
             self.assertEqual(len(urls), 4)
             self.assertIn("https://ccfddl.com/conferences/ai/acl-2027/", urls)
+
+    def test_directory_loads_the_same_versioned_app_and_stylesheet(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            (output / "index.html").write_text(
+                '<link rel="stylesheet" href="/styles-abc.css">'
+                '<link rel="modulepreload" href="/ccfddl-abc.js">'
+                '<link rel="modulepreload" href="/snippets/ccfddl-abc/inline0.js">'
+                '<link rel="preload" type="application/wasm" href="/ccfddl-abc_bg.wasm">'
+            )
+            generate([], {}, output)
+            directory = (output / "conferences/index.html").read_text()
+            bootstrap = (output / "conferences/app.js").read_text()
+            self.assertIn('href="/styles-abc.css"', directory)
+            self.assertIn('src="/conferences/app.js"', directory)
+            self.assertIn('import init from "/ccfddl-abc.js"', bootstrap)
+            self.assertIn('module_or_path: "/ccfddl-abc_bg.wasm"', bootstrap)
+
+    def test_incomplete_app_build_fails_instead_of_shipping_missing_controls(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            (output / "index.html").write_text('<html></html>')
+            with self.assertRaisesRegex(ValueError, "after Trunk"):
+                generate([], {}, output)
 
     def test_duplicate_urls_fail_build(self):
         conference = {"title": "ACL", "sub": "AI", "confs": [{"year": 2027, "id": "one", "timeline": []}]}

@@ -1,23 +1,15 @@
-use crate::components::checkbox_button::{
-    MultiSelectDropdown, ccf_filter_options, core_filter_options, normalize_rank_filter_selection,
-    thcpl_filter_options,
+use crate::components::conf::{Conference, ConferenceYear, Timeline, fetch_all_conf};
+use crate::components::conference_controls::{
+    ConferenceControls, ConferenceDivider, ConferenceFilterState, LiveClock, ToolbarClock,
+    persist_filters,
 };
-use crate::components::conf::{
-    Category, Conference, ConferenceYear, Timeline, fetch_all_conf, get_categories,
-};
-use crate::components::showtable::{
-    display_timezone_offset_at, display_timezone_options, is_supported_display_timezone,
-    parse_deadline_to_rfc3339,
-};
-use crate::components::timezone::get_timezone_name;
+use crate::components::showtable::{display_timezone_offset_at, parse_deadline_to_rfc3339};
 use chrono::{DateTime, Datelike, Utc};
 use leptos::prelude::*;
-use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use std::collections::HashSet;
-use thaw::{Checkbox, CheckboxGroup, CheckboxSize, Icon, Input, InputPrefix, InputSize, Switch};
 use wasm_bindgen::JsValue;
 use wasm_bindgen_futures::spawn_local;
-use web_sys::{UrlSearchParams, window};
+use web_sys::window;
 
 #[derive(Clone)]
 struct DeadlineCell {
@@ -60,32 +52,6 @@ impl RankFilters {
     }
 }
 
-fn parse_filter_values(value: Option<String>, allowed: &HashSet<String>) -> HashSet<String> {
-    value
-        .unwrap_or_default()
-        .split(',')
-        .filter(|value| allowed.contains(*value))
-        .map(str::to_string)
-        .collect()
-}
-
-fn stored_filter_values(key: &str) -> HashSet<String> {
-    window()
-        .and_then(|browser| browser.local_storage().ok().flatten())
-        .and_then(|storage| storage.get_item(key).ok().flatten())
-        .and_then(|value| serde_json::from_str(&value).ok())
-        .unwrap_or_default()
-}
-
-fn rank_values(
-    options: &[crate::components::checkbox_button::FilterDropdownOption],
-) -> HashSet<String> {
-    options
-        .iter()
-        .map(|option| option.value.to_string())
-        .collect()
-}
-
 fn filter_query(
     categories: &HashSet<String>,
     ccf: &HashSet<String>,
@@ -124,116 +90,29 @@ fn filter_query(
 
 #[component]
 pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
-    let query = window()
-        .and_then(|browser| browser.location().search().ok())
-        .and_then(|search| UrlSearchParams::new_with_str(&search).ok());
-    let url_has_filters = query.as_ref().is_some_and(|query| {
-        ["categories", "ccf", "core", "thcpl", "filters", "q", "tz"]
-            .iter()
-            .any(|key| query.has(key))
-    });
-    let categories = get_categories();
-    let all_categories: HashSet<String> = categories.iter().map(|item| item.sub.clone()).collect();
-    let category_list = RwSignal::new(categories);
-    let is_mobile = RwSignal::new(is_narrow_viewport());
-    let resize_listener = window_event_listener(ev::resize, move |_| {
-        is_mobile.set(is_narrow_viewport());
-    });
-    on_cleanup(move || resize_listener.remove());
-    let mut initial_categories = if url_has_filters {
-        parse_filter_values(
-            query.as_ref().and_then(|query| query.get("categories")),
-            &all_categories,
-        )
-    } else {
-        stored_filter_values("types")
-    };
-    initial_categories.retain(|category| all_categories.contains(category));
-    if initial_categories == all_categories {
-        initial_categories.clear();
-    }
-    let selected = RwSignal::new(initial_categories);
-    let initial_rank = |url_key: &str, storage_key: &str, allowed: HashSet<String>| {
-        if url_has_filters {
-            parse_filter_values(
-                query.as_ref().and_then(|query| query.get(url_key)),
-                &allowed,
-            )
-        } else {
-            let mut values = stored_filter_values(storage_key);
-            values.retain(|value| allowed.contains(value));
-            values
-        }
-    };
-    let mut ccf = initial_rank("ccf", "ranks", rank_values(&ccf_filter_options()));
-    let mut core = initial_rank("core", "core_ranks", rank_values(&core_filter_options()));
-    let mut thcpl = initial_rank("thcpl", "thcpl_ranks", rank_values(&thcpl_filter_options()));
-    normalize_rank_filter_selection(&mut ccf);
-    normalize_rank_filter_selection(&mut core);
-    normalize_rank_filter_selection(&mut thcpl);
-    let rank_list = RwSignal::new(ccf);
-    let core_rank_list = RwSignal::new(core);
-    let thcpl_rank_list = RwSignal::new(thcpl);
-    let search = RwSignal::new(if url_has_filters {
-        query
-            .as_ref()
-            .and_then(|query| query.get("q"))
-            .unwrap_or_default()
-    } else {
-        window()
-            .and_then(|browser| browser.local_storage().ok().flatten())
-            .and_then(|storage| storage.get_item("conference_search").ok().flatten())
-            .unwrap_or_default()
-    });
-    let browser_timezone = get_timezone_name().unwrap_or_else(|| "UTC".to_string());
-    let stored_timezone = window()
-        .and_then(|browser| browser.local_storage().ok().flatten())
-        .and_then(|storage| storage.get_item("display_timezone").ok().flatten());
-    let initial_timezone = if url_has_filters {
-        query.as_ref().and_then(|query| query.get("tz"))
-    } else {
-        stored_timezone
-    }
-    .filter(|value| is_supported_display_timezone(value, &browser_timezone))
-    .unwrap_or_else(|| browser_timezone.clone());
-    let selected_timezone = RwSignal::new(initial_timezone);
+    let ConferenceFilterState {
+        category_list,
+        selected,
+        rank_list,
+        core_rank_list,
+        thcpl_rank_list,
+        search,
+        browser_timezone,
+        selected_timezone,
+    } = ConferenceFilterState::new();
+    persist_filters(
+        selected,
+        rank_list,
+        core_rank_list,
+        thcpl_rank_list,
+        search,
+        selected_timezone,
+    );
     let open_dropdown = RwSignal::new(None::<String>);
     let conferences = RwSignal::new(None::<Vec<Conference>>);
     let loading = RwSignal::new(true);
     let failed = RwSignal::new(false);
     let reload = RwSignal::new(0u32);
-
-    Effect::new(move |_| {
-        let value = serde_json::to_string(&selected.get()).unwrap_or_else(|_| "[]".to_string());
-        if let Some(storage) = window().and_then(|browser| browser.local_storage().ok().flatten()) {
-            let _ = storage.set_item("types", &value);
-        }
-    });
-
-    Effect::new(move |_| {
-        let ranks = serde_json::to_string(&rank_list.get()).unwrap_or_else(|_| "[]".to_string());
-        let core_ranks =
-            serde_json::to_string(&core_rank_list.get()).unwrap_or_else(|_| "[]".to_string());
-        let thcpl_ranks =
-            serde_json::to_string(&thcpl_rank_list.get()).unwrap_or_else(|_| "[]".to_string());
-        if let Some(storage) = window().and_then(|browser| browser.local_storage().ok().flatten()) {
-            let _ = storage.set_item("ranks", &ranks);
-            let _ = storage.set_item("core_ranks", &core_ranks);
-            let _ = storage.set_item("thcpl_ranks", &thcpl_ranks);
-        }
-    });
-
-    Effect::new(move |_| {
-        if let Some(storage) = window().and_then(|browser| browser.local_storage().ok().flatten()) {
-            let _ = storage.set_item("conference_search", &search.get());
-        }
-    });
-
-    Effect::new(move |_| {
-        if let Some(storage) = window().and_then(|browser| browser.local_storage().ok().flatten()) {
-            let _ = storage.set_item("display_timezone", &selected_timezone.get());
-        }
-    });
 
     Effect::new(move |_| {
         let query = filter_query(
@@ -280,144 +159,11 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
 
     view! {
         <section class="tabular-view">
-            <div class="language-switches">
-                <div class="el-switch">
-                    <span class=("is_active", move || !use_english.get())>"中文"</span>
-                    <Switch checked=use_english />
-                    <span class=("is_active", move || use_english.get())>"English"</span>
-                </div>
-            </div>
-            <div class="tabular-filter-row">
-                <div class="tabular-category-column">
-                    <CheckboxGroup value=selected>
-                        <div class="category-filter-grid" role="group" aria-label=move || if use_english.get() { "Conference categories" } else { "选择会议类别" }>
-                    <For
-                        each=move || {
-                            category_list.get().into_iter().enumerate().collect::<Vec<(usize, Category)>>()
-                        }
-                        key=|(_, item)| item.sub.clone()
-                        children=move |(_, item)| {
-                            let sub = item.sub.clone();
-                            let selected_sub = sub.clone();
-                            let label = Memo::new(move |_| {
-                                if is_mobile.get() {
-                                    sub.clone()
-                                } else if use_english.get() {
-                                    item.name_en.clone()
-                                } else {
-                                    item.name.clone()
-                                }
-                            });
-                            view! {
-                                <div class=move || if selected.get().contains(&selected_sub) {
-                                    "checkbox-item filter-selected"
-                                } else {
-                                    "checkbox-item"
-                                }>
-                                    <label><Checkbox size=CheckboxSize::Large label=label value=item.sub.clone() /></label>
-                                </div>
-                            }
-                        }
-                    />
-                    <Show when=move || !selected.get().is_empty()>
-                        <button type="button" class="clear-filter" on:click=move |_| selected.set(HashSet::new())>
-                            {move || if use_english.get() { "Clear ×" } else { "清除 ×" }}
-                        </button>
-                    </Show>
-                        </div>
-                    </CheckboxGroup>
-                </div>
-                <div class="tabular-filter-controls">
-                <div class="tabular-timezone">
-                    <span>{move || if use_english.get() { "Times in" } else { "显示时区" }}</span>
-                    <div class="toolbar-timezone-picker">
-                        <button
-                            type="button"
-                            class="toolbar-timezone-trigger"
-                            aria-label=move || if use_english.get() { "Select display timezone" } else { "选择显示时区" }
-                            aria-haspopup="listbox"
-                            aria-expanded=move || open_dropdown.get().as_deref() == Some("timezone")
-                            on:click=move |_| {
-                                if open_dropdown.get_untracked().as_deref() == Some("timezone") {
-                                    open_dropdown.set(None);
-                                } else {
-                                    open_dropdown.set(Some("timezone".to_string()));
-                                }
-                            }
-                        >
-                            <span>{move || selected_timezone.get()}</span>
-                            <span class="toolbar-timezone-arrow" aria-hidden="true">"⌄"</span>
-                        </button>
-                        <Show when=move || open_dropdown.get().as_deref() == Some("timezone")>
-                            <div class="toolbar-timezone-backdrop" on:click=move |_| open_dropdown.set(None)></div>
-                            <div class="toolbar-timezone-menu" role="listbox">
-                                {display_timezone_options(&browser_timezone)
-                                    .into_iter()
-                                    .map(|timezone| {
-                                        let selected_value = timezone.clone();
-                                        view! {
-                                            <button
-                                                type="button"
-                                                class="toolbar-timezone-option"
-                                                role="option"
-                                                aria-selected=move || selected_timezone.get() == selected_value
-                                                on:click=move |_| {
-                                                    selected_timezone.set(timezone.clone());
-                                                    open_dropdown.set(None);
-                                                }
-                                            >
-                                                {timezone.clone()}
-                                            </button>
-                                        }
-                                    })
-                                    .collect_view()}
-                            </div>
-                        </Show>
-                    </div>
-                </div>
-                <div class="tabular-search">
-                    <Input
-                        value=search
-                        placeholder=Memo::new(move |_| if use_english.get() { "search conference" } else { "搜索会议" }.to_string())
-                        size=InputSize::Small
-                        class="custom-search-input"
-                    >
-                        <InputPrefix slot>
-                            <Icon icon=icondata::FiSearch style="color: lightgray;" />
-                        </InputPrefix>
-                    </Input>
-                </div>
-                <div class="tabular-rank-filters" role="group" aria-label=move || if use_english.get() { "Conference rankings" } else { "会议评级筛选" }>
-                <MultiSelectDropdown
-                    dropdown_id="ccf".to_string()
-                    title="CCF".to_string()
-                    options=ccf_filter_options()
-                    selected_values=rank_list
-                    use_english=use_english
-                    panel_width="180px".to_string()
-                    open_dropdown=open_dropdown
-                />
-                <MultiSelectDropdown
-                    dropdown_id="core".to_string()
-                    title="CORE".to_string()
-                    options=core_filter_options()
-                    selected_values=core_rank_list
-                    use_english=use_english
-                    panel_width="188px".to_string()
-                    open_dropdown=open_dropdown
-                />
-                <MultiSelectDropdown
-                    dropdown_id="thcpl".to_string()
-                    title="THCPL".to_string()
-                    options=thcpl_filter_options()
-                    selected_values=thcpl_rank_list
-                    use_english=use_english
-                    panel_width="196px".to_string()
-                    open_dropdown=open_dropdown
-                />
-                </div>
-                </div>
-            </div>
+            <ConferenceControls use_english categories=category_list selected search
+                rank_list core_rank_list thcpl_rank_list selected_timezone browser_timezone open_dropdown>
+                <ToolbarClock slot><LiveClock selected_timezone /></ToolbarClock>
+            </ConferenceControls>
+            <ConferenceDivider />
             {move || {
                 if loading.get() {
                     view! { <p class="tabular-status">{if use_english.get() { "Loading conference table..." } else { "正在加载会议表格…" }}</p> }.into_any()
@@ -459,13 +205,6 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
             </div>
         </section>
     }
-}
-
-fn is_narrow_viewport() -> bool {
-    window()
-        .and_then(|browser| browser.inner_width().ok())
-        .and_then(|width| width.as_f64())
-        .is_some_and(|width| width <= 768.0)
 }
 
 fn leading_year(
@@ -748,7 +487,10 @@ mod tests {
             "?view=table&categories=AI,DB&ccf=A,B&core=A*&q=VLDB%202027&tz=Asia%2FShanghai"
         );
         assert_eq!(
-            parse_filter_values(Some("AI,INVALID,DB".to_string()), &categories),
+            crate::components::conference_controls::parse_filter_values(
+                Some("AI,INVALID,DB".to_string()),
+                &categories
+            ),
             categories
         );
     }

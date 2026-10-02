@@ -105,76 +105,15 @@ a {
   margin-right: auto;
 }
 
+.conference-divider {
+  margin: 12px 0;
+  border: 0;
+  border-top: 1px solid #e8e3dc;
+}
+
 .tabular-table-wrap {
   width: 100%;
   overflow-x: auto;
-}
-
-.tabular-filter-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 12px 0;
-  padding: 12px 0 8px;
-  border-top: 1px solid #e8e3dc;
-  border-bottom: 1px solid #e8e3dc;
-}
-
-.tabular-category-column {
-  width: 100%;
-}
-
-.tabular-view .category-filter-grid {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.tabular-filter-controls {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  width: 100%;
-}
-
-.tabular-timezone {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: #666;
-  font-size: var(--font-size-sm);
-  white-space: nowrap;
-}
-
-.tabular-search {
-  flex: 0 1 160px;
-  min-width: 0;
-}
-
-.tabular-search .thaw-input,
-.tabular-search .thaw-input__input {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.tabular-rank-filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-self: flex-end;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-left: auto;
-}
-
-@media (max-width: 600px) {
-  .tabular-filter-controls {
-    flex-wrap: wrap;
-  }
-
-  .tabular-search {
-    flex-basis: 100%;
-  }
 }
 
 .tabular-table {
@@ -3876,5 +3815,37 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .favorites-timeline-tbd {
     margin-right: 4px;
     margin-left: 4px;
+  }
+}
+
+/* Shared conference controls: the same DOM and breakpoints in all views. */
+.thaw-config-provider.conference-controls-provider { min-height: 0; }
+.conference-controls { font-family: "Roboto Mono", "SF Mono", Monaco, monospace; }
+.toolbar-clock {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.toolbar-rank-control { position: relative; }
+.toolbar-filter-toggle { display: none; }
+.toolbar-rank-filters { display: flex; align-items: center; gap: 6px; }
+@media (max-width: 768px) {
+  .toolbar-filter-toggle { display: inline-flex; }
+  .toolbar-rank-filters { display: none; }
+  .toolbar-rank-filters.is-open {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+    padding: 12px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
   }
 }

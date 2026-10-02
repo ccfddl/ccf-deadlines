@@ -1,45 +1,16 @@
-/* Shared controls for the crawlable conference directory and edition pages. */
+/* Deadline and calendar behavior for static edition pages. Directory controls mount in Rust. */
 (() => {
-  const directory = Boolean(document.querySelector('.directory-section'));
+  if (document.getElementById('directory-controls-root')) return;
   const params = new URLSearchParams(location.search);
-  const filterKeys = ['categories', 'ccf', 'core', 'thcpl', 'q', 'tz'];
-  const hasUrlFilters = filterKeys.some((key) => params.has(key));
-  const categories = [...document.querySelectorAll('[data-category]')]
-    .filter((node) => node.closest('.category-filter-grid'));
-  const categoryValues = new Set(categories.map((node) => node.dataset.category));
-  const rankValues = {
-    ccf: new Set(['A', 'B', 'C', 'N']),
-    core: new Set(['A*', 'A', 'B', 'C', 'N']),
-    thcpl: new Set(['A', 'B', 'N']),
-  };
   function stored(key) {
     try { return localStorage.getItem(key); } catch (_) { return null; }
   }
-
   function store(key, value) {
     try { localStorage.setItem(key, value); } catch (_) { /* storage can be unavailable */ }
   }
-
-  function selection(key, allowed) {
-    const values = (params.get(key) || '').split(',');
-    const selected = new Set(values.filter((value) => allowed.has(value)));
-    if (key !== 'categories' && selected.has('N') && selected.size > 1) selected.delete('N');
-    if (key === 'categories' && selected.size === allowed.size) selected.clear();
-    return selected;
-  }
-
-  const state = {
-    categories: selection('categories', categoryValues),
-    ccf: selection('ccf', rankValues.ccf),
-    core: selection('core', rankValues.core),
-    thcpl: selection('thcpl', rankValues.thcpl),
-    q: params.get('q') || '',
-    tz: hasUrlFilters ? params.get('tz') : stored('display_timezone'),
-  };
-
+  const state = { tz: params.get('tz') || stored('display_timezone') };
   const timezoneSelect = document.getElementById('display-timezone');
   const clock = document.getElementById('display-clock');
-  const search = document.getElementById('conference-search');
   const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
   const fallbackZones = [
     'UTC', 'Pacific/Honolulu', 'America/Los_Angeles', 'America/Denver',
@@ -54,7 +25,6 @@
   for (const zone of zones) timezoneSelect.add(new Option(zone, zone));
   if (!zones.includes(state.tz)) state.tz = browserTimezone;
   timezoneSelect.value = state.tz;
-  if (search) search.value = state.q;
   let clockFormatter;
 
   function configureClock() {
@@ -75,125 +45,6 @@
   configureClock();
   renderClock();
   setInterval(renderClock, 1000);
-
-  function queryUrl(path = location.pathname) {
-    const url = new URL(path, location.origin);
-    const output = new URLSearchParams();
-    for (const key of ['categories', 'ccf', 'core', 'thcpl']) {
-      if (state[key].size) output.set(key, [...state[key]].sort().join(','));
-    }
-    if (state.q.trim()) output.set('q', state.q.trim());
-    if (state.tz) output.set('tz', state.tz);
-    url.search = output.toString();
-    return url.pathname + url.search;
-  }
-
-  function persist() {
-    store('display_timezone', state.tz);
-  }
-
-  function refreshControls() {
-    for (const link of categories) {
-      link.classList.toggle('is-selected', directory && state.categories.has(link.dataset.category));
-    }
-    for (const details of document.querySelectorAll('.rank-filter')) {
-      const key = details.dataset.rankKey;
-      const inputs = [...details.querySelectorAll('.rank-option input')];
-      for (const input of inputs) {
-        input.checked = state[key].has(input.value);
-      }
-      const labels = inputs.filter((input) => input.checked)
-        .map((input) => input.value === 'N' ? 'Non' : input.value);
-      const title = key.toUpperCase();
-      details.querySelector('.rank-summary-text').textContent = labels.length === 0 ? title
-        : labels.length === 1 ? `${title} ${labels[0]}`
-          : labels.length === 2 ? `${title} ${labels.join(',')}`
-            : `${title} ${labels[0]},${labels[1]}+${labels.length - 2}`;
-      details.classList.toggle('is-active', labels.length > 0);
-      details.querySelector('.rank-clear').disabled = labels.length === 0;
-    }
-  }
-
-  function filterDirectory() {
-    if (!directory) return;
-    const needle = state.q.trim().toLocaleLowerCase();
-    let matches = 0;
-    for (const section of document.querySelectorAll('.directory-section')) {
-      let sectionMatches = 0;
-      for (const row of section.querySelectorAll('li[data-category]')) {
-        const visible = (!state.categories.size || state.categories.has(row.dataset.category))
-          && ['ccf', 'core', 'thcpl'].every((key) => !state[key].size || state[key].has(row.dataset[key]))
-          && (!needle || row.dataset.search.toLocaleLowerCase().includes(needle));
-        row.hidden = !visible;
-        if (visible) { matches++; sectionMatches++; }
-      }
-      section.hidden = sectionMatches === 0;
-    }
-    document.getElementById('directory-empty').hidden = matches !== 0;
-  }
-
-  function updateDirectory() {
-    refreshControls();
-    filterDirectory();
-    persist();
-    history.replaceState(null, '', queryUrl() + location.hash);
-  }
-
-  for (const link of categories) {
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      const category = link.dataset.category;
-      if (directory) {
-        if (state.categories.has(category)) state.categories.delete(category);
-        else state.categories.add(category);
-        updateDirectory();
-      } else {
-        state.categories = new Set([category]);
-        persist();
-        location.assign(queryUrl('/conferences/'));
-      }
-    });
-  }
-
-  if (search) {
-    search.addEventListener('input', () => {
-      state.q = search.value;
-      updateDirectory();
-    });
-  }
-
-  for (const details of document.querySelectorAll('.rank-filter')) {
-    const key = details.dataset.rankKey;
-    details.addEventListener('toggle', () => {
-      if (details.open) {
-        for (const other of document.querySelectorAll('.rank-filter')) {
-          if (other !== details) other.open = false;
-        }
-      }
-    });
-    details.querySelector('.rank-clear').addEventListener('click', () => {
-      state[key].clear();
-      updateDirectory();
-    });
-    details.addEventListener('change', (event) => {
-      const value = event.target.value;
-      if (event.target.checked) {
-        if (value === 'N') state[key].clear();
-        else state[key].delete('N');
-        state[key].add(value);
-      } else state[key].delete(value);
-      if (directory) updateDirectory();
-      else {
-        persist();
-        location.assign(queryUrl('/conferences/'));
-      }
-    });
-  }
-  document.addEventListener('click', (event) => {
-    if (!event.target.closest('.rank-filter')) {
-      for (const details of document.querySelectorAll('.rank-filter')) details.open = false;
-    }
-  });
 
   function zoneOffsetMinutes(zone, timestamp) {
     const parts = new Intl.DateTimeFormat('en-US', {
@@ -369,29 +220,14 @@
     state.tz = timezoneSelect.value;
     configureClock();
     renderClock();
-    persist();
+    store('display_timezone', state.tz);
     renderDeadlineTimes();
     renderDetail();
-    if (directory) updateDirectory();
-    else {
-      const url = new URL(location.href);
-      url.searchParams.set('tz', state.tz);
-      history.replaceState(null, '', url.pathname + url.search + url.hash);
-    }
+    const url = new URL(location.href);
+    url.searchParams.set('tz', state.tz);
+    history.replaceState(null, '', url.pathname + url.search + url.hash);
   });
 
-  function updateLanguage() {
-    const english = document.documentElement.lang === 'en';
-    for (const clear of document.querySelectorAll('.rank-clear')) {
-      clear.textContent = english ? 'Clear' : '清空';
-    }
-    if (directory) document.getElementById('directory-empty').textContent = english
-      ? 'No matching conferences.' : '没有匹配的会议。';
-  }
-  document.addEventListener('static-language-change', updateLanguage);
-  updateLanguage();
-  refreshControls();
-  filterDirectory();
   renderDeadlineTimes();
   renderDetail();
   setupDetailCalendars();
