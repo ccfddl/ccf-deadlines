@@ -78,8 +78,10 @@
       link: https://asiaccs2027.cityu.edu.mo/index.html
       timeline:
         - deadline: '2026-08-21 23:59:59'
+          rebuttal_deadline: '2026-10-30 23:59:00'
           comment: 1st round Deadline
         - deadline: '2026-12-11 23:59:59'
+          rebuttal_deadline: '2027-03-12 23:59:00'
           comment: 2nd round Deadline
       timezone: AoE
       date: July 12-16, 2027
