@@ -11,29 +11,34 @@
       id: hpcc2021
       link: https://www.ieee-hpcc.org/2021/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper: September 15, 2021; exact time and timezone unpublished (UTC+0 is a placeholder).'
-      timezone: UTC+0
+        - deadline: '2021-09-15 23:59:00'
+      timezone: AoE
       date: December 20-22, 2021
       place: Haikou, China
     - year: 2022
       id: hpcc2022
       link: https://www.ieee-hpcc.org/2022/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper: September 20, 2022 (extended); exact time and timezone unpublished (UTC+0 is a placeholder).'
-      timezone: UTC+0
+        - deadline: '2022-09-20 23:59:00'
+      timezone: AoE
       date: December 18-21, 2022
       place: Chengdu, China
     - year: 2023
       id: hpcc2023
       link: http://www.swinflow.org/confs/2023/hpcc/
       timeline:
-        - deadline: TBD
-          comment: 'Regular paper: September 15, 2023 HST (firm); exact time unpublished.'
+        - deadline: '2023-09-15 23:59:00'
       timezone: UTC-10
       date: December 13-15, 2023
       place: Melbourne, Australia
+    - year: 2024
+      id: hpcc2024
+      link: http://www.ieee-hust-ncc.org/2024/HPCC/index.html
+      timeline:
+        - deadline: '2024-08-15 23:59:00'
+      timezone: AoE
+      date: December 13-15, 2024
+      place: Wuhan, China
     - year: 2025
       id: hpcc2025
       link: https://hpcn.exeter.ac.uk/hpcc2025/
