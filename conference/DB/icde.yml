@@ -82,8 +82,10 @@
       link: https://icde2027.github.io/
       timeline:
         - deadline: '2026-06-11 17:00:00'
+          rebuttal_deadline: '2026-08-15 17:00:00'
           comment: first round
         - deadline: '2026-11-11 17:00:00'
+          rebuttal_deadline: '2027-01-15 17:00:00'
           comment: second round
       timezone: PT
       date: May 17-21, 2027
