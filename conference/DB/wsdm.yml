@@ -63,6 +63,7 @@
       timeline:
         - abstract_deadline: '2026-08-17 23:59:59'
           deadline: '2026-08-24 23:59:59'
+          decision_deadline: '2026-11-02 23:59:00'
           comment: Full Paper
       timezone: UTC-12
       date: February 15 - 19, 2027
