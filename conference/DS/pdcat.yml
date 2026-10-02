@@ -7,14 +7,6 @@
     thcpl: N
   dblp: pdcat
   confs:
-    - year: 2021
-      id: pdcat2021
-      link: http://cse.sysu.edu.cn/pdcat2021
-      timeline:
-        - deadline: '2021-11-08 23:59:00'
-      timezone: AoE
-      date: TBD
-      place: Guangzhou, China
     - year: 2022
       id: pdcat2022
       link: https://www.hpc.is.tohoku.ac.jp/pdcat2022/
@@ -24,14 +16,6 @@
       timezone: AoE
       date: December 7-9, 2022
       place: Sendai, Japan (Hybrid)
-    - year: 2023
-      id: pdcat2023
-      link: http://kips-cswrg.org/pdcat2023/
-      timeline:
-        - deadline: TBD
-      timezone: AoE
-      date: TBD
-      place: Jeju, South Korea
     - year: 2024
       id: pdcat2024
       link: https://hpcc.siat.ac.cn/meeting/pdcat2024/index.html
