@@ -3837,6 +3837,12 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 .toolbar-rank-control { position: relative; }
 .toolbar-rank-filters { display: flex; align-items: center; gap: 6px; }
 @media (max-width: 768px) {
+  .conference-controls {
+    --toolbar-control-height: 30px;
+  }
+  .conference-controls .toolbar-search > .thaw-input {
+    min-height: var(--toolbar-control-height);
+  }
   .toolbar-actions {
     flex-basis: 100%;
     width: 100%;
@@ -3858,7 +3864,7 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
     width: 100%;
     min-width: 0;
     max-width: none;
-    min-height: 30px;
+    min-height: var(--toolbar-control-height);
     box-sizing: border-box;
     padding: 4px 8px;
     font-size: 12px;
