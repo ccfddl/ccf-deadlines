@@ -85,9 +85,12 @@
       timeline:
         - abstract_deadline: '2026-06-19 23:59:00'
           deadline: '2026-06-26 23:59:59'
+          rebuttal_deadline: '2026-08-28 23:59:00'
+          decision_deadline: '2026-10-09 23:59:00'
           comment: First round
         - abstract_deadline: '2026-08-21 23:59:00'
           deadline: '2026-08-28 23:59:59'
+          decision_deadline: '2026-10-09 23:59:00'
           comment: Second round
       timezone: AoE
       date: Jan 4 - 8, 2027
