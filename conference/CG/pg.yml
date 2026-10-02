@@ -7,12 +7,32 @@
     thcpl: B
   dblp: pg
   confs:
+    - year: 2021
+      id: pg21
+      link: https://www.pg2021.org/
+      timeline:
+        - abstract_deadline: '2021-06-01 23:59:00'
+          deadline: '2021-06-02 23:59:00'
+      timezone: UTC
+      date: October 18-21, 2021
+      place: Online
+    - year: 2022
+      id: pg22
+      link: https://pg2022.org/
+      timeline:
+        - abstract_deadline: TBD
+          deadline: '2022-06-10 23:59:00'
+          comment: 'Abstract cutoff conflicts across official portal captures'
+      timezone: AoE
+      date: October 5-8, 2022
+      place: Kyoto, Japan (Hybrid)
     - year: 2023
       id: pg23
       link: https://pg2023.org/
       timeline:
-        - abstract_deadline: '2023-06-01 23:59:59'
+        - abstract_deadline: '2023-06-05 23:59:59'
           deadline: '2023-06-06 23:59:59'
+          comment: 'Conflicting full-paper dates; final cutoff unverified'
       timezone: AoE
       date: October 10-13, 2023
       place: Daejeon, South Korea
@@ -22,7 +42,6 @@
       timeline:
         - abstract_deadline: '2024-05-31 23:59:00'
           deadline: '2024-06-07 23:59:00'
-          comment: 'Initial full-paper dates and AoE verified; 23:59:00 is the repository default where the clock is unpublished.'
       timezone: AoE
       date: October 13-16, 2024
       place: Huangshan, China
