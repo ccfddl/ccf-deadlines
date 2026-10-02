@@ -62,6 +62,7 @@
       link: https://acm-stoc.org/stoc2027/
       timeline:
         - deadline: '2026-11-02 23:59:59'
+          decision_deadline: '2027-02-01 23:59:00'
       timezone: UTC-12
       date: June 6-11, 2027
       place: Atlanta, Georgia, USA
