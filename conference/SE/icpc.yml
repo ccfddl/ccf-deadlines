@@ -68,6 +68,7 @@
       timeline:
         - abstract_deadline: '2026-10-29 23:59:59'
           deadline: '2026-11-05 23:59:59'
+          decision_deadline: '2027-01-14 23:59:59'
       timezone: AoE
       date: April 25-26, 2027
       place: Dublin, Ireland
