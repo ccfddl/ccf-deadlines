@@ -66,6 +66,7 @@
       timeline:
         - abstract_deadline: '2026-10-28 23:59:59'
           deadline: '2026-11-04 23:59:59'
+          decision_deadline: '2026-12-22 23:59:00'
       timezone: AoE
       date: May 17-20, 2027
       place: Toronto, Canada
