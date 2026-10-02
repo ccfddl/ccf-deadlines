@@ -91,6 +91,7 @@
       timeline:
         - abstract_deadline: '2026-08-26 23:59:59'
           deadline: '2026-09-02 23:59:59'
+          rebuttal_deadline: '2026-11-06 23:59:00'
           comment: Summer Deadlines
       timezone: AoE
       date: Oct 18-22, 2027
