@@ -71,6 +71,7 @@
       timeline:
         - abstract_deadline: '2026-11-05 23:59:59'
           deadline: '2026-11-12 23:59:59'
+          decision_deadline: '2027-01-14 23:59:00'
           comment: Regular research papers; abstract submission is optional
       timezone: AoE
       date: April 12-15, 2027
