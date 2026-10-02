@@ -62,6 +62,7 @@
         - deadline: '2026-09-23 23:59:59'
           comment: Paper Registration
         - deadline: '2026-09-30 23:59:59'
+          decision_deadline: '2026-11-06 23:59:00'
           comment: Paper Submission
       timezone: AoE
       date: January 11-12, 2027
