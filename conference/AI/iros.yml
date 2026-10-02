@@ -65,7 +65,7 @@
       id: iros27
       link: https://2027.ieee-iros.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2027-03-01 23:59:00'
           comment: 'Paper submission deadline: March 1, 2027; exact cutoff time and timezone not specified on the official IEEE RAS event page'
       timezone: AoE
       date: September 26 - October 1, 2027
