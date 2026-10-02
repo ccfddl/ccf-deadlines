@@ -67,6 +67,7 @@
       timeline:
         - abstract_deadline: '2026-09-21 23:59:59'
           deadline: '2026-09-25 23:59:59'
+          decision_deadline: '2026-12-01 23:59:00'
           comment: Research Track Paper submission deadline
       timezone: AoE
       date: March 9-12, 2027
