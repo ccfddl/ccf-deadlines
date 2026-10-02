@@ -67,6 +67,7 @@
       timeline:
         - abstract_deadline: '2026-12-14 23:59:59'
           deadline: '2026-12-21 23:59:59'
+          decision_deadline: '2027-04-27 11:59:00'
       timezone: UTC
       date: June 21-25, 2027
       place: Singapore
