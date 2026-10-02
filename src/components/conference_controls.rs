@@ -257,17 +257,9 @@ fn RankFilters(
     thcpl_rank_list: RwSignal<HashSet<String>>,
     open_dropdown: RwSignal<Option<String>>,
 ) -> impl IntoView {
-    let show_filters = RwSignal::new(false);
     view! {
         <div class="toolbar-rank-control">
-            <Button class="toolbar-filter-toggle" size=ButtonSize::Small appearance=ButtonAppearance::Subtle
-                on_click=move |_| show_filters.update(|value| *value = !*value)
-                attr:aria-expanded=move || show_filters.get().to_string()>
-                <Icon icon=icondata::FiFilter style="margin-right: 4px;" />
-                {move || if use_english.get() { "Filters" } else { "筛选" }}
-                <Icon icon=icondata::BsChevronDown style="margin-left: 4px;" />
-            </Button>
-            <div class="toolbar-rank-filters" class:is-open=move || show_filters.get() role="group" aria-label="Conference rankings">
+            <div class="toolbar-rank-filters" role="group" aria-label="Conference rankings">
                 <MultiSelectDropdown dropdown_id="ccf".to_string() title="CCF".to_string() options=ccf_filter_options() selected_values=rank_list use_english panel_width="180px".to_string() open_dropdown />
                 <MultiSelectDropdown dropdown_id="core".to_string() title="CORE".to_string() options=core_filter_options() selected_values=core_rank_list use_english panel_width="188px".to_string() open_dropdown />
                 <MultiSelectDropdown dropdown_id="thcpl".to_string() title="THCPL".to_string() options=thcpl_filter_options() selected_values=thcpl_rank_list use_english panel_width="196px".to_string() open_dropdown />
