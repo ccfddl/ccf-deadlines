@@ -7,20 +7,43 @@
     thcpl: N
   dblp: isbra
   confs:
+    - year: 2022
+      id: isbra2022
+      link: https://mangul-lab-usc.github.io/ISBRA22/
+      timeline:
+        - deadline: '2022-08-08 23:59:00'
+      timezone: AoE
+      date: November 15-17, 2022
+      place: Haifa, Israel (Hybrid)
+    - year: 2023
+      id: isbra2023
+      link: https://mangul-lab-usc.github.io/ISBRA23/
+      timeline:
+        - deadline: '2023-07-12 23:59:00'
+      timezone: AoE
+      date: October 10-12, 2023
+      place: Wrocław, Poland
+    - year: 2024
+      id: isbra2024
+      link: https://bio.csu.edu.cn/ISBRA2024/ISBRA2024_Home.html
+      timeline:
+        - deadline: '2024-04-08 23:59:00'
+      timezone: AoE
+      date: July 20-21, 2024
+      place: Kunming, China
     - year: 2025
       id: isbra25
       link: https://www.helsinki.fi/en/conferences/isbra2025
       timeline:
         - deadline: '2025-04-01 23:59:59'
       timezone: AoE
-      date: August 3-5, 2025
-      place: Helsinki, Finland
+      date: August 4-5, 2025
+      place: Helsinki, Finland (Hybrid)
     - year: 2026
       id: isbra26
       link: https://isbra2026.scimeeting.cn/
       timeline:
         - deadline: '2026-03-22 23:59:59'
-          comment: Extended submission deadline
       timezone: AoE
       date: July 22-24, 2026
       place: Macau, China
