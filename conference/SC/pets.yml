@@ -102,12 +102,16 @@
       link: https://petsymposium.org/cfp27.php
       timeline:
         - deadline: '2026-05-31 23:59:59'
+          rebuttal_deadline: '2026-07-17 23:59:59'
           comment: Issue 1 Paper Submission Deadline
         - deadline: '2026-08-31 23:59:59'
+          rebuttal_deadline: '2026-10-18 23:59:59'
           comment: Issue 2 Paper Submission Deadline
         - deadline: '2026-11-30 23:59:59'
+          rebuttal_deadline: '2027-01-18 23:59:59'
           comment: Issue 3 Paper Submission Deadline
         - deadline: '2027-02-28 23:59:59'
+          rebuttal_deadline: '2027-04-16 23:59:59'
           comment: Issue 4 Paper Submission Deadline
       timezone: AoE
       date: July 19-24, 2027
