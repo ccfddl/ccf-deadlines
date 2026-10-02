@@ -60,6 +60,7 @@
       link: https://hicss.hawaii.edu/
       timeline:
         - deadline: '2026-06-15 23:59:59'
+          decision_deadline: '2026-09-11 23:59:00'
           comment: 'Paper Submission Deadline'
       timezone: UTC-10
       date: January 5-8, 2027
