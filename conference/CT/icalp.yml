@@ -62,6 +62,8 @@
       link: https://icalp.uj.edu.pl/
       timeline:
         - deadline: '2026-09-15 23:59:59'
+          rebuttal_deadline: '2026-11-09 23:59:00'
+          decision_deadline: '2026-12-08 23:59:00'
           comment: 'Track B first round; Track A and Track B second round TBA'
       timezone: AoE
       date: July 5-9, 2027
