@@ -22,7 +22,7 @@
         - deadline: '2022-10-07 23:59:00'
       timezone: UTC-10
       date: TBD
-      place: Melbourne, Australia
+      place: Virtual
     - year: 2023
       id: ispa23
       link: http://www.ieee-hust-ncc.org/2023/ISPA/index.html
@@ -30,7 +30,7 @@
         - deadline: '2023-09-15 23:59:00'
       timezone: AoE
       date: December 22-24, 2023
-      place: Wuhan, China
+      place: Wuhan, China (Hybrid)
     - year: 2024
       id: ispa24
       link: https://www.ieee-ispa.org/2024/ispa/
