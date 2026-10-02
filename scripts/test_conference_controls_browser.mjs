@@ -28,8 +28,14 @@ const types = {
   ".json": "application/json",
   ".wasm": "application/wasm",
 };
+let failingDirectoryResource;
 const server = createServer((request, response) => {
   const pathname = new URL(request.url, "http://localhost").pathname;
+  if ((failingDirectoryResource === 'bootstrap' && /^\/conferences\/app-.*\.js$/.test(pathname))
+      || (failingDirectoryResource === 'wasm' && pathname.endsWith('.wasm'))) {
+    response.writeHead(503).end();
+    return;
+  }
   if (pathname === "/api/bootstrap") {
     response.writeHead(200, { "Content-Type": "application/json" });
     response.end(JSON.stringify({
@@ -136,7 +142,7 @@ try {
     const controls = document.querySelector('.conference-controls');
     return {
       chip: styles('.thaw-checkbox'), language: styles('.el-switch'),
-      search: styles('.thaw-input'), timezone: styles('.toolbar-timezone'),
+      search: styles('.thaw-input'), searchInput: styles('.thaw-input__input'), timezone: styles('.toolbar-timezone'),
       rank: styles('.filter-dropdown-trigger'),
       categoryWidth: Math.round(controls.querySelector('.category-filter-grid').getBoundingClientRect().width),
       labels: [...controls.querySelectorAll('.thaw-checkbox__label')].map(node => node.textContent),
@@ -161,6 +167,23 @@ try {
       if (!baseline) baseline = current;
       else assert.deepEqual(current, baseline, `control presentation must match at ${width}px on ${path}`);
       assert.equal(current.labels.length, 10);
+      // Only the outer search control draws a frame, including while typing.
+      for (const focused of [false, true]) {
+        const frame = await evaluate(`(() => {
+          const input = document.querySelector('.toolbar-search input');
+          if (${focused}) input.focus(); else input.blur();
+          const css = getComputedStyle(input);
+          const outer = getComputedStyle(input.closest('.thaw-input'));
+          return {
+            border: css.borderWidth, outline: css.outlineWidth,
+            shadow: css.boxShadow, outerBorder: outer.borderWidth,
+          };
+        })()`);
+        assert.deepEqual(frame, {
+          border: '0px', outline: '0px', shadow: 'none', outerBorder: '1px',
+        }, `${path} search must have a single frame at ${width}px (focused=${focused})`);
+      }
+      await evaluate("document.querySelector('.toolbar-search input').blur()");
       if (path.includes('/conferences/')) {
         assert.ok(await evaluate("document.querySelector('.directory-list li:not([hidden])').getBoundingClientRect().top < innerHeight"), 'directory links must be visible below the controls');
       }
@@ -216,6 +239,19 @@ try {
   await evaluate("document.querySelector('.past-switch input').click()");
   await until(async () => await past() === before, 'past switch toggle');
   assert.deepEqual(errors, []);
+  // A missing bootstrap or WASM must leave usable static links and a working retry.
+  for (const resource of ['bootstrap', 'wasm']) {
+    failingDirectoryResource = resource;
+    await command('Page.navigate', { url: `http://127.0.0.1:${server.address().port}/conferences/` });
+    await until(() => evaluate("Boolean(document.querySelector('.directory-controls-loading button'))"), `${resource} failure feedback`);
+    assert.ok(await evaluate("document.querySelectorAll('.directory-list a').length > 0"));
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.directory-categories')).display"), 'flex');
+    assert.equal(await evaluate("document.querySelector('.directory-controls-loading').getAttribute('role')"), 'alert');
+    failingDirectoryResource = undefined;
+    await evaluate("document.querySelector('.directory-controls-loading button').click()");
+    await until(() => evaluate("Boolean(document.querySelector('.conference-controls .toolbar-search input'))"), `${resource} retry recovery`);
+    assert.equal(await evaluate("Boolean(document.querySelector('.directory-controls-loading'))"), false);
+  }
   console.log('Shared conference controls passed at 1280, 768, 390 and 320px; directory filtering and cross-view preferences passed');
 } finally {
   socket?.close();

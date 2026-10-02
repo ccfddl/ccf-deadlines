@@ -4,6 +4,9 @@ on:
     branches: [main]
 permissions:
   contents: read
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -50,6 +53,16 @@ jobs:
         run: ./trunk build --release
       - name: Generate crawlable conference pages
         run: python scripts/generate_seo_pages.py
+      - name: Checkout published site assets
+        uses: actions/checkout@v4
+        with:
+          repository: ccfddl/ccfddl.github.io
+          ref: page
+          path: previous-site
+          token: ${{ secrets.ACCESS_TOKEN }}
+          persist-credentials: false
+      - name: Retain assets for cached pages and modules
+        run: python scripts/retain_site_assets.py --previous previous-site --retention-hours 24
       - name: Config Git
         run: |
           git config --global user.email "jacklightchen@gmail.com"

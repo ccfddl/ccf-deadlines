@@ -242,7 +242,7 @@ fn TimezonePicker(
 fn ConferenceSearch(search: RwSignal<String>) -> impl IntoView {
     view! {
         <div class="toolbar-search">
-            <Input value=search placeholder="search conference" size=InputSize::Small class="custom-search-input">
+            <Input value=search placeholder="search conference" size=InputSize::Small>
                 <InputPrefix slot><Icon icon=icondata::FiSearch style="color: lightgray;" /></InputPrefix>
             </Input>
         </div>

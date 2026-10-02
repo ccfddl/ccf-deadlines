@@ -2,6 +2,7 @@
 """Generate crawlable conference pages from the same data used by the app."""
 
 import argparse
+import hashlib
 import json
 import re
 from collections import defaultdict
@@ -71,7 +72,45 @@ def category_links(categories: dict[str, str], active_sub: str = "") -> str:
     )
 
 
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "") -> str:
+def directory_startup() -> str:
+    return '''<script id="directory-startup-recovery">
+    (() => {
+      const root = document.getElementById('directory-controls-root');
+      const ready = () => Boolean(root.querySelector('.conference-controls'));
+      const cleanup = () => {
+        clearTimeout(timer);
+        window.removeEventListener('DirectoryControlsReady', cleanup);
+        window.removeEventListener('DirectoryControlsFailed', fail);
+        window.removeEventListener('error', onError, true);
+      };
+      const fail = () => {
+        if (ready()) { cleanup(); return; }
+        let status = root.querySelector('.directory-controls-loading');
+        if (!status) { status = document.createElement('p'); root.append(status); }
+        status.className = 'directory-controls-loading';
+        status.setAttribute('role', 'alert');
+        status.textContent = document.documentElement.lang === 'en'
+          ? 'Unable to load filters. Conference links are still available. '
+          : '筛选控件加载失败，仍可浏览下方会议链接。';
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.textContent = document.documentElement.lang === 'en' ? 'Retry' : '重试';
+        retry.onclick = () => location.reload();
+        status.append(retry);
+        cleanup();
+      };
+      const onError = event => {
+        if (event.target?.tagName === 'SCRIPT' && event.target.src.includes('/conferences/app-')) fail();
+      };
+      const timer = setTimeout(fail, 30000);
+      window.addEventListener('DirectoryControlsReady', cleanup);
+      window.addEventListener('DirectoryControlsFailed', fail);
+      window.addEventListener('error', onError, true);
+    })();
+    </script>'''
+
+
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/conferences/style.css") -> str:
     clock_control = (
         '<div class="toolbar-clock"><time class="toolbar-clock-value" id="display-clock">—</time>'
         '<span class="toolbar-timezone"><span>(</span><label class="toolbar-timezone-picker">'
@@ -80,7 +119,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     )
     filters = (
         f'<div class="directory-toolbar detail-toolbar">{clock_control}</div>'
-        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" aria-label="Conference categories">{navigation}</nav><p class="directory-controls-loading" role="status">Loading filters…</p></div>'
+        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" style="display:flex;flex-wrap:wrap;gap:10px" aria-label="Conference categories">{navigation}</nav><p class="directory-controls-loading" role="status">Loading filters…</p></div>{directory_startup()}'
     )
     return f"""<!doctype html>
 <html lang="en">
@@ -92,7 +131,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <link rel="canonical" href="{text(canonical)}">
   <link rel="icon" href="/favicon.ico">
   {app_assets}
-  <link rel="stylesheet" href="/conferences/style.css">
+  <link rel="stylesheet" href="{text(static_css)}">
 </head>
 <body class="{'detail-page' if detail_page else 'directory-page'}">
   <div class="home">
@@ -178,7 +217,7 @@ def deadline_rows(edition: dict) -> str:
     return "".join(row for _, row in sorted(rows, key=lambda entry: entry[0])) or '<div class="conference-detail-deadline">Dates to be announced</div>'
 
 
-def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]]) -> str:
+def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/conferences/style.css") -> str:
     name, year = conference["title"], edition["year"]
     path = edition_path(conference, edition)
     canonical = BASE_URL + path
@@ -245,10 +284,10 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     <section class="editions"><h2>past venues</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
     """
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/conferences/">All conferences</a><span>/</span><span>{text(name)} {year}</span></nav>'
-    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True)
+    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css)
 
 
-def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "") -> str:
+def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "", static_css: str = "/conferences/style.css") -> str:
     groups = defaultdict(list)
     for conference in conferences:
         latest = max(conference["confs"], key=lambda item: item["year"])
@@ -269,7 +308,7 @@ def directory_page(conferences: list[dict], categories: dict[str, str], app_asse
         sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2 data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(category)}</h2><ul class="directory-list">{links}</ul></section>')
     body = f'<p class="directory-empty" id="directory-empty" hidden>No matching conferences.</p>{"".join(sections)}'
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><span>All conferences</span></nav>'
-    return layout("Conference Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/conferences/", body, category_links(categories), breadcrumb, app_assets=app_assets)
+    return layout("Conference Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/conferences/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
 
 
 def stylesheet() -> str:
@@ -422,18 +461,34 @@ def shared_app_assets(output: Path) -> str:
     if not all((assets.css, assets.module, assets.wasm)):
         raise ValueError("Generate conference pages after Trunk has built the shared app assets")
     bootstrap = (
-        f"import init from {json.dumps(assets.module)};\n"
-        f"await init({{ module_or_path: {json.dumps(assets.wasm)} }});\n"
+        "try {\n"
+        f"  const {{ default: init }} = await import({json.dumps(assets.module)});\n"
+        f"  await init({{ module_or_path: {json.dumps(assets.wasm)} }});\n"
+        "  if (!document.querySelector('#directory-controls-root .conference-controls')) throw new Error('Directory controls did not mount');\n"
+        "  window.dispatchEvent(new Event('DirectoryControlsReady'));\n"
+        "} catch (error) {\n"
+        "  console.error('Directory controls failed to load', error);\n"
+        "  window.dispatchEvent(new Event('DirectoryControlsFailed'));\n"
+        "}\n"
     )
     directory = output / "conferences"
     directory.mkdir(exist_ok=True)
-    (directory / "app.js").write_text(bootstrap, encoding="utf-8")
-    return f'<link rel="stylesheet" href="{text(assets.css)}"><script type="module" src="/conferences/app.js"></script>'
+    filename = f'app-{hashlib.sha256(bootstrap.encode()).hexdigest()[:16]}.js'
+    (directory / filename).write_text(bootstrap, encoding="utf-8")
+    return f'<link rel="stylesheet" href="{text(assets.css)}"><script type="module" src="/conferences/{filename}"></script>'
 
 
 def generate(conferences: list[dict], categories: dict[str, str], output: Path, acceptances: dict[str, list[dict]] | None = None) -> list[str]:
     output.mkdir(parents=True, exist_ok=True)
     acceptances = acceptances or {}
+    directory = output / "conferences"
+    directory.mkdir(exist_ok=True)
+    css = stylesheet()
+    css_filename = f'style-{hashlib.sha256(css.encode()).hexdigest()[:16]}.css'
+    (directory / css_filename).write_text(css, encoding="utf-8")
+    # Keep the previous URL available for already-cached edition pages.
+    (directory / "style.css").write_text(css, encoding="utf-8")
+    static_css = f'/conferences/{css_filename}'
     written = []
     seen = set()
     for conference in conferences:
@@ -444,13 +499,12 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
             seen.add(path)
             target = output / path.lstrip("/") / "index.html"
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(edition_page(conference, edition, categories, acceptances), encoding="utf-8")
+            target.write_text(edition_page(conference, edition, categories, acceptances, static_css), encoding="utf-8")
             written.append(path)
     assets = shared_app_assets(output)
     directory = output / "conferences"
     directory.mkdir(exist_ok=True)
-    (directory / "index.html").write_text(directory_page(conferences, categories, assets), encoding="utf-8")
-    (directory / "style.css").write_text(stylesheet(), encoding="utf-8")
+    (directory / "index.html").write_text(directory_page(conferences, categories, assets, static_css), encoding="utf-8")
     (directory / "controls.js").write_text((ROOT / "scripts/seo_page_controls.js").read_text(encoding="utf-8"), encoding="utf-8")
     urls = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
     for path in ("/", "/conferences/", *sorted(written)):
