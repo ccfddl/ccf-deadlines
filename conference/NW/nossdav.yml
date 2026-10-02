@@ -69,7 +69,8 @@
       id: nossdav27
       link: https://nossdav.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2027-01-11 23:59:00'
+          decision_deadline: '2027-02-01 23:59:00'
       timezone: AoE
       date: TBD
       place: Ghent, Belgium
