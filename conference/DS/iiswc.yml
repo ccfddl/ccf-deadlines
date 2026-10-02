@@ -7,23 +7,45 @@
     thcpl: N
   dblp: iiswc
   confs:
+    - year: 2021
+      id: iiswc2021
+      link: https://iiswc.org/iiswc2021/
+      timeline:
+        - deadline: '2021-07-16 23:59:00'
+      timezone: UTC-4
+      date: November 8-9, 2021
+      place: Online
+    - year: 2022
+      id: iiswc2022
+      link: https://iiswc.org/iiswc2022/
+      timeline:
+        - deadline: '2022-07-15 17:00:00'
+      timezone: UTC-4
+      date: November 7-8, 2022
+      place: Austin, Texas, USA
+    - year: 2023
+      id: iiswc2023
+      link: https://iiswc.org/iiswc2023/
+      timeline:
+        - deadline: '2023-06-16 23:59:00'
+      timezone: AoE
+      date: October 2-3, 2023
+      place: Ghent, Belgium
     - year: 2024
       id: iiswc2024
       link: https://iiswc.org/iiswc2024/
       timeline:
-        - deadline: '2024-06-03 00:00:00'
-          comment: 'Submissions Due: 2024-06-03'
-      timezone: UTC
-      date: September 15-17, 2024
+        - deadline: '2024-06-03 23:59:00'
+      timezone: AoE
+      date: September 16-17, 2024
       place: Vancouver BC Canada
     - year: 2025
       id: iiswc2025
       link: https://iiswc.org/iiswc2025/
       timeline:
-        - deadline: '2025-06-21 00:00:00'
-          comment: 'Submissions Due: 2025-06-21'
-      timezone: UTC
-      date: October 12-14, 2025
+        - deadline: '2025-06-30 23:59:00'
+      timezone: AoE
+      date: October 13-14, 2025
       place: Irvine, USA
     - year: 2026
       id: iiswc2026
@@ -32,5 +54,5 @@
         - abstract_deadline: '2026-05-14 23:59:59'
           deadline: '2026-05-21 23:59:59'
       timezone: AoE
-      date: September 27-29, 2026
+      date: September 28-29, 2026
       place: Boulder, USA
