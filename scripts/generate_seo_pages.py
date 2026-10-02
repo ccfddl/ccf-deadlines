@@ -71,23 +71,7 @@ def category_links(categories: dict[str, str], active_sub: str = "") -> str:
     )
 
 
-def rank_filter(key: str, label: str, values: tuple[str, ...]) -> str:
-    options = "".join(
-        f'<label class="rank-option"><input type="checkbox" value="{text(value)}"><span>{text(f"Non-{label}" if value == "N" else f"{label} {value}")}</span></label>'
-        for value in values
-    )
-    panel_width = {"ccf": 180, "core": 188, "thcpl": 196}[key]
-    return (
-        f'<details class="rank-filter" data-rank-key="{key}" style="--rank-panel-width:{panel_width}px">'
-        f'<summary><span class="rank-summary-text">{label}</span><span class="rank-arrow" aria-hidden="true">▾</span></summary>'
-        f'<div class="rank-menu"><div class="rank-menu-header"><span>{label}</span>'
-        f'<button class="rank-clear" type="button" disabled>清空</button></div>'
-        f'<div class="rank-menu-options">{options}</div></div></details>'
-    )
-
-
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False) -> str:
-    language_row = '' if detail_page else '<div class="language-row"><span id="language-zh">中文</span><button class="language-switch" id="language-switch" type="button" role="switch" aria-label="Switch language" aria-checked="false"><span></span></button><span id="language-en">English</span></div>'
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "") -> str:
     clock_control = (
         '<div class="toolbar-clock"><time class="toolbar-clock-value" id="display-clock">—</time>'
         '<span class="toolbar-timezone"><span>(</span><label class="toolbar-timezone-picker">'
@@ -96,12 +80,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     )
     filters = (
         f'<div class="directory-toolbar detail-toolbar">{clock_control}</div>'
-        if detail_page else f'''<nav class="category-filter-grid" aria-label="Conference categories">{navigation}</nav>
-      <div class="directory-toolbar">
-        {clock_control}
-        <label class="toolbar-search-wrap"><span class="toolbar-search"><span class="toolbar-search-prefix"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span><input id="conference-search" type="text" placeholder="search conference" aria-label="Search conferences" autocomplete="off"></span></label>
-        <div class="toolbar-ranks" role="group" aria-label="Conference rankings">{rank_filter('ccf', 'CCF', ('A', 'B', 'C', 'N'))}{rank_filter('core', 'CORE', ('A*', 'A', 'B', 'C', 'N'))}{rank_filter('thcpl', 'THCPL', ('A', 'B', 'N'))}</div>
-      </div>'''
+        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" aria-label="Conference categories">{navigation}</nav><p class="directory-controls-loading" role="status">Loading filters…</p></div>'
     )
     return f"""<!doctype html>
 <html lang="en">
@@ -112,36 +91,28 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <meta name="description" content="{text(description)}">
   <link rel="canonical" href="{text(canonical)}">
   <link rel="icon" href="/favicon.ico">
+  {app_assets}
   <link rel="stylesheet" href="/conferences/style.css">
 </head>
-<body>
+<body class="{'detail-page' if detail_page else 'directory-page'}">
   <div class="home">
     <header class="site-header">
       <div class="header-main"><a class="title" href="{BASE_URL}/"><span>CCFDDL&nbsp;Open&nbsp;</span><span class="title-accent">Deadlines</span></a><div class="header-github"><a class="github-star-link" href="https://github.com/ccfddl/ccf-deadlines" target="_blank" rel="noopener noreferrer" aria-label="Star ccfddl/ccf-deadlines on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>Star</span><span class="github-star-count" id="github-star-count" hidden></span></a></div><div class="header-auth" id="github-auth"><a class="github-login-button" id="github-login-link" href="{BASE_URL}/api/auth/github?return_to=%2F"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span data-zh="使用 GitHub 登录" data-en="Sign in with GitHub">使用 GitHub 登录</span></a></div></div>
       <div class="el-row subtitle">Worldwide Conference Deadline Countdowns. Preview in <a href="{BASE_URL}/?view=table">tabular form</a> or <a href="{BASE_URL}/conferences/" target="_blank" rel="noopener noreferrer">directory</a>.</div>
       <div class="el-row subtitle">*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only.</div>
       {breadcrumb}
-      {language_row}
       {filters}
     </header>
     <main>{body}</main>
     <footer class="footer"><div class="footer-text"><span class="footer-credit">Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
   </div>
   <script>(function(){{
-    var toggle=document.getElementById('language-switch');
     function setLanguage(english){{
       document.documentElement.lang=english?'en':'zh-CN';
-      if(toggle){{
-        toggle.setAttribute('aria-checked',english?'true':'false');
-        document.getElementById('language-zh').classList.toggle('is-active',!english);
-        document.getElementById('language-en').classList.toggle('is-active',english);
-      }}
       document.querySelectorAll('[data-en][data-zh]').forEach(function(node){{node.textContent=english?node.dataset.en:node.dataset.zh;}});
     }}
     var stored;try{{stored=localStorage.getItem('language_preference');}}catch(error){{}}
     setLanguage(stored==='en'||(stored!=='zh'&&!navigator.language.toLowerCase().startsWith('zh')));
-    document.dispatchEvent(new CustomEvent('static-language-change'));
-    if(toggle)toggle.addEventListener('click',function(){{var english=toggle.getAttribute('aria-checked')!=='true';setLanguage(english);document.dispatchEvent(new CustomEvent('static-language-change'));try{{localStorage.setItem('language_preference',english?'en':'zh');}}catch(error){{}}}});
     var starCount=document.getElementById('github-star-count');
     function showStarCount(value){{if(Number.isFinite(value)){{starCount.textContent=new Intl.NumberFormat('en-US').format(value);starCount.hidden=false;}}}}
     var cachedStars=0;
@@ -277,7 +248,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True)
 
 
-def directory_page(conferences: list[dict], categories: dict[str, str]) -> str:
+def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "") -> str:
     groups = defaultdict(list)
     for conference in conferences:
         latest = max(conference["confs"], key=lambda item: item["year"])
@@ -298,17 +269,18 @@ def directory_page(conferences: list[dict], categories: dict[str, str]) -> str:
         sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2 data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(category)}</h2><ul class="directory-list">{links}</ul></section>')
     body = f'<p class="directory-empty" id="directory-empty" hidden>No matching conferences.</p>{"".join(sections)}'
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><span>All conferences</span></nav>'
-    return layout("Conference Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/conferences/", body, category_links(categories), breadcrumb)
+    return layout("Conference Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/conferences/", body, category_links(categories), breadcrumb, app_assets=app_assets)
 
 
 def stylesheet() -> str:
     return """/* Matches the main site's header, conference cards and detail dialog. */
 :root{--color-primary:#409eff;--color-text-primary:#2c3e50;--color-text-secondary:#666;--color-border-light:#ebeef5}
-*{box-sizing:border-box}
-body{margin:0;background:#faf9f7;color:var(--color-text-primary);font-family:"PingFang SC","Microsoft YaHei","Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
+.detail-page *, main *, .header-main *, .breadcrumb *{box-sizing:border-box}
+body.detail-page{margin:0}
+body{background:#faf9f7;color:var(--color-text-primary);font-family:"PingFang SC","Microsoft YaHei","Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}
 a{color:var(--color-primary);text-decoration:underline;text-decoration-color:currentColor}
 a:hover{color:#d9554f}
-.home{max-width:1240px;margin:0 auto;padding:0 20px;font-family:"Roboto Mono","SF Mono",Monaco,monospace;-webkit-font-smoothing:antialiased}
+.detail-page .home{max-width:1240px;margin:0 auto;padding:0 20px;font-family:"Roboto Mono","SF Mono",Monaco,monospace;-webkit-font-smoothing:antialiased}
 .site-header{padding-top:8px}
 .header-main{position:relative;display:flex;align-items:center;flex-wrap:wrap;gap:7px;min-height:36px;padding-right:250px;font-size:16px}
 .header-github{display:flex;align-items:center}
@@ -333,50 +305,16 @@ a:hover{color:#d9554f}
 .github-account-options a:hover,.github-account-options button:hover{background:#f5f7fa}
 .subtitle{display:inline-block;margin:3px 0 0;padding-top:7px;color:var(--color-text-secondary);font-size:16px;line-height:20px}
 .subtitle a{color:inherit}
-.language-row{display:flex;align-items:center;gap:14px;min-height:28px;margin-top:12px;font-size:14px;color:#333}
-.language-row .is-active{color:#409eff}
-.language-switch{position:relative;width:38px;height:20px;padding:0;border:0;border-radius:999px;background:#dcdfe6;cursor:pointer}
-.language-switch span{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.12);transition:transform .15s}
-.language-switch[aria-checked=true]{background:#409eff}
-.language-switch[aria-checked=true] span{transform:translateX(18px)}
-.category-filter-grid{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:12px;padding:12px 0 2px;border-top:1px solid #e8e3dc}
-.category-filter-grid a{display:block;min-height:22px;padding:2px 9px;border:1px solid transparent;border-radius:7px;background:#f2efeb;color:#655f58;font-family:"Segoe UI","Segoe UI Web (West European)",ui-sans-serif,system-ui,-apple-system,"system-ui",Roboto,"Helvetica Neue",sans-serif;font-size:14px;font-weight:500;line-height:16px;text-decoration:none;white-space:nowrap}
-.category-filter-grid a:hover{border-color:#ddd4ca;background:#ebe6df}
-.category-filter-grid a[aria-current=page],.category-filter-grid a.is-selected{border-color:#9fc4e3;background:#edf5fb;color:#356d9e}
 .directory-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;min-height:46px;padding:4px 0 10px;border-bottom:1px solid #e8e3dc}
 .detail-toolbar{margin-top:12px;padding-top:12px;border-top:1px solid #e8e3dc}
-.toolbar-clock{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 8px;color:#666;font-size:14px;white-space:nowrap}
-.toolbar-clock-value{color:#666;font-variant-numeric:tabular-nums;font-weight:500}
-.toolbar-timezone{display:inline-flex;align-items:center;gap:0;line-height:1.4}
-.toolbar-timezone-picker{display:inline-flex;align-items:center;cursor:pointer}
-.toolbar-timezone select{max-width:190px;padding:0 0 0 2px;border:0;appearance:none;background:transparent;color:#666;font:inherit;cursor:pointer}
-.toolbar-timezone-arrow{position:relative;top:-1px;margin-left:3px;font-size:12px;line-height:1;pointer-events:none}
-.toolbar-timezone>span:last-child{margin-left:3px}
-.toolbar-search-wrap{display:inline-flex;width:160px;height:24px;flex:none;align-items:center}
-.toolbar-search{display:inline-flex;width:100%;height:24px;align-items:center;padding-left:6px;border:1px solid #c0c4cc;border-radius:4px;background:#fff;color:#666;font:12px/16px "Segoe UI","Segoe UI Web (West European)",ui-sans-serif,system-ui,-apple-system,Roboto,"Helvetica Neue",sans-serif}
-.toolbar-search-prefix{display:flex;width:12px;height:12px;flex:none;align-items:center}
-.toolbar-search-prefix svg{width:12px;height:12px;color:lightgray;pointer-events:none}
-.toolbar-search input{display:block;width:100%;min-width:0;height:22px;margin-left:2px;padding:0 8px 0 2px;border:0;outline:0;background:transparent;color:#242424;font:inherit}
-.toolbar-search input::placeholder{color:#909399}
-.toolbar-search:focus-within,.toolbar-timezone select:focus{outline:2px solid #409eff;outline-offset:1px}
-.toolbar-ranks{display:flex;align-items:center;gap:6px;margin-left:auto}
-.rank-filter{position:relative;color:#666}
-.rank-filter summary{display:inline-flex;align-items:center;justify-content:space-between;gap:6px;min-width:88px;max-width:132px;padding:5px 8px;border:1px solid #d9d9d9;border-radius:6px;background:#fff;color:#666;font:500 11px Arial,sans-serif;text-align:left;cursor:pointer;list-style:none;white-space:nowrap;user-select:none;transition:border-color .2s,color .2s,box-shadow .2s}
-.rank-filter summary::-webkit-details-marker{display:none}
-.rank-filter summary:hover,.rank-filter[open] summary{border-color:#1890ff;color:#1890ff}
-.rank-filter.is-active summary{border-color:#1890ff;background:#f2f8ff;color:#1890ff}
-.rank-filter summary:focus-visible{outline:2px solid #409eff;outline-offset:2px}
-.rank-summary-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rank-arrow{color:inherit;font-size:10px;transition:transform .2s}
-.rank-filter[open] .rank-arrow{transform:rotate(180deg)}
-.rank-menu{position:absolute;z-index:20;top:calc(100% + 6px);right:0;width:var(--rank-panel-width);padding:8px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;box-shadow:0 10px 24px rgba(15,23,42,.1)}
-.rank-menu-header{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px;color:#475569;font:600 11px Arial,sans-serif}
-.rank-clear{padding:0;border:0;background:transparent;color:#1890ff;font:11px Arial,sans-serif;cursor:pointer}
-.rank-clear:disabled{color:#94a3b8;cursor:default}
-.rank-menu-options{display:flex;flex-direction:column;gap:4px}
-.rank-option{display:flex;align-items:center;gap:6px;padding:5px 6px;border-radius:6px;color:#334155;font:12px Arial,sans-serif;cursor:pointer;white-space:nowrap}
-.rank-option:hover{background:#f8fafc}
-.rank-option input{margin:0;accent-color:#409eff}
+.detail-toolbar .toolbar-clock{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 8px;color:#666;font-size:14px;white-space:nowrap}
+.detail-toolbar .toolbar-clock-value{color:#666;font-variant-numeric:tabular-nums;font-weight:500}
+.detail-toolbar .toolbar-timezone{display:inline-flex;align-items:center;gap:0;line-height:1.4}
+.detail-toolbar .toolbar-timezone-picker{display:inline-flex;align-items:center;cursor:pointer}
+.detail-toolbar .toolbar-timezone select{max-width:190px;padding:0 0 0 2px;border:0;appearance:none;background:transparent;color:#666;font:inherit;cursor:pointer}
+.detail-toolbar .toolbar-timezone-arrow{position:relative;top:-1px;margin-left:3px;font-size:12px;line-height:1;pointer-events:none}
+.detail-toolbar .toolbar-timezone>span:last-child{margin-left:3px}
+.directory-categories{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.directory-controls-loading{font-size:14px;color:#666}
 [hidden]{display:none!important}
 main{padding:18px 0 8px}
 .breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:12px 0 0;color:#697583;font-size:12px}
@@ -450,8 +388,47 @@ main{padding:18px 0 8px}
 .footer-text{display:flex;align-items:center;gap:14px;min-width:0}
 .footer-credit{min-width:0}
 .footer a{color:#666}
-@media(max-width:600px){.home{padding:0 16px}.header-main{display:grid;grid-template-columns:minmax(0,1fr) auto;padding-right:0}.header-main .title{grid-column:1/-1;grid-row:1}.header-github{grid-column:1;grid-row:2;justify-self:start}.header-auth{position:static;grid-column:2;grid-row:2;justify-self:end}.github-login-button span{display:none}.github-login-button{width:30px;padding:0}.title{font-size:24px}.directory-toolbar{align-items:flex-start}.toolbar-search-wrap{width:100%}.toolbar-ranks{width:100%;justify-content:space-between;margin-left:0}.rank-filter{flex:1;min-width:0}.rank-filter summary{width:100%}.detail-card{padding:18px 16px}.conference-detail-title{font-size:24px}.footer-text{font-size:14px;text-align:center}}
+@media(max-width:600px){.detail-page .home{padding:0 16px}.header-main{display:grid;grid-template-columns:minmax(0,1fr) auto;padding-right:0}.header-main .title{grid-column:1/-1;grid-row:1}.header-github{grid-column:1;grid-row:2;justify-self:start}.header-auth{position:static;grid-column:2;grid-row:2;justify-self:end}.github-login-button span{display:none}.github-login-button{width:30px;padding:0}.title{font-size:24px}.detail-toolbar{align-items:flex-start}.detail-card{padding:18px 16px}.conference-detail-title{font-size:24px}.footer-text{font-size:14px;text-align:center}}
 """
+
+
+def shared_app_assets(output: Path) -> str:
+    index = output / "index.html"
+    if not index.exists():
+        # Data-only generation (including unit fixtures) keeps the static directory usable.
+        return ""
+    built = index.read_text(encoding="utf-8")
+    from html.parser import HTMLParser
+
+    class Assets(HTMLParser):
+        css = ""
+        module = ""
+        wasm = ""
+
+        def handle_starttag(self, tag, attrs):
+            attrs = dict(attrs)
+            href = attrs.get("href", "")
+            if tag != "link":
+                return
+            if attrs.get("rel") == "stylesheet":
+                self.css = href
+            elif attrs.get("rel") == "modulepreload" and href.endswith(".js") and "/snippets/" not in href:
+                self.module = href
+            elif attrs.get("type") == "application/wasm":
+                self.wasm = href
+
+    assets = Assets()
+    assets.feed(built)
+    if not all((assets.css, assets.module, assets.wasm)):
+        raise ValueError("Generate conference pages after Trunk has built the shared app assets")
+    bootstrap = (
+        f"import init from {json.dumps(assets.module)};\n"
+        f"await init({{ module_or_path: {json.dumps(assets.wasm)} }});\n"
+    )
+    directory = output / "conferences"
+    directory.mkdir(exist_ok=True)
+    (directory / "app.js").write_text(bootstrap, encoding="utf-8")
+    return f'<link rel="stylesheet" href="{text(assets.css)}"><script type="module" src="/conferences/app.js"></script>'
 
 
 def generate(conferences: list[dict], categories: dict[str, str], output: Path, acceptances: dict[str, list[dict]] | None = None) -> list[str]:
@@ -469,9 +446,10 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(edition_page(conference, edition, categories, acceptances), encoding="utf-8")
             written.append(path)
+    assets = shared_app_assets(output)
     directory = output / "conferences"
     directory.mkdir(exist_ok=True)
-    (directory / "index.html").write_text(directory_page(conferences, categories), encoding="utf-8")
+    (directory / "index.html").write_text(directory_page(conferences, categories, assets), encoding="utf-8")
     (directory / "style.css").write_text(stylesheet(), encoding="utf-8")
     (directory / "controls.js").write_text((ROOT / "scripts/seo_page_controls.js").read_text(encoding="utf-8"), encoding="utf-8")
     urls = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")

@@ -2,6 +2,7 @@ use crate::components::batch_subscription_modal::BatchSubscriptionModal;
 use crate::components::checkbox_button::*;
 use crate::components::conf::ConfItem;
 use crate::components::conf::*;
+use crate::components::conference_controls::{ConferenceControls, ToolbarActions, ToolbarClock};
 use crate::components::countdown::{CountDown, urgency_class_for, use_interval};
 use crate::components::email_reminders::EmailReminderModal;
 use crate::components::favorites::FavoritesContext;
@@ -12,7 +13,6 @@ use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
 use chrono::{DateTime, Datelike, Duration, FixedOffset, NaiveDate, Utc};
 use leptos::prelude::*;
-use leptos::{ev, leptos_dom::helpers::window_event_listener};
 use serde_json;
 use std::cmp::Reverse;
 use std::collections::{HashMap, HashSet};
@@ -31,14 +31,6 @@ pub fn ShowTable(
     show_email_reminders: RwSignal<bool>,
 ) -> impl IntoView {
     let favorites = expect_context::<FavoritesContext>();
-    // mobile
-    let is_mobile = RwSignal::new(is_narrow_viewport());
-    let show_filters = RwSignal::new(false);
-    let resize_listener = window_event_listener(ev::resize, move |_| {
-        is_mobile.set(is_narrow_viewport());
-    });
-    on_cleanup(move || resize_listener.remove());
-
     // switch
     let show_past = RwSignal::new(
         get_from_local_storage("show_past")
@@ -455,91 +447,12 @@ pub fn ShowTable(
 
     view! {
         <section>
-            <div class="language-switches">
-                <div class="el-switch">
-                    <span class=("is_active", move || !use_english.get())>"中文"</span>
-                    <Switch checked=use_english />
-                    <span class=("is_active", move || use_english.get())>"English"</span>
-                </div>
-                <div
-                    class="el-switch past-switch"
-                    on:click=move |_| show_past.update(|value| *value = !*value)
-                >
-                    <Switch checked=show_past />
-                    <span class="past-label">
-                        {move || if use_english.get() {
-                            "Show past conferences"
-                        } else {
-                            "显示往期会议"
-                        }}
-                    </span>
-                </div>
-            </div>
-
-            <CheckboxGroup value=check_list>
-                <div class="category-filter-grid">
-                    <For
-                        each=move || {
-                            sub_list
-                                .get()
-                                .into_iter()
-                                .enumerate()
-                                .collect::<Vec<(usize, Category)>>()
-                        }
-                        key=|(_, item)| item.sub.clone()
-                        children=move |(_, item)| {
-                            let sub = item.sub.clone();
-                            let selected_sub = sub.clone();
-                            let label = Memo::new(move |_| {
-                                if is_mobile.get() {
-                                    sub.clone()
-                                } else if use_english.get() {
-                                    item.name_en.clone()
-                                } else {
-                                    item.name.clone()
-                                }
-                            });
-
-                            view! {
-                                <div class=move || {
-                                    if check_list.get().contains(&selected_sub) {
-                                        "checkbox-item filter-selected"
-                                    } else {
-                                        "checkbox-item"
-                                    }
-                                }>
-                                    <label>
-                                        <Checkbox
-                                            size=CheckboxSize::Large
-                                            label=label
-                                            value=item.sub.clone()
-                                        />
-                                    </label>
-                                </div>
-                            }
-                        }
-                    />
-                    {move || {
-                        if check_list.get().is_empty() {
-                            view! {}.into_any()
-                        } else {
-                            view! {
-                                <button
-                                    type="button"
-                                    class="clear-filter"
-                                    on:click=move |_| check_list.set(HashSet::new())
-                                >
-                                    {move || if use_english.get() { "Clear ×" } else { "清除 ×" }}
-                                </button>
-                            }
-                                .into_any()
-                        }
-                    }}
-                </div>
-            </CheckboxGroup>
-
-            <div class="timezone toolbar">
-                <div class="toolbar-main">
+            <ConferenceControls
+                use_english categories=sub_list selected=check_list search=input_value
+                rank_list core_rank_list thcpl_rank_list selected_timezone
+                browser_timezone=browser_time_zone.get_untracked() open_dropdown show_past=Some(show_past)
+            >
+                <ToolbarClock slot>
                     <div class=move || {
                         if base_time.get().is_some() {
                             "toolbar-base-time is-custom"
@@ -608,77 +521,8 @@ pub fn ShowTable(
                             on:blur=move |_| base_time_editing.set(false)
                         />
                     </div>
-                    <div class="toolbar-timezone">
-                        <span>"("</span>
-                        <div class="toolbar-timezone-picker">
-                            <button
-                                type="button"
-                                class="toolbar-timezone-trigger"
-                                aria-label="Select display timezone"
-                                aria-haspopup="listbox"
-                                aria-expanded=move || {
-                                    open_dropdown.get().as_deref() == Some("timezone")
-                                }
-                                on:click=move |_| {
-                                    if open_dropdown.get_untracked().as_deref() == Some("timezone") {
-                                        open_dropdown.set(None);
-                                    } else {
-                                        open_dropdown.set(Some("timezone".to_string()));
-                                    }
-                                }
-                            >
-                                <span>{move || time_zone.get()}</span>
-                                <span class="toolbar-timezone-arrow" aria-hidden="true">"⌄"</span>
-                            </button>
-                            <Show when=move || open_dropdown.get().as_deref() == Some("timezone")>
-                                <div
-                                    class="toolbar-timezone-backdrop"
-                                    on:click=move |_| open_dropdown.set(None)
-                                ></div>
-                                <div class="toolbar-timezone-menu" role="listbox">
-                                    {display_timezone_options(&browser_time_zone.get_untracked())
-                                        .into_iter()
-                                        .map(|timezone| {
-                                            let value = timezone.clone();
-                                            let selected_value = timezone.clone();
-                                            view! {
-                                                <button
-                                                    type="button"
-                                                    class="toolbar-timezone-option"
-                                                    role="option"
-                                                    aria-selected=move || {
-                                                        selected_timezone.get() == selected_value
-                                                    }
-                                                    on:click=move |_| {
-                                                        selected_timezone.set(value.clone());
-                                                        open_dropdown.set(None);
-                                                    }
-                                                >
-                                                    {timezone}
-                                                </button>
-                                            }
-                                        })
-                                        .collect_view()}
-                                </div>
-                            </Show>
-                        </div>
-                        <span>" time)"</span>
-                    </div>
-                    <div class="toolbar-search">
-                        <Input
-                            value=input_value
-                            placeholder="search conference"
-                            size=InputSize::Small
-                            class="custom-search-input"
-                        >
-                            <InputPrefix slot>
-                                <Icon icon=icondata::FiSearch style="color: lightgray;" />
-                            </InputPrefix>
-                        </Input>
-                    </div>
-                </div>
-
-                <div class="toolbar-actions">
+                </ToolbarClock>
+                <ToolbarActions slot>
                     <span class="star-sort-control" class:is-active=move || sort_by_stars.get()>
                         <Button
                             class="star-sort-toggle"
@@ -746,103 +590,8 @@ pub fn ShowTable(
                         <Icon icon=icondata::AiCalendarOutlined style="margin-right: 4px;" />
                         {move || if use_english.get() { "Subscribe" } else { "订阅" }}
                     </Button>
-                    {move || {
-                        if is_mobile.get() {
-                            view! {
-                                <Button
-                                    size=ButtonSize::Small
-                                    appearance=ButtonAppearance::Subtle
-                                    on_click=move |_| show_filters.update(|v| *v = !*v)
-                                >
-                                    <Icon icon=icondata::FiFilter style="margin-right: 4px;" />
-                                    {move || if use_english.get() { "Filters" } else { "筛选" }}
-                                    {move || if show_filters.get() {
-                                        view! { <Icon icon=icondata::BsChevronUp style="margin-left: 4px;" /> }.into_any()
-                                    } else {
-                                        view! { <Icon icon=icondata::BsChevronDown style="margin-left: 4px;" /> }.into_any()
-                                    }}
-                                </Button>
-                                {move || {
-                                    if show_filters.get() {
-                                        view! {
-                                            <div
-                                                style="position: absolute; top: 100%; right: 0; z-index: 100; background: white; border: 1px solid #dcdfe6; border-radius: 4px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); display: flex; flex-direction: column; gap: 8px; min-width: 200px;"
-                                            >
-                                                <MultiSelectDropdown
-                                                    dropdown_id="ccf".to_string()
-                                                    title="CCF".to_string()
-                                                    options=ccf_filter_options()
-                                                    selected_values=rank_list
-                                                    use_english=use_english
-                                                    panel_width="180px".to_string()
-                                                    open_dropdown=open_dropdown
-                                                />
-                                                <MultiSelectDropdown
-                                                    dropdown_id="core".to_string()
-                                                    title="CORE".to_string()
-                                                    options=core_filter_options()
-                                                    selected_values=core_rank_list
-                                                    use_english=use_english
-                                                    panel_width="188px".to_string()
-                                                    open_dropdown=open_dropdown
-                                                />
-                                                <MultiSelectDropdown
-                                                    dropdown_id="thcpl".to_string()
-                                                    title="THCPL".to_string()
-                                                    options=thcpl_filter_options()
-                                                    selected_values=thcpl_rank_list
-                                                    use_english=use_english
-                                                    panel_width="196px".to_string()
-                                                    open_dropdown=open_dropdown
-                                                />
-                                            </div>
-                                        }
-                                            .into_any()
-                                    } else {
-                                        view! {}.into_any()
-                                    }
-                                }}
-                            }
-                                .into_any()
-                        } else {
-                            view! {
-                                <div
-                                    style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; justify-content: flex-end;"
-                                >
-                                    <MultiSelectDropdown
-                                        dropdown_id="ccf".to_string()
-                                        title="CCF".to_string()
-                                        options=ccf_filter_options()
-                                        selected_values=rank_list
-                                        use_english=use_english
-                                        panel_width="180px".to_string()
-                                        open_dropdown=open_dropdown
-                                    />
-                                    <MultiSelectDropdown
-                                        dropdown_id="core".to_string()
-                                        title="CORE".to_string()
-                                        options=core_filter_options()
-                                        selected_values=core_rank_list
-                                        use_english=use_english
-                                        panel_width="188px".to_string()
-                                        open_dropdown=open_dropdown
-                                    />
-                                    <MultiSelectDropdown
-                                        dropdown_id="thcpl".to_string()
-                                        title="THCPL".to_string()
-                                        options=thcpl_filter_options()
-                                        selected_values=thcpl_rank_list
-                                        use_english=use_english
-                                        panel_width="196px".to_string()
-                                        open_dropdown=open_dropdown
-                                    />
-                                </div>
-                            }
-                                .into_any()
-                        }
-                    }}
-                </div>
-            </div>
+                </ToolbarActions>
+            </ConferenceControls>
 
             <SubscriptionModal
                 show=show_subscription_modal
@@ -2319,7 +2068,7 @@ fn display_place(place: &str) -> String {
         .to_string()
 }
 
-fn format_datetime_local(time: DateTime<Utc>, timezone: &str) -> String {
+pub(crate) fn format_datetime_local(time: DateTime<Utc>, timezone: &str) -> String {
     let offset = display_timezone_offset_at(timezone, time.timestamp_millis());
     time.with_timezone(&offset)
         .format("%Y-%m-%dT%H:%M:%S")
@@ -2335,7 +2084,7 @@ fn parse_datetime_local(value: &str, timezone: &str) -> Option<DateTime<Utc>> {
     Some(tentative_utc - Duration::seconds(offset.local_minus_utc().into()))
 }
 
-fn format_base_time_display(value: &str) -> String {
+pub(crate) fn format_base_time_display(value: &str) -> String {
     let mut display = value.replace('-', "/").replace('T', " ");
     if display.matches(':').count() == 1 {
         display.push_str(":00");
@@ -2535,13 +2284,6 @@ fn get_utc_map() -> &'static HashMap<String, String> {
         utc_map.insert("UTC".to_string(), "+00:00".to_string());
         utc_map
     })
-}
-
-fn is_narrow_viewport() -> bool {
-    window()
-        .and_then(|browser| browser.inner_width().ok())
-        .and_then(|width| width.as_f64())
-        .is_some_and(|width| width <= 768.0)
 }
 
 fn get_from_local_storage(key: &str) -> Option<String> {
