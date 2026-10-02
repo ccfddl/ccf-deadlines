@@ -35,7 +35,7 @@
       id: casa2024
       link: https://casa2024.wtu.edu.cn/index.htm
       timeline:
-        - deadline: '2024-03-05 23:59:00'
+        - deadline: '2024-03-05 23:59:59'
       timezone: AoE
       date: June 5-7, 2024
       place: Wuhan, China (Hybrid)
@@ -43,7 +43,7 @@
       id: casa2025
       link: https://casa2025.sciencesconf.org/
       timeline:
-        - deadline: '2025-03-08 23:59:00'
+        - deadline: '2025-03-08 23:59:59'
       timezone: AoE
       date: June 2-4, 2025
       place: Strasbourg, France (Hybrid)
@@ -51,7 +51,7 @@
       id: casa2026
       link: https://cgs-network.org/CASAXR26/
       timeline:
-        - deadline: '2026-02-10 23:59:00'
+        - deadline: '2026-02-10 23:59:59'
       timezone: AoE
       date: June 1-3, 2026
       place: Geneva, Switzerland (Hybrid)
