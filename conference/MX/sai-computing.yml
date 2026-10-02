@@ -5,6 +5,34 @@
     ccf: N
   dblp: sai
   confs:
+    - year: 2024
+      id: computing24
+      link: https://saiconference.com/Conferences/Computing2024
+      timeline:
+        - deadline: '2023-11-01 23:59:00'
+      timezone: AoE
+      date: July 11-12, 2024
+      place: London, United Kingdom (Hybrid)
+    - year: 2025
+      id: computing25
+      link: https://saiconference.com/Conferences/Computing2025
+      timeline:
+        - deadline: '2024-12-15 23:59:00'
+          comment: 'Round 2'
+      timezone: AoE
+      date: June 19-20, 2025
+      place: London, United Kingdom (Hybrid)
+    - year: 2026
+      id: computing26
+      link: https://saiconference.com/Conferences/Computing2026
+      timeline:
+        - deadline: '2025-08-01 23:59:00'
+          comment: 'Round 1'
+        - deadline: '2025-09-01 23:59:00'
+          comment: 'Round 2'
+      timezone: AoE
+      date: July 9-10, 2026
+      place: London, United Kingdom (Hybrid)
     - year: 2027
       id: computing27
       link: https://saiconference.com/Computing
