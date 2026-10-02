@@ -61,6 +61,7 @@
       link: https://www.pakdd2027.org/
       timeline:
         - deadline: '2026-11-20 23:59:59'
+          decision_deadline: '2027-02-26 23:59:00'
       timezone: AoE
       date: June 29-July 2, 2027
       place: Wellington, New Zealand
