@@ -146,7 +146,7 @@ try {
       rank: styles('.filter-dropdown-trigger'),
       categoryWidth: Math.round(controls.querySelector('.category-filter-grid').getBoundingClientRect().width),
       labels: [...controls.querySelectorAll('.thaw-checkbox__label')].map(node => node.textContent),
-      filterToggle: getComputedStyle(controls.querySelector('.toolbar-filter-toggle')).display,
+      filterToggle: Boolean(controls.querySelector('.toolbar-filter-toggle')),
       rankPanel: getComputedStyle(controls.querySelector('.toolbar-rank-filters')).display,
       overflow: document.documentElement.scrollWidth > innerWidth,
     };
@@ -187,12 +187,34 @@ try {
       if (path.includes('/conferences/')) {
         assert.ok(await evaluate("document.querySelector('.directory-list li:not([hidden])').getBoundingClientRect().top < innerHeight"), 'directory links must be visible below the controls');
       }
-      assert.equal(current.filterToggle === 'none', width > 768);
+      assert.equal(current.filterToggle, false, 'rank filters must be directly available');
+      assert.equal(current.rankPanel, width <= 768 ? 'grid' : 'flex');
       if (width <= 768) {
         assert.ok(current.labels.every(label => label.length === 2));
-        assert.equal(current.rankPanel, 'none');
-        await evaluate("document.querySelector('.toolbar-filter-toggle').click()");
-        await until(() => evaluate("getComputedStyle(document.querySelector('.toolbar-rank-filters')).display === 'flex'"), 'mobile rank panel');
+        const ranks = await evaluate(`(() => {
+          const row = document.querySelector('.toolbar-rank-filters').getBoundingClientRect();
+          return { row: {left: row.left, right: row.right}, buttons:
+            [...document.querySelectorAll('.toolbar-rank-filters .filter-dropdown-trigger')].map(node => {
+              const rect = node.getBoundingClientRect();
+              return {top: rect.top, width: rect.width, height: rect.height};
+            }) };
+        })()`);
+        assert.ok(ranks.row.left >= 0 && ranks.row.right <= width);
+        assert.equal(ranks.buttons.length, 3);
+        assert.ok(ranks.buttons.every(button => button.top === ranks.buttons[0].top
+          && Math.abs(button.width - ranks.buttons[0].width) < 1 && button.height >= 36),
+          `${path} mobile ranks must share one responsive row at ${width}px`);
+        for (let index = 0; index < 3; index++) {
+          await evaluate(`document.querySelectorAll('.toolbar-rank-filters .filter-dropdown-trigger')[${index}].click()`);
+          await until(() => evaluate("Boolean(document.querySelector('.filter-dropdown-panel'))"), 'rank options');
+          const menu = await evaluate(`(() => {
+            const rect = document.querySelector('.filter-dropdown-panel').getBoundingClientRect();
+            return {left: rect.left, right: rect.right};
+          })()`);
+          assert.ok(menu.left >= 0 && menu.right <= width,
+            `${path} rank ${index} options must stay on screen at ${width}px`);
+          await evaluate("document.querySelector('.filter-dropdown-backdrop').click()");
+        }
       }
       const screenshot = await command('Page.captureScreenshot', { format: 'png' });
       const name = path.includes('conferences') ? 'directory' : path.includes('view=table') ? 'tabular' : 'main';
