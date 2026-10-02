@@ -67,6 +67,8 @@
       timeline:
         - abstract_deadline: '2026-08-13 23:59:59'
           deadline: '2026-08-20 23:59:59'
+          rebuttal_deadline: '2026-11-05 23:59:00'
+          decision_deadline: '2026-11-23 23:59:00'
       timezone: AoE
       date: February 8-11, 2027
       place: Helsinki, Finland
