@@ -12,7 +12,6 @@
       link: https://globecom2021.ieee-globecom.org/
       timeline:
         - deadline: '2021-05-28 23:59:00'
-          comment: 'Final regular paper deadline; official CFP explicitly specifies EST'
       timezone: UTC-5
       date: December 8-10, 2021
       place: Madrid, Spain / Hybrid
@@ -45,7 +44,6 @@
       link: https://globecom2025.ieee-globecom.org/
       timeline:
         - deadline: '2025-05-02 23:59:00'
-          comment: 'Final firm extension; unspecified clock and timezone use repository defaults 23:59:00 and AoE'
       timezone: AoE
       date: December 9-11, 2025
       place: Taipei, Taiwan
