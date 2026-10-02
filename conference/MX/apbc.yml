@@ -11,7 +11,8 @@
       id: apbc2021
       link: https://www.binfo.ncku.edu.tw/APBC2021/
       timeline:
-        - deadline: '2020-10-15 23:59:00'
+        - deadline: TBD
+          comment: 'Conflicting abstract/full cutoff dates'
       timezone: AoE
       date: February 3-5, 2021
       place: Online
