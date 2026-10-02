@@ -67,8 +67,11 @@
       link: https://etaps.org/2027
       timeline:
         - deadline: '2026-05-28 23:59:59'
+          rebuttal_deadline: '2026-07-22 23:59:00'
+          decision_deadline: '2026-08-06 23:59:00'
           comment: ESOP round 1
         - deadline: '2026-10-15 23:59:59'
+          decision_deadline: '2026-12-22 23:59:00'
           comment: ESOP round 2, FoSSaCS, TACAS, iFS
       timezone: AoE
       date: April 10-15, 2027
