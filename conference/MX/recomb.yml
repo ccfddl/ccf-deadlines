@@ -7,6 +7,41 @@
     thcpl: A
   dblp: recomb
   confs:
+    - year: 2021
+      id: recomb21
+      link: https://sistemacongressi.wixsite.com/recomb2021
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: August 29 - September 1, 2021
+      place: Online
+    - year: 2022
+      id: recomb22
+      link: https://recomb.org/recomb2022/
+      timeline:
+        - abstract_deadline: '2021-11-04 23:59:00'
+          deadline: '2021-11-04 23:59:00'
+      timezone: AoE
+      date: May 22-25, 2022
+      place: La Jolla, CA, USA
+    - year: 2023
+      id: recomb23
+      link: https://recomb.org/recomb2023/
+      timeline:
+        - abstract_deadline: '2022-10-07 23:59:00'
+          deadline: '2022-10-14 23:59:00'
+      timezone: AoE
+      date: April 16-19, 2023
+      place: Istanbul, Turkey
+    - year: 2024
+      id: recomb24
+      link: https://recomb.org/recomb2024/
+      timeline:
+        - abstract_deadline: '2023-10-23 23:59:00'
+          deadline: '2023-11-03 23:59:00'
+      timezone: AoE
+      date: April 29 - May 2, 2024
+      place: Cambridge, MA, USA
     - year: 2025
       id: recomb25
       link: https://recomb.org/recomb2025/index.html
