@@ -63,6 +63,7 @@
       link: https://fc27.ifca.ai/
       timeline:
         - deadline: '2026-09-24 23:59:59'
+          decision_deadline: '2026-11-12 23:59:00'
           comment: Submission deadline
       timezone: UTC-12
       date: February 8-12, 2027
