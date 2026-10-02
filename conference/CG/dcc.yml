@@ -59,7 +59,8 @@
       id: dcc2027
       link: https://datacompressionconference.org/
       timeline:
-        - deadline: '2026-10-02 23:59:59'
+        - deadline: '2026-10-09 23:59:59'
+          decision_deadline: '2026-11-23 03:59:00'
       timezone: PT
       date: March 23-26, 2027
       place: Snowbird, Utah, United States
