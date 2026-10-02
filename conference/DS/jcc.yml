@@ -13,7 +13,6 @@
       timeline:
         - abstract_deadline: '2024-04-07 23:59:00'
           deadline: '2024-04-28 23:59:00'
-          comment: 'Final extended dates verified; 23:59:00 and AoE are repository defaults because time and timezone are unpublished.'
       timezone: AoE
       date: July 15-18, 2024
       place: Shanghai, China
@@ -25,7 +24,7 @@
           comment: 'Regular paper: official CFP says final deadline 2025-04-29, but official Important Dates lists 2025-05-06 AoE. Conflicting dates; exact time not published.'
       timezone: AoE
       date: July 21-24, 2025
-      place: Tucson, Arizona, USA
+      place: Tucson, Arizona, USA (Hybrid)
     - year: 2026
       id: jcc2026
       link: https://jointcloud.cloud
@@ -34,4 +33,4 @@
           deadline: '2026-04-15 23:59:59'
       timezone: AoE
       date: Jul 27-30, 2026
-      place: Tokyo, Japan
+      place: TBD
