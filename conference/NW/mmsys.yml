@@ -86,7 +86,6 @@
       timeline:
         - abstract_deadline: '2026-09-17 23:59:59'
           deadline: '2026-09-17 23:59:59'
-          decision_deadline: '2026-10-24 23:59:00'
           comment: 'Research Track - First Round (extended)'
         - abstract_deadline: '2026-11-12 23:59:59'
           deadline: '2026-11-19 23:59:59'
