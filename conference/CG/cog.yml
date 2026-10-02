@@ -60,8 +60,10 @@
       link: https://cog2027.u-aizu.ac.jp/
       timeline:
         - deadline: '2027-03-01 23:59:59'
+          decision_deadline: '2027-05-03 23:59:00'
           comment: 'Full Technical Paper'
         - deadline: '2027-05-15 23:59:59'
+          decision_deadline: '2027-06-11 23:59:00'
           comment: 'Auxiliary Paper'
       timezone: AoE
       date: August 2-5, 2027
