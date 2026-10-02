@@ -64,6 +64,7 @@
       link: https://conf.researchr.org/home/icst-2027
       timeline:
         - deadline: '2026-11-02 23:59:59'
+          decision_deadline: '2027-02-20 23:59:00'
       timezone: AoE
       date: May 17-21, 2027
       place: San Sebastian, Spain
