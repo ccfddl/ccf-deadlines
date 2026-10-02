@@ -7,35 +7,51 @@
     thcpl: N
   dblp: cogsci
   confs:
+    - year: 2021
+      id: cogsci21
+      link: https://cognitivesciencesociety.org/cogsci-2021/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: July 27-29, 2021
+      place: Online
+    - year: 2022
+      id: cogsci22
+      link: https://cognitivesciencesociety.org/cogsci-2022/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: July 28-30, 2022
+      place: Toronto, Canada (Hybrid)
     - year: 2023
       id: cogsci23
       link: https://cognitivesciencesociety.org/cogsci-2023/
       timeline:
         - deadline: '2023-02-01 23:59:59'
       timezone: UTC+8
-      date: July 26-29, 2023
-      place: Sydney, Australia
+      date: July 27-29, 2023
+      place: Sydney, Australia (Hybrid)
     - year: 2024
       id: cogsci24
       link: https://cognitivesciencesociety.org/cogsci-2024/
       timeline:
         - deadline: '2024-02-01 23:59:59'
       timezone: UTC+8
-      date: July 24-27, 2024
-      place: Rotterdam, Netherlands
+      date: July 25-27, 2024
+      place: Rotterdam, Netherlands (Hybrid)
     - year: 2025
       id: cogsci25
       link: https://cognitivesciencesociety.org/cogsci-2025/
       timeline:
         - deadline: '2025-02-01 23:59:59'
       timezone: UTC+8
-      date: July 30-August 2, 2025
-      place: Marriott Marquis, San Francisco
+      date: July 31-August 2, 2025
+      place: San Francisco, USA (Hybrid)
     - year: 2026
       id: cogsci26
       link: https://cognitivesciencesociety.org/cogsci-2026/
       timeline:
         - deadline: '2026-02-02 23:59:59'
       timezone: AoE
-      date: July 22-25, 2026
-      place: Rio de Janeiro, Brazil
+      date: July 23-25, 2026
+      place: Rio de Janeiro, Brazil (Hybrid)
