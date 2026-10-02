@@ -83,6 +83,8 @@
       timeline:
         - abstract_deadline: '2026-07-21 23:59:59'
           deadline: '2026-07-28 23:59:59'
+          rebuttal_deadline: '2026-10-25 23:59:00'
+          decision_deadline: '2026-11-30 23:59:00'
       timezone: UTC-12
       date: February 16-23, 2027
       place: Montréal, Québec, Canada
