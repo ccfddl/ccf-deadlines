@@ -78,8 +78,10 @@
       link: https://acns2027.isg.rhul.ac.uk/
       timeline:
         - deadline: '2026-09-24 23:59:59'
+          decision_deadline: '2026-11-26 23:59:00'
           comment: Cycle 1 Submission deadline
         - deadline: '2027-01-21 23:59:59'
+          decision_deadline: '2027-03-25 23:59:00'
           comment: Cycle 2 Submission deadline
       timezone: AoE
       date: June 28 - July 1, 2027
