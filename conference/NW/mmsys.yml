@@ -7,6 +7,29 @@
     thcpl: N
   dblp: mmsys
   confs:
+    - year: 2021
+      id: mmsys21
+      link: https://2021.acmmmsys.org/
+      timeline:
+        - abstract_deadline: '2020-12-11 23:59:00'
+          deadline: '2020-12-14 23:59:00'
+          comment: 'Round 1'
+        - abstract_deadline: '2021-03-05 23:59:00'
+          deadline: '2021-03-08 23:59:00'
+          comment: 'Round 2; CFP gates (later portal upload close)'
+      timezone: AoE
+      date: September 28-October 1, 2021
+      place: Istanbul, Turkey (Hybrid)
+    - year: 2022
+      id: mmsys22
+      link: https://2022.acmmmsys.org/
+      timeline:
+        - abstract_deadline: '2022-01-20 23:59:59'
+          deadline: '2022-01-21 23:59:00'
+          comment: 'Portal registration; CFP full cutoff (portal later)'
+      timezone: AoE
+      date: June 14-16, 2022
+      place: Athlone, Ireland (Hybrid)
     - year: 2023
       id: mmsys23
       link: https://2023.acmmmsys.org/
@@ -14,19 +37,48 @@
         - deadline: '2022-11-18 23:59:00'
           comment: 'Round 1'
         - deadline: '2023-01-27 23:59:00'
-          comment: 'Round 2; CFP publishes the date; 23:59:00 and AoE are repository defaults for unspecified cutoff precision.'
+          comment: 'Round 2'
       timezone: AoE
       date: June 7-9, 2023
       place: Vancouver, Canada
+    - year: 2024
+      id: mmsys24
+      link: https://2024.acmmmsys.org/
+      timeline:
+        - abstract_deadline: '2023-09-15 23:59:00'
+          deadline: '2023-09-22 23:59:00'
+          comment: 'Round 1'
+        - abstract_deadline: '2023-11-24 23:59:59'
+          deadline: '2023-11-30 23:59:59'
+          comment: 'Round 2'
+      timezone: AoE
+      date: April 15-17, 2024
+      place: Bari, Italy
+    - year: 2025
+      id: mmsys25
+      link: https://2025.acmmmsys.org/
+      timeline:
+        - abstract_deadline: '2024-09-20 23:59:59'
+          deadline: '2024-09-27 23:59:00'
+          comment: 'Round 1; portal registration, CFP full cutoff (portal later)'
+        - abstract_deadline: '2024-11-16 23:59:59'
+          deadline: '2024-11-22 23:59:00'
+          comment: 'Round 2; portal registration, CFP full cutoff (portal later)'
+      timezone: AoE
+      date: April 1-3, 2025
+      place: Stellenbosch, South Africa
     - year: 2026
       id: mmsys26
       link: https://2026.acmmmsys.org
       timeline:
+        - abstract_deadline: '2025-09-19 23:59:00'
+          deadline: '2025-09-26 23:59:00'
+          comment: 'Round 1'
         - abstract_deadline: '2025-11-14 23:59:59'
           deadline: '2025-11-21 23:59:59'
-          comment: 'Round 2 deadline'
+          comment: 'Round 2'
       timezone: AoE
-      date: April 4 - 8, 2026
+      date: April 5-7, 2026
       place: Hong Kong SAR
     - year: 2027
       id: mmsys27
