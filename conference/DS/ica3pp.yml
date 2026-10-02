@@ -7,13 +7,20 @@
     thcpl: N
   dblp: ica3pp
   confs:
+    - year: 2021
+      id: ica3pp21
+      link: https://nsclab.org/ica3pp2021/
+      timeline:
+        - deadline: '2021-09-29 23:59:00'
+      timezone: AoE
+      date: December 3-5, 2021
+      place: Online
     - year: 2022
       id: ica3pp22
       link: https://ica3pp2022.compute.dtu.dk/
       timeline:
-        - deadline: TBD
-          comment: 'Extended paper submission: June 30, 2022 (firm); exact time and timezone not published'
-      timezone: UTC-8
+        - deadline: '2022-06-30 23:59:00'
+      timezone: AoE
       date: October 10-12, 2022
       place: Copenhagen, Denmark (Online)
     - year: 2023
@@ -21,25 +28,30 @@
       link: http://tjutanklab.com/ica3pp2023/
       timeline:
         - deadline: '2023-05-30 23:59:00'
-          comment: Paper Submission Due
       timezone: UTC-8
       date: October 20-22, 2023
       place: Tianjin, China
+    - year: 2024
+      id: ica3pp24
+      link: https://ica3pp2024.scimeeting.cn/en/web/index/21666
+      timeline:
+        - deadline: '2024-06-09 23:59:00'
+      timezone: AoE
+      date: October 29-31, 2024
+      place: Macau, China
     - year: 2025
       id: ica3pp25
       link: https://ieee-cybermatics.org/2025/ica3pp/
       timeline:
-        - deadline: '2025-06-30 23:59:00'
-          comment: Paper Submission Due
-      timezone: UTC-8
-      date: October 30- November 2, 2025
+        - deadline: '2025-08-10 23:59:00'
+      timezone: AoE
+      date: October 30 - November 1, 2025
       place: Zhengzhou, Henan, China
     - year: 2026
       id: ica3pp26
       link: https://hpcn.exeter.ac.uk/ica3pp2026/
       timeline:
         - deadline: '2026-07-25 23:59:00'
-          comment: Paper Submission Due
       timezone: AoE
       date: October 26-28, 2026
       place: Exeter, UK
