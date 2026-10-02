@@ -931,8 +931,15 @@ a {
   line-height: 16px;
 }
 
-.custom-search-input {
+.conference-controls .toolbar-search > .thaw-input {
   border: 1px solid var(--color-text-placeholder) !important;
+}
+
+.conference-controls .toolbar-search .thaw-input__input {
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  box-shadow: none;
 }
 
 * input::placeholder {

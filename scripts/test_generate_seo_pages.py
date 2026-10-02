@@ -1,4 +1,5 @@
 import tempfile
+import re
 import unittest
 from pathlib import Path
 from xml.etree import ElementTree
@@ -85,11 +86,35 @@ class SeoPageTests(unittest.TestCase):
             )
             generate([], {}, output)
             directory = (output / "conferences/index.html").read_text()
-            bootstrap = (output / "conferences/app.js").read_text()
+            bootstrap_path = re.search(r'src="(/conferences/app-[0-9a-f]+\.js)"', directory).group(1)
+            bootstrap = (output / bootstrap_path.lstrip('/')).read_text()
             self.assertIn('href="/styles-abc.css"', directory)
-            self.assertIn('src="/conferences/app.js"', directory)
-            self.assertIn('import init from "/ccfddl-abc.js"', bootstrap)
+            self.assertNotIn('src="/conferences/app.js"', directory)
+            self.assertIn('await import("/ccfddl-abc.js")', bootstrap)
             self.assertIn('module_or_path: "/ccfddl-abc_bg.wasm"', bootstrap)
+            self.assertIn('DirectoryControlsFailed', bootstrap)
+            self.assertIn('id="directory-startup-recovery"', directory)
+            self.assertIn('location.reload()', directory)
+
+            # New HTML must never reuse a cached bootstrap pointing to an old build.
+            built = (output / 'index.html').read_text()
+            (output / 'index.html').write_text(built.replace('abc', 'next'))
+            generate([], {}, output)
+            next_directory = (output / 'conferences/index.html').read_text()
+            next_path = re.search(r'src="(/conferences/app-[0-9a-f]+\.js)"', next_directory).group(1)
+            self.assertNotEqual(bootstrap_path, next_path)
+            self.assertIn('/ccfddl-next.js', (output / next_path.lstrip('/')).read_text())
+
+    def test_static_css_is_versioned_on_directory_and_edition_pages(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            conference = {'title': 'ACL', 'sub': 'AI', 'confs': [{'year': 2027, 'timeline': []}]}
+            generate([conference], {'AI': 'Artificial Intelligence'}, output)
+            directory = (output / 'conferences/index.html').read_text()
+            css_path = re.search(r'href="(/conferences/style-[0-9a-f]+\.css)"', directory).group(1)
+            self.assertTrue((output / css_path.lstrip('/')).exists())
+            edition = (output / 'conferences/ai/acl-2027/index.html').read_text()
+            self.assertIn(f'href="{css_path}"', edition)
 
     def test_incomplete_app_build_fails_instead_of_shipping_missing_controls(self):
         with tempfile.TemporaryDirectory() as temporary:
