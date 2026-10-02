@@ -67,6 +67,8 @@
       timeline:
         - abstract_deadline: '2026-10-20 23:59:59'
           deadline: '2026-10-23 23:59:59'
+          rebuttal_deadline: '2026-12-08 23:59:00'
+          decision_deadline: '2027-01-08 23:59:00'
       timezone: AoE
       date: April 26-27, 2027
       place: Dublin, Ireland
