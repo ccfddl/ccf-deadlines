@@ -67,6 +67,8 @@
       timeline:
         - abstract_deadline: '2026-10-01 23:59:59'
           deadline: '2026-10-08 23:59:59'
+          rebuttal_deadline: '2026-12-03 23:59:00'
+          decision_deadline: '2027-02-02 23:59:00'
       timezone: AoE
       date: June 1-5, 2027
       place: Seattle, USA
