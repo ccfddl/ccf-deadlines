@@ -24,6 +24,7 @@ const types = {
   ".css": "text/css",
   ".html": "text/html",
   ".ico": "image/x-icon",
+  ".svg": "image/svg+xml",
   ".js": "text/javascript",
   ".json": "application/json",
   ".wasm": "application/wasm",

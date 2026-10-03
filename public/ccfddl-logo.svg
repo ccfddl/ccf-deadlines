@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512" height="512" role="img" aria-labelledby="title desc">
+  <title id="title">CCFDDL</title>
+  <desc id="desc">参考商标的圆润边角：柔化字母外角、内角与端头。在原版双色橙基础上小幅微调：外层 #CF3D08，内层 #F66A0A，保留 DDL 结构、左右间距与水平居中。</desc>
+  <g transform="translate(-0.25 0)" fill="#CF3D08">
+    <path d="M3.2 13.16C5.55 13.75 7 16 7 18.4V24.2Q7 25 7.8 25H11.8Q13 25 13 26.2V28.8Q13 30 11.8 30H3.2Q2 30 2 28.8V14.2Q2 12.9 3.2 13.16Z"/>
+    <path fill="#F66A0A" fill-rule="evenodd" d="M10.4 9.3H17A6.2 6.7 0 0 1 17 22.7H10.4Q9.3 22.7 9.3 21.6V10.4Q9.3 9.3 10.4 9.3ZM13.2 12.5H17A3 3.5 0 0 1 17 19.5H13.2Q12.5 19.5 12.5 18.8V13.2Q12.5 12.5 13.2 12.5Z"/>
+    <path d="M3.2 2H17A13.5 14 0 0 1 18.2 29.944Q17 30 17 28.8V26.2Q17 25 18.2 24.91A8.5 9 0 0 0 17 7H7C4.58 7 2.603 5.385 2.07 3.2Q1.94 2 3.2 2Z"/>
+  </g>
+</svg>

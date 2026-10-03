@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import re
+import shutil
 from collections import defaultdict
 from datetime import datetime
 from html import escape
@@ -130,6 +131,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <meta name="description" content="{text(description)}">
   <link rel="canonical" href="{text(canonical)}">
   <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="/ccfddl-logo.svg">
   {app_assets}
   <link rel="stylesheet" href="{text(static_css)}">
 </head>
@@ -480,6 +482,8 @@ def shared_app_assets(output: Path) -> str:
 
 def generate(conferences: list[dict], categories: dict[str, str], output: Path, acceptances: dict[str, list[dict]] | None = None) -> list[str]:
     output.mkdir(parents=True, exist_ok=True)
+    for asset in ("favicon.ico", "ccfddl-logo.svg"):
+        shutil.copy2(ROOT / "public" / asset, output / asset)
     acceptances = acceptances or {}
     directory = output / "conferences"
     directory.mkdir(exist_ok=True)
