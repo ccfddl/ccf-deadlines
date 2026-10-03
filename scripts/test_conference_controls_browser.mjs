@@ -221,6 +221,43 @@ try {
       writeFileSync(`/tmp/ccfddl-controls-${name}-${width}.png`, Buffer.from(screenshot.data, 'base64'));
     }
   }
+  // Long IANA names use a compact label without changing the stored timezone.
+  const longTimezone = 'America/Argentina/San_Juan';
+  // Chrome versions differ in whether this valid alias is listed as America/San_Juan.
+  const longTimezoneOptions = await command('Page.addScriptToEvaluateOnNewDocument', {
+    source: `localStorage.setItem('display_timezone', '${longTimezone}');
+      const supportedTimezones = Intl.supportedValuesOf.bind(Intl);
+      Intl.supportedValuesOf = key => key === 'timeZone'
+        ? [...new Set([...supportedTimezones(key), '${longTimezone}'])]
+        : supportedTimezones(key);`,
+  });
+  for (const width of [2516, 1280, 768, 390, 320]) {
+    for (const path of ['/?filters=all', '/?view=table&filters=all', '/conferences/?filters=all']) {
+      await navigate(`${path}&tz=${encodeURIComponent(longTimezone)}`, width);
+      const timezone = await evaluate(`(() => {
+        const trigger = document.querySelector('.toolbar-timezone-trigger');
+        const rect = document.querySelector('.toolbar-timezone').getBoundingClientRect();
+        return {label: trigger.querySelector('.toolbar-timezone-label').textContent,
+          title: trigger.title, left: rect.left, right: rect.right,
+          overflow: document.documentElement.scrollWidth > innerWidth,
+          stored: localStorage.getItem('display_timezone')};
+      })()`);
+      assert.equal(timezone.label, 'San Juan');
+      assert.equal(timezone.title, longTimezone);
+      assert.equal(timezone.stored, longTimezone);
+      assert.equal(timezone.overflow, false);
+      assert.ok(timezone.left >= 0 && timezone.right <= width);
+      await evaluate("document.querySelector('.toolbar-timezone-trigger').click()");
+      await until(() => evaluate("Boolean(document.querySelector('.toolbar-timezone-menu'))"), 'long timezone menu');
+      assert.equal(await evaluate(`[...document.querySelectorAll('.toolbar-timezone-option')].some(node => node.textContent === '${longTimezone}')`), true);
+      await evaluate("document.querySelector('.toolbar-timezone-backdrop').click()");
+      if (width === 2516 && path === '/?filters=all') {
+        const screenshot = await command('Page.captureScreenshot', { format: 'png' });
+        writeFileSync('/tmp/ccfddl-compact-timezone-desktop.png', Buffer.from(screenshot.data, 'base64'));
+      }
+    }
+  }
+  await command('Page.removeScriptToEvaluateOnNewDocument', { identifier: longTimezoneOptions.identifier });
   await navigate('/conferences/?categories=AI&ccf=A&q=ACL&tz=UTC', 1280);
   const visible = () => evaluate("[...document.querySelectorAll('.directory-list li:not([hidden])')].map(row => row.textContent.trim())");
   assert.ok((await visible()).length > 0);
@@ -250,7 +287,7 @@ try {
   await evaluate("[...document.querySelectorAll('.category-filter-grid .checkbox-item')].find(node => node.textContent.includes('人工智能')).querySelector('input').click()");
   await until(() => evaluate("new URLSearchParams(location.search).get('categories') === 'AI'"), 'category selection');
   await navigate('/?view=table', 390);
-  assert.equal(await evaluate("document.querySelector('.toolbar-timezone-trigger').textContent.includes('Asia/Shanghai')"), true);
+  assert.equal(await evaluate("document.querySelector('.toolbar-timezone-trigger').title"), 'Asia/Shanghai');
   assert.equal(await evaluate("document.querySelectorAll('.category-filter-grid .filter-selected').length"), 1);
   // Main-site history switch must toggle once when either the text or switch is clicked.
   await navigate('/', 390);

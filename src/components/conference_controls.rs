@@ -184,6 +184,7 @@ fn TimezonePicker(
                             <button
                                 type="button"
                                 class="toolbar-timezone-trigger"
+                                title=move || selected_timezone.get()
                                 aria-label=move || if use_english.get() { "Select display timezone" } else { "选择显示时区" }
                                 aria-haspopup="listbox"
                                 aria-expanded=move || {
@@ -197,7 +198,9 @@ fn TimezonePicker(
                                     }
                                 }
                             >
-                                <span>{move || selected_timezone.get()}</span>
+                                <span class="toolbar-timezone-label">{move || {
+                                    selected_timezone.get().rsplit('/').next().unwrap_or("UTC").replace('_', " ")
+                                }}</span>
                                 <span class="toolbar-timezone-arrow" aria-hidden="true">"⌄"</span>
                             </button>
                             <Show when=move || open_dropdown.get().as_deref() == Some("timezone")>
