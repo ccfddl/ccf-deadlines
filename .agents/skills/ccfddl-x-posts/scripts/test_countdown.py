@@ -65,9 +65,31 @@ class DeadlineTests(unittest.TestCase):
 class SelectionTests(unittest.TestCase):
     def test_category_and_explicit_include(self):
         rows = [(row(), "conference/AI/example.yml"), (row("MLSys", "MX", "N"), "conference/MX/mlsys.yml"), (row("B", "DB", "B"), "conference/DB/b.yml")]
-        cats, issues = c.select(rows, {"include_paths": ["conference/MX/mlsys.yml"]}, NOW)
+        cats, issues = c.select(rows, {"ccf_ranks": ["A"], "include_paths": ["conference/MX/mlsys.yml"]}, NOW)
         self.assertEqual(len(cats["AI"]), 1)
         self.assertEqual([e["conference"] for e in cats["Data Systems"]], ["MLSys"])
+
+    def test_default_scope_includes_ccf_a_and_b_not_c(self):
+        rows = [(row("A", rank="A"), "conference/AI/a.yml"), (row("B", rank="B"), "conference/AI/b.yml"), (row("C", rank="C"), "conference/AI/c.yml")]
+        cats, _ = c.select(rows, {}, NOW)
+        self.assertEqual({e["conference"] for e in cats["AI"]}, {"A", "B"})
+
+    def test_commitment_is_not_a_submission_or_extra_round(self):
+        timelines = [{"deadline": "2026-10-12 23:59:59", "comment": "ARR Submission"}, {"deadline": "2026-12-23 23:59:59", "comment": "Conference commitment after ARR meta-reviews; reviewed papers only"}]
+        rows = [(row("COLING", timeline=timelines), "conference/AI/coling.yml")]
+        cats, issues = c.select(rows, {}, NOW)
+        self.assertEqual(len(cats["AI"]), 1)
+        self.assertEqual(cats["AI"][0]["round_label"], "")
+        self.assertEqual(len(issues), 1)
+        later, _ = c.select(rows, {}, c.as_utc("2026-12-01T12:00:00Z"))
+        self.assertEqual(later["AI"], [])
+
+    def test_card_event_labels(self):
+        cats, _ = c.select([(row("VLDB", timeline=[{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]), "conference/DB/vldb.yml")], {"stage_selection": "all_future"}, NOW)
+        self.assertEqual(c.card_event_title(cats["AI"][0]), "VLDB 2027 Abstract Deadline")
+        self.assertEqual(c.card_event_title(cats["AI"][1]), "VLDB 2027 Deadline")
+        cats["AI"][1]["abstract_closed"] = True
+        self.assertEqual(c.card_event_title(cats["AI"][1]), "VLDB 2027 Deadline")
 
     def test_submission_only(self):
         r = row(timeline=[{"deadline": "TBD", "rebuttal_deadline": "2026-10-05 12:00:00", "decision_deadline": "2026-10-06 12:00:00"}])
@@ -86,12 +108,33 @@ class SelectionTests(unittest.TestCase):
         cats, _ = c.select([(r, "conference/AI/x.yml")], {}, NOW)
         self.assertTrue(cats["AI"][0]["abstract_closed"])
         text, _ = c.tweet("AI", cats["AI"], NOW, 3)
-        self.assertIn("abstract closed", text)
+        self.assertNotIn("abstract closed", text)
+        self.assertNotIn("abstract closed", c.card_event_title(cats["AI"][0]))
 
     def test_title_collisions_not_merged(self):
         rows = [(row("SEC"), "conference/SC/sec.yml"), (row("SEC"), "conference/SE/sec.yml")]
         cats, _ = c.select(rows, {}, NOW)
         self.assertEqual(len(cats["AI"]), 2)
+
+    def test_official_clock_override_exact_guard(self):
+        r = row("EDBT", sub="DB", timeline=[{"deadline": "2026-10-07 23:59:59"}], identity="edbt27")
+        override = {"source_path": "conference/DB/edbt.yml", "id": "edbt27", "timeline_index": 1, "field": "deadline", "expected_repository_value": "2026-10-07 23:59:59", "expected_repository_timezone": "AoE", "replacement_value": "2026-10-07 17:00:00", "replacement_timezone": "America/Los_Angeles", "display_timezone": "PT", "official_url": "https://edbticdt2027.github.io/?contents=important_dates.html", "verified_at_utc": "2026-10-03T14:25:30Z"}
+        cfg = {"official_deadline_overrides": [override]}
+        cats, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
+        event = cats["Data Systems"][0]
+        self.assertEqual(event["deadline_utc"], "2026-10-08T00:00:00Z")
+        self.assertEqual(event["timezone_source"], "PT")
+        self.assertEqual(event["deadline_source"], "2026-10-07 17:00:00")
+        self.assertIn("official_deadline_override", event)
+        r["confs"][0]["timeline"][0]["deadline"] = "2026-10-09 23:59:59"
+        changed, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
+        self.assertEqual(changed["Data Systems"], [])
+        self.assertIn("fingerprint changed", issues[0]["reason"])
+        r["confs"][0]["timeline"][0]["deadline"] = "2026-10-07 17:00:00"
+        r["confs"][0]["timezone"] = "PT"
+        corrected, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
+        self.assertEqual(corrected["Data Systems"][0]["deadline_utc"], "2026-10-08T00:00:00Z")
+        self.assertNotIn("official_deadline_override", corrected["Data Systems"][0])
 
     def test_quarantine(self):
         cats, issues = c.select([(row(), "conference/AI/x.yml")], {"quarantine_events": [{"source_path": "conference/AI/x.yml", "id": "example27", "reason": "clock conflict"}]}, NOW)
@@ -104,6 +147,18 @@ class SelectionTests(unittest.TestCase):
         self.assertEqual(cats["AI"], [])
         self.assertEqual(len(issues), 1)
 
+    def test_overflow_preserves_a_and_b_representatives(self):
+        items = [{"conference": f"B{i}", "rank_ccf": "B"} for i in range(8)] + [{"conference": "A", "rank_ccf": "A"}]
+        selected = c.choose_digest_events(items, 6)
+        self.assertEqual(len(selected), 6)
+        self.assertEqual({e["rank_ccf"] for e in selected}, {"A", "B"})
+        with self.assertRaises(ValueError):
+            c.choose_digest_events(items, 1)
+
+    def test_all_six_fit_without_rank_displacement(self):
+        items = [{"conference": str(i), "rank_ccf": "A" if i in (3, 5) else "B"} for i in range(6)]
+        self.assertEqual(c.choose_digest_events(items, 6), items)
+
     def test_default_tweet_has_at_most_three_rows(self):
         rows = [(row("ConferenceVeryLong" + str(i)), f"conference/AI/x{i}.yml") for i in range(10)]
         cats, _ = c.select(rows, {}, NOW)
@@ -115,9 +170,9 @@ class SelectionTests(unittest.TestCase):
         timelines = [{"deadline": "TBD"} for _ in range(3)] + [{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]
         cats, _ = c.select([(row("SIGMOD", sub="DB", timeline=timelines), "conference/DB/sigmod.yml")], {}, NOW)
         text, _ = c.tweet("Data Systems", cats["Data Systems"], NOW, 3)
-        self.assertEqual(text, "CCFDDL deadline reminders:\nSIGMOD'27 (abstract, round 4) · 7 days left · 2026/10/10 23:59 (AoE)\nsee details: https://ccfddl.com")
+        self.assertEqual(text, "CCFDDL deadline reminders (Data Systems)\n\nSIGMOD'27 (abstract, round 4) · 7 days left\n\nsee details: https://ccfddl.com")
         self.assertNotIn("**", text)
-        self.assertNotIn("Data Systems", text)
+        self.assertFalse(text.splitlines()[0].endswith(":"))
 
     def test_explicit_multiple_stages(self):
         timeline = [{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]
@@ -130,6 +185,22 @@ class SelectionTests(unittest.TestCase):
         self.assertEqual(len(chosen), 2)
         self.assertIn("CVPR'27 (abstract)", text)
         self.assertIn("CVPR'27 (paper)", text)
+
+    def test_ai_category_header_without_colon(self):
+        cats, _ = c.select([(row(), "conference/AI/x.yml")], {}, NOW)
+        text, _ = c.tweet("AI", cats["AI"], NOW, 3)
+        self.assertEqual(text.splitlines()[0], "CCFDDL deadline reminders (AI)")
+
+    def test_abstract_display_ignores_registration_alias(self):
+        cats, _ = c.select([(row("CVPR", timeline=[{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]), "conference/AI/cvpr.yml")], {}, NOW)
+        event = cats["AI"][0]
+        event["stage_label"] = "reg"
+        self.assertEqual(c.display_stage(event), "abstract")
+        text, _ = c.tweet("AI", [event], NOW, 3)
+        self.assertIn("CVPR'27 (abstract)", text)
+        self.assertNotIn("(reg)", text)
+        event["stage_label"] = "registration"
+        self.assertEqual(c.display_stage(event), "abstract")
 
     def test_unknown_selection_mode_rejected(self):
         with self.assertRaises(ValueError):
@@ -160,10 +231,47 @@ class BuildAndLedgerTests(unittest.TestCase):
             cfg.write_text('{"editorial_confirmed":true}')
             manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
             self.assertEqual(len(manifest["digests"]), 1)
+            self.assertFalse(manifest["digests"][0]["card_has_more"])
+            self.assertNotIn("abstract closed", manifest["digests"][0]["alt_text"])
             from PIL import Image
             with Image.open(manifest["digests"][0]["image"]) as image:
-                self.assertEqual(image.size, (1600, 652))
+                self.assertEqual(image.size, (1600, 610))
                 self.assertEqual(image.getpixel((0, 0)), (242, 242, 242))
+
+    def test_six_text_rows_with_three_card_rows_and_ellipsis(self):
+        with tempfile.TemporaryDirectory() as temp:
+            snapshot = self.make_snapshot(temp)
+            obj = json.loads(snapshot.read_text())
+            raw = yaml.safe_dump([row(f"Conference{i}", identity=f"conf{i}27") for i in range(6)])
+            obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
+            snapshot.write_text(json.dumps(obj))
+            cfg = Path(temp) / "config.json"
+            cfg.write_text('{"editorial_confirmed":true,"max_items_per_category":6}')
+            manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+            self.assertEqual(len(manifest["digests"][0]["events"]), 6)
+            self.assertEqual(len(manifest["digests"][0]["card_events"]), 3)
+            self.assertTrue(manifest["digests"][0]["card_has_more"])
+            self.assertIn("ellipsis", manifest["digests"][0]["alt_text"])
+            self.assertNotIn("Conference5", manifest["digests"][0]["alt_text"])
+            from PIL import Image
+            with Image.open(manifest["digests"][0]["image"]) as image:
+                self.assertEqual(image.size, (1600, 970))
+
+    def test_public_outputs_omit_internal_closure_flag(self):
+        with tempfile.TemporaryDirectory() as temp:
+            snapshot = self.make_snapshot(temp)
+            obj = json.loads(snapshot.read_text())
+            raw = yaml.safe_dump([row(timeline=[{"abstract_deadline": "2026-10-01 23:59:59", "deadline": "2026-10-08 23:59:59"}])])
+            obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
+            snapshot.write_text(json.dumps(obj))
+            cfg = Path(temp) / "config.json"
+            cfg.write_text('{"editorial_confirmed":true}')
+            manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+            digest = manifest["digests"][0]
+            self.assertTrue(digest["events"][0]["abstract_closed"])
+            self.assertNotIn("closed", digest["text"] + digest["alt_text"])
+            self.assertNotIn("passed", digest["alt_text"])
+            self.assertNotIn("As of", digest["alt_text"])
 
     def test_stale_and_partial_fail_closed(self):
         for complete, age in ((False, 0), (True, 16)):
