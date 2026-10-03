@@ -1066,7 +1066,9 @@ a {
 .toolbar-timezone {
   display: inline-flex;
   align-items: center;
-  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
   gap: 0;
   font-size: var(--font-size-sm);
   line-height: 1.4;
@@ -1076,6 +1078,7 @@ a {
   position: relative;
   display: inline-flex;
   align-items: center;
+  min-width: 0;
 }
 
 .toolbar-timezone > span:last-child {
@@ -1095,6 +1098,13 @@ a {
   font: inherit;
   line-height: inherit;
   cursor: pointer;
+}
+
+.toolbar-timezone-label {
+  max-width: 20ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .toolbar-timezone-trigger:focus-visible {
@@ -3830,6 +3840,7 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 .conference-controls { font-family: "Roboto Mono", "SF Mono", Monaco, monospace; }
 .toolbar-clock {
   display: inline-flex;
+  min-width: 0;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
