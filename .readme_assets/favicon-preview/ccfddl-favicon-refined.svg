@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512" height="512" role="img" aria-labelledby="title desc">
+  <title id="title">CCFDDL</title>
+  <desc id="desc">以 public/favicon.ico 为参考的双色 DDL 矢量精修。保留字母组合、弯钩和原有比例。</desc>
+  <path fill="#F15A24" d="M2 13C5.05 13 7 15.65 7 18.4V25H13V30H2Z"/>
+  <path fill="#FF8428" fill-rule="evenodd" d="M9 9H15.6C19.356 9 22.4 12 22.4 15.7C22.4 19.4 19.356 22.4 15.6 22.4H9ZM12.2 12.2V19.2H15.6C17.588 19.2 19.2 17.633 19.2 15.7C19.2 13.767 17.588 12.2 15.6 12.2Z"/>
+  <path fill="#F15A24" d="M2 2H17C24.456 2 30.5 8.268 30.5 16C30.5 23.732 24.456 30 17 30V25C21.694 25 25.5 20.971 25.5 16C25.5 11.029 21.694 7 17 7H7C4.239 7 2 4.761 2 2Z"/>
+</svg>

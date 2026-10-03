@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CCFDDL · 原图矢量精修预览</title>
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#f7f6f2;color:#292c30;font:14px/1.6 system-ui,-apple-system,sans-serif}
+    main{max-width:920px;margin:auto;padding:48px 24px}
+    header{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:28px}
+    h1{margin:0;font:600 22px/1.4 ui-monospace,SFMono-Regular,monospace;letter-spacing:-.8px}
+    header p{margin:0;color:#77756e;font-size:12px}
+    .comparison{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .panel{background:#fff;padding:24px;border:1px solid #e6e3dc;border-radius:12px}
+    .panel-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    h2{font-size:13px;font-weight:500;margin:0;color:#6d6c67}
+    .tag{color:#8d8a82;font-size:11px;font-family:ui-monospace,monospace}
+    .hero{display:block;width:min(100%,300px);height:auto;margin:28px auto}
+    .sizes{display:flex;align-items:end;gap:24px;justify-content:center;border-top:1px solid #efede8;padding-top:20px}
+    figure{margin:0;text-align:center}
+    figure img{display:block;margin:auto}
+    figcaption{color:#9a978e;font:11px/1.5 ui-monospace,monospace;margin-top:10px}
+    footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:22px;color:#77756e;font-size:12px}
+    .swatch{display:inline-block;width:10px;height:10px;background:#f15a24;vertical-align:-1px;margin-right:8px;border-radius:2px}
+    .swatch.inner{background:#ff8428;margin-left:14px}
+    .original.hero{image-rendering:pixelated}
+    .dark{margin-top:20px;padding:18px;background:#202329;border-radius:8px;border-top:0}
+    .dark figcaption{color:#bcbfc5}
+    a{color:#52534d;text-underline-offset:3px}nav{display:flex;gap:18px}
+    @media(max-width:560px){main{padding:28px 16px}header{align-items:start;flex-direction:column;gap:4px}.comparison{grid-template-columns:1fr}.hero{width:240px}}
+  </style>
+</head>
+<body>
+  <main>
+    <header><h1>CCFDDL</h1><p>以 public/favicon.ico 为准 · 双色矢量精修</p></header>
+    <div class="comparison">
+      <section class="panel">
+        <div class="panel-head"><h2>网站原图</h2><span class="tag">ICO · 32px</span></div>
+        <img class="hero original" src="ccfddl-favicon-original.png" alt="public/favicon.ico 原图，像素放大">
+        <div class="sizes">
+          <figure><img src="ccfddl-favicon-original.png" width="64" height="64" alt="原图 64px"><figcaption>64px</figcaption></figure>
+          <figure><img src="ccfddl-favicon-original.png" width="32" height="32" alt="原图 32px"><figcaption>32px</figcaption></figure>
+          <figure><img src="ccfddl-favicon-original.png" width="16" height="16" alt="原图 16px"><figcaption>16px</figcaption></figure>
+        </div>
+        <div class="sizes dark"><figure><img src="ccfddl-favicon-original.png" width="32" height="32" alt="原图深色背景"><figcaption>深色 · 32px</figcaption></figure><figure><img src="ccfddl-favicon-original.png" width="16" height="16" alt="原图深色背景 16px"><figcaption>16px</figcaption></figure></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><h2>精修预览</h2><span class="tag">SVG</span></div>
+        <img class="hero" src="ccfddl-favicon-refined.svg" alt="按 favicon 原图重绘的双色图标">
+        <div class="sizes">
+          <figure><img src="ccfddl-favicon-refined.svg" width="64" height="64" alt="精修版 64px"><figcaption>64px</figcaption></figure>
+          <figure><img src="ccfddl-favicon-refined.svg" width="32" height="32" alt="精修版 32px"><figcaption>32px</figcaption></figure>
+          <figure><img src="ccfddl-favicon-refined.svg" width="16" height="16" alt="精修版 16px"><figcaption>16px</figcaption></figure>
+        </div>
+        <div class="sizes dark"><figure><img src="ccfddl-favicon-refined.svg" width="32" height="32" alt="精修版深色背景"><figcaption>深色 · 32px</figcaption></figure><figure><img src="ccfddl-favicon-refined.svg" width="16" height="16" alt="精修版深色背景 16px"><figcaption>16px</figcaption></figure></div>
+      </section>
+    </div>
+    <footer><span><i class="swatch"></i>#F15A24<i class="swatch inner"></i>#FF8428 · 透明底</span><nav><a href="ccfddl-favicon-refined.svg" download>SVG</a><a href="ccfddl-favicon-refined.png" download>2048px PNG</a><a href="ccfddl-favicon-refined.ico" download>多尺寸 ICO</a></nav></footer>
+  </main>
+</body>
+</html>
