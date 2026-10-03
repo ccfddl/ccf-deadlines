@@ -59,7 +59,7 @@
       id: icc27
       link: https://icc2027.ieee-icc.org
       timeline:
-        - deadline: '2026-10-02 23:59:59'
-      timezone: UTC-4
+        - deadline: '2026-10-16 23:59:59'
+      timezone: UTC-7
       date: May 30 - June 3, 2027
       place: Washington, DC, USA
