@@ -1,0 +1,34 @@
+- title: ACM TURC
+  description: ACM Turing Award Celebration Conference - China
+  sub: MX
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: acmturc
+  confs:
+    - year: 2021
+      id: acmturc2021
+      link: https://www.acmturc.com/2021/en/
+      timeline:
+        - abstract_deadline: '2021-05-14 22:00:00'
+          deadline: '2021-05-20 22:00:00'
+      timezone: AoE
+      date: July 30-August 1, 2021
+      place: Hefei, China
+    - year: 2024
+      id: acmturc2024
+      link: https://www.acmturc.com/2024/#/index
+      timeline:
+        - deadline: '2024-05-20 23:59:00'
+      timezone: AoE
+      date: July 5-7, 2024
+      place: Changsha, China
+    - year: 2026
+      id: acmturc2026
+      link: https://www.acmturc.com/2026/en/
+      timeline:
+        - deadline: '2026-06-10 23:59:00'
+      timezone: AoE
+      date: July 11-12, 2026
+      place: Hangzhou, China
