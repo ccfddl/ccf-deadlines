@@ -81,6 +81,17 @@ pub fn Header(
                 </a>
                 <div class="header-github">
                     <GitButton />
+                    <a
+                        class="header-x-link"
+                        href="https://x.com/ccfddl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Follow CCFDDL on X"
+                        title="Follow CCFDDL on X"
+                    >
+                        <Icon icon=icondata::BsTwitterX />
+                        <span>"Follow"</span>
+                    </a>
                 </div>
                 {move || {
                     show_latest_conf

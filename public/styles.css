@@ -230,9 +230,15 @@ a {
   font-size: 16px;
 }
 
+.header-x-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
 .header-github {
   display: flex;
   align-items: center;
+  gap: 6px;
 }
 
 .header-auth {
@@ -611,7 +617,8 @@ a {
   font-size: 13px;
 }
 
-.github-star-link {
+.github-star-link,
+.header-x-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -631,14 +638,16 @@ a {
   transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
-.github-star-link:hover {
+.github-star-link:hover,
+.header-x-link:hover {
   border-color: #bfc8d1;
   background: #f7f9fb;
   color: #29394b;
   text-decoration: none;
 }
 
-.github-star-link svg {
+.github-star-link svg,
+.header-x-link svg {
   width: 16px;
   height: 16px;
 }
@@ -3588,6 +3597,16 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .header-github {
     grid-column: 1;
     grid-row: 2;
+  }
+
+  .header-x-link {
+    justify-content: center;
+    width: 30px;
+    padding: 0;
+  }
+
+  .header-x-link span {
+    display: none;
   }
 
   .header-auth {
