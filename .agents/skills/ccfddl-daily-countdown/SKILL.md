@@ -25,6 +25,8 @@ Before creating a scheduled task, perform a harmless read through the intended p
 
 If the chosen route is unconnected, unauthenticated, or points at another account, prepare previews and report the precise blocker. Use the supported plugin or browser login setup flow. Metricool is optional; do not require it or subscribe to a paid service without authorization. For Metricool, a connected plugin alone is insufficient: read brand settings and verify an actual connected X network. Do not guess the `info` JSON schema or media-file format for `createScheduledPost`; inspect current tool documentation and official provider documentation first. Do not request or store an API key or password in chat. Installing this skill does not connect X.
 
+For Buffer API/MCP, require a verified public-image hosting route before enabling this image-post campaign: local PNG files cannot be attached directly, and the image URL must remain accessible until publication completes. Never submit a private Library download or signed URL. If this media gate is unresolved, keep publication blocked; do not silently post text alone or claim end-to-end setup is complete. See the Buffer media gate in the source-and-publishing reference.
+
 Use the user's bounded authorization for this recurring campaign. Ask before expanding its audience, topic, account, or scope. Obtain any additional action-specific confirmations required by the platform or applicable policy. Do not publish a preview merely to test the connector.
 
 ## 2. Acquire a coherent current source
@@ -71,6 +73,8 @@ Compute the publication day in America/Los_Angeles. Check both the ledger and pr
 python3 <skill>/scripts/countdown.py ledger check --path <persistent-ledger> --day YYYY-MM-DD --category AI
 python3 <skill>/scripts/countdown.py ledger reserve --path <persistent-ledger> --day YYYY-MM-DD --category AI --content-sha256 <manifest-hash>
 ```
+
+For Buffer, verify the exact final PNG's authorized public URL and its availability through the planned publication time before reserving or creating the post. Host only generated campaign cards authorized for public use, without credentials or private run data.
 
 Reserve immediately before the single publication request; the reservation uses an exclusive file lock and atomic state replacement. Use the exact approved text, card, and alt text. If upload fails before any post request, determine the exact state without duplicate publication. If sending times out or returns an uncertain result, leave the entry pending, inspect the provider and X, and **do not resend automatically**. A pending reservation blocks additional sends. Reconcile manually only after establishing whether publication occurred.
 
