@@ -6,8 +6,13 @@
   "publication_daypart": "morning",
   "suggested_local_time": "08:00",
   "timing_mode": "flexible",
-  "ccf_ranks": ["A"],
-  "include_paths": ["conference/AI/iclr.yml", "conference/MX/mlsys.yml"],
+  "ccf_ranks": [
+    "A"
+  ],
+  "include_paths": [
+    "conference/AI/iclr.yml",
+    "conference/MX/mlsys.yml"
+  ],
   "include_titles": [],
   "exclude_titles": [],
   "horizon_days": 120,
@@ -17,7 +22,11 @@
       "source_path": "conference/MX/mlsys.yml",
       "id": "mlsys27",
       "reason": "Exact submission clock conflict verified 2026-10-03: official CFP states 2026-10-30 20:00 UTC, official Dates/homepage state 12:00 PDT (19:00 UTC). Recheck both official pages and source before removing this quarantine.",
-      "sources": ["https://mlsys.org/Conferences/2027/CallForResearchPapers", "https://mlsys.org/Conferences/2027/Dates"]
+      "sources": [
+        "https://mlsys.org/Conferences/2027/CallForResearchPapers",
+        "https://mlsys.org/Conferences/2027/Dates"
+      ]
     }
-  ]
+  ],
+  "stage_selection": "nearest"
 }

@@ -111,13 +111,29 @@ class SelectionTests(unittest.TestCase):
         self.assertLessEqual(len(chosen), 3)
         self.assertTrue(text.endswith(c.LINK))
 
-    def test_email_style_text(self):
-        cats, _ = c.select([(row("Example"), "conference/AI/x.yml")], {}, NOW)
-        text, _ = c.tweet("AI", cats["AI"], NOW, 3)
-        self.assertTrue(text.startswith("AI Daily deadline reminders\n\n"))
-        self.assertIn("7 days left · Example 2027 paper · 2026/10/10 23:59 (AoE)", text)
-        self.assertNotIn("Unsubscribe", text)
-        self.assertTrue(text.endswith(c.LINK))
+    def test_exact_user_plain_text_format(self):
+        timelines = [{"deadline": "TBD"} for _ in range(3)] + [{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]
+        cats, _ = c.select([(row("SIGMOD", sub="DB", timeline=timelines), "conference/DB/sigmod.yml")], {}, NOW)
+        text, _ = c.tweet("Data Systems", cats["Data Systems"], NOW, 3)
+        self.assertEqual(text, "CCFDDL deadline reminders:\nSIGMOD'27 (abstract, round 4) · 7 days left · 2026/10/10 23:59 (AoE)\nsee details: https://ccfddl.com")
+        self.assertNotIn("**", text)
+        self.assertNotIn("Data Systems", text)
+
+    def test_explicit_multiple_stages(self):
+        timeline = [{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]
+        rows = [(row("CVPR", timeline=timeline), "conference/AI/cvpr.yml")]
+        nearest, _ = c.select(rows, {}, NOW)
+        self.assertEqual(len(nearest["AI"]), 1)
+        all_stages, _ = c.select(rows, {"stage_selection": "all_future"}, NOW)
+        self.assertEqual([e["stage"] for e in all_stages["AI"]], ["abstract", "paper"])
+        text, chosen = c.tweet("AI", all_stages["AI"], NOW, 3)
+        self.assertEqual(len(chosen), 2)
+        self.assertIn("CVPR'27 (abstract)", text)
+        self.assertIn("CVPR'27 (paper)", text)
+
+    def test_unknown_selection_mode_rejected(self):
+        with self.assertRaises(ValueError):
+            c.select([], {"stage_selection": "guess"}, NOW)
 
     def test_long_text_is_advisory_not_a_hard_cap(self):
         rows = [(row("LongConference" * 10), "conference/AI/long.yml")]

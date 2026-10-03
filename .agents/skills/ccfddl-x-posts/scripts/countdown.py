@@ -149,6 +149,9 @@ def select(rows, config, now):
     exclude = {x.casefold() for x in config.get("exclude_titles", [])}
     include_paths = set(config.get("include_paths", []))
     quarantine = config.get("quarantine_events", [])
+    stage_selection = config.get("stage_selection", "nearest")
+    if stage_selection not in ("nearest", "all_future"):
+        raise ValueError("stage_selection must be nearest or all_future")
     allowed = set(config.get("ccf_ranks", ["A"]))
     horizon = timedelta(days=int(config.get("horizon_days", 120)))
     for row, path in rows:
@@ -183,18 +186,19 @@ def select(rows, config, now):
                     continue
                 if not candidates:
                     continue
-                deadline, stage, original = min(candidates)
+                selected_candidates = [min(candidates)] if stage_selection == "nearest" else sorted(candidates)
                 identity = str(conf.get("id") or f"{title}-{conf.get('year')}")
                 if len(timelines) > 1:
                     round_label = f"R{index + 1}"
                 else:
                     round_label = ""
-                event = {"conference": title, "year": conf.get("year"), "id": identity, "round_index": index + 1,
-                         "round_label": round_label, "stage": stage, "deadline_utc": iso(deadline),
-                         "deadline_source": str(original), "timezone_source": conf.get("timezone"),
-                         "seconds_left": (deadline - now).total_seconds(), "abstract_closed": bool(stage == "paper" and abstract and abstract <= now),
-                         "comment": comment, "source_path": path, "official_url": conf.get("link"), "rank_ccf": rank}
-                categories[category].append(event)
+                for deadline, stage, original in selected_candidates:
+                    event = {"conference": title, "year": conf.get("year"), "id": identity, "round_index": index + 1,
+                             "round_label": round_label, "stage": stage, "deadline_utc": iso(deadline),
+                             "deadline_source": str(original), "timezone_source": conf.get("timezone"),
+                             "seconds_left": (deadline - now).total_seconds(), "abstract_closed": bool(stage == "paper" and abstract and abstract <= now),
+                             "comment": comment, "source_path": path, "official_url": conf.get("link"), "rank_ccf": rank}
+                    categories[category].append(event)
     for name in categories:
         categories[name].sort(key=lambda e: (e["deadline_utc"], e["conference"].casefold(), e["year"] or 0, e["round_index"], e["stage"]))
         # Equivalent repeated YAML records must never appear twice.
@@ -214,25 +218,30 @@ def deadline_display(event, seconds=False):
 
 
 def event_title(event):
-    title = f"{event['conference']} {event['year']}"
+    year = str(event["year"])
+    if not re.fullmatch(r"\d{4}", year):
+        raise ValueError("A four-digit conference year is required")
+    qualifiers = [event.get("stage_label", event["stage"])]
     if event["round_label"]:
-        title += " " + event["round_label"]
-    return title + " " + event["stage"]
+        qualifiers.append(f"round {event['round_index']}")
+    if event["abstract_closed"]:
+        qualifiers.append("abstract closed")
+    return f"{event['conference']}'{year[-2:]} ({', '.join(qualifiers)})"
 
 
 def tweet(category, events, now, maximum):
-    header = f"{category} Daily deadline reminders"
+    # Keep the final user-specified plain-text format; category stays on the image.
+    header = "CCFDDL deadline reminders:"
     lines = []
     selected = []
     for e in events[:maximum]:
         when, zone = deadline_display(e)
-        note = " [abstract closed]" if e["abstract_closed"] else ""
-        line = f"{countdown(e['seconds_left'])} · {event_title(e)} · {when} ({zone}){note}"
+        line = f"{event_title(e)} · {countdown(e['seconds_left'])} · {when} ({zone})"
         selected.append(e)
         lines.append(line)
     if not selected:
         return None, []
-    text = "\n\n".join([header, "\n".join(lines), "Dates + details: " + LINK])
+    text = "\n".join([header, *lines, "see details: " + LINK])
     return text, selected
 
 
@@ -273,7 +282,10 @@ def render_card(category, events, now, commit, output, preview=False):
         draw.rounded_rectangle((116, y, 1484, y + card_h), radius=14, fill="#ffffff", outline="#e7e2dd", width=2)
         lead = countdown(event["seconds_left"]).upper()
         draw.text((146, y + 15), lead, font=font(24, True), fill=accent)
-        title = event_title(event).removesuffix(" " + event["stage"]) + " · " + event["stage"].capitalize() + " submission"
+        title = f"{event['conference']} {event['year']}"
+        if event["round_label"]:
+            title += " " + event["round_label"]
+        title += " · " + event.get("stage_label", event["stage"]).capitalize() + " submission"
         if event["abstract_closed"]:
             title += " · Abstract deadline passed"
         draw.text((146, y + 49), title, font=fit(title, 1305, 31, weight=True), fill="#242933")
