@@ -35,7 +35,7 @@ Persist the exact source SHA, as-of UTC, selected source paths/deadlines, text/c
 
 ## Portable files
 
-Mirror `SKILL.md`, `agents/openai.yaml`, `scripts/countdown.py`, `scripts/test_countdown.py`, and the two reference files when authorized. Generated artifacts remain outside the skill. Dependencies are Python 3.10+, PyYAML, Pillow, DejaVu Sans Mono, and zoneinfo data. The deterministic script performs no network, credential, or X calls; live actions stay in the agent/provider workflow.
+Mirror `SKILL.md`, `agents/openai.yaml`, `scripts/countdown.py`, `scripts/test_countdown.py`, and the two reference files when authorized. Generated artifacts remain outside the skill. Dependencies are Python 3.10+, PyYAML, Pillow, Liberation Sans (Arial-compatible), and zoneinfo data. The deterministic script performs no network, credential, or X calls; live actions stay in the agent/provider workflow.
 
 ## Optional routes
 
@@ -48,3 +48,13 @@ Mirror `SKILL.md`, `agents/openai.yaml`, `scripts/countdown.py`, `scripts/test_c
 Buffer API/MCP requires media at a public URL; it does not accept a local PNG upload. Keep the URL reachable until the post publishes, including when queued for later. Source: https://support.buffer.com/en-us/articles/what-is-buffers-api-GtIYIQilz5, Native media uploads.
 
 Verify an authorized public hosting route for the final card before enabling the campaign or creating a post. Check anonymous retrieval returns the correct image and that its availability covers publication. Never expose a private Library file URL, temporary signed download URL, credentials, manifests, or ledger. Publish only the generated cards authorized for public use. If hosting is unavailable or unverified, block the image-post workflow and report the specific gap; do not downgrade to text-only or claim the connection is fully ready. Do not create another setup request merely to record this gate.
+
+## Email notification format
+
+Use the repository's actual email reminder template as the visual and text reference: https://github.com/ccfddl/ccf-deadlines/blob/a8b906a1842d8ce1264d6ffa98feb12adf4d68ef/worker/src/email_reminders.js#L90-L153. Recheck the live template when maintaining this skill.
+
+- Heading: `<category> Daily deadline reminders`.
+- Text rows: `<remaining time> · <conference year round stage> · <YYYY/MM/DD HH:mm> (<source timezone>)`. Keep the canonical ccfddl.com link.
+- Card: #f2f2f2 page; white panel and event cards; #d44f3f masthead, top border, and countdown; #242933 event title; #5f6975 exact date; rounded #e7e2dd borders; Arial/Helvetica-style sans-serif. Use Liberation Sans as the deterministic metric-compatible font.
+- Show `ccf-deadlines`, `REMINDER`, and `DEADLINE NOTICE`, with the template's submission good-luck footer. Omit email preferences and unsubscribe links from social output.
+- Keep seconds and timezone semantics internally and show seconds on the card. Keep the exact UTC as-of and source SHA in the social image footer. Do not replace true remaining-time counts with the email implementation's calendar-day differences.

@@ -41,6 +41,10 @@ class DeadlineTests(unittest.TestCase):
         self.assertIsNone(c.parse_deadline("TBD", "AoE"))
 
     def test_countdown_boundaries(self):
+        self.assertEqual(c.countdown(90000), "1 day left")
+        self.assertEqual(c.countdown(3600), "1 hour left")
+        self.assertEqual(c.countdown(7200), "2 hours left")
+        self.assertEqual(c.countdown(172800), "2 days left")
         self.assertEqual(c.countdown(86400, True), "24h")
         self.assertEqual(c.countdown(86399, True), "23h")
         self.assertEqual(c.countdown(3599, True), "59m")
@@ -100,12 +104,19 @@ class SelectionTests(unittest.TestCase):
         self.assertEqual(cats["AI"], [])
         self.assertEqual(len(issues), 1)
 
-    def test_default_tweet_is_concise(self):
+    def test_default_tweet_has_at_most_three_rows(self):
         rows = [(row("ConferenceVeryLong" + str(i)), f"conference/AI/x{i}.yml") for i in range(10)]
         cats, _ = c.select(rows, {}, NOW)
         text, chosen = c.tweet("AI", cats["AI"], NOW, 3)
-        self.assertLessEqual(c.weighted_length(text), 280)
         self.assertLessEqual(len(chosen), 3)
+        self.assertTrue(text.endswith(c.LINK))
+
+    def test_email_style_text(self):
+        cats, _ = c.select([(row("Example"), "conference/AI/x.yml")], {}, NOW)
+        text, _ = c.tweet("AI", cats["AI"], NOW, 3)
+        self.assertTrue(text.startswith("AI Daily deadline reminders\n\n"))
+        self.assertIn("7 days left · Example 2027 paper · 2026/10/10 23:59 (AoE)", text)
+        self.assertNotIn("Unsubscribe", text)
         self.assertTrue(text.endswith(c.LINK))
 
     def test_long_text_is_advisory_not_a_hard_cap(self):
@@ -135,7 +146,8 @@ class BuildAndLedgerTests(unittest.TestCase):
             self.assertEqual(len(manifest["digests"]), 1)
             from PIL import Image
             with Image.open(manifest["digests"][0]["image"]) as image:
-                self.assertEqual(image.size, (1600, 960))
+                self.assertEqual(image.size, (1600, 652))
+                self.assertEqual(image.getpixel((0, 0)), (242, 242, 242))
 
     def test_stale_and_partial_fail_closed(self):
         for complete, age in ((False, 0), (True, 16)):

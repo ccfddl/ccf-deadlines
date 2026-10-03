@@ -79,9 +79,9 @@ def countdown(seconds, short=False):
         return f"{n}m" if short else f"{n} min left"
     if seconds <= 86400:
         n = math.floor(seconds / 3600)
-        return f"{n}h" if short else f"{n} hours left"
+        return f"{n}h" if short else f"{n} hour{'s' if n != 1 else ''} left"
     n = math.floor(seconds / 86400)
-    return f"{n}d" if short else f"{n} days left"
+    return f"{n}d" if short else f"{n} day{'s' if n != 1 else ''} left"
 
 
 def weighted_length(text):
@@ -206,73 +206,89 @@ def select(rows, config, now):
     return categories, issues
 
 
+def deadline_display(event, seconds=False):
+    stamp = datetime.fromisoformat(event["deadline_source"].replace("Z", "+00:00"))
+    when = stamp.strftime("%Y/%m/%d %H:%M:%S" if seconds else "%Y/%m/%d %H:%M")
+    zone = stamp.strftime("UTC%z") if stamp.tzinfo is not None else event["timezone_source"]
+    return when, zone
+
+
+def event_title(event):
+    title = f"{event['conference']} {event['year']}"
+    if event["round_label"]:
+        title += " " + event["round_label"]
+    return title + " " + event["stage"]
+
+
 def tweet(category, events, now, maximum):
-    date = now.strftime("%b %d")
-    header = f"{category} deadlines | {date} UTC"
+    header = f"{category} Daily deadline reminders"
     lines = []
     selected = []
     for e in events[:maximum]:
-        round_ = (" " + e["round_label"]) if e["round_label"] else ""
-        note = "; abstract closed" if e["abstract_closed"] else ""
-        line = f"{e['conference']} {e['year']}{round_}: {countdown(e['seconds_left'], True)} ({e['stage']}{note})"
+        when, zone = deadline_display(e)
+        note = " [abstract closed]" if e["abstract_closed"] else ""
+        line = f"{countdown(e['seconds_left'])} · {event_title(e)} · {when} ({zone}){note}"
         selected.append(e)
         lines.append(line)
     if not selected:
         return None, []
-    text = "\n".join([header, *lines, "", "Dates + details: " + LINK])
+    text = "\n\n".join([header, "\n".join(lines), "Dates + details: " + LINK])
     return text, selected
 
 
 def render_card(category, events, now, commit, output, preview=False):
+    """Adapt the repository email reminder layout for a legible social image."""
     from PIL import Image, ImageDraw, ImageFont
-    W, H = 1600, 960
-    image = Image.new("RGB", (W, H), "#faf9f7")
+    n = len(events)
+    if not 1 <= n <= 3:
+        raise ValueError("Render 1–3 events per image")
+    W, H = 1600, 960 - (3 - n) * 154
+    image = Image.new("RGB", (W, H), "#f2f2f2")
     draw = ImageDraw.Draw(image)
-    regular = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
-    bold = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
+    regular = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+    bold = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
     def font(n, weight=False):
         try:
             return ImageFont.truetype(bold if weight else regular, n)
         except OSError as exc:
-            raise RuntimeError("Install DejaVu Sans or update the explicit font paths; never silently use an unreadable fallback") from exc
+            raise RuntimeError("Install Liberation Sans (Arial-compatible) or update the explicit font paths; never silently use an unreadable fallback") from exc
     def fit(text, maximum, size=31, minimum=18, weight=False):
         for n in range(size, minimum - 1, -1):
             f = font(n, weight)
             if draw.textlength(text, font=f) <= maximum:
                 return f
         raise ValueError(f"Card text cannot fit: {text}")
-    accent = "#F66A0A"
-    draw.rectangle((0, 0, W, 14), fill=accent)
-    draw.text((74, 50), "CCFDDL", font=font(34, True), fill="#334155")
-    draw.text((W - 370, 58), "DAILY COUNTDOWN", font=font(23, True), fill="#666666")
-    draw.text((74, 113), category, font=font(64, True), fill="#2c3e50")
-    draw.text((76, 196), "Upcoming submission deadlines", font=font(29), fill="#666666")
-    n = len(events)
-    top, gap, available = 259, 19, 507
-    card_h = min(233, (available - gap * (n - 1)) // n)
+    accent = "#d44f3f"
+    draw.text((80, 51), "ccf-deadlines", font=font(47, True), fill=accent)
+    masthead = "REMINDER"
+    draw.text((1520 - draw.textlength(masthead, font=font(23)), 67), masthead, font=font(23), fill="#a0a5aa")
+    draw.rounded_rectangle((74, 136, 1526, H - 72), radius=12, fill="#ffffff", outline="#dedede", width=2)
+    draw.rectangle((86, 136, 1514, 143), fill=accent)
+    draw.text((118, 181), "DEADLINE NOTICE", font=font(24, True), fill=accent)
+    heading = f"{category} Daily deadline reminders"
+    draw.text((118, 225), heading, font=fit(heading, 1362, 47, weight=True), fill="#16191f")
+    top, gap, card_h = 307, 18, 136
     for i, event in enumerate(events):
         y = top + i * (card_h + gap)
-        draw.rounded_rectangle((74, y, 1526, y + card_h), radius=23, fill="#fffefa", outline="#e6e0d8", width=2)
-        draw.rounded_rectangle((75, y + 1, 87, y + card_h - 1), radius=5, fill=accent)
-        title = f"{event['conference']} {event['year']}"
-        if event["round_label"]:
-            title += "  ·  " + event["round_label"]
-        draw.text((112, y + 19), title, font=fit(title, 950, 35, weight=True), fill="#2c3e50")
-        meta = event["stage"].capitalize() + " submission"
+        draw.rounded_rectangle((116, y, 1484, y + card_h), radius=14, fill="#ffffff", outline="#e7e2dd", width=2)
+        lead = countdown(event["seconds_left"]).upper()
+        draw.text((146, y + 15), lead, font=font(24, True), fill=accent)
+        title = event_title(event).removesuffix(" " + event["stage"]) + " · " + event["stage"].capitalize() + " submission"
         if event["abstract_closed"]:
-            meta += " · Abstract deadline passed"
-        draw.text((113, y + 65), meta, font=fit(meta, 950, 25), fill="#475569")
-        deadline = f"Due {event['deadline_source']} {event['timezone_source']}"
-        draw.text((113, y + 105), deadline, font=fit(deadline, 990, 22), fill="#666666")
-        urgency = "#f56c6c" if event["seconds_left"] < 3 * 86400 else "#e6a23c" if event["seconds_left"] < 7 * 86400 else "#67c23a"
-        countdown_text = countdown(event["seconds_left"], True)
-        cw = draw.textlength(countdown_text, font=font(53, True))
-        draw.text((1474 - cw, y + 36), countdown_text, font=font(53, True), fill=urgency)
-        draw.text((1380, y + 104), "LEFT", font=font(18, True), fill="#909399")
-    draw.text((75, 807), "Explore deadlines → ccfddl.com", font=font(35, True), fill="#2c3e50")
-    draw.text((77, 863), f"As of {iso(now)}  ·  Source {commit[:12]}", font=font(22), fill="#666666")
+            title += " · Abstract deadline passed"
+        draw.text((146, y + 49), title, font=fit(title, 1305, 31, weight=True), fill="#242933")
+        when, zone = deadline_display(event, seconds=True)
+        exact = f"{when} · {zone}"
+        draw.text((146, y + 94), exact, font=fit(exact, 1305, 25), fill="#5f6975")
+    draw.text((119, H - 167), "Good luck with your submissions!", font=font(28), fill="#424a54")
+    draw.text((119, H - 128), "The CCFDDL maintainer team", font=font(24), fill="#424a54")
+    link = "ccfddl.com →"
+    draw.text((1481 - draw.textlength(link, font=font(33, True)), H - 147), link, font=font(33, True), fill=accent)
+    provenance = f"As of {iso(now)}  ·  Source {commit[:12]}"
+    draw.text((78, H - 46), provenance, font=font(21), fill="#69727c")
     if preview:
-        draw.text((1208, 882), "DRAFT PREVIEW", font=font(21, True), fill="#9a3412")
+        label = "DRAFT PREVIEW"
+        draw.text((1522 - draw.textlength(label, font=font(21, True)), H - 46), label, font=font(21, True), fill=accent)
     image.save(output)
 
 

@@ -1,4 +1,0 @@
-interface:
-  display_name: CCFDDL Daily Countdown
-  short_description: Create daily AI and Data Systems countdown posts
-  default_prompt: Use $ccfddl-daily-countdown to prepare today’s conference countdown posts for @ccfddl.

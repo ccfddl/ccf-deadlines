@@ -1,9 +1,9 @@
 ---
-name: ccfddl-daily-countdown
-description: Prepare and, with a verified authenticated publishing route and authorization, publish daily conference-deadline countdown posts for @ccfddl on X/Twitter. Use for the recurring CCFDDL campaign, AI/Data Systems countdown text, website-style social cards, schedule setup, publication checks, or maintaining this workflow. Read the live CCFDDL source, include CCF A plus ICLR and MLSys, and link every digest to ccfddl.com.
+name: ccfddl-x-posts
+description: Prepare and, with a verified authenticated publishing route and authorization, publish daily conference-deadline countdown posts for @ccfddl on X/Twitter. Use for the recurring CCFDDL campaign, AI/Data Systems countdown text, email-notification-style social cards, schedule setup, publication checks, or maintaining this workflow. Read the live CCFDDL source, include CCF A plus ICLR and MLSys, and link every digest to ccfddl.com.
 ---
 
-# CCFDDL Daily Countdown
+# CCFDDL X Posts
 
 Create up to two English digests per publication day: one **AI**, one **Data Systems**, with concise countdown text, a matching readable PNG, and `https://ccfddl.com`.
 
@@ -47,7 +47,7 @@ Keep the existing MLSys 2027 exact-clock quarantine until the conflicting offici
 
 ## 3. Build and inspect
 
-Use a current explicit UTC as-of time. Require Python 3.10+, PyYAML, Pillow, and DejaVu Sans Mono. Use the executor's existing packages or an authorized reputable package source; do not silently install from an unknown source.
+Use a current explicit UTC as-of time. Require Python 3.10+, PyYAML, Pillow, and Liberation Sans (Arial-compatible). Use the executor's existing packages or an authorized reputable package source; do not silently install from an unknown source.
 
 ```bash
 python3 <skill>/scripts/countdown.py build \
@@ -57,7 +57,7 @@ python3 <skill>/scripts/countdown.py build \
 
 For an actual publication run, omit `--preview` after all gates are satisfied. A non-preview build requires a complete catalog, confirmed editorial configuration, and a snapshot fetched within 15 minutes. Recheck latest source SHA immediately before sending; if it changed, regenerate the affected content before posting.
 
-Inspect every final PNG with an image-view tool. Confirm legible text, no overlaps/clipping, correct category, labels, exact deadline and zone, as-of UTC, source SHA, branding, and canonical link. Cards use CCFDDL's warm off-white background, monospace type, orange brand accent, and green/gold/red urgency colors. Every countdown is a snapshot, not a live clock.
+Inspect every final PNG with an image-view tool. Confirm legible text, no overlaps/clipping, correct category, labels, exact deadline and zone, as-of UTC, source SHA, branding, and canonical link. Adapt the live repository email reminder template (`worker/src/email_reminders.js`) for social cards: gray page, white bordered cards, brick-red reminder accent, Arial-compatible sans-serif typography, and countdown → event title → exact deadline hierarchy. Match the text row pattern `remaining time · event · date (timezone)`. Omit unsubscribe/settings controls and retain ccfddl.com. Preserve precise elapsed-time countdowns rather than copying email calendar-day arithmetic. Every countdown is a snapshot, not a live clock.
 
 Inspect the manifest and each tweet. Honor the skipped-for-review list. Preserve round labels, distinguish abstract from paper, and explicitly disclose when the abstract deadline has already passed. Such paper deadlines apply to already-registered submissions; do not claim a new submission is still possible. The next future deadline per timeline round is selected deterministically.
 
@@ -90,7 +90,7 @@ A queued/scheduled job is not a published tweet; retain its provider job ID in d
 
 Only after the authenticated-route read succeeds, create a daily morning task with the user's supported scheduler. Preserve `America/Los_Angeles` in the schedule; use flexible timing around 08:00 local. The task must invoke this workflow, refresh source data, perform read-back and idempotency checks, and keep private state outside the public repository. Verify that the task is enabled and tied to the correct provider/account before claiming it is active. Do not create a second schedule if one already exists.
 
-Maintain the reusable skill in the user's personal skill directory. When separately authorized for repository maintenance, mirror only the portable skill files to `.agents/skills/ccfddl-daily-countdown/` through the repository's normal review workflow. Keep the personal installed copy and repository copy aligned when updating behavior. Never commit generated posts, snapshots, private ledger state, credentials, or provider tokens.
+Maintain the reusable skill in the user's personal skill directory. When separately authorized for repository maintenance, mirror only the portable skill files to `.agents/skills/ccfddl-x-posts/` through the repository's normal review workflow. Keep the personal installed copy and repository copy aligned when updating behavior. Never commit generated posts, snapshots, private ledger state, credentials, or provider tokens.
 
 ## Validation
 
