@@ -33,7 +33,37 @@ pub fn TimeLine(
     let (sel_dot_class, set_sel_dot_class) = signal(String::new());
     let (can_line_style, set_can_line_style) = signal(String::new());
     let preview_point = Memo::new(move |_| {
-        active.get().and_then(|index| incre_dates.with(|points| points.get(index).cloned()))
+        active
+            .get()
+            .and_then(|index| incre_dates.with(|points| points.get(index).cloned()))
+    });
+
+    let nearby_points = Memo::new(move |_| {
+        let Some(index) = active.get() else {
+            return Vec::new();
+        };
+        incre_dates.with(|points| {
+            if index >= points.len() {
+                return Vec::new();
+            }
+            let position = |i: usize| {
+                calculate_position_percent(&points[i].timepoint, start_date.get(), end_date.get())
+            };
+            let mut first = index;
+            let mut last = index;
+            while first > 0 && position(first) - position(first - 1) < 5.0 {
+                first -= 1;
+            }
+            while last + 1 < points.len() && position(last + 1) - position(last) < 5.0 {
+                last += 1;
+            }
+            if first == last {
+                return Vec::new();
+            }
+            (first..=last)
+                .map(|i| (i, points[i].clone()))
+                .collect::<Vec<_>>()
+        })
     });
 
     Effect::new(move |_| {
@@ -102,17 +132,44 @@ pub fn TimeLine(
         }
     };
 
-    let calculate_backup_position = move |time: &DateTime<FixedOffset>, index: usize| -> String {
+    let calculate_backup_position = move |time: &DateTime<FixedOffset>,
+                                          index: usize|
+          -> (String, String) {
         let left_percent = calculate_position_percent(time, start_date.get(), end_date.get());
 
         let clamped_percent = left_percent.max(0.5).min(99.5);
-        let base_style = format!("left:{}%;", clamped_percent);
-
-        if index as i32 <= expire_index.get() {
-            format!("{}border: 2px solid #ccc;", base_style)
+        let positions = incre_dates.with(|points| {
+            points
+                .iter()
+                .map(|point| {
+                    calculate_position_percent(&point.timepoint, start_date.get(), end_date.get())
+                        .clamp(0.5, 99.5)
+                })
+                .collect::<Vec<_>>()
+        });
+        // Divide neighbouring hit targets at their date midpoint. Keep the
+        // decorative marker separate so a narrow target never clips its shape.
+        let left_boundary = index
+            .checked_sub(1)
+            .map(|previous| (clamped_percent + positions[previous]) / 2.0)
+            .unwrap_or(0.0);
+        let right_boundary = positions
+            .get(index + 1)
+            .map(|next| (next + clamped_percent) / 2.0)
+            .unwrap_or(100.0);
+        let target_style = format!(
+            "left:max(0px, calc({clamped_percent}% - 12px), {left_boundary}%);right:max(0px, calc({}% - 12px), {}%);",
+            100.0 - clamped_percent,
+            100.0 - right_boundary,
+        );
+        let marker_style =
+            format!("left:{clamped_percent}%;margin-left:0;transform:translateX(-50%);");
+        let marker_style = if index as i32 <= expire_index.get() {
+            format!("{marker_style}border: 2px solid #ccc;")
         } else {
-            base_style
-        }
+            marker_style
+        };
+        (target_style, marker_style)
     };
 
     let calculate_reference_position = move |time: &DateTime<FixedOffset>| -> String {
@@ -179,20 +236,54 @@ pub fn TimeLine(
                 }
 
                 .line_time .timeline-event {
+                    position: absolute;
+                    top: -11px;
+                    height: 25px;
                     padding: 0;
+                    border: 0;
+                    background: transparent;
+                    min-width: 0;
+                    cursor: pointer;
+                    z-index: 3;
+                }
+
+                .line_time .timeline-marker {
+                    pointer-events: none;
+                }
+
+                .line_time .timeline-event:focus-visible {
+                    outline: none;
+                }
+
+                .line_time .timeline-event:focus-visible + .timeline-marker,
+                .line_time .timeline-event[aria-pressed="true"] + .timeline-marker {
+                    outline: 2px solid #409eff;
+                    outline-offset: 3px;
+                }
+
+                .line_time .timeline-choices {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 6px;
+                    margin-top: 16px;
+                }
+
+                .line_time .timeline-choice {
+                    padding: 6px 9px;
+                    min-height: 32px;
+                    border: 1px solid #d9dfe5;
+                    border-radius: 6px;
+                    background: transparent;
+                    color: #526579;
+                    font: inherit;
+                    font-size: 11px;
                     cursor: pointer;
                 }
 
-                .line_time .timeline-event::before {
-                    content: "";
-                    position: absolute;
-                    inset: -8px;
-                }
-
-                .line_time .timeline-event:focus-visible,
-                .line_time .timeline-event[aria-pressed="true"] {
-                    outline: 2px solid #409eff;
-                    outline-offset: 3px;
+                .line_time .timeline-choice[aria-pressed="true"] {
+                    border-color: #6f9fca;
+                    background: #ecf5fc;
+                    color: #2b4d68;
                 }
 
                 .time_con.is-interacting .sel_dot::after {
@@ -380,7 +471,7 @@ pub fn TimeLine(
                                 .enumerate()
                                 .map(|(index, backup_point)| {
                                     let class_name = format_backup_class(backup_point.r#type);
-                                    let style = calculate_backup_position(
+                                    let (target_style, marker_style) = calculate_backup_position(
                                         &backup_point.timepoint,
                                         index,
                                     );
@@ -394,8 +485,8 @@ pub fn TimeLine(
                                     view! {
                                         <button
                                             type="button"
-                                            class=format!("timeline-event {class_name}")
-                                            style=style
+                                            class="timeline-event"
+                                            style=target_style
                                             aria-label=format!("{type_label} {time_label}")
                                             aria-pressed=move || (selected.get() == Some(index)).to_string()
                                             on:pointerenter=move |_| hovered.set(Some(index))
@@ -403,9 +494,6 @@ pub fn TimeLine(
                                             on:focus=move |_| focused.set(Some(index))
                                             on:blur=move |_| {
                                                 focused.set(None);
-                                                if selected.get_untracked() == Some(index) {
-                                                    selected.set(None);
-                                                }
                                             }
                                             on:click=move |event| {
                                                 event.stop_propagation();
@@ -416,6 +504,11 @@ pub fn TimeLine(
                                                 });
                                             }
                                         ></button>
+                                        <span
+                                            class=format!("timeline-marker {class_name}")
+                                            style=marker_style
+                                            aria-hidden="true"
+                                        ></span>
                                     }
                                 })
                                 .collect_view()
@@ -430,6 +523,42 @@ pub fn TimeLine(
 
                         </div>
                     </div>
+                    {move || {
+                        let choices = nearby_points.get();
+                        (!choices.is_empty()).then(|| view! {
+                            <div class="timeline-choices" role="group" aria-label="Nearby milestones">
+                                {choices.into_iter().map(|(index, point)| {
+                                    let label = format_backup_type(point.r#type).trim_end_matches(':');
+                                    let date = format_time_label(&point.timepoint, false, 0);
+                                    let short_label = match point.r#type {
+                                        0 => "Abstract",
+                                        1 => "Paper",
+                                        2 => "Rebuttal",
+                                        3 => "Decisions",
+                                        4 => "Opening",
+                                        _ => label,
+                                    };
+                                    view! {
+                                        <button
+                                            type="button"
+                                            class="timeline-choice"
+                                            aria-label=format!("{label}: {date}")
+                                            aria-pressed=move || (active.get() == Some(index)).to_string()
+                                            on:focus=move |_| focused.set(Some(index))
+                                            on:blur=move |_| focused.set(None)
+                                            on:click=move |event| {
+                                                event.stop_propagation();
+                                                hovered.set(None);
+                                                focused.set(None);
+                                                selected.set(Some(index));
+                                            }
+                                            title=format!("{label}: {date}")
+                                        >{short_label}</button>
+                                    }
+                                }).collect_view()}
+                            </div>
+                        })
+                    }}
                 </div>
             </div>
         </div>

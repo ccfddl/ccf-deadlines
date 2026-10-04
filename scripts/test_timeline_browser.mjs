@@ -28,11 +28,14 @@ const types = {
   ".wasm": "application/wasm",
 };
 const testDeadline = '2026-11-11 19:59:00';
+let fixture = 'wide';
 const testConferences = () => [{
   title: 'TIMELINETEST', description: 'Timeline interaction regression', sub: 'AI',
   rank: {ccf: 'A'}, dblp: 'test',
   confs: [{year: 2027, id: 'timelinetest27', link: 'https://example.org',
-    timeline: [{abstract_deadline: '2026-10-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2027-01-15 19:59:00', decision_deadline: '2027-02-11 19:59:00'}], timezone: 'UTC',
+    timeline: [fixture === 'close'
+      ? {abstract_deadline: '2026-11-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2026-11-17 19:59:00', decision_deadline: '2026-11-18 19:59:00'}
+      : {abstract_deadline: '2026-10-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2027-01-15 19:59:00', decision_deadline: '2027-02-11 19:59:00'}], timezone: 'UTC',
     date: 'June 20-25, 2027', opening: '2027-06-20 08:00:00', place: 'Virtual'},
   ],
 }];
@@ -168,81 +171,152 @@ try {
     if (result) assert.equal(result.dot, 'visible', 'NOW dot remains visible during interaction');
     return result;
   };
-  for (const mode of ['cards', 'list']) {
-    const preferences = await command('Page.addScriptToEvaluateOnNewDocument', {source: `
-      localStorage.setItem('conference_view', '${mode}');
-      localStorage.setItem('conference_search', 'TIMELINETEST');
-      localStorage.setItem('display_timezone', 'UTC');
-      localStorage.setItem('show_past', 'false');
-      for (const key of ['types', 'ranks', 'core_ranks', 'thcpl_ranks']) localStorage.setItem(key, '[]');
-    `});
-    for (const width of [1280, 390, 320]) {
-      await command('Emulation.setDeviceMetricsOverride', {width, height: 1100, deviceScaleFactor: 1, mobile:false});
-      await command('Page.navigate', {url: `http://127.0.0.1:${server.address().port}/?filters=all`});
-      await until(present, 'conference loaded');
-      await evaluate("document.querySelector('.conf-title').click()");
-      await until(() => evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event').length === 5"), 'timeline buttons');
-      assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"), 'visible');
-      // Click every marker. First and last labels must remain within the rail bounds.
-      for (let index=0; index<5; index++) {
-        await evaluate(`document.querySelectorAll('.conference-detail-timeline .timeline-event')[${index}].click()`);
-        await until(bounds, 'selected preview');
-        const preview=await bounds();
-        assert.equal(preview.now, 'hidden');
-        assert.ok(preview.left >= preview.containerLeft-1 && preview.right <= preview.containerRight+1, JSON.stringify(preview));
-        assert.equal(preview.clipped, false);
-        if (index===0) assert.equal(preview.align, 'flex-start');
-        if (index===4) assert.equal(preview.align, 'flex-end');
-        if (index===0 || index===4) {
-          const screenshot = await command('Page.captureScreenshot', {format:'png'});
-          writeFileSync(`/tmp/ccfddl-timeline-${mode}-${width}-${index}.png`, Buffer.from(screenshot.data,'base64'));
-        }
-        // Clicking the selected marker again dismisses it and restores NOW.
-        await evaluate(`document.querySelectorAll('.conference-detail-timeline .timeline-event')[${index}].click()`);
-        await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'toggle dismissal');
+  for (fixture of ['wide', 'close']) {
+    for (const mode of ['cards', 'list']) {
+      const preferences = await command('Page.addScriptToEvaluateOnNewDocument', {source: `
+        localStorage.setItem('conference_view', '${mode}');
+        localStorage.setItem('conference_search', 'TIMELINETEST');
+        localStorage.setItem('display_timezone', 'UTC');
+        localStorage.setItem('show_past', 'false');
+        for (const key of ['types', 'ranks', 'core_ranks', 'thcpl_ranks']) localStorage.setItem(key, '[]');
+      `});
+      for (const width of [1280, 390, 320]) {
+        await command('Emulation.setDeviceMetricsOverride', {width, height: 1100, deviceScaleFactor: 1, mobile:false});
+        await command('Page.navigate', {url: `http://127.0.0.1:${server.address().port}/?filters=all`});
+        await until(present, 'conference loaded');
+        await evaluate("document.querySelector('.conf-title').click()");
+        await until(() => evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event').length === 5"), 'timeline buttons');
         assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"), 'visible');
-      }
-      // A separate click dismisses the selection.
-      await evaluate("document.querySelector('.conference-detail-timeline .timeline-event').click()");
-      await evaluate("document.querySelector('.conference-detail-description').click()");
-      await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'outside dismissal');
-      // Keyboard focus previews the node, Escape dismisses without closing the dialog.
-      await evaluate("document.querySelector('.conference-detail-timeline .timeline-event').blur(); document.querySelector('.conference-detail-timeline .timeline-event').focus()");
-      await until(bounds, 'keyboard preview');
-      assert.equal((await bounds()).now,'hidden');
-      await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
-      await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'Escape dismissal');
-      assert.equal(await evaluate("Boolean(document.querySelector('.conference-detail-title'))"), true);
-      // Physical hover also works beside the NOW marker and restores it on leave.
-      const point = await evaluate(`(() => {
-        const box = document.querySelector('.conference-detail-timeline .timeline-event').getBoundingClientRect();
-        return {x: box.left+box.width/2, y:box.top+box.height/2};
-      })()`);
-      await command('Input.dispatchMouseEvent',{type:'mouseMoved',...point});
-      await until(bounds,'hover preview');
-      assert.equal((await bounds()).now,'hidden');
-      await command('Input.dispatchMouseEvent',{type:'mouseMoved',x:1,y:1});
-      await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"),'hover dismissal');
-      assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"),'visible');
-      if (width === 320) {
-        await command('Emulation.setTouchEmulationEnabled',{enabled:true});
-        await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
-        await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
-        await until(bounds,'touch selection');
+        // Exercise native hit testing at every marker, including six-day and one-day gaps.
+        for (const input of ['mouse', 'touch']) {
+          await command('Emulation.setTouchEmulationEnabled', {enabled: input === 'touch'});
+          for (let index=0; index<5; index++) {
+            await command('Input.dispatchMouseEvent', {type:'mouseMoved',x:1,y:1});
+            const marker = await evaluate(`(() => {
+              const node = document.querySelectorAll('.conference-detail-timeline .timeline-event')[${index}];
+              const box = node.nextElementSibling.getBoundingClientRect();
+              const target = node.getBoundingClientRect();
+              // Use the visible part of each marker that belongs to its bounded target.
+              // Subpixel-spaced markers can share a visual centre pixel; never click
+              // another marker's part of that shared glyph.
+              const x = (Math.max(box.left, target.left) + Math.min(box.right, target.right)) / 2;
+              const y = box.top + box.height / 2;
+              return {point: {x,y}, label: node.getAttribute('aria-label'),
+                hit: document.elementFromPoint(x,y)?.closest('.timeline-event') === node};
+            })()`);
+            assert.equal(marker.hit, true, `${fixture} ${mode} ${width} marker ${index} owns its visible hit area`);
+            const activate = async () => {
+              if (input === 'mouse') {
+                await command('Input.dispatchMouseEvent', {type:'mouseMoved',...marker.point});
+                await command('Input.dispatchMouseEvent', {type:'mousePressed',button:'left',clickCount:1,...marker.point});
+                await command('Input.dispatchMouseEvent', {type:'mouseReleased',button:'left',clickCount:1,...marker.point});
+              } else {
+                await command('Input.dispatchTouchEvent', {type:'touchStart',touchPoints:[{...marker.point,radiusX:1,radiusY:1}]});
+                await command('Input.dispatchTouchEvent', {type:'touchEnd',touchPoints:[]});
+              }
+            };
+            await activate();
+            await until(bounds, 'selected preview');
+            let preview=await bounds();
+            if (input === 'mouse' || fixture === 'wide' || index === 4) {
+              assert.equal(preview.text.replace(/\s+/g, ' '), marker.label, 'native marker selection');
+            }
+            if (fixture === 'close' && index < 4) {
+              // Mobile browsers can redirect tiny taps. The nearby picker must offer
+              // a full-sized physical target for the exact intended milestone.
+              const choice = await evaluate(`(() => {
+                const node = [...document.querySelectorAll('.timeline-choice')].find(n => n.getAttribute('aria-label') === ${JSON.stringify(marker.label)});
+                if (!node) return null;
+                const box = node.getBoundingClientRect();
+                return {x:box.left+box.width/2,y:box.top+box.height/2};
+              })()`);
+              assert.ok(choice, 'nearby milestone choice exists');
+              if (input === 'touch') {
+                await command('Input.dispatchTouchEvent', {type:'touchStart',touchPoints:[choice]});
+                await command('Input.dispatchTouchEvent', {type:'touchEnd',touchPoints:[]});
+              } else {
+                await command('Input.dispatchMouseEvent', {type:'mouseMoved',...choice});
+                await command('Input.dispatchMouseEvent', {type:'mousePressed',button:'left',clickCount:1,...choice});
+                await command('Input.dispatchMouseEvent', {type:'mouseReleased',button:'left',clickCount:1,...choice});
+              }
+              await until(async () => (await bounds())?.text.replace(/\s+/g, ' ') === marker.label, 'intended nearby choice');
+              preview=await bounds();
+            }
+            assert.equal(preview.text.replace(/\s+/g, ' '), marker.label, `${fixture} ${mode} ${width} ${input} marker ${index}`);
+            assert.equal(await evaluate(`document.querySelectorAll('.conference-detail-timeline .timeline-event')[${index}].getAttribute('aria-pressed')`), 'true');
+            assert.equal(preview.now, 'hidden');
+            assert.ok(preview.left >= preview.containerLeft-1 && preview.right <= preview.containerRight+1, JSON.stringify(preview));
+            assert.equal(preview.clipped, false);
+            if (index===0) assert.equal(preview.align, 'flex-start');
+            if (index===4) assert.equal(preview.align, 'flex-end');
+            if (index===0 || index===4) {
+              const screenshot = await command('Page.captureScreenshot', {format:'png'});
+              writeFileSync(`/tmp/ccfddl-timeline-${mode}-${width}-${index}.png`, Buffer.from(screenshot.data,'base64'));
+            }
+            // Clicking the selected marker again dismisses it and restores NOW.
+            if (fixture === 'wide') {
+              await activate();
+            } else {
+              const outside = await evaluate(`(() => {
+                const box = document.querySelector('.conference-detail-description').getBoundingClientRect();
+                return {x:box.left+10,y:box.top+box.height/2};
+              })()`);
+              if (input === 'touch') {
+                await command('Input.dispatchTouchEvent', {type:'touchStart',touchPoints:[outside]});
+                await command('Input.dispatchTouchEvent', {type:'touchEnd',touchPoints:[]});
+              } else {
+                await command('Input.dispatchMouseEvent', {type:'mouseMoved',...outside});
+                await command('Input.dispatchMouseEvent', {type:'mousePressed',button:'left',clickCount:1,...outside});
+                await command('Input.dispatchMouseEvent', {type:'mouseReleased',button:'left',clickCount:1,...outside});
+              }
+            }
+            await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'physical dismissal');
+            assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"), 'visible');
+          }
+        }
+        await command('Emulation.setTouchEmulationEnabled', {enabled:false});
+        // A separate click dismisses the selection.
+        await evaluate("document.querySelector('.conference-detail-timeline .timeline-event').click()");
+        await evaluate("document.querySelector('.conference-detail-description').click()");
+        await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'outside dismissal');
+        // Keyboard focus previews the node, Escape dismisses without closing the dialog.
+        await evaluate("document.querySelector('.conference-detail-timeline .timeline-event').blur(); document.querySelector('.conference-detail-timeline .timeline-event').focus()");
+        await until(bounds, 'keyboard preview');
         assert.equal((await bounds()).now,'hidden');
-        const outside = await evaluate(`(() => {
-          const box = document.querySelector('.conference-detail-description').getBoundingClientRect();
-          return {x:box.left+10,y:box.top+box.height/2};
+        await command('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+        await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'Escape dismissal');
+        assert.equal(await evaluate("Boolean(document.querySelector('.conference-detail-title'))"), true);
+        // Physical hover also works beside the NOW marker and restores it on leave.
+        const point = await evaluate(`(() => {
+          const box = document.querySelector('.conference-detail-timeline .timeline-marker').getBoundingClientRect();
+          return {x: box.left+box.width/2, y:box.top+box.height/2};
         })()`);
-        await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[outside]});
-        await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
-        await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"),'touch outside dismissal');
-        await command('Emulation.setTouchEmulationEnabled',{enabled:false});
+        await command('Input.dispatchMouseEvent',{type:'mouseMoved',...point});
+        await until(bounds,'hover preview');
+        assert.equal((await bounds()).now,'hidden');
+        await command('Input.dispatchMouseEvent',{type:'mouseMoved',x:1,y:1});
+        await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"),'hover dismissal');
+        assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"),'visible');
+        if (width === 320) {
+          await command('Emulation.setTouchEmulationEnabled',{enabled:true});
+          await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
+          await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+          await until(bounds,'touch selection');
+          assert.equal((await bounds()).now,'hidden');
+          const outside = await evaluate(`(() => {
+            const box = document.querySelector('.conference-detail-description').getBoundingClientRect();
+            return {x:box.left+10,y:box.top+box.height/2};
+          })()`);
+          await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[outside]});
+          await command('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+          await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"),'touch outside dismissal');
+          await command('Emulation.setTouchEmulationEnabled',{enabled:false});
+        }
+        assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false);
+        console.log('Physical pointer/touch selection, dismissal and label bounds passed:',fixture,mode,width);
       }
-      assert.equal(await evaluate('document.documentElement.scrollWidth > innerWidth'), false);
-      console.log('Timeline selection, dismissal and label bounds passed:',mode,width);
+      await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:preferences.identifier});
     }
-    await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:preferences.identifier});
   }
   assert.deepEqual(errors, []);
   console.log('Timeline labels stay visible and NOW text hides during interaction while its dot stays visible');
