@@ -115,6 +115,8 @@ pub fn ShowTable(
     let archive_path = RwSignal::new(None::<String>);
     let archive_requested = RwSignal::new(false);
     let base_time = RwSignal::new(None::<DateTime<Utc>>);
+    let next_status_transition = RwSignal::new(None::<DateTime<Utc>>);
+    let status_revision = RwSignal::new(0u64);
     let base_time_input = RwSignal::new(String::new());
     let base_time_editing = RwSignal::new(false);
     let base_time_input_ref = NodeRef::<leptos::html::Input>::new();
@@ -128,11 +130,22 @@ pub fn ShowTable(
     let time_zone = RwSignal::new(stored_timezone);
 
     use_interval(1_000, move || {
-        if base_time.get_untracked().is_none() && !base_time_editing.get_untracked() {
-            base_time_input.set(format_datetime_local(
-                Utc::now(),
-                &selected_timezone.get_untracked(),
-            ));
+        if base_time.get_untracked().is_none() {
+            let now = Utc::now();
+            if next_status_transition
+                .get_untracked()
+                .is_some_and(|transition| transition <= now)
+            {
+                // Rebuild only at deadline boundaries, including conference opening.
+                next_status_transition.set(None);
+                status_revision.update(|revision| *revision = revision.wrapping_add(1));
+            }
+            if !base_time_editing.get_untracked() {
+                base_time_input.set(format_datetime_local(
+                    now,
+                    &selected_timezone.get_untracked(),
+                ));
+            }
         }
     });
 
@@ -316,13 +329,24 @@ pub fn ShowTable(
             .get_untracked()
             .as_ref()
             .map(|item| item.id.clone());
+        let _ = status_revision.get();
+        let reference_time = base_time.get().unwrap_or_else(Utc::now);
         let items = build_conf_items(
             conferences,
             &sub_list.get_untracked(),
             &like_list.get_untracked(),
             &acceptance_rates.get(),
             &selected_timezone.get(),
-            base_time.get().unwrap_or_else(Utc::now),
+            reference_time,
+        );
+        next_status_transition.set(
+            items
+                .iter()
+                .filter(|item| item.status != "FIN")
+                .flat_map(|item| item.ddls.iter().chain(item.opening.iter()))
+                .map(|point| point.timepoint.with_timezone(&Utc))
+                .filter(|instant| *instant > reference_time)
+                .min(),
         );
 
         if let Some(selected_id) = selected_id {
@@ -1026,6 +1050,8 @@ pub fn ShowTable(
                                             (
                                                 conf.id.clone(),
                                                 conf.is_like,
+                                                conf.status.clone(),
+                                                conf.deadline.clone(),
                                                 selected_timezone.get(),
                                                 base_time.get().map(|value| value.timestamp_millis()),
                                             )
