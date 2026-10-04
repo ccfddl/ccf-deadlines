@@ -49,6 +49,15 @@ export default {
 async function route(request, env) {
   const url = new URL(request.url);
 
+  const legacyFeed = url.pathname.match(/^\/conference\/(deadlines_(?:en|zh)(?:_[A-Za-z0-9]+)*\.(?:ics|xml))$/);
+  if (["GET", "HEAD"].includes(request.method) && legacyFeed) {
+    url.pathname = `/conference/deadlines/${legacyFeed[1]}`;
+    return new Response(null, {
+      status: 308,
+      headers: { Location: url.toString(), "Cache-Control": "public, max-age=86400" },
+    });
+  }
+
   if (request.method === "GET" && url.pathname === "/api/health") {
     return json({ ok: true });
   }
@@ -402,7 +411,7 @@ async function favoritesCalendar(url, env) {
   if (ids.length === 0 || ids.length > 100 || !ids.every(isValidConferenceKey) || !["en", "zh"].includes(lang)) {
     throw new HttpError(400, "Select 1 to 100 valid conference editions.");
   }
-  const sourceUrl = `${env.PUBLIC_ORIGIN}/conference/deadlines_${lang}.ics`;
+  const sourceUrl = `${env.PUBLIC_ORIGIN}/conference/deadlines/deadlines_${lang}.ics`;
   const source = await fetch(sourceUrl, { redirect: "manual" });
   if (!source.ok || source.status >= 300) {
     throw new HttpError(503, "Conference calendar is temporarily unavailable.");

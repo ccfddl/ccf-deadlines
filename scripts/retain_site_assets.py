@@ -20,7 +20,7 @@ def browser_assets(directory: Path):
             continue
         if len(relative.parts) == 1 or relative.parts[0] == 'snippets':
             yield relative
-        elif relative.parts[0] == 'conferences' and len(relative.parts) == 2:
+        elif relative.parts[0] == 'venues' and len(relative.parts) == 2:
             yield relative
 
 

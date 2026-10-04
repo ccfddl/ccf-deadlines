@@ -23,7 +23,7 @@ export function updateDirectoryFilters(json, english) {
     const empty = document.getElementById('directory-empty');
     if (empty) {
         empty.hidden = matches !== 0;
-        empty.textContent = english ? 'No matching conferences.' : '没有匹配的会议。';
+        empty.textContent = english ? 'No matching venues.' : '没有匹配的会议。';
     }
     document.querySelectorAll('[data-en][data-zh]').forEach(node => {
         node.textContent = english ? node.dataset.en : node.dataset.zh;

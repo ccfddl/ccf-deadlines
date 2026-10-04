@@ -159,7 +159,7 @@ pub fn generate_ics_urls(
     thcpl_ranks: &HashSet<String>,
 ) -> Vec<IcsSubscription> {
     build_subscription_urls(
-        "webcal://ccfddl.com/conference",
+        "webcal://ccfddl.com/conference/deadlines",
         "ics",
         lang,
         subs,
@@ -177,7 +177,7 @@ pub fn generate_rss_urls(
     thcpl_ranks: &HashSet<String>,
 ) -> Vec<SubscriptionLink> {
     build_subscription_urls(
-        "https://ccfddl.com/conference",
+        "https://ccfddl.com/conference/deadlines",
         "xml",
         lang,
         subs,

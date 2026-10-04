@@ -12,6 +12,10 @@
     {
       "pattern": "ccfddl.com/api/*",
       "zone_name": "ccfddl.com"
+    },
+    {
+      "pattern": "ccfddl.com/conference/deadlines_*",
+      "zone_name": "ccfddl.com"
     }
   ],
   "vars": {

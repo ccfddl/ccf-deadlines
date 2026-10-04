@@ -32,7 +32,7 @@ const types = {
 let failingDirectoryResource;
 const server = createServer((request, response) => {
   const pathname = new URL(request.url, "http://localhost").pathname;
-  if ((failingDirectoryResource === 'bootstrap' && /^\/conferences\/app-.*\.js$/.test(pathname))
+  if ((failingDirectoryResource === 'bootstrap' && /^\/venues\/app-.*\.js$/.test(pathname))
       || (failingDirectoryResource === 'wasm' && pathname.endsWith('.wasm'))) {
     response.writeHead(503).end();
     return;
@@ -161,7 +161,7 @@ try {
   };
   for (const width of [1280, 768, 390, 320]) {
     let baseline;
-    for (const path of ['/?filters=all', '/?view=table&filters=all', '/conferences/?filters=all']) {
+    for (const path of ['/?filters=all', '/?view=table&filters=all', '/venues/?filters=all']) {
       await navigate(path, width);
       const current = await metrics();
       assert.equal(current.overflow, false, `${path} overflow at ${width}px`);
@@ -185,7 +185,7 @@ try {
         }, `${path} search must have a single frame at ${width}px (focused=${focused})`);
       }
       await evaluate("document.querySelector('.toolbar-search input').blur()");
-      if (path.includes('/conferences/')) {
+      if (path.includes('/venues/')) {
         assert.ok(await evaluate("document.querySelector('.directory-list li:not([hidden])').getBoundingClientRect().top < innerHeight"), 'directory links must be visible below the controls');
       }
       assert.equal(current.filterToggle, false, 'rank filters must be directly available');
@@ -218,7 +218,7 @@ try {
         }
       }
       const screenshot = await command('Page.captureScreenshot', { format: 'png' });
-      const name = path.includes('conferences') ? 'directory' : path.includes('view=table') ? 'tabular' : 'main';
+      const name = path.includes('venues') ? 'directory' : path.includes('view=table') ? 'tabular' : 'main';
       writeFileSync(`/tmp/ccfddl-controls-${name}-${width}.png`, Buffer.from(screenshot.data, 'base64'));
     }
   }
@@ -233,7 +233,7 @@ try {
         : supportedTimezones(key);`,
   });
   for (const width of [2516, 1280, 768, 390, 320]) {
-    for (const path of ['/?filters=all', '/?view=table&filters=all', '/conferences/?filters=all']) {
+    for (const path of ['/?filters=all', '/?view=table&filters=all', '/venues/?filters=all']) {
       await navigate(`${path}&tz=${encodeURIComponent(longTimezone)}`, width);
       const timezone = await evaluate(`(() => {
         const trigger = document.querySelector('.toolbar-timezone-trigger');
@@ -259,7 +259,7 @@ try {
     }
   }
   await command('Page.removeScriptToEvaluateOnNewDocument', { identifier: longTimezoneOptions.identifier });
-  await navigate('/conferences/?categories=AI&ccf=A&q=ACL&tz=UTC', 1280);
+  await navigate('/venues/?categories=AI&ccf=A&q=ACL&tz=UTC', 1280);
   const visible = () => evaluate("[...document.querySelectorAll('.directory-list li:not([hidden])')].map(row => row.textContent.trim())");
   assert.ok((await visible()).length > 0);
   assert.ok((await visible()).every(title => /^ACL \d{4}$/.test(title)));
@@ -302,7 +302,7 @@ try {
   // A missing bootstrap or WASM must leave usable static links and a working retry.
   for (const resource of ['bootstrap', 'wasm']) {
     failingDirectoryResource = resource;
-    await command('Page.navigate', { url: `http://127.0.0.1:${server.address().port}/conferences/` });
+    await command('Page.navigate', { url: `http://127.0.0.1:${server.address().port}/venues/` });
     await until(() => evaluate("Boolean(document.querySelector('.directory-controls-loading button'))"), `${resource} failure feedback`);
     assert.ok(await evaluate("document.querySelectorAll('.directory-list a').length > 0"));
     assert.equal(await evaluate("getComputedStyle(document.querySelector('.directory-categories')).display"), 'flex');
