@@ -444,7 +444,7 @@ try {
     assert.equal(await evaluate("document.activeElement?.closest('.time_con') === document.querySelectorAll('.time_con')[1]"), true);
     assert.equal(await evaluate("Boolean(document.querySelectorAll('.time_con')[0].querySelector('.timeline-preview'))"), false, 'keyboard focus dismisses the other timeline');
     // Leaving a keyboard-selected timeline must also clear its sticky preview.
-    await evaluate("document.querySelectorAll('.time_con')[1].querySelectorAll('.timeline-event')[4].focus()");
+    await evaluate("[...document.querySelectorAll('.time_con')[1].querySelectorAll('.timeline-event')].at(-1).focus()");
     await pressKey('Enter', 'Enter', 13);
     await until(() => evaluate("document.querySelectorAll('.time_con')[1].querySelectorAll('.timeline-event[aria-pressed=true]').length === 1"), 'keyboard sticky selection');
     await pressKey('Tab', 'Tab', 9);
