@@ -34,7 +34,9 @@ const testConferences = () => {
     title: 'TIMELINETEST', description: 'Timeline interaction regression', sub: 'AI',
     rank: {ccf: 'A'}, dblp: 'test',
     confs: [{year: 2027, id: 'timelinetest27', link: 'https://example.org',
-      timeline: [fixture === 'close'
+      timeline: [fixture === 'keyboard'
+        ? {abstract_deadline: '2027-06-07 19:59:00', deadline: '2027-06-13 19:59:00', rebuttal_deadline: '2027-06-18 19:59:00', decision_deadline: '2027-06-19 19:59:00'}
+        : fixture === 'close'
         ? {abstract_deadline: '2026-11-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2026-11-17 19:59:00', decision_deadline: '2026-11-18 19:59:00'}
         : {abstract_deadline: '2026-10-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2027-01-15 19:59:00', decision_deadline: '2027-02-11 19:59:00'}], timezone: 'UTC',
       date: 'June 20-25, 2027', opening: '2027-06-20 08:00:00', place: 'Virtual'},
@@ -119,6 +121,11 @@ async function evaluate(expression) {
     throw new Error(result.exceptionDetails.text);
   }
   return result.result.value;
+}
+
+async function pressKey(key, code, windowsVirtualKeyCode) {
+  await command('Input.dispatchKeyEvent', {type:'keyDown',key,code,windowsVirtualKeyCode});
+  await command('Input.dispatchKeyEvent', {type:'keyUp',key,code,windowsVirtualKeyCode});
 }
 
 try {
@@ -340,6 +347,50 @@ try {
       await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:preferences.identifier});
     }
   }
+  // Keep Opening next to Decisions so native Tab can enter the nearby picker
+  // from the final marker, without a mouse-selected fallback holding it open.
+  fixture = 'keyboard';
+  const keyboardPreferences = await command('Page.addScriptToEvaluateOnNewDocument', {source: `
+    localStorage.setItem('conference_view', 'cards');
+    localStorage.setItem('conference_search', 'TIMELINETEST');
+  `});
+  for (const width of [1280, 390, 320]) {
+    await command('Emulation.setDeviceMetricsOverride', {width,height:1100,deviceScaleFactor:1,mobile:false});
+    await command('Page.navigate', {url:`http://127.0.0.1:${server.address().port}/?filters=all`});
+    await until(present, 'keyboard fixture loaded');
+    await evaluate("document.querySelector('.conf-title').click()");
+    await until(() => evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event').length === 5"), 'keyboard timeline buttons');
+    await command('Input.dispatchMouseEvent', {type:'mouseMoved',x:1,y:1});
+    await evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event')[4].focus()");
+    await until(() => evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-choice').length >= 2"), 'focus-only nearby choices');
+    assert.equal(await evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event[aria-pressed=true]').length"), 0, 'picker starts with no clicked selection');
+    const choices = await evaluate("[...document.querySelectorAll('.conference-detail-timeline .timeline-choice')].map(node => node.getAttribute('aria-label'))");
+    for (const label of choices.slice(0,2)) {
+      await pressKey('Tab', 'Tab', 9);
+      await until(async () => (await bounds())?.text.replace(/\s+/g, ' ') === label, 'Tab focus previews the nearby choice');
+      assert.equal(await evaluate(`(() => {
+        const choice = document.activeElement;
+        return choice?.matches('.conference-detail-timeline .timeline-choice')
+          && choice.getAttribute('aria-label') === ${JSON.stringify(label)};
+      })()`), true, 'nearby choice retains actual keyboard focus');
+    }
+    await pressKey('Enter', 'Enter', 13);
+    await until(() => evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event[aria-pressed=true]').length === 1"), 'keyboard nearby choice selection');
+    assert.equal((await bounds()).text.replace(/\s+/g, ' '), choices[1]);
+    await pressKey('Escape', 'Escape', 27);
+    await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'nearby choice Escape dismissal');
+    assert.equal(await evaluate("Boolean(document.querySelector('.conference-detail-title'))"), true);
+    // Reopen from focus alone, then Tab through all choices and out of the
+    // timeline. Outside focus must clear the final preview and restore NOW.
+    await evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event')[4].focus()");
+    for (let tab=0;tab<choices.length+1;tab++) await pressKey('Tab', 'Tab', 9);
+    assert.equal(await evaluate("document.querySelector('.conference-detail-timeline .time_con').contains(document.activeElement)"), false, 'Tab leaves the nearby picker');
+    await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'Tab outside nearby choices');
+    assert.equal(await evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event[aria-pressed=true]').length"), 0);
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"), 'visible');
+    console.log('Focus-only nearby picker Tab/Enter/Escape and outside dismissal passed:',width);
+  }
+  await command('Page.removeScriptToEvaluateOnNewDocument', {identifier:keyboardPreferences.identifier});
   // Clicks stopped by one row must still dismiss a selection in another row.
   fixture = 'multiple';
   const multiPreferences = await command('Page.addScriptToEvaluateOnNewDocument', {source: `
@@ -392,6 +443,15 @@ try {
     }
     assert.equal(await evaluate("document.activeElement?.closest('.time_con') === document.querySelectorAll('.time_con')[1]"), true);
     assert.equal(await evaluate("Boolean(document.querySelectorAll('.time_con')[0].querySelector('.timeline-preview'))"), false, 'keyboard focus dismisses the other timeline');
+    // Leaving a keyboard-selected timeline must also clear its sticky preview.
+    await evaluate("document.querySelectorAll('.time_con')[1].querySelectorAll('.timeline-event')[4].focus()");
+    await pressKey('Enter', 'Enter', 13);
+    await until(() => evaluate("document.querySelectorAll('.time_con')[1].querySelectorAll('.timeline-event[aria-pressed=true]').length === 1"), 'keyboard sticky selection');
+    await pressKey('Tab', 'Tab', 9);
+    assert.equal(await evaluate("document.querySelectorAll('.time_con')[1].contains(document.activeElement)"), false, 'Tab leaves the last timeline');
+    await until(() => evaluate("!document.querySelectorAll('.time_con')[1].querySelector('.timeline-preview')"), 'Tab outside clears sticky preview');
+    assert.equal(await evaluate("document.querySelectorAll('.time_con')[1].querySelectorAll('.timeline-event[aria-pressed=true]').length"), 0);
+    assert.equal(await evaluate("getComputedStyle(document.querySelectorAll('.time_con')[1].querySelector('.sel_dot'), '::after').visibility"), 'visible');
     // Custom reference times expose BASE through the same hit-testable wrapper.
     await evaluate(`(() => {
       const input=document.querySelector('#base-time-input');

@@ -46,6 +46,8 @@ jobs:
         # relatively as favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
         # will obviously return error 404 not found.
         run: ./trunk build --release
+      - name: Test timeline pointer, touch, and keyboard interactions
+        run: node scripts/test_timeline_browser.mjs dist
       - name: Generate crawlable conference pages
         run: python scripts/generate_seo_pages.py
       - name: Verify public MCP pages
