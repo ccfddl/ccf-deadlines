@@ -630,8 +630,8 @@ async function loadCcfddlData() {
     }
 
     const [zhResponse, enResponse] = await Promise.all([
-      fetch("https://ccfddl.com/conference/deadlines_zh.ics"),
-      fetch("https://ccfddl.com/conference/deadlines_en.ics"),
+      fetch("https://ccfddl.com/conference/deadlines/deadlines_zh.ics"),
+      fetch("https://ccfddl.com/conference/deadlines/deadlines_en.ics"),
     ]);
     const responses = [zhResponse, enResponse].filter((res) => res.ok);
     if (responses.length === 0) throw new Error("加载失败");

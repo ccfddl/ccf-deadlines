@@ -209,7 +209,7 @@ pub fn Header(
                     " Preview in "
                     <a style="color: #666666" href="/?view=table" target="_blank" rel="noopener noreferrer">"tabular form"</a>
                     " or "
-                    <a style="color: #666666" href="/conferences/" target="_blank" rel="noopener noreferrer">"directory"</a>
+                    <a style="color: #666666" href="/venues/" target="_blank" rel="noopener noreferrer">"directory"</a>
                     "."
                 })}
             </div>

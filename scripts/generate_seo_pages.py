@@ -43,7 +43,7 @@ def edition_path(conference: dict, edition: dict) -> str:
     if not isinstance(edition["year"], int) or not 1900 <= edition["year"] <= 2200:
         raise ValueError(f"Invalid conference year: {edition['year']}")
     slug = slugify(conference["title"]) or slugify(edition["id"])
-    return f"/conferences/{conference['sub'].lower()}/{slug}-{edition['year']}/"
+    return f"/venues/{conference['sub'].lower()}/{slug}-{edition['year']}/"
 
 
 def safe_link(url: str) -> str | None:
@@ -67,7 +67,7 @@ def format_deadline(value: object, timezone: str) -> str:
 
 def category_links(categories: dict[str, str], active_sub: str = "") -> str:
     return "".join(
-        f'<a href="/conferences/?categories={text(sub)}"{(" aria-current=\"page\"" if sub == active_sub else "")}'
+        f'<a href="/venues/?categories={text(sub)}"{(" aria-current=\"page\"" if sub == active_sub else "")}'
         f' data-category="{text(sub)}" data-zh="{text(name)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, name))}">{text(name)}</a>'
         for sub, name in categories.items()
     )
@@ -91,7 +91,7 @@ def directory_startup() -> str:
         status.className = 'directory-controls-loading';
         status.setAttribute('role', 'alert');
         status.textContent = document.documentElement.lang === 'en'
-          ? 'Unable to load filters. Conference links are still available. '
+          ? 'Unable to load filters. Venue links are still available. '
           : '筛选控件加载失败，仍可浏览下方会议链接。';
         const retry = document.createElement('button');
         retry.type = 'button';
@@ -101,7 +101,7 @@ def directory_startup() -> str:
         cleanup();
       };
       const onError = event => {
-        if (event.target?.tagName === 'SCRIPT' && event.target.src.includes('/conferences/app-')) fail();
+        if (event.target?.tagName === 'SCRIPT' && event.target.src.includes('/venues/app-')) fail();
       };
       const timer = setTimeout(fail, 30000);
       window.addEventListener('DirectoryControlsReady', cleanup);
@@ -111,7 +111,7 @@ def directory_startup() -> str:
     </script>'''
 
 
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/conferences/style.css") -> str:
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css") -> str:
     clock_control = (
         '<div class="toolbar-clock"><time class="toolbar-clock-value" id="display-clock">—</time>'
         '<span class="toolbar-timezone"><span>(</span><label class="toolbar-timezone-picker">'
@@ -120,7 +120,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     )
     filters = (
         f'<div class="directory-toolbar detail-toolbar">{clock_control}</div>'
-        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" style="display:flex;flex-wrap:wrap;gap:10px" aria-label="Conference categories">{navigation}</nav><p class="directory-controls-loading" role="status">Loading filters…</p></div>{directory_startup()}'
+        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" style="display:flex;flex-wrap:wrap;gap:10px" aria-label="Venue categories">{navigation}</nav><p class="directory-controls-loading" role="status">Loading filters…</p></div>{directory_startup()}'
     )
     return f"""<!doctype html>
 <html lang="en">
@@ -139,7 +139,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <div class="home">
     <header class="site-header">
       <div class="header-main"><a class="title" href="{BASE_URL}/"><span>CCFDDL&nbsp;Open&nbsp;</span><span class="title-accent">Deadlines</span></a><div class="header-github"><a class="github-star-link" href="https://github.com/ccfddl/ccf-deadlines" target="_blank" rel="noopener noreferrer" aria-label="Star ccfddl/ccf-deadlines on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>Star</span><span class="github-star-count" id="github-star-count" hidden></span></a><a class="header-x-link" href="https://x.com/ccfddl" target="_blank" rel="noopener noreferrer" aria-label="Follow CCFDDL on X" title="Follow CCFDDL on X"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg><span>Follow</span></a></div><div class="header-auth" id="github-auth"><a class="github-login-button" id="github-login-link" href="{BASE_URL}/api/auth/github?return_to=%2F"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span data-zh="使用 GitHub 登录" data-en="Sign in with GitHub">使用 GitHub 登录</span></a></div></div>
-      <div class="el-row subtitle">Worldwide Conference Deadline Countdowns. Preview in <a href="{BASE_URL}/?view=table">tabular form</a> or <a href="{BASE_URL}/conferences/" target="_blank" rel="noopener noreferrer">directory</a>.</div>
+      <div class="el-row subtitle">Worldwide Conference Deadline Countdowns. Preview in <a href="{BASE_URL}/?view=table">tabular form</a> or <a href="{BASE_URL}/venues/" target="_blank" rel="noopener noreferrer">directory</a>.</div>
       <div class="el-row subtitle">*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only.</div>
       {breadcrumb}
       {filters}
@@ -185,7 +185,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       }}).catch(function(){{}});
     }}
   }})();</script>
-  <script src="/conferences/controls.js" defer></script>
+  <script src="/venues/controls.js" defer></script>
 </body>
 </html>
 """
@@ -219,7 +219,7 @@ def deadline_rows(edition: dict) -> str:
     return "".join(row for _, row in sorted(rows, key=lambda entry: entry[0])) or '<div class="conference-detail-deadline">Dates to be announced</div>'
 
 
-def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/conferences/style.css") -> str:
+def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/venues/style.css") -> str:
     name, year = conference["title"], edition["year"]
     path = edition_path(conference, edition)
     canonical = BASE_URL + path
@@ -285,11 +285,11 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     </article>
     <section class="editions"><h2>past venues</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
     """
-    breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/conferences/">All conferences</a><span>/</span><span>{text(name)} {year}</span></nav>'
+    breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/venues/">All venues</a><span>/</span><span>{text(name)} {year}</span></nav>'
     return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css)
 
 
-def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "", static_css: str = "/conferences/style.css") -> str:
+def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "", static_css: str = "/venues/style.css") -> str:
     groups = defaultdict(list)
     for conference in conferences:
         latest = max(conference["confs"], key=lambda item: item["year"])
@@ -308,9 +308,9 @@ def directory_page(conferences: list[dict], categories: dict[str, str], app_asse
             )
         category = categories.get(sub, sub)
         sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2 data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(category)}</h2><ul class="directory-list">{links}</ul></section>')
-    body = f'<p class="directory-empty" id="directory-empty" hidden>No matching conferences.</p>{"".join(sections)}'
-    breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><span>All conferences</span></nav>'
-    return layout("Conference Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/conferences/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
+    body = f'<p class="directory-empty" id="directory-empty" hidden>No matching venues.</p>{"".join(sections)}'
+    breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><span>All venues</span></nav>'
+    return layout("Venue Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
 
 
 def stylesheet() -> str:
@@ -474,11 +474,11 @@ def shared_app_assets(output: Path) -> str:
         "  window.dispatchEvent(new Event('DirectoryControlsFailed'));\n"
         "}\n"
     )
-    directory = output / "conferences"
+    directory = output / "venues"
     directory.mkdir(exist_ok=True)
     filename = f'app-{hashlib.sha256(bootstrap.encode()).hexdigest()[:16]}.js'
     (directory / filename).write_text(bootstrap, encoding="utf-8")
-    return f'<link rel="stylesheet" href="{text(assets.css)}"><script type="module" src="/conferences/{filename}"></script>'
+    return f'<link rel="stylesheet" href="{text(assets.css)}"><script type="module" src="/venues/{filename}"></script>'
 
 
 def generate(conferences: list[dict], categories: dict[str, str], output: Path, acceptances: dict[str, list[dict]] | None = None) -> list[str]:
@@ -486,14 +486,14 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     for asset in ("favicon.ico", "ccfddl-logo.svg"):
         shutil.copy2(ROOT / "public" / asset, output / asset)
     acceptances = acceptances or {}
-    directory = output / "conferences"
+    directory = output / "venues"
     directory.mkdir(exist_ok=True)
     css = stylesheet()
     css_filename = f'style-{hashlib.sha256(css.encode()).hexdigest()[:16]}.css'
     (directory / css_filename).write_text(css, encoding="utf-8")
     # Keep the previous URL available for already-cached edition pages.
     (directory / "style.css").write_text(css, encoding="utf-8")
-    static_css = f'/conferences/{css_filename}'
+    static_css = f'/venues/{css_filename}'
     written = []
     seen = set()
     for conference in conferences:
@@ -507,12 +507,12 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
             target.write_text(edition_page(conference, edition, categories, acceptances, static_css), encoding="utf-8")
             written.append(path)
     assets = shared_app_assets(output)
-    directory = output / "conferences"
+    directory = output / "venues"
     directory.mkdir(exist_ok=True)
     (directory / "index.html").write_text(directory_page(conferences, categories, assets, static_css), encoding="utf-8")
     (directory / "controls.js").write_text((ROOT / "scripts/seo_page_controls.js").read_text(encoding="utf-8"), encoding="utf-8")
     urls = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-    for path in ("/", "/conferences/", *sorted(written)):
+    for path in ("/", "/venues/", *sorted(written)):
         SubElement(SubElement(urls, "url"), "loc").text = BASE_URL + path
     (output / "sitemap.xml").write_bytes(b'<?xml version="1.0" encoding="UTF-8"?>\n' + tostring(urls, encoding="utf-8") + b"\n")
     return written

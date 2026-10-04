@@ -1,7 +1,11 @@
 ## iCal Subscription:
 
-- English: `https://ccfddl.com/conference/deadlines_en.ics`
-- 简体中文: `https://ccfddl.com/conference/deadlines_zh.ics`
+- English: `https://ccfddl.com/conference/deadlines/deadlines_en.ics`
+- 简体中文: `https://ccfddl.com/conference/deadlines/deadlines_zh.ics`
+
+Calendar (`.ics`) and RSS (`.xml`) feeds are published in `/conference/deadlines/`. Existing `/conference/deadlines_*.ics` and `.xml` subscriptions redirect to the new folder through the Cloudflare Worker.
+
+The deployment generates files directly in that folder using `--output-dir public/conference/deadlines`. Without `--output-dir`, the CLI still writes to the current directory.
 
 <img src="../../.readme_assets/screenshot_iCal.jpg" width="500px"/>
 

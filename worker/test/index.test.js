@@ -26,6 +26,21 @@ test("filters a live calendar to selected conference editions", () => {
   assert.match(filtered, /TZID:UTC\+00:00/);
 });
 
+test("redirects existing calendar and RSS subscriptions to the feed folder", async () => {
+  for (const filename of ["deadlines_en.ics", "deadlines_zh.xml", "deadlines_en_ccf_A_core_Astar_thcpl_A_AI.ics"]) {
+    for (const method of ["GET", "HEAD"]) {
+      const response = await worker.fetch(new Request(`https://ccfddl.com/conference/${filename}?version=1`, { method }), {});
+      assert.equal(response.status, 308);
+      assert.equal(response.headers.get("Location"), `https://ccfddl.com/conference/deadlines/${filename}?version=1`);
+    }
+  }
+  for (const pathname of ["/conference/deadlines_fake.ics", "/conference/deadlines_en.json", "/conference/deadlines/deadlines_en.ics"]) {
+    const response = await worker.fetch(new Request(`https://ccfddl.com${pathname}`), {});
+    assert.equal(response.status, 404);
+    assert.equal(response.headers.get("Location"), null);
+  }
+});
+
 test("rejects a calendar from before edition markers were deployed", () => {
   assert.throws(
     () => filterFavoritesCalendar("BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n", new Set(["iclr27"])),
@@ -54,7 +69,7 @@ test("serves one public calendar feed for multiple selected editions", async () 
   ].join("\r\n");
   try {
     globalThis.fetch = async (url) => {
-      assert.equal(url, "https://ccfddl.com/conference/deadlines_en.ics");
+      assert.equal(url, "https://ccfddl.com/conference/deadlines/deadlines_en.ics");
       return new Response(source);
     };
     const response = await worker.fetch(

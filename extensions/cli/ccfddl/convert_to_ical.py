@@ -323,22 +323,27 @@ def reverse_index(file_paths: list[str], subs: list[str]):
 
 
 if __name__ == "__main__":
+    import argparse
     from xlin import ls, element_mapping
 
+    parser = argparse.ArgumentParser(description="Generate conference calendar feeds")
+    parser.add_argument("--output-dir", type=Path, default=Path("."))
+    output_dir = parser.parse_args().output_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
     SUB_MAPPING = load_mapping("conference/types.yml")
-    paths = ls("conference", filter=lambda f: f.name != "types.yml")
+    paths = ls("conference", filter=lambda f: f.suffix == ".yml" and f.name != "types.yml")
     index = reverse_index(paths, list(SUB_MAPPING.keys()))
     for lang in ["zh", "en"]:
-        convert_to_ical(paths, f"deadlines_{lang}.ics", lang, SUB_MAPPING)
+        convert_to_ical(paths, str(output_dir / f"deadlines_{lang}.ics"), lang, SUB_MAPPING)
         if lang == "en":
             write_deadline_events_index(
-                "deadlines_en.ics", "public/conference/deadline_events.json"
+                str(output_dir / "deadlines_en.ics"), "public/conference/deadline_events.json"
             )
         f = lambda key: (
             len(index[key]) > 0,
             convert_to_ical(
                 index[key],
-                f"deadlines_{lang}_{key.replace('*', 'star')}.ics",
+                str(output_dir / f"deadlines_{lang}_{key.replace('*', 'star')}.ics"),
                 lang,
                 SUB_MAPPING,
             ),

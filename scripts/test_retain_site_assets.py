@@ -14,9 +14,10 @@ class RetainedAssetTests(unittest.TestCase):
             previous.mkdir()
             output.mkdir()
             files = ['app-old.js', 'app-old_bg.wasm', 'styles-old.css',
-                     'snippets/old/inline0.js', 'conferences/app-old.js',
-                     'conferences/style-old.css', 'conferences/app.js']
-            for name in [*files, 'index.html', 'conferences/ai/acl/index.html', 'CNAME']:
+                     'snippets/old/inline0.js', 'venues/app-old.js', 'venues/style-old.css']
+            for name in [*files, 'index.html', 'conferences/app-old.js',
+                         'conferences/style-old.css', 'conferences/ai/acl/index.html',
+                         'venues/ai/acl/index.html', 'CNAME']:
                 path = previous / name
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(name)
@@ -25,7 +26,8 @@ class RetainedAssetTests(unittest.TestCase):
                 self.assertEqual((output / name).read_text(), name)
             self.assertFalse((output / 'index.html').exists())
             self.assertFalse((output / 'CNAME').exists())
-            self.assertFalse((output / 'conferences/ai/acl/index.html').exists())
+            self.assertFalse((output / 'conferences').exists())
+            self.assertFalse((output / 'venues/ai/acl/index.html').exists())
 
     def test_expiration_does_not_overwrite_current_assets_or_extend_old_assets(self):
         with tempfile.TemporaryDirectory() as temporary:
