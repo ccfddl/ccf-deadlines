@@ -3074,7 +3074,7 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 .conference-detail-timeline .line_time .all_line {
   width: calc(100% - 24px);
   margin: 0 12px;
-  padding-top: 25px;
+  padding-top: 0;
   padding-bottom: 5px;
 }
 
@@ -3108,11 +3108,6 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   border-radius: 2px;
 }
 
-.conference-detail-timeline .line_time .dot_all em,
-.conference-detail-timeline .line_time .square_all em {
-  display: none;
-}
-
 .conference-detail-timeline .line_time .sel_dot {
   top: -5px;
   width: 13px;
@@ -3133,18 +3128,6 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.08em;
-}
-
-.conference-detail-timeline .line_time .sel_dot:hover::after {
-  opacity: 0;
-}
-
-.conference-detail-timeline .line_time .sel_dot em {
-  display: none;
-}
-
-.conference-detail-timeline .line_time .sel_dot:hover em {
-  display: inline-block;
 }
 
 .conference-detail-timeline-range {
