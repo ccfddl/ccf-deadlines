@@ -1,6 +1,9 @@
 use crate::components::conf::TimePoint;
 use chrono::{Duration, prelude::*};
 use leptos::prelude::*;
+use wasm_bindgen::JsCast;
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::closure::Closure;
 
 #[component]
 pub fn TimeLine(
@@ -9,7 +12,60 @@ pub fn TimeLine(
     #[prop(default = false)] custom_reference: bool,
 ) -> impl IntoView {
     let has_custom_reference = custom_reference;
+    let hovered = RwSignal::new(None::<usize>);
+    let focused = RwSignal::new(None::<usize>);
+    let selected = RwSignal::new(None::<usize>);
+    let active = Memo::new(move |_| hovered.get().or(focused.get()).or(selected.get()));
+    let dismiss = move || {
+        hovered.set(None);
+        focused.set(None);
+        selected.set(None);
+    };
+    let timeline_ref = NodeRef::<leptos::html::Div>::new();
+    #[cfg(target_arch = "wasm32")]
+    {
+        // Capture outside interactions before a different timeline or row button
+        // stops propagation. Preserve this timeline's own toggle and picker clicks.
+        let listener = Closure::<dyn FnMut(web_sys::Event)>::new(move |event: web_sys::Event| {
+            let inside = event
+                .target()
+                .and_then(|target| target.dyn_into::<web_sys::Node>().ok())
+                .zip(timeline_ref.get_untracked())
+                .is_some_and(|(target, root)| root.contains(Some(&target)));
+            if !inside {
+                dismiss();
+            }
+        });
+        for name in ["click", "focusin"] {
+            window()
+                .add_event_listener_with_callback_and_bool(
+                    name,
+                    listener.as_ref().unchecked_ref(),
+                    true,
+                )
+                .expect("register timeline outside listener");
+        }
+        let listener = StoredValue::new_local(listener);
+        on_cleanup(move || {
+            listener.with_value(|listener| {
+                for name in ["click", "focusin"] {
+                    let _ = window().remove_event_listener_with_callback_and_bool(
+                        name,
+                        listener.as_ref().unchecked_ref(),
+                        true,
+                    );
+                }
+            });
+        });
+    }
     let (sel_time, set_sel_time) = signal(String::new());
+    let reference_label = move || {
+        format!(
+            "{}: {}",
+            if has_custom_reference { "Base" } else { "Now" },
+            sel_time.get()
+        )
+    };
     let (start_date, set_start_date) = signal(0.0);
     let (end_date, set_end_date) = signal(0.0);
     let (incre_dates, set_incre_dates) = signal(Vec::<TimePoint>::new());
@@ -20,6 +76,39 @@ pub fn TimeLine(
     let (sel_dot_style, set_sel_dot_style) = signal(String::new());
     let (sel_dot_class, set_sel_dot_class) = signal(String::new());
     let (can_line_style, set_can_line_style) = signal(String::new());
+    let preview_point = Memo::new(move |_| {
+        active
+            .get()
+            .and_then(|index| incre_dates.with(|points| points.get(index).cloned()))
+    });
+
+    let nearby_points = Memo::new(move |_| {
+        let Some(index) = active.get() else {
+            return Vec::new();
+        };
+        incre_dates.with(|points| {
+            if index >= points.len() {
+                return Vec::new();
+            }
+            let position = |i: usize| {
+                calculate_position_percent(&points[i].timepoint, start_date.get(), end_date.get())
+            };
+            let mut first = index;
+            let mut last = index;
+            while first > 0 && position(first) - position(first - 1) < 5.0 {
+                first -= 1;
+            }
+            while last + 1 < points.len() && position(last + 1) - position(last) < 5.0 {
+                last += 1;
+            }
+            if first == last {
+                return Vec::new();
+            }
+            (first..=last)
+                .map(|i| (i, points[i].clone()))
+                .collect::<Vec<_>>()
+        })
+    });
 
     Effect::new(move |_| {
         initialize_timeline(
@@ -67,8 +156,8 @@ pub fn TimeLine(
 
     let format_backup_type = |backup_type: i32| -> &'static str {
         match backup_type {
-            0 => "Registration:",
-            1 => "Submission:",
+            0 => "Abstract Submission:",
+            1 => "Paper Submission:",
             2 => "Rebuttal Submission:",
             3 => "Final Decisions:",
             4 => "Conference Opening:",
@@ -87,17 +176,44 @@ pub fn TimeLine(
         }
     };
 
-    let calculate_backup_position = move |time: &DateTime<FixedOffset>, index: usize| -> String {
+    let calculate_backup_position = move |time: &DateTime<FixedOffset>,
+                                          index: usize|
+          -> (String, String) {
         let left_percent = calculate_position_percent(time, start_date.get(), end_date.get());
 
         let clamped_percent = left_percent.max(0.5).min(99.5);
-        let base_style = format!("left:{}%;", clamped_percent);
-
-        if index as i32 <= expire_index.get() {
-            format!("{}border: 2px solid #ccc;", base_style)
+        let positions = incre_dates.with(|points| {
+            points
+                .iter()
+                .map(|point| {
+                    calculate_position_percent(&point.timepoint, start_date.get(), end_date.get())
+                        .clamp(0.5, 99.5)
+                })
+                .collect::<Vec<_>>()
+        });
+        // Divide neighbouring hit targets at their date midpoint. Keep the
+        // decorative marker separate so a narrow target never clips its shape.
+        let left_boundary = index
+            .checked_sub(1)
+            .map(|previous| (clamped_percent + positions[previous]) / 2.0)
+            .unwrap_or(0.0);
+        let right_boundary = positions
+            .get(index + 1)
+            .map(|next| (next + clamped_percent) / 2.0)
+            .unwrap_or(100.0);
+        let target_style = format!(
+            "left:max(0px, calc({clamped_percent}% - 12px), {left_boundary}%);right:max(0px, calc({}% - 12px), {}%);",
+            100.0 - clamped_percent,
+            100.0 - right_boundary,
+        );
+        let marker_style =
+            format!("left:{clamped_percent}%;margin-left:0;transform:translateX(-50%);");
+        let marker_style = if index as i32 <= expire_index.get() {
+            format!("{marker_style}border: 2px solid #ccc;")
         } else {
-            base_style
-        }
+            marker_style
+        };
+        (target_style, marker_style)
     };
 
     let calculate_reference_position = move |time: &DateTime<FixedOffset>| -> String {
@@ -107,16 +223,33 @@ pub fn TimeLine(
         format!("left:{}%;", clamped_percent)
     };
 
-    let get_backup_text_style = move |index: usize| -> &'static str {
-        if index as i32 <= expire_index.get() {
-            "color: #7a8795;"
-        } else {
-            ""
-        }
-    };
-
     view! {
-        <div class="time_con">
+        <div
+            class="time_con"
+            node_ref=timeline_ref
+            class:is-interacting=move || active.get().is_some()
+            on:click=move |_| dismiss()
+            on:focusout=move |event| {
+                // Preserve focus-only choices during a marker-to-choice or
+                // choice-to-choice transfer. Clearing on each child's blur
+                // removes the picker before the next button receives focus.
+                let inside = event
+                    .related_target()
+                    .and_then(|target| target.dyn_into::<web_sys::Node>().ok())
+                    .zip(timeline_ref.get_untracked())
+                    .is_some_and(|(target, root)| root.contains(Some(&target)));
+                if !inside {
+                    dismiss();
+                }
+            }
+            on:keydown=move |event| {
+                if event.key() == "Escape" && active.get_untracked().is_some() {
+                    event.stop_propagation();
+                    event.prevent_default();
+                    dismiss();
+                }
+            }
+        >
             <style>
                 r#"
                 /* 时间轴容器 */
@@ -137,8 +270,82 @@ pub fn TimeLine(
                 .line_time .all_line {
                     width: 90%;
                     margin: 0 5%;
-                    padding-top: 25px;
+                    padding-top: 0;
                     padding-bottom: 15px;
+                }
+
+                .line_time .timeline-preview-slot {
+                    display: flex;
+                    align-items: flex-end;
+                    min-height: 44px;
+                    padding-bottom: 12px;
+                    box-sizing: border-box;
+                }
+
+                .line_time .timeline-preview {
+                    max-width: 100%;
+                    min-width: 0;
+                    color: #409eff;
+                    font-size: 12px;
+                    line-height: 1.4;
+                    font-style: normal;
+                    white-space: normal;
+                    overflow-wrap: anywhere;
+                }
+
+                .line_time .timeline-event {
+                    position: absolute;
+                    top: -11px;
+                    height: 25px;
+                    padding: 0;
+                    border: 0;
+                    background: transparent;
+                    min-width: 0;
+                    cursor: pointer;
+                    z-index: 3;
+                }
+
+                .line_time .timeline-marker {
+                    pointer-events: none;
+                }
+
+                .line_time .timeline-event:focus-visible {
+                    outline: none;
+                }
+
+                .line_time .timeline-event:focus-visible + .timeline-marker,
+                .line_time .timeline-event[aria-pressed="true"] + .timeline-marker {
+                    outline: 2px solid #409eff;
+                    outline-offset: 3px;
+                }
+
+                .line_time .timeline-choices {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 6px;
+                    margin-top: 16px;
+                }
+
+                .line_time .timeline-choice {
+                    padding: 6px 9px;
+                    min-height: 32px;
+                    border: 1px solid #d9dfe5;
+                    border-radius: 6px;
+                    background: transparent;
+                    color: #526579;
+                    font: inherit;
+                    font-size: 11px;
+                    cursor: pointer;
+                }
+
+                .line_time .timeline-choice[aria-pressed="true"] {
+                    border-color: #6f9fca;
+                    background: #ecf5fc;
+                    color: #2b4d68;
+                }
+
+                .time_con.is-interacting .sel_dot::after {
+                    visibility: hidden;
                 }
 
                 /* 时间轴主线 */
@@ -197,23 +404,11 @@ pub fn TimeLine(
                     box-sizing: border-box;
                 }
 
-                .line_time .dot_all em {
-                    display: none;
-                    color: #409eff;
-                    transform: translateX(-50%);
-                    position: absolute;
-                    top: -25px;
-                }
-
                 .line_time .dot_all:hover {
                     width: 10px;
                     height: 10px;
                     border: 2px solid #409eff;
                     top: -4px;
-                }
-
-                .line_time .dot_all:hover em {
-                    display: inline-block;
                 }
 
                 .line_time .dot_rebuttal {
@@ -240,14 +435,6 @@ pub fn TimeLine(
                     box-sizing: border-box;
                 }
 
-                .line_time .square_all em {
-                    display: none;
-                    color: #409eff;
-                    transform: translateX(-50%);
-                    position: absolute;
-                    top: -25px;
-                }
-
                 .line_time .square_all:hover {
                     width: 10px;
                     height: 10px;
@@ -255,12 +442,9 @@ pub fn TimeLine(
                     top: -4px;
                 }
 
-                .line_time .square_all:hover em {
-                    display: inline-block;
-                }
-
                 /* 当前选中点 */
                 .line_time .sel_dot {
+                    pointer-events: none;
                     width: 10px;
                     height: 10px;
                     top: -4px;
@@ -270,46 +454,39 @@ pub fn TimeLine(
                     position: absolute;
                 }
 
-                .line_time .sel_dot em {
-                    display: none;
-                    color: #FFA500;
-                    transform: translateX(-50%);
-                    position: absolute;
-                    top: -25px;
-                }
-
-                .line_time .sel_dot:hover em {
-                    display: inline-block;
-                }
-
-                /* 边界情况的特殊定位 */
-                .line_time .sel_dot_left em {
-                    transform: translateX(-20%);
-                }
-
-                .line_time .sel_dot_left i {
-                    left: 20%;
-                }
-
-                .line_time .sel_dot_right em {
-                    transform: translateX(-90%);
-                }
-
-                .line_time .sel_dot_left i {
-                    left: 20%;
-                }
-                .line_time .sel_dot_right em {
-                    transform: translateX(-80%);
-                }
-                .line_time .sel_dot_right i {
-                    left: 80%;
-                }
-
                 "#
             </style>
 
             <div class="line_time">
-                <div class="all_line">
+                // The decorative reference dot must not block nearby milestones.
+                // Its hit-testable rail wrapper exposes the exact NOW/BASE time.
+                <div class="all_line" role="group" aria-label=reference_label title=reference_label>
+                    <div
+                        class="timeline-preview-slot"
+                        style=move || {
+                            let percent = preview_point.get().map(|point| {
+                                calculate_position_percent(&point.timepoint, start_date.get(), end_date.get())
+                            }).unwrap_or(50.0);
+                            if percent < 35.0 {
+                                "justify-content:flex-start;text-align:left;"
+                            } else if percent > 65.0 {
+                                "justify-content:flex-end;text-align:right;"
+                            } else {
+                                "justify-content:center;text-align:center;"
+                            }
+                        }
+                    >
+                        {move || preview_point.get().map(|point| view! {
+                            <div class="timeline-preview" style=if point.timepoint <= reference_time {
+                                "color:#7a8795;"
+                            } else {
+                                ""
+                            }>
+                                {format_backup_type(point.r#type)} " "
+                                {format_time_label(&point.timepoint, false, 0)}
+                            </div>
+                        })}
+                    </div>
                     <div class="line">
                         <div class="can_line" style=move || can_line_style.get()></div>
 
@@ -354,11 +531,10 @@ pub fn TimeLine(
                                 .enumerate()
                                 .map(|(index, backup_point)| {
                                     let class_name = format_backup_class(backup_point.r#type);
-                                    let style = calculate_backup_position(
+                                    let (target_style, marker_style) = calculate_backup_position(
                                         &backup_point.timepoint,
                                         index,
                                     );
-                                    let text_style = get_backup_text_style(index);
                                     let type_label = format_backup_type(backup_point.r#type);
                                     let time_label = format_time_label(
                                         &backup_point.timepoint,
@@ -367,9 +543,30 @@ pub fn TimeLine(
                                     );
 
                                     view! {
-                                        <div class=class_name style=style>
-                                            <em style=text_style>{type_label}" "{time_label}</em>
-                                        </div>
+                                        <button
+                                            type="button"
+                                            class="timeline-event"
+                                            style=target_style
+                                            aria-label=format!("{type_label} {time_label}")
+                                            title=format!("{type_label} {time_label}")
+                                            aria-pressed=move || (selected.get() == Some(index)).to_string()
+                                            on:pointerenter=move |_| hovered.set(Some(index))
+                                            on:pointerleave=move |_| hovered.set(None)
+                                            on:focus=move |_| focused.set(Some(index))
+                                            on:click=move |event| {
+                                                event.stop_propagation();
+                                                hovered.set(None);
+                                                focused.set(None);
+                                                selected.update(|value| {
+                                                    *value = if *value == Some(index) { None } else { Some(index) };
+                                                });
+                                            }
+                                        ></button>
+                                        <span
+                                            class=format!("timeline-marker {class_name}")
+                                            style=marker_style
+                                            aria-hidden="true"
+                                        ></span>
                                     }
                                 })
                                 .collect_view()
@@ -380,12 +577,44 @@ pub fn TimeLine(
                             style=move || sel_dot_style.get()
                             data-label=if has_custom_reference { "BASE" } else { "NOW" }
                         >
-                            <em>
-                                {if has_custom_reference { "Base: " } else { "Now: " }}
-                                {move || sel_time.get()}
-                            </em>
+
                         </div>
                     </div>
+                    {move || {
+                        let choices = nearby_points.get();
+                        (!choices.is_empty()).then(|| view! {
+                            <div class="timeline-choices" role="group" aria-label="Nearby milestones">
+                                {choices.into_iter().map(|(index, point)| {
+                                    let label = format_backup_type(point.r#type).trim_end_matches(':');
+                                    let date = format_time_label(&point.timepoint, false, 0);
+                                    let short_label = match point.r#type {
+                                        0 => "Abstract",
+                                        1 => "Paper",
+                                        2 => "Rebuttal",
+                                        3 => "Decisions",
+                                        4 => "Opening",
+                                        _ => label,
+                                    };
+                                    view! {
+                                        <button
+                                            type="button"
+                                            class="timeline-choice"
+                                            aria-label=format!("{label}: {date}")
+                                            aria-pressed=move || (active.get() == Some(index)).to_string()
+                                            on:focus=move |_| focused.set(Some(index))
+                                            on:click=move |event| {
+                                                event.stop_propagation();
+                                                hovered.set(None);
+                                                focused.set(None);
+                                                selected.set(Some(index));
+                                            }
+                                            title=format!("{label}: {date}")
+                                        >{short_label}</button>
+                                    }
+                                }).collect_view()}
+                            </div>
+                        })
+                    }}
                 </div>
             </div>
         </div>
