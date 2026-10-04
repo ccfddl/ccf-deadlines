@@ -209,6 +209,7 @@ try {
         await command('Input.dispatchMouseEvent', {type:'mouseMoved',...reference.point});
         assert.equal(await bounds(), null, 'reference tooltip does not select a milestone');
         await command('Input.dispatchMouseEvent', {type:'mouseMoved',x:1,y:1});
+        assert.equal(await evaluate("document.querySelectorAll('.timeline-choice, .timeline-choices').length"), 0, 'timeline has no extra milestone buttons');
         // Exercise native hit testing at every marker, including six-day and one-day gaps.
         for (const input of ['mouse', 'touch']) {
           await command('Emulation.setTouchEmulationEnabled', {enabled: input === 'touch'});
@@ -240,30 +241,6 @@ try {
             await activate();
             await until(bounds, 'selected preview');
             let preview=await bounds();
-            if (input === 'mouse' || fixture === 'wide' || index === 4) {
-              assert.equal(preview.text.replace(/\s+/g, ' '), marker.label, 'native marker selection');
-            }
-            if (fixture === 'close' && index < 4) {
-              // Mobile browsers can redirect tiny taps. The nearby picker must offer
-              // a full-sized physical target for the exact intended milestone.
-              const choice = await evaluate(`(() => {
-                const node = [...document.querySelectorAll('.timeline-choice')].find(n => n.getAttribute('aria-label') === ${JSON.stringify(marker.label)});
-                if (!node) return null;
-                const box = node.getBoundingClientRect();
-                return {x:box.left+box.width/2,y:box.top+box.height/2};
-              })()`);
-              assert.ok(choice, 'nearby milestone choice exists');
-              if (input === 'touch') {
-                await command('Input.dispatchTouchEvent', {type:'touchStart',touchPoints:[choice]});
-                await command('Input.dispatchTouchEvent', {type:'touchEnd',touchPoints:[]});
-              } else {
-                await command('Input.dispatchMouseEvent', {type:'mouseMoved',...choice});
-                await command('Input.dispatchMouseEvent', {type:'mousePressed',button:'left',clickCount:1,...choice});
-                await command('Input.dispatchMouseEvent', {type:'mouseReleased',button:'left',clickCount:1,...choice});
-              }
-              await until(async () => (await bounds())?.text.replace(/\s+/g, ' ') === marker.label, 'intended nearby choice');
-              preview=await bounds();
-            }
             assert.equal(preview.text.replace(/\s+/g, ' '), marker.label, `${fixture} ${mode} ${width} ${input} marker ${index}`);
             assert.equal(await evaluate(`document.querySelectorAll('.conference-detail-timeline .timeline-event')[${index}].getAttribute('aria-pressed')`), 'true');
             assert.equal(preview.now, 'hidden');
