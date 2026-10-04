@@ -71,6 +71,7 @@ pub fn TimeLine(
             1 => "Submission:",
             2 => "Rebuttal Submission:",
             3 => "Final Decisions:",
+            4 => "Conference Opening:",
             _ => "",
         }
     };
@@ -81,6 +82,7 @@ pub fn TimeLine(
             1 => "dot dot_all",
             2 => "dot dot_all dot_rebuttal",
             3 => "dot dot_all dot_decision",
+            4 => "dot dot_all",
             _ => "",
         }
     };

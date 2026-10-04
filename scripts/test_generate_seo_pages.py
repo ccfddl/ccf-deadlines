@@ -47,6 +47,9 @@ class SeoPageTests(unittest.TestCase):
             self.assertNotIn('data-rank-key="ccf"', page)
             self.assertNotIn('class="category-filter-grid"', page)
             self.assertIn('data-raw="2027-01-04 23:59:59"', page)
+            self.assertIn('data-raw="2027-08-17 08:00:00" data-source-tz="UTC-12"', page)
+            self.assertEqual(page.count('>Conference Opening</div>'), 1)
+            self.assertNotIn('Round 1 Conference Opening', page)
             self.assertIn("fetch('/api/bootstrap'", page)
             self.assertIn("fetch('/api/auth/logout'", page)
             self.assertIn("Maintained by @ccfddl. If you find it useful, star or follow", page)
@@ -161,8 +164,25 @@ class SeoPageTests(unittest.TestCase):
             page = (output / "venues/ai/acl-2027/index.html").read_text()
             self.assertIn('id="conference-next-deadline" aria-live="off">TBD', page)
             self.assertIn("Dates to be announced", page)
-            self.assertNotIn("Paper Submission Deadline</div>", page)
+            self.assertNotIn("Paper Submission</div>", page)
             self.assertNotIn('id="google-calendar-button"', page)
+            self.assertIn('data-deadline-type="opening"', page)
+            self.assertEqual(page.count('>Conference Opening</div>'), 1)
+
+    def test_known_opening_is_available_when_submission_deadline_is_unknown(self):
+        conference = {
+            "title": "Example", "sub": "AI", "confs": [{
+                "year": 2099, "id": "example99", "timezone": "PT",
+                "date": "June 20-25, 2099", "timeline": [{"deadline": "TBD"}],
+            }],
+        }
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            generate([conference], {"AI": "Artificial Intelligence"}, output)
+            page = (output / "venues/ai/example-2099/index.html").read_text()
+            self.assertIn('data-raw="2099-06-20 08:00:00" data-source-tz="PT"', page)
+            self.assertIn('id="google-calendar-button"', page)
+            self.assertNotIn('id="conference-next-deadline" aria-live="off">TBD', page)
 
 
 if __name__ == "__main__":

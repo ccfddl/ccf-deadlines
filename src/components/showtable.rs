@@ -115,6 +115,8 @@ pub fn ShowTable(
     let archive_path = RwSignal::new(None::<String>);
     let archive_requested = RwSignal::new(false);
     let base_time = RwSignal::new(None::<DateTime<Utc>>);
+    let next_status_transition = RwSignal::new(None::<DateTime<Utc>>);
+    let status_revision = RwSignal::new(0u64);
     let base_time_input = RwSignal::new(String::new());
     let base_time_editing = RwSignal::new(false);
     let base_time_input_ref = NodeRef::<leptos::html::Input>::new();
@@ -128,11 +130,22 @@ pub fn ShowTable(
     let time_zone = RwSignal::new(stored_timezone);
 
     use_interval(1_000, move || {
-        if base_time.get_untracked().is_none() && !base_time_editing.get_untracked() {
-            base_time_input.set(format_datetime_local(
-                Utc::now(),
-                &selected_timezone.get_untracked(),
-            ));
+        if base_time.get_untracked().is_none() {
+            let now = Utc::now();
+            if next_status_transition
+                .get_untracked()
+                .is_some_and(|transition| transition <= now)
+            {
+                // Rebuild only at deadline boundaries, including conference opening.
+                next_status_transition.set(None);
+                status_revision.update(|revision| *revision = revision.wrapping_add(1));
+            }
+            if !base_time_editing.get_untracked() {
+                base_time_input.set(format_datetime_local(
+                    now,
+                    &selected_timezone.get_untracked(),
+                ));
+            }
         }
     });
 
@@ -316,13 +329,24 @@ pub fn ShowTable(
             .get_untracked()
             .as_ref()
             .map(|item| item.id.clone());
+        let _ = status_revision.get();
+        let reference_time = base_time.get().unwrap_or_else(Utc::now);
         let items = build_conf_items(
             conferences,
             &sub_list.get_untracked(),
             &like_list.get_untracked(),
             &acceptance_rates.get(),
             &selected_timezone.get(),
-            base_time.get().unwrap_or_else(Utc::now),
+            reference_time,
+        );
+        next_status_transition.set(
+            items
+                .iter()
+                .filter(|item| item.status != "FIN")
+                .flat_map(|item| item.ddls.iter().chain(item.opening.iter()))
+                .map(|point| point.timepoint.with_timezone(&Utc))
+                .filter(|instant| *instant > reference_time)
+                .min(),
         );
 
         if let Some(selected_id) = selected_id {
@@ -671,8 +695,12 @@ pub fn ShowTable(
                                             )
                                         })
                                         .collect::<Vec<_>>();
-                                    let mut deadlines = conf.ddls.clone();
-                                    deadlines.sort_by_key(|point| point.timepoint);
+                                    let deadlines = detail_time_points(&conf).into_iter().map(|mut point| {
+                                        point.timepoint = point.timepoint.with_timezone(&display_timezone_offset_at(
+                                            &display_timezone, point.timepoint.timestamp_millis(),
+                                        ));
+                                        point
+                                    }).collect::<Vec<_>>();
                                     let custom_base_time = base_time.get();
                                     let countdown_running = custom_base_time.is_none();
                                     let now = custom_base_time.unwrap_or_else(Utc::now);
@@ -735,7 +763,7 @@ pub fn ShowTable(
                                         .enumerate()
                                         .map(|(index, point)| {
                                             let label = deadline_detail_label(point.r#type);
-                                            let label = if show_round {
+                                            let label = if show_round && point.r#type != 4 {
                                                 format!("Round {} {label}", point.round)
                                             } else {
                                                 label.to_string()
@@ -845,10 +873,10 @@ pub fn ShowTable(
                                             <div class="conference-detail-next">
                                                 <span class="conference-detail-label">"NEXT DEADLINE IN"</span>
                                                 <strong>
-                                                    {if is_tbd {
-                                                        view! { "TBD" }.into_any()
-                                                    } else if let Some(remain) = next_remain {
+                                                    {if let Some(remain) = next_remain {
                                                         view! { <CountDown remain detailed=true running=countdown_running /> }.into_any()
+                                                    } else if is_tbd {
+                                                        view! { "TBD" }.into_any()
                                                     } else {
                                                         view! { "Passed" }.into_any()
                                                     }}
@@ -864,10 +892,10 @@ pub fn ShowTable(
                                             </div>
                                             <div class="conference-detail-section">
                                                 <span class="conference-detail-label">"IMPORTANT DEADLINES"</span>
-                                                {(!is_tbd && conf.status != "FIN" && !conf.ddls.is_empty()).then(|| view! {
+                                                {next_remain.is_some().then(|| view! {
                                                     <div class="conference-detail-timeline">
                                                         <TimeLine
-                                                            time_points=conf.ddls.clone()
+                                                            time_points=deadlines.clone()
                                                             reference_time=now
                                                             custom_reference=!countdown_running
                                                         />
@@ -878,6 +906,14 @@ pub fn ShowTable(
                                                     </div>
                                                 })}
                                                 {deadline_cards}
+                                                {conf.opening.is_none().then(|| view! {
+                                                    <div class="conference-detail-deadline">
+                                                        <div class="conference-detail-deadline-main">
+                                                            <div class="conference-detail-deadline-name">"Conference Opening"</div>
+                                                            <div class="conference-detail-deadline-date">"TBD"</div>
+                                                        </div>
+                                                    </div>
+                                                })}
                                                 {is_tbd.then(|| {
                                                     if estimated_details.is_empty() {
                                                         view! {
@@ -1014,6 +1050,8 @@ pub fn ShowTable(
                                             (
                                                 conf.id.clone(),
                                                 conf.is_like,
+                                                conf.status.clone(),
+                                                conf.deadline.clone(),
                                                 selected_timezone.get(),
                                                 base_time.get().map(|value| value.timestamp_millis()),
                                             )
@@ -1741,11 +1779,31 @@ fn build_conf_items(
                     acceptance_rates,
                 ),
                 ddls: deadlines,
+                opening: edition
+                    .opening
+                    .as_deref()
+                    .and_then(|raw| parse_deadline_to_rfc3339(raw, &edition.timezone))
+                    .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+                    .map(|value| TimePoint {
+                        timepoint: value.with_timezone(&display_timezone_offset_at(
+                            display_timezone,
+                            value.timestamp_millis(),
+                        )),
+                        r#type: 4,
+                        round: 0,
+                        comment: None,
+                    }),
                 estimated_deadlines: Vec::new(),
             };
 
             if item.deadline == "TBD" {
-                if edition.year < current_time.year() {
+                let finished = item
+                    .opening
+                    .as_ref()
+                    .map_or(edition.year < current_time.year(), |opening| {
+                        opening.timepoint <= current_time
+                    });
+                if finished {
                     // Missing historical clock precision does not make an old edition upcoming.
                     item.status = "FIN".to_string();
                 } else {
@@ -1760,8 +1818,26 @@ fn build_conf_items(
                 .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
             {
                 let remaining = deadline_time.signed_duration_since(current_time);
-                if remaining.num_milliseconds() <= 0 {
+                let opening = item.opening.as_ref();
+                if opening.is_some_and(|point| point.timepoint <= current_time) {
                     item.status = "FIN".to_string();
+                } else if remaining.num_milliseconds() <= 0 {
+                    if let Some(opening) = opening {
+                        item.status = "RUN".to_string();
+                        item.remain = opening
+                            .timepoint
+                            .signed_duration_since(current_time)
+                            .num_milliseconds() as u64;
+                        item.deadline = edition
+                            .opening
+                            .clone()
+                            .expect("parsed opening has a source date");
+                        item.deadline_type = 4;
+                        item.abstract_deadline = None;
+                        item.comment = None;
+                    } else {
+                        item.status = "FIN".to_string();
+                    }
                 } else {
                     item.remain = remaining.num_milliseconds() as u64;
                     item.status = "RUN".to_string();
@@ -1932,14 +2008,22 @@ fn recent_acceptance_rates(
     (!recent_rates.is_empty()).then(|| recent_rates.join("  ·  "))
 }
 
+fn detail_time_points(conf: &ConfItem) -> Vec<TimePoint> {
+    let mut points = conf.ddls.clone();
+    points.extend(conf.opening.clone());
+    points.sort_by_key(|point| point.timepoint);
+    points
+}
+
 fn build_calendar_urls(conf: &ConfItem) -> (Vec<(String, String)>, Option<String>) {
-    if conf.ddls.is_empty() {
+    let deadlines = detail_time_points(conf);
+    if deadlines.is_empty() {
         return (Vec::new(), None);
     }
-    let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1);
-    let google = conf.ddls.iter().map(|point| {
+    let multiple_rounds = deadlines.iter().any(|point| point.round > 1);
+    let google = deadlines.iter().map(|point| {
         let label = deadline_detail_label(point.r#type);
-        let label = if multiple_rounds {
+        let label = if multiple_rounds && point.r#type != 4 {
             format!("Round {} {label}", point.round)
         } else {
             label.to_string()
@@ -1987,11 +2071,11 @@ fn build_conference_ical(conf: &ConfItem) -> String {
     let timestamp = Utc::now().format("%Y%m%dT%H%M%SZ").to_string();
     let multiple_rounds = conf.ddls.iter().any(|point| point.round > 1);
 
-    for point in &conf.ddls {
+    for point in &detail_time_points(conf) {
         let start = point.timepoint.with_timezone(&Utc);
         let end = start + Duration::minutes(1);
         let label = deadline_detail_label(point.r#type);
-        let label = if multiple_rounds {
+        let label = if multiple_rounds && point.r#type != 4 {
             format!("Round {} {label}", point.round)
         } else {
             label.to_string()
@@ -2112,6 +2196,7 @@ fn deadline_summary_label(deadline_type: i32) -> &'static str {
         0 => "Abstract Submission",
         2 => "Rebuttal Submission",
         3 => "Final Decisions",
+        4 => "Conference Opening",
         _ => "Paper Submission",
     }
 }
@@ -2121,16 +2206,18 @@ fn deadline_short_label(deadline_type: i32) -> &'static str {
         0 => "Abstract Deadline",
         2 => "Rebuttal Submission",
         3 => "Final Decisions",
+        4 => "Conference Opening",
         _ => "Paper Deadline",
     }
 }
 
 fn deadline_detail_label(deadline_type: i32) -> &'static str {
     match deadline_type {
-        0 => "Abstract Submission Deadline",
+        0 => "Abstract Submission",
         2 => "Rebuttal Submission",
         3 => "Final Decisions",
-        _ => "Paper Submission Deadline",
+        4 => "Conference Opening",
+        _ => "Paper Submission",
     }
 }
 
@@ -2303,6 +2390,88 @@ mod historical_deadline_tests {
     use super::*;
 
     #[test]
+    fn opening_uses_the_edition_timezone_and_only_extends_detail_deadlines() {
+        for (timezone, opening, utc) in [
+            ("UTC+8", "2027-06-20 08:00:00", "2027-06-20T00:00:00+00:00"),
+            ("AoE", "2027-06-20 08:00:00", "2027-06-20T20:00:00+00:00"),
+            ("PT", "2027-06-20 08:00:00", "2027-06-20T15:00:00+00:00"),
+            ("PT", "2027-01-20 08:00:00", "2027-01-20T16:00:00+00:00"),
+        ] {
+            let conference: Conference = serde_json::from_value(serde_json::json!({
+                "title": "TEST", "description": "Test conference", "sub": "AI",
+                "rank": {"ccf": "A"}, "dblp": "test",
+                "confs": [{
+                    "year": 2027, "id": "test27", "link": "https://example.org",
+                    "timeline": [{"deadline": "2026-10-01 23:59:59"}, {"deadline": "2026-12-01 23:59:59"}],
+                    "timezone": timezone, "date": "June 20-25, 2027", "opening": opening, "place": "Virtual"
+                }]
+            })).unwrap();
+            let reference = DateTime::parse_from_rfc3339("2027-01-01T00:00:00Z")
+                .unwrap()
+                .with_timezone(&Utc);
+            let items = build_conf_items(
+                vec![conference],
+                &[],
+                &HashSet::new(),
+                &HashMap::new(),
+                "UTC",
+                reference,
+            );
+            let conf = &items[0];
+            assert_eq!(conf.ddls.len(), 2);
+            assert_eq!(conf.status, "RUN");
+            assert_eq!(conf.deadline_type, 4);
+            let points = detail_time_points(conf);
+            assert_eq!(points.len(), 3);
+            let point = points.last().unwrap();
+            assert_eq!(point.timepoint.to_rfc3339(), utc);
+            assert_eq!(point.r#type, 4);
+            assert_eq!(point.round, 0);
+            assert_eq!(
+                points.iter().find(|point| point.timepoint > reference),
+                Some(point)
+            );
+            let (google, _) = build_calendar_urls(conf);
+            assert_eq!(google.last().unwrap().0, "Conference Opening");
+            assert!(!build_conference_ical(conf).contains("Round 0"));
+        }
+    }
+
+    #[test]
+    fn fin_changes_at_the_opening_instant_even_with_unknown_submission_dates() {
+        let opening = DateTime::parse_from_rfc3339("2027-06-20T00:00:00Z")
+            .unwrap()
+            .with_timezone(&Utc);
+        for submission in ["2026-12-01 23:59:59", "TBD"] {
+            let conference: Conference = serde_json::from_value(serde_json::json!({
+                "title": "TEST", "description": "Test conference", "sub": "AI",
+                "rank": {"ccf": "A"}, "dblp": "test",
+                "confs": [{
+                    "year": 2027, "id": "test27", "link": "https://example.org",
+                    "timeline": [{"deadline": submission}], "timezone": "UTC+8",
+                    "date": "June 20-25, 2027", "opening": "2027-06-20 08:00:00", "place": "Virtual"
+                }]
+            }))
+            .unwrap();
+            for (reference, finished) in [
+                (opening - Duration::seconds(1), false),
+                (opening, true),
+                (opening + Duration::seconds(1), true),
+            ] {
+                let items = build_conf_items(
+                    vec![conference.clone()],
+                    &[],
+                    &HashSet::new(),
+                    &HashMap::new(),
+                    "UTC",
+                    reference,
+                );
+                assert_eq!(items[0].status == "FIN", finished);
+            }
+        }
+    }
+
+    #[test]
     fn unknown_historical_deadlines_stay_out_of_the_active_list() {
         let current_year = chrono::Utc::now().year();
         for edition_year in [current_year - 1, current_year, current_year + 1] {
@@ -2400,8 +2569,8 @@ mod historical_deadline_tests {
                 && url.contains("dates=20261119T115959Z/20261119T120059Z")
         }));
         for (label, comment) in [
-            ("Round 1 Paper Submission Deadline", "Track A"),
-            ("Round 2 Paper Submission Deadline", "Track B"),
+            ("Round 1 Paper Submission", "Track A"),
+            ("Round 2 Paper Submission", "Track B"),
         ] {
             let url = &google.iter().find(|(event, _)| event == label).unwrap().1;
             assert!(urlencoding::decode(url).unwrap().contains(comment));
@@ -2413,9 +2582,9 @@ mod historical_deadline_tests {
         let calendar = urlencoding::decode(encoded).unwrap();
         assert_eq!(calendar.matches("BEGIN:VEVENT\r\n").count(), 5);
         for summary in [
-            "ICLR 2027 Round 1 Abstract Submission Deadline",
-            "ICLR 2027 Round 1 Paper Submission Deadline",
-            "ICLR 2027 Round 2 Paper Submission Deadline",
+            "ICLR 2027 Round 1 Abstract Submission",
+            "ICLR 2027 Round 1 Paper Submission",
+            "ICLR 2027 Round 2 Paper Submission",
             "ICLR 2027 Round 2 Rebuttal Submission",
             "ICLR 2027 Round 2 Final Decisions",
         ] {
