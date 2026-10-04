@@ -15,17 +15,20 @@ pub fn TimeLine(
     let hovered = RwSignal::new(None::<usize>);
     let focused = RwSignal::new(None::<usize>);
     let selected = RwSignal::new(None::<usize>);
+    let touch_target = RwSignal::new(None::<(f64, f64, usize)>);
+    let rail_ref = NodeRef::<leptos::html::Div>::new();
     let active = Memo::new(move |_| hovered.get().or(focused.get()).or(selected.get()));
     let dismiss = move || {
         hovered.set(None);
         focused.set(None);
         selected.set(None);
+        touch_target.set(None);
     };
     let timeline_ref = NodeRef::<leptos::html::Div>::new();
     #[cfg(target_arch = "wasm32")]
     {
         // Capture outside interactions before a different timeline or row button
-        // stops propagation. Preserve this timeline's own toggle and picker clicks.
+        // stops propagation. Preserve this timeline's own marker clicks.
         let listener = Closure::<dyn FnMut(web_sys::Event)>::new(move |event: web_sys::Event| {
             let inside = event
                 .target()
@@ -80,34 +83,6 @@ pub fn TimeLine(
         active
             .get()
             .and_then(|index| incre_dates.with(|points| points.get(index).cloned()))
-    });
-
-    let nearby_points = Memo::new(move |_| {
-        let Some(index) = active.get() else {
-            return Vec::new();
-        };
-        incre_dates.with(|points| {
-            if index >= points.len() {
-                return Vec::new();
-            }
-            let position = |i: usize| {
-                calculate_position_percent(&points[i].timepoint, start_date.get(), end_date.get())
-            };
-            let mut first = index;
-            let mut last = index;
-            while first > 0 && position(first) - position(first - 1) < 5.0 {
-                first -= 1;
-            }
-            while last + 1 < points.len() && position(last + 1) - position(last) < 5.0 {
-                last += 1;
-            }
-            if first == last {
-                return Vec::new();
-            }
-            (first..=last)
-                .map(|i| (i, points[i].clone()))
-                .collect::<Vec<_>>()
-        })
     });
 
     Effect::new(move |_| {
@@ -230,9 +205,7 @@ pub fn TimeLine(
             class:is-interacting=move || active.get().is_some()
             on:click=move |_| dismiss()
             on:focusout=move |event| {
-                // Preserve focus-only choices during a marker-to-choice or
-                // choice-to-choice transfer. Clearing on each child's blur
-                // removes the picker before the next button receives focus.
+                // Keep previews while focus moves between this timeline's markers.
                 let inside = event
                     .related_target()
                     .and_then(|target| target.dyn_into::<web_sys::Node>().ok())
@@ -317,31 +290,6 @@ pub fn TimeLine(
                 .line_time .timeline-event[aria-pressed="true"] + .timeline-marker {
                     outline: 2px solid #409eff;
                     outline-offset: 3px;
-                }
-
-                .line_time .timeline-choices {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 6px;
-                    margin-top: 16px;
-                }
-
-                .line_time .timeline-choice {
-                    padding: 6px 9px;
-                    min-height: 32px;
-                    border: 1px solid #d9dfe5;
-                    border-radius: 6px;
-                    background: transparent;
-                    color: #526579;
-                    font: inherit;
-                    font-size: 11px;
-                    cursor: pointer;
-                }
-
-                .line_time .timeline-choice[aria-pressed="true"] {
-                    border-color: #6f9fca;
-                    background: #ecf5fc;
-                    color: #2b4d68;
                 }
 
                 .time_con.is-interacting .sel_dot::after {
@@ -487,7 +435,39 @@ pub fn TimeLine(
                             </div>
                         })}
                     </div>
-                    <div class="line">
+                    <div
+                        class="line"
+                        node_ref=rail_ref
+                        on:pointerdown=move |event| {
+                            touch_target.set(None);
+                            if event.pointer_type() == "touch" {
+                                let Some(rail) = rail_ref.get_untracked() else { return; };
+                                let rect = rail.get_bounding_client_rect();
+                                if rect.width() <= 0.0 { return; }
+                                let (x, y) = pointer_coordinates(&event);
+                                let percent = (x - rect.left()) / rect.width() * 100.0;
+                                let nearest = incre_dates.with_untracked(|points| {
+                                    points.iter().enumerate().min_by(|(_, a), (_, b)| {
+                                        let distance = |point: &TimePoint| {
+                                            (calculate_position_percent(&point.timepoint, start_date.get_untracked(), end_date.get_untracked())
+                                                .clamp(0.5, 99.5) - percent).abs()
+                                        };
+                                        distance(a).total_cmp(&distance(b))
+                                    }).map(|(index, _)| index)
+                                });
+                                touch_target.set(nearest.map(|index| (x, y, index)));
+                            }
+                        }
+                        on:pointermove=move |event| {
+                            if let Some((start_x, start_y, _)) = touch_target.get_untracked() {
+                                let (x, y) = pointer_coordinates(&event);
+                                if (x - start_x).hypot(y - start_y) > 8.0 {
+                                    touch_target.set(None);
+                                }
+                            }
+                        }
+                        on:pointercancel=move |_| touch_target.set(None)
+                    >
                         <div class="can_line" style=move || can_line_style.get()></div>
 
                         {move || {
@@ -555,6 +535,11 @@ pub fn TimeLine(
                                             on:focus=move |_| focused.set(Some(index))
                                             on:click=move |event| {
                                                 event.stop_propagation();
+                                                // Chrome may retarget a tiny tap to an adjacent button.
+                                                // Select from the original touch coordinates instead.
+                                                let index = touch_target.get_untracked()
+                                                    .map(|(_, _, index)| index).unwrap_or(index);
+                                                touch_target.set(None);
                                                 hovered.set(None);
                                                 focused.set(None);
                                                 selected.update(|value| {
@@ -580,45 +565,25 @@ pub fn TimeLine(
 
                         </div>
                     </div>
-                    {move || {
-                        let choices = nearby_points.get();
-                        (!choices.is_empty()).then(|| view! {
-                            <div class="timeline-choices" role="group" aria-label="Nearby milestones">
-                                {choices.into_iter().map(|(index, point)| {
-                                    let label = format_backup_type(point.r#type).trim_end_matches(':');
-                                    let date = format_time_label(&point.timepoint, false, 0);
-                                    let short_label = match point.r#type {
-                                        0 => "Abstract",
-                                        1 => "Paper",
-                                        2 => "Rebuttal",
-                                        3 => "Decisions",
-                                        4 => "Opening",
-                                        _ => label,
-                                    };
-                                    view! {
-                                        <button
-                                            type="button"
-                                            class="timeline-choice"
-                                            aria-label=format!("{label}: {date}")
-                                            aria-pressed=move || (active.get() == Some(index)).to_string()
-                                            on:focus=move |_| focused.set(Some(index))
-                                            on:click=move |event| {
-                                                event.stop_propagation();
-                                                hovered.set(None);
-                                                focused.set(None);
-                                                selected.set(Some(index));
-                                            }
-                                            title=format!("{label}: {date}")
-                                        >{short_label}</button>
-                                    }
-                                }).collect_view()}
-                            </div>
-                        })
-                    }}
                 </div>
             </div>
         </div>
     }
+}
+
+// PointerEvent coordinates can be fractional CSS pixels on high-DPI screens.
+// Preserve them when adjacent dates are less than one CSS pixel apart.
+fn pointer_coordinates(event: &web_sys::PointerEvent) -> (f64, f64) {
+    let coordinate = |key: &str, fallback: i32| {
+        web_sys::js_sys::Reflect::get(event.as_ref(), &key.into())
+            .ok()
+            .and_then(|value| value.as_f64())
+            .unwrap_or(fallback as f64)
+    };
+    (
+        coordinate("clientX", event.client_x()),
+        coordinate("clientY", event.client_y()),
+    )
 }
 
 fn calculate_position_percent(time: &DateTime<FixedOffset>, start: f64, end: f64) -> f64 {
