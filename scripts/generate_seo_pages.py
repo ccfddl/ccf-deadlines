@@ -132,6 +132,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <title>{text(title)}</title>
   <meta name="description" content="{text(description)}">
   <link rel="canonical" href="{text(canonical)}">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2114972416819347" crossorigin="anonymous"></script>
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/svg+xml" href="/ccfddl-logo.svg">
   {app_assets}
