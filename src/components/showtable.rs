@@ -677,13 +677,13 @@ pub fn ShowTable(
                                         .estimated_deadlines
                                         .iter()
                                         .map(|estimate| {
-                                            let kind = if estimate.is_abstract {
-                                                "abstract"
+                                            let label = if estimate.is_abstract {
+                                                "Estimated Abstract Submission"
                                             } else {
-                                                "paper"
+                                                "Estimated Paper Submission"
                                             };
                                             (
-                                                format!("Estimated {kind} submission deadline"),
+                                                label.to_string(),
                                                 format!(
                                                     "{} · {}",
                                                     format_estimated_deadline_date(
@@ -905,15 +905,6 @@ pub fn ShowTable(
                                                         </div>
                                                     </div>
                                                 })}
-                                                {deadline_cards}
-                                                {conf.opening.is_none().then(|| view! {
-                                                    <div class="conference-detail-deadline">
-                                                        <div class="conference-detail-deadline-main">
-                                                            <div class="conference-detail-deadline-name">"Conference Opening"</div>
-                                                            <div class="conference-detail-deadline-date">"TBD"</div>
-                                                        </div>
-                                                    </div>
-                                                })}
                                                 {is_tbd.then(|| {
                                                     if estimated_details.is_empty() {
                                                         view! {
@@ -942,6 +933,15 @@ pub fn ShowTable(
                                                             .collect_view()
                                                             .into_any()
                                                     }
+                                                })}
+                                                {deadline_cards}
+                                                {conf.opening.is_none().then(|| view! {
+                                                    <div class="conference-detail-deadline">
+                                                        <div class="conference-detail-deadline-main">
+                                                            <div class="conference-detail-deadline-name">"Conference Opening"</div>
+                                                            <div class="conference-detail-deadline-date">"TBD"</div>
+                                                        </div>
+                                                    </div>
                                                 })}
                                             </div>
                                             <div class="conference-detail-tags">
