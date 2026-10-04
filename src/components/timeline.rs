@@ -1,7 +1,8 @@
 use crate::components::conf::TimePoint;
 use chrono::{Duration, prelude::*};
 use leptos::prelude::*;
-use leptos::{ev, leptos_dom::helpers::window_event_listener};
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::{JsCast, closure::Closure};
 
 #[component]
 pub fn TimeLine(
@@ -19,9 +20,51 @@ pub fn TimeLine(
         focused.set(None);
         selected.set(None);
     };
-    let outside_listener = window_event_listener(ev::click, move |_| dismiss());
-    on_cleanup(move || outside_listener.remove());
+    let timeline_ref = NodeRef::<leptos::html::Div>::new();
+    #[cfg(target_arch = "wasm32")]
+    {
+        // Capture outside interactions before a different timeline or row button
+        // stops propagation. Preserve this timeline's own toggle and picker clicks.
+        let listener = Closure::<dyn FnMut(web_sys::Event)>::new(move |event: web_sys::Event| {
+            let inside = event
+                .target()
+                .and_then(|target| target.dyn_into::<web_sys::Node>().ok())
+                .zip(timeline_ref.get_untracked())
+                .is_some_and(|(target, root)| root.contains(Some(&target)));
+            if !inside {
+                dismiss();
+            }
+        });
+        for name in ["click", "focusin"] {
+            window()
+                .add_event_listener_with_callback_and_bool(
+                    name,
+                    listener.as_ref().unchecked_ref(),
+                    true,
+                )
+                .expect("register timeline outside listener");
+        }
+        let listener = StoredValue::new_local(listener);
+        on_cleanup(move || {
+            listener.with_value(|listener| {
+                for name in ["click", "focusin"] {
+                    let _ = window().remove_event_listener_with_callback_and_bool(
+                        name,
+                        listener.as_ref().unchecked_ref(),
+                        true,
+                    );
+                }
+            });
+        });
+    }
     let (sel_time, set_sel_time) = signal(String::new());
+    let reference_label = move || {
+        format!(
+            "{}: {}",
+            if has_custom_reference { "Base" } else { "Now" },
+            sel_time.get()
+        )
+    };
     let (start_date, set_start_date) = signal(0.0);
     let (end_date, set_end_date) = signal(0.0);
     let (incre_dates, set_incre_dates) = signal(Vec::<TimePoint>::new());
@@ -182,6 +225,7 @@ pub fn TimeLine(
     view! {
         <div
             class="time_con"
+            node_ref=timeline_ref
             class:is-interacting=move || active.get().is_some()
             on:click=move |_| dismiss()
             on:keydown=move |event| {
@@ -400,7 +444,9 @@ pub fn TimeLine(
             </style>
 
             <div class="line_time">
-                <div class="all_line">
+                // The decorative reference dot must not block nearby milestones.
+                // Its hit-testable rail wrapper exposes the exact NOW/BASE time.
+                <div class="all_line" role="group" aria-label=reference_label title=reference_label>
                     <div
                         class="timeline-preview-slot"
                         style=move || {
@@ -488,6 +534,7 @@ pub fn TimeLine(
                                             class="timeline-event"
                                             style=target_style
                                             aria-label=format!("{type_label} {time_label}")
+                                            title=format!("{type_label} {time_label}")
                                             aria-pressed=move || (selected.get() == Some(index)).to_string()
                                             on:pointerenter=move |_| hovered.set(Some(index))
                                             on:pointerleave=move |_| hovered.set(None)
@@ -518,7 +565,6 @@ pub fn TimeLine(
                             class=move || format!("dot sel_dot {}", sel_dot_class.get())
                             style=move || sel_dot_style.get()
                             data-label=if has_custom_reference { "BASE" } else { "NOW" }
-                            title=move || format!("{}: {}", if has_custom_reference { "Base" } else { "Now" }, sel_time.get())
                         >
 
                         </div>

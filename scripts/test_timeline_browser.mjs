@@ -29,16 +29,23 @@ const types = {
 };
 const testDeadline = '2026-11-11 19:59:00';
 let fixture = 'wide';
-const testConferences = () => [{
-  title: 'TIMELINETEST', description: 'Timeline interaction regression', sub: 'AI',
-  rank: {ccf: 'A'}, dblp: 'test',
-  confs: [{year: 2027, id: 'timelinetest27', link: 'https://example.org',
-    timeline: [fixture === 'close'
-      ? {abstract_deadline: '2026-11-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2026-11-17 19:59:00', decision_deadline: '2026-11-18 19:59:00'}
-      : {abstract_deadline: '2026-10-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2027-01-15 19:59:00', decision_deadline: '2027-02-11 19:59:00'}], timezone: 'UTC',
-    date: 'June 20-25, 2027', opening: '2027-06-20 08:00:00', place: 'Virtual'},
-  ],
-}];
+const testConferences = () => {
+  const conferences = [{
+    title: 'TIMELINETEST', description: 'Timeline interaction regression', sub: 'AI',
+    rank: {ccf: 'A'}, dblp: 'test',
+    confs: [{year: 2027, id: 'timelinetest27', link: 'https://example.org',
+      timeline: [fixture === 'close'
+        ? {abstract_deadline: '2026-11-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2026-11-17 19:59:00', decision_deadline: '2026-11-18 19:59:00'}
+        : {abstract_deadline: '2026-10-05 19:59:00', deadline: testDeadline, rebuttal_deadline: '2027-01-15 19:59:00', decision_deadline: '2027-02-11 19:59:00'}], timezone: 'UTC',
+      date: 'June 20-25, 2027', opening: '2027-06-20 08:00:00', place: 'Virtual'},
+    ],
+  }];
+  if (fixture === 'multiple') {
+    conferences.push({...conferences[0], title: 'TIMELINETESTOTHER',
+      confs: conferences[0].confs.map(edition => ({...edition, id: 'timelinetestother27'}))});
+  }
+  return conferences;
+};
 const server = createServer((request, response) => {
   const pathname = new URL(request.url, "http://localhost").pathname;
   if (pathname === '/conference/initial.json') {
@@ -187,6 +194,21 @@ try {
         await evaluate("document.querySelector('.conf-title').click()");
         await until(() => evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event').length === 5"), 'timeline buttons');
         assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"), 'visible');
+        // The visible NOW label resolves to a hit-testable wrapper with its exact time.
+        const reference = await evaluate(`(() => {
+          const dot = document.querySelector('.conference-detail-timeline .sel_dot');
+          const box = dot.getBoundingClientRect();
+          const label = getComputedStyle(dot, '::after');
+          const point = {x:box.left+box.width/2,y:box.top-parseFloat(label.bottom)+2};
+          const target = document.elementFromPoint(point.x, point.y);
+          return {point, title:target?.closest('[title]')?.title,
+            accessible:dot.closest('.all_line').getAttribute('aria-label')};
+        })()`);
+        assert.equal(reference.title, 'Now: 2026-10-04 00:00:00');
+        assert.equal(reference.accessible, reference.title);
+        await command('Input.dispatchMouseEvent', {type:'mouseMoved',...reference.point});
+        assert.equal(await bounds(), null, 'reference tooltip does not select a milestone');
+        await command('Input.dispatchMouseEvent', {type:'mouseMoved',x:1,y:1});
         // Exercise native hit testing at every marker, including six-day and one-day gaps.
         for (const input of ['mouse', 'touch']) {
           await command('Emulation.setTouchEmulationEnabled', {enabled: input === 'touch'});
@@ -318,6 +340,83 @@ try {
       await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:preferences.identifier});
     }
   }
+  // Clicks stopped by one row must still dismiss a selection in another row.
+  fixture = 'multiple';
+  const multiPreferences = await command('Page.addScriptToEvaluateOnNewDocument', {source: `
+    localStorage.setItem('conference_view', 'list');
+    localStorage.setItem('conference_search', 'TIMELINETEST');
+  `});
+  for (const width of [1280, 390, 320]) {
+    await command('Emulation.setDeviceMetricsOverride', {width,height:1100,deviceScaleFactor:1,mobile:false});
+    for (const input of ['mouse', 'touch']) {
+      await command('Emulation.setTouchEmulationEnabled', {enabled:input === 'touch'});
+      await command('Page.navigate', {url:`http://127.0.0.1:${server.address().port}/?filters=all`});
+      await until(() => evaluate("document.querySelectorAll('.time_con').length === 2"), 'two inline timelines');
+      const clickMarker = async (index) => {
+        const point = await evaluate(`(() => {
+          const timeline = document.querySelectorAll('.time_con')[${index}];
+          timeline.scrollIntoView({block:'center'});
+          const box = timeline.querySelector('.timeline-event').getBoundingClientRect();
+          return {x:box.left+box.width/2,y:box.top+box.height/2};
+        })()`);
+        if (input === 'touch') {
+          await command('Input.dispatchTouchEvent', {type:'touchStart',touchPoints:[point]});
+          await command('Input.dispatchTouchEvent', {type:'touchEnd',touchPoints:[]});
+        } else {
+          await command('Input.dispatchMouseEvent', {type:'mouseMoved',...point});
+          await command('Input.dispatchMouseEvent', {type:'mousePressed',button:'left',clickCount:1,...point});
+          await command('Input.dispatchMouseEvent', {type:'mouseReleased',button:'left',clickCount:1,...point});
+        }
+      };
+      for (const index of [0,1,0]) {
+        await clickMarker(index);
+        await until(() => evaluate(`(() => {
+          const timelines=[...document.querySelectorAll('.time_con')];
+          return timelines.every((node,i) => Boolean(node.querySelector('.timeline-preview')) === (i === ${index}));
+        })()`), 'only the clicked timeline remains selected');
+        assert.equal(await evaluate("document.querySelectorAll('.time_con.is-interacting').length"), 1);
+        assert.equal(await evaluate("document.querySelectorAll('.conference-detail-dialog').length"), 0, 'marker click must not open the row dialog');
+        assert.equal(await evaluate("[...document.querySelectorAll('.time_con .sel_dot')].every(dot => getComputedStyle(dot).visibility === 'visible')"), true);
+      }
+      await clickMarker(0);
+      await until(() => evaluate("document.querySelectorAll('.time_con.is-interacting').length === 0"), 'selected marker toggles off');
+      await command('Input.dispatchMouseEvent', {type:'mouseMoved',x:1,y:1});
+      console.log('Cross-timeline physical selection and same-marker dismissal passed:',width,input);
+    }
+    await command('Emulation.setTouchEmulationEnabled', {enabled:false});
+    await evaluate("document.querySelectorAll('.time_con')[0].querySelector('.timeline-event').focus()");
+    for (let tab=0;tab<30;tab++) {
+      if (await evaluate("document.activeElement?.closest('.time_con') === document.querySelectorAll('.time_con')[1]")) break;
+      await command('Input.dispatchKeyEvent', {type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+      await command('Input.dispatchKeyEvent', {type:'keyUp',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
+    }
+    assert.equal(await evaluate("document.activeElement?.closest('.time_con') === document.querySelectorAll('.time_con')[1]"), true);
+    assert.equal(await evaluate("Boolean(document.querySelectorAll('.time_con')[0].querySelector('.timeline-preview'))"), false, 'keyboard focus dismisses the other timeline');
+    // Custom reference times expose BASE through the same hit-testable wrapper.
+    await evaluate(`(() => {
+      const input=document.querySelector('#base-time-input');
+      input.value='2026-10-04T00:00:00';
+      input.dispatchEvent(new Event('change',{bubbles:true}));
+    })()`);
+    await until(() => evaluate("document.querySelectorAll('.time_con .sel_dot[data-label=BASE]').length === 2"), 'custom reference applied');
+    await evaluate("document.querySelector('.conf-title').click()");
+    await until(() => evaluate("Boolean(document.querySelector('.conference-detail-timeline .sel_dot[data-label=BASE]'))"), 'BASE in dialog');
+    const base = await evaluate(`(() => {
+      const dot=document.querySelector('.conference-detail-timeline .sel_dot');
+      dot.scrollIntoView({block:'center'});
+      const box=dot.getBoundingClientRect();
+      const label=getComputedStyle(dot,'::after');
+      const point={x:box.left+box.width/2,y:box.top-parseFloat(label.bottom)+2};
+      return {point,title:document.elementFromPoint(point.x,point.y)?.closest('[title]')?.title,
+        accessible:dot.closest('.all_line').getAttribute('aria-label')};
+    })()`);
+    assert.equal(base.title, 'Base: 2026-10-04 00:00:00');
+    assert.equal(base.accessible, base.title);
+    await command('Input.dispatchMouseEvent', {type:'mouseMoved',...base.point});
+    assert.equal(await bounds(), null);
+    console.log('Keyboard switching and native BASE tooltip target passed:',width);
+  }
+  await command('Page.removeScriptToEvaluateOnNewDocument', {identifier:multiPreferences.identifier});
   assert.deepEqual(errors, []);
   console.log('Timeline labels stay visible and NOW text hides during interaction while its dot stays visible');
 } finally {
