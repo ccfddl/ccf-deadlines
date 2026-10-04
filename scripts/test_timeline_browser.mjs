@@ -152,7 +152,8 @@ try {
     };
   `});
   const present = () => evaluate("[...document.querySelectorAll('.conf-title')].some(node => node.textContent.trim() === 'TIMELINETEST 2027')");
-  const bounds = () => evaluate(`(() => {
+  const bounds = async () => {
+    const result = await evaluate(`(() => {
     const container = document.querySelector('.conference-detail-timeline .all_line');
     const preview = container.querySelector('.timeline-preview');
     if (!preview) return null;
@@ -160,9 +161,13 @@ try {
     return {text: preview.textContent.trim(), left:box.left, right:box.right, width:box.width,
       containerLeft:outer.left, containerRight:outer.right,
       clipped:preview.scrollWidth > preview.clientWidth,
-      now:getComputedStyle(container.querySelector('.sel_dot')).visibility,
+      now:getComputedStyle(container.querySelector('.sel_dot'), '::after').visibility,
+      dot:getComputedStyle(container.querySelector('.sel_dot')).visibility,
       align:getComputedStyle(container.querySelector('.timeline-preview-slot')).justifyContent};
-  })()`);
+    })()`);
+    if (result) assert.equal(result.dot, 'visible', 'NOW dot remains visible during interaction');
+    return result;
+  };
   for (const mode of ['cards', 'list']) {
     const preferences = await command('Page.addScriptToEvaluateOnNewDocument', {source: `
       localStorage.setItem('conference_view', '${mode}');
@@ -177,7 +182,7 @@ try {
       await until(present, 'conference loaded');
       await evaluate("document.querySelector('.conf-title').click()");
       await until(() => evaluate("document.querySelectorAll('.conference-detail-timeline .timeline-event').length === 5"), 'timeline buttons');
-      assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot')).visibility"), 'visible');
+      assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"), 'visible');
       // Click every marker. First and last labels must remain within the rail bounds.
       for (let index=0; index<5; index++) {
         await evaluate(`document.querySelectorAll('.conference-detail-timeline .timeline-event')[${index}].click()`);
@@ -195,7 +200,7 @@ try {
         // Clicking the selected marker again dismisses it and restores NOW.
         await evaluate(`document.querySelectorAll('.conference-detail-timeline .timeline-event')[${index}].click()`);
         await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"), 'toggle dismissal');
-        assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot')).visibility"), 'visible');
+        assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"), 'visible');
       }
       // A separate click dismisses the selection.
       await evaluate("document.querySelector('.conference-detail-timeline .timeline-event').click()");
@@ -218,7 +223,7 @@ try {
       assert.equal((await bounds()).now,'hidden');
       await command('Input.dispatchMouseEvent',{type:'mouseMoved',x:1,y:1});
       await until(() => evaluate("!document.querySelector('.conference-detail-timeline .timeline-preview')"),'hover dismissal');
-      assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot')).visibility"),'visible');
+      assert.equal(await evaluate("getComputedStyle(document.querySelector('.conference-detail-timeline .sel_dot'), '::after').visibility"),'visible');
       if (width === 320) {
         await command('Emulation.setTouchEmulationEnabled',{enabled:true});
         await command('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});
@@ -240,7 +245,7 @@ try {
     await command('Page.removeScriptToEvaluateOnNewDocument',{identifier:preferences.identifier});
   }
   assert.deepEqual(errors, []);
-  console.log('Timeline labels stay visible and NOW hides during interaction');
+  console.log('Timeline labels stay visible and NOW text hides during interaction while its dot stays visible');
 } finally {
   socket?.close();
   browser.kill();

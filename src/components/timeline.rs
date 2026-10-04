@@ -195,7 +195,7 @@ pub fn TimeLine(
                     outline-offset: 3px;
                 }
 
-                .time_con.is-interacting .sel_dot {
+                .time_con.is-interacting .sel_dot::after {
                     visibility: hidden;
                 }
 
