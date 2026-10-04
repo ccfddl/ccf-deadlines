@@ -10,6 +10,8 @@ from pathlib import Path
 
 import yaml
 
+from conference_dates import with_conference_openings
+
 ROOT = Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "public" / "conference"
 MERGE_SCRIPT = ROOT / "scripts" / "merge.py"
@@ -44,7 +46,9 @@ def split_conferences(conferences: list, today: date) -> tuple[list, list]:
         for edition in editions:
             if (edition["year"] >= today.year and any(
                 point.get("deadline") == "TBD" for point in edition["timeline"]
-            )) or any(
+            )) or (
+                str(edition.get("opening") or "")[:10] >= (today - timedelta(days=1)).isoformat()
+            ) or any(
                 str(point.get(field, ""))[:10] >= (today - timedelta(days=1)).isoformat()
                 and str(point.get(field, ""))[:4].isdigit()
                 for point in edition["timeline"]
@@ -131,7 +135,9 @@ def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     merge(ROOT / "conference", OUTPUT_DIR / "allconf.yml", exclude="types.yml")
     merge(ROOT / "accept_rates", OUTPUT_DIR / "allacc.yml")
-    conferences = yaml.safe_load((OUTPUT_DIR / "allconf.yml").read_text(encoding="utf-8"))
+    conferences = with_conference_openings(
+        yaml.safe_load((OUTPUT_DIR / "allconf.yml").read_text(encoding="utf-8"))
+    )
     acceptances = yaml.safe_load((OUTPUT_DIR / "allacc.yml").read_text(encoding="utf-8"))
     acceptances = resolve_acceptance_keys(conferences, acceptances)
     (OUTPUT_DIR / "allacc.yml").write_text(

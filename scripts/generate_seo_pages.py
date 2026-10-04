@@ -15,6 +15,8 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 
 import yaml
 
+from conference_dates import conference_opening
+
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE_URL = "https://ccfddl.com"
@@ -193,8 +195,8 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
 
 def deadline_rows(edition: dict) -> str:
     labels = (
-        ("abstract_deadline", "Abstract Submission Deadline"),
-        ("deadline", "Paper Submission Deadline"),
+        ("abstract_deadline", "Abstract Submission"),
+        ("deadline", "Paper Submission"),
         ("rebuttal_deadline", "Rebuttal Submission"),
         ("decision_deadline", "Final Decisions"),
     )
@@ -216,7 +218,19 @@ def deadline_rows(edition: dict) -> str:
                 f'</div><span class="conference-detail-deadline-status" aria-live="off"></span></div>'
             )
             rows.append((raw, row))
-    return "".join(row for _, row in sorted(rows, key=lambda entry: entry[0])) or '<div class="conference-detail-deadline">Dates to be announced</div>'
+    if not rows:
+        rows.append(("", '<div class="conference-detail-deadline">Dates to be announced</div>'))
+    opening = conference_opening(edition)
+    opening_date = format_deadline(opening, timezone) if opening else "TBD"
+    attributes = f' data-raw="{text(opening)}" data-source-tz="{text(timezone)}"' if opening else ""
+    rows.append((opening or "9999", (
+        f'<div class="conference-detail-deadline" data-deadline-type="opening"{attributes}>'
+        '<div class="conference-detail-deadline-main">'
+        '<div class="conference-detail-deadline-name">Conference Opening</div>'
+        f'<div class="conference-detail-deadline-date">{opening_date}</div></div>'
+        '<span class="conference-detail-deadline-status" aria-live="off"></span></div>'
+    )))
+    return "".join(row for _, row in sorted(rows, key=lambda entry: entry[0]))
 
 
 def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/venues/style.css") -> str:
@@ -230,6 +244,9 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
         for field in ("abstract_deadline", "deadline", "rebuttal_deadline", "decision_deadline")
         if KNOWN_DATE.fullmatch(str(point.get(field, "")))
     ]
+    opening = conference_opening(edition)
+    if opening:
+        all_known.append(opening)
     deadline_summary = f"paper deadline {min(known)[:16]} {edition.get('timezone', '')}" if known else "paper deadline not listed"
     description = f"{name} {year}: {deadline_summary}; {edition.get('date') or 'conference dates not listed'}; {edition.get('place') or 'location not listed'}. Deadlines and past editions on CCFDDL."
     title = f"{name} {year} Deadline and Conference Dates | CCFDDL"

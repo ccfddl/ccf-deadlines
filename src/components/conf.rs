@@ -32,6 +32,8 @@ pub struct ConferenceYear {
     pub timeline: Vec<Timeline>,
     pub timezone: String,
     pub date: String,
+    #[serde(default)]
+    pub opening: Option<String>,
     pub place: String,
 }
 
@@ -104,6 +106,8 @@ pub struct ConfItem {
     pub subname_en: String,
     pub acc_str: Option<String>,
     pub ddls: Vec<TimePoint>,
+    #[serde(default)]
+    pub opening: Option<TimePoint>,
     pub estimated_deadlines: Vec<EstimatedDeadline>,
 }
 

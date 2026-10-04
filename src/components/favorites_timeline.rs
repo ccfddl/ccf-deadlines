@@ -467,6 +467,7 @@ mod tests {
                 })
                 .collect(),
             estimated_deadlines: Vec::new(),
+            opening: None,
         }
     }
 

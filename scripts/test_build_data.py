@@ -42,6 +42,15 @@ class LoadingDataTests(unittest.TestCase):
         self.assertEqual(len(initial[0]["confs"]), 2)
         self.assertEqual(archive, [])
 
+    def test_keeps_upcoming_opening_after_submission_dates_have_passed(self):
+        older = edition(2026, "2025-10-01 23:59:59")
+        older["opening"] = "2026-12-01 08:00:00"
+        initial, archive = split_conferences([
+            {"title": "Example", "confs": [older, edition(2027)]},
+        ], date(2026, 10, 4))
+        self.assertEqual([entry["year"] for entry in initial[0]["confs"]], [2026, 2027])
+        self.assertEqual(archive, [])
+
     def test_keeps_previous_edition_across_year_gaps_for_estimates(self):
         initial, archive = split_conferences([
             {"title": "Example", "confs": [edition(2021), edition(2024), edition(2027)]},
