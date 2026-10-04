@@ -1,8 +1,9 @@
 use crate::components::conf::TimePoint;
 use chrono::{Duration, prelude::*};
 use leptos::prelude::*;
+use wasm_bindgen::JsCast;
 #[cfg(target_arch = "wasm32")]
-use wasm_bindgen::{JsCast, closure::Closure};
+use wasm_bindgen::closure::Closure;
 
 #[component]
 pub fn TimeLine(
@@ -228,6 +229,19 @@ pub fn TimeLine(
             node_ref=timeline_ref
             class:is-interacting=move || active.get().is_some()
             on:click=move |_| dismiss()
+            on:focusout=move |event| {
+                // Preserve focus-only choices during a marker-to-choice or
+                // choice-to-choice transfer. Clearing on each child's blur
+                // removes the picker before the next button receives focus.
+                let inside = event
+                    .related_target()
+                    .and_then(|target| target.dyn_into::<web_sys::Node>().ok())
+                    .zip(timeline_ref.get_untracked())
+                    .is_some_and(|(target, root)| root.contains(Some(&target)));
+                if !inside {
+                    dismiss();
+                }
+            }
             on:keydown=move |event| {
                 if event.key() == "Escape" && active.get_untracked().is_some() {
                     event.stop_propagation();
@@ -539,9 +553,6 @@ pub fn TimeLine(
                                             on:pointerenter=move |_| hovered.set(Some(index))
                                             on:pointerleave=move |_| hovered.set(None)
                                             on:focus=move |_| focused.set(Some(index))
-                                            on:blur=move |_| {
-                                                focused.set(None);
-                                            }
                                             on:click=move |event| {
                                                 event.stop_propagation();
                                                 hovered.set(None);
@@ -591,7 +602,6 @@ pub fn TimeLine(
                                             aria-label=format!("{label}: {date}")
                                             aria-pressed=move || (active.get() == Some(index)).to_string()
                                             on:focus=move |_| focused.set(Some(index))
-                                            on:blur=move |_| focused.set(None)
                                             on:click=move |event| {
                                                 event.stop_propagation();
                                                 hovered.set(None);
