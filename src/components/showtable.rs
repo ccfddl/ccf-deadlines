@@ -38,6 +38,12 @@ pub fn ShowTable(
             .and_then(|s| s.parse::<bool>().ok())
             .unwrap_or(false),
     );
+    let submission_only = RwSignal::new(
+        get_from_local_storage("submission_only")
+            .as_deref()
+            .and_then(|value| value.parse::<bool>().ok())
+            .unwrap_or(false),
+    );
 
     // checkbox
     let sub_list = RwSignal::new(get_categories());
@@ -156,6 +162,7 @@ pub fn ShowTable(
         let _ = core_rank_list.get();
         let _ = thcpl_rank_list.get();
         let _ = show_past.get();
+        let _ = submission_only.get();
         let _ = sort_by_stars.get();
 
         if is_filter_change.get_untracked() {
@@ -167,6 +174,7 @@ pub fn ShowTable(
 
     Effect::new(move |_| {
         set_in_local_storage("show_past", &show_past.get().to_string());
+        set_in_local_storage("submission_only", &submission_only.get().to_string());
         set_in_local_storage("types", &serde_json::to_string(&check_list.get()).unwrap());
         set_in_local_storage("ranks", &serde_json::to_string(&rank_list.get()).unwrap());
         set_in_local_storage(
@@ -331,6 +339,17 @@ pub fn ShowTable(
             .map(|item| item.id.clone());
         let _ = status_revision.get();
         let reference_time = base_time.get().unwrap_or_else(Utc::now);
+        // Opening still expires an unannounced edition, even when its marker is hidden.
+        let next_opening_transition = conferences
+            .iter()
+            .flat_map(|conference| &conference.confs)
+            .filter_map(|edition| {
+                parse_deadline_to_rfc3339(edition.opening.as_deref()?, &edition.timezone)
+                    .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+                    .map(|value| value.with_timezone(&Utc))
+            })
+            .filter(|instant| *instant > reference_time)
+            .min();
         let items = build_conf_items(
             conferences,
             &sub_list.get_untracked(),
@@ -338,6 +357,7 @@ pub fn ShowTable(
             &acceptance_rates.get(),
             &selected_timezone.get(),
             reference_time,
+            submission_only.get(),
         );
         next_status_transition.set(
             items
@@ -346,6 +366,7 @@ pub fn ShowTable(
                 .flat_map(|item| item.ddls.iter().chain(item.opening.iter()))
                 .map(|point| point.timepoint.with_timezone(&Utc))
                 .filter(|instant| *instant > reference_time)
+                .chain(next_opening_transition)
                 .min(),
         );
 
@@ -475,6 +496,7 @@ pub fn ShowTable(
                 use_english categories=sub_list selected=check_list search=input_value
                 rank_list core_rank_list thcpl_rank_list selected_timezone
                 browser_timezone=browser_time_zone.get_untracked() open_dropdown show_past=Some(show_past)
+                submission_only=Some(submission_only)
             >
                 <ToolbarClock slot>
                     <div class=move || {
@@ -650,6 +672,7 @@ pub fn ShowTable(
                         <Show when=move || selected_conf.get().is_some()>
                             {move || {
                                 selected_conf.get().map(|conf| {
+                                    let only_submissions = submission_only.get();
                                     let is_tbd = conf.status == "TBD";
                                     let display_timezone = time_zone.get();
                                     let estimated_next_labels = conf
@@ -935,7 +958,7 @@ pub fn ShowTable(
                                                     }
                                                 })}
                                                 {deadline_cards}
-                                                {conf.opening.is_none().then(|| view! {
+                                                {(!only_submissions && conf.opening.is_none()).then(|| view! {
                                                     <div class="conference-detail-deadline">
                                                         <div class="conference-detail-deadline-main">
                                                             <div class="conference-detail-deadline-name">"Conference Opening"</div>
@@ -1054,6 +1077,7 @@ pub fn ShowTable(
                                                 conf.deadline.clone(),
                                                 selected_timezone.get(),
                                                 base_time.get().map(|value| value.timestamp_millis()),
+                                                submission_only.get(),
                                             )
                                         }
                                         children=move |conf| {
@@ -1660,6 +1684,7 @@ fn build_conf_items(
     acceptance_rates: &AcceptanceRateMap,
     display_timezone: &str,
     reference_time: DateTime<Utc>,
+    submission_only: bool,
 ) -> Vec<ConfItem> {
     let current_time = reference_time.fixed_offset();
     let mut items = Vec::new();
@@ -1686,6 +1711,9 @@ fn build_conf_items(
                 ];
 
                 for (kind, raw_deadline) in timeline_deadlines {
+                    if submission_only && kind > 1 {
+                        continue;
+                    }
                     let Some(raw_deadline) = raw_deadline else {
                         continue;
                     };
@@ -1724,6 +1752,7 @@ fn build_conf_items(
 
             deadlines.sort_by_key(|point| point.timepoint);
 
+            let has_upcoming_deadline = !upcoming_deadlines.is_empty();
             let selected_deadline = upcoming_deadlines
                 .into_iter()
                 .min_by(|left, right| left.0.cmp(&right.0))
@@ -1744,6 +1773,20 @@ fn build_conf_items(
                 .map(|(_, label)| *label)
                 .unwrap_or("Non-CCF")
                 .to_string();
+            let opening = edition
+                .opening
+                .as_deref()
+                .and_then(|raw| parse_deadline_to_rfc3339(raw, &edition.timezone))
+                .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
+                .map(|value| TimePoint {
+                    timepoint: value.with_timezone(&display_timezone_offset_at(
+                        display_timezone,
+                        value.timestamp_millis(),
+                    )),
+                    r#type: 4,
+                    round: 0,
+                    comment: None,
+                });
             let mut item = ConfItem {
                 conference_key: conference.conference_key.clone(),
                 title: conference.title.clone(),
@@ -1779,26 +1822,38 @@ fn build_conf_items(
                     acceptance_rates,
                 ),
                 ddls: deadlines,
-                opening: edition
-                    .opening
-                    .as_deref()
-                    .and_then(|raw| parse_deadline_to_rfc3339(raw, &edition.timezone))
-                    .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())
-                    .map(|value| TimePoint {
-                        timepoint: value.with_timezone(&display_timezone_offset_at(
-                            display_timezone,
-                            value.timestamp_millis(),
-                        )),
-                        r#type: 4,
-                        round: 0,
-                        comment: None,
-                    }),
+                opening: if submission_only {
+                    None
+                } else {
+                    opening.clone()
+                },
                 estimated_deadlines: Vec::new(),
             };
 
+            // FIN describes the selected deadline scope. The original edition data
+            // stays intact, so switching back restores all milestones and opening.
+            if submission_only {
+                if opening
+                    .as_ref()
+                    .is_some_and(|point| point.timepoint <= current_time)
+                {
+                    item.status = "FIN".to_string();
+                    items.push(item);
+                    continue;
+                }
+                // A later round with an unpublished paper deadline must remain TBD
+                // after known submissions pass, rather than disappearing as FIN.
+                if !has_upcoming_deadline
+                    && edition.timeline.iter().any(|round| round.deadline == "TBD")
+                {
+                    item.deadline = "TBD".to_string();
+                    item.deadline_type = 1;
+                    item.abstract_deadline = None;
+                }
+            }
+
             if item.deadline == "TBD" {
-                let finished = item
-                    .opening
+                let finished = opening
                     .as_ref()
                     .map_or(edition.year < current_time.year(), |opening| {
                         opening.timepoint <= current_time
@@ -2389,6 +2444,146 @@ fn set_in_local_storage(key: &str, value: &str) {
 mod historical_deadline_tests {
     use super::*;
 
+    fn submission_fixture() -> Conference {
+        serde_json::from_value(serde_json::json!({
+            "title": "TEST", "description": "Test conference", "sub": "AI",
+            "rank": {"ccf": "A"}, "dblp": "test",
+            "confs": [{
+                "year": 2027, "id": "test27", "link": "https://example.org",
+                "timeline": [
+                    {"abstract_deadline": "2027-05-30 10:00:00", "deadline": "2027-06-01 10:00:00",
+                     "rebuttal_deadline": "2027-06-05 10:00:00", "decision_deadline": "2027-06-10 10:00:00"},
+                    {"abstract_deadline": "2027-06-15 10:00:00", "deadline": "2027-06-20 10:00:00",
+                     "rebuttal_deadline": "2027-06-22 10:00:00", "decision_deadline": "2027-06-25 10:00:00"}
+                ],
+                "timezone": "UTC", "date": "July 1-5, 2027",
+                "opening": "2027-07-01 08:00:00", "place": "Virtual"
+            }]
+        })).unwrap()
+    }
+
+    fn submission_items(conference: Conference, reference: &str, only: bool) -> Vec<ConfItem> {
+        build_conf_items(
+            vec![conference],
+            &[],
+            &HashSet::new(),
+            &HashMap::new(),
+            "UTC",
+            DateTime::parse_from_rfc3339(reference)
+                .unwrap()
+                .with_timezone(&Utc),
+            only,
+        )
+    }
+
+    #[test]
+    fn submission_only_selects_both_submission_types_across_rounds() {
+        for (reference, expected_type, expected_deadline) in [
+            ("2027-05-29T10:00:00Z", 0, "2027-05-30 10:00:00"),
+            ("2027-05-30T10:00:00Z", 1, "2027-06-01 10:00:00"),
+            ("2027-06-03T10:00:00Z", 0, "2027-06-15 10:00:00"),
+            ("2027-06-15T10:00:00Z", 1, "2027-06-20 10:00:00"),
+        ] {
+            let items = submission_items(submission_fixture(), reference, true);
+            let item = &items[0];
+            assert_eq!(item.status, "RUN");
+            assert_eq!(item.deadline_type, expected_type);
+            assert_eq!(item.deadline, expected_deadline);
+            assert_eq!(item.ddls.len(), 4);
+            assert!(item.ddls.iter().all(|point| point.r#type <= 1));
+            assert!(item.opening.is_none());
+            for round in [1, 2] {
+                let types: Vec<_> = item
+                    .ddls
+                    .iter()
+                    .filter(|point| point.round == round)
+                    .map(|point| point.r#type)
+                    .collect();
+                assert_eq!(types, [0, 1]);
+            }
+            let (google, _) = build_calendar_urls(item);
+            assert_eq!(google.len(), 4);
+            assert!(google.iter().all(|(label, _)| label.contains("Submission")));
+        }
+    }
+
+    #[test]
+    fn submission_scope_ends_at_last_paper_and_full_scope_restores_other_events() {
+        let conference = submission_fixture();
+        for reference in ["2027-06-20T10:00:00Z", "2027-06-26T10:00:00Z"] {
+            let only = submission_items(conference.clone(), reference, true);
+            assert_eq!(only[0].status, "FIN");
+            assert_eq!(only[0].remain, 0);
+            assert_eq!(only[0].deadline_type, 1);
+            assert!(
+                detail_time_points(&only[0])
+                    .iter()
+                    .all(|point| point.r#type <= 1)
+            );
+            let full = submission_items(conference.clone(), reference, false);
+            assert_eq!(full[0].status, "RUN");
+            assert_eq!(
+                full[0].deadline_type,
+                if reference.starts_with("2027-06-20") {
+                    2
+                } else {
+                    4
+                }
+            );
+            assert_eq!(detail_time_points(&full[0]).len(), 9);
+        }
+    }
+
+    #[test]
+    fn unpublished_submission_round_stays_tbd_and_keeps_estimates() {
+        let mut conference = submission_fixture();
+        let mut previous = conference.confs[0].clone();
+        previous.year = 2026;
+        previous.id = "test26".to_string();
+        previous.timeline = vec![
+            serde_json::from_value(serde_json::json!({
+                "abstract_deadline": "2026-06-15 10:00:00", "deadline": "2026-06-20 10:00:00"
+            }))
+            .unwrap(),
+        ];
+        let edition = &mut conference.confs[0];
+        edition.timeline[1].deadline = "TBD".to_string();
+        conference.confs.push(previous);
+        for (reference, expected) in [
+            ("2027-06-14T10:00:00Z", "RUN"),
+            ("2027-06-15T10:00:00Z", "TBD"),
+            ("2027-07-01T08:00:00Z", "FIN"),
+        ] {
+            let items = submission_items(conference.clone(), reference, true);
+            let item = items.iter().find(|item| item.id == "test27").unwrap();
+            assert_eq!(item.status, expected);
+            if expected == "TBD" {
+                assert_eq!(item.deadline, "TBD");
+                assert_eq!(item.estimated_deadlines.len(), 2);
+                assert!(
+                    item.estimated_deadlines
+                        .iter()
+                        .any(|estimate| estimate.is_abstract)
+                );
+                assert!(
+                    item.estimated_deadlines
+                        .iter()
+                        .any(|estimate| !estimate.is_abstract)
+                );
+            }
+        }
+    }
+
+    #[test]
+    fn submission_only_tbd_uses_known_opening_across_calendar_years() {
+        let mut conference = submission_fixture();
+        conference.confs[0].year = 2026;
+        conference.confs[0].timeline[1].deadline = "TBD".to_string();
+        let items = submission_items(conference, "2027-06-16T10:00:00Z", true);
+        assert_eq!(items[0].status, "TBD");
+        assert!(items[0].opening.is_none());
+    }
+
     #[test]
     fn opening_uses_the_edition_timezone_and_only_extends_detail_deadlines() {
         for (timezone, opening, utc) in [
@@ -2416,6 +2611,7 @@ mod historical_deadline_tests {
                 &HashMap::new(),
                 "UTC",
                 reference,
+                false,
             );
             let conf = &items[0];
             assert_eq!(conf.ddls.len(), 2);
@@ -2465,6 +2661,7 @@ mod historical_deadline_tests {
                     &HashMap::new(),
                     "UTC",
                     reference,
+                    false,
                 );
                 assert_eq!(items[0].status == "FIN", finished);
             }
@@ -2499,6 +2696,7 @@ mod historical_deadline_tests {
                 &HashMap::new(),
                 "UTC",
                 chrono::Utc::now(),
+                false,
             );
             let unknown = items.iter().find(|item| item.id == "unknown").unwrap();
             assert_eq!(unknown.deadline, "TBD");
@@ -2557,6 +2755,7 @@ mod historical_deadline_tests {
             &HashMap::new(),
             "Asia/Shanghai",
             Utc::now(),
+            false,
         );
         let conf = items.iter().find(|item| item.id == "iclr27").unwrap();
         let (google, icloud) = build_calendar_urls(conf);
