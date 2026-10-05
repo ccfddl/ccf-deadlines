@@ -2,7 +2,7 @@
 // Uses Chrome's DevTools protocol and only Node.js built-ins.
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
-import { existsSync, mkdtempSync, readFileSync, rmSync, statSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import { extname, join, resolve, sep } from "node:path";
@@ -28,7 +28,8 @@ const types = {
   ".wasm": "application/wasm",
 };
 let testDeadline = '2027-06-20 07:59:55';
-const testConferences = () => [{
+let submissionConferences = null;
+const testConferences = () => submissionConferences ?? [{
   title: 'OPENINGTEST', description: 'Opening transition regression', sub: 'AI',
   rank: {ccf: 'A'}, dblp: 'test',
   confs: [{year: 2027, id: 'openingtest27', link: 'https://example.org',
@@ -161,6 +162,7 @@ try {
           localStorage.setItem('display_timezone', 'UTC');
           localStorage.setItem('show_past', '${showPast}');
           localStorage.setItem('sort_by_stars', 'false');
+          localStorage.setItem('submission_only', 'false');
           for (const key of ['types', 'ranks', 'core_ranks', 'thcpl_ranks']) localStorage.setItem(key, '[]');
         `});
         await command('Page.navigate', {url: `http://127.0.0.1:${server.address().port}/?filters=all`});
@@ -195,6 +197,151 @@ try {
         console.log('Opening transition passed:', mode, showPast, deadline);
       }
     }
+  }
+  const submissionFixture = () => [{
+    title: 'OPENINGTEST', description: 'Submission scope regression', sub: 'AI',
+    rank: {ccf: 'A'}, dblp: 'test',
+    confs: [{year: 2027, id: 'openingtest27', link: 'https://example.org',
+      timeline: [
+        {abstract_deadline: '2027-06-20 07:59:55', deadline: '2027-06-20 08:00:00',
+          rebuttal_deadline: '2027-06-20 08:00:05', decision_deadline: '2027-06-20 08:00:10'},
+        {abstract_deadline: '2027-06-20 08:00:15', deadline: '2027-06-20 08:00:20',
+          rebuttal_deadline: '2027-06-21 08:00:00', decision_deadline: '2027-06-22 08:00:00'},
+      ], timezone: 'UTC', date: 'July 1-5, 2027', opening: '2027-07-01 08:00:00', place: 'Virtual'}],
+  }, {
+    title: 'ORDERTEST', description: 'Submission sorting regression', sub: 'AI',
+    rank: {ccf: 'A'}, dblp: 'test',
+    confs: [{year: 2027, id: 'ordertest27', link: 'https://example.org',
+      timeline: [{deadline: '2027-06-20 08:00:08'}], timezone: 'UTC',
+      date: 'July 3-5, 2027', opening: '2027-07-03 08:00:00', place: 'Virtual'}],
+  }];
+  async function pointerClick(selector) {
+    const point = await until(() => evaluate(`(() => {
+      if (document.querySelector('.thaw-dialog-surface.fade-in-scale-up-transition-enter-active, .thaw-dialog-surface.fade-in-scale-up-transition-leave-active')) return null;
+      const element = document.querySelector(${JSON.stringify(selector)});
+      if (!element) return null;
+      element.scrollIntoView({block: 'center'});
+      const rect = element.getBoundingClientRect();
+      const point = {x: rect.x + rect.width / 2, y: rect.y + rect.height / 2};
+      const hit = document.elementFromPoint(point.x, point.y);
+      return hit === element || element.contains(hit) ? point : null;
+    })()`), `physical pointer target ${selector}`);
+    await command('Input.dispatchMouseEvent', {type: 'mousePressed', button: 'left', clickCount: 1, ...point});
+    await command('Input.dispatchMouseEvent', {type: 'mouseReleased', button: 'left', clickCount: 1, ...point});
+  }
+  const submissionLabels = () => evaluate("[...document.querySelectorAll('.conference-detail-deadline-name')].map(node => node.textContent.trim())");
+  const firstConference = () => evaluate("document.querySelector('.conf-title')?.textContent.trim()");
+  const openSubmissionDetail = () => evaluate("[...document.querySelectorAll('.conf-title')].find(node => node.textContent.trim() === 'OPENINGTEST 2027').click()");
+  for (const mode of ['cards', 'list']) {
+    for (const width of [1280, 320]) {
+      submissionConferences = submissionFixture();
+      await command('Emulation.setDeviceMetricsOverride', {width, height: 1000, deviceScaleFactor: 1, mobile: false});
+      const preferences = await command('Page.addScriptToEvaluateOnNewDocument', {source: `
+        localStorage.setItem('conference_view', '${mode}');
+        localStorage.setItem('conference_search', '');
+        localStorage.setItem('display_timezone', 'UTC');
+        localStorage.setItem('show_past', 'false');
+        localStorage.setItem('sort_by_stars', 'false');
+        localStorage.removeItem('submission_only');
+        for (const key of ['types', 'ranks', 'core_ranks', 'thcpl_ranks']) localStorage.setItem(key, '[]');
+      `});
+      await command('Page.navigate', {url: `http://127.0.0.1:${server.address().port}/`});
+      await until(present, 'submission fixture');
+      assert.equal(await evaluate("document.querySelector('.submission-only-switch input').checked"), false);
+      assert.equal(await evaluate("document.querySelector('.submission-only-switch').textContent.trim()"), 'Show submission only');
+      await openSubmissionDetail();
+      await until(async () => (await submissionLabels()).some(label => label.includes('Rebuttal')), 'full mode retains rebuttal');
+      assert.ok((await submissionLabels()).some(label => label.includes('Conference Opening')));
+      await pointerClick('.conference-detail-close');
+      await pointerClick('.submission-only-switch input');
+      await until(() => evaluate("localStorage.getItem('submission_only') === 'true'"), 'submission preference saved');
+      await command('Page.removeScriptToEvaluateOnNewDocument', {identifier: preferences.identifier});
+      await command('Page.reload');
+      await until(present, 'saved submission mode');
+      assert.equal(await evaluate("document.querySelector('.submission-only-switch input').checked"), true);
+      await pointerClick('.language-switches input');
+      await until(() => evaluate("document.querySelector('.submission-only-switch').textContent.trim() === '仅显示投稿截止'"), 'Chinese switch label');
+      await pointerClick('.language-switches input');
+      const layout = await evaluate("({width: innerWidth, content: document.documentElement.scrollWidth})");
+      assert.ok(layout.content <= layout.width, `switches must fit at ${width}px`);
+      const screenshot = await command('Page.captureScreenshot', {format: 'png'});
+      writeFileSync(join(tmpdir(), `ccfddl-submission-${mode}-${width}.png`), Buffer.from(screenshot.data, 'base64'));
+      await openSubmissionDetail();
+      await until(async () => (await submissionLabels()).length === 4, 'only four paired submission dates');
+      assert.ok((await submissionLabels()).every(label => /Abstract Submission|Paper Submission/.test(label)));
+      assert.match(await nextLabel(), /Round 1 Abstract Submission/);
+      await evaluate("window.openingTestNow = Date.parse('2027-06-20T07:59:56Z')");
+      await until(async () => (await nextLabel()).includes('Round 1 Paper Submission'), 'abstract switches to paper', 5000);
+      await evaluate("window.openingTestNow = Date.parse('2027-06-20T08:00:01Z')");
+      await until(async () => (await nextLabel()).includes('Round 2 Abstract Submission'), 'paper switches to next round, skipping rebuttal', 5000);
+      await pointerClick('.conference-detail-close');
+      await until(async () => (await firstConference()) === 'ORDERTEST 2027', 'sort uses next submission');
+      await pointerClick('.submission-only-switch input');
+      await until(async () => (await firstConference()) === 'OPENINGTEST 2027', 'full mode sort restores earlier rebuttal');
+      await pointerClick('.submission-only-switch input');
+      await until(async () => (await firstConference()) === 'ORDERTEST 2027', 'submission sorting restored');
+      await openSubmissionDetail();
+      await evaluate("window.openingTestNow = Date.parse('2027-06-20T08:00:16Z')");
+      await until(async () => (await nextLabel()).includes('Round 2 Paper Submission'), 'next round abstract switches to paper', 5000);
+      await evaluate(`(() => { const input = document.querySelector('#base-time-input');
+        input.value = '2027-06-20T08:00:16'; input.dispatchEvent(new Event('change', {bubbles: true})); })()`);
+      await evaluate("window.openingTestNow = Date.parse('2027-06-20T08:00:20Z')");
+      await delay(1200);
+      assert.match(await nextLabel(), /Round 2 Paper Submission/, 'custom reference freezes selected submission');
+      await evaluate(`(() => { const input = document.querySelector('#base-time-input');
+        input.value = ''; input.dispatchEvent(new Event('change', {bubbles: true})); })()`);
+      await until(async () => (await nextLabel()) === '', 'last paper ends submission scope', 5000);
+      await pointerClick('.conference-detail-close');
+      await until(async () => !(await present()), 'ended submissions hidden before conference opening', 5000);
+      await pointerClick('.past-switch input');
+      await until(present, 'past submissions can be shown');
+      await openSubmissionDetail();
+      assert.equal((await submissionLabels()).length, 4);
+      assert.ok((await submissionLabels()).every(label => /Abstract Submission|Paper Submission/.test(label)));
+      await pointerClick('.conference-detail-close');
+      await pointerClick('.submission-only-switch input');
+      await openSubmissionDetail();
+      await until(async () => (await nextLabel()).includes('Rebuttal'), 'full mode restores upcoming rebuttal');
+      assert.ok((await submissionLabels()).some(label => label.includes('Conference Opening')));
+      await pointerClick('.conference-detail-close');
+      console.log('Submission-only switch, persistence, paired dates, sorting and transitions passed:', mode, width);
+    }
+  }
+  // Missing submission dates remain visible without an opening placeholder; an
+  // actual opening still expires them even though that marker is not displayed.
+  for (const estimates of [false, true]) {
+    submissionConferences = submissionFixture().slice(0, 1);
+    const conference = submissionConferences[0];
+    const edition = conference.confs[0];
+    edition.timeline = [{deadline: 'TBD'}];
+    edition.opening = '2027-06-20 08:00:00';
+    if (estimates) {
+      conference.confs.push({...edition, year: 2026, id: 'openingtest26',
+        timeline: [{abstract_deadline: '2026-06-15 23:59:59', deadline: '2026-06-20 23:59:59'}],
+        opening: '2026-06-20 08:00:00'});
+    }
+    const preferences = await command('Page.addScriptToEvaluateOnNewDocument', {source: `
+      localStorage.setItem('conference_view', 'cards');
+      localStorage.setItem('show_past', 'false');
+      localStorage.setItem('submission_only', 'true');
+    `});
+    await command('Page.navigate', {url: `http://127.0.0.1:${server.address().port}/`});
+    await until(present, 'TBD submission remains visible');
+    await openSubmissionDetail();
+    await until(() => evaluate("document.querySelector('.conference-detail-next strong')?.textContent.trim() === 'TBD'"), 'TBD next deadline');
+    assert.equal(await evaluate("document.querySelector('.conference-detail-dialog').textContent.includes('Conference Opening')"), false);
+    if (estimates) {
+      const labels = await submissionLabels();
+      assert.deepEqual(labels, ['Estimated Abstract SubmissionEST.', 'Estimated Paper SubmissionEST.']);
+    } else {
+      assert.equal(await evaluate("document.querySelector('.conference-detail-dialog').textContent.includes('Dates to be announced')"), true);
+    }
+    await evaluate("window.openingTestNow = Date.parse('2027-06-20T08:00:00Z')");
+    await until(() => evaluate("document.querySelector('.conference-detail-next strong')?.textContent.trim() === 'Passed'"), 'hidden opening expires TBD submission', 5000);
+    await pointerClick('.conference-detail-close');
+    await until(async () => !(await present()), 'expired TBD edition disappears', 5000);
+    await command('Page.removeScriptToEvaluateOnNewDocument', {identifier: preferences.identifier});
+    console.log('Submission-only TBD/estimated regression passed:', estimates);
   }
   assert.deepEqual(errors, []);
   console.log('Live submission/opening transitions passed in cards and list views, with known/TBD submissions and past visibility on/off');

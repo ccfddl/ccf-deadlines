@@ -44,10 +44,11 @@ pub fn ConferenceControls(
     toolbar_clock: ToolbarClock,
     #[prop(optional)] toolbar_actions: Option<ToolbarActions>,
     #[prop(optional_no_strip)] show_past: Option<RwSignal<bool>>,
+    #[prop(optional_no_strip)] submission_only: Option<RwSignal<bool>>,
 ) -> impl IntoView {
     view! {
         <div class="conference-controls">
-            <LanguageControls use_english show_past=show_past />
+            <LanguageControls use_english show_past=show_past submission_only=submission_only />
             <CategoryFilters use_english categories selected />
             <div class="timezone toolbar">
                 <div class="toolbar-main">
@@ -69,6 +70,7 @@ pub fn ConferenceControls(
 fn LanguageControls(
     use_english: RwSignal<bool>,
     #[prop(optional_no_strip)] show_past: Option<RwSignal<bool>>,
+    #[prop(optional_no_strip)] submission_only: Option<RwSignal<bool>>,
 ) -> impl IntoView {
     view! {
         <div class="language-switches">
@@ -77,6 +79,12 @@ fn LanguageControls(
                 <Switch checked=use_english />
                 <span class=("is_active", move || use_english.get())>"English"</span>
             </div>
+            {submission_only.map(|submission_only| view! {
+                <label class="el-switch submission-only-switch">
+                    <Switch checked=submission_only />
+                    <span class="past-label">{move || if use_english.get() { "Show submission only" } else { "仅显示投稿截止" }}</span>
+                </label>
+            })}
             {show_past.map(|show_past| view! {
                 <label class="el-switch past-switch">
                     <Switch checked=show_past />

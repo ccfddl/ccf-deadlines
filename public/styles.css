@@ -833,7 +833,8 @@ a {
     line-height: 20px;
 }
 
-.past-switch {
+.past-switch,
+.submission-only-switch {
   cursor: pointer;
 }
 
@@ -3859,6 +3860,16 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   .toolbar-actions {
     flex-basis: 100%;
     width: 100%;
+    justify-content: space-between;
+    column-gap: 1px;
+    row-gap: 8px;
+  }
+  .toolbar-actions > .thaw-button,
+  .toolbar-actions > .star-sort-control > .thaw-button {
+    min-width: 0;
+    min-height: var(--toolbar-control-height);
+    padding: 4px 0;
+    white-space: nowrap;
   }
   .toolbar-rank-control {
     flex: 1 0 100%;
