@@ -51,7 +51,7 @@ CCFDDL provides a read-only Model Context Protocol (MCP) server for AI clients t
 
 Connect using **Streamable HTTP** at `https://ccfddl.com/mcp`.
 
-MCP shares the `ccfddl-api` Cloudflare Worker with the site's API and email scheduler. Run `npm run deploy` from `worker/` to deploy them together. See the [MCP README](worker/mcp/README.md) for available tools, parameters, local setup, and deployment instructions.
+See the [MCP README](worker/mcp/README.md) for details.
 
 ## Community Activity
 ![Alt](https://repobeats.axiom.co/api/embed/98d0169b30fc63bfddcfbf2ac6d73656ef0f9d00.svg "Repobeats analytics image")
