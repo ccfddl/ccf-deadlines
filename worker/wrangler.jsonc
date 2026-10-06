@@ -19,8 +19,8 @@
       "zone_name": "ccfddl.com"
     },
     {
-      "pattern": "mcp.ccfddl.com",
-      "custom_domain": true
+      "pattern": "ccfddl.com/.well-known/openai-apps-challenge",
+      "zone_name": "ccfddl.com"
     }
   ],
   "vars": {

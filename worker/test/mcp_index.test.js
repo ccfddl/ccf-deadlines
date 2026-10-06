@@ -32,7 +32,7 @@ test("serves API health and MCP initialization through the same Worker", async (
   const health = await worker.fetch(new Request("https://ccfddl.com/api/health"), {});
   assert.equal(health.status, 200);
   assert.deepEqual(await health.json(), { ok: true });
-  for (const url of ["https://ccfddl.com/api/mcp", "https://mcp.ccfddl.com/mcp", "http://localhost/mcp"]) {
+  for (const url of ["https://ccfddl.com/api/mcp", "http://localhost/api/mcp"]) {
     const response = await worker.fetch(rpcRequest(url, "initialize", initialize), {});
     assert.equal(response.status, 200);
     assert.equal(response.headers.get("X-Content-Type-Options"), "nosniff");
@@ -77,16 +77,23 @@ test("lists and calls MCP tools without a database or site login", async () => {
   }
 });
 
-test("keeps the MCP subdomain read-only and serves its domain verification", async () => {
-  const health = await worker.fetch(new Request("https://mcp.ccfddl.com/health"), {});
-  assert.deepEqual(await health.json(), { ok: true });
+test("serves domain verification on the primary domain", async () => {
   const challenge = "test-challenge";
-  const verified = await worker.fetch(new Request("https://mcp.ccfddl.com/.well-known/openai-apps-challenge"), {
+  const url = "https://ccfddl.com/.well-known/openai-apps-challenge";
+  const verified = await worker.fetch(new Request(url), {
     OPENAI_DOMAIN_VERIFICATION_TOKEN: challenge,
   });
+  assert.equal(verified.status, 200);
   assert.equal(await verified.text(), challenge);
-  const apiOnMcpDomain = await worker.fetch(new Request("https://mcp.ccfddl.com/api/bootstrap"), {});
-  assert.equal(apiOnMcpDomain.status, 404);
+  const unconfigured = await worker.fetch(new Request(url), {});
+  assert.equal(unconfigured.status, 404);
+});
+
+test("does not serve legacy MCP paths", async () => {
+  for (const path of ["/mcp", "/health"]) {
+    const response = await worker.fetch(new Request("https://ccfddl.com" + path), {});
+    assert.equal(response.status, 404);
+  }
 });
 
 test("applies the shared rate limiter to MCP requests", async () => {
@@ -103,6 +110,7 @@ test("applies the shared rate limiter to MCP requests", async () => {
 test("rejects untrusted MCP hosts and origins", async () => {
   for (const [url, headers] of [
     ["https://untrusted.example/api/mcp", {}],
+    ["https://mcp.ccfddl.com/api/mcp", {}],
     ["https://ccfddl.com/api/mcp", { Origin: "https://untrusted.example" }],
   ]) {
     const response = await worker.fetch(rpcRequest(url, "initialize", initialize, headers), {});

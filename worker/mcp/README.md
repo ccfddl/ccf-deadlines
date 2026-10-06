@@ -1,6 +1,6 @@
 # CCFDDL MCP plugin
 
-This is a public, read-only MCP server for conference search, published deadlines and historical acceptance statistics. It runs inside the same `ccfddl-api` Cloudflare Worker as the site's API, at `https://mcp.ccfddl.com/mcp` and `https://ccfddl.com/api/mcp`. It reads `https://ccfddl.com/conference/allconf.json` and `https://ccfddl.com/conference/allacc.json` with independent 15-minute in-isolate caches. MCP tools do not use D1 or site sessions.
+This is a public, read-only MCP server for conference search, published deadlines and historical acceptance statistics. It runs inside the same `ccfddl-api` Cloudflare Worker as the site's API, at `https://ccfddl.com/api/mcp` using **Streamable HTTP**. It reads `https://ccfddl.com/conference/allconf.json` and `https://ccfddl.com/conference/allacc.json` with independent 15-minute in-isolate caches. MCP tools do not use D1 or site sessions.
 
 Source files are under `worker/src/mcp/`, tests are under `worker/test/mcp_*.test.js`, and the portable plugin package is under `worker/mcp/plugin/ccfddl/`. The shared dependencies and deployment configuration are in `worker/package.json` and `worker/wrangler.jsonc`.
 
@@ -56,7 +56,7 @@ npm run check
 npm run dev
 ```
 
-Use MCP Inspector with `http://localhost:8787/api/mcp`. Test `initialize`, `tools/list`, and each tool call, including empty results and timezone boundaries. `/api/health` checks the shared Worker, and `/health` remains available on the MCP domain. Health routes do not check the data sources.
+Use MCP Inspector with `http://localhost:8787/api/mcp`. Test `initialize`, `tools/list`, and each tool call, including empty results and timezone boundaries. `/api/health` checks the shared Worker; it does not check the data sources.
 
 ## Deployment
 
@@ -66,11 +66,9 @@ Deploy from `worker/` after the code and plugin metadata have been reviewed:
 npm run deploy
 ```
 
-This single command deploys the site's API, email scheduler, and MCP service together as `ccfddl-api`. Cloudflare must be authorized in the deployment environment. Verify `https://ccfddl.com/api/health`, then connect either MCP endpoint and call a tool; no separate MCP deployment is needed.
+This single command deploys the site's API, email scheduler, and MCP service together as `ccfddl-api`. Cloudflare must be authorized in the deployment environment. Verify `https://ccfddl.com/api/health`, then connect `https://ccfddl.com/api/mcp` and call a tool; no separate MCP deployment is needed.
 
-For the first deployment after consolidation, Wrangler may ask whether to update the existing `mcp.ccfddl.com` Custom Domain to point to `ccfddl-api` instead of `ccfddl-mcp`. Confirm this transfer to retain the existing MCP URL. Verify the old URL serves the new tools before removing the old Worker. Existing API routes, D1 bindings, and email Cron Trigger remain in the shared configuration.
-
-When OpenAI provides the domain-verification challenge, save its exact token as the `ccfddl-api` Worker secret `OPENAI_DOMAIN_VERIFICATION_TOKEN` and redeploy. If this secret previously belonged to `ccfddl-mcp`, configure it on `ccfddl-api` too; secrets do not move with a domain. The MCP domain returns that token at `/.well-known/openai-apps-challenge`. Do not place the token in Git.
+When OpenAI provides a domain-verification challenge for `ccfddl.com`, save its exact token as the `ccfddl-api` Worker secret `OPENAI_DOMAIN_VERIFICATION_TOKEN` and redeploy. The Worker returns that token at `https://ccfddl.com/.well-known/openai-apps-challenge`. Do not place the token in Git.
 
 ## Public plugin submission
 
@@ -78,8 +76,8 @@ The portable plugin package is under `worker/mcp/plugin/ccfddl/`. After deployme
 
 ```bash
 mkdir -p dist
-cd plugin/ccfddl
-zip -r ../../dist/ccfddl-plugin.zip plugin.json mcp.json assets
+cd plugin
+zip -r ../dist/ccfddl-plugin.zip ccfddl
 ```
 
 Upload the ZIP in the OpenAI Platform Plugins portal, connect the MCP URL, complete domain verification, and run the tool scan. The manifest contains acceptance-history and missing-statistics cases alongside deadline queries. Record a demonstration video and add its URL in the portal. Select the verified publisher identity and review the public listing before submitting; approval and publishing are separate actions.

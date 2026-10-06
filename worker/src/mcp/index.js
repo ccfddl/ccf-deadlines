@@ -141,23 +141,20 @@ function createServer() {
 export default {
   fetch(request, env, context) {
     const url = new URL(request.url);
-    if (url.pathname === "/health" && request.method === "GET") {
-      return Response.json({ ok: true });
-    }
     if (url.pathname === "/.well-known/openai-apps-challenge" && request.method === "GET") {
       return env.OPENAI_DOMAIN_VERIFICATION_TOKEN
         ? new Response(env.OPENAI_DOMAIN_VERIFICATION_TOKEN, { headers: { "Content-Type": "text/plain; charset=utf-8" } })
         : new Response("Not configured", { status: 404 });
     }
-    if (!["/api/mcp", "/mcp"].includes(url.pathname)) return new Response("Not found", { status: 404 });
+    if (url.pathname !== "/api/mcp") return new Response("Not found", { status: 404 });
 
     const hostname = url.hostname;
-    const allowedHostnames = ["ccfddl.com", "mcp.ccfddl.com", "localhost", "127.0.0.1"];
+    const allowedHostnames = ["ccfddl.com", "localhost", "127.0.0.1"];
     if (hostname.endsWith(".workers.dev")) allowedHostnames.push(hostname);
     return createMcpHandler(createServer, {
       route: url.pathname,
       allowedHostnames,
-      allowedOriginHostnames: ["chatgpt.com", "ccfddl.com", "mcp.ccfddl.com", "localhost", "127.0.0.1"],
+      allowedOriginHostnames: ["chatgpt.com", "ccfddl.com", "localhost", "127.0.0.1"],
       corsOptions: false,
       responseMode: "json",
     })(request, env, context);

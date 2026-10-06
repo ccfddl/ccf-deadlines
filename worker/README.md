@@ -1,6 +1,6 @@
 # CCFDDL API
 
-This Cloudflare Worker handles GitHub sign-in, per-edition conference favorites, the public message wall, email reminders, and the public read-only MCP service. The static site calls it through the same-origin `/api/*` route. MCP clients can connect to `https://mcp.ccfddl.com/mcp` or `https://ccfddl.com/api/mcp`; see the [MCP README](mcp/README.md) for tools and parameters. It also redirects existing `/conference/deadlines_*` calendar and RSS subscriptions to `/conference/deadlines/`.
+This Cloudflare Worker handles GitHub sign-in, per-edition conference favorites, the public message wall, email reminders, and the public read-only MCP service. The static site calls it through the same-origin `/api/*` route. MCP clients can connect to `https://ccfddl.com/api/mcp`; see the [MCP README](mcp/README.md) for tools and parameters. It also redirects existing `/conference/deadlines_*` calendar and RSS subscriptions to `/conference/deadlines/`.
 
 ## 1. Create the GitHub OAuth app
 
@@ -60,8 +60,6 @@ npm run deploy
 ```
 
 One deployment updates the API, email scheduler, and MCP service together. After deployment, verify `https://ccfddl.com/api/health` returns `{"ok":true}` before publishing the static frontend changes, then connect an MCP client and call `search_conferences` or `get_acceptance_rates`.
-
-For the first unified deployment, confirm Wrangler's prompt to move the existing `mcp.ccfddl.com` Custom Domain from `ccfddl-mcp` to `ccfddl-api`. The MCP endpoint URL stays the same. Any `OPENAI_DOMAIN_VERIFICATION_TOKEN` secret must be configured on `ccfddl-api`; it does not transfer automatically. See the [MCP migration notes](mcp/README.md#deployment).
 
 When a new migration is added, apply the migration before deploying the Worker version that uses it. The message wall requires migrations `0002` through `0006`. Migration `0006` enforces posting limits atomically in D1; deploy it before this Worker version to keep message posting working. It preserves existing daily quotas in a separate counter, avoiding double-counting while the previous Worker is still running. Email reminders require migrations `0007` and `0008`; migration `0008` adds the optional daily mode, off by default for existing users. Migration `0009` backfills favorite counts and keeps them current with database triggers; apply it before deploying the Worker that queries `conference_star_counts`. Migration `0010` indexes email send dates for daily retention cleanup. Deploy the static site with `/conference/deadline_events.json` before enabling the sender secrets and deploying this Worker version.
 
