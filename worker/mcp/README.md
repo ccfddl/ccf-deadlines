@@ -1,6 +1,6 @@
 # CCFDDL MCP plugin
 
-This is a public, read-only MCP server for conference search, published deadlines and historical acceptance statistics. It runs inside the same `ccfddl-api` Cloudflare Worker as the site's API, at `https://ccfddl.com/api/mcp` using **Streamable HTTP**. It reads `https://ccfddl.com/conference/allconf.json` and `https://ccfddl.com/conference/allacc.json` with independent 15-minute in-isolate caches. MCP tools do not use D1 or site sessions.
+This is a public, read-only MCP server for conference search, published deadlines and historical acceptance statistics. It runs inside the same `ccfddl-api` Cloudflare Worker as the site's API, at `https://ccfddl.com/mcp` using **Streamable HTTP**. It reads `https://ccfddl.com/conference/allconf.json` and `https://ccfddl.com/conference/allacc.json` with independent 15-minute in-isolate caches. MCP tools do not use D1 or site sessions.
 
 Source files are under `worker/src/mcp/`, tests are under `worker/test/mcp_*.test.js`, and the portable plugin package is under `worker/mcp/plugin/ccfddl/`. The shared dependencies and deployment configuration are in `worker/package.json` and `worker/wrangler.jsonc`.
 
@@ -56,7 +56,7 @@ npm run check
 npm run dev
 ```
 
-Use MCP Inspector with `http://localhost:8787/api/mcp`. Test `initialize`, `tools/list`, and each tool call, including empty results and timezone boundaries. `/api/health` checks the shared Worker; it does not check the data sources.
+Use MCP Inspector with `http://localhost:8787/mcp`. Test `initialize`, `tools/list`, and each tool call, including empty results and timezone boundaries. `/api/health` checks the shared Worker; it does not check the data sources.
 
 ## Deployment
 
@@ -66,7 +66,7 @@ Deploy from `worker/` after the code and plugin metadata have been reviewed:
 npm run deploy
 ```
 
-This single command deploys the site's API, email scheduler, and MCP service together as `ccfddl-api`. Cloudflare must be authorized in the deployment environment. Verify `https://ccfddl.com/api/health`, then connect `https://ccfddl.com/api/mcp` and call a tool; no separate MCP deployment is needed.
+This single command deploys the site's API, email scheduler, and MCP service together as `ccfddl-api`. Cloudflare must be authorized in the deployment environment. Verify `https://ccfddl.com/api/health`, then connect `https://ccfddl.com/mcp` and call a tool; no separate MCP deployment is needed.
 
 When OpenAI provides a domain-verification challenge for `ccfddl.com`, save its exact token as the `ccfddl-api` Worker secret `OPENAI_DOMAIN_VERIFICATION_TOKEN` and redeploy. The Worker returns that token at `https://ccfddl.com/.well-known/openai-apps-challenge`. Do not place the token in Git.
 

@@ -15,6 +15,10 @@
       "zone_name": "ccfddl.com"
     },
     {
+      "pattern": "ccfddl.com/mcp",
+      "zone_name": "ccfddl.com"
+    },
+    {
       "pattern": "ccfddl.com/conference/deadlines_*",
       "zone_name": "ccfddl.com"
     },

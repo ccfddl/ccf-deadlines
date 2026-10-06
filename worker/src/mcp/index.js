@@ -146,7 +146,7 @@ export default {
         ? new Response(env.OPENAI_DOMAIN_VERIFICATION_TOKEN, { headers: { "Content-Type": "text/plain; charset=utf-8" } })
         : new Response("Not configured", { status: 404 });
     }
-    if (url.pathname !== "/api/mcp") return new Response("Not found", { status: 404 });
+    if (url.pathname !== "/mcp") return new Response("Not found", { status: 404 });
 
     const hostname = url.hostname;
     const allowedHostnames = ["ccfddl.com", "localhost", "127.0.0.1"];

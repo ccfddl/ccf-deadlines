@@ -1,6 +1,6 @@
 # CCFDDL API
 
-This Cloudflare Worker handles GitHub sign-in, per-edition conference favorites, the public message wall, email reminders, and the public read-only MCP service. The static site calls it through the same-origin `/api/*` route. MCP clients can connect to `https://ccfddl.com/api/mcp`; see the [MCP README](mcp/README.md) for tools and parameters. It also redirects existing `/conference/deadlines_*` calendar and RSS subscriptions to `/conference/deadlines/`.
+This Cloudflare Worker handles GitHub sign-in, per-edition conference favorites, the public message wall, email reminders, and the public read-only MCP service. The static site calls it through the same-origin `/api/*` route. MCP clients can connect to `https://ccfddl.com/mcp`; see the [MCP README](mcp/README.md) for tools and parameters. It also redirects existing `/conference/deadlines_*` calendar and RSS subscriptions to `/conference/deadlines/`.
 
 ## 1. Create the GitHub OAuth app
 

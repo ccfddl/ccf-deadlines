@@ -49,7 +49,7 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
 
 CCFDDL provides a read-only Model Context Protocol (MCP) server for AI clients to search conferences, check published deadlines and opening dates, and retrieve historical acceptance rates. It supports CCF/CORE/THCPL filters, pagination, and timezone conversion.
 
-Connect using **Streamable HTTP** at `https://ccfddl.com/api/mcp`.
+Connect using **Streamable HTTP** at `https://ccfddl.com/mcp`.
 
 MCP shares the `ccfddl-api` Cloudflare Worker with the site's API and email scheduler. Run `npm run deploy` from `worker/` to deploy them together. See the [MCP README](worker/mcp/README.md) for available tools, parameters, local setup, and deployment instructions.
 

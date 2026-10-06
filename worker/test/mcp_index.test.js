@@ -32,7 +32,7 @@ test("serves API health and MCP initialization through the same Worker", async (
   const health = await worker.fetch(new Request("https://ccfddl.com/api/health"), {});
   assert.equal(health.status, 200);
   assert.deepEqual(await health.json(), { ok: true });
-  for (const url of ["https://ccfddl.com/api/mcp", "http://localhost/api/mcp"]) {
+  for (const url of ["https://ccfddl.com/mcp", "http://localhost/mcp"]) {
     const response = await worker.fetch(rpcRequest(url, "initialize", initialize), {});
     assert.equal(response.status, 200);
     assert.equal(response.headers.get("X-Content-Type-Options"), "nosniff");
@@ -43,7 +43,7 @@ test("serves API health and MCP initialization through the same Worker", async (
 });
 
 test("lists and calls MCP tools without a database or site login", async () => {
-  const url = "https://ccfddl.com/api/mcp";
+  const url = "https://ccfddl.com/mcp";
   const listed = await worker.fetch(rpcRequest(url, "tools/list"), {});
   assert.equal(listed.status, 200);
   assert.deepEqual((await rpcResponse(listed)).result.tools.map((tool) => tool.name).sort(), [
@@ -89,15 +89,15 @@ test("serves domain verification on the primary domain", async () => {
   assert.equal(unconfigured.status, 404);
 });
 
-test("does not serve legacy MCP paths", async () => {
-  for (const path of ["/mcp", "/health"]) {
-    const response = await worker.fetch(new Request("https://ccfddl.com" + path), {});
+test("does not serve retired MCP paths", async () => {
+  for (const path of ["/api/mcp", "/health"]) {
+    const response = await worker.fetch(rpcRequest("https://ccfddl.com" + path, "initialize", initialize), {});
     assert.equal(response.status, 404);
   }
 });
 
 test("applies the shared rate limiter to MCP requests", async () => {
-  const response = await worker.fetch(rpcRequest("https://ccfddl.com/api/mcp", "initialize", initialize, {
+  const response = await worker.fetch(rpcRequest("https://ccfddl.com/mcp", "initialize", initialize, {
     "CF-Connecting-IP": "192.0.2.1",
   }), { API_RATE_LIMITER: { limit: async ({ key }) => {
     assert.equal(key, "192.0.2.1");
@@ -109,9 +109,9 @@ test("applies the shared rate limiter to MCP requests", async () => {
 
 test("rejects untrusted MCP hosts and origins", async () => {
   for (const [url, headers] of [
-    ["https://untrusted.example/api/mcp", {}],
-    ["https://mcp.ccfddl.com/api/mcp", {}],
-    ["https://ccfddl.com/api/mcp", { Origin: "https://untrusted.example" }],
+    ["https://untrusted.example/mcp", {}],
+    ["https://mcp.ccfddl.com/mcp", {}],
+    ["https://ccfddl.com/mcp", { Origin: "https://untrusted.example" }],
   ]) {
     const response = await worker.fetch(rpcRequest(url, "initialize", initialize, headers), {});
     assert.ok(response.status >= 400 && response.status < 500);

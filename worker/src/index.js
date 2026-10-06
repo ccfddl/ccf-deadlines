@@ -50,7 +50,7 @@ export default {
 async function route(request, env, context) {
   const url = new URL(request.url);
 
-  if (["/api/mcp", "/.well-known/openai-apps-challenge"].includes(url.pathname)) {
+  if (["/mcp", "/.well-known/openai-apps-challenge"].includes(url.pathname)) {
     return mcp.fetch(request, env, context);
   }
 
