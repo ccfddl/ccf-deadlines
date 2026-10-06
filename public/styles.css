@@ -414,18 +414,10 @@ a {
 }
 
 .email-reminder-intro,
-.email-reminder-notice,
 .email-reminder-message {
   color: #66717c;
   font-size: 12px;
   line-height: 1.6;
-}
-
-.email-reminder-notice {
-  padding: 8px 10px;
-  border-radius: 6px;
-  background: #fff8ec;
-  color: #87633a;
 }
 
 .email-reminder-settings {
@@ -3143,7 +3135,8 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 
 .conference-detail-tags span,
 .conference-detail-actions a,
-.conference-detail-actions button.conference-detail-calendar-link {
+.conference-detail-actions button.conference-detail-calendar-link,
+.conference-detail-actions button.batch-subscription-copy {
   display: inline-block;
   padding: 5px 8px;
   border: 0;
@@ -3171,7 +3164,8 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   color: #356d9e;
 }
 
-.conference-detail-actions .conference-detail-calendar-link {
+.conference-detail-actions .conference-detail-calendar-link,
+.conference-detail-actions button.batch-subscription-copy {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
@@ -3188,7 +3182,8 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
 }
 
 .conference-detail-actions a:hover,
-.conference-detail-actions button.conference-detail-calendar-link:hover {
+.conference-detail-actions button.conference-detail-calendar-link:hover,
+.conference-detail-actions button.batch-subscription-copy:hover {
   color: #24557e;
 }
 

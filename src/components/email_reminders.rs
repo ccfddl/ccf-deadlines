@@ -167,11 +167,6 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                 (false, false) => "收藏会议截止前 7 天、1 天，所选时区上午 9 点合并发送邮件。",
                             }
                         }}</p>
-                        <p class="email-reminder-notice">{move || if use_english.get() {
-                            "Free email delivery is limited, so some reminders may not be sent."
-                        } else {
-                            "邮件通知的免费额度有限，可能出现提醒未发出的情况。"
-                        }}</p>
                         {move || if status.contains("email_status=denied") {
                             Some(view! { <p class="email-reminder-message">{if use_english.get() { "GitHub email access was not granted." } else { "未授予 GitHub 邮箱权限。" }}</p> })
                         } else if status.contains("email_status=email_unavailable") {
