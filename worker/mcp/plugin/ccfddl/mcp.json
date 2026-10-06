@@ -3,7 +3,7 @@
   "mcpServers": {
     "ccfddl": {
       "type": "streamable-http",
-      "url": "https://mcp.ccfddl.com/mcp"
+      "url": "https://ccfddl.com/mcp"
     }
   }
 }

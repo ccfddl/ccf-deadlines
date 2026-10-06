@@ -5,6 +5,7 @@ import {
   validReminderTimezone,
   verifiedPrimaryEmail,
 } from "./email_reminders.js";
+import mcp from "./mcp/index.js";
 
 const OAUTH_COOKIE = "__Host-ccfddl_oauth";
 const SESSION_COOKIE = "__Host-ccfddl_session";
@@ -20,11 +21,11 @@ const MAX_JSON_BYTES = 8 * 1024;
 const STAR_COUNTS_CACHE_SECONDS = 300;
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, context) {
     let response;
     try {
       await enforceRateLimit(request, env);
-      response = await route(request, env);
+      response = await route(request, env, context);
     } catch (error) {
       if (error instanceof HttpError) {
         response = json({ error: error.message, ...(error.code ? { code: error.code } : {}) }, error.status);
@@ -46,8 +47,12 @@ export default {
   },
 };
 
-async function route(request, env) {
+async function route(request, env, context) {
   const url = new URL(request.url);
+
+  if (["/mcp", "/.well-known/openai-apps-challenge"].includes(url.pathname)) {
+    return mcp.fetch(request, env, context);
+  }
 
   const legacyFeed = url.pathname.match(/^\/conference\/(deadlines_(?:en|zh)(?:_[A-Za-z0-9]+)*\.(?:ics|xml))$/);
   if (["GET", "HEAD"].includes(request.method) && legacyFeed) {
