@@ -3871,6 +3871,9 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
     padding: 4px 0;
     white-space: nowrap;
   }
+  .toolbar-actions > .star-sort-control > .star-sort-toggle {
+    padding-inline: clamp(0px, calc((100vw - 320px) / 2), 6px);
+  }
   .toolbar-rank-control {
     flex: 1 0 100%;
     min-width: 0;
