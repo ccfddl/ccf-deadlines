@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "ccfddl",
-  "version": "1.0.0",
-  "description": "Find research conferences and their published submission deadlines using CCFDDL data.",
+  "version": "1.2.0",
+  "description": "Find research conferences, published deadlines, openings and historical acceptance statistics using CCFDDL data.",
   "author": {
     "name": "CCFDDL",
     "url": "https://ccfddl.com"
@@ -10,16 +10,26 @@
   "homepage": "https://ccfddl.com",
   "repository": "https://github.com/ccfddl/ccf-deadlines",
   "license": "MIT",
-  "keywords": ["conferences", "research", "deadlines"],
+  "keywords": [
+    "conferences",
+    "research",
+    "deadlines"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "CCFDDL",
         "shortDescription": "Find research deadlines",
-        "longDescription": "Search research conferences by name, CCF rank, and subject area. See published submission deadlines with their original timezone and source conference link. Dates that are missing or still TBD are not predicted.",
+        "longDescription": "Search research conferences by name, subject, CCF/CORE/THCPL rank and edition year. Browse paginated deadlines and published openings with optional local-time display. Read historical acceptance rates, submitted and accepted paper counts, statistical years and source links. Distinguish conferences sharing a name and identify missing or inconsistent statistics. Missing or TBD dates are not predicted.",
         "developerName": "CCFDDL",
         "category": "Productivity",
-        "capabilities": ["Search conferences", "Read submission deadlines"],
+        "capabilities": [
+          "Search conferences",
+          "Read published deadlines",
+          "Read conference openings",
+          "Discover conference filters",
+          "Read acceptance statistics"
+        ],
         "websiteURL": "https://ccfddl.com",
         "supportURL": "https://ccfddl.com/mcp-support.html",
         "privacyPolicyURL": "https://ccfddl.com/mcp-privacy.html",
@@ -65,6 +75,48 @@
               "prompt": "Find the conference named ZZZ-NONEXISTENT in CCFDDL.",
               "tools_triggered": "search_conferences",
               "expected_behavior": "Report no match without inventing conference details."
+            },
+            {
+              "description": "Discover subject codes and ranking options",
+              "prompt": "What subject and ranking filters does CCFDDL support?",
+              "tools_triggered": "get_filter_options",
+              "expected_behavior": "Return bilingual category labels, CCF/CORE/THCPL options, edition years and deadline types."
+            },
+            {
+              "description": "Read upcoming paper deadlines in local time",
+              "prompt": "Find CORE A* AI paper submission deadlines in the next 30 days using CCFDDL, displayed in Asia/Shanghai time.",
+              "tools_triggered": "upcoming_deadlines",
+              "expected_behavior": "Apply category AI, CORE A* and deadline type deadline; preserve source and UTC times and add Asia/Shanghai display times. Return no matches if none are published."
+            },
+            {
+              "description": "Distinguish conferences sharing a name",
+              "prompt": "Show the published deadlines for the software engineering conference FSE in CCFDDL.",
+              "tools_triggered": "get_conference",
+              "expected_behavior": "Use category SE or its returned conference key. If the name-only lookup is ambiguous, distinguish it from Fast Software Encryption before returning deadlines."
+            },
+            {
+              "description": "Read published conference openings",
+              "prompt": "Which conferences open in the next 90 days? Use CCFDDL.",
+              "tools_triggered": "upcoming_deadlines",
+              "expected_behavior": "Request deadline_types opening; return only explicitly dated future opening nodes, preserving timezone and source links without estimating missing dates."
+            },
+            {
+              "description": "Read historical acceptance rates and counts",
+              "prompt": "Show ICLR acceptance rates, submitted and accepted papers from 2022 through 2026 using CCFDDL.",
+              "tools_triggered": "get_acceptance_rates",
+              "expected_behavior": "Return published records in the inclusive year range, sorted newest first with each statistical year, fraction, percentage, counts and provenance link. Follow pagination if needed."
+            },
+            {
+              "description": "Distinguish future statistics from historical rates",
+              "prompt": "What is the acceptance rate for ICLR 2027 in CCFDDL?",
+              "tools_triggered": "get_acceptance_rates",
+              "expected_behavior": "Query statistical year 2027. If no record is published, report missing statistics; do not relabel a previous year or predict the future rate."
+            },
+            {
+              "description": "Refuse ambiguous title-only acceptance data",
+              "prompt": "Compare the acceptance rates of the two conferences called FSE using CCFDDL.",
+              "tools_triggered": "get_acceptance_rates",
+              "expected_behavior": "Disambiguate conference identities, but do not assign title-only acceptance records to either namesake. Report ambiguous or missing statistics when no explicit key or subject identifies the record."
             }
           ],
           "negative": [
@@ -79,6 +131,10 @@
             {
               "description": "Cannot access private favorites",
               "prompt": "Show another person's private favorites from CCFDDL."
+            },
+            {
+              "description": "Cannot predict individual acceptance",
+              "prompt": "Use CCFDDL to guarantee the probability that my paper will be accepted at ICLR."
             }
           ]
         },
@@ -86,7 +142,7 @@
         "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
-        "release_notes": "Initial read-only conference search and deadline lookup."
+        "release_notes": "Add historical acceptance-rate queries, year-range pagination, submitted/accepted paper counts, provenance, exact-year and recent statistics in conference details, latest historical rates in search and upcoming results, and handling for ambiguous, missing or inconsistent statistics."
       }
     }
   }
