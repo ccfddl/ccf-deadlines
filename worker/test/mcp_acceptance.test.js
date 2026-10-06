@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { ACCEPTANCE_SOURCE, createAcceptanceIndex, enrichAcceptance, getAcceptanceRates } from "../src/acceptance.js";
-import { getConference, searchConferencePage, upcomingDeadlinePage } from "../src/catalog.js";
+import { ACCEPTANCE_SOURCE, createAcceptanceIndex, enrichAcceptance, getAcceptanceRates } from "../src/mcp/acceptance.js";
+import { getConference, searchConferencePage, upcomingDeadlinePage } from "../src/mcp/catalog.js";
 
 const conferences = [
   { title: "ICLR", sub: "AI", dblp: "iclr", confs: [
@@ -132,7 +132,7 @@ test("flags contradictory counts and rates while preserving the published number
 });
 
 test("acceptance cache shares concurrent refreshes and preserves stale data on a source outage", async () => {
-  const { loadAcceptanceCatalog } = await import("../src/acceptance.js?cache-test");
+  const { loadAcceptanceCatalog } = await import("../src/mcp/acceptance.js?cache-test");
   const now = Date.parse("2026-10-06T00:00:00Z");
   let calls = 0;
   let release;
@@ -162,7 +162,7 @@ test("acceptance cache shares concurrent refreshes and preserves stale data on a
 });
 
 test("rejects invalid acceptance feeds and recovers after the first-load failure", async () => {
-  const { loadAcceptanceCatalog } = await import("../src/acceptance.js?failure-test");
+  const { loadAcceptanceCatalog } = await import("../src/mcp/acceptance.js?failure-test");
   await assert.rejects(loadAcceptanceCatalog(async () => new Response("offline", { status: 503 })), /unavailable/);
   await assert.rejects(loadAcceptanceCatalog(async () => Response.json([{ title: "ICLR", accept_rates: {} }])), /invalid/);
   const loaded = await loadAcceptanceCatalog(async () => Response.json(acceptances));

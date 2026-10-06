@@ -3,6 +3,7 @@
   "name": "ccfddl-api",
   "main": "src/index.js",
   "compatibility_date": "2026-09-26",
+  "compatibility_flags": ["nodejs_compat"],
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1,
@@ -16,6 +17,10 @@
     {
       "pattern": "ccfddl.com/conference/deadlines_*",
       "zone_name": "ccfddl.com"
+    },
+    {
+      "pattern": "mcp.ccfddl.com",
+      "custom_domain": true
     }
   ],
   "vars": {

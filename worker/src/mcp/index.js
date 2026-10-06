@@ -149,14 +149,15 @@ export default {
         ? new Response(env.OPENAI_DOMAIN_VERIFICATION_TOKEN, { headers: { "Content-Type": "text/plain; charset=utf-8" } })
         : new Response("Not configured", { status: 404 });
     }
-    if (url.pathname !== "/mcp") return new Response("Not found", { status: 404 });
+    if (!["/api/mcp", "/mcp"].includes(url.pathname)) return new Response("Not found", { status: 404 });
 
     const hostname = url.hostname;
-    const allowedHostnames = ["mcp.ccfddl.com", "localhost", "127.0.0.1"];
+    const allowedHostnames = ["ccfddl.com", "mcp.ccfddl.com", "localhost", "127.0.0.1"];
     if (hostname.endsWith(".workers.dev")) allowedHostnames.push(hostname);
     return createMcpHandler(createServer, {
+      route: url.pathname,
       allowedHostnames,
-      allowedOriginHostnames: ["chatgpt.com", "mcp.ccfddl.com", "localhost", "127.0.0.1"],
+      allowedOriginHostnames: ["chatgpt.com", "ccfddl.com", "mcp.ccfddl.com", "localhost", "127.0.0.1"],
       corsOptions: false,
       responseMode: "json",
     })(request, env, context);

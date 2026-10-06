@@ -26,6 +26,9 @@ jobs:
         run: python scripts/build_data.py
       - name: Test data loading and database limits
         run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Install Worker dependencies
+        run: npm ci --no-audit --no-fund
+        working-directory: worker
       - name: Test Worker security
         run: node --test worker/test/*.test.js scripts/test_startup.mjs
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt

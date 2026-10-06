@@ -1,6 +1,8 @@
 # CCFDDL MCP plugin
 
-This is a public, read-only MCP server for conference search, published deadlines and historical acceptance statistics. It runs as a separate Cloudflare Worker at `https://mcp.ccfddl.com/mcp`. It reads `https://ccfddl.com/conference/allconf.json` and `https://ccfddl.com/conference/allacc.json` with independent 15-minute in-isolate caches and has no D1 binding.
+This is a public, read-only MCP server for conference search, published deadlines and historical acceptance statistics. It runs inside the same `ccfddl-api` Cloudflare Worker as the site's API, at `https://mcp.ccfddl.com/mcp` and `https://ccfddl.com/api/mcp`. It reads `https://ccfddl.com/conference/allconf.json` and `https://ccfddl.com/conference/allacc.json` with independent 15-minute in-isolate caches. MCP tools do not use D1 or site sessions.
+
+Source files are under `worker/src/mcp/`, tests are under `worker/test/mcp_*.test.js`, and the portable plugin package is under `worker/mcp/plugin/ccfddl/`. The shared dependencies and deployment configuration are in `worker/package.json` and `worker/wrangler.jsonc`.
 
 Tools:
 
@@ -46,32 +48,33 @@ Tools that read statistics include an `acceptance_data` envelope with the datase
 
 ## Local verification
 
-From this directory:
+From `worker/`:
 
 ```bash
-npm install
-npm test
+npm ci
 npm run check
 npm run dev
 ```
 
-Use MCP Inspector with `http://localhost:8787/mcp`. Test `initialize`, `tools/list`, and each tool call, including empty results and timezone boundaries. The `/health` route only confirms the Worker is running; it does not check the data source.
+Use MCP Inspector with `http://localhost:8787/api/mcp`. Test `initialize`, `tools/list`, and each tool call, including empty results and timezone boundaries. `/api/health` checks the shared Worker, and `/health` remains available on the MCP domain. Health routes do not check the data sources.
 
 ## Deployment
 
-Deploy after the code and plugin metadata have been reviewed:
+Deploy from `worker/` after the code and plugin metadata have been reviewed:
 
 ```bash
 npm run deploy
 ```
 
-Wrangler config binds the separate `ccfddl-mcp` Worker to `mcp.ccfddl.com`. Cloudflare must be authorized in the deployment environment. Verify `https://mcp.ccfddl.com/health` and connect `https://mcp.ccfddl.com/mcp` with MCP Inspector and ChatGPT developer mode.
+This single command deploys the site's API, email scheduler, and MCP service together as `ccfddl-api`. Cloudflare must be authorized in the deployment environment. Verify `https://ccfddl.com/api/health`, then connect either MCP endpoint and call a tool; no separate MCP deployment is needed.
 
-When OpenAI provides the domain-verification challenge, save its exact token as the Worker secret `OPENAI_DOMAIN_VERIFICATION_TOKEN` and redeploy. The Worker returns that token at `/.well-known/openai-apps-challenge`. Do not place the token in Git.
+For the first deployment after consolidation, Wrangler may ask whether to update the existing `mcp.ccfddl.com` Custom Domain to point to `ccfddl-api` instead of `ccfddl-mcp`. Confirm this transfer to retain the existing MCP URL. Verify the old URL serves the new tools before removing the old Worker. Existing API routes, D1 bindings, and email Cron Trigger remain in the shared configuration.
+
+When OpenAI provides the domain-verification challenge, save its exact token as the `ccfddl-api` Worker secret `OPENAI_DOMAIN_VERIFICATION_TOKEN` and redeploy. If this secret previously belonged to `ccfddl-mcp`, configure it on `ccfddl-api` too; secrets do not move with a domain. The MCP domain returns that token at `/.well-known/openai-apps-challenge`. Do not place the token in Git.
 
 ## Public plugin submission
 
-The portable plugin package is under `plugin/ccfddl/`. After deployment, verify the public support, privacy, and terms pages, and review their wording with the publisher. Build the ZIP with:
+The portable plugin package is under `worker/mcp/plugin/ccfddl/`. After deployment, verify the public support, privacy, and terms pages, and review their wording with the publisher. From `worker/mcp/`, build the ZIP with:
 
 ```bash
 mkdir -p dist

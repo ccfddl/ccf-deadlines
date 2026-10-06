@@ -2,7 +2,7 @@ name: MCP Check
 on:
   pull_request:
     paths:
-      - "mcp/**"
+      - "worker/**"
       - ".github/workflows/mcp_check.yml"
 permissions:
   contents: read
@@ -14,9 +14,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - name: Install MCP dependencies
+      - name: Install Worker dependencies
         run: npm ci --no-audit --no-fund
-        working-directory: mcp
-      - name: Test and bundle MCP Worker
+        working-directory: worker
+      - name: Test and bundle API and MCP Worker
         run: npm run check
-        working-directory: mcp
+        working-directory: worker

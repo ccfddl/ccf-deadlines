@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { deadlineToUtc, getConference, loadCatalog, searchConferencePage, searchConferences, upcomingDeadlinePage, upcomingDeadlines } from "../src/catalog.js";
+import { deadlineToUtc, getConference, loadCatalog, searchConferencePage, searchConferences, upcomingDeadlinePage, upcomingDeadlines } from "../src/mcp/catalog.js";
 
 const conferences = [
   {
