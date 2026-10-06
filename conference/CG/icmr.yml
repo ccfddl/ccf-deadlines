@@ -11,7 +11,7 @@
       id: icmr21
       link: https://icmr2021.org/
       timeline:
-        - deadline: '2021-03-03 23:59:00'
+        - deadline: '2021-03-03 23:59:59'
       timezone: UTC-8
       date: November 17-19, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: icmr22
       link: https://www.icmr2022.org/
       timeline:
-        - deadline: '2022-01-30 23:59:00'
+        - deadline: '2022-01-30 23:59:59'
       timezone: AoE
       date: June 27-30, 2022
       place: Newark, NJ, USA and Online
@@ -27,7 +27,7 @@
       id: icmr23
       link: https://icmr2023.org/
       timeline:
-        - deadline: '2023-02-12 23:59:00'
+        - deadline: '2023-02-12 23:59:59'
       timezone: UTC-12
       date: June 13-15, 2023
       place: Thessaloniki, Greece
@@ -35,7 +35,7 @@
       id: icmr24
       link: https://icmr2024.org/index.html
       timeline:
-        - deadline: '2024-02-16 23:59:00'
+        - deadline: '2024-02-16 23:59:59'
       timezone: UTC-12
       date: June 11-13, 2024
       place: Phuket, Thailand

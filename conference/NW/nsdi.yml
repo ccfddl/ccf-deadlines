@@ -11,11 +11,11 @@
       id: nsdi21
       link: https://www.usenix.org/conference/nsdi21/
       timeline:
-        - abstract_deadline: '2020-04-10 23:59:00'
-          deadline: '2020-04-17 23:59:00'
+        - abstract_deadline: '2020-04-10 23:59:59'
+          deadline: '2020-04-17 23:59:59'
           comment: Spring round
-        - abstract_deadline: '2020-09-16 23:59:00'
-          deadline: '2020-09-17 23:59:00'
+        - abstract_deadline: '2020-09-16 23:59:59'
+          deadline: '2020-09-17 23:59:59'
           comment: Fall round
       timezone: UTC-4
       date: April 12-14, 2021

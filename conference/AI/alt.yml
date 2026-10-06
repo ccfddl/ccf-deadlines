@@ -37,7 +37,7 @@
       id: alt2024
       link: http://algorithmiclearningtheory.org/alt2024/
       timeline:
-        - deadline: '2023-09-26 23:59:00'
+        - deadline: '2023-09-26 23:59:59'
       timezone: AoE
       date: February 25-28, 2024
       place: San Diego, California
@@ -62,8 +62,8 @@
       link: https://algorithmiclearningtheory.org/alt2027/
       timeline:
         - deadline: '2026-10-12 23:59:59'
-          rebuttal_deadline: '2026-12-06 23:59:00'
-          decision_deadline: '2027-01-05 23:59:00'
+          rebuttal_deadline: '2026-12-06 23:59:59'
+          decision_deadline: '2027-01-05 23:59:59'
       timezone: AoE
       date: March 9-12, 2027
       place: Leiden, Netherlands

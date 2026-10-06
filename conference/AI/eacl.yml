@@ -11,7 +11,7 @@
       id: eacl21
       link: https://2021.eacl.org/
       timeline:
-        - deadline: '2020-10-07 23:59:00'
+        - deadline: '2020-10-07 23:59:59'
       timezone: UTC-12
       date: April 21-23, 2021
       place: Virtual
@@ -19,10 +19,10 @@
       id: eacl23
       link: https://2023.eacl.org/
       timeline:
-        - abstract_deadline: '2022-10-13 23:59:00'
-          deadline: '2022-10-20 23:59:00'
+        - abstract_deadline: '2022-10-13 23:59:59'
+          deadline: '2022-10-20 23:59:59'
           comment: 'Direct submission'
-        - deadline: '2022-10-15 23:59:00'
+        - deadline: '2022-10-15 23:59:59'
           comment: 'ARR submission'
         - deadline: TBD
           comment: 'ARR commitment: January 8/9 conflict'
@@ -33,9 +33,9 @@
       id: eacl24
       link: https://2024.eacl.org/
       timeline:
-        - deadline: '2023-10-15 23:59:00'
+        - deadline: '2023-10-15 23:59:59'
           comment: 'ARR Submission'
-        - deadline: '2023-12-20 23:59:00'
+        - deadline: '2023-12-20 23:59:59'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
       date: March 18-20, 2024
@@ -46,7 +46,7 @@
       timeline:
         - deadline: '2025-10-06 23:59:59'
           comment: 'ARR Submission'
-        - deadline: '2025-12-14 23:59:00'
+        - deadline: '2025-12-14 23:59:59'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: AoE
       date: March 25-27, 2026
@@ -56,10 +56,10 @@
       link: https://2027.eacl.org/
       timeline:
         - deadline: '2026-08-03 23:59:59'
-          rebuttal_deadline: '2026-09-19 23:59:00'
+          rebuttal_deadline: '2026-09-19 23:59:59'
           comment: 'ARR Submission'
         - deadline: '2026-10-11 23:59:59'
-          decision_deadline: '2026-11-12 23:59:00'
+          decision_deadline: '2026-11-12 23:59:59'
           comment: 'EACL commitment after ARR meta-reviews; reviewed papers only'
       timezone: UTC-12
       date: March 9-14, 2027

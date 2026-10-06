@@ -37,7 +37,7 @@
       id: hotnets24
       link: https://conferences.sigcomm.org/hotnets/2024/
       timeline:
-        - deadline: '2024-06-27 23:59:00'
+        - deadline: '2024-06-27 23:59:59'
       timezone: AoE
       date: November 18-19, 2024
       place: Irvine, California, USA
@@ -45,7 +45,7 @@
       id: hotnets25
       link: https://conferences.sigcomm.org/hotnets/2025/
       timeline:
-        - deadline: '2025-07-09 23:59:00'
+        - deadline: '2025-07-09 23:59:59'
       timezone: AoE
       date: November 17-18, 2025
       place: College Park, Maryland, USA

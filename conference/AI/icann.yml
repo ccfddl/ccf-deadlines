@@ -11,7 +11,7 @@
       id: icann2021
       link: https://e-nns.org/icann2021/
       timeline:
-        - deadline: '2021-04-15 23:59:00'
+        - deadline: '2021-04-15 23:59:59'
       timezone: AoE
       date: September 14-17, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: icann2022
       link: https://e-nns.org/icann2022/
       timeline:
-        - deadline: '2022-04-13 23:59:00'
+        - deadline: '2022-04-13 23:59:59'
       timezone: AoE
       date: September 6-9, 2022
       place: Bristol, UK (Hybrid)
@@ -27,7 +27,7 @@
       id: icann2023
       link: https://e-nns.org/icann2023/
       timeline:
-        - deadline: '2023-04-19 23:59:00'
+        - deadline: '2023-04-19 23:59:59'
       timezone: UTC-12
       date: Sept 26-29, 2023
       place: Heraklion, Crete, Greece (Hybrid)
@@ -35,7 +35,7 @@
       id: icann2024
       link: https://e-nns.org/icann2024/
       timeline:
-        - deadline: '2024-03-26 23:59:00'
+        - deadline: '2024-03-26 23:59:59'
           comment: 'March 29 updates only'
       timezone: AoE
       date: Sept 17-20, 2024

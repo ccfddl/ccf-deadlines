@@ -11,7 +11,7 @@
       id: rtas2021
       link: https://2021.rtas.org/
       timeline:
-        - deadline: '2020-10-26 23:59:00'
+        - deadline: '2020-10-26 23:59:59'
       timezone: AoE
       date: May 19-21, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: rtas2022
       link: https://2022.rtas.org/
       timeline:
-        - deadline: '2021-10-29 23:59:00'
+        - deadline: '2021-10-29 23:59:59'
       timezone: AoE
       date: May 4-6, 2022
       place: Virtual
@@ -27,7 +27,7 @@
       id: rtas2023
       link: https://2023.rtas.org/
       timeline:
-        - deadline: '2022-10-31 23:59:00'
+        - deadline: '2022-10-31 23:59:59'
       timezone: AoE
       date: May 10-12, 2023
       place: San Antonio, Texas, USA
@@ -43,7 +43,7 @@
       id: rtas2025
       link: https://2025.rtas.org/
       timeline:
-        - deadline: '2024-11-14 23:59:00'
+        - deadline: '2024-11-14 23:59:59'
       timezone: AoE
       date: May 7-9, 2025
       place: Irvine, CA, USA
@@ -60,7 +60,7 @@
       link: https://2027.rtas.org/
       timeline:
         - deadline: '2026-11-05 23:59:59'
-          rebuttal_deadline: '2027-01-15 23:59:00'
+          rebuttal_deadline: '2027-01-15 23:59:59'
           comment: Submission Deadline (Firm)
       timezone: AoE
       date: May 17-20, 2027

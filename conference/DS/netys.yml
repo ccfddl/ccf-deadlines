@@ -11,8 +11,8 @@
       id: netys2021
       link: https://netys.net/history/netys2021/index.html
       timeline:
-        - abstract_deadline: '2021-03-19 23:59:00'
-          deadline: '2021-03-26 23:59:00'
+        - abstract_deadline: '2021-03-19 23:59:59'
+          deadline: '2021-03-26 23:59:59'
       timezone: AoE
       date: TBD
       place: Virtual
@@ -20,8 +20,8 @@
       id: netys2022
       link: https://netys.net/history/netys2022/index.htm
       timeline:
-        - abstract_deadline: '2022-03-19 23:59:00'
-          deadline: '2022-03-26 23:59:00'
+        - abstract_deadline: '2022-03-19 23:59:59'
+          deadline: '2022-03-26 23:59:59'
       timezone: AoE
       date: May 17-19, 2022
       place: Virtual
@@ -29,8 +29,8 @@
       id: netys2023
       link: https://netys.net/history/netys2023/index.html
       timeline:
-        - abstract_deadline: '2023-03-22 23:59:00'
-          deadline: '2023-03-29 23:59:00'
+        - abstract_deadline: '2023-03-22 23:59:59'
+          deadline: '2023-03-29 23:59:59'
       timezone: AoE
       date: May 22-24, 2023
       place: Benguerir, Morocco
@@ -38,8 +38,8 @@
       id: netys2024
       link: https://netys.net/history/netys2024/netys.net/index.html
       timeline:
-        - abstract_deadline: '2024-03-11 23:59:00'
-          deadline: '2024-03-18 23:59:00'
+        - abstract_deadline: '2024-03-11 23:59:59'
+          deadline: '2024-03-18 23:59:59'
       timezone: AoE
       date: May 29-31, 2024
       place: Rabat, Morocco
@@ -47,8 +47,8 @@
       id: netys2025
       link: https://netys.net/history/netys2025/index.html
       timeline:
-        - abstract_deadline: '2025-03-15 23:59:00'
-          deadline: '2025-03-15 23:59:00'
+        - abstract_deadline: '2025-03-15 23:59:59'
+          deadline: '2025-03-15 23:59:59'
       timezone: AoE
       date: May 21-23, 2025
       place: Rabat, Morocco

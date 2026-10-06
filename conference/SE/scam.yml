@@ -11,8 +11,8 @@
       id: scam21
       link: https://www.ieee-scam.org/2021/
       timeline:
-        - abstract_deadline: '2021-06-24 23:59:00'
-          deadline: '2021-06-30 23:59:00'
+        - abstract_deadline: '2021-06-24 23:59:59'
+          deadline: '2021-06-30 23:59:59'
       timezone: AoE
       date: September 27-28, 2021
       place: Online
@@ -20,8 +20,8 @@
       id: scam22
       link: https://www.ieee-scam.org/2022/
       timeline:
-        - abstract_deadline: '2022-06-17 23:59:00'
-          deadline: '2022-06-23 23:59:00'
+        - abstract_deadline: '2022-06-17 23:59:59'
+          deadline: '2022-06-23 23:59:59'
       timezone: AoE
       date: October 3-4, 2022
       place: Limassol, Cyprus
@@ -29,8 +29,8 @@
       id: scam23
       link: https://www.ieee-scam.org/2023/
       timeline:
-        - abstract_deadline: '2023-06-29 23:59:00'
-          deadline: '2023-07-06 23:59:00'
+        - abstract_deadline: '2023-06-29 23:59:59'
+          deadline: '2023-07-06 23:59:59'
       timezone: AoE
       date: October 2-3, 2023
       place: Bogota, Colombia
@@ -38,7 +38,7 @@
       id: scam24
       link: https://conf.researchr.org/home/scam-2024
       timeline:
-        - abstract_deadline: '2024-06-17 23:59:00'
+        - abstract_deadline: '2024-06-17 23:59:59'
           deadline: TBD
           comment: 'June 23 grace-period eligibility unclear'
       timezone: AoE

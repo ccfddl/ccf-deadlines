@@ -11,7 +11,7 @@
       id: iiswc2021
       link: https://iiswc.org/iiswc2021/
       timeline:
-        - deadline: '2021-07-16 23:59:00'
+        - deadline: '2021-07-16 23:59:59'
       timezone: UTC-4
       date: November 8-9, 2021
       place: Online
@@ -27,7 +27,7 @@
       id: iiswc2023
       link: https://iiswc.org/iiswc2023/
       timeline:
-        - deadline: '2023-06-16 23:59:00'
+        - deadline: '2023-06-16 23:59:59'
       timezone: AoE
       date: October 2-3, 2023
       place: Ghent, Belgium
@@ -35,7 +35,7 @@
       id: iiswc2024
       link: https://iiswc.org/iiswc2024/
       timeline:
-        - deadline: '2024-06-03 23:59:00'
+        - deadline: '2024-06-03 23:59:59'
       timezone: AoE
       date: September 16-17, 2024
       place: Vancouver BC Canada
@@ -43,7 +43,7 @@
       id: iiswc2025
       link: https://iiswc.org/iiswc2025/
       timeline:
-        - deadline: '2025-06-30 23:59:00'
+        - deadline: '2025-06-30 23:59:59'
       timezone: AoE
       date: October 13-14, 2025
       place: Irvine, USA

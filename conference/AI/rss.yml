@@ -11,7 +11,7 @@
       id: rss21
       link: https://roboticsconference.org/2021/
       timeline:
-        - deadline: '2021-03-01 23:59:00'
+        - deadline: '2021-03-01 23:59:59'
       timezone: AoE
       date: July 12-16, 2021
       place: Virtual
@@ -36,7 +36,7 @@
       id: rss24
       link: https://roboticsconference.org/2024/
       timeline:
-        - deadline: '2024-02-02 23:59:00'
+        - deadline: '2024-02-02 23:59:59'
       timezone: AoE
       date: July 15-19, 2024
       place: Delft, Netherlands
@@ -44,8 +44,8 @@
       id: rss25
       link: https://roboticsconference.org/2025/
       timeline:
-        - abstract_deadline: '2025-01-17 23:59:00'
-          deadline: '2025-01-24 23:59:00'
+        - abstract_deadline: '2025-01-17 23:59:59'
+          deadline: '2025-01-24 23:59:59'
           comment: 'Initial semi-complete paper required; title, abstract and authors become final'
       timezone: AoE
       date: June 21-25, 2025
@@ -54,8 +54,8 @@
       id: rss26
       link: https://roboticsconference.org/2026/
       timeline:
-        - abstract_deadline: '2026-01-23 23:59:00'
-          deadline: '2026-01-30 23:59:00'
+        - abstract_deadline: '2026-01-23 23:59:59'
+          deadline: '2026-01-30 23:59:59'
       timezone: AoE
       date: July 13-17, 2026
       place: Sydney, Australia
@@ -63,8 +63,8 @@
       id: rss27
       link: https://roboticsconference.org/
       timeline:
-        - deadline: '2026-12-04 23:59:00'
-          rebuttal_deadline: '2027-02-12 23:59:00'
+        - deadline: '2026-12-04 23:59:59'
+          rebuttal_deadline: '2027-02-12 23:59:59'
           comment: 'Stage 1: initial 6-page extended abstract submission'
       timezone: AoE
       date: July 6-11, 2027

@@ -21,8 +21,8 @@
       id: secon22
       link: https://secon2022.ieee-secon.org/
       timeline:
-        - abstract_deadline: '2022-05-09 23:59:00'
-          deadline: '2022-05-16 23:59:00'
+        - abstract_deadline: '2022-05-09 23:59:59'
+          deadline: '2022-05-16 23:59:59'
       timezone: AoE
       date: September 20-22, 2022
       place: Virtual
@@ -30,8 +30,8 @@
       id: secon23
       link: https://secon2023.ieee-secon.org/
       timeline:
-        - abstract_deadline: '2023-04-05 23:59:00'
-          deadline: '2023-04-05 23:59:00'
+        - abstract_deadline: '2023-04-05 23:59:59'
+          deadline: '2023-04-05 23:59:59'
       timezone: AoE
       date: September 12-14, 2023
       place: Madrid, Spain
@@ -39,8 +39,8 @@
       id: secon24
       link: https://secon2024.ieee-secon.org/
       timeline:
-        - abstract_deadline: '2024-08-30 23:59:00'
-          deadline: '2024-08-30 23:59:00'
+        - abstract_deadline: '2024-08-30 23:59:59'
+          deadline: '2024-08-30 23:59:59'
       timezone: AoE
       date: December 3-4, 2024
       place: Phoenix, AZ, USA

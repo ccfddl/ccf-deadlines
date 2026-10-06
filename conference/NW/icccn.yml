@@ -11,8 +11,8 @@
       id: icccn21
       link: http://www.icccn.org/icccn21/
       timeline:
-        - abstract_deadline: '2021-03-05 23:59:00'
-          deadline: '2021-03-05 23:59:00'
+        - abstract_deadline: '2021-03-05 23:59:59'
+          deadline: '2021-03-05 23:59:59'
           comment: Registration / full paper
       timezone: AoE
       date: July 19-21, 2021
@@ -21,7 +21,7 @@
       id: icccn22
       link: http://www.icccn.org/icccn22/
       timeline:
-        - deadline: '2022-03-20 23:59:00'
+        - deadline: '2022-03-20 23:59:59'
       timezone: UTC-4
       date: July 25-27, 2022
       place: Virtual
@@ -29,7 +29,7 @@
       id: icccn23
       link: http://www.icccn.org/icccn23/
       timeline:
-        - deadline: '2023-03-17 23:59:00'
+        - deadline: '2023-03-17 23:59:59'
       timezone: PT
       date: July 24-26, 2023
       place: Honolulu, Hawaii, USA
@@ -37,7 +37,7 @@
       id: icccn24
       link: http://www.icccn.org/icccn24/
       timeline:
-        - deadline: '2024-03-25 23:59:00'
+        - deadline: '2024-03-25 23:59:59'
       timezone: UTC-4
       date: July 29-31, 2024
       place: Big Island, Hawaii, USA
@@ -45,7 +45,7 @@
       id: icccn25
       link: http://www.icccn.org/icccn25/
       timeline:
-        - deadline: '2025-03-23 23:59:00'
+        - deadline: '2025-03-23 23:59:59'
       timezone: UTC-10
       date: August 4-7, 2025
       place: Tokyo, Japan

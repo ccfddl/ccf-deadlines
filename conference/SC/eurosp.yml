@@ -11,7 +11,7 @@
       id: eurosp21
       link: https://www.ieee-security.org/TC/EuroSP2021/
       timeline:
-        - deadline: '2020-11-05 23:59:00'
+        - deadline: '2020-11-05 23:59:59'
       timezone: UTC-12
       date: September 8-10, 2021
       place: Virtual
@@ -27,7 +27,7 @@
       id: eurosp23
       link: https://eurosp2023.ieee-security.org/
       timeline:
-        - deadline: '2022-10-26 23:59:00'
+        - deadline: '2022-10-26 23:59:59'
       timezone: UTC-12
       date: July 4-6, 2023
       place: Delft, Netherlands
@@ -64,8 +64,8 @@
       timeline:
         - abstract_deadline: '2026-11-25 23:59:59'
           deadline: '2026-12-02 23:59:59'
-          rebuttal_deadline: '2027-03-01 23:59:00'
-          decision_deadline: '2027-03-18 23:59:00'
+          rebuttal_deadline: '2027-03-01 23:59:59'
+          decision_deadline: '2027-03-18 23:59:59'
       timezone: UTC-12
       date: July 5 - 9, 2027
       place: Madrid, Spain

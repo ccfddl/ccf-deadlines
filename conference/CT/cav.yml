@@ -11,7 +11,7 @@
       id: cav21
       link: https://ucl-pplv.github.io/CAV21/
       timeline:
-        - deadline: '2021-01-28 23:59:00'
+        - deadline: '2021-01-28 23:59:59'
           comment: 'February 4 was updates only'
       timezone: AoE
       date: July 20-23, 2021
@@ -20,7 +20,7 @@
       id: cav22
       link: http://i-cav.org/2022/
       timeline:
-        - deadline: '2022-01-21 23:59:00'
+        - deadline: '2022-01-21 23:59:59'
       timezone: AoE
       date: Aug 7-10, 2022
       place: Technion, Haifa, Israel
@@ -37,7 +37,7 @@
       id: cav24
       link: http://www.i-cav.org/2024/
       timeline:
-        - deadline: '2024-01-19 23:59:00'
+        - deadline: '2024-01-19 23:59:59'
           comment: 'January 26 was updates only'
       timezone: AoE
       date: July 24-27, 2024
@@ -55,7 +55,7 @@
       id: cav26
       link: https://conferences.i-cav.org/2026/
       timeline:
-        - deadline: '2026-01-28 23:59:00'
+        - deadline: '2026-01-28 23:59:59'
       timezone: AoE
       date: July 26-29, 2026
       place: Lisbon, Portugal
@@ -64,8 +64,8 @@
       link: https://conferences.i-cav.org/2027/
       timeline:
         - deadline: '2027-01-20 23:59:59'
-          rebuttal_deadline: '2027-04-08 23:59:00'
-          decision_deadline: '2027-04-23 23:59:00'
+          rebuttal_deadline: '2027-04-08 23:59:59'
+          decision_deadline: '2027-04-23 23:59:59'
       timezone: AoE
       date: July 19-23, 2027
       place: KIT, Amsterdam, The Netherlands

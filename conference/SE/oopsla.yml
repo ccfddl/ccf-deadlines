@@ -11,7 +11,7 @@
       id: oopsla21
       link: https://2021.splashcon.org/track/splash-2021-oopsla
       timeline:
-        - deadline: '2021-04-16 23:59:00'
+        - deadline: '2021-04-16 23:59:59'
       timezone: AoE
       date: October 20-22, 2021
       place: Chicago, Illinois, USA and Online
@@ -52,7 +52,7 @@
       id: oopsla25
       link: https://2025.splashcon.org/track/OOPSLA
       timeline:
-        - deadline: '2024-10-15 23:59:00'
+        - deadline: '2024-10-15 23:59:59'
           comment: Round 1
         - deadline: '2025-03-25 23:59:59'
           comment: Round 2
@@ -75,12 +75,12 @@
       link: https://2027.splashcon.org/track/splashoopsla2027
       timeline:
         - deadline: '2026-10-14 23:59:59'
-          rebuttal_deadline: '2026-12-05 23:59:00'
-          decision_deadline: '2027-02-12 23:59:00'
+          rebuttal_deadline: '2026-12-05 23:59:59'
+          decision_deadline: '2027-02-12 23:59:59'
           comment: Submission Deadline Round 1
         - deadline: '2027-04-07 23:59:59'
-          rebuttal_deadline: '2027-06-19 23:59:00'
-          decision_deadline: '2027-08-13 23:59:00'
+          rebuttal_deadline: '2027-06-19 23:59:59'
+          decision_deadline: '2027-08-13 23:59:59'
           comment: Submission Deadline Round 2
       timezone: AoE
       date: October 10-15, 2027

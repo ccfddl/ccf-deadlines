@@ -35,7 +35,7 @@
       id: isaac24
       link: https://sites.google.com/view/isaac2024/
       timeline:
-        - deadline: '2024-06-28 23:59:00'
+        - deadline: '2024-06-28 23:59:59'
       timezone: AoE
       date: December 9-11, 2024
       place: Sydney, Australia
@@ -43,7 +43,7 @@
       id: isaac25
       link: https://isaac2025.csie.ncku.edu.tw/
       timeline:
-        - deadline: '2025-06-30 23:59:00'
+        - deadline: '2025-06-30 23:59:59'
       timezone: AoE
       date: December 8-10, 2025
       place: Tainan, Taiwan
@@ -51,7 +51,7 @@
       id: isaac26
       link: https://www.algo-door.com/isaac2026/index.html
       timeline:
-        - deadline: '2026-06-29 23:59:00'
+        - deadline: '2026-06-29 23:59:59'
       timezone: AoE
       date: December 7-9, 2026
       place: Hangzhou, China

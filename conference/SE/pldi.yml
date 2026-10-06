@@ -60,8 +60,8 @@
       link: https://pldi27.sigplan.org/
       timeline:
         - deadline: '2026-11-12 23:59:59'
-          rebuttal_deadline: '2027-02-18 23:59:00'
-          decision_deadline: '2027-04-01 23:59:00'
+          rebuttal_deadline: '2027-02-18 23:59:59'
+          decision_deadline: '2027-04-01 23:59:59'
       timezone: AoE
       date: June 5-11, 2027
       place: Atlanta, Georgia, USA

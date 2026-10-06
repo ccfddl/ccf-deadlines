@@ -27,7 +27,7 @@
       id: dimva23
       link: https://dimva2023.de/
       timeline:
-        - deadline: '2022-12-07 23:59:00'
+        - deadline: '2022-12-07 23:59:59'
           comment: Cycle 1
         - deadline: '2023-02-01 23:59:59'
           comment: Cycle 2
@@ -51,7 +51,7 @@
       timeline:
         - deadline: '2024-12-10 23:59:59'
           comment: Cycle 1
-        - deadline: '2025-02-19 23:59:00'
+        - deadline: '2025-02-19 23:59:59'
           comment: Cycle 2
       timezone: AoE
       date: July 10-11, 2025

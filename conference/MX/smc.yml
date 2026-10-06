@@ -11,7 +11,7 @@
       id: smc23
       link: https://ieeesmc2023.org/
       timeline:
-        - deadline: '2023-04-15 23:59:00'
+        - deadline: '2023-04-15 23:59:59'
       timezone: AoE
       date: October 1-4, 2023
       place: Sheraton Waikiki, Honolulu, Hawaii, USA (Hybrid)
@@ -19,7 +19,7 @@
       id: smc24
       link: https://www.ieeesmc2024.org/
       timeline:
-        - deadline: '2024-04-30 23:59:00'
+        - deadline: '2024-04-30 23:59:59'
       timezone: AoE
       date: October 7-10, 2024
       place: Borneo Convention Centre Kuching, Sarawak, Malaysia

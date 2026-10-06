@@ -76,11 +76,11 @@
       id: pods26
       link: https://2026.sigmod.org/
       timeline:
-        - abstract_deadline: '2025-06-03 23:59:00'
-          deadline: '2025-06-10 23:59:00'
+        - abstract_deadline: '2025-06-03 23:59:59'
+          deadline: '2025-06-10 23:59:59'
           comment: First submission cycle
-        - abstract_deadline: '2025-12-03 23:59:00'
-          deadline: '2025-12-10 23:59:00'
+        - abstract_deadline: '2025-12-03 23:59:59'
+          deadline: '2025-12-10 23:59:59'
           comment: Second submission cycle
       timezone: AoE
       date: May 31-June 3, 2026
@@ -91,13 +91,13 @@
       timeline:
         - abstract_deadline: '2026-05-23 23:59:59'
           deadline: '2026-05-30 23:59:59'
-          rebuttal_deadline: '2026-08-01 23:59:00'
-          decision_deadline: '2026-09-01 23:59:00'
+          rebuttal_deadline: '2026-08-01 23:59:59'
+          decision_deadline: '2026-09-01 23:59:59'
           comment: 'First Submission Cycle'
         - abstract_deadline: '2026-12-03 23:59:59'
           deadline: '2026-12-10 23:59:59'
-          rebuttal_deadline: '2027-01-29 23:59:00'
-          decision_deadline: '2027-03-01 23:59:00'
+          rebuttal_deadline: '2027-01-29 23:59:59'
+          decision_deadline: '2027-03-01 23:59:59'
           comment: 'Second Submission Cycle'
       timezone: AoE
       date: June 13-19, 2027

@@ -11,13 +11,13 @@
       id: ubicomp21
       link: https://www.ubicomp.org/ubicomp2021/
       timeline:
-        - deadline: '2020-08-15 23:59:00'
+        - deadline: '2020-08-15 23:59:59'
           comment: 'August 2020 cycle'
-        - deadline: '2020-11-15 23:59:00'
+        - deadline: '2020-11-15 23:59:59'
           comment: 'November 2020 cycle'
-        - deadline: '2021-02-15 23:59:00'
+        - deadline: '2021-02-15 23:59:59'
           comment: 'February 2021 cycle'
-        - deadline: '2021-05-15 23:59:00'
+        - deadline: '2021-05-15 23:59:59'
           comment: 'May 2021 cycle'
       timezone: AoE
       date: September 21-24, 2021

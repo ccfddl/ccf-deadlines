@@ -27,7 +27,7 @@
       id: isc23
       link: https://isc23.cs.rug.nl/
       timeline:
-        - deadline: '2023-08-03 23:59:00'
+        - deadline: '2023-08-03 23:59:59'
       timezone: UTC-12
       date: November 15-17, 2023
       place: Groningen, Netherlands
@@ -44,7 +44,7 @@
       id: isc25
       link: https://isc25.skku.edu/
       timeline:
-        - deadline: '2025-06-11 23:59:00'
+        - deadline: '2025-06-11 23:59:59'
       timezone: AoE
       date: October 20-22, 2025
       place: Seoul, South Korea

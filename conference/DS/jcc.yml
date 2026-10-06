@@ -11,8 +11,8 @@
       id: jcc2024
       link: https://ieeejcc.com/
       timeline:
-        - abstract_deadline: '2024-04-07 23:59:00'
-          deadline: '2024-04-28 23:59:00'
+        - abstract_deadline: '2024-04-07 23:59:59'
+          deadline: '2024-04-28 23:59:59'
       timezone: AoE
       date: July 15-18, 2024
       place: Shanghai, China

@@ -22,7 +22,7 @@
       link: https://fc22.ifca.ai/
       timeline:
         - abstract_deadline: '2021-09-02 23:59:59'
-          deadline: '2021-09-13 23:59:00'
+          deadline: '2021-09-13 23:59:59'
       timezone: UTC-12
       date: May 2-5, 2022
       place: Radisson Grenada Beach Resort Grenada
@@ -30,7 +30,7 @@
       id: fc23
       link: https://fc23.ifca.ai/
       timeline:
-        - deadline: '2022-10-19 23:59:00'
+        - deadline: '2022-10-19 23:59:59'
       timezone: UTC-12
       date: May 1-4, 2023
       place: Bol, Brac, Croatia
@@ -38,7 +38,7 @@
       id: fc24
       link: https://fc24.ifca.ai/
       timeline:
-        - deadline: '2023-09-20 23:59:00'
+        - deadline: '2023-09-20 23:59:59'
       timezone: UTC-12
       date: March 4-7, 2024
       place: Willemstad, Curaçao
@@ -63,7 +63,7 @@
       link: https://fc27.ifca.ai/
       timeline:
         - deadline: '2026-09-24 23:59:59'
-          decision_deadline: '2026-11-12 23:59:00'
+          decision_deadline: '2026-11-12 23:59:59'
           comment: Submission deadline
       timezone: UTC-12
       date: February 8-12, 2027

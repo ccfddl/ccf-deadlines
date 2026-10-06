@@ -21,7 +21,7 @@
       id: log2023
       link: https://log2023.logconference.org/
       timeline:
-        - abstract_deadline: '2023-08-18 23:59:00'
+        - abstract_deadline: '2023-08-18 23:59:59'
           deadline: TBD
           comment: 'Full-paper cutoff unresolved'
       timezone: AoE

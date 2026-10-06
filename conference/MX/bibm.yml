@@ -54,7 +54,7 @@
       id: bibm26
       link: https://ieeebibm.org/BIBM2026/
       timeline:
-        - deadline: '2026-07-05 23:59:00'
+        - deadline: '2026-07-05 23:59:59'
       timezone: UTC-12
       date: Dec 1-4, 2026
       place: Dallas, USA

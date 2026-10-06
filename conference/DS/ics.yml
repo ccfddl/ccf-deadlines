@@ -20,8 +20,8 @@
       id: ics22
       link: https://ics2022.github.io/
       timeline:
-        - abstract_deadline: '2022-01-28 23:59:00'
-          deadline: '2022-02-04 23:59:00'
+        - abstract_deadline: '2022-01-28 23:59:59'
+          deadline: '2022-02-04 23:59:59'
       timezone: AoE
       date: June 28-30, 2022
       place: Virtual
@@ -73,9 +73,9 @@
       id: ics27
       link: https://ics-conference.org/index.html
       timeline:
-        - abstract_deadline: '2026-12-01 23:59:00'
-          deadline: '2026-12-07 23:59:00'
-          decision_deadline: '2027-03-12 23:59:00'
+        - abstract_deadline: '2026-12-01 23:59:59'
+          deadline: '2026-12-07 23:59:59'
+          decision_deadline: '2027-03-12 23:59:59'
       timezone: AoE
       date: TBD
       place: Atlanta, Georgia, USA

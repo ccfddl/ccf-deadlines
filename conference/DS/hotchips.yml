@@ -11,7 +11,7 @@
       id: hcs2021
       link: https://hc33.hotchips.org/
       timeline:
-        - deadline: '2021-04-07 23:59:00'
+        - deadline: '2021-04-07 23:59:59'
           comment: Technical presentation abstract
       timezone: AoE
       date: August 23-24, 2021
@@ -20,7 +20,7 @@
       id: hcs2022
       link: https://hc34.hotchips.org/
       timeline:
-        - deadline: '2022-04-05 23:59:00'
+        - deadline: '2022-04-05 23:59:59'
           comment: Technical presentation abstract
       timezone: AoE
       date: August 22-23, 2022
@@ -29,7 +29,7 @@
       id: hcs2023
       link: https://hc2023.hotchips.org/
       timeline:
-        - deadline: '2023-04-07 23:59:00'
+        - deadline: '2023-04-07 23:59:59'
           comment: Technical presentation abstract
       timezone: AoE
       date: August 28-29, 2023
@@ -38,7 +38,7 @@
       id: hcs2024
       link: https://hc2024.hotchips.org/
       timeline:
-        - deadline: '2024-04-19 23:59:00'
+        - deadline: '2024-04-19 23:59:59'
           comment: Technical presentation abstract
       timezone: AoE
       date: August 26-27, 2024

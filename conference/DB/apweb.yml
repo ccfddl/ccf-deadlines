@@ -11,8 +11,8 @@
       id: apweb21
       link: https://tc.ccf.org.cn/tcis/qkjhy/2021-03-12/730450.shtml
       timeline:
-        - abstract_deadline: '2021-03-31 23:59:00'
-          deadline: '2021-03-31 23:59:00'
+        - abstract_deadline: '2021-03-31 23:59:59'
+          deadline: '2021-03-31 23:59:59'
       timezone: AoE
       date: TBD
       place: Guangzhou, China
@@ -20,8 +20,8 @@
       id: apweb22
       link: https://tc.ccf.org.cn/tcis/xwdt/2022-03-16/761566.shtml
       timeline:
-        - abstract_deadline: '2022-03-29 23:59:00'
-          deadline: '2022-04-05 23:59:00'
+        - abstract_deadline: '2022-03-29 23:59:59'
+          deadline: '2022-04-05 23:59:59'
       timezone: AoE
       date: TBD
       place: Nanjing, China
@@ -29,11 +29,11 @@
       id: apweb23
       link: https://web.archive.org/web/20230927013851/http://www.apweb-waim2023.com/
       timeline:
-        - abstract_deadline: '2023-03-13 23:59:00'
-          deadline: '2023-03-20 23:59:00'
+        - abstract_deadline: '2023-03-13 23:59:59'
+          deadline: '2023-03-20 23:59:59'
           comment: First round
-        - abstract_deadline: '2023-06-03 23:59:00'
-          deadline: '2023-06-10 23:59:00'
+        - abstract_deadline: '2023-06-03 23:59:59'
+          deadline: '2023-06-10 23:59:59'
           comment: Second round
       timezone: UTC-8
       date: October 7-8, 2023
@@ -53,9 +53,9 @@
       id: apweb25
       link: https://apweb2025.sau.edu.cn/
       timeline:
-        - deadline: '2025-03-09 23:59:00'
+        - deadline: '2025-03-09 23:59:59'
           comment: first round
-        - deadline: '2025-05-18 23:59:00'
+        - deadline: '2025-05-18 23:59:59'
           comment: second round
       timezone: UTC-7
       date: August 29-30, 2025

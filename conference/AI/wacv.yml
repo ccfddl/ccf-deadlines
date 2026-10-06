@@ -11,9 +11,9 @@
       id: wacv21
       link: https://wacv2021.thecvf.com/
       timeline:
-        - deadline: '2020-06-24 23:59:00'
+        - deadline: '2020-06-24 23:59:59'
           comment: 'First round'
-        - deadline: '2020-09-29 23:59:00'
+        - deadline: '2020-09-29 23:59:59'
           comment: 'Second round'
       timezone: UTC-7
       date: January 6-8, 2021
@@ -22,9 +22,9 @@
       id: wacv22
       link: https://wacv2022.thecvf.com/
       timeline:
-        - deadline: '2021-06-09 23:59:00'
+        - deadline: '2021-06-09 23:59:59'
           comment: 'First round'
-        - deadline: '2021-08-18 23:59:00'
+        - deadline: '2021-08-18 23:59:59'
           comment: 'Second round'
       timezone: UTC-7
       date: January 5-7, 2022
@@ -33,10 +33,10 @@
       id: wacv23
       link: https://wacv2023.thecvf.com/
       timeline:
-        - abstract_deadline: '2022-07-06 23:59:00'
+        - abstract_deadline: '2022-07-06 23:59:59'
           deadline: '2022-07-13 11:59:00'
           comment: 'First round'
-        - abstract_deadline: '2022-08-22 23:59:00'
+        - abstract_deadline: '2022-08-22 23:59:59'
           deadline: '2022-08-29 11:59:00'
           comment: 'Second round'
       timezone: UTC-7
@@ -70,10 +70,10 @@
       id: wacv26
       link: https://wacv.thecvf.com/Conferences/2026
       timeline:
-        - abstract_deadline: '2025-07-11 23:59:00'
+        - abstract_deadline: '2025-07-11 23:59:59'
           deadline: '2025-07-18 23:59:59'
           comment: First round
-        - abstract_deadline: '2025-09-12 23:59:00'
+        - abstract_deadline: '2025-09-12 23:59:59'
           deadline: '2025-09-19 23:59:59'
           comment: Second round
       timezone: AoE
@@ -83,14 +83,14 @@
       id: wacv27
       link: https://wacv.thecvf.com/
       timeline:
-        - abstract_deadline: '2026-06-19 23:59:00'
+        - abstract_deadline: '2026-06-19 23:59:59'
           deadline: '2026-06-26 23:59:59'
-          rebuttal_deadline: '2026-08-28 23:59:00'
-          decision_deadline: '2026-10-09 23:59:00'
+          rebuttal_deadline: '2026-08-28 23:59:59'
+          decision_deadline: '2026-10-09 23:59:59'
           comment: First round
-        - abstract_deadline: '2026-08-21 23:59:00'
+        - abstract_deadline: '2026-08-21 23:59:59'
           deadline: '2026-08-28 23:59:59'
-          decision_deadline: '2026-10-09 23:59:00'
+          decision_deadline: '2026-10-09 23:59:59'
           comment: Second round
       timezone: AoE
       date: Jan 4 - 8, 2027

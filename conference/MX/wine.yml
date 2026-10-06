@@ -11,7 +11,7 @@
       id: wine2021
       link: https://hpi.de/wine2021/
       timeline:
-        - deadline: '2021-07-12 23:59:00'
+        - deadline: '2021-07-12 23:59:59'
       timezone: UTC-7
       date: December 14-17, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: wine2022
       link: https://www.cs.rpi.edu/wine2022/
       timeline:
-        - deadline: '2022-07-07 23:59:00'
+        - deadline: '2022-07-07 23:59:59'
       timezone: UTC-7
       date: TBD
       place: Troy, NY, USA (Hybrid)

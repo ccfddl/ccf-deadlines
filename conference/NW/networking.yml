@@ -11,8 +11,8 @@
       id: networking21
       link: https://networking.ifip.org/2021/
       timeline:
-        - abstract_deadline: '2021-01-21 23:59:00'
-          deadline: '2021-01-21 23:59:00'
+        - abstract_deadline: '2021-01-21 23:59:59'
+          deadline: '2021-01-21 23:59:59'
           comment: 'Title/abstract optional; full required'
       timezone: UTC+2
       date: June 22-24, 2021
@@ -21,8 +21,8 @@
       id: networking22
       link: https://networking.ifip.org/2022/
       timeline:
-        - abstract_deadline: '2022-02-13 23:59:00'
-          deadline: '2022-02-16 23:59:00'
+        - abstract_deadline: '2022-02-13 23:59:59'
+          deadline: '2022-02-16 23:59:59'
       timezone: AoE
       date: June 14-16, 2022
       place: Catania, Italy (Hybrid)
@@ -30,7 +30,7 @@
       id: networking23
       link: https://networking.ifip.org/2023/
       timeline:
-        - deadline: '2023-02-13 23:59:00'
+        - deadline: '2023-02-13 23:59:59'
       timezone: AoE
       date: June 13-15, 2023
       place: Barcelona, Spain
@@ -38,7 +38,7 @@
       id: networking24
       link: https://networking.ifip.org/2024/
       timeline:
-        - deadline: '2024-03-08 23:59:00'
+        - deadline: '2024-03-08 23:59:59'
       timezone: AoE
       date: June 4-6, 2024
       place: Thessaloniki, Greece
@@ -46,7 +46,7 @@
       id: networking25
       link: https://networking.ifip.org/2025/
       timeline:
-        - deadline: '2025-03-14 23:59:00'
+        - deadline: '2025-03-14 23:59:59'
       timezone: AoE
       date: May 27-29, 2025
       place: Limassol, Cyprus

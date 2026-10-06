@@ -11,7 +11,7 @@
       id: euvip21
       link: https://www-l2ti.univ-paris13.fr/euvip2020/Home.html
       timeline:
-        - deadline: '2021-04-08 23:59:00'
+        - deadline: '2021-04-08 23:59:59'
       timezone: AoE
       date: June 23-25, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: euvip22
       link: https://www.euvip2022.org/
       timeline:
-        - deadline: '2022-06-06 23:59:00'
+        - deadline: '2022-06-06 23:59:59'
       timezone: AoE
       date: September 12-14, 2022
       place: Lisbon, Portugal
@@ -27,7 +27,7 @@
       id: euvip23
       link: https://www.euvip2023.org/
       timeline:
-        - deadline: '2023-05-29 23:59:00'
+        - deadline: '2023-05-29 23:59:59'
       timezone: AoE
       date: September 12-14, 2023
       place: Gjøvik, Norway
@@ -35,7 +35,7 @@
       id: euvip24
       link: https://www.euvip2024.org/
       timeline:
-        - deadline: '2024-05-24 23:59:00'
+        - deadline: '2024-05-24 23:59:59'
       timezone: AoE
       date: September 9-11, 2024
       place: Geneva, Switzerland
@@ -43,7 +43,7 @@
       id: euvip25
       link: https://www.euvip2025.org/
       timeline:
-        - deadline: '2025-06-15 23:59:00'
+        - deadline: '2025-06-15 23:59:59'
       timezone: AoE
       date: October 14-16, 2025
       place: Valletta, Malta

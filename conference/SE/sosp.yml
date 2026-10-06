@@ -48,8 +48,8 @@
       id: sosp26
       link: https://sigops.org/s/conferences/sosp/2026/index.html
       timeline:
-        - abstract_deadline: '2026-03-26 23:59:00'
-          deadline: '2026-04-01 23:59:00'
+        - abstract_deadline: '2026-03-26 23:59:59'
+          deadline: '2026-04-01 23:59:59'
       timezone: AoE
       date: September 30 - October 2, 2026
       place: Clarion Congress Hotel Prague, Prague, Czechia

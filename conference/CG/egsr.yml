@@ -11,8 +11,8 @@
       id: egsr2021
       link: https://diglib.eg.org/handle/10.2312/3607117
       timeline:
-        - abstract_deadline: '2021-04-09 23:59:00'
-          deadline: '2021-04-16 23:59:00'
+        - abstract_deadline: '2021-04-09 23:59:59'
+          deadline: '2021-04-16 23:59:59'
       timezone: UTC
       date: June 29 - July 2, 2021
       place: Saarbrücken, Germany (Hybrid)
@@ -20,8 +20,8 @@
       id: egsr2022
       link: https://www.eg.org/wp/event/egsr-2022-the-33rd-eurographics-symposium-on-rendering/
       timeline:
-        - abstract_deadline: '2022-04-08 23:59:00'
-          deadline: '2022-04-15 23:59:00'
+        - abstract_deadline: '2022-04-08 23:59:59'
+          deadline: '2022-04-15 23:59:59'
       timezone: UTC
       date: July 4-6, 2022
       place: Prague, Czech Republic (Hybrid)

@@ -11,11 +11,11 @@
       id: icde21
       link: https://icde2021.gr/
       timeline:
-        - abstract_deadline: '2020-06-10 23:59:00'
-          deadline: '2020-06-17 23:59:00'
+        - abstract_deadline: '2020-06-10 23:59:59'
+          deadline: '2020-06-17 23:59:59'
           comment: first round
-        - abstract_deadline: '2020-10-07 23:59:00'
-          deadline: '2020-10-14 23:59:00'
+        - abstract_deadline: '2020-10-07 23:59:59'
+          deadline: '2020-10-14 23:59:59'
           comment: second round
       timezone: AoE
       date: April 20-22, 2021

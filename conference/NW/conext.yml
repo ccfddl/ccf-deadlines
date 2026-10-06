@@ -11,8 +11,8 @@
       id: conext21
       link: https://conferences2.sigcomm.org/co-next/2021/#!/home
       timeline:
-        - abstract_deadline: '2021-06-21 23:59:00'
-          deadline: '2021-06-28 23:59:00'
+        - abstract_deadline: '2021-06-21 23:59:59'
+          deadline: '2021-06-28 23:59:59'
       timezone: UTC+2
       date: December 8-10, 2021
       place: Virtual
@@ -30,7 +30,7 @@
       id: conext23
       link: https://conferences.sigcomm.org/co-next/2023/#!/home
       timeline:
-        - deadline: '2022-11-30 23:59:00'
+        - deadline: '2022-11-30 23:59:59'
           comment: November cycle
         - deadline: '2023-06-28 00:00:00'
           comment: June cycle

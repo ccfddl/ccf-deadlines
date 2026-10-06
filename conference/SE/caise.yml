@@ -11,8 +11,8 @@
       id: caise21
       link: https://web.archive.org/web/20210725073223/https://caise21.org/
       timeline:
-        - abstract_deadline: '2020-11-28 23:59:00'
-          deadline: '2020-12-04 23:59:00'
+        - abstract_deadline: '2020-11-28 23:59:59'
+          deadline: '2020-12-04 23:59:59'
       timezone: AoE
       date: June 30-July 2, 2021
       place: Online
@@ -20,8 +20,8 @@
       id: caise22
       link: https://caise22.ugent.be/
       timeline:
-        - abstract_deadline: '2021-11-22 23:59:00'
-          deadline: '2021-11-29 23:59:00'
+        - abstract_deadline: '2021-11-22 23:59:59'
+          deadline: '2021-11-29 23:59:59'
       timezone: AoE
       date: June 8-10, 2022
       place: Leuven
@@ -29,8 +29,8 @@
       id: caise23
       link: https://caise23.svit.usj.es/
       timeline:
-        - abstract_deadline: '2022-11-22 23:59:00'
-          deadline: '2022-11-29 23:59:00'
+        - abstract_deadline: '2022-11-22 23:59:59'
+          deadline: '2022-11-29 23:59:59'
       timezone: AoE
       date: June 14-16, 2023
       place: Zaragoza, Spain
@@ -38,8 +38,8 @@
       id: caise24
       link: https://cyprusconferences.org/caise2024/
       timeline:
-        - abstract_deadline: '2023-12-01 23:59:00'
-          deadline: '2023-12-08 23:59:00'
+        - abstract_deadline: '2023-12-01 23:59:59'
+          deadline: '2023-12-08 23:59:59'
       timezone: AoE
       date: June 5-7, 2024
       place: Limassol, Cyprus
@@ -47,8 +47,8 @@
       id: caise25
       link: https://conferences.big.tuwien.ac.at/caise2025/
       timeline:
-        - abstract_deadline: '2024-11-29 23:59:00'
-          deadline: '2024-12-06 23:59:00'
+        - abstract_deadline: '2024-11-29 23:59:59'
+          deadline: '2024-12-06 23:59:59'
       timezone: AoE
       date: June 18-20, 2025
       place: Vienna, Austria
@@ -65,9 +65,9 @@
       id: caise27
       link: https://deal.us.es/caise27/
       timeline:
-        - abstract_deadline: '2026-11-04 23:59:00'
-          deadline: '2026-11-15 23:59:00'
-          decision_deadline: '2027-02-10 23:59:00'
+        - abstract_deadline: '2026-11-04 23:59:59'
+          deadline: '2026-11-15 23:59:59'
+          decision_deadline: '2027-02-10 23:59:59'
       timezone: AoE
       date: June 7-11, 2027
       place: Seville, Spain

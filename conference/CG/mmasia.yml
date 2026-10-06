@@ -20,7 +20,7 @@
       id: mmasia22
       link: https://www.acmmmasia.org/2022/
       timeline:
-        - deadline: '2022-08-08 23:59:00'
+        - deadline: '2022-08-08 23:59:59'
       timezone: AoE
       date: December 14-16, 2022
       place: Tokyo, Japan
@@ -28,7 +28,7 @@
       id: mmasia23
       link: https://www.acmmmasia.org/2023/
       timeline:
-        - deadline: '2023-08-12 23:59:00'
+        - deadline: '2023-08-12 23:59:59'
       timezone: AoE
       date: December 6-7, 2023
       place: Tainan, Taiwan
@@ -36,7 +36,7 @@
       id: mmasia24
       link: https://mmasia2024.org/
       timeline:
-        - deadline: '2024-08-09 23:59:00'
+        - deadline: '2024-08-09 23:59:59'
       timezone: AoE
       date: December 4-6, 2024
       place: Auckland, New Zealand

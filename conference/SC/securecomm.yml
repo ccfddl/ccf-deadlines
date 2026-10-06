@@ -20,7 +20,7 @@
       id: securecomm22
       link: https://securecomm.eai-conferences.org/2022/
       timeline:
-        - deadline: '2022-04-17 23:59:00'
+        - deadline: '2022-04-17 23:59:59'
       timezone: AoE
       date: October 17-19, 2022
       place: Virtual
@@ -28,7 +28,7 @@
       id: securecomm23
       link: https://securecomm.eai-conferences.org/2023/
       timeline:
-        - deadline: '2023-05-20 23:59:00'
+        - deadline: '2023-05-20 23:59:59'
       timezone: AoE
       date: October 19-21, 2023
       place: Hong Kong SAR, Hong Kong
@@ -65,10 +65,10 @@
       link: https://securecomm.eai-conferences.org/2027/
       timeline:
         - deadline: '2027-02-01 23:59:59'
-          decision_deadline: '2027-03-15 23:59:00'
+          decision_deadline: '2027-03-15 23:59:59'
           comment: Full Paper Submission deadline (Cycle 1)
         - deadline: '2027-04-15 23:59:59'
-          decision_deadline: '2027-06-01 23:59:00'
+          decision_deadline: '2027-06-01 23:59:59'
           comment: Full Paper Submission deadline (Cycle 2)
       timezone: AoE
       date: October 15-18, 2027

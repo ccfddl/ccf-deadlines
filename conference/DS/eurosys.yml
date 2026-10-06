@@ -81,11 +81,11 @@
       timeline:
         - abstract_deadline: '2026-05-07 23:59:59'
           deadline: '2026-05-14 23:59:59'
-          rebuttal_deadline: '2026-07-31 23:59:00'
+          rebuttal_deadline: '2026-07-31 23:59:59'
           comment: Spring Submission Deadline
         - abstract_deadline: '2026-09-17 23:59:59'
           deadline: '2026-09-24 23:59:59'
-          rebuttal_deadline: '2027-01-08 23:59:00'
+          rebuttal_deadline: '2027-01-08 23:59:59'
           comment: Fall Submission Deadline
       timezone: AoE
       date: April 19-23, 2027

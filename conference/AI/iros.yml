@@ -11,9 +11,9 @@
       id: iros21
       link: https://www.iros2021.org/
       timeline:
-        - deadline: '2021-02-24 23:59:00'
+        - deadline: '2021-02-24 23:59:59'
           comment: 'RA-L with IROS option'
-        - deadline: '2021-03-05 23:59:00'
+        - deadline: '2021-03-05 23:59:59'
           comment: 'Conference papers'
       timezone: UTC-8
       date: September 28-30, 2021
@@ -22,9 +22,9 @@
       id: iros22
       link: https://iros2022.org/
       timeline:
-        - deadline: '2022-02-24 23:59:00'
+        - deadline: '2022-02-24 23:59:59'
           comment: 'RA-L with IROS option'
-        - deadline: '2022-03-01 23:59:00'
+        - deadline: '2022-03-01 23:59:59'
           comment: 'Conference papers'
       timezone: UTC-8
       date: October 23-26, 2022
@@ -33,7 +33,7 @@
       id: iros23
       link: https://2023.ieee-iros.org/
       timeline:
-        - deadline: '2023-03-02 23:59:00'
+        - deadline: '2023-03-02 23:59:59'
       timezone: UTC-8
       date: October 2-4, 2023
       place: Detroit, Michigan, USA
@@ -65,7 +65,7 @@
       id: iros27
       link: https://2027.ieee-iros.org/
       timeline:
-        - deadline: '2027-03-01 23:59:00'
+        - deadline: '2027-03-01 23:59:59'
           comment: 'Paper submission deadline: March 1, 2027; exact cutoff time and timezone not specified on the official IEEE RAS event page'
       timezone: AoE
       date: September 26 - October 1, 2027

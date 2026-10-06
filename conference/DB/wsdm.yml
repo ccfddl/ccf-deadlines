@@ -11,7 +11,7 @@
       id: wsdm21
       link: https://www.wsdm-conference.org/2021/
       timeline:
-        - deadline: '2020-08-16 23:59:00'
+        - deadline: '2020-08-16 23:59:59'
       timezone: UTC-11
       date: March 8-12, 2021
       place: Online
@@ -63,7 +63,7 @@
       timeline:
         - abstract_deadline: '2026-08-17 23:59:59'
           deadline: '2026-08-24 23:59:59'
-          decision_deadline: '2026-11-02 23:59:00'
+          decision_deadline: '2026-11-02 23:59:59'
           comment: Full Paper
       timezone: UTC-12
       date: February 15 - 19, 2027

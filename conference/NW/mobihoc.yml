@@ -11,8 +11,8 @@
       id: mobihoc21
       link: https://www.sigmobile.org/mobihoc/2021/
       timeline:
-        - abstract_deadline: '2020-12-12 23:59:00'
-          deadline: '2020-12-19 23:59:00'
+        - abstract_deadline: '2020-12-12 23:59:59'
+          deadline: '2020-12-19 23:59:59'
       timezone: UTC-5
       date: July 27-29, 2021
       place: Shanghai, China
@@ -30,8 +30,8 @@
       id: mobihoc23
       link: https://www.sigmobile.org/mobihoc/2023/
       timeline:
-        - abstract_deadline: '2023-03-10 23:59:00'
-          deadline: '2023-03-10 23:59:00'
+        - abstract_deadline: '2023-03-10 23:59:59'
+          deadline: '2023-03-10 23:59:59'
       timezone: UTC-5
       date: October 24-26, 2023
       place: Washington, DC, USA
@@ -39,8 +39,8 @@
       id: mobihoc24
       link: https://www.sigmobile.org/mobihoc/2024/
       timeline:
-        - abstract_deadline: '2024-04-14 23:59:00'
-          deadline: '2024-04-14 23:59:00'
+        - abstract_deadline: '2024-04-14 23:59:59'
+          deadline: '2024-04-14 23:59:59'
       timezone: UTC-4
       date: October 15-17, 2024
       place: Athens, Greece
@@ -48,8 +48,8 @@
       id: mobihoc25
       link: https://www.sigmobile.org/mobihoc/2025/
       timeline:
-        - abstract_deadline: '2025-03-30 23:59:00'
-          deadline: '2025-04-06 23:59:00'
+        - abstract_deadline: '2025-03-30 23:59:59'
+          deadline: '2025-04-06 23:59:59'
       timezone: UTC-4
       date: October 27-29, 2025
       place: Houston, Texas, USA

@@ -19,7 +19,7 @@
       id: acisp22
       link: https://uow-ic2.github.io/acisp2022/
       timeline:
-        - deadline: '2022-02-21 23:59:00'
+        - deadline: '2022-02-21 23:59:59'
       timezone: AoE
       date: November 28-30, 2022
       place: Wollongong, Australia
@@ -27,7 +27,7 @@
       id: acisp23
       link: https://www.qut.edu.au/about/faculty-of-science/school-of-computer-science/acisp
       timeline:
-        - deadline: '2023-02-13 23:59:00'
+        - deadline: '2023-02-13 23:59:59'
       timezone: AoE
       date: July 5-7, 2023
       place: Brisbane, Australia

@@ -11,7 +11,7 @@
       id: satml23
       link: https://satml.org/2023/
       timeline:
-        - abstract_deadline: '2022-08-22 23:59:00'
+        - abstract_deadline: '2022-08-22 23:59:59'
           deadline: '2022-09-01 23:59:59'
       timezone: UTC-12
       date: February 8-10, 2023
@@ -20,7 +20,7 @@
       id: satml24
       link: https://satml.org/2024/
       timeline:
-        - abstract_deadline: '2023-10-04 23:59:00'
+        - abstract_deadline: '2023-10-04 23:59:59'
           deadline: '2023-10-11 23:59:59'
       timezone: UTC-12
       date: April 9-11, 2024
@@ -47,8 +47,8 @@
       timeline:
         - abstract_deadline: '2026-09-22 23:59:59'
           deadline: '2026-09-29 23:59:59'
-          rebuttal_deadline: '2026-12-09 23:59:00'
-          decision_deadline: '2027-02-01 23:59:00'
+          rebuttal_deadline: '2026-12-09 23:59:59'
+          decision_deadline: '2027-02-01 23:59:59'
       timezone: UTC-12
       date: May 2027 (exact dates TBD)
       place: Reykjavik, Iceland

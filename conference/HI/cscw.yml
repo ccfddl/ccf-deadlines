@@ -11,9 +11,9 @@
       id: cscw21
       link: https://cscw.acm.org/2021/
       timeline:
-        - deadline: '2020-10-15 23:59:00'
+        - deadline: '2020-10-15 23:59:59'
           comment: 'October 2020 cycle'
-        - deadline: '2021-01-15 23:59:00'
+        - deadline: '2021-01-15 23:59:59'
           comment: 'January 2021 cycle'
         - deadline: '2021-04-15 23:59:59'
           comment: 'April 2021 cycle'
@@ -24,7 +24,7 @@
       id: cscw22
       link: https://cscw.acm.org/2022/
       timeline:
-        - deadline: '2021-07-15 23:59:00'
+        - deadline: '2021-07-15 23:59:59'
           comment: 'July 2021 cycle'
         - deadline: '2022-01-15 23:59:59'
           comment: 'January 2022 cycle'
@@ -35,9 +35,9 @@
       id: cscw23
       link: https://cscw.acm.org/2023/
       timeline:
-        - deadline: '2022-07-15 23:59:00'
+        - deadline: '2022-07-15 23:59:59'
           comment: 'July 2022 cycle'
-        - deadline: '2023-01-15 23:59:00'
+        - deadline: '2023-01-15 23:59:59'
           comment: 'January 2023 cycle'
       timezone: AoE
       date: October 14-18, 2023
@@ -46,7 +46,7 @@
       id: cscw24
       link: https://cscw.acm.org/2024/
       timeline:
-        - deadline: '2023-07-18 23:59:00'
+        - deadline: '2023-07-18 23:59:59'
           comment: 'July 2023 cycle'
         - deadline: '2024-01-16 23:59:59'
           comment: 'January 2024 cycle'

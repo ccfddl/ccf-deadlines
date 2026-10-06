@@ -11,8 +11,8 @@
       id: cf2021
       link: https://www.computingfrontiers.org/2021/
       timeline:
-        - abstract_deadline: '2021-01-28 23:59:00'
-          deadline: '2021-02-04 23:59:00'
+        - abstract_deadline: '2021-01-28 23:59:59'
+          deadline: '2021-02-04 23:59:59'
       timezone: AoE
       date: May 11-13, 2021
       place: Virtual
@@ -20,8 +20,8 @@
       id: cf2022
       link: https://www.computingfrontiers.org/2022/
       timeline:
-        - abstract_deadline: '2022-02-06 23:59:00'
-          deadline: '2022-02-13 23:59:00'
+        - abstract_deadline: '2022-02-06 23:59:59'
+          deadline: '2022-02-13 23:59:59'
       timezone: AoE
       date: May 17-19, 2022
       place: Turin, Italy (Hybrid)
@@ -47,7 +47,7 @@
       id: cf2025
       link: https://www.computingfrontiers.org/2025/
       timeline:
-        - abstract_deadline: '2025-01-20 23:59:00'
+        - abstract_deadline: '2025-01-20 23:59:59'
           deadline: TBD
           comment: CFP January 27 AoE conflicts with portal January 26 AoE
       timezone: AoE

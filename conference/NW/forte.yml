@@ -11,8 +11,8 @@
       id: forte21
       link: https://www.discotec.org/2021/forte
       timeline:
-        - abstract_deadline: '2021-02-12 23:59:00'
-          deadline: '2021-02-19 23:59:00'
+        - abstract_deadline: '2021-02-12 23:59:59'
+          deadline: '2021-02-19 23:59:59'
       timezone: AoE
       date: June 15-17, 2021
       place: Virtual
@@ -20,8 +20,8 @@
       id: forte22
       link: https://www.discotec.org/2022/forte
       timeline:
-        - abstract_deadline: '2022-02-11 23:59:00'
-          deadline: '2022-02-18 23:59:00'
+        - abstract_deadline: '2022-02-11 23:59:59'
+          deadline: '2022-02-18 23:59:59'
       timezone: AoE
       date: June 14-16, 2022
       place: Lucca, Italy (Hybrid)
@@ -29,8 +29,8 @@
       id: forte23
       link: https://www.discotec.org/2023/forte
       timeline:
-        - abstract_deadline: '2023-02-24 23:59:00'
-          deadline: '2023-03-04 23:59:00'
+        - abstract_deadline: '2023-02-24 23:59:59'
+          deadline: '2023-03-04 23:59:59'
       timezone: AoE
       date: June 20-22, 2023
       place: Lisbon, Portugal

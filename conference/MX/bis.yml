@@ -11,7 +11,7 @@
       id: bis2021
       link: https://bisconf.org/2021/
       timeline:
-        - deadline: '2021-02-21 23:59:00'
+        - deadline: '2021-02-21 23:59:59'
       timezone: AoE
       date: June 15-17, 2021
       place: Online

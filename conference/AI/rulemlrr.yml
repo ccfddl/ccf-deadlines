@@ -11,8 +11,8 @@
       id: rulemlrr2021
       link: https://declarativeai2021.net/conference/
       timeline:
-        - abstract_deadline: '2021-06-27 23:59:00'
-          deadline: '2021-07-02 23:59:00'
+        - abstract_deadline: '2021-06-27 23:59:59'
+          deadline: '2021-07-02 23:59:59'
           comment: Regular papers
       timezone: AoE
       date: September 13-15, 2021
@@ -21,8 +21,8 @@
       id: rulemlrr2022
       link: https://2022.declarativeai.net/events/ruleml-rr/ruleml-rr-cfp
       timeline:
-        - abstract_deadline: '2022-06-19 23:59:00'
-          deadline: '2022-06-23 23:59:00'
+        - abstract_deadline: '2022-06-19 23:59:59'
+          deadline: '2022-06-23 23:59:59'
           comment: Regular papers
       timezone: AoE
       date: September 26-28, 2022
@@ -31,8 +31,8 @@
       id: rulemlrr2023
       link: https://2023.declarativeai.net/events/ruleml-rr/ruleml-rr-cfp
       timeline:
-        - abstract_deadline: '2023-06-17 23:59:00'
-          deadline: '2023-06-17 23:59:00'
+        - abstract_deadline: '2023-06-17 23:59:59'
+          deadline: '2023-06-17 23:59:59'
           comment: Regular papers
       timezone: AoE
       date: September 18-20, 2023
@@ -41,8 +41,8 @@
       id: rulemlrr2024
       link: https://2024.declarativeai.net/events/ruleml-rr/cfp
       timeline:
-        - abstract_deadline: '2024-06-15 23:59:00'
-          deadline: '2024-06-15 23:59:00'
+        - abstract_deadline: '2024-06-15 23:59:59'
+          deadline: '2024-06-15 23:59:59'
           comment: Regular papers
       timezone: AoE
       date: September 16-18, 2024
@@ -51,8 +51,8 @@
       id: rulemlrr2025
       link: https://2025.declarativeai.net/events/ruleml-rr/cfp
       timeline:
-        - abstract_deadline: '2025-06-20 23:59:00'
-          deadline: '2025-06-20 23:59:00'
+        - abstract_deadline: '2025-06-20 23:59:59'
+          deadline: '2025-06-20 23:59:59'
           comment: Regular papers
       timezone: AoE
       date: September 22-24, 2025

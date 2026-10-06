@@ -11,10 +11,10 @@
       id: acns21
       link: https://sulab-sever.u-aizu.ac.jp/ACNS2021/
       timeline:
-        - deadline: '2020-09-07 23:59:00'
-          comment: 'First regular paper final deadline; 23:59:00 is the repository default for unspecified cutoff time'
-        - deadline: '2021-01-15 23:59:00'
-          comment: 'Second regular paper final deadline; 23:59:00 is the repository default for unspecified cutoff time'
+        - deadline: '2020-09-07 23:59:59'
+          comment: 'First regular paper final deadline; 23:59:59 is the repository default for unspecified cutoff time'
+        - deadline: '2021-01-15 23:59:59'
+          comment: 'Second regular paper final deadline; 23:59:59 is the repository default for unspecified cutoff time'
       timezone: AoE
       date: June 21-24, 2021
       place: Virtual
@@ -33,9 +33,9 @@
       id: acns23
       link: https://sulab-sever.u-aizu.ac.jp/acns2023/
       timeline:
-        - deadline: '2022-09-08 23:59:00'
+        - deadline: '2022-09-08 23:59:59'
           comment: First regular paper submission deadline
-        - deadline: '2023-01-12 23:59:00'
+        - deadline: '2023-01-12 23:59:59'
           comment: Second regular paper submission deadline
       timezone: AoE
       date: June 19-22, 2023
@@ -78,10 +78,10 @@
       link: https://acns2027.isg.rhul.ac.uk/
       timeline:
         - deadline: '2026-09-24 23:59:59'
-          decision_deadline: '2026-11-26 23:59:00'
+          decision_deadline: '2026-11-26 23:59:59'
           comment: Cycle 1 Submission deadline
         - deadline: '2027-01-21 23:59:59'
-          decision_deadline: '2027-03-25 23:59:00'
+          decision_deadline: '2027-03-25 23:59:59'
           comment: Cycle 2 Submission deadline
       timezone: AoE
       date: June 28 - July 1, 2027

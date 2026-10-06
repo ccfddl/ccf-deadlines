@@ -11,7 +11,7 @@
       id: apbc25
       link: https://bioinfo.nuaa.edu.cn/apbc2025/main.psp
       timeline:
-        - deadline: '2025-07-15 23:59:00'
+        - deadline: '2025-07-15 23:59:59'
       timezone: UTC+0
       date: September 19-22, 2025
       place: Nanjing， China
@@ -19,7 +19,7 @@
       id: apbc26
       link: https://www.apbc2026.com/home
       timeline:
-        - deadline: '2026-07-17 23:59:00'
+        - deadline: '2026-07-17 23:59:59'
       timezone: AoE
       date: October 22-24, 2026
       place: Hsinchu, Taiwan， China

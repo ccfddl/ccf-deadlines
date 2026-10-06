@@ -11,7 +11,7 @@
       id: cpal24
       link: https://2024.cpal.cc/
       timeline:
-        - deadline: '2023-08-28 23:59:00'
+        - deadline: '2023-08-28 23:59:59'
           comment: 'Proceedings Track'
       timezone: AoE
       date: January 3-6, 2024
@@ -40,8 +40,8 @@
       timeline:
         - abstract_deadline: '2026-11-23 23:59:59'
           deadline: '2026-12-05 23:59:59'
-          rebuttal_deadline: '2027-01-17 23:59:00'
-          decision_deadline: '2027-02-01 23:59:00'
+          rebuttal_deadline: '2027-01-17 23:59:59'
+          decision_deadline: '2027-02-01 23:59:59'
       timezone: AoE
       date: March 23-26, 2027
       place: Tokyo, Japan

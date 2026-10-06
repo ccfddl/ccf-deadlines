@@ -11,11 +11,11 @@
       id: uss21
       link: https://www.usenix.org/conference/usenixsecurity21
       timeline:
-        - deadline: '2020-06-18 23:59:00'
+        - deadline: '2020-06-18 23:59:59'
           comment: Summer Deadline (Extended)
-        - deadline: '2020-10-15 23:59:00'
+        - deadline: '2020-10-15 23:59:59'
           comment: Fall Deadline
-        - deadline: '2021-02-04 23:59:00'
+        - deadline: '2021-02-04 23:59:59'
           comment: Winter Deadline
       timezone: UTC-12
       date: August 11 - 13, 2021
@@ -89,11 +89,11 @@
       timeline:
         - abstract_deadline: '2026-08-18 23:59:59'
           deadline: '2026-08-25 23:59:59'
-          rebuttal_deadline: '2026-11-12 23:59:00'
+          rebuttal_deadline: '2026-11-12 23:59:59'
           comment: Cycle 1 Deadline
         - abstract_deadline: '2027-01-19 23:59:59'
           deadline: '2027-01-26 23:59:59'
-          rebuttal_deadline: '2027-04-15 23:59:00'
+          rebuttal_deadline: '2027-04-15 23:59:59'
           comment: Cycle 2 Deadline
       timezone: UTC-12
       date: August 11-13, 2027

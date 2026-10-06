@@ -11,7 +11,7 @@
       id: esa2021
       link: https://algo2021.tecnico.ulisboa.pt/ESA2021/
       timeline:
-        - deadline: '2021-05-03 23:59:00'
+        - deadline: '2021-05-03 23:59:59'
       timezone: AoE
       date: September 6-8, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: esa2022
       link: https://algo-conference.org/2022/esa/
       timeline:
-        - deadline: '2022-04-21 23:59:00'
+        - deadline: '2022-04-21 23:59:59'
       timezone: AoE
       date: September 5-7, 2022
       place: Potsdam, Germany
@@ -27,7 +27,7 @@
       id: esa2023
       link: https://algo-conference.org/2023/esa/
       timeline:
-        - deadline: '2023-04-28 23:59:00'
+        - deadline: '2023-04-28 23:59:59'
       timezone: AoE
       date: September 4-6, 2023
       place: Amsterdam, Netherlands
@@ -35,7 +35,7 @@
       id: esa2024
       link: https://algo-conference.org/2024/esa/
       timeline:
-        - deadline: '2024-04-22 23:59:00'
+        - deadline: '2024-04-22 23:59:59'
       timezone: AoE
       date: September 2-4, 2024
       place: Egham, UK
@@ -43,7 +43,7 @@
       id: esa2025
       link: https://algo-conference.org/2025/esa/
       timeline:
-        - deadline: '2025-04-23 23:59:00'
+        - deadline: '2025-04-23 23:59:59'
       timezone: AoE
       date: September 15-17, 2025
       place: Warsaw, Poland

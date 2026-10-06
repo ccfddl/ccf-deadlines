@@ -11,7 +11,7 @@
       id: ictai21
       link: https://ictai.computer.org/2021/
       timeline:
-        - deadline: '2021-07-26 23:59:00'
+        - deadline: '2021-07-26 23:59:59'
       timezone: AoE
       date: November 01-03, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: ictai22
       link: https://ictai.computer.org/2022/
       timeline:
-        - deadline: '2022-08-08 23:59:00'
+        - deadline: '2022-08-08 23:59:59'
       timezone: AoE
       date: October 31 - November 2, 2022
       place: Virtual
@@ -36,7 +36,7 @@
       id: ictai24
       link: https://ictai.computer.org/2024/
       timeline:
-        - deadline: '2024-07-21 23:59:00'
+        - deadline: '2024-07-21 23:59:59'
       timezone: AoE
       date: October 28-30, 2024
       place: Herndon, VA, USA
@@ -44,7 +44,7 @@
       id: ictai25
       link: https://easyconferences.eu/ictai2025/
       timeline:
-        - deadline: '2025-07-15 23:59:00'
+        - deadline: '2025-07-15 23:59:59'
       timezone: AoE
       date: November 3-5, 2025
       place: Athens, Greece
@@ -52,7 +52,7 @@
       id: ictai26
       link: https://ictai.computer.org/2026/
       timeline:
-        - deadline: '2026-07-21 23:59:00'
+        - deadline: '2026-07-21 23:59:59'
       timezone: AoE
       date: November 02-04, 2026
       place: Boca Raton FL, USA

@@ -11,7 +11,7 @@
       id: casa2021
       link: https://casa2021.ca/
       timeline:
-        - deadline: '2021-03-06 23:59:00'
+        - deadline: '2021-03-06 23:59:59'
       timezone: AoE
       date: July 15-17, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: casa2022
       link: http://www.casa2022.org/
       timeline:
-        - deadline: '2022-04-07 23:59:00'
+        - deadline: '2022-04-07 23:59:59'
       timezone: AoE
       date: TBD
       place: Nanjing, China
@@ -27,7 +27,7 @@
       id: casa2023
       link: https://cyprusconferences.org/casa2023/
       timeline:
-        - deadline: '2023-03-12 23:59:00'
+        - deadline: '2023-03-12 23:59:59'
       timezone: AoE
       date: May 29-31, 2023
       place: Limassol, Cyprus (Hybrid)

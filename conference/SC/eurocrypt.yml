@@ -60,8 +60,8 @@
       link: https://eurocrypt.iacr.org/2027/
       timeline:
         - deadline: '2026-09-17 23:59:59'
-          rebuttal_deadline: '2026-12-05 23:59:00'
-          decision_deadline: '2027-01-18 23:59:00'
+          rebuttal_deadline: '2026-12-05 23:59:59'
+          decision_deadline: '2027-01-18 23:59:59'
       timezone: AoE
       date: April 11-15, 2027
       place: Eindhoven, Netherlands

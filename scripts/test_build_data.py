@@ -149,8 +149,8 @@ class AcceptanceIdentityTests(unittest.TestCase):
 
     def test_identity_survives_initial_and_history_split(self):
         conference = {"conference_key": "SC/sec", "title": "SEC", "confs": [
-            edition(2021, "2020-01-01 23:59:00"), edition(2026, "2025-01-01 23:59:00"),
-            edition(2027, "2026-12-01 23:59:00"),
+            edition(2021, "2020-01-01 23:59:59"), edition(2026, "2025-01-01 23:59:59"),
+            edition(2027, "2026-12-01 23:59:59"),
         ]}
         initial, history = split_conferences([conference], date(2026, 9, 30))
         self.assertEqual(initial[0]["conference_key"], "SC/sec")

@@ -11,7 +11,7 @@
       id: conll21
       link: https://www.conll.org/2021
       timeline:
-        - deadline: '2021-06-14 23:59:00'
+        - deadline: '2021-06-14 23:59:59'
       timezone: UTC-12
       date: November 10-11, 2021
       place: Punta Cana, Dominican Republic (Hybrid)
@@ -19,7 +19,7 @@
       id: conll22
       link: https://www.conll.org/2022
       timeline:
-        - deadline: '2022-06-30 23:59:00'
+        - deadline: '2022-06-30 23:59:59'
           comment: 'Direct submissions; ARR commitment deadline: August 1, 2022, 23:59 UTC-12'
       timezone: UTC-12
       date: December 7-8, 2022
@@ -28,7 +28,7 @@
       id: conll23
       link: https://www.conll.org/2023
       timeline:
-        - deadline: '2023-06-30 23:59:00'
+        - deadline: '2023-06-30 23:59:59'
       timezone: UTC-12
       date: December 6-7, 2023
       place: Singapore
@@ -36,7 +36,7 @@
       id: conll24
       link: https://www.conll.org/2024
       timeline:
-        - deadline: '2024-07-07 23:59:00'
+        - deadline: '2024-07-07 23:59:59'
           comment: 'Direct submissions (extended); ARR commitment deadline: August 30, 2024, 23:59 UTC-12'
       timezone: UTC-12
       date: November 15-16, 2024

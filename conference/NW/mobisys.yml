@@ -37,8 +37,8 @@
       id: mobisys24
       link: https://www.sigmobile.org/mobisys/2024/
       timeline:
-        - abstract_deadline: '2023-11-23 23:59:00'
-          deadline: '2023-11-30 23:59:00'
+        - abstract_deadline: '2023-11-23 23:59:59'
+          deadline: '2023-11-30 23:59:59'
       timezone: AoE
       date: June 4-6, 2024
       place: Tokyo, Japan
@@ -46,8 +46,8 @@
       id: mobisys25
       link: https://www.sigmobile.org/mobisys/2025/
       timeline:
-        - abstract_deadline: '2024-12-02 23:59:00'
-          deadline: '2024-12-09 23:59:00'
+        - abstract_deadline: '2024-12-02 23:59:59'
+          deadline: '2024-12-09 23:59:59'
       timezone: AoE
       date: June 24-26, 2025
       place: Anaheim, California, USA
@@ -66,7 +66,7 @@
       timeline:
         - abstract_deadline: '2026-11-27 23:59:59'
           deadline: '2026-12-04 23:59:59'
-          rebuttal_deadline: '2027-02-12 23:59:00'
+          rebuttal_deadline: '2027-02-12 23:59:59'
       timezone: AoE
       date: June 21-25, 2027
       place: Ho Chi Minh City, Vietnam

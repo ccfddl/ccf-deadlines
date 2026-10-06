@@ -11,8 +11,8 @@
       id: edbt21
       link: https://edbticdt2021.cs.ucy.ac.cy/index.html
       timeline:
-        - abstract_deadline: '2020-10-02 23:59:00'
-          deadline: '2020-10-09 23:59:00'
+        - abstract_deadline: '2020-10-02 23:59:59'
+          deadline: '2020-10-09 23:59:59'
           comment: Abstract optional
       timezone: AoE
       date: March 24-26, 2021
@@ -21,7 +21,7 @@
       id: edbt22
       link: https://conferences.inf.ed.ac.uk/edbticdt2022/
       timeline:
-        - deadline: '2021-06-01 23:59:00'
+        - deadline: '2021-06-01 23:59:59'
           comment: First cycle
         - deadline: '2021-10-01 23:59:59'
           comment: Second cycle

@@ -29,7 +29,7 @@
       id: bmvc23
       link: https://www.bmvc2023.org/
       timeline:
-        - abstract_deadline: '2023-05-05 23:59:00'
+        - abstract_deadline: '2023-05-05 23:59:59'
           deadline: '2023-05-12 23:59:59'
       timezone: UTC+1
       date: November 20-23, 2023

@@ -11,8 +11,8 @@
       id: sigcse21
       link: https://sigcse2021.sigcse.org/
       timeline:
-        - abstract_deadline: '2020-08-21 23:59:00'
-          deadline: '2020-08-28 23:59:00'
+        - abstract_deadline: '2020-08-21 23:59:59'
+          deadline: '2020-08-28 23:59:59'
       timezone: UTC-12
       date: March 15-20, 2021
       place: Online
@@ -20,8 +20,8 @@
       id: sigcse22
       link: https://sigcse2022.sigcse.org/
       timeline:
-        - abstract_deadline: '2021-08-06 23:59:00'
-          deadline: '2021-08-13 23:59:00'
+        - abstract_deadline: '2021-08-06 23:59:59'
+          deadline: '2021-08-13 23:59:59'
       timezone: UTC-12
       date: March 3-5, 2022
       place: Providence, Rhode Island, USA (Hybrid)
@@ -29,8 +29,8 @@
       id: sigcse23
       link: https://sigcse2023.sigcse.org/
       timeline:
-        - abstract_deadline: '2022-08-12 23:59:00'
-          deadline: '2022-08-19 23:59:00'
+        - abstract_deadline: '2022-08-12 23:59:59'
+          deadline: '2022-08-19 23:59:59'
       timezone: UTC-12
       date: March 16-18, 2023
       place: Toronto, Canada (Hybrid)
@@ -38,8 +38,8 @@
       id: sigcse24
       link: https://sigcse2024.sigcse.org/
       timeline:
-        - abstract_deadline: '2023-08-11 23:59:00'
-          deadline: '2023-08-18 23:59:00'
+        - abstract_deadline: '2023-08-11 23:59:59'
+          deadline: '2023-08-18 23:59:59'
       timezone: UTC-12
       date: March 21-23, 2024
       place: Portland, Oregon, USA (Hybrid)

@@ -171,7 +171,7 @@ Description of the fields:
 Fields marked with asterisk (*) are required.
 
 Deadline defaults are repository conventions: when an official source gives a
-calendar date but no clock time, use `23:59:00` on that date. When the source does
+calendar date but no clock time, use `23:59:59` on that date. When the source does
 not specify a timezone, use `AoE`. Document these defaults in comments where
 appropriate; do not present them as times or zones stated by the source. A truly
 unpublished date remains `TBD`. Resolve explicit conflicting dates from reliable

@@ -11,8 +11,8 @@
       id: ets2021
       link: https://www.ieee-ets.org/past_events/ets21/
       timeline:
-        - abstract_deadline: '2020-12-10 23:59:00'
-          deadline: '2020-12-17 23:59:00'
+        - abstract_deadline: '2020-12-10 23:59:59'
+          deadline: '2020-12-17 23:59:59'
       timezone: AoE
       date: May 24-27, 2021
       place: Virtual
@@ -38,7 +38,7 @@
       id: ets2024
       link: https://ets24.ewi.tudelft.nl/
       timeline:
-        - abstract_deadline: '2023-12-15 23:59:00'
+        - abstract_deadline: '2023-12-15 23:59:59'
           deadline: '2023-12-23 00:00:00'
       timezone: AoE
       date: May 21-23, 2024
@@ -56,8 +56,8 @@
       id: ets2026
       link: https://ets2026.uniwa.gr/
       timeline:
-        - abstract_deadline: '2025-12-15 23:59:00'
-          deadline: '2026-01-14 23:59:00'
+        - abstract_deadline: '2025-12-15 23:59:59'
+          deadline: '2026-01-14 23:59:59'
       timezone: AoE
       date: May 26-28, 2026
       place: Chania, Greece
@@ -65,9 +65,9 @@
       id: ets2027
       link: https://www.ets2027.co.uk/
       timeline:
-        - abstract_deadline: '2026-12-08 23:59:00'
-          deadline: '2026-12-15 23:59:00'
-          comment: 'Regular papers; official CFP dates. Clock 23:59:00 and timezone AoE are repository defaults, not published cutoff precision.'
+        - abstract_deadline: '2026-12-08 23:59:59'
+          deadline: '2026-12-15 23:59:59'
+          comment: 'Regular papers; official CFP dates. Clock 23:59:59 and timezone AoE are repository defaults, not published cutoff precision.'
       timezone: AoE
       date: May 24-28, 2027
       place: London, UK

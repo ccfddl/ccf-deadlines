@@ -11,7 +11,7 @@
       id: cns21
       link: https://cns2021.ieee-cns.org/
       timeline:
-        - deadline: '2021-06-17 23:59:00'
+        - deadline: '2021-06-17 23:59:59'
       timezone: UTC-4
       date: October 4-5, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: cns22
       link: https://cns2022.ieee-cns.org/
       timeline:
-        - deadline: '2022-06-10 23:59:00'
+        - deadline: '2022-06-10 23:59:59'
       timezone: AoE
       date: October 3-4, 2022
       place: Austin, TX, USA (Hybrid)
@@ -27,7 +27,7 @@
       id: cns23
       link: https://cns2023.ieee-cns.org/
       timeline:
-        - deadline: '2023-06-18 23:59:00'
+        - deadline: '2023-06-18 23:59:59'
       timezone: AoE
       date: October 2-4, 2023
       place: Orlando, FL, USA
@@ -35,7 +35,7 @@
       id: cns24
       link: https://cns2024.ieee-cns.org/
       timeline:
-        - deadline: '2024-06-24 23:59:00'
+        - deadline: '2024-06-24 23:59:59'
       timezone: AoE
       date: September 30-October 2, 2024
       place: Taipei, Taiwan
@@ -43,7 +43,7 @@
       id: cns25
       link: https://cns2025.ieee-cns.org/
       timeline:
-        - deadline: '2025-05-30 23:59:00'
+        - deadline: '2025-05-30 23:59:59'
       timezone: AoE
       date: September 8-10, 2025
       place: Avignon, France
@@ -51,7 +51,7 @@
       id: cns26
       link: https://cns2026.ieee-cns.org/
       timeline:
-        - deadline: '2026-05-18 23:59:00'
+        - deadline: '2026-05-18 23:59:59'
       timezone: AoE
       date: September 14-16, 2026
       place: Newark, Delaware, USA

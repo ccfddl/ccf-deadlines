@@ -11,7 +11,7 @@
       id: ecir21
       link: https://www.ecir2021.eu/
       timeline:
-        - deadline: '2020-10-15 23:59:00'
+        - deadline: '2020-10-15 23:59:59'
       timezone: AoE
       date: March 29-31, 2021
       place: Online
@@ -19,8 +19,8 @@
       id: ecir22
       link: https://ecir2022.org/
       timeline:
-        - abstract_deadline: '2021-09-30 23:59:00'
-          deadline: '2021-10-07 23:59:00'
+        - abstract_deadline: '2021-09-30 23:59:59'
+          deadline: '2021-10-07 23:59:59'
       timezone: AoE
       date: April 11-13, 2022
       place: Stavanger, Norway (with remote attendance)
@@ -28,8 +28,8 @@
       id: ecir23
       link: https://ecir2023.org/
       timeline:
-        - abstract_deadline: '2022-09-30 23:59:00'
-          deadline: '2022-10-07 23:59:00'
+        - abstract_deadline: '2022-09-30 23:59:59'
+          deadline: '2022-10-07 23:59:59'
       timezone: AoE
       date: March 31, 2023 (virtual); April 3-5, 2023 (in person)
       place: Dublin, Ireland / Online
@@ -37,8 +37,8 @@
       id: ecir24
       link: https://www.ecir2024.org/
       timeline:
-        - abstract_deadline: '2023-09-27 23:59:00'
-          deadline: '2023-10-04 23:59:00'
+        - abstract_deadline: '2023-09-27 23:59:59'
+          deadline: '2023-10-04 23:59:59'
       timezone: AoE
       date: March 25-27, 2024
       place: Glasgow, Scotland

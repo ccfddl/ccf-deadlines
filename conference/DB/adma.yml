@@ -11,7 +11,7 @@
       id: adma21
       link: https://adma21.webflow.io/
       timeline:
-        - deadline: '2021-08-15 23:59:00'
+        - deadline: '2021-08-15 23:59:59'
       timezone: AoE
       date: February 2-4, 2022
       place: Online

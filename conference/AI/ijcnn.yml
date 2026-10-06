@@ -11,7 +11,7 @@
       id: ijcnn2021
       link: https://neural.memberclicks.net/ijcnn-2021-sessions
       timeline:
-        - deadline: '2021-02-10 23:59:00'
+        - deadline: '2021-02-10 23:59:59'
       timezone: UTC-8
       date: TBD
       place: Virtual
@@ -19,8 +19,8 @@
       id: ijcnn2022
       link: https://wcci2022.org/
       timeline:
-        - abstract_deadline: '2022-01-31 23:59:00'
-          deadline: '2022-02-14 23:59:00'
+        - abstract_deadline: '2022-01-31 23:59:59'
+          deadline: '2022-02-14 23:59:59'
       timezone: AoE
       date: July 19-23, 2022
       place: Padua, Italy
@@ -28,7 +28,7 @@
       id: ijcnn2023
       link: https://2023.ijcnn.org/
       timeline:
-        - deadline: '2023-02-07 23:59:00'
+        - deadline: '2023-02-07 23:59:59'
       timezone: AoE
       date: June 19-22, 2023
       place: Gold Coast, Queensland, Australia
@@ -62,7 +62,7 @@
       link: https://ijcnn.org/2027
       timeline:
         - deadline: '2027-01-31 23:59:59'
-          decision_deadline: '2027-03-15 23:59:00'
+          decision_deadline: '2027-03-15 23:59:59'
       timezone: UTC-12
       date: June 14 - 18, 2027
       place: Cape Town, South Africa

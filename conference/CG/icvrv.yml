@@ -11,7 +11,7 @@
       id: icvrv21
       link: https://icvrv2021.aconf.org/
       timeline:
-        - deadline: '2021-07-11 23:59:00'
+        - deadline: '2021-07-11 23:59:59'
       timezone: AoE
       date: October 17-20, 2021
       place: Nanchang, China
@@ -19,7 +19,7 @@
       id: icvrv22
       link: https://icvrv2022.aconf.org/
       timeline:
-        - deadline: '2022-09-30 23:59:00'
+        - deadline: '2022-09-30 23:59:59'
       timezone: AoE
       date: November 18-20, 2022
       place: Kunming, China (Hybrid)
@@ -27,8 +27,8 @@
       id: icvrv24
       link: https://icvrv2024.aconf.org/
       timeline:
-        - abstract_deadline: '2024-09-01 23:59:00'
-          deadline: '2024-09-08 23:59:00'
+        - abstract_deadline: '2024-09-01 23:59:59'
+          deadline: '2024-09-08 23:59:59'
       timezone: AoE
       date: TBD
       place: Macau SAR and Zhuhai, China (Hybrid)

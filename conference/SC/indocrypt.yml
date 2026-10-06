@@ -19,8 +19,8 @@
       id: indocrypt22
       link: https://www.tcgcrest.org/indocrypt-2022/
       timeline:
-        - abstract_deadline: '2022-09-01 23:59:00'
-          deadline: '2022-09-07 23:59:00'
+        - abstract_deadline: '2022-09-01 23:59:59'
+          deadline: '2022-09-07 23:59:59'
       timezone: UTC-12
       date: December 12-14, 2022
       place: Kolkata, India

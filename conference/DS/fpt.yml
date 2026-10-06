@@ -11,10 +11,10 @@
       id: fpt2021
       link: https://parallel.auckland.ac.nz/fpt21/
       timeline:
-        - deadline: '2021-06-28 23:59:00'
+        - deadline: '2021-06-28 23:59:59'
           comment: Journal track
-        - abstract_deadline: '2021-07-26 23:59:00'
-          deadline: '2021-08-04 23:59:00'
+        - abstract_deadline: '2021-07-26 23:59:59'
+          deadline: '2021-08-04 23:59:59'
           comment: Conference track
       timezone: AoE
       date: December 8-10, 2021
@@ -23,10 +23,10 @@
       id: fpt2022
       link: https://fpt22.hkust.edu.hk/
       timeline:
-        - deadline: '2022-06-17 23:59:00'
+        - deadline: '2022-06-17 23:59:59'
           comment: Journal track
-        - abstract_deadline: '2022-07-29 23:59:00'
-          deadline: '2022-08-05 23:59:00'
+        - abstract_deadline: '2022-07-29 23:59:59'
+          deadline: '2022-08-05 23:59:59'
           comment: Conference track
       timezone: AoE
       date: December 7-9, 2022
@@ -35,10 +35,10 @@
       id: fpt2023
       link: https://fpt2023.org/
       timeline:
-        - deadline: '2023-06-30 23:59:00'
+        - deadline: '2023-06-30 23:59:59'
           comment: Journal track
-        - abstract_deadline: '2023-07-21 23:59:00'
-          deadline: '2023-07-30 23:59:00'
+        - abstract_deadline: '2023-07-21 23:59:59'
+          deadline: '2023-07-30 23:59:59'
           comment: Conference track
       timezone: AoE
       date: December 12-14, 2023
@@ -57,10 +57,10 @@
       id: fpt2025
       link: https://fpt2025.shanghaitech.edu.cn
       timeline:
-        - deadline: '2025-06-25 23:59:00'
+        - deadline: '2025-06-25 23:59:59'
           comment: Journal track
-        - abstract_deadline: '2025-07-20 23:59:00'
-          deadline: '2025-08-01 23:59:00'
+        - abstract_deadline: '2025-07-20 23:59:59'
+          deadline: '2025-08-01 23:59:59'
           comment: Conference track
       timezone: AoE
       date: December 3-5, 2025
@@ -69,7 +69,7 @@
       id: fpt2026
       link: https://fpt2026.uark.edu
       timeline:
-        - deadline: '2026-05-01 23:59:00'
+        - deadline: '2026-05-01 23:59:59'
           comment: Journal track
         - abstract_deadline: '2026-06-19 23:59:59'
           deadline: '2026-06-19 23:59:59'

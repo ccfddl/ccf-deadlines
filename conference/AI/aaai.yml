@@ -11,11 +11,11 @@
       id: aaai21
       link: https://aaai.org/Conferences/AAAI-21/
       timeline:
-        - abstract_deadline: '2020-09-01 23:59:00'
-          deadline: '2020-09-09 23:59:00'
+        - abstract_deadline: '2020-09-01 23:59:59'
+          deadline: '2020-09-09 23:59:59'
           comment: 'Regular round'
-        - abstract_deadline: '2020-09-29 23:59:00'
-          deadline: '2020-09-29 23:59:00'
+        - abstract_deadline: '2020-09-29 23:59:59'
+          deadline: '2020-09-29 23:59:59'
           comment: 'NeurIPS/EMNLP fast track'
       timezone: UTC-12
       date: February 4-7, 2021
@@ -27,8 +27,8 @@
         - abstract_deadline: '2021-08-30 23:59:59'
           deadline: '2021-09-08 23:59:59'
           comment: 'Regular round'
-        - abstract_deadline: '2021-10-01 23:59:00'
-          deadline: '2021-10-01 23:59:00'
+        - abstract_deadline: '2021-10-01 23:59:59'
+          deadline: '2021-10-01 23:59:59'
           comment: 'NeurIPS fast track'
       timezone: UTC-12
       date: February 24-27, 2022
@@ -40,8 +40,8 @@
         - abstract_deadline: '2022-08-08 23:59:59'
           deadline: '2022-08-15 23:59:59'
           comment: 'Regular round'
-        - abstract_deadline: '2022-09-16 23:59:00'
-          deadline: '2022-09-16 23:59:00'
+        - abstract_deadline: '2022-09-16 23:59:59'
+          deadline: '2022-09-16 23:59:59'
           comment: 'NeurIPS fast track'
       timezone: UTC-12
       date: February 9-12, 2023
@@ -53,8 +53,8 @@
         - abstract_deadline: '2023-08-08 23:59:59'
           deadline: '2023-08-15 23:59:59'
           comment: 'Regular round'
-        - abstract_deadline: '2023-09-25 23:59:00'
-          deadline: '2023-09-25 23:59:00'
+        - abstract_deadline: '2023-09-25 23:59:59'
+          deadline: '2023-09-25 23:59:59'
           comment: 'NeurIPS fast track'
       timezone: UTC-12
       date: February 22-25, 2024
@@ -83,8 +83,8 @@
       timeline:
         - abstract_deadline: '2026-07-21 23:59:59'
           deadline: '2026-07-28 23:59:59'
-          rebuttal_deadline: '2026-10-25 23:59:00'
-          decision_deadline: '2026-11-30 23:59:00'
+          rebuttal_deadline: '2026-10-25 23:59:59'
+          decision_deadline: '2026-11-30 23:59:59'
       timezone: UTC-12
       date: February 16-23, 2027
       place: Montréal, Québec, Canada

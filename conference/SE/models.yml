@@ -21,7 +21,7 @@
       id: models22
       link: https://conf.researchr.org/home/models-2022
       timeline:
-        - abstract_deadline: '2022-05-18 23:59:00'
+        - abstract_deadline: '2022-05-18 23:59:59'
           deadline: '2022-05-18 23:59:59'
       timezone: AoE
       date: October 26-28, 2022
@@ -30,8 +30,8 @@
       id: models23
       link: https://conf.researchr.org/home/models-2023
       timeline:
-        - abstract_deadline: '2023-04-07 23:59:00'
-          deadline: '2023-04-14 23:59:00'
+        - abstract_deadline: '2023-04-07 23:59:59'
+          deadline: '2023-04-14 23:59:59'
       timezone: AoE
       date: October 4-6, 2023
       place: Västerås, Sweden
@@ -39,8 +39,8 @@
       id: models24
       link: https://conf.researchr.org/home/models-2024
       timeline:
-        - abstract_deadline: '2024-03-21 23:59:00'
-          deadline: '2024-03-28 23:59:00'
+        - abstract_deadline: '2024-03-21 23:59:59'
+          deadline: '2024-03-28 23:59:59'
       timezone: AoE
       date: September 25-27, 2024
       place: Linz, Austria
@@ -48,8 +48,8 @@
       id: models25
       link: https://conf.researchr.org/home/models-2025
       timeline:
-        - abstract_deadline: '2025-03-27 23:59:00'
-          deadline: '2025-04-03 23:59:00'
+        - abstract_deadline: '2025-03-27 23:59:59'
+          deadline: '2025-04-03 23:59:59'
       timezone: AoE
       date: October 8-10, 2025
       place: Grand Rapids, Michigan, USA

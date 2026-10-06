@@ -11,11 +11,11 @@
       id: icwsm2021
       link: https://www.icwsm.org/2021/
       timeline:
-        - deadline: '2020-05-15 23:59:00'
+        - deadline: '2020-05-15 23:59:59'
           comment: 1st Full-paper Deadline
-        - deadline: '2020-09-15 23:59:00'
+        - deadline: '2020-09-15 23:59:59'
           comment: 2nd Full-paper Deadline
-        - deadline: '2021-01-15 23:59:00'
+        - deadline: '2021-01-15 23:59:59'
           comment: 3rd Full-paper Deadline
       timezone: AoE
       date: June 8-10, 2021
@@ -24,11 +24,11 @@
       id: icwsm2022
       link: https://www.icwsm.org/2022/
       timeline:
-        - deadline: '2021-05-15 23:59:00'
+        - deadline: '2021-05-15 23:59:59'
           comment: 1st Full-paper Deadline
-        - deadline: '2021-09-15 23:59:00'
+        - deadline: '2021-09-15 23:59:59'
           comment: 2nd Full-paper Deadline
-        - deadline: '2022-01-15 23:59:00'
+        - deadline: '2022-01-15 23:59:59'
           comment: 3rd Full-paper Deadline
       timezone: AoE
       date: June 7-9, 2022
@@ -37,11 +37,11 @@
       id: icwsm2023
       link: https://www.icwsm.org/2023/
       timeline:
-        - deadline: '2022-05-15 23:59:00'
+        - deadline: '2022-05-15 23:59:59'
           comment: 1st Full-paper Deadline
-        - deadline: '2022-09-15 23:59:00'
+        - deadline: '2022-09-15 23:59:59'
           comment: 2nd Full-paper Deadline
-        - deadline: '2023-01-15 23:59:00'
+        - deadline: '2023-01-15 23:59:59'
           comment: 3rd Full-paper Deadline
       timezone: AoE
       date: June 6-8, 2023
@@ -50,11 +50,11 @@
       id: icwsm2024
       link: https://www.icwsm.org/2024/
       timeline:
-        - deadline: '2023-05-15 23:59:00'
+        - deadline: '2023-05-15 23:59:59'
           comment: 1st Full-paper Deadline
-        - deadline: '2023-09-15 23:59:00'
+        - deadline: '2023-09-15 23:59:59'
           comment: 2nd Full-paper Deadline
-        - deadline: '2024-01-15 23:59:00'
+        - deadline: '2024-01-15 23:59:59'
           comment: 3rd Full-paper Deadline
       timezone: AoE
       date: June 4-6, 2024

@@ -11,8 +11,8 @@
       id: cp21
       link: https://cp2021.a4cp.org/
       timeline:
-        - abstract_deadline: '2021-05-21 23:59:00'
-          deadline: '2021-05-30 23:59:00'
+        - abstract_deadline: '2021-05-21 23:59:59'
+          deadline: '2021-05-30 23:59:59'
       timezone: AoE
       date: October 26-29, 2021
       place: Online
@@ -20,7 +20,7 @@
       id: cp22
       link: https://cp2022.a4cp.org/
       timeline:
-        - abstract_deadline: '2022-02-18 23:59:00'
+        - abstract_deadline: '2022-02-18 23:59:59'
           deadline: '2022-02-25 23:59:59'
       timezone: AoE
       date: July 31-August 8, 2022
@@ -29,8 +29,8 @@
       id: cp23
       link: https://cp2023.a4cp.org/
       timeline:
-        - abstract_deadline: '2023-04-28 23:59:00'
-          deadline: '2023-05-05 23:59:00'
+        - abstract_deadline: '2023-04-28 23:59:59'
+          deadline: '2023-05-05 23:59:59'
       timezone: AoE
       date: August 28-31, 2023
       place: Toronto, Canada
@@ -38,8 +38,8 @@
       id: cp24
       link: https://cp2024.a4cp.org/
       timeline:
-        - abstract_deadline: '2024-04-18 23:59:00'
-          deadline: '2024-04-26 23:59:00'
+        - abstract_deadline: '2024-04-18 23:59:59'
+          deadline: '2024-04-26 23:59:59'
       timezone: AoE
       date: September 3-6, 2024
       place: Girona, Catalonia, Spain

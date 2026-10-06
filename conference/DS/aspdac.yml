@@ -67,7 +67,7 @@
       timeline:
         - abstract_deadline: '2026-07-11 17:00:00'
           deadline: '2026-07-18 17:00:00'
-          decision_deadline: '2026-09-04 23:59:00'
+          decision_deadline: '2026-09-04 23:59:59'
       timezone: AoE
       date: Jan 25-28, 2027
       place: Hitotsubashi Hall, Tokyo, Japan

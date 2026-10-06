@@ -11,7 +11,7 @@
       id: icfp21
       link: https://icfp21.sigplan.org/
       timeline:
-        - deadline: '2021-03-02 23:59:00'
+        - deadline: '2021-03-02 23:59:59'
       timezone: AoE
       date: August 23-25, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: icfp22
       link: https://icfp22.sigplan.org/
       timeline:
-        - deadline: '2022-03-02 23:59:00'
+        - deadline: '2022-03-02 23:59:59'
       timezone: AoE
       date: September 12-14, 2022
       place: Ljubljana, Slovenia
@@ -27,7 +27,7 @@
       id: icfp23
       link: https://icfp23.sigplan.org/
       timeline:
-        - deadline: '2023-03-01 23:59:00'
+        - deadline: '2023-03-01 23:59:59'
       timezone: AoE
       date: September 5-7, 2023
       place: Seattle, Washington, USA
@@ -35,7 +35,7 @@
       id: icfp24
       link: https://icfp24.sigplan.org/
       timeline:
-        - deadline: '2024-02-28 23:59:00'
+        - deadline: '2024-02-28 23:59:59'
       timezone: AoE
       date: September 3-5, 2024
       place: Milan, Italy
@@ -43,7 +43,7 @@
       id: icfp25
       link: https://icfp25.sigplan.org/
       timeline:
-        - deadline: '2025-02-27 23:59:00'
+        - deadline: '2025-02-27 23:59:59'
       timezone: AoE
       date: October 13-15, 2025
       place: Singapore
@@ -51,7 +51,7 @@
       id: icfp26
       link: https://icfp26.sigplan.org/
       timeline:
-        - deadline: '2026-02-19 23:59:00'
+        - deadline: '2026-02-19 23:59:59'
       timezone: AoE
       date: August 25-27, 2026
       place: Indiana University Indianapolis, United States
@@ -60,8 +60,8 @@
       link: https://icfp27.sigplan.org/
       timeline:
         - deadline: '2027-02-25 23:59:59'
-          rebuttal_deadline: '2027-04-22 23:59:00'
-          decision_deadline: '2027-06-11 23:59:00'
+          rebuttal_deadline: '2027-04-22 23:59:59'
+          decision_deadline: '2027-06-11 23:59:59'
       timezone: AoE
       date: September 26 - October 1, 2027
       place: Nijmegen, Netherlands

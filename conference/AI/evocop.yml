@@ -59,8 +59,8 @@
       id: evocop27
       link: https://www.evostar.org/2027/evocop/
       timeline:
-        - deadline: '2026-11-01 23:59:00'
-          decision_deadline: '2027-01-10 23:59:00'
+        - deadline: '2026-11-01 23:59:59'
+          decision_deadline: '2027-01-10 23:59:59'
           comment: 'Full papers'
       timezone: AoE
       date: March 31-April 2, 2027
