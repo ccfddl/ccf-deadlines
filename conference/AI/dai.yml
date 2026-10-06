@@ -11,7 +11,7 @@
       id: dai2021
       link: https://adai.ai/dai/2021/index.html
       timeline:
-        - deadline: '2021-09-30 23:59:00'
+        - deadline: '2021-09-30 23:59:59'
       timezone: UTC-12
       date: January 4-5, 2022
       place: Shanghai, China (Hybrid)
@@ -19,7 +19,7 @@
       id: dai2022
       link: https://adai.ai/dai/2022/2022.html
       timeline:
-        - deadline: '2022-10-15 23:59:00'
+        - deadline: '2022-10-15 23:59:59'
       timezone: UTC-12
       date: December 16-17, 2022
       place: Tianjin, China (Hybrid)
@@ -27,7 +27,7 @@
       id: dai2023
       link: https://adai.ai/dai/2023/
       timeline:
-        - deadline: '2023-09-15 23:59:00'
+        - deadline: '2023-09-15 23:59:59'
       timezone: UTC-12
       date: December 2-3, 2023
       place: Singapore
@@ -35,7 +35,7 @@
       id: dai2024
       link: https://www.adai.ai/dai/2024/index.html
       timeline:
-        - deadline: '2024-09-10 23:59:00'
+        - deadline: '2024-09-10 23:59:59'
       timezone: UTC-12
       date: December 20-21, 2024
       place: Singapore

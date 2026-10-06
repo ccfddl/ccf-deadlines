@@ -11,8 +11,8 @@
       id: fccm21
       link: https://www.fccm.org/past/2021/
       timeline:
-        - abstract_deadline: '2021-01-11 23:59:00'
-          deadline: '2021-01-18 23:59:00'
+        - abstract_deadline: '2021-01-11 23:59:59'
+          deadline: '2021-01-18 23:59:59'
       timezone: AoE
       date: May 10-11, 2021
       place: Virtual
@@ -20,8 +20,8 @@
       id: fccm22
       link: https://www.fccm.org/
       timeline:
-        - abstract_deadline: '2022-01-10 23:59:00'
-          deadline: '2022-01-17 23:59:00'
+        - abstract_deadline: '2022-01-10 23:59:59'
+          deadline: '2022-01-17 23:59:59'
       timezone: AoE
       date: May 16-17, 2022
       place: New York City, USA
@@ -48,7 +48,7 @@
       id: fccm25
       link: https://www.fccm.org/
       timeline:
-        - abstract_deadline: '2025-01-10 23:59:00'
+        - abstract_deadline: '2025-01-10 23:59:59'
           deadline: '2025-01-19 19:59:00'
       timezone: AoE
       date: May 4-6, 2025

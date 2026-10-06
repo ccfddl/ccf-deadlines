@@ -11,7 +11,7 @@
       id: atva21
       link: https://formal-analysis.com/atva/2021/
       timeline:
-        - deadline: '2021-04-26 23:59:00'
+        - deadline: '2021-04-26 23:59:59'
       timezone: AoE
       date: October 19-22, 2021
       place: Virtual
@@ -19,8 +19,8 @@
       id: atva22
       link: https://atva-conference.org/2022/
       timeline:
-        - abstract_deadline: '2022-05-08 23:59:00'
-          deadline: '2022-05-15 23:59:00'
+        - abstract_deadline: '2022-05-08 23:59:59'
+          deadline: '2022-05-15 23:59:59'
       timezone: AoE
       date: October 26-28, 2022
       place: Virtual
@@ -28,8 +28,8 @@
       id: atva23
       link: https://atva-conference.org/2023/
       timeline:
-        - abstract_deadline: '2023-05-11 23:59:00'
-          deadline: '2023-05-11 23:59:00'
+        - abstract_deadline: '2023-05-11 23:59:59'
+          deadline: '2023-05-11 23:59:59'
       timezone: AoE
       date: October 25-27, 2023
       place: Singapore
@@ -37,7 +37,7 @@
       id: atva24
       link: https://atva-conference.org/2024/
       timeline:
-        - deadline: '2024-04-25 23:59:00'
+        - deadline: '2024-04-25 23:59:59'
           comment: April 28 updates only
       timezone: AoE
       date: October 22-24, 2024
@@ -46,8 +46,8 @@
       id: atva25
       link: https://conf.researchr.org/home/atva-2025
       timeline:
-        - abstract_deadline: '2025-04-25 23:59:00'
-          deadline: '2025-04-25 23:59:00'
+        - abstract_deadline: '2025-04-25 23:59:59'
+          deadline: '2025-04-25 23:59:59'
       timezone: AoE
       date: October 28-30, 2025
       place: Bengaluru, India

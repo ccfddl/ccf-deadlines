@@ -11,11 +11,11 @@
       id: icdt21
       link: https://edbticdt2021.cs.ucy.ac.cy/index.html
       timeline:
-        - abstract_deadline: '2020-04-02 23:59:00'
-          deadline: '2020-04-09 23:59:00'
+        - abstract_deadline: '2020-04-02 23:59:59'
+          deadline: '2020-04-09 23:59:59'
           comment: First cycle
-        - abstract_deadline: '2020-09-21 23:59:00'
-          deadline: '2020-09-28 23:59:00'
+        - abstract_deadline: '2020-09-21 23:59:59'
+          deadline: '2020-09-28 23:59:59'
           comment: Second cycle
       timezone: AoE
       date: March 23-25, 2021
@@ -24,8 +24,8 @@
       id: icdt22
       link: https://conferences.inf.ed.ac.uk/edbticdt2022/
       timeline:
-        - abstract_deadline: '2021-04-03 23:59:00'
-          deadline: '2021-04-10 23:59:00'
+        - abstract_deadline: '2021-04-03 23:59:59'
+          deadline: '2021-04-10 23:59:59'
           comment: First cycle
         - abstract_deadline: '2021-09-13 23:59:59'
           deadline: '2021-09-20 23:59:59'
@@ -63,9 +63,9 @@
       id: icdt25
       link: https://edbticdt2025.upc.edu/
       timeline:
-        - abstract_deadline: '2024-03-18 23:59:00'
+        - abstract_deadline: '2024-03-18 23:59:59'
           deadline: '2024-03-18 23:59:59'
-        - abstract_deadline: '2024-09-19 23:59:00'
+        - abstract_deadline: '2024-09-19 23:59:59'
           deadline: '2024-09-19 23:59:59'
       timezone: AoE
       date: March 25-28, 2025
@@ -87,11 +87,11 @@
       timeline:
         - abstract_deadline: '2026-03-03 23:59:59'
           deadline: '2026-03-10 23:59:59'
-          decision_deadline: '2026-06-01 23:59:00'
+          decision_deadline: '2026-06-01 23:59:59'
         - abstract_deadline: '2026-09-03 23:59:59'
           deadline: '2026-09-10 23:59:59'
-          rebuttal_deadline: '2026-11-07 23:59:00'
-          decision_deadline: '2026-12-01 23:59:00'
+          rebuttal_deadline: '2026-11-07 23:59:59'
+          decision_deadline: '2026-12-01 23:59:59'
       timezone: AoE
       date: April 6-9, 2027
       place: Lille, France

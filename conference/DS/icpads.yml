@@ -11,7 +11,7 @@
       id: icpads23
       link: https://ieee-cybermatics.org/2023/icpads/
       timeline:
-        - deadline: '2023-09-22 23:59:00'
+        - deadline: '2023-09-22 23:59:59'
       timezone: AoE
       date: December 17-20, 2023
       place: Ocean Flower Island, Hainan, China
@@ -19,7 +19,7 @@
       id: icpads24
       link: https://attend.ieee.org/icpads/
       timeline:
-        - deadline: '2024-07-15 23:59:00'
+        - deadline: '2024-07-15 23:59:59'
       timezone: UTC-7
       date: TBD
       place: Belgrade, Serbia
@@ -35,7 +35,7 @@
       id: icpads26
       link: https://www.cloud-conf.net/icpads2026
       timeline:
-        - deadline: '2026-08-15 23:59:00'
+        - deadline: '2026-08-15 23:59:59'
       timezone: AoE
       date: November 22-26 2026
       place: Tokyo, Japan

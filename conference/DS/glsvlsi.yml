@@ -19,7 +19,7 @@
       id: glsvlsi2022
       link: https://www.glsvlsi.org/archive/glsvlsi22/index.html
       timeline:
-        - deadline: '2022-02-22 23:59:00'
+        - deadline: '2022-02-22 23:59:59'
       timezone: UTC-5
       date: June 6-8, 2022
       place: Irvine, California, USA
@@ -27,7 +27,7 @@
       id: glsvlsi2023
       link: https://www.glsvlsi.org/archive/glsvlsi23/index.html
       timeline:
-        - deadline: '2023-02-27 23:59:00'
+        - deadline: '2023-02-27 23:59:59'
       timezone: UTC-5
       date: June 5-7, 2023
       place: Knoxville, Tennessee, USA
@@ -35,7 +35,7 @@
       id: glsvlsi2024
       link: https://www.glsvlsi.org/archive/glsvlsi24/index.html
       timeline:
-        - deadline: '2024-03-08 23:59:00'
+        - deadline: '2024-03-08 23:59:59'
       timezone: UTC-5
       date: June 12-14, 2024
       place: Clearwater Beach, Florida, USA
@@ -43,7 +43,7 @@
       id: glsvlsi2025
       link: https://www.glsvlsi.org/archive/glsvlsi25/index.html
       timeline:
-        - deadline: '2025-03-17 23:59:00'
+        - deadline: '2025-03-17 23:59:59'
       timezone: UTC-5
       date: June 30-July 2, 2025
       place: New Orleans, LA, USA
@@ -51,7 +51,7 @@
       id: glsvlsi2026
       link: https://www.glsvlsi.org/
       timeline:
-        - deadline: '2026-03-23 23:59:00'
+        - deadline: '2026-03-23 23:59:59'
       timezone: UTC-5
       date: June 22-24, 2026
       place: Canandaigua, NY, USA

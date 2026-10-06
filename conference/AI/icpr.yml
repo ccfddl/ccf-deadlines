@@ -11,8 +11,8 @@
       id: icpr22
       link: https://iapr.org/archives/icpr2022/index.html
       timeline:
-        - abstract_deadline: '2022-01-17 23:59:00'
-          deadline: '2022-01-24 23:59:00'
+        - abstract_deadline: '2022-01-17 23:59:59'
+          deadline: '2022-01-24 23:59:59'
       timezone: AoE
       date: August 22-25, 2022
       place: Montreal, Canada and Online

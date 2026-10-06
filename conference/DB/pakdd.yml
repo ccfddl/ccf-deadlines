@@ -11,8 +11,8 @@
       id: pakdd21
       link: https://web.archive.org/web/20210506055903/https://www.pakdd2021.org/Call/calls
       timeline:
-        - abstract_deadline: '2020-12-07 23:59:00'
-          deadline: '2020-12-07 23:59:00'
+        - abstract_deadline: '2020-12-07 23:59:59'
+          deadline: '2020-12-07 23:59:59'
       timezone: UTC-8
       date: May 12-14, 2021
       place: Online
@@ -61,7 +61,7 @@
       link: https://www.pakdd2027.org/
       timeline:
         - deadline: '2026-11-20 23:59:59'
-          decision_deadline: '2027-02-26 23:59:00'
+          decision_deadline: '2027-02-26 23:59:59'
       timezone: AoE
       date: June 29-July 2, 2027
       place: Wellington, New Zealand

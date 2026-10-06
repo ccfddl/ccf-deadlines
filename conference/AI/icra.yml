@@ -11,9 +11,9 @@
       id: icra21
       link: https://web.archive.org/web/20210615211913/http://ieee-icra.org/
       timeline:
-        - deadline: '2020-10-15 23:59:00'
+        - deadline: '2020-10-15 23:59:59'
           comment: 'RA-L with ICRA option'
-        - deadline: '2020-10-31 23:59:00'
+        - deadline: '2020-10-31 23:59:59'
           comment: 'Conference papers'
       timezone: AoE
       date: TBD
@@ -22,9 +22,9 @@
       id: icra22
       link: https://ewh.ieee.org/soc/ras/conf/fullysponsored/icra/2022/icra2022.org/
       timeline:
-        - deadline: '2021-09-09 23:59:00'
+        - deadline: '2021-09-09 23:59:59'
           comment: 'RA-L with ICRA option'
-        - deadline: '2021-09-15 23:59:00'
+        - deadline: '2021-09-15 23:59:59'
           comment: 'Conference papers'
       timezone: UTC-7
       date: May 24-26, 2022
@@ -41,7 +41,7 @@
       id: icra24
       link: https://2024.ieee-icra.org
       timeline:
-        - deadline: '2023-09-15 23:59:00'
+        - deadline: '2023-09-15 23:59:59'
       timezone: UTC-8
       date: May 14-16, 2024
       place: Yokohama, Japan (Hybrid)
@@ -57,7 +57,7 @@
       id: icra26
       link: https://2026.ieee-icra.org/
       timeline:
-        - deadline: '2025-09-15 23:59:00'
+        - deadline: '2025-09-15 23:59:59'
       timezone: UTC-8
       date: June 2-4, 2026
       place: Vienna, Austria

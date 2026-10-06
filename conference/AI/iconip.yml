@@ -11,7 +11,7 @@
       id: iconip2021
       link: https://easychair.org/cfp/iconip2021
       timeline:
-        - deadline: '2021-07-14 23:59:00'
+        - deadline: '2021-07-14 23:59:59'
       timezone: UTC+7
       date: TBD
       place: Bali, Indonesia (Online)
@@ -19,7 +19,7 @@
       id: iconip2022
       link: https://www.apnns.org/ICONIP2022/
       timeline:
-        - deadline: '2022-07-28 23:59:00'
+        - deadline: '2022-07-28 23:59:59'
       timezone: UTC-12
       date: November 23-26, 2022
       place: Online

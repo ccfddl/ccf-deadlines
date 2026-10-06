@@ -11,7 +11,7 @@
       id: sca21
       link: https://computeranimation.org/2021/cfp.html
       timeline:
-        - deadline: '2021-05-12 23:59:00'
+        - deadline: '2021-05-12 23:59:59'
       timezone: UTC+0
       date: September 7-10, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: sca22
       link: https://computeranimation.org/2022/instructions.html
       timeline:
-        - deadline: '2022-05-24 23:59:00'
+        - deadline: '2022-05-24 23:59:59'
       timezone: AoE
       date: September 13-15, 2022
       place: Durham, UK and Online
@@ -27,7 +27,7 @@
       id: sca23
       link: https://computeranimation.org/2023/
       timeline:
-        - deadline: '2023-04-12 23:59:00'
+        - deadline: '2023-04-12 23:59:59'
       timezone: AoE
       date: August 4-6, 2023
       place: Los Angeles, USA
@@ -51,8 +51,8 @@
       id: sca26
       link: https://computeranimation.org/
       timeline:
-        - abstract_deadline: '2026-04-10 23:59:00'
-          deadline: '2026-04-17 23:59:00'
+        - abstract_deadline: '2026-04-10 23:59:59'
+          deadline: '2026-04-17 23:59:59'
       timezone: UTC+0
       date: July 8-10, 2026
       place: Barcelona, Spain

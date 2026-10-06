@@ -11,8 +11,8 @@
       id: asap2021
       link: https://2021.asapconference.org/
       timeline:
-        - abstract_deadline: '2021-04-05 23:59:00'
-          deadline: '2021-04-12 23:59:00'
+        - abstract_deadline: '2021-04-05 23:59:59'
+          deadline: '2021-04-12 23:59:59'
       timezone: AoE
       date: July 7-8, 2021
       place: Online
@@ -20,8 +20,8 @@
       id: asap2022
       link: https://www.asap2022.org/home
       timeline:
-        - abstract_deadline: '2022-02-25 23:59:00'
-          deadline: '2022-02-28 23:59:00'
+        - abstract_deadline: '2022-02-25 23:59:59'
+          deadline: '2022-02-28 23:59:59'
       timezone: AoE
       date: July 12-14, 2022
       place: Online
@@ -29,8 +29,8 @@
       id: asap2023
       link: https://www.asap2023.org/
       timeline:
-        - abstract_deadline: '2023-02-27 23:59:00'
-          deadline: '2023-03-06 23:59:00'
+        - abstract_deadline: '2023-02-27 23:59:59'
+          deadline: '2023-03-06 23:59:59'
       timezone: AoE
       date: July 19-21, 2023
       place: Porto, Portugal
@@ -38,8 +38,8 @@
       id: asap2024
       link: https://www.asap2024.org/
       timeline:
-        - abstract_deadline: '2024-04-04 23:59:00'
-          deadline: '2024-04-11 23:59:00'
+        - abstract_deadline: '2024-04-04 23:59:59'
+          deadline: '2024-04-11 23:59:59'
       timezone: AoE
       date: July 24-26, 2024
       place: Hong Kong, China

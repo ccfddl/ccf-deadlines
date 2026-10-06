@@ -9,8 +9,8 @@
       id: codesisss2021
       link: https://www.sigarch.org/call-contributions/esweek-2021/
       timeline:
-        - abstract_deadline: '2021-04-02 23:59:00'
-          deadline: '2021-04-09 23:59:00'
+        - abstract_deadline: '2021-04-02 23:59:59'
+          deadline: '2021-04-09 23:59:59'
       timezone: AoE
       date: October 11-13, 2021
       place: Online
@@ -18,8 +18,8 @@
       id: codesisss2022
       link: https://www.sigarch.org/call-contributions/esweek-2022/
       timeline:
-        - abstract_deadline: '2022-03-31 23:59:00'
-          deadline: '2022-04-07 23:59:00'
+        - abstract_deadline: '2022-03-31 23:59:59'
+          deadline: '2022-04-07 23:59:59'
       timezone: AoE
       date: October 10-12, 2022
       place: Shanghai, China / Hybrid
@@ -27,8 +27,8 @@
       id: codesisss2023
       link: https://www.sigarch.org/call-contributions/esweek-2023/
       timeline:
-        - abstract_deadline: '2023-03-16 23:59:00'
-          deadline: '2023-03-23 23:59:00'
+        - abstract_deadline: '2023-03-16 23:59:59'
+          deadline: '2023-03-23 23:59:59'
       timezone: AoE
       date: September 18-20, 2023
       place: Hamburg, Germany

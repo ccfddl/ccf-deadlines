@@ -11,8 +11,8 @@
       id: cvm21
       link: https://iccvm.org/2021/
       timeline:
-        - abstract_deadline: '2020-10-31 23:59:00'
-          deadline: '2020-11-03 23:59:00'
+        - abstract_deadline: '2020-10-31 23:59:59'
+          deadline: '2020-11-03 23:59:59'
       timezone: UTC+0
       date: April 21-23, 2021
       place: Qingdao, China
@@ -20,8 +20,8 @@
       id: cvm22
       link: https://iccvm.org/2022/
       timeline:
-        - abstract_deadline: '2021-10-18 23:59:00'
-          deadline: '2021-10-22 23:59:00'
+        - abstract_deadline: '2021-10-18 23:59:59'
+          deadline: '2021-10-22 23:59:59'
       timezone: UTC+0
       date: April 8-9, 2022
       place: Beijing, China (Hybrid)
@@ -29,8 +29,8 @@
       id: cvm23
       link: https://iccvm.org/2023/
       timeline:
-        - abstract_deadline: '2022-10-19 23:59:00'
-          deadline: '2022-10-21 23:59:00'
+        - abstract_deadline: '2022-10-19 23:59:59'
+          deadline: '2022-10-21 23:59:59'
       timezone: UTC+0
       date: April 7-8, 2023
       place: Shenzhen, China
@@ -38,8 +38,8 @@
       id: cvm24
       link: https://iccvm.org/2024/
       timeline:
-        - abstract_deadline: '2023-10-09 23:59:00'
-          deadline: '2023-10-12 23:59:00'
+        - abstract_deadline: '2023-10-09 23:59:59'
+          deadline: '2023-10-12 23:59:59'
       timezone: UTC+0
       date: April 10-12, 2024
       place: Wellington, New Zealand
@@ -67,7 +67,7 @@
       timeline:
         - abstract_deadline: '2026-10-23 23:59:59'
           deadline: '2026-10-26 23:59:59'
-          decision_deadline: '2026-12-15 23:59:00'
+          decision_deadline: '2026-12-15 23:59:59'
       timezone: UTC+0
       date: April 9-11, 2027
       place: Nanyang Technological University, Singapore

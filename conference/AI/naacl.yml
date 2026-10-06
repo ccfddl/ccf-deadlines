@@ -11,7 +11,7 @@
       id: naacl21
       link: https://2021.naacl.org/
       timeline:
-        - deadline: '2020-11-23 23:59:00'
+        - deadline: '2020-11-23 23:59:59'
       timezone: UTC-12
       date: June 7-9, 2021
       place: Virtual
@@ -23,7 +23,7 @@
           comment: 'ARR December cycle: December 15/16 conflict'
         - deadline: '2022-01-15 23:59:59'
           comment: 'ARR January cycle'
-        - deadline: '2022-03-06 23:59:00'
+        - deadline: '2022-03-06 23:59:59'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
       date: July 11-13, 2022
@@ -34,7 +34,7 @@
       timeline:
         - deadline: '2023-12-15 23:59:59'
           comment: 'ARR Submission'
-        - deadline: '2024-02-20 23:59:00'
+        - deadline: '2024-02-20 23:59:59'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
       date: June 17-19, 2024
@@ -45,7 +45,7 @@
       timeline:
         - deadline: '2024-10-15 23:59:59'
           comment: 'ARR Submission'
-        - deadline: '2024-12-16 23:59:00'
+        - deadline: '2024-12-16 23:59:59'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
       date: April 30-May 2, 2025
@@ -55,10 +55,10 @@
       link: https://2027.naacl.org/
       timeline:
         - deadline: '2026-10-12 23:59:59'
-          rebuttal_deadline: '2026-11-30 23:59:00'
+          rebuttal_deadline: '2026-11-30 23:59:59'
           comment: 'ARR Submission'
         - deadline: '2026-12-23 23:59:59'
-          decision_deadline: '2027-02-10 23:59:00'
+          decision_deadline: '2027-02-10 23:59:59'
           comment: 'NAACL commitment after ARR meta-reviews; reviewed papers only'
       timezone: UTC-12
       date: June 1-5, 2027

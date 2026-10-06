@@ -11,8 +11,8 @@
       id: cvpr21
       link: https://cvpr2021.thecvf.com/
       timeline:
-        - abstract_deadline: '2020-11-09 23:59:00'
-          deadline: '2020-11-16 23:59:00'
+        - abstract_deadline: '2020-11-09 23:59:59'
+          deadline: '2020-11-16 23:59:59'
       timezone: UTC-8
       date: June 21-24, 2021
       place: Virtual
@@ -20,7 +20,7 @@
       id: cvpr22
       link: http://cvpr2022.thecvf.com/
       timeline:
-        - abstract_deadline: '2021-11-09 23:59:00'
+        - abstract_deadline: '2021-11-09 23:59:59'
           deadline: '2021-11-18 11:59:00'
       timezone: UTC-8
       date: June 21-24 and 28 (virtual posters), 2022
@@ -47,8 +47,8 @@
       id: cvpr25
       link: https://cvpr.thecvf.com/Conferences/2025/CallForPapers
       timeline:
-        - abstract_deadline: '2024-11-07 23:59:00'
-          deadline: '2024-11-14 23:59:00'
+        - abstract_deadline: '2024-11-07 23:59:59'
+          deadline: '2024-11-14 23:59:59'
       timezone: UTC-8
       date: June 13-15, 2025
       place: Nashville, Tennessee, USA (Hybrid)
@@ -56,8 +56,8 @@
       id: cvpr26
       link: https://cvpr.thecvf.com/Conferences/2026
       timeline:
-        - abstract_deadline: '2025-11-07 23:59:00'
-          deadline: '2025-11-13 23:59:00'
+        - abstract_deadline: '2025-11-07 23:59:59'
+          deadline: '2025-11-13 23:59:59'
       timezone: UTC-12
       date: June 5-7, 2026
       place: Denver, Colorado, United States (Hybrid)
@@ -65,10 +65,10 @@
       id: cvpr27
       link: https://cvpr.thecvf.com/Conferences/2027
       timeline:
-        - abstract_deadline: '2026-11-10 23:59:00'
-          deadline: '2026-11-16 23:59:00'
-          rebuttal_deadline: '2027-02-01 23:59:00'
-          decision_deadline: '2027-02-25 23:59:00'
+        - abstract_deadline: '2026-11-10 23:59:59'
+          deadline: '2026-11-16 23:59:59'
+          rebuttal_deadline: '2027-02-01 23:59:59'
+          decision_deadline: '2027-02-25 23:59:59'
       timezone: UTC-12
       date: June 20-25, 2027
       place: Seattle, WA, United States

@@ -11,7 +11,7 @@
       id: ncmmsc22
       link: https://www.ncmmsc.org.cn/2022/
       timeline:
-        - deadline: '2022-10-17 23:59:00'
+        - deadline: '2022-10-17 23:59:59'
       timezone: AoE
       date: December 16-17, 2022
       place: Online
@@ -19,7 +19,7 @@
       id: ncmmsc23
       link: https://www.ncmmsc.org.cn/2023/
       timeline:
-        - deadline: '2023-10-23 23:59:00'
+        - deadline: '2023-10-23 23:59:59'
           comment: 'October 29 is for updates only'
       timezone: UTC+8
       date: December 9-10, 2023
@@ -28,10 +28,10 @@
       id: ncmmsc24
       link: https://www.ncmmsc.org.cn/2024/
       timeline:
-        - abstract_deadline: '2024-04-29 23:59:00'
-          deadline: '2024-05-06 23:59:00'
+        - abstract_deadline: '2024-04-29 23:59:59'
+          deadline: '2024-05-06 23:59:59'
           comment: 'Round 1'
-        - abstract_deadline: '2024-06-14 23:59:00'
+        - abstract_deadline: '2024-06-14 23:59:59'
           deadline: '2024-06-23 08:00:00'
           comment: 'Round 2'
       timezone: AoE
@@ -41,7 +41,7 @@
       id: ncmmsc25
       link: https://www.ncmmsc.org.cn/2025/
       timeline:
-        - deadline: '2025-07-15 23:59:00'
+        - deadline: '2025-07-15 23:59:59'
       timezone: AoE
       date: October 18-19, 2025
       place: Zhenjiang, China
@@ -49,8 +49,8 @@
       id: ncmmsc26
       link: https://www.ncmmsc.org.cn/
       timeline:
-        - abstract_deadline: '2026-07-05 23:59:00'
-          deadline: '2026-07-12 23:59:00'
+        - abstract_deadline: '2026-07-05 23:59:59'
+          deadline: '2026-07-12 23:59:59'
       timezone: AoE
       date: Nov 5-8, 2026
       place: Hengqin, China

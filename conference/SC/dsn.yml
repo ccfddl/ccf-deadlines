@@ -11,7 +11,7 @@
       id: dsn21
       link: https://www.dependability.org/dsn2021/
       timeline:
-        - abstract_deadline: '2020-12-11 23:59:00'
+        - abstract_deadline: '2020-12-11 23:59:59'
           deadline: '2020-12-11 23:59:59'
       timezone: AoE
       date: June 22-24, 2021
@@ -20,8 +20,8 @@
       id: dsn22
       link: https://dsn2022.github.io/
       timeline:
-        - abstract_deadline: '2021-12-03 23:59:00'
-          deadline: '2021-12-10 23:59:00'
+        - abstract_deadline: '2021-12-03 23:59:59'
+          deadline: '2021-12-10 23:59:59'
       timezone: AoE
       date: June 28-30, 2022
       place: Baltimore, Maryland, USA
@@ -66,8 +66,8 @@
       timeline:
         - abstract_deadline: '2026-11-25 23:59:59'
           deadline: '2026-12-02 23:59:59'
-          rebuttal_deadline: '2027-02-26 23:59:00'
-          decision_deadline: '2027-03-18 23:59:00'
+          rebuttal_deadline: '2027-02-26 23:59:59'
+          decision_deadline: '2027-03-18 23:59:59'
       timezone: AoE
       date: June 22-25, 2027
       place: Berlin, Germany

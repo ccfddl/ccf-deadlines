@@ -13,12 +13,12 @@ NOW = c.as_utc("2026-10-03T12:00:00Z")
 
 def row(title="Example", sub="AI", rank="A", timeline=None, zone="AoE", identity="example27"):
     return {"title": title, "sub": sub, "rank": {"ccf": rank}, "confs": [{"year": 2027, "id": identity,
-            "timezone": zone, "link": "https://example.org", "date": "July 2027", "timeline": timeline or [{"deadline": "2026-10-10 23:59:00"}]}]}
+            "timezone": zone, "link": "https://example.org", "date": "July 2027", "timeline": timeline or [{"deadline": "2026-10-10 23:59:59"}]}]}
 
 
 class DeadlineTests(unittest.TestCase):
     def test_aoe(self):
-        self.assertEqual(c.iso(c.parse_deadline("2026-10-10 23:59:00", "AoE")), "2026-10-11T11:59:00Z")
+        self.assertEqual(c.iso(c.parse_deadline("2026-10-10 23:59:59", "AoE")), "2026-10-11T11:59:59Z")
 
     def test_offsets(self):
         self.assertEqual(c.iso(c.parse_deadline("2026-10-10 12:00:00", "UTC+05:30")), "2026-10-10T06:30:00Z")
@@ -85,7 +85,7 @@ class SelectionTests(unittest.TestCase):
         self.assertEqual(later["AI"], [])
 
     def test_card_event_labels(self):
-        cats, _ = c.select([(row("VLDB", timeline=[{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]), "conference/DB/vldb.yml")], {"stage_selection": "all_future"}, NOW)
+        cats, _ = c.select([(row("VLDB", timeline=[{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]), "conference/DB/vldb.yml")], {"stage_selection": "all_future"}, NOW)
         self.assertEqual(c.card_event_title(cats["AI"][0]), "VLDB 2027 Abstract Deadline")
         self.assertEqual(c.card_event_title(cats["AI"][1]), "VLDB 2027 Deadline")
         cats["AI"][1]["abstract_closed"] = True
@@ -167,7 +167,7 @@ class SelectionTests(unittest.TestCase):
         self.assertTrue(text.endswith(c.LINK))
 
     def test_exact_user_plain_text_format(self):
-        timelines = [{"deadline": "TBD"} for _ in range(3)] + [{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]
+        timelines = [{"deadline": "TBD"} for _ in range(3)] + [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
         cats, _ = c.select([(row("SIGMOD", sub="DB", timeline=timelines), "conference/DB/sigmod.yml")], {}, NOW)
         text, _ = c.tweet("Data Systems", cats["Data Systems"], NOW, 3)
         self.assertEqual(text, "CCFDDL deadline reminders (Data Systems)\n\nSIGMOD'27 (abstract, round 4) · 7 days left\n\nsee details: https://ccfddl.com")
@@ -175,7 +175,7 @@ class SelectionTests(unittest.TestCase):
         self.assertFalse(text.splitlines()[0].endswith(":"))
 
     def test_explicit_multiple_stages(self):
-        timeline = [{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]
+        timeline = [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
         rows = [(row("CVPR", timeline=timeline), "conference/AI/cvpr.yml")]
         nearest, _ = c.select(rows, {}, NOW)
         self.assertEqual(len(nearest["AI"]), 1)
@@ -192,7 +192,7 @@ class SelectionTests(unittest.TestCase):
         self.assertEqual(text.splitlines()[0], "CCFDDL deadline reminders (AI)")
 
     def test_abstract_display_ignores_registration_alias(self):
-        cats, _ = c.select([(row("CVPR", timeline=[{"abstract_deadline": "2026-10-10 23:59:00", "deadline": "2026-10-17 23:59:00"}]), "conference/AI/cvpr.yml")], {}, NOW)
+        cats, _ = c.select([(row("CVPR", timeline=[{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]), "conference/AI/cvpr.yml")], {}, NOW)
         event = cats["AI"][0]
         event["stage_label"] = "reg"
         self.assertEqual(c.display_stage(event), "abstract")

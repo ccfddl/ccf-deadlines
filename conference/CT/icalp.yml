@@ -11,7 +11,7 @@
       id: icalp21
       link: https://easyconferences.eu/icalp2021/cfp/
       timeline:
-        - deadline: '2021-02-12 23:59:00'
+        - deadline: '2021-02-12 23:59:59'
       timezone: AoE
       date: July 12-16, 2021
       place: Online
@@ -53,7 +53,7 @@
       link: https://icalppodcspaa2026.cs.rhul.ac.uk/
       timeline:
         - deadline: '2026-02-06 23:59:59'
-          abstract_deadline: '2026-02-03 23:59:00'
+          abstract_deadline: '2026-02-03 23:59:59'
       timezone: AoE
       date: July 7-10, 2026
       place: London, UK
@@ -62,8 +62,8 @@
       link: https://icalp.uj.edu.pl/
       timeline:
         - deadline: '2026-09-15 23:59:59'
-          rebuttal_deadline: '2026-11-09 23:59:00'
-          decision_deadline: '2026-12-08 23:59:00'
+          rebuttal_deadline: '2026-11-09 23:59:59'
+          decision_deadline: '2026-12-08 23:59:59'
           comment: 'Track B first round; Track A and Track B second round TBA'
       timezone: AoE
       date: July 5-9, 2027

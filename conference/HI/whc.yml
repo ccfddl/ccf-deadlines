@@ -9,7 +9,7 @@
       id: whc21
       link: https://2021.worldhaptics.org/
       timeline:
-        - deadline: '2021-02-19 23:59:00'
+        - deadline: '2021-02-19 23:59:59'
       timezone: UTC-8
       date: July 6-9, 2021
       place: Virtual
@@ -17,7 +17,7 @@
       id: whc23
       link: https://2023.worldhaptics.org/
       timeline:
-        - deadline: '2023-02-08 23:59:00'
+        - deadline: '2023-02-08 23:59:59'
       timezone: UTC-8
       date: July 10-13, 2023
       place: Delft, Netherlands
@@ -25,7 +25,7 @@
       id: whc25
       link: https://2025.worldhaptics.org/
       timeline:
-        - deadline: '2025-01-31 23:59:00'
+        - deadline: '2025-01-31 23:59:59'
       timezone: AoE
       date: July 9-11, 2025
       place: Suwon, South Korea

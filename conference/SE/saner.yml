@@ -11,8 +11,8 @@
       id: saner2021
       link: https://saner2021.shidler.hawaii.edu/
       timeline:
-        - abstract_deadline: '2020-10-22 23:59:00'
-          deadline: '2020-10-29 23:59:00'
+        - abstract_deadline: '2020-10-22 23:59:59'
+          deadline: '2020-10-29 23:59:59'
       timezone: AoE
       date: March 10-12, 2021
       place: Online
@@ -29,8 +29,8 @@
       id: saner2023
       link: https://saner2023.must.edu.mo/
       timeline:
-        - abstract_deadline: '2022-10-14 23:59:00'
-          deadline: '2022-10-21 23:59:00'
+        - abstract_deadline: '2022-10-14 23:59:59'
+          deadline: '2022-10-21 23:59:59'
       timezone: AoE
       date: March 22-24, 2023
       place: Macao, China
@@ -67,7 +67,7 @@
       timeline:
         - abstract_deadline: '2026-09-21 23:59:59'
           deadline: '2026-09-25 23:59:59'
-          decision_deadline: '2026-12-01 23:59:00'
+          decision_deadline: '2026-12-01 23:59:59'
           comment: Research Track Paper submission deadline
       timezone: AoE
       date: March 9-12, 2027

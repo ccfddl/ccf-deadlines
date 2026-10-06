@@ -28,7 +28,7 @@
       id: corl23
       link: https://www.corl2023.org/
       timeline:
-        - deadline: '2023-06-08 23:59:00'
+        - deadline: '2023-06-08 23:59:59'
       timezone: UTC-7
       date: November 7-9, 2023
       place: Atlanta, Georgia, USA (Hybrid)
@@ -44,7 +44,7 @@
       id: corl25
       link: https://2025.corl.org/
       timeline:
-        - abstract_deadline: '2025-04-23 23:59:00'
+        - abstract_deadline: '2025-04-23 23:59:59'
           deadline: '2025-04-30 23:59:59'
       timezone: AoE
       date: September 28-30, 2025

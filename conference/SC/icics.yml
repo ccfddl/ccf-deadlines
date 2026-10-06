@@ -19,7 +19,7 @@
       id: icics22
       link: https://icics2022.cyber.kent.ac.uk/
       timeline:
-        - deadline: '2022-04-11 23:59:00'
+        - deadline: '2022-04-11 23:59:59'
       timezone: AoE
       date: September 5-8, 2022
       place: Canterbury, UK (Hybrid)
@@ -27,7 +27,7 @@
       id: icics23
       link: https://icics23.nankai.edu.cn/
       timeline:
-        - deadline: '2023-04-06 23:59:00'
+        - deadline: '2023-04-06 23:59:59'
       timezone: AoE
       date: November 18-20, 2023
       place: Nankai University, Tianjin, China

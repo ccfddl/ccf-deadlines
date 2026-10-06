@@ -11,7 +11,7 @@
       id: issta21
       link: https://conf.researchr.org/home/issta-2021
       timeline:
-        - deadline: '2021-01-29 23:59:00'
+        - deadline: '2021-01-29 23:59:59'
       timezone: AoE
       date: July 14-17, 2021
       place: Virtual
@@ -67,8 +67,8 @@
       timeline:
         - abstract_deadline: '2027-01-08 23:59:59'
           deadline: '2027-01-11 23:59:59'
-          rebuttal_deadline: '2027-03-25 23:59:00'
-          decision_deadline: '2027-06-17 23:59:00'
+          rebuttal_deadline: '2027-03-25 23:59:59'
+          decision_deadline: '2027-06-17 23:59:59'
       timezone: AoE
       date: September 7-10, 2027
       place: Singapore

@@ -20,19 +20,19 @@
       id: acl22
       link: https://2022.aclweb.org/
       timeline:
-        - deadline: '2021-05-15 23:59:00'
+        - deadline: '2021-05-15 23:59:59'
           comment: 'ARR May cycle'
-        - deadline: '2021-06-15 23:59:00'
+        - deadline: '2021-06-15 23:59:59'
           comment: 'ARR June cycle'
-        - deadline: '2021-07-15 23:59:00'
+        - deadline: '2021-07-15 23:59:59'
           comment: 'ARR July cycle'
-        - deadline: '2021-08-15 23:59:00'
+        - deadline: '2021-08-15 23:59:59'
           comment: 'ARR August cycle'
         - deadline: '2021-09-15 23:59:59'
         - deadline: '2021-10-15 23:59:59'
         - deadline: '2021-11-15 23:59:59'
           comment: 'Final ARR submission'
-        - deadline: '2022-01-15 23:59:00'
+        - deadline: '2022-01-15 23:59:59'
           comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
       date: May 23-25, 2022
@@ -46,7 +46,7 @@
         - abstract_deadline: '2023-01-13 23:59:59'
           deadline: '2023-01-20 23:59:59'
           comment: 'Direct submission'
-        - deadline: '2023-03-17 23:59:00'
+        - deadline: '2023-03-17 23:59:59'
           comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
       date: July 10-12, 2023
@@ -57,7 +57,7 @@
       timeline:
         - deadline: '2024-02-15 23:59:59'
           comment: 'ARR submission'
-        - deadline: '2024-04-20 23:59:00'
+        - deadline: '2024-04-20 23:59:59'
           comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
       date: August 12-14, 2024
@@ -68,7 +68,7 @@
       timeline:
         - deadline: '2025-02-15 23:59:59'
           comment: 'ARR submission'
-        - deadline: '2025-04-20 23:59:00'
+        - deadline: '2025-04-20 23:59:59'
           comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
       date: July 28-30, 2025
@@ -77,11 +77,11 @@
       id: acl26
       link: https://2026.aclweb.org/
       timeline:
-        - deadline: '2025-10-06 23:59:00'
+        - deadline: '2025-10-06 23:59:59'
           comment: 'ARR October cycle'
         - deadline: '2026-01-05 23:59:59'
           comment: 'ARR January cycle'
-        - deadline: '2026-03-14 23:59:00'
+        - deadline: '2026-03-14 23:59:59'
           comment: 'ARR commitment; reviewed papers only'
       timezone: UTC-12
       date: July 5-7, 2026

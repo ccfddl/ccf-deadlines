@@ -11,7 +11,7 @@
       id: vinci2021
       link: https://hpi.de/doellner/cgs-news/papers-accepted-for-vinci-2021.html
       timeline:
-        - deadline: '2021-05-13 23:59:00'
+        - deadline: '2021-05-13 23:59:59'
       timezone: AoE
       date: TBD
       place: TBD
@@ -19,7 +19,7 @@
       id: vinci2022
       link: https://vinci-conf.github.io/website/
       timeline:
-        - deadline: '2022-05-06 23:59:00'
+        - deadline: '2022-05-06 23:59:59'
       timezone: AoE
       date: August 16-18, 2022
       place: Chur, Switzerland
@@ -27,7 +27,7 @@
       id: vinci2023
       link: https://www.hkust-gz.edu.cn/zh/?p=5197%2F
       timeline:
-        - deadline: '2023-05-01 23:59:00'
+        - deadline: '2023-05-01 23:59:59'
       timezone: AoE
       date: TBD
       place: Guangzhou, China
@@ -35,7 +35,7 @@
       id: vinci2024
       link: https://iaa.nycu.edu.tw/?p=7565
       timeline:
-        - deadline: '2024-06-05 23:59:00'
+        - deadline: '2024-06-05 23:59:59'
       timezone: AoE
       date: TBD
       place: Hsinchu, Taiwan

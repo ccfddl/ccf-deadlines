@@ -19,7 +19,7 @@
       id: wisec22
       link: https://wisec2022.cs.utsa.edu/
       timeline:
-        - deadline: '2022-02-12 23:59:00'
+        - deadline: '2022-02-12 23:59:59'
       timezone: AoE
       date: May 16 - 18, 2022
       place: San Antonio, Texas, United States
@@ -27,9 +27,9 @@
       id: wisec23
       link: https://wisec2023.surrey.ac.uk/
       timeline:
-        - deadline: '2022-11-17 23:59:00'
+        - deadline: '2022-11-17 23:59:59'
           comment: Round 1
-        - deadline: '2023-02-17 23:59:00'
+        - deadline: '2023-02-17 23:59:59'
           comment: Round 2
       timezone: AoE
       date: May 29 - 31, 2023
@@ -38,7 +38,7 @@
       id: wisec24
       link: https://wisec2024.kaist.ac.kr/
       timeline:
-        - deadline: '2023-11-09 23:59:00'
+        - deadline: '2023-11-09 23:59:59'
           comment: Round 1
         - deadline: '2024-02-12 23:59:59'
           comment: Round 2

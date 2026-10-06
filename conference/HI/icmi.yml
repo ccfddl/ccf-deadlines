@@ -11,7 +11,7 @@
       id: icmi21
       link: https://icmi.acm.org/2021/
       timeline:
-        - deadline: '2021-06-02 23:59:00'
+        - deadline: '2021-06-02 23:59:59'
       timezone: UTC-7
       date: October 19-21, 2021
       place: Montreal, Canada (Hybrid)
@@ -19,7 +19,7 @@
       id: icmi22
       link: https://icmi.acm.org/2022/
       timeline:
-        - deadline: '2022-05-27 23:59:00'
+        - deadline: '2022-05-27 23:59:59'
       timezone: UTC-7
       date: November 8-10, 2022
       place: Bengaluru, India
@@ -27,8 +27,8 @@
       id: icmi23
       link: https://icmi.acm.org/2023/
       timeline:
-        - abstract_deadline: '2023-05-01 23:59:00'
-          deadline: '2023-05-08 23:59:00'
+        - abstract_deadline: '2023-05-01 23:59:59'
+          deadline: '2023-05-08 23:59:59'
       timezone: UTC-7
       date: October 10-12, 2023
       place: Paris, France

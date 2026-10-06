@@ -11,8 +11,8 @@
       id: icpp21
       link: https://oaciss.uoregon.edu/icpp21/
       timeline:
-        - abstract_deadline: '2021-04-23 23:59:00'
-          deadline: '2021-04-23 23:59:00'
+        - abstract_deadline: '2021-04-23 23:59:59'
+          deadline: '2021-04-23 23:59:59'
       timezone: AoE
       date: August 9-12, 2021
       place: Virtual
@@ -20,8 +20,8 @@
       id: icpp22
       link: https://icpp22.gitlabpages.inria.fr/
       timeline:
-        - abstract_deadline: '2022-04-14 23:59:00'
-          deadline: '2022-04-22 23:59:00'
+        - abstract_deadline: '2022-04-14 23:59:59'
+          deadline: '2022-04-22 23:59:59'
       timezone: AoE
       date: August 29-September 1, 2022
       place: Virtual
@@ -29,8 +29,8 @@
       id: icpp23
       link: https://icpp23.sci.utah.edu/
       timeline:
-        - abstract_deadline: '2023-04-14 23:59:00'
-          deadline: '2023-04-22 23:59:00'
+        - abstract_deadline: '2023-04-14 23:59:59'
+          deadline: '2023-04-22 23:59:59'
       timezone: AoE
       date: August 8-10, 2023
       place: Salt Lake City, UTAH, USA

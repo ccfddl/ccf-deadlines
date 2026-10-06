@@ -9,9 +9,9 @@
       id: gi21
       link: https://conferences.graphicsinterface.org/2021/
       timeline:
-        - deadline: '2020-12-18 23:59:00'
+        - deadline: '2020-12-18 23:59:59'
           comment: 'Round 1'
-        - deadline: '2021-04-09 23:59:00'
+        - deadline: '2021-04-09 23:59:59'
           comment: 'Round 2'
       timezone: UTC-5
       date: May 27-28, 2021
@@ -20,9 +20,9 @@
       id: gi22
       link: https://conferences.graphicsinterface.org/2022/
       timeline:
-        - deadline: '2021-12-17 23:59:00'
+        - deadline: '2021-12-17 23:59:59'
           comment: 'Round 1'
-        - deadline: '2022-03-25 23:59:00'
+        - deadline: '2022-03-25 23:59:59'
           comment: 'Round 2'
       timezone: UTC-5
       date: May 17-19, 2022
@@ -31,9 +31,9 @@
       id: gi23
       link: https://conferences.graphicsinterface.org/2023/
       timeline:
-        - deadline: '2022-12-16 23:59:00'
+        - deadline: '2022-12-16 23:59:59'
           comment: 'Round 1'
-        - deadline: '2023-04-02 23:59:00'
+        - deadline: '2023-04-02 23:59:59'
           comment: 'Round 2'
       timezone: AoE
       date: May 30-June 2, 2023
@@ -42,9 +42,9 @@
       id: gi24
       link: https://conferences.graphicsinterface.org/2024/
       timeline:
-        - deadline: '2023-12-15 23:59:00'
+        - deadline: '2023-12-15 23:59:59'
           comment: 'Round 1'
-        - deadline: '2024-04-12 23:59:00'
+        - deadline: '2024-04-12 23:59:59'
           comment: 'Round 2'
       timezone: AoE
       date: June 4-6, 2024
@@ -53,9 +53,9 @@
       id: gi25
       link: https://conferences.graphicsinterface.org/2025/
       timeline:
-        - deadline: '2024-12-16 23:59:00'
+        - deadline: '2024-12-16 23:59:59'
           comment: 'Round 1'
-        - deadline: '2025-03-07 23:59:00'
+        - deadline: '2025-03-07 23:59:59'
           comment: 'Round 2'
       timezone: AoE
       date: TBD
@@ -64,9 +64,9 @@
       id: gi26
       link: https://conferences.graphicsinterface.org/2026/
       timeline:
-        - deadline: '2026-01-30 23:59:00'
+        - deadline: '2026-01-30 23:59:59'
           comment: 'Round 1'
-        - deadline: '2026-04-03 23:59:00'
+        - deadline: '2026-04-03 23:59:59'
           comment: 'Round 2'
       timezone: AoE
       date: June 10-12, 2026
@@ -75,8 +75,8 @@
       id: gi27
       link: https://conferences.graphicsinterface.org/2027
       timeline:
-        - deadline: '2027-02-05 23:59:00'
-          decision_deadline: '2027-04-30 23:59:00'
+        - deadline: '2027-02-05 23:59:59'
+          decision_deadline: '2027-04-30 23:59:59'
       timezone: AoE
       date: June 15-18, 2027
       place: Winnipeg, Canada

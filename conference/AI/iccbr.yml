@@ -11,7 +11,7 @@
       id: iccbr2021
       link: https://www.iccbr.org/iccbr21/
       timeline:
-        - deadline: '2021-05-05 23:59:00'
+        - deadline: '2021-05-05 23:59:59'
       timezone: AoE
       date: September 13-16, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: iccbr2022
       link: https://iccbr2022.loria.fr/
       timeline:
-        - deadline: '2022-05-01 23:59:00'
+        - deadline: '2022-05-01 23:59:59'
       timezone: AoE
       date: September 13-15, 2022
       place: Nancy, France
@@ -27,7 +27,7 @@
       id: iccbr2023
       link: https://www.iccbr2023.org/
       timeline:
-        - deadline: '2023-04-24 23:59:00'
+        - deadline: '2023-04-24 23:59:59'
       timezone: AoE
       date: July 18-20, 2023
       place: Aberdeen, Scotland, UK
@@ -46,10 +46,10 @@
       id: iccbr2025
       link: https://2025.iccbr.org/
       timeline:
-        - deadline: '2025-02-26 23:59:00'
+        - deadline: '2025-02-26 23:59:59'
           comment: Early submission
-        - abstract_deadline: '2025-03-16 23:59:00'
-          deadline: '2025-03-16 23:59:00'
+        - abstract_deadline: '2025-03-16 23:59:59'
+          deadline: '2025-03-16 23:59:59'
           comment: Late submission
       timezone: AoE
       date: July 1-3, 2025

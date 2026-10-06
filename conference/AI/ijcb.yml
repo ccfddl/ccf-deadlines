@@ -11,7 +11,7 @@
       id: ijcb2021
       link: https://ijcb2021.iapr-tc4.org/
       timeline:
-        - deadline: '2021-04-06 23:59:00'
+        - deadline: '2021-04-06 23:59:59'
       timezone: UTC-8
       date: August 5-7, 2021
       place: Online
@@ -27,7 +27,7 @@
       id: ijcb2023
       link: https://ijcb2023.ieee-biometrics.org/
       timeline:
-        - deadline: '2023-05-08 23:59:00'
+        - deadline: '2023-05-08 23:59:59'
       timezone: UTC-7
       date: September 26-28, 2023
       place: Ljubljana, Slovenia
@@ -35,8 +35,8 @@
       id: ijcb2024
       link: https://iapr.org/archives/ijcb2024/index.html
       timeline:
-        - abstract_deadline: '2024-04-30 23:59:00'
-          deadline: '2024-04-30 23:59:00'
+        - abstract_deadline: '2024-04-30 23:59:59'
+          deadline: '2024-04-30 23:59:59'
       timezone: UTC-7
       date: September 16-18, 2024
       place: Buffalo, New York, USA

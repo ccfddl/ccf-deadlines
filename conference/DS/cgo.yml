@@ -21,8 +21,8 @@
       id: cgo2022
       link: https://conf.researchr.org/home/cgo-2022
       timeline:
-        - abstract_deadline: '2021-08-27 23:59:00'
-          deadline: '2021-09-03 23:59:00'
+        - abstract_deadline: '2021-08-27 23:59:59'
+          deadline: '2021-09-03 23:59:59'
       timezone: AoE
       date: April 4-6, 2022
       place: Virtual
@@ -30,7 +30,7 @@
       id: cgo2023
       link: https://conf.researchr.org/home/cgo-2023
       timeline:
-        - deadline: '2022-09-02 23:59:00'
+        - deadline: '2022-09-02 23:59:59'
       timezone: AoE
       date: February 27-March 1, 2023
       place: Montreal, Canada
@@ -40,7 +40,7 @@
       timeline:
         - deadline: '2023-05-19 23:59:59'
           comment: First submission round
-        - deadline: '2023-09-01 23:59:00'
+        - deadline: '2023-09-01 23:59:59'
           comment: Second submission round
       timezone: AoE
       date: March 4-6, 2024
@@ -51,7 +51,7 @@
       timeline:
         - deadline: '2024-05-30 23:59:59'
           comment: First submission round
-        - deadline: '2024-09-12 23:59:00'
+        - deadline: '2024-09-12 23:59:59'
           comment: Second submission round
       timezone: AoE
       date: March 3-5, 2025
@@ -72,7 +72,7 @@
       link: https://conf.researchr.org/home/cgo-2027
       timeline:
         - deadline: '2026-06-11 23:59:59'
-          rebuttal_deadline: '2026-07-23 23:59:00'
+          rebuttal_deadline: '2026-07-23 23:59:59'
           comment: 'First Submission'
         - deadline: '2026-09-10 23:59:59'
           comment: 'Second Submission'

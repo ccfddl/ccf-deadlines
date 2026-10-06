@@ -11,10 +11,10 @@
       id: nossdav21
       link: https://nossdav.org/2021/
       timeline:
-        - abstract_deadline: '2020-12-11 23:59:00'
-          deadline: '2020-12-14 23:59:00'
+        - abstract_deadline: '2020-12-11 23:59:59'
+          deadline: '2020-12-14 23:59:59'
           comment: 'Round 1'
-        - abstract_deadline: '2021-03-05 23:59:00'
+        - abstract_deadline: '2021-03-05 23:59:59'
           deadline: '2021-03-08 23:59:59'
           comment: 'Round 2'
       timezone: AoE
@@ -32,7 +32,7 @@
       id: nossdav23
       link: https://nossdav.org/2023/
       timeline:
-        - deadline: '2023-03-10 23:59:00'
+        - deadline: '2023-03-10 23:59:59'
       timezone: AoE
       date: June 10, 2023
       place: Vancouver, Canada
@@ -50,7 +50,7 @@
       id: nossdav25
       link: https://nossdav.org/2025/
       timeline:
-        - deadline: '2025-01-26 23:59:00'
+        - deadline: '2025-01-26 23:59:59'
           comment: 'Published full extension; portal upload close later'
       timezone: AoE
       date: April 4, 2025
@@ -59,7 +59,7 @@
       id: nossdav26
       link: https://nossdav.org/2026/
       timeline:
-        - abstract_deadline: '2026-01-16 23:59:00'
+        - abstract_deadline: '2026-01-16 23:59:59'
           deadline: '2026-01-16 23:59:59'
           comment: 'Published registration and full cutoff; portal full close later'
       timezone: AoE
@@ -69,8 +69,8 @@
       id: nossdav27
       link: https://nossdav.org/
       timeline:
-        - deadline: '2027-01-11 23:59:00'
-          decision_deadline: '2027-02-01 23:59:00'
+        - deadline: '2027-01-11 23:59:59'
+          decision_deadline: '2027-02-01 23:59:59'
       timezone: AoE
       date: TBD
       place: Ghent, Belgium

@@ -20,8 +20,8 @@
       id: soups22
       link: https://www.usenix.org/conference/soups2022
       timeline:
-        - abstract_deadline: '2022-02-11 23:59:00'
-          deadline: '2022-02-17 23:59:00'
+        - abstract_deadline: '2022-02-11 23:59:59'
+          deadline: '2022-02-17 23:59:59'
       timezone: AoE
       date: August 8-9, 2022
       place: Boston, MA, USA
@@ -29,8 +29,8 @@
       id: soups23
       link: https://www.usenix.org/conference/soups2023
       timeline:
-        - abstract_deadline: '2023-02-10 23:59:00'
-          deadline: '2023-02-16 23:59:00'
+        - abstract_deadline: '2023-02-10 23:59:59'
+          deadline: '2023-02-16 23:59:59'
       timezone: AoE
       date: August 7-8, 2023
       place: Anaheim, CA, USA

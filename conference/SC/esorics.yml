@@ -37,9 +37,9 @@
       id: esorics23
       link: https://esorics2023.org/
       timeline:
-        - deadline: '2023-01-22 23:59:00'
+        - deadline: '2023-01-22 23:59:59'
           comment: Winter
-        - deadline: '2023-06-04 23:59:00'
+        - deadline: '2023-06-04 23:59:59'
           comment: Spring
       timezone: AoE
       date: September 25-27, 2023
@@ -48,9 +48,9 @@
       id: esorics24
       link: https://web.archive.org/web/20241007075853/https://esorics2024.org/
       timeline:
-        - deadline: '2024-01-08 23:59:00'
+        - deadline: '2024-01-08 23:59:59'
           comment: Winter
-        - deadline: '2024-04-19 23:59:00'
+        - deadline: '2024-04-19 23:59:59'
           comment: Spring
       timezone: AoE
       date: September 16-18, 2024

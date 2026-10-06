@@ -11,7 +11,7 @@
       id: ifip119'21
       link: https://www.ifip119.org/Conferences/
       timeline:
-        - deadline: '2020-10-18 23:59:00'
+        - deadline: '2020-10-18 23:59:59'
       timezone: AoE
       date: February 1-2, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: ifip119'22
       link: http://www.ifip119.org/Conferences/
       timeline:
-        - deadline: '2021-11-12 23:59:00'
+        - deadline: '2021-11-12 23:59:59'
       timezone: AoE
       date: January 3-4, 2022
       place: Virtual
@@ -27,7 +27,7 @@
       id: ifip119'23
       link: https://www.ifip119.org/Conferences/
       timeline:
-        - deadline: '2022-11-15 23:59:00'
+        - deadline: '2022-11-15 23:59:59'
       timezone: AoE
       date: January 30-31, 2023
       place: Arlington, Virginia, USA
@@ -35,7 +35,7 @@
       id: ifip119'24
       link: https://www.ifip119.org/Conferences/
       timeline:
-        - deadline: '2023-10-31 23:59:00'
+        - deadline: '2023-10-31 23:59:59'
       timezone: AoE
       date: January 4-5, 2024
       place: New Delhi, India
@@ -43,7 +43,7 @@
       id: ifip119'25
       link: https://www.ifip119.org/Conferences/
       timeline:
-        - deadline: '2024-09-30 23:59:00'
+        - deadline: '2024-09-30 23:59:59'
       timezone: AoE
       date: January 6-7, 2025
       place: New Delhi, India
@@ -51,7 +51,7 @@
       id: ifip119'26
       link: http://www.ifip119.org/Conferences/
       timeline:
-        - deadline: '2025-10-31 23:59:00'
+        - deadline: '2025-10-31 23:59:59'
       timezone: AoE
       date: January 5 - 6, 2026
       place: New Delhi, India
@@ -60,7 +60,7 @@
       link: https://www.ifip119.org/Conferences/
       timeline:
         - deadline: '2026-10-10 23:59:59'
-          decision_deadline: '2026-11-10 23:59:00'
+          decision_deadline: '2026-11-10 23:59:59'
           comment: Submission Deadline
       timezone: AoE
       date: January 7 - 8, 2027

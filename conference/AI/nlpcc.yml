@@ -11,7 +11,7 @@
       id: nlpcc2021
       link: http://tcci.ccf.org.cn/conference/2021/
       timeline:
-        - deadline: '2021-06-08 23:59:00'
+        - deadline: '2021-06-08 23:59:59'
       timezone: UTC+8
       date: October 16-17, 2021
       place: Qingdao, Shandong, China
@@ -19,7 +19,7 @@
       id: nlpcc2022
       link: http://tcci.ccf.org.cn/conference/2022/
       timeline:
-        - deadline: '2022-05-13 23:59:00'
+        - deadline: '2022-05-13 23:59:59'
       timezone: UTC+8
       date: September 24-25, 2022
       place: Guilin, China
@@ -27,7 +27,7 @@
       id: nlpcc2023
       link: http://tcci.ccf.org.cn/conference/2023/index.php
       timeline:
-        - deadline: '2023-05-18 23:59:00'
+        - deadline: '2023-05-18 23:59:59'
       timezone: UTC+8
       date: October 14-15, 2023
       place: Foshan, Guangdong, China
@@ -35,7 +35,7 @@
       id: nlpcc2024
       link: http://tcci.ccf.org.cn/conference/2024/index.php
       timeline:
-        - deadline: '2024-06-11 23:59:00'
+        - deadline: '2024-06-11 23:59:59'
       timezone: UTC+8
       date: November 2-3, 2024
       place: Hangzhou, China

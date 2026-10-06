@@ -38,8 +38,8 @@
       id: vis24
       link: https://ieeevis.org/year/2024/welcome
       timeline:
-        - abstract_deadline: '2024-03-21 23:59:00'
-          deadline: '2024-03-31 23:59:00'
+        - abstract_deadline: '2024-03-21 23:59:59'
+          deadline: '2024-03-31 23:59:59'
       timezone: AoE
       date: October 15-18, 2024
       place: Online

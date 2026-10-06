@@ -19,7 +19,7 @@
       id: icdm22
       link: https://icdm22.cse.usf.edu/key-dates.html
       timeline:
-        - deadline: '2022-06-10 23:59:00'
+        - deadline: '2022-06-10 23:59:59'
       timezone: UTC-7
       date: November 28 - December 1, 2022
       place: Orlando, FL, USA

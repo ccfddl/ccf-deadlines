@@ -27,7 +27,7 @@
       id: aft21
       link: https://aft.ifca.ai/aft21/index.html
       timeline:
-        - deadline: '2021-05-27 23:59:00'
+        - deadline: '2021-05-27 23:59:59'
       timezone: UTC-12
       date: September 26-28, 2021
       place: Online

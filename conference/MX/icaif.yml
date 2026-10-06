@@ -11,7 +11,7 @@
       id: icaif2021
       link: https://ai-finance.org/icaif21/
       timeline:
-        - deadline: '2021-07-11 23:59:00'
+        - deadline: '2021-07-11 23:59:59'
       timezone: AoE
       date: November 4-5, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: icaif2022
       link: https://ai-finance.org/icaif22/
       timeline:
-        - deadline: '2022-07-06 23:59:00'
+        - deadline: '2022-07-06 23:59:59'
       timezone: AoE
       date: November 3-4, 2022
       place: New York, NY, USA (Hybrid)
@@ -27,7 +27,7 @@
       id: icaif2023
       link: https://ai-finance.org/icaif-23/
       timeline:
-        - deadline: '2023-07-28 23:59:00'
+        - deadline: '2023-07-28 23:59:59'
       timezone: AoE
       date: November 28-29, 2023
       place: Brooklyn, NY, USA (Hybrid)
@@ -35,7 +35,7 @@
       id: icaif2024
       link: https://ai-finance.org/
       timeline:
-        - deadline: '2024-08-02 23:59:00'
+        - deadline: '2024-08-02 23:59:59'
       timezone: AoE
       date: November 16-17, 2024
       place: Brooklyn, NY, USA (Hybrid)
@@ -43,7 +43,7 @@
       id: icaif2025
       link: https://icaif25.org/
       timeline:
-        - deadline: '2025-08-03 23:59:00'
+        - deadline: '2025-08-03 23:59:59'
       timezone: AoE
       date: November 17-18, 2025
       place: Singapore (Hybrid)

@@ -33,11 +33,11 @@
       id: sigmod23
       link: http://2023.sigmod.org/
       timeline:
-        - deadline: '2022-04-15 23:59:00'
+        - deadline: '2022-04-15 23:59:59'
           comment: first round
-        - deadline: '2022-07-15 23:59:00'
+        - deadline: '2022-07-15 23:59:59'
           comment: second round
-        - deadline: '2022-10-15 23:59:00'
+        - deadline: '2022-10-15 23:59:59'
           comment: third round
       timezone: PT
       date: June 20-22, 2023
@@ -46,13 +46,13 @@
       id: sigmod24
       link: http://2024.sigmod.org/
       timeline:
-        - deadline: '2023-01-15 23:59:00'
+        - deadline: '2023-01-15 23:59:59'
           comment: round 1
-        - deadline: '2023-04-15 23:59:00'
+        - deadline: '2023-04-15 23:59:59'
           comment: round 2
-        - deadline: '2023-07-15 23:59:00'
+        - deadline: '2023-07-15 23:59:59'
           comment: round 3
-        - deadline: '2023-10-15 23:59:00'
+        - deadline: '2023-10-15 23:59:59'
           comment: round 4
       timezone: PT
       date: June 11-13, 2024
@@ -61,17 +61,17 @@
       id: sigmod25
       link: https://2025.sigmod.org/
       timeline:
-        - abstract_deadline: '2024-01-10 23:59:00'
-          deadline: '2024-01-17 23:59:00'
+        - abstract_deadline: '2024-01-10 23:59:59'
+          deadline: '2024-01-17 23:59:59'
           comment: round 1
-        - abstract_deadline: '2024-04-10 23:59:00'
-          deadline: '2024-04-17 23:59:00'
+        - abstract_deadline: '2024-04-10 23:59:59'
+          deadline: '2024-04-17 23:59:59'
           comment: round 2
-        - abstract_deadline: '2024-07-10 23:59:00'
-          deadline: '2024-07-17 23:59:00'
+        - abstract_deadline: '2024-07-10 23:59:59'
+          deadline: '2024-07-17 23:59:59'
           comment: round 3
-        - abstract_deadline: '2024-10-10 23:59:00'
-          deadline: '2024-10-17 23:59:00'
+        - abstract_deadline: '2024-10-10 23:59:59'
+          deadline: '2024-10-17 23:59:59'
           comment: round 4
       timezone: AoE
       date: June 22 and June 24-26, 2025
@@ -80,17 +80,17 @@
       id: sigmod26
       link: https://2026.sigmod.org/
       timeline:
-        - abstract_deadline: '2025-01-10 23:59:00'
-          deadline: '2025-01-17 23:59:00'
+        - abstract_deadline: '2025-01-10 23:59:59'
+          deadline: '2025-01-17 23:59:59'
           comment: round 1
-        - abstract_deadline: '2025-04-10 23:59:00'
-          deadline: '2025-04-17 23:59:00'
+        - abstract_deadline: '2025-04-10 23:59:59'
+          deadline: '2025-04-17 23:59:59'
           comment: round 2
-        - abstract_deadline: '2025-07-10 23:59:00'
-          deadline: '2025-07-17 23:59:00'
+        - abstract_deadline: '2025-07-10 23:59:59'
+          deadline: '2025-07-17 23:59:59'
           comment: round 3
-        - abstract_deadline: '2025-10-10 23:59:00'
-          deadline: '2025-10-17 23:59:00'
+        - abstract_deadline: '2025-10-10 23:59:59'
+          deadline: '2025-10-17 23:59:59'
           comment: round 4
       timezone: AoE
       date: May 31 and June 2-4, 2026
@@ -99,25 +99,25 @@
       id: sigmod27
       link: https://2027.sigmod.org/
       timeline:
-        - abstract_deadline: '2026-01-10 23:59:00'
-          deadline: '2026-01-17 23:59:00'
-          rebuttal_deadline: '2026-03-17 23:59:00'
-          decision_deadline: '2026-06-12 23:59:00'
+        - abstract_deadline: '2026-01-10 23:59:59'
+          deadline: '2026-01-17 23:59:59'
+          rebuttal_deadline: '2026-03-17 23:59:59'
+          decision_deadline: '2026-06-12 23:59:59'
           comment: round 1
-        - abstract_deadline: '2026-04-10 23:59:00'
-          deadline: '2026-04-17 23:59:00'
-          rebuttal_deadline: '2026-06-17 23:59:00'
-          decision_deadline: '2026-09-12 23:59:00'
+        - abstract_deadline: '2026-04-10 23:59:59'
+          deadline: '2026-04-17 23:59:59'
+          rebuttal_deadline: '2026-06-17 23:59:59'
+          decision_deadline: '2026-09-12 23:59:59'
           comment: round 2
-        - abstract_deadline: '2026-07-10 23:59:00'
-          deadline: '2026-07-17 23:59:00'
-          rebuttal_deadline: '2026-09-17 23:59:00'
-          decision_deadline: '2026-12-12 23:59:00'
+        - abstract_deadline: '2026-07-10 23:59:59'
+          deadline: '2026-07-17 23:59:59'
+          rebuttal_deadline: '2026-09-17 23:59:59'
+          decision_deadline: '2026-12-12 23:59:59'
           comment: round 3
-        - abstract_deadline: '2026-10-10 23:59:00'
-          deadline: '2026-10-17 23:59:00'
-          rebuttal_deadline: '2026-12-17 23:59:00'
-          decision_deadline: '2027-03-12 23:59:00'
+        - abstract_deadline: '2026-10-10 23:59:59'
+          deadline: '2026-10-17 23:59:59'
+          rebuttal_deadline: '2026-12-17 23:59:59'
+          decision_deadline: '2027-03-12 23:59:59'
           comment: round 4
       timezone: AoE
       date: June 13-19, 2027

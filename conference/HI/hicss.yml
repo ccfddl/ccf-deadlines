@@ -11,7 +11,7 @@
       id: hicss21
       link: https://hicss.hawaii.edu/
       timeline:
-        - deadline: '2020-07-15 23:59:00'
+        - deadline: '2020-07-15 23:59:59'
       timezone: UTC-10
       date: TBD
       place: Virtual
@@ -19,7 +19,7 @@
       id: hicss22
       link: https://hicss.hawaii.edu/
       timeline:
-        - deadline: '2021-06-15 23:59:00'
+        - deadline: '2021-06-15 23:59:59'
       timezone: UTC-10
       date: January 3-7, 2022
       place: Virtual
@@ -27,7 +27,7 @@
       id: hicss23
       link: https://hicss.hawaii.edu/
       timeline:
-        - deadline: '2022-06-15 23:59:00'
+        - deadline: '2022-06-15 23:59:59'
       timezone: UTC-10
       date: TBD
       place: Maui, Hawaii, USA (hybrid)
@@ -35,7 +35,7 @@
       id: hicss24
       link: https://hicss.hawaii.edu/
       timeline:
-        - deadline: '2023-06-15 23:59:00'
+        - deadline: '2023-06-15 23:59:59'
       timezone: UTC-10
       date: January 4-6, 2024
       place: Honolulu, Hawaii, USA
@@ -43,7 +43,7 @@
       id: hicss25
       link: https://hicss.hawaii.edu/
       timeline:
-        - deadline: '2024-06-15 23:59:00'
+        - deadline: '2024-06-15 23:59:59'
       timezone: UTC-10
       date: January 8-10, 2025
       place: Waikoloa, Hawaii, USA
@@ -51,7 +51,7 @@
       id: hicss26
       link: https://hicss.hawaii.edu/
       timeline:
-        - deadline: '2025-06-15 23:59:00'
+        - deadline: '2025-06-15 23:59:59'
       timezone: UTC-10
       date: January 7-9, 2026
       place: Maui, Hawaii, USA
@@ -60,7 +60,7 @@
       link: https://hicss.hawaii.edu/
       timeline:
         - deadline: '2026-06-15 23:59:59'
-          decision_deadline: '2026-09-11 23:59:00'
+          decision_deadline: '2026-09-11 23:59:59'
           comment: 'Paper Submission Deadline'
       timezone: UTC-10
       date: January 5-8, 2027

@@ -20,7 +20,7 @@
       id: hpdc2022
       link: https://hpdc.sci.utah.edu/2022/
       timeline:
-        - abstract_deadline: '2022-01-20 23:59:00'
+        - abstract_deadline: '2022-01-20 23:59:59'
           deadline: '2022-01-27 23:59:59'
       timezone: AoE
       date: June 27-29, 2022
@@ -29,7 +29,7 @@
       id: hpdc2023
       link: https://hpdc.sci.utah.edu/2023/
       timeline:
-        - deadline: '2023-01-27 23:59:00'
+        - deadline: '2023-01-27 23:59:59'
       timezone: AoE
       date: June 21-23, 2023
       place: Orlando, FL, USA
@@ -37,7 +37,7 @@
       id: hpdc2024
       link: https://hpdc.sci.utah.edu/2024/
       timeline:
-        - abstract_deadline: '2024-01-18 23:59:00'
+        - abstract_deadline: '2024-01-18 23:59:59'
           deadline: 'TBD'
           comment: 'Full-paper cutoff conflict: CFP January 25; portal January 28'
       timezone: AoE
@@ -55,8 +55,8 @@
       id: hpdc2026
       link: https://hpdc.sci.utah.edu/2026/
       timeline:
-        - abstract_deadline: '2026-01-29 23:59:00'
-          deadline: '2026-02-05 23:59:00'
+        - abstract_deadline: '2026-01-29 23:59:59'
+          deadline: '2026-02-05 23:59:59'
       timezone: AoE
       date: July 14-16, 2026
       place: Cleveland, OH, USA

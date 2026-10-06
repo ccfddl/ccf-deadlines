@@ -11,7 +11,7 @@
       id: cccg2021
       link: https://projects.cs.dal.ca/cccg2021/
       timeline:
-        - deadline: '2021-05-10 23:59:00'
+        - deadline: '2021-05-10 23:59:59'
       timezone: AoE
       date: August 10-12, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: cccg2022
       link: https://www.torontomu.ca/canadian-conference-computational-geometry-2022/
       timeline:
-        - deadline: '2022-05-06 23:59:00'
+        - deadline: '2022-05-06 23:59:59'
       timezone: AoE
       date: August 25-27, 2022
       place: Toronto, Canada
@@ -27,7 +27,7 @@
       id: cccg2023
       link: https://wadscccg2023.encs.concordia.ca/
       timeline:
-        - deadline: '2023-04-14 23:59:00'
+        - deadline: '2023-04-14 23:59:59'
       timezone: AoE
       date: August 2-4, 2023
       place: Montreal, Canada
@@ -35,7 +35,7 @@
       id: cccg2024
       link: https://brocku.ca/mathematics-science/canadian-conference-on-computational-geometry-2024/
       timeline:
-        - deadline: '2024-04-05 23:59:00'
+        - deadline: '2024-04-05 23:59:59'
       timezone: AoE
       date: July 17-19, 2024
       place: St. Catharines, Canada
@@ -43,7 +43,7 @@
       id: cccg2025
       link: https://sites.google.com/view/cccgwads-2025/cccg-2025
       timeline:
-        - deadline: '2025-05-07 23:59:00'
+        - deadline: '2025-05-07 23:59:59'
       timezone: AoE
       date: August 13-15, 2025
       place: Toronto, Canada

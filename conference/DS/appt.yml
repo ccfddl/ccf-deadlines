@@ -11,9 +11,9 @@
       id: appt2021
       link: https://appt2021.github.io/
       timeline:
-        - deadline: '2021-05-07 23:59:00'
+        - deadline: '2021-05-07 23:59:59'
           comment: First submission round
-        - deadline: '2021-05-31 23:59:00'
+        - deadline: '2021-05-31 23:59:59'
           comment: Second submission round
       timezone: UTC+8
       date: TBD
@@ -22,8 +22,8 @@
       id: appt2023
       link: https://conf.ccf.org.cn/CCFSys2023
       timeline:
-        - abstract_deadline: '2023-06-18 23:59:00'
-          deadline: '2023-06-18 23:59:00'
+        - abstract_deadline: '2023-06-18 23:59:59'
+          deadline: '2023-06-18 23:59:59'
       timezone: UTC+8
       date: August 4-5, 2023
       place: Nanchang, China
@@ -31,8 +31,8 @@
       id: appt2025
       link: https://www.appt-conference.com/2025
       timeline:
-        - abstract_deadline: '2025-04-06 23:59:00'
-          deadline: '2025-04-13 23:59:00'
+        - abstract_deadline: '2025-04-06 23:59:59'
+          deadline: '2025-04-13 23:59:59'
       timezone: AoE
       date: July 14-16, 2025
       place: Athens, Greece

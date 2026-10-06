@@ -11,7 +11,7 @@
       id: isbra2022
       link: https://mangul-lab-usc.github.io/ISBRA22/
       timeline:
-        - deadline: '2022-08-08 23:59:00'
+        - deadline: '2022-08-08 23:59:59'
       timezone: AoE
       date: November 15-17, 2022
       place: Haifa, Israel (Hybrid)
@@ -19,7 +19,7 @@
       id: isbra2023
       link: https://mangul-lab-usc.github.io/ISBRA23/
       timeline:
-        - deadline: '2023-07-12 23:59:00'
+        - deadline: '2023-07-12 23:59:59'
       timezone: AoE
       date: October 10-12, 2023
       place: Wrocław, Poland
@@ -27,7 +27,7 @@
       id: isbra2024
       link: https://bio.csu.edu.cn/ISBRA2024/ISBRA2024_Home.html
       timeline:
-        - deadline: '2024-04-08 23:59:00'
+        - deadline: '2024-04-08 23:59:59'
       timezone: AoE
       date: July 20-21, 2024
       place: Kunming, China

@@ -37,7 +37,7 @@
       id: sec2023
       link: https://acm-ieee-sec.org/2023/
       timeline:
-        - abstract_deadline: '2023-06-30 23:59:00'
+        - abstract_deadline: '2023-06-30 23:59:59'
           deadline: '2023-07-07 09:00:00'
       timezone: AoE
       date: December 6-8, 2023
@@ -56,7 +56,7 @@
       id: sec2025
       link: https://acm-ieee-sec.org/2025/
       timeline:
-        - deadline: '2025-06-20 23:59:00'
+        - deadline: '2025-06-20 23:59:59'
       timezone: AoE
       date: December 3-5, 2025
       place: Washington, D.C., USA

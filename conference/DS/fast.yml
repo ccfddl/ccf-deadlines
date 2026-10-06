@@ -11,7 +11,7 @@
       id: fast21
       link: https://www.usenix.org/conference/fast21/
       timeline:
-        - deadline: '2020-09-24 23:59:00'
+        - deadline: '2020-09-24 23:59:59'
       timezone: UTC-7
       date: February 23-25, 2021
       place: Virtual
@@ -51,9 +51,9 @@
       id: fast26
       link: https://www.usenix.net/conference/fast26
       timeline:
-        - deadline: '2025-03-18 23:59:00'
+        - deadline: '2025-03-18 23:59:59'
           comment: Spring deadline
-        - deadline: '2025-09-16 23:59:00'
+        - deadline: '2025-09-16 23:59:59'
           comment: Fall deadline
       timezone: AoE
       date: FEBRUARY 24-26, 2026
@@ -62,11 +62,11 @@
       id: fast27
       link: https://www.usenix.org/conference/fast27
       timeline:
-        - deadline: '2026-03-17 23:59:00'
-          rebuttal_deadline: '2026-05-20 23:59:00'
+        - deadline: '2026-03-17 23:59:59'
+          rebuttal_deadline: '2026-05-20 23:59:59'
           comment: Spring deadline
-        - deadline: '2026-09-15 23:59:00'
-          rebuttal_deadline: '2026-11-19 23:59:00'
+        - deadline: '2026-09-15 23:59:59'
+          rebuttal_deadline: '2026-11-19 23:59:59'
           comment: Fall deadline
       timezone: AoE
       date: FEBRUARY 23-25, 2027

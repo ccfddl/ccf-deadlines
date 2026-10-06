@@ -11,7 +11,7 @@
       id: sas21
       link: https://conf.researchr.org/home/sas-2021
       timeline:
-        - deadline: '2021-04-30 23:59:00'
+        - deadline: '2021-04-30 23:59:59'
       timezone: AoE
       date: October 17-19, 2021
       place: Online
@@ -27,8 +27,8 @@
       id: sas23
       link: https://conf.researchr.org/home/sas-2023
       timeline:
-        - abstract_deadline: '2023-04-24 23:59:00'
-          deadline: '2023-05-01 23:59:00'
+        - abstract_deadline: '2023-04-24 23:59:59'
+          deadline: '2023-05-01 23:59:59'
           comment: Optional abstract
       timezone: AoE
       date: October 22-24, 2023
@@ -37,7 +37,7 @@
       id: sas24
       link: https://2024.splashcon.org/home/sas-2024
       timeline:
-        - deadline: '2024-05-19 23:59:00'
+        - deadline: '2024-05-19 23:59:59'
       timezone: AoE
       date: October 20-22, 2024
       place: Pasadena, California, USA

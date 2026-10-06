@@ -29,7 +29,7 @@
       id: apsys2023
       link: https://apsys23.skku.edu/
       timeline:
-        - abstract_deadline: '2023-04-28 23:59:00'
+        - abstract_deadline: '2023-04-28 23:59:59'
           deadline: '2023-05-05 23:59:59'
       timezone: AoE
       date: August 24-25, 2023
@@ -38,8 +38,8 @@
       id: apsys2024
       link: https://apsys2024.github.io/
       timeline:
-        - abstract_deadline: '2024-04-26 23:59:00'
-          deadline: '2024-05-02 23:59:00'
+        - abstract_deadline: '2024-04-26 23:59:59'
+          deadline: '2024-05-02 23:59:59'
       timezone: AoE
       date: September 4-5, 2024
       place: Kyoto, Japan
@@ -47,8 +47,8 @@
       id: apsys2025
       link: https://apsys2025.github.io/
       timeline:
-        - abstract_deadline: '2025-05-29 23:59:00'
-          deadline: '2025-06-05 23:59:00'
+        - abstract_deadline: '2025-05-29 23:59:59'
+          deadline: '2025-06-05 23:59:59'
       timezone: AoE
       date: October 12-13, 2025
       place: Seoul, South Korea
@@ -56,8 +56,8 @@
       id: apsys2026
       link: https://apsys26.github.io/
       timeline:
-        - abstract_deadline: '2026-05-13 23:59:00'
-          deadline: '2026-05-20 23:59:00'
+        - abstract_deadline: '2026-05-13 23:59:59'
+          deadline: '2026-05-20 23:59:59'
       timezone: AoE
       date: September 17-18, 2026
       place: Bangkok, Thailand

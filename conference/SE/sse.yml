@@ -22,7 +22,7 @@
       id: sse22
       link: https://conferences.computer.org/scc/2022/
       timeline:
-        - deadline: '2022-04-01 23:59:00'
+        - deadline: '2022-04-01 23:59:59'
       timezone: AoE
       date: July 11-14, 2022
       place: Barcelona, Spain
@@ -30,7 +30,7 @@
       id: sse23
       link: https://conferences.computer.org/sse/2023/
       timeline:
-        - deadline: '2023-03-25 23:59:00'
+        - deadline: '2023-03-25 23:59:59'
       timezone: AoE
       date: July 4-6, 2023
       place: Chicago, Illinois, USA
@@ -38,7 +38,7 @@
       id: sse24
       link: https://sse.conferences.computer.org/2024/
       timeline:
-        - deadline: '2024-04-07 23:59:00'
+        - deadline: '2024-04-07 23:59:59'
       timezone: AoE
       date: July 8-11, 2024
       place: Shenzhen, China

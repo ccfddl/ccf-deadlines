@@ -11,7 +11,7 @@
       id: icip21
       link: https://www.2021.ieeeicip.org/www.2021.ieeeicip.org/index.html
       timeline:
-        - deadline: '2021-01-25 23:59:00'
+        - deadline: '2021-01-25 23:59:59'
       timezone: AoE
       date: September 20-22, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: icip22
       link: https://2022.ieeeicip.org/
       timeline:
-        - deadline: '2022-02-25 23:59:00'
+        - deadline: '2022-02-25 23:59:59'
       timezone: AoE
       date: October 3-7 (Virtual) and October 17-19 (In-person), 2022
       place: Bordeaux, France
@@ -27,7 +27,7 @@
       id: icip23
       link: https://2023.ieeeicip.org/
       timeline:
-        - deadline: '2023-02-24 23:59:00'
+        - deadline: '2023-02-24 23:59:59'
       timezone: AoE
       date: October 9-11, 2023
       place: Kuala Lumpur, Malaysia
@@ -35,7 +35,7 @@
       id: icip24
       link: https://2024.ieeeicip.org/
       timeline:
-        - deadline: '2024-02-07 23:59:00'
+        - deadline: '2024-02-07 23:59:59'
       timezone: AoE
       date: October 28-30, 2024
       place: Abu Dhabi, United Arab Emirates
@@ -43,7 +43,7 @@
       id: icip25
       link: https://2025.ieeeicip.org/
       timeline:
-        - deadline: '2025-02-05 23:59:00'
+        - deadline: '2025-02-05 23:59:59'
       timezone: AoE
       date: September 15-17, 2025
       place: Anchorage Alaska, USA

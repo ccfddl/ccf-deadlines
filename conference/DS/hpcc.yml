@@ -11,7 +11,7 @@
       id: hpcc2021
       link: https://www.ieee-hpcc.org/2021/
       timeline:
-        - deadline: '2021-09-15 23:59:00'
+        - deadline: '2021-09-15 23:59:59'
       timezone: AoE
       date: December 20-22, 2021
       place: Haikou, China
@@ -19,7 +19,7 @@
       id: hpcc2022
       link: https://www.ieee-hpcc.org/2022/
       timeline:
-        - deadline: '2022-09-20 23:59:00'
+        - deadline: '2022-09-20 23:59:59'
       timezone: AoE
       date: December 18-21, 2022
       place: Chengdu, China
@@ -27,7 +27,7 @@
       id: hpcc2023
       link: http://www.swinflow.org/confs/2023/hpcc/
       timeline:
-        - deadline: '2023-09-15 23:59:00'
+        - deadline: '2023-09-15 23:59:59'
       timezone: UTC-10
       date: December 13-15, 2023
       place: Melbourne, Australia
@@ -35,7 +35,7 @@
       id: hpcc2024
       link: http://www.ieee-hust-ncc.org/2024/HPCC/index.html
       timeline:
-        - deadline: '2024-08-15 23:59:00'
+        - deadline: '2024-08-15 23:59:59'
       timezone: AoE
       date: TBD
       place: Wuhan, China

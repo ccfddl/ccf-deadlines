@@ -11,7 +11,7 @@
       id: ih&mmsec21
       link: https://www.ihmmsec.org/
       timeline:
-        - deadline: '2021-02-26 23:59:00'
+        - deadline: '2021-02-26 23:59:59'
           comment: Paper Submission Deadline
       timezone: AoE
       date: June 22-25, 2021
@@ -20,7 +20,7 @@
       id: ih&mmsec22
       link: https://easychair.org/cfp/ihmmsec22
       timeline:
-        - deadline: '2022-02-27 23:59:00'
+        - deadline: '2022-02-27 23:59:59'
       timezone: AoE
       date: TBD
       place: Santa Barbara, CA, USA
@@ -28,7 +28,7 @@
       id: ih&mmsec23
       link: https://easychair.org/cfp/ihmmsec23
       timeline:
-        - deadline: '2023-03-05 23:59:00'
+        - deadline: '2023-03-05 23:59:59'
       timezone: AoE
       date: TBD
       place: Chicago, IL, USA
@@ -54,7 +54,7 @@
       id: ih&mmsec26
       link: https://www.ihmmsec.org/cms/home/home2026.html
       timeline:
-        - deadline: '2026-03-02 23:59:00'
+        - deadline: '2026-03-02 23:59:59'
       timezone: AoE
       date: June 17-19, 2026
       place: Florence, Italy

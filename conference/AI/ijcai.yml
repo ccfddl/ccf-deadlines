@@ -11,8 +11,8 @@
       id: ijcai21
       link: https://ijcai-21.org/
       timeline:
-        - abstract_deadline: '2021-01-13 23:59:00'
-          deadline: '2021-01-20 23:59:00'
+        - abstract_deadline: '2021-01-13 23:59:59'
+          deadline: '2021-01-20 23:59:59'
       timezone: UTC-12
       date: August 23-26, 2021
       place: Virtual conference

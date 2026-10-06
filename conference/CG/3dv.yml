@@ -11,8 +11,8 @@
       id: 3dv2021
       link: https://3dv2021.surrey.ac.uk/
       timeline:
-        - abstract_deadline: '2021-07-30 23:59:00'
-          deadline: '2021-07-30 23:59:00'
+        - abstract_deadline: '2021-07-30 23:59:59'
+          deadline: '2021-07-30 23:59:59'
           comment: Registration / full paper
       timezone: UTC-7
       date: December 1-3, 2021
@@ -21,8 +21,8 @@
       id: 3dv2022
       link: https://3dvconf.github.io/2022/
       timeline:
-        - abstract_deadline: '2022-06-02 23:59:00'
-          deadline: '2022-06-02 23:59:00'
+        - abstract_deadline: '2022-06-02 23:59:59'
+          deadline: '2022-06-02 23:59:59'
           comment: Registration / full paper
       timezone: UTC-7
       date: September 13-15, 2022

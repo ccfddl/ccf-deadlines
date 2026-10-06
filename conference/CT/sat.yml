@@ -47,8 +47,8 @@
       id: sat25
       link: https://satisfiability.org/SAT25/
       timeline:
-        - abstract_deadline: '2025-03-24 23:59:00'
-          deadline: '2025-04-03 23:59:00'
+        - abstract_deadline: '2025-03-24 23:59:59'
+          deadline: '2025-04-03 23:59:59'
       timezone: AoE
       date: August 12-15, 2025
       place: Glasgow, Scotland

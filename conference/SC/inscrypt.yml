@@ -19,7 +19,7 @@
       id: inscrypt22
       link: https://www.sklois.cn/inscrypt2022/
       timeline:
-        - deadline: '2022-09-01 23:59:00'
+        - deadline: '2022-09-01 23:59:59'
       timezone: AoE
       date: TBD
       place: Online
@@ -36,7 +36,7 @@
       id: inscrypt24
       link: https://inscrypt2024.github.io/
       timeline:
-        - deadline: '2024-09-05 23:59:00'
+        - deadline: '2024-09-05 23:59:59'
       timezone: AoE
       date: December 14-16, 2024
       place: Kunming, China

@@ -11,7 +11,7 @@
       id: cidr21
       link: https://www.cidrdb.org/cidr2021/
       timeline:
-        - deadline: '2020-08-28 23:59:00'
+        - deadline: '2020-08-28 23:59:59'
       timezone: UTC-7
       date: January 11-15, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: cidr22
       link: https://www.cidrdb.org/cidr2022/
       timeline:
-        - deadline: '2021-08-31 23:59:00'
+        - deadline: '2021-08-31 23:59:59'
       timezone: UTC-7
       date: January 10-12, 2022
       place: Chaminade, CA, USA
@@ -27,7 +27,7 @@
       id: cidr23
       link: https://www.cidrdb.org/cidr2023/
       timeline:
-        - deadline: '2022-09-02 23:59:00'
+        - deadline: '2022-09-02 23:59:59'
       timezone: UTC-7
       date: January 9-11, 2023
       place: Amsterdam, The Netherlands
@@ -60,7 +60,7 @@
       link: https://www.cidrdb.org/cidr2027/
       timeline:
         - deadline: '2026-08-04 23:59:59'
-          decision_deadline: '2026-10-06 23:59:00'
+          decision_deadline: '2026-10-06 23:59:59'
       timezone: UTC-7
       date: January 24-27, 2027
       place: Amsterdam, The Netherlands

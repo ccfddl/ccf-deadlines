@@ -11,8 +11,8 @@
       id: icsme21
       link: https://icsme2021.github.io/
       timeline:
-        - abstract_deadline: '2021-04-26 23:59:00'
-          deadline: '2021-04-29 23:59:00'
+        - abstract_deadline: '2021-04-26 23:59:59'
+          deadline: '2021-04-29 23:59:59'
       timezone: AoE
       date: September 29-October 1, 2021
       place: Virtual
@@ -67,8 +67,8 @@
       link: https://conf.researchr.org/home/icsme-2027
       timeline:
         - deadline: '2027-03-05 23:59:59'
-          rebuttal_deadline: '2027-05-07 23:59:00'
-          decision_deadline: '2027-05-28 23:59:00'
+          rebuttal_deadline: '2027-05-07 23:59:59'
+          decision_deadline: '2027-05-28 23:59:59'
           comment: 'Research Papers Track'
       timezone: AoE
       date: September 7-11, 2027

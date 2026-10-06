@@ -11,7 +11,7 @@
       id: eusipco2021
       link: https://web.archive.org/web/20210902042345/https://eusipco2021.org/
       timeline:
-        - deadline: '2021-03-01 23:59:00'
+        - deadline: '2021-03-01 23:59:59'
       timezone: AoE
       date: August 23-27, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: eusipco2022
       link: https://2022.eusipco.org/
       timeline:
-        - deadline: '2022-03-07 23:59:00'
+        - deadline: '2022-03-07 23:59:59'
       timezone: UTC-10
       date: August 29 - September 2, 2022
       place: Belgrade, Serbia (Hybrid)
@@ -27,7 +27,7 @@
       id: eusipco2023
       link: https://eusipco2023.org/
       timeline:
-        - deadline: '2023-03-10 23:59:00'
+        - deadline: '2023-03-10 23:59:59'
       timezone: AoE
       date: September 4-8, 2023
       place: Helsinki, Finland

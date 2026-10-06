@@ -11,7 +11,7 @@
       id: coling22
       link: https://coling2022.org/
       timeline:
-        - deadline: '2022-05-17 23:59:00'
+        - deadline: '2022-05-17 23:59:59'
       timezone: AoE
       date: October 12-15, 2022
       place: Gyeongju, Republic of Korea (Hybrid)
@@ -27,13 +27,13 @@
       id: coling25
       link: https://coling2025.org/
       timeline:
-        - deadline: '2024-06-15 23:59:00'
+        - deadline: '2024-06-15 23:59:59'
           comment: 'ARR June cycle'
-        - deadline: '2024-08-15 23:59:00'
+        - deadline: '2024-08-15 23:59:59'
           comment: 'ARR August cycle'
         - deadline: '2024-09-16 23:59:59'
           comment: 'Direct submission'
-        - deadline: '2024-10-20 23:59:00'
+        - deadline: '2024-10-20 23:59:59'
           comment: 'Commitment deadline for papers reviewed by ARR'
       timezone: UTC-12
       date: January 21-24 (in-person) and 27-28 (virtual), 2025
@@ -43,10 +43,10 @@
       link: https://2027.coling-iccl.org/
       timeline:
         - deadline: '2026-10-12 23:59:59'
-          rebuttal_deadline: '2026-11-30 23:59:00'
+          rebuttal_deadline: '2026-11-30 23:59:59'
           comment: 'ARR Submission'
         - deadline: '2026-12-23 23:59:59'
-          decision_deadline: '2027-02-10 23:59:00'
+          decision_deadline: '2027-02-10 23:59:59'
           comment: 'COLING commitment after ARR meta-reviews; reviewed papers only'
       timezone: UTC-12
       date: May 9-14, 2027

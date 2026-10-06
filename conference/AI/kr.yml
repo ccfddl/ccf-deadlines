@@ -11,8 +11,8 @@
       id: krd21
       link: https://kr.org/KR2021/
       timeline:
-        - abstract_deadline: '2021-03-24 23:59:00'
-          deadline: '2021-03-31 23:59:00'
+        - abstract_deadline: '2021-03-24 23:59:59'
+          deadline: '2021-03-31 23:59:59'
       timezone: UTC-12
       date: November 8-12, 2021
       place: Virtual
@@ -20,8 +20,8 @@
       id: krd22
       link: https://kr.org/KR2022/
       timeline:
-        - abstract_deadline: '2022-02-02 23:59:00'
-          deadline: '2022-02-11 23:59:00'
+        - abstract_deadline: '2022-02-02 23:59:59'
+          deadline: '2022-02-11 23:59:59'
       timezone: UTC-12
       date: August 2-5, 2022
       place: Haifa, Israel
@@ -29,8 +29,8 @@
       id: krd23
       link: https://kr.org/KR2023/
       timeline:
-        - abstract_deadline: '2023-03-03 23:59:00'
-          deadline: '2023-03-14 23:59:00'
+        - abstract_deadline: '2023-03-03 23:59:59'
+          deadline: '2023-03-14 23:59:59'
       timezone: UTC-12
       date: September 5-8, 2023
       place: Rhodes, Greece

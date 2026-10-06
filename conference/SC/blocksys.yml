@@ -11,7 +11,7 @@
       id: blocksys21
       link: http://blocksys.info/2021/
       timeline:
-        - deadline: '2021-03-20 23:59:00'
+        - deadline: '2021-03-20 23:59:59'
       timezone: AoE
       date: TBD
       place: Guangzhou, China
@@ -19,7 +19,7 @@
       id: blocksys22
       link: https://blocksys.info/2022/
       timeline:
-        - deadline: '2022-04-30 23:59:00'
+        - deadline: '2022-04-30 23:59:59'
       timezone: AoE
       date: August 4-5, 2022
       place: Chengdu, China
@@ -27,7 +27,7 @@
       id: blocksys23
       link: https://easychair.org/cfp/BlockSys2023
       timeline:
-        - deadline: '2023-04-15 23:59:00'
+        - deadline: '2023-04-15 23:59:59'
       timezone: AoE
       date: August 8-10, 2023
       place: Haikou, China
@@ -35,7 +35,7 @@
       id: blocksys24
       link: https://blocksys.info/2024/
       timeline:
-        - deadline: '2024-05-12 23:59:00'
+        - deadline: '2024-05-12 23:59:59'
       timezone: AoE
       date: July 12-14, 2024
       place: Hangzhou, China
@@ -43,9 +43,9 @@
       id: blocksys25
       link: https://blocksys.info/2025/
       timeline:
-        - deadline: '2024-12-01 23:59:00'
+        - deadline: '2024-12-01 23:59:59'
           comment: 1st Round
-        - deadline: '2025-03-01 23:59:00'
+        - deadline: '2025-03-01 23:59:59'
           comment: 2nd Round
       timezone: AoE
       date: May 30-31, 2025

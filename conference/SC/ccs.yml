@@ -64,10 +64,10 @@
       id: ccs25
       link: https://www.sigsac.org/ccs/CCS2025/
       timeline:
-        - abstract_deadline: '2025-01-02 23:59:00'
+        - abstract_deadline: '2025-01-02 23:59:59'
           deadline: '2025-01-09 23:59:59'
           comment: Cycle 1
-        - abstract_deadline: '2025-04-07 23:59:00'
+        - abstract_deadline: '2025-04-07 23:59:59'
           deadline: '2025-04-14 23:59:59'
           comment: Cycle 2
       timezone: UTC-12

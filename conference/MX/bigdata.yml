@@ -11,7 +11,7 @@
       id: bigdata21
       link: https://bigdataieee.org/BigData2021/
       timeline:
-        - deadline: '2021-09-05 23:59:00'
+        - deadline: '2021-09-05 23:59:59'
       timezone: AoE
       date: December 15-18, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: bigdata22
       link: https://bigdataieee.org/BigData2022/
       timeline:
-        - deadline: '2022-09-03 23:59:00'
+        - deadline: '2022-09-03 23:59:59'
       timezone: AoE
       date: December 18-20, 2022
       place: Osaka, Japan
@@ -27,7 +27,7 @@
       id: bigdata23
       link: https://bigdataieee.org/BigData2023/
       timeline:
-        - deadline: '2023-09-03 23:59:00'
+        - deadline: '2023-09-03 23:59:59'
       timezone: AoE
       date: December 15-18, 2023
       place: Sorrento, Italy
@@ -35,7 +35,7 @@
       id: bigdata24
       link: https://bigdataieee.org/BigData2024/
       timeline:
-        - deadline: '2024-09-08 23:59:00'
+        - deadline: '2024-09-08 23:59:59'
       timezone: AoE
       date: December 16-18, 2024
       place: Washington DC, USA

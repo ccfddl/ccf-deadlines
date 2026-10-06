@@ -11,7 +11,7 @@
       id: rtss21
       link: https://2021.rtss.org/
       timeline:
-        - deadline: '2021-05-27 23:59:00'
+        - deadline: '2021-05-27 23:59:59'
       timezone: AoE
       date: December 7-10, 2021
       place: Virtual
@@ -27,7 +27,7 @@
       id: rtss23
       link: https://2023.rtss.org/
       timeline:
-        - deadline: '2023-05-25 23:59:00'
+        - deadline: '2023-05-25 23:59:59'
       timezone: AoE
       date: December 6-8, 2023
       place: Taipei
@@ -35,7 +35,7 @@
       id: rtss24
       link: https://2024.rtss.org/
       timeline:
-        - deadline: '2024-05-23 23:59:00'
+        - deadline: '2024-05-23 23:59:59'
       timezone: AoE
       date: December 11-13, 2024
       place: York, United Kingdom

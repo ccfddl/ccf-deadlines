@@ -11,8 +11,8 @@
       id: recsys21
       link: https://recsys.acm.org/recsys21/
       timeline:
-        - abstract_deadline: '2021-04-27 23:59:00'
-          deadline: '2021-05-04 23:59:00'
+        - abstract_deadline: '2021-04-27 23:59:59'
+          deadline: '2021-05-04 23:59:59'
       timezone: AoE
       date: September 27-30, 2021
       place: Amsterdam, Netherlands / Online
@@ -20,8 +20,8 @@
       id: recsys22
       link: https://recsys.acm.org/recsys22/
       timeline:
-        - abstract_deadline: '2022-04-26 23:59:00'
-          deadline: '2022-05-03 23:59:00'
+        - abstract_deadline: '2022-04-26 23:59:59'
+          deadline: '2022-05-03 23:59:59'
       timezone: AoE
       date: September 19-21, 2022
       place: Seattle, WA, USA (with remote attendance)

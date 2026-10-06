@@ -41,7 +41,7 @@
         - abstract_deadline: '2023-10-02 23:59:59'
           deadline: '2023-10-09 23:59:59'
           comment: 'Main track'
-        - deadline: '2024-01-08 23:59:00'
+        - deadline: '2024-01-08 23:59:59'
           comment: 'AAAI track'
       timezone: UTC-12
       date: May 8-10, 2024
@@ -53,7 +53,7 @@
         - abstract_deadline: '2024-10-09 23:59:59'
           deadline: '2024-10-16 23:59:59'
           comment: 'Main track'
-        - deadline: '2025-01-08 23:59:00'
+        - deadline: '2025-01-08 23:59:59'
           comment: 'AAAI track'
       timezone: UTC-12
       date: May 21-23, 2025
@@ -65,7 +65,7 @@
         - abstract_deadline: '2025-10-01 23:59:59'
           deadline: '2025-10-08 23:59:59'
           comment: 'Main track'
-        - deadline: '2025-11-17 23:59:00'
+        - deadline: '2025-11-17 23:59:59'
           comment: 'AAAI track'
       timezone: UTC-12
       date: May 27-29, 2026
@@ -76,8 +76,8 @@
       timeline:
         - abstract_deadline: '2026-10-01 23:59:59'
           deadline: '2026-10-08 23:59:59'
-          rebuttal_deadline: '2026-11-24 23:59:00'
-          decision_deadline: '2026-12-21 23:59:00'
+          rebuttal_deadline: '2026-11-24 23:59:59'
+          decision_deadline: '2026-12-21 23:59:59'
       timezone: AoE
       date: May 3-7, 2027
       place: Hanoi, Vietnam

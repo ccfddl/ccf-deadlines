@@ -20,8 +20,8 @@
       id: dis22
       link: https://dis.acm.org/2022/
       timeline:
-        - abstract_deadline: '2022-02-11 23:59:00'
-          deadline: '2022-02-18 23:59:00'
+        - abstract_deadline: '2022-02-11 23:59:59'
+          deadline: '2022-02-18 23:59:59'
       timezone: AoE
       date: June 13-17, 2022
       place: Virtual
@@ -38,8 +38,8 @@
       id: dis24
       link: https://dis.acm.org/2024/
       timeline:
-        - abstract_deadline: '2024-02-01 23:59:00'
-          deadline: '2024-02-08 23:59:00'
+        - abstract_deadline: '2024-02-01 23:59:59'
+          deadline: '2024-02-08 23:59:59'
       timezone: AoE
       date: July 3-5, 2024
       place: Copenhagen, Denmark

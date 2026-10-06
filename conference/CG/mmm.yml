@@ -11,7 +11,7 @@
       id: mmm21
       link: https://mmm2021.cz/
       timeline:
-        - deadline: '2020-08-31 23:59:00'
+        - deadline: '2020-08-31 23:59:59'
       timezone: AoE
       date: June 22-24, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: mmm22
       link: https://mmm2022.org/
       timeline:
-        - deadline: '2021-09-13 23:59:00'
+        - deadline: '2021-09-13 23:59:59'
       timezone: AoE
       date: June 6-9, 2022
       place: Phu Quoc, Vietnam (Hybrid)
@@ -27,7 +27,7 @@
       id: mmm23
       link: https://www.mmm2023.no/
       timeline:
-        - deadline: '2022-09-12 23:59:00'
+        - deadline: '2022-09-12 23:59:59'
       timezone: AoE
       date: January 9-12, 2023
       place: Bergen, Norway (Hybrid)
@@ -52,7 +52,7 @@
       id: mmm26
       link: https://mmm2026.cz/
       timeline:
-        - deadline: '2025-09-02 23:59:00'
+        - deadline: '2025-09-02 23:59:59'
       timezone: AoE
       date: January 29-31, 2026
       place: Prague, Czech Republic
@@ -60,8 +60,8 @@
       id: mmm27
       link: https://www.mmm2027.net/
       timeline:
-        - deadline: '2026-08-30 23:59:00'
-          decision_deadline: '2026-10-16 23:59:00'
+        - deadline: '2026-08-30 23:59:59'
+          decision_deadline: '2026-10-16 23:59:59'
           comment: 'Regular papers; extended deadline'
       timezone: AoE
       date: January 5-8, 2027

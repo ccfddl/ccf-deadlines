@@ -11,8 +11,8 @@
       id: podc21
       link: https://www.podc.org/podc2021/
       timeline:
-        - abstract_deadline: '2021-02-11 23:59:00'
-          deadline: '2021-02-15 23:59:00'
+        - abstract_deadline: '2021-02-11 23:59:59'
+          deadline: '2021-02-15 23:59:59'
       timezone: AoE
       date: July 26-29, 2021
       place: Virtual
@@ -20,8 +20,8 @@
       id: podc22
       link: https://www.podc.org/podc2022/
       timeline:
-        - abstract_deadline: '2022-02-10 23:59:00'
-          deadline: '2022-02-13 23:59:00'
+        - abstract_deadline: '2022-02-10 23:59:59'
+          deadline: '2022-02-13 23:59:59'
       timezone: AoE
       date: July 26-28, 2022
       place: Salerno, Italy
@@ -29,8 +29,8 @@
       id: podc23
       link: https://www.podc.org/podc2023/
       timeline:
-        - abstract_deadline: '2023-01-06 23:59:00'
-          deadline: '2023-01-10 23:59:00'
+        - abstract_deadline: '2023-01-06 23:59:59'
+          deadline: '2023-01-10 23:59:59'
       timezone: AoE
       date: June 19-23, 2023
       place: Orlando, Florida, USA

@@ -27,7 +27,7 @@
       id: assets23
       link: https://assets23.sigaccess.org/
       timeline:
-        - deadline: '2023-05-03 23:59:00'
+        - deadline: '2023-05-03 23:59:59'
       timezone: AoE
       date: October 23-25, 2023
       place: New York, NY, USA
@@ -35,7 +35,7 @@
       id: assets24
       link: https://assets24.sigaccess.org/
       timeline:
-        - deadline: '2024-04-24 23:59:00'
+        - deadline: '2024-04-24 23:59:59'
       timezone: AoE
       date: October 28-30, 2024
       place: St. John's, Newfoundland and Labrador, Canada

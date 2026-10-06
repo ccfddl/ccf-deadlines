@@ -27,7 +27,7 @@
       id: pkc23
       link: https://pkc.iacr.org/2023/
       timeline:
-        - deadline: '2022-11-01 23:59:00'
+        - deadline: '2022-11-01 23:59:59'
       timezone: AoE
       date: May 7-10, 2023
       place: Atlanta, USA

@@ -11,7 +11,7 @@
       id: ct-rsa21
       link: https://sites.google.com/site/ctrsa2021/
       timeline:
-        - deadline: '2020-12-01 23:59:00'
+        - deadline: '2020-12-01 23:59:59'
       timezone: UTC-12
       date: May 17-20, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: ct-rsa22
       link: https://ct-rsa-2022.auckland.ac.nz/
       timeline:
-        - deadline: '2021-09-23 23:59:00'
+        - deadline: '2021-09-23 23:59:59'
           comment: Submission deadline
       timezone: UTC
       date: February 07-10 , 2022

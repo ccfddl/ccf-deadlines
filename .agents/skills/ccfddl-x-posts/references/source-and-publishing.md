@@ -12,7 +12,7 @@ Each YAML file contains an array of conference objects: `title`, `description`, 
 
 Use CCF A and CCF B plus the exact explicit paths `conference/AI/iclr.yml` and `conference/MX/mlsys.yml`. ICLR is already CCF A at the initial verified source, but keep the requested override. MLSys is CCF N/sub MX and maps to this campaign's Data Systems category.
 
-Treat comments with non-submission wording conservatively and flag for review. Conference event date and place are contextual metadata, never a fallback deadline. Never infer a time from a date-only string. Source values such as 23:59:00 can reflect repository convention; do not claim organizer-level second precision without checking the official page.
+Treat comments with non-submission wording conservatively and flag for review. Conference event date and place are contextual metadata, never a fallback deadline. Never infer a time from a date-only string. Source values such as 23:59:59 can reflect repository convention; do not claim organizer-level second precision without checking the official page.
 
 ## Known conflict
 

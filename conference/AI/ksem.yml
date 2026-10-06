@@ -11,7 +11,7 @@
       id: ksem21
       link: https://www.cloud-conf.net/ksem21/index.html
       timeline:
-        - deadline: '2021-04-30 23:59:00'
+        - deadline: '2021-04-30 23:59:59'
       timezone: AoE
       date: August 14-16, 2021
       place: Online
@@ -19,7 +19,7 @@
       id: ksem22
       link: https://ksem22.smart-conf.net/
       timeline:
-        - deadline: '2022-04-25 23:59:00'
+        - deadline: '2022-04-25 23:59:59'
       timezone: AoE
       date: August 6-8, 2022
       place: Online
@@ -27,7 +27,7 @@
       id: ksem23
       link: https://www.ksem2023.conferences.academy/
       timeline:
-        - deadline: '2023-05-05 23:59:00'
+        - deadline: '2023-05-05 23:59:59'
       timezone: AoE
       date: Aug 16-18, 2023
       place: Guangzhou, China
@@ -35,7 +35,7 @@
       id: ksem24
       link: https://ksem24.ai-edge.net/
       timeline:
-        - deadline: '2024-04-15 23:59:00'
+        - deadline: '2024-04-15 23:59:59'
       timezone: AoE
       date: August 16-17, 2024
       place: Birmingham, UK
@@ -51,7 +51,7 @@
       id: ksem26
       link: https://ksem2026.rosc.org.cn/
       timeline:
-        - deadline: '2026-02-28 23:59:00'
+        - deadline: '2026-02-28 23:59:59'
       timezone: AoE
       date: July 17-18, 2026
       place: Beijing, China

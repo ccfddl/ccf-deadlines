@@ -47,8 +47,8 @@
       id: icdcs24
       link: https://icdcs2024.icdcs.org/
       timeline:
-        - abstract_deadline: '2024-01-12 23:59:00'
-          deadline: '2024-01-26 23:59:00'
+        - abstract_deadline: '2024-01-12 23:59:59'
+          deadline: '2024-01-26 23:59:59'
       timezone: UTC-5
       date: July 24-26, 2024
       place: Jersey City, New Jersey, USA
@@ -56,8 +56,8 @@
       id: icdcs25
       link: https://icdcs2025.icdcs.org/
       timeline:
-        - abstract_deadline: '2024-12-11 23:59:00'
-          deadline: '2024-12-18 23:59:00'
+        - abstract_deadline: '2024-12-11 23:59:59'
+          deadline: '2024-12-18 23:59:59'
       timezone: UTC-12
       date: July 21-23, 2025
       place: Glasgow, Scotland, UK

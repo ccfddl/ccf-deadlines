@@ -11,8 +11,8 @@
       id: cluster21
       link: https://clustercomp.org/2021/
       timeline:
-        - abstract_deadline: '2021-05-10 23:59:00'
-          deadline: '2021-05-24 23:59:00'
+        - abstract_deadline: '2021-05-10 23:59:59'
+          deadline: '2021-05-24 23:59:59'
       timezone: AoE
       date: September 8-10, 2021
       place: Virtual
@@ -20,7 +20,7 @@
       id: cluster22
       link: https://clustercomp.org/2022
       timeline:
-        - deadline: '2022-05-20 23:59:00'
+        - deadline: '2022-05-20 23:59:59'
       timezone: UTC-12
       date: September 7-9, 2022
       place: Heidelberg, Germany
@@ -28,7 +28,7 @@
       id: cluster23
       link: https://clustercomp.org/2023
       timeline:
-        - deadline: '2023-05-15 23:59:00'
+        - deadline: '2023-05-15 23:59:59'
       timezone: AoE
       date: November 1-3, 2023
       place: Santa Fe, New Mexico, USA
@@ -44,7 +44,7 @@
       id: cluster25
       link: https://clustercomp.org/2025
       timeline:
-        - deadline: '2025-05-06 23:59:00'
+        - deadline: '2025-05-06 23:59:59'
       timezone: AoE
       date: September 3-5, 2025
       place: Edinburgh, United Kingdom

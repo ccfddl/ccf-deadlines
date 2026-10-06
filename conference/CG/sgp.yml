@@ -11,8 +11,8 @@
       id: sgp21
       link: https://sgp2021.github.io/
       timeline:
-        - abstract_deadline: '2021-04-19 23:59:00'
-          deadline: '2021-04-24 23:59:00'
+        - abstract_deadline: '2021-04-19 23:59:59'
+          deadline: '2021-04-24 23:59:59'
           comment: Recommended abstract / full paper
       timezone: UTC+0
       date: July 12-14, 2021
@@ -21,8 +21,8 @@
       id: sgp22
       link: https://sgp2022.github.io/
       timeline:
-        - abstract_deadline: '2022-04-07 23:59:00'
-          deadline: '2022-04-11 23:59:00'
+        - abstract_deadline: '2022-04-07 23:59:59'
+          deadline: '2022-04-11 23:59:59'
           comment: Recommended abstract / full paper
       timezone: UTC+0
       date: July 4-6, 2022
@@ -31,8 +31,8 @@
       id: sgp23
       link: https://sgp2023.github.io/
       timeline:
-        - abstract_deadline: '2023-04-07 23:59:00'
-          deadline: '2023-04-12 23:59:00'
+        - abstract_deadline: '2023-04-07 23:59:59'
+          deadline: '2023-04-12 23:59:59'
           comment: Recommended abstract / full paper
       timezone: UTC+0
       date: July 3-5, 2023
@@ -41,8 +41,8 @@
       id: sgp24
       link: https://sgp2024.github.io/
       timeline:
-        - abstract_deadline: '2024-04-10 23:59:00'
-          deadline: '2024-04-12 23:59:00'
+        - abstract_deadline: '2024-04-10 23:59:59'
+          deadline: '2024-04-12 23:59:59'
           comment: Recommended abstract / full paper
       timezone: UTC+0
       date: June 24-26, 2024
@@ -51,11 +51,11 @@
       id: sgp25
       link: https://sgp2025.my.canva.site/
       timeline:
-        - abstract_deadline: '2025-02-04 23:59:00'
-          deadline: '2025-02-07 23:59:00'
+        - abstract_deadline: '2025-02-04 23:59:59'
+          deadline: '2025-02-07 23:59:59'
           comment: 'First round: recommended abstract / full paper'
-        - abstract_deadline: '2025-04-08 23:59:00'
-          deadline: '2025-04-11 23:59:00'
+        - abstract_deadline: '2025-04-08 23:59:59'
+          deadline: '2025-04-11 23:59:59'
           comment: 'Second round: recommended abstract / full paper'
       timezone: UTC+0
       date: July 2-4, 2025

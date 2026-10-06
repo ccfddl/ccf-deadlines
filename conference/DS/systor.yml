@@ -20,7 +20,7 @@
       id: systor22
       link: https://www.systor.org/2022/
       timeline:
-        - deadline: '2022-03-01 23:59:00'
+        - deadline: '2022-03-01 23:59:59'
       timezone: AoE
       date: June 13-15, 2022
       place: Haifa, Israel

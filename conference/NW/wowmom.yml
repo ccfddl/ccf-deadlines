@@ -11,7 +11,7 @@
       id: wowmom21
       link: https://wowmom2021.iit.cnr.it/
       timeline:
-        - deadline: '2020-12-31 23:59:00'
+        - deadline: '2020-12-31 23:59:59'
       timezone: AoE
       date: June 8-10, 2021
       place: Virtual
@@ -19,7 +19,7 @@
       id: wowmom22
       link: https://computing.ulster.ac.uk/WoWMoM2022/
       timeline:
-        - deadline: '2022-01-15 23:59:00'
+        - deadline: '2022-01-15 23:59:59'
       timezone: AoE
       date: June 15-16, 2022
       place: Belfast, Northern Ireland, UK (Hybrid)
@@ -27,7 +27,7 @@
       id: wowmom23
       link: https://coe.northeastern.edu/Groups/wowmom2023/
       timeline:
-        - deadline: '2023-01-19 23:59:00'
+        - deadline: '2023-01-19 23:59:59'
       timezone: AoE
       date: June 13-15, 2023
       place: Boston, MA, USA
@@ -35,7 +35,7 @@
       id: wowmom24
       link: https://cgi.cse.unsw.edu.au/~wowmom/2024/
       timeline:
-        - deadline: '2023-12-17 23:59:00'
+        - deadline: '2023-12-17 23:59:59'
       timezone: AoE
       date: June 5-7, 2024
       place: Perth, Western Australia
@@ -43,7 +43,7 @@
       id: wowmom25
       link: https://wowmomconference.uta.edu/index.html
       timeline:
-        - deadline: '2024-12-09 23:59:00'
+        - deadline: '2024-12-09 23:59:59'
       timezone: AoE
       date: May 28-30, 2025
       place: Fort Worth, Texas, USA
@@ -61,7 +61,7 @@
       link: https://wowmom2027.dii.unipi.it/index.html
       timeline:
         - deadline: '2026-12-01 23:59:59'
-          decision_deadline: '2027-02-10 23:59:00'
+          decision_deadline: '2027-02-10 23:59:59'
       timezone: AoE
       date: June 21-24, 2027
       place: Irvine, California, USA

@@ -11,8 +11,8 @@
       id: iswc21
       link: https://iswc2021.semanticweb.org/
       timeline:
-        - abstract_deadline: '2021-04-12 23:59:00'
-          deadline: '2021-04-19 23:59:00'
+        - abstract_deadline: '2021-04-12 23:59:59'
+          deadline: '2021-04-19 23:59:59'
       timezone: AoE
       date: October 26-28, 2021
       place: Online
@@ -48,7 +48,7 @@
       link: https://iswc2025.semanticweb.org
       timeline:
         - abstract_deadline: '2025-05-06 23:59:59'
-          deadline: '2025-05-14 23:59:00'
+          deadline: '2025-05-14 23:59:59'
       timezone: AoE
       date: November 4-6, 2025
       place: Nara, Japan
@@ -56,8 +56,8 @@
       id: iswc26
       link: https://iswc2026.semanticweb.org/
       timeline:
-        - abstract_deadline: '2026-04-11 23:59:00'
-          deadline: '2026-05-07 23:59:00'
+        - abstract_deadline: '2026-04-11 23:59:59'
+          deadline: '2026-05-07 23:59:59'
           comment: ESWC transfer
         - abstract_deadline: '2026-05-02 23:59:59'
           deadline: '2026-05-07 23:59:59'

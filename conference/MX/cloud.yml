@@ -22,8 +22,8 @@
       id: cloud22
       link: https://conferences.computer.org/cloud/2022/
       timeline:
-        - abstract_deadline: '2022-03-22 23:59:00'
-          deadline: '2022-04-01 23:59:00'
+        - abstract_deadline: '2022-03-22 23:59:59'
+          deadline: '2022-04-01 23:59:59'
           comment: Abstract optional; full required
       timezone: AoE
       date: July 11-15, 2022
@@ -32,7 +32,7 @@
       id: cloud23
       link: https://conferences.computer.org/cloud/2023/
       timeline:
-        - deadline: '2023-03-25 23:59:00'
+        - deadline: '2023-03-25 23:59:59'
       timezone: AoE
       date: July 3-8, 2023
       place: Chicago, USA (Hybrid)
@@ -40,7 +40,7 @@
       id: cloud24
       link: https://cloud.conferences.computer.org/2024/
       timeline:
-        - deadline: '2024-03-31 23:59:00'
+        - deadline: '2024-03-31 23:59:59'
       timezone: AoE
       date: July 8-11, 2024
       place: Shenzhen, China

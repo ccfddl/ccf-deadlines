@@ -9,7 +9,7 @@
       id: computing24
       link: https://saiconference.com/Conferences/Computing2024
       timeline:
-        - deadline: '2023-11-01 23:59:00'
+        - deadline: '2023-11-01 23:59:59'
       timezone: AoE
       date: July 11-12, 2024
       place: London, United Kingdom (Hybrid)
@@ -17,7 +17,7 @@
       id: computing25
       link: https://saiconference.com/Conferences/Computing2025
       timeline:
-        - deadline: '2024-12-15 23:59:00'
+        - deadline: '2024-12-15 23:59:59'
           comment: 'Round 2'
       timezone: AoE
       date: June 19-20, 2025
@@ -26,9 +26,9 @@
       id: computing26
       link: https://saiconference.com/Conferences/Computing2026
       timeline:
-        - deadline: '2025-08-01 23:59:00'
+        - deadline: '2025-08-01 23:59:59'
           comment: 'Round 1'
-        - deadline: '2025-09-01 23:59:00'
+        - deadline: '2025-09-01 23:59:59'
           comment: 'Round 2'
       timezone: AoE
       date: July 9-10, 2026
@@ -37,11 +37,11 @@
       id: computing27
       link: https://saiconference.com/Computing
       timeline:
-        - deadline: '2026-10-01 23:59:00'
-          decision_deadline: '2026-11-01 23:59:00'
+        - deadline: '2026-10-01 23:59:59'
+          decision_deadline: '2026-11-01 23:59:59'
           comment: 'Round 1'
-        - deadline: '2026-12-01 23:59:00'
-          decision_deadline: '2027-01-15 23:59:00'
+        - deadline: '2026-12-01 23:59:59'
+          decision_deadline: '2027-01-15 23:59:59'
           comment: 'Round 2'
       timezone: AoE
       date: July 8-9, 2027
