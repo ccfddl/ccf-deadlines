@@ -1,12 +1,11 @@
 import tempfile
 import unittest
+import struct
 from html.parser import HTMLParser
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
-
-from conference_share_image import FONT, fit_lines, share_image
-from generate_seo_pages import generate
+from conference_share_image import share_images
+from generate_seo_pages import generate, stylesheet
 
 
 class Metadata(HTMLParser):
@@ -43,31 +42,36 @@ class ShareImageTests(unittest.TestCase):
             self.assertEqual(meta['description'], meta['og:description'])
             self.assertEqual(meta['description'], meta['twitter:description'])
             self.assertEqual(meta['og:image:alt'], meta['twitter:image:alt'])
-            with Image.open(page.parent / 'share.png') as image:
-                self.assertEqual(image.size, (1200, 630))
-                self.assertEqual(image.format, 'PNG')
-                self.assertEqual(image.mode, 'RGB')
+            data = (page.parent / 'share.png').read_bytes()
+            self.assertEqual(data[:8], b'\x89PNG\r\n\x1a\n')
+            self.assertEqual(struct.unpack('>II', data[16:24]), (1200, 630))
             self.assertLess((page.parent / 'share.png').stat().st_size, 5_000_000)
             self.assertNotIn('twitter:image', (output / 'venues/index.html').read_text())
 
-    def test_deterministic_no_countdown_or_deadline_dependency(self):
-        conference = {'title': 'AAAI', 'description': 'Conference on Artificial Intelligence', 'rank': {'ccf': 'A'}}
-        edition = {'year': 2027, 'date': 'February 16–23, 2027', 'place': 'Montréal, Canada'}
+    def test_repeatable_unicode_cards_use_site_stylesheet(self):
+        card = {'path': '/venues/ai/aaai-2027/', 'title': 'AAAI 2027',
+                'description': 'Conference on Artificial Intelligence', 'category': 'CCF A / Artificial Intelligence',
+                'date': 'February 16–23, 2027', 'place': 'Montréal, Québec, Canada，Virtual'}
         with tempfile.TemporaryDirectory() as temp:
-            first, second = Path(temp) / 'one.png', Path(temp) / 'two.png'
-            share_image(conference, edition, 'Artificial Intelligence', first)
-            edition['timeline'] = [{'deadline': '1900-01-01 23:59:59'}]
-            share_image(conference, edition, 'Artificial Intelligence', second)
-            self.assertEqual(first.read_bytes(), second.read_bytes())
+            output = Path(temp)
+            share_images([card], stylesheet(), output)
+            target = output / 'venues/ai/aaai-2027/share.png'
+            before = target.read_bytes()
+            share_images([card], stylesheet(), output)
+            self.assertEqual(before, target.read_bytes())
+            # Rendering must consume the site's actual computed font stack,
+            # not maintain another hardcoded or bundled font.
+            renderer = Path(__file__).with_name('render_share_images.mjs').read_text()
+            self.assertIn('getComputedStyle(home).fontFamily', renderer)
+            self.assertNotIn('DejaVu', renderer)
+            self.assertIn('"Roboto Mono","SF Mono",Monaco,monospace', stylesheet())
 
-    def test_long_text_wraps_and_ellipsizes_within_bounds(self):
-        draw = ImageDraw.Draw(Image.new('RGB', (1200, 630)))
-        font = ImageFont.truetype(str(FONT), size=28)
-        for value in ('A long conference name ' * 30, 'X' * 200, 'Unicode Montréal – Zürich'):
-            lines = fit_lines(draw, value, font, 400, 2)
-            self.assertLessEqual(len(lines), 2)
-            self.assertTrue(all(draw.textlength(line, font=font) <= 400 for line in lines))
-        self.assertEqual(fit_lines(draw, '', font, 400, 2), [])
+    def test_long_and_unknown_text_renders(self):
+        with tempfile.TemporaryDirectory() as temp:
+            share_images([{'path': '/venues/ai/long-2027/', 'title': 'X' * 200,
+                           'description': 'A very long conference name ' * 30,
+                           'category': 'Artificial Intelligence', 'date': None, 'place': None}], stylesheet(), Path(temp))
+            self.assertTrue((Path(temp) / 'venues/ai/long-2027/share.png').is_file())
 
 
 if __name__ == '__main__':

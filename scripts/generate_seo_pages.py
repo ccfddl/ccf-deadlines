@@ -16,7 +16,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 import yaml
 
 from conference_dates import conference_opening
-from conference_share_image import share_image
+from conference_share_image import share_images
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -533,6 +533,7 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     (directory / "style.css").write_text(css, encoding="utf-8")
     static_css = f'/venues/{css_filename}'
     written = []
+    cards = []
     seen = set()
     for conference in conferences:
         for edition in conference.get("confs", []):
@@ -542,9 +543,15 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
             seen.add(path)
             target = output / path.lstrip("/") / "index.html"
             target.parent.mkdir(parents=True, exist_ok=True)
-            share_image(conference, edition, CATEGORY_EN_BY_SUB.get(conference["sub"], conference["sub"]), target.parent / "share.png")
+            category = CATEGORY_EN_BY_SUB.get(conference["sub"], conference["sub"])
+            rank = (conference.get("rank") or {}).get("ccf")
+            cards.append({"path": path, "title": f"{conference['title']} {edition['year']}",
+                          "description": conference.get("description") or conference["title"],
+                          "category": f"CCF {rank} / {category}" if rank else category,
+                          "date": edition.get("date"), "place": edition.get("place")})
             target.write_text(edition_page(conference, edition, categories, acceptances, static_css), encoding="utf-8")
             written.append(path)
+    share_images(cards, css, output)
     assets = shared_app_assets(output)
     directory = output / "venues"
     directory.mkdir(exist_ok=True)

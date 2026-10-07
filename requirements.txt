@@ -2,4 +2,3 @@
 jsonschema
 icalendar
 xlin
-Pillow>=10.4,<13
