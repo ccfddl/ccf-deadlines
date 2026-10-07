@@ -5,7 +5,7 @@ description: Prepare and, with a verified authenticated publishing route and aut
 
 # CCFDDL X Posts
 
-Create up to two English digests per publication day: one **AI**, one **Data Systems**, with up to six rows each. After the rows and one blank line, include `see details: ` immediately followed on the same line by the first selected conference’s full detail URL, followed immediately by `#ccfddl #conf_deadline #蓝v`. Omit the entire `see details: ccfddl.com` line. X controls whether a link preview appears; do not attach a generated PNG by default.
+Create up to two English digests per publication day: one **AI**, one **Data Systems**, with up to six rows each. After the rows and one blank line, include `see details: ` immediately followed on the same line by the most-starred selected conference’s full detail URL, followed immediately on the next line by `#ccfddl #conf_deadline #蓝v`. Omit the entire `see details: ccfddl.com` line. X controls whether a link preview appears; do not attach a generated PNG by default.
 
 ## Campaign contract
 
@@ -25,7 +25,7 @@ Before creating a scheduled task, perform a harmless read through the intended p
 
 If the chosen route is unconnected, unauthenticated, or points at another account, prepare previews and report the precise blocker. Use the supported plugin or browser login setup flow. Respect cancelled login/setup requests and wait for the user to continue rather than automatically reopening them. Metricool is optional; do not require it or subscribe to a paid service without authorization. For Metricool, a connected plugin alone is insufficient: read brand settings and verify an actual connected X network. Do not guess the `info` JSON schema or media-file format for `createScheduledPost`; inspect current tool documentation and official provider documentation first. Do not request or store an API key or password in chat. Installing this skill does not connect X.
 
-Default to `media_mode: link_preview`: submit the approved text with one first-selected-conference detail URL and no separate image attachment or homepage footer. Verify that URL’s reachability, canonical, edition and sharing metadata. Successful metadata validation is not proof X will display a preview. Validate the actual account/provider’s full-post capability and report uncertain rendering. For an explicitly requested generated-card fallback only, apply the public-image gate in the source-and-publishing reference.
+Default to `media_mode: link_preview`: submit the approved text with one most-starred-selected-conference detail URL and no separate image attachment or homepage footer. Verify that URL’s reachability, canonical, edition and sharing metadata. Successful metadata validation is not proof X will display a preview. Validate the actual account/provider’s full-post capability and report uncertain rendering. For an explicitly requested generated-card fallback only, apply the public-image gate in the source-and-publishing reference.
 
 Use the user's bounded authorization for this recurring campaign. Ask before expanding its audience, topic, account, or scope. Obtain any additional action-specific confirmations required by the platform or applicable policy. Do not publish a preview merely to test the connector.
 
@@ -45,6 +45,24 @@ Never convert `TBD`, historical patterns, website estimates, conference dates, d
 
 Do not apply independent official-clock overrides or external-source conflict quarantines during publication. In particular, use EDBT’s repository deadline/timezone unchanged and include eligible MLSys repository entries through the existing explicit exception. Preserve CCF A/B plus ICLR/MLSys scope, nearest-stage selection, horizon, TBD handling, precise seconds and normal source-parsing safeguards. Do not edit conference YAML as a side effect of this workflow. Keep known outside-source discrepancies in separate data review, not as publishing blockers or silent substitutions.
 
+## Star-count snapshot for the detail link
+
+Before building each run, fetch `https://ccfddl.com/api/bootstrap` anonymously and require HTTP 200 with the complete JSON response `{"user": null, "counts": {...}, "starred": []}`. This public endpoint’s `counts` keys are repository edition IDs, not conference-series names or GitHub stars. Fetch once for both category digests and record actual fetch time; the server may cache anonymous counts for up to 300 seconds.
+
+Save the complete public response body outside the skill, then freeze it with:
+
+```bash
+python3 <skill>/scripts/countdown.py stars \
+  --response <run>/bootstrap.json --fetched-at <actual-fetch-UTC> \
+  --http-status 200 --output <run>/stars.json
+```
+
+Use `--http-status 200` only after actually verifying that successful response; do not fabricate response contents or refresh the timestamp on cached local data. The snapshot stores source URL, exact public response and SHA256, fetch UTC, complete-response marker, edition-ID semantics and the known server-cache bound. `build --stars` verifies schema, integrity and freshness (at most 15 minutes old and at most one minute in the future), including preview builds.
+
+The API returns all database counter rows without pagination and deletes rows when their count becomes zero. Therefore an absent edition ID means zero **only within this validated complete sparse response**. Missing/malformed/truncated response, wrong endpoint, failed fetch, missing edition ID, invalid count, stale snapshot or broken hash must stop the build. Never default those failures to zero or silently use the first row. A successful empty complete counts object is the documented all-zero case; ties retain current row order.
+
+Star counts affect only the linked conference among the selected maximum six. Do not sort the deadline rows by stars, add an unselected popular conference, change deadline facts or alter normal category/CCF/horizon selection. Record selected edition counts, featured edition/count, source provenance and tie policy in the private manifest. Keep counts out of tweet text unless requested.
+
 ## 3. Build and inspect
 
 Use a current explicit UTC as-of time. Require Python 3.10+, PyYAML, Pillow, and Liberation Sans (Arial-compatible). Use the executor's existing packages or an authorized reputable package source; do not silently install from an unknown source.
@@ -52,7 +70,7 @@ Use a current explicit UTC as-of time. Require Python 3.10+, PyYAML, Pillow, and
 ```bash
 python3 <skill>/scripts/countdown.py build \
   --snapshot <run>/snapshot.json --config <skill>/references/config.json \
-  --as-of <current-UTC-ISO8601> --output <run>/posts --preview
+  --as-of <current-UTC-ISO8601> --stars <run>/stars.json --output <run>/posts --preview
 ```
 
 For an actual publication run, omit `--preview` after all gates are satisfied. A non-preview build requires a complete catalog, confirmed editorial configuration, and a snapshot fetched within 15 minutes. Recheck latest source SHA immediately before sending; if it changed, regenerate the affected content before posting.
@@ -65,13 +83,13 @@ Keep the full selected digest in the text (up to six rows per category). For the
 
 ### Final plain-text contract
 
-Use exactly `CCFDDL daily reminders (AI) · YYYY/MM/DD` as the AI first line and `CCFDDL daily reminders (Data Systems) · YYYY/MM/DD` as the Data Systems first line, with no trailing colon. Resolve `YYYY/MM/DD` from the explicit as-of time in `America/Los_Angeles`, including daylight-saving changes; add the date to tweet text only, keeping the card heading unchanged. Render each selected event as `NAME'YY (stage, round N) · N days`, omitting `, round N` for a single-round conference. Omit `left` from day-based tweet countdowns (use `1 day` for singular). Keep card countdown wording unchanged. Use the existing hour/minute countdown for near-term deadlines. Put one blank line after the heading and one blank line before `see details: ` followed on the same line by the first selected conference’s full canonical detail URL. Follow the URL immediately with exactly `#ccfddl #conf_deadline #蓝v` on the next line. Omit the entire `see details: ccfddl.com` line and any additional homepage link. Keep hashtags out of the image. Keep exact dates and timezones on the website rather than repeating them in the compact tweet. Optional fallback cards retain their three visible rows. Use ordinary text with no Markdown bold or Unicode bold. Uniformly label `abstract_deadline` as `abstract` in the tweet and `NAME YEAR Abstract Deadline` in its matching card; do not relabel CVPR as reg or registration. Do not invent dates from examples. Omit `abstract closed` from all public output while retaining its private fact flag. Do not claim that new registrations or new submissions are still possible. The image retains the AI/Data Systems category.
+Use exactly `CCFDDL daily reminders (AI) · YYYY/MM/DD` as the AI first line and `CCFDDL daily reminders (Data Systems) · YYYY/MM/DD` as the Data Systems first line, with no trailing colon. Resolve `YYYY/MM/DD` from the explicit as-of time in `America/Los_Angeles`, including daylight-saving changes; add the date to tweet text only, keeping the card heading unchanged. Render each selected event as `NAME'YY (stage, round N) · N days`, omitting `, round N` for a single-round conference. Omit `left` from day-based tweet countdowns (use `1 day` for singular). Keep card countdown wording unchanged. Use the existing hour/minute countdown for near-term deadlines. Put one blank line after the heading and one blank line before `see details: ` followed on the same line by the most-starred selected conference’s full canonical detail URL. Follow the URL immediately with exactly `#ccfddl #conf_deadline #蓝v` on the next line. Omit the entire `see details: ccfddl.com` line and any additional homepage link. Keep hashtags out of the image. Keep exact dates and timezones on the website rather than repeating them in the compact tweet. Optional fallback cards retain their three visible rows. Use ordinary text with no Markdown bold or Unicode bold. Uniformly label `abstract_deadline` as `abstract` in the tweet and `NAME YEAR Abstract Deadline` in its matching card; do not relabel CVPR as reg or registration. Do not invent dates from examples. Omit `abstract closed` from all public output while retaining its private fact flag. Do not claim that new registrations or new submissions are still possible. The image retains the AI/Data Systems category.
 
 ### Single-link footer and publication preflight
 
-After the selected rows and one blank line, use `see details: ` followed on the same line by the first selected conference’s full detail URL, then `#ccfddl #conf_deadline #蓝v` on the immediately following line. Keep the full canonical URL in the generated text; X may display it in abbreviated form. Do not substitute a t.co short link or invent a category landing page. Do not add a standalone homepage line, a second link, hidden links, independent link attachments, or PNG by default.
+After the selected rows and one blank line, use `see details: ` followed on the same line by the most-starred selected conference’s full detail URL, then `#ccfddl #conf_deadline #蓝v` on the immediately following line. Keep the full canonical URL in the generated text; X may display it in abbreviated form. Do not substitute a t.co short link or invent a category landing page. Do not add a standalone homepage line, a second link, hidden links, independent link attachments, or PNG by default.
 
-Resolve the first event after digest selection and ordering. Match the website route `https://ccfddl.com/venues/{source-subject-lower}/{slug}-{full-year}/`, with the source title lowercased, non-ASCII-alphanumeric runs replaced by hyphens and trimmed; fall back to the edition ID slug only when the title slug is empty. Use the source subject, not the campaign category Data Systems.
+Choose the highest-starred edition only after digest selection and ordering; preserve all selected rows and their existing deadline order. Break equal counts by the earliest selected row. Use the fresh validated public-count snapshot described below. Match the website route `https://ccfddl.com/venues/{source-subject-lower}/{slug}-{full-year}/`, with the source title lowercased, non-ASCII-alphanumeric runs replaced by hyphens and trimmed; fall back to the edition ID slug only when the title slug is empty. Use the source subject, not the campaign category Data Systems.
 
 Require the conference URL to return HTTP 200 with the correct canonical/edition and inspect its sharing metadata and referenced image. X may omit a preview even with valid metadata; keep `link_preview_guaranteed: false` and `preview_selection_guaranteed: false` in the manifest. No independent card-target capability is needed.
 

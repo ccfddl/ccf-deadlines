@@ -22,6 +22,7 @@ UTC = timezone.utc
 LINK = "https://ccfddl.com"
 DISPLAY_LINK = "ccfddl.com"
 HASHTAGS = "#ccfddl #conf_deadline #蓝v"
+STAR_SOURCE_URL = "https://ccfddl.com/api/bootstrap"
 ZONE_ALIASES = {"AoE": "UTC-12", "PT": "America/Los_Angeles", "ET": "America/New_York"}
 NON_SUBMISSION = re.compile(r"\b(rebuttal|notification|decision|camera[- ]ready|author response|revision[- ]only|commitment)\b", re.I)
 
@@ -211,7 +212,7 @@ def select(rows, config, now):
                 else:
                     round_label = ""
                 for deadline, stage, original, shown_zone in selected_candidates:
-                    event = {"conference": title, "year": conf.get("year"), "id": identity, "round_index": round_number, "timeline_index": index + 1,
+                    event = {"conference": title, "year": conf.get("year"), "id": identity, "star_edition_id": conf.get("id"), "round_index": round_number, "timeline_index": index + 1,
                              "round_label": round_label, "stage": stage, "deadline_utc": iso(deadline),
                              "deadline_source": str(original), "timezone_source": shown_zone,
                              "seconds_left": (deadline - now).total_seconds(), "abstract_closed": bool(stage == "paper" and abstract and abstract <= now),
@@ -275,7 +276,71 @@ def choose_digest_events(events, maximum):
     return selected
 
 
-def tweet(category, events, now, maximum):
+def validate_star_response(raw):
+    """The verified anonymous bootstrap endpoint returns a complete sparse count map."""
+    payload = json.loads(raw)
+    if not isinstance(payload, dict) or payload.get("user", "missing") is not None or payload.get("starred") != []:
+        raise ValueError("Require the complete anonymous CCFDDL bootstrap response")
+    counts = payload.get("counts")
+    if not isinstance(counts, dict):
+        raise ValueError("Missing or malformed star counts must not become zero")
+    for key, value in counts.items():
+        if not isinstance(key, str) or not key or type(value) is not int or value < 0:
+            raise ValueError("Star counts must map edition IDs to nonnegative integers")
+    return counts
+
+
+def snapshot_stars(response_path, fetched_at, output, http_status=200):
+    if http_status != 200:
+        raise ValueError("Star-count fetch did not return HTTP 200")
+    raw = Path(response_path).read_text()
+    validate_star_response(raw)
+    obj = {"source_url": STAR_SOURCE_URL, "fetched_at_utc": iso(fetched_at),
+           "http_status": http_status, "complete_response": True,
+           "response": raw, "response_sha256": sha(raw),
+           "identity": "edition.id", "server_cache_max_age_seconds": 300}
+    Path(output).write_text(json.dumps(obj, ensure_ascii=False, indent=2))
+    return obj
+
+
+def load_stars(path, now):
+    if path is None:
+        raise ValueError("A fresh verified CCFDDL star-count snapshot is required")
+    obj = json.loads(Path(path).read_text())
+    if (obj.get("source_url") != STAR_SOURCE_URL or obj.get("http_status") != 200
+            or obj.get("complete_response") is not True or obj.get("identity") != "edition.id"):
+        raise ValueError("Unverified or incomplete star-count snapshot")
+    raw = obj.get("response")
+    if not isinstance(raw, str) or sha(raw) != obj.get("response_sha256"):
+        raise ValueError("Star-count response integrity mismatch")
+    fetched = as_utc(obj["fetched_at_utc"])
+    if now - fetched > timedelta(minutes=15) or fetched - now > timedelta(minutes=1):
+        raise ValueError("Star-count snapshot is stale or from the future; refresh before building")
+    counts = validate_star_response(raw)
+    return {**{k: v for k, v in obj.items() if k != "response"}, "counts": counts}
+
+
+def featured_event(selected, stars):
+    if not selected:
+        return None
+    if (not isinstance(stars, dict) or stars.get("complete_response") is not True
+            or stars.get("source_url") != STAR_SOURCE_URL or not isinstance(stars.get("counts"), dict)):
+        raise ValueError("A verified complete star-count response is required")
+    counts = stars["counts"]
+    # This API is complete and sparse: its zero-count database rows are deleted.
+    # Missing response/counts is an error above, never a blanket zero fallback.
+    for event in selected:
+        if not event.get("id") or ("star_edition_id" in event and event["star_edition_id"] != event["id"]):
+            raise ValueError("Missing edition ID for star-count lookup")
+        value = counts.get(event["id"], 0)
+        if type(value) is not int or value < 0:
+            raise ValueError("Invalid star count")
+    # max keeps the first selected row on ties. Do not reorder the deadline list.
+    return max(selected, key=lambda event: counts.get(event["id"], 0))
+
+
+def tweet(category, events, now, maximum, stars=None):
+
     # Keep the latest user-specified category header and ordinary plain text.
     if category not in ("AI", "Data Systems"):
         raise ValueError("Invalid publication category")
@@ -292,7 +357,7 @@ def tweet(category, events, now, maximum):
         lines.append(line)
     if not selected:
         return None, []
-    text = "\n\n".join([header, "\n".join(lines), "see details: " + detail_url(selected[0]) + "\n" + HASHTAGS])
+    text = "\n\n".join([header, "\n".join(lines), "see details: " + detail_url(featured_event(selected, stars)) + "\n" + HASHTAGS])
     return text, selected
 
 
@@ -381,10 +446,12 @@ def digest_limit(config, category):
     return limit
 
 
-def build(snapshot_path, config_path, now, output, preview):
+def build(snapshot_path, config_path, now, output, preview, stars_path=None):
     config = json.loads(Path(config_path).read_text())
     if config.get("language", "en") != "en":
         raise ValueError("The deterministic renderer supports English; adapt and validate before using another language")
+    if config.get("detail_link_selection", "most_starred_selected") != "most_starred_selected":
+        raise ValueError("Detail link must use the most-starred selected conference")
     limits = {category: digest_limit(config, category) for category in ("AI", "Data Systems")}
     media_mode = config.get("media_mode", "link_preview")
     if media_mode not in ("link_preview", "generated_card"):
@@ -396,15 +463,20 @@ def build(snapshot_path, config_path, now, output, preview):
     if not preview and (now - fetched > timedelta(minutes=15) or fetched - now > timedelta(minutes=1)):
         raise ValueError("Source snapshot is stale or from the future; refresh immediately before publishing")
     categories, issues = select(rows, config, now)
+    stars = load_stars(stars_path, now)
+    for category, events in categories.items():
+        featured_event(choose_digest_events(events, limits[category]), stars)
     out = Path(output)
     out.mkdir(parents=True, exist_ok=True)
     result = {"account": "ccfddl", "as_of_utc": iso(now), "preview_only": bool(preview), "source_commit": source["commit"],
               "source_repository": source["repository"], "source_fetched_at_utc": source["fetched_at_utc"],
-              "configuration_confirmed": bool(config.get("editorial_confirmed", False)), "skipped_for_review": issues, "digests": []}
+              "configuration_confirmed": bool(config.get("editorial_confirmed", False)),
+              "star_count_source": {k: v for k, v in stars.items() if k != "counts"}, "skipped_for_review": issues, "digests": []}
     for category, events in categories.items():
-        text, chosen = tweet(category, events, now, limits[category])
+        text, chosen = tweet(category, events, now, limits[category], stars)
         if not text:
             continue
+        featured = featured_event(chosen, stars)
         stem = "ai" if category == "AI" else "data-systems"
         (out / (stem + ".txt")).write_text(text + "\n")
         png = None
@@ -422,9 +494,13 @@ def build(snapshot_path, config_path, now, output, preview):
         weight = weighted_length(text)
         result["digests"].append({"category": category, "text": text, "weighted_length_upper_bound": weight,
                                   "long_text_advisory": weight > 280, "needs_publication_capability_validation": weight > 280,
-                                  "media_mode": media_mode, "link_url": detail_url(chosen[0]),
-                                  "card_target_url": detail_url(chosen[0]),
-                                  "visible_detail_url": detail_url(chosen[0]),
+                                  "media_mode": media_mode, "link_url": detail_url(featured),
+                                  "card_target_url": detail_url(featured),
+                                  "visible_detail_url": detail_url(featured),
+                                  "featured_edition_id": featured["id"],
+                                  "featured_star_count": stars["counts"].get(featured["id"], 0),
+                                  "selected_star_counts": {e["id"]: stars["counts"].get(e["id"], 0) for e in chosen},
+                                  "featured_selection_policy": "most_stars_among_selected_then_existing_row_order",
                                   "preview_selection_guaranteed": False,
                                   "requires_live_url_verification": True, "link_preview_guaranteed": False,
                                   "image": str(png.resolve()) if png else None, "alt_text": alt,
@@ -488,6 +564,12 @@ def main():
     b.add_argument("--as-of", required=True)
     b.add_argument("--output", required=True)
     b.add_argument("--preview", action="store_true")
+    b.add_argument("--stars", required=True, help="Fresh verified public star-count snapshot")
+    st = sub.add_parser("stars")
+    st.add_argument("--response", required=True, help="Complete anonymous bootstrap HTTP response body")
+    st.add_argument("--fetched-at", required=True)
+    st.add_argument("--http-status", type=int, required=True)
+    st.add_argument("--output", required=True)
     l = sub.add_parser("ledger")
     l.add_argument("operation", choices=["check", "reserve", "confirm"])
     l.add_argument("--path", required=True)
@@ -500,8 +582,10 @@ def main():
     if args.command == "snapshot":
         snapshot_from_git(args.repo, args.output)
     elif args.command == "build":
-        result = build(args.snapshot, args.config, as_utc(args.as_of), args.output, args.preview)
+        result = build(args.snapshot, args.config, as_utc(args.as_of), args.output, args.preview, args.stars)
         print(json.dumps({"digests": len(result["digests"]), "review_warnings": len(result["skipped_for_review"]), "manifest": str(Path(args.output) / "manifest.json")}))
+    elif args.command == "stars":
+        snapshot_stars(args.response, as_utc(args.fetched_at), args.output, args.http_status)
     else:
         print(json.dumps(ledger(args.path, args.operation, args.day, args.category, args.content_sha256, args.post_url, args.post_id)))
 

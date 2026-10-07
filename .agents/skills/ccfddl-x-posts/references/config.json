@@ -24,5 +24,6 @@
   "max_items_by_category": {
     "AI": 6,
     "Data Systems": 6
-  }
+  },
+  "detail_link_selection": "most_starred_selected"
 }
