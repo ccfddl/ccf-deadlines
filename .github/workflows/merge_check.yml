@@ -27,7 +27,7 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Check share-card browser startup
         run: |
-          node --test scripts/test_share_browser.mjs
+          node --test scripts/test_share_browser.mjs scripts/test_share_card_canvas.mjs
           python -m unittest discover -s scripts -p 'test_conference_share_image.py'
       - name: Assemble yml files
         run: python scripts/build_data.py
@@ -60,6 +60,16 @@ jobs:
         run: node scripts/test_timeline_browser.mjs dist
       - name: Generate crawlable conference pages
         run: python scripts/generate_seo_pages.py
+      - name: Upload deadline-card review previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: deadline-card-previews
+          retention-days: 7
+          if-no-files-found: error
+          path: |
+            dist/venues/ai/aaai-2027/share.png
+            dist/venues/db/sigmod-2027/share.png
+            dist/venues/db/vldb-2027/share.png
       - name: Verify public MCP pages
         run: |
           test -s dist/mcp-support.html

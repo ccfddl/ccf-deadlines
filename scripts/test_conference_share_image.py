@@ -4,7 +4,7 @@ import struct
 from html.parser import HTMLParser
 from pathlib import Path
 
-from conference_share_image import share_images
+from conference_share_image import deadline_card_data, share_images
 from generate_seo_pages import generate, stylesheet
 
 
@@ -32,7 +32,7 @@ class ShareImageTests(unittest.TestCase):
             meta = Metadata(html).values
             canonical = 'https://ccfddl.com/venues/ai/a-b-conference-2027/'
             self.assertEqual(meta['og:url'], canonical)
-            self.assertEqual(meta['og:image'], canonical + 'share.png')
+            self.assertEqual(meta['og:image'], canonical + 'share.png?v=deadlines-2')
             self.assertEqual(meta['twitter:image'], meta['og:image'])
             self.assertEqual(meta['twitter:card'], 'summary_large_image')
             self.assertEqual(meta['twitter:site'], '@ccfddl')
@@ -51,7 +51,8 @@ class ShareImageTests(unittest.TestCase):
     def test_repeatable_unicode_cards_use_site_stylesheet(self):
         card = {'path': '/venues/ai/aaai-2027/', 'title': 'AAAI 2027',
                 'description': 'Conference on Artificial Intelligence', 'category': 'CCF A / Artificial Intelligence',
-                'date': 'February 16–23, 2027', 'place': 'Montréal, Québec, Canada，Virtual'}
+                'date': 'February 16–23, 2027', 'place': 'Montréal, Québec, Canada，Virtual',
+                **deadline_card_data({'timezone': 'UTC-12', 'timeline': [{'abstract_deadline': '2026-07-21 23:59:59', 'deadline': '2026-07-28 23:59:59', 'rebuttal_deadline': '2026-10-25 23:59:59', 'decision_deadline': '2026-11-30 23:59:59'}]})}
         with tempfile.TemporaryDirectory() as temp:
             output = Path(temp)
             share_images([card], stylesheet(), output)

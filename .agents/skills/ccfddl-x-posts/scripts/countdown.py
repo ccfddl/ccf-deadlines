@@ -325,7 +325,7 @@ def tweet(category, events, now, maximum):
         lines.append(line)
     if not selected:
         return None, []
-    text = "\n\n".join([header, "\n".join(lines), "see details: " + DISPLAY_LINK + "\n" + HASHTAGS])
+    text = "\n\n".join([header, "\n".join(lines), "see details: " + DISPLAY_LINK + "\n" + detail_url(selected[0]) + "\n" + HASHTAGS])
     return text, selected
 
 
@@ -444,8 +444,8 @@ def build(snapshot_path, config_path, now, output, preview):
                                   "long_text_advisory": weight > 280, "needs_publication_capability_validation": weight > 280,
                                   "media_mode": media_mode, "link_url": LINK, "display_link": DISPLAY_LINK,
                                   "card_target_url": detail_url(chosen[0]),
-                                  "requires_separate_card_target_validation": True,
-                                  "publication_blocker": "Separate first-conference card target needs verified support; current Buffer X route does not provide it",
+                                  "visible_detail_url": detail_url(chosen[0]),
+                                  "preview_selection_guaranteed": False,
                                   "requires_live_url_verification": True, "link_preview_guaranteed": False,
                                   "image": str(png.resolve()) if png else None, "alt_text": alt,
                                   "events": chosen, "card_events": card_events, "card_has_more": card_has_more,
