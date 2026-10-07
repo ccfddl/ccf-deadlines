@@ -16,6 +16,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 import yaml
 
 from conference_dates import conference_opening
+from conference_share_image import share_images
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -113,7 +114,25 @@ def directory_startup() -> str:
     </script>'''
 
 
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css") -> str:
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "") -> str:
+    social = ""
+    if social_image:
+        social = f'''<meta property="og:type" content="website">
+  <meta property="og:site_name" content="CCFDDL">
+  <meta property="og:title" content="{text(title)}">
+  <meta property="og:description" content="{text(description)}">
+  <meta property="og:url" content="{text(canonical)}">
+  <meta property="og:image" content="{text(social_image)}">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{text(social_image_alt)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@ccfddl">
+  <meta name="twitter:title" content="{text(title)}">
+  <meta name="twitter:description" content="{text(description)}">
+  <meta name="twitter:image" content="{text(social_image)}">
+  <meta name="twitter:image:alt" content="{text(social_image_alt)}">'''
     clock_control = (
         '<div class="toolbar-clock"><time class="toolbar-clock-value" id="display-clock">—</time>'
         '<span class="toolbar-timezone"><span>(</span><label class="toolbar-timezone-picker">'
@@ -132,6 +151,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <title>{text(title)}</title>
   <meta name="description" content="{text(description)}">
   <link rel="canonical" href="{text(canonical)}">
+  {social}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2114972416819347" crossorigin="anonymous"></script>
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/svg+xml" href="/ccfddl-logo.svg">
@@ -304,7 +324,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     <section class="editions"><h2>past venues</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
     """
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/venues/">All venues</a><span>/</span><span>{text(name)} {year}</span></nav>'
-    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css)
+    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png", social_image_alt=f"{name} {year}: conference dates and location on CCFDDL")
 
 
 def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "", static_css: str = "/venues/style.css") -> str:
@@ -513,6 +533,7 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     (directory / "style.css").write_text(css, encoding="utf-8")
     static_css = f'/venues/{css_filename}'
     written = []
+    cards = []
     seen = set()
     for conference in conferences:
         for edition in conference.get("confs", []):
@@ -522,8 +543,15 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
             seen.add(path)
             target = output / path.lstrip("/") / "index.html"
             target.parent.mkdir(parents=True, exist_ok=True)
+            category = CATEGORY_EN_BY_SUB.get(conference["sub"], conference["sub"])
+            rank = (conference.get("rank") or {}).get("ccf")
+            cards.append({"path": path, "title": f"{conference['title']} {edition['year']}",
+                          "description": conference.get("description") or conference["title"],
+                          "category": f"CCF {rank} / {category}" if rank else category,
+                          "date": edition.get("date"), "place": edition.get("place")})
             target.write_text(edition_page(conference, edition, categories, acceptances, static_css), encoding="utf-8")
             written.append(path)
+    share_images(cards, css, output)
     assets = shared_app_assets(output)
     directory = output / "venues"
     directory.mkdir(exist_ok=True)
