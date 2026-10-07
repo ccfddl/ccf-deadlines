@@ -1,22 +1,12 @@
 // Render all conference cards in one Chromium session, using the actual site's
 // generated stylesheet. No bundled font, image service, or npm dependencies.
-import { spawn } from 'node:child_process';
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { dirname, join, resolve, sep } from 'node:path';
-import { setTimeout as delay } from 'node:timers/promises';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, resolve, sep } from 'node:path';
+import { launchShareBrowser } from './share_browser.mjs';
 
 const {cards, css} = JSON.parse(readFileSync(0, 'utf8'));
 const output = resolve(process.argv[2]);
-const chrome = process.env.CHROME_BINARY ?? [
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-  '/usr/bin/google-chrome', '/usr/bin/chromium',
-].find(existsSync);
-if (!chrome) throw new Error('Share cards require Chrome/Chromium; set CHROME_BINARY if needed');
-const profile = mkdtempSync(join(tmpdir(), 'ccfddl-share-'));
-const browser = spawn(chrome, ['--headless=new', '--disable-extensions', '--no-first-run',
-  '--no-default-browser-check', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage',
-  '--remote-debugging-port=0', `--user-data-dir=${profile}`, 'about:blank'], {stdio: 'ignore'});
+const {port, cleanup} = await launchShareBrowser();
 let socket, nextId = 0;
 const pending = new Map();
 function command(method, params = {}) {
@@ -33,13 +23,6 @@ async function evaluate(expression) {
   return result.result.value;
 }
 try {
-  const portFile = join(profile, 'DevToolsActivePort');
-  const deadline = Date.now() + 20000;
-  while (!existsSync(portFile)) {
-    if (browser.exitCode !== null || browser.signalCode !== null || Date.now() > deadline) throw new Error('Chrome failed to start');
-    await delay(50);
-  }
-  const port = readFileSync(portFile, 'utf8').split('\n')[0];
   const targets = await fetch(`http://127.0.0.1:${port}/json/list`).then(r => r.json());
   const target = targets.find(t => t.type === 'page');
   socket = new WebSocket(target.webSocketDebuggerUrl);
@@ -75,11 +58,7 @@ try {
 } finally {
   for (const waiting of pending.values()) clearTimeout(waiting.timer);
   socket?.close();
-  if (browser.exitCode === null && browser.signalCode === null) {
-    const exited = new Promise(done => browser.once('exit', done));
-    browser.kill(); await Promise.race([exited, delay(2000)]);
-  }
-  rmSync(profile, {recursive: true, force: true, maxRetries: 5, retryDelay: 100});
+  await cleanup();
 }
 
 function drawShareCard(card) {
