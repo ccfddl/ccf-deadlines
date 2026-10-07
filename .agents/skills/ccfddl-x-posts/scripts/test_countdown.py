@@ -134,30 +134,34 @@ class SelectionTests(unittest.TestCase):
         cats, _ = c.select(rows, {}, NOW)
         self.assertEqual(len(cats["AI"]), 2)
 
-    def test_official_clock_override_exact_guard(self):
+    def test_repository_deadline_ignores_legacy_official_override(self):
         r = row("EDBT", sub="DB", timeline=[{"deadline": "2026-10-07 23:59:59"}], identity="edbt27")
-        override = {"source_path": "conference/DB/edbt.yml", "id": "edbt27", "timeline_index": 1, "field": "deadline", "expected_repository_value": "2026-10-07 23:59:59", "expected_repository_timezone": "AoE", "replacement_value": "2026-10-07 17:00:00", "replacement_timezone": "America/Los_Angeles", "display_timezone": "PT", "official_url": "https://edbticdt2027.github.io/?contents=important_dates.html", "verified_at_utc": "2026-10-03T14:25:30Z"}
-        cfg = {"official_deadline_overrides": [override]}
+        cfg = {"official_deadline_overrides": [{"source_path": "conference/DB/edbt.yml",
+               "id": "edbt27", "timeline_index": 1, "field": "deadline",
+               "replacement_value": "2026-10-07 17:00:00", "replacement_timezone": "PT"}]}
         cats, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
         event = cats["Data Systems"][0]
-        self.assertEqual(event["deadline_utc"], "2026-10-08T00:00:00Z")
-        self.assertEqual(event["timezone_source"], "PT")
-        self.assertEqual(event["deadline_source"], "2026-10-07 17:00:00")
-        self.assertIn("official_deadline_override", event)
+        self.assertEqual(event["deadline_utc"], "2026-10-08T11:59:59Z")
+        self.assertEqual(event["timezone_source"], "AoE")
+        self.assertEqual(event["deadline_source"], "2026-10-07 23:59:59")
+        self.assertNotIn("official_deadline_override", event)
+        self.assertEqual(issues, [])
         r["confs"][0]["timeline"][0]["deadline"] = "2026-10-09 23:59:59"
         changed, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
-        self.assertEqual(changed["Data Systems"], [])
-        self.assertIn("fingerprint changed", issues[0]["reason"])
-        r["confs"][0]["timeline"][0]["deadline"] = "2026-10-07 17:00:00"
-        r["confs"][0]["timezone"] = "PT"
-        corrected, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
-        self.assertEqual(corrected["Data Systems"][0]["deadline_utc"], "2026-10-08T00:00:00Z")
-        self.assertNotIn("official_deadline_override", corrected["Data Systems"][0])
+        self.assertEqual(changed["Data Systems"][0]["deadline_utc"], "2026-10-10T11:59:59Z")
+        self.assertEqual(issues, [])
 
-    def test_quarantine(self):
-        cats, issues = c.select([(row(), "conference/AI/x.yml")], {"quarantine_events": [{"source_path": "conference/AI/x.yml", "id": "example27", "reason": "clock conflict"}]}, NOW)
-        self.assertEqual(cats["AI"], [])
-        self.assertEqual(issues[0]["reason"], "clock conflict")
+    def test_repository_mlsys_ignores_legacy_external_quarantine(self):
+        r = row("MLSys", sub="MX", rank="N", identity="mlsys27",
+                timeline=[{"deadline": "2026-10-30 12:00:00"}], zone="PT")
+        cfg = {"include_paths": ["conference/MX/mlsys.yml"],
+               "quarantine_events": [{"source_path": "conference/MX/mlsys.yml",
+                                     "id": "mlsys27", "reason": "external clock conflict"}]}
+        cats, issues = c.select([(r, "conference/MX/mlsys.yml")], cfg, NOW)
+        self.assertEqual(len(cats["Data Systems"]), 1)
+        self.assertEqual(cats["Data Systems"][0]["deadline_source"], "2026-10-30 12:00:00")
+        self.assertEqual(cats["Data Systems"][0]["deadline_utc"], "2026-10-30T19:00:00Z")
+        self.assertEqual(issues, [])
 
     def test_skip_expired_far_tbd_and_unclear(self):
         r = row(timeline=[{"deadline": "TBD"}, {"deadline": "2025-01-01 12:00:00"}, {"deadline": "2030-01-01 12:00:00"}, {"deadline": "2026-10-12 12:00:00", "comment": "Rebuttal deadline"}])
@@ -182,13 +186,13 @@ class SelectionTests(unittest.TestCase):
         cats, _ = c.select(rows, {}, NOW)
         text, chosen = c.tweet("AI", cats["AI"], NOW, 3)
         self.assertLessEqual(len(chosen), 3)
-        self.assertTrue(text.endswith(c.DISPLAY_LINK + "\n" + c.detail_url(chosen[0]) + "\n#ccfddl #conf_deadline #蓝v"))
+        self.assertTrue(text.endswith("see details: " + c.detail_url(chosen[0]) + "\n#ccfddl #conf_deadline #蓝v"))
 
     def test_exact_user_plain_text_format(self):
         timelines = [{"deadline": "TBD"} for _ in range(3)] + [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
         cats, _ = c.select([(row("SIGMOD", sub="DB", timeline=timelines), "conference/DB/sigmod.yml")], {}, NOW)
         text, _ = c.tweet("Data Systems", cats["Data Systems"], NOW, 3)
-        self.assertEqual(text, "CCFDDL deadline reminders (Data Systems) · 2026/10/03\n\nSIGMOD'27 (abstract, round 4) · 7 days\n\nsee details: ccfddl.com\nhttps://ccfddl.com/venues/db/sigmod-2027/\n#ccfddl #conf_deadline #蓝v")
+        self.assertEqual(text, "CCFDDL daily reminders (Data Systems) · 2026/10/03\n\nSIGMOD'27 (abstract, round 4) · 7 days\n\nsee details: https://ccfddl.com/venues/db/sigmod-2027/\n#ccfddl #conf_deadline #蓝v")
         self.assertNotIn("**", text)
         self.assertFalse(text.splitlines()[0].endswith(":"))
 
@@ -215,9 +219,9 @@ class SelectionTests(unittest.TestCase):
                 with self.subTest(category=category, stamp=stamp):
                     text, _ = c.tweet(category, cats["AI"], c.as_utc(stamp), 3)
                     self.assertEqual(text.splitlines()[0],
-                                     f"CCFDDL deadline reminders ({category}) · {date}")
+                                     f"CCFDDL daily reminders ({category}) · {date}")
                     # The Chinese character in the hashtag has weight two; other non-URL characters weigh one.
-                    self.assertEqual(c.weighted_length(text), len(text) - len(c.DISPLAY_LINK) - len(c.detail_url(cats["AI"][0])) + 46 + 1)
+                    self.assertEqual(c.weighted_length(text), len(text) - len(c.detail_url(cats["AI"][0])) + 23 + 1)
 
     def test_explicit_multiple_stages(self):
         timeline = [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
@@ -234,7 +238,7 @@ class SelectionTests(unittest.TestCase):
     def test_ai_category_header_without_colon(self):
         cats, _ = c.select([(row(), "conference/AI/x.yml")], {}, NOW)
         text, _ = c.tweet("AI", cats["AI"], NOW, 3)
-        self.assertEqual(text.splitlines()[0], "CCFDDL deadline reminders (AI) · 2026/10/03")
+        self.assertEqual(text.splitlines()[0], "CCFDDL daily reminders (AI) · 2026/10/03")
 
     def test_abstract_display_ignores_registration_alias(self):
         cats, _ = c.select([(row("CVPR", timeline=[{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]), "conference/AI/cvpr.yml")], {}, NOW)
@@ -269,6 +273,43 @@ class BuildAndLedgerTests(unittest.TestCase):
         path.write_text(json.dumps(obj))
         return path
 
+    def test_category_limits(self):
+        self.assertEqual(c.digest_limit({}, "AI"), 6)
+        self.assertEqual(c.digest_limit({}, "Data Systems"), 6)
+        for cfg, category in [({"max_items_by_category": {"AI": 7}}, "AI"),
+                              ({"max_items_by_category": {"Data Systems": 7}}, "Data Systems"),
+                              ({"max_items_by_category": {"Data Systems": 0}}, "Data Systems"),
+                              ({"max_items_by_category": {"Unknown": 6}}, "AI")]:
+            with self.subTest(cfg=cfg):
+                with self.assertRaises(ValueError):
+                    c.digest_limit(cfg, category)
+
+    def test_both_categories_six_without_inventing_rows(self):
+        for data_count in (3, 9):
+            with self.subTest(data_count=data_count), tempfile.TemporaryDirectory() as temp:
+                snapshot = self.make_snapshot(temp)
+                obj = json.loads(snapshot.read_text())
+                rows = [row(f"AI{i:02d}", identity=f"ai{i}27") for i in range(8)]
+                rows += [row(f"DB{i:02d}", sub="DB", rank="A" if i == data_count - 1 else "B",
+                             identity=f"db{i}27") for i in range(data_count)]
+                raw = yaml.safe_dump(rows)
+                obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
+                snapshot.write_text(json.dumps(obj))
+                cfg = Path(temp) / "config.json"
+                cfg.write_text('{"editorial_confirmed":true,"max_items_by_category":{"AI":6,"Data Systems":6}}')
+                manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+                digests = {d["category"]: d for d in manifest["digests"]}
+                self.assertEqual(len(digests["AI"]["events"]), 6)
+                data = digests["Data Systems"]
+                self.assertEqual(len(data["events"]), min(data_count, 6))
+                self.assertEqual(data["max_text_events"], 6)
+                self.assertEqual(data["omitted_event_count"], max(0, data_count - 6))
+                self.assertEqual({e["rank_ccf"] for e in data["events"]}, {"A", "B"})
+                self.assertEqual([e["conference"] for e in data["events"]],
+                                 sorted(e["conference"] for e in data["events"]))
+                self.assertEqual(data["needs_publication_capability_validation"], c.weighted_length(data["text"]) > 280)
+                self.assertIsNone(data["image"])
+
     def test_build(self):
         with tempfile.TemporaryDirectory() as temp:
             snapshot = self.make_snapshot(temp)
@@ -297,8 +338,8 @@ class BuildAndLedgerTests(unittest.TestCase):
             self.assertEqual(digest["category"], "Data Systems")
             self.assertEqual(len(digest["events"]), 6)
             self.assertEqual(digest["media_mode"], "link_preview")
-            self.assertEqual(digest["link_url"], "https://ccfddl.com")
-            self.assertEqual(digest["display_link"], "ccfddl.com")
+            self.assertEqual(digest["link_url"], c.detail_url(digest["events"][0]))
+            self.assertNotIn("display_link", digest)
             self.assertNotIn("detail_url", digest)
             self.assertEqual(digest["card_target_url"], c.detail_url(digest["events"][0]))
             self.assertNotIn("requires_separate_card_target_validation", digest)
@@ -306,8 +347,10 @@ class BuildAndLedgerTests(unittest.TestCase):
             self.assertFalse(digest["preview_selection_guaranteed"])
             self.assertEqual(digest["visible_detail_url"], digest["card_target_url"])
             self.assertEqual(digest["text"].count("https://"), 1)
-            self.assertEqual(digest["text"].count("ccfddl.com"), 2)
-            self.assertTrue(digest["text"].endswith("see details: ccfddl.com\n" + digest["visible_detail_url"] + "\n#ccfddl #conf_deadline #蓝v"))
+            self.assertEqual(digest["text"].count("ccfddl.com"), 1)
+            self.assertTrue(digest["text"].endswith("see details: " + digest["visible_detail_url"] + "\n#ccfddl #conf_deadline #蓝v"))
+            self.assertEqual(digest["text"].count("see details: "), 1)
+            self.assertNotIn("see details: ccfddl.com", digest["text"])
             self.assertIsNone(digest["image"])
             self.assertFalse(list((Path(temp) / "output").glob("*.png")))
             self.assertTrue(digest["needs_publication_capability_validation"])
