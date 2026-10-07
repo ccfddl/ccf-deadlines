@@ -17,36 +17,13 @@
   "include_titles": [],
   "exclude_titles": [],
   "horizon_days": 120,
-  "max_items_per_category": 6,
-  "quarantine_events": [
-    {
-      "source_path": "conference/MX/mlsys.yml",
-      "id": "mlsys27",
-      "reason": "Exact submission clock conflict verified 2026-10-03: official CFP states 2026-10-30 20:00 UTC, official Dates/homepage state 12:00 PDT (19:00 UTC). Recheck both official pages and source before removing this quarantine.",
-      "sources": [
-        "https://mlsys.org/Conferences/2027/CallForResearchPapers",
-        "https://mlsys.org/Conferences/2027/Dates"
-      ]
-    }
-  ],
   "stage_selection": "nearest",
   "card_limit": 3,
-  "official_deadline_overrides": [
-    {
-      "source_path": "conference/DB/edbt.yml",
-      "id": "edbt27",
-      "timeline_index": 3,
-      "field": "deadline",
-      "expected_repository_value": "2026-10-07 23:59:59",
-      "expected_repository_timezone": "AoE",
-      "replacement_value": "2026-10-07 17:00:00",
-      "replacement_timezone": "America/Los_Angeles",
-      "display_timezone": "PT",
-      "official_url": "https://edbticdt2027.github.io/?contents=important_dates.html",
-      "official_content_url": "https://edbticdt2027.github.io/contents/important_dates.html",
-      "verified_at_utc": "2026-10-03T14:25:30Z",
-      "reason": "Official EDBT research deadlines are 5 pm PT; round 3 is October 7, 2026. The source AoE value is almost twelve hours late. Recheck the official page before each publication while override is active."
-    }
-  ],
-  "media_mode": "link_preview"
+  "media_mode": "link_preview",
+  "publishing_source_policy": "repository_exact",
+  "max_items_by_category": {
+    "AI": 6,
+    "Data Systems": 6
+  },
+  "detail_link_selection": "most_starred_selected"
 }

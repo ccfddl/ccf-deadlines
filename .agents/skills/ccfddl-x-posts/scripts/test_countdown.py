@@ -16,6 +16,75 @@ def row(title="Example", sub="AI", rank="A", timeline=None, zone="AoE", identity
             "timezone": zone, "link": "https://example.org", "date": "July 2027", "timeline": timeline or [{"deadline": "2026-10-10 23:59:59"}]}]}
 
 
+def zero_stars():
+    return {"source_url": c.STAR_SOURCE_URL, "complete_response": True, "counts": {}}
+
+
+def tweet_with_zero_stars(category, events, now, maximum):
+    return c.tweet(category, events, now, maximum, zero_stars())
+
+
+def build_with_zero_stars(snapshot, config, now, output, preview):
+    raw = Path(output).parent / "bootstrap-test.json"
+    raw.write_text('{"user":null,"counts":{},"starred":[]}')
+    stars = Path(output).parent / "stars-test.json"
+    c.snapshot_stars(raw, now, stars, 200)
+    return c.build(snapshot, config, now, output, preview, stars)
+
+
+class StarTests(unittest.TestCase):
+    def test_most_starred_selected_only_without_reordering(self):
+        cats, _ = c.select([(row(f"Event{i}", identity=f"event{i}27"), f"conference/AI/x{i}.yml")
+                            for i in range(7)], {}, NOW)
+        events = cats["AI"]
+        stars = {"source_url": c.STAR_SOURCE_URL, "complete_response": True,
+                 "counts": {"event027": 2, "event227": 9, "event327": 9, "event627": 999}}
+        text, chosen = c.tweet("AI", events, NOW, 6, stars)
+        self.assertEqual(chosen, events[:6])
+        self.assertEqual(c.featured_event(chosen, stars)["id"], "event227")
+        self.assertIn("see details: " + c.detail_url(events[2]), text)
+        self.assertLess(text.index("Event0'27"), text.index("Event2'27"))
+        self.assertNotIn("event6-2027", text)
+
+    def test_complete_sparse_zeros_and_failure_are_distinct(self):
+        events = [{"id": "absent"}, {"id": "explicit-zero"}]
+        stars = {"source_url": c.STAR_SOURCE_URL, "complete_response": True,
+                 "counts": {"explicit-zero": 0}}
+        self.assertEqual(c.featured_event(events, stars), events[0])
+        for bad in (None, {}, {"counts": {}}, {**stars, "complete_response": False},
+                    {**stars, "counts": {"absent": -1}}, {**stars, "counts": {"absent": True}}):
+            with self.subTest(bad=bad), self.assertRaises(ValueError):
+                c.featured_event(events, bad)
+
+    def test_snapshot_provenance_freshness_integrity_and_schema(self):
+        with tempfile.TemporaryDirectory() as temp:
+            response = Path(temp) / "response.json"
+            path = Path(temp) / "stars.json"
+            response.write_text('{"user":null,"counts":{"cvpr27":216},"starred":[]}')
+            c.snapshot_stars(response, NOW, path, 200)
+            stars = c.load_stars(path, NOW)
+            self.assertEqual(stars["counts"]["cvpr27"], 216)
+            self.assertEqual(stars["identity"], "edition.id")
+            for clock in (NOW + timedelta(minutes=16), NOW - timedelta(minutes=2)):
+                with self.assertRaises(ValueError):
+                    c.load_stars(path, clock)
+            altered = json.loads(path.read_text())
+            altered["response"] += " "
+            path.write_text(json.dumps(altered))
+            with self.assertRaises(ValueError):
+                c.load_stars(path, NOW)
+            with self.assertRaises(ValueError):
+                c.snapshot_stars(response, NOW, path, 503)
+            for payload in ('{}', '{"user":null,"starred":[]}',
+                            '{"user":null,"counts":null,"starred":[]}',
+                            '{"user":null,"counts":{"a":1.5},"starred":[]}',
+                            '{"user":{"login":"private"},"counts":{},"starred":[]}'):
+                with self.subTest(payload=payload), self.assertRaises(ValueError):
+                    c.validate_star_response(payload)
+            with self.assertRaises(ValueError):
+                c.load_stars(None, NOW)
+
+
 class DeadlineTests(unittest.TestCase):
     def test_aoe(self):
         self.assertEqual(c.iso(c.parse_deadline("2026-10-10 23:59:59", "AoE")), "2026-10-11T11:59:59Z")
@@ -125,7 +194,7 @@ class SelectionTests(unittest.TestCase):
         r = row(timeline=[{"abstract_deadline": "2026-10-01 12:00:00", "deadline": "2026-10-10 12:00:00"}])
         cats, _ = c.select([(r, "conference/AI/x.yml")], {}, NOW)
         self.assertTrue(cats["AI"][0]["abstract_closed"])
-        text, _ = c.tweet("AI", cats["AI"], NOW, 3)
+        text, _ = tweet_with_zero_stars("AI", cats["AI"], NOW, 3)
         self.assertNotIn("abstract closed", text)
         self.assertNotIn("abstract closed", c.card_event_title(cats["AI"][0]))
 
@@ -134,30 +203,34 @@ class SelectionTests(unittest.TestCase):
         cats, _ = c.select(rows, {}, NOW)
         self.assertEqual(len(cats["AI"]), 2)
 
-    def test_official_clock_override_exact_guard(self):
+    def test_repository_deadline_ignores_legacy_official_override(self):
         r = row("EDBT", sub="DB", timeline=[{"deadline": "2026-10-07 23:59:59"}], identity="edbt27")
-        override = {"source_path": "conference/DB/edbt.yml", "id": "edbt27", "timeline_index": 1, "field": "deadline", "expected_repository_value": "2026-10-07 23:59:59", "expected_repository_timezone": "AoE", "replacement_value": "2026-10-07 17:00:00", "replacement_timezone": "America/Los_Angeles", "display_timezone": "PT", "official_url": "https://edbticdt2027.github.io/?contents=important_dates.html", "verified_at_utc": "2026-10-03T14:25:30Z"}
-        cfg = {"official_deadline_overrides": [override]}
+        cfg = {"official_deadline_overrides": [{"source_path": "conference/DB/edbt.yml",
+               "id": "edbt27", "timeline_index": 1, "field": "deadline",
+               "replacement_value": "2026-10-07 17:00:00", "replacement_timezone": "PT"}]}
         cats, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
         event = cats["Data Systems"][0]
-        self.assertEqual(event["deadline_utc"], "2026-10-08T00:00:00Z")
-        self.assertEqual(event["timezone_source"], "PT")
-        self.assertEqual(event["deadline_source"], "2026-10-07 17:00:00")
-        self.assertIn("official_deadline_override", event)
+        self.assertEqual(event["deadline_utc"], "2026-10-08T11:59:59Z")
+        self.assertEqual(event["timezone_source"], "AoE")
+        self.assertEqual(event["deadline_source"], "2026-10-07 23:59:59")
+        self.assertNotIn("official_deadline_override", event)
+        self.assertEqual(issues, [])
         r["confs"][0]["timeline"][0]["deadline"] = "2026-10-09 23:59:59"
         changed, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
-        self.assertEqual(changed["Data Systems"], [])
-        self.assertIn("fingerprint changed", issues[0]["reason"])
-        r["confs"][0]["timeline"][0]["deadline"] = "2026-10-07 17:00:00"
-        r["confs"][0]["timezone"] = "PT"
-        corrected, issues = c.select([(r, "conference/DB/edbt.yml")], cfg, NOW)
-        self.assertEqual(corrected["Data Systems"][0]["deadline_utc"], "2026-10-08T00:00:00Z")
-        self.assertNotIn("official_deadline_override", corrected["Data Systems"][0])
+        self.assertEqual(changed["Data Systems"][0]["deadline_utc"], "2026-10-10T11:59:59Z")
+        self.assertEqual(issues, [])
 
-    def test_quarantine(self):
-        cats, issues = c.select([(row(), "conference/AI/x.yml")], {"quarantine_events": [{"source_path": "conference/AI/x.yml", "id": "example27", "reason": "clock conflict"}]}, NOW)
-        self.assertEqual(cats["AI"], [])
-        self.assertEqual(issues[0]["reason"], "clock conflict")
+    def test_repository_mlsys_ignores_legacy_external_quarantine(self):
+        r = row("MLSys", sub="MX", rank="N", identity="mlsys27",
+                timeline=[{"deadline": "2026-10-30 12:00:00"}], zone="PT")
+        cfg = {"include_paths": ["conference/MX/mlsys.yml"],
+               "quarantine_events": [{"source_path": "conference/MX/mlsys.yml",
+                                     "id": "mlsys27", "reason": "external clock conflict"}]}
+        cats, issues = c.select([(r, "conference/MX/mlsys.yml")], cfg, NOW)
+        self.assertEqual(len(cats["Data Systems"]), 1)
+        self.assertEqual(cats["Data Systems"][0]["deadline_source"], "2026-10-30 12:00:00")
+        self.assertEqual(cats["Data Systems"][0]["deadline_utc"], "2026-10-30T19:00:00Z")
+        self.assertEqual(issues, [])
 
     def test_skip_expired_far_tbd_and_unclear(self):
         r = row(timeline=[{"deadline": "TBD"}, {"deadline": "2025-01-01 12:00:00"}, {"deadline": "2030-01-01 12:00:00"}, {"deadline": "2026-10-12 12:00:00", "comment": "Rebuttal deadline"}])
@@ -180,15 +253,15 @@ class SelectionTests(unittest.TestCase):
     def test_default_tweet_has_at_most_three_rows(self):
         rows = [(row("ConferenceVeryLong" + str(i)), f"conference/AI/x{i}.yml") for i in range(10)]
         cats, _ = c.select(rows, {}, NOW)
-        text, chosen = c.tweet("AI", cats["AI"], NOW, 3)
+        text, chosen = tweet_with_zero_stars("AI", cats["AI"], NOW, 3)
         self.assertLessEqual(len(chosen), 3)
-        self.assertTrue(text.endswith(c.DISPLAY_LINK + "\n" + c.detail_url(chosen[0]) + "\n#ccfddl #conf_deadline #蓝v"))
+        self.assertTrue(text.endswith("see details: " + c.detail_url(chosen[0]) + "\n#ccfddl #conf_deadline #蓝v"))
 
     def test_exact_user_plain_text_format(self):
         timelines = [{"deadline": "TBD"} for _ in range(3)] + [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
         cats, _ = c.select([(row("SIGMOD", sub="DB", timeline=timelines), "conference/DB/sigmod.yml")], {}, NOW)
-        text, _ = c.tweet("Data Systems", cats["Data Systems"], NOW, 3)
-        self.assertEqual(text, "CCFDDL deadline reminders (Data Systems) · 2026/10/03\n\nSIGMOD'27 (abstract, round 4) · 7 days\n\nsee details: ccfddl.com\nhttps://ccfddl.com/venues/db/sigmod-2027/\n#ccfddl #conf_deadline #蓝v")
+        text, _ = tweet_with_zero_stars("Data Systems", cats["Data Systems"], NOW, 3)
+        self.assertEqual(text, "CCFDDL daily reminders (Data Systems) · 2026/10/03\n\nSIGMOD'27 (abstract, round 4) · 7 days\n\nsee details: https://ccfddl.com/venues/db/sigmod-2027/\n#ccfddl #conf_deadline #蓝v")
         self.assertNotIn("**", text)
         self.assertFalse(text.splitlines()[0].endswith(":"))
 
@@ -200,7 +273,7 @@ class SelectionTests(unittest.TestCase):
                                   (60, "1 min left"), (1, "<1 min left")]:
             with self.subTest(seconds=seconds):
                 event["seconds_left"] = seconds
-                text, _ = c.tweet("AI", [event], NOW, 3)
+                text, _ = tweet_with_zero_stars("AI", [event], NOW, 3)
                 self.assertEqual(text.splitlines()[2], f"Example'27 (paper) · {expected}")
                 self.assertTrue(c.countdown(seconds).endswith(" left"))
 
@@ -213,11 +286,11 @@ class SelectionTests(unittest.TestCase):
         for category in ("AI", "Data Systems"):
             for stamp, date in cases:
                 with self.subTest(category=category, stamp=stamp):
-                    text, _ = c.tweet(category, cats["AI"], c.as_utc(stamp), 3)
+                    text, _ = tweet_with_zero_stars(category, cats["AI"], c.as_utc(stamp), 3)
                     self.assertEqual(text.splitlines()[0],
-                                     f"CCFDDL deadline reminders ({category}) · {date}")
+                                     f"CCFDDL daily reminders ({category}) · {date}")
                     # The Chinese character in the hashtag has weight two; other non-URL characters weigh one.
-                    self.assertEqual(c.weighted_length(text), len(text) - len(c.DISPLAY_LINK) - len(c.detail_url(cats["AI"][0])) + 46 + 1)
+                    self.assertEqual(c.weighted_length(text), len(text) - len(c.detail_url(cats["AI"][0])) + 23 + 1)
 
     def test_explicit_multiple_stages(self):
         timeline = [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
@@ -226,22 +299,22 @@ class SelectionTests(unittest.TestCase):
         self.assertEqual(len(nearest["AI"]), 1)
         all_stages, _ = c.select(rows, {"stage_selection": "all_future"}, NOW)
         self.assertEqual([e["stage"] for e in all_stages["AI"]], ["abstract", "paper"])
-        text, chosen = c.tweet("AI", all_stages["AI"], NOW, 3)
+        text, chosen = tweet_with_zero_stars("AI", all_stages["AI"], NOW, 3)
         self.assertEqual(len(chosen), 2)
         self.assertIn("CVPR'27 (abstract)", text)
         self.assertIn("CVPR'27 (paper)", text)
 
     def test_ai_category_header_without_colon(self):
         cats, _ = c.select([(row(), "conference/AI/x.yml")], {}, NOW)
-        text, _ = c.tweet("AI", cats["AI"], NOW, 3)
-        self.assertEqual(text.splitlines()[0], "CCFDDL deadline reminders (AI) · 2026/10/03")
+        text, _ = tweet_with_zero_stars("AI", cats["AI"], NOW, 3)
+        self.assertEqual(text.splitlines()[0], "CCFDDL daily reminders (AI) · 2026/10/03")
 
     def test_abstract_display_ignores_registration_alias(self):
         cats, _ = c.select([(row("CVPR", timeline=[{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]), "conference/AI/cvpr.yml")], {}, NOW)
         event = cats["AI"][0]
         event["stage_label"] = "reg"
         self.assertEqual(c.display_stage(event), "abstract")
-        text, _ = c.tweet("AI", [event], NOW, 3)
+        text, _ = tweet_with_zero_stars("AI", [event], NOW, 3)
         self.assertIn("CVPR'27 (abstract)", text)
         self.assertNotIn("(reg)", text)
         event["stage_label"] = "registration"
@@ -254,7 +327,7 @@ class SelectionTests(unittest.TestCase):
     def test_long_text_is_advisory_not_a_hard_cap(self):
         rows = [(row("LongConference" * 10), "conference/AI/long.yml")]
         cats, _ = c.select(rows, {}, NOW)
-        text, chosen = c.tweet("Data Systems", cats["AI"] * 3, NOW, 3)
+        text, chosen = tweet_with_zero_stars("Data Systems", cats["AI"] * 3, NOW, 3)
         self.assertGreater(c.weighted_length(text), 280)
         self.assertEqual(len(chosen), 3)
 
@@ -269,12 +342,77 @@ class BuildAndLedgerTests(unittest.TestCase):
         path.write_text(json.dumps(obj))
         return path
 
+    def test_build_featured_count_provenance_and_missing_snapshot_block(self):
+        with tempfile.TemporaryDirectory() as temp:
+            snapshot = self.make_snapshot(temp)
+            obj = json.loads(snapshot.read_text())
+            raw = yaml.safe_dump([row(f"Event{i}", identity=f"event{i}27") for i in range(7)])
+            obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
+            snapshot.write_text(json.dumps(obj))
+            cfg = Path(temp) / "config.json"
+            cfg.write_text('{"editorial_confirmed":true}')
+            output = Path(temp) / "output"
+            with self.assertRaises(ValueError):
+                c.build(snapshot, cfg, NOW, output, False)
+            self.assertFalse(output.exists())
+            response = Path(temp) / "bootstrap.json"
+            response.write_text('{"user":null,"counts":{"event227":216,"event627":999},"starred":[]}')
+            stars = Path(temp) / "stars.json"
+            c.snapshot_stars(response, NOW, stars, 200)
+            manifest = c.build(snapshot, cfg, NOW, output, False, stars)
+            digest = manifest["digests"][0]
+            self.assertEqual(digest["featured_edition_id"], "event227")
+            self.assertEqual(digest["featured_star_count"], 216)
+            self.assertEqual(digest["selected_star_counts"]["event027"], 0)
+            self.assertNotIn("event627", digest["selected_star_counts"])
+            self.assertEqual(digest["link_url"], "https://ccfddl.com/venues/ai/event2-2027/")
+            self.assertEqual(digest["events"][0]["id"], "event027")
+            self.assertEqual(manifest["star_count_source"]["source_url"], c.STAR_SOURCE_URL)
+            self.assertEqual(manifest["star_count_source"]["response_sha256"], c.sha(response.read_text()))
+
+    def test_category_limits(self):
+        self.assertEqual(c.digest_limit({}, "AI"), 6)
+        self.assertEqual(c.digest_limit({}, "Data Systems"), 6)
+        for cfg, category in [({"max_items_by_category": {"AI": 7}}, "AI"),
+                              ({"max_items_by_category": {"Data Systems": 7}}, "Data Systems"),
+                              ({"max_items_by_category": {"Data Systems": 0}}, "Data Systems"),
+                              ({"max_items_by_category": {"Unknown": 6}}, "AI")]:
+            with self.subTest(cfg=cfg):
+                with self.assertRaises(ValueError):
+                    c.digest_limit(cfg, category)
+
+    def test_both_categories_six_without_inventing_rows(self):
+        for data_count in (3, 9):
+            with self.subTest(data_count=data_count), tempfile.TemporaryDirectory() as temp:
+                snapshot = self.make_snapshot(temp)
+                obj = json.loads(snapshot.read_text())
+                rows = [row(f"AI{i:02d}", identity=f"ai{i}27") for i in range(8)]
+                rows += [row(f"DB{i:02d}", sub="DB", rank="A" if i == data_count - 1 else "B",
+                             identity=f"db{i}27") for i in range(data_count)]
+                raw = yaml.safe_dump(rows)
+                obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
+                snapshot.write_text(json.dumps(obj))
+                cfg = Path(temp) / "config.json"
+                cfg.write_text('{"editorial_confirmed":true,"max_items_by_category":{"AI":6,"Data Systems":6}}')
+                manifest = build_with_zero_stars(snapshot, cfg, NOW, Path(temp) / "output", False)
+                digests = {d["category"]: d for d in manifest["digests"]}
+                self.assertEqual(len(digests["AI"]["events"]), 6)
+                data = digests["Data Systems"]
+                self.assertEqual(len(data["events"]), min(data_count, 6))
+                self.assertEqual(data["max_text_events"], 6)
+                self.assertEqual(data["omitted_event_count"], max(0, data_count - 6))
+                self.assertEqual({e["rank_ccf"] for e in data["events"]}, {"A", "B"})
+                self.assertEqual([e["conference"] for e in data["events"]],
+                                 sorted(e["conference"] for e in data["events"]))
+                self.assertEqual(data["needs_publication_capability_validation"], c.weighted_length(data["text"]) > 280)
+                self.assertIsNone(data["image"])
+
     def test_build(self):
         with tempfile.TemporaryDirectory() as temp:
             snapshot = self.make_snapshot(temp)
             cfg = Path(temp) / "config.json"
             cfg.write_text('{"editorial_confirmed":true,"media_mode":"generated_card"}')
-            manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+            manifest = build_with_zero_stars(snapshot, cfg, NOW, Path(temp) / "output", False)
             self.assertEqual(len(manifest["digests"]), 1)
             self.assertFalse(manifest["digests"][0]["card_has_more"])
             self.assertNotIn("abstract closed", manifest["digests"][0]["alt_text"])
@@ -291,14 +429,14 @@ class BuildAndLedgerTests(unittest.TestCase):
             obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
             snapshot.write_text(json.dumps(obj))
             cfg = Path(temp) / "config.json"
-            cfg.write_text('{"editorial_confirmed":true,"max_items_per_category":6}')
-            manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+            cfg.write_text('{"editorial_confirmed":true,"max_items_by_category":{"AI":6,"Data Systems":6}}')
+            manifest = build_with_zero_stars(snapshot, cfg, NOW, Path(temp) / "output", False)
             digest = manifest["digests"][0]
             self.assertEqual(digest["category"], "Data Systems")
             self.assertEqual(len(digest["events"]), 6)
             self.assertEqual(digest["media_mode"], "link_preview")
-            self.assertEqual(digest["link_url"], "https://ccfddl.com")
-            self.assertEqual(digest["display_link"], "ccfddl.com")
+            self.assertEqual(digest["link_url"], c.detail_url(digest["events"][0]))
+            self.assertNotIn("display_link", digest)
             self.assertNotIn("detail_url", digest)
             self.assertEqual(digest["card_target_url"], c.detail_url(digest["events"][0]))
             self.assertNotIn("requires_separate_card_target_validation", digest)
@@ -306,8 +444,10 @@ class BuildAndLedgerTests(unittest.TestCase):
             self.assertFalse(digest["preview_selection_guaranteed"])
             self.assertEqual(digest["visible_detail_url"], digest["card_target_url"])
             self.assertEqual(digest["text"].count("https://"), 1)
-            self.assertEqual(digest["text"].count("ccfddl.com"), 2)
-            self.assertTrue(digest["text"].endswith("see details: ccfddl.com\n" + digest["visible_detail_url"] + "\n#ccfddl #conf_deadline #蓝v"))
+            self.assertEqual(digest["text"].count("ccfddl.com"), 1)
+            self.assertTrue(digest["text"].endswith("see details: " + digest["visible_detail_url"] + "\n#ccfddl #conf_deadline #蓝v"))
+            self.assertEqual(digest["text"].count("see details: "), 1)
+            self.assertNotIn("see details: ccfddl.com", digest["text"])
             self.assertIsNone(digest["image"])
             self.assertFalse(list((Path(temp) / "output").glob("*.png")))
             self.assertTrue(digest["needs_publication_capability_validation"])
@@ -323,8 +463,8 @@ class BuildAndLedgerTests(unittest.TestCase):
             obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
             snapshot.write_text(json.dumps(obj))
             cfg = Path(temp) / "config.json"
-            cfg.write_text('{"editorial_confirmed":true,"max_items_per_category":6,"media_mode":"generated_card"}')
-            manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+            cfg.write_text('{"editorial_confirmed":true,"max_items_by_category":{"AI":6,"Data Systems":6},"media_mode":"generated_card"}')
+            manifest = build_with_zero_stars(snapshot, cfg, NOW, Path(temp) / "output", False)
             self.assertEqual(len(manifest["digests"][0]["events"]), 6)
             self.assertEqual(len(manifest["digests"][0]["card_events"]), 3)
             self.assertTrue(manifest["digests"][0]["card_has_more"])
@@ -343,7 +483,7 @@ class BuildAndLedgerTests(unittest.TestCase):
             snapshot.write_text(json.dumps(obj))
             cfg = Path(temp) / "config.json"
             cfg.write_text('{"editorial_confirmed":true,"media_mode":"generated_card"}')
-            manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+            manifest = build_with_zero_stars(snapshot, cfg, NOW, Path(temp) / "output", False)
             digest = manifest["digests"][0]
             self.assertTrue(digest["events"][0]["abstract_closed"])
             self.assertNotIn("closed", digest["text"] + digest["alt_text"])
@@ -357,7 +497,7 @@ class BuildAndLedgerTests(unittest.TestCase):
                 cfg = Path(temp) / "config.json"
                 cfg.write_text('{"editorial_confirmed":true,"media_mode":"generated_card"}')
                 with self.assertRaises(ValueError):
-                    c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+                    build_with_zero_stars(snapshot, cfg, NOW, Path(temp) / "output", False)
 
     def test_integrity(self):
         with tempfile.TemporaryDirectory() as temp:
