@@ -20,6 +20,7 @@ import yaml
 
 UTC = timezone.utc
 LINK = "https://ccfddl.com"
+HASHTAGS = "#conf_deadline #deadline #蓝v"
 ZONE_ALIASES = {"AoE": "UTC-12", "PT": "America/Los_Angeles", "ET": "America/New_York"}
 NON_SUBMISSION = re.compile(r"\b(rebuttal|notification|decision|camera[- ]ready|author response|revision[- ]only|commitment)\b", re.I)
 
@@ -84,16 +85,29 @@ def countdown(seconds, short=False):
     return f"{n}d" if short else f"{n} day{'s' if n != 1 else ''} left"
 
 
+def detail_url(event):
+    """Match scripts/generate_seo_pages.py edition_path; verify the live page before publishing."""
+    subject = str(event.get("source_subject", "")).lower()
+    slug = re.sub(r"[^a-z0-9]+", "-", str(event.get("conference", "")).lower()).strip("-")
+    if not slug:
+        slug = re.sub(r"[^a-z0-9]+", "-", str(event.get("id", "")).lower()).strip("-")
+    year = str(event.get("year", ""))
+    if not re.fullmatch(r"[a-z]+", subject) or not slug or not re.fullmatch(r"\d{4}", year):
+        raise ValueError("Cannot resolve canonical conference detail URL")
+    return f"{LINK}/venues/{subject}/{slug}-{year}/"
+
+
 def weighted_length(text):
-    """Safe upper bound for generated text. Sole canonical URL uses t.co length 23.
-    Emoji sequences may be overcounted; never undercounted. No arbitrary URLs.
-    """
+    """Conservative X weight: count each entire approved canonical URL as 23."""
     text = unicodedata.normalize("NFC", text)
-    count = text.count(LINK)
-    rest = text.replace(LINK, "")
+    urls = re.findall(r"https?://[^\s]+", text, re.I)
+    for url in urls:
+        if not re.fullmatch(r"https://ccfddl\.com(?:/|/venues/[a-z]+/[a-z0-9]+(?:-[a-z0-9]+)*-\d{4}/)?", url):
+            raise ValueError("Only canonical CCFDDL home/detail URLs are allowed")
+    rest = re.sub(r"https?://[^\s]+", "", text, flags=re.I)
     if re.search(r"(?:https?://|www\.)", rest, re.I):
-        raise ValueError("Only the canonical CCFDDL URL is allowed")
-    return 23 * count + sum(1 if (ord(c) <= 0x10FF or 0x2000 <= ord(c) <= 0x200D or 0x2010 <= ord(c) <= 0x201F or 0x2032 <= ord(c) <= 0x2037) else 2 for c in rest)
+        raise ValueError("Only canonical CCFDDL home/detail URLs are allowed")
+    return 23 * len(urls) + sum(1 if (ord(c) <= 0x10FF or 0x2000 <= ord(c) <= 0x200D or 0x2010 <= ord(c) <= 0x201F or 0x2032 <= ord(c) <= 0x2037) else 2 for c in rest)
 
 
 def sha(text):
@@ -228,7 +242,7 @@ def select(rows, config, now):
                              "round_label": round_label, "stage": stage, "deadline_utc": iso(deadline),
                              "deadline_source": str(original), "timezone_source": shown_zone,
                              "seconds_left": (deadline - now).total_seconds(), "abstract_closed": bool(stage == "paper" and abstract and abstract <= now),
-                             "comment": comment, "source_path": path, "official_url": conf.get("link"), "rank_ccf": rank}
+                             "comment": comment, "source_path": path, "source_subject": row.get("sub"), "official_url": conf.get("link"), "rank_ccf": rank}
                     if override_record:
                         event["official_deadline_override"] = override_record
                     categories[category].append(event)
@@ -294,16 +308,20 @@ def tweet(category, events, now, maximum):
     # Keep the latest user-specified category header and ordinary plain text.
     if category not in ("AI", "Data Systems"):
         raise ValueError("Invalid publication category")
-    header = f"CCFDDL deadline reminders ({category})"
+    publication_date = now.astimezone(ZoneInfo("America/Los_Angeles")).strftime("%Y/%m/%d")
+    header = f"CCFDDL deadline reminders ({category}) · {publication_date}"
     lines = []
     selected = []
     for e in choose_digest_events(events, maximum):
-        line = f"{event_title(e)} · {countdown(e['seconds_left'])}"
+        remaining = countdown(e["seconds_left"])
+        if e["seconds_left"] > 86400:
+            remaining = remaining.removesuffix(" left")
+        line = f"{event_title(e)} · {remaining}"
         selected.append(e)
         lines.append(line)
     if not selected:
         return None, []
-    text = "\n\n".join([header, "\n".join(lines), "see details: " + LINK])
+    text = "\n\n".join([header, "\n".join(lines), "see details: " + detail_url(selected[0]) + "\n" + HASHTAGS])
     return text, selected
 
 
@@ -384,6 +402,9 @@ def build(snapshot_path, config_path, now, output, preview):
         raise ValueError("The deterministic renderer supports English; adapt and validate before using another language")
     if not 1 <= int(config.get("max_items_per_category", 6)) <= 6:
         raise ValueError("Use 1–6 rows per card for readable mobile output")
+    media_mode = config.get("media_mode", "link_preview")
+    if media_mode not in ("link_preview", "generated_card"):
+        raise ValueError("media_mode must be link_preview or generated_card")
     source, rows = load_snapshot(snapshot_path)
     if not preview and (not source.get("complete_catalog") or not config.get("editorial_confirmed")):
         raise ValueError("Publication builds require the complete catalog and confirmed editorial settings")
@@ -402,16 +423,26 @@ def build(snapshot_path, config_path, now, output, preview):
             continue
         stem = "ai" if category == "AI" else "data-systems"
         (out / (stem + ".txt")).write_text(text + "\n")
-        png = out / (stem + ".png")
-        card_limit = int(config.get("card_limit", 3))
-        card_events = chosen[:card_limit]
-        card_has_more = len(events) > len(card_events)
-        render_card(category, chosen, now, source["commit"], png, preview, card_limit, len(events))
-        alt = f"CCFDDL deadline reminders ({category}). " + "; ".join(
-            f"{e['conference']} {e['year']} {e['round_label']} {e['stage']}: {countdown(e['seconds_left'])}; deadline {e['deadline_source']} {e['timezone_source']}" for e in card_events) + (". More deadlines are indicated by an ellipsis; see post text and ccfddl.com." if card_has_more else ". Full dates at ccfddl.com.")
-        result["digests"].append({"category": category, "text": text, "weighted_length_upper_bound": weighted_length(text), "long_text_advisory": weighted_length(text) > 280,
-                                  "image": str(png.resolve()), "alt_text": alt, "events": chosen, "card_events": card_events, "card_has_more": card_has_more,
-                                  "content_sha256": sha(text + hashlib.sha256(png.read_bytes()).hexdigest()),
+        png = None
+        card_events = []
+        card_has_more = False
+        alt = ""
+        if media_mode == "generated_card":
+            png = out / (stem + ".png")
+            card_limit = int(config.get("card_limit", 3))
+            card_events = chosen[:card_limit]
+            card_has_more = len(events) > len(card_events)
+            render_card(category, chosen, now, source["commit"], png, preview, card_limit, len(events))
+            alt = f"CCFDDL deadline reminders ({category}). " + "; ".join(
+                f"{e['conference']} {e['year']} {e['round_label']} {e['stage']}: {countdown(e['seconds_left'])}; deadline {e['deadline_source']} {e['timezone_source']}" for e in card_events) + (". More deadlines are indicated by an ellipsis; see post text and ccfddl.com." if card_has_more else ". Full dates at ccfddl.com.")
+        weight = weighted_length(text)
+        result["digests"].append({"category": category, "text": text, "weighted_length_upper_bound": weight,
+                                  "long_text_advisory": weight > 280, "needs_publication_capability_validation": weight > 280,
+                                  "media_mode": media_mode, "detail_url": detail_url(chosen[0]),
+                                  "requires_live_url_verification": True, "link_preview_guaranteed": False,
+                                  "image": str(png.resolve()) if png else None, "alt_text": alt,
+                                  "events": chosen, "card_events": card_events, "card_has_more": card_has_more,
+                                  "content_sha256": sha(text + (hashlib.sha256(png.read_bytes()).hexdigest() if png else "")),
                                   "candidate_event_count": len(events), "omitted_event_count": len(events) - len(chosen),
                                   "selection_policy": "all_if_fit_else_nearest_with_A_B_representation"})
     (out / "manifest.json").write_text(json.dumps(result, ensure_ascii=False, indent=2))

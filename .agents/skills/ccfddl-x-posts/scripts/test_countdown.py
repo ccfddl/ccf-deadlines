@@ -53,10 +53,24 @@ class DeadlineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             c.countdown(0)
 
+    def test_detail_url_and_whole_path_weight(self):
+        event = {"source_subject": "DB", "conference": "IEEE ICDE", "year": 2027, "id": "icde27"}
+        url = c.detail_url(event)
+        self.assertEqual(url, "https://ccfddl.com/venues/db/ieee-icde-2027/")
+        self.assertEqual(c.weighted_length(url), 23)
+        event.update(source_subject="MX", conference="!!!", id="MLSys27")
+        self.assertEqual(c.detail_url(event), "https://ccfddl.com/venues/mx/mlsys27-2027/")
+        for bad in ("https://ccfddl.com.evil.org/venues/ai/aaai-2027/",
+                    "https://ccfddl.com/venues/ai/aaai-2027/?private=1",
+                    "https://evil.org/venues/ai/aaai-2027/"):
+            with self.assertRaises(ValueError):
+                c.weighted_length(bad)
+
     def test_weighted_length(self):
         self.assertEqual(c.weighted_length("abc"), 3)
         self.assertEqual(c.weighted_length("会议"), 4)
         self.assertEqual(c.weighted_length(c.LINK), 23)
+        self.assertEqual(c.weighted_length(c.HASHTAGS), 29)
         self.assertEqual(c.weighted_length("e\u0301"), 1)
         with self.assertRaises(ValueError):
             c.weighted_length("https://evil.example")
@@ -164,15 +178,42 @@ class SelectionTests(unittest.TestCase):
         cats, _ = c.select(rows, {}, NOW)
         text, chosen = c.tweet("AI", cats["AI"], NOW, 3)
         self.assertLessEqual(len(chosen), 3)
-        self.assertTrue(text.endswith(c.LINK))
+        self.assertTrue(text.endswith(c.detail_url(chosen[0]) + "\n#conf_deadline #deadline #蓝v"))
 
     def test_exact_user_plain_text_format(self):
         timelines = [{"deadline": "TBD"} for _ in range(3)] + [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
         cats, _ = c.select([(row("SIGMOD", sub="DB", timeline=timelines), "conference/DB/sigmod.yml")], {}, NOW)
         text, _ = c.tweet("Data Systems", cats["Data Systems"], NOW, 3)
-        self.assertEqual(text, "CCFDDL deadline reminders (Data Systems)\n\nSIGMOD'27 (abstract, round 4) · 7 days left\n\nsee details: https://ccfddl.com")
+        self.assertEqual(text, "CCFDDL deadline reminders (Data Systems) · 2026/10/03\n\nSIGMOD'27 (abstract, round 4) · 7 days\n\nsee details: https://ccfddl.com/venues/db/sigmod-2027/\n#conf_deadline #deadline #蓝v")
         self.assertNotIn("**", text)
         self.assertFalse(text.splitlines()[0].endswith(":"))
+
+    def test_tweet_day_countdown_omits_left_only_in_text(self):
+        cats, _ = c.select([(row(), "conference/AI/x.yml")], {}, NOW)
+        event = cats["AI"][0]
+        for seconds, expected in [(38 * 86400, "38 days"), (90000, "1 day"),
+                                  (86400, "24 hours left"), (3600, "1 hour left"),
+                                  (60, "1 min left"), (1, "<1 min left")]:
+            with self.subTest(seconds=seconds):
+                event["seconds_left"] = seconds
+                text, _ = c.tweet("AI", [event], NOW, 3)
+                self.assertEqual(text.splitlines()[2], f"Example'27 (paper) · {expected}")
+                self.assertTrue(c.countdown(seconds).endswith(" left"))
+
+    def test_tweet_header_uses_los_angeles_publication_date(self):
+        cats, _ = c.select([(row(), "conference/AI/x.yml")], {}, NOW)
+        cases = [("2026-10-07T06:59:59Z", "2026/10/06"),
+                 ("2026-10-07T07:00:00Z", "2026/10/07"),
+                 ("2026-12-07T07:59:59Z", "2026/12/06"),
+                 ("2026-12-07T08:00:00Z", "2026/12/07")]
+        for category in ("AI", "Data Systems"):
+            for stamp, date in cases:
+                with self.subTest(category=category, stamp=stamp):
+                    text, _ = c.tweet(category, cats["AI"], c.as_utc(stamp), 3)
+                    self.assertEqual(text.splitlines()[0],
+                                     f"CCFDDL deadline reminders ({category}) · {date}")
+                    # The Chinese character in the hashtag has weight two; other non-URL characters weigh one.
+                    self.assertEqual(c.weighted_length(text), len(text) - len(c.detail_url(cats["AI"][0])) + 23 + 1)
 
     def test_explicit_multiple_stages(self):
         timeline = [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
@@ -189,7 +230,7 @@ class SelectionTests(unittest.TestCase):
     def test_ai_category_header_without_colon(self):
         cats, _ = c.select([(row(), "conference/AI/x.yml")], {}, NOW)
         text, _ = c.tweet("AI", cats["AI"], NOW, 3)
-        self.assertEqual(text.splitlines()[0], "CCFDDL deadline reminders (AI)")
+        self.assertEqual(text.splitlines()[0], "CCFDDL deadline reminders (AI) · 2026/10/03")
 
     def test_abstract_display_ignores_registration_alias(self):
         cats, _ = c.select([(row("CVPR", timeline=[{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]), "conference/AI/cvpr.yml")], {}, NOW)
@@ -228,7 +269,7 @@ class BuildAndLedgerTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             snapshot = self.make_snapshot(temp)
             cfg = Path(temp) / "config.json"
-            cfg.write_text('{"editorial_confirmed":true}')
+            cfg.write_text('{"editorial_confirmed":true,"media_mode":"generated_card"}')
             manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
             self.assertEqual(len(manifest["digests"]), 1)
             self.assertFalse(manifest["digests"][0]["card_has_more"])
@@ -238,6 +279,30 @@ class BuildAndLedgerTests(unittest.TestCase):
                 self.assertEqual(image.size, (1600, 610))
                 self.assertEqual(image.getpixel((0, 0)), (242, 242, 242))
 
+    def test_default_link_preview_preserves_long_digest_without_image(self):
+        with tempfile.TemporaryDirectory() as temp:
+            snapshot = self.make_snapshot(temp)
+            obj = json.loads(snapshot.read_text())
+            raw = yaml.safe_dump([row(f"ConferenceVeryLongName{i}", sub="DB", identity=f"conf{i}27") for i in range(6)])
+            obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
+            snapshot.write_text(json.dumps(obj))
+            cfg = Path(temp) / "config.json"
+            cfg.write_text('{"editorial_confirmed":true,"max_items_per_category":6}')
+            manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
+            digest = manifest["digests"][0]
+            self.assertEqual(digest["category"], "Data Systems")
+            self.assertEqual(len(digest["events"]), 6)
+            self.assertEqual(digest["media_mode"], "link_preview")
+            self.assertEqual(digest["detail_url"], c.detail_url(digest["events"][0]))
+            self.assertIn("/venues/db/", digest["detail_url"])
+            self.assertEqual(digest["text"].count("https://"), 1)
+            self.assertIsNone(digest["image"])
+            self.assertFalse(list((Path(temp) / "output").glob("*.png")))
+            self.assertTrue(digest["needs_publication_capability_validation"])
+            self.assertTrue(digest["requires_live_url_verification"])
+            self.assertFalse(digest["link_preview_guaranteed"])
+            self.assertEqual(digest["content_sha256"], c.sha(digest["text"]))
+
     def test_six_text_rows_with_three_card_rows_and_ellipsis(self):
         with tempfile.TemporaryDirectory() as temp:
             snapshot = self.make_snapshot(temp)
@@ -246,7 +311,7 @@ class BuildAndLedgerTests(unittest.TestCase):
             obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
             snapshot.write_text(json.dumps(obj))
             cfg = Path(temp) / "config.json"
-            cfg.write_text('{"editorial_confirmed":true,"max_items_per_category":6}')
+            cfg.write_text('{"editorial_confirmed":true,"max_items_per_category":6,"media_mode":"generated_card"}')
             manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
             self.assertEqual(len(manifest["digests"][0]["events"]), 6)
             self.assertEqual(len(manifest["digests"][0]["card_events"]), 3)
@@ -265,7 +330,7 @@ class BuildAndLedgerTests(unittest.TestCase):
             obj["files"][0].update({"content": raw, "sha256": c.sha(raw)})
             snapshot.write_text(json.dumps(obj))
             cfg = Path(temp) / "config.json"
-            cfg.write_text('{"editorial_confirmed":true}')
+            cfg.write_text('{"editorial_confirmed":true,"media_mode":"generated_card"}')
             manifest = c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
             digest = manifest["digests"][0]
             self.assertTrue(digest["events"][0]["abstract_closed"])
@@ -278,7 +343,7 @@ class BuildAndLedgerTests(unittest.TestCase):
             with tempfile.TemporaryDirectory() as temp:
                 snapshot = self.make_snapshot(temp, complete, age)
                 cfg = Path(temp) / "config.json"
-                cfg.write_text('{"editorial_confirmed":true}')
+                cfg.write_text('{"editorial_confirmed":true,"media_mode":"generated_card"}')
                 with self.assertRaises(ValueError):
                     c.build(snapshot, cfg, NOW, Path(temp) / "output", False)
 
