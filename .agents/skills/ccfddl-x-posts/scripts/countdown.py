@@ -20,7 +20,8 @@ import yaml
 
 UTC = timezone.utc
 LINK = "https://ccfddl.com"
-HASHTAGS = "#conf_deadline #deadline #蓝v"
+DISPLAY_LINK = "ccfddl.com"
+HASHTAGS = "#ccfddl #conf_deadline #蓝v"
 ZONE_ALIASES = {"AoE": "UTC-12", "PT": "America/Los_Angeles", "ET": "America/New_York"}
 NON_SUBMISSION = re.compile(r"\b(rebuttal|notification|decision|camera[- ]ready|author response|revision[- ]only|commitment)\b", re.I)
 
@@ -107,7 +108,10 @@ def weighted_length(text):
     rest = re.sub(r"https?://[^\s]+", "", text, flags=re.I)
     if re.search(r"(?:https?://|www\.)", rest, re.I):
         raise ValueError("Only canonical CCFDDL home/detail URLs are allowed")
-    return 23 * len(urls) + sum(1 if (ord(c) <= 0x10FF or 0x2000 <= ord(c) <= 0x200D or 0x2010 <= ord(c) <= 0x201F or 0x2032 <= ord(c) <= 0x2037) else 2 for c in rest)
+    bare_domain = r"(?<![\w@./-])ccfddl\.com(?![\w./:-])"
+    bare_count = len(re.findall(bare_domain, rest))
+    rest = re.sub(bare_domain, "", rest)
+    return 23 * (len(urls) + bare_count) + sum(1 if (ord(c) <= 0x10FF or 0x2000 <= ord(c) <= 0x200D or 0x2010 <= ord(c) <= 0x201F or 0x2032 <= ord(c) <= 0x2037) else 2 for c in rest)
 
 
 def sha(text):
@@ -321,7 +325,7 @@ def tweet(category, events, now, maximum):
         lines.append(line)
     if not selected:
         return None, []
-    text = "\n\n".join([header, "\n".join(lines), "see details: " + detail_url(selected[0]) + "\n" + HASHTAGS])
+    text = "\n\n".join([header, "\n".join(lines), "see details: " + DISPLAY_LINK + "\n" + HASHTAGS])
     return text, selected
 
 
@@ -438,7 +442,10 @@ def build(snapshot_path, config_path, now, output, preview):
         weight = weighted_length(text)
         result["digests"].append({"category": category, "text": text, "weighted_length_upper_bound": weight,
                                   "long_text_advisory": weight > 280, "needs_publication_capability_validation": weight > 280,
-                                  "media_mode": media_mode, "detail_url": detail_url(chosen[0]),
+                                  "media_mode": media_mode, "link_url": LINK, "display_link": DISPLAY_LINK,
+                                  "card_target_url": detail_url(chosen[0]),
+                                  "requires_separate_card_target_validation": True,
+                                  "publication_blocker": "Separate first-conference card target needs verified support; current Buffer X route does not provide it",
                                   "requires_live_url_verification": True, "link_preview_guaranteed": False,
                                   "image": str(png.resolve()) if png else None, "alt_text": alt,
                                   "events": chosen, "card_events": card_events, "card_has_more": card_has_more,

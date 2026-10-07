@@ -70,7 +70,10 @@ class DeadlineTests(unittest.TestCase):
         self.assertEqual(c.weighted_length("abc"), 3)
         self.assertEqual(c.weighted_length("会议"), 4)
         self.assertEqual(c.weighted_length(c.LINK), 23)
-        self.assertEqual(c.weighted_length(c.HASHTAGS), 29)
+        self.assertEqual(c.weighted_length(c.DISPLAY_LINK), 23)
+        self.assertEqual(c.weighted_length("see details: ccfddl.com"), len("see details: ") + 23)
+        self.assertEqual(c.weighted_length(c.LINK + " " + c.DISPLAY_LINK), 47)
+        self.assertEqual(c.weighted_length(c.HASHTAGS), 27)
         self.assertEqual(c.weighted_length("e\u0301"), 1)
         with self.assertRaises(ValueError):
             c.weighted_length("https://evil.example")
@@ -178,13 +181,13 @@ class SelectionTests(unittest.TestCase):
         cats, _ = c.select(rows, {}, NOW)
         text, chosen = c.tweet("AI", cats["AI"], NOW, 3)
         self.assertLessEqual(len(chosen), 3)
-        self.assertTrue(text.endswith(c.detail_url(chosen[0]) + "\n#conf_deadline #deadline #蓝v"))
+        self.assertTrue(text.endswith(c.DISPLAY_LINK + "\n#ccfddl #conf_deadline #蓝v"))
 
     def test_exact_user_plain_text_format(self):
         timelines = [{"deadline": "TBD"} for _ in range(3)] + [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
         cats, _ = c.select([(row("SIGMOD", sub="DB", timeline=timelines), "conference/DB/sigmod.yml")], {}, NOW)
         text, _ = c.tweet("Data Systems", cats["Data Systems"], NOW, 3)
-        self.assertEqual(text, "CCFDDL deadline reminders (Data Systems) · 2026/10/03\n\nSIGMOD'27 (abstract, round 4) · 7 days\n\nsee details: https://ccfddl.com/venues/db/sigmod-2027/\n#conf_deadline #deadline #蓝v")
+        self.assertEqual(text, "CCFDDL deadline reminders (Data Systems) · 2026/10/03\n\nSIGMOD'27 (abstract, round 4) · 7 days\n\nsee details: ccfddl.com\n#ccfddl #conf_deadline #蓝v")
         self.assertNotIn("**", text)
         self.assertFalse(text.splitlines()[0].endswith(":"))
 
@@ -213,7 +216,7 @@ class SelectionTests(unittest.TestCase):
                     self.assertEqual(text.splitlines()[0],
                                      f"CCFDDL deadline reminders ({category}) · {date}")
                     # The Chinese character in the hashtag has weight two; other non-URL characters weigh one.
-                    self.assertEqual(c.weighted_length(text), len(text) - len(c.detail_url(cats["AI"][0])) + 23 + 1)
+                    self.assertEqual(c.weighted_length(text), len(text) - len(c.DISPLAY_LINK) + 23 + 1)
 
     def test_explicit_multiple_stages(self):
         timeline = [{"abstract_deadline": "2026-10-10 23:59:59", "deadline": "2026-10-17 23:59:59"}]
@@ -293,9 +296,15 @@ class BuildAndLedgerTests(unittest.TestCase):
             self.assertEqual(digest["category"], "Data Systems")
             self.assertEqual(len(digest["events"]), 6)
             self.assertEqual(digest["media_mode"], "link_preview")
-            self.assertEqual(digest["detail_url"], c.detail_url(digest["events"][0]))
-            self.assertIn("/venues/db/", digest["detail_url"])
-            self.assertEqual(digest["text"].count("https://"), 1)
+            self.assertEqual(digest["link_url"], "https://ccfddl.com")
+            self.assertEqual(digest["display_link"], "ccfddl.com")
+            self.assertNotIn("detail_url", digest)
+            self.assertEqual(digest["card_target_url"], c.detail_url(digest["events"][0]))
+            self.assertTrue(digest["requires_separate_card_target_validation"])
+            self.assertNotIn("/venues/", digest["text"])
+            self.assertNotIn("https://", digest["text"])
+            self.assertEqual(digest["text"].count("ccfddl.com"), 1)
+            self.assertTrue(digest["text"].endswith("see details: ccfddl.com\n#ccfddl #conf_deadline #蓝v"))
             self.assertIsNone(digest["image"])
             self.assertFalse(list((Path(temp) / "output").glob("*.png")))
             self.assertTrue(digest["needs_publication_capability_validation"])
