@@ -30,7 +30,7 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Check share-card browser startup
         run: |
-          node --test scripts/test_share_browser.mjs
+          node --test scripts/test_share_browser.mjs scripts/test_share_card_canvas.mjs
           python -m unittest discover -s scripts -p 'test_conference_share_image.py'
       - name: Assemble yml files
         run: python scripts/build_data.py

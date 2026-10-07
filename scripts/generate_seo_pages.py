@@ -16,7 +16,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 import yaml
 
 from conference_dates import conference_opening
-from conference_share_image import share_images
+from conference_share_image import deadline_card_data, share_images
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -324,7 +324,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     <section class="editions"><h2>past venues</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
     """
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/venues/">All venues</a><span>/</span><span>{text(name)} {year}</span></nav>'
-    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png", social_image_alt=f"{name} {year}: conference dates and location on CCFDDL")
+    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL")
 
 
 def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "", static_css: str = "/venues/style.css") -> str:
@@ -548,7 +548,8 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
             cards.append({"path": path, "title": f"{conference['title']} {edition['year']}",
                           "description": conference.get("description") or conference["title"],
                           "category": f"CCF {rank} / {category}" if rank else category,
-                          "date": edition.get("date"), "place": edition.get("place")})
+                          "date": edition.get("date"), "place": edition.get("place"),
+                          **deadline_card_data(edition)})
             target.write_text(edition_page(conference, edition, categories, acceptances, static_css), encoding="utf-8")
             written.append(path)
     share_images(cards, css, output)

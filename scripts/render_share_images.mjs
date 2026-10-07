@@ -3,6 +3,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve, sep } from 'node:path';
 import { launchShareBrowser } from './share_browser.mjs';
+import { drawShareCard } from './share_card_canvas.mjs';
 
 const {cards, css} = JSON.parse(readFileSync(0, 'utf8'));
 const output = resolve(process.argv[2]);
@@ -51,7 +52,9 @@ try {
   for (const card of cards) {
     const targetPath = resolve(output, '.' + card.path, 'share.png');
     if (!targetPath.startsWith(output + sep)) throw new Error('Invalid share-card path');
-    const encoded = await evaluate(`drawShareCard(${JSON.stringify(card)})`);
+    const {encoded, report} = await evaluate(`drawShareCard(${JSON.stringify(card)})`);
+    if (report.renderedDeadlines !== (card.deadlines || []).length) throw new Error(`Incomplete card: ${card.path}`);
+    if (Buffer.byteLength(encoded, 'base64') >= 5_000_000) throw new Error(`Share image exceeds 5 MB: ${card.path}`);
     mkdirSync(dirname(targetPath), {recursive: true});
     writeFileSync(targetPath, Buffer.from(encoded, 'base64'));
   }
@@ -59,44 +62,4 @@ try {
   for (const waiting of pending.values()) clearTimeout(waiting.timer);
   socket?.close();
   await cleanup();
-}
-
-function drawShareCard(card) {
-  const canvas = document.createElement('canvas'); canvas.width = 1200; canvas.height = 630;
-  const ctx = canvas.getContext('2d', {alpha: false});
-  ctx.fillStyle = window.shareBackground; ctx.fillRect(0, 0, 1200, 630);
-  ctx.textBaseline = 'top';
-  function label(value, x, y, size, color = window.shareInk, width = 1040, limit = 1) {
-    ctx.font = `${size}px ${window.shareFont}`; ctx.fillStyle = color;
-    let remaining = String(value || '').replace(/\s+/g, ' ').trim();
-    for (let row = 0; remaining && row < limit; row++) {
-      let end = remaining.length;
-      while (end > 1 && ctx.measureText(remaining.slice(0, end)).width > width) end--;
-      if (end < remaining.length && row + 1 < limit) {
-        const space = remaining.lastIndexOf(' ', end); if (space > 0) end = space;
-      }
-      let line = remaining.slice(0, end).trimEnd(); remaining = remaining.slice(end).trimStart();
-      if (remaining && row + 1 === limit) {
-        while (line && ctx.measureText(line + '…').width > width) line = line.slice(0, -1);
-        line += '…';
-      }
-      ctx.fillText(line, x, y + row * (size + 8));
-    }
-  }
-  const muted = '#67727e', accent = '#d9554f';
-  label('CCFDDL Open', 64, 42, 28);
-  ctx.font = `28px ${window.shareFont}`;
-  label('Deadlines', 64 + ctx.measureText('CCFDDL Open ').width, 42, 28, accent);
-  ctx.strokeStyle = '#e5ded6'; ctx.lineWidth = 2;
-  ctx.beginPath(); ctx.moveTo(64, 91); ctx.lineTo(1136, 91); ctx.stroke();
-  ctx.fillStyle = '#fffdfa'; ctx.beginPath(); ctx.roundRect(48, 119, 1104, 421, 16); ctx.fill(); ctx.stroke();
-  label(card.category, 80, 146, 23, muted);
-  label(card.title, 80, 192, 62);
-  label(card.description, 80, 272, 28, muted, 1040, 2);
-  label('CONFERENCE DATES', 80, 371, 17, muted);
-  label(card.date || 'Dates to be announced', 80, 403, 27);
-  label(card.place || 'Location to be announced', 80, 457, 25, muted);
-  label('Conference deadlines and details', 64, 568, 23, muted);
-  label('ccfddl.com', 949, 565, 27, accent, 220);
-  return canvas.toDataURL('image/png').split(',')[1];
 }
