@@ -76,7 +76,7 @@
           comment: 'Official February cutoff is 17:00 PST (UTC-8), represented as the equivalent 13:00 AoE.'
         - deadline: '2026-06-10 23:59:59'
         - deadline: '2026-10-07 23:59:59'
-          decision_deadline: '2027-01-27 13:00:00'
-      timezone: AoE
+          decision_deadline: '2027-01-27 23:59:59'
+      timezone: UTC−7
       date: April 6-9, 2027
       place: Lille, France
