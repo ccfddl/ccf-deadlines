@@ -43,12 +43,11 @@
         # Source: https://www.icpr2027.com/web/dates
         # abstract_deadline represents the paper registration deadline.
         # No clock times are published; 23:59:59 follows README defaults.
-        # Rebuttal/notification timezones are unspecified; AoE follows README defaults.
+        # Notification timezone is unspecified; AoE follows README defaults.
         - abstract_deadline: '2027-03-01 23:59:59'
           deadline: '2027-03-08 23:59:59'
-          rebuttal_deadline: '2027-04-23 23:59:59'
           decision_deadline: '2027-05-31 23:59:59'
-          comment: 'All dates tentative; March 1 is paper registration; rebuttal provisional'
+          comment: 'All dates tentative; March 1 is paper registration; author rebuttal April 23 (provisional, cutoff unspecified)'
       timezone: AoE
       date: October 4-6 and 14-15, 2027
       place: Online
