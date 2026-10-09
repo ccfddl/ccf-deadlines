@@ -349,9 +349,8 @@ def tweet(category, events, now, maximum, stars=None):
     lines = []
     selected = []
     for e in choose_digest_events(events, maximum):
-        remaining = countdown(e["seconds_left"])
-        if e["seconds_left"] > 86400:
-            remaining = remaining.removesuffix(" left")
+        # Tweet countdowns omit the suffix in every unit; cards retain it.
+        remaining = countdown(e["seconds_left"]).removesuffix(" left")
         line = f"{event_title(e)} · {remaining}"
         selected.append(e)
         lines.append(line)

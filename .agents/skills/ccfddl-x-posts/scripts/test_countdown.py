@@ -265,16 +265,19 @@ class SelectionTests(unittest.TestCase):
         self.assertNotIn("**", text)
         self.assertFalse(text.splitlines()[0].endswith(":"))
 
-    def test_tweet_day_countdown_omits_left_only_in_text(self):
+    def test_tweet_countdowns_omit_left_only_in_text(self):
         cats, _ = c.select([(row(), "conference/AI/x.yml")], {}, NOW)
         event = cats["AI"][0]
         for seconds, expected in [(38 * 86400, "38 days"), (90000, "1 day"),
-                                  (86400, "24 hours left"), (3600, "1 hour left"),
-                                  (60, "1 min left"), (1, "<1 min left")]:
+                                  (86400, "24 hours"), (20 * 3600, "20 hours"),
+                                  (7200, "2 hours"), (3600, "1 hour"),
+                                  (3599, "59 min"), (120, "2 min"),
+                                  (60, "1 min"), (1, "<1 min")]:
             with self.subTest(seconds=seconds):
                 event["seconds_left"] = seconds
                 text, _ = tweet_with_zero_stars("AI", [event], NOW, 3)
                 self.assertEqual(text.splitlines()[2], f"Example'27 (paper) · {expected}")
+                self.assertNotIn(" left", text)
                 self.assertTrue(c.countdown(seconds).endswith(" left"))
 
     def test_tweet_header_uses_los_angeles_publication_date(self):
