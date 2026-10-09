@@ -65,8 +65,8 @@
       link: https://dasfaa2027.github.io/
       timeline:
         # Source: https://dasfaa2027.github.io/CallforResearchTrack/list.htm
-        - deadline: '2026-11-25 23:59:59'
-          decision_deadline: '2027-01-25 23:59:59'
+        - deadline: '2026-11-25 23:59:00'
+          decision_deadline: '2027-01-25 23:59:00'
           comment: 'Research papers'
       timezone: AoE
       date: May 27-30, 2027
