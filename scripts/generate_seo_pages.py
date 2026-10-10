@@ -168,7 +168,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       {filters}
     </header>
     <main>{body}</main>
-    <footer class="footer"><div class="footer-text"><span class="footer-credit">Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
+    <footer class="footer"><div class="footer-text"><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
   </div>
   <script>(function(){{
     function setLanguage(english){{
@@ -307,7 +307,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     dblp_link = f' <a class="conference-detail-dblp" href="{text(dblp)}" target="_blank" rel="noopener noreferrer" title="View on DBLP" aria-label="View conference on DBLP"><img src="https://dblp.org/img/favicon.ico" alt=""></a>' if dblp else ""
     body = f"""
     <article class="detail-card" data-conference-name="{text(name)}" data-conference-year="{year}" data-conference-place="{text(edition.get('place') or '')}" data-conference-description="{text(conference.get('description') or name)}" data-conference-website="{text(official or '')}" data-conference-id="{text(edition.get('id', ''))}">
-      <h1 class="conference-detail-title"><span class="conference-detail-title-text">{text(name)} {year}</span><span class="conference-detail-star-count" data-conference-key="{text(edition.get('id', ''))}" title="GitHub user favorites" aria-label="GitHub user favorites"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><span class="conference-detail-star-number">0</span></span></h1>
+      <div class="conference-detail-heading"><h1 class="conference-detail-title"><span class="conference-detail-title-text">{text(name)} {year}</span></h1><span class="conference-detail-star-count" data-nosnippet data-conference-key="{text(edition.get('id', ''))}" title="GitHub user favorites" aria-label="GitHub user favorites"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><span class="conference-detail-star-number">0</span></span></div>
       <div class="detail-content">
       <div class="conference-detail-description">{text(conference.get('description') or name)}{dblp_link}</div>
       {acceptance}
@@ -402,7 +402,8 @@ main{padding:18px 0 8px}
 .breadcrumb a:hover{text-decoration:underline;color:var(--color-primary)}
 .detail-card{width:min(100%,520px);margin:0 auto;padding:18px 20px;border:1px solid #e5ded6;border-radius:8px;background:#fffdfa;color:#334155;font-size:14px;line-height:20px;box-shadow:0 1px 2px rgba(80,67,51,.04)}
 .detail-content{padding:0 2px 2px}
-.conference-detail-title{display:flex;align-items:center;gap:10px;margin:0;color:#292d33;font-size:27px;font-weight:500;line-height:1.15}
+.conference-detail-heading{display:flex;align-items:center;gap:10px}
+.conference-detail-title{min-width:0;margin:0;color:#292d33;font-size:27px;font-weight:500;line-height:1.15}
 .conference-detail-title-text{min-width:0;overflow-wrap:anywhere}
 .conference-detail-star-count{display:inline-flex;flex:none;align-items:center;gap:4px;padding:3px 7px;border:1px solid #e1dbd3;border-radius:999px;background:#f7f3ee;color:#5f6873;font-size:12px;font-variant-numeric:tabular-nums;font-weight:600;line-height:1}
 .conference-detail-star-count svg{color:#e6a23c}

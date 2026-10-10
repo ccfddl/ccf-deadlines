@@ -1,10 +1,56 @@
 import tempfile
 import re
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 from xml.etree import ElementTree
 
-from generate_seo_pages import generate
+from generate_seo_pages import directory_page, edition_page, generate
+
+
+class SearchPresentationTests(unittest.TestCase):
+    def test_conference_heading_excludes_favorites_and_footer_is_not_a_snippet(self):
+        class SearchContent(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.in_heading = False
+                self.headings = []
+                self.excluded = []
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == 'h1':
+                    self.in_heading = True
+                    self.headings.append('')
+                if 'data-nosnippet' in attrs:
+                    self.excluded.append(attrs.get('class'))
+
+            def handle_endtag(self, tag):
+                if tag == 'h1':
+                    self.in_heading = False
+
+            def handle_data(self, data):
+                if self.in_heading:
+                    self.headings[-1] += data
+
+        edition = {'year': 2026, 'id': 'cloud26', 'timeline': []}
+        conference = {'title': 'Cloud', 'sub': 'MX', 'confs': [edition]}
+        detail = edition_page(conference, edition, {}, {})
+        parsed = SearchContent()
+        parsed.feed(detail)
+        self.assertEqual(parsed.headings, ['Cloud 2026'])
+        self.assertIn('conference-detail-star-count', parsed.excluded)
+        self.assertIn('footer-credit', parsed.excluded)
+        self.assertIn('class="conference-detail-star-number">0</span>', detail)
+        self.assertIn('rel="canonical" href="https://ccfddl.com/venues/mx/cloud-2026/"', detail)
+        self.assertNotIn('noindex', detail)
+
+        directory = directory_page([conference], {})
+        parsed = SearchContent()
+        parsed.feed(directory)
+        self.assertIn('footer-credit', parsed.excluded)
+        self.assertIn('<title>Venue Deadlines Directory | CCFDDL</title>', directory)
+        self.assertNotIn('noindex', directory)
 
 
 class SeoPageTests(unittest.TestCase):
