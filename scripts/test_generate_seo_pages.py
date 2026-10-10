@@ -1,10 +1,131 @@
 import tempfile
 import re
 import unittest
+from html import escape
+from html.parser import HTMLParser
 from pathlib import Path
 from xml.etree import ElementTree
 
-from generate_seo_pages import generate
+from generate_seo_pages import directory_page, edition_metadata, edition_page, generate
+
+
+class SearchPresentationTests(unittest.TestCase):
+    def test_metadata_describes_conference_identity_ratings_and_event(self):
+        conference = {'title': 'SIGMOD', 'description': 'ACM Conference on Management of Data',
+                      'rank': {'ccf': 'A', 'core': 'A*', 'thcpl': 'A'}}
+        edition = {'year': 2027, 'date': 'June 13-19, 2027', 'place': 'Huntington Beach, CA, USA'}
+        title, description = edition_metadata(conference, edition)
+        self.assertEqual(title, 'SIGMOD 2027: ACM Conference on Management of Data | CCFDDL')
+        self.assertEqual(description, 'SIGMOD 2027 (ACM Conference on Management of Data) is a CCF A / CORE A* / THCPL A conference held in Huntington Beach, CA, USA (June 13-19, 2027). Track paper submission deadlines, check deadline time zones, and explore past venues on CCFDDL.')
+
+    def test_metadata_omits_unknown_values_and_duplicate_names(self):
+        for unknown in (None, '', 'N', 'TBD', 'TBA', 'Unknown', 'N/A', '-'):
+            with self.subTest(unknown=unknown):
+                conference = {'title': 'ACL', 'description': 'ACL',
+                              'rank': {'ccf': unknown, 'core': unknown, 'thcpl': unknown}}
+                title, description = edition_metadata(conference, {'year': 2027, 'date': unknown, 'place': unknown})
+                self.assertEqual(title, 'ACL 2027 | CCFDDL')
+                self.assertEqual(description, 'ACL 2027 is a conference. Track paper submission deadlines, check deadline time zones, and explore past venues on CCFDDL.')
+
+    def test_metadata_is_escaped_and_consistent_across_search_and_social(self):
+        class Metadata(HTMLParser):
+            def __init__(self, html):
+                super().__init__()
+                self.values = {}
+                self.feed(html)
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == 'meta':
+                    self.values[attrs.get('property') or attrs.get('name')] = attrs.get('content')
+
+        edition = {'year': 2027, 'place': 'A & B', 'timeline': []}
+        conference = {'title': 'A&B', 'description': 'A <special> "conference"',
+                      'sub': 'AI', 'confs': [edition]}
+        page = edition_page(conference, edition, {}, {})
+        meta = Metadata(page).values
+        title, description = edition_metadata(conference, edition)
+        self.assertIn('A &lt;special&gt; &quot;conference&quot;', page)
+        self.assertIn(f'<div class="conference-detail-description" id="conference-overview">{escape(description)}', page)
+        self.assertEqual(meta['og:title'], title)
+        self.assertEqual(meta['twitter:title'], title)
+        for key in ('description', 'og:description', 'twitter:description'):
+            self.assertEqual(meta[key], description)
+
+    def test_older_editions_promote_latest_and_keep_history_separate(self):
+        # Input order is not guaranteed, and the newest edition can have TBD dates.
+        editions = [{'year': year, 'id': f'acl{year}', 'timeline': []}
+                    for year in (2025, 2027, 2024, 2026)]
+        conference = {'title': 'ACL', 'sub': 'AI', 'confs': editions}
+        for edition in editions:
+            with self.subTest(year=edition['year']):
+                page = edition_page(conference, edition, {}, {})
+                self.assertIn(f'rel="canonical" href="https://ccfddl.com/venues/ai/acl-{edition["year"]}/"', page)
+                self.assertNotIn('noindex', page)
+                history = page.split('<ul class="edition-list">', 1)[1].split('</ul>', 1)[0]
+                for other in editions:
+                    link = f'href="/venues/ai/acl-{other["year"]}/"'
+                    self.assertEqual(link in history, other['year'] < edition['year'])
+                if edition['year'] < 2027:
+                    self.assertIn('<a href="/venues/ai/acl-2027/">View latest venue: ACL 2027</a>', page)
+                    self.assertLess(page.index('<aside class="conference-edition-notice"'), page.index('<article'))
+                else:
+                    self.assertNotIn('<aside class="conference-edition-notice"', page)
+
+        directory = directory_page([conference], {})
+        self.assertIn('href="/venues/ai/acl-2027/"', directory)
+        for year in (2024, 2025, 2026):
+            self.assertNotIn(f'href="/venues/ai/acl-{year}/"', directory)
+
+    def test_single_edition_has_no_self_link_notice(self):
+        edition = {'year': 2027, 'timeline': []}
+        conference = {'title': 'ACL', 'sub': 'AI', 'confs': [edition]}
+        page = edition_page(conference, edition, {}, {})
+        self.assertNotIn('<aside class="conference-edition-notice"', page)
+        self.assertIn('No earlier edition in the database.', page)
+
+    def test_conference_heading_excludes_favorites_and_footer_is_not_a_snippet(self):
+        class SearchContent(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.in_heading = False
+                self.headings = []
+                self.excluded = []
+
+            def handle_starttag(self, tag, attrs):
+                attrs = dict(attrs)
+                if tag == 'h1':
+                    self.in_heading = True
+                    self.headings.append('')
+                if 'data-nosnippet' in attrs:
+                    self.excluded.append(attrs.get('class'))
+
+            def handle_endtag(self, tag):
+                if tag == 'h1':
+                    self.in_heading = False
+
+            def handle_data(self, data):
+                if self.in_heading:
+                    self.headings[-1] += data
+
+        edition = {'year': 2026, 'id': 'cloud26', 'timeline': []}
+        conference = {'title': 'Cloud', 'sub': 'MX', 'confs': [edition]}
+        detail = edition_page(conference, edition, {}, {})
+        parsed = SearchContent()
+        parsed.feed(detail)
+        self.assertEqual(parsed.headings, ['Cloud 2026'])
+        self.assertIn('conference-detail-star-count', parsed.excluded)
+        self.assertIn('footer-credit', parsed.excluded)
+        self.assertIn('class="conference-detail-star-number">0</span>', detail)
+        self.assertIn('rel="canonical" href="https://ccfddl.com/venues/mx/cloud-2026/"', detail)
+        self.assertNotIn('noindex', detail)
+
+        directory = directory_page([conference], {})
+        parsed = SearchContent()
+        parsed.feed(directory)
+        self.assertIn('footer-credit', parsed.excluded)
+        self.assertIn('<title>Venue Deadlines Directory | CCFDDL</title>', directory)
+        self.assertNotIn('noindex', directory)
 
 
 class SeoPageTests(unittest.TestCase):
@@ -29,7 +150,7 @@ class SeoPageTests(unittest.TestCase):
             )
             self.assertIn("/venues/ai/acl-2027/", paths)
             page = (output / "venues/ai/acl-2027/index.html").read_text()
-            self.assertIn("ACL 2027 Deadline and Conference Dates | CCFDDL", page)
+            self.assertIn("ACL 2027: Annual Meeting of the Association for Computational Linguistics | CCFDDL", page)
             self.assertIn('rel="canonical" href="https://ccfddl.com/venues/ai/acl-2027/"', page)
             self.assertIn("2027-01-04 23:59", page)
             self.assertIn("Kyoto, Japan", page)

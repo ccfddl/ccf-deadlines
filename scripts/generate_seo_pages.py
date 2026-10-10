@@ -168,7 +168,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       {filters}
     </header>
     <main>{body}</main>
-    <footer class="footer"><div class="footer-text"><span class="footer-credit">Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
+    <footer class="footer"><div class="footer-text"><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
   </div>
   <script>(function(){{
     function setLanguage(english){{
@@ -254,11 +254,43 @@ def deadline_rows(edition: dict) -> str:
     return "".join(row for _, row in sorted(rows, key=lambda entry: entry[0]))
 
 
+def edition_metadata(conference: dict, edition: dict) -> tuple[str, str]:
+    def available(value: object) -> str:
+        value = str(value or "").strip()
+        return "" if value.upper() in {"TBD", "TBA", "N/A", "N", "UNKNOWN", "-"} else value
+
+    name = f'{conference["title"]} {edition["year"]}'
+    full_name = available(conference.get("description"))
+    has_full_name = full_name and full_name.casefold() != str(conference["title"]).strip().casefold()
+    title = f"{name}: {full_name} | CCFDDL" if has_full_name else f"{name} | CCFDDL"
+    identity = f"{name} ({full_name})" if has_full_name else name
+    ranks = conference.get("rank") or {}
+    ratings = " / ".join(
+        f"{label} {value}" for key, label in (("ccf", "CCF"), ("core", "CORE"), ("thcpl", "THCPL"))
+        if (value := available(ranks.get(key)))
+    )
+    description = f"{identity} is a {ratings + ' ' if ratings else ''}conference"
+    place, date = available(edition.get("place")), available(edition.get("date"))
+    if place:
+        description += f" held in {place}"
+    if date:
+        description += f" ({date})"
+    return title, description + ". Track paper submission deadlines, check deadline time zones, and explore past venues on CCFDDL."
+
+
 def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/venues/style.css") -> str:
     name, year = conference["title"], edition["year"]
     path = edition_path(conference, edition)
     canonical = BASE_URL + path
-    known = [str(point.get("deadline")) for point in edition.get("timeline", []) if KNOWN_DATE.fullmatch(str(point.get("deadline", "")))]
+    latest = max(conference["confs"], key=lambda item: item["year"])
+    edition_notice = ""
+    if year < latest["year"]:
+        edition_notice = (
+            '<aside class="conference-edition-notice" aria-label="Latest conference edition">'
+            '<span>This is an earlier edition.</span> '
+            f'<a href="{text(edition_path(conference, latest))}">View latest venue: {text(name)} {latest["year"]}</a>'
+            '</aside>'
+        )
     all_known = [
         str(point[field])
         for point in edition.get("timeline", [])
@@ -268,9 +300,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     opening = conference_opening(edition)
     if opening:
         all_known.append(opening)
-    deadline_summary = f"paper deadline {min(known)[:16]} {edition.get('timezone', '')}" if known else "paper deadline not listed"
-    description = f"{name} {year}: {deadline_summary}; {edition.get('date') or 'conference dates not listed'}; {edition.get('place') or 'location not listed'}. Deadlines and past editions on CCFDDL."
-    title = f"{name} {year} Deadline and Conference Dates | CCFDDL"
+    title, description = edition_metadata(conference, edition)
     category = categories.get(conference["sub"], conference["sub"])
     ranks = conference.get("rank") or {}
     rank_tags = "".join(
@@ -289,7 +319,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
             '<img src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png" alt="">'
             '<span>iCloud Calendar</span></a>'
         )
-    other_editions = sorted((item for item in conference["confs"] if item["year"] != year), key=lambda item: item["year"], reverse=True)
+    other_editions = sorted((item for item in conference["confs"] if item["year"] < year), key=lambda item: item["year"], reverse=True)
     history = "".join(f'<li><a href="{text(edition_path(conference, item))}">{text(name)} {item["year"]}</a></li>' for item in other_editions)
     notes = list(dict.fromkeys(str(point["comment"]).strip() for point in edition.get("timeline", []) if point.get("comment")))
     note = f'<div class="conference-detail-note">NOTE: {text(" · ".join(notes))}</div>' if notes else ""
@@ -306,10 +336,11 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     dblp = safe_link(f'https://dblp.org/db/conf/{conference.get("dblp", "")}') if conference.get("dblp") else None
     dblp_link = f' <a class="conference-detail-dblp" href="{text(dblp)}" target="_blank" rel="noopener noreferrer" title="View on DBLP" aria-label="View conference on DBLP"><img src="https://dblp.org/img/favicon.ico" alt=""></a>' if dblp else ""
     body = f"""
+    {edition_notice}
     <article class="detail-card" data-conference-name="{text(name)}" data-conference-year="{year}" data-conference-place="{text(edition.get('place') or '')}" data-conference-description="{text(conference.get('description') or name)}" data-conference-website="{text(official or '')}" data-conference-id="{text(edition.get('id', ''))}">
-      <h1 class="conference-detail-title"><span class="conference-detail-title-text">{text(name)} {year}</span><span class="conference-detail-star-count" data-conference-key="{text(edition.get('id', ''))}" title="GitHub user favorites" aria-label="GitHub user favorites"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><span class="conference-detail-star-number">0</span></span></h1>
+      <div class="conference-detail-heading"><h1 class="conference-detail-title"><span class="conference-detail-title-text">{text(name)} {year}</span></h1><span class="conference-detail-star-count" data-nosnippet data-conference-key="{text(edition.get('id', ''))}" title="GitHub user favorites" aria-label="GitHub user favorites"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><span class="conference-detail-star-number">0</span></span></div>
       <div class="detail-content">
-      <div class="conference-detail-description">{text(conference.get('description') or name)}{dblp_link}</div>
+      <div class="conference-detail-description" id="conference-overview">{text(description)}{dblp_link}</div>
       {acceptance}
       <div class="conference-detail-section"><span class="conference-detail-label">DATES</span><div>{text(edition.get('date') or 'Not listed')}</div></div>
       <div class="conference-detail-section"><span class="conference-detail-label">VENUE</span><div>{text(edition.get('place') or 'Not listed')}</div></div>
@@ -321,7 +352,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
       <div class="conference-detail-calendar-events" id="google-calendar-events" hidden></div>
       </div>
     </article>
-    <section class="editions"><h2>past venues</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
+    <section class="editions"><h2>Past venues</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
     """
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/venues/">All venues</a><span>/</span><span>{text(name)} {year}</span></nav>'
     return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL")
@@ -401,8 +432,11 @@ main{padding:18px 0 8px}
 .breadcrumb a{color:#5c7185;text-decoration:none}
 .breadcrumb a:hover{text-decoration:underline;color:var(--color-primary)}
 .detail-card{width:min(100%,520px);margin:0 auto;padding:18px 20px;border:1px solid #e5ded6;border-radius:8px;background:#fffdfa;color:#334155;font-size:14px;line-height:20px;box-shadow:0 1px 2px rgba(80,67,51,.04)}
+.conference-edition-notice{width:min(100%,520px);margin:0 auto 12px;padding:12px 16px;border:1px solid #d9d3cb;border-radius:8px;background:#f7f3ee;color:#5f6873;font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+.conference-edition-notice a{display:block;font-weight:600}
 .detail-content{padding:0 2px 2px}
-.conference-detail-title{display:flex;align-items:center;gap:10px;margin:0;color:#292d33;font-size:27px;font-weight:500;line-height:1.15}
+.conference-detail-heading{display:flex;align-items:center;gap:10px}
+.conference-detail-title{min-width:0;margin:0;color:#292d33;font-size:27px;font-weight:500;line-height:1.15}
 .conference-detail-title-text{min-width:0;overflow-wrap:anywhere}
 .conference-detail-star-count{display:inline-flex;flex:none;align-items:center;gap:4px;padding:3px 7px;border:1px solid #e1dbd3;border-radius:999px;background:#f7f3ee;color:#5f6873;font-size:12px;font-variant-numeric:tabular-nums;font-weight:600;line-height:1}
 .conference-detail-star-count svg{color:#e6a23c}
