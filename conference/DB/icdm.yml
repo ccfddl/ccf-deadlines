@@ -55,3 +55,15 @@
       timezone: AoE
       date: November 12-15, 2026
       place: Shenyang, China
+    - year: 2027
+      id: icdm2027
+      link: https://icdm2027-website.onrender.com/
+      timeline:
+        # Source: https://icdm2027-website.onrender.com/dates/
+        # Official deadlines are 11:59 PM AoE (23:59:00).
+        - deadline: '2027-06-06 23:59:00'
+          decision_deadline: '2027-08-16 23:59:00'
+          comment: 'Full papers; dates are tentative and subject to change'
+      timezone: AoE
+      date: November 15-18, 2027
+      place: Brisbane, Australia
