@@ -61,3 +61,14 @@
       timezone: AoE
       date: June 8-12, 2026
       place: Nottingham, United Kingdom
+    - year: 2027
+      id: eurovis2027
+      link: https://eurovis27.github.io/web/
+      timeline:
+        # Source: https://eurovis27.github.io/web/submissions/full-papers/
+        - deadline: TBD
+          comment: 'Full papers; submission deadline not yet announced'
+      # Full paper timezone is unpublished; AoE follows README defaults.
+      timezone: AoE
+      date: May 31-June 4, 2027
+      place: Stuttgart, Germany
