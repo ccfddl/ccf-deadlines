@@ -9,6 +9,38 @@ from generate_seo_pages import directory_page, edition_page, generate
 
 
 class SearchPresentationTests(unittest.TestCase):
+    def test_older_editions_promote_latest_and_keep_history_separate(self):
+        # Input order is not guaranteed, and the newest edition can have TBD dates.
+        editions = [{'year': year, 'id': f'acl{year}', 'timeline': []}
+                    for year in (2025, 2027, 2024, 2026)]
+        conference = {'title': 'ACL', 'sub': 'AI', 'confs': editions}
+        for edition in editions:
+            with self.subTest(year=edition['year']):
+                page = edition_page(conference, edition, {}, {})
+                self.assertIn(f'rel="canonical" href="https://ccfddl.com/venues/ai/acl-{edition["year"]}/"', page)
+                self.assertNotIn('noindex', page)
+                history = page.split('<ul class="edition-list">', 1)[1].split('</ul>', 1)[0]
+                for other in editions:
+                    link = f'href="/venues/ai/acl-{other["year"]}/"'
+                    self.assertEqual(link in history, other['year'] < edition['year'])
+                if edition['year'] < 2027:
+                    self.assertIn('<a href="/venues/ai/acl-2027/">View latest edition: ACL 2027</a>', page)
+                    self.assertLess(page.index('<aside class="conference-edition-notice"'), page.index('<article'))
+                else:
+                    self.assertNotIn('<aside class="conference-edition-notice"', page)
+
+        directory = directory_page([conference], {})
+        self.assertIn('href="/venues/ai/acl-2027/"', directory)
+        for year in (2024, 2025, 2026):
+            self.assertNotIn(f'href="/venues/ai/acl-{year}/"', directory)
+
+    def test_single_edition_has_no_self_link_notice(self):
+        edition = {'year': 2027, 'timeline': []}
+        conference = {'title': 'ACL', 'sub': 'AI', 'confs': [edition]}
+        page = edition_page(conference, edition, {}, {})
+        self.assertNotIn('<aside class="conference-edition-notice"', page)
+        self.assertIn('No earlier edition in the database.', page)
+
     def test_conference_heading_excludes_favorites_and_footer_is_not_a_snippet(self):
         class SearchContent(HTMLParser):
             def __init__(self):
