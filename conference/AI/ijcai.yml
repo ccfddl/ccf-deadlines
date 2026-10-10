@@ -65,9 +65,14 @@
       place: Bremen, Germany
     - year: 2027
       id: ijcai27
-      link: https://www.ijcai.org/node/8
+      link: https://2027.ijcai.org/
       timeline:
-        - deadline: 'TBD'
-      timezone: UTC-12
-      date: August 7-13 and August 15-17, 2027
-      place: Kyoto, Japan and Hengqin, China
+        # Source: https://2027.ijcai.org/
+        # The official time is explicitly 23:59 AoE, represented as 23:59:00.
+        - abstract_deadline: '2027-01-04 23:59:00'
+          deadline: '2027-01-11 23:59:00'
+          decision_deadline: '2027-04-21 23:59:00'
+          comment: 'Separate satellite event: August 15-17, 2027, Hengqin, China'
+      timezone: AoE
+      date: August 7-13, 2027
+      place: Kyoto, Japan
