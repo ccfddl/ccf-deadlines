@@ -287,7 +287,6 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     if year < latest["year"]:
         edition_notice = (
             '<aside class="conference-edition-notice" aria-label="Latest conference edition">'
-            '<span>This is an earlier edition.</span> '
             f'<a href="{text(edition_path(conference, latest))}">View latest venue: {text(name)} {latest["year"]}</a>'
             '</aside>'
         )
@@ -321,6 +320,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
         )
     other_editions = sorted((item for item in conference["confs"] if item["year"] < year), key=lambda item: item["year"], reverse=True)
     history = "".join(f'<li><a href="{text(edition_path(conference, item))}">{text(name)} {item["year"]}</a></li>' for item in other_editions)
+    history_section = f'<section class="editions"><h2>Past venues</h2><ul class="edition-list">{history}</ul></section>' if history else ""
     notes = list(dict.fromkeys(str(point["comment"]).strip() for point in edition.get("timeline", []) if point.get("comment")))
     note = f'<div class="conference-detail-note">NOTE: {text(" · ".join(notes))}</div>' if notes else ""
     upcoming = [value for value in all_known if value[:10] >= datetime.now().date().isoformat()]
@@ -340,7 +340,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     <article class="detail-card" data-conference-name="{text(name)}" data-conference-year="{year}" data-conference-place="{text(edition.get('place') or '')}" data-conference-description="{text(conference.get('description') or name)}" data-conference-website="{text(official or '')}" data-conference-id="{text(edition.get('id', ''))}">
       <div class="conference-detail-heading"><h1 class="conference-detail-title"><span class="conference-detail-title-text">{text(name)} {year}</span></h1><span class="conference-detail-star-count" data-nosnippet data-conference-key="{text(edition.get('id', ''))}" title="GitHub user favorites" aria-label="GitHub user favorites"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><span class="conference-detail-star-number">0</span></span></div>
       <div class="detail-content">
-      <div class="conference-detail-description" id="conference-overview">{text(description)}{dblp_link}</div>
+      <div class="conference-detail-description" id="conference-overview">{text(conference.get('description') or name)}{dblp_link}</div>
       {acceptance}
       <div class="conference-detail-section"><span class="conference-detail-label">DATES</span><div>{text(edition.get('date') or 'Not listed')}</div></div>
       <div class="conference-detail-section"><span class="conference-detail-label">VENUE</span><div>{text(edition.get('place') or 'Not listed')}</div></div>
@@ -352,7 +352,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
       <div class="conference-detail-calendar-events" id="google-calendar-events" hidden></div>
       </div>
     </article>
-    <section class="editions"><h2>Past venues</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
+    {history_section}
     """
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/venues/">All venues</a><span>/</span><span>{text(name)} {year}</span></nav>'
     return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL")
