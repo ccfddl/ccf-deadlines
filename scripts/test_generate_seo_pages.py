@@ -24,7 +24,7 @@ class SearchPresentationTests(unittest.TestCase):
                     link = f'href="/venues/ai/acl-{other["year"]}/"'
                     self.assertEqual(link in history, other['year'] < edition['year'])
                 if edition['year'] < 2027:
-                    self.assertIn('<a href="/venues/ai/acl-2027/">View latest edition: ACL 2027</a>', page)
+                    self.assertIn('<a href="/venues/ai/acl-2027/">View latest venue</a>', page)
                     self.assertLess(page.index('<aside class="conference-edition-notice"'), page.index('<article'))
                 else:
                     self.assertNotIn('<aside class="conference-edition-notice"', page)

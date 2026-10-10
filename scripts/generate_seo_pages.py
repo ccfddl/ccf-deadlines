@@ -264,7 +264,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
         edition_notice = (
             '<aside class="conference-edition-notice" aria-label="Latest conference edition">'
             '<span>This is an earlier edition.</span> '
-            f'<a href="{text(edition_path(conference, latest))}">View latest edition: {text(name)} {latest["year"]}</a>'
+            f'<a href="{text(edition_path(conference, latest))}">View latest venue</a>'
             '</aside>'
         )
     known = [str(point.get("deadline")) for point in edition.get("timeline", []) if KNOWN_DATE.fullmatch(str(point.get("deadline", "")))]
