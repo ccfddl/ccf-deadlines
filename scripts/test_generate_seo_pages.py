@@ -1,6 +1,7 @@
 import tempfile
 import re
 import unittest
+from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.etree import ElementTree
@@ -15,7 +16,7 @@ class SearchPresentationTests(unittest.TestCase):
         edition = {'year': 2027, 'date': 'June 13-19, 2027', 'place': 'Huntington Beach, CA, USA'}
         title, description = edition_metadata(conference, edition)
         self.assertEqual(title, 'SIGMOD 2027: ACM Conference on Management of Data | CCFDDL')
-        self.assertEqual(description, 'SIGMOD 2027 (ACM Conference on Management of Data) is a CCF A / CORE A* / THCPL A conference held in Huntington Beach, CA, USA (June 13-19, 2027).')
+        self.assertEqual(description, 'SIGMOD 2027 (ACM Conference on Management of Data) is a CCF A / CORE A* / THCPL A conference held in Huntington Beach, CA, USA (June 13-19, 2027). Track paper submission deadlines, check deadline time zones, and explore past venues on CCFDDL.')
 
     def test_metadata_omits_unknown_values_and_duplicate_names(self):
         for unknown in (None, '', 'N', 'TBD', 'TBA', 'Unknown', 'N/A', '-'):
@@ -24,7 +25,7 @@ class SearchPresentationTests(unittest.TestCase):
                               'rank': {'ccf': unknown, 'core': unknown, 'thcpl': unknown}}
                 title, description = edition_metadata(conference, {'year': 2027, 'date': unknown, 'place': unknown})
                 self.assertEqual(title, 'ACL 2027 | CCFDDL')
-                self.assertEqual(description, 'ACL 2027 is a conference.')
+                self.assertEqual(description, 'ACL 2027 is a conference. Track paper submission deadlines, check deadline time zones, and explore past venues on CCFDDL.')
 
     def test_metadata_is_escaped_and_consistent_across_search_and_social(self):
         class Metadata(HTMLParser):
@@ -45,6 +46,7 @@ class SearchPresentationTests(unittest.TestCase):
         meta = Metadata(page).values
         title, description = edition_metadata(conference, edition)
         self.assertIn('A &lt;special&gt; &quot;conference&quot;', page)
+        self.assertIn(f'<div class="conference-detail-description" id="conference-overview">{escape(description)}', page)
         self.assertEqual(meta['og:title'], title)
         self.assertEqual(meta['twitter:title'], title)
         for key in ('description', 'og:description', 'twitter:description'):
@@ -65,7 +67,7 @@ class SearchPresentationTests(unittest.TestCase):
                     link = f'href="/venues/ai/acl-{other["year"]}/"'
                     self.assertEqual(link in history, other['year'] < edition['year'])
                 if edition['year'] < 2027:
-                    self.assertIn('<a href="/venues/ai/acl-2027/">View latest venue</a>', page)
+                    self.assertIn('<a href="/venues/ai/acl-2027/">View latest venue: ACL 2027</a>', page)
                     self.assertLess(page.index('<aside class="conference-edition-notice"'), page.index('<article'))
                 else:
                     self.assertNotIn('<aside class="conference-edition-notice"', page)
