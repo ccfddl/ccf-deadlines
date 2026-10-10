@@ -254,6 +254,30 @@ def deadline_rows(edition: dict) -> str:
     return "".join(row for _, row in sorted(rows, key=lambda entry: entry[0]))
 
 
+def edition_metadata(conference: dict, edition: dict) -> tuple[str, str]:
+    def available(value: object) -> str:
+        value = str(value or "").strip()
+        return "" if value.upper() in {"TBD", "TBA", "N/A", "N", "UNKNOWN", "-"} else value
+
+    name = f'{conference["title"]} {edition["year"]}'
+    full_name = available(conference.get("description"))
+    has_full_name = full_name and full_name.casefold() != str(conference["title"]).strip().casefold()
+    title = f"{name}: {full_name} | CCFDDL" if has_full_name else f"{name} | CCFDDL"
+    identity = f"{name} ({full_name})" if has_full_name else name
+    ranks = conference.get("rank") or {}
+    ratings = " / ".join(
+        f"{label} {value}" for key, label in (("ccf", "CCF"), ("core", "CORE"), ("thcpl", "THCPL"))
+        if (value := available(ranks.get(key)))
+    )
+    description = f"{identity} is a {ratings + ' ' if ratings else ''}conference"
+    place, date = available(edition.get("place")), available(edition.get("date"))
+    if place:
+        description += f" held in {place}"
+    if date:
+        description += f" ({date})"
+    return title, description + "."
+
+
 def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/venues/style.css") -> str:
     name, year = conference["title"], edition["year"]
     path = edition_path(conference, edition)
@@ -267,7 +291,6 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
             f'<a href="{text(edition_path(conference, latest))}">View latest venue</a>'
             '</aside>'
         )
-    known = [str(point.get("deadline")) for point in edition.get("timeline", []) if KNOWN_DATE.fullmatch(str(point.get("deadline", "")))]
     all_known = [
         str(point[field])
         for point in edition.get("timeline", [])
@@ -277,9 +300,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     opening = conference_opening(edition)
     if opening:
         all_known.append(opening)
-    deadline_summary = f"paper deadline {min(known)[:16]} {edition.get('timezone', '')}" if known else "paper deadline not listed"
-    description = f"{name} {year}: {deadline_summary}; {edition.get('date') or 'conference dates not listed'}; {edition.get('place') or 'location not listed'}. Deadlines and past editions on CCFDDL."
-    title = f"{name} {year} Deadline and Conference Dates | CCFDDL"
+    title, description = edition_metadata(conference, edition)
     category = categories.get(conference["sub"], conference["sub"])
     ranks = conference.get("rank") or {}
     rank_tags = "".join(
