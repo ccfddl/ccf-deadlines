@@ -31,3 +31,15 @@
       timezone: UTC+8
       date: July 22-26, 2026
       place: Toronto, Canada (Hybrid)
+    - year: 2027
+      id: icic27
+      link: http://ic-icc.cn/2027/index.php
+      timeline:
+        # Source: http://ic-icc.cn/2027/index.php
+        # Submission deadline not verified; official CFP and date content unavailable.
+        # No official timezone is available; AoE follows README defaults.
+        - deadline: TBD
+          comment: 'Submission deadline to be confirmed'
+      timezone: AoE
+      date: July 22-26, 2027
+      place: Jinan, China
