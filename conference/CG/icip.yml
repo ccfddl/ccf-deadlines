@@ -55,3 +55,14 @@
       timezone: AoE
       date: September 14-16, 2026
       place: Tampere, Finland
+    - year: 2027
+      id: icip27
+      link: https://2027.ieeeicip.org/
+      timeline:
+        # Source: https://signalprocessingsociety.org/events/2027-ieee-international-conference-image-processing-icip
+        # Official source gives a date only; 23:59:59 follows README defaults.
+        - deadline: '2027-03-31 23:59:59'
+      # Official source does not specify a timezone; AoE follows README defaults.
+      timezone: AoE
+      date: November 29-December 3, 2027
+      place: Singapore
