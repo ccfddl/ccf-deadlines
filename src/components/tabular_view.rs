@@ -189,7 +189,7 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                     let current_year = now.with_timezone(&display_timezone_offset_at(&timezone, now.timestamp_millis())).year();
                     let year = leading_year(&data, &selected_categories, &ranks, &query, &timezone, current_year);
                     let groups = build_table(&data, &selected_categories, &ranks, &query, &timezone, year);
-                    render_table(year, groups, use_english.get()).into_any()
+                    render_table(year, groups, use_english.get(), selected_timezone.get()).into_any()
                 } else {
                     view! { <p class="tabular-status">"—"</p> }.into_any()
                 }
@@ -393,7 +393,7 @@ fn render_deadlines(deadlines: Vec<DeadlineCell>, english: bool) -> AnyView {
         .into_any()
 }
 
-fn render_table(year: i32, groups: Vec<MonthGroup>, english: bool) -> AnyView {
+fn render_table(year: i32, groups: Vec<MonthGroup>, english: bool, timezone: String) -> AnyView {
     if groups.is_empty() {
         return view! { <p class="tabular-status">{if english { "No known submission deadlines match these filters." } else { "没有符合条件的已知投稿截止日期。" }}</p> }.into_any();
     }
@@ -433,8 +433,19 @@ fn render_table(year: i32, groups: Vec<MonthGroup>, english: bool) -> AnyView {
         })
         .collect_view();
     view! {
+        <div class="tabular-caption">
+            <strong>{if english { "Paper submission deadlines" } else { "论文投稿截止日期" }}</strong>
+            <span>{timezone}</span>
+        </div>
+        <p class="tabular-note">
+            {if english {
+                "Columns show deadline years; locations appear below dates."
+            } else {
+                "年份列按截止日期年份归类；日期下方为会议举办地点。"
+            }}
+        </p>
         <div class="tabular-table-wrap">
-            <table class="tabular-table">
+            <table class="tabular-table" aria-label=if english { "Paper submission deadlines by year" } else { "按年份排列的论文投稿截止日期" }>
                 <thead><tr>
                     <th scope="col">{if english { "Month" } else { "月份" }}</th>
                     <th scope="col">{if english { "Venue" } else { "会议" }}</th>
