@@ -34,18 +34,7 @@ CATEGORY_EN_BY_SUB = {
     "HI": "Computer-Human Interaction",
     "MX": "Interdiscipline",
 }
-CATEGORY_SHORT_ZH_BY_SUB = {
-    "DS": "计算机体系结构",
-    "NW": "计算机网络",
-    "SC": "网络与信息安全",
-    "SE": "软件工程",
-    "DB": "数据库",
-    "CT": "计算理论",
-    "CG": "图形学与多媒体",
-    "AI": "人工智能",
-    "HI": "人机交互",
-    "MX": "交叉与新兴领域",
-}
+
 
 
 def slugify(title: str) -> str:
@@ -105,14 +94,17 @@ def format_deadline(value: object, timezone: str) -> str:
     return f'<time class="deadline-time" data-raw="{text(raw)}" data-source-tz="{text(timezone)}" title="Original: {text(raw)} {text(timezone)}">{text(shown)} · {text(timezone)}</time>'
 
 
-def category_links(categories: dict[str, str], active_sub: str = "", compact: bool = False) -> str:
-    return "".join(
-        f'<a href="{text(category_path(sub))}"{(" aria-current=\"page\"" if sub == active_sub else "")}'
-        f' title="{text(name)} · {text(CATEGORY_EN_BY_SUB.get(sub, name))}"'
-        f' data-category="{text(sub)}" data-zh="{text(CATEGORY_SHORT_ZH_BY_SUB.get(sub, name) if compact else name)}"'
-        f' data-en="{text(CATEGORY_EN_BY_SUB.get(sub, name))}">{text(CATEGORY_EN_BY_SUB.get(sub, name))}</a>'
-        for sub, name in categories.items()
-    )
+def category_links(categories: dict[str, str], active_sub: str = "", responsive: bool = False) -> str:
+    links = []
+    for sub, name in categories.items():
+        english = CATEGORY_EN_BY_SUB.get(sub, name)
+        label = f'<span class="category-name" data-zh="{text(name)}" data-en="{text(english)}">{text(english)}</span>'
+        if responsive:
+            label += f'<span class="category-code">{text(sub)}</span>'
+        current = ' aria-current="page"' if sub == active_sub else ""
+        links.append(f'<a href="{text(category_path(sub))}"{current} data-category="{text(sub)}"'
+                     f' title="{text(name)} · {text(english)}">{label}</a>')
+    return "".join(links)
 
 
 def directory_startup() -> str:
@@ -455,7 +447,7 @@ def category_page(sub: str, conferences: list[dict], categories: dict[str, str],
                   f'<span aria-current="page">{text(name)}</span></nav>')
     body = (f'<div class="category-overview"><h1>{text(name)} Conference Deadlines</h1>'
             f'<p>{len(conferences)} conference series. Explore each series or open its latest listed venue.</p></div>'
-            f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, compact=True)}</nav>'
+            f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
             f'<ul class="directory-list category-list">{directory_entries(conferences, descriptions=True)}</ul>')
     return layout(title, description, BASE_URL + category_path(sub), body,
                   breadcrumb=breadcrumb, detail_page=True, static_css=static_css)
@@ -603,13 +595,15 @@ main{padding:18px 0 8px}
 .series-latest-title a{color:#356d9e;text-decoration:none}
 .series-latest-title a:hover{text-decoration:underline}
 .category-overview{margin:22px 0 18px}
-.category-navigation{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:0 0 22px;font-size:13px;line-height:1.4}
-.category-navigation a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:9px 10px;border:1px solid #e6e0d8;border-radius:7px;background:#f3f0ec;color:#586573;text-align:center;text-decoration:none;overflow-wrap:anywhere}
-.category-navigation a:hover{border-color:#b8d2e8;background:#edf5fc;color:#356d9e}
-.category-navigation a[aria-current=page]{border-color:#a9c7df;background:#e9f2fa;color:#24557e;font-weight:600}
+.category-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 22px;padding-top:12px;padding-bottom:2px;border-top:1px solid #e8e3dc;font-size:14px;font-weight:500;line-height:16px}
+.category-navigation a{display:block;min-height:22px;padding:2px 9px;border:1px solid transparent;border-radius:7px;background:#f2efeb;color:#655f58;text-decoration:none;line-height:16px}
+.category-navigation a:hover{border-color:#ddd4ca;background:#ebe6df}
+.category-navigation a[aria-current=page]{border-color:#9fc4e3;background:#edf5fb;color:#356d9e}
 .category-navigation a:focus-visible{outline:2px solid #356d9e;outline-offset:2px}
-@media(max-width:900px){.category-navigation{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:600px){.category-navigation{grid-template-columns:repeat(2,minmax(0,1fr));font-size:12px}}
+.category-navigation .category-name,.category-navigation .category-code{font-family:"Segoe UI","Segoe UI Web (West European)",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif}
+.category-navigation .category-code{display:none}
+@media(max-width:768px){.category-navigation .category-name{display:none}.category-navigation .category-code{display:inline}}
+
 .category-list{grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr))}
 .venue-description{flex-basis:100%;padding:0 10px 10px;color:#697583;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
 .directory-empty{margin:14px 0;color:#697583;font-size:14px}
