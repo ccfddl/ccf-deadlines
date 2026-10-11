@@ -430,7 +430,6 @@ def series_page(conference: dict, categories: dict[str, str], static_css: str = 
         <div class="conference-detail-tags">{tags}</div>
       </header>
       <section class="series-latest">
-        <h2>Latest venue</h2>
         <a class="series-latest-link" href="{text(edition_path(conference, latest))}">View latest venue: {text(name)} {latest["year"]}</a>
         <p>{text(latest.get("date") or "Dates to be announced")} · {text(latest.get("place") or "Location to be announced")}</p>
         {deadline_summary}
