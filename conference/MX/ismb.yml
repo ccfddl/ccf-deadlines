@@ -57,8 +57,11 @@
       id: ismb27
       link: https://www.iscb.org/ismbeccb2027/
       timeline:
-        - deadline: 'TBD'
-          comment: 'Proceedings'
+        # Source: https://www.iscb.org/ismbeccb2027/key-dates (Proceedings)
+        # Final acceptance has no clock time; 23:59:59 follows README defaults.
+        - deadline: '2027-01-14 23:59:00'
+          decision_deadline: '2027-03-30 23:59:59'
+          comment: 'Proceedings; conditional acceptance: March 2, 2027; revised papers due: March 18, 2027, 23:59 AoE; no extensions to submission or revision deadlines'
       timezone: AoE
       date: July 18-22, 2027
       place: Copenhagen, Denmark
