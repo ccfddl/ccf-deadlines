@@ -601,10 +601,12 @@ main{padding:18px 0 8px}
 .directory-section:first-of-type{padding-top:0;border-top:0}
 .directory-section:last-of-type{margin-bottom:0}
 .directory-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:0;padding:0;list-style:none}
-.directory-list li{display:flex;flex-wrap:wrap;align-items:baseline;min-width:0;border:1px solid #e6e0d8;border-radius:8px;background:#fffefa;box-shadow:0 1px 2px rgba(80,67,51,.04)}
+.directory-list li{position:relative;display:flex;flex-wrap:wrap;align-items:baseline;min-width:0;border:1px solid #e6e0d8;border-radius:8px;background:#fffefa;box-shadow:0 1px 2px rgba(80,67,51,.04)}
 .directory-list a{padding:9px 10px;color:#334155;font-size:13px;text-decoration:none;overflow-wrap:anywhere}
 .directory-list .venue-series-link{flex:1;min-width:0}
-.directory-list .venue-latest-link{flex:none;padding-left:0;color:#356d9e;font-size:12px}
+.directory-list .venue-series-link::after{content:"";position:absolute;inset:0;z-index:1;border-radius:8px}
+.directory-list .venue-series-link:focus-visible::after{outline:2px solid #356d9e;outline-offset:2px}
+.directory-list .venue-latest-link{position:relative;z-index:2;flex:none;padding-left:0;color:#356d9e;font-size:12px}
 .directory-list a:hover{color:#409eff;text-decoration:underline}
 .directory-section h2 a{color:inherit;text-decoration:none}
 .directory-section h2 a:hover{text-decoration:underline}
