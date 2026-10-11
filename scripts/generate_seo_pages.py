@@ -287,7 +287,6 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     if year < latest["year"]:
         edition_notice = (
             '<aside class="conference-edition-notice" aria-label="Latest conference edition">'
-            '<span>This is an earlier edition.</span> '
             f'<a href="{text(edition_path(conference, latest))}">View latest venue: {text(name)} {latest["year"]}</a>'
             '</aside>'
         )
@@ -312,15 +311,17 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     calendar_actions = ""
     if all_known:
         calendar_actions = (
+            '<div class="conference-detail-calendars">'
             '<button class="conference-detail-calendar-link" id="google-calendar-button" type="button" aria-expanded="false">'
             '<img src="https://ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_31_2x.png" alt="">'
             '<span>Google Calendar</span></button>'
             f'<a class="conference-detail-calendar-link" id="icloud-calendar-link" download="{text(slugify(name))}-{year}.ics">'
             '<img src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png" alt="">'
-            '<span>iCloud Calendar</span></a>'
+            '<span>iCloud Calendar</span></a></div>'
         )
     other_editions = sorted((item for item in conference["confs"] if item["year"] < year), key=lambda item: item["year"], reverse=True)
     history = "".join(f'<li><a href="{text(edition_path(conference, item))}">{text(name)} {item["year"]}</a></li>' for item in other_editions)
+    history_section = f'<section class="editions"><h2>Past venues</h2><ul class="edition-list">{history}</ul></section>' if history else ""
     notes = list(dict.fromkeys(str(point["comment"]).strip() for point in edition.get("timeline", []) if point.get("comment")))
     note = f'<div class="conference-detail-note">NOTE: {text(" · ".join(notes))}</div>' if notes else ""
     upcoming = [value for value in all_known if value[:10] >= datetime.now().date().isoformat()]
@@ -340,7 +341,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     <article class="detail-card" data-conference-name="{text(name)}" data-conference-year="{year}" data-conference-place="{text(edition.get('place') or '')}" data-conference-description="{text(conference.get('description') or name)}" data-conference-website="{text(official or '')}" data-conference-id="{text(edition.get('id', ''))}">
       <div class="conference-detail-heading"><h1 class="conference-detail-title"><span class="conference-detail-title-text">{text(name)} {year}</span></h1><span class="conference-detail-star-count" data-nosnippet data-conference-key="{text(edition.get('id', ''))}" title="GitHub user favorites" aria-label="GitHub user favorites"><svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/></svg><span class="conference-detail-star-number">0</span></span></div>
       <div class="detail-content">
-      <div class="conference-detail-description" id="conference-overview">{text(description)}{dblp_link}</div>
+      <div class="conference-detail-description" id="conference-overview">{text(conference.get('description') or name)}{dblp_link}</div>
       {acceptance}
       <div class="conference-detail-section"><span class="conference-detail-label">DATES</span><div>{text(edition.get('date') or 'Not listed')}</div></div>
       <div class="conference-detail-section"><span class="conference-detail-label">VENUE</span><div>{text(edition.get('place') or 'Not listed')}</div></div>
@@ -352,7 +353,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
       <div class="conference-detail-calendar-events" id="google-calendar-events" hidden></div>
       </div>
     </article>
-    <section class="editions"><h2>Past venues</h2><ul class="edition-list">{history or '<li>No earlier edition in the database.</li>'}</ul></section>
+    {history_section}
     """
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/venues/">All venues</a><span>/</span><span>{text(name)} {year}</span></nav>'
     return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL")
@@ -479,6 +480,7 @@ main{padding:18px 0 8px}
 .conference-detail-tags span,.conference-detail-actions a{display:inline-block;padding:5px 8px;border:0;border-radius:4px;background:#f3f0ec;color:#586573;font-size:12px;text-decoration:none}
 .conference-detail-actions{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:10px 0 2px;border-top:1px solid #e6e1da}
 .conference-detail-actions .conference-detail-website{margin-right:auto;padding-left:0;background:transparent;color:#356d9e}
+.conference-detail-calendars{display:flex;gap:6px;max-width:100%}
 .conference-detail-actions .conference-detail-calendar-link{display:inline-flex;flex:none;align-items:center;gap:5px;padding:5px 8px;border:0;border-radius:4px;background:#f3f0ec;color:#586573;font:12px "Roboto Mono","SF Mono",Monaco,monospace;text-decoration:none;white-space:nowrap;cursor:pointer}
 .conference-detail-calendar-link img{display:block;width:16px;height:16px;flex:none;object-fit:contain}
 .conference-detail-actions a:hover{color:#24557e}
@@ -502,6 +504,12 @@ main{padding:18px 0 8px}
 .footer-text{display:flex;align-items:center;gap:14px;min-width:0}
 .footer-credit{min-width:0}
 .footer a{color:#666}
+@media(max-width:600px){
+  .header-main .title{justify-self:start;max-width:100%;font-size:clamp(20px,6vw,24px)}
+  .conference-detail-actions .conference-detail-website{flex-basis:100%}
+  .conference-detail-calendars{width:100%;min-width:0}
+  .conference-detail-actions .conference-detail-calendar-link{flex:1 1 0;min-width:0;justify-content:center;padding:5px 4px;font-size:clamp(10px,3vw,12px)}
+}
 @media(max-width:600px){.detail-page .home{padding:0 16px}.header-main{display:grid;grid-template-columns:minmax(0,1fr) auto;padding-right:0}.header-main .title{grid-column:1/-1;grid-row:1}.header-github{grid-column:1;grid-row:2;justify-self:start}.header-x-link{justify-content:center;width:30px;padding:0}.header-x-link span{display:none}.header-auth{position:static;grid-column:2;grid-row:2;justify-self:end}.github-login-button span{display:none}.github-login-button{width:30px;padding:0}.title{font-size:24px}.detail-toolbar{align-items:flex-start}.detail-card{padding:18px 16px}.conference-detail-title{font-size:24px}.footer-text{font-size:14px;text-align:center}}
 """
 

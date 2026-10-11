@@ -46,7 +46,9 @@ class SearchPresentationTests(unittest.TestCase):
         meta = Metadata(page).values
         title, description = edition_metadata(conference, edition)
         self.assertIn('A &lt;special&gt; &quot;conference&quot;', page)
-        self.assertIn(f'<div class="conference-detail-description" id="conference-overview">{escape(description)}', page)
+        self.assertIn(f'<div class="conference-detail-description" id="conference-overview">{escape(conference["description"])}</div>', page)
+        body = page.split('<body', 1)[1]
+        self.assertNotIn('Track paper submission deadlines', body)
         self.assertEqual(meta['og:title'], title)
         self.assertEqual(meta['twitter:title'], title)
         for key in ('description', 'og:description', 'twitter:description'):
@@ -62,7 +64,11 @@ class SearchPresentationTests(unittest.TestCase):
                 page = edition_page(conference, edition, {}, {})
                 self.assertIn(f'rel="canonical" href="https://ccfddl.com/venues/ai/acl-{edition["year"]}/"', page)
                 self.assertNotIn('noindex', page)
-                history = page.split('<ul class="edition-list">', 1)[1].split('</ul>', 1)[0]
+                has_history = any(other['year'] < edition['year'] for other in editions)
+                self.assertEqual('<section class="editions">' in page, has_history)
+                history = page.split('<ul class="edition-list">', 1)[1].split('</ul>', 1)[0] if has_history else ''
+                self.assertNotIn('This is an earlier edition.', page)
+                self.assertNotIn('No earlier edition in the database.', page)
                 for other in editions:
                     link = f'href="/venues/ai/acl-{other["year"]}/"'
                     self.assertEqual(link in history, other['year'] < edition['year'])
@@ -82,7 +88,8 @@ class SearchPresentationTests(unittest.TestCase):
         conference = {'title': 'ACL', 'sub': 'AI', 'confs': [edition]}
         page = edition_page(conference, edition, {}, {})
         self.assertNotIn('<aside class="conference-edition-notice"', page)
-        self.assertIn('No earlier edition in the database.', page)
+        self.assertNotIn('No earlier edition in the database.', page)
+        self.assertNotIn('<section class="editions">', page)
 
     def test_conference_heading_excludes_favorites_and_footer_is_not_a_snippet(self):
         class SearchContent(HTMLParser):
