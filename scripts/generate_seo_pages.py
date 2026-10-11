@@ -145,7 +145,7 @@ def directory_startup() -> str:
     </script>'''
 
 
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "") -> str:
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "", show_clock: bool = True) -> str:
     social = ""
     if social_image:
         social = f'''<meta property="og:type" content="website">
@@ -174,6 +174,9 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
         f'<div class="directory-toolbar detail-toolbar">{clock_control}</div>'
         if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" style="display:flex;flex-wrap:wrap;gap:10px" aria-label="Venue categories">{navigation}</nav><p class="directory-controls-loading" role="status">Loading filters…</p></div>{directory_startup()}'
     )
+    if detail_page and not show_clock:
+        filters = ""
+    page_controls = '<script src="/venues/controls.js" defer></script>' if not detail_page or show_clock else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -239,7 +242,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       }}).catch(function(){{}});
     }}
   }})();</script>
-  <script src="/venues/controls.js" defer></script>
+  {page_controls}
 </body>
 </html>
 """
@@ -398,24 +401,44 @@ def series_page(conference: dict, categories: dict[str, str], static_css: str = 
     description = f"{name} conference deadlines, dates and past venues. Latest listed venue: {name} {latest['year']}."
     past = sorted((item for item in conference["confs"] if item["year"] < latest["year"]),
                   key=lambda item: item["year"], reverse=True)
-    history = "".join(f'<li><a href="{text(edition_path(conference, item))}">{text(name)} {item["year"]}</a></li>' for item in past)
-    history_section = f'<section class="editions"><h2>Past venues</h2><ul class="edition-list">{history}</ul></section>' if history else ""
+    history = "".join(
+        f'<li><a href="{text(edition_path(conference, item))}">{text(name)} {item["year"]}</a>'
+        f'<span>{text(item.get("date") or "Not listed")}</span><span>{text(item.get("place") or "Not listed")}</span></li>'
+        for item in past
+    )
+    history_section = f'<section class="series-history"><h2>Past venues</h2><ul class="edition-list">{history}</ul></section>' if history else ""
     ranks = conference.get("rank") or {}
     tags = "".join(f'<span>{label} {text(ranks[key])}</span>'
                    for key, label in (("ccf", "CCF"), ("core", "CORE"), ("thcpl", "THCPL"))
                    if ranks.get(key) and ranks[key] != "N")
+    sub = conference["sub"]
+    category = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
+    dblp = safe_link(f'https://dblp.org/db/conf/{conference["dblp"]}/') if conference.get("dblp") else None
+    dblp_link = f'<a href="{text(dblp)}" target="_blank" rel="noopener noreferrer">DBLP ↗</a>' if dblp else ""
+    submissions = []
+    timeline = latest.get("timeline", [])
+    for number, point in enumerate(timeline, 1):
+        raw = str(point.get("deadline") or "")
+        label = f"Round {number} paper submission" if len(timeline) > 1 else "Paper submission"
+        deadline = format_deadline(raw, latest.get("timezone", "")) if KNOWN_DATE.fullmatch(raw) else "TBD"
+        submissions.append(f'<div><dt>{label}</dt><dd>{deadline}</dd></div>')
+    deadline_summary = f'<dl class="series-submissions">{"".join(submissions)}</dl>' if submissions else ""
     body = f'''
-    <div class="series-overview"><h1>{text(name)}</h1><p>{text(full_name)}</p></div>
-    <article class="detail-card series-latest">
-      <h2 class="series-latest-title"><a href="{text(edition_path(conference, latest))}">View latest venue: {text(name)} {latest["year"]}</a></h2>
-      <div class="conference-detail-section"><span class="conference-detail-label">DATES</span><div>{text(latest.get("date") or "Not listed")}</div></div>
-      <div class="conference-detail-section"><span class="conference-detail-label">VENUE</span><div>{text(latest.get("place") or "Not listed")}</div></div>
-      <div class="conference-detail-section"><h3 class="conference-detail-label">IMPORTANT DEADLINES</h3>{deadline_rows(latest)}</div>
-      <div class="conference-detail-tags">{tags}</div>
-    </article>
-    {history_section}'''
+    <article class="series-summary">
+      <header class="series-overview"><h1>{text(name)}</h1><p>{text(full_name)}</p>
+        <div class="series-identity"><a href="{text(category_path(sub))}">{text(category)}</a>{dblp_link}</div>
+        <div class="conference-detail-tags">{tags}</div>
+      </header>
+      <section class="series-latest">
+        <h2>Latest venue</h2>
+        <a class="series-latest-link" href="{text(edition_path(conference, latest))}">View latest venue: {text(name)} {latest["year"]}</a>
+        <p>{text(latest.get("date") or "Dates to be announced")} · {text(latest.get("place") or "Location to be announced")}</p>
+        {deadline_summary}
+      </section>
+      {history_section}
+    </article>'''
     return layout(title, description, BASE_URL + series_path(conference), body,
-                  breadcrumb=venue_breadcrumb(conference, categories), detail_page=True, static_css=static_css)
+                  breadcrumb=venue_breadcrumb(conference, categories), detail_page=True, static_css=static_css, show_clock=False)
 
 
 def directory_entries(conferences: list[dict], descriptions: bool = False) -> str:
@@ -588,12 +611,26 @@ main{padding:18px 0 8px}
 .directory-list a:hover{color:#409eff;text-decoration:underline}
 .directory-section h2 a{color:inherit;text-decoration:none}
 .directory-section h2 a:hover{text-decoration:underline}
-.series-overview{width:min(100%,520px);margin:22px auto 16px}
+.series-summary{width:min(100%,720px);margin:4px auto 0}
+.series-overview{margin:0 0 24px}
 .series-overview h1,.category-overview h1{margin:0 0 10px;font-size:26px;font-weight:500;overflow-wrap:anywhere}
 .series-overview p,.category-overview p{margin:0;color:#697583;font-size:14px;line-height:1.6}
-.series-latest-title{margin:0 0 20px;font-size:18px;font-weight:500;overflow-wrap:anywhere}
-.series-latest-title a{color:#356d9e;text-decoration:none}
-.series-latest-title a:hover{text-decoration:underline}
+.series-identity{display:flex;flex-wrap:wrap;gap:16px;margin:12px 0;font-size:13px}
+.series-identity a{color:#356d9e;text-decoration:none}
+.series-summary h2{margin:0 0 12px;font-size:16px;font-weight:500;color:#334155}
+.series-latest{padding:18px;border:1px solid #e6e0d8;border-radius:8px;background:#fffdfa}
+.series-latest-link{color:#356d9e;font-size:16px;text-decoration:none;overflow-wrap:anywhere}
+.series-latest-link:hover,.series-identity a:hover{text-decoration:underline}
+.series-latest p{margin:10px 0 0;color:#697583;font-size:13px;line-height:1.6}
+.series-submissions{display:grid;gap:10px;margin:14px 0 0;font-size:12px;line-height:1.6}
+.series-submissions dt{color:#697583}.series-submissions dd{margin:2px 0 0;color:#334155}
+.series-history{margin-top:24px}
+.series-history .edition-list{display:block}
+.series-history li{display:grid;grid-template-columns:100px minmax(0,1fr) minmax(0,1fr);align-items:baseline;gap:10px;padding:12px 0;border-top:1px solid #e6e0d8;font-size:12px;line-height:1.6;color:#697583}
+.series-history .edition-list a{padding:0;border:0;border-radius:0;background:none;font-size:13px}
+.series-history li span{overflow-wrap:anywhere}
+@media(max-width:600px){.series-history li{grid-template-columns:90px minmax(0,1fr);gap:3px 10px}.series-history li a{grid-row:span 2}.series-history li span{grid-column:2}}
+
 .category-overview{margin:22px 0 18px}
 .category-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 22px;padding-top:12px;padding-bottom:2px;border-top:1px solid #e8e3dc;font-size:14px;font-weight:500;line-height:16px}
 .category-navigation a{display:block;min-height:22px;padding:2px 9px;border:1px solid transparent;border-radius:7px;background:#f2efeb;color:#655f58;text-decoration:none;line-height:16px}

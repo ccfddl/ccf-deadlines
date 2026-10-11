@@ -157,6 +157,10 @@ class VenueHubTests(unittest.TestCase):
         self.assertNotIn('ACL 2027', history)
         self.assertIn('href="/venues/ai/"', page)
         self.assertNotIn('noindex', page)
+        self.assertNotIn('id="display-clock"', page)
+        self.assertNotIn('id="display-timezone"', page)
+        self.assertNotIn('src="/venues/controls.js"', page)
+        self.assertNotIn('IMPORTANT DEADLINES', page)
 
     def test_new_pages_escape_names_and_preserve_source_timezone(self):
         conference = {'title': 'A&B', 'description': '<script>bad</script>', 'sub': 'AI',
