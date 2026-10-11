@@ -430,7 +430,6 @@ def series_page(conference: dict, categories: dict[str, str], static_css: str = 
         <div class="conference-detail-tags">{tags}</div>
       </header>
       <section class="series-latest">
-        <h2>Latest venue</h2>
         <a class="series-latest-link" href="{text(edition_path(conference, latest))}">View latest venue: {text(name)} {latest["year"]}</a>
         <p>{text(latest.get("date") or "Dates to be announced")} · {text(latest.get("place") or "Location to be announced")}</p>
         {deadline_summary}
@@ -468,9 +467,7 @@ def category_page(sub: str, conferences: list[dict], categories: dict[str, str],
     breadcrumb = (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a>'
                   f'<span>/</span><a href="/venues/">All venues</a><span>/</span>'
                   f'<span aria-current="page">{text(name)}</span></nav>')
-    body = (f'<div class="category-overview"><h1>{text(name)} Conference Deadlines</h1>'
-            f'<p>{len(conferences)} conference series. Explore each series or open its latest listed venue.</p></div>'
-            f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
+    body = (f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
             f'<ul class="directory-list category-list">{directory_entries(conferences, descriptions=True)}</ul>')
     return layout(title, description, BASE_URL + category_path(sub), body,
                   breadcrumb=breadcrumb, detail_page=True, static_css=static_css)
@@ -488,7 +485,7 @@ def directory_page(conferences: list[dict], categories: dict[str, str], app_asse
         sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2><a href="{text(category_path(sub))}" data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(CATEGORY_EN_BY_SUB.get(sub, category))}</a></h2><ul class="directory-list">{links}</ul></section>')
     body = f'<p class="directory-empty" id="directory-empty" hidden>No matching venues.</p>{"".join(sections)}'
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><span>All venues</span></nav>'
-    return layout("Venue Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
+    return layout("Venue Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
 
 
 def stylesheet() -> str:
@@ -604,17 +601,19 @@ main{padding:18px 0 8px}
 .directory-section:first-of-type{padding-top:0;border-top:0}
 .directory-section:last-of-type{margin-bottom:0}
 .directory-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:0;padding:0;list-style:none}
-.directory-list li{display:flex;flex-wrap:wrap;align-items:baseline;min-width:0;border:1px solid #e6e0d8;border-radius:8px;background:#fffefa;box-shadow:0 1px 2px rgba(80,67,51,.04)}
+.directory-list li{position:relative;display:flex;flex-wrap:wrap;align-items:baseline;min-width:0;border:1px solid #e6e0d8;border-radius:8px;background:#fffefa;box-shadow:0 1px 2px rgba(80,67,51,.04)}
 .directory-list a{padding:9px 10px;color:#334155;font-size:13px;text-decoration:none;overflow-wrap:anywhere}
 .directory-list .venue-series-link{flex:1;min-width:0}
-.directory-list .venue-latest-link{flex:none;padding-left:0;color:#356d9e;font-size:12px}
+.directory-list .venue-series-link::after{content:"";position:absolute;inset:0;z-index:1;border-radius:8px}
+.directory-list .venue-series-link:focus-visible::after{outline:2px solid #356d9e;outline-offset:2px}
+.directory-list .venue-latest-link{position:relative;z-index:2;flex:none;padding-left:0;color:#356d9e;font-size:12px}
 .directory-list a:hover{color:#409eff;text-decoration:underline}
 .directory-section h2 a{color:inherit;text-decoration:none}
 .directory-section h2 a:hover{text-decoration:underline}
 .series-summary{width:min(100%,720px);margin:4px auto 0}
 .series-overview{margin:0 0 24px}
-.series-overview h1,.category-overview h1{margin:0 0 10px;font-size:26px;font-weight:500;overflow-wrap:anywhere}
-.series-overview p,.category-overview p{margin:0;color:#697583;font-size:14px;line-height:1.6}
+.series-overview h1{margin:0 0 10px;font-size:26px;font-weight:500;overflow-wrap:anywhere}
+.series-overview p{margin:0;color:#697583;font-size:14px;line-height:1.6}
 .series-identity{display:flex;flex-wrap:wrap;gap:16px;margin:12px 0;font-size:13px}
 .series-identity a{color:#356d9e;text-decoration:none}
 .series-summary h2{margin:0 0 12px;font-size:16px;font-weight:500;color:#334155}
@@ -631,8 +630,7 @@ main{padding:18px 0 8px}
 .series-history li span{overflow-wrap:anywhere}
 @media(max-width:600px){.series-history li{grid-template-columns:90px minmax(0,1fr);gap:3px 10px}.series-history li a{grid-row:span 2}.series-history li span{grid-column:2}}
 
-.category-overview{margin:22px 0 18px}
-.category-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 22px;padding-top:12px;padding-bottom:2px;border-top:1px solid #e8e3dc;font-size:14px;font-weight:500;line-height:16px}
+.category-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 22px;padding-bottom:2px;font-size:14px;font-weight:500;line-height:16px}
 .category-navigation a{display:block;min-height:22px;padding:2px 9px;border:1px solid transparent;border-radius:7px;background:#f2efeb;color:#655f58;text-decoration:none;line-height:16px}
 .category-navigation a:hover{border-color:#ddd4ca;background:#ebe6df}
 .category-navigation a[aria-current=page]{border-color:#9fc4e3;background:#edf5fb;color:#356d9e}

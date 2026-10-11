@@ -131,7 +131,7 @@ class SearchPresentationTests(unittest.TestCase):
         parsed = SearchContent()
         parsed.feed(directory)
         self.assertIn('footer-credit', parsed.excluded)
-        self.assertIn('<title>Venue Deadlines Directory | CCFDDL</title>', directory)
+        self.assertIn('<title>Venue Directory | CCFDDL</title>', directory)
         self.assertNotIn('noindex', directory)
 
 
@@ -182,7 +182,7 @@ class VenueHubTests(unittest.TestCase):
             root = Path(temporary)
             paths = generate([self.conference, db, empty], {'AI': '人工智能', 'DB': '数据库', 'SC': '安全'}, root)
             ai = (root / 'venues/ai/index.html').read_text()
-            self.assertIn('<h1>Artificial Intelligence Conference Deadlines</h1>', ai)
+            self.assertIn('<title>Artificial Intelligence Conference Deadlines | CCFDDL</title>', ai)
             self.assertIn('rel="canonical" href="https://ccfddl.com/venues/ai/"', ai)
             self.assertIn('href="/venues/ai/acl/"', ai)
             self.assertIn('href="/venues/ai/acl-2027/"', ai)
