@@ -38,7 +38,7 @@ impl DateType {
             (Self::Submission, true) => "Paper submission",
             (Self::Submission, false) => "论文投稿截止",
             (Self::Opening, true) => "Conference opening",
-            (Self::Opening, false) => "会议开始",
+            (Self::Opening, false) => "会议召开",
         }
     }
 
@@ -47,7 +47,7 @@ impl DateType {
             (Self::Submission, true) => "Paper submission deadlines",
             (Self::Submission, false) => "论文投稿截止日期",
             (Self::Opening, true) => "Conference opening dates",
-            (Self::Opening, false) => "会议开始日期",
+            (Self::Opening, false) => "会议召开日期",
         }
     }
 }
@@ -478,7 +478,7 @@ fn render_table(year: i32, groups: Vec<MonthGroup>, english: bool, date_type: Da
             (DateType::Submission, true) => "No known submission deadlines match these filters.",
             (DateType::Submission, false) => "没有符合条件的已知投稿截止日期。",
             (DateType::Opening, true) => "No known conference opening dates match these filters.",
-            (DateType::Opening, false) => "没有符合条件的已知会议开始日期。",
+            (DateType::Opening, false) => "没有符合条件的已知会议召开日期。",
         };
         return view! { <p class="tabular-status">{message}</p> }.into_any();
     }
