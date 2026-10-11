@@ -467,9 +467,7 @@ def category_page(sub: str, conferences: list[dict], categories: dict[str, str],
     breadcrumb = (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a>'
                   f'<span>/</span><a href="/venues/">All venues</a><span>/</span>'
                   f'<span aria-current="page">{text(name)}</span></nav>')
-    body = (f'<div class="category-overview"><h1>{text(name)} Conference Deadlines</h1>'
-            f'<p>{len(conferences)} conference series. Explore each series or open its latest listed venue.</p></div>'
-            f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
+    body = (f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
             f'<ul class="directory-list category-list">{directory_entries(conferences, descriptions=True)}</ul>')
     return layout(title, description, BASE_URL + category_path(sub), body,
                   breadcrumb=breadcrumb, detail_page=True, static_css=static_css)
@@ -612,8 +610,8 @@ main{padding:18px 0 8px}
 .directory-section h2 a:hover{text-decoration:underline}
 .series-summary{width:min(100%,720px);margin:4px auto 0}
 .series-overview{margin:0 0 24px}
-.series-overview h1,.category-overview h1{margin:0 0 10px;font-size:26px;font-weight:500;overflow-wrap:anywhere}
-.series-overview p,.category-overview p{margin:0;color:#697583;font-size:14px;line-height:1.6}
+.series-overview h1{margin:0 0 10px;font-size:26px;font-weight:500;overflow-wrap:anywhere}
+.series-overview p{margin:0;color:#697583;font-size:14px;line-height:1.6}
 .series-identity{display:flex;flex-wrap:wrap;gap:16px;margin:12px 0;font-size:13px}
 .series-identity a{color:#356d9e;text-decoration:none}
 .series-summary h2{margin:0 0 12px;font-size:16px;font-weight:500;color:#334155}
@@ -630,8 +628,7 @@ main{padding:18px 0 8px}
 .series-history li span{overflow-wrap:anywhere}
 @media(max-width:600px){.series-history li{grid-template-columns:90px minmax(0,1fr);gap:3px 10px}.series-history li a{grid-row:span 2}.series-history li span{grid-column:2}}
 
-.category-overview{margin:22px 0 18px}
-.category-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 22px;padding-top:12px;padding-bottom:2px;border-top:1px solid #e8e3dc;font-size:14px;font-weight:500;line-height:16px}
+.category-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 22px;padding-bottom:2px;font-size:14px;font-weight:500;line-height:16px}
 .category-navigation a{display:block;min-height:22px;padding:2px 9px;border:1px solid transparent;border-radius:7px;background:#f2efeb;color:#655f58;text-decoration:none;line-height:16px}
 .category-navigation a:hover{border-color:#ddd4ca;background:#ebe6df}
 .category-navigation a[aria-current=page]{border-color:#9fc4e3;background:#edf5fb;color:#356d9e}
