@@ -311,12 +311,13 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     calendar_actions = ""
     if all_known:
         calendar_actions = (
+            '<div class="conference-detail-calendars">'
             '<button class="conference-detail-calendar-link" id="google-calendar-button" type="button" aria-expanded="false">'
             '<img src="https://ssl.gstatic.com/calendar/images/dynamiclogo_2020q4/calendar_31_2x.png" alt="">'
             '<span>Google Calendar</span></button>'
             f'<a class="conference-detail-calendar-link" id="icloud-calendar-link" download="{text(slugify(name))}-{year}.ics">'
             '<img src="https://help.apple.com/assets/61526E8E1494760B754BD308/61526E8F1494760B754BD30F/zh_CN/2162f7d3de310d2b3503c0bbebdc3d56.png" alt="">'
-            '<span>iCloud Calendar</span></a>'
+            '<span>iCloud Calendar</span></a></div>'
         )
     other_editions = sorted((item for item in conference["confs"] if item["year"] < year), key=lambda item: item["year"], reverse=True)
     history = "".join(f'<li><a href="{text(edition_path(conference, item))}">{text(name)} {item["year"]}</a></li>' for item in other_editions)
@@ -479,6 +480,7 @@ main{padding:18px 0 8px}
 .conference-detail-tags span,.conference-detail-actions a{display:inline-block;padding:5px 8px;border:0;border-radius:4px;background:#f3f0ec;color:#586573;font-size:12px;text-decoration:none}
 .conference-detail-actions{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:10px 0 2px;border-top:1px solid #e6e1da}
 .conference-detail-actions .conference-detail-website{margin-right:auto;padding-left:0;background:transparent;color:#356d9e}
+.conference-detail-calendars{display:flex;gap:6px;max-width:100%}
 .conference-detail-actions .conference-detail-calendar-link{display:inline-flex;flex:none;align-items:center;gap:5px;padding:5px 8px;border:0;border-radius:4px;background:#f3f0ec;color:#586573;font:12px "Roboto Mono","SF Mono",Monaco,monospace;text-decoration:none;white-space:nowrap;cursor:pointer}
 .conference-detail-calendar-link img{display:block;width:16px;height:16px;flex:none;object-fit:contain}
 .conference-detail-actions a:hover{color:#24557e}
@@ -502,6 +504,12 @@ main{padding:18px 0 8px}
 .footer-text{display:flex;align-items:center;gap:14px;min-width:0}
 .footer-credit{min-width:0}
 .footer a{color:#666}
+@media(max-width:600px){
+  .header-main .title{justify-self:start;max-width:100%;font-size:clamp(20px,6vw,24px)}
+  .conference-detail-actions .conference-detail-website{flex-basis:100%}
+  .conference-detail-calendars{width:100%;min-width:0}
+  .conference-detail-actions .conference-detail-calendar-link{flex:1 1 0;min-width:0;justify-content:center;padding:5px 4px;font-size:clamp(10px,3vw,12px)}
+}
 @media(max-width:600px){.detail-page .home{padding:0 16px}.header-main{display:grid;grid-template-columns:minmax(0,1fr) auto;padding-right:0}.header-main .title{grid-column:1/-1;grid-row:1}.header-github{grid-column:1;grid-row:2;justify-self:start}.header-x-link{justify-content:center;width:30px;padding:0}.header-x-link span{display:none}.header-auth{position:static;grid-column:2;grid-row:2;justify-self:end}.github-login-button span{display:none}.github-login-button{width:30px;padding:0}.title{font-size:24px}.detail-toolbar{align-items:flex-start}.detail-card{padding:18px 16px}.conference-detail-title{font-size:24px}.footer-text{font-size:14px;text-align:center}}
 """
 
