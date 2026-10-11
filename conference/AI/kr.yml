@@ -63,9 +63,15 @@
       place: Lisbon, Portugal
     - year: 2027
       id: krd27
-      link: https://kr.org/
+      link: https://kr.org/KR2027/
       timeline:
-        - deadline: 'TBD'
+        # Source: https://kr.org/KR2027/dates.html
+        # Official source gives dates only; 23:59:59 follows README defaults.
+        - abstract_deadline: '2027-04-23 23:59:59'
+          deadline: '2027-04-28 23:59:59'
+          rebuttal_deadline: '2027-06-18 23:59:59'
+          decision_deadline: '2027-06-30 23:59:59'
+          comment: 'Main track; author response period: June 15-18, 2027'
       timezone: AoE
-      date: TBD
+      date: September 21-24, 2027
       place: Buenos Aires, Argentina
