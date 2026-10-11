@@ -146,31 +146,6 @@ a {
   outline-offset: 2px;
 }
 
-.tabular-caption {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 12px;
-  margin: 0 0 5px;
-  font-size: 14px;
-}
-
-.tabular-caption strong {
-  font-weight: 500;
-}
-
-.tabular-caption span,
-.tabular-note {
-  color: #697583;
-  font-size: 12px;
-  overflow-wrap: anywhere;
-}
-
-.tabular-note {
-  margin: 0 0 12px;
-  line-height: 1.5;
-}
-
 .tabular-table-wrap {
   width: 100%;
   overflow-x: auto;

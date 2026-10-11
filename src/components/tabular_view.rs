@@ -50,19 +50,6 @@ impl DateType {
             (Self::Opening, false) => "会议开始日期",
         }
     }
-
-    fn note(self, english: bool) -> &'static str {
-        match (self, english) {
-            (Self::Submission, true) => {
-                "Columns show deadline years; locations appear below dates."
-            }
-            (Self::Submission, false) => "年份列按截止日期年份归类；日期下方为会议举办地点。",
-            (Self::Opening, true) => {
-                "Columns show opening-date years; locations appear below dates."
-            }
-            (Self::Opening, false) => "年份列按会议开始日期年份归类；日期下方为会议举办地点。",
-        }
-    }
 }
 
 #[derive(Clone)]
@@ -262,7 +249,7 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                     let kind = date_type.get();
                     let year = leading_year(&data, &selected_categories, &ranks, &query, &timezone, current_year, kind);
                     let groups = build_table(&data, &selected_categories, &ranks, &query, &timezone, year, kind);
-                    render_table(year, groups, use_english.get(), timezone, kind).into_any()
+                    render_table(year, groups, use_english.get(), kind).into_any()
                 } else {
                     view! { <p class="tabular-status">"—"</p> }.into_any()
                 }
@@ -485,13 +472,7 @@ fn render_deadlines(deadlines: Vec<DeadlineCell>, english: bool) -> AnyView {
         .into_any()
 }
 
-fn render_table(
-    year: i32,
-    groups: Vec<MonthGroup>,
-    english: bool,
-    timezone: String,
-    date_type: DateType,
-) -> AnyView {
+fn render_table(year: i32, groups: Vec<MonthGroup>, english: bool, date_type: DateType) -> AnyView {
     if groups.is_empty() {
         let message = match (date_type, english) {
             (DateType::Submission, true) => "No known submission deadlines match these filters.",
@@ -537,13 +518,6 @@ fn render_table(
         })
         .collect_view();
     view! {
-        <div class="tabular-caption">
-            <strong>{date_type.heading(english)}</strong>
-            <span>{timezone}</span>
-        </div>
-        <p class="tabular-note">
-            {date_type.note(english)}
-        </p>
         <div class="tabular-table-wrap">
             <table class="tabular-table" aria-label=date_type.heading(english)>
                 <thead><tr>
