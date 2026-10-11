@@ -1,0 +1,26 @@
+- title: ESWC
+  description: European Semantic Web Conference
+  sub: DB
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: esws
+  confs:
+    - year: 2026
+      id: eswc26
+      link: https://2026.eswc-conferences.org/
+      timeline:
+        - abstract_deadline: '2025-11-27 23:59:59'
+          deadline: '2025-12-04 23:59:59'
+      timezone: AoE
+      date: May 10-14, 2026
+      place: Dubrovnik, Croatia
+    - year: 2027
+      id: eswc27
+      link: https://2027.eswc-conferences.org/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: May 23-27, 2027
+      place: Limassol, Cyprus
