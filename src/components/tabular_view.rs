@@ -11,6 +11,60 @@ use wasm_bindgen::JsValue;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum DateType {
+    Submission,
+    Opening,
+}
+
+impl DateType {
+    fn from_param(value: Option<&str>) -> Self {
+        if value == Some("opening") {
+            Self::Opening
+        } else {
+            Self::Submission
+        }
+    }
+
+    fn event_count(self, edition: &ConferenceYear) -> usize {
+        match self {
+            Self::Submission => edition.timeline.len(),
+            Self::Opening => 1,
+        }
+    }
+
+    fn label(self, english: bool) -> &'static str {
+        match (self, english) {
+            (Self::Submission, true) => "Paper submission",
+            (Self::Submission, false) => "论文投稿截止",
+            (Self::Opening, true) => "Conference opening",
+            (Self::Opening, false) => "会议开始",
+        }
+    }
+
+    fn heading(self, english: bool) -> &'static str {
+        match (self, english) {
+            (Self::Submission, true) => "Paper submission deadlines",
+            (Self::Submission, false) => "论文投稿截止日期",
+            (Self::Opening, true) => "Conference opening dates",
+            (Self::Opening, false) => "会议开始日期",
+        }
+    }
+
+    fn note(self, english: bool) -> &'static str {
+        match (self, english) {
+            (Self::Submission, true) => {
+                "Columns show deadline years; locations appear below dates."
+            }
+            (Self::Submission, false) => "年份列按截止日期年份归类；日期下方为会议举办地点。",
+            (Self::Opening, true) => {
+                "Columns show opening-date years; locations appear below dates."
+            }
+            (Self::Opening, false) => "年份列按会议开始日期年份归类；日期下方为会议举办地点。",
+        }
+    }
+}
+
 #[derive(Clone)]
 struct DeadlineCell {
     date: String,
@@ -59,6 +113,7 @@ fn filter_query(
     thcpl: &HashSet<String>,
     search: &str,
     timezone: &str,
+    date_type: DateType,
 ) -> String {
     let mut query = "?view=table".to_string();
     for (name, values) in [
@@ -85,6 +140,9 @@ fn filter_query(
     }
     query.push_str("&tz=");
     query.push_str(&urlencoding::encode(timezone));
+    if date_type == DateType::Opening {
+        query.push_str("&date_type=opening");
+    }
     query
 }
 
@@ -109,6 +167,11 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
         selected_timezone,
     );
     let open_dropdown = RwSignal::new(None::<String>);
+    let initial_date_type = window()
+        .and_then(|browser| browser.location().search().ok())
+        .and_then(|query| web_sys::UrlSearchParams::new_with_str(&query).ok())
+        .and_then(|params| params.get("date_type"));
+    let date_type = RwSignal::new(DateType::from_param(initial_date_type.as_deref()));
     let conferences = RwSignal::new(None::<Vec<Conference>>);
     let loading = RwSignal::new(true);
     let failed = RwSignal::new(false);
@@ -122,6 +185,7 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
             &thcpl_rank_list.get(),
             &search.get(),
             &selected_timezone.get(),
+            date_type.get(),
         );
         if let Some(browser) = window() {
             let location = browser.location();
@@ -164,6 +228,14 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                 <ToolbarClock slot><LiveClock selected_timezone /></ToolbarClock>
             </ConferenceControls>
             <ConferenceDivider />
+            <div class="tabular-date-types" role="group" aria-label=move || if use_english.get() { "Date type" } else { "日期类型" }>
+                {[DateType::Submission, DateType::Opening].into_iter().map(|kind| view! {
+                    <button type="button" aria-pressed=move || (date_type.get() == kind).to_string()
+                        on:click=move |_| date_type.set(kind)>
+                        {move || kind.label(use_english.get())}
+                    </button>
+                }).collect_view()}
+            </div>
             {move || {
                 if loading.get() {
                     view! { <p class="tabular-status">{if use_english.get() { "Loading conference table..." } else { "正在加载会议表格…" }}</p> }.into_any()
@@ -187,9 +259,10 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                     let timezone = selected_timezone.get();
                     let now = Utc::now();
                     let current_year = now.with_timezone(&display_timezone_offset_at(&timezone, now.timestamp_millis())).year();
-                    let year = leading_year(&data, &selected_categories, &ranks, &query, &timezone, current_year);
-                    let groups = build_table(&data, &selected_categories, &ranks, &query, &timezone, year);
-                    render_table(year, groups, use_english.get(), selected_timezone.get()).into_any()
+                    let kind = date_type.get();
+                    let year = leading_year(&data, &selected_categories, &ranks, &query, &timezone, current_year, kind);
+                    let groups = build_table(&data, &selected_categories, &ranks, &query, &timezone, year, kind);
+                    render_table(year, groups, use_english.get(), timezone, kind).into_any()
                 } else {
                     view! { <p class="tabular-status">"—"</p> }.into_any()
                 }
@@ -214,6 +287,7 @@ fn leading_year(
     search: &str,
     timezone: &str,
     current_year: i32,
+    date_type: DateType,
 ) -> i32 {
     conferences
         .iter()
@@ -224,8 +298,8 @@ fn leading_year(
         })
         .flat_map(|conference| &conference.confs)
         .flat_map(|edition| {
-            (0..edition.timeline.len())
-                .filter_map(move |round| round_deadline(edition, round, timezone))
+            (0..date_type.event_count(edition))
+                .filter_map(move |round| event_date(edition, round, timezone, date_type))
         })
         .map(|deadline| deadline.year)
         .max()
@@ -263,6 +337,7 @@ fn is_full_submission_deadline(point: &Timeline) -> bool {
             | "paper title and author registration"
             | "research track abstract submission (mandatory)"
             | "regular paper abstract submissions"
+            | "technical presentation abstract"
             | "title and abstract due (conference track)"
             | "winter cycle title and abstract"
             | "spring cycle title and abstract"
@@ -273,12 +348,28 @@ fn is_full_submission_deadline(point: &Timeline) -> bool {
         || comment.starts_with("original abstract registration:"))
 }
 
-fn round_deadline(edition: &ConferenceYear, round: usize, timezone: &str) -> Option<DeadlineCell> {
-    let point = edition.timeline.get(round)?;
-    if !is_full_submission_deadline(point) {
-        return None;
-    }
-    let origin = parse_deadline_to_rfc3339(&point.deadline, &edition.timezone)
+fn event_date(
+    edition: &ConferenceYear,
+    round: usize,
+    timezone: &str,
+    date_type: DateType,
+) -> Option<DeadlineCell> {
+    let raw = match date_type {
+        DateType::Submission => {
+            let point = edition.timeline.get(round)?;
+            if !is_full_submission_deadline(point) {
+                return None;
+            }
+            point.deadline.as_str()
+        }
+        DateType::Opening => {
+            if round != 0 {
+                return None;
+            }
+            edition.opening.as_deref()?
+        }
+    };
+    let origin = parse_deadline_to_rfc3339(raw, &edition.timezone)
         .and_then(|value| DateTime::parse_from_rfc3339(&value).ok())?;
     let offset = display_timezone_offset_at(timezone, origin.timestamp_millis());
     let date = origin.with_timezone(&offset);
@@ -298,6 +389,7 @@ fn build_table(
     search: &str,
     timezone: &str,
     year: i32,
+    date_type: DateType,
 ) -> Vec<MonthGroup> {
     let mut monthly_rows: [Vec<TabularRow>; 12] = std::array::from_fn(|_| Vec::new());
     for conference in conferences {
@@ -311,22 +403,22 @@ fn build_table(
             .confs
             .iter()
             .filter(|edition| {
-                (0..edition.timeline.len())
-                    .any(|round| round_deadline(edition, round, timezone).is_some())
+                (0..date_type.event_count(edition))
+                    .any(|round| event_date(edition, round, timezone, date_type).is_some())
             })
             .max_by_key(|edition| edition.year)
         else {
             continue;
         };
-        for round in 0..latest_edition.timeline.len() {
-            if round_deadline(latest_edition, round, timezone).is_none() {
+        for round in 0..date_type.event_count(latest_edition) {
+            if event_date(latest_edition, round, timezone, date_type).is_none() {
                 continue;
             }
             let deadlines: Vec<_> = conference
                 .confs
                 .iter()
                 .filter_map(|edition| {
-                    round_deadline(edition, round, timezone).map(|date| (edition.year, date))
+                    event_date(edition, round, timezone, date_type).map(|date| (edition.year, date))
                 })
                 .filter(|(_, date)| (year - 3..=year).contains(&date.year))
                 .collect();
@@ -393,9 +485,21 @@ fn render_deadlines(deadlines: Vec<DeadlineCell>, english: bool) -> AnyView {
         .into_any()
 }
 
-fn render_table(year: i32, groups: Vec<MonthGroup>, english: bool, timezone: String) -> AnyView {
+fn render_table(
+    year: i32,
+    groups: Vec<MonthGroup>,
+    english: bool,
+    timezone: String,
+    date_type: DateType,
+) -> AnyView {
     if groups.is_empty() {
-        return view! { <p class="tabular-status">{if english { "No known submission deadlines match these filters." } else { "没有符合条件的已知投稿截止日期。" }}</p> }.into_any();
+        let message = match (date_type, english) {
+            (DateType::Submission, true) => "No known submission deadlines match these filters.",
+            (DateType::Submission, false) => "没有符合条件的已知投稿截止日期。",
+            (DateType::Opening, true) => "No known conference opening dates match these filters.",
+            (DateType::Opening, false) => "没有符合条件的已知会议开始日期。",
+        };
+        return view! { <p class="tabular-status">{message}</p> }.into_any();
     }
     let months_zh = [
         "一月",
@@ -434,18 +538,14 @@ fn render_table(year: i32, groups: Vec<MonthGroup>, english: bool, timezone: Str
         .collect_view();
     view! {
         <div class="tabular-caption">
-            <strong>{if english { "Paper submission deadlines" } else { "论文投稿截止日期" }}</strong>
+            <strong>{date_type.heading(english)}</strong>
             <span>{timezone}</span>
         </div>
         <p class="tabular-note">
-            {if english {
-                "Columns show deadline years; locations appear below dates."
-            } else {
-                "年份列按截止日期年份归类；日期下方为会议举办地点。"
-            }}
+            {date_type.note(english)}
         </p>
         <div class="tabular-table-wrap">
-            <table class="tabular-table" aria-label=if english { "Paper submission deadlines by year" } else { "按年份排列的论文投稿截止日期" }>
+            <table class="tabular-table" aria-label=date_type.heading(english)>
                 <thead><tr>
                     <th scope="col">{if english { "Month" } else { "月份" }}</th>
                     <th scope="col">{if english { "Venue" } else { "会议" }}</th>
@@ -467,12 +567,139 @@ mod tests {
     use serde_json::json;
 
     #[test]
+    fn opening_mode_is_shareable_and_unknown_modes_default_to_submission() {
+        assert_eq!(DateType::from_param(Some("opening")), DateType::Opening);
+        for value in [None, Some("submission"), Some("unknown")] {
+            assert_eq!(DateType::from_param(value), DateType::Submission);
+        }
+        let query = filter_query(
+            &HashSet::from(["AI".to_string()]),
+            &HashSet::new(),
+            &HashSet::new(),
+            &HashSet::new(),
+            "AAAI",
+            "Asia/Shanghai",
+            DateType::Opening,
+        );
+        assert_eq!(
+            query,
+            "?view=table&categories=AI&q=AAAI&tz=Asia%2FShanghai&date_type=opening"
+        );
+    }
+
+    #[test]
+    fn opening_mode_has_one_row_per_series_and_uses_opening_years() {
+        let conferences: Vec<Conference> = serde_json::from_value(json!([{
+            "title": "Example", "description": "Example", "sub": "AI", "rank": {"ccf":"A"}, "dblp":"example",
+            "confs": [
+                {"year":2026,"id":"example26","link":"https://example.com/26","timezone":"UTC","place":"Paris",
+                 "date":"June 2, 2026","opening":"2026-06-02 08:00:00",
+                 "timeline":[{"deadline":"2025-10-01 23:59:59"},{"deadline":"2026-01-01 23:59:59"}]},
+                {"year":2027,"id":"example27","link":"https://example.com/27","timezone":"UTC","place":"Rome",
+                 "date":"June 3, 2027","opening":"2027-06-03 08:00:00",
+                 "timeline":[{"deadline":"TBD"},{"deadline":"TBD"}]},
+                {"year":2028,"id":"example28","link":"https://example.com/28","timezone":"UTC","place":"TBD",
+                 "date":"June 2028","opening":null,"timeline":[{"deadline":"2027-10-01 23:59:59"}]}
+            ]
+        }])).unwrap();
+        let ranks = RankFilters::default();
+        let selected = HashSet::new();
+        let year = leading_year(
+            &conferences,
+            &selected,
+            &ranks,
+            "",
+            "UTC",
+            2026,
+            DateType::Opening,
+        );
+        assert_eq!(year, 2027);
+        let groups = build_table(
+            &conferences,
+            &selected,
+            &ranks,
+            "",
+            "UTC",
+            year,
+            DateType::Opening,
+        );
+        assert_eq!(groups.len(), 1);
+        assert_eq!(groups[0].month, 6);
+        assert_eq!(groups[0].rows.len(), 1);
+        let cells = &groups[0].rows[0].cells;
+        assert_eq!(cells[0].len(), 1);
+        assert_eq!(cells[0][0].date, "2027-06-03 08:00:00");
+        assert_eq!(cells[0][0].place, "Rome");
+        assert_eq!(cells[1][0].date, "2026-06-02 08:00:00");
+        assert_eq!(cells.iter().map(Vec::len).sum::<usize>(), 2);
+        assert!(event_date(&conferences[0].confs[2], 0, "UTC", DateType::Opening).is_none());
+        assert!(
+            build_table(
+                &conferences,
+                &HashSet::from(["DB".into()]),
+                &ranks,
+                "",
+                "UTC",
+                year,
+                DateType::Opening
+            )
+            .is_empty()
+        );
+    }
+
+    #[test]
+    fn opening_dates_move_between_month_and_year_columns_with_timezone() {
+        let conferences: Vec<Conference> = serde_json::from_value(json!([{
+            "title":"Boundary","description":"Boundary","sub":"AI","rank":{"ccf":"A"},"dblp":"boundary",
+            "confs":[{"year":2027,"id":"boundary27","link":"https://example.com","timezone":"UTC",
+                "place":"Paris","date":"January 1, 2027","opening":"2027-01-01 00:30:00","timeline":[]}]
+        }])).unwrap();
+        let ranks = RankFilters::default();
+        for (timezone, year, month, expected) in [
+            ("UTC", 2027, 1, "2027-01-01 00:30:00"),
+            ("Pacific/Honolulu", 2026, 12, "2026-12-31 14:30:00"),
+        ] {
+            assert_eq!(
+                leading_year(
+                    &conferences,
+                    &HashSet::new(),
+                    &ranks,
+                    "",
+                    timezone,
+                    2026,
+                    DateType::Opening
+                ),
+                year
+            );
+            let groups = build_table(
+                &conferences,
+                &HashSet::new(),
+                &ranks,
+                "",
+                timezone,
+                year,
+                DateType::Opening,
+            );
+            assert_eq!(groups[0].month, month);
+            assert_eq!(groups[0].rows[0].cells[0][0].date, expected);
+        }
+    }
+
+    #[test]
     fn shareable_filter_query_is_sorted_and_uses_only_allowed_values() {
         let categories = HashSet::from(["AI".to_string(), "DB".to_string()]);
         let ccf = HashSet::from(["B".to_string(), "A".to_string()]);
         let core = HashSet::from(["A*".to_string()]);
         assert_eq!(
-            filter_query(&categories, &ccf, &core, &HashSet::new(), "", "UTC"),
+            filter_query(
+                &categories,
+                &ccf,
+                &core,
+                &HashSet::new(),
+                "",
+                "UTC",
+                DateType::Submission
+            ),
             "?view=table&categories=AI,DB&ccf=A,B&core=A*&tz=UTC"
         );
         assert_eq!(
@@ -482,7 +709,8 @@ mod tests {
                 &HashSet::new(),
                 &HashSet::new(),
                 "",
-                "UTC"
+                "UTC",
+                DateType::Submission
             ),
             "?view=table&filters=all&tz=UTC"
         );
@@ -493,7 +721,8 @@ mod tests {
                 &core,
                 &HashSet::new(),
                 "VLDB 2027",
-                "Asia/Shanghai"
+                "Asia/Shanghai",
+                DateType::Submission
             ),
             "?view=table&categories=AI,DB&ccf=A,B&core=A*&q=VLDB%202027&tz=Asia%2FShanghai"
         );
@@ -521,7 +750,8 @@ mod tests {
                 "timeline": [
                     {"deadline": "2026-10-01 23:59:59", "comment": "Abstract deadline"},
                     {"deadline": "2026-10-08 23:59:59", "abstract_deadline": "2026-10-01 23:59:59", "comment": "Mandatory abstract deadline on October 1."},
-                    {"deadline": "2026-11-01 23:59:59", "comment": "Commitment deadline for papers reviewed by ARR"}
+                    {"deadline": "2026-11-01 23:59:59", "comment": "Commitment deadline for papers reviewed by ARR"},
+                    {"deadline": "2026-12-01 23:59:59", "comment": "Technical presentation abstract"}
                 ],
                 "timezone": "AoE",
                 "date": "June 2027",
@@ -535,6 +765,7 @@ mod tests {
             "",
             "America/Los_Angeles",
             2026,
+            DateType::Submission,
         );
         let dates: Vec<_> = groups
             .iter()
@@ -559,7 +790,15 @@ mod tests {
         .unwrap();
         let ranks = RankFilters::default();
         assert_eq!(
-            leading_year(&conferences, &HashSet::new(), &ranks, "", "UTC", 2026),
+            leading_year(
+                &conferences,
+                &HashSet::new(),
+                &ranks,
+                "",
+                "UTC",
+                2026,
+                DateType::Submission
+            ),
             2027
         );
         assert_eq!(
@@ -569,11 +808,20 @@ mod tests {
                 &ranks,
                 "",
                 "Pacific/Honolulu",
-                2026
+                2026,
+                DateType::Submission
             ),
             2026
         );
-        let utc = build_table(&conferences, &HashSet::new(), &ranks, "", "UTC", 2027);
+        let utc = build_table(
+            &conferences,
+            &HashSet::new(),
+            &ranks,
+            "",
+            "UTC",
+            2027,
+            DateType::Submission,
+        );
         assert_eq!(utc[0].month, 1);
         assert_eq!(utc[0].rows[0].cells[0][0].date, "2027-01-01 00:30:00");
         let honolulu = build_table(
@@ -583,6 +831,7 @@ mod tests {
             "",
             "Pacific/Honolulu",
             2026,
+            DateType::Submission,
         );
         assert_eq!(honolulu[0].month, 12);
         assert_eq!(honolulu[0].rows[0].cells[0][0].date, "2026-12-31 14:30:00");
@@ -630,7 +879,8 @@ mod tests {
                 &all_ranks,
                 "",
                 "America/Los_Angeles",
-                2026
+                2026,
+                DateType::Submission
             ),
             2027
         );
@@ -642,7 +892,8 @@ mod tests {
                 &all_ranks,
                 "",
                 "America/Los_Angeles",
-                2026
+                2026,
+                DateType::Submission
             ),
             2026
         );
@@ -653,6 +904,7 @@ mod tests {
             "",
             "America/Los_Angeles",
             2027,
+            DateType::Submission,
         )
         .into_iter()
         .find(|group| group.month == 2)
@@ -670,7 +922,8 @@ mod tests {
                 &b_only,
                 "",
                 "America/Los_Angeles",
-                2026
+                2026,
+                DateType::Submission
             ),
             2026
         );
@@ -681,7 +934,8 @@ mod tests {
                 &b_only,
                 "",
                 "America/Los_Angeles",
-                2027
+                2027,
+                DateType::Submission
             )
             .iter()
             .map(|group| group.rows.len())
@@ -700,7 +954,8 @@ mod tests {
                 &matching_ranks,
                 "",
                 "America/Los_Angeles",
-                2026
+                2026,
+                DateType::Submission
             ),
             2027
         );
@@ -711,7 +966,8 @@ mod tests {
                 &matching_ranks,
                 "",
                 "America/Los_Angeles",
-                2027
+                2027,
+                DateType::Submission
             )
             .iter()
             .map(|group| group.rows.len())
@@ -729,7 +985,8 @@ mod tests {
                 &non_core,
                 "",
                 "America/Los_Angeles",
-                2026
+                2026,
+                DateType::Submission
             ),
             2026
         );
@@ -740,6 +997,7 @@ mod tests {
             "",
             "America/Los_Angeles",
             2027,
+            DateType::Submission,
         );
         let future_january = future_groups.iter().find(|group| group.month == 1).unwrap();
         assert_eq!(&future_january.rows[0].cells[0][0].date[..10], "2027-01-01");
@@ -766,6 +1024,7 @@ mod tests {
             "",
             "America/Los_Angeles",
             2026,
+            DateType::Submission,
         );
         let january = groups.iter().find(|group| group.month == 1).unwrap();
         assert_eq!(january.rows[0].cells[0].len(), 1);
@@ -787,7 +1046,8 @@ mod tests {
                 &all_ranks,
                 "aiconf26",
                 "America/Los_Angeles",
-                2026
+                2026,
+                DateType::Submission
             ),
             2026
         );
@@ -798,7 +1058,8 @@ mod tests {
                 &all_ranks,
                 "aiconf26",
                 "America/Los_Angeles",
-                2026
+                2026,
+                DateType::Submission
             )
             .iter()
             .map(|group| group.rows.len())

@@ -111,6 +111,41 @@ a {
   border-top: 1px solid #e8e3dc;
 }
 
+.tabular-date-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tabular-date-types button {
+  padding: 5px 9px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: #f2efeb;
+  color: #655f58;
+  font: inherit;
+  font-size: 12px;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.tabular-date-types button:hover {
+  border-color: #ddd4ca;
+  background: #ebe6df;
+}
+
+.tabular-date-types button[aria-pressed="true"] {
+  border-color: #9fc4e3;
+  background: #edf5fb;
+  color: #356d9e;
+}
+
+.tabular-date-types button:focus-visible {
+  outline: 2px solid #356d9e;
+  outline-offset: 2px;
+}
+
 .tabular-caption {
   display: flex;
   flex-wrap: wrap;
