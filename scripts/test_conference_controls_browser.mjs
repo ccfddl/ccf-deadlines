@@ -262,7 +262,9 @@ try {
   await navigate('/venues/?categories=AI&ccf=A&q=ACL&tz=UTC', 1280);
   const visible = () => evaluate("[...document.querySelectorAll('.directory-list li:not([hidden])')].map(row => row.textContent.trim())");
   assert.ok((await visible()).length > 0);
-  assert.ok((await visible()).every(title => /^ACL \d{4}$/.test(title)));
+  assert.ok((await visible()).every(title => /^ACL \d{4} ↗$/.test(title)));
+  assert.equal(await evaluate("document.querySelector('.directory-list li:not([hidden]) .venue-series-link').getAttribute('href')"), '/venues/ai/acl/');
+  assert.equal(await evaluate("document.querySelector('.directory-section:not([hidden]) h2 a').getAttribute('href')"), '/venues/ai/');
   // URL filters override the persisted preferences and survive reload.
   await evaluate("document.querySelector('.toolbar-search input').value = 'no-such-conference'; document.querySelector('.toolbar-search input').dispatchEvent(new Event('input', {bubbles: true}))");
   await until(() => evaluate("!document.querySelector('#directory-empty').hidden"), 'directory empty state');
