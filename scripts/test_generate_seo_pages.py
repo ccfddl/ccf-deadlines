@@ -6,7 +6,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from xml.etree import ElementTree
 
-from generate_seo_pages import directory_page, edition_metadata, edition_page, generate
+from generate_seo_pages import category_page, directory_page, edition_metadata, edition_page, generate, series_page
 
 
 class SearchPresentationTests(unittest.TestCase):
@@ -135,6 +135,82 @@ class SearchPresentationTests(unittest.TestCase):
         self.assertNotIn('noindex', directory)
 
 
+class VenueHubTests(unittest.TestCase):
+    def setUp(self):
+        self.conference = {
+            'title': 'ACL', 'description': 'Association for Computational Linguistics', 'sub': 'AI',
+            'confs': [
+                {'year': 2026, 'timeline': [{'deadline': '2026-01-05 23:59:59'}]},
+                {'year': 2027, 'timeline': [{'deadline': 'TBD'}]},
+                {'year': 2025, 'timeline': []},
+            ],
+        }
+
+    def test_series_uses_latest_year_even_when_dates_are_unknown(self):
+        page = series_page(self.conference, {'AI': 'Artificial Intelligence'})
+        self.assertIn('rel="canonical" href="https://ccfddl.com/venues/ai/acl/"', page)
+        self.assertIn('View latest venue: ACL 2027', page)
+        self.assertIn('Dates to be announced', page)
+        self.assertNotIn('2026-01-05', page)
+        history = page.split('<ul class="edition-list">')[1].split('</ul>')[0]
+        self.assertLess(history.index('ACL 2026'), history.index('ACL 2025'))
+        self.assertNotIn('ACL 2027', history)
+        self.assertIn('href="/venues/ai/"', page)
+        self.assertNotIn('noindex', page)
+        self.assertNotIn('id="display-clock"', page)
+        self.assertNotIn('id="display-timezone"', page)
+        self.assertNotIn('src="/venues/controls.js"', page)
+        self.assertNotIn('IMPORTANT DEADLINES', page)
+
+    def test_new_pages_escape_names_and_preserve_source_timezone(self):
+        conference = {'title': 'A&B', 'description': '<script>bad</script>', 'sub': 'AI',
+                      'confs': [{'year': 2027, 'timeline': [{'deadline': '2026-11-10 23:59:59'}],
+                                 'timezone': 'UTC-12'}]}
+        series = series_page(conference, {})
+        category = category_page('AI', [conference], {'AI': 'Artificial Intelligence'})
+        for page in (series, category):
+            self.assertIn('A&amp;B', page)
+            self.assertIn('&lt;script&gt;bad&lt;/script&gt;', page)
+            self.assertNotIn('<script>bad</script>', page)
+        self.assertIn('data-source-tz="UTC-12"', series)
+        self.assertNotIn('Past venues', series.split('<body', 1)[1])
+
+    def test_generation_connects_directory_categories_series_and_editions(self):
+        db = {'title': 'VLDB', 'sub': 'DB', 'confs': [{'year': 2027, 'timeline': []}]}
+        empty = {'title': 'Unannounced', 'sub': 'SC', 'confs': []}
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            paths = generate([self.conference, db, empty], {'AI': '人工智能', 'DB': '数据库', 'SC': '安全'}, root)
+            ai = (root / 'venues/ai/index.html').read_text()
+            self.assertIn('<h1>Artificial Intelligence Conference Deadlines</h1>', ai)
+            self.assertIn('rel="canonical" href="https://ccfddl.com/venues/ai/"', ai)
+            self.assertIn('href="/venues/ai/acl/"', ai)
+            self.assertIn('href="/venues/ai/acl-2027/"', ai)
+            self.assertNotIn('VLDB', ai)
+            self.assertNotIn('href="/venues/sc/"', ai)
+            self.assertNotIn('id="directory-controls-root"', ai)
+            directory = (root / 'venues/index.html').read_text()
+            self.assertIn('<h2><a href="/venues/ai/"', directory)
+            self.assertIn('href="/venues/ai/acl/"', directory)
+            for year in (2025, 2026, 2027):
+                page = (root / f'venues/ai/acl-{year}/index.html').read_text()
+                breadcrumb = page.split('<nav class="breadcrumb"')[1].split('</nav>')[0]
+                self.assertIn('href="/venues/ai/"', breadcrumb)
+                self.assertIn('href="/venues/ai/acl/"', breadcrumb)
+                self.assertIn(f'rel="canonical" href="https://ccfddl.com/venues/ai/acl-{year}/"', page)
+            urls = [node.text for node in ElementTree.parse(root / 'sitemap.xml').iter() if node.tag.endswith('loc')]
+            self.assertEqual(set(urls), {'https://ccfddl.com' + path for path in ['/', '/venues/', *paths]})
+            self.assertEqual(len(urls), len(set(urls)))
+            self.assertTrue((root / 'llms.txt').is_file())
+            self.assertIn('https://ccfddl.com/mcp', (root / 'llms.txt').read_text())
+
+    def test_series_and_annual_path_collision_fails_build(self):
+        namesake = {'title': 'ACL-2027', 'sub': 'AI', 'confs': [{'year': 2028, 'timeline': []}]}
+        with tempfile.TemporaryDirectory() as temporary:
+            with self.assertRaisesRegex(ValueError, 'Duplicate conference page'):
+                generate([self.conference, namesake], {}, Path(temporary))
+
+
 class SeoPageTests(unittest.TestCase):
     def test_acl_page_has_crawlable_content_and_directory_link(self):
         conference = {
@@ -205,7 +281,7 @@ class SeoPageTests(unittest.TestCase):
             self.assertNotIn("Browse the latest edition", directory)
             sitemap = ElementTree.parse(output / "sitemap.xml")
             urls = [node.text for node in sitemap.iter() if node.tag.endswith("loc")]
-            self.assertEqual(len(urls), 4)
+            self.assertEqual(len(urls), 6)
             self.assertIn("https://ccfddl.com/venues/", urls)
             self.assertFalse(any("/conferences/" in url for url in urls))
             self.assertFalse((output / "conferences").exists())
@@ -279,7 +355,7 @@ class SeoPageTests(unittest.TestCase):
                 self.assertTrue((output / f"venues/{path}/index.html").exists())
                 self.assertIn(f'href="/venues/{path}/"', directory)
                 self.assertIn(f"https://ccfddl.com/venues/{path}/", urls)
-            self.assertEqual(len(urls), 4)
+            self.assertEqual(len(urls), 8)
 
     def test_unknown_deadline_uses_announced_later_state(self):
         conference = {

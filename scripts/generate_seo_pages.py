@@ -36,6 +36,7 @@ CATEGORY_EN_BY_SUB = {
 }
 
 
+
 def slugify(title: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
 
@@ -47,6 +48,31 @@ def edition_path(conference: dict, edition: dict) -> str:
         raise ValueError(f"Invalid conference year: {edition['year']}")
     slug = slugify(conference["title"]) or slugify(edition["id"])
     return f"/venues/{conference['sub'].lower()}/{slug}-{edition['year']}/"
+
+
+def category_path(sub: str) -> str:
+    if not re.fullmatch(r"[A-Za-z0-9]+", sub):
+        raise ValueError(f"Invalid conference category: {sub}")
+    return f"/venues/{sub.lower()}/"
+
+
+def series_path(conference: dict) -> str:
+    slug = slugify(conference["title"])
+    if not slug:
+        raise ValueError(f"Invalid conference title: {conference['title']}")
+    return f"{category_path(conference['sub'])}{slug}/"
+
+
+def venue_breadcrumb(conference: dict, categories: dict[str, str], year: int | None = None) -> str:
+    sub = conference["sub"]
+    category = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
+    current = f'<span aria-current="page">{text(conference["title"])}</span>'
+    if year is not None:
+        current = (f'<a href="{text(series_path(conference))}">{text(conference["title"])}</a>'
+                   f'<span>/</span><span aria-current="page">{year}</span>')
+    return (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a>'
+            f'<span>/</span><a href="/venues/">All venues</a><span>/</span>'
+            f'<a href="{text(category_path(sub))}">{text(category)}</a><span>/</span>{current}</nav>')
 
 
 def safe_link(url: str) -> str | None:
@@ -68,12 +94,17 @@ def format_deadline(value: object, timezone: str) -> str:
     return f'<time class="deadline-time" data-raw="{text(raw)}" data-source-tz="{text(timezone)}" title="Original: {text(raw)} {text(timezone)}">{text(shown)} · {text(timezone)}</time>'
 
 
-def category_links(categories: dict[str, str], active_sub: str = "") -> str:
-    return "".join(
-        f'<a href="/venues/?categories={text(sub)}"{(" aria-current=\"page\"" if sub == active_sub else "")}'
-        f' data-category="{text(sub)}" data-zh="{text(name)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, name))}">{text(name)}</a>'
-        for sub, name in categories.items()
-    )
+def category_links(categories: dict[str, str], active_sub: str = "", responsive: bool = False) -> str:
+    links = []
+    for sub, name in categories.items():
+        english = CATEGORY_EN_BY_SUB.get(sub, name)
+        label = f'<span class="category-name" data-zh="{text(name)}" data-en="{text(english)}">{text(english)}</span>'
+        if responsive:
+            label += f'<span class="category-code">{text(sub)}</span>'
+        current = ' aria-current="page"' if sub == active_sub else ""
+        links.append(f'<a href="{text(category_path(sub))}"{current} data-category="{text(sub)}"'
+                     f' title="{text(name)} · {text(english)}">{label}</a>')
+    return "".join(links)
 
 
 def directory_startup() -> str:
@@ -114,7 +145,7 @@ def directory_startup() -> str:
     </script>'''
 
 
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "") -> str:
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "", show_clock: bool = True) -> str:
     social = ""
     if social_image:
         social = f'''<meta property="og:type" content="website">
@@ -143,6 +174,9 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
         f'<div class="directory-toolbar detail-toolbar">{clock_control}</div>'
         if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" style="display:flex;flex-wrap:wrap;gap:10px" aria-label="Venue categories">{navigation}</nav><p class="directory-controls-loading" role="status">Loading filters…</p></div>{directory_startup()}'
     )
+    if detail_page and not show_clock:
+        filters = ""
+    page_controls = '<script src="/venues/controls.js" defer></script>' if not detail_page or show_clock else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -208,7 +242,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       }}).catch(function(){{}});
     }}
   }})();</script>
-  <script src="/venues/controls.js" defer></script>
+  {page_controls}
 </body>
 </html>
 """
@@ -355,29 +389,103 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     </article>
     {history_section}
     """
-    breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><a href="/venues/">All venues</a><span>/</span><span>{text(name)} {year}</span></nav>'
+    breadcrumb = venue_breadcrumb(conference, categories, year)
     return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL")
+
+
+def series_page(conference: dict, categories: dict[str, str], static_css: str = "/venues/style.css") -> str:
+    latest = max(conference["confs"], key=lambda item: item["year"])
+    name = conference["title"]
+    full_name = conference.get("description") or name
+    title = f"{name}: {full_name} | CCFDDL" if full_name != name else f"{name} Conference Deadlines | CCFDDL"
+    description = f"{name} conference deadlines, dates and past venues. Latest listed venue: {name} {latest['year']}."
+    past = sorted((item for item in conference["confs"] if item["year"] < latest["year"]),
+                  key=lambda item: item["year"], reverse=True)
+    history = "".join(
+        f'<li><a href="{text(edition_path(conference, item))}">{text(name)} {item["year"]}</a>'
+        f'<span>{text(item.get("date") or "Not listed")}</span><span>{text(item.get("place") or "Not listed")}</span></li>'
+        for item in past
+    )
+    history_section = f'<section class="series-history"><h2>Past venues</h2><ul class="edition-list">{history}</ul></section>' if history else ""
+    ranks = conference.get("rank") or {}
+    tags = "".join(f'<span>{label} {text(ranks[key])}</span>'
+                   for key, label in (("ccf", "CCF"), ("core", "CORE"), ("thcpl", "THCPL"))
+                   if ranks.get(key) and ranks[key] != "N")
+    sub = conference["sub"]
+    category = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
+    dblp = safe_link(f'https://dblp.org/db/conf/{conference["dblp"]}/') if conference.get("dblp") else None
+    dblp_link = f'<a href="{text(dblp)}" target="_blank" rel="noopener noreferrer">DBLP ↗</a>' if dblp else ""
+    submissions = []
+    timeline = latest.get("timeline", [])
+    for number, point in enumerate(timeline, 1):
+        raw = str(point.get("deadline") or "")
+        label = f"Round {number} paper submission" if len(timeline) > 1 else "Paper submission"
+        deadline = format_deadline(raw, latest.get("timezone", "")) if KNOWN_DATE.fullmatch(raw) else "TBD"
+        submissions.append(f'<div><dt>{label}</dt><dd>{deadline}</dd></div>')
+    deadline_summary = f'<dl class="series-submissions">{"".join(submissions)}</dl>' if submissions else ""
+    body = f'''
+    <article class="series-summary">
+      <header class="series-overview"><h1>{text(name)}</h1><p>{text(full_name)}</p>
+        <div class="series-identity"><a href="{text(category_path(sub))}">{text(category)}</a>{dblp_link}</div>
+        <div class="conference-detail-tags">{tags}</div>
+      </header>
+      <section class="series-latest">
+        <h2>Latest venue</h2>
+        <a class="series-latest-link" href="{text(edition_path(conference, latest))}">View latest venue: {text(name)} {latest["year"]}</a>
+        <p>{text(latest.get("date") or "Dates to be announced")} · {text(latest.get("place") or "Location to be announced")}</p>
+        {deadline_summary}
+      </section>
+      {history_section}
+    </article>'''
+    return layout(title, description, BASE_URL + series_path(conference), body,
+                  breadcrumb=venue_breadcrumb(conference, categories), detail_page=True, static_css=static_css, show_clock=False)
+
+
+def directory_entries(conferences: list[dict], descriptions: bool = False) -> str:
+    links = []
+    for conference in sorted(conferences, key=lambda item: item["title"].lower()):
+        latest = max(conference["confs"], key=lambda item: item["year"])
+        ranks = conference.get("rank") or {}
+        name = conference["title"]
+        search_text = f"{name} {conference.get('description') or ''} {latest['year']}"
+        summary = (f'<span class="venue-description">{text(conference.get("description") or name)}</span>'
+                   if descriptions else "")
+        links.append(
+            f'<li data-category="{text(conference["sub"])}" data-ccf="{text(ranks.get("ccf") or "N")}"'
+            f' data-core="{text(ranks.get("core") or "N")}" data-thcpl="{text(ranks.get("thcpl") or "N")}"'
+            f' data-search="{text(search_text)}">'
+            f'<a class="venue-series-link" href="{text(series_path(conference))}">{text(name)}</a> '
+            f'<a class="venue-latest-link" href="{text(edition_path(conference, latest))}"'
+            f' aria-label="View latest venue: {text(name)} {latest["year"]}">{latest["year"]} ↗</a>{summary}</li>'
+        )
+    return "".join(links)
+
+
+def category_page(sub: str, conferences: list[dict], categories: dict[str, str], static_css: str = "/venues/style.css") -> str:
+    name = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
+    title = f"{name} Conference Deadlines | CCFDDL"
+    description = f"Browse {name} conferences, their latest listed venues, submission deadlines and past venues on CCFDDL."
+    breadcrumb = (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a>'
+                  f'<span>/</span><a href="/venues/">All venues</a><span>/</span>'
+                  f'<span aria-current="page">{text(name)}</span></nav>')
+    body = (f'<div class="category-overview"><h1>{text(name)} Conference Deadlines</h1>'
+            f'<p>{len(conferences)} conference series. Explore each series or open its latest listed venue.</p></div>'
+            f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
+            f'<ul class="directory-list category-list">{directory_entries(conferences, descriptions=True)}</ul>')
+    return layout(title, description, BASE_URL + category_path(sub), body,
+                  breadcrumb=breadcrumb, detail_page=True, static_css=static_css)
 
 
 def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "", static_css: str = "/venues/style.css") -> str:
     groups = defaultdict(list)
     for conference in conferences:
-        latest = max(conference["confs"], key=lambda item: item["year"])
-        groups[conference["sub"]].append((conference, latest))
+        if conference.get("confs"):
+            groups[conference["sub"]].append(conference)
     sections = []
     for sub in sorted(groups):
-        links = ""
-        for conference, edition in sorted(groups[sub], key=lambda pair: pair[0]["title"].lower()):
-            ranks = conference.get("rank") or {}
-            search_text = f"{conference['title']} {conference.get('description') or ''} {edition['year']}"
-            links += (
-                f'<li data-category="{text(sub)}" data-ccf="{text(ranks.get("ccf") or "N")}"'
-                f' data-core="{text(ranks.get("core") or "N")}" data-thcpl="{text(ranks.get("thcpl") or "N")}"'
-                f' data-search="{text(search_text)}">'
-                f'<a href="{text(edition_path(conference, edition))}">{text(conference["title"])} {edition["year"]}</a></li>'
-            )
+        links = directory_entries(groups[sub])
         category = categories.get(sub, sub)
-        sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2 data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(category)}</h2><ul class="directory-list">{links}</ul></section>')
+        sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2><a href="{text(category_path(sub))}" data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(CATEGORY_EN_BY_SUB.get(sub, category))}</a></h2><ul class="directory-list">{links}</ul></section>')
     body = f'<p class="directory-empty" id="directory-empty" hidden>No matching venues.</p>{"".join(sections)}'
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><span>All venues</span></nav>'
     return layout("Venue Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
@@ -496,9 +604,45 @@ main{padding:18px 0 8px}
 .directory-section:first-of-type{padding-top:0;border-top:0}
 .directory-section:last-of-type{margin-bottom:0}
 .directory-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin:0;padding:0;list-style:none}
-.directory-list li{display:flex;min-width:0}
-.directory-list a{display:flex;align-items:center;width:100%;padding:9px 10px;border:1px solid #e6e0d8;border-radius:8px;background:#fffefa;color:#334155;font-size:13px;text-decoration:none;box-shadow:0 1px 2px rgba(80,67,51,.04)}
-.directory-list a:hover{color:#409eff;border-color:#b8d2e8}
+.directory-list li{display:flex;flex-wrap:wrap;align-items:baseline;min-width:0;border:1px solid #e6e0d8;border-radius:8px;background:#fffefa;box-shadow:0 1px 2px rgba(80,67,51,.04)}
+.directory-list a{padding:9px 10px;color:#334155;font-size:13px;text-decoration:none;overflow-wrap:anywhere}
+.directory-list .venue-series-link{flex:1;min-width:0}
+.directory-list .venue-latest-link{flex:none;padding-left:0;color:#356d9e;font-size:12px}
+.directory-list a:hover{color:#409eff;text-decoration:underline}
+.directory-section h2 a{color:inherit;text-decoration:none}
+.directory-section h2 a:hover{text-decoration:underline}
+.series-summary{width:min(100%,720px);margin:4px auto 0}
+.series-overview{margin:0 0 24px}
+.series-overview h1,.category-overview h1{margin:0 0 10px;font-size:26px;font-weight:500;overflow-wrap:anywhere}
+.series-overview p,.category-overview p{margin:0;color:#697583;font-size:14px;line-height:1.6}
+.series-identity{display:flex;flex-wrap:wrap;gap:16px;margin:12px 0;font-size:13px}
+.series-identity a{color:#356d9e;text-decoration:none}
+.series-summary h2{margin:0 0 12px;font-size:16px;font-weight:500;color:#334155}
+.series-latest{padding:18px;border:1px solid #e6e0d8;border-radius:8px;background:#fffdfa}
+.series-latest-link{color:#356d9e;font-size:16px;text-decoration:none;overflow-wrap:anywhere}
+.series-latest-link:hover,.series-identity a:hover{text-decoration:underline}
+.series-latest p{margin:10px 0 0;color:#697583;font-size:13px;line-height:1.6}
+.series-submissions{display:grid;gap:10px;margin:14px 0 0;font-size:12px;line-height:1.6}
+.series-submissions dt{color:#697583}.series-submissions dd{margin:2px 0 0;color:#334155}
+.series-history{margin-top:24px}
+.series-history .edition-list{display:block}
+.series-history li{display:grid;grid-template-columns:100px minmax(0,1fr) minmax(0,1fr);align-items:baseline;gap:10px;padding:12px 0;border-top:1px solid #e6e0d8;font-size:12px;line-height:1.6;color:#697583}
+.series-history .edition-list a{padding:0;border:0;border-radius:0;background:none;font-size:13px}
+.series-history li span{overflow-wrap:anywhere}
+@media(max-width:600px){.series-history li{grid-template-columns:90px minmax(0,1fr);gap:3px 10px}.series-history li a{grid-row:span 2}.series-history li span{grid-column:2}}
+
+.category-overview{margin:22px 0 18px}
+.category-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:12px 0 22px;padding-top:12px;padding-bottom:2px;border-top:1px solid #e8e3dc;font-size:14px;font-weight:500;line-height:16px}
+.category-navigation a{display:block;min-height:22px;padding:2px 9px;border:1px solid transparent;border-radius:7px;background:#f2efeb;color:#655f58;text-decoration:none;line-height:16px}
+.category-navigation a:hover{border-color:#ddd4ca;background:#ebe6df}
+.category-navigation a[aria-current=page]{border-color:#9fc4e3;background:#edf5fb;color:#356d9e}
+.category-navigation a:focus-visible{outline:2px solid #356d9e;outline-offset:2px}
+.category-navigation .category-name,.category-navigation .category-code{font-family:"Segoe UI","Segoe UI Web (West European)",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif}
+.category-navigation .category-code{display:none}
+@media(max-width:768px){.category-navigation .category-name{display:none}.category-navigation .category-code{display:inline}}
+
+.category-list{grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr))}
+.venue-description{flex-basis:100%;padding:0 10px 10px;color:#697583;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
 .directory-empty{margin:14px 0;color:#697583;font-size:14px}
 .footer{display:flex;align-items:center;min-height:20px;padding:8px 0 16px;color:#666;font-size:14px;line-height:20px}
 .footer-text{display:flex;align-items:center;gap:14px;min-width:0}
@@ -563,7 +707,7 @@ def shared_app_assets(output: Path) -> str:
 
 def generate(conferences: list[dict], categories: dict[str, str], output: Path, acceptances: dict[str, list[dict]] | None = None) -> list[str]:
     output.mkdir(parents=True, exist_ok=True)
-    for asset in ("favicon.ico", "ccfddl-logo.svg"):
+    for asset in ("favicon.ico", "ccfddl-logo.svg", "llms.txt"):
         shutil.copy2(ROOT / "public" / asset, output / asset)
     acceptances = acceptances or {}
     directory = output / "venues"
@@ -577,14 +721,25 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     written = []
     cards = []
     seen = set()
+    def write_page(path: str, content: str) -> None:
+        if path in seen:
+            raise ValueError(f"Duplicate conference page: {path}")
+        seen.add(path)
+        target = output / path.lstrip("/") / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content, encoding="utf-8")
+        written.append(path)
+
+    # Only advertise categories and series that have at least one known edition.
+    conferences = [conference for conference in conferences if conference.get("confs")]
+    groups = defaultdict(list)
+    for conference in conferences:
+        groups[conference["sub"]].append(conference)
+    ordered_subs = [sub for sub in CATEGORY_EN_BY_SUB if sub in groups] + sorted(set(groups) - CATEGORY_EN_BY_SUB.keys())
+    categories = {sub: categories.get(sub, CATEGORY_EN_BY_SUB.get(sub, sub)) for sub in ordered_subs}
     for conference in conferences:
         for edition in conference.get("confs", []):
             path = edition_path(conference, edition)
-            if path in seen:
-                raise ValueError(f"Duplicate conference page: {path}")
-            seen.add(path)
-            target = output / path.lstrip("/") / "index.html"
-            target.parent.mkdir(parents=True, exist_ok=True)
             category = CATEGORY_EN_BY_SUB.get(conference["sub"], conference["sub"])
             rank = (conference.get("rank") or {}).get("ccf")
             cards.append({"path": path, "title": f"{conference['title']} {edition['year']}",
@@ -592,8 +747,10 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
                           "category": f"CCF {rank} / {category}" if rank else category,
                           "date": edition.get("date"), "place": edition.get("place"),
                           **deadline_card_data(edition)})
-            target.write_text(edition_page(conference, edition, categories, acceptances, static_css), encoding="utf-8")
-            written.append(path)
+            write_page(path, edition_page(conference, edition, categories, acceptances, static_css))
+        write_page(series_path(conference), series_page(conference, categories, static_css))
+    for sub, members in groups.items():
+        write_page(category_path(sub), category_page(sub, members, categories, static_css))
     share_images(cards, css, output)
     assets = shared_app_assets(output)
     directory = output / "venues"
