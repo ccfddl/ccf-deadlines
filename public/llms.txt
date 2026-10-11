@@ -6,7 +6,7 @@
 
 ## Browse and cite
 
-- [Venue Deadlines Directory](https://ccfddl.com/venues/): browse research areas, conference series and the latest listed venues.
+- [Venue Directory](https://ccfddl.com/venues/): browse research areas, conference series and the latest listed venues.
 - [Artificial Intelligence](https://ccfddl.com/venues/ai/): AI conference series and latest listed venues.
 - [Software Engineering](https://ccfddl.com/venues/se/): software engineering, systems software and programming language venues.
 - [Database](https://ccfddl.com/venues/db/): database, data mining and information retrieval venues.

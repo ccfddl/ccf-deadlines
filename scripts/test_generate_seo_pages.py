@@ -131,7 +131,7 @@ class SearchPresentationTests(unittest.TestCase):
         parsed = SearchContent()
         parsed.feed(directory)
         self.assertIn('footer-credit', parsed.excluded)
-        self.assertIn('<title>Venue Deadlines Directory | CCFDDL</title>', directory)
+        self.assertIn('<title>Venue Directory | CCFDDL</title>', directory)
         self.assertNotIn('noindex', directory)
 
 

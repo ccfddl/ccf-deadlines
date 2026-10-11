@@ -485,7 +485,7 @@ def directory_page(conferences: list[dict], categories: dict[str, str], app_asse
         sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2><a href="{text(category_path(sub))}" data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(CATEGORY_EN_BY_SUB.get(sub, category))}</a></h2><ul class="directory-list">{links}</ul></section>')
     body = f'<p class="directory-empty" id="directory-empty" hidden>No matching venues.</p>{"".join(sections)}'
     breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><span>All venues</span></nav>'
-    return layout("Venue Deadlines Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
+    return layout("Venue Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
 
 
 def stylesheet() -> str:
