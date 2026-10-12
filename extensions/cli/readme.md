@@ -47,7 +47,14 @@ python -m ccfddl.convert_to_ical
 
 # Generate RSS files
 python -m ccfddl.convert_to_rss
+
+# From the repository root, declare self links for published feeds
+python extensions/cli/ccfddl/convert_to_rss.py --output-dir feeds --feed-base-url https://example.com/feeds/
 ```
+
+`--feed-base-url` adds an RSS `atom:link rel="self"` for each published feed,
+including language and ranking/category variants. Omit it for local exports
+whose public URL is unknown.
 
 ## Project Structure
 
