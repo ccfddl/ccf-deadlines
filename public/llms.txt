@@ -25,6 +25,8 @@ For a conference's history or latest listed venue, cite its series page.
 
 - [Conference catalog](https://ccfddl.com/conference/allconf.json): conference identity, subjects, rankings, editions and deadline timelines.
 - [Acceptance statistics](https://ccfddl.com/conference/allacc.json): historical submission and acceptance data, with sources where recorded.
+- [Deadline RSS](https://ccfddl.com/conference/deadlines/deadlines_en.xml): submission and review deadline entries with original dates and timezones in their descriptions.
+- [Deadline calendar](https://ccfddl.com/conference/deadlines/deadlines_en.ics): iCalendar subscription for submission and review deadlines; this is not a conference schedule.
 - [Source repository](https://github.com/ccfddl/ccf-deadlines): conference YAML, acceptance data and contribution history.
 
 ## MCP access
@@ -53,6 +55,8 @@ local-time conversion and retain the original timezone in deadline citations.
   source for event dates, start times and the event's local timezone.
 - `TBD`, missing dates and missing statistics are unknown, not estimates.
 - Different submission rounds and abstract/paper deadlines are separate events.
+- RSS deadline dates are not publication dates. Feed items do not assert unknown
+  publication/update times. Use the iCalendar feed for date-based subscriptions.
 - Rankings (CCF, CORE and THCPL) belong to their respective ranking systems;
   CCFDDL displays them and does not define them.
 - Acceptance rates are historical observations, not predictions. Include the

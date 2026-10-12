@@ -1,6 +1,5 @@
 import xml.etree.ElementTree as ET
-from datetime import datetime, timedelta, timezone
-from email.utils import format_datetime
+from datetime import datetime
 
 from convert_to_ical import load_mapping, get_timezone, reverse_index
 
@@ -23,9 +22,8 @@ def convert_to_rss(
         else "会议投稿截止日期追踪"
     )
     ET.SubElement(channel, "language").text = "en" if lang == "en" else "zh-CN"
-    ET.SubElement(channel, "lastBuildDate").text = format_datetime(
-        datetime.now(timezone.utc)
-    )
+    # Source records do not carry publication/update dates. Neither a deadline
+    # nor the build clock establishes when feed content was published or changed.
 
     for file_path in file_paths:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -97,20 +95,16 @@ def convert_to_rss(
                             continue
 
                         try:
-                            deadline_dt = datetime.strptime(
+                            datetime.strptime(
                                 deadline_str, "%Y-%m-%d %H:%M:%S"
                             )
                         except ValueError:
                             try:
-                                deadline_dt = datetime.strptime(
+                                datetime.strptime(
                                     deadline_str, "%Y-%m-%d"
                                 )
                             except ValueError:
                                 continue
-
-                        # 按截止日期解析时区 (PT 需要按日期判断夏令时)
-                        tz = get_timezone(timezone_str, deadline_dt.date())
-                        aware_dt = deadline_dt.replace(tzinfo=tz)
 
                         item = ET.SubElement(channel, "item")
 
@@ -162,8 +156,6 @@ def convert_to_rss(
                             ]
                         desc_lines = [x for x in desc_lines if x]
                         ET.SubElement(item, "description").text = "\n".join(desc_lines)
-
-                        ET.SubElement(item, "pubDate").text = format_datetime(aware_dt)
 
                         guid = ET.SubElement(
                             item, "guid", isPermaLink="false"
