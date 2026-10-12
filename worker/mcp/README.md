@@ -22,6 +22,8 @@ Conference results include `series_url` for a CCFDDL series history and `venue_u
 
 Conference `opening` values are countdown timestamps derived from the earliest announced first day in the edition's `date` text. The data builder assigns a default 08:00 hour in the edition's submission timezone. `opening_utc` and `opening_display_time` are conversions of this derived value, not verified local event start times. Cite the original `date` text for conference dates and consult the official conference website for actual start times and the event's local timezone. This distinction also applies to `upcoming_deadlines` results with `deadline_types: ["opening"]`.
 
+The builder marks generated openings with `opening_is_derived: true`. MCP copies an explicit boolean source flag when an opening exists, including in upcoming results. Missing openings and legacy records without a declared flag return `null`; provenance is not guessed from the clock hour. An explicit `false` reflects only the source declaration and does not verify the actual event start time. The original `date` text, including tentative-date qualifiers, remains available.
+
 For upcoming nodes, `deadline_types` accepts `abstract_deadline`, `deadline`, `rebuttal_deadline`, `decision_deadline`, and `opening`. The default includes the four submission/review types and excludes openings. Examples:
 
 ```json

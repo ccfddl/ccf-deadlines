@@ -168,6 +168,28 @@ test("only includes known conference openings when explicitly requested", () => 
   assert.equal(openings[0].round, null);
 });
 
+test("returns declared opening provenance without inferring it from the clock hour", () => {
+  const data = [{ title: "Marker", sub: "AI", confs: [
+    { year: 2027, date: "Jan 10-12, 2027 (To be confirmed)", timezone: "UTC",
+      opening: "2027-01-10 08:00:00", opening_is_derived: true, timeline: [] },
+    { year: 2026, timezone: "UTC", opening: "2026-01-10 09:00:00", timeline: [] },
+    { year: 2025, timezone: "UTC", opening: "2025-01-10 08:00:00", timeline: [] },
+    { year: 2028, opening: null, opening_is_derived: true, timeline: [] },
+    { year: 2029, timezone: "UTC", opening: "2029-01-10 08:00:00", opening_is_derived: "true", timeline: [] },
+    { year: 2030, timezone: "UTC", opening: "2030-01-10 09:00:00", opening_is_derived: false, timeline: [] },
+  ] }];
+  const result = getConference(data, "Marker", { display_timezone: "Asia/Shanghai" });
+  assert.deepEqual(result.editions.map((edition) => [edition.year, edition.opening_is_derived]), [
+    [2030, false], [2029, null], [2028, null], [2027, true], [2026, null], [2025, null],
+  ]);
+  const upcoming = upcomingDeadlines(data, { now: Date.parse("2027-01-01T00:00:00Z"),
+    days: 30, deadline_types: ["opening"], display_timezone: "Asia/Shanghai" });
+  assert.equal(upcoming.length, 1);
+  assert.equal(upcoming[0].opening_is_derived, true);
+  assert.equal(upcoming[0].date, "Jan 10-12, 2027 (To be confirmed)");
+  assert.equal(upcoming[0].display_time, "2027-01-10 16:00:00");
+});
+
 test("rejects impossible calendar dates instead of silently rolling them forward", () => {
   for (const raw of ["2026-02-30 12:00:00", "2026-02-29 12:00:00", "2026-04-31 12:00:00",
     "2026-13-01 12:00:00", "2026-01-01 24:00:00", "2026-01-01 12:60:00"]) {

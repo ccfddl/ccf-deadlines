@@ -57,6 +57,9 @@ including any requested year filter.
   08:00 countdown hour in the edition's submission timezone. They are not verified
   local event start times. Cite the original `date` text and official conference
   source for event dates, start times and the event's local timezone.
+- `opening_is_derived: true` marks generated opening countdowns. MCP copies this
+  source flag; `null` means no opening or undeclared provenance. A `false` flag
+  alone does not verify an event's actual start time.
 - `TBD`, missing dates and missing statistics are unknown, not estimates.
 - Pacific (`PT`) clock times skipped or repeated during daylight-saving changes
   do not identify a unique instant. MCP retains the original time but leaves UTC

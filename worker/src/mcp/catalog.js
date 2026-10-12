@@ -116,6 +116,8 @@ function editionSummary(conference, edition) {
     date: edition.date ?? null,
     timezone: edition.timezone ?? null,
     opening: edition.opening ?? null,
+    opening_is_derived: typeof edition.opening === "string" && edition.opening.trim()
+      && typeof edition.opening_is_derived === "boolean" ? edition.opening_is_derived : null,
     opening_utc: deadlineToUtc(edition.opening, edition.timezone),
   };
 }

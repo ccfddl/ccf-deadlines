@@ -50,9 +50,13 @@ test("lists and calls MCP tools without a database or site login", async () => {
     "get_acceptance_rates", "get_conference", "get_filter_options", "search_conferences", "upcoming_deadlines",
   ]);
   const originalFetch = globalThis.fetch;
+  const originalNow = Date.now;
+  Date.now = () => Date.parse("2027-01-01T00:00:00Z");
   globalThis.fetch = async (source) => {
     if (source === "https://ccfddl.com/conference/allconf.json") return Response.json([
-      { title: "ICLR", sub: "AI", rank: { ccf: "A" }, confs: [{ year: 2027, id: "iclr27", timeline: [] }] },
+      { title: "ICLR", sub: "AI", rank: { ccf: "A" }, confs: [{ year: 2027, id: "iclr27", timezone: "UTC",
+        date: "May 1-3, 2027 (To be confirmed)", opening: "2027-05-01 08:00:00",
+        opening_is_derived: true, timeline: [] }] },
     ]);
     assert.equal(source, "https://ccfddl.com/conference/allacc.json");
     return Response.json([{ title: "ICLR", accept_rates: [{ year: 2026, submitted: 100, accepted: 30, rate: 0.3 }] }]);
@@ -74,7 +78,15 @@ test("lists and calls MCP tools without a database or site login", async () => {
     assert.equal(detailData.isError, undefined);
     assert.equal(detailData.structuredContent.conference.series_url, "https://ccfddl.com/venues/ai/iclr/");
     assert.equal(detailData.structuredContent.conference.editions[0].venue_url, "https://ccfddl.com/venues/ai/iclr-2027/");
+    assert.equal(detailData.structuredContent.conference.editions[0].opening_is_derived, true);
     assert.deepEqual(JSON.parse(detailData.content[0].text), detailData.structuredContent);
+    const upcoming = await worker.fetch(rpcRequest(url, "tools/call", {
+      name: "upcoming_deadlines", arguments: { days: 365, deadline_types: ["opening"], display_timezone: "Asia/Shanghai" },
+    }), {});
+    const upcomingData = (await rpcResponse(upcoming)).result;
+    assert.equal(upcomingData.structuredContent.results[0].opening_is_derived, true);
+    assert.equal(upcomingData.structuredContent.results[0].date, "May 1-3, 2027 (To be confirmed)");
+    assert.deepEqual(JSON.parse(upcomingData.content[0].text), upcomingData.structuredContent);
     const rates = await worker.fetch(rpcRequest(url, "tools/call", {
       name: "get_acceptance_rates", arguments: { name_or_id: "ICLR", year: 2026 },
     }), {});
@@ -84,6 +96,7 @@ test("lists and calls MCP tools without a database or site login", async () => {
     assert.equal(rateData.results[0].rate_percent, 30);
   } finally {
     globalThis.fetch = originalFetch;
+    Date.now = originalNow;
   }
 });
 
