@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 from xml.etree import ElementTree
 
 from update_sitemap_dates import BASE_URL, NS, PageContent, update_dates, venue_file
@@ -96,6 +97,45 @@ class SitemapDatesTests(unittest.TestCase):
                      old_date='2026-09-30T23:30:00-07:00')
         self.assertEqual(update_dates(self.output, self.previous, now=NOW), 0)
         self.assertEqual(dates(self.output)[BASE_URL + PATH], '2026-09-30T23:30:00-07:00')
+
+    def test_generated_next_deadline_rollover_preserves_date_but_source_edit_updates_it(self):
+        import generate_seo_pages as seo
+
+        conference = {'title': 'AAAI', 'sub': 'AI', 'confs': [{
+            'year': 2027, 'timezone': 'AoE', 'timeline': [{
+                'deadline': '2026-10-12 23:59:59',
+                'decision_deadline': '2026-11-30 23:59:59',
+            }],
+        }]}
+
+        class Clock(datetime):
+            value = NOW
+
+            @classmethod
+            def now(cls, tz=None):
+                return cls.value
+
+        def render(now):
+            Clock.value = now
+            with patch.object(seo, 'datetime', Clock):
+                return seo.edition_page(conference, conference['confs'][0], {}, {})
+
+        old, new = render(NOW), render(NEXT_DAY)
+        self.assertNotEqual(old, new)
+        self.prepare(old=old, new=new, old_date='2026-10-01')
+        self.assertEqual(update_dates(self.output, self.previous, now=NEXT_DAY), 0)
+        self.assertEqual(dates(self.output)[BASE_URL + PATH], '2026-10-01')
+
+        # The next widget still points to November, but October's source date changes.
+        conference['confs'][0]['timeline'][0]['deadline'] = '2026-10-11 23:59:59'
+        self.prepare(old=new, new=render(NEXT_DAY), old_date='2026-10-01')
+        self.assertEqual(update_dates(self.output, self.previous, now=NEXT_DAY), 1)
+
+    def test_next_widget_nested_markup_does_not_hide_following_source_content(self):
+        before = '<main><div class="conference-detail-next" data-nosnippet><div><strong>Today</strong></div></div><time data-raw="2026-10-12">Paper submission</time></main>'
+        after = before.replace('Today', 'Passed')
+        self.assertEqual(PageContent(before).value(), PageContent(after).value())
+        self.assertNotEqual(PageContent(after).value(), PageContent(after.replace('2026-10-12', '2026-10-13')).value())
 
     def test_latest_link_metadata_and_structured_data_changes_refresh_dates(self):
         for new in [page(latest='2028'), page(description='Updated conference location'),

@@ -38,14 +38,17 @@ class PageContent(HTMLParser):
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if self.ignored:
-            if tag in {'script', 'style', 'svg'}:
+            if tag in {'script', 'style', 'svg'} or tag == self.ignored[-1]:
                 self.ignored.append(tag)
             return
         if tag == 'script' and attrs.get('type') == 'application/ld+json':
             self.jsonld = True
             self.buffer = []
             return
-        if tag in {'script', 'style', 'svg'}:
+        # The next-deadline widget changes with the clock; source dates are
+        # compared separately in the important-deadlines rows below it.
+        if tag in {'script', 'style', 'svg'} or (
+                self.main and 'conference-detail-next' in attrs.get('class', '').split()):
             self.ignored.append(tag)
             return
         if tag == 'main':
