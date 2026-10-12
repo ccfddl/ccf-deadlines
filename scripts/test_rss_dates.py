@@ -146,6 +146,33 @@ class RssDateTests(unittest.TestCase):
             with self.subTest(url=invalid), self.assertRaises(ValueError):
                 self.feed([self.conference], feed_url=invalid)
 
+    def test_shared_deadline_rounds_keep_distinct_ids_across_languages_and_filters(self):
+        conference = copy.deepcopy(self.conference)
+        shared = '2099-03-01 23:59:59'
+        conference['confs'][0]['timeline'] = [
+            {'deadline': 'TBD', 'comment': 'Unannounced round'},
+            {'decision_deadline': shared, 'deadline': '2099-01-08', 'comment': 'First round'},
+            {'decision_deadline': shared, 'deadline': '2099-02-08', 'comment': 'Second round'},
+            {'decision_deadline': shared, 'comment': 'Third round'},
+        ]
+        unrelated = copy.deepcopy(self.conference)
+        unrelated['title'] = 'Other'
+        expected = [
+            'Example-2099-deadline-2099-01-08@ccfddl.com',
+            f'Example-2099-decision-{shared}@ccfddl.com',
+            'Example-2099-deadline-2099-02-08@ccfddl.com',
+            f'Example-2099-decision-{shared}-round-3@ccfddl.com',
+            f'Example-2099-decision-{shared}-round-4@ccfddl.com',
+        ]
+        for lang in ('en', 'zh'):
+            for other_files in ((), ([unrelated],)):
+                with self.subTest(lang=lang, filtered=not other_files):
+                    items = self.feed([conference], lang, other_files).findall('./channel/item')
+                    selected = [item for item in items if item.findtext('title').startswith('Example ')]
+                    self.assertEqual([item.findtext('guid') for item in selected], expected)
+                    self.assertEqual(len({item.findtext('guid') for item in selected}), len(selected))
+                    self.assertIn('[Second round]', selected[3].findtext('title'))
+
 
 if __name__ == "__main__":
     unittest.main()

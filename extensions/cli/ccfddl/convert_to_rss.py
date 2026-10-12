@@ -69,8 +69,9 @@ def convert_to_rss(
                 timezone_str = conf["timezone"]
                 place = conf["place"]
                 date = conf["date"]
+                seen_deadlines = set()
 
-                for entry in timeline:
+                for round_number, entry in enumerate(timeline, start=1):
                     try:
                         get_timezone(timezone_str)
                     except ValueError:
@@ -184,7 +185,12 @@ def convert_to_rss(
                         guid = ET.SubElement(
                             item, "guid", isPermaLink="false"
                         )
-                        guid.text = f"{title}-{year}-{type_key}-{deadline_str}@ccfddl.com"
+                        # Shared dates can belong to distinct submission rounds.
+                        # Keep the first and all noncolliding legacy IDs stable.
+                        identity = (type_key, deadline_str)
+                        suffix = f"-round-{round_number}" if identity in seen_deadlines else ""
+                        seen_deadlines.add(identity)
+                        guid.text = f"{title}-{year}-{type_key}-{deadline_str}{suffix}@ccfddl.com"
 
                         ET.SubElement(item, "category").text = sub
 
