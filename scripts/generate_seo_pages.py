@@ -245,6 +245,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <title>{text(title)}</title>
   <meta name="description" content="{text(description)}">
   <link rel="canonical" href="{text(canonical)}">
+  <link rel="describedby" href="{BASE_URL}/llms.txt" type="text/plain">
   {structured_breadcrumb}
   {social}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2114972416819347" crossorigin="anonymous"></script>
