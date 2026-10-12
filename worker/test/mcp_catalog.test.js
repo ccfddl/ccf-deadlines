@@ -177,6 +177,44 @@ test("rejects impossible calendar dates instead of silently rolling them forward
   assert.equal(deadlineToUtc("2026-10-01 12:00:00", "UTC+15"), null);
 });
 
+test("does not guess a Pacific instant for skipped or repeated daylight-saving hours", () => {
+  for (const raw of ["2026-03-08 02:00:00", "2026-03-08 02:59:59",
+    "2026-11-01 01:00:00", "2026-11-01 01:59:59",
+    "2027-03-14 02:30:00", "2027-11-07 01:30:00"]) {
+    assert.equal(deadlineToUtc(raw, "PT"), null, raw);
+  }
+  for (const [raw, expected] of [
+    ["2026-03-08 01:59:59", "2026-03-08T09:59:59.000Z"],
+    ["2026-03-08 03:00:00", "2026-03-08T10:00:00.000Z"],
+    ["2026-11-01 00:59:59", "2026-11-01T07:59:59.000Z"],
+    ["2026-11-01 02:00:00", "2026-11-01T10:00:00.000Z"],
+  ]) {
+    assert.equal(deadlineToUtc(raw, "PT"), expected, raw);
+  }
+  // An explicit offset disambiguates the repeated local hour.
+  assert.equal(deadlineToUtc("2026-11-01 01:30:00", "UTC-7"), "2026-11-01T08:30:00.000Z");
+  assert.equal(deadlineToUtc("2026-11-01 01:30:00", "UTC-8"), "2026-11-01T09:30:00.000Z");
+});
+
+test("keeps ambiguous source times in details but excludes them from upcoming instants", () => {
+  const data = [{ title: "Boundary", sub: "AI", confs: [{
+    year: 2026, id: "boundary26", timezone: "PT", timeline: [
+      { deadline: "2026-03-08 02:30:00", comment: "Spring gap" },
+      { deadline: "2026-11-01 01:30:00", comment: "Autumn overlap" },
+      { deadline: "2026-03-08 03:15:00", comment: "Unique instant" },
+    ],
+  }] }];
+  const deadlines = getConference(data, "Boundary", { display_timezone: "Asia/Shanghai" }).editions[0].deadlines;
+  assert.deepEqual(deadlines.slice(0, 2).map((event) => [event.local_time, event.utc_time, event.display_time]), [
+    ["2026-03-08 02:30:00", null, null], ["2026-11-01 01:30:00", null, null],
+  ]);
+  assert.equal(deadlines[2].display_time, "2026-03-08 18:15:00");
+  const upcoming = upcomingDeadlines(data, { now: Date.parse("2026-03-01T00:00:00Z"), days: 365 });
+  assert.deepEqual(upcoming.map((event) => [event.local_time, event.utc_time, event.note]), [
+    ["2026-03-08 03:15:00", "2026-03-08T10:15:00.000Z", "Unique instant"],
+  ]);
+});
+
 test("loads and reuses the public dataset without a database", async () => {
   let calls = 0;
   const fetcher = async (url) => {

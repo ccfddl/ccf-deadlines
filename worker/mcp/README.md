@@ -32,7 +32,7 @@ For upcoming nodes, `deadline_types` accepts `abstract_deadline`, `deadline`, `r
 {"days": 90, "year": 2027, "deadline_types": ["opening"], "limit": 50}
 ```
 
-The server retains source timezone labels and supplies UTC instants where a date is known. `TBD`, missing openings, and invalid calendar dates are not converted or predicted. Each response includes the source dataset URL and fetch time. Conference links come from the source data.
+The server retains source timezone labels and supplies UTC instants where the source identifies a unique instant. `TBD`, missing openings, and invalid calendar dates are not converted or predicted. Pacific (`PT`) clock times skipped or repeated during daylight-saving transitions also stay unconverted: details retain the original `local_time` and `timezone`, with `null` UTC/display values, and upcoming results omit those nodes. A published explicit offset such as `UTC-7` or `UTC-8` disambiguates a repeated hour; do not guess one. Each response includes the source dataset URL and fetch time. Conference links come from the source data.
 
 ## Acceptance statistics
 

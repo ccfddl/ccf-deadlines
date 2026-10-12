@@ -44,21 +44,34 @@ export async function loadCatalog(fetcher = fetch, now = Date.now()) {
   return loading;
 }
 
+let pacificFormatter;
+
 function pacificOffset(raw) {
   const approximateUtc = Date.parse(`${raw.replace(" ", "T")}Z`);
   if (!Number.isFinite(approximateUtc)) return null;
-  const format = new Intl.DateTimeFormat("en-US", {
+  const format = pacificFormatter ??= new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Los_Angeles", timeZoneName: "shortOffset",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23",
   });
-  let offset = -8;
-  for (let attempt = 0; attempt < 2; attempt++) {
-    const name = format.formatToParts(new Date(approximateUtc - offset * 3_600_000))
+  // Collect both offsets around a transition, then require one exact round trip.
+  const offsets = new Set();
+  for (const shift of [-86_400_000, 0, 86_400_000]) {
+    const name = format.formatToParts(new Date(approximateUtc + shift))
       .find((part) => part.type === "timeZoneName")?.value;
     const match = /^GMT([+-]\d{1,2})$/.exec(name ?? "");
     if (!match) return null;
-    offset = Number(match[1]);
+    offsets.add(Number(match[1]));
   }
-  return offset;
+  const matches = [];
+  for (const offset of offsets) {
+    const parts = format.formatToParts(new Date(approximateUtc - offset * 3_600_000));
+    const value = (type) => parts.find((part) => part.type === type).value;
+    const local = `${value("year").padStart(4, "0")}-${value("month")}-${value("day")} ${value("hour")}:${value("minute")}:${value("second")}`;
+    if (local === raw) matches.push(offset);
+  }
+  // A skipped hour has no match; a repeated hour has two possible instants.
+  return matches.length === 1 ? matches[0] : null;
 }
 
 export function deadlineToUtc(raw, timezone) {

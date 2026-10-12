@@ -58,6 +58,9 @@ including any requested year filter.
   local event start times. Cite the original `date` text and official conference
   source for event dates, start times and the event's local timezone.
 - `TBD`, missing dates and missing statistics are unknown, not estimates.
+- Pacific (`PT`) clock times skipped or repeated during daylight-saving changes
+  do not identify a unique instant. MCP retains the original time but leaves UTC
+  conversions empty and omits these nodes from upcoming results.
 - Different submission rounds and abstract/paper deadlines are separate events.
 - RSS entries are ordered by venue year, newest first. Deadline dates are not
   publication dates; feed items do not assert unknown publication/update times.
