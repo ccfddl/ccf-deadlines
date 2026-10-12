@@ -340,7 +340,7 @@ def deadline_rows(edition: dict) -> str:
         f'<div class="conference-detail-deadline" data-deadline-type="opening"{attributes}>'
         '<div class="conference-detail-deadline-main">'
         '<div class="conference-detail-deadline-name">Conference Opening</div>'
-        f'<div class="conference-detail-deadline-date">{opening_date}</div></div>'
+        f'<div class="conference-detail-deadline-date" data-nosnippet>{opening_date}</div></div>'
         '<span class="conference-detail-deadline-status" data-nosnippet aria-live="off"></span></div>'
     )))
     return "".join(row for _, row in sorted(rows, key=lambda entry: entry[0]))

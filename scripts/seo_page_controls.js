@@ -85,7 +85,7 @@
       }).formatToParts(instant);
       const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
       time.textContent = `${values.hour}:${values.minute}, ${values.month} ${values.day}, ${values.year} · ${state.tz}`;
-      time.dateTime = instant.toISOString();
+      // Preserve source datetime precision; inferred countdown hours are display-only.
     }
   }
 
