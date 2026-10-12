@@ -35,6 +35,18 @@ CATEGORY_EN_BY_SUB = {
     "HI": "Computer-Human Interaction",
     "MX": "Interdiscipline",
 }
+CATEGORY_METADATA_BY_SUB = {
+    "DS": ("Computer Architecture", "computer architecture, parallel and distributed computing, and storage systems"),
+    "NW": ("Computer Networks", "computer networks"),
+    "SC": ("Network and System Security", "network and system security"),
+    "SE": ("Software Engineering", "software engineering, system software, and programming languages"),
+    "DB": ("Databases and Data Mining", "databases, data mining, and information retrieval"),
+    "CT": ("Computing Theory", "theoretical computer science"),
+    "CG": ("Computer Graphics and Multimedia", "computer graphics and multimedia"),
+    "AI": ("Artificial Intelligence", "artificial intelligence"),
+    "HI": ("Human-Computer Interaction", "human-computer interaction and ubiquitous computing"),
+    "MX": ("Interdisciplinary", "interdisciplinary, general, and emerging computing research"),
+}
 
 
 
@@ -527,9 +539,10 @@ def directory_entries(conferences: list[dict], descriptions: bool = False) -> st
 
 
 def category_page(sub: str, conferences: list[dict], categories: dict[str, str], static_css: str = "/venues/style.css") -> str:
-    name = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
+    fallback = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
+    name, topics = CATEGORY_METADATA_BY_SUB.get(sub, (fallback, fallback))
     title = f"{name} Conference Deadlines | CCFDDL"
-    description = f"Browse {name} conferences, their latest listed venues, submission deadlines and past venues on CCFDDL."
+    description = f"Find {topics} conference deadlines, dates and past venues on CCFDDL."
     breadcrumb = category_trail(sub, categories)
     body = (f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
             f'<ul class="directory-list category-list">{directory_entries(conferences, descriptions=True)}</ul>')

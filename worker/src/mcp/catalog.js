@@ -5,16 +5,16 @@ export const DEADLINE_FIELDS = ["abstract_deadline", "deadline", "rebuttal_deadl
 export const EVENT_TYPES = [...DEADLINE_FIELDS, "opening"];
 
 export const CATEGORIES = [
-  ["DS", "Computer Architecture", "计算机体系结构"],
+  ["DS", "Computer Architecture, Parallel and Distributed Computing, and Storage Systems", "计算机体系结构/并行与分布计算/存储系统"],
   ["NW", "Computer Networks", "计算机网络"],
   ["SC", "Network and System Security", "网络与信息安全"],
-  ["SE", "Software Engineering", "软件工程"],
-  ["DB", "Databases and Data Mining", "数据库与数据挖掘"],
+  ["SE", "Software Engineering, System Software, and Programming Languages", "软件工程/系统软件/程序设计语言"],
+  ["DB", "Databases, Data Mining, and Information Retrieval", "数据库/数据挖掘/内容检索"],
   ["CT", "Computing Theory", "计算机科学理论"],
   ["CG", "Computer Graphics and Multimedia", "计算机图形学与多媒体"],
   ["AI", "Artificial Intelligence", "人工智能"],
-  ["HI", "Human-Computer Interaction", "人机交互"],
-  ["MX", "Interdisciplinary", "交叉学科"],
+  ["HI", "Human-Computer Interaction and Ubiquitous Computing", "人机交互与普适计算"],
+  ["MX", "Interdisciplinary, General, and Emerging Computing Research", "交叉/综合/新兴"],
 ].map(([code, name_en, name_zh]) => ({ code, name_en, name_zh }));
 
 let snapshot;
