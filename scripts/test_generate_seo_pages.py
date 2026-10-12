@@ -1,12 +1,123 @@
 import tempfile
 import re
+import json
 import unittest
 from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.etree import ElementTree
 
-from generate_seo_pages import category_page, directory_page, edition_metadata, edition_page, generate, series_page
+from generate_seo_pages import category_page, deadline_datetime, directory_page, edition_metadata, edition_page, generate, series_page
+
+
+class BreadcrumbParser(HTMLParser):
+    def __init__(self, page):
+        super().__init__()
+        self.structured = []
+        self.visible = []
+        self.in_json = False
+        self.in_breadcrumb = False
+        self.in_label = False
+        self.buffer = ''
+        self.feed(page)
+
+    def handle_starttag(self, tag, attrs):
+        attrs = dict(attrs)
+        if tag == 'script' and attrs.get('type') == 'application/ld+json':
+            self.in_json = True
+            self.buffer = ''
+        if tag == 'nav' and attrs.get('class') == 'breadcrumb':
+            self.in_breadcrumb = True
+        if self.in_breadcrumb and (tag == 'a' or attrs.get('aria-current') == 'page'):
+            self.in_label = True
+
+    def handle_data(self, data):
+        if self.in_json:
+            self.buffer += data
+        elif self.in_label:
+            self.visible.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == 'script' and self.in_json:
+            self.structured.append(json.loads(self.buffer))
+            self.in_json = False
+        if tag in ('a', 'span'):
+            self.in_label = False
+        if tag == 'nav':
+            self.in_breadcrumb = False
+
+
+class CrawlableMetadataTests(unittest.TestCase):
+    def test_breadcrumbs_match_visible_paths_and_edition_canonicals(self):
+        editions = [{'year': year, 'timeline': []} for year in (2025, 2027)]
+        conference = {'title': 'ACL', 'sub': 'AI', 'confs': editions}
+        pages = [
+            (directory_page([conference], {}), ['Main site', 'All venues'], '/venues/'),
+            (category_page('AI', [conference], {}), ['Main site', 'All venues', 'Artificial Intelligence'], '/venues/ai/'),
+            (series_page(conference, {}), ['Main site', 'All venues', 'Artificial Intelligence', 'ACL'], '/venues/ai/acl/'),
+        ]
+        for edition in editions:
+            pages.append((edition_page(conference, edition, {}, {}),
+                          ['Main site', 'All venues', 'Artificial Intelligence', 'ACL', str(edition['year'])],
+                          f"/venues/ai/acl-{edition['year']}/"))
+        for page, labels, path in pages:
+            with self.subTest(path=path):
+                parsed = BreadcrumbParser(page)
+                self.assertEqual(parsed.visible, labels)
+                self.assertEqual(len(parsed.structured), 1)
+                trail = parsed.structured[0]
+                self.assertEqual(trail['@type'], 'BreadcrumbList')
+                items = trail['itemListElement']
+                self.assertEqual([item['name'] for item in items], labels)
+                self.assertEqual([item['position'] for item in items], list(range(1, len(labels) + 1)))
+                self.assertTrue(all(item['item'].startswith('https://ccfddl.com/') for item in items))
+                self.assertEqual(items[-1]['item'], 'https://ccfddl.com' + path)
+                self.assertNotIn('noindex', page)
+
+    def test_jsonld_cannot_close_its_script_with_a_conference_name(self):
+        name = 'A&B </script><script>alert(1)</script> 学术'
+        edition = {'year': 2027, 'timeline': []}
+        conference = {'title': name, 'sub': 'AI', 'confs': [edition]}
+        page = edition_page(conference, edition, {}, {})
+        parsed = BreadcrumbParser(page)
+        self.assertEqual(parsed.structured[0]['itemListElement'][-2]['name'], name)
+        self.assertNotIn('<script>alert(1)</script>', page)
+        self.assertIn('\\u003c/script>', page)
+
+    def test_deadline_datetimes_keep_offsets_and_date_precision(self):
+        cases = [
+            ('2026-07-28 23:59:59', 'AoE', '2026-07-28T23:59:59-12:00'),
+            ('2026-07-28 23:59', 'UTC-12', '2026-07-28T23:59:00-12:00'),
+            ('2027-01-10 12:30:00', 'UTC', '2027-01-10T12:30:00+00:00'),
+            ('2027-01-10 12:30:00', 'UTC+5:30', '2027-01-10T12:30:00+05:30'),
+            ('2027-01-10 23:59:59', 'PT', '2027-01-10T23:59:59-08:00'),
+            ('2027-07-10 23:59:59', 'PT', '2027-07-10T23:59:59-07:00'),
+            ('2027-01-10', '', '2027-01-10'),
+        ]
+        for raw, zone, expected in cases:
+            with self.subTest(raw=raw, zone=zone):
+                self.assertEqual(deadline_datetime(raw, zone), expected)
+        for raw, zone in [('TBD', 'AoE'), ('2027-02-30', 'UTC'),
+                          ('2027-01-10 25:00', 'UTC'), ('2027-01-10 12:00', 'UTC+24'),
+                          ('2027-01-10 12:00', 'UTC+5:60'), ('2027-01-10 12:00', 'UNKNOWN'),
+                          ('2027-03-14 02:30', 'PT'), ('2027-11-07 01:30', 'PT')]:
+            with self.subTest(raw=raw, zone=zone):
+                self.assertIsNone(deadline_datetime(raw, zone))
+
+    def test_initial_html_marks_published_deadlines_without_promoting_inferred_opening_times(self):
+        edition = {'year': 2027, 'timezone': 'AoE', 'date': 'April 26-30, 2027',
+                   'timeline': [{'deadline': '2026-12-01 23:59:59'}]}
+        conference = {'title': 'Example', 'sub': 'AI', 'confs': [edition]}
+        page = edition_page(conference, edition, {}, {})
+        self.assertIn('datetime="2026-12-01T23:59:59-12:00"', page)
+        self.assertNotIn('datetime="2027-04-26T08:00:00', page)
+        self.assertNotIn('"@type":"Event"', page)
+        self.assertNotIn('datePublished', page)
+        self.assertIn('class="toolbar-clock" data-nosnippet', page)
+        self.assertIn('class="conference-detail-next" data-nosnippet', page)
+        deadline = page.split('data-deadline-type="deadline"', 1)[1].split('data-deadline-type="opening"', 1)[0]
+        self.assertIn('class="conference-detail-deadline-date">', deadline)
+        self.assertIn('class="conference-detail-deadline-status" data-nosnippet', deadline)
 
 
 class SearchPresentationTests(unittest.TestCase):
@@ -274,7 +385,7 @@ class SeoPageTests(unittest.TestCase):
             self.assertNotIn('id="conference-search"', directory)
             self.assertNotIn('data-rank-key="ccf"', directory)
             self.assertIn('class="directory-categories"', directory)
-            self.assertIn('<span>All venues</span>', directory)
+            self.assertIn('<span aria-current="page">All venues</span>', directory)
             self.assertIn('rel="canonical" href="https://ccfddl.com/venues/"', directory)
             self.assertNotIn('.rank-filter{', (output / "venues/style.css").read_text())
             self.assertNotIn("Conference deadlines / 会议截稿时间", directory)
@@ -391,3 +502,4 @@ class SeoPageTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+

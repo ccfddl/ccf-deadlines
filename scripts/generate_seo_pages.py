@@ -7,11 +7,12 @@ import json
 import re
 import shutil
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timedelta, timezone as fixed_timezone
 from html import escape
 from pathlib import Path
 from urllib.parse import urlparse
 from xml.etree.ElementTree import Element, SubElement, tostring
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -63,16 +64,38 @@ def series_path(conference: dict) -> str:
     return f"{category_path(conference['sub'])}{slug}/"
 
 
-def venue_breadcrumb(conference: dict, categories: dict[str, str], year: int | None = None) -> str:
-    sub = conference["sub"]
+def directory_trail() -> list[tuple[str, str]]:
+    return [("Main site", BASE_URL + "/"), ("All venues", BASE_URL + "/venues/")]
+
+
+def category_trail(sub: str, categories: dict[str, str]) -> list[tuple[str, str]]:
     category = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
-    current = f'<span aria-current="page">{text(conference["title"])}</span>'
+    return [*directory_trail(), (category, BASE_URL + category_path(sub))]
+
+
+def venue_trail(conference: dict, categories: dict[str, str], year: int | None = None) -> list[tuple[str, str]]:
+    sub = conference["sub"]
+    trail = [*category_trail(sub, categories), (conference["title"], BASE_URL + series_path(conference))]
     if year is not None:
-        current = (f'<a href="{text(series_path(conference))}">{text(conference["title"])}</a>'
-                   f'<span>/</span><span aria-current="page">{year}</span>')
-    return (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a>'
-            f'<span>/</span><a href="/venues/">All venues</a><span>/</span>'
-            f'<a href="{text(category_path(sub))}">{text(category)}</a><span>/</span>{current}</nav>')
+        trail.append((str(year), BASE_URL + edition_path(conference, {"year": year})))
+    return trail
+
+
+def breadcrumb_html(trail: list[tuple[str, str]]) -> str:
+    items = [f'<a href="{text(url if index == 0 else url.removeprefix(BASE_URL))}">{text(name)}</a>'
+             for index, (name, url) in enumerate(trail[:-1])]
+    items.append(f'<span aria-current="page">{text(trail[-1][0])}</span>')
+    return '<nav class="breadcrumb" aria-label="Breadcrumb">' + '<span>/</span>'.join(items) + '</nav>'
+
+
+def breadcrumb_jsonld(trail: list[tuple[str, str]]) -> str:
+    data = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": index, "name": name, "item": url}
+        for index, (name, url) in enumerate(trail, start=1)
+    ]}
+    # JSON script data must not allow a source title to close the script element.
+    encoded = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    return f'<script type="application/ld+json">{encoded}</script>'
 
 
 def safe_link(url: str) -> str | None:
@@ -84,14 +107,46 @@ def text(value: object) -> str:
     return escape(str(value or ""), quote=True)
 
 
-def format_deadline(value: object, timezone: str) -> str:
+def deadline_datetime(value: object, timezone: str) -> str | None:
+    raw = str(value or "").strip()
+    if not KNOWN_DATE.fullmatch(raw):
+        return None
+    try:
+        when = datetime.fromisoformat(raw)
+        if len(raw) == 10:
+            return when.date().isoformat()
+        if timezone == "PT":
+            zone = ZoneInfo("America/Los_Angeles")
+            # A local timestamp during a DST gap or repeated hour isn't unique.
+            if when.replace(tzinfo=zone, fold=0).utcoffset() != when.replace(tzinfo=zone, fold=1).utcoffset():
+                return None
+        else:
+            match = re.fullmatch(r"UTC(?:([+-])(\d{1,2})(?::(\d{2}))?)?", timezone)
+            if timezone == "AoE":
+                offset = -720
+            elif match:
+                hours, minutes = int(match[2] or 0), int(match[3] or 0)
+                if hours > 23 or minutes > 59:
+                    return None
+                offset = (hours * 60 + minutes) * (-1 if match[1] == "-" else 1)
+            else:
+                return None
+            zone = fixed_timezone(timedelta(minutes=offset))
+        return when.replace(tzinfo=zone).isoformat(timespec="seconds")
+    except ValueError:
+        return None
+
+
+def format_deadline(value: object, timezone: str, published_time: bool = True) -> str:
     raw = str(value or "").strip()
     if not KNOWN_DATE.fullmatch(raw):
         return "Not listed"
     when = datetime.strptime(raw[:10], "%Y-%m-%d")
     shown = f"{raw[11:16] if len(raw) > 10 else '23:59'}, "
     shown += f"{when:%b} {when.day}, {when.year}"
-    return f'<time class="deadline-time" data-raw="{text(raw)}" data-source-tz="{text(timezone)}" title="Original: {text(raw)} {text(timezone)}">{text(shown)} · {text(timezone)}</time>'
+    machine_time = deadline_datetime(raw, timezone) if published_time else None
+    datetime_attribute = f' datetime="{text(machine_time)}"' if machine_time else ""
+    return f'<time class="deadline-time"{datetime_attribute} data-raw="{text(raw)}" data-source-tz="{text(timezone)}" title="Original: {text(raw)} {text(timezone)}">{text(shown)} · {text(timezone)}</time>'
 
 
 def category_links(categories: dict[str, str], active_sub: str = "", responsive: bool = False) -> str:
@@ -145,7 +200,7 @@ def directory_startup() -> str:
     </script>'''
 
 
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: str = "", detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "", show_clock: bool = True) -> str:
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: list[tuple[str, str]] | None = None, detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "", show_clock: bool = True) -> str:
     social = ""
     if social_image:
         social = f'''<meta property="og:type" content="website">
@@ -165,7 +220,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <meta name="twitter:image" content="{text(social_image)}">
   <meta name="twitter:image:alt" content="{text(social_image_alt)}">'''
     clock_control = (
-        '<div class="toolbar-clock"><time class="toolbar-clock-value" id="display-clock">—</time>'
+        '<div class="toolbar-clock" data-nosnippet><time class="toolbar-clock-value" id="display-clock">—</time>'
         '<span class="toolbar-timezone"><span>(</span><label class="toolbar-timezone-picker">'
         '<select id="display-timezone" aria-label="Select display timezone"><option value="UTC">UTC</option></select>'
         '<span class="toolbar-timezone-arrow" aria-hidden="true">⌄</span></label><span> time)</span></span></div>'
@@ -177,6 +232,8 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     if detail_page and not show_clock:
         filters = ""
     page_controls = '<script src="/venues/controls.js" defer></script>' if not detail_page or show_clock else ""
+    breadcrumb_markup = breadcrumb_html(breadcrumb) if breadcrumb else ""
+    structured_breadcrumb = breadcrumb_jsonld(breadcrumb) if breadcrumb else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -185,6 +242,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <title>{text(title)}</title>
   <meta name="description" content="{text(description)}">
   <link rel="canonical" href="{text(canonical)}">
+  {structured_breadcrumb}
   {social}
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2114972416819347" crossorigin="anonymous"></script>
   <link rel="icon" href="/favicon.ico">
@@ -198,7 +256,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       <div class="header-main"><a class="title" href="{BASE_URL}/"><span>CCFDDL&nbsp;Open&nbsp;</span><span class="title-accent">Deadlines</span></a><div class="header-github"><a class="github-star-link" href="https://github.com/ccfddl/ccf-deadlines" target="_blank" rel="noopener noreferrer" aria-label="Star ccfddl/ccf-deadlines on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>Star</span><span class="github-star-count" id="github-star-count" hidden></span></a><a class="header-x-link" href="https://x.com/ccfddl" target="_blank" rel="noopener noreferrer" aria-label="Follow CCFDDL on X" title="Follow CCFDDL on X"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg><span>Follow</span></a></div><div class="header-auth" id="github-auth"><a class="github-login-button" id="github-login-link" href="{BASE_URL}/api/auth/github?return_to=%2F"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span data-zh="使用 GitHub 登录" data-en="Sign in with GitHub">使用 GitHub 登录</span></a></div></div>
       <div class="el-row subtitle">Worldwide Conference Deadline Countdowns. Preview in <a href="{BASE_URL}/?view=table">tabular form</a> or <a href="{BASE_URL}/venues/" target="_blank" rel="noopener noreferrer">directory</a>.</div>
       <div class="el-row subtitle">*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only.</div>
-      {breadcrumb}
+      {breadcrumb_markup}
       {filters}
     </header>
     <main>{body}</main>
@@ -270,20 +328,20 @@ def deadline_rows(edition: dict) -> str:
                 f'<div class="conference-detail-deadline" data-raw="{text(raw)}" data-source-tz="{text(timezone)}" data-deadline-type="{text(field)}" data-comment="{text(point.get("comment", ""))}"><div class="conference-detail-deadline-main">'
                 f'<div class="conference-detail-deadline-name">{text(heading)}</div>'
                 f'<div class="conference-detail-deadline-date">{format_deadline(point[field], timezone)}</div>'
-                f'</div><span class="conference-detail-deadline-status" aria-live="off"></span></div>'
+                f'</div><span class="conference-detail-deadline-status" data-nosnippet aria-live="off"></span></div>'
             )
             rows.append((raw, row))
     if not rows:
         rows.append(("", '<div class="conference-detail-deadline">Dates to be announced</div>'))
     opening = conference_opening(edition)
-    opening_date = format_deadline(opening, timezone) if opening else "TBD"
+    opening_date = format_deadline(opening, timezone, published_time=False) if opening else "TBD"
     attributes = f' data-raw="{text(opening)}" data-source-tz="{text(timezone)}"' if opening else ""
     rows.append((opening or "9999", (
         f'<div class="conference-detail-deadline" data-deadline-type="opening"{attributes}>'
         '<div class="conference-detail-deadline-main">'
         '<div class="conference-detail-deadline-name">Conference Opening</div>'
         f'<div class="conference-detail-deadline-date">{opening_date}</div></div>'
-        '<span class="conference-detail-deadline-status" aria-live="off"></span></div>'
+        '<span class="conference-detail-deadline-status" data-nosnippet aria-live="off"></span></div>'
     )))
     return "".join(row for _, row in sorted(rows, key=lambda entry: entry[0]))
 
@@ -360,8 +418,8 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     note = f'<div class="conference-detail-note">NOTE: {text(" · ".join(notes))}</div>' if notes else ""
     upcoming = [value for value in all_known if value[:10] >= datetime.now().date().isoformat()]
     next_deadline = min(upcoming) if upcoming else None
-    next_display = format_deadline(next_deadline, edition.get("timezone", "")) if next_deadline else "Passed" if all_known else "TBD"
-    next_panel = f'<div class="conference-detail-next"><span class="conference-detail-label">NEXT DEADLINE IN</span><strong id="conference-next-deadline" aria-live="off">{next_display}</strong></div>'
+    next_display = format_deadline(next_deadline, edition.get("timezone", ""), published_time=next_deadline != opening) if next_deadline else "Passed" if all_known else "TBD"
+    next_panel = f'<div class="conference-detail-next" data-nosnippet><span class="conference-detail-label">NEXT DEADLINE IN</span><strong id="conference-next-deadline" aria-live="off">{next_display}</strong></div>'
     recent_rates = sorted(
         (rate for rate in acceptances.get(name, []) if rate.get("year", 0) <= year),
         key=lambda rate: rate["year"],
@@ -389,7 +447,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     </article>
     {history_section}
     """
-    breadcrumb = venue_breadcrumb(conference, categories, year)
+    breadcrumb = venue_trail(conference, categories, year)
     return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL")
 
 
@@ -437,7 +495,7 @@ def series_page(conference: dict, categories: dict[str, str], static_css: str = 
       {history_section}
     </article>'''
     return layout(title, description, BASE_URL + series_path(conference), body,
-                  breadcrumb=venue_breadcrumb(conference, categories), detail_page=True, static_css=static_css, show_clock=False)
+                  breadcrumb=venue_trail(conference, categories), detail_page=True, static_css=static_css, show_clock=False)
 
 
 def directory_entries(conferences: list[dict], descriptions: bool = False) -> str:
@@ -464,9 +522,7 @@ def category_page(sub: str, conferences: list[dict], categories: dict[str, str],
     name = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
     title = f"{name} Conference Deadlines | CCFDDL"
     description = f"Browse {name} conferences, their latest listed venues, submission deadlines and past venues on CCFDDL."
-    breadcrumb = (f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a>'
-                  f'<span>/</span><a href="/venues/">All venues</a><span>/</span>'
-                  f'<span aria-current="page">{text(name)}</span></nav>')
+    breadcrumb = category_trail(sub, categories)
     body = (f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
             f'<ul class="directory-list category-list">{directory_entries(conferences, descriptions=True)}</ul>')
     return layout(title, description, BASE_URL + category_path(sub), body,
@@ -484,7 +540,7 @@ def directory_page(conferences: list[dict], categories: dict[str, str], app_asse
         category = categories.get(sub, sub)
         sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2><a href="{text(category_path(sub))}" data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(CATEGORY_EN_BY_SUB.get(sub, category))}</a></h2><ul class="directory-list">{links}</ul></section>')
     body = f'<p class="directory-empty" id="directory-empty" hidden>No matching venues.</p>{"".join(sections)}'
-    breadcrumb = f'<nav class="breadcrumb" aria-label="Breadcrumb"><a href="{BASE_URL}/">Main site</a><span>/</span><span>All venues</span></nav>'
+    breadcrumb = directory_trail()
     return layout("Venue Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
 
 
@@ -778,3 +834,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
