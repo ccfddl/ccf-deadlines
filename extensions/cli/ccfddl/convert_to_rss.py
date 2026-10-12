@@ -24,6 +24,7 @@ def convert_to_rss(
     ET.SubElement(channel, "language").text = "en" if lang == "en" else "zh-CN"
     # Source records do not carry publication/update dates. Neither a deadline
     # nor the build clock establishes when feed content was published or changed.
+    items = []
 
     for file_path in file_paths:
         with open(file_path, "r", encoding="utf-8") as f:
@@ -41,6 +42,10 @@ def convert_to_rss(
 
             for conf in conf_data["confs"]:
                 year = conf["year"]
+                try:
+                    sort_year = int(year)
+                except (TypeError, ValueError):
+                    sort_year = 0
                 link = conf["link"]
                 timeline = conf["timeline"]
                 timezone_str = conf["timezone"]
@@ -106,7 +111,8 @@ def convert_to_rss(
                             except ValueError:
                                 continue
 
-                        item = ET.SubElement(channel, "item")
+                        item = ET.Element("item")
+                        items.append((sort_year, item))
 
                         if lang == "en":
                             summary = f"{title} {year} {deadline_type[1]}"
@@ -163,6 +169,12 @@ def convert_to_rss(
                         guid.text = f"{title}-{year}-{type_key}-{deadline_str}@ccfddl.com"
 
                         ET.SubElement(item, "category").text = sub
+
+    # Put newer venue years first without inventing publication dates. Python's
+    # stable sort keeps source order for conferences, rounds and types in a year.
+    channel.extend(
+        item for _, item in sorted(items, key=lambda entry: entry[0], reverse=True)
+    )
 
     tree = ET.ElementTree(rss)
     ET.indent(tree, space="  ")

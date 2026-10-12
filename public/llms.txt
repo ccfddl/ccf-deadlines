@@ -59,8 +59,9 @@ including any requested year filter.
   source for event dates, start times and the event's local timezone.
 - `TBD`, missing dates and missing statistics are unknown, not estimates.
 - Different submission rounds and abstract/paper deadlines are separate events.
-- RSS deadline dates are not publication dates. Feed items do not assert unknown
-  publication/update times. Use the iCalendar feed for date-based subscriptions.
+- RSS entries are ordered by venue year, newest first. Deadline dates are not
+  publication dates; feed items do not assert unknown publication/update times.
+  Use the iCalendar feed for date-based subscriptions.
 - Rankings (CCF, CORE and THCPL) belong to their respective ranking systems;
   CCFDDL displays them and does not define them.
 - Acceptance rates are historical observations, not predictions. Include the

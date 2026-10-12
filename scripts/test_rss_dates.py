@@ -35,12 +35,15 @@ class RssDateTests(unittest.TestCase):
             }],
         }
 
-    def feed(self, conferences, lang="en"):
+    def feed(self, conferences, lang="en", other_files=()):
         with tempfile.TemporaryDirectory() as directory:
-            source = Path(directory) / "conference.yml"
-            source.write_text(yaml.safe_dump(conferences), encoding="utf-8")
+            sources = []
+            for index, records in enumerate((conferences, *other_files)):
+                source = Path(directory) / f"conference-{index}.yml"
+                source.write_text(yaml.safe_dump(records), encoding="utf-8")
+                sources.append(str(source))
             output = Path(directory) / "deadlines.xml"
-            convert_to_rss([str(source)], str(output), lang, {"AI": "人工智能"})
+            convert_to_rss(sources, str(output), lang, {"AI": "人工智能"})
             return ET.fromstring(output.read_bytes())
 
     def test_future_deadlines_do_not_claim_future_publication_dates(self):
@@ -91,6 +94,39 @@ class RssDateTests(unittest.TestCase):
         edition["timezone"] = "UNKNOWN"
         self.assertEqual(self.feed([self.conference]).findall("./channel/item"), [])
         self.assertEqual(self.feed(None).findall("./channel/item"), [])
+
+    def test_newer_venue_years_first_across_files_with_stable_rounds_and_types(self):
+        first = copy.deepcopy(self.conference)
+        old = copy.deepcopy(first["confs"][0])
+        old["year"] = 2098
+        latest = copy.deepcopy(first["confs"][0])
+        latest["year"] = 2100
+        latest["timeline"].append({"deadline": "2099-04-01", "comment": "Second round"})
+        first["confs"] = [old, latest]
+        middle = copy.deepcopy(self.conference)
+        middle["title"] = "Middle"
+        tied = copy.deepcopy(self.conference)
+        tied["title"] = "Other"
+        tied["confs"][0]["year"] = "2100"
+        tied["confs"][0]["timeline"] = [{"deadline": "2099-05-01"}]
+
+        for lang in ("en", "zh"):
+            with self.subTest(lang=lang):
+                channel = self.feed([first], lang, ([middle, tied],)).find("channel")
+                items = channel.findall("item")
+                guids = [item.findtext("guid") for item in items]
+                expected = []
+                for title, edition in (("Example", latest), ("Other", tied["confs"][0]),
+                                       ("Middle", middle["confs"][0]), ("Example", old)):
+                    for entry in edition["timeline"]:
+                        for field, key in (("abstract_deadline", "abstract"), ("deadline", "deadline"),
+                                           ("rebuttal_deadline", "rebuttal"), ("decision_deadline", "decision")):
+                            if field in entry:
+                                expected.append(f"{title}-{edition['year']}-{key}-{entry[field]}@ccfddl.com")
+                self.assertEqual(guids, expected)
+                self.assertTrue(all(item.find("pubDate") is None for item in items))
+                self.assertEqual([child.tag for child in channel][:4],
+                                 ["title", "link", "description", "language"])
 
 
 if __name__ == "__main__":
