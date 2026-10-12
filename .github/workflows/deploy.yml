@@ -62,6 +62,8 @@ jobs:
           path: previous-site
           token: ${{ secrets.ACCESS_TOKEN }}
           persist-credentials: false
+      - name: Update sitemap dates for changed venue content
+        run: python scripts/update_sitemap_dates.py --previous previous-site
       - name: Retain assets for cached pages and modules
         run: python scripts/retain_site_assets.py --previous previous-site --retention-hours 24
       - name: Config Git
