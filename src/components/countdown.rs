@@ -78,7 +78,7 @@ pub fn CountDown(
     let urgency_class = move || urgency_class_for(remaining_time.get());
 
     view! {
-        <span class=urgency_class>
+        <span class=urgency_class data-nosnippet="">
             {if legacy {
                 view! {
                     <span class="countdown-legacy-value">

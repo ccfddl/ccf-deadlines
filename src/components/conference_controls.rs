@@ -52,7 +52,7 @@ pub fn ConferenceControls(
             <CategoryFilters use_english categories selected />
             <div class="timezone toolbar">
                 <div class="toolbar-main">
-                    <div class="toolbar-clock">{(toolbar_clock.children)()}
+                    <div class="toolbar-clock" data-nosnippet="">{(toolbar_clock.children)()}
                         <TimezonePicker use_english selected_timezone browser_timezone open_dropdown />
                     </div>
                     <ConferenceSearch search />
