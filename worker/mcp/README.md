@@ -18,6 +18,8 @@ For namesakes such as FSE, `get_conference` returns `ambiguous: true` and candid
 
 `get_conference` and `upcoming_deadlines` accept `display_timezone` (an IANA name such as `Asia/Shanghai`). Responses retain the source `local_time`, `timezone`, and `utc_time`, and add `display_time` and `display_timezone` for known dates. Unknown dates have no converted instant.
 
+Conference results include `series_url` for a CCFDDL series history and `venue_url` for the corresponding annual page. In search results, `venue_url` matches `latest_edition`, respecting a requested year. Cite `venue_url` for year-specific deadline claims and retain `website` as the official conference source. Invalid identities or years do not produce guessed page URLs.
+
 Conference `opening` values are countdown timestamps derived from the earliest announced first day in the edition's `date` text. The data builder assigns a default 08:00 hour in the edition's submission timezone. `opening_utc` and `opening_display_time` are conversions of this derived value, not verified local event start times. Cite the original `date` text for conference dates and consult the official conference website for actual start times and the event's local timezone. This distinction also applies to `upcoming_deadlines` results with `deadline_types: ["opening"]`.
 
 For upcoming nodes, `deadline_types` accepts `abstract_deadline`, `deadline`, `rebuttal_deadline`, `decision_deadline`, and `opening`. The default includes the four submission/review types and excludes openings. Examples:

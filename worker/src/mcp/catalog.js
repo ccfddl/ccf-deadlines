@@ -1,4 +1,5 @@
-const SOURCE_URL = "https://ccfddl.com/conference/allconf.json";
+const SITE_URL = "https://ccfddl.com";
+const SOURCE_URL = `${SITE_URL}/conference/allconf.json`;
 const TTL_MS = 15 * 60 * 1000;
 export const DEADLINE_FIELDS = ["abstract_deadline", "deadline", "rebuttal_deadline", "decision_deadline"];
 export const EVENT_TYPES = [...DEADLINE_FIELDS, "opening"];
@@ -74,6 +75,19 @@ export function deadlineToUtc(raw, timezone) {
   return utc.toISOString();
 }
 
+function seriesUrl(conference) {
+  // Keep paths aligned with scripts/generate_seo_pages.py.
+  if (typeof conference.sub !== "string" || !/^[A-Za-z0-9]+$/.test(conference.sub)) return null;
+  const slug = conference.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return slug ? `${SITE_URL}/venues/${conference.sub.toLowerCase()}/${slug}/` : null;
+}
+
+function venueUrl(conference, edition) {
+  const series = seriesUrl(conference);
+  if (!series || !Number.isInteger(edition.year) || edition.year < 1900 || edition.year > 2200) return null;
+  return `${series.slice(0, -1)}-${edition.year}/`;
+}
+
 function editionSummary(conference, edition) {
   return {
     conference_key: conferenceKey(conference),
@@ -82,6 +96,8 @@ function editionSummary(conference, edition) {
     year: edition.year,
     category: conference.sub,
     rank: conference.rank ?? {},
+    series_url: seriesUrl(conference),
+    venue_url: venueUrl(conference, edition),
     website: edition.link ?? null,
     place: edition.place ?? null,
     date: edition.date ?? null,
@@ -102,14 +118,17 @@ function matchesFilters(conference, { category, ccf_rank, core_rank, thcpl_rank 
 }
 
 function conferenceSummary(conference, year) {
+  const latest = [...conference.confs].filter((edition) => !year || edition.year === year)
+    .sort((a, b) => b.year - a.year)[0];
   return {
     conference_key: conferenceKey(conference),
     title: conference.title,
     description: conference.description ?? null,
     category: conference.sub ?? null,
     rank: conference.rank ?? {},
-    latest_edition: [...conference.confs].filter((edition) => !year || edition.year === year)
-      .sort((a, b) => b.year - a.year)[0]?.id ?? null,
+    series_url: seriesUrl(conference),
+    venue_url: latest ? venueUrl(conference, latest) : null,
+    latest_edition: latest?.id ?? null,
   };
 }
 
@@ -198,6 +217,7 @@ export function getConference(conferences, nameOrId, options = {}) {
     category: conference.sub ?? null,
     rank: conference.rank ?? {},
     dblp: conference.dblp ?? null,
+    series_url: seriesUrl(conference),
     editions: [...selected].sort((a, b) => b.year - a.year).slice(0, options.edition_limit ?? 6).map((edition) => ({
       ...editionSummary(conference, edition),
       deadlines: editionEvents(edition).map((event) => withDisplayTime(event, options.display_timezone)),

@@ -46,6 +46,32 @@ test("filters future deadlines and preserves source timezone", () => {
   assert.equal(results[0].website, "https://iclr.cc/Conferences/2027");
 });
 
+test("provides canonical citation URLs separately from the official conference website", () => {
+  const conference = getConference(conferences, "ICLR 2027");
+  const edition = conference.editions[0];
+  assert.equal(conference.series_url, "https://ccfddl.com/venues/ai/iclr/");
+  assert.equal(edition.series_url, conference.series_url);
+  assert.equal(edition.venue_url, "https://ccfddl.com/venues/ai/iclr-2027/");
+  assert.equal(edition.website, "https://iclr.cc/Conferences/2027");
+  const [deadline] = upcomingDeadlines(conferences, { now: Date.parse("2026-09-30T00:00:00Z"), days: 7 });
+  assert.equal(deadline.venue_url, edition.venue_url);
+});
+
+test("omits citation URLs for invalid identities and years instead of guessing pages", () => {
+  for (const sub of ["AI/../../", "", undefined]) {
+    const conference = getConference([{ ...conferences[0], sub }], "ICLR");
+    assert.equal(conference.series_url, null);
+    assert.equal(conference.editions[0].venue_url, null);
+  }
+  for (const year of ["2027", 1899, 2201, undefined]) {
+    const source = { ...conferences[0], confs: [{ ...conferences[0].confs[0], year }] };
+    assert.equal(getConference([source], "ICLR").editions[0].venue_url, null);
+  }
+  const missingSlug = { ...conferences[0], title: "会议" };
+  assert.equal(getConference([missingSlug], "会议").series_url, null);
+  assert.equal(getConference([missingSlug], "会议").editions[0].venue_url, null);
+});
+
 const extendedCatalog = [
   {
     title: "FSE", conference_key: "SC/fse", sub: "SC", description: "Fast Software Encryption",
@@ -72,6 +98,8 @@ test("filters CORE, THCPL and edition year while retaining namesake keys", () =>
   const results = searchConferences(extendedCatalog, { core_rank: "A*", thcpl_rank: "A", year: 2026 });
   assert.deepEqual(results.map((item) => item.conference_key), ["SE/fse"]);
   assert.equal(results[0].latest_edition, "fse26");
+  assert.equal(results[0].series_url, "https://ccfddl.com/venues/se/fse/");
+  assert.equal(results[0].venue_url, "https://ccfddl.com/venues/se/fse-2026/");
   assert.deepEqual(searchConferences(extendedCatalog, { ccf_rank: "N", core_rank: "N", thcpl_rank: "N" })
     .map((item) => item.title), ["UNRANKED"]);
   assert.equal(searchConferences(extendedCatalog, { query: "SE/fse" })[0].description, "Foundations of Software Engineering");
@@ -93,6 +121,9 @@ test("asks callers to disambiguate namesakes instead of returning the first conf
   const ambiguous = getConference(extendedCatalog, "FSE 2027");
   assert.equal(ambiguous.ambiguous, true);
   assert.deepEqual(ambiguous.matches.map((item) => item.conference_key), ["SC/fse", "SE/fse"]);
+  assert.deepEqual(ambiguous.matches.map((item) => item.venue_url), [
+    "https://ccfddl.com/venues/sc/fse-2027/", "https://ccfddl.com/venues/se/fse-2027/",
+  ]);
   assert.equal(getConference(extendedCatalog, "FSE", { category: "se" }).conference_key, "SE/fse");
   assert.equal(getConference(extendedCatalog, "se/FSE 2027").editions.length, 1);
   assert.equal(getConference(extendedCatalog, "crypto-fse27").conference_key, "SC/fse");

@@ -42,6 +42,10 @@ For a conference's history or latest listed venue, cite its series page.
 Use `conference_key` or a category to distinguish conferences with the same
 acronym. Follow `next_offset` for paginated results. Use `display_timezone` for
 local-time conversion and retain the original timezone in deadline citations.
+MCP results provide `series_url` for histories and `venue_url` for annual pages.
+Cite `venue_url` for a particular year's deadlines; `website` remains the official
+conference source. A search result's `venue_url` follows its `latest_edition`,
+including any requested year filter.
 
 ## Interpretation
 

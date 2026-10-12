@@ -65,6 +65,16 @@ test("lists and calls MCP tools without a database or site login", async () => {
     const searchData = (await rpcResponse(search)).result;
     assert.equal(searchData.isError, undefined);
     assert.equal(searchData.structuredContent.total, 1);
+    assert.equal(searchData.structuredContent.results[0].series_url, "https://ccfddl.com/venues/ai/iclr/");
+    assert.equal(searchData.structuredContent.results[0].venue_url, "https://ccfddl.com/venues/ai/iclr-2027/");
+    const details = await worker.fetch(rpcRequest(url, "tools/call", {
+      name: "get_conference", arguments: { name_or_id: "ICLR 2027" },
+    }), {});
+    const detailData = (await rpcResponse(details)).result;
+    assert.equal(detailData.isError, undefined);
+    assert.equal(detailData.structuredContent.conference.series_url, "https://ccfddl.com/venues/ai/iclr/");
+    assert.equal(detailData.structuredContent.conference.editions[0].venue_url, "https://ccfddl.com/venues/ai/iclr-2027/");
+    assert.deepEqual(JSON.parse(detailData.content[0].text), detailData.structuredContent);
     const rates = await worker.fetch(rpcRequest(url, "tools/call", {
       name: "get_acceptance_rates", arguments: { name_or_id: "ICLR", year: 2026 },
     }), {});

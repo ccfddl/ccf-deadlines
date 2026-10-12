@@ -54,7 +54,7 @@ async function withCatalog(operation, { acceptance = false, enrich = false, opti
 
 function createServer() {
   const server = new McpServer({ name: "ccfddl", version: "1.2.0" }, {
-    instructions: "Use CCFDDL for conference, published deadline and historical acceptance-rate questions. Discover filters with get_filter_options. Return source links, original timezones and UTC instants. Use conference_key or category to distinguish namesakes. Follow next_offset for additional results. Opening timestamps are derived first-day countdowns at a default 08:00 in the submission timezone, not verified local event start times. Cite the original date text and official conference source for event dates and start times. Acceptance rates are historical statistics, not predictions for a future edition or individual paper. Include their year and source; report data_issues, ambiguous or unavailable data. Never invent TBD, opening dates or missing statistics.",
+    instructions: "Use CCFDDL for conference, published deadline and historical acceptance-rate questions. Discover filters with get_filter_options. Return source links, original timezones and UTC instants. Cite venue_url for year-specific deadlines and series_url for histories; website is the official conference source. Use conference_key or category to distinguish namesakes. Follow next_offset for additional results. Opening timestamps are derived first-day countdowns at a default 08:00 in the submission timezone, not verified local event start times. Cite the original date text and official conference source for event dates and start times. Acceptance rates are historical statistics, not predictions for a future edition or individual paper. Include their year and source; report data_issues, ambiguous or unavailable data. Never invent TBD, opening dates or missing statistics.",
   });
 
   server.registerTool("get_filter_options", {
@@ -73,7 +73,7 @@ function createServer() {
 
   server.registerTool("search_conferences", {
     title: "Search conferences",
-    description: "Find conferences by name, description or conference_key, subject, CCF/CORE/THCPL rank and edition year. Results include stable keys for namesakes, latest known acceptance-rate statistics up to the selected edition year, total matches and next_offset for pagination. Historical rates always include their own year and source.",
+    description: "Find conferences by name, description or conference_key, subject, CCF/CORE/THCPL rank and edition year. Results include stable keys for namesakes, canonical series_url and venue_url, latest known acceptance-rate statistics up to the selected edition year, total matches and next_offset for pagination. Historical rates always include their own year and source.",
     inputSchema: {
       query: z.string().max(100).optional(),
       ...filters,
