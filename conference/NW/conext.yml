@@ -76,3 +76,16 @@
       timezone: AoE
       date: December 7-10, 2026
       place: Utrecht, The Netherlands
+    - year: 2027
+      id: conext27
+      link: https://conferences.sigcomm.org/co-next/2027/#!/home
+      timeline:
+        - abstract_deadline: '2026-11-27 23:59:59'
+          deadline: '2026-12-04 23:59:59'
+          comment: 'December Cycle'
+        - abstract_deadline: '2027-05-28 23:59:59'
+          deadline: '2027-06-04 23:59:59'
+          comment: 'June Cycle'
+      timezone: AoE
+      date: December 6-9, 2027 (To be confirmed)
+      place: Rio de Janeiro, Brazil
