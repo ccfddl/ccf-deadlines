@@ -179,14 +179,17 @@ def directory_startup() -> str:
         if (!status) { status = document.createElement('p'); root.append(status); }
         status.className = 'directory-controls-loading';
         status.setAttribute('role', 'alert');
-        status.textContent = document.documentElement.lang === 'en'
+        const message = document.createElement('span');
+        message.setAttribute('data-nosnippet', '');
+        message.textContent = document.documentElement.lang === 'en'
           ? 'Unable to load filters. Venue links are still available. '
           : '筛选控件加载失败，仍可浏览下方会议链接。';
+        status.replaceChildren(message);
         const retry = document.createElement('button');
         retry.type = 'button';
         retry.textContent = document.documentElement.lang === 'en' ? 'Retry' : '重试';
         retry.onclick = () => location.reload();
-        status.append(retry);
+        message.append(retry);
         cleanup();
       };
       const onError = event => {
@@ -227,7 +230,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     )
     filters = (
         f'<div class="directory-toolbar detail-toolbar">{clock_control}</div>'
-        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" style="display:flex;flex-wrap:wrap;gap:10px" aria-label="Venue categories">{navigation}</nav><p class="directory-controls-loading" role="status">Loading filters…</p></div>{directory_startup()}'
+        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" style="display:flex;flex-wrap:wrap;gap:10px" aria-label="Venue categories">{navigation}</nav><p class="directory-controls-loading" role="status"><span data-nosnippet>Loading filters…</span></p></div>{directory_startup()}'
     )
     if detail_page and not show_clock:
         filters = ""
