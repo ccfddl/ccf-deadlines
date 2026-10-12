@@ -47,6 +47,10 @@ local-time conversion and retain the original timezone in deadline citations.
   have no announced deadline or may already have passed. It is not necessarily
   accepting submissions.
 - An edition year can differ from the calendar year of its submission deadline.
+- `opening` timestamps are derived from the announced first day with a default
+  08:00 countdown hour in the edition's submission timezone. They are not verified
+  local event start times. Cite the original `date` text and official conference
+  source for event dates, start times and the event's local timezone.
 - `TBD`, missing dates and missing statistics are unknown, not estimates.
 - Different submission rounds and abstract/paper deadlines are separate events.
 - Rankings (CCF, CORE and THCPL) belong to their respective ranking systems;

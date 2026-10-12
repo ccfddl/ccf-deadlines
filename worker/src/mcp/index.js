@@ -54,7 +54,7 @@ async function withCatalog(operation, { acceptance = false, enrich = false, opti
 
 function createServer() {
   const server = new McpServer({ name: "ccfddl", version: "1.2.0" }, {
-    instructions: "Use CCFDDL for conference, published deadline and historical acceptance-rate questions. Discover filters with get_filter_options. Return source links, original timezones and UTC instants. Use conference_key or category to distinguish namesakes. Follow next_offset for additional results. Acceptance rates are historical statistics, not predictions for a future edition or individual paper. Include their year and source; report data_issues, ambiguous or unavailable data. Never invent TBD, opening dates or missing statistics.",
+    instructions: "Use CCFDDL for conference, published deadline and historical acceptance-rate questions. Discover filters with get_filter_options. Return source links, original timezones and UTC instants. Use conference_key or category to distinguish namesakes. Follow next_offset for additional results. Opening timestamps are derived first-day countdowns at a default 08:00 in the submission timezone, not verified local event start times. Cite the original date text and official conference source for event dates and start times. Acceptance rates are historical statistics, not predictions for a future edition or individual paper. Include their year and source; report data_issues, ambiguous or unavailable data. Never invent TBD, opening dates or missing statistics.",
   });
 
   server.registerTool("get_filter_options", {
@@ -86,7 +86,7 @@ function createServer() {
 
   server.registerTool("get_conference", {
     title: "Get conference details",
-    description: "Get published deadlines, opening, DBLP identifier and historical acceptance statistics by name, name and year, edition ID or conference_key. Includes up to 10 acceptance records, exact-year statistics and two recent records per edition. Use get_acceptance_rates for full history. A namesake lookup returns ambiguous matches: choose a key or category and retry. Optional display_timezone converts known times; TBD remains unchanged.",
+    description: "Get published deadlines, derived conference openings, DBLP identifier and historical acceptance statistics by name, name and year, edition ID or conference_key. Opening timestamps use a default countdown hour, not a verified local event start time. Includes up to 10 acceptance records, exact-year statistics and two recent records per edition. Use get_acceptance_rates for full history. A namesake lookup returns ambiguous matches: choose a key or category and retry. Optional display_timezone converts known times; TBD remains unchanged.",
     inputSchema: {
       name_or_id: z.string().trim().min(1).max(100),
       category: filters.category,
@@ -122,7 +122,7 @@ function createServer() {
 
   server.registerTool("upcoming_deadlines", {
     title: "Upcoming conference deadlines",
-    description: "List future published nodes in the next 1–365 days, sorted by UTC instant, with latest known historical acceptance statistics up to the edition year. Filter by subject, CCF/CORE/THCPL rank, edition year and deadline_types. Use [deadline] for paper submissions, [abstract_deadline, deadline] for submission nodes, or [opening] for conference openings. Default includes submission, rebuttal and decision nodes, excluding openings. Supports pagination and display_timezone.",
+    description: "List future submission/review nodes and optionally derived conference openings in the next 1–365 days, sorted by UTC instant, with latest known historical acceptance statistics up to the edition year. Filter by subject, CCF/CORE/THCPL rank, edition year and deadline_types. Use [deadline] for paper submissions, [abstract_deadline, deadline] for submission nodes, or [opening] for first-day countdowns with a default hour, not verified local event start times. Default includes submission, rebuttal and decision nodes, excluding openings. Supports pagination and display_timezone.",
     inputSchema: {
       days: z.number().int().min(1).max(365).optional(),
       ...filters,

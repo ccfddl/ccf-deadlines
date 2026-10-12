@@ -8,7 +8,7 @@ Tools:
 
 - `get_filter_options`: subject codes with English/Chinese names, CCF/CORE/THCPL rankings, edition years, and supported event types.
 - `search_conferences`: name, description, conference key, subject, CCF/CORE/THCPL rank, and edition year search, with the latest known acceptance statistics up to that edition year.
-- `get_conference`: recent editions, known deadline nodes, explicitly published conference opening times, DBLP identifier, and historical acceptance statistics. Accepts a name, name plus year, edition ID, or returned conference key.
+- `get_conference`: recent editions, known deadline nodes, derived conference openings, DBLP identifier, and historical acceptance statistics. Accepts a name, name plus year, edition ID, or returned conference key.
 - `get_acceptance_rates`: historical acceptance rates, submitted and accepted paper counts, percentages and sources, filtered by statistical year or inclusive year range and paginated newest first.
 - `upcoming_deadlines`: future nodes within a specified time window, filtered by ranking, subject, edition year, and node type, with the latest known historical acceptance statistics up to the edition year.
 
@@ -17,6 +17,8 @@ Search and upcoming results include `total`, `offset`, `limit`, and `next_offset
 For namesakes such as FSE, `get_conference` returns `ambiguous: true` and candidate `matches` inside `conference`. Retry with a returned `conference_key` or a `category` instead of assuming the first result is correct. Named lookups return up to six editions by default; `edition_limit` can request up to 20.
 
 `get_conference` and `upcoming_deadlines` accept `display_timezone` (an IANA name such as `Asia/Shanghai`). Responses retain the source `local_time`, `timezone`, and `utc_time`, and add `display_time` and `display_timezone` for known dates. Unknown dates have no converted instant.
+
+Conference `opening` values are countdown timestamps derived from the earliest announced first day in the edition's `date` text. The data builder assigns a default 08:00 hour in the edition's submission timezone. `opening_utc` and `opening_display_time` are conversions of this derived value, not verified local event start times. Cite the original `date` text for conference dates and consult the official conference website for actual start times and the event's local timezone. This distinction also applies to `upcoming_deadlines` results with `deadline_types: ["opening"]`.
 
 For upcoming nodes, `deadline_types` accepts `abstract_deadline`, `deadline`, `rebuttal_deadline`, `decision_deadline`, and `opening`. The default includes the four submission/review types and excludes openings. Examples:
 
