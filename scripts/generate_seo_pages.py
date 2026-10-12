@@ -456,7 +456,8 @@ def series_page(conference: dict, categories: dict[str, str], static_css: str = 
     name = conference["title"]
     full_name = conference.get("description") or name
     title = f"{name}: {full_name} | CCFDDL" if full_name != name else f"{name} Conference Deadlines | CCFDDL"
-    description = f"{name} conference deadlines, dates and past venues. Latest listed venue: {name} {latest['year']}."
+    identity = f"{name} ({full_name})" if full_name != name else name
+    description = f"{identity} conference deadlines, dates and past venues. Latest listed venue: {name} {latest['year']}."
     past = sorted((item for item in conference["confs"] if item["year"] < latest["year"]),
                   key=lambda item: item["year"], reverse=True)
     history = "".join(
