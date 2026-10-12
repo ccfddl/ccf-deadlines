@@ -195,7 +195,20 @@ Pay particular attention to AoE, UTC, UTC offsets, local timezones, daylight-sav
 
 Do not infer a timezone from previous editions.
 
-Do not silently reinterpret an official deadline unless repository conventions explicitly require a representation conversion.
+### Deadline precision and representation
+
+Apply these repository conventions after verifying the official deadline date and any stated time and timezone:
+
+- When an official source states `23:59` (or `11:59 PM`) without seconds, represent it as `23:59:59`, not `23:59:00`.
+- When the official source explicitly includes seconds, preserve those seconds exactly. For example, `23:59:00` remains `23:59:00`, and `23:59:30` remains `23:59:30`.
+- Preserve all other explicitly stated times under the existing repository conventions. Do not round them up to the end of a minute or day.
+- For an officially published date with no time, retain the existing end-of-day default of `23:59:59`.
+- If the official source provides no timezone, retain the existing `AoE` default. An explicitly stated timezone takes precedence and must be preserved or converted only as required by repository conventions.
+- These representation defaults do not authorize inventing an unpublished date or replacing `TBD` / `TBA`.
+
+Do not flag a verified official `23:59` deadline represented as `23:59:59` as a seconds mismatch. Apply the same normalization consistently in review findings and proposed corrections.
+
+Do not otherwise reinterpret an official deadline unless repository conventions explicitly require a representation conversion.
 
 ## TBD and unpublished information
 
