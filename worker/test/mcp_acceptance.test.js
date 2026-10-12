@@ -149,6 +149,7 @@ test("acceptance cache shares concurrent refreshes and preserves stale data on a
   assert.equal(await first, await concurrent);
   const cached = await loadAcceptanceCatalog(fetcher, now + 60_000);
   assert.equal(calls, 1);
+  assert.equal(cached.stale, false);
   let outages = 0;
   const failing = async () => { outages++; throw new Error("offline"); };
   const stale = await Promise.all([
@@ -156,9 +157,15 @@ test("acceptance cache shares concurrent refreshes and preserves stale data on a
     loadAcceptanceCatalog(failing, now + 16 * 60_000),
   ]);
   assert.equal(outages, 1);
-  assert.equal(stale[0], cached);
-  assert.equal(stale[1], cached);
+  assert.equal(stale[0], stale[1]);
+  assert.equal(stale[0].acceptances, cached.acceptances);
+  assert.equal(stale[0].stale, true);
+  assert.equal(cached.stale, false);
   assert.equal(stale[0].fetched_at, new Date(now).toISOString());
+  const recovered = await loadAcceptanceCatalog(fetcher, now + 17 * 60_000);
+  assert.equal(calls, 2);
+  assert.equal(recovered.stale, false);
+  assert.equal(recovered.fetched_at, new Date(now + 17 * 60_000).toISOString());
 });
 
 test("rejects invalid acceptance feeds and recovers after the first-load failure", async () => {
@@ -167,4 +174,5 @@ test("rejects invalid acceptance feeds and recovers after the first-load failure
   await assert.rejects(loadAcceptanceCatalog(async () => Response.json([{ title: "ICLR", accept_rates: {} }])), /invalid/);
   const loaded = await loadAcceptanceCatalog(async () => Response.json(acceptances));
   assert.equal(loaded.acceptances.length, 2);
+  assert.equal(loaded.stale, false);
 });

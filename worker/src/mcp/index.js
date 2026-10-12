@@ -37,14 +37,15 @@ async function withCatalog(operation, { acceptance = false, enrich = false, opti
     ]);
     if (catalogResult.status === "rejected") throw catalogResult.reason;
     const catalog = catalogResult.value;
-    if (!acceptance) return result(operation(catalog));
+    if (!acceptance) return result({ ...operation(catalog), stale: catalog.stale });
     const acceptanceCatalog = acceptanceResult.status === "fulfilled" ? acceptanceResult.value : undefined;
     if (!acceptanceCatalog) console.error("CCFDDL MCP acceptance error", acceptanceResult.reason?.message ?? "Error");
     const index = createAcceptanceIndex(catalog.conferences, acceptanceCatalog);
     const data = operation(catalog, index);
     return result({ ...(enrich ? enrichAcceptance(data, index, catalog.conferences, options) : data),
+      stale: catalog.stale,
       acceptance_data: { status: acceptanceCatalog ? "available" : "unavailable",
-        source: ACCEPTANCE_SOURCE, fetched_at: index.fetched_at },
+        source: ACCEPTANCE_SOURCE, fetched_at: index.fetched_at, stale: acceptanceCatalog?.stale ?? null },
     });
   } catch (error) {
     console.error("CCFDDL MCP catalog error", error?.message ?? "Error");
@@ -54,7 +55,7 @@ async function withCatalog(operation, { acceptance = false, enrich = false, opti
 
 function createServer() {
   const server = new McpServer({ name: "ccfddl", version: "1.2.0" }, {
-    instructions: "Use CCFDDL for conference, published deadline and historical acceptance-rate questions. Discover filters with get_filter_options. Return source links, original timezones and UTC instants. Cite venue_url for year-specific deadlines and series_url for histories; website is the official conference source. Use conference_key or category to distinguish namesakes. Follow next_offset for additional results. Opening timestamps are derived first-day countdowns at a default 08:00 in the submission timezone, not verified local event start times. opening_is_derived copies source provenance: true marks a generated countdown, null means absent or undeclared, and false alone does not verify an event start. Cite the original date text and official conference source for event dates and start times. Acceptance rates are historical statistics, not predictions for a future edition or individual paper. Include their year and source; report data_issues, ambiguous or unavailable data. Never invent TBD, opening dates or missing statistics.",
+    instructions: "Use CCFDDL for conference, published deadline and historical acceptance-rate questions. Discover filters with get_filter_options. Return source links, original timezones and UTC instants. Cite venue_url for year-specific deadlines and series_url for histories; website is the official conference source. Use conference_key or category to distinguish namesakes. Follow next_offset for additional results. Report stale cached results; conference and acceptance_data flags are independent. fetched_at is the last successful retrieval, not verification of individual records. Opening timestamps are derived first-day countdowns at a default 08:00 in the submission timezone, not verified local event start times. opening_is_derived copies source provenance: true marks a generated countdown, null means absent or undeclared, and false alone does not verify an event start. Cite the original date text and official conference source for event dates and start times. Acceptance rates are historical statistics, not predictions for a future edition or individual paper. Include their year and source; report data_issues, ambiguous or unavailable data. Never invent TBD, opening dates or missing statistics.",
   });
 
   server.registerTool("get_filter_options", {

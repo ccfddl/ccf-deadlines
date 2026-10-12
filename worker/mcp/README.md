@@ -36,6 +36,8 @@ For upcoming nodes, `deadline_types` accepts `abstract_deadline`, `deadline`, `r
 
 The server retains source timezone labels and supplies UTC instants where the source identifies a unique instant. `TBD`, missing openings, and invalid calendar dates are not converted or predicted. Pacific (`PT`) clock times skipped or repeated during daylight-saving transitions also stay unconverted: details retain the original `local_time` and `timezone`, with `null` UTC/display values, and upcoming results omit those nodes. A published explicit offset such as `UTC-7` or `UTC-8` disambiguates a repeated hour; do not guess one. Each response includes the source dataset URL and fetch time. Conference links come from the source data.
 
+Every successful tool response includes `stale`, referring to the conference catalog. It is `true` when the 15-minute cache expired and refreshing the source failed, so a cached snapshot was returned. The original `fetched_at` is preserved. A successful refresh clears the flag; callers share a pending refresh and failures do not extend the cache lifetime. `false` means the cache has not expired, not that individual deadlines were recently verified. Report stale data as cached and check consequential deadline claims against the official conference source.
+
 ## Acceptance statistics
 
 `get_acceptance_rates` requires `name_or_id` and accepts `category`, `year`, `from_year`, `to_year`, `offset`, and `limit`. Here `year` refers to the **statistics year**, independently of whether the deadline catalog contains that edition. A name with a year or an edition ID selects its year; a conflicting explicit `year` returns no matching statistics. Ranges are inclusive and `from_year` must not exceed `to_year`.
@@ -50,7 +52,7 @@ Responses distinguish `available`, `missing`, `ambiguous`, `unavailable`, and `n
 
 Search and upcoming results add `acceptance_status` and a nullable `latest_acceptance_rate` with its own year and provenance. Conference details add `acceptance_rates` (the newest 10 historical records), `acceptance_rates_total`, and `acceptance_status`. Each edition has a nullable exact-year `acceptance_rate` and up to two `recent_acceptance_rates` from that year or earlier. The complete history is available through `get_acceptance_rates`. Historical statistics are not predictions for an upcoming edition or an individual paper.
 
-Tools that read statistics include an `acceptance_data` envelope with the dataset `source`, `fetched_at`, and feed status. Acceptance data loads alongside conference data. If its source is unavailable and no cached snapshot exists, deadline queries still succeed, statistics are empty or `null`, and their status is `unavailable`. A cached snapshot can be served during an outage with its original fetch timestamp.
+Tools that read statistics include an `acceptance_data` envelope with the dataset `source`, `fetched_at`, feed status and `stale`. Acceptance data loads alongside conference data and reports its cache flag independently of the top-level conference-catalog flag. If its source is unavailable and no cached snapshot exists, deadline queries still succeed, statistics are empty or `null`, their status is `unavailable`, and `acceptance_data.stale` is `null`. A cached snapshot remains `available` during an outage with its original fetch timestamp and `stale: true`. A valid refresh clears that flag without changing historical-record or query statuses.
 
 ## Local verification
 

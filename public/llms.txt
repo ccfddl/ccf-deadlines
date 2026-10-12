@@ -75,3 +75,8 @@ including any requested year filter.
 - MCP `fetched_at` is the dataset retrieval time, not the date an individual
   deadline was last verified. Confirm consequential deadline decisions against
   the official conference website.
+- MCP `stale: true` marks an expired conference cache returned after a failed
+  refresh. `acceptance_data.stale` reports the statistics cache independently;
+  it is `null` when no statistics snapshot is available. Original fetch times
+  are retained during fallback. `false` means the cache has not expired, not
+  that individual deadlines or statistics were recently verified.

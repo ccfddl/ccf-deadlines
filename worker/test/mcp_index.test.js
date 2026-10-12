@@ -51,17 +51,31 @@ test("lists and calls MCP tools without a database or site login", async () => {
   ]);
   const originalFetch = globalThis.fetch;
   const originalNow = Date.now;
-  Date.now = () => Date.parse("2027-01-01T00:00:00Z");
+  const initialTime = Date.parse("2027-01-01T00:00:00Z");
+  let now = initialTime;
+  let catalogOffline = false;
+  let acceptanceOffline = true;
+  Date.now = () => now;
   globalThis.fetch = async (source) => {
+    if (source === "https://ccfddl.com/conference/allconf.json" && catalogOffline) return new Response("offline", { status: 503 });
     if (source === "https://ccfddl.com/conference/allconf.json") return Response.json([
       { title: "ICLR", sub: "AI", rank: { ccf: "A" }, confs: [{ year: 2027, id: "iclr27", timezone: "UTC",
         date: "May 1-3, 2027 (To be confirmed)", opening: "2027-05-01 08:00:00",
         opening_is_derived: true, timeline: [] }] },
     ]);
     assert.equal(source, "https://ccfddl.com/conference/allacc.json");
+    if (acceptanceOffline) return new Response("offline", { status: 503 });
     return Response.json([{ title: "ICLR", accept_rates: [{ year: 2026, submitted: 100, accepted: 30, rate: 0.3 }] }]);
   };
   try {
+    const unavailable = await worker.fetch(rpcRequest(url, "tools/call", {
+      name: "search_conferences", arguments: { query: "ICLR" },
+    }), {});
+    const unavailableData = (await rpcResponse(unavailable)).result.structuredContent;
+    assert.equal(unavailableData.stale, false);
+    assert.equal(unavailableData.acceptance_data.status, "unavailable");
+    assert.equal(unavailableData.acceptance_data.stale, null);
+    acceptanceOffline = false;
     const search = await worker.fetch(rpcRequest(url, "tools/call", {
       name: "search_conferences", arguments: { query: "ICLR" },
     }), {});
@@ -94,6 +108,62 @@ test("lists and calls MCP tools without a database or site login", async () => {
     const rateData = (await rpcResponse(rates)).result.structuredContent;
     assert.equal(rateData.status, "available");
     assert.equal(rateData.results[0].rate_percent, 30);
+
+    const calls = [
+      ["get_filter_options", {}], ["search_conferences", { query: "ICLR" }],
+      ["get_conference", { name_or_id: "ICLR 2027" }],
+      ["get_acceptance_rates", { name_or_id: "ICLR", year: 2026 }],
+      ["upcoming_deadlines", { days: 365, deadline_types: ["opening"] }],
+    ];
+    const call = async (name, args) => {
+      const response = await worker.fetch(rpcRequest(url, "tools/call", { name, arguments: args }), {});
+      assert.equal(response.status, 200);
+      const data = (await rpcResponse(response)).result;
+      assert.equal(data.isError, undefined);
+      assert.deepEqual(JSON.parse(data.content[0].text), data.structuredContent);
+      return data.structuredContent;
+    };
+    const withoutStaleFlags = (data) => {
+      const { stale, ...rest } = data;
+      if (rest.acceptance_data) {
+        const { stale: acceptanceStale, ...envelope } = rest.acceptance_data;
+        rest.acceptance_data = envelope;
+      }
+      return rest;
+    };
+    const baseline = new Map();
+    for (const [name, args] of calls) {
+      const data = await call(name, args);
+      assert.equal(data.stale, false);
+      if (data.acceptance_data) assert.equal(data.acceptance_data.stale, false);
+      baseline.set(name, data);
+    }
+    now += 16 * 60_000;
+    catalogOffline = acceptanceOffline = true;
+    for (const [name, args] of calls) {
+      const data = await call(name, args);
+      assert.equal(data.stale, true);
+      if (data.acceptance_data) {
+        assert.equal(data.acceptance_data.stale, true);
+        assert.equal(data.acceptance_data.status, "available");
+      }
+      assert.deepEqual(withoutStaleFlags(data), withoutStaleFlags(baseline.get(name)));
+    }
+    catalogOffline = false;
+    now += 1000;
+    const partialRecovery = await call("get_conference", { name_or_id: "ICLR 2027" });
+    assert.equal(partialRecovery.stale, false);
+    assert.equal(partialRecovery.acceptance_data.stale, true);
+    assert.equal(partialRecovery.fetched_at, new Date(now).toISOString());
+    assert.equal(partialRecovery.acceptance_data.fetched_at, new Date(initialTime).toISOString());
+    assert.deepEqual(partialRecovery.conference, baseline.get("get_conference").conference);
+    acceptanceOffline = false;
+    now += 1000;
+    const recovered = await call("get_conference", { name_or_id: "ICLR 2027" });
+    assert.equal(recovered.stale, false);
+    assert.equal(recovered.acceptance_data.stale, false);
+    assert.equal(recovered.acceptance_data.fetched_at, new Date(now).toISOString());
+    assert.deepEqual(recovered.conference, baseline.get("get_conference").conference);
   } finally {
     globalThis.fetch = originalFetch;
     Date.now = originalNow;

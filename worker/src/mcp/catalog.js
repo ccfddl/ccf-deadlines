@@ -32,11 +32,11 @@ export async function loadCatalog(fetcher = fetch, now = Date.now()) {
       item && typeof item.title === "string" && Array.isArray(item.confs))) {
       throw new Error("CCFDDL conference data is invalid");
     }
-    snapshot = { conferences, source: SOURCE_URL, fetched_at: new Date(now).toISOString() };
+    snapshot = { conferences, source: SOURCE_URL, fetched_at: new Date(now).toISOString(), stale: false };
     expiresAt = now + TTL_MS;
     return snapshot;
   })().catch((error) => {
-    if (snapshot) return snapshot;
+    if (snapshot) return { ...snapshot, stale: true };
     throw error;
   }).finally(() => {
     loading = undefined;

@@ -247,6 +247,7 @@ test("loads and reuses the public dataset without a database", async () => {
   const first = await loadCatalog(fetcher, Date.parse("2026-09-30T00:00:00Z"));
   const second = await loadCatalog(fetcher, Date.parse("2026-09-30T00:01:00Z"));
   assert.equal(first, second);
+  assert.equal(first.stale, false);
   assert.equal(calls, 1);
 });
 
@@ -267,8 +268,18 @@ test("shares stale fallback with concurrent callers and retries after a failed r
 
   const [firstResult, secondResult] = await responses;
   assert.equal(refreshCalls, 1);
-  assert.equal(firstResult, cached);
-  assert.equal(secondResult, cached);
+  assert.equal(firstResult, secondResult);
+  assert.equal(firstResult.conferences, cached.conferences);
+  assert.equal(firstResult.fetched_at, cached.fetched_at);
+  assert.equal(firstResult.stale, true);
+  assert.equal(cached.stale, false);
+
+  for (const response of [new Response("offline", { status: 503 }), Response.json({ invalid: true })]) {
+    const fallback = await loadCatalog(async () => response, expiredTime);
+    assert.equal(fallback.stale, true);
+    assert.equal(fallback.conferences, cached.conferences);
+    assert.equal(fallback.fetched_at, cached.fetched_at);
+  }
 
   let recoveryCalls = 0;
   const recovered = await loadCatalog(async () => {
@@ -278,4 +289,14 @@ test("shares stale fallback with concurrent callers and retries after a failed r
   assert.equal(recoveryCalls, 1);
   assert.notEqual(recovered, cached);
   assert.equal(recovered.fetched_at, new Date(expiredTime + 1000).toISOString());
+  assert.equal(recovered.stale, false);
+});
+
+test("does not fabricate a cached catalog after a failed first load", async () => {
+  const { loadCatalog: freshLoader } = await import("../src/mcp/catalog.js?cold-failure-test");
+  await assert.rejects(freshLoader(async () => new Response("offline", { status: 503 })), /unavailable/);
+  await assert.rejects(freshLoader(async () => Response.json({ invalid: true })), /invalid/);
+  const loaded = await freshLoader(async () => Response.json(conferences));
+  assert.equal(loaded.stale, false);
+  assert.deepEqual(loaded.conferences, conferences);
 });

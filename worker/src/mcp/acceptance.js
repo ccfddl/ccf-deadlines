@@ -18,11 +18,11 @@ export async function loadAcceptanceCatalog(fetcher = fetch, now = Date.now()) {
       item && typeof item.title === "string" && Array.isArray(item.accept_rates))) {
       throw new Error("CCFDDL acceptance data is invalid");
     }
-    snapshot = { acceptances, source: ACCEPTANCE_SOURCE, fetched_at: new Date(now).toISOString() };
+    snapshot = { acceptances, source: ACCEPTANCE_SOURCE, fetched_at: new Date(now).toISOString(), stale: false };
     expiresAt = now + TTL_MS;
     return snapshot;
   })().catch((error) => {
-    if (snapshot) return snapshot;
+    if (snapshot) return { ...snapshot, stale: true };
     throw error;
   }).finally(() => { loading = undefined; });
   return loading;
