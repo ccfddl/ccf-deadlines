@@ -61,7 +61,9 @@ test("lists and calls MCP tools without a database or site login", async () => {
     if (source === "https://ccfddl.com/conference/allconf.json") return Response.json([
       { title: "ICLR", sub: "AI", rank: { ccf: "A" }, confs: [{ year: 2027, id: "iclr27", timezone: "UTC",
         date: "May 1-3, 2027 (To be confirmed)", opening: "2027-05-01 08:00:00",
-        opening_is_derived: true, timeline: [] }] },
+        opening_is_derived: true, timeline: [] }, ...Array.from({ length: 6 }, (_, index) => ({
+          year: 2021 + index, id: `iclr${21 + index}`, timezone: "UTC", timeline: [],
+        }))] },
     ]);
     assert.equal(source, "https://ccfddl.com/conference/allacc.json");
     if (acceptanceOffline) return new Response("offline", { status: 503 });
@@ -91,9 +93,20 @@ test("lists and calls MCP tools without a database or site login", async () => {
     const detailData = (await rpcResponse(details)).result;
     assert.equal(detailData.isError, undefined);
     assert.equal(detailData.structuredContent.conference.series_url, "https://ccfddl.com/venues/ai/iclr/");
+    assert.equal(detailData.structuredContent.conference.editions_total, 1);
     assert.equal(detailData.structuredContent.conference.editions[0].venue_url, "https://ccfddl.com/venues/ai/iclr-2027/");
     assert.equal(detailData.structuredContent.conference.editions[0].opening_is_derived, true);
     assert.deepEqual(JSON.parse(detailData.content[0].text), detailData.structuredContent);
+    for (const [editionLimit, count] of [[undefined, 6], [20, 7]]) {
+      const history = await worker.fetch(rpcRequest(url, "tools/call", {
+        name: "get_conference", arguments: { name_or_id: "AI/iclr", ...(editionLimit ? { edition_limit: editionLimit } : {}) },
+      }), {});
+      const historyData = (await rpcResponse(history)).result;
+      assert.equal(historyData.isError, undefined);
+      assert.equal(historyData.structuredContent.conference.editions_total, 7);
+      assert.equal(historyData.structuredContent.conference.editions.length, count);
+      assert.deepEqual(JSON.parse(historyData.content[0].text), historyData.structuredContent);
+    }
     const upcoming = await worker.fetch(rpcRequest(url, "tools/call", {
       name: "upcoming_deadlines", arguments: { days: 365, deadline_types: ["opening"], display_timezone: "Asia/Shanghai" },
     }), {});

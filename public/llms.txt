@@ -61,6 +61,10 @@ MCP results provide `series_url` for histories and `venue_url` for annual pages.
 Cite `venue_url` for a particular year's deadlines; `website` remains the official
 conference source. A search result's `venue_url` follows its `latest_edition`,
 including any requested year filter.
+`get_conference` returns up to six recent editions by default. `editions_total`
+counts catalog editions matching the query before the limit. If it exceeds
+`editions.length`, request a higher `edition_limit` (maximum 20) or query a
+specific year or edition ID. Do not treat a limited result as complete history.
 
 ## Browse and cite
 

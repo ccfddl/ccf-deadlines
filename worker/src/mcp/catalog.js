@@ -233,6 +233,7 @@ export function getConference(conferences, nameOrId, options = {}) {
     rank: conference.rank ?? {},
     dblp: conference.dblp ?? null,
     series_url: seriesUrl(conference),
+    editions_total: selected.length,
     editions: [...selected].sort((a, b) => b.year - a.year).slice(0, options.edition_limit ?? 6).map((edition) => ({
       ...editionSummary(conference, edition),
       deadlines: editionEvents(edition).map((event) => withDisplayTime(event, options.display_timezone)),

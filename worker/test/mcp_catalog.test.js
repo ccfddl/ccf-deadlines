@@ -37,6 +37,27 @@ test("returns explicit deadlines without inventing unknown dates", () => {
   assert.equal(getConference(conferences, "unknown"), null);
 });
 
+test("reports the matching edition count before limiting recent history", () => {
+  const history = [{ ...conferences[0], confs: Array.from({ length: 7 }, (_, index) => ({
+    year: 2021 + index, id: `iclr${21 + index}`, timezone: "UTC", timeline: [],
+  })) }];
+  const recent = getConference(history, "AI/iclr");
+  assert.equal(recent.editions_total, 7);
+  assert.deepEqual(recent.editions.map((edition) => edition.year), [2027, 2026, 2025, 2024, 2023, 2022]);
+  const limited = getConference(history, "ICLR", { edition_limit: 2 });
+  assert.equal(limited.editions_total, 7);
+  assert.deepEqual(limited.editions.map((edition) => edition.year), [2027, 2026]);
+  const complete = getConference(history, "ICLR", { edition_limit: 20 });
+  assert.equal(complete.editions_total, complete.editions.length);
+  for (const [name, options] of [["ICLR 2021", {}], ["iclr21", {}], ["AI/iclr", { year: 2021 }]]) {
+    const selected = getConference(history, name, options);
+    assert.equal(selected.editions_total, 1);
+    assert.deepEqual(selected.editions.map((edition) => edition.year), [2021]);
+  }
+  assert.equal(getConference(history, "ICLR", { year: 2040 }), null);
+  assert.equal(getConference(history, "ICLR 2021", { year: 2022 }), null);
+});
+
 test("filters future deadlines and preserves source timezone", () => {
   const now = Date.parse("2026-09-30T00:00:00Z");
   const results = upcomingDeadlines(conferences, { now, days: 7, ccf_rank: "A", category: "AI" });
@@ -120,6 +141,7 @@ test("paginates matching conferences with complete counts and stable namesake or
 test("asks callers to disambiguate namesakes instead of returning the first conference", () => {
   const ambiguous = getConference(extendedCatalog, "FSE 2027");
   assert.equal(ambiguous.ambiguous, true);
+  assert.equal("editions_total" in ambiguous, false);
   assert.deepEqual(ambiguous.matches.map((item) => item.conference_key), ["SC/fse", "SE/fse"]);
   assert.deepEqual(ambiguous.matches.map((item) => item.venue_url), [
     "https://ccfddl.com/venues/sc/fse-2027/", "https://ccfddl.com/venues/se/fse-2027/",

@@ -87,7 +87,7 @@ function createServer() {
 
   server.registerTool("get_conference", {
     title: "Get conference details",
-    description: "Get published deadlines, derived conference openings, DBLP identifier and historical acceptance statistics by name, name and year, edition ID or conference_key. Opening timestamps use a default countdown hour, not a verified local event start time. Includes up to 10 acceptance records, exact-year statistics and two recent records per edition. Use get_acceptance_rates for full history. A namesake lookup returns ambiguous matches: choose a key or category and retry. Optional display_timezone converts known times; TBD remains unchanged.",
+    description: "Get published deadlines, derived conference openings, DBLP identifier and historical acceptance statistics by name, name and year, edition ID or conference_key. Returns six recent editions by default; editions_total counts matching catalog editions before edition_limit (maximum 20). Query a year or edition ID for older records. Opening timestamps use a default countdown hour, not a verified local event start time. Includes up to 10 acceptance records, exact-year statistics and two recent records per edition. Use get_acceptance_rates for full history. A namesake lookup returns ambiguous matches: choose a key or category and retry. Optional display_timezone converts known times; TBD remains unchanged.",
     inputSchema: {
       name_or_id: z.string().trim().min(1).max(100),
       category: filters.category,

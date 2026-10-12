@@ -14,7 +14,7 @@ Tools:
 
 Search and upcoming results include `total`, `offset`, `limit`, and `next_offset`. Pass `next_offset` as the next request's `offset`; `null` means the final page. The default limit is 20 and the maximum is 50. Filters use the conference **edition year**, which can differ from the year of its submission deadline. Rank `N` selects unranked conferences, including entries without that ranking.
 
-For namesakes such as FSE, `get_conference` returns `ambiguous: true` and candidate `matches` inside `conference`. Retry with a returned `conference_key` or a `category` instead of assuming the first result is correct. Named lookups return up to six editions by default; `edition_limit` can request up to 20.
+For namesakes such as FSE, `get_conference` returns `ambiguous: true` and candidate `matches` inside `conference`. Retry with a returned `conference_key` or a `category` instead of assuming the first result is correct. Named lookups return up to six editions by default; `edition_limit` can request up to 20. Conference details include `editions_total`, the number of catalog editions matching the requested name, year or edition ID before applying the limit. Compare it with `editions.length` to detect omitted history, then raise `edition_limit` or query a specific year or edition ID. The count describes listed records, not every edition ever held; ambiguous and not-found results have no count.
 
 `get_conference` and `upcoming_deadlines` accept `display_timezone` (an IANA name such as `Asia/Shanghai`). Responses retain the source `local_time`, `timezone`, and `utc_time`, and add `display_time` and `display_timezone` for known dates. Unknown dates have no converted instant.
 
