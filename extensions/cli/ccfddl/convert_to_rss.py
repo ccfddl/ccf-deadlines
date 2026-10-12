@@ -1,14 +1,27 @@
 import xml.etree.ElementTree as ET
 from datetime import datetime
+from urllib.parse import quote, urlparse
 
 from convert_to_ical import load_mapping, get_timezone, reverse_index
 
 import yaml
 
 
+ATOM_NAMESPACE = "http://www.w3.org/2005/Atom"
+ET.register_namespace("atom", ATOM_NAMESPACE)
+
+
 def convert_to_rss(
-    file_paths: list[str], output_path: str, lang: str = "en", SUB_MAPPING={}
+    file_paths: list[str],
+    output_path: str,
+    lang: str = "en",
+    SUB_MAPPING={},
+    feed_url: str | None = None,
 ):
+    if feed_url:
+        parsed = urlparse(feed_url)
+        if parsed.scheme not in ("http", "https") or not parsed.netloc:
+            raise ValueError("Feed URL must be an absolute HTTP(S) URL")
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
 
@@ -22,6 +35,11 @@ def convert_to_rss(
         else "会议投稿截止日期追踪"
     )
     ET.SubElement(channel, "language").text = "en" if lang == "en" else "zh-CN"
+    if feed_url:
+        ET.SubElement(
+            channel, f"{{{ATOM_NAMESPACE}}}link",
+            {"href": feed_url, "rel": "self", "type": "application/rss+xml"},
+        )
     # Source records do not carry publication/update dates. Neither a deadline
     # nor the build clock establishes when feed content was published or changed.
     items = []
@@ -189,20 +207,32 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Generate conference RSS feeds")
     parser.add_argument("--output-dir", type=Path, default=Path("."))
-    output_dir = parser.parse_args().output_dir
+    parser.add_argument("--feed-base-url", help="Published directory URL for RSS self links")
+    args = parser.parse_args()
+    if args.feed_base_url:
+        parsed = urlparse(args.feed_base_url)
+        if (parsed.scheme not in ("http", "https") or not parsed.netloc
+                or parsed.query or parsed.fragment):
+            parser.error("--feed-base-url must be an absolute HTTP(S) directory URL without a query or fragment")
+    output_dir = args.output_dir
     output_dir.mkdir(parents=True, exist_ok=True)
     SUB_MAPPING = load_mapping("conference/types.yml")
     paths = ls("conference", filter=lambda f: f.suffix == ".yml" and f.name != "types.yml")
     index = reverse_index(paths, list(SUB_MAPPING.keys()))
+
+    def write_feed(paths, filename, lang):
+        feed_url = (f"{args.feed_base_url.rstrip('/')}/{quote(filename)}"
+                    if args.feed_base_url else None)
+        convert_to_rss(paths, str(output_dir / filename), lang, SUB_MAPPING, feed_url)
+
     for lang in ["zh", "en"]:
-        convert_to_rss(paths, str(output_dir / f"deadlines_{lang}.xml"), lang, SUB_MAPPING)
+        write_feed(paths, f"deadlines_{lang}.xml", lang)
         f = lambda key: (
             len(index[key]) > 0,
-            convert_to_rss(
+            write_feed(
                 index[key],
-                str(output_dir / f"deadlines_{lang}_{key.replace('*', 'star')}.xml"),
+                f"deadlines_{lang}_{key.replace('*', 'star')}.xml",
                 lang,
-                SUB_MAPPING,
             ),
         )
         element_mapping(index.keys(), f, thread_pool_size=8)

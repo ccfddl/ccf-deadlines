@@ -8,7 +8,7 @@ from xml.etree import ElementTree as ET
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "extensions/cli/ccfddl"))
-from convert_to_rss import convert_to_rss
+from convert_to_rss import ATOM_NAMESPACE, convert_to_rss
 
 
 class RssDateTests(unittest.TestCase):
@@ -35,7 +35,7 @@ class RssDateTests(unittest.TestCase):
             }],
         }
 
-    def feed(self, conferences, lang="en", other_files=()):
+    def feed(self, conferences, lang="en", other_files=(), feed_url=None):
         with tempfile.TemporaryDirectory() as directory:
             sources = []
             for index, records in enumerate((conferences, *other_files)):
@@ -43,7 +43,7 @@ class RssDateTests(unittest.TestCase):
                 source.write_text(yaml.safe_dump(records), encoding="utf-8")
                 sources.append(str(source))
             output = Path(directory) / "deadlines.xml"
-            convert_to_rss(sources, str(output), lang, {"AI": "人工智能"})
+            convert_to_rss(sources, str(output), lang, {"AI": "人工智能"}, feed_url)
             return ET.fromstring(output.read_bytes())
 
     def test_future_deadlines_do_not_claim_future_publication_dates(self):
@@ -127,6 +127,24 @@ class RssDateTests(unittest.TestCase):
                 self.assertTrue(all(item.find("pubDate") is None for item in items))
                 self.assertEqual([child.tag for child in channel][:4],
                                  ["title", "link", "description", "language"])
+
+    def test_optional_self_link_identifies_feed_without_changing_items(self):
+        for lang in ("en", "zh"):
+            with self.subTest(lang=lang):
+                plain = self.feed([self.conference], lang).find("channel")
+                url = f"https://example.com/feeds/deadlines_{lang}_core_Astar_AI.xml"
+                published = self.feed([self.conference], lang, feed_url=url).find("channel")
+                tag = f"{{{ATOM_NAMESPACE}}}link"
+                self.assertIsNone(plain.find(tag))
+                self.assertEqual([link.attrib for link in published.findall(tag)], [{
+                    "href": url, "rel": "self", "type": "application/rss+xml",
+                }])
+                self.assertEqual(ET.tostring(plain.find("link")), ET.tostring(published.find("link")))
+                self.assertEqual([ET.tostring(item) for item in plain.findall("item")],
+                                 [ET.tostring(item) for item in published.findall("item")])
+        for invalid in ("/feeds/deadlines.xml", "javascript:alert(1)", "https:///feed.xml"):
+            with self.subTest(url=invalid), self.assertRaises(ValueError):
+                self.feed([self.conference], feed_url=invalid)
 
 
 if __name__ == "__main__":
