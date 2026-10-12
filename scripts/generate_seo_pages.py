@@ -146,7 +146,8 @@ def format_deadline(value: object, timezone: str, published_time: bool = True) -
     shown += f"{when:%b} {when.day}, {when.year}"
     machine_time = deadline_datetime(raw, timezone) if published_time else None
     datetime_attribute = f' datetime="{text(machine_time)}"' if machine_time else ""
-    return f'<time class="deadline-time"{datetime_attribute} data-raw="{text(raw)}" data-source-tz="{text(timezone)}" title="Original: {text(raw)} {text(timezone)}">{text(shown)} · {text(timezone)}</time>'
+    tag = "time" if machine_time else "span"
+    return f'<{tag} class="deadline-time"{datetime_attribute} data-raw="{text(raw)}" data-source-tz="{text(timezone)}" title="Original: {text(raw)} {text(timezone)}">{text(shown)} · {text(timezone)}</{tag}>'
 
 
 def category_links(categories: dict[str, str], active_sub: str = "", responsive: bool = False) -> str:
@@ -223,7 +224,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <meta name="twitter:image" content="{text(social_image)}">
   <meta name="twitter:image:alt" content="{text(social_image_alt)}">'''
     clock_control = (
-        '<div class="toolbar-clock" data-nosnippet><time class="toolbar-clock-value" id="display-clock">—</time>'
+        '<div class="toolbar-clock" data-nosnippet><span class="toolbar-clock-value" id="display-clock">—</span>'
         '<span class="toolbar-timezone"><span>(</span><label class="toolbar-timezone-picker">'
         '<select id="display-timezone" aria-label="Select display timezone"><option value="UTC">UTC</option></select>'
         '<span class="toolbar-timezone-arrow" aria-hidden="true">⌄</span></label><span> time)</span></span></div>'

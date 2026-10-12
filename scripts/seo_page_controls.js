@@ -39,7 +39,6 @@
     const now = new Date();
     const parts = Object.fromEntries(clockFormatter.formatToParts(now).map((part) => [part.type, part.value]));
     clock.textContent = `${parts.year}/${parts.month}/${parts.day} ${parts.hour}:${parts.minute}:${parts.second}`;
-    clock.dateTime = now.toISOString();
   }
 
   configureClock();

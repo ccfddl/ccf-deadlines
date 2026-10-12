@@ -114,6 +114,8 @@ class CrawlableMetadataTests(unittest.TestCase):
         page = edition_page(conference, edition, {}, {})
         self.assertIn('datetime="2026-12-01T23:59:59-12:00"', page)
         self.assertNotIn('datetime="2027-04-26T08:00:00', page)
+        self.assertIn('<span class="deadline-time" data-raw="2027-04-26 08:00:00"', page)
+        self.assertIn('<span class="toolbar-clock-value" id="display-clock">—</span>', page)
         self.assertNotIn('"@type":"Event"', page)
         self.assertNotIn('datePublished', page)
         self.assertIn('class="toolbar-clock" data-nosnippet', page)
@@ -121,6 +123,30 @@ class CrawlableMetadataTests(unittest.TestCase):
         deadline = page.split('data-deadline-type="deadline"', 1)[1].split('data-deadline-type="opening"', 1)[0]
         self.assertIn('class="conference-detail-deadline-date">', deadline)
         self.assertIn('class="conference-detail-deadline-status" data-nosnippet', deadline)
+
+    def test_date_markup_reserves_time_elements_for_supported_published_datetimes(self):
+        class DateNodes(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.nodes = []
+
+            def handle_starttag(self, tag, pairs):
+                attrs = dict(pairs)
+                if attrs.get('class') == 'deadline-time':
+                    self.nodes.append((tag, attrs.get('datetime'), attrs.get('data-raw')))
+
+        cases = [
+            ('2027-01-10 12:00', 'AoE', True, 'time', '2027-01-10T12:00:00-12:00'),
+            ('2027-01-10', 'UNKNOWN', True, 'time', '2027-01-10'),
+            ('2027-11-07 01:30', 'PT', True, 'span', None),
+            ('2027-01-10 12:00', 'UNKNOWN', True, 'span', None),
+            ('2027-01-10 08:00:00', 'UTC', False, 'span', None),
+        ]
+        for raw, zone, published, tag, machine_time in cases:
+            with self.subTest(raw=raw, timezone=zone, published=published):
+                parsed = DateNodes()
+                parsed.feed(seo.format_deadline(raw, zone, published_time=published))
+                self.assertEqual(parsed.nodes, [(tag, machine_time, raw)])
 
 
 class AcceptanceIdentityTests(unittest.TestCase):
