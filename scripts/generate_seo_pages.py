@@ -423,8 +423,10 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     next_deadline = min(upcoming) if upcoming else None
     next_display = format_deadline(next_deadline, edition.get("timezone", ""), published_time=next_deadline != opening) if next_deadline else "Passed" if all_known else "TBD"
     next_panel = f'<div class="conference-detail-next" data-nosnippet><span class="conference-detail-label">NEXT DEADLINE IN</span><strong id="conference-next-deadline" aria-live="off">{next_display}</strong></div>'
+    # Acronyms such as FSE and SEC identify different conferences by category.
+    acceptance_key = conference.get("conference_key") or f"{conference['sub']}/{name.lower()}"
     recent_rates = sorted(
-        (rate for rate in acceptances.get(name, []) if rate.get("year", 0) <= year),
+        (rate for rate in acceptances.get(acceptance_key, []) if rate.get("year", 0) <= year),
         key=lambda rate: rate["year"],
         reverse=True,
     )[:2]
@@ -831,7 +833,7 @@ def main() -> None:
     categories = {item["sub"]: item["name"] for item in yaml.safe_load((ROOT / "conference/types.yml").read_text(encoding="utf-8"))}
     acceptance_file = ROOT / "public/conference/allacc.json"
     acceptance_rows = json.loads(acceptance_file.read_text(encoding="utf-8")) if acceptance_file.exists() else []
-    acceptances = {row["title"]: row.get("accept_rates", []) for row in acceptance_rows}
+    acceptances = {row["conference_key"]: row.get("accept_rates", []) for row in acceptance_rows}
     written = generate(conferences, categories, args.output, acceptances)
     print(f"Generated {len(written)} conference pages and sitemap.xml")
 

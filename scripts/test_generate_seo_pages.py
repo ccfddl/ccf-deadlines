@@ -1,12 +1,15 @@
 import tempfile
 import re
 import json
+import shutil
 import unittest
+from unittest.mock import patch
 from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 from xml.etree import ElementTree
 
+import generate_seo_pages as seo
 from generate_seo_pages import category_page, deadline_datetime, directory_page, edition_metadata, edition_page, generate, series_page
 
 
@@ -118,6 +121,49 @@ class CrawlableMetadataTests(unittest.TestCase):
         deadline = page.split('data-deadline-type="deadline"', 1)[1].split('data-deadline-type="opening"', 1)[0]
         self.assertIn('class="conference-detail-deadline-date">', deadline)
         self.assertIn('class="conference-detail-deadline-status" data-nosnippet', deadline)
+
+
+class AcceptanceIdentityTests(unittest.TestCase):
+    def test_entrypoint_keeps_namesake_statistics_separate_by_source_identity(self):
+        identities = [
+            ('FSE', 'SC', 'SC/fse', '28.1%'),
+            ('FSE', 'SE', 'SE/fse', '26.4%'),
+            ('SEC', 'DS', 'DS/sec', '25.4%'),
+            ('SEC', 'SC', 'SC/sec', '23.8%'),
+            ('Renamed', 'AI', 'AI/original', '19.5%'),
+        ]
+        conferences = [{'title': title, 'sub': sub, 'conference_key': key,
+                        'confs': [{'year': 2027, 'timeline': []}]}
+                       for title, sub, key, _ in identities]
+        rows = [{'title': title, 'conference_key': key, 'accept_rates': [
+                    {'year': 2026, 'str': label}, {'year': 2099, 'str': '99.9%'}]}
+                for title, _, key, label in identities]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            public = root / 'public'
+            catalog = public / 'conference'
+            catalog.mkdir(parents=True)
+            (catalog / 'allconf.json').write_text(json.dumps(conferences))
+            (catalog / 'allacc.json').write_text(json.dumps(rows))
+            (root / 'conference').mkdir()
+            (root / 'conference/types.yml').write_text('[]')
+            for asset in ('favicon.ico', 'ccfddl-logo.svg', 'llms.txt'):
+                shutil.copy2(seo.ROOT / 'public' / asset, public / asset)
+            (root / 'scripts').mkdir()
+            shutil.copy2(seo.ROOT / 'scripts/seo_page_controls.js', root / 'scripts/seo_page_controls.js')
+            output = root / 'site'
+            with patch.object(seo, 'ROOT', root), patch.object(seo, 'share_images'), \
+                    patch('sys.argv', ['generate_seo_pages.py', '--output', str(output)]):
+                seo.main()
+            for conference, (_, _, key, expected) in zip(conferences, identities):
+                with self.subTest(key=key):
+                    path = seo.edition_path(conference, conference['confs'][0])
+                    page = (output / path.lstrip('/') / 'index.html').read_text()
+                    self.assertIn(f'Acc. Rate: {expected}</div>', page)
+                    self.assertNotIn('99.9%', page)
+                    for _, _, other_key, other_label in identities:
+                        if other_key != key:
+                            self.assertNotIn(f'Acc. Rate: {other_label}', page)
 
 
 class SearchPresentationTests(unittest.TestCase):
@@ -340,7 +386,7 @@ class SeoPageTests(unittest.TestCase):
                 [conference],
                 {"DS": "计算机体系结构/并行与分布计算/存储系统", "AI": "Artificial Intelligence"},
                 output,
-                {"ACL": [{"year": 2026, "str": "20.0%"}, {"year": 2025, "str": "19.0%"}]},
+                {"AI/acl": [{"year": 2026, "str": "20.0%"}, {"year": 2025, "str": "19.0%"}]},
             )
             self.assertIn("/venues/ai/acl-2027/", paths)
             page = (output / "venues/ai/acl-2027/index.html").read_text()
