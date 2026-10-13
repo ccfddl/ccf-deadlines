@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - "worker/**"
+      - "scripts/test_worker_database.py"
+      - "scripts/test_star_counts_migration.py"
       - ".github/workflows/mcp_check.yml"
 permissions:
   contents: read
@@ -14,6 +16,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12.12
+      - name: Test database migrations
+        run: |
+          python -m unittest discover -s scripts -p 'test_worker_database.py'
+          python -m unittest discover -s scripts -p 'test_star_counts_migration.py'
       - name: Install Worker dependencies
         run: npm ci --no-audit --no-fund
         working-directory: worker

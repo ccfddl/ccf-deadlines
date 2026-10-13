@@ -1,0 +1,78 @@
+name: Code Tests
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'index.html'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - 'rust-toolchain*'
+      - 'scripts/**'
+      - 'extensions/cli/**'
+      - 'requirements.txt'
+      - '.github/workflows/code_tests.yml'
+      - '.github/workflows/merge_check.yml'
+      - '.github/workflows/deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  code-tests:
+    runs-on: ubuntu-latest
+    env:
+      CHROME_BINARY: /usr/bin/chromium
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12.12
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Assemble yml files
+        run: python scripts/build_data.py
+      - name: Test Python scripts
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Test startup and share-card scripts
+        run: node --test scripts/test_startup.mjs scripts/test_share_browser.mjs scripts/test_share_card_canvas.mjs
+      - name: Install nightly Rust
+        uses: dtolnay/rust-toolchain@nightly
+      - name: Test acceptance identity and cache compatibility
+        run: cargo test --lib acceptance_
+      - name: Add WASM target
+        run: rustup target add wasm32-unknown-unknown
+      - name: Download and install Trunk binary
+        run: wget -qO- https://github.com/trunk-rs/trunk/releases/download/v0.18.4/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf-
+      - name: Build browser test assets
+        run: ./trunk build --release
+      - name: Test timeline pointer, touch, and keyboard interactions
+        run: node scripts/test_timeline_browser.mjs dist
+      - name: Generate crawlable conference pages
+        run: python scripts/generate_seo_pages.py
+      - name: Upload deadline-card review previews
+        uses: actions/upload-artifact@v4
+        with:
+          name: deadline-card-previews
+          retention-days: 7
+          if-no-files-found: error
+          path: |
+            dist/venues/ai/aaai-2027/share.png
+            dist/venues/db/sigmod-2027/share.png
+            dist/venues/db/vldb-2027/share.png
+      - name: Verify public MCP pages
+        run: |
+          test -s dist/mcp-support.html
+          grep -Fq '<h1>CCFDDL Plugin Support</h1>' dist/mcp-support.html
+          test -s dist/mcp-privacy.html
+          grep -Fq '<h1>CCFDDL Plugin Privacy Policy</h1>' dist/mcp-privacy.html
+          test -s dist/mcp-terms.html
+          grep -Fq '<h1>CCFDDL Plugin Terms</h1>' dist/mcp-terms.html

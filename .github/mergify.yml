@@ -24,6 +24,12 @@ pull_request_rules:
       - check-success=build
       - check-success=pre-commit
       - base=main
+      - or:
+          - '-files~=^(src/|public/|scripts/|extensions/cli/|index\.html$|Cargo\.(toml|lock)$|rust-toolchain[^/]*$|requirements\.txt$|\.github/workflows/(code_tests|merge_check|deploy)\.yml$)'
+          - check-success=code-tests
+      - or:
+          - '-files~=^(worker/|scripts/test_(worker_database|star_counts_migration)\.py$|\.github/workflows/mcp_check\.yml$)'
+          - check-success=test
     actions:
       merge:
         method: squash
