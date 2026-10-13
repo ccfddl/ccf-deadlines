@@ -1,6 +1,6 @@
 ---
 name: ccfddl-pr-review
-description: Review open, non-draft pull requests in ccfddl/ccf-deadlines. Use for PR review, re-review after new commits, approval decisions, requested changes, and CI/source verification.
+description: Review open, non-draft pull requests in ccfddl/ccf-deadlines. Use for PR review, re-review after new commits, conference-information approval decisions, comment-only reviews of other PR types, and CI/source verification.
 ---
 
 # ccfddl PR Review
@@ -16,8 +16,9 @@ Use this skill when asked to:
 - review one or more pull requests
 - continue reviewing open PRs
 - check whether a PR is correct
-- approve eligible PRs
-- request changes on incorrect PRs
+- approve eligible conference-information-only PRs
+- request changes on incorrect conference-information-only PRs
+- comment on all other PR types for a human maintainer to approve
 - re-review a PR after new commits
 
 Skip closed PRs and draft PRs.
@@ -25,6 +26,26 @@ Skip closed PRs and draft PRs.
 Do not proactively search the repository for new conference editions. Use the `ccfddl-conference-update` skill for that.
 
 Do not manually merge a PR unless the current user request explicitly asks for a merge operation.
+
+## PR type and permitted actions
+
+Classify each PR from its complete current diff before choosing a review action. Apply this classification to the whole PR, not only its title, labels, author, or conference-related subset.
+
+### Conference-information-only PRs
+
+A PR is eligible for the existing full review workflow only when every change is a conference-information update, such as conference metadata, dates, deadlines, tracks, rounds, locations, official URLs, or directly associated data formatting.
+
+For these PRs, retain all official-source verification, current-head CI, unresolved-thread, duplicate-action, and final race-check requirements below. Submit `APPROVE` only when all approval gates pass; use `REQUEST_CHANGES` for concrete correctness issues under the existing rules.
+
+### All other PR types
+
+For every other PR type, publish findings only through a `COMMENT` review or a normal PR comment. Never submit `APPROVE` or `REQUEST_CHANGES`, even when the changes look correct, CI is green, or a concrete defect is found. A human maintainer is responsible for approval.
+
+This includes application code, UI, scripts, dependencies, build/CI configuration, automation, documentation, review rules or skills, and any mixed PR containing conference-information changes plus another type of change.
+
+If the PR cannot be confidently classified as conference-information-only, use comment-only review. Mixed PRs remain comment-only unless the complete current diff is safely established to contain only conference-information changes.
+
+Continue reviewing the complete current diff, existing discussion, relevant conventions, and exact-head CI. Independently verify any changed conference facts even in a mixed PR. Clearly describe findings and verification limits in the comment, without converting them into a formal approval or change request.
 
 ## Review invariants
 
@@ -174,7 +195,20 @@ Pay particular attention to AoE, UTC, UTC offsets, local timezones, daylight-sav
 
 Do not infer a timezone from previous editions.
 
-Do not silently reinterpret an official deadline unless repository conventions explicitly require a representation conversion.
+### Deadline precision and representation
+
+Apply these repository conventions after verifying the official deadline date and any stated time and timezone:
+
+- When an official source states `23:59` (or `11:59 PM`) without seconds, represent it as `23:59:59`, not `23:59:00`.
+- When the official source explicitly includes seconds, preserve those seconds exactly. For example, `23:59:00` remains `23:59:00`, and `23:59:30` remains `23:59:30`.
+- Preserve all other explicitly stated times under the existing repository conventions. Do not round them up to the end of a minute or day.
+- For an officially published date with no time, retain the existing end-of-day default of `23:59:59`.
+- If the official source provides no timezone, retain the existing `AoE` default. An explicitly stated timezone takes precedence and must be preserved or converted only as required by repository conventions.
+- These representation defaults do not authorize inventing an unpublished date or replacing `TBD` / `TBA`.
+
+Do not flag a verified official `23:59` deadline represented as `23:59:59` as a seconds mismatch. Apply the same normalization consistently in review findings and proposed corrections.
+
+Do not otherwise reinterpret an official deadline unless repository conventions explicitly require a representation conversion.
 
 ## TBD and unpublished information
 
@@ -213,6 +247,7 @@ When CI state is ambiguous, hold the PR.
 
 Submit `APPROVE` only when all of the following are true:
 
+- the entire PR is confidently classified as conference-information-only
 - the complete current diff was reviewed
 - relevant official information was independently verified
 - all changed factual fields are correct
@@ -229,7 +264,7 @@ Replace `<model-name>` with the actual model that performed that specific review
 
 ### REQUEST_CHANGES
 
-Use `REQUEST_CHANGES` when a concrete correctness issue requires modification before acceptance.
+Use `REQUEST_CHANGES` only for a conference-information-only PR when a concrete correctness issue requires modification before acceptance. For all other or mixed PR types, describe the issue in a `COMMENT` review or normal PR comment instead.
 
 The review must begin with:
 
@@ -254,7 +289,9 @@ Prefer actionable wording. Do not use vague blocking feedback when the exact iss
 
 ### COMMENT
 
-Use a normal non-blocking comment when the issue is optional or stylistic and does not justify blocking an otherwise correct PR.
+Use a `COMMENT` review or normal PR comment for every PR that is not confidently conference-information-only, including mixed PRs. Report concrete defects, optional suggestions, and verification limits through comments only; leave approval to a human maintainer.
+
+For conference-information-only PRs, use a normal non-blocking comment when the issue is optional or stylistic and does not justify blocking an otherwise correct PR.
 
 If the comment asks the submitter to take action, begin with:
 
@@ -291,6 +328,7 @@ Immediately before writing any review action to GitHub:
 1. fetch the current head SHA again
 2. compare it with the reviewed SHA
 3. if they differ, do not submit the stale review and restart against the new SHA
+4. confirm that the action is permitted for the reviewed PR type; non-conference and mixed PRs allow comments only
 
 After submitting a review, verify that GitHub actually accepted it.
 
@@ -319,6 +357,8 @@ If GitHub rejects the action, report the review conclusion, attempted action, ac
 
 When evidence is incomplete, do not approve.
 
-When the PR is correct and verified, approve it without inventing additional requirements.
+When a conference-information-only PR is correct, verified, and passes every approval gate, approve it without inventing additional requirements.
+
+For every other or uncertain PR type, comment only and leave approval to a human maintainer.
 
 Correctness and source verification take precedence over review throughput.

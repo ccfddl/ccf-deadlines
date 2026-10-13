@@ -37,6 +37,27 @@ test("returns explicit deadlines without inventing unknown dates", () => {
   assert.equal(getConference(conferences, "unknown"), null);
 });
 
+test("reports the matching edition count before limiting recent history", () => {
+  const history = [{ ...conferences[0], confs: Array.from({ length: 7 }, (_, index) => ({
+    year: 2021 + index, id: `iclr${21 + index}`, timezone: "UTC", timeline: [],
+  })) }];
+  const recent = getConference(history, "AI/iclr");
+  assert.equal(recent.editions_total, 7);
+  assert.deepEqual(recent.editions.map((edition) => edition.year), [2027, 2026, 2025, 2024, 2023, 2022]);
+  const limited = getConference(history, "ICLR", { edition_limit: 2 });
+  assert.equal(limited.editions_total, 7);
+  assert.deepEqual(limited.editions.map((edition) => edition.year), [2027, 2026]);
+  const complete = getConference(history, "ICLR", { edition_limit: 20 });
+  assert.equal(complete.editions_total, complete.editions.length);
+  for (const [name, options] of [["ICLR 2021", {}], ["iclr21", {}], ["AI/iclr", { year: 2021 }]]) {
+    const selected = getConference(history, name, options);
+    assert.equal(selected.editions_total, 1);
+    assert.deepEqual(selected.editions.map((edition) => edition.year), [2021]);
+  }
+  assert.equal(getConference(history, "ICLR", { year: 2040 }), null);
+  assert.equal(getConference(history, "ICLR 2021", { year: 2022 }), null);
+});
+
 test("filters future deadlines and preserves source timezone", () => {
   const now = Date.parse("2026-09-30T00:00:00Z");
   const results = upcomingDeadlines(conferences, { now, days: 7, ccf_rank: "A", category: "AI" });
@@ -44,6 +65,32 @@ test("filters future deadlines and preserves source timezone", () => {
   assert.equal(results[0].kind, "deadline");
   assert.equal(results[0].timezone, "AoE");
   assert.equal(results[0].website, "https://iclr.cc/Conferences/2027");
+});
+
+test("provides canonical citation URLs separately from the official conference website", () => {
+  const conference = getConference(conferences, "ICLR 2027");
+  const edition = conference.editions[0];
+  assert.equal(conference.series_url, "https://ccfddl.com/venues/ai/iclr/");
+  assert.equal(edition.series_url, conference.series_url);
+  assert.equal(edition.venue_url, "https://ccfddl.com/venues/ai/iclr-2027/");
+  assert.equal(edition.website, "https://iclr.cc/Conferences/2027");
+  const [deadline] = upcomingDeadlines(conferences, { now: Date.parse("2026-09-30T00:00:00Z"), days: 7 });
+  assert.equal(deadline.venue_url, edition.venue_url);
+});
+
+test("omits citation URLs for invalid identities and years instead of guessing pages", () => {
+  for (const sub of ["AI/../../", "", undefined]) {
+    const conference = getConference([{ ...conferences[0], sub }], "ICLR");
+    assert.equal(conference.series_url, null);
+    assert.equal(conference.editions[0].venue_url, null);
+  }
+  for (const year of ["2027", 1899, 2201, undefined]) {
+    const source = { ...conferences[0], confs: [{ ...conferences[0].confs[0], year }] };
+    assert.equal(getConference([source], "ICLR").editions[0].venue_url, null);
+  }
+  const missingSlug = { ...conferences[0], title: "会议" };
+  assert.equal(getConference([missingSlug], "会议").series_url, null);
+  assert.equal(getConference([missingSlug], "会议").editions[0].venue_url, null);
 });
 
 const extendedCatalog = [
@@ -72,6 +119,8 @@ test("filters CORE, THCPL and edition year while retaining namesake keys", () =>
   const results = searchConferences(extendedCatalog, { core_rank: "A*", thcpl_rank: "A", year: 2026 });
   assert.deepEqual(results.map((item) => item.conference_key), ["SE/fse"]);
   assert.equal(results[0].latest_edition, "fse26");
+  assert.equal(results[0].series_url, "https://ccfddl.com/venues/se/fse/");
+  assert.equal(results[0].venue_url, "https://ccfddl.com/venues/se/fse-2026/");
   assert.deepEqual(searchConferences(extendedCatalog, { ccf_rank: "N", core_rank: "N", thcpl_rank: "N" })
     .map((item) => item.title), ["UNRANKED"]);
   assert.equal(searchConferences(extendedCatalog, { query: "SE/fse" })[0].description, "Foundations of Software Engineering");
@@ -92,7 +141,11 @@ test("paginates matching conferences with complete counts and stable namesake or
 test("asks callers to disambiguate namesakes instead of returning the first conference", () => {
   const ambiguous = getConference(extendedCatalog, "FSE 2027");
   assert.equal(ambiguous.ambiguous, true);
+  assert.equal("editions_total" in ambiguous, false);
   assert.deepEqual(ambiguous.matches.map((item) => item.conference_key), ["SC/fse", "SE/fse"]);
+  assert.deepEqual(ambiguous.matches.map((item) => item.venue_url), [
+    "https://ccfddl.com/venues/sc/fse-2027/", "https://ccfddl.com/venues/se/fse-2027/",
+  ]);
   assert.equal(getConference(extendedCatalog, "FSE", { category: "se" }).conference_key, "SE/fse");
   assert.equal(getConference(extendedCatalog, "se/FSE 2027").editions.length, 1);
   assert.equal(getConference(extendedCatalog, "crypto-fse27").conference_key, "SC/fse");
@@ -137,6 +190,28 @@ test("only includes known conference openings when explicitly requested", () => 
   assert.equal(openings[0].round, null);
 });
 
+test("returns declared opening provenance without inferring it from the clock hour", () => {
+  const data = [{ title: "Marker", sub: "AI", confs: [
+    { year: 2027, date: "Jan 10-12, 2027 (To be confirmed)", timezone: "UTC",
+      opening: "2027-01-10 08:00:00", opening_is_derived: true, timeline: [] },
+    { year: 2026, timezone: "UTC", opening: "2026-01-10 09:00:00", timeline: [] },
+    { year: 2025, timezone: "UTC", opening: "2025-01-10 08:00:00", timeline: [] },
+    { year: 2028, opening: null, opening_is_derived: true, timeline: [] },
+    { year: 2029, timezone: "UTC", opening: "2029-01-10 08:00:00", opening_is_derived: "true", timeline: [] },
+    { year: 2030, timezone: "UTC", opening: "2030-01-10 09:00:00", opening_is_derived: false, timeline: [] },
+  ] }];
+  const result = getConference(data, "Marker", { display_timezone: "Asia/Shanghai" });
+  assert.deepEqual(result.editions.map((edition) => [edition.year, edition.opening_is_derived]), [
+    [2030, false], [2029, null], [2028, null], [2027, true], [2026, null], [2025, null],
+  ]);
+  const upcoming = upcomingDeadlines(data, { now: Date.parse("2027-01-01T00:00:00Z"),
+    days: 30, deadline_types: ["opening"], display_timezone: "Asia/Shanghai" });
+  assert.equal(upcoming.length, 1);
+  assert.equal(upcoming[0].opening_is_derived, true);
+  assert.equal(upcoming[0].date, "Jan 10-12, 2027 (To be confirmed)");
+  assert.equal(upcoming[0].display_time, "2027-01-10 16:00:00");
+});
+
 test("rejects impossible calendar dates instead of silently rolling them forward", () => {
   for (const raw of ["2026-02-30 12:00:00", "2026-02-29 12:00:00", "2026-04-31 12:00:00",
     "2026-13-01 12:00:00", "2026-01-01 24:00:00", "2026-01-01 12:60:00"]) {
@@ -144,6 +219,44 @@ test("rejects impossible calendar dates instead of silently rolling them forward
   }
   assert.equal(deadlineToUtc("2028-02-29 12:00:00", "UTC+8"), "2028-02-29T04:00:00.000Z");
   assert.equal(deadlineToUtc("2026-10-01 12:00:00", "UTC+15"), null);
+});
+
+test("does not guess a Pacific instant for skipped or repeated daylight-saving hours", () => {
+  for (const raw of ["2026-03-08 02:00:00", "2026-03-08 02:59:59",
+    "2026-11-01 01:00:00", "2026-11-01 01:59:59",
+    "2027-03-14 02:30:00", "2027-11-07 01:30:00"]) {
+    assert.equal(deadlineToUtc(raw, "PT"), null, raw);
+  }
+  for (const [raw, expected] of [
+    ["2026-03-08 01:59:59", "2026-03-08T09:59:59.000Z"],
+    ["2026-03-08 03:00:00", "2026-03-08T10:00:00.000Z"],
+    ["2026-11-01 00:59:59", "2026-11-01T07:59:59.000Z"],
+    ["2026-11-01 02:00:00", "2026-11-01T10:00:00.000Z"],
+  ]) {
+    assert.equal(deadlineToUtc(raw, "PT"), expected, raw);
+  }
+  // An explicit offset disambiguates the repeated local hour.
+  assert.equal(deadlineToUtc("2026-11-01 01:30:00", "UTC-7"), "2026-11-01T08:30:00.000Z");
+  assert.equal(deadlineToUtc("2026-11-01 01:30:00", "UTC-8"), "2026-11-01T09:30:00.000Z");
+});
+
+test("keeps ambiguous source times in details but excludes them from upcoming instants", () => {
+  const data = [{ title: "Boundary", sub: "AI", confs: [{
+    year: 2026, id: "boundary26", timezone: "PT", timeline: [
+      { deadline: "2026-03-08 02:30:00", comment: "Spring gap" },
+      { deadline: "2026-11-01 01:30:00", comment: "Autumn overlap" },
+      { deadline: "2026-03-08 03:15:00", comment: "Unique instant" },
+    ],
+  }] }];
+  const deadlines = getConference(data, "Boundary", { display_timezone: "Asia/Shanghai" }).editions[0].deadlines;
+  assert.deepEqual(deadlines.slice(0, 2).map((event) => [event.local_time, event.utc_time, event.display_time]), [
+    ["2026-03-08 02:30:00", null, null], ["2026-11-01 01:30:00", null, null],
+  ]);
+  assert.equal(deadlines[2].display_time, "2026-03-08 18:15:00");
+  const upcoming = upcomingDeadlines(data, { now: Date.parse("2026-03-01T00:00:00Z"), days: 365 });
+  assert.deepEqual(upcoming.map((event) => [event.local_time, event.utc_time, event.note]), [
+    ["2026-03-08 03:15:00", "2026-03-08T10:15:00.000Z", "Unique instant"],
+  ]);
 });
 
 test("loads and reuses the public dataset without a database", async () => {
@@ -156,6 +269,7 @@ test("loads and reuses the public dataset without a database", async () => {
   const first = await loadCatalog(fetcher, Date.parse("2026-09-30T00:00:00Z"));
   const second = await loadCatalog(fetcher, Date.parse("2026-09-30T00:01:00Z"));
   assert.equal(first, second);
+  assert.equal(first.stale, false);
   assert.equal(calls, 1);
 });
 
@@ -176,8 +290,18 @@ test("shares stale fallback with concurrent callers and retries after a failed r
 
   const [firstResult, secondResult] = await responses;
   assert.equal(refreshCalls, 1);
-  assert.equal(firstResult, cached);
-  assert.equal(secondResult, cached);
+  assert.equal(firstResult, secondResult);
+  assert.equal(firstResult.conferences, cached.conferences);
+  assert.equal(firstResult.fetched_at, cached.fetched_at);
+  assert.equal(firstResult.stale, true);
+  assert.equal(cached.stale, false);
+
+  for (const response of [new Response("offline", { status: 503 }), Response.json({ invalid: true })]) {
+    const fallback = await loadCatalog(async () => response, expiredTime);
+    assert.equal(fallback.stale, true);
+    assert.equal(fallback.conferences, cached.conferences);
+    assert.equal(fallback.fetched_at, cached.fetched_at);
+  }
 
   let recoveryCalls = 0;
   const recovered = await loadCatalog(async () => {
@@ -187,4 +311,14 @@ test("shares stale fallback with concurrent callers and retries after a failed r
   assert.equal(recoveryCalls, 1);
   assert.notEqual(recovered, cached);
   assert.equal(recovered.fetched_at, new Date(expiredTime + 1000).toISOString());
+  assert.equal(recovered.stale, false);
+});
+
+test("does not fabricate a cached catalog after a failed first load", async () => {
+  const { loadCatalog: freshLoader } = await import("../src/mcp/catalog.js?cold-failure-test");
+  await assert.rejects(freshLoader(async () => new Response("offline", { status: 503 })), /unavailable/);
+  await assert.rejects(freshLoader(async () => Response.json({ invalid: true })), /invalid/);
+  const loaded = await freshLoader(async () => Response.json(conferences));
+  assert.equal(loaded.stale, false);
+  assert.deepEqual(loaded.conferences, conferences);
 });

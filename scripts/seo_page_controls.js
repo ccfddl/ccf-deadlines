@@ -39,18 +39,19 @@
     const now = new Date();
     const parts = Object.fromEntries(clockFormatter.formatToParts(now).map((part) => [part.type, part.value]));
     clock.textContent = `${parts.year}/${parts.month}/${parts.day} ${parts.hour}:${parts.minute}:${parts.second}`;
-    clock.dateTime = now.toISOString();
   }
 
   configureClock();
   renderClock();
   setInterval(renderClock, 1000);
 
+  const sourceZoneFormatters = new Map();
   function zoneOffsetMinutes(zone, timestamp) {
-    const parts = new Intl.DateTimeFormat('en-US', {
+    if (!sourceZoneFormatters.has(zone)) sourceZoneFormatters.set(zone, new Intl.DateTimeFormat('en-US', {
       timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit',
       hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
-    }).formatToParts(new Date(timestamp));
+    }));
+    const parts = sourceZoneFormatters.get(zone).formatToParts(new Date(timestamp));
     const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
     const zoneTimestamp = Date.UTC(+values.year, +values.month - 1, +values.day,
       +values.hour, +values.minute, +values.second);
@@ -60,16 +61,21 @@
   function deadlineInstant(raw, sourceTimezone) {
     const match = /^(\d{4})-(\d{2})-(\d{2})(?: (\d{2}):(\d{2})(?::(\d{2}))?)?$/.exec(raw);
     if (!match) return null;
-    const naive = Date.UTC(+match[1], +match[2] - 1, +match[3],
-      +(match[4] || 23), +(match[5] || 59), +(match[6] || (match[4] ? 0 : 59)));
+    const civil = `${match[1]}-${match[2]}-${match[3]}T${match[4] || '23'}:${match[5] || '59'}:${match[6] || (match[4] ? '00' : '59')}`;
+    const naive = Date.parse(`${civil}Z`);
+    if (!Number.isFinite(naive) || +match[1] === 0 || new Date(naive).toISOString().slice(0, 19) !== civil) return null;
     let offset = 0;
     if (sourceTimezone === 'AoE') offset = -720;
     else if (sourceTimezone === 'PT') {
-      offset = zoneOffsetMinutes('America/Los_Angeles', naive);
-      offset = zoneOffsetMinutes('America/Los_Angeles', naive - offset * 60000);
+      const offsets = new Set([-86400000, 0, 86400000].map((shift) => zoneOffsetMinutes('America/Los_Angeles', naive + shift)));
+      const matches = [...offsets].filter((value) => zoneOffsetMinutes('America/Los_Angeles', naive - value * 60000) === value);
+      // Skipped hours have no instant; repeated hours have two. Neither is safe to guess.
+      if (matches.length !== 1) return null;
+      offset = matches[0];
     } else {
       const zone = /^UTC(?:([+-])(\d{1,2})(?::(\d{2}))?)?$/.exec(sourceTimezone);
       if (!zone) return null;
+      if (+zone[2] > 23 || +zone[3] > 59) return null;
       if (zone[1]) offset = (zone[1] === '+' ? 1 : -1) * (+zone[2] * 60 + +(zone[3] || 0));
     }
     return new Date(naive - offset * 60000);
@@ -85,7 +91,7 @@
       }).formatToParts(instant);
       const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
       time.textContent = `${values.hour}:${values.minute}, ${values.month} ${values.day}, ${values.year} · ${state.tz}`;
-      time.dateTime = instant.toISOString();
+      // Preserve source datetime precision; inferred countdown hours are display-only.
     }
   }
 

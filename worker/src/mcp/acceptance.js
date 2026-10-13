@@ -18,11 +18,11 @@ export async function loadAcceptanceCatalog(fetcher = fetch, now = Date.now()) {
       item && typeof item.title === "string" && Array.isArray(item.accept_rates))) {
       throw new Error("CCFDDL acceptance data is invalid");
     }
-    snapshot = { acceptances, source: ACCEPTANCE_SOURCE, fetched_at: new Date(now).toISOString() };
+    snapshot = { acceptances, source: ACCEPTANCE_SOURCE, fetched_at: new Date(now).toISOString(), stale: false };
     expiresAt = now + TTL_MS;
     return snapshot;
   })().catch((error) => {
-    if (snapshot) return snapshot;
+    if (snapshot) return { ...snapshot, stale: true };
     throw error;
   }).finally(() => { loading = undefined; });
   return loading;
@@ -98,7 +98,10 @@ export function getAcceptanceRates(conferences, index, nameOrId, options = {}) {
   if (!conference) return { conference: null, status: "not_found", ...paginate([], options) };
   if (conference.ambiguous) return { conference, status: "ambiguous", ...paginate([], options) };
   const stats = index.lookup(conferenceKey(conference));
-  const idEdition = conference.confs.find((edition) => edition.id?.toLowerCase() === nameOrId.trim().toLowerCase());
+  const needle = nameOrId.trim().toLowerCase();
+  // A legacy edition ID can equal the series name (for example, LICS 2023).
+  const isSeries = conference.title.toLowerCase() === needle || conferenceKey(conference).toLowerCase() === needle;
+  const idEdition = isSeries ? undefined : conference.confs.find((edition) => edition.id?.toLowerCase() === needle);
   const year = options.year ?? (namedYear ? Number(namedYear[2]) : idEdition?.year);
   // Do not silently override the edition encoded in a name or ID.
   const conflictingYear = options.year && ((namedYear && Number(namedYear[2]) !== options.year)
