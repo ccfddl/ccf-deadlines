@@ -1,19 +1,20 @@
-const SOURCE_URL = "https://ccfddl.com/conference/allconf.json";
+const SITE_URL = "https://ccfddl.com";
+const SOURCE_URL = `${SITE_URL}/conference/allconf.json`;
 const TTL_MS = 15 * 60 * 1000;
 export const DEADLINE_FIELDS = ["abstract_deadline", "deadline", "rebuttal_deadline", "decision_deadline"];
 export const EVENT_TYPES = [...DEADLINE_FIELDS, "opening"];
 
 export const CATEGORIES = [
-  ["DS", "Computer Architecture", "计算机体系结构"],
+  ["DS", "Computer Architecture, Parallel and Distributed Computing, and Storage Systems", "计算机体系结构/并行与分布计算/存储系统"],
   ["NW", "Computer Networks", "计算机网络"],
   ["SC", "Network and System Security", "网络与信息安全"],
-  ["SE", "Software Engineering", "软件工程"],
-  ["DB", "Databases and Data Mining", "数据库与数据挖掘"],
+  ["SE", "Software Engineering, System Software, and Programming Languages", "软件工程/系统软件/程序设计语言"],
+  ["DB", "Databases, Data Mining, and Information Retrieval", "数据库/数据挖掘/内容检索"],
   ["CT", "Computing Theory", "计算机科学理论"],
   ["CG", "Computer Graphics and Multimedia", "计算机图形学与多媒体"],
   ["AI", "Artificial Intelligence", "人工智能"],
-  ["HI", "Human-Computer Interaction", "人机交互"],
-  ["MX", "Interdisciplinary", "交叉学科"],
+  ["HI", "Human-Computer Interaction and Ubiquitous Computing", "人机交互与普适计算"],
+  ["MX", "Interdisciplinary, General, and Emerging Computing Research", "交叉/综合/新兴"],
 ].map(([code, name_en, name_zh]) => ({ code, name_en, name_zh }));
 
 let snapshot;
@@ -31,11 +32,11 @@ export async function loadCatalog(fetcher = fetch, now = Date.now()) {
       item && typeof item.title === "string" && Array.isArray(item.confs))) {
       throw new Error("CCFDDL conference data is invalid");
     }
-    snapshot = { conferences, source: SOURCE_URL, fetched_at: new Date(now).toISOString() };
+    snapshot = { conferences, source: SOURCE_URL, fetched_at: new Date(now).toISOString(), stale: false };
     expiresAt = now + TTL_MS;
     return snapshot;
   })().catch((error) => {
-    if (snapshot) return snapshot;
+    if (snapshot) return { ...snapshot, stale: true };
     throw error;
   }).finally(() => {
     loading = undefined;
@@ -43,21 +44,34 @@ export async function loadCatalog(fetcher = fetch, now = Date.now()) {
   return loading;
 }
 
+let pacificFormatter;
+
 function pacificOffset(raw) {
   const approximateUtc = Date.parse(`${raw.replace(" ", "T")}Z`);
   if (!Number.isFinite(approximateUtc)) return null;
-  const format = new Intl.DateTimeFormat("en-US", {
+  const format = pacificFormatter ??= new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Los_Angeles", timeZoneName: "shortOffset",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23",
   });
-  let offset = -8;
-  for (let attempt = 0; attempt < 2; attempt++) {
-    const name = format.formatToParts(new Date(approximateUtc - offset * 3_600_000))
+  // Collect both offsets around a transition, then require one exact round trip.
+  const offsets = new Set();
+  for (const shift of [-86_400_000, 0, 86_400_000]) {
+    const name = format.formatToParts(new Date(approximateUtc + shift))
       .find((part) => part.type === "timeZoneName")?.value;
     const match = /^GMT([+-]\d{1,2})$/.exec(name ?? "");
     if (!match) return null;
-    offset = Number(match[1]);
+    offsets.add(Number(match[1]));
   }
-  return offset;
+  const matches = [];
+  for (const offset of offsets) {
+    const parts = format.formatToParts(new Date(approximateUtc - offset * 3_600_000));
+    const value = (type) => parts.find((part) => part.type === type).value;
+    const local = `${value("year").padStart(4, "0")}-${value("month")}-${value("day")} ${value("hour")}:${value("minute")}:${value("second")}`;
+    if (local === raw) matches.push(offset);
+  }
+  // A skipped hour has no match; a repeated hour has two possible instants.
+  return matches.length === 1 ? matches[0] : null;
 }
 
 export function deadlineToUtc(raw, timezone) {
@@ -74,6 +88,19 @@ export function deadlineToUtc(raw, timezone) {
   return utc.toISOString();
 }
 
+function seriesUrl(conference) {
+  // Keep paths aligned with scripts/generate_seo_pages.py.
+  if (typeof conference.sub !== "string" || !/^[A-Za-z0-9]+$/.test(conference.sub)) return null;
+  const slug = conference.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  return slug ? `${SITE_URL}/venues/${conference.sub.toLowerCase()}/${slug}/` : null;
+}
+
+function venueUrl(conference, edition) {
+  const series = seriesUrl(conference);
+  if (!series || !Number.isInteger(edition.year) || edition.year < 1900 || edition.year > 2200) return null;
+  return `${series.slice(0, -1)}-${edition.year}/`;
+}
+
 function editionSummary(conference, edition) {
   return {
     conference_key: conferenceKey(conference),
@@ -82,11 +109,15 @@ function editionSummary(conference, edition) {
     year: edition.year,
     category: conference.sub,
     rank: conference.rank ?? {},
+    series_url: seriesUrl(conference),
+    venue_url: venueUrl(conference, edition),
     website: edition.link ?? null,
     place: edition.place ?? null,
     date: edition.date ?? null,
     timezone: edition.timezone ?? null,
     opening: edition.opening ?? null,
+    opening_is_derived: typeof edition.opening === "string" && edition.opening.trim()
+      && typeof edition.opening_is_derived === "boolean" ? edition.opening_is_derived : null,
     opening_utc: deadlineToUtc(edition.opening, edition.timezone),
   };
 }
@@ -102,14 +133,17 @@ function matchesFilters(conference, { category, ccf_rank, core_rank, thcpl_rank 
 }
 
 function conferenceSummary(conference, year) {
+  const latest = [...conference.confs].filter((edition) => !year || edition.year === year)
+    .sort((a, b) => b.year - a.year)[0];
   return {
     conference_key: conferenceKey(conference),
     title: conference.title,
     description: conference.description ?? null,
     category: conference.sub ?? null,
     rank: conference.rank ?? {},
-    latest_edition: [...conference.confs].filter((edition) => !year || edition.year === year)
-      .sort((a, b) => b.year - a.year)[0]?.id ?? null,
+    series_url: seriesUrl(conference),
+    venue_url: latest ? venueUrl(conference, latest) : null,
+    latest_edition: latest?.id ?? null,
   };
 }
 
@@ -198,6 +232,8 @@ export function getConference(conferences, nameOrId, options = {}) {
     category: conference.sub ?? null,
     rank: conference.rank ?? {},
     dblp: conference.dblp ?? null,
+    series_url: seriesUrl(conference),
+    editions_total: selected.length,
     editions: [...selected].sort((a, b) => b.year - a.year).slice(0, options.edition_limit ?? 6).map((edition) => ({
       ...editionSummary(conference, edition),
       deadlines: editionEvents(edition).map((event) => withDisplayTime(event, options.display_timezone)),

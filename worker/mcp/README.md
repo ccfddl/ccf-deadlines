@@ -8,15 +8,21 @@ Tools:
 
 - `get_filter_options`: subject codes with English/Chinese names, CCF/CORE/THCPL rankings, edition years, and supported event types.
 - `search_conferences`: name, description, conference key, subject, CCF/CORE/THCPL rank, and edition year search, with the latest known acceptance statistics up to that edition year.
-- `get_conference`: recent editions, known deadline nodes, explicitly published conference opening times, DBLP identifier, and historical acceptance statistics. Accepts a name, name plus year, edition ID, or returned conference key.
+- `get_conference`: recent editions, known deadline nodes, derived conference openings, DBLP identifier, and historical acceptance statistics. Accepts a name, name plus year, edition ID, or returned conference key.
 - `get_acceptance_rates`: historical acceptance rates, submitted and accepted paper counts, percentages and sources, filtered by statistical year or inclusive year range and paginated newest first.
 - `upcoming_deadlines`: future nodes within a specified time window, filtered by ranking, subject, edition year, and node type, with the latest known historical acceptance statistics up to the edition year.
 
 Search and upcoming results include `total`, `offset`, `limit`, and `next_offset`. Pass `next_offset` as the next request's `offset`; `null` means the final page. The default limit is 20 and the maximum is 50. Filters use the conference **edition year**, which can differ from the year of its submission deadline. Rank `N` selects unranked conferences, including entries without that ranking.
 
-For namesakes such as FSE, `get_conference` returns `ambiguous: true` and candidate `matches` inside `conference`. Retry with a returned `conference_key` or a `category` instead of assuming the first result is correct. Named lookups return up to six editions by default; `edition_limit` can request up to 20.
+For namesakes such as FSE, `get_conference` returns `ambiguous: true` and candidate `matches` inside `conference`. Retry with a returned `conference_key` or a `category` instead of assuming the first result is correct. Named lookups return up to six editions by default; `edition_limit` can request up to 20. Conference details include `editions_total`, the number of catalog editions matching the requested name, year or edition ID before applying the limit. Compare it with `editions.length` to detect omitted history, then raise `edition_limit` or query a specific year or edition ID. The count describes listed records, not every edition ever held; ambiguous and not-found results have no count.
 
 `get_conference` and `upcoming_deadlines` accept `display_timezone` (an IANA name such as `Asia/Shanghai`). Responses retain the source `local_time`, `timezone`, and `utc_time`, and add `display_time` and `display_timezone` for known dates. Unknown dates have no converted instant.
+
+Conference results include `series_url` for a CCFDDL series history and `venue_url` for the corresponding annual page. In search results, `venue_url` matches `latest_edition`, respecting a requested year. Cite `venue_url` for year-specific deadline claims and retain `website` as the official conference source. Invalid identities or years do not produce guessed page URLs.
+
+Conference `opening` values are countdown timestamps derived from the earliest announced first day in the edition's `date` text. The data builder assigns a default 08:00 hour in the edition's submission timezone. `opening_utc` and `opening_display_time` are conversions of this derived value, not verified local event start times. Cite the original `date` text for conference dates and consult the official conference website for actual start times and the event's local timezone. This distinction also applies to `upcoming_deadlines` results with `deadline_types: ["opening"]`.
+
+The builder marks generated openings with `opening_is_derived: true`. MCP copies an explicit boolean source flag when an opening exists, including in upcoming results. Missing openings and legacy records without a declared flag return `null`; provenance is not guessed from the clock hour. An explicit `false` reflects only the source declaration and does not verify the actual event start time. The original `date` text, including tentative-date qualifiers, remains available.
 
 For upcoming nodes, `deadline_types` accepts `abstract_deadline`, `deadline`, `rebuttal_deadline`, `decision_deadline`, and `opening`. The default includes the four submission/review types and excludes openings. Examples:
 
@@ -28,7 +34,9 @@ For upcoming nodes, `deadline_types` accepts `abstract_deadline`, `deadline`, `r
 {"days": 90, "year": 2027, "deadline_types": ["opening"], "limit": 50}
 ```
 
-The server retains source timezone labels and supplies UTC instants where a date is known. `TBD`, missing openings, and invalid calendar dates are not converted or predicted. Each response includes the source dataset URL and fetch time. Conference links come from the source data.
+The server retains source timezone labels and supplies UTC instants where the source identifies a unique instant. `TBD`, missing openings, and invalid calendar dates are not converted or predicted. Pacific (`PT`) clock times skipped or repeated during daylight-saving transitions also stay unconverted: details retain the original `local_time` and `timezone`, with `null` UTC/display values, and upcoming results omit those nodes. A published explicit offset such as `UTC-7` or `UTC-8` disambiguates a repeated hour; do not guess one. Each response includes the source dataset URL and fetch time. Conference links come from the source data.
+
+Every successful tool response includes `stale`, referring to the conference catalog. It is `true` when the 15-minute cache expired and refreshing the source failed, so a cached snapshot was returned. The original `fetched_at` is preserved. A successful refresh clears the flag; callers share a pending refresh and failures do not extend the cache lifetime. `false` means the cache has not expired, not that individual deadlines were recently verified. Report stale data as cached and check consequential deadline claims against the official conference source.
 
 ## Acceptance statistics
 
@@ -44,7 +52,7 @@ Responses distinguish `available`, `missing`, `ambiguous`, `unavailable`, and `n
 
 Search and upcoming results add `acceptance_status` and a nullable `latest_acceptance_rate` with its own year and provenance. Conference details add `acceptance_rates` (the newest 10 historical records), `acceptance_rates_total`, and `acceptance_status`. Each edition has a nullable exact-year `acceptance_rate` and up to two `recent_acceptance_rates` from that year or earlier. The complete history is available through `get_acceptance_rates`. Historical statistics are not predictions for an upcoming edition or an individual paper.
 
-Tools that read statistics include an `acceptance_data` envelope with the dataset `source`, `fetched_at`, and feed status. Acceptance data loads alongside conference data. If its source is unavailable and no cached snapshot exists, deadline queries still succeed, statistics are empty or `null`, and their status is `unavailable`. A cached snapshot can be served during an outage with its original fetch timestamp.
+Tools that read statistics include an `acceptance_data` envelope with the dataset `source`, `fetched_at`, feed status and `stale`. Acceptance data loads alongside conference data and reports its cache flag independently of the top-level conference-catalog flag. If its source is unavailable and no cached snapshot exists, deadline queries still succeed, statistics are empty or `null`, their status is `unavailable`, and `acceptance_data.stale` is `null`. A cached snapshot remains `available` during an outage with its original fetch timestamp and `stale: true`. A valid refresh clears that flag without changing historical-record or query statuses.
 
 ## Local verification
 

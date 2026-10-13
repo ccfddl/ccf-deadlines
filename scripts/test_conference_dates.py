@@ -26,15 +26,19 @@ class ConferenceOpeningTests(unittest.TestCase):
 
     def test_generated_data_preserves_the_edition_timezone_and_submission_dates(self):
         original = [{"title": "Example", "confs": [
-            {"year": 2027, "date": "April 26-30, 2027", "timezone": "AoE", "timeline": [{"deadline": "TBD"}]},
+            {"year": 2027, "date": "April 26-30, 2027 (To be confirmed)", "timezone": "AoE", "timeline": [{"deadline": "TBD"}]},
             {"year": 2028, "date": "TBD", "timezone": "PT", "timeline": []},
         ]}]
         result = with_conference_openings(original)
         self.assertEqual(result[0]["confs"][0]["opening"], "2027-04-26 08:00:00")
+        self.assertIs(result[0]["confs"][0]["opening_is_derived"], True)
+        self.assertEqual(result[0]["confs"][0]["date"], original[0]["confs"][0]["date"])
         self.assertEqual(result[0]["confs"][0]["timezone"], "AoE")
         self.assertEqual(result[0]["confs"][0]["timeline"], [{"deadline": "TBD"}])
         self.assertIsNone(result[0]["confs"][1]["opening"])
+        self.assertIsNone(result[0]["confs"][1]["opening_is_derived"])
         self.assertNotIn("opening", original[0]["confs"][0])
+        self.assertNotIn("opening_is_derived", original[0]["confs"][0])
 
 
 if __name__ == "__main__":

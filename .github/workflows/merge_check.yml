@@ -37,7 +37,7 @@ jobs:
         run: npm ci --no-audit --no-fund
         working-directory: worker
       - name: Test Worker security
-        run: node --test worker/test/*.test.js scripts/test_startup.mjs
+        run: node --test worker/test/*.test.js scripts/test_startup.mjs scripts/test_seo_page_controls.mjs
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly

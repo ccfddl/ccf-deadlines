@@ -54,7 +54,12 @@ def conference_opening(edition: dict) -> str | None:
 
 
 def with_conference_openings(conferences: list) -> list:
-    return [{**conference, "confs": [
-        {**edition, "opening": conference_opening(edition)}
-        for edition in conference["confs"]
-    ]} for conference in conferences]
+    result = []
+    for conference in conferences:
+        editions = []
+        for edition in conference["confs"]:
+            opening = conference_opening(edition)
+            editions.append({**edition, "opening": opening,
+                             "opening_is_derived": True if opening else None})
+        result.append({**conference, "confs": editions})
+    return result
