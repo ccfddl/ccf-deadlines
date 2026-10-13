@@ -48,6 +48,39 @@ test("filters statistical years independently of published deadline editions", (
   assert.equal(getAcceptanceRates(conferences, index, "iclr26", { year: 2025 }).total, 0);
 });
 
+test("keeps conference names and keys from being restricted by a matching legacy edition ID", () => {
+  const lics = { title: "LICS", sub: "CT", conference_key: "CT/lics", confs: [
+    { id: "lics21", year: 2021 }, { id: "lics22", year: 2022 },
+    { id: "lics", year: 2023 }, { id: "lics25", year: 2025 }, { id: "lics26", year: 2026 },
+  ] };
+  const records = [2021, 2022, 2023, 2025, 2026].map((year) => ({ year, rate: 0.3 }));
+  for (const editions of [lics.confs, [...lics.confs, { id: "CT/lics", year: 2024 }]]) {
+    const rows = [{ ...lics, confs: editions }];
+    const scoped = createAcceptanceIndex(rows, catalog([{ title: "LICS", accept_rates: records }]));
+    for (const name of ["LICS", " lIcS ", "CT/lics", " ct/LICS "]) {
+      const history = getAcceptanceRates(rows, scoped, name);
+      assert.equal(history.status, "available");
+      assert.equal(history.total, 5);
+      assert.deepEqual(history.results.map((record) => record.year), [2026, 2025, 2023, 2022, 2021]);
+      assert.deepEqual(getAcceptanceRates(rows, scoped, name, { year: 2026 }).results.map((record) => record.year), [2026]);
+      assert.deepEqual(getAcceptanceRates(rows, scoped, name, { from_year: 2025, to_year: 2026 })
+        .results.map((record) => record.year), [2026, 2025]);
+      const first = getAcceptanceRates(rows, scoped, name, { limit: 2 });
+      assert.deepEqual(getAcceptanceRates(rows, scoped, name, { limit: 2, offset: first.next_offset })
+        .results.map((record) => record.year), [2023, 2022]);
+      assert.equal(getAcceptanceRates(rows, scoped, name, { year: 2024 }).status, "missing");
+    }
+    for (const name of ["lics26", "LICS 2026", "CT/lics 2026"]) {
+      assert.deepEqual(getAcceptanceRates(rows, scoped, name).results.map((record) => record.year), [2026]);
+      assert.equal(getAcceptanceRates(rows, scoped, name, { year: 2025 }).status, "missing");
+    }
+    assert.equal(getAcceptanceRates(rows, createAcceptanceIndex(rows), "LICS").status, "unavailable");
+    const namesakes = [...rows, { title: "LICS", sub: "MX", confs: [{ id: "other-lics", year: 2026 }] }];
+    assert.equal(getAcceptanceRates(namesakes, scoped, "LICS").status, "ambiguous");
+    assert.equal(getAcceptanceRates(namesakes, scoped, "LICS", { category: "CT" }).total, 5);
+  }
+});
+
 test("does not claim a missing future year's rate is a historical rate", () => {
   const response = enrichAcceptance({ conference: getConference(conferences, "ICLR") }, index, conferences);
   assert.equal(response.conference.dblp, "iclr");

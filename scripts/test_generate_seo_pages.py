@@ -1,6 +1,7 @@
 import tempfile
 import re
 import json
+import hashlib
 import shutil
 import unittest
 from unittest.mock import patch
@@ -510,6 +511,45 @@ class SeoPageTests(unittest.TestCase):
             self.assertTrue((output / css_path.lstrip('/')).exists())
             edition = (output / 'venues/ai/acl-2027/index.html').read_text()
             self.assertIn(f'href="{css_path}"', edition)
+
+    def test_controls_urls_follow_script_content_and_keep_the_legacy_alias(self):
+        conference = {'title': 'ACL', 'sub': 'AI', 'confs': [{'year': 2027, 'timeline': []}]}
+        categories = {'AI': 'Artificial Intelligence'}
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source_root = root / 'source'
+            (source_root / 'public').mkdir(parents=True)
+            (source_root / 'scripts').mkdir()
+            for name in ('favicon.ico', 'ccfddl-logo.svg', 'llms.txt'):
+                shutil.copy2(seo.ROOT / 'public' / name, source_root / 'public' / name)
+            controls_source = source_root / 'scripts/seo_page_controls.js'
+            urls = []
+            for number, content in enumerate((b'const version = "first";\n',
+                                              b'const version = "first";\n',
+                                              b'const version = "second";\n')):
+                controls_source.write_bytes(content)
+                output = root / f'build-{number}'
+                with patch.object(seo, 'ROOT', source_root):
+                    generate([conference], categories, output)
+                directory = (output / 'venues/index.html').read_text()
+                match = re.search(r'src="(/venues/controls-[0-9a-f]{16}\.js)" defer', directory)
+                self.assertIsNotNone(match, 'Generated HTML must reference the versioned controls script')
+                url = match.group(1)
+                urls.append(url)
+                self.assertEqual(url, f'/venues/controls-{hashlib.sha256(content).hexdigest()[:16]}.js')
+                self.assertEqual((output / url.lstrip('/')).read_bytes(), content)
+                self.assertEqual((output / 'venues/controls.js').read_bytes(), content)
+                for path in ('venues/ai/index.html', 'venues/ai/acl-2027/index.html'):
+                    page = (output / path).read_text()
+                    self.assertIn(f'src="{url}" defer', page)
+                    self.assertNotIn('src="/venues/controls.js"', page)
+                series = (output / 'venues/ai/acl/index.html').read_text()
+                self.assertNotIn(f'src="{url}"', series)
+            self.assertEqual(urls[0], urls[1])
+            self.assertNotEqual(urls[1], urls[2])
+            # Direct helpers retain their existing default, independently of builds.
+            page = edition_page(conference, conference['confs'][0], categories, {})
+            self.assertIn('src="/venues/controls.js" defer', page)
 
     def test_incomplete_app_build_fails_instead_of_shipping_missing_controls(self):
         with tempfile.TemporaryDirectory() as temporary:

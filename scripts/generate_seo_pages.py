@@ -216,7 +216,7 @@ def directory_startup() -> str:
     </script>'''
 
 
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: list[tuple[str, str]] | None = None, detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "", show_clock: bool = True) -> str:
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: list[tuple[str, str]] | None = None, detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "", show_clock: bool = True, static_controls: str = "/venues/controls.js") -> str:
     social = ""
     if social_image:
         social = f'''<meta property="og:type" content="website">
@@ -247,7 +247,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     )
     if detail_page and not show_clock:
         filters = ""
-    page_controls = '<script src="/venues/controls.js" defer></script>' if not detail_page or show_clock else ""
+    page_controls = f'<script src="{text(static_controls)}" defer></script>' if not detail_page or show_clock else ""
     breadcrumb_markup = breadcrumb_html(breadcrumb) if breadcrumb else ""
     structured_breadcrumb = breadcrumb_jsonld(breadcrumb) if breadcrumb else ""
     return f"""<!doctype html>
@@ -387,7 +387,7 @@ def edition_metadata(conference: dict, edition: dict) -> tuple[str, str]:
     return title, description + ". Track paper submission deadlines, check deadline time zones, and explore past venues on CCFDDL."
 
 
-def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/venues/style.css") -> str:
+def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/venues/style.css", static_controls: str = "/venues/controls.js") -> str:
     name, year = conference["title"], edition["year"]
     path = edition_path(conference, edition)
     canonical = BASE_URL + path
@@ -467,7 +467,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     {history_section}
     """
     breadcrumb = venue_trail(conference, categories, year)
-    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL")
+    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL", static_controls=static_controls)
 
 
 def series_page(conference: dict, categories: dict[str, str], static_css: str = "/venues/style.css") -> str:
@@ -538,7 +538,7 @@ def directory_entries(conferences: list[dict], descriptions: bool = False) -> st
     return "".join(links)
 
 
-def category_page(sub: str, conferences: list[dict], categories: dict[str, str], static_css: str = "/venues/style.css") -> str:
+def category_page(sub: str, conferences: list[dict], categories: dict[str, str], static_css: str = "/venues/style.css", static_controls: str = "/venues/controls.js") -> str:
     fallback = CATEGORY_EN_BY_SUB.get(sub, categories.get(sub, sub))
     name, topics = CATEGORY_METADATA_BY_SUB.get(sub, (fallback, fallback))
     title = f"{name} Conference Deadlines | CCFDDL"
@@ -547,10 +547,10 @@ def category_page(sub: str, conferences: list[dict], categories: dict[str, str],
     body = (f'<nav class="category-navigation" aria-label="Research areas">{category_links(categories, sub, responsive=True)}</nav>'
             f'<ul class="directory-list category-list">{directory_entries(conferences, descriptions=True)}</ul>')
     return layout(title, description, BASE_URL + category_path(sub), body,
-                  breadcrumb=breadcrumb, detail_page=True, static_css=static_css)
+                  breadcrumb=breadcrumb, detail_page=True, static_css=static_css, static_controls=static_controls)
 
 
-def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "", static_css: str = "/venues/style.css") -> str:
+def directory_page(conferences: list[dict], categories: dict[str, str], app_assets: str = "", static_css: str = "/venues/style.css", static_controls: str = "/venues/controls.js") -> str:
     groups = defaultdict(list)
     for conference in conferences:
         if conference.get("confs"):
@@ -562,7 +562,7 @@ def directory_page(conferences: list[dict], categories: dict[str, str], app_asse
         sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2><a href="{text(category_path(sub))}" data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(CATEGORY_EN_BY_SUB.get(sub, category))}</a></h2><ul class="directory-list">{links}</ul></section>')
     body = f'<p class="directory-empty" id="directory-empty" hidden>No matching venues.</p>{"".join(sections)}'
     breadcrumb = directory_trail()
-    return layout("Venue Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css)
+    return layout("Venue Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css, static_controls=static_controls)
 
 
 def stylesheet() -> str:
@@ -793,6 +793,12 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     # Keep the previous URL available for already-cached edition pages.
     (directory / "style.css").write_text(css, encoding="utf-8")
     static_css = f'/venues/{css_filename}'
+    controls = (ROOT / "scripts/seo_page_controls.js").read_bytes()
+    controls_filename = f'controls-{hashlib.sha256(controls).hexdigest()[:16]}.js'
+    (directory / controls_filename).write_bytes(controls)
+    # Keep the previous URL available for already-cached pages and direct helpers.
+    (directory / "controls.js").write_bytes(controls)
+    static_controls = f'/venues/{controls_filename}'
     written = []
     cards = []
     seen = set()
@@ -822,16 +828,15 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
                           "category": f"CCF {rank} / {category}" if rank else category,
                           "date": edition.get("date"), "place": edition.get("place"),
                           **deadline_card_data(edition)})
-            write_page(path, edition_page(conference, edition, categories, acceptances, static_css))
+            write_page(path, edition_page(conference, edition, categories, acceptances, static_css, static_controls))
         write_page(series_path(conference), series_page(conference, categories, static_css))
     for sub, members in groups.items():
-        write_page(category_path(sub), category_page(sub, members, categories, static_css))
+        write_page(category_path(sub), category_page(sub, members, categories, static_css, static_controls))
     share_images(cards, css, output)
     assets = shared_app_assets(output)
     directory = output / "venues"
     directory.mkdir(exist_ok=True)
-    (directory / "index.html").write_text(directory_page(conferences, categories, assets, static_css), encoding="utf-8")
-    (directory / "controls.js").write_text((ROOT / "scripts/seo_page_controls.js").read_text(encoding="utf-8"), encoding="utf-8")
+    (directory / "index.html").write_text(directory_page(conferences, categories, assets, static_css, static_controls), encoding="utf-8")
     urls = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
     for path in ("/", "/venues/", *sorted(written)):
         SubElement(SubElement(urls, "url"), "loc").text = BASE_URL + path
