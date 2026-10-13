@@ -460,7 +460,7 @@ a {
   gap: 12px;
 }
 
-.email-reminder-settings label {
+.email-reminder-field {
   display: grid;
   min-width: 0;
   gap: 5px;
@@ -468,17 +468,48 @@ a {
   font-size: 12px;
 }
 
-.email-reminder-settings select {
+.email-reminder-settings .email-reminder-dropdown-trigger {
   box-sizing: border-box;
   min-width: 0;
   width: 100%;
-  padding: 7px 32px 7px 9px;
-  appearance: none;
+  justify-content: space-between;
+  padding: 7px 12px 7px 9px;
   border: 1px solid #dcd6cf;
   border-radius: 6px;
-  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='m2 4 4 4 4-4' fill='none' stroke='%23304458' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center / 12px 12px;
-  color: #304458;
+  background: #fffefa;
+  color: var(--color-text-primary);
   font: inherit;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+.email-reminder-dropdown-trigger .toolbar-timezone-label {
+  max-width: none;
+}
+
+.email-reminder-dropdown-trigger .toolbar-timezone-arrow {
+  flex: 0 0 auto;
+}
+
+.toolbar-timezone-menu.email-reminder-dropdown-menu {
+  position: fixed;
+  z-index: 2001;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: calc(100vw - 24px);
+  font-family: "Roboto Mono", "SF Mono", Monaco, monospace;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+.email-reminder-dropdown-menu .toolbar-timezone-option {
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.email-reminder-dropdown-menu .toolbar-timezone-option[data-active="true"] {
+  background: #f5f2ee;
 }
 
 .email-reminder-actions {

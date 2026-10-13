@@ -1,4 +1,5 @@
 use crate::components::favorites::api_url;
+use crate::components::select_dropdown::SelectDropdown;
 #[cfg(not(target_arch = "wasm32"))]
 use crate::components::showtable::display_timezone_offset_at;
 use crate::components::showtable::display_timezone_options;
@@ -110,12 +111,14 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
     let busy = RwSignal::new(false);
     let error = RwSignal::new(None::<String>);
     let saved = RwSignal::new(false);
+    let open_dropdown = RwSignal::new(None::<&'static str>);
     let mut options = display_timezone_options(&timezone.get_untracked());
     options.sort();
     let options = RwSignal::new(options);
 
     Effect::new(move |_| {
         if !show.get() {
+            open_dropdown.set(None);
             return;
         }
         loading.set(true);
@@ -159,7 +162,7 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                     <button type="button" class="conference-detail-close"
                         aria-label=move || if use_english.get() { "Close" } else { "关闭" }
                         on:click=move |_| show.set(false)>"×"</button>
-                    <DialogContent>
+                    <DialogContent on:scroll=move |_| open_dropdown.set(None)>
                         <p class="email-reminder-intro">{move || {
                             let daily = settings.get().is_some_and(|value| value.daily_enabled);
                             match (use_english.get(), daily) {
@@ -186,25 +189,27 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                         {enabled.then(|| view! {
                                             <p>{move || if use_english.get() { "Sending to" } else { "发送到" }} " " <strong>{current.email.clone().unwrap_or_default()}</strong></p>
                                         })}
-                                        <label>
-                                            {move || if use_english.get() { "Time zone" } else { "时区" }}
-                                            <select prop:value=move || timezone.get() on:change=move |event| timezone.set(event_target_value(&event))>
-                                                {move || {
-                                                    let timestamp = Utc::now().timestamp_millis();
-                                                    options.get().into_iter().map(|zone| {
-                                                        let label = timezone_option_label(&zone, timestamp);
-                                                        view! { <option value=zone>{label}</option> }
-                                                    }).collect_view()
-                                                }}
-                                            </select>
-                                        </label>
-                                        <label>
-                                            {move || if use_english.get() { "Email language" } else { "邮件语言" }}
-                                            <select prop:value=move || language.get() on:change=move |event| language.set(event_target_value(&event))>
-                                                <option value="en">"English"</option>
-                                                <option value="zh">"中文"</option>
-                                            </select>
-                                        </label>
+                                        <SelectDropdown
+                                            id="email-reminder-timezone"
+                                            label=Signal::derive(move || if use_english.get() { "Time zone" } else { "时区" })
+                                            selected=timezone open_dropdown
+                                            options=Signal::derive(move || {
+                                                let timestamp = Utc::now().timestamp_millis();
+                                                options.get().into_iter().map(|zone| {
+                                                    let label = timezone_option_label(&zone, timestamp);
+                                                    (zone, label)
+                                                }).collect()
+                                            })
+                                        />
+                                        <SelectDropdown
+                                            id="email-reminder-language"
+                                            label=Signal::derive(move || if use_english.get() { "Email language" } else { "邮件语言" })
+                                            selected=language open_dropdown
+                                            options=Signal::derive(|| vec![
+                                                ("en".to_string(), "English".to_string()),
+                                                ("zh".to_string(), "中文".to_string()),
+                                            ])
+                                        />
                                         {enabled.then(|| view! {
                                             <div class="email-reminder-daily-option">
                                                 <div class="el-switch email-reminder-daily-control"

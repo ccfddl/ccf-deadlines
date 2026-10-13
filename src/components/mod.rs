@@ -10,6 +10,7 @@ pub mod favorites_timeline;
 pub mod gitbutton;
 pub mod header;
 pub mod message_wall;
+pub mod select_dropdown;
 pub mod showtable;
 pub mod subscription_modal;
 pub mod tabular_view;
