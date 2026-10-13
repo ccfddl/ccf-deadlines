@@ -63,9 +63,14 @@
       place: Raleigh, USA
     - year: 2027
       id: isca27
-      link: https://www.iscaconf.org/
+      link: https://iscaconf.org/isca2027/
       timeline:
-        - deadline: 'TBD'
+        # Source: https://iscaconf.org/isca2027/submit/callforpapers.php
+        - abstract_deadline: '2026-11-09 23:59:00'
+          deadline: '2026-11-16 23:59:00'
+          rebuttal_deadline: '2027-03-08 23:59:00'
+          decision_deadline: '2027-03-26 23:59:00'
+          comment: 'Main Track; rebuttal/revision period: February 16-March 8, 2027'
       timezone: AoE
-      date: TBD
+      date: June 5-9, 2027
       place: Atlanta, Georgia, USA
