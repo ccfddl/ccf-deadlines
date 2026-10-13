@@ -67,7 +67,12 @@
       id: re27
       link: https://conf.researchr.org/home/RE-2027
       timeline:
-        - deadline: 'TBD'
+        # Source: https://conf.researchr.org/track/RE-2027/RE-2027-papers
+        # Official dates are AoE; 23:59:59 follows README defaults (no clock time given).
+        - abstract_deadline: '2027-02-22 23:59:59'
+          deadline: '2027-03-01 23:59:59'
+          decision_deadline: '2027-05-14 23:59:59'
+          comment: Research Papers
       timezone: AoE
       date: August 23-27, 2027
       place: Milan, Italy
