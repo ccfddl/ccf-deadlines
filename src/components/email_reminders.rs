@@ -1,5 +1,11 @@
 use crate::components::favorites::api_url;
+#[cfg(not(target_arch = "wasm32"))]
+use crate::components::showtable::display_timezone_offset_at;
+use crate::components::showtable::display_timezone_options;
+#[cfg(target_arch = "wasm32")]
+use crate::components::showtable::timezone_offset_from_intl;
 use crate::components::timezone::get_timezone_name_or_utc;
+use chrono::Utc;
 use gloo_net::http::Request;
 use leptos::prelude::*;
 use serde::Deserialize;
@@ -7,26 +13,25 @@ use thaw::*;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
 
-const TIMEZONES: &[&str] = &[
-    "UTC",
-    "Pacific/Honolulu",
-    "America/Los_Angeles",
-    "America/Denver",
-    "America/Chicago",
-    "America/New_York",
-    "America/Sao_Paulo",
-    "Europe/London",
-    "Europe/Paris",
-    "Europe/Berlin",
-    "Africa/Cairo",
-    "Asia/Dubai",
-    "Asia/Kolkata",
-    "Asia/Bangkok",
-    "Asia/Shanghai",
-    "Asia/Tokyo",
-    "Australia/Sydney",
-    "Pacific/Auckland",
-];
+fn timezone_option_label(timezone: &str, timestamp_millis: i64) -> String {
+    #[cfg(target_arch = "wasm32")]
+    let Some(offset) = timezone_offset_from_intl(timezone, timestamp_millis) else {
+        return timezone.to_string();
+    };
+    #[cfg(not(target_arch = "wasm32"))]
+    let offset = display_timezone_offset_at(timezone, timestamp_millis);
+    let offset_minutes = offset.local_minus_utc() / 60;
+    let sign = if offset_minutes < 0 { '-' } else { '+' };
+    let minutes = offset_minutes.unsigned_abs();
+    let hours = minutes / 60;
+    let remainder = minutes % 60;
+    let offset = if remainder == 0 {
+        format!("UTC{sign}{hours}")
+    } else {
+        format!("UTC{sign}{hours}:{remainder:02}")
+    };
+    format!("{timezone} ({offset})")
+}
 
 #[derive(Clone, Deserialize)]
 struct ReminderSettings {
@@ -105,10 +110,7 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
     let busy = RwSignal::new(false);
     let error = RwSignal::new(None::<String>);
     let saved = RwSignal::new(false);
-    let mut options: Vec<String> = TIMEZONES.iter().map(|value| (*value).to_string()).collect();
-    if !options.contains(&timezone.get_untracked()) {
-        options.push(timezone.get_untracked());
-    }
+    let mut options = display_timezone_options(&timezone.get_untracked());
     options.sort();
     let options = RwSignal::new(options);
 
@@ -187,7 +189,13 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                         <label>
                                             {move || if use_english.get() { "Time zone" } else { "时区" }}
                                             <select prop:value=move || timezone.get() on:change=move |event| timezone.set(event_target_value(&event))>
-                                                {move || options.get().into_iter().map(|zone| view! { <option value=zone.clone()>{zone.clone()}</option> }).collect_view()}
+                                                {move || {
+                                                    let timestamp = Utc::now().timestamp_millis();
+                                                    options.get().into_iter().map(|zone| {
+                                                        let label = timezone_option_label(&zone, timestamp);
+                                                        view! { <option value=zone>{label}</option> }
+                                                    }).collect_view()
+                                                }}
                                             </select>
                                         </label>
                                         <label>

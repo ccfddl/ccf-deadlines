@@ -1548,6 +1548,7 @@ fn browser_origin() -> Option<String> {
 }
 
 const DISPLAY_TIMEZONES: &[&str] = &[
+    "UTC",
     "Pacific/Honolulu",
     "America/Los_Angeles",
     "America/Denver",
@@ -1576,6 +1577,7 @@ pub(crate) fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
         web_sys::js_sys::eval("Intl.supportedValuesOf ? Intl.supportedValuesOf('timeZone') : []")
             .ok()
             .and_then(|value| value.dyn_into::<Array>().ok())
+            .filter(|values| values.length() > 0)
             .map(|values| {
                 values
                     .iter()
@@ -1583,6 +1585,9 @@ pub(crate) fn display_timezone_options(browser_timezone: &str) -> Vec<String> {
                     .collect()
             })
             .unwrap_or_else(|| fallback_display_timezone_options());
+    if !options.iter().any(|timezone| timezone == "UTC") {
+        options.insert(0, "UTC".to_string());
+    }
     options.retain(|timezone| timezone != browser_timezone);
     options.insert(0, browser_timezone.to_string());
     options
@@ -1616,8 +1621,12 @@ pub(crate) fn display_timezone_offset_at(timezone: &str, timestamp_millis: i64) 
 }
 
 #[cfg(target_arch = "wasm32")]
-fn timezone_offset_from_intl(timezone: &str, timestamp_millis: i64) -> Option<FixedOffset> {
-    use web_sys::js_sys::{Array, Date, Intl, Object, Reflect};
+pub(crate) fn timezone_offset_from_intl(
+    timezone: &str,
+    timestamp_millis: i64,
+) -> Option<FixedOffset> {
+    use wasm_bindgen::JsCast;
+    use web_sys::js_sys::{Array, Date, Function, Intl, Object, Reflect};
 
     let locales = Array::new();
     locales.push(&"en-US".into());
@@ -1635,7 +1644,18 @@ fn timezone_offset_from_intl(timezone: &str, timestamp_millis: i64) -> Option<Fi
         Reflect::set(&options, &key.into(), &value.into()).ok()?;
     }
 
-    let formatter = Intl::DateTimeFormat::new(&locales, &options);
+    let intl = Reflect::get(&web_sys::js_sys::global(), &"Intl".into()).ok()?;
+    let constructor = Reflect::get(&intl, &"DateTimeFormat".into())
+        .ok()?
+        .dyn_into::<Function>()
+        .ok()?;
+    let arguments = Array::new();
+    arguments.push(&locales);
+    arguments.push(&options);
+    let formatter = Reflect::construct(&constructor, &arguments)
+        .ok()?
+        .dyn_into::<Intl::DateTimeFormat>()
+        .ok()?;
     let date = Date::new(&wasm_bindgen::JsValue::from_f64(timestamp_millis as f64));
     let parts = formatter.format_to_parts(&date);
     let mut values = HashMap::new();
