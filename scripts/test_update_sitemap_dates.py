@@ -98,6 +98,21 @@ class SitemapDatesTests(unittest.TestCase):
         self.assertEqual(update_dates(self.output, self.previous, now=NOW), 0)
         self.assertEqual(dates(self.output)[BASE_URL + PATH], '2026-09-30T23:30:00-07:00')
 
+    def test_privacy_entry_does_not_affect_venue_content_dates(self):
+        for venue_changed in (False, True):
+            with self.subTest(venue_changed=venue_changed):
+                self.prepare(old=page(), new=page(deadline='2026-07-29 23:59:59') if venue_changed else page(),
+                             old_date='2026-10-01')
+                sitemap(self.previous, ['/', '/privacy.html', PATH], {PATH: '2026-10-01'})
+                sitemap(self.output, ['/', '/privacy.html', PATH])
+                (self.previous / 'privacy.html').write_text('<main>Previous policy</main>', encoding='utf-8')
+                (self.output / 'privacy.html').write_text('<main>Updated policy</main>', encoding='utf-8')
+                self.assertEqual(update_dates(self.output, self.previous, now=NOW), int(venue_changed))
+                result = dates(self.output)
+                self.assertIsNone(result[BASE_URL + '/privacy.html'])
+                self.assertEqual(result[BASE_URL + PATH],
+                                 '2026-10-12T06:30:00Z' if venue_changed else '2026-10-01')
+
     def test_generated_next_deadline_rollover_preserves_date_but_source_edit_updates_it(self):
         import generate_seo_pages as seo
 
@@ -181,10 +196,14 @@ class SitemapDatesTests(unittest.TestCase):
     def test_only_canonical_local_venue_urls_are_read(self):
         for url in ['https://other.test' + PATH, BASE_URL + PATH + '?view=table',
                     BASE_URL + '/venues/../private/', BASE_URL + '/venues/%2e%2e/private/',
-                    BASE_URL + '/venues/%5cprivate/', BASE_URL + '/venues/ai/aaai-2027']:
+                    BASE_URL + '/venues/%5cprivate/', BASE_URL + '/venues/ai/aaai-2027',
+                    'https://other.test/privacy.html', BASE_URL + '/privacy.html?view=policy',
+                    BASE_URL + '/privacy.html#policy', BASE_URL + '/privacy.html/',
+                    BASE_URL + '/%70rivacy.html', BASE_URL + '/private/../privacy.html']:
             with self.subTest(url=url), self.assertRaises(ValueError):
                 venue_file(self.output, url)
         self.assertIsNone(venue_file(self.output, BASE_URL + '/'))
+        self.assertIsNone(venue_file(self.output, BASE_URL + '/privacy.html'))
 
 
 if __name__ == '__main__':
