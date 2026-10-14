@@ -2014,12 +2014,6 @@ a {
   gap: 5px;
 }
 
-.conference-detail-dialog.favorites-timeline-dialog,
-.conference-detail-dialog.batch-subscription-dialog,
-.conference-detail-dialog.email-reminder-dialog {
-  background: #f3f0eb;
-}
-
 .conference-detail-dialog .thaw-dialog-content {
   min-height: 0;
   margin: 0;
@@ -2224,7 +2218,7 @@ a {
   z-index: 1;
   padding: 0 5px;
   color: #89939d;
-  background: #f3f0eb;
+  background: #fffdfa;
   font-size: 10px;
   line-height: 1.25;
   white-space: nowrap;
