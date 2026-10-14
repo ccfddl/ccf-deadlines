@@ -45,7 +45,7 @@
     if (!dialog) createDialog();
     if (dialog.open) return;
     opener = link;
-    const english = link.textContent.trim() === 'Privacy';
+    const english = /^Privacy(?: Policy)?$/i.test(link.textContent.trim());
     dialog.querySelector('h2').textContent = english ? 'Privacy Policy' : '隐私政策';
     dialog.querySelector('button').setAttribute('aria-label', english ? 'Close privacy policy' : '关闭隐私政策');
     dialog.showModal();

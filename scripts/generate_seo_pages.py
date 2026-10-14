@@ -273,7 +273,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   {app_assets}
   <link rel="stylesheet" href="{text(static_css)}">
   <link rel="stylesheet" href="/privacy-modal.css?v=1">
-  <script src="/privacy-modal.js?v=1" defer></script>
+  <script src="/privacy-modal.js?v=2" defer></script>
 </head>
 <body class="{'detail-page' if detail_page else 'directory-page'}">
   <div class="home">
@@ -285,7 +285,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       {filters}
     </header>
     <main>{body}</main>
-    <footer class="footer"><div class="footer-text"><nav class="footer-links" aria-label="Site information" data-nosnippet><a href="/privacy.html" data-privacy-modal>Privacy</a></nav><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
+    <footer class="footer"><div class="footer-text"><nav class="footer-links" aria-label="Site information" data-nosnippet><a href="/privacy.html" data-privacy-modal>Privacy Policy</a></nav><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
   </div>
   <script>(function(){{
     function setLanguage(english){{
