@@ -366,7 +366,7 @@ class AdPlacementTests(unittest.TestCase):
             self.assertIn('<a href="/privacy.html" data-privacy-modal>Privacy Policy</a>', page)
             self.assertLess(page.index('class="footer-links"'), page.index('class="footer-credit"'))
             self.assertIn('<link rel="stylesheet" href="/privacy-modal.css?v=1">', page)
-            self.assertIn('<script src="/privacy-modal.js?v=2" defer></script>', page)
+            self.assertIn('<script src="/privacy-modal.js?v=3" defer></script>', page)
 
     def test_privacy_page_ships_its_assets_and_enters_sitemap_only_when_copied(self):
         with tempfile.TemporaryDirectory() as temporary:

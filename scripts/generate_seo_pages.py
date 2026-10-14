@@ -273,7 +273,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   {app_assets}
   <link rel="stylesheet" href="{text(static_css)}">
   <link rel="stylesheet" href="/privacy-modal.css?v=1">
-  <script src="/privacy-modal.js?v=2" defer></script>
+  <script src="/privacy-modal.js?v=3" defer></script>
 </head>
 <body class="{'detail-page' if detail_page else 'directory-page'}">
   <div class="home">
