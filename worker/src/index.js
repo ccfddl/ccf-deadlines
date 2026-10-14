@@ -11,6 +11,7 @@ const OAUTH_COOKIE = "__Host-ccfddl_oauth";
 const SESSION_COOKIE = "__Host-ccfddl_session";
 const OAUTH_TTL_SECONDS = 10 * 60;
 const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60;
+const SESSION_RENEWAL_INTERVAL_SECONDS = 24 * 60 * 60;
 const MESSAGE_MAX_CHARACTERS = 500;
 const MESSAGE_MAX_LINES = 8;
 const MESSAGE_PAGE_SIZE = 50;
@@ -23,9 +24,10 @@ const STAR_COUNTS_CACHE_SECONDS = 300;
 export default {
   async fetch(request, env, context) {
     let response;
+    const session = {};
     try {
       await enforceRateLimit(request, env);
-      response = await route(request, env, context);
+      response = await route(request, env, context, session);
     } catch (error) {
       if (error instanceof HttpError) {
         response = json({ error: error.message, ...(error.code ? { code: error.code } : {}) }, error.status);
@@ -33,6 +35,9 @@ export default {
         console.error("Worker request failed", error?.name ?? "Error");
         response = json({ error: "Internal server error" }, 500);
       }
+    }
+    if (response.ok && session.token) {
+      await renewSession(request, env, response, session);
     }
     response.headers.set("X-Content-Type-Options", "nosniff");
     response.headers.set("Referrer-Policy", "no-referrer");
@@ -47,7 +52,7 @@ export default {
   },
 };
 
-async function route(request, env, context) {
+async function route(request, env, context, session) {
   const url = new URL(request.url);
 
   if (["/mcp", "/.well-known/openai-apps-challenge"].includes(url.pathname)) {
@@ -77,37 +82,37 @@ async function route(request, env, context) {
     return logout(request, env);
   }
   if (request.method === "GET" && url.pathname === "/api/bootstrap") {
-    return bootstrap(request, env);
+    return bootstrap(request, env, session);
   }
   if (request.method === "GET" && url.pathname === "/api/calendar/favorites.ics") {
     return favoritesCalendar(url, env);
   }
   if (url.pathname === "/api/email/reminders") {
-    if (request.method === "GET") return emailReminderSettings(request, env);
+    if (request.method === "GET") return emailReminderSettings(request, env, session);
     if (request.method === "PUT") {
       assertTrustedOrigin(request, env);
-      return updateEmailReminderSettings(request, env);
+      return updateEmailReminderSettings(request, env, session);
     }
     if (request.method === "DELETE") {
       assertTrustedOrigin(request, env);
-      return deleteEmailReminderSettings(request, env);
+      return deleteEmailReminderSettings(request, env, session);
     }
   }
   if (url.pathname === "/api/email/unsubscribe" && ["GET", "POST"].includes(request.method)) {
     return unsubscribeEmail(request, env, url);
   }
   if (request.method === "GET" && url.pathname === "/api/messages") {
-    return listMessages(request, env, url);
+    return listMessages(request, env, url, session);
   }
   const messageRepliesMatch = url.pathname.match(
     /^\/api\/messages\/(\d+)\/replies$/,
   );
   if (request.method === "GET" && messageRepliesMatch) {
-    return listMessageReplies(request, env, url, Number(messageRepliesMatch[1]));
+    return listMessageReplies(request, env, url, Number(messageRepliesMatch[1]), session);
   }
   if (request.method === "POST" && url.pathname === "/api/messages") {
     assertTrustedOrigin(request, env);
-    return createMessage(request, env);
+    return createMessage(request, env, session);
   }
   const messageLikeMatch = url.pathname.match(/^\/api\/messages\/(\d+)\/like$/);
   if (
@@ -115,18 +120,18 @@ async function route(request, env, context) {
     (request.method === "PUT" || request.method === "DELETE")
   ) {
     assertTrustedOrigin(request, env);
-    return mutateMessageLike(request, env, Number(messageLikeMatch[1]));
+    return mutateMessageLike(request, env, Number(messageLikeMatch[1]), session);
   }
   if (request.method === "DELETE" && url.pathname.startsWith("/api/messages/")) {
     assertTrustedOrigin(request, env);
-    return deleteMessage(request, env, url);
+    return deleteMessage(request, env, url, session);
   }
   if (
     (request.method === "PUT" || request.method === "DELETE") &&
     url.pathname.startsWith("/api/stars/")
   ) {
     assertTrustedOrigin(request, env);
-    return mutateStar(request, env, url);
+    return mutateStar(request, env, url, session);
   }
 
   return json({ error: "Not found" }, 404);
@@ -353,8 +358,8 @@ async function githubLoginStep(stage, operation) {
   }
 }
 
-async function bootstrap(request, env) {
-  const user = await authenticatedUser(request, env);
+async function bootstrap(request, env, session) {
+  const user = await authenticatedUser(request, env, session);
   const counts = await starCounts(env, Boolean(user));
   let starred = [];
   if (user) {
@@ -431,8 +436,8 @@ async function favoritesCalendar(url, env) {
   });
 }
 
-async function emailReminderSettings(request, env) {
-  const user = await authenticatedUser(request, env);
+async function emailReminderSettings(request, env, session) {
+  const user = await authenticatedUser(request, env, session);
   if (!user) throw new HttpError(401, "GitHub sign-in is required.");
   const settings = await env.DB.prepare(
     "SELECT email, timezone, language, daily_enabled FROM email_reminders WHERE github_id = ?",
@@ -449,8 +454,8 @@ async function emailReminderSettings(request, env) {
   });
 }
 
-async function updateEmailReminderSettings(request, env) {
-  const user = await authenticatedUser(request, env);
+async function updateEmailReminderSettings(request, env, session) {
+  const user = await authenticatedUser(request, env, session);
   if (!user) throw new HttpError(401, "GitHub sign-in is required.");
   const body = await readJsonBody(request);
   if (!validReminderTimezone(body?.timezone) || !validReminderLanguage(body?.language)
@@ -467,11 +472,11 @@ async function updateEmailReminderSettings(request, env) {
     ).bind(user.github_id),
   ]);
   if (results[0].meta?.changes !== 1) throw new HttpError(404, "Enable email reminders first.");
-  return emailReminderSettings(request, env);
+  return emailReminderSettings(request, env, session);
 }
 
-async function deleteEmailReminderSettings(request, env) {
-  const user = await authenticatedUser(request, env);
+async function deleteEmailReminderSettings(request, env, session) {
+  const user = await authenticatedUser(request, env, session);
   if (!user) throw new HttpError(401, "GitHub sign-in is required.");
   await env.DB.prepare("DELETE FROM email_reminders WHERE github_id = ?").bind(user.github_id).run();
   return json({ enabled: false });
@@ -530,8 +535,8 @@ export function filterFavoritesCalendar(calendar, selectedIds) {
   return filtered.join("\r\n");
 }
 
-async function mutateStar(request, env, url) {
-  const user = await authenticatedUser(request, env);
+async function mutateStar(request, env, url, session) {
+  const user = await authenticatedUser(request, env, session);
   if (!user) {
     return json({ error: "GitHub sign-in is required." }, 401);
   }
@@ -571,14 +576,14 @@ async function mutateStar(request, env, url) {
   });
 }
 
-async function listMessages(request, env, url) {
+async function listMessages(request, env, url, session) {
   const sort = url.searchParams.get("sort") ?? "latest";
   if (!["latest", "likes", "mine"].includes(sort)) {
     throw new HttpError(400, "Invalid message sort.");
   }
   const offset = parseMessageOffset(url);
 
-  const user = await authenticatedUser(request, env);
+  const user = await authenticatedUser(request, env, session);
   if (offset > 0 && !user) {
     throw new HttpError(401, "GitHub sign-in is required to browse older messages.");
   }
@@ -649,7 +654,7 @@ async function listMessages(request, env, url) {
   });
 }
 
-async function listMessageReplies(request, env, url, messageId) {
+async function listMessageReplies(request, env, url, messageId, session) {
   if (!Number.isSafeInteger(messageId) || messageId < 1) {
     throw new HttpError(400, "Invalid message ID.");
   }
@@ -666,7 +671,7 @@ async function listMessageReplies(request, env, url, messageId) {
   }
 
   const offset = parseMessageOffset(url);
-  const user = await authenticatedUser(request, env);
+  const user = await authenticatedUser(request, env, session);
   if (offset > 0 && !user) {
     throw new HttpError(401, "GitHub sign-in is required to browse older replies.");
   }
@@ -728,8 +733,8 @@ function parseMessageOffset(url) {
   return offset;
 }
 
-async function createMessage(request, env) {
-  const user = await authenticatedUser(request, env);
+async function createMessage(request, env, session) {
+  const user = await authenticatedUser(request, env, session);
   if (!user) {
     return json({ error: "GitHub sign-in is required." }, 401);
   }
@@ -805,11 +810,11 @@ async function createMessage(request, env) {
   );
 }
 
-async function mutateMessageLike(request, env, messageId) {
+async function mutateMessageLike(request, env, messageId, session) {
   if (!Number.isSafeInteger(messageId) || messageId < 1) {
     throw new HttpError(400, "Invalid message ID.");
   }
-  const user = await authenticatedUser(request, env);
+  const user = await authenticatedUser(request, env, session);
   if (!user) {
     throw new HttpError(401, "GitHub sign-in is required.");
   }
@@ -848,8 +853,8 @@ async function mutateMessageLike(request, env, messageId) {
   });
 }
 
-async function deleteMessage(request, env, url) {
-  const user = await authenticatedUser(request, env);
+async function deleteMessage(request, env, url, session) {
+  const user = await authenticatedUser(request, env, session);
   if (!user) {
     return json({ error: "GitHub sign-in is required." }, 401);
   }
@@ -894,21 +899,50 @@ async function logout(request, env) {
   });
 }
 
-async function authenticatedUser(request, env) {
+async function authenticatedUser(request, env, session) {
   const token = parseCookies(request.headers.get("Cookie"))[cookieName(SESSION_COOKIE, request)];
   if (!token || !/^[A-Za-z0-9_-]{43}$/.test(token)) return null;
-  const user = await env.DB.prepare(
-    `SELECT users.github_id, users.login, users.avatar_url, users.profile_url
+  const tokenHash = await sha256Hex(token);
+  const now = unixTime();
+  const row = await env.DB.prepare(
+    `SELECT users.github_id, users.login, users.avatar_url, users.profile_url,
+            sessions.expires_at AS session_expires_at
      FROM sessions JOIN users ON users.github_id = sessions.github_id
      WHERE sessions.token_hash = ? AND sessions.expires_at > ?`,
   )
-    .bind(await sha256Hex(token), unixTime())
+    .bind(tokenHash, now)
     .first();
-  if (user && ["POST", "PUT", "DELETE"].includes(request.method) && env.USER_WRITE_LIMITER) {
+  if (!row) return null;
+  const { session_expires_at: expiresAt, ...user } = row;
+  if (["POST", "PUT", "DELETE"].includes(request.method) && env.USER_WRITE_LIMITER) {
     const { success } = await env.USER_WRITE_LIMITER.limit({ key: String(user.github_id) });
     if (!success) throw new HttpError(429, "Too many requests. Please try again later.");
   }
+  if (session && expiresAt <= now + SESSION_TTL_SECONDS - SESSION_RENEWAL_INTERVAL_SECONDS) {
+    session.token = token;
+    session.tokenHash = tokenHash;
+  }
   return user;
+}
+
+async function renewSession(request, env, response, session) {
+  const now = unixTime();
+  try {
+    // Conditional renewal keeps expired or revoked sessions invalid and limits
+    // writes to once a day, including when several requests arrive together.
+    const result = await env.DB.prepare(
+      `UPDATE sessions SET expires_at = ?
+       WHERE token_hash = ? AND expires_at > ? AND expires_at <= ?`,
+    ).bind(now + SESSION_TTL_SECONDS, session.tokenHash, now,
+      now + SESSION_TTL_SECONDS - SESSION_RENEWAL_INTERVAL_SECONDS).run();
+    if (Number(result.meta?.changes) === 1) {
+      response.headers.append("Set-Cookie",
+        serializeCookie(SESSION_COOKIE, session.token, SESSION_TTL_SECONDS, request));
+    }
+  } catch {
+    // A renewal failure must not turn a completed user action into a retry.
+    console.error("Session renewal failed");
+  }
 }
 
 function requireConfiguration(env) {

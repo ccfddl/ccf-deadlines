@@ -54,7 +54,7 @@
 
     <section aria-labelledby="browser-storage">
       <h2 id="browser-storage">Cookies and browser preferences</h2>
-      <p>CCFDDL uses cookies for GitHub authorization and signed-in sessions. The authorization cookie expires after 10 minutes; the session cookie has a 30-day lifetime. The production session cookie is named <code>__Host-ccfddl_session</code> and is marked HttpOnly and Secure. The database stores a hash of the session token. Signing out removes the current session and clears its cookie.</p>
+      <p>CCFDDL uses cookies for GitHub authorization and signed-in sessions. The authorization cookie expires after 10 minutes; the session cookie is issued with a 30-day lifetime. While you use the website, the session and its cookie are periodically renewed for another 30 days, allowing active users to remain signed in. The production session cookie is named <code>__Host-ccfddl_session</code> and is marked HttpOnly and Secure. The database stores a hash of the session token. Signing out immediately revokes the current session and clears its cookie.</p>
       <p>The site uses browser localStorage to remember choices such as language, display time zone, subject and ranking filters, search text and view preferences. This storage remains on your device until you or your browser clear it. It is separate from the account favorites and reminder settings stored on the server.</p>
       <p>You can remove cookies and localStorage through your browser's site-data settings. Blocking or clearing session cookies may require you to sign in again. Clearing local preferences resets those choices.</p>
     </section>
@@ -79,7 +79,7 @@
 
     <section aria-labelledby="retention">
       <h2 id="retention">Retention and your controls</h2>
-      <p>Account records, favorites, public contributions and abuse-prevention records do not have a fixed automatic expiry in the current application. Remove favorites or your own messages through the website when you no longer want them stored. Session records expire after 30 days and expired records are cleaned up during sign-in.</p>
+      <p>Account records, favorites, public contributions and abuse-prevention records do not have a fixed automatic expiry in the current application. Remove favorites or your own messages through the website when you no longer want them stored. Session records expire 30 days after issuance or their most recent renewal. There is no fixed total lifetime limit while renewal continues. Expired records are cleaned up during sign-in.</p>
       <p>The email scheduler is configured to remove send records whose local date is more than seven days old, including saved retry payloads, during its daily cleanup. Infrastructure, analytics, advertising and email providers may retain their own records under their policies and account settings; this application cleanup does not set those retention periods.</p>
       <p>For questions about access, correction or deletion of other CCFDDL account data, contact the maintainers through <a href="https://github.com/ccfddl/ccf-deadlines/issues/new">GitHub Issues</a>. GitHub issues are public: do not include your email address, session cookies, authorization tokens or other sensitive information. If a request needs private information, ask how to proceed before posting it.</p>
     </section>
@@ -123,7 +123,7 @@
 
       <section aria-labelledby="zh-browser-storage">
         <h2 id="zh-browser-storage">Cookie 与浏览器偏好</h2>
-        <p>CCFDDL 使用 Cookie 完成 GitHub 授权并维持登录会话。授权 Cookie 在 10 分钟后过期，登录会话 Cookie 的有效期为 30 天。生产环境的会话 Cookie 名称为 <code>__Host-ccfddl_session</code>，并设有 HttpOnly 和 Secure 属性。数据库保存的是会话令牌的哈希值。退出登录会删除当前会话并清除其 Cookie。</p>
+        <p>CCFDDL 使用 Cookie 完成 GitHub 授权并维持登录会话。授权 Cookie 在 10 分钟后过期，登录会话 Cookie 每次签发时的有效期为 30 天。使用网站期间，会话及其 Cookie 会定期自动续期 30 天，因此活跃用户可以持续保持登录。生产环境的会话 Cookie 名称为 <code>__Host-ccfddl_session</code>，并设有 HttpOnly 和 Secure 属性。数据库保存的是会话令牌的哈希值。退出登录会立即撤销当前会话并清除其 Cookie。</p>
         <p>网站使用浏览器 localStorage 记住语言、显示时区、学科与排名筛选、搜索文字和视图偏好等选择。这些数据会保留在您的设备上，直到您或浏览器将其清除。它们与服务器保存的账户收藏和提醒设置相互独立。</p>
         <p>您可以通过浏览器的网站数据设置删除 Cookie 和 localStorage。阻止或清除会话 Cookie 后，您可能需要重新登录。清除本地偏好会重置相应选择。</p>
       </section>
@@ -148,7 +148,7 @@
 
       <section aria-labelledby="zh-retention">
         <h2 id="zh-retention">保留期限与您的控制方式</h2>
-        <p>当前应用没有为账户记录、收藏、公开贡献及防滥用记录设置固定的自动过期时间。如果您不再希望保留某条收藏或自己发布的留言，可以通过网站将其删除。会话记录在 30 天后过期，已过期记录会在登录过程中清理。</p>
+        <p>当前应用没有为账户记录、收藏、公开贡献及防滥用记录设置固定的自动过期时间。如果您不再希望保留某条收藏或自己发布的留言，可以通过网站将其删除。会话记录在签发或最近一次续期后的 30 天到期，持续续期期间没有固定的总时长上限。已过期记录会在登录过程中清理。</p>
         <p>邮件调度器配置为在每日清理时删除当地日期已超过七天的发送记录，包括保存的重试内容。基础设施、分析、广告和邮件提供商可能按照自身政策及账户设置保留记录；应用中的这项清理不会决定这些提供商的保留期限。</p>
         <p>如需询问其他 CCFDDL 账户数据的访问、更正或删除事宜，请通过 <a href="https://github.com/ccfddl/ccf-deadlines/issues/new">GitHub Issues</a> 联系维护者。GitHub Issue 是公开的：请勿填写您的邮箱地址、会话 Cookie、授权令牌或其他敏感信息。如果请求需要私人信息，请先询问应如何处理，再决定如何提供。</p>
       </section>
