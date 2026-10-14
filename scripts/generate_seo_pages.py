@@ -23,6 +23,9 @@ from conference_share_image import deadline_card_data, share_images
 ROOT = Path(__file__).resolve().parent.parent
 BASE_URL = "https://ccfddl.com"
 KNOWN_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}(?: \d{2}:\d{2}(?::\d{2})?)?$")
+UNCONFIRMED_DATE = re.compile(
+    r"\b(?:TBD|TBA|TBC|tentative|estimated?|approx(?:imate(?:ly)?)?|expected|predict(?:ed|ion)?|provisional)\b"
+    r"|to be (?:announced|confirmed)|待定|预计|估计", re.IGNORECASE)
 CATEGORY_EN_BY_SUB = {
     "DS": "Computer Architecture",
     "NW": "Network System",
@@ -216,7 +219,7 @@ def directory_startup() -> str:
     </script>'''
 
 
-def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: list[tuple[str, str]] | None = None, detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "", show_clock: bool = True, static_controls: str = "/venues/controls.js") -> str:
+def layout(title: str, description: str, canonical: str, body: str, navigation: str = "", breadcrumb: list[tuple[str, str]] | None = None, detail_page: bool = False, app_assets: str = "", static_css: str = "/venues/style.css", social_image: str = "", social_image_alt: str = "", show_clock: bool = True, static_controls: str = "/venues/controls.js", allow_ads: bool = False) -> str:
     social = ""
     if social_image:
         social = f'''<meta property="og:type" content="website">
@@ -238,7 +241,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     clock_control = (
         '<div class="toolbar-clock" data-nosnippet><span class="toolbar-clock-value" id="display-clock">—</span>'
         '<span class="toolbar-timezone"><span>(</span><label class="toolbar-timezone-picker">'
-        '<select id="display-timezone" aria-label="Select display timezone"><option value="UTC">UTC</option></select>'
+        '<select id="display-timezone" aria-label="Select display timezone"><option value="UTC">UTC (UTC+0)</option></select>'
         '<span class="toolbar-timezone-arrow" aria-hidden="true">⌄</span></label><span> time)</span></span></div>'
     )
     filters = (
@@ -250,6 +253,8 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     page_controls = f'<script src="{text(static_controls)}" defer></script>' if not detail_page or show_clock else ""
     breadcrumb_markup = breadcrumb_html(breadcrumb) if breadcrumb else ""
     structured_breadcrumb = breadcrumb_jsonld(breadcrumb) if breadcrumb else ""
+    ad_script = ('<script src="/site-ads.js" defer data-content-selector=".detail-card"></script>'
+                 if allow_ads else "")
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -257,15 +262,18 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{text(title)}</title>
   <meta name="description" content="{text(description)}">
+  <meta name="google-adsense-account" content="ca-pub-2114972416819347">
   <link rel="canonical" href="{text(canonical)}">
   <link rel="describedby" href="{BASE_URL}/llms.txt" type="text/plain">
   {structured_breadcrumb}
   {social}
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2114972416819347" crossorigin="anonymous"></script>
+  {ad_script}
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/svg+xml" href="/ccfddl-logo.svg">
   {app_assets}
   <link rel="stylesheet" href="{text(static_css)}">
+  <link rel="stylesheet" href="/privacy-modal.css?v=1">
+  <script src="/privacy-modal.js?v=3" defer></script>
 </head>
 <body class="{'detail-page' if detail_page else 'directory-page'}">
   <div class="home">
@@ -277,7 +285,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       {filters}
     </header>
     <main>{body}</main>
-    <footer class="footer"><div class="footer-text"><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
+    <footer class="footer"><div class="footer-text"><nav class="footer-links" aria-label="Site information" data-nosnippet><a href="/privacy.html" data-privacy-modal>Privacy Policy</a></nav><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
   </div>
   <script>(function(){{
     function setLanguage(english){{
@@ -387,6 +395,32 @@ def edition_metadata(conference: dict, edition: dict) -> tuple[str, str]:
     return title, description + ". Track paper submission deadlines, check deadline time zones, and explore past venues on CCFDDL."
 
 
+def edition_allows_ads(edition: dict) -> bool:
+    """Conservatively limit ads to sourced editions with a concrete date.
+
+    This is a local placement rule, not a prediction of AdSense approval.
+    Undated editions and navigation/series pages remain available without ads.
+    """
+    if not safe_link(str(edition.get("link") or "")):
+        return False
+    # Read the published date field, not a cached/estimated opening timestamp.
+    if not UNCONFIRMED_DATE.search(str(edition.get("date") or "")) and conference_opening(edition):
+        return True
+    for point in edition.get("timeline", []):
+        if UNCONFIRMED_DATE.search(str(point.get("comment") or "")):
+            continue
+        for field in ("abstract_deadline", "deadline", "rebuttal_deadline", "decision_deadline"):
+            raw = str(point.get(field) or "").strip()
+            if not KNOWN_DATE.fullmatch(raw):
+                continue
+            try:
+                datetime.fromisoformat(raw)
+                return True
+            except ValueError:
+                continue
+    return False
+
+
 def edition_page(conference: dict, edition: dict, categories: dict[str, str], acceptances: dict[str, list[dict]], static_css: str = "/venues/style.css", static_controls: str = "/venues/controls.js") -> str:
     name, year = conference["title"], edition["year"]
     path = edition_path(conference, edition)
@@ -467,7 +501,7 @@ def edition_page(conference: dict, edition: dict, categories: dict[str, str], ac
     {history_section}
     """
     breadcrumb = venue_trail(conference, categories, year)
-    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL", static_controls=static_controls)
+    return layout(title, description, canonical, body, breadcrumb=breadcrumb, detail_page=True, static_css=static_css, social_image=canonical + "share.png?v=deadlines-2", social_image_alt=f"{name} {year}: all listed abstract, paper, rebuttal and decision deadline dates by round; source timezone {edition.get('timezone') or 'not listed'}. CCFDDL", static_controls=static_controls, allow_ads=edition_allows_ads(edition))
 
 
 def series_page(conference: dict, categories: dict[str, str], static_css: str = "/venues/style.css") -> str:
@@ -601,11 +635,11 @@ a:hover{color:#d9554f}
 .subtitle a{color:inherit}
 .directory-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;min-height:46px;padding:4px 0 10px;border-bottom:1px solid #e8e3dc}
 .detail-toolbar{margin-top:12px;padding-top:12px;border-top:1px solid #e8e3dc}
-.detail-toolbar .toolbar-clock{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 8px;color:#666;font-size:14px;white-space:nowrap}
+.detail-toolbar .toolbar-clock{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 8px;max-width:100%;min-width:0;color:#666;font-size:14px;white-space:nowrap}
 .detail-toolbar .toolbar-clock-value{color:#666;font-variant-numeric:tabular-nums;font-weight:500}
 .detail-toolbar .toolbar-timezone{display:inline-flex;align-items:center;gap:0;line-height:1.4}
-.detail-toolbar .toolbar-timezone-picker{display:inline-flex;align-items:center;cursor:pointer}
-.detail-toolbar .toolbar-timezone select{max-width:190px;padding:0 0 0 2px;border:0;appearance:none;background:transparent;color:#666;font:inherit;cursor:pointer}
+.detail-toolbar .toolbar-timezone-picker{display:inline-flex;align-items:center;min-width:0;cursor:pointer}
+.detail-toolbar .toolbar-timezone select{max-width:calc(100vw - 120px);min-width:0;padding:0 0 0 2px;border:0;appearance:none;background:transparent;color:#666;font:inherit;cursor:pointer}
 .detail-toolbar .toolbar-timezone-arrow{position:relative;top:-1px;margin-left:3px;font-size:12px;line-height:1;pointer-events:none}
 .detail-toolbar .toolbar-timezone>span:last-child{margin-left:3px}
 .directory-categories{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.directory-controls-loading{font-size:14px;color:#666}
@@ -720,8 +754,9 @@ main{padding:18px 0 8px}
 .venue-description{flex-basis:100%;padding:0 10px 10px;color:#697583;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
 .directory-empty{margin:14px 0;color:#697583;font-size:14px}
 .footer{display:flex;align-items:center;min-height:20px;padding:8px 0 16px;color:#666;font-size:14px;line-height:20px}
-.footer-text{display:flex;align-items:center;gap:14px;min-width:0}
+.footer-text{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;min-width:0}
 .footer-credit{min-width:0}
+.footer-links{display:flex;flex-wrap:wrap;gap:12px}
 .footer a{color:#666}
 @media(max-width:600px){
   .header-main .title{justify-self:start;max-width:100%;font-size:clamp(20px,6vw,24px)}
@@ -784,6 +819,13 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     output.mkdir(parents=True, exist_ok=True)
     for asset in ("favicon.ico", "ccfddl-logo.svg", "llms.txt"):
         shutil.copy2(ROOT / "public" / asset, output / asset)
+    information_paths = []
+    for asset in ("site-ads.js", "site-pages.css", "privacy.html", "privacy-modal.js", "privacy-modal.css"):
+        source = ROOT / "public" / asset
+        if source.is_file():
+            shutil.copy2(source, output / asset)
+            if asset.endswith(".html"):
+                information_paths.append(f"/{asset}")
     acceptances = acceptances or {}
     directory = output / "venues"
     directory.mkdir(exist_ok=True)
@@ -838,7 +880,7 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     directory.mkdir(exist_ok=True)
     (directory / "index.html").write_text(directory_page(conferences, categories, assets, static_css, static_controls), encoding="utf-8")
     urls = Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-    for path in ("/", "/venues/", *sorted(written)):
+    for path in ("/", "/venues/", *information_paths, *sorted(written)):
         SubElement(SubElement(urls, "url"), "loc").text = BASE_URL + path
     (output / "sitemap.xml").write_bytes(b'<?xml version="1.0" encoding="UTF-8"?>\n' + tostring(urls, encoding="utf-8") + b"\n")
     return written

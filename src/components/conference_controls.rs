@@ -3,8 +3,8 @@ use crate::components::checkbox_button::*;
 use crate::components::conf::{Category, get_categories};
 use crate::components::countdown::use_interval;
 use crate::components::showtable::{
-    display_timezone_options, format_base_time_display, format_datetime_local,
-    is_supported_display_timezone,
+    display_timezone_label_at, display_timezone_options, format_base_time_display,
+    format_datetime_local, is_supported_display_timezone,
 };
 use crate::components::timezone::get_timezone_name;
 use chrono::Utc;
@@ -185,14 +185,17 @@ fn TimezonePicker(
     browser_timezone: String,
     open_dropdown: RwSignal<Option<String>>,
 ) -> impl IntoView {
+    let picker = NodeRef::<leptos::html::Div>::new();
+    let resize = window_event_listener(ev::resize, move |_| open_dropdown.set(None));
+    on_cleanup(move || resize.remove());
     view! {
                     <div class="toolbar-timezone">
                         <span>"("</span>
-                        <div class="toolbar-timezone-picker">
+                        <div class="toolbar-timezone-picker" node_ref=picker>
                             <button
                                 type="button"
                                 class="toolbar-timezone-trigger"
-                                title=move || selected_timezone.get()
+                                title=move || display_timezone_label_at(&selected_timezone.get(), Utc::now().timestamp_millis())
                                 aria-label=move || if use_english.get() { "Select display timezone" } else { "选择显示时区" }
                                 aria-haspopup="listbox"
                                 aria-expanded=move || {
@@ -216,10 +219,22 @@ fn TimezonePicker(
                                     class="toolbar-timezone-backdrop"
                                     on:click=move |_| open_dropdown.set(None)
                                 ></div>
-                                <div class="toolbar-timezone-menu" role="listbox">
-                                    {display_timezone_options(&browser_timezone)
+                                <div class="toolbar-timezone-menu" role="listbox"
+                                    style=move || {
+                                        if is_narrow_viewport() {
+                                            picker.get().map(|element| {
+                                                format!("left:{}px;", 20.0 - element.get_bounding_client_rect().left())
+                                            }).unwrap_or_default()
+                                        } else {
+                                            String::new()
+                                        }
+                                    }
+                                >
+                                    {let timestamp = Utc::now().timestamp_millis();
+                                    display_timezone_options(&browser_timezone)
                                         .into_iter()
                                         .map(|timezone| {
+                                            let label = display_timezone_label_at(&timezone, timestamp);
                                             let value = timezone.clone();
                                             let selected_value = timezone.clone();
                                             view! {
@@ -235,7 +250,7 @@ fn TimezonePicker(
                                                         open_dropdown.set(None);
                                                     }
                                                 >
-                                                    {timezone}
+                                                    {label}
                                                 </button>
                                             }
                                         })

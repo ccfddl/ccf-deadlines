@@ -8,6 +8,7 @@ use crate::components::email_reminders::EmailReminderModal;
 use crate::components::favorites::FavoritesContext;
 use crate::components::favorites_timeline::FavoritesTimelineModal;
 use crate::components::message_wall::MessageWallModal;
+use crate::components::site_footer::SiteFooterLinks;
 use crate::components::subscription_modal::*;
 use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
@@ -1514,6 +1515,7 @@ pub fn ShowTable(
 
             <div class="footer">
                 <div class="footer-text">
+                    <SiteFooterLinks use_english />
                     <span class="footer-credit" data-nosnippet="">
                         "Maintained by @ccfddl. If you find it useful, star or follow "
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank">
@@ -1612,6 +1614,26 @@ pub(crate) fn is_supported_display_timezone(value: &str, browser_timezone: &str)
     display_timezone_options(browser_timezone)
         .iter()
         .any(|timezone| timezone == value)
+}
+
+pub(crate) fn display_timezone_label_at(timezone: &str, timestamp_millis: i64) -> String {
+    #[cfg(target_arch = "wasm32")]
+    let Some(offset) = timezone_offset_from_intl(timezone, timestamp_millis) else {
+        return timezone.to_string();
+    };
+    #[cfg(not(target_arch = "wasm32"))]
+    let offset = display_timezone_offset_at(timezone, timestamp_millis);
+    let offset_minutes = offset.local_minus_utc() / 60;
+    let sign = if offset_minutes < 0 { '-' } else { '+' };
+    let minutes = offset_minutes.unsigned_abs();
+    let hours = minutes / 60;
+    let remainder = minutes % 60;
+    let offset = if remainder == 0 {
+        format!("UTC{sign}{hours}")
+    } else {
+        format!("UTC{sign}{hours}:{remainder:02}")
+    };
+    format!("{timezone} ({offset})")
 }
 
 #[cfg(target_arch = "wasm32")]

@@ -319,6 +319,90 @@ class SearchPresentationTests(unittest.TestCase):
         self.assertNotIn('noindex', directory)
 
 
+class AdPlacementTests(unittest.TestCase):
+    def test_edition_needs_a_valid_date_and_official_link(self):
+        edition = {'year': 2027, 'link': 'https://example.org/2027/', 'timezone': 'UTC',
+                   'timeline': [{'deadline': '2027-01-10 23:59:59'}]}
+        self.assertTrue(seo.edition_allows_ads(edition))
+        self.assertTrue(seo.edition_allows_ads({**edition, 'link': 'http://example.org/2027/'}))
+        for link in ('', 'TBD', '/2027/', 'javascript:alert(1)'):
+            with self.subTest(link=link):
+                self.assertFalse(seo.edition_allows_ads({**edition, 'link': link}))
+        for raw in ('TBD', 'TBA', '', '2027-02-30', '2027-13-01 23:59:59', '2027-01-10 25:00:00'):
+            with self.subTest(raw=raw):
+                self.assertFalse(seo.edition_allows_ads({**edition, 'timeline': [{'deadline': raw}]}))
+        for field in ('abstract_deadline', 'deadline', 'rebuttal_deadline', 'decision_deadline'):
+            with self.subTest(field=field):
+                self.assertTrue(seo.edition_allows_ads({**edition, 'timeline': [{field: '2027-01-10'}]}))
+        self.assertFalse(seo.edition_allows_ads({**edition, 'timeline': [
+            {'deadline': '2027-01-10', 'comment': 'Estimated date; to be confirmed'}]}))
+
+    def test_conference_date_is_announced_not_an_estimate_or_cached_opening(self):
+        edition = {'year': 2027, 'link': 'https://example.org/2027/', 'timeline': [{'deadline': 'TBD'}]}
+        self.assertTrue(seo.edition_allows_ads({**edition, 'date': 'June 20-25, 2027'}))
+        for date in ('TBD', 'June 2027', 'June 31, 2027', 'June 20-25, 2027 (tentative)',
+                     'June 20-25, 2027 (estimated)', 'June 20-25, 2027 (TBC)'):
+            with self.subTest(date=date):
+                self.assertFalse(seo.edition_allows_ads({**edition, 'date': date}))
+        self.assertFalse(seo.edition_allows_ads({**edition, 'date': 'TBD', 'opening': '2027-06-20 08:00:00'}))
+
+    def test_ads_are_scoped_to_eligible_editions_and_keep_other_pages_accessible(self):
+        known = {'year': 2026, 'link': 'https://example.org/2026/', 'timezone': 'UTC',
+                 'timeline': [{'deadline': '2026-01-10'}]}
+        pending = {'year': 2027, 'link': 'https://example.org/2027/', 'timeline': [{'deadline': 'TBD'}]}
+        conference = {'title': 'Example', 'sub': 'AI', 'confs': [known, pending]}
+        known_page = edition_page(conference, known, {}, {})
+        self.assertIn('<script src="/site-ads.js" defer data-content-selector=".detail-card"></script>', known_page)
+        self.assertIn('2026-01-10', known_page)
+        for page in (edition_page(conference, pending, {}, {}), series_page(conference, {}),
+                     category_page('AI', [conference], {}), directory_page([conference], {})):
+            self.assertNotIn('src="/site-ads.js"', page)
+            self.assertIn('name="google-adsense-account" content="ca-pub-2114972416819347"', page)
+            self.assertIn('rel="canonical"', page)
+            self.assertNotIn('noindex', page)
+        self.assertIn('href="/venues/ai/example-2026/"', series_page(conference, {}))
+        for page in (known_page, directory_page([conference], {})):
+            self.assertIn('<nav class="footer-links" aria-label="Site information" data-nosnippet>', page)
+            self.assertIn('<a href="/privacy.html" data-privacy-modal>Privacy Policy</a>', page)
+            self.assertLess(page.index('class="footer-links"'), page.index('class="footer-credit"'))
+            self.assertIn('<link rel="stylesheet" href="/privacy-modal.css?v=1">', page)
+            self.assertIn('<script src="/privacy-modal.js?v=3" defer></script>', page)
+
+    def test_privacy_page_ships_its_assets_and_enters_sitemap_only_when_copied(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / 'source'
+            (source / 'public').mkdir(parents=True)
+            (source / 'scripts').mkdir()
+            names = ('favicon.ico', 'ccfddl-logo.svg', 'llms.txt', 'site-ads.js', 'site-pages.css',
+                     'privacy.html', 'privacy-modal.js', 'privacy-modal.css')
+            for name in names:
+                shutil.copy2(seo.ROOT / 'public' / name, source / 'public' / name)
+            shutil.copy2(seo.ROOT / 'scripts/seo_page_controls.js', source / 'scripts/seo_page_controls.js')
+            output = root / 'complete'
+            with patch.object(seo, 'ROOT', source):
+                generate([], {}, output)
+            for name in names:
+                self.assertEqual((output / name).read_bytes(), (source / 'public' / name).read_bytes())
+            urls = [node.text for node in ElementTree.parse(output / 'sitemap.xml').iter() if node.tag.endswith('loc')]
+            directory = (output / 'venues/index.html').read_text()
+            self.assertIn('https://ccfddl.com/privacy.html', urls)
+            self.assertIn('href="/privacy.html"', directory)
+            page = (output / 'privacy.html').read_text()
+            self.assertIn('href="/site-pages.css"', page)
+            self.assertIn('href="/ccfddl-logo.svg"', page)
+            self.assertFalse(any(url.endswith(('.css', '.js')) for url in urls))
+
+            # Fixtures without the optional privacy page must not advertise it.
+            (source / 'public/privacy.html').unlink()
+            partial = root / 'partial'
+            with patch.object(seo, 'ROOT', source):
+                generate([], {}, partial)
+            urls = [node.text for node in ElementTree.parse(partial / 'sitemap.xml').iter() if node.tag.endswith('loc')]
+            self.assertNotIn('https://ccfddl.com/privacy.html', urls)
+            self.assertFalse((partial / 'privacy.html').exists())
+
+
 class VenueHubTests(unittest.TestCase):
     def setUp(self):
         self.conference = {
@@ -383,7 +467,8 @@ class VenueHubTests(unittest.TestCase):
                 self.assertIn('href="/venues/ai/acl/"', breadcrumb)
                 self.assertIn(f'rel="canonical" href="https://ccfddl.com/venues/ai/acl-{year}/"', page)
             urls = [node.text for node in ElementTree.parse(root / 'sitemap.xml').iter() if node.tag.endswith('loc')]
-            self.assertEqual(set(urls), {'https://ccfddl.com' + path for path in ['/', '/venues/', *paths]})
+            self.assertEqual(set(urls), {'https://ccfddl.com' + path for path in
+                                       ['/', '/venues/', '/privacy.html', *paths]})
             self.assertEqual(len(urls), len(set(urls)))
             self.assertTrue((root / 'llms.txt').is_file())
             self.assertIn('https://ccfddl.com/mcp', (root / 'llms.txt').read_text())
@@ -465,7 +550,7 @@ class SeoPageTests(unittest.TestCase):
             self.assertNotIn("Browse the latest edition", directory)
             sitemap = ElementTree.parse(output / "sitemap.xml")
             urls = [node.text for node in sitemap.iter() if node.tag.endswith("loc")]
-            self.assertEqual(len(urls), 6)
+            self.assertEqual(len(urls), 7)
             self.assertIn("https://ccfddl.com/venues/", urls)
             self.assertFalse(any("/conferences/" in url for url in urls))
             self.assertFalse((output / "conferences").exists())
@@ -578,7 +663,7 @@ class SeoPageTests(unittest.TestCase):
                 self.assertTrue((output / f"venues/{path}/index.html").exists())
                 self.assertIn(f'href="/venues/{path}/"', directory)
                 self.assertIn(f"https://ccfddl.com/venues/{path}/", urls)
-            self.assertEqual(len(urls), 8)
+            self.assertEqual(len(urls), 9)
 
     def test_unknown_deadline_uses_announced_later_state(self):
         conference = {
