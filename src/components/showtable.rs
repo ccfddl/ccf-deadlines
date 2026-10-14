@@ -8,6 +8,7 @@ use crate::components::email_reminders::EmailReminderModal;
 use crate::components::favorites::FavoritesContext;
 use crate::components::favorites_timeline::FavoritesTimelineModal;
 use crate::components::message_wall::MessageWallModal;
+use crate::components::site_footer::SiteFooterLinks;
 use crate::components::subscription_modal::*;
 use crate::components::timeline::TimeLine;
 use crate::components::timezone::*;
@@ -1520,6 +1521,7 @@ pub fn ShowTable(
                             "@ccfddl"
                         </a> " on Github."
                     </span>
+                    <SiteFooterLinks use_english />
                 </div>
                 <div class="footer-pagination">
                     <Pagination page page_count />

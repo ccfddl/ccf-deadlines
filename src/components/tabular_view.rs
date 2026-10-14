@@ -4,6 +4,7 @@ use crate::components::conference_controls::{
     persist_filters,
 };
 use crate::components::showtable::{display_timezone_offset_at, parse_deadline_to_rfc3339};
+use crate::components::site_footer::SiteFooterLinks;
 use chrono::{DateTime, Datelike, Utc};
 use leptos::prelude::*;
 use std::collections::HashSet;
@@ -261,6 +262,7 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">"@ccfddl"</a>
                         " on Github."
                     </span>
+                    <SiteFooterLinks use_english />
                 </div>
             </div>
         </section>

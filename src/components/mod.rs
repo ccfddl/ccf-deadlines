@@ -12,6 +12,7 @@ pub mod header;
 pub mod message_wall;
 pub mod select_dropdown;
 pub mod showtable;
+pub mod site_footer;
 pub mod subscription_modal;
 pub mod tabular_view;
 pub mod timeline;

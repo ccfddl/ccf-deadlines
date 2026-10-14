@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How CCFDDL handles GitHub sign-in, favorites, email reminders, browser preferences, analytics and advertising, and the choices available to visitors.">
+  <title>Privacy Policy | CCFDDL</title>
+  <link rel="canonical" href="https://ccfddl.com/privacy.html">
+  <link rel="stylesheet" href="/site-pages.css">
+  <link rel="icon" type="image/svg+xml" href="/ccfddl-logo.svg">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-brand" href="/">CCFDDL</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="/">Tracker</a>
+      <a href="/about.html">About</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/privacy.html" aria-current="page">Privacy</a>
+    </nav>
+  </header>
+  <main id="main" class="site-page">
+    <h1>Privacy Policy</h1>
+    <p class="page-meta">Last updated: <time datetime="2026-10-14">October 14, 2026</time></p>
+    <p class="page-intro">This policy explains how the CCFDDL website and its supporting services handle information when you browse conference deadlines, sign in, save favorites, post messages or enable email reminders.</p>
+    <p class="notice" lang="zh-CN">中文说明：浏览公开会议信息无需登录。GitHub 登录、收藏、留言及邮件提醒会使用下述相应数据；网站部分页面使用 Google Analytics 和 AdSense。您可在账户菜单关闭邮件提醒、清除浏览器本地数据，并使用下方 Google 链接管理分析与广告偏好。</p>
+
+    <section aria-labelledby="browsing">
+      <h2 id="browsing">Browsing and service providers</h2>
+      <p>You can browse public conference information without creating a CCFDDL account. The static website is hosted through GitHub Pages, with Cloudflare providing network delivery and the Worker services used by the website. These providers process connection information, such as IP addresses, requested URLs and browser or request metadata, to deliver the service and protect it from abuse.</p>
+      <p>The site also loads resources from other providers, such as GitHub avatars and calendar service icons. Those requests disclose connection information to the provider serving the resource. Conference websites, GitHub, calendar providers and other external services have their own privacy practices.</p>
+    </section>
+
+    <section aria-labelledby="account">
+      <h2 id="account">GitHub sign-in and favorites</h2>
+      <p>When you sign in with GitHub, CCFDDL stores your GitHub numeric user ID, username, avatar URL and profile URL in its Cloudflare D1 database. A session record connects your browser to your account. The application uses the GitHub access token during authorization and does not keep that token in its database.</p>
+      <p>Normal sign-in does not request the separate GitHub permission to read your email address. That permission is requested when you choose to enable email reminders.</p>
+      <p>Favorites are stored as links between your GitHub user ID and conference editions, with timestamps. The site publishes aggregate favorite counts for each edition. Your personal favorite selection is returned to your signed-in account; a public count does not list the people who contributed to it.</p>
+      <p>If you create or share a calendar subscription link, its URL contains the selected conference edition IDs. Anyone with that link can see those selections. Your calendar provider receives the feed URL and events when you add or refresh the subscription.</p>
+    </section>
+
+    <section aria-labelledby="messages">
+      <h2 id="messages">Public messages</h2>
+      <p>Messages and replies you post on the message wall are public and appear with your GitHub username and profile or avatar information. CCFDDL stores their content, timestamps and account association, along with likes, reply relationships and posting-limit records. You can delete your own messages and change your likes through the site. Avoid posting private information in public messages.</p>
+    </section>
+
+    <section aria-labelledby="email">
+      <h2 id="email">Email reminders</h2>
+      <p>If you enable reminders, a separate GitHub authorization lets CCFDDL read your verified primary email address. CCFDDL stores that address, your time zone, email language and daily-reminder setting in D1, linked to your GitHub user ID. The service uses your saved favorites and these settings to prepare deadline reminders.</p>
+      <p>CCFDDL sends reminders through Resend. Delivery involves providing Resend with the recipient address and email content, including the relevant conferences and deadlines. Recent send records in D1 include delivery status, a provider message ID and a saved email payload used for retries and duplicate prevention.</p>
+      <p>You can change the settings or turn reminders off in <strong>Email Reminders</strong> in the account menu. Each reminder also includes an unsubscribe link, which opens a confirmation page. Turning reminders off removes the reminder settings, stored reminder address and associated send records from the application database. Emails already delivered, and records retained by your email provider or Resend, are subject to those providers' practices.</p>
+    </section>
+
+    <section aria-labelledby="browser-storage">
+      <h2 id="browser-storage">Cookies and browser preferences</h2>
+      <p>CCFDDL uses cookies for GitHub authorization and signed-in sessions. The authorization cookie expires after 10 minutes; the session cookie has a 30-day lifetime. The production session cookie is named <code>__Host-ccfddl_session</code> and is marked HttpOnly and Secure. The database stores a hash of the session token. Signing out removes the current session and clears its cookie.</p>
+      <p>The site uses browser localStorage to remember choices such as language, display time zone, subject and ranking filters, search text and view preferences. This storage remains on your device until you or your browser clear it. It is separate from the account favorites and reminder settings stored on the server.</p>
+      <p>You can remove cookies and localStorage through your browser's site-data settings. Blocking or clearing session cookies may require you to sign in again. Clearing local preferences resets those choices.</p>
+    </section>
+
+    <section aria-labelledby="analytics">
+      <h2 id="analytics">Google Analytics</h2>
+      <p>The tracker includes Google Analytics 4 to help the maintainers understand visits and site usage. Depending on the applicable Google and browser settings, Analytics can use cookies and technical identifiers and process information such as page URLs, referral information, browser and device characteristics, and approximate location. Google handles connection information under its own policies.</p>
+      <p>Read <a href="https://policies.google.com/technologies/partner-sites">how Google uses information from partner websites</a> and <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>. Google provides an <a href="https://tools.google.com/dlpage/gaoptout">Analytics opt-out browser add-on</a> for supported browsers. Browser privacy controls can also restrict storage and requests to third-party services.</p>
+    </section>
+
+    <section aria-labelledby="advertising">
+      <h2 id="advertising">Google AdSense and advertising choices</h2>
+      <p>Selected conference detail pages include Google AdSense advertising code. The interactive tracker, directory and this policy page do not load it. Google and other advertising vendors may store or read cookies and use identifiers, web beacons or IP addresses when serving and measuring ads. Advertising cookies can enable Google and its partners to personalize ads using previous visits to this website and other websites.</p>
+      <p>You can manage or opt out of Google ad personalization through <a href="https://adssettings.google.com/">Google Ad Settings</a>. For participating third-party advertising vendors, <a href="https://optout.aboutads.info/">the Digital Advertising Alliance's opt-out tool</a> offers additional choices. These controls have their own browser, device and account scope; opting out of personalization does not necessarily remove ads or measurement.</p>
+      <p>See <a href="https://policies.google.com/technologies/ads">Google's advertising information</a> for details. Ad delivery and available choices depend on provider configuration, location and your settings. This privacy page does not load AdSense or Google Analytics scripts.</p>
+    </section>
+
+    <section aria-labelledby="mcp">
+      <h2 id="mcp">MCP and AI clients</h2>
+      <p>The public MCP service searches the public conference dataset. It does not use website sessions, personal favorites, email addresses or reminder settings. It processes the query supplied by your client to return a result and does not keep query or result history in the application database. Cloudflare still processes the network request, and the AI client provider processes the interaction under its own terms. See the <a href="/mcp-privacy.html">MCP plugin privacy policy</a> for the service-specific explanation.</p>
+    </section>
+
+    <section aria-labelledby="retention">
+      <h2 id="retention">Retention and your controls</h2>
+      <p>Account records, favorites, public contributions and abuse-prevention records do not have a fixed automatic expiry in the current application. Remove favorites or your own messages through the website when you no longer want them stored. Session records expire after 30 days and expired records are cleaned up during sign-in.</p>
+      <p>The email scheduler is configured to remove send records whose local date is more than seven days old, including saved retry payloads, during its daily cleanup. Infrastructure, analytics, advertising and email providers may retain their own records under their policies and account settings; this application cleanup does not set those retention periods.</p>
+      <p>For questions about access, correction or deletion of other CCFDDL account data, contact the maintainers through <a href="https://github.com/ccfddl/ccf-deadlines/issues/new">GitHub Issues</a>. GitHub issues are public: do not include your email address, session cookies, authorization tokens or other sensitive information. If a request needs private information, ask how to proceed before posting it.</p>
+    </section>
+
+    <section aria-labelledby="providers">
+      <h2 id="providers">Provider policies and updates</h2>
+      <p>You can review the policies of <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub</a>, <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> and <a href="https://resend.com/legal/privacy-policy">Resend</a> for their handling of information. This page describes CCFDDL's current features and may be updated when those features or providers change; the update date appears above.</p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>Maintained by <a href="https://github.com/ccfddl">@ccfddl</a>. <a href="https://github.com/ccfddl/ccf-deadlines/issues/new">Contact via GitHub Issues</a>.</p>
+    <nav aria-label="Footer navigation">
+      <a href="/about.html">About</a>
+      <a href="/guide.html">Guide</a>
+      <a href="/privacy.html" aria-current="page">Privacy</a>
+    </nav>
+  </footer>
+</body>
+</html>

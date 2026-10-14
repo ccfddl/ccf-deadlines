@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Use CCFDDL | Deadlines, Time Zones and Reminders</title>
+  <meta name="description" content="Use CCFDDL's conference filters, time zones, deadline history, favorites, calendar subscriptions and email reminders to plan research submissions.">
+  <link rel="canonical" href="https://ccfddl.com/guide.html">
+  <link rel="stylesheet" href="/site-pages.css">
+  <link rel="icon" type="image/svg+xml" href="/ccfddl-logo.svg">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="site-brand" href="/">CCFDDL <span>Open Deadlines</span></a>
+    <nav class="site-nav" aria-label="Site information">
+      <a href="/">Tracker</a>
+      <a href="/guide.html" aria-current="page">Guide</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+    </nav>
+  </header>
+  <main id="main" class="site-page">
+    <h1>Plan a submission with CCFDDL</h1>
+    <p class="page-intro">Start with a shortlist, check the correct edition and round, then translate the published cutoff into your time zone. Use reminders as a backup to that plan.</p>
+    <p lang="zh-CN">中文提示：首页可切换中文。本指南说明筛选规则、时区换算、往期数据、收藏及订阅；最终投稿要求请核对会议官网。</p>
+    <nav class="section-links" aria-label="On this page">
+      <strong>On this page</strong>
+      <ul>
+        <li><a href="#filters">Find conferences and use ranking filters</a></li>
+        <li><a href="#milestones">Read dates, rounds and unknown deadlines</a></li>
+        <li><a href="#time-zones">Understand time zones and summer time</a></li>
+        <li><a href="#history">Compare editions and views</a></li>
+        <li><a href="#favorites">Save favorites and set email reminders</a></li>
+        <li><a href="#calendars">Add deadlines to a calendar</a></li>
+      </ul>
+    </nav>
+
+    <h2 id="filters">1. Build a conference shortlist</h2>
+    <p>On the <a href="/">tracker</a>, search for a conference's short name or edition ID, such as <code>CVPR</code> or <code>cvpr27</code>. Subject buttons narrow the results by research area. On small screens those buttons use short category codes, such as <code>AI</code> or <code>DB</code>.</p>
+    <p>CCF, CORE and TH-CPL are separate ranking filters. You can select multiple levels within a filter. Selecting CCF A and B matches either level; adding CORE A* further requires a matching CORE label. A filter with no selected levels imposes no restriction. If results disappear, check all three filters and the search field.</p>
+    <p><em>Non-CCF</em>, <em>Non-CORE</em> and <em>Non-THCPL</em> include records marked non-listed or without a value for that system. Rankings are venue-level reference labels, not a guarantee of topical fit or acceptance. Read the conference's call for papers to decide whether its scope matches your work.</p>
+
+    <h2 id="milestones">2. Read the next milestone, not just the year</h2>
+    <p>The year in a conference name is the event edition. Its paper deadline may be in the previous calendar year. Conference dates and location describe attendance; they do not replace the submission cutoff.</p>
+    <p>Open a conference's details to inspect the recorded milestones and round comments:</p>
+    <dl>
+      <dt>Abstract submission</dt>
+      <dd>A separate abstract or registration cutoff, when recorded. Submitting a paper later may depend on completing this step.</dd>
+      <dt>Paper submission</dt>
+      <dd>The paper cutoff for the specified round. A conference can have several rounds or tracks with different dates.</dd>
+      <dt>Rebuttal and final decisions</dt>
+      <dd>Later review milestones, when available. The next countdown can advance to these after a paper deadline. Enable <em>Show submission only</em> to focus on abstract and paper cutoffs.</dd>
+      <dt>Conference opening</dt>
+      <dd>A countdown reference derived from the first listed conference date, using 08:00 in the record's submission time zone. It is not a verified local opening time. Check the organizer's program for attendance and travel planning.</dd>
+    </dl>
+    <p><code>TBD</code> means a confirmed date is missing from the record. An <em>estimated</em> date is extrapolated from a previous edition's schedule and identifies that source year. Neither is a confirmed opportunity to submit. An estimate may become inaccurate if organizers change the season, submission model or number of rounds.</p>
+    <p>If a source states only a date, the repository convention uses the end of that date. If it omits the zone, the convention is AoE. Those defaults add usable precision to the record; they should not be mistaken for explicit organizer instructions. Check the official website and entry comments before relying on the last hour.</p>
+
+    <h2 id="time-zones">3. Check the source zone and your display zone</h2>
+    <p>The time-zone selector beside the clock changes the display zone. The main tracker starts from your browser's time zone unless you have a saved preference; the table and directory can also use a time zone in their URL filters. The event still has one deadline instant: changing the display zone changes how that instant is shown, not how much time remains.</p>
+    <div class="table-scroll">
+      <table class="reading-table">
+        <caption>Common time-zone labels</caption>
+        <thead><tr><th scope="col">Label</th><th scope="col">How to read it</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">UTC</th><td>The zero-offset reference zone. A fixed label such as UTC-8 stays eight hours behind UTC throughout the year.</td></tr>
+          <tr><th scope="row">AoE</th><td>Anywhere on Earth, represented as UTC-12. Its calendar day ends later than the same date in most local zones.</td></tr>
+          <tr><th scope="row">PT</th><td>US Pacific Time. The tracker applies US daylight saving dates: normally UTC-8 in winter and UTC-7 in summer. Check organizer instructions carefully around clock changes.</td></tr>
+          <tr><th scope="row">Asia/Shanghai</th><td>An IANA time-zone name, used for mainland China's UTC+8 time. The standard identifier is Asia/Shanghai, including when you are in Beijing.</td></tr>
+          <tr><th scope="row">America/New_York</th><td>A regional zone whose offset changes with daylight saving time. Use the deadline date's offset, rather than assuming today's offset applies all year.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>For example, <strong>May 1 at 23:59 AoE</strong> is <strong>May 2 at 19:59 in Asia/Shanghai</strong>. It is still the same instant, although the calendar dates differ. Named display zones use the browser's time-zone rules for the event date. An offset shown beside a zone in email settings describes its current offset; it may differ in another season.</p>
+    <p>The main clock can also set a custom countdown base time. This previews the schedule relative to that chosen moment. Reset the base time when you want live countdowns again.</p>
+
+    <h2 id="history">4. Compare editions without treating history as an announcement</h2>
+    <p>Enable <em>Show past conferences</em> to bring completed editions back into the main list. This is useful for reviewing past submission patterns or finding an earlier event's official link. If available, acceptance-rate history supplies context about past editions; the coverage and reporting detail vary by conference.</p>
+    <p>The <a href="/?view=table">tabular view</a> groups conference dates for year-to-year comparison and lets you switch between paper submission and conference opening dates. The <a href="/venues/">directory</a> provides subject, conference-series and individual-edition pages, including links to other recorded editions. Its text and conference links remain readable without loading the interactive tracker.</p>
+    <p>Historical timing can help you decide when to look for a new call for papers. It cannot confirm that a future edition will use the same schedule.</p>
+
+    <h2 id="favorites">5. Save favorites and choose email reminders</h2>
+    <p>Sign in with GitHub and click a conference's star to save that edition. Open <em>My Favorites</em> from the account menu to see your saved timeline. Stars refer to individual editions, so check and star the new edition when planning a new year.</p>
+    <p>Open <em>Email Reminders</em> in the account menu, select a time zone and English or Chinese, then authorize access to your verified primary GitHub email. This is separate from simply browsing deadlines. The dialog shows the destination address after reminders are enabled.</p>
+    <ul>
+      <li>Standard reminders combine starred deadline notices into an email at 9 AM in the selected time zone, 7 days and 1 day before the deadline.</li>
+      <li>With <em>Daily reminders</em> enabled, the daily 9 AM email summarizes upcoming milestones from starred conferences.</li>
+      <li>Save changes to the time zone and language in that dialog. You can disable reminders there as well.</li>
+    </ul>
+    <p>Email settings have their own time-zone choice; changing the tracker's clock does not save the email setting. Delivery can depend on the email service and your mailbox, so keep your own submission plan. The <a href="/privacy.html">privacy policy</a> explains the account and reminder data involved.</p>
+
+    <h2 id="calendars">6. Choose a calendar import or a subscription</h2>
+    <p>A conference's details offer calendar actions for its known milestones. A downloaded <code>.ics</code> file is a snapshot: importing it does not create an updating subscription.</p>
+    <p>For an updating calendar, use <em>Subscribe</em> in the main toolbar for category and ranking subscription links, or choose <em>Batch Subscribe</em> from the account menu to select starred editions. Batch subscriptions support up to 100 selected editions. The generated link contains that selected set; create a new link if you want a different set of editions.</p>
+    <p>Copy the subscription URL into your calendar application's subscribe-by-URL option. The batch dialog's Google Calendar action copies the URL and explains where to paste it; iCloud can open a <code>webcal</code> link. Calendar applications refresh subscriptions on their own schedules, so an extension announced on the website may take time to appear in your calendar.</p>
+
+    <div class="notice"><p>Before submitting, visit the official conference website from the entry and verify the edition, round, track, clock time and zone. If you find a discrepancy, <a href="https://github.com/ccfddl/ccf-deadlines/issues/new">report it with the official source</a>.</p></div>
+  </main>
+  <footer class="site-footer">
+    <p>Questions or corrections? <a href="https://github.com/ccfddl/ccf-deadlines/issues">Contact the maintainers on GitHub Issues</a>.</p>
+    <p><a href="/">Conference tracker</a> · <a href="/about.html">About the data</a> · <a href="/privacy.html">Privacy policy</a></p>
+  </footer>
+</body>
+</html>

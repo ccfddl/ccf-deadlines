@@ -778,7 +778,7 @@ a {
 /* 移动端样式 */
 @media (max-width: 768px) {
     .footer {
-        height: 20px;
+        min-height: 20px;
         padding-top: 8px;
         color: var(--color-text-secondary);
         display: flex;
@@ -801,9 +801,23 @@ a {
 
 .footer-text {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 14px;
   min-width: 0;
+}
+
+.site-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.site-footer-links a {
+  color: inherit;
+  text-underline-offset: 2px;
 }
 
 .toolbar-base-time {
