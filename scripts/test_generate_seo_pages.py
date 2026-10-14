@@ -363,17 +363,15 @@ class AdPlacementTests(unittest.TestCase):
         self.assertIn('href="/venues/ai/example-2026/"', series_page(conference, {}))
         for page in (known_page, directory_page([conference], {})):
             self.assertIn('<nav class="footer-links" aria-label="Site information" data-nosnippet>', page)
-            for path, label in (('/about.html', 'About &amp; contact'), ('/guide.html', 'Guide'), ('/privacy.html', 'Privacy')):
-                self.assertIn(f'<a href="{path}">{label}</a>', page)
+            self.assertIn('<a href="/privacy.html">Privacy</a>', page)
 
-    def test_information_pages_ship_their_assets_and_only_copied_pages_enter_sitemap(self):
+    def test_privacy_page_ships_its_assets_and_enters_sitemap_only_when_copied(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             source = root / 'source'
             (source / 'public').mkdir(parents=True)
             (source / 'scripts').mkdir()
-            names = ('favicon.ico', 'ccfddl-logo.svg', 'llms.txt', 'site-ads.js', 'site-pages.css',
-                     'about.html', 'guide.html', 'privacy.html')
+            names = ('favicon.ico', 'ccfddl-logo.svg', 'llms.txt', 'site-ads.js', 'site-pages.css', 'privacy.html')
             for name in names:
                 shutil.copy2(seo.ROOT / 'public' / name, source / 'public' / name)
             shutil.copy2(seo.ROOT / 'scripts/seo_page_controls.js', source / 'scripts/seo_page_controls.js')
@@ -384,22 +382,21 @@ class AdPlacementTests(unittest.TestCase):
                 self.assertEqual((output / name).read_bytes(), (source / 'public' / name).read_bytes())
             urls = [node.text for node in ElementTree.parse(output / 'sitemap.xml').iter() if node.tag.endswith('loc')]
             directory = (output / 'venues/index.html').read_text()
-            for name in ('about.html', 'guide.html', 'privacy.html'):
-                self.assertIn(f'https://ccfddl.com/{name}', urls)
-                self.assertIn(f'href="/{name}"', directory)
-                page = (output / name).read_text()
-                self.assertIn('href="/site-pages.css"', page)
-                self.assertIn('href="/ccfddl-logo.svg"', page)
+            self.assertIn('https://ccfddl.com/privacy.html', urls)
+            self.assertIn('href="/privacy.html"', directory)
+            page = (output / 'privacy.html').read_text()
+            self.assertIn('href="/site-pages.css"', page)
+            self.assertIn('href="/ccfddl-logo.svg"', page)
             self.assertFalse(any(url.endswith(('.css', '.js')) for url in urls))
 
-            # Fixture and partial source trees need not have every optional page.
-            (source / 'public/guide.html').unlink()
+            # Fixtures without the optional privacy page must not advertise it.
+            (source / 'public/privacy.html').unlink()
             partial = root / 'partial'
             with patch.object(seo, 'ROOT', source):
                 generate([], {}, partial)
             urls = [node.text for node in ElementTree.parse(partial / 'sitemap.xml').iter() if node.tag.endswith('loc')]
-            self.assertNotIn('https://ccfddl.com/guide.html', urls)
-            self.assertFalse((partial / 'guide.html').exists())
+            self.assertNotIn('https://ccfddl.com/privacy.html', urls)
+            self.assertFalse((partial / 'privacy.html').exists())
 
 
 class VenueHubTests(unittest.TestCase):
@@ -467,7 +464,7 @@ class VenueHubTests(unittest.TestCase):
                 self.assertIn(f'rel="canonical" href="https://ccfddl.com/venues/ai/acl-{year}/"', page)
             urls = [node.text for node in ElementTree.parse(root / 'sitemap.xml').iter() if node.tag.endswith('loc')]
             self.assertEqual(set(urls), {'https://ccfddl.com' + path for path in
-                                       ['/', '/venues/', '/about.html', '/guide.html', '/privacy.html', *paths]})
+                                       ['/', '/venues/', '/privacy.html', *paths]})
             self.assertEqual(len(urls), len(set(urls)))
             self.assertTrue((root / 'llms.txt').is_file())
             self.assertIn('https://ccfddl.com/mcp', (root / 'llms.txt').read_text())
@@ -549,7 +546,7 @@ class SeoPageTests(unittest.TestCase):
             self.assertNotIn("Browse the latest edition", directory)
             sitemap = ElementTree.parse(output / "sitemap.xml")
             urls = [node.text for node in sitemap.iter() if node.tag.endswith("loc")]
-            self.assertEqual(len(urls), 9)
+            self.assertEqual(len(urls), 7)
             self.assertIn("https://ccfddl.com/venues/", urls)
             self.assertFalse(any("/conferences/" in url for url in urls))
             self.assertFalse((output / "conferences").exists())
@@ -662,7 +659,7 @@ class SeoPageTests(unittest.TestCase):
                 self.assertTrue((output / f"venues/{path}/index.html").exists())
                 self.assertIn(f'href="/venues/{path}/"', directory)
                 self.assertIn(f"https://ccfddl.com/venues/{path}/", urls)
-            self.assertEqual(len(urls), 11)
+            self.assertEqual(len(urls), 9)
 
     def test_unknown_deadline_uses_announced_later_state(self):
         conference = {

@@ -283,7 +283,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       {filters}
     </header>
     <main>{body}</main>
-    <footer class="footer"><div class="footer-text"><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span><nav class="footer-links" aria-label="Site information" data-nosnippet><a href="/about.html">About &amp; contact</a><a href="/guide.html">Guide</a><a href="/privacy.html">Privacy</a></nav></div></footer>
+    <footer class="footer"><div class="footer-text"><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span><nav class="footer-links" aria-label="Site information" data-nosnippet><a href="/privacy.html">Privacy</a></nav></div></footer>
   </div>
   <script>(function(){{
     function setLanguage(english){{
@@ -818,7 +818,7 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     for asset in ("favicon.ico", "ccfddl-logo.svg", "llms.txt"):
         shutil.copy2(ROOT / "public" / asset, output / asset)
     information_paths = []
-    for asset in ("site-ads.js", "site-pages.css", "about.html", "guide.html", "privacy.html"):
+    for asset in ("site-ads.js", "site-pages.css", "privacy.html"):
         source = ROOT / "public" / asset
         if source.is_file():
             shutil.copy2(source, output / asset)
