@@ -102,6 +102,10 @@ def venue_file(root: Path, url: str) -> Path | None:
     parsed = urlsplit(url)
     if f'{parsed.scheme}://{parsed.netloc}' != BASE_URL or parsed.query or parsed.fragment:
         raise ValueError(f'Non-canonical sitemap URL: {url}')
+    if parsed.path == '/privacy.html':
+        # The static policy is listed in the sitemap, but this updater dates
+        # venue content only. Do not infer its lastmod from a deployment.
+        return None
     path = unquote(parsed.path)
     if path == '/':
         # App content is in WebAssembly; its build time is not a content date.

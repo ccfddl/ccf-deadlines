@@ -1996,7 +1996,7 @@ a {
   transition: none !important;
   border: 1px solid #e5ded6;
   border-radius: 8px;
-  background: #fffdfa;
+  background: #fffdfa !important;
   color: #334155;
   font-family: "Roboto Mono", "SF Mono", Monaco, monospace;
   -webkit-font-smoothing: antialiased;
