@@ -363,7 +363,10 @@ class AdPlacementTests(unittest.TestCase):
         self.assertIn('href="/venues/ai/example-2026/"', series_page(conference, {}))
         for page in (known_page, directory_page([conference], {})):
             self.assertIn('<nav class="footer-links" aria-label="Site information" data-nosnippet>', page)
-            self.assertIn('<a href="/privacy.html">Privacy</a>', page)
+            self.assertIn('<a href="/privacy.html" data-privacy-modal>Privacy</a>', page)
+            self.assertLess(page.index('class="footer-links"'), page.index('class="footer-credit"'))
+            self.assertIn('<link rel="stylesheet" href="/privacy-modal.css?v=1">', page)
+            self.assertIn('<script src="/privacy-modal.js?v=1" defer></script>', page)
 
     def test_privacy_page_ships_its_assets_and_enters_sitemap_only_when_copied(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -371,7 +374,8 @@ class AdPlacementTests(unittest.TestCase):
             source = root / 'source'
             (source / 'public').mkdir(parents=True)
             (source / 'scripts').mkdir()
-            names = ('favicon.ico', 'ccfddl-logo.svg', 'llms.txt', 'site-ads.js', 'site-pages.css', 'privacy.html')
+            names = ('favicon.ico', 'ccfddl-logo.svg', 'llms.txt', 'site-ads.js', 'site-pages.css',
+                     'privacy.html', 'privacy-modal.js', 'privacy-modal.css')
             for name in names:
                 shutil.copy2(seo.ROOT / 'public' / name, source / 'public' / name)
             shutil.copy2(seo.ROOT / 'scripts/seo_page_controls.js', source / 'scripts/seo_page_controls.js')

@@ -4,7 +4,7 @@ use leptos::prelude::*;
 pub fn SiteFooterLinks(use_english: RwSignal<bool>) -> impl IntoView {
     view! {
         <nav class="site-footer-links" aria-label=move || if use_english.get() { "Site information" } else { "网站说明" }>
-            <a href="/privacy.html">{move || if use_english.get() { "Privacy" } else { "隐私政策" }}</a>
+            <a href="/privacy.html" data-privacy-modal="">{move || if use_english.get() { "Privacy" } else { "隐私政策" }}</a>
         </nav>
     }
 }

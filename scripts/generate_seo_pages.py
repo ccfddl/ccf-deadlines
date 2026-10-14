@@ -272,6 +272,8 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
   <link rel="icon" type="image/svg+xml" href="/ccfddl-logo.svg">
   {app_assets}
   <link rel="stylesheet" href="{text(static_css)}">
+  <link rel="stylesheet" href="/privacy-modal.css?v=1">
+  <script src="/privacy-modal.js?v=1" defer></script>
 </head>
 <body class="{'detail-page' if detail_page else 'directory-page'}">
   <div class="home">
@@ -283,7 +285,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       {filters}
     </header>
     <main>{body}</main>
-    <footer class="footer"><div class="footer-text"><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span><nav class="footer-links" aria-label="Site information" data-nosnippet><a href="/privacy.html">Privacy</a></nav></div></footer>
+    <footer class="footer"><div class="footer-text"><nav class="footer-links" aria-label="Site information" data-nosnippet><a href="/privacy.html" data-privacy-modal>Privacy</a></nav><span class="footer-credit" data-nosnippet>Maintained by @ccfddl. If you find it useful, star or follow <a href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">@ccfddl</a> on Github.</span></div></footer>
   </div>
   <script>(function(){{
     function setLanguage(english){{
@@ -818,7 +820,7 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
     for asset in ("favicon.ico", "ccfddl-logo.svg", "llms.txt"):
         shutil.copy2(ROOT / "public" / asset, output / asset)
     information_paths = []
-    for asset in ("site-ads.js", "site-pages.css", "privacy.html"):
+    for asset in ("site-ads.js", "site-pages.css", "privacy.html", "privacy-modal.js", "privacy-modal.css"):
         source = ROOT / "public" / asset
         if source.is_file():
             shutil.copy2(source, output / asset)

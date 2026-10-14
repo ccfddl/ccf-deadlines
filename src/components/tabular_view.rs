@@ -257,12 +257,12 @@ pub fn TabularView(use_english: RwSignal<bool>) -> impl IntoView {
             }}
             <div class="footer">
                 <div class="footer-text">
+                    <SiteFooterLinks use_english />
                     <span class="footer-credit" data-nosnippet="">
                         "Maintained by @ccfddl. If you find it useful, star or follow "
                         <a style="color: #666666" href="https://github.com/ccfddl" target="_blank" rel="noopener noreferrer">"@ccfddl"</a>
                         " on Github."
                     </span>
-                    <SiteFooterLinks use_english />
                 </div>
             </div>
         </section>
