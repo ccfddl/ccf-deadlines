@@ -171,7 +171,7 @@ pub fn SelectDropdown(
                 class="toolbar-timezone-trigger email-reminder-dropdown-trigger"
                 role="combobox" aria-haspopup="listbox"
                 aria-labelledby=label_id.get_value() aria-controls=menu_id.get_value()
-                aria-expanded=move || is_open.get()
+                aria-expanded=move || is_open.get().to_string()
                 aria-activedescendant=move || is_open.get().then(|| format!("{id}-option-{}", active.get()))
                 title=move || selected_label.get()
                 on:click=move |_| {
@@ -197,8 +197,8 @@ pub fn SelectDropdown(
                                 <div
                                     id=format!("{id}-option-{index}")
                                     class="toolbar-timezone-option" role="option"
-                                    aria-selected=move || selected.get() == selection
-                                    data-index=index data-active=move || active.get() == index
+                                    aria-selected=move || (selected.get() == selection).to_string()
+                                    data-index=index data-active=move || (active.get() == index).to_string()
                                     title=text.clone()
                                     on:mousedown=move |event| event.prevent_default()
                                     on:click=move |_| { selected.set(value.clone()); open_dropdown.set(None); }

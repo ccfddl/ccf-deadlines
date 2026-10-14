@@ -3719,7 +3719,9 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
   }
 
   .toolbar-base-time,
-  .toolbar-timezone {
+  .toolbar-timezone,
+  .email-reminder-settings .email-reminder-dropdown-trigger,
+  .toolbar-timezone-menu.email-reminder-dropdown-menu {
     font-size: 13px;
   }
 
