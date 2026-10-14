@@ -241,7 +241,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     clock_control = (
         '<div class="toolbar-clock" data-nosnippet><span class="toolbar-clock-value" id="display-clock">—</span>'
         '<span class="toolbar-timezone"><span>(</span><label class="toolbar-timezone-picker">'
-        '<select id="display-timezone" aria-label="Select display timezone"><option value="UTC">UTC</option></select>'
+        '<select id="display-timezone" aria-label="Select display timezone"><option value="UTC">UTC (UTC+0)</option></select>'
         '<span class="toolbar-timezone-arrow" aria-hidden="true">⌄</span></label><span> time)</span></span></div>'
     )
     filters = (
@@ -633,11 +633,11 @@ a:hover{color:#d9554f}
 .subtitle a{color:inherit}
 .directory-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px;min-height:46px;padding:4px 0 10px;border-bottom:1px solid #e8e3dc}
 .detail-toolbar{margin-top:12px;padding-top:12px;border-top:1px solid #e8e3dc}
-.detail-toolbar .toolbar-clock{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 8px;color:#666;font-size:14px;white-space:nowrap}
+.detail-toolbar .toolbar-clock{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px 8px;max-width:100%;min-width:0;color:#666;font-size:14px;white-space:nowrap}
 .detail-toolbar .toolbar-clock-value{color:#666;font-variant-numeric:tabular-nums;font-weight:500}
 .detail-toolbar .toolbar-timezone{display:inline-flex;align-items:center;gap:0;line-height:1.4}
-.detail-toolbar .toolbar-timezone-picker{display:inline-flex;align-items:center;cursor:pointer}
-.detail-toolbar .toolbar-timezone select{max-width:190px;padding:0 0 0 2px;border:0;appearance:none;background:transparent;color:#666;font:inherit;cursor:pointer}
+.detail-toolbar .toolbar-timezone-picker{display:inline-flex;align-items:center;min-width:0;cursor:pointer}
+.detail-toolbar .toolbar-timezone select{max-width:calc(100vw - 120px);min-width:0;padding:0 0 0 2px;border:0;appearance:none;background:transparent;color:#666;font:inherit;cursor:pointer}
 .detail-toolbar .toolbar-timezone-arrow{position:relative;top:-1px;margin-left:3px;font-size:12px;line-height:1;pointer-events:none}
 .detail-toolbar .toolbar-timezone>span:last-child{margin-left:3px}
 .directory-categories{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.directory-controls-loading{font-size:14px;color:#666}

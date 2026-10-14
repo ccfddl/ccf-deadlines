@@ -12,6 +12,16 @@
   const timezoneSelect = document.getElementById('display-timezone');
   const clock = document.getElementById('display-clock');
   const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC';
+  const sourceZoneFormatters = new Map();
+  const timezoneLabelTimestamp = Date.now();
+  function timezoneLabel(zone) {
+    const offset = zoneOffsetMinutes(zone, timezoneLabelTimestamp);
+    const sign = offset < 0 ? '-' : '+';
+    const minutes = Math.abs(offset);
+    const remainder = minutes % 60;
+    const suffix = remainder ? `:${String(remainder).padStart(2, '0')}` : '';
+    return `${zone} (UTC${sign}${Math.floor(minutes / 60)}${suffix})`;
+  }
   const fallbackZones = [
     'UTC', 'Pacific/Honolulu', 'America/Los_Angeles', 'America/Denver',
     'America/Chicago', 'America/New_York', 'America/Sao_Paulo',
@@ -22,13 +32,16 @@
   const availableZones = typeof Intl.supportedValuesOf === 'function'
     ? Intl.supportedValuesOf('timeZone') : fallbackZones;
   const zones = [...new Set([browserTimezone, 'UTC', ...availableZones])];
-  for (const zone of zones) timezoneSelect.add(new Option(zone, zone));
+  timezoneSelect.textContent = '';
+  for (const zone of zones) timezoneSelect.add(new Option(timezoneLabel(zone), zone));
   if (!zones.includes(state.tz)) state.tz = browserTimezone;
   timezoneSelect.value = state.tz;
   let clockFormatter;
 
   function configureClock() {
-    timezoneSelect.style.width = `${Math.min(state.tz.length + 0.5, 24)}ch`;
+    const label = timezoneLabel(state.tz);
+    timezoneSelect.style.width = `${label.length + 0.5}ch`;
+    timezoneSelect.title = label;
     clockFormatter = new Intl.DateTimeFormat('en-GB', {
       timeZone: state.tz, year: 'numeric', month: '2-digit', day: '2-digit',
       hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
@@ -45,7 +58,6 @@
   renderClock();
   setInterval(renderClock, 1000);
 
-  const sourceZoneFormatters = new Map();
   function zoneOffsetMinutes(zone, timestamp) {
     if (!sourceZoneFormatters.has(zone)) sourceZoneFormatters.set(zone, new Intl.DateTimeFormat('en-US', {
       timeZone: zone, year: 'numeric', month: '2-digit', day: '2-digit',

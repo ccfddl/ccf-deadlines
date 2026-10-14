@@ -1,10 +1,6 @@
 use crate::components::favorites::api_url;
 use crate::components::select_dropdown::SelectDropdown;
-#[cfg(not(target_arch = "wasm32"))]
-use crate::components::showtable::display_timezone_offset_at;
-use crate::components::showtable::display_timezone_options;
-#[cfg(target_arch = "wasm32")]
-use crate::components::showtable::timezone_offset_from_intl;
+use crate::components::showtable::{display_timezone_label_at, display_timezone_options};
 use crate::components::timezone::get_timezone_name_or_utc;
 use chrono::Utc;
 use gloo_net::http::Request;
@@ -13,26 +9,6 @@ use serde::Deserialize;
 use thaw::*;
 use wasm_bindgen_futures::spawn_local;
 use web_sys::window;
-
-fn timezone_option_label(timezone: &str, timestamp_millis: i64) -> String {
-    #[cfg(target_arch = "wasm32")]
-    let Some(offset) = timezone_offset_from_intl(timezone, timestamp_millis) else {
-        return timezone.to_string();
-    };
-    #[cfg(not(target_arch = "wasm32"))]
-    let offset = display_timezone_offset_at(timezone, timestamp_millis);
-    let offset_minutes = offset.local_minus_utc() / 60;
-    let sign = if offset_minutes < 0 { '-' } else { '+' };
-    let minutes = offset_minutes.unsigned_abs();
-    let hours = minutes / 60;
-    let remainder = minutes % 60;
-    let offset = if remainder == 0 {
-        format!("UTC{sign}{hours}")
-    } else {
-        format!("UTC{sign}{hours}:{remainder:02}")
-    };
-    format!("{timezone} ({offset})")
-}
 
 #[derive(Clone, Deserialize)]
 struct ReminderSettings {
@@ -196,7 +172,7 @@ pub fn EmailReminderModal(show: RwSignal<bool>, use_english: RwSignal<bool>) -> 
                                             options=Signal::derive(move || {
                                                 let timestamp = Utc::now().timestamp_millis();
                                                 options.get().into_iter().map(|zone| {
-                                                    let label = timezone_option_label(&zone, timestamp);
+                                                    let label = display_timezone_label_at(&zone, timestamp);
                                                     (zone, label)
                                                 }).collect()
                                             })
