@@ -80,3 +80,13 @@
       timezone: AoE
       date: October 11-15, 2026
       place: Shanghai, China
+    - year: 2027
+      id: ubicomp27
+      link: https://sigchi.org/events/ubicomp-2027/
+      timeline:
+        # SIGCHI confirms the dates and venue but does not publish submission deadlines.
+        - deadline: TBD
+      # No deadline timezone has been announced; AoE follows README defaults.
+      timezone: AoE
+      date: October 3-7, 2027
+      place: Seoul, Republic of Korea
