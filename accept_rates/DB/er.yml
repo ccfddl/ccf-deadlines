@@ -1,0 +1,10 @@
+# Main conference only: 20 full + 13 short papers selected from 104 submissions.
+# Excludes workshops, doctoral symposium, tutorials, panels, demos, and posters.
+- title: ER
+  accept_rates:
+    - year: 2026
+      submitted: 104
+      accepted: 33
+      str: 31.7%(33/104 26')
+      rate: 0.317307692307692
+      source: https://link.springer.com/book/10.1007/978-3-032-40795-5
