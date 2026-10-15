@@ -1,0 +1,22 @@
+# CCF 2026 directory: Database/Data Mining/Information Retrieval, category C.
+- title: MDM
+  description: IEEE International Conference on Mobile Data Management
+  sub: DB
+  rank:
+    ccf: C
+  dblp: mdm
+  confs:
+    - year: 2026
+      id: mdm26
+      link: https://mdm-2026.github.io/index.html
+      timeline:
+        # Source: https://mdm-2026.github.io/callsResearch.html
+        # Official deadlines are 23:59 AoE; seconds normalized to 59 by repository convention.
+        - deadline: '2026-03-06 23:59:59'
+          decision_deadline: '2026-04-17 23:59:59'
+          comment: 'Research track regular and short papers; extended deadline'
+      timezone: AoE
+      # Main conference June 30-July 2; workshops and advanced seminars June 29.
+      # Source: https://mdm-2026.github.io/program.html
+      date: June 30 - July 2, 2026
+      place: Athens, Greece
