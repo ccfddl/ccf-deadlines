@@ -1,8 +1,3 @@
-# Regular full research papers only: 18 accepted from 59 regular submissions (30.5%).
-# Excludes short papers (including downgraded regular submissions), industry, workshops,
-# demos, posters, doctoral forum, and PhD showcase papers.
-# The chairs' message contains mixed totals ("72 73", "13 14", "15 10");
-# use its unambiguous regular/full pair and explicitly stated acceptance rate.
 - title: MDM
   accept_rates:
     - year: 2026
