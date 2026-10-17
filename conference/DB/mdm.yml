@@ -1,0 +1,19 @@
+- title: MDM
+  description: IEEE International Conference on Mobile Data Management
+  sub: DB
+  rank:
+    ccf: C
+    core: B
+    thcpl: N
+  dblp: mdm
+  confs:
+    - year: 2026
+      id: mdm26
+      link: https://mdm-2026.github.io/index.html
+      timeline:
+        - deadline: '2026-03-06 23:59:59'
+          decision_deadline: '2026-04-17 23:59:59'
+          comment: 'Research track regular and short papers; extended deadline'
+      timezone: AoE
+      date: June 30 - July 2, 2026
+      place: Athens, Greece
