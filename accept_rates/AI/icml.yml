@@ -12,6 +12,14 @@
       str: 27.5%(2609/9473 24')
       rate: 0.2754143
       source: https://csconfstats.xoveexu.com/
+    # Program chairs' decision email (screenshot): 12,107 submissions excluding desk rejects, 3,260 accepted, 26.9%.
+    # The official fact sheet gives the same 3,260 main-track papers and "27%", without a submission count.
+    - year: 2025
+      submitted: 12107
+      accepted: 3260
+      str: 26.9%(3260/12107 25')
+      rate: 0.2692657140497233
+      source: https://x.com/CSProfKGD/status/1917934488295768526
     - year: 2026
       submitted: 24661
       accepted: 6552
