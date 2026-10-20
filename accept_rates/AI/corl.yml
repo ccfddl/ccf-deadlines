@@ -1,5 +1,20 @@
 - title: CoRL
   accept_rates:
+    # CoRL 2025 opening remarks, "Papers" slide (official livestream, ~2:42:20): 693 submissions; 30 oral + 234 poster.
+    # The 2024 call-for-papers page's "671 submissions received" was an earlier count and is not used.
+    - year: 2024
+      submitted: 693
+      accepted: 264
+      str: 38.1%(264/693 24')
+      rate: 0.38095238095238093
+      source: https://www.youtube.com/watch?v=Use5M-nfFlI&t=9740s
+    # Same slide: 737 submissions; 42 oral + 221 poster.
+    - year: 2025
+      submitted: 737
+      accepted: 263
+      str: 35.7%(263/737 25')
+      rate: 0.3568521031207598
+      source: https://www.youtube.com/watch?v=Use5M-nfFlI&t=9740s
     # Official board acceptance decisions / active submissions, not all initial submissions.
     - year: 2026
       submitted: 2094
