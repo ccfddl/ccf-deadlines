@@ -9,94 +9,11 @@
     thcpl: N
   dblp: clef
   confs:
-    - year: 2010
-      id: clef10
-      link: http://clef2010.clef-initiative.eu/
-      timeline:
-        - deadline: '2010-05-02 23:59:59'
-      timezone: AoE
-      date: September 20-23, 2010
-      place: Padua, Italy
-    - year: 2011
-      id: clef11
-      link: http://clef2011.clef-initiative.eu/
-      timeline:
-        - deadline: '2011-05-01 23:59:59'
-      timezone: AoE
-      date: September 19-22, 2011
-      place: Amsterdam, The Netherlands
-    - year: 2012
-      id: clef12
-      link: http://clef2012.clef-initiative.eu/
-      timeline:
-        - deadline: '2012-05-07 23:59:59'
-          comment: Extended from April 30
-      timezone: AoE
-      date: September 17-20, 2012
-      place: Rome, Italy
-    - year: 2013
-      id: clef13
-      link: http://clef2013.clef-initiative.eu/
-      timeline:
-        - deadline: '2013-04-28 23:59:59'
-      timezone: AoE
-      date: September 23-26, 2013
-      place: Valencia, Spain
-    - year: 2014
-      id: clef14
-      link: http://clef2014.clef-initiative.eu/
-      timeline:
-        - deadline: '2014-04-28 23:59:59'
-      timezone: AoE
-      date: September 15-18, 2014
-      place: Sheffield, UK
-    - year: 2015
-      id: clef15
-      link: http://clef2015.clef-initiative.eu/
-      timeline:
-        - deadline: '2015-04-12 23:59:59'
-      timezone: AoE
-      date: September 8-11, 2015
-      place: Toulouse, France
-    - year: 2016
-      id: clef16
-      link: http://clef2016.clef-initiative.eu/
-      timeline:
-        - deadline: '2016-04-08 23:59:59'
-      timezone: AoE
-      date: September 5-8, 2016
-      place: Evora, Portugal
-    - year: 2017
-      id: clef17
-      link: http://clef2017.clef-initiative.eu/
-      timeline:
-        - deadline: '2017-04-28 23:59:59'
-      timezone: AoE
-      date: September 11-14, 2017
-      place: Dublin, Ireland
-    - year: 2018
-      id: clef18
-      link: http://clef2018.clef-initiative.eu/
-      timeline:
-        - abstract_deadline: '2018-05-07 23:59:59'
-          deadline: '2018-05-14 23:59:59'
-      timezone: AoE
-      date: September 10-14, 2018
-      place: Avignon, France
-    - year: 2019
-      id: clef19
-      link: http://clef2019.clef-initiative.eu/
-      timeline:
-        - abstract_deadline: '2019-05-03 23:59:59'
-          deadline: '2019-05-10 23:59:59'
-      timezone: AoE
-      date: September 9-12, 2019
-      place: Lugano, Switzerland
     - year: 2020
       id: clef20
       link: http://clef2020.clef-initiative.eu/
       timeline:
-        - deadline: '2020-04-28 23:59:59'
+        - deadline: '2020-05-15 23:59:59'
       timezone: AoE
       date: September 22-25, 2020
       place: Online
@@ -104,7 +21,8 @@
       id: clef21
       link: http://clef2021.clef-initiative.eu/
       timeline:
-        - deadline: '2021-04-03 23:59:59'
+        - deadline: '2021-05-10 23:59:59'
+          comment: Extended from May 3
       timezone: AoE
       date: September 21-24, 2021
       place: Online
@@ -137,8 +55,9 @@
       id: clef25
       link: https://clef2025.clef-initiative.eu/
       timeline:
-        - abstract_deadline: '2025-05-06 23:59:59'
-          deadline: '2025-05-13 23:59:59'
+        - abstract_deadline: '2025-05-11 23:59:59'
+          deadline: '2025-05-20 23:59:59'
+          comment: Extended from May 6 (abstract) and May 13 (full paper)
       timezone: AoE
       date: September 9-12, 2025
       place: Madrid, Spain
