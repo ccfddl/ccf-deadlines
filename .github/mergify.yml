@@ -1,3 +1,6 @@
+merge_queue:
+  # Automatic merging is handled by the rules below; omit manual queue controls.
+  queue_controls_comment: false
 pull_request_rules:
   - name: say hi on new contribution
     conditions:
