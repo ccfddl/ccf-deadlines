@@ -1,0 +1,69 @@
+- title: ICTIR
+  description: International ACM SIGIR Conference on Innovative Concepts and Theories in Information Retrieval
+  sub: DB
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: ictir
+  confs:
+    - year: 2020
+      id: ictir20
+      link: https://ictir2020.org/
+      timeline:
+        - deadline: '2020-05-25 23:59:59'
+          comment: 'Full and short papers; extended from May 11 (full) and May 18 (short)'
+      timezone: AoE
+      date: September 14-17, 2020
+      place: Online
+    - year: 2021
+      id: ictir21
+      link: https://web.archive.org/web/20210625085820/https://ictir2021.org/
+      timeline:
+        - deadline: '2021-05-03 23:59:59'
+          comment: 'Extended from April 26'
+      timezone: AoE
+      date: July 11, 2021
+      place: Online
+    - year: 2022
+      id: ictir22
+      link: https://web.archive.org/web/20220703013506/https://www.ictir2022.org/
+      timeline:
+        - deadline: '2022-05-06 23:59:59'
+          comment: 'Extended from April 29'
+      timezone: AoE
+      date: July 11-12, 2022
+      place: Madrid, Spain
+    - year: 2023
+      id: ictir23
+      link: https://sigir.org/ictir2023/
+      timeline:
+        - deadline: '2023-05-05 23:59:59'
+          comment: 'Extended from April 28'
+      timezone: AoE
+      date: July 23, 2023
+      place: Taipei, Taiwan
+    - year: 2024
+      id: ictir24
+      link: https://www.ictir2024.org/
+      timeline:
+        - deadline: '2024-04-25 23:59:59'
+      timezone: AoE
+      date: July 13, 2024
+      place: Washington, DC, USA
+    - year: 2025
+      id: ictir25
+      link: https://ictir2025.cs.umass.edu/
+      timeline:
+        - deadline: '2025-04-24 23:59:59'
+      timezone: AoE
+      date: July 18, 2025
+      place: Padua, Italy
+    - year: 2026
+      id: ictir26
+      link: https://sigir-ictir.github.io/ictir2026/
+      timeline:
+        - deadline: '2026-04-16 23:59:59'
+      timezone: AoE
+      date: July 25, 2026
+      place: Melbourne, Australia
