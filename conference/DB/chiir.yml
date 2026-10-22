@@ -1,0 +1,98 @@
+# Not in the CCF 2026 list; ICORE2026: B (https://portal.core.edu.au/conf-ranks/2335/).
+# Deadlines below are for full and perspective papers.
+- title: CHIIR
+  description: ACM SIGIR Conference on Human Information Interaction and Retrieval
+  sub: DB
+  rank:
+    ccf: N
+    core: B
+  dblp: chiir
+  confs:
+    - year: 2020
+      id: chiir20
+      link: http://sigir.org/chiir2020/
+      timeline:
+        # Midnight AoE: http://sigir.org/chiir2020/guidelines.html
+        - deadline: '2019-10-15 23:59:59'
+          decision_deadline: '2019-12-10 23:59:59'
+      timezone: AoE
+      date: August 13-14, 2020
+      place: Virtual (originally Vancouver, Canada)
+    - year: 2021
+      id: chiir21
+      link: https://acm-chiir.github.io/chiir2021/
+      timeline:
+        # https://acm-chiir.github.io/chiir2021/cfp-papers.html
+        - abstract_deadline: '2020-10-06 23:59:59'
+          deadline: '2020-10-16 23:59:59'
+          decision_deadline: '2020-12-08 23:59:59'
+      timezone: AoE
+      date: March 14-19, 2021
+      place: Virtual (originally Canberra, Australia)
+    - year: 2022
+      id: chiir22
+      link: https://ai.ur.de/chiir2022/
+      timeline:
+        # https://easychair.org/cfp/chiir2022
+        # Official dates have no time or timezone; 23:59:59 and AoE are README defaults.
+        - abstract_deadline: '2021-10-05 23:59:59'
+          deadline: '2021-10-12 23:59:59'
+          decision_deadline: '2021-12-07 23:59:59'
+      timezone: AoE
+      date: March 14-18, 2022
+      place: Virtual (originally Regensburg, Germany)
+    - year: 2023
+      id: chiir23
+      link: https://sigir.org/chiir2023/
+      timeline:
+        # Midnight AoE: https://sigir.org/chiir2023/submit/
+        - abstract_deadline: '2022-10-12 23:59:59'
+          deadline: '2022-10-19 23:59:59'
+          decision_deadline: '2022-12-13 23:59:59'
+      timezone: AoE
+      date: March 19-23, 2023
+      place: Austin, Texas, USA
+    - year: 2024
+      id: chiir24
+      link: https://chiir2024.github.io/
+      timeline:
+        # Paper deadline extended from October 17, 2023.
+        # Official dates have no time or timezone; 23:59:59 and AoE are README defaults.
+        - abstract_deadline: '2023-10-10 23:59:59'
+          deadline: '2023-10-20 23:59:59'
+          decision_deadline: '2023-12-12 23:59:59'
+      timezone: AoE
+      date: March 10-14, 2024
+      place: Sheffield, UK
+    - year: 2025
+      id: chiir25
+      link: https://chiir2025.github.io/
+      timeline:
+        # Extended from October 14 (abstracts) and October 21, 2024 (papers).
+        # Official dates have no time or timezone; 23:59:59 and AoE are README defaults.
+        - abstract_deadline: '2024-10-17 23:59:59'
+          deadline: '2024-10-24 23:59:59'
+          decision_deadline: '2024-12-17 23:59:59'
+      timezone: AoE
+      date: March 24-28, 2025
+      place: Melbourne, Australia
+    - year: 2026
+      id: chiir26
+      link: https://chiir2026.github.io/
+      timeline:
+        - abstract_deadline: '2025-10-08 23:59:59'
+          deadline: '2025-10-15 23:59:59'
+          decision_deadline: '2025-12-10 23:59:59'
+      timezone: AoE
+      date: March 22-26, 2026
+      place: Seattle, Washington, USA
+    - year: 2027
+      id: chiir27
+      link: https://chiir2027.github.io/
+      timeline:
+        - abstract_deadline: '2026-10-08 23:59:59'
+          deadline: '2026-10-15 23:59:59'
+          decision_deadline: '2026-12-15 23:59:59'
+      timezone: AoE
+      date: March 7-11, 2027
+      place: Berlin, Germany
