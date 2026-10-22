@@ -1,0 +1,18 @@
+- title: SAIS
+  description: USENIX Conference on Secure Agentic-AI Systems
+  sub: SC
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: ''
+  confs:
+    - year: 2027
+      id: sais27
+      link: https://www.usenix.org/conference/sais27
+      timeline:
+        - deadline: '2027-02-04 23:59:59'
+          comment: Paper submission deadline
+      timezone: AoE
+      date: June 7-8, 2027
+      place: Santa Clara, CA, USA
