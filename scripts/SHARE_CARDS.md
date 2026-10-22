@@ -8,11 +8,14 @@ The website uses a platform fallback stack; the actual font can differ between
 operating systems. No font binary or visitor-facing webfont is added.
 
 Run `python scripts/build_data.py && python scripts/generate_seo_pages.py`.
-The PNG step requires Node.js 22+ and Chrome/Chromium (or `CHROME_BINARY`), the
-same tools used by the existing browser tests. CI and deployment explicitly
-select `/usr/bin/chromium` through `CHROME_BINARY` so neither silently chooses
-a different Google Chrome release from a changing runner image. It starts one browser for all
-editions, renders locally to canvas, and does not download external assets.
+The PNG step requires Node.js 22+ and Chrome/Chromium (or `CHROME_BINARY`).
+Deployment explicitly selects `/usr/bin/chromium` through `CHROME_BINARY`.
+MergeCheck runs `python scripts/generate_seo_pages.py --skip-share-images` to
+validate the static pages and sitemap without starting a browser. PR checks do
+not run browser rendering, including for changes to the renderer. The default
+command used by Deploy still requires every share image to render successfully.
+It starts one browser for all editions, renders locally to canvas, and does not
+download external assets.
 Conference values are passed as data, never executable HTML. Cards include every known abstract, paper, rebuttal and decision timestamp in
 source round order, with the unconverted source timezone shown prominently.
 Single-round cards use labeled rows; multi-round cards use a complete date table.
@@ -23,13 +26,10 @@ edition is VLDB 2027: 24 dates across 12 rounds. Non-date titles/descriptions ma
 be shortened; unknown dates are not invented. Cards omit live countdowns and
 next-deadline status because social previews are cached. The HTML page body is
 unchanged; metadata uses `share.png?v=deadlines-2` to refresh earlier previews.
-CI uploads AAAI, SIGMOD and VLDB 2027 images as `deadline-card-previews` for
-visual review before deployment.
 
 Tests: `python -m unittest discover -s scripts -p 'test_*share_image.py'`.
 The PNG URLs become publicly accessible only after the regular site deployment.
 
 Startup prints the selected browser/version, retains a bounded stderr tail for
-failures, and exits without publishing if rendering fails. Both workflows run
-a small render test before the expensive Rust build. Launcher regression tests:
+failures, and exits without publishing if rendering fails. Launcher regression tests:
 `node --test scripts/test_share_browser.mjs`.

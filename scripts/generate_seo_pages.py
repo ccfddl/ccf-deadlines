@@ -815,7 +815,9 @@ def shared_app_assets(output: Path) -> str:
     return f'<link rel="stylesheet" href="{text(assets.css)}"><script type="module" src="/venues/{filename}"></script>'
 
 
-def generate(conferences: list[dict], categories: dict[str, str], output: Path, acceptances: dict[str, list[dict]] | None = None) -> list[str]:
+def generate(conferences: list[dict], categories: dict[str, str], output: Path,
+             acceptances: dict[str, list[dict]] | None = None, *,
+             render_share_images: bool = True) -> list[str]:
     output.mkdir(parents=True, exist_ok=True)
     for asset in ("favicon.ico", "ccfddl-logo.svg", "llms.txt"):
         shutil.copy2(ROOT / "public" / asset, output / asset)
@@ -874,7 +876,8 @@ def generate(conferences: list[dict], categories: dict[str, str], output: Path, 
         write_page(series_path(conference), series_page(conference, categories, static_css))
     for sub, members in groups.items():
         write_page(category_path(sub), category_page(sub, members, categories, static_css, static_controls))
-    share_images(cards, css, output)
+    if render_share_images:
+        share_images(cards, css, output)
     assets = shared_app_assets(output)
     directory = output / "venues"
     directory.mkdir(exist_ok=True)
@@ -890,13 +893,16 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=ROOT / "public/conference/allconf.json")
     parser.add_argument("--output", type=Path, default=ROOT / "dist")
+    parser.add_argument("--skip-share-images", action="store_true",
+                        help="Generate pages and sitemap without browser-rendered share PNGs")
     args = parser.parse_args()
     conferences = json.loads(args.input.read_text(encoding="utf-8"))
     categories = {item["sub"]: item["name"] for item in yaml.safe_load((ROOT / "conference/types.yml").read_text(encoding="utf-8"))}
     acceptance_file = ROOT / "public/conference/allacc.json"
     acceptance_rows = json.loads(acceptance_file.read_text(encoding="utf-8")) if acceptance_file.exists() else []
     acceptances = {row["conference_key"]: row.get("accept_rates", []) for row in acceptance_rows}
-    written = generate(conferences, categories, args.output, acceptances)
+    written = generate(conferences, categories, args.output, acceptances,
+                       render_share_images=not args.skip_share_images)
     print(f"Generated {len(written)} conference pages and sitemap.xml")
 
 

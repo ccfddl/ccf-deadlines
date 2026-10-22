@@ -3,6 +3,7 @@ import re
 import json
 import hashlib
 import shutil
+import subprocess
 import unittest
 from unittest.mock import patch
 from html import escape
@@ -12,6 +13,50 @@ from xml.etree import ElementTree
 
 import generate_seo_pages as seo
 from generate_seo_pages import category_page, deadline_datetime, directory_page, edition_metadata, edition_page, generate, series_page
+
+
+class GenerationModeTests(unittest.TestCase):
+    conference = {'title': 'ACL', 'sub': 'AI', 'confs': [
+        {'year': 2027, 'timezone': 'AoE', 'timeline': [{'deadline': '2026-12-01 23:59:59'}]},
+    ]}
+
+    def test_skip_share_images_cli_generates_site_without_subprocesses(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / 'conferences.json'
+            source.write_text(json.dumps([self.conference]))
+            output = root / 'site'
+            with patch('sys.argv', ['generate_seo_pages.py', '--input', str(source),
+                                    '--output', str(output), '--skip-share-images']), \
+                    patch('conference_share_image.subprocess.run',
+                          side_effect=AssertionError('Page-only builds must not launch a browser')) as run:
+                seo.main()
+            run.assert_not_called()
+            for path in ('venues/index.html', 'venues/ai/index.html',
+                         'venues/ai/acl/index.html', 'venues/ai/acl-2027/index.html'):
+                self.assertTrue((output / path).is_file(), path)
+            page = (output / 'venues/ai/acl-2027/index.html').read_text()
+            self.assertIn('2026-12-01', page)
+            self.assertIn('share.png?v=deadlines-2', page)
+            self.assertTrue(list((output / 'venues').glob('style-*.css')))
+            self.assertTrue(list((output / 'venues').glob('controls-*.js')))
+            urls = [node.text for node in ElementTree.parse(output / 'sitemap.xml').iter()
+                    if node.tag.endswith('loc')]
+            self.assertIn('https://ccfddl.com/venues/ai/acl-2027/', urls)
+            self.assertFalse(list(output.rglob('share.png')))
+
+    def test_default_cli_keeps_rendering_failures_fatal(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / 'conferences.json'
+            source.write_text(json.dumps([self.conference]))
+            with patch('sys.argv', ['generate_seo_pages.py', '--input', str(source),
+                                    '--output', str(root / 'site')]), \
+                    patch.object(seo, 'share_images',
+                                 side_effect=subprocess.CalledProcessError(1, ['node'])) as render:
+                with self.assertRaises(subprocess.CalledProcessError):
+                    seo.main()
+            render.assert_called_once()
 
 
 class BreadcrumbParser(HTMLParser):
