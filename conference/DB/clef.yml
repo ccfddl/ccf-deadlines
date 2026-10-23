@@ -1,0 +1,79 @@
+# Deadlines refer to the main conference track (long/short papers, LNCS proceedings).
+# Where the source gives only a date, 23:59:59 AoE is used per repository convention.
+- title: CLEF
+  description: Conference and Labs of the Evaluation Forum
+  sub: DB
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: clef
+  confs:
+    - year: 2020
+      id: clef20
+      link: http://clef2020.clef-initiative.eu/
+      timeline:
+        - deadline: '2020-05-15 23:59:59'
+      timezone: AoE
+      date: September 22-25, 2020
+      place: Online
+    - year: 2021
+      id: clef21
+      link: http://clef2021.clef-initiative.eu/
+      timeline:
+        - deadline: '2021-05-10 23:59:59'
+          comment: Extended from May 3
+      timezone: AoE
+      date: September 21-24, 2021
+      place: Online
+    - year: 2022
+      id: clef22
+      link: http://clef2022.clef-initiative.eu/
+      timeline:
+        - deadline: '2022-05-02 23:59:59'
+      timezone: AoE
+      date: September 5-8, 2022
+      place: Bologna, Italy
+    - year: 2023
+      id: clef23
+      link: http://clef2023.clef-initiative.eu/
+      timeline:
+        - deadline: '2023-05-21 23:59:59'
+          comment: Extended from May 12
+      timezone: AoE
+      date: September 18-21, 2023
+      place: Thessaloniki, Greece
+    - year: 2024
+      id: clef24
+      link: https://clef2024.clef-initiative.eu/
+      timeline:
+        - deadline: '2024-05-17 23:59:59'
+      timezone: AoE
+      date: September 9-12, 2024
+      place: Grenoble, France
+    - year: 2025
+      id: clef25
+      link: https://clef2025.clef-initiative.eu/
+      timeline:
+        - abstract_deadline: '2025-05-11 23:59:59'
+          deadline: '2025-05-20 23:59:59'
+          comment: Extended from May 6 (abstract) and May 13 (full paper)
+      timezone: AoE
+      date: September 9-12, 2025
+      place: Madrid, Spain
+    - year: 2026
+      id: clef26
+      link: https://clef2026.clef-initiative.eu/
+      timeline:
+        - deadline: '2026-05-25 23:59:59'
+      timezone: AoE
+      date: September 21-24, 2026
+      place: Jena, Germany
+    - year: 2027
+      id: clef27
+      link: https://clef2027.clef-initiative.eu/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: September 14-17, 2027
+      place: Bucharest, Romania
