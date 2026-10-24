@@ -165,15 +165,16 @@ def format_deadline(value: object, timezone: str, published_time: bool = True) -
     return f'<{tag} class="deadline-time"{datetime_attribute} data-raw="{text(raw)}" data-source-tz="{text(timezone)}" title="Original: {text(raw)} {text(timezone)}">{text(shown)} · {text(timezone)}</{tag}>'
 
 
-def category_links(categories: dict[str, str], active_sub: str = "", responsive: bool = False) -> str:
+def category_links(categories: dict[str, str], active_sub: str = "", responsive: bool = False, directory_filters: bool = False) -> str:
     links = []
     for sub, name in categories.items():
         english = CATEGORY_EN_BY_SUB.get(sub, name)
         label = f'<span class="category-name" data-zh="{text(name)}" data-en="{text(english)}">{text(english)}</span>'
-        if responsive:
+        if responsive or directory_filters:
             label += f'<span class="category-code">{text(sub)}</span>'
         current = ' aria-current="page"' if sub == active_sub else ""
-        links.append(f'<a href="{text(category_path(sub))}"{current} data-category="{text(sub)}"'
+        css_class = ' class="directory-category-link"' if directory_filters else ""
+        links.append(f'<a{css_class} href="{text(category_path(sub))}"{current} data-category="{text(sub)}"'
                      f' title="{text(name)} · {text(english)}">{label}</a>')
     return "".join(links)
 
@@ -182,6 +183,42 @@ def directory_startup() -> str:
     return '''<script id="directory-startup-recovery">
     (() => {
       const root = document.getElementById('directory-controls-root');
+      // Match the controls' initial selection before downloading the app.
+      const links = [...root.querySelectorAll('[data-category]')];
+      const query = new URLSearchParams(location.search);
+      const hasFilters = ['categories', 'ccf', 'core', 'thcpl', 'filters', 'q', 'tz'].some(key => query.has(key));
+      const stored = key => {
+        try { return localStorage.getItem(key); } catch (error) { return null; }
+      };
+      const storedValues = key => {
+        try {
+          const values = JSON.parse(stored(key));
+          return Array.isArray(values) && values.every(value => typeof value === 'string') ? values : [];
+        } catch (error) { return []; }
+      };
+      const requested = hasFilters ? (query.get('categories') || '').split(',') : storedValues('types');
+      const selected = new Set(links.map(link => link.dataset.category).filter(sub => requested.includes(sub)));
+      if (selected.size === links.length) selected.clear();
+      if (!hasFilters) {
+        for (const [key, storage] of [['ccf', 'ranks'], ['core', 'core_ranks'], ['thcpl', 'thcpl_ranks']]) {
+          const values = storedValues(storage);
+          if (values.length) query.set(key, values.join(','));
+        }
+        if (stored('conference_search')) query.set('q', stored('conference_search'));
+        if (stored('display_timezone')) query.set('tz', stored('display_timezone'));
+      }
+      for (const link of links) {
+        const sub = link.dataset.category;
+        if (selected.has(sub)) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+        const next = new Set(selected);
+        if (next.has(sub)) next.delete(sub); else next.add(sub);
+        const params = new URLSearchParams(query);
+        params.delete('categories');
+        if (next.size && next.size !== links.length) params.set('categories', [...next].sort().join(','));
+        params.set('filters', 'all');
+        link.href = location.pathname + '?' + params + location.hash;
+      }
       const ready = () => Boolean(root.querySelector('.conference-controls'));
       const cleanup = () => {
         clearTimeout(timer);
@@ -246,7 +283,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
     )
     filters = (
         f'<div class="directory-toolbar detail-toolbar">{clock_control}</div>'
-        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories" style="display:flex;flex-wrap:wrap;gap:10px" aria-label="Venue categories">{navigation}</nav><p class="directory-controls-loading" role="status"><span data-nosnippet>Loading filters…</span></p></div>{directory_startup()}'
+        if detail_page else f'<div id="directory-controls-root"><nav class="directory-categories category-filter-grid" aria-label="Venue categories">{navigation}</nav><p class="directory-controls-loading" role="status"><span data-nosnippet>Loading filters…</span></p></div>{directory_startup()}'
     )
     if detail_page and not show_clock:
         filters = ""
@@ -278,7 +315,7 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
 <body class="{'detail-page' if detail_page else 'directory-page'}">
   <div class="home">
     <header class="site-header">
-      <div class="header-main"><a class="title" href="{BASE_URL}/"><span>CCFDDL&nbsp;Open&nbsp;</span><span class="title-accent">Deadlines</span></a><div class="header-github"><a class="github-star-link" href="https://github.com/ccfddl/ccf-deadlines" target="_blank" rel="noopener noreferrer" aria-label="Star ccfddl/ccf-deadlines on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>Star</span><span class="github-star-count" id="github-star-count" hidden></span></a><a class="header-x-link" href="https://x.com/ccfddl" target="_blank" rel="noopener noreferrer" aria-label="Follow CCFDDL on X" title="Follow CCFDDL on X"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg><span>Follow</span></a></div><div class="header-auth" id="github-auth"><a class="github-login-button" id="github-login-link" href="{BASE_URL}/api/auth/github?return_to=%2F"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span data-zh="使用 GitHub 登录" data-en="Sign in with GitHub">使用 GitHub 登录</span></a></div></div>
+      <div class="header-main"><a class="title" href="{BASE_URL}/"><span>CCFDDL&nbsp;Open&nbsp;</span><span class="title-accent">Deadlines</span></a><div class="header-github"><a class="github-star-link" href="https://github.com/ccfddl/ccf-deadlines" target="_blank" rel="noopener noreferrer" aria-label="Star ccfddl/ccf-deadlines on GitHub"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span>Star</span><span class="github-star-count" id="github-star-count" hidden></span></a><a class="header-x-link" href="https://x.com/ccfddl" target="_blank" rel="noopener noreferrer" aria-label="Follow CCFDDL on X" title="Follow CCFDDL on X"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg><span>Follow</span></a></div><div class="header-auth" id="github-auth"><a class="github-login-button" id="github-login-link" href="{BASE_URL}/api/auth/github?return_to=%2F"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.62 7.62 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><span data-zh="使用 GitHub 登录" data-en="Sign in with GitHub">使用 GitHub 登录</span><span class="github-login-label-mobile" data-zh="登录" data-en="Sign in">登录</span></a></div></div>
       <div class="el-row subtitle">Worldwide Conference Deadline Countdowns. Preview in <a href="{BASE_URL}/?view=table">tabular form</a> or <a href="{BASE_URL}/venues/" target="_blank" rel="noopener noreferrer">directory</a>.</div>
       <div class="el-row subtitle">*Disclaimer: The data provided by ccfddl is agenticly collected and for reference purposes only.</div>
       {breadcrumb_markup}
@@ -292,8 +329,8 @@ def layout(title: str, description: str, canonical: str, body: str, navigation: 
       document.documentElement.lang=english?'en':'zh-CN';
       document.querySelectorAll('[data-en][data-zh]').forEach(function(node){{node.textContent=english?node.dataset.en:node.dataset.zh;}});
     }}
-    var stored;try{{stored=localStorage.getItem('language_preference');}}catch(error){{}}
-    setLanguage(stored==='en'||(stored!=='zh'&&!navigator.language.toLowerCase().startsWith('zh')));
+    var stored,legacyEnglish;try{{stored=localStorage.getItem('language_preference');legacyEnglish=localStorage.getItem('use_english')==='true';}}catch(error){{}}
+    setLanguage(stored==='en'||(stored!=='zh'&&(legacyEnglish||!navigator.language.toLowerCase().startsWith('zh'))));
     var starCount=document.getElementById('github-star-count');
     function showStarCount(value){{if(Number.isFinite(value)){{starCount.textContent=new Intl.NumberFormat('en-US').format(value);starCount.hidden=false;}}}}
     var cachedStars=0;
@@ -596,7 +633,7 @@ def directory_page(conferences: list[dict], categories: dict[str, str], app_asse
         sections.append(f'<section class="directory-section" id="{text(sub.lower())}"><h2><a href="{text(category_path(sub))}" data-zh="{text(category)}" data-en="{text(CATEGORY_EN_BY_SUB.get(sub, category))}">{text(CATEGORY_EN_BY_SUB.get(sub, category))}</a></h2><ul class="directory-list">{links}</ul></section>')
     body = f'<p class="directory-empty" id="directory-empty" hidden>No matching venues.</p>{"".join(sections)}'
     breadcrumb = directory_trail()
-    return layout("Venue Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories), breadcrumb, app_assets=app_assets, static_css=static_css, static_controls=static_controls)
+    return layout("Venue Directory | CCFDDL", "Find conference deadlines, dates, locations and official websites for every conference tracked by CCFDDL.", BASE_URL + "/venues/", body, category_links(categories, directory_filters=True), breadcrumb, app_assets=app_assets, static_css=static_css, static_controls=static_controls)
 
 
 def stylesheet() -> str:
@@ -623,6 +660,7 @@ a:hover{color:#d9554f}
 .github-login-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:28px;padding:0 10px;border:1px solid #d9d3cb;border-radius:8px;background:#fff;color:#3f4751;font-size:12px;line-height:1;text-decoration:none;white-space:nowrap}
 .github-login-button:hover{border-color:#bfc8d1;background:#f7f9fb;color:#29394b;text-decoration:none}
 .github-login-button svg{width:16px;height:16px}
+.github-login-label-mobile{display:none}
 .github-account-menu{position:relative;font-size:12px}
 .github-account-trigger{display:flex;align-items:center;gap:8px;height:32px;padding:3px 10px 3px 4px;border:1px solid #d9d3cb;border-radius:9px;background:#fff;color:#3f4751;cursor:pointer;list-style:none}
 .github-account-trigger::-webkit-details-marker{display:none}
@@ -643,6 +681,9 @@ a:hover{color:#d9554f}
 .detail-toolbar .toolbar-timezone-arrow{position:relative;top:-1px;margin-left:3px;font-size:12px;line-height:1;pointer-events:none}
 .detail-toolbar .toolbar-timezone>span:last-child{margin-left:3px}
 .directory-categories{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.directory-controls-loading{font-size:14px;color:#666}
+.directory-category-link{font-family:'Segoe UI','Segoe UI Web (West European)',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Roboto,'Helvetica Neue',sans-serif;font-size:14px;font-weight:500;text-decoration:none}
+.directory-categories .category-code{display:none}
+@media(max-width:768px){.directory-categories .category-name{display:none}.directory-categories .category-code{display:inline}}
 [hidden]{display:none!important}
 main{padding:18px 0 8px}
 .breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:12px 0 0;color:#697583;font-size:12px}
@@ -764,7 +805,7 @@ main{padding:18px 0 8px}
   .conference-detail-calendars{width:100%;min-width:0}
   .conference-detail-actions .conference-detail-calendar-link{flex:1 1 0;min-width:0;justify-content:center;padding:5px 4px;font-size:clamp(10px,3vw,12px)}
 }
-@media(max-width:600px){.detail-page .home{padding:0 16px}.header-main{display:grid;grid-template-columns:minmax(0,1fr) auto;padding-right:0}.header-main .title{grid-column:1/-1;grid-row:1}.header-github{grid-column:1;grid-row:2;justify-self:start}.header-x-link{justify-content:center;width:30px;padding:0}.header-x-link span{display:none}.header-auth{position:static;grid-column:2;grid-row:2;justify-self:end}.github-login-button span{display:none}.github-login-button{width:30px;padding:0}.title{font-size:24px}.detail-toolbar{align-items:flex-start}.detail-card{padding:18px 16px}.conference-detail-title{font-size:24px}.footer-text{font-size:14px;text-align:center}}
+@media(max-width:600px){.detail-page .home{padding:0 16px}.header-main{display:grid;grid-template-columns:minmax(0,1fr) auto;padding-right:0}.header-main .title{grid-column:1/-1;grid-row:1}.header-github{grid-column:1;grid-row:2;justify-self:start}.header-x-link{justify-content:center;width:30px;padding:0}.header-x-link span{display:none}.header-auth{position:static;grid-column:2;grid-row:2;justify-self:end}.github-login-button span{display:none}.github-login-button .github-login-label-mobile{display:inline}.github-login-button{width:auto;padding:0 8px}.title{font-size:24px}.detail-toolbar{align-items:flex-start}.detail-card{padding:18px 16px}.conference-detail-title{font-size:24px}.footer-text{font-size:14px;text-align:center}}
 """
 
 
