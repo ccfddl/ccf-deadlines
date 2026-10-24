@@ -309,6 +309,10 @@ a {
   cursor: pointer;
 }
 
+.github-login-label-mobile {
+  display: none;
+}
+
 .github-auth-retry {
   padding: 0 10px;
   color: #75808b;
@@ -962,7 +966,8 @@ a {
   cursor: pointer;
 }
 
-.category-filter-grid .thaw-checkbox {
+.category-filter-grid .thaw-checkbox,
+.category-filter-grid .directory-category-link {
   display: block;
   min-height: 22px;
   box-sizing: border-box;
@@ -975,12 +980,14 @@ a {
   transition: none;
 }
 
-.category-filter-grid .thaw-checkbox:hover {
+.category-filter-grid .thaw-checkbox:hover,
+.category-filter-grid .directory-category-link:hover {
   border-color: #ddd4ca;
   background: #ebe6df;
 }
 
-.category-filter-grid .filter-selected .thaw-checkbox {
+.category-filter-grid .filter-selected .thaw-checkbox,
+.category-filter-grid .directory-category-link[aria-current="page"] {
   border-color: #9fc4e3;
   background: #edf5fb;
   color: #356d9e;
@@ -3683,12 +3690,11 @@ body:has(.conference-detail-dialog) .thaw-dialog-surface__backdrop {
     display: none;
   }
 
-  .github-login-button {
-    width: 30px;
-    padding: 0;
+  .github-login-button .github-login-label-mobile {
+    display: inline;
   }
 
-  .github-login-button--checking {
+  .github-login-button {
     width: auto;
     padding: 0 8px;
   }

@@ -30,6 +30,12 @@ const types = {
   ".wasm": "application/wasm",
 };
 let failingDirectoryResource;
+let delayDirectoryBootstrap = false;
+const delayedDirectoryBootstraps = [];
+function releaseDirectoryBootstrap() {
+  delayDirectoryBootstrap = false;
+  for (const serve of delayedDirectoryBootstraps.splice(0)) serve();
+}
 const server = createServer((request, response) => {
   const pathname = new URL(request.url, "http://localhost").pathname;
   if ((failingDirectoryResource === 'bootstrap' && /^\/venues\/app-.*\.js$/.test(pathname))
@@ -46,17 +52,24 @@ const server = createServer((request, response) => {
     }));
     return;
   }
-  let file = resolve(dist, `.${pathname === "/" ? "/index.html" : pathname}`);
-  if (!file.startsWith(`${dist}${sep}`) && file !== join(dist, "index.html")) {
-    response.writeHead(403).end();
-    return;
-  }
-  try {
-    if (statSync(file).isDirectory()) file = join(file, "index.html");
-    response.writeHead(200, { "Content-Type": types[extname(file)] ?? "application/octet-stream" });
-    response.end(readFileSync(file));
-  } catch {
-    response.writeHead(404).end();
+  const serve = () => {
+    let file = resolve(dist, `.${pathname === "/" ? "/index.html" : pathname}`);
+    if (!file.startsWith(`${dist}${sep}`) && file !== join(dist, "index.html")) {
+      response.writeHead(403).end();
+      return;
+    }
+    try {
+      if (statSync(file).isDirectory()) file = join(file, "index.html");
+      response.writeHead(200, { "Content-Type": types[extname(file)] ?? "application/octet-stream" });
+      response.end(readFileSync(file));
+    } catch {
+      response.writeHead(404).end();
+    }
+  };
+  if (delayDirectoryBootstrap && /^\/venues\/app-.*\.js$/.test(pathname)) {
+    delayedDirectoryBootstraps.push(serve);
+  } else {
+    serve();
   }
 });
 await new Promise((done) => server.listen(0, "127.0.0.1", done));
@@ -222,6 +235,74 @@ try {
       writeFileSync(`/tmp/ccfddl-controls-${name}-${width}.png`, Buffer.from(screenshot.data, 'base64'));
     }
   }
+  // Hold the app bootstrap so the first paint is checked before Rust replaces it.
+  await command('Network.enable');
+  await command('Network.setCacheDisabled', { cacheDisabled: true });
+  const categoryPaint = async (mounted) => evaluate(`(() => {
+    const nodes = [...document.querySelectorAll(${JSON.stringify(mounted
+      ? '.conference-controls .category-filter-grid .thaw-checkbox'
+      : '.directory-categories .directory-category-link')})];
+    return {
+      labels: nodes.map(node => node.innerText.trim()),
+      selected: nodes.flatMap((node, index) => ${mounted
+        ? "node.closest('.filter-selected')"
+        : "node.getAttribute('aria-current') === 'page'"} ? [index] : []),
+      styles: nodes.map(node => {
+        const css = getComputedStyle(node);
+        return Object.fromEntries(['lineHeight',
+          'height', 'padding', 'borderRadius', 'borderWidth', 'borderStyle', 'borderColor',
+          'backgroundColor', 'color', 'boxSizing', 'textDecorationLine'].map(key => [key, css[key]]));
+      }),
+      typography: nodes.map(node => {
+        const visibleLabel = ${mounted
+          ? "node.querySelector('.thaw-checkbox__label')"
+          : "[...node.children].find(child => getComputedStyle(child).display !== 'none')"};
+        const css = getComputedStyle(visibleLabel);
+        return Object.fromEntries(['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'color'].map(key => [key, css[key]]));
+      }),
+    };
+  })()`);
+  const categoryCodes = ['DS', 'NW', 'SC', 'SE', 'DB', 'CT', 'CG', 'AI', 'HI', 'MX'];
+  const initialCases = [
+    { path: '/venues/?core=A%2CA*&tz=Asia%2FShanghai', width: 1280, stored: ['AI'], selected: [] },
+    { path: '/venues/?categories=AI,invalid&core=A%2CA*&tz=Asia%2FShanghai', width: 1280, stored: ['DB'], selected: ['AI'] },
+    { path: '/venues/?core=A%2CA*&tz=Asia%2FShanghai', width: 390, stored: ['AI'], selected: [] },
+    { path: '/venues/?categories=' + categoryCodes.join(','), width: 390, stored: [], selected: [] },
+    { path: '/venues/', width: 1280, stored: ['AI', 'invalid'], selected: ['AI'], legacyEnglish: true },
+  ];
+  for (const test of initialCases) {
+    const preferences = await command('Page.addScriptToEvaluateOnNewDocument', {
+      source: `localStorage.setItem('types', ${JSON.stringify(JSON.stringify(test.stored))});`
+        + (test.legacyEnglish ? `localStorage.removeItem('language_preference');
+          localStorage.setItem('use_english', 'true');
+          Object.defineProperty(navigator, 'language', {value: 'zh-CN', configurable: true});` : ''),
+    });
+    delayDirectoryBootstrap = true;
+    await command('Emulation.setDeviceMetricsOverride', { width: test.width, height: 900, deviceScaleFactor: 1, mobile: false });
+    console.log('Checking first paint', test.path, test.width);
+    await command('Page.navigate', { url: `http://127.0.0.1:${server.address().port}${test.path}` });
+    await until(() => evaluate("document.querySelectorAll('.directory-category-link').length === 10 && getComputedStyle(document.querySelector('.directory-category-link')).borderRadius === '7px'"), 'initial category chips');
+    assert.equal(await evaluate("Boolean(document.querySelector('.conference-controls'))"), false);
+    const initial = await categoryPaint(false);
+    assert.deepEqual(initial.selected, test.selected.map(code => categoryCodes.indexOf(code)), 'first paint must use the same category preferences');
+    assert.equal(initial.labels[0], test.width <= 768 ? 'DS' : 'Computer Architecture', 'first paint must use the same language and responsive labels');
+    if (test.path.includes('core=')) {
+      const links = await evaluate(`[...document.querySelectorAll('.directory-category-link')].map(node => {
+        const query = new URL(node.href).searchParams;
+        return {core: query.get('core'), tz: query.get('tz'), categories: query.get('categories')};
+      })`);
+      assert.ok(links.every(link => link.core === 'A,A*' && link.tz === 'Asia/Shanghai'), 'fallback links must preserve rank and timezone filters');
+      assert.equal(links[7].categories, test.selected.includes('AI') ? null : 'AI', 'fallback links must toggle categories');
+    }
+    if (test.path.includes('core=') && !test.path.includes('categories=')) {
+      const screenshot = await command('Page.captureScreenshot', { format: 'png' });
+      writeFileSync(`/tmp/ccfddl-directory-first-paint-${test.width}.png`, Buffer.from(screenshot.data, 'base64'));
+    }
+    releaseDirectoryBootstrap();
+    await until(() => evaluate("Boolean(document.querySelector('.conference-controls .filter-dropdown-trigger'))"), 'shared controls after first paint');
+    assert.deepEqual(await categoryPaint(true), initial, `category chips must keep their appearance after mounting at ${test.width}px`);
+    await command('Page.removeScriptToEvaluateOnNewDocument', { identifier: preferences.identifier });
+  }
   // Long IANA names use a compact label without changing the stored timezone.
   const longTimezone = 'America/Argentina/San_Juan';
   // Chrome versions differ in whether this valid alias is listed as America/San_Juan.
@@ -244,13 +325,15 @@ try {
           stored: localStorage.getItem('display_timezone')};
       })()`);
       assert.equal(timezone.label, 'San Juan');
-      assert.equal(timezone.title, longTimezone);
+      assert.equal(timezone.title, `${longTimezone} (UTC-3)`);
       assert.equal(timezone.stored, longTimezone);
       assert.equal(timezone.overflow, false);
       assert.ok(timezone.left >= 0 && timezone.right <= width);
       await evaluate("document.querySelector('.toolbar-timezone-trigger').click()");
       await until(() => evaluate("Boolean(document.querySelector('.toolbar-timezone-menu'))"), 'long timezone menu');
-      assert.equal(await evaluate(`[...document.querySelectorAll('.toolbar-timezone-option')].some(node => node.textContent === '${longTimezone}')`), true);
+      const timezoneOptions = await evaluate("[...document.querySelectorAll('.toolbar-timezone-option')].map(node => ({label: node.textContent.trim(), selected: node.getAttribute('aria-selected')}))");
+      assert.ok(timezoneOptions.some(option => option.label === `${longTimezone} (UTC-3)`),
+        `Expected ${longTimezone} (UTC-3) among timezone options: ${JSON.stringify(timezoneOptions)}`);
       await evaluate("document.querySelector('.toolbar-timezone-backdrop').click()");
       if (width === 2516 && path === '/?filters=all') {
         const screenshot = await command('Page.captureScreenshot', { format: 'png' });
@@ -282,7 +365,7 @@ try {
   await until(() => evaluate("!new URLSearchParams(location.search).has('ccf')"), 'clear rank');
   await evaluate("document.querySelector('.toolbar-timezone-trigger').click()");
   await until(() => evaluate("Boolean(document.querySelector('.toolbar-timezone-menu'))"), 'timezone menu');
-  await evaluate("[...document.querySelectorAll('.toolbar-timezone-option')].find(node => node.textContent === 'Asia/Shanghai').click()");
+  await evaluate("[...document.querySelectorAll('.toolbar-timezone-option')].find(node => node.textContent === 'Asia/Shanghai (UTC+8)').click()");
   await until(() => evaluate("new URLSearchParams(location.search).get('tz') === 'Asia/Shanghai'"), 'timezone change');
   await evaluate("document.querySelector('.language-switches input').click()");
   await until(() => evaluate("document.documentElement.lang === 'zh-CN'"), 'language change');
@@ -290,13 +373,14 @@ try {
   await evaluate("[...document.querySelectorAll('.category-filter-grid .checkbox-item')].find(node => node.textContent.includes('人工智能')).querySelector('input').click()");
   await until(() => evaluate("new URLSearchParams(location.search).get('categories') === 'AI'"), 'category selection');
   await navigate('/?view=table', 390);
-  assert.equal(await evaluate("document.querySelector('.toolbar-timezone-trigger').title"), 'Asia/Shanghai');
+  assert.equal(await evaluate("document.querySelector('.toolbar-timezone-trigger').title"), 'Asia/Shanghai (UTC+8)');
+  assert.equal(await evaluate("localStorage.getItem('display_timezone')"), 'Asia/Shanghai');
   assert.equal(await evaluate("document.querySelectorAll('.category-filter-grid .filter-selected').length"), 1);
   // Main-site history switch must toggle once when either the text or switch is clicked.
   await navigate('/', 390);
   const past = () => evaluate("document.querySelector('.past-switch input').checked");
   const before = await past();
-  await evaluate("document.querySelector('.past-label').click()");
+  await evaluate("document.querySelector('.past-switch .past-label').click()");
   await until(async () => await past() !== before, 'past label toggle');
   await evaluate("document.querySelector('.past-switch input').click()");
   await until(async () => await past() === before, 'past switch toggle');
@@ -308,13 +392,15 @@ try {
     await until(() => evaluate("Boolean(document.querySelector('.directory-controls-loading button'))"), `${resource} failure feedback`);
     assert.ok(await evaluate("document.querySelectorAll('.directory-list a').length > 0"));
     assert.equal(await evaluate("getComputedStyle(document.querySelector('.directory-categories')).display"), 'flex');
+    assert.equal(await evaluate("document.querySelectorAll('.directory-category-link[href]').length"), 10);
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.directory-category-link')).borderRadius"), '7px');
     assert.equal(await evaluate("document.querySelector('.directory-controls-loading').getAttribute('role')"), 'alert');
     failingDirectoryResource = undefined;
     await evaluate("document.querySelector('.directory-controls-loading button').click()");
     await until(() => evaluate("Boolean(document.querySelector('.conference-controls .toolbar-search input'))"), `${resource} retry recovery`);
     assert.equal(await evaluate("Boolean(document.querySelector('.directory-controls-loading'))"), false);
   }
-  console.log('Shared conference controls passed at 1280, 768, 390 and 320px; directory filtering and cross-view preferences passed');
+  console.log('Shared conference controls passed at 1280, 768, 390 and 320px; directory first paint, filtering and cross-view preferences passed');
 } finally {
   socket?.close();
   browser.kill();
