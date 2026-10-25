@@ -77,6 +77,10 @@
       id: pacificvis27
       link: https://pacificvis2027.github.io/
       timeline:
+        - abstract_deadline: '2026-09-01 23:59:59'
+          deadline: '2026-09-08 23:59:59'
+          decision_deadline: '2026-12-15 23:59:59'
+          comment: 'Journal track'
         - abstract_deadline: '2026-11-02 23:59:59'
           deadline: '2026-11-09 23:59:59'
           decision_deadline: '2027-01-25 23:59:59'
