@@ -45,7 +45,7 @@ Use **one conference per PR**. Multiple relevant fields/rounds for that conferen
 
 Immediately before opening the PR, reopen the official source, verify every changed fact and its year/track/round/timezone, inspect the diff, and check again for a duplicate PR. Cached checks never replace this final verification. If current sources conflict or remain insufficient, leave unsupported facts out and report the blocker; prefer `TBD` or no change to speculation.
 
-Use a title such as `Add ICDE 2028`, `Update SIGMOD 2027 round 4 deadline`, or `Add ICML 2027 rebuttal and decision dates`. The body should state the resulting change, direct official sources, and material round/timezone clarification. Follow repository policy on signatures. Proceed within the user's authorization; the skill adds no separate approval requirement.
+Use exactly `Update <ACRONYM> <YEAR>` as the PR title, for example `Update ICME 2027`, including when adding a new conference or edition. Do not append changed fields, rounds, or other change descriptions to the title; put those details in the body. The body should state the resulting change, direct official sources, and material round/timezone clarification. Follow repository policy on signatures. Proceed within the user's authorization; the skill adds no separate approval requirement.
 
 Confirm that GitHub actually created the PR before reporting its number/link. Record conference, edition/rounds, changed fields, branch/head SHA, sources, and CI state if available. Do not claim running CI passed or that an open PR is merged.
 
