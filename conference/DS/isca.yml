@@ -71,6 +71,12 @@
           rebuttal_deadline: '2027-03-08 23:59:59'
           decision_deadline: '2027-03-26 23:59:59'
           comment: 'Main Track; rebuttal/revision period: February 16-March 8, 2027'
+        # Source: https://iscaconf.org/isca2027/submit/industry.php
+        - abstract_deadline: '2026-12-06 23:59:59'
+          deadline: '2026-12-13 23:59:59'
+          rebuttal_deadline: '2027-02-26 23:59:59'
+          decision_deadline: '2027-03-26 23:59:59'
+          comment: 'Industry Track; rebuttal period: February 15-26, 2027'
       timezone: AoE
       date: June 5-9, 2027
       place: Atlanta, Georgia, USA
