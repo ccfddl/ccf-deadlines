@@ -44,10 +44,7 @@
       timeline:
         - deadline: '2026-10-12 23:59:59'
           rebuttal_deadline: '2026-11-30 23:59:59'
-          comment: 'ARR Submission'
-        - deadline: '2026-12-23 23:59:59'
           decision_deadline: '2027-02-10 23:59:59'
-          comment: 'COLING commitment after ARR meta-reviews; reviewed papers only'
       timezone: UTC-12
       date: May 9-14 (in-person) and 6-7 (virtual), 2027
       place: Macau SAR, China / Online
