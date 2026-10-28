@@ -1,0 +1,8 @@
+- title: MDM
+  accept_rates:
+    - year: 2026
+      submitted: 59
+      accepted: 18
+      str: 30.5%(18/59 26')
+      rate: 0.305084745762712
+      source: https://ieeexplore.ieee.org/document/11619353

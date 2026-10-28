@@ -65,7 +65,9 @@
       id: gecco27
       link: https://gecco-2027.sigevo.org/HomePage
       timeline:
-        - deadline: 'TBD'
+        - abstract_deadline: '2027-01-18 23:59:59'
+          deadline: '2027-01-25 23:59:59'
+          decision_deadline: '2027-03-19 23:59:59'
       timezone: AoE
       date: July 12-16, 2027
       place: Kraków, Poland

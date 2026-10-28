@@ -43,6 +43,12 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
      <td align="center"><img src=".readme_assets/screenshot_ccf-ddl-tracker.png" width="280px"/></td>
      <td align="center"><img src=".readme_assets/CCF-Deadlines_TUI_2026-05-01T19_50_27_068657.svg" width="280px"/></td>
   </tr>
+  <tr>
+    <td align="center"><b><a href="https://github.com/neverbiasu/ccfddl-skills">Agent Skill</a><br></b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src=".readme_assets/screenshot_agent_skill.png" width="280px"/></td>
+  </tr>
 </table>
 
 ## MCP

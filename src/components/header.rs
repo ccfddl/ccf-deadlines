@@ -196,6 +196,9 @@ pub fn Header(
                                             "使用 GitHub 登录"
                                         }}
                                     </span>
+                                    <span class="github-login-label-mobile">
+                                        {move || if use_english.get() { "Sign in" } else { "登录" }}
+                                    </span>
                                 </button>
                             }
                                 .into_any()

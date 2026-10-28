@@ -7,9 +7,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # The site build renders public share cards with the production browser.
-      CHROME_BINARY: /usr/bin/chromium
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,4 +35,4 @@ jobs:
       - name: Build with Trunk
         run: ./trunk build --release
       - name: Generate crawlable conference pages
-        run: python scripts/generate_seo_pages.py
+        run: python scripts/generate_seo_pages.py --skip-share-images

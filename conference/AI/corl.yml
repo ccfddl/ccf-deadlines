@@ -55,6 +55,8 @@
       timeline:
         - abstract_deadline: '2026-05-25 23:59:59'
           deadline: '2026-05-28 23:59:59'
+          rebuttal_deadline: '2026-08-11 23:59:59'
+          decision_deadline: '2026-09-04 23:59:59'
       timezone: AoE
       date: November 9-11, 2026
       place: Austin, Texas, USA

@@ -59,7 +59,10 @@
       id: colt27
       link: https://learningtheory.org/colt2027/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2027-01-29 23:59:59'
+          rebuttal_deadline: '2027-04-02 23:59:59'
+          decision_deadline: '2027-05-03 23:59:59'
+          comment: 'Expected rebuttal March 29 - April 2; author notification on or before May 3.'
       timezone: AoE
       date: June 28 - July 2, 2027
       place: Tokyo, Japan
