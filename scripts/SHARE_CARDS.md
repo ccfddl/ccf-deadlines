@@ -9,12 +9,12 @@ operating systems. No font binary or visitor-facing webfont is added.
 
 Run `python scripts/build_data.py && python scripts/generate_seo_pages.py`.
 The PNG step requires Node.js 22+ and Chrome/Chromium (or `CHROME_BINARY`).
-Deploy and MergeCheck select the runner's preinstalled stable Google Chrome at
+Deploy selects the runner's preinstalled stable Google Chrome at
 `/usr/bin/google-chrome` through `CHROME_BINARY`, rather than the Chromium snapshot.
-MergeCheck runs the browser-launcher tests and real share-image tests, including
-PNG generation, before building the site. It then uses
-`python scripts/generate_seo_pages.py --skip-share-images` to validate the complete
-static pages and sitemap without rendering the full image catalog again.
+Only Deploy runs the browser-launcher tests and real share-image tests, including
+PNG generation, before assembling data and building the site.
+MergeCheck uses `python scripts/generate_seo_pages.py --skip-share-images` to
+validate the static pages and sitemap without starting a browser.
 The default command used by Deploy still requires every share image to render successfully.
 It starts one browser for all editions, renders locally to canvas, and does not
 download external assets.
