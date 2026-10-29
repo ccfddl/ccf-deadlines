@@ -52,6 +52,7 @@
       link: https://www.adai.ai/dai/2026/index.html
       timeline:
         - deadline: '2026-08-03 23:59:59'
+          decision_deadline: '2026-09-16 23:59:59'
       timezone: AoE
       date: November 30-December 1, 2026
       place: Hong Kong, China
