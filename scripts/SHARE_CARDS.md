@@ -9,11 +9,13 @@ operating systems. No font binary or visitor-facing webfont is added.
 
 Run `python scripts/build_data.py && python scripts/generate_seo_pages.py`.
 The PNG step requires Node.js 22+ and Chrome/Chromium (or `CHROME_BINARY`).
-Deployment explicitly selects `/usr/bin/chromium` through `CHROME_BINARY`.
-MergeCheck runs `python scripts/generate_seo_pages.py --skip-share-images` to
-validate the static pages and sitemap without starting a browser. PR checks do
-not run browser rendering, including for changes to the renderer. The default
-command used by Deploy still requires every share image to render successfully.
+Deploy and MergeCheck select the runner's preinstalled stable Google Chrome at
+`/usr/bin/google-chrome` through `CHROME_BINARY`, rather than the Chromium snapshot.
+MergeCheck runs the browser-launcher tests and real share-image tests, including
+PNG generation, before building the site. It then uses
+`python scripts/generate_seo_pages.py --skip-share-images` to validate the complete
+static pages and sitemap without rendering the full image catalog again.
+The default command used by Deploy still requires every share image to render successfully.
 It starts one browser for all editions, renders locally to canvas, and does not
 download external assets.
 Conference values are passed as data, never executable HTML. Cards include every known abstract, paper, rebuttal and decision timestamp in

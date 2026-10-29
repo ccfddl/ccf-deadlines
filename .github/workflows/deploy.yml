@@ -11,8 +11,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Use Chromium for production share-card generation.
-      CHROME_BINARY: /usr/bin/chromium
+      # Use the runner's stable Chrome for production share cards.
+      CHROME_BINARY: /usr/bin/google-chrome
     steps:
       - name: Checkout
         uses: actions/checkout@v4
