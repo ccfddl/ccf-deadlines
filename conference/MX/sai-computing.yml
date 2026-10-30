@@ -37,8 +37,8 @@
       id: computing27
       link: https://saiconference.com/Computing
       timeline:
-        - deadline: '2026-10-01 23:59:59'
-          decision_deadline: '2026-11-01 23:59:59'
+        - deadline: '2026-11-01 23:59:59'
+          decision_deadline: '2026-11-15 23:59:59'
           comment: 'Round 1'
         - deadline: '2026-12-01 23:59:59'
           decision_deadline: '2027-01-15 23:59:59'

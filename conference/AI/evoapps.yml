@@ -59,7 +59,7 @@
       id: evoapps27
       link: https://www.evostar.org/2027/evoapps/
       timeline:
-        - deadline: '2026-11-01 23:59:59'
+        - deadline: '2026-11-16 23:59:59'
           decision_deadline: '2027-01-10 23:59:59'
           comment: 'Full papers'
       timezone: AoE
