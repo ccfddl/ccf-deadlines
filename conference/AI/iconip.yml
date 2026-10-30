@@ -54,6 +54,7 @@
       link: https://www.iconip2026.org/
       timeline:
         - deadline: '2026-05-31 23:59:59'
+          decision_deadline: '2026-08-14 23:59:59'
       timezone: UTC-12
       date: November 23-27, 2026
       place: Melbourne, Australia
