@@ -53,6 +53,7 @@
       link: https://ictai.computer.org/2026/
       timeline:
         - deadline: '2026-07-21 23:59:59'
+          decision_deadline: '2026-09-06 23:59:59'
       timezone: AoE
       date: November 02-04, 2026
       place: Boca Raton FL, USA
