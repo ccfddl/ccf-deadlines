@@ -80,12 +80,13 @@
       link: https://www.ndss-symposium.org/ndss2027/
       timeline:
         - deadline: '2026-05-06 23:59:59'
+          rebuttal_deadline: '2026-07-17 23:59:59'
           decision_deadline: '2026-09-16 23:59:59'
-          comment: Summer
+          comment: 'Summer; author rebuttal date tentative; decision is final major-revision notification'
         - deadline: '2026-08-19 23:59:59'
           rebuttal_deadline: '2026-11-13 23:59:59'
           decision_deadline: '2027-01-11 23:59:59'
-          comment: Fall
+          comment: 'Fall; decision is final major-revision notification'
       timezone: UTC-12
       date: March 22 - March 26, 2027
       place: Seoul, Republic of Korea
