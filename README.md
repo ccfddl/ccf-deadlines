@@ -45,9 +45,11 @@ English | [简体中文](https://translate.google.com/translate?sl=auto&tl=zh&u=
   </tr>
   <tr>
     <td align="center"><b><a href="https://github.com/neverbiasu/ccfddl-skills">Agent Skill</a><br></b></td>
+    <td align="center"><b><a href="https://github.com/Gerard-Devlin/ccf-ddl-win-bar">Windows Island</a><br></b></td>
   </tr>
   <tr>
     <td align="center"><img src=".readme_assets/screenshot_agent_skill.png" width="280px"/></td>
+    <td align="center"><img src=".readme_assets/screenshot_windows_island.png" width="280px"/></td>
   </tr>
 </table>
 
