@@ -56,8 +56,9 @@
       id: nips26
       link: https://neurips.cc/Conferences/2026
       timeline:
-        - abstract_deadline: '2026-05-05 11:59:00'
-          deadline: '2026-05-07 11:59:00'
+        - abstract_deadline: '2026-05-05 11:59:59'
+          deadline: '2026-05-07 11:59:59'
+          decision_deadline: '2026-09-25 11:59:59'
       timezone: UTC+0
       date: December 8-10 (Sydney), December 9-11 (Atlanta and Paris), 2026
       place: Sydney, Australia; Atlanta, USA; Paris, France
