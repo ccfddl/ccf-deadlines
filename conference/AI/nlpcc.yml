@@ -52,6 +52,9 @@
       link: http://tcci.ccf.org.cn/conference/2026/
       timeline:
         - deadline: '2026-06-20 23:59:59'
+          rebuttal_deadline: '2026-07-15 23:59:59'
+          decision_deadline: '2026-08-04 23:59:59'
+          comment: 'Notification expected to be unchanged'
       timezone: UTC+8
       date: November 4-5, 2026
       place: Macau, China
