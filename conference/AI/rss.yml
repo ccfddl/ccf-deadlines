@@ -65,6 +65,7 @@
       timeline:
         - deadline: '2026-12-04 23:59:59'
           rebuttal_deadline: '2027-02-12 23:59:59'
+          decision_deadline: '2027-04-30 23:59:59'
           comment: 'Stage 1: initial 6-page extended abstract submission'
       timezone: AoE
       date: July 6-11, 2027
