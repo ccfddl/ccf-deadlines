@@ -68,10 +68,11 @@
       link: https://2027.ijcai.org/
       timeline:
         # Source: https://2027.ijcai.org/
-        # The official time is explicitly 23:59 AoE, represented as 23:59:00.
-        - abstract_deadline: '2027-01-04 23:59:00'
-          deadline: '2027-01-11 23:59:00'
-          decision_deadline: '2027-04-21 23:59:00'
+        # Official 23:59 AoE is represented as 23:59:59 by repository convention.
+        - abstract_deadline: '2027-01-04 23:59:59'
+          deadline: '2027-01-11 23:59:59'
+          rebuttal_deadline: '2027-04-02 23:59:59'
+          decision_deadline: '2027-04-21 23:59:59'
           comment: 'Separate satellite event: August 15-17, 2027, Hengqin, China'
       timezone: AoE
       date: August 7-13, 2027
