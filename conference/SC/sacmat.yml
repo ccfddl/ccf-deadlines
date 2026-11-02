@@ -72,9 +72,11 @@
       id: sacmat27
       link: https://www.sacmat.org/2027/
       timeline:
-        - deadline: '2026-10-30 23:59:59'
+        - deadline: '2026-11-04 23:59:59'
+          decision_deadline: '2026-12-21 23:59:59'
           comment: 'First Cycle'
         - deadline: '2027-02-12 23:59:59'
+          decision_deadline: '2027-03-29 23:59:59'
           comment: 'Second Cycle'
       timezone: AoE
       date: July 19-21, 2027
