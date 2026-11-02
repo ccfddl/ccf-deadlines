@@ -56,8 +56,10 @@
         - deadline: '2026-05-25 23:59:59'
           comment: 'ARR initial submission'
         - deadline: '2026-08-07 23:59:59'
+          decision_deadline: '2026-09-07 23:59:59'
           comment: 'Reviewed-paper commitment, round 1'
         - deadline: '2026-08-25 23:59:59'
+          decision_deadline: '2026-09-07 23:59:59'
           comment: 'Reviewed-paper commitment, round 2'
       timezone: UTC-12
       date: Nov 6-10, 2026
