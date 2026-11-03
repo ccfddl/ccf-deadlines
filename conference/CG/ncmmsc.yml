@@ -51,6 +51,7 @@
       timeline:
         - abstract_deadline: '2026-07-05 23:59:59'
           deadline: '2026-07-12 23:59:59'
+          decision_deadline: '2026-09-04 23:59:59'
       timezone: AoE
       date: Nov 5-8, 2026
       place: Hengqin, China
