@@ -62,7 +62,9 @@
       id: sec27
       link: https://ifipsec.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2026-12-15 23:59:59'
+          decision_deadline: '2027-02-18 23:59:59'
+          comment: Full papers
       timezone: AoE
-      date: TBD
-      place: Linköping, Sweden
+      date: June 14-16, 2027
+      place: Linköping University, Linköping, Sweden
