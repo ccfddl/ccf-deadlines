@@ -60,10 +60,11 @@
       id: hscc27
       link: https://hscc.acm.org/2027/
       timeline:
-        - abstract_deadline: '2026-10-29 23:59:59'
+        - abstract_deadline: '2026-11-05 23:59:59'
           deadline: '2026-11-05 23:59:59'
           rebuttal_deadline: '2027-01-15 23:59:59'
           decision_deadline: '2027-01-28 23:59:59'
+          comment: 'Regular papers; papers submitted by the deadline may be updated until November 6, 2026 23:59:59 AoE'
       timezone: AoE
       date: May 17-20, 2027
       place: Boulder, Colorado, USA
