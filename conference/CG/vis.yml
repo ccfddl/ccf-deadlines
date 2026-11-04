@@ -58,6 +58,7 @@
       timeline:
         - abstract_deadline: '2026-03-21 23:59:59'
           deadline: '2026-03-31 23:59:59'
+          decision_deadline: '2026-07-15 23:59:59'
       timezone: AoE
       date: November 10-13, 2026
       place: Boston, Massachusetts, USA
