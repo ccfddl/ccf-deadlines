@@ -63,13 +63,14 @@
       timeline:
         - abstract_deadline: '2026-05-05 23:59:59'
           deadline: '2026-05-12 23:59:59'
+          rebuttal_deadline: '2026-07-03 23:59:59'
           comment: Registration / full paper
       timezone: UTC-12
       date: December 1-4, 2026
       place: KLCC, Kuala Lumpur, Malaysia
     - year: 2027
       id: siggrapha27
-      link: https://asia.siggraph.org/2027/
+      link: https://asia.siggraph.org/2026/about-the-event/siggraph-asia-2027/
       timeline:
         - abstract_deadline: 'TBD'
           deadline: 'TBD'
