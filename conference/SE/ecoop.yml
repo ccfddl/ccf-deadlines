@@ -76,9 +76,11 @@
       timeline:
         - deadline: '2026-11-19 23:59:59'
           rebuttal_deadline: '2027-01-15 23:59:59'
+          decision_deadline: '2027-01-28 23:59:59'
           comment: Submission R1
         - deadline: '2027-02-11 23:59:59'
           rebuttal_deadline: '2027-03-26 23:59:59'
+          decision_deadline: '2027-04-08 23:59:59'
           comment: Submission R2
       timezone: AoE
       date: June 28 - July 2, 2027
