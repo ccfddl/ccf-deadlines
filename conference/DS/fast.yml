@@ -73,3 +73,11 @@
       timezone: AoE
       date: FEBRUARY 23-25, 2027
       place: Renton, WA, USA
+    - year: 2028
+      id: fast28
+      link: https://www.usenix.org/conference/fast28
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: February 28-March 1, 2028
+      place: Seattle, WA, USA
