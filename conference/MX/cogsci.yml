@@ -55,3 +55,11 @@
       timezone: AoE
       date: July 23-25, 2026
       place: Rio de Janeiro, Brazil (Hybrid)
+    - year: 2027
+      id: cogsci27
+      link: https://cognitivesciencesociety.org/cogsci-2027/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: July 28-31, 2027
+      place: Euskalduna Bilbao Convention Centre, Bilbao, Spain
