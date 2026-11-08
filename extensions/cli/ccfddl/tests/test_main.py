@@ -267,3 +267,74 @@ class TestProcessConferenceDeadlines:
         assert '"deadline": "2027-01-28 22:00:00 UTC"' in json_output
         assert '"comment": "Submissions form & conflicts / paper deadline"' in json_output
 
+    def test_abstract_upcoming_paper_tbd(self):
+        ref_date = datetime(2026, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+        conf = Conference.from_dict({
+            "title": "Conf TBD",
+            "sub": "AI",
+            "rank": {"ccf": "A"},
+            "dblp": "tbd",
+            "confs": [
+                {
+                    "year": 2026,
+                    "id": "tbd26",
+                    "link": "https://tbd.org",
+                    "timeline": [
+                        {
+                            "abstract_deadline": "2026-02-01 12:00:00",
+                            "deadline": "TBD",
+                            "comment": "Abstract first, full paper TBD",
+                        }
+                    ],
+                    "timezone": "UTC+0",
+                    "date": "2026",
+                    "place": "City",
+                }
+            ],
+        })
+        results = process_conference_deadlines([conf], ref_date)
+        assert len(results) == 1
+        res = results[0]
+        assert res["abstract_deadline_str"] == "2026-02-01 12:00:00 UTC"
+        assert res["deadline"] is None
+        assert res["deadline_str"] is None
+        assert res["comment"] == "Abstract first, full paper TBD"
+        assert res["next_deadline"] == res["abstract_deadline"]
+
+    def test_multiple_rounds_selected_round_consistency(self):
+        ref_date = datetime(2026, 2, 1, 0, 0, 0, tzinfo=timezone.utc)
+        conf = Conference.from_dict({
+            "title": "Conf Multi",
+            "sub": "AI",
+            "rank": {"ccf": "B"},
+            "dblp": "multi",
+            "confs": [
+                {
+                    "year": 2026,
+                    "id": "multi26",
+                    "link": "https://multi.org",
+                    "timeline": [
+                        {
+                            "abstract_deadline": "2026-01-10 12:00:00",
+                            "deadline": "2026-01-20 12:00:00",
+                            "comment": "Round 1",
+                        },
+                        {
+                            "abstract_deadline": "2026-03-01 12:00:00",
+                            "deadline": "2026-03-15 12:00:00",
+                            "comment": "Round 2",
+                        },
+                    ],
+                    "timezone": "UTC+0",
+                    "date": "2026",
+                    "place": "City",
+                }
+            ],
+        })
+        results = process_conference_deadlines([conf], ref_date)
+        assert len(results) == 1
+        res = results[0]
+        assert res["abstract_deadline_str"] == "2026-03-01 12:00:00 UTC"
+        assert res["deadline_str"] == "2026-03-15 12:00:00 UTC"
+        assert res["comment"] == "Round 2"
+        assert res["next_deadline"] == res["abstract_deadline"]
