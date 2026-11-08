@@ -267,7 +267,8 @@ class TestProcessConferenceDeadlines:
         assert '"deadline": "2027-01-28 22:00:00 UTC"' in json_output
         assert '"comment": "Submissions form & conflicts / paper deadline"' in json_output
 
-    def test_abstract_upcoming_paper_tbd(self):
+    @patch("builtins.print")
+    def test_abstract_upcoming_paper_tbd(self, mock_print):
         ref_date = datetime(2026, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
         conf = Conference.from_dict({
             "title": "Conf TBD",
@@ -301,8 +302,20 @@ class TestProcessConferenceDeadlines:
         assert res["comment"] == "Abstract first, full paper TBD"
         assert res["next_deadline"] == res["abstract_deadline"]
 
-    def test_multiple_rounds_selected_round_consistency(self):
-        ref_date = datetime(2026, 2, 1, 0, 0, 0, tzinfo=timezone.utc)
+        output_table(results, ref_date)
+        table_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert "31 days" in table_output
+        assert "TBD" in table_output
+
+        mock_print.reset_mock()
+        output_json(results)
+        json_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert '"abstract_deadline": "2026-02-01 12:00:00 UTC"' in json_output
+        assert '"deadline": null' in json_output
+        assert '"comment": "Abstract first, full paper TBD"' in json_output
+
+    @patch("builtins.print")
+    def test_multiple_rounds_selected_round_consistency(self, mock_print):
         conf = Conference.from_dict({
             "title": "Conf Multi",
             "sub": "AI",
@@ -316,12 +329,12 @@ class TestProcessConferenceDeadlines:
                     "timeline": [
                         {
                             "abstract_deadline": "2026-01-10 12:00:00",
-                            "deadline": "2026-01-20 12:00:00",
+                            "deadline": "2026-02-15 12:00:00",
                             "comment": "Round 1",
                         },
                         {
-                            "abstract_deadline": "2026-03-01 12:00:00",
-                            "deadline": "2026-03-15 12:00:00",
+                            "abstract_deadline": "2026-04-01 12:00:00",
+                            "deadline": "2026-04-15 12:00:00",
                             "comment": "Round 2",
                         },
                     ],
@@ -331,10 +344,37 @@ class TestProcessConferenceDeadlines:
                 }
             ],
         })
-        results = process_conference_deadlines([conf], ref_date)
-        assert len(results) == 1
-        res = results[0]
-        assert res["abstract_deadline_str"] == "2026-03-01 12:00:00 UTC"
-        assert res["deadline_str"] == "2026-03-15 12:00:00 UTC"
-        assert res["comment"] == "Round 2"
-        assert res["next_deadline"] == res["abstract_deadline"]
+
+        # Phase 1: In Round 1, abstract has passed but paper deadline is upcoming.
+        # Round 2 is further in the future.
+        ref_date_1 = datetime(2026, 2, 1, 0, 0, 0, tzinfo=timezone.utc)
+        results_1 = process_conference_deadlines([conf], ref_date_1)
+        assert len(results_1) == 1
+        res_1 = results_1[0]
+        # Must select Round 1: abstract_deadline is None (expired), paper deadline is Feb 15
+        assert res_1["abstract_deadline"] is None
+        assert res_1["abstract_deadline_str"] is None
+        assert res_1["deadline_str"] == "2026-02-15 12:00:00 UTC"
+        assert res_1["comment"] == "Round 1"
+        assert res_1["next_deadline"] == res_1["deadline"]
+
+        output_table(results_1, ref_date_1)
+        table_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert "14 days" in table_output
+
+        mock_print.reset_mock()
+        output_json(results_1)
+        json_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert '"abstract_deadline": null' in json_output
+        assert '"deadline": "2026-02-15 12:00:00 UTC"' in json_output
+        assert '"comment": "Round 1"' in json_output
+
+        # Phase 2: Round 1 fully passed, now active round is Round 2.
+        ref_date_2 = datetime(2026, 3, 1, 0, 0, 0, tzinfo=timezone.utc)
+        results_2 = process_conference_deadlines([conf], ref_date_2)
+        assert len(results_2) == 1
+        res_2 = results_2[0]
+        assert res_2["abstract_deadline_str"] == "2026-04-01 12:00:00 UTC"
+        assert res_2["deadline_str"] == "2026-04-15 12:00:00 UTC"
+        assert res_2["comment"] == "Round 2"
+        assert res_2["next_deadline"] == res_2["abstract_deadline"]
