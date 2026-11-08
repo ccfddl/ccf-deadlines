@@ -3,7 +3,9 @@ from datetime import datetime, timezone, timedelta
 from unittest.mock import patch, MagicMock
 
 from ccfddl.__main__ import parse_args, main
-from ccfddl.fetch import extract_alpha_id
+from ccfddl.fetch import extract_alpha_id, process_conference_deadlines
+from ccfddl.models import Conference
+from ccfddl.output import output_json, output_table
 from ccfddl.utils import format_duration, get_timezone
 
 
@@ -150,3 +152,118 @@ class TestMain:
 
         printed = [str(call) for call in mock_print.call_args_list]
         assert any("Available Categories" in str(p) for p in printed)
+
+
+class TestProcessConferenceDeadlines:
+    @pytest.fixture
+    def siggraph_conf(self):
+        return Conference.from_dict({
+            "title": "ACM SIGGRAPH",
+            "description": "ACM SIGGRAPH Annual Conference",
+            "sub": "CG",
+            "rank": {"ccf": "A", "core": "A*", "thcpl": "A"},
+            "dblp": "siggraph",
+            "confs": [
+                {
+                    "year": 2027,
+                    "id": "siggraph27",
+                    "link": "https://s2027.siggraph.org/",
+                    "timeline": [
+                        {
+                            "abstract_deadline": "2027-01-21 22:00:00",
+                            "deadline": "2027-01-28 22:00:00",
+                            "comment": "Submissions form & conflicts / paper deadline",
+                        }
+                    ],
+                    "timezone": "UTC+0",
+                    "date": "August 8 - 12, 2027",
+                    "place": "Anaheim, California",
+                }
+            ],
+        })
+
+    def test_both_abstract_and_paper_upcoming(self, siggraph_conf):
+        ref_date = datetime(2026, 11, 8, 0, 0, 0, tzinfo=timezone.utc)
+        results = process_conference_deadlines([siggraph_conf], ref_date)
+
+        assert len(results) == 1
+        res = results[0]
+        assert res["abstract_deadline_str"] == "2027-01-21 22:00:00 UTC"
+        assert res["deadline_str"] == "2027-01-28 22:00:00 UTC"
+        assert res["comment"] == "Submissions form & conflicts / paper deadline"
+        assert res["next_deadline"] == res["abstract_deadline"]
+
+    def test_abstract_expired_paper_upcoming(self, siggraph_conf):
+        ref_date = datetime(2027, 1, 23, 0, 0, 0, tzinfo=timezone.utc)
+        results = process_conference_deadlines([siggraph_conf], ref_date)
+
+        assert len(results) == 1
+        res = results[0]
+        assert res["abstract_deadline"] is None
+        assert res["abstract_deadline_str"] is None
+        assert res["deadline_str"] == "2027-01-28 22:00:00 UTC"
+        assert res["next_deadline"] == res["deadline"]
+
+    def test_sorting_uses_earliest_upcoming_deadline(self):
+        ref_date = datetime(2026, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+        conf_a = Conference.from_dict({
+            "title": "Conf A",
+            "sub": "AI",
+            "rank": {"ccf": "A"},
+            "dblp": "a",
+            "confs": [
+                {
+                    "year": 2026,
+                    "id": "a26",
+                    "link": "https://a.org",
+                    "timeline": [
+                        {
+                            "abstract_deadline": "2026-01-10 12:00:00",
+                            "deadline": "2026-01-30 12:00:00",
+                        }
+                    ],
+                    "timezone": "UTC+0",
+                    "date": "2026",
+                    "place": "City A",
+                }
+            ],
+        })
+        conf_b = Conference.from_dict({
+            "title": "Conf B",
+            "sub": "AI",
+            "rank": {"ccf": "A"},
+            "dblp": "b",
+            "confs": [
+                {
+                    "year": 2026,
+                    "id": "b26",
+                    "link": "https://b.org",
+                    "timeline": [{"deadline": "2026-01-20 12:00:00"}],
+                    "timezone": "UTC+0",
+                    "date": "2026",
+                    "place": "City B",
+                }
+            ],
+        })
+        results = process_conference_deadlines([conf_b, conf_a], ref_date)
+        assert [r["title"] for r in results] == ["Conf A", "Conf B"]
+
+    @patch("builtins.print")
+    def test_output_table_and_json(self, mock_print, siggraph_conf):
+        ref_date = datetime(2026, 11, 8, 0, 0, 0, tzinfo=timezone.utc)
+        results = process_conference_deadlines([siggraph_conf], ref_date)
+
+        output_table(results, ref_date)
+        table_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert "Abs DDL" in table_output
+        assert "DDL" in table_output
+        assert "74 days" in table_output
+        assert "81 days" in table_output
+
+        mock_print.reset_mock()
+        output_json(results)
+        json_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert '"abstract_deadline": "2027-01-21 22:00:00 UTC"' in json_output
+        assert '"deadline": "2027-01-28 22:00:00 UTC"' in json_output
+        assert '"comment": "Submissions form & conflicts / paper deadline"' in json_output
+
