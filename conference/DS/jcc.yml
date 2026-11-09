@@ -1,0 +1,36 @@
+- title: JCC
+  description: International Conference on JointCloud Computing
+  sub: DS
+  rank:
+    ccf: C
+    core: N
+    thcpl: N
+  dblp: N
+  confs:
+    - year: 2024
+      id: jcc2024
+      link: https://ieeejcc.com/
+      timeline:
+        - abstract_deadline: '2024-04-07 23:59:59'
+          deadline: '2024-04-28 23:59:59'
+      timezone: AoE
+      date: July 15-18, 2024
+      place: Shanghai, China
+    - year: 2025
+      id: jcc2025
+      link: https://conf.researchr.org/track/cisose-2025/jcc-2025
+      timeline:
+        - deadline: TBD
+          comment: 'Regular paper: official CFP says final deadline 2025-04-29, but official Important Dates lists 2025-05-06 AoE. Conflicting dates; exact time not published.'
+      timezone: AoE
+      date: July 21-24, 2025
+      place: Tucson, Arizona, USA (Hybrid)
+    - year: 2026
+      id: jcc2026
+      link: https://jointcloud.cloud
+      timeline:
+        - abstract_deadline: '2026-04-10 23:59:59'
+          deadline: '2026-04-15 23:59:59'
+      timezone: AoE
+      date: Jul 27-30, 2026
+      place: TBD

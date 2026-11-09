@@ -7,6 +7,42 @@
     thcpl: B
   dblp: sma
   confs:
+    - year: 2021
+      id: spm21
+      link: https://www.siam.org/conferences-events/past-event-archive/gdspm21/
+      timeline:
+        - abstract_deadline: '2021-03-05 23:59:59'
+          deadline: '2021-03-12 23:59:59'
+      timezone: AoE
+      date: September 27-29, 2021
+      place: Online
+    - year: 2022
+      id: spm22
+      link: https://spm2022.sciencesconf.org/
+      timeline:
+        - abstract_deadline: '2022-02-11 23:59:59'
+          deadline: '2022-02-17 23:59:59'
+      timezone: AoE
+      date: June 27-29, 2022
+      place: Online
+    - year: 2023
+      id: spm23
+      link: https://sites.google.com/view/spm-2023/home
+      timeline:
+        - abstract_deadline: '2023-02-17 23:59:59'
+          deadline: '2023-02-17 23:59:59'
+      timezone: AoE
+      date: July 5-7, 2023
+      place: Genoa, Italy
+    - year: 2024
+      id: spm24
+      link: https://spmconf.github.io/SPM2024/
+      timeline:
+        - abstract_deadline: '2024-02-17 23:59:59'
+          deadline: '2024-02-17 23:59:59'
+      timezone: AoE
+      date: July 8-10, 2024
+      place: Montreal, Quebec, Canada
     - year: 2025
       id: spm25
       link: https://spmconf2025.github.io/SPM2025/
@@ -14,5 +50,22 @@
         - abstract_deadline: '2025-03-08 23:59:59'
           deadline: '2025-03-15 23:59:59'
       timezone: AoE
-      date: October 29 - November 2, 2025
+      date: October 29 - November 1, 2025
       place: Hangzhou, Zhejiang, P.R. China
+    - year: 2026
+      id: spm26
+      link: https://spmconf2026.github.io/
+      timeline:
+        - abstract_deadline: '2026-02-08 23:59:59'
+          deadline: '2026-02-15 23:59:59'
+      timezone: AoE
+      date: July 6-9, 2026
+      place: Istanbul, Türkiye
+    - year: 2027
+      id: spm27
+      link: https://igs2027singapore.github.io/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: June 21-25, 2027
+      place: Singapore

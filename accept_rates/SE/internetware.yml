@@ -1,0 +1,25 @@
+# Official Main/Research Track HotCRP current-system decision cohorts.
+# These denominators are not certified as all received or all reviewed papers.
+- title: Internetware
+  accept_rates:
+    # Main Track research papers.
+    - year: 2023
+      submitted: 75
+      accepted: 30
+      str: 40.0%(30/75 23')
+      rate: 0.400000000000000
+      source: https://internetware2023.hotcrp.com/
+    # Research Track; New Idea uses a separate portal.
+    - year: 2024
+      submitted: 104
+      accepted: 47
+      str: 45.2%(47/104 24')
+      rate: 0.451923076923077
+      source: https://internetware2024.hotcrp.com/
+    # Research Track; New Idea uses a separate portal; two submission cycles and major revisions, without a unique-manuscript deduplication claim.
+    - year: 2025
+      submitted: 114
+      accepted: 50
+      str: 43.9%(50/114 25')
+      rate: 0.438596491228070
+      source: https://internetware2025.hotcrp.com/

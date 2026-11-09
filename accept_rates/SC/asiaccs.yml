@@ -1,0 +1,24 @@
+- title: AsiaCCS
+  # Main technical-paper decisions; separate posters and workshops excluded.
+  accept_rates:
+    - year: 2021
+      # Public annual HotCRP accepted decisions; withdrawal/desk-rejection breakdown not published here.
+      submitted: 362
+      accepted: 70
+      str: 19.3%(70/362 21')
+      rate: 0.19337016574585636
+      source: https://asiaccs21.hotcrp.com/
+    - year: 2022
+      # Final PC report p. 4: 169+294 submissions, 31+54 accepted; revision/resubmission process, not unique-paper claim.
+      submitted: 463
+      accepted: 85
+      str: 18.4%(85/463 22')
+      rate: 0.183585313174946
+      source: https://asiaccs2022.conferenceservice.jp/doc/asiaccs22_opening_remark_pcc.pdf
+    - year: 2023
+      # Handbook printed p. 2 / PDF p. 3: received 204+225; accepted 32+42 after shepherded major revisions.
+      submitted: 429
+      accepted: 74
+      str: 17.2%(74/429 23')
+      rate: 0.17249417249417248
+      source: https://asiaccs2023.org/wp-content/uploads/2023/07/Handbook.pdf

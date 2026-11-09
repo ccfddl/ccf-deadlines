@@ -1,0 +1,16 @@
+- title: Performance
+  accept_rates:
+    # PDF p.13: full papers from evaluated submissions; 5 shorts excluded.
+    - year: 2021
+      submitted: 82
+      accepted: 22
+      rate: 0.2682926829268293
+      str: "26.8%(22/82 21')"
+      source: https://www.performance2021.deib.polimi.it/www.performance2021.deib.polimi.it/wp-content/uploads/2021/11/Performance2021-Opening.pdf
+    # Chair report printed p.3: regular papers from definitive submissions; 80 registrations and 4 shorts excluded.
+    - year: 2023
+      submitted: 52
+      accepted: 14
+      rate: 0.2692307692307692
+      str: "26.9%(14/52 23')"
+      source: https://pure.tue.nl/ws/files/327130654/3649477.3649480.pdf

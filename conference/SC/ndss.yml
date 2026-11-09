@@ -7,16 +7,27 @@
     thcpl: A
   dblp: ndss
   confs:
+    - year: 2021
+      id: ndss21
+      link: https://www.ndss-symposium.org/ndss2021/
+      timeline:
+        - deadline: '2020-05-22 23:59:59'
+          comment: Summer
+        - deadline: '2020-07-31 23:59:59'
+          comment: Fall
+      timezone: UTC-12
+      date: February 22-24, 2021
+      place: Virtual
     - year: 2022
       id: ndss22
       link: https://www.ndss-symposium.org/ndss2022/
       timeline:
         - deadline: '2021-05-21 23:59:59'
-          comment: spring
+          comment: Summer
         - deadline: '2021-07-23 23:59:59'
-          comment: fall
+          comment: Fall
       timezone: UTC-12
-      date: February 27 - March 3, 2022
+      date: April 25-27, 2022
       place: San Diego, California
     - year: 2023
       id: ndss23
@@ -27,7 +38,7 @@
         - deadline: '2022-07-29 23:59:59'
           comment: Fall
       timezone: UTC-12
-      date: TBD
+      date: February 28 - March 2, 2023
       place: San Diego, California
     - year: 2024
       id: ndss24
@@ -38,7 +49,7 @@
         - deadline: '2023-06-28 23:59:59'
           comment: Fall
       timezone: UTC-12
-      date: February 26 - March 1, 2024
+      date: February 27-29, 2024
       place: San Diego, California
     - year: 2025
       id: ndss25
@@ -49,7 +60,7 @@
         - deadline: '2024-07-10 23:59:59'
           comment: Fall
       timezone: UTC-12
-      date: February 23 - February 28, 2025
+      date: February 25-27, 2025
       place: San Diego, California
     - year: 2026
       id: ndss26
@@ -62,5 +73,20 @@
           deadline: '2025-08-06 23:59:59'
           comment: Fall
       timezone: UTC-12
-      date: February 23 - February 27, 2026
+      date: February 24-26, 2026
       place: San Diego, California
+    - year: 2027
+      id: ndss27
+      link: https://www.ndss-symposium.org/ndss2027/
+      timeline:
+        - deadline: '2026-05-06 23:59:59'
+          rebuttal_deadline: '2026-07-17 23:59:59'
+          decision_deadline: '2026-09-16 23:59:59'
+          comment: 'Summer; author rebuttal date tentative; decision is final major-revision notification'
+        - deadline: '2026-08-19 23:59:59'
+          rebuttal_deadline: '2026-11-21 23:59:59'
+          decision_deadline: '2027-01-25 23:59:59'
+          comment: 'Fall; decision is final major-revision notification'
+      timezone: UTC-12
+      date: March 22 - March 26, 2027
+      place: Seoul, Republic of Korea

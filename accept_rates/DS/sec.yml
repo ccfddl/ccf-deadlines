@@ -1,0 +1,10 @@
+- title: SEC
+  accept_rates:
+    # Program-chair report: 18 research papers in the program / 71 reviewed submissions.
+    # Received, desk-rejection, withdrawal and conditional-decision counts are not stated.
+    - year: 2023
+      submitted: 71
+      accepted: 18
+      str: 25.4%(18/71 23')
+      rate: 0.2535211267605634
+      source: https://ieeexplore.ieee.org/document/10419275

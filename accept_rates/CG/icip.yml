@@ -1,8 +1,34 @@
 - title: ICIP
   accept_rates:
+    - year: 2021
+      submitted: 1723
+      accepted: 793
+      str: 46.0%(793/1723 21')
+      rate: 0.460243760882182
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9506761
+    - year: 2022
+      submitted: 1957
+      accepted: 863
+      str: 44.1%(863/1957 22')
+      rate: 0.440981093510475
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9897326
     - year: 2023
       submitted: 1647
       accepted: 732
       str: 44.4%(732/1647 23')
       rate: 0.444444444444444
       source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10222530
+    # Main-conference submissions; independent workshop and journal routes excluded.
+    - year: 2024
+      submitted: 1258
+      accepted: 596
+      str: 47.4%(596/1258 24')
+      rate: 0.473767885532591
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10647663
+    # Regular-paper track only; special sessions and other independent tracks excluded.
+    - year: 2025
+      submitted: 1040
+      accepted: 412
+      str: 39.6%(412/1040 25')
+      rate: 0.396153846153846
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11084753

@@ -1,14 +1,27 @@
 - title: ICME
   accept_rates:
+    - year: 2022
+      submitted: 1285
+      accepted: 381
+      str: 29.6%(381/1285 22')
+      rate: 0.296498054474708
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9859798
     - year: 2023
       submitted: 1415
       accepted: 488
       str: 34.5%(488/1415 23')
       rate: 0.344876325088339
       source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10219647
+    # Reviewed main-conference submissions; 2099 received before compliance checks.
     - year: 2024
       submitted: 2049
       accepted: 666
       str: 32.5%(666/2049 24')
-      rate: 0.3250366
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.325036603221083
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=10688105
+    - year: 2025
+      submitted: 3737
+      accepted: 1019
+      str: 27.3%(1019/3737 25')
+      rate: 0.272678619213273
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11209086

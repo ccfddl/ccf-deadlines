@@ -1,0 +1,26 @@
+- title: SAI
+  accept_rates:
+    # Chair selection of main papers; official archive agrees on counts but its rounded percentage is inconsistent.
+    # No quantified track, desk-rejection or withdrawal partition.
+    - year: 2023
+      submitted: 539
+      accepted: 193
+      str: "35.8%(193/539 23')"
+      rate: 0.3580705009276438
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-37717-4/1
+    # Accepted decisions across the conference; 165 published papers are a separate stage. Source percentage is inconsistent.
+    # No quantified track, desk-rejection or withdrawal partition.
+    - year: 2024
+      submitted: 457
+      accepted: 180
+      str: "39.4%(180/457 24')"
+      rate: 0.3938730853391685
+      source: https://saiconference.com/Conferences/Computing2024
+    # Accepted decisions across the conference; 187 published papers are a separate stage.
+    # No quantified track, desk-rejection or withdrawal partition.
+    - year: 2026
+      submitted: 505
+      accepted: 198
+      str: "39.2%(198/505 26')"
+      rate: 0.3920792079207921
+      source: https://saiconference.com/Conferences/Computing2026

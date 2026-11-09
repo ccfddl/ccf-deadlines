@@ -1,0 +1,28 @@
+- title: IUI
+  accept_rates:
+    # Combined archival main full and short papers; not a full-paper-only rate.
+    # Host report lists posters, demonstrations and student consortium contributions separately.
+    - year: 2021
+      submitted: 241
+      accepted: 64
+      str: 26.6%(64/241 21')
+      rate: 0.26556016597510373
+      source: https://engineering.tamu.edu/news/2021/05/csce-texas-am-hosts-26th-annual-association-of-computer-machinery-conference.html
+    # Unified main-paper track; official post-conference report, printed page 5.
+    # Excludes 5 invited TiiS 2023 papers, posters, demos and doctoral consortium.
+    # Report does not separately quantify withdrawals or desk rejections.
+    - year: 2024
+      submitted: 250
+      accepted: 61
+      rate: 0.244
+      str: "24.4%(61/250 24')"
+      source: https://sigai.acm.org/static/aimatters/10-3/AIMatters-10-3-02-Dennis.pdf
+    # Unified technical papers: signed chairs' welcome, printed page iii.
+    # Excludes 5 invited TiiS 2024 papers and separate adjunct tracks.
+    # No separate desk-rejection or withdrawal adjustment is stated.
+    - year: 2025
+      submitted: 387
+      accepted: 97
+      rate: 0.25064599483204136
+      str: "25.1%(97/387 25')"
+      source: https://iris.cnr.it/retrieve/4929f139-134f-4da2-b39e-0346f1fd3a6b/chair%20welcome.pdf

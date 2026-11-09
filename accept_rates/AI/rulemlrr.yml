@@ -1,0 +1,37 @@
+- title: RuleML+RR
+  accept_rates:
+    # 17 full + 2 short main-track papers / reviewed submissions.
+    - year: 2021
+      submitted: 39
+      accepted: 19
+      str: 48.7%(19/39 21')
+      rate: 0.48717948717948717
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-91167-6/1
+    # Accepted conference papers / submissions, each receiving at least three reviews.
+    - year: 2022
+      submitted: 52
+      accepted: 19
+      str: 36.5%(19/52 22')
+      rate: 0.36538461538461536
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-21541-4/1
+    # 13 full + 3 short main-track papers / reviewed submissions.
+    - year: 2023
+      submitted: 46
+      accepted: 16
+      str: 34.8%(16/46 23')
+      rate: 0.34782608695652173
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-45072-3/1
+    # 12 full + 4 short main-track papers / received submissions, including 2 desk rejects; 33 reviewed.
+    - year: 2024
+      submitted: 35
+      accepted: 16
+      str: 45.7%(16/35 24')
+      rate: 0.45714285714285713
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-72407-7/1
+    # 12 full + 2 short main-track papers / 34 reviewed submissions (31 full + 3 short).
+    - year: 2025
+      submitted: 34
+      accepted: 14
+      str: 41.2%(14/34 25')
+      rate: 0.4117647058823529
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-08887-1/1

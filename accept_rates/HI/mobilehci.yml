@@ -1,0 +1,11 @@
+- title: MobileHCI
+  accept_rates:
+    # Full PACMHCI papers: final acceptances after the second review round.
+    # Denominator is valid submissions, not all initial submission events.
+    # Excludes late-breaking work and other adjunct tracks; no withdrawal adjustment.
+    - year: 2023
+      submitted: 110
+      accepted: 42
+      rate: 0.38181818181818183
+      str: "38.2%(42/110 23')"
+      source: https://openportal.isti.cnr.it/data/2023/491545/2023_491545.published.pdf?id=people______%3A%3A2182641a472394363b1d4b9b5ee34e13

@@ -1,0 +1,21 @@
+# CCF 2026: Database/Data Mining/Information Retrieval, category C.
+- title: DEXA
+  description: International Conference on Database and Expert Systems Applications
+  sub: DB
+  rank:
+    ccf: C
+  dblp: dexa
+  confs:
+    - year: 2026
+      id: dexa26
+      link: https://www.dexa.org/2026/dexa2026.html
+      timeline:
+        # Main conference final deadline, not the April 27 workshop deadline:
+        # https://www.dexa.org/2026/important-dates-2.html
+        # Official dates have no time or timezone; 23:59:59 and AoE are README defaults.
+        - deadline: '2026-04-10 23:59:59'
+          decision_deadline: '2026-05-17 23:59:59'
+          comment: Final and firm main conference deadline
+      timezone: AoE
+      date: August 11-13, 2026
+      place: Graz, Austria

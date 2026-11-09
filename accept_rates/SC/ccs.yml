@@ -6,3 +6,9 @@
       str: 22.3%(196/880 21')
       rate: 0.222727272727273
       source: https://github.com/emeryberger/csconferences
+    - year: 2023
+      submitted: 1222
+      accepted: 234
+      str: 19.1%(234/1222 23')
+      rate: 0.1914893617021277
+      source: https://www.sigsac.org/ccs/CCS2023/assets/img/album/opening/16.webp

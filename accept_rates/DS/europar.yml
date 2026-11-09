@@ -1,0 +1,32 @@
+- title: Euro-Par
+  accept_rates:
+    - year: 2021
+      submitted: 136
+      accepted: 38
+      str: 27.9%(38/136 21')
+      rate: 0.279411764705882
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-85665-6/1
+    - year: 2022
+      submitted: 102
+      accepted: 25
+      str: 24.5%(25/102 22')
+      rate: 0.245098039215686
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-12597-3/1
+    - year: 2023
+      submitted: 164
+      accepted: 49
+      str: 29.9%(49/164 23')
+      rate: 0.298780487804878
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-39698-4/1
+    - year: 2025
+      submitted: 264
+      accepted: 78
+      str: 29.5%(78/264 25')
+      rate: 0.295454545454545
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-99872-0/1
+    - year: 2026
+      submitted: 332
+      accepted: 87
+      str: 26.2%(87/332 26')
+      rate: 0.262048192771084
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-35248-4/1

@@ -1,0 +1,31 @@
+- title: ICC
+  accept_rates:
+    # Main Technical Symposia, including SAC; workshops and magazine presentations excluded.
+    # Accepted papers / received submissions; not a final-publication census.
+    # Desk rejections, withdrawals and later no-show removals are not separately quantified.
+    - year: 2021
+      submitted: 1881
+      accepted: 758
+      str: 40.3%(758/1881 21')
+      rate: 0.4029771398192451
+      source: https://doi.org/10.1109/ICC42927.2021.9500666
+    - year: 2022
+      submitted: 2529
+      accepted: 962
+      str: 38.0%(962/2529 22')
+      rate: 0.3803875049426651
+      source: https://doi.org/10.1109/ICC45855.2022.9882275
+    - year: 2023
+      submitted: 2778
+      accepted: 1098
+      str: 39.5%(1098/2778 23')
+      rate: 0.3952483801295896
+      source: https://doi.org/10.1109/ICC45041.2023.10278735
+    # The 2024 chair explicitly states that all received submissions were reviewed.
+    # Includes 800 lecture-style and 139 interactive accepted papers.
+    - year: 2024
+      submitted: 2364
+      accepted: 939
+      str: 39.7%(939/2364 24')
+      rate: 0.39720812182741116
+      source: https://doi.org/10.1109/ICC51166.2024.10622493

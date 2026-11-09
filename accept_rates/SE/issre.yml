@@ -1,0 +1,38 @@
+# Research track only; industry, workshops and journal-first papers excluded.
+- title: ISSRE
+  accept_rates:
+    # Research REG, PER and TAR categories; two journal-first presentations excluded.
+    - year: 2021
+      submitted: 189
+      accepted: 52
+      str: 27.5%(52/189 21')
+      rate: 0.2751322751322751
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9700302
+    # Research REG, PER and TAR categories; all received submissions reviewed.
+    - year: 2022
+      submitted: 162
+      accepted: 47
+      str: 29.0%(47/162 22')
+      rate: 0.29012345679012347
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9978986
+    # Final research-track decisions after nine of eleven conditional papers passed shepherding.
+    - year: 2023
+      submitted: 247
+      accepted: 70
+      str: 28.3%(70/247 23')
+      rate: 0.2834008097165992
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10301264
+    # Final research-track decisions after ten of eleven conditional papers passed shepherding.
+    - year: 2024
+      submitted: 205
+      accepted: 53
+      str: 25.9%(53/205 24')
+      rate: 0.25853658536585367
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10771427
+    # Research-track papers received, including the early-rejection stage; other tracks excluded.
+    - year: 2025
+      submitted: 170
+      accepted: 47
+      str: 27.6%(47/170 25')
+      rate: 0.27647058823529413
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11229737

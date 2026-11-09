@@ -1,0 +1,18 @@
+- title: WISA
+  accept_rates:
+    # All-language conference selections: 67 English (49 long + 18 short) + 49 Chinese, over 206 conference submissions.
+    # Chinese journal recommendations are not claimed as final journal acceptances; the separate Software Journal 53/7 pool is excluded.
+    - year: 2021
+      submitted: 206
+      accepted: 116
+      rate: 0.5631067961165048
+      str: "56.3%(116/206 21', all-language selection)"
+      source: https://tc.ccf.org.cn/tcis/tbtj/2021-12-20/761555.shtml
+    # All-language conference selections: 52 English (43 long + 9 short) + 67 Chinese, over 213 conference submissions.
+    # Conference selection is distinct from subsequent journal publication.
+    - year: 2023
+      submitted: 213
+      accepted: 119
+      rate: 0.5586854460093896
+      str: "55.9%(119/213 23', all-language selection)"
+      source: https://tc.ccf.org.cn/tcis/tbtj/2023-09-15/823515.shtml

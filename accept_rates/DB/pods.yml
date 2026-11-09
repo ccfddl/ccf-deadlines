@@ -1,0 +1,8 @@
+- title: PODS
+  accept_rates:
+    - year: 2025
+      submitted: 127
+      accepted: 45
+      str: 35.4%(45/127 25')
+      rate: 0.3543307086614173
+      source: https://2025.sigmod.org/pods-welcome.pdf

@@ -7,11 +7,54 @@
     thcpl: N
   dblp: nlpcc
   confs:
+    - year: 2021
+      id: nlpcc2021
+      link: http://tcci.ccf.org.cn/conference/2021/
+      timeline:
+        - deadline: '2021-06-08 23:59:59'
+      timezone: UTC+8
+      date: October 16-17, 2021
+      place: Qingdao, Shandong, China
+    - year: 2022
+      id: nlpcc2022
+      link: http://tcci.ccf.org.cn/conference/2022/
+      timeline:
+        - deadline: '2022-05-13 23:59:59'
+      timezone: UTC+8
+      date: September 24-25, 2022
+      place: Guilin, China
+    - year: 2023
+      id: nlpcc2023
+      link: http://tcci.ccf.org.cn/conference/2023/index.php
+      timeline:
+        - deadline: '2023-05-18 23:59:59'
+      timezone: UTC+8
+      date: October 14-15, 2023
+      place: Foshan, Guangdong, China
+    - year: 2024
+      id: nlpcc2024
+      link: http://tcci.ccf.org.cn/conference/2024/index.php
+      timeline:
+        - deadline: '2024-06-11 23:59:59'
+      timezone: UTC+8
+      date: November 2-3, 2024
+      place: Hangzhou, China
     - year: 2025
       id: nlpcc2025
       link: http://tcci.ccf.org.cn/conference/2025/index.php
       timeline:
         - deadline: '2025-04-20 23:59:59'
       timezone: UTC+8
-      date: August 8-10, 2025
+      date: August 8-9, 2025
       place: Urumqi, China
+    - year: 2026
+      id: nlpcc2026
+      link: http://tcci.ccf.org.cn/conference/2026/
+      timeline:
+        - deadline: '2026-06-20 23:59:59'
+          rebuttal_deadline: '2026-07-15 23:59:59'
+          decision_deadline: '2026-08-04 23:59:59'
+          comment: 'Notification expected to be unchanged'
+      timezone: UTC+8
+      date: November 4-5, 2026
+      place: Macau, China

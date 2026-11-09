@@ -1,0 +1,45 @@
+# Main Research Track only. Denominator stage is qualified separately for each year.
+- title: RE
+  accept_rates:
+    # Reviewed research cohort: 86 full submissions minus 5 desk rejects and 2 withdrawals leaves 79 evaluated; 23 accepted.
+    - year: 2021
+      submitted: 79
+      accepted: 23
+      str: 29.1%(23/79 21')
+      rate: 0.2911392405063291
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9604616
+    # Evaluated research cohort: 74 abstracts minus 7 withdrawals and 5 without full papers leaves 62 evaluated; 16 accepted. Abstracts are not the denominator.
+    - year: 2022
+      submitted: 62
+      accepted: 16
+      str: 25.8%(16/62 22')
+      rate: 0.25806451612903225
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9920104
+    # Received research cohort: 71 full papers, 8 desk rejects, 63 entering review and 1 subsequent withdrawal. Final accepted count is 15, after 8 unconditional and 9 conditional initial decisions; no assumption about which individual conditions failed.
+    - year: 2023
+      submitted: 71
+      accepted: 15
+      str: 21.1%(15/71 23')
+      rate: 0.2112676056338028
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10260769
+    # Received research cohort: 89 full papers, 9 desk rejects and 80 reviewed. All 7 unconditional and 10 conditional papers are included in the final 17.
+    - year: 2024
+      submitted: 89
+      accepted: 17
+      str: 19.1%(17/89 24')
+      rate: 0.19101123595505617
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10628477
+    # Received research cohort: 108 full papers, 5 desk rejects and 103 reviewed. Final 23 differs from the initial 15 unconditional plus 10 conditional decisions; use the explicitly stated final count without inventing reasons for the difference.
+    - year: 2025
+      submitted: 108
+      accepted: 23
+      str: 21.3%(23/108 25')
+      rate: 0.21296296296296297
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11190368
+    # Received research cohort: 100 full papers, 9 desk rejects and 91 reviewed. All 14 unconditional and 10 conditional papers are included in the final 24.
+    - year: 2026
+      submitted: 100
+      accepted: 24
+      str: 24.0%(24/100 26')
+      rate: 0.24
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11676809

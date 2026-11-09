@@ -1,0 +1,30 @@
+- title: ICA3PP
+  accept_rates:
+    # Preface p. v: accepted contributed papers / received submissions; keynotes excluded.
+    - year: 2021
+      submitted: 403
+      accepted: 145
+      str: 36.0%(145/403 21')
+      rate: 0.359801488833747
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-95384-3/1
+    # Preface p. v: 33 full + 10 short / 91 valid, reviewed submissions. Printed 36.3% is full-only.
+    - year: 2022
+      submitted: 91
+      accepted: 43
+      str: 47.3%(43/91 22')
+      rate: 0.472527472527473
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-22677-9/1
+    # Preface p. v and publisher description: 91 full + 35 short + 5 workshop / 265 received; includes workshops.
+    - year: 2024
+      submitted: 265
+      accepted: 131
+      str: 49.4%(131/265 24')
+      rate: 0.494339622641509
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-1525-4/1
+    # Preface p. v: 158 regular + 104 research + 48 special-session / 543 received. Printed 29% is regular-only.
+    - year: 2025
+      submitted: 543
+      accepted: 310
+      str: 57.1%(310/543 25')
+      rate: 0.570902394106814
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-8399-7/1

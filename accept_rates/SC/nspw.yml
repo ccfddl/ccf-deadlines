@@ -1,0 +1,17 @@
+# Overall paper submissions and accepted paper program, including theme papers.
+# Retrospective PC-chair reports; conditional shepherding precedes the workshop.
+# Category, desk-reject and withdrawal splits are not reported.
+- title: NSPW
+  accept_rates:
+    - year: 2021
+      submitted: 32
+      accepted: 8
+      str: 25.0%(8/32 21')
+      rate: 0.25
+      source: https://www.nspw.org/papers/2021/nspw2021-frontmatter.pdf
+    - year: 2022
+      submitted: 22
+      accepted: 10
+      str: 45.5%(10/22 22')
+      rate: 0.454545454545455
+      source: https://www.nspw.org/papers/2022/nspw2022-frontmatter.pdf

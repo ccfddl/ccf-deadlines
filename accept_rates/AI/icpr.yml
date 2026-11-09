@@ -1,0 +1,15 @@
+# Reported two-round main-conference submission pools; no unique-manuscript claim.
+- title: ICPR
+  accept_rates:
+    - year: 2022
+      submitted: 1547
+      accepted: 716
+      str: 46.3%(716/1547 22')
+      rate: 0.46283128636069815
+      source: https://iapr.org/docs/newsletters/2022-Vol-44-No-4.pdf
+    - year: 2024
+      submitted: 2135
+      accepted: 945
+      str: 44.3%(945/2135 24')
+      rate: 0.4426229508196721
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-78107-0/1

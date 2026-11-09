@@ -1,14 +1,20 @@
 - title: SIGCOMM
   accept_rates:
+    - year: 2021
+      submitted: 241
+      accepted: 55
+      str: 22.8%(55/241 21')
+      rate: 0.22821576763485477
+      source: https://sigcomm2021.hotcrp.com/
     - year: 2022
       submitted: 279
       accepted: 55
       str: 19.7%(55/279 22')
-      rate: 0.197132616487455
-      source: https://github.com/emeryberger/csconferences
+      rate: 0.1971326164874552
+      source: https://sigcomm22.hotcrp.com/
     - year: 2024
       submitted: 366
       accepted: 62
       str: 16.9%(62/366 24')
-      rate: 0.1693989
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.16939890710382513
+      source: https://sigcomm24.hotcrp.com/

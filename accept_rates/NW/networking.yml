@@ -1,0 +1,8 @@
+- title: Networking
+  accept_rates:
+    - year: 2023
+      submitted: 192
+      accepted: 52
+      str: 27.1%(52/192 23')
+      rate: 0.2708333333333333
+      source: https://networking.ifip.org/images/IFIP-Networking-2023-program.pdf

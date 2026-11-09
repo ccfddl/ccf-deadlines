@@ -1,5 +1,18 @@
 - title: SIGIR
+  # Full research papers only; other tracks excluded.
   accept_rates:
+    - year: 2021
+      submitted: 720
+      accepted: 151
+      str: 21.0%(151/720 21')
+      rate: 0.2097222222222222
+      source: https://sigir.org/wp-content/uploads/2022/02/p08.pdf
+    - year: 2022
+      submitted: 793
+      accepted: 161
+      str: 20.3%(161/793 22')
+      rate: 0.2030264817150063
+      source: https://opus.lib.uts.edu.au/bitstream/10453/163520/3/3477495.fm.pdf
     - year: 2023
       submitted: 822
       accepted: 165
@@ -11,4 +24,4 @@
       accepted: 160
       str: 20.2%(160/791 24')
       rate: 0.202275600505689
-      source: https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3626772
+      source: https://par.nsf.gov/servlets/purl/10580580

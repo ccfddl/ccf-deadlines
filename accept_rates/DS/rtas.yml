@@ -1,8 +1,26 @@
 - title: RTAS
   accept_rates:
+    # Main technical tracks; 93 received, 2 rebuttal withdrawals.
+    # Opening PDF p. 3: 8 direct and 14 conditional acceptances.
     - year: 2022
       submitted: 91
       accepted: 22
       str: 24.2%(22/91 22')
       rate: 0.241758241758242
-      source: https://github.com/emeryberger/csconferences
+      source: https://rtas2022.hotcrp.com/
+    # Main technical tracks; public system acceptance decisions.
+    # Withdrawal, desk rejection and conditional breakdowns are not stated.
+    - year: 2023
+      submitted: 85
+      accepted: 25
+      str: 29.4%(25/85 23')
+      rate: 0.29411764705882354
+      source: https://rtas2023.hotcrp.com/
+    # Main technical tracks; public system acceptance decisions.
+    # Withdrawal, desk rejection and conditional breakdowns are not stated.
+    - year: 2024
+      submitted: 116
+      accepted: 29
+      str: 25.0%(29/116 24')
+      rate: 0.25
+      source: https://rtas2024.hotcrp.com/

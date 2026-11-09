@@ -12,3 +12,24 @@
       str: 27.6%(879/3180 23')
       rate: 0.2764151
       source: https://csconfstats.xoveexu.com/
+    # PC acceptances; submission total: https://chi2024.acm.org/2023/11/17/chi-2024-papers-track-post-round-one-outcomes-report/
+    - year: 2024
+      submitted: 4028
+      accepted: 1060
+      str: 26.3%(1060/4028 24')
+      rate: 0.263157894736842
+      source: https://chi2024.acm.org/2024/01/29/chi-2024-papers-track-post-pc-outcomes-report/
+    # Post-PC conditional acceptances / all completed submissions; not the publication-stage paper count.
+    - year: 2025
+      submitted: 5014
+      accepted: 1249
+      str: 24.9%(1249/5014 25')
+      rate: 0.249102512963702
+      source: https://chi2025.acm.org/chi-2025-papers-track-post-pc-outcomes-report/
+    # Post-PC conditional acceptances / all completed submissions; not the publication-stage paper count.
+    - year: 2026
+      submitted: 6730
+      accepted: 1705
+      str: 25.3%(1705/6730 26')
+      rate: 0.253343239227340
+      source: https://chi2026.acm.org/2026/02/06/insights-into-the-papers-track-post-pc-meeting-outcomes/

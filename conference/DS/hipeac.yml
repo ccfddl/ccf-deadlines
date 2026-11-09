@@ -1,0 +1,15 @@
+- title: HiPEAC
+  description: International Conference on High Performance and Embedded Architectures and Compilers
+  sub: DS
+  rank:
+    ccf: B
+  dblp: hipeac
+  confs:
+    - year: 2027
+      id: hipeac27
+      link: https://www.hipeac.net/2027/glasgow/#/call-for-papers/
+      timeline:
+        - deadline: '2026-06-01 23:59:59'
+      timezone: AoE
+      date: January 18-20, 2027
+      place: Glasgow, Scotland, UK

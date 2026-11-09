@@ -1,0 +1,26 @@
+- title: MLSys
+  accept_rates:
+    # Main conference chair opening video at 37:20; desk/withdrawals not quantified.
+    - year: 2021
+      submitted: 221
+      accepted: 52
+      rate: 0.23529411764705882
+      str: "23.5%(52/221 21')"
+      source: https://mlsys.org/virtual/2021/remarks/1556
+    # Main research papers; chair opening slides 8 and 10.
+    # 61 accepted includes 13 accepted with shepherding.
+    # Annual desk/withdrawal counts are not separately quantified.
+    - year: 2025
+      submitted: 271
+      accepted: 61
+      rate: 0.22509225092250923
+      str: "22.5%(61/271 25')"
+      source: https://slideslive.com/39042971/opening-remarks
+    # Shared research/industrial submission-site aggregate; no track split reported.
+    # Desk/withdrawal handling is not separately quantified on the public page.
+    - year: 2026
+      submitted: 504
+      accepted: 135
+      rate: 0.26785714285714285
+      str: "26.8%(135/504 26')"
+      source: https://mlsys26.hotcrp.com/

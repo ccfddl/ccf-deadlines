@@ -7,14 +7,24 @@
     thcpl: N
   dblp: satml
   confs:
-    - year: 2026
-      id: satml26
-      link: https://www.satml.org
+    - year: 2023
+      id: satml23
+      link: https://satml.org/2023/
       timeline:
-        - deadline: '2025-09-24 23:59:59'
+        - abstract_deadline: '2022-08-22 23:59:59'
+          deadline: '2022-09-01 23:59:59'
       timezone: UTC-12
-      date: March 23-25, 2026
-      place: Munich, Germany
+      date: February 8-10, 2023
+      place: Raleigh, North Carolina, USA
+    - year: 2024
+      id: satml24
+      link: https://satml.org/2024/
+      timeline:
+        - abstract_deadline: '2023-10-04 23:59:59'
+          deadline: '2023-10-11 23:59:59'
+      timezone: UTC-12
+      date: April 9-11, 2024
+      place: Toronto, Canada
     - year: 2025
       id: satml25
       link: https://satml.org/2025/
@@ -23,19 +33,22 @@
       timezone: UTC-12
       date: April 9-11, 2025
       place: Copenhagen, Denmark
-    - year: 2024
-      id: satml24
-      link: https://satml.org/2024/
+    - year: 2026
+      id: satml26
+      link: https://www.satml.org
       timeline:
-        - deadline: '2023-10-11 23:59:59'
+        - deadline: '2025-09-24 23:59:59'
       timezone: UTC-12
-      date: April 9-11, 2024
-      place: Toronto, Canada
-    - year: 2023
-      id: satml23
-      link: https://satml.org/2023/
+      date: March 23-25, 2026
+      place: Munich, Germany
+    - year: 2027
+      id: satml27
+      link: https://satml.org/
       timeline:
-        - deadline: '2022-09-01 23:59:59'
+        - abstract_deadline: '2026-09-22 23:59:59'
+          deadline: '2026-09-29 23:59:59'
+          rebuttal_deadline: '2026-12-09 23:59:59'
+          decision_deadline: '2027-02-01 23:59:59'
       timezone: UTC-12
-      date: February 8-10, 2023
-      place: Raleigh, North Carolina, USA
+      date: May 2027 (exact dates TBD)
+      place: Reykjavik, Iceland

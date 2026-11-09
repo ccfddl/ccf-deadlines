@@ -1,0 +1,40 @@
+# Annual PoPETs totals; includes shepherded and successfully revised papers as officially counted.
+- title: PETS
+  accept_rates:
+    - year: 2021
+      submitted: 436
+      accepted: 82
+      str: 18.8%(82/436 21')
+      rate: 0.188073394495413
+      source: https://www.petsymposium.org/acceptance-rates.php
+    - year: 2022
+      submitted: 534
+      accepted: 128
+      str: 24.0%(128/534 22')
+      rate: 0.239700374531835
+      source: https://www.petsymposium.org/acceptance-rates.php
+    - year: 2023
+      submitted: 563
+      accepted: 123
+      str: 21.8%(123/563 23')
+      rate: 0.218472468916519
+      source: https://www.petsymposium.org/acceptance-rates.php
+    - year: 2024
+      submitted: 708
+      accepted: 148
+      str: 20.9%(148/708 24')
+      rate: 0.209039548022599
+      source: https://www.petsymposium.org/acceptance-rates.php
+    - year: 2025
+      submitted: 644
+      accepted: 169
+      str: 26.2%(169/644 25')
+      rate: 0.262422360248447
+      source: https://www.petsymposium.org/acceptance-rates.php
+    # 706 new/resubmitted + 8 pending from 2025.4 = 714; do not double-count within-year revisions.
+    - year: 2026
+      submitted: 714
+      accepted: 160
+      str: 22.4%(160/714 26')
+      rate: 0.224089635854342
+      source: https://www.petsymposium.org/acceptance-rates.php

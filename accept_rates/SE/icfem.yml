@@ -1,0 +1,29 @@
+# Full conference papers only; doctoral symposium and invited contributions excluded.
+- title: ICFEM
+  accept_rates:
+    - year: 2022
+      submitted: 61
+      accepted: 23
+      str: 37.7%(23/61 22')
+      rate: 0.377049180327869
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-17244-1/1
+    - year: 2023
+      submitted: 34
+      accepted: 13
+      str: 38.2%(13/34 23')
+      rate: 0.382352941176471
+      source: https://link.springer.com/content/pdf/bfm:978-981-99-7584-6/1
+    # Final published cohort: 23 accepted, one later withdrawn, 22 published.
+    - year: 2024
+      submitted: 50
+      accepted: 22
+      str: 44.0%(22/50 24')
+      rate: 0.440000000000000
+      source: https://link.springer.com/book/10.1007/978-981-96-0617-7
+    # 47 full papers from 58 abstracts; separate journal-first and doctoral tracks excluded.
+    - year: 2025
+      submitted: 47
+      accepted: 20
+      str: 42.6%(20/47 25')
+      rate: 0.425531914893617
+      source: https://link.springer.com/book/10.1007/978-981-95-4213-0

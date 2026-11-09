@@ -1,0 +1,33 @@
+# Main conference regular papers; all-language scope through 2023, English-only from 2024.
+- title: NLPCC
+  accept_rates:
+    - year: 2021
+      submitted: 446
+      accepted: 104
+      str: 23.3%(104/446 21')
+      rate: 0.23318385650224216
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-88480-2/1
+    - year: 2022
+      submitted: 327
+      accepted: 83
+      str: 25.4%(83/327 22')
+      rate: 0.25382262996941896
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-17120-8/1
+    - year: 2023
+      submitted: 478
+      accepted: 143
+      str: 29.9%(143/478 23')
+      rate: 0.29916317991631797
+      source: https://www.ccf.org.cn/Media_list/TC/2023-10-17/810519.shtml
+    - year: 2024
+      submitted: 451
+      accepted: 161
+      str: 35.7%(161/451 24')
+      rate: 0.35698447893569846
+      source: https://link.springer.com/content/pdf/bfm:978-981-97-9431-7/1
+    - year: 2025
+      submitted: 505
+      accepted: 152
+      str: 30.1%(152/505 25')
+      rate: 0.300990099009901
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-3343-5/1

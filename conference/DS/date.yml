@@ -3,19 +3,35 @@
   sub: DS
   rank:
     ccf: B
-    core: B
+    core: A
     thcpl: B
   dblp: date
   confs:
+    - year: 2021
+      id: date2021
+      link: https://date21.date-conference.com/
+      timeline:
+        - abstract_deadline: '2020-09-14 23:59:59'
+          deadline: '2020-09-21 23:59:59'
+      timezone: UTC+1
+      date: February 2-4, 2021
+      place: Virtual
+    - year: 2022
+      id: date2022
+      link: https://date22.date-conference.com/
+      timeline:
+        - abstract_deadline: '2021-09-12 23:59:59'
+          deadline: '2021-09-19 23:59:59'
+      timezone: AoE
+      date: March 14-23, 2022
+      place: Virtual
     - year: 2023
       id: date2023
       link: https://www.date-conference.com/
       timeline:
-        - deadline: '2022-09-18 23:59:59'
-          comment: abstract deadline
-        - deadline: '2022-09-25 23:59:59'
-          comment: full paper deadline
-      timezone: UTC+1
+        - abstract_deadline: '2022-09-18 23:59:59'
+          deadline: '2022-09-25 23:59:59'
+      timezone: AoE
       date: April 17-19, 2023
       place: Antwerp, BE
     - year: 2024
@@ -45,3 +61,13 @@
       timezone: AoE
       date: April 20- April 22, 2026
       place: Verona, Italy
+    - year: 2027
+      id: date2027
+      link: https://www.date-conference.com/call-for-papers
+      timeline:
+        - abstract_deadline: '2026-09-13 23:59:00'
+          deadline: '2026-09-20 23:59:00'
+          decision_deadline: '2026-11-23 23:59:00'
+      timezone: AoE
+      date: March 22-24, 2027
+      place: Dresden, Germany

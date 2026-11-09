@@ -1,8 +1,25 @@
 - title: FSE
+  # Fast Software Encryption; FSE 2021 was cancelled. ToSC issues map to conference years below.
   accept_rates:
-    - year: 2021
-      submitted: 407
-      accepted: 97
-      str: 23.8%(97/407 21')
-      rate: 0.238329238329238
-      source: https://github.com/emeryberger/csconferences
+    # ToSC 2020.4, 2021.1-4, 2022.1; regular submissions and accept/minor-revision decisions.
+    # Earlier issue counts: https://doi.org/10.46586/tosc.v2021.i1.1-4
+    - year: 2022
+      submitted: 242
+      accepted: 58
+      str: 24.0%(58/242 22')
+      rate: 0.2396694214876033
+      source: https://doi.org/10.46586/tosc.v2022.i1.1-4
+    # ToSC 2023.2-4, 2024.1; reported regular submissions and accept/minor-revision decisions.
+    - year: 2024
+      submitted: 175
+      accepted: 48
+      str: 27.4%(48/175 24')
+      rate: 0.2742857142857143
+      source: https://doi.org/10.46586/tosc.v2024.i1.1-4
+    # ToSC 2025.2-4, 2026.1; excludes corrigenda/addenda, includes SoK and minor revisions.
+    - year: 2026
+      submitted: 196
+      accepted: 55
+      str: 28.1%(55/196 26')
+      rate: 0.28061224489795916
+      source: https://doi.org/10.46586/tosc.v2026.i1.1-4

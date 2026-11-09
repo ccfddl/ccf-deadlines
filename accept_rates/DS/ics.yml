@@ -1,0 +1,22 @@
+- title: ICS
+  accept_rates:
+    # Main technical-paper portal decisions; workshops and tutorials excluded.
+    # Withdrawals/desk rejections and final published totals are not separately quantified.
+    - year: 2021
+      submitted: 157
+      accepted: 39
+      str: 24.8%(39/157 21')
+      rate: 0.2484076433121019
+      source: https://ics21.hotcrp.com/
+    - year: 2022
+      submitted: 161
+      accepted: 39
+      str: 24.2%(39/161 22')
+      rate: 0.2422360248447205
+      source: https://ics22.hotcrp.com/
+    - year: 2023
+      submitted: 136
+      accepted: 40
+      str: 29.4%(40/136 23')
+      rate: 0.29411764705882354
+      source: https://acm-ics23.hotcrp.com/

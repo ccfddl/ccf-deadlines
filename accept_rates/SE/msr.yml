@@ -1,0 +1,31 @@
+# Technical track full and short papers; separate conference tracks excluded.
+- title: MSR
+  accept_rates:
+    # Reviewed technical full+short cohort, 141 received minus one full-paper desk rejection. 38 full and 10 short accepted; no full-to-short downgrades.
+    - year: 2021
+      submitted: 140
+      accepted: 48
+      str: 34.3%(48/140 21')
+      rate: 0.34285714285714286
+      source: https://kblincoe.github.io/publications/2021_MSR_Welcome.pdf
+    # Received technical full+short cohort, including one desk reject. 39 full and 8 short accepted; 137 reviewed is separately stated.
+    - year: 2022
+      submitted: 138
+      accepted: 47
+      str: 34.1%(47/138 22')
+      rate: 0.34057971014492755
+      source: https://publicatio.bibl.u-szeged.hu/31944/2/33038172_c%C3%ADmlap_tartalom.pdf
+    # Received technical full+short cohort, including three full-paper desk rejects. 37 full and 6 short accepted; 115 reviewed is separately stated.
+    - year: 2023
+      submitted: 118
+      accepted: 43
+      str: 36.4%(43/118 23')
+      rate: 0.3644067796610169
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10174047
+    # Valid technical full+short submissions: 44 full and 3 short accepted. Other tracks and Junior-PC applications excluded.
+    - year: 2025
+      submitted: 161
+      accepted: 47
+      str: 29.2%(47/161 25')
+      rate: 0.2919254658385093
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11025537

@@ -1,8 +1,36 @@
 - title: NDSS
   accept_rates:
+    # Complete submissions exclude clear guideline violations; final selected program papers.
+    - year: 2021
+      submitted: 573
+      accepted: 87
+      str: 15.2%(87/573 21')
+      rate: 0.1518324607329843
+      source: https://www.ndss-symposium.org/wp-content/uploads/NDSS2021_Proceedings_Front_Matter.pdf
+    # Complete submissions exclude clear guideline violations; final selected program papers.
     - year: 2022
       submitted: 513
       accepted: 83
       str: 16.2%(83/513 22')
       rate: 0.161793372319688
-      source: https://github.com/emeryberger/csconferences
+      source: https://www.ndss-symposium.org/wp-content/uploads/NDSS2022_Proceedings_Front_Matter.pdf
+    # Complete submissions exclude clear guideline violations; final selected program papers.
+    - year: 2023
+      submitted: 574
+      accepted: 94
+      str: 16.4%(94/574 23')
+      rate: 0.16376306620209058
+      source: https://www.ndss-symposium.org/wp-content/uploads/2023/08/NDSS2023_Proceedings_Front_Matter.pdf
+    - year: 2024
+      submitted: 694
+      accepted: 140
+      str: 20.2%(140/694 24')
+      rate: 0.201729106628242
+      source: https://www.ndss-symposium.org/ndss-2024/ndss-2024-largest-ndss-signals-continued-importance-of-distributed-systems-security/
+    # Peer-reviewed submissions exclude guideline/out-of-scope rejects; includes accepted non-presented papers.
+    - year: 2026
+      submitted: 1481
+      accepted: 265
+      str: 17.9%(265/1481 26')
+      rate: 0.17893315327481432
+      source: https://www.ndss-symposium.org/wp-content/uploads/NDSS2026_Proceedings_Front_Matter.pdf

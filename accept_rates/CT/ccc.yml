@@ -1,0 +1,39 @@
+- title: CCC
+  # Main-conference research papers selected for presentation; excludes invited talks.
+  accept_rates:
+    - year: 2021
+      submitted: 116
+      accepted: 41
+      str: 35.3%(41/116 21')
+      rate: 0.35344827586206895
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol200-ccc2021/LIPIcs.CCC.2021.0/LIPIcs.CCC.2021.0.pdf
+    - year: 2022
+      submitted: 89
+      accepted: 38
+      str: 42.7%(38/89 22')
+      rate: 0.42696629213483145
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol234-ccc2022/LIPIcs.CCC.2022.0/LIPIcs.CCC.2022.0.pdf
+    - year: 2023
+      submitted: 74
+      accepted: 36
+      str: 48.6%(36/74 23')
+      rate: 0.4864864864864865
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol264-ccc2023/LIPIcs.CCC.2023.0/LIPIcs.CCC.2023.0.pdf
+    - year: 2024
+      submitted: 105
+      accepted: 36
+      str: 34.3%(36/105 24')
+      rate: 0.34285714285714286
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol300-ccc2024/LIPIcs.CCC.2024.0/LIPIcs.CCC.2024.0.pdf
+    - year: 2025
+      submitted: 91
+      accepted: 36
+      str: 39.6%(36/91 25')
+      rate: 0.3956043956043956
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol339-ccc2025/LIPIcs.CCC.2025.0/LIPIcs.CCC.2025.0.pdf
+    - year: 2026
+      submitted: 124
+      accepted: 42
+      str: 33.9%(42/124 26')
+      rate: 0.3387096774193548
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol383-ccc2026/LIPIcs.CCC.2026.0/LIPIcs.CCC.2026.0.pdf

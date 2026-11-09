@@ -1,0 +1,46 @@
+# Peer-reviewed conference papers, including tool and case-study papers; invited contributions excluded.
+- title: VMCAI
+  accept_rates:
+    # Original PC preface p.v/PDF5:50 received,2 out-of-scope desk rejects,1 withdrawal during review. Preserve post-desk48 cohort;23 selected includes20regular+2case+1tool.
+    - year: 2021
+      submitted: 48
+      accepted: 23
+      str: 47.9%(23/48 21')
+      rate: 0.479166666666667
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-67067-2/1
+    # Original PC preface p.v/PDF5 explicitly23/63 conflicts with publisher/main22/48; no explanation recovered. Preserve existing numbers as unresolved, not recertified.
+    # Conflicting preface: https://link.springer.com/content/pdf/bfm:978-3-030-94583-1/1
+    - year: 2022
+      submitted: 48
+      accepted: 22
+      str: 45.8%(22/48 22')
+      rate: 0.458333333333333
+      source: https://link.springer.com/book/10.1007/978-3-030-94583-1
+    # Original PC preface p.v/PDF5:17 accepted/34 received. Artifact paragraph separately says14accepted papers, unexplained; not substituted for explicit main acceptance17.
+    - year: 2023
+      submitted: 34
+      accepted: 17
+      str: 50.0%(17/34 23')
+      rate: 0.500000000000000
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-24950-1/1
+    # Original PC preface p.v/PDF5:88received,14desk,74reviewed,30accepted (25regular+4tools+1case). Preserve reviewed cohort30/74, not normalize toreceived88.
+    - year: 2024
+      submitted: 74
+      accepted: 30
+      str: 40.5%(30/74 24')
+      rate: 0.405405405405405
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-50524-9/1
+    # Original PC preface p.v/PDF5 explicitly20accepted from48received;18regular/case+2tools. Resolves awkward publisher prose without accepted-list counting.
+    - year: 2025
+      submitted: 48
+      accepted: 20
+      str: 41.7%(20/48 25')
+      rate: 0.416666666666667
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-82700-6/1
+    # Original PC preface p.v/PDF5:18/54 received,15regular+2tools+1case. Artifact section stale2025label not used for main statistics; invitations excluded.
+    - year: 2026
+      submitted: 54
+      accepted: 18
+      str: 33.3%(18/54 26')
+      rate: 0.333333333333333
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-15700-3/1

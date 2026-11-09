@@ -3,16 +3,71 @@
   sub: DS
   rank:
     ccf: C
-    core: N
+    core: B
     thcpl: N
   dblp: ets
   confs:
+    - year: 2021
+      id: ets2021
+      link: https://www.ieee-ets.org/past_events/ets21/
+      timeline:
+        - abstract_deadline: '2020-12-10 23:59:59'
+          deadline: '2020-12-17 23:59:59'
+      timezone: AoE
+      date: May 24-27, 2021
+      place: Virtual
+    - year: 2022
+      id: ets2022
+      link: https://ets2022.upc.edu/en
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: 'Abstract and full midnight boundary unclear'
+      timezone: AoE
+      date: May 24-26, 2022
+      place: Barcelona, Spain / Hybrid
+    - year: 2023
+      id: ets2023
+      link: https://cas.polito.it/ETS23/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: TBD
+      place: Venice, Italy / Hybrid
     - year: 2024
       id: ets2024
       link: https://ets24.ewi.tudelft.nl/
       timeline:
-        - abstract_deadline: '2023-12-08 23:59:59'
-          deadline: '2023-12-16 23:59:59'
+        - abstract_deadline: '2023-12-15 23:59:59'
+          deadline: '2023-12-23 00:00:00'
       timezone: AoE
-      date: May 20-24, 2024
+      date: May 21-23, 2024
       place: The Hague, Netherlands
+    - year: 2025
+      id: ets2025
+      link: https://ets2025.taltech.ee/
+      timeline:
+        - abstract_deadline: '2024-12-09 23:59:59'
+          deadline: '2024-12-15 23:59:59'
+      timezone: AoE
+      date: May 27-29, 2025
+      place: Tallinn, Estonia
+    - year: 2026
+      id: ets2026
+      link: https://ets2026.uniwa.gr/
+      timeline:
+        - abstract_deadline: '2025-12-15 23:59:59'
+          deadline: '2026-01-14 23:59:59'
+      timezone: AoE
+      date: May 26-28, 2026
+      place: Chania, Greece
+    - year: 2027
+      id: ets2027
+      link: https://www.ets2027.co.uk/
+      timeline:
+        - abstract_deadline: '2026-12-08 23:59:59'
+          deadline: '2026-12-15 23:59:59'
+          comment: 'Regular papers; official CFP dates. Clock 23:59:59 and timezone AoE are repository defaults, not published cutoff precision.'
+      timezone: AoE
+      date: May 24-28, 2027
+      place: London, UK

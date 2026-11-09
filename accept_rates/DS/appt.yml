@@ -1,0 +1,16 @@
+- title: APPT
+  accept_rates:
+    # PC acceptance decisions against paper registrations; full/short aggregate, revisions requested.
+    - year: 2023
+      submitted: 49
+      accepted: 24
+      str: 49.0%(24/49 23')
+      rate: 0.4897959183673469
+      source: https://link.springer.com/content/pdf/bfm:978-981-99-7872-4/1
+    # 17 regular + 10 short accepted; 9 poster acceptances excluded, revisions requested.
+    - year: 2025
+      submitted: 74
+      accepted: 27
+      str: 36.5%(27/74 25')
+      rate: 0.36486486486486486
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-1021-4/1

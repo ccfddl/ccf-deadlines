@@ -1,0 +1,37 @@
+- title: EvoMUSART
+  accept_rates:
+    # Accepted long-talk and short-talk/poster papers (24 + 7) / received submissions.
+    - year: 2021
+      submitted: 66
+      accepted: 31
+      str: 47.0%(31/66 21')
+      rate: 0.4696969696969697
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-72914-1/1
+    # Accepted long-talk and short-talk/poster papers (20 + 7) / received submissions.
+    - year: 2023
+      submitted: 55
+      accepted: 27
+      str: 49.1%(27/55 23')
+      rate: 0.4909090909090909
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-29956-8/1
+    # Accepted long-talk and short-talk/poster papers (17 + 8) / received submissions.
+    - year: 2024
+      submitted: 55
+      accepted: 25
+      str: 45.5%(25/55 24')
+      rate: 0.45454545454545453
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-56992-0/1
+    # Accepted long-talk and short-talk/poster papers (16 + 12) / received submissions.
+    - year: 2025
+      submitted: 52
+      accepted: 28
+      str: 53.8%(28/52 25')
+      rate: 0.5384615384615384
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-90167-6/1
+    # Accepted long-talk and short-talk/poster papers (13 + 15) / received submissions.
+    - year: 2026
+      submitted: 58
+      accepted: 28
+      str: 48.3%(28/58 26')
+      rate: 0.4827586206896552
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-24350-8/1

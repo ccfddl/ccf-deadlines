@@ -2,35 +2,45 @@ name: Deploy
 on:
   push:
     branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Use the runner's stable Chrome for production share cards.
+      CHROME_BINARY: /usr/bin/google-chrome
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v4
       - name: Setup Node.js environment
-        uses: actions/setup-node@main
+        uses: actions/setup-node@v4
         with:
-          node-version: '15.x'
+          node-version: '24'
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12.12
+          python-version: '3.12'
+          check-latest: true
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install PyYAML jsonschema icalendar xlin
-      - name: Assemble yml files
+          python -m pip install -r requirements.txt
+      - name: Test share-card browser and rendering
         run: |
-          mkdir -p public/conference && cd public/conference
-          python ../../scripts/merge.py ../../conference --exclude "types.yml" > allconf.yml
-          python ../../scripts/merge.py ../../accept_rates > allacc.yml
-          cp ../../conference/types.yml .
-          cd ../..
+          node --test scripts/test_share_browser.mjs
+          python -m unittest discover -s scripts -p 'test_*share_image.py'
+      - name: Assemble yml files
+        run: python scripts/build_data.py
       - name: Generate iCal files
         run: |
-          python extensions/cli/ccfddl/convert_to_ical.py
-          mv *.ics public/conference/
+          python extensions/cli/ccfddl/convert_to_ical.py --output-dir public/conference/deadlines
+      - name: Generate RSS feeds
+        run: |
+          python extensions/cli/ccfddl/convert_to_rss.py --output-dir public/conference/deadlines --feed-base-url https://ccfddl.com/conference/deadlines/
       # Install Rust Nightly Toolchain, with Clippy & Rustfmt
       - name: Install nightly Rust
         uses: dtolnay/rust-toolchain@nightly
@@ -47,6 +57,20 @@ jobs:
         # relatively as favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
         # will obviously return error 404 not found.
         run: ./trunk build --release
+      - name: Generate crawlable conference pages
+        run: python scripts/generate_seo_pages.py
+      - name: Checkout published site assets
+        uses: actions/checkout@v4
+        with:
+          repository: ccfddl/ccfddl.github.io
+          ref: page
+          path: previous-site
+          token: ${{ secrets.ACCESS_TOKEN }}
+          persist-credentials: false
+      - name: Update sitemap dates for changed venue content
+        run: python scripts/update_sitemap_dates.py --previous previous-site
+      - name: Retain assets for cached pages and modules
+        run: python scripts/retain_site_assets.py --previous previous-site --retention-hours 24
       - name: Config Git
         run: |
           git config --global user.email "jacklightchen@gmail.com"
@@ -57,5 +81,5 @@ jobs:
           echo 'ccfddl.com' > CNAME
           git init
           git add --all
-          git commit -m "Site Update:`TZ=':Asia/Shanghai' date +' %Y-%m-%d %H:%m:%S'`"
+          git commit -m "Site Update:`TZ=':Asia/Shanghai' date +' %Y-%m-%d %H:%M:%S'`"
           git push --force https://${{ secrets.ACCESS_TOKEN }}@github.com/ccfddl/ccfddl.github.io.git master:page

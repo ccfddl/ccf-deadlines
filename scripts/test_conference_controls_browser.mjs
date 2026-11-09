@@ -1,0 +1,411 @@
+// Run after `trunk build --dist /tmp/ccfddl-shared-controls`:
+// python3 scripts/generate_seo_pages.py --output /tmp/ccfddl-shared-controls
+// node scripts/test_conference_controls_browser.mjs /tmp/ccfddl-shared-controls
+// Uses Chrome's DevTools protocol and only Node.js built-ins.
+import assert from "node:assert/strict";
+import { spawn } from "node:child_process";
+import { existsSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { createServer } from "node:http";
+import { tmpdir } from "node:os";
+import { extname, join, resolve, sep } from "node:path";
+import { setTimeout as delay } from "node:timers/promises";
+
+const dist = resolve(process.argv[2] ?? "dist");
+const chrome = process.env.CHROME_BINARY ?? [
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "/usr/bin/google-chrome",
+  "/usr/bin/chromium",
+].find(existsSync);
+if (!chrome || !existsSync(join(dist, "index.html"))) {
+  throw new Error("Build the site and provide a valid dist directory and Chrome binary");
+}
+
+const types = {
+  ".css": "text/css",
+  ".html": "text/html",
+  ".ico": "image/x-icon",
+  ".svg": "image/svg+xml",
+  ".js": "text/javascript",
+  ".json": "application/json",
+  ".wasm": "application/wasm",
+};
+let failingDirectoryResource;
+let delayDirectoryBootstrap = false;
+const delayedDirectoryBootstraps = [];
+function releaseDirectoryBootstrap() {
+  delayDirectoryBootstrap = false;
+  for (const serve of delayedDirectoryBootstraps.splice(0)) serve();
+}
+const server = createServer((request, response) => {
+  const pathname = new URL(request.url, "http://localhost").pathname;
+  if ((failingDirectoryResource === 'bootstrap' && /^\/venues\/app-.*\.js$/.test(pathname))
+      || (failingDirectoryResource === 'wasm' && pathname.endsWith('.wasm'))) {
+    response.writeHead(503).end();
+    return;
+  }
+  if (pathname === "/api/bootstrap") {
+    response.writeHead(200, { "Content-Type": "application/json" });
+    response.end(JSON.stringify({
+      user: { login: "browser-test", avatar_url: "", profile_url: "" },
+      counts: {},
+      starred: ["cvpr27", "iclr27"],
+    }));
+    return;
+  }
+  const serve = () => {
+    let file = resolve(dist, `.${pathname === "/" ? "/index.html" : pathname}`);
+    if (!file.startsWith(`${dist}${sep}`) && file !== join(dist, "index.html")) {
+      response.writeHead(403).end();
+      return;
+    }
+    try {
+      if (statSync(file).isDirectory()) file = join(file, "index.html");
+      response.writeHead(200, { "Content-Type": types[extname(file)] ?? "application/octet-stream" });
+      response.end(readFileSync(file));
+    } catch {
+      response.writeHead(404).end();
+    }
+  };
+  if (delayDirectoryBootstrap && /^\/venues\/app-.*\.js$/.test(pathname)) {
+    delayedDirectoryBootstraps.push(serve);
+  } else {
+    serve();
+  }
+});
+await new Promise((done) => server.listen(0, "127.0.0.1", done));
+
+const profile = mkdtempSync(join(tmpdir(), "ccfddl-controls-browser-"));
+const browser = spawn(chrome, [
+  "--headless=new",
+  "--no-sandbox",
+  "--disable-gpu",
+  "--disable-dev-shm-usage",
+  "--remote-debugging-port=0",
+  `--user-data-dir=${profile}`,
+  "about:blank",
+], { stdio: "ignore" });
+let socket;
+let nextId = 0;
+const pending = new Map();
+
+async function until(check, label, timeout = 20_000) {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    const result = await check();
+    if (result) return result;
+    await delay(100);
+  }
+  throw new Error(`Timed out waiting for ${label}`);
+}
+
+function command(method, params = {}) {
+  const id = ++nextId;
+  return new Promise((resolveCommand, rejectCommand) => {
+    pending.set(id, { resolveCommand, rejectCommand });
+    socket.send(JSON.stringify({ id, method, params }));
+  });
+}
+
+async function evaluate(expression) {
+  const result = await command("Runtime.evaluate", {
+    expression,
+    returnByValue: true,
+    awaitPromise: true,
+  });
+  if (result.exceptionDetails) {
+    throw new Error(result.exceptionDetails.text);
+  }
+  return result.result.value;
+}
+
+try {
+  const portFile = join(profile, "DevToolsActivePort");
+  const debugPort = await until(() => existsSync(portFile) && readFileSync(portFile, "utf8").split("\n")[0], "Chrome debugging port");
+  const targets = await fetch(`http://127.0.0.1:${debugPort}/json/list`).then((res) => res.json());
+  const target = targets.find((item) => item.type === "page");
+  assert.ok(target, "Chrome page target must exist");
+  socket = new WebSocket(target.webSocketDebuggerUrl);
+  await new Promise((done, fail) => {
+    socket.addEventListener("open", done, { once: true });
+    socket.addEventListener("error", fail, { once: true });
+  });
+  socket.addEventListener("message", (event) => {
+    const message = JSON.parse(event.data);
+    const waiting = pending.get(message.id);
+    if (!waiting) return;
+    pending.delete(message.id);
+    if (message.error) waiting.rejectCommand(new Error(message.error.message));
+    else waiting.resolveCommand(message.result);
+  });
+  await command("Page.enable");
+  await command("Runtime.enable");
+  await command("Page.addScriptToEvaluateOnNewDocument", {
+    source: "localStorage.setItem('language_preference', 'en')",
+  });
+  const errors = [];
+  socket.addEventListener('message', event => {
+    const message = JSON.parse(event.data);
+    if (message.method === 'Runtime.exceptionThrown') { errors.push(message.params.exceptionDetails.text); console.error(JSON.stringify(message.params.exceptionDetails)); }
+  });
+  const metrics = async () => evaluate(`(() => {
+    const styles = selector => {
+      const node = document.querySelector('.conference-controls ' + selector);
+      const css = getComputedStyle(node);
+      return Object.fromEntries(['fontFamily', 'fontSize', 'lineHeight', 'height', 'padding', 'borderRadius', 'gap', 'boxSizing'].map(key => [key, css[key]]));
+    };
+    const controls = document.querySelector('.conference-controls');
+    return {
+      chip: styles('.thaw-checkbox'), language: styles('.el-switch'),
+      search: styles('.thaw-input'), searchInput: styles('.thaw-input__input'), timezone: styles('.toolbar-timezone'),
+      rank: styles('.filter-dropdown-trigger'),
+      categoryWidth: Math.round(controls.querySelector('.category-filter-grid').getBoundingClientRect().width),
+      labels: [...controls.querySelectorAll('.thaw-checkbox__label')].map(node => node.textContent),
+      filterToggle: Boolean(controls.querySelector('.toolbar-filter-toggle')),
+      rankPanel: getComputedStyle(controls.querySelector('.toolbar-rank-filters')).display,
+      overflow: document.documentElement.scrollWidth > innerWidth,
+    };
+  })()`);
+  const navigate = async (path, width) => {
+    await command('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: false });
+    console.log('Checking', path, width);
+    await command('Page.navigate', { url: `http://127.0.0.1:${server.address().port}${path}` });
+    await until(() => evaluate("Boolean(document.querySelector('.conference-controls .filter-dropdown-trigger'))"), 'shared controls');
+    await delay(150);
+  };
+  for (const width of [1280, 768, 390, 320]) {
+    let baseline;
+    for (const path of ['/?filters=all', '/?view=table&filters=all', '/venues/?filters=all']) {
+      await navigate(path, width);
+      const current = await metrics();
+      assert.equal(current.overflow, false, `${path} overflow at ${width}px`);
+      if (!baseline) baseline = current;
+      else assert.deepEqual(current, baseline, `control presentation must match at ${width}px on ${path}`);
+      assert.equal(current.labels.length, 10);
+      // Only the outer search control draws a frame, including while typing.
+      for (const focused of [false, true]) {
+        const frame = await evaluate(`(() => {
+          const input = document.querySelector('.toolbar-search input');
+          if (${focused}) input.focus(); else input.blur();
+          const css = getComputedStyle(input);
+          const outer = getComputedStyle(input.closest('.thaw-input'));
+          return {
+            border: css.borderWidth, outline: css.outlineWidth,
+            shadow: css.boxShadow, outerBorder: outer.borderWidth,
+          };
+        })()`);
+        assert.deepEqual(frame, {
+          border: '0px', outline: '0px', shadow: 'none', outerBorder: '1px',
+        }, `${path} search must have a single frame at ${width}px (focused=${focused})`);
+      }
+      await evaluate("document.querySelector('.toolbar-search input').blur()");
+      if (path.includes('/venues/')) {
+        assert.ok(await evaluate("document.querySelector('.directory-list li:not([hidden])').getBoundingClientRect().top < innerHeight"), 'directory links must be visible below the controls');
+      }
+      assert.equal(current.filterToggle, false, 'rank filters must be directly available');
+      assert.equal(current.rankPanel, width <= 768 ? 'grid' : 'flex');
+      if (width <= 768) {
+        assert.ok(current.labels.every(label => label.length === 2));
+        const ranks = await evaluate(`(() => {
+          const row = document.querySelector('.toolbar-rank-filters').getBoundingClientRect();
+          return { row: {left: row.left, right: row.right}, buttons:
+            [...document.querySelectorAll('.toolbar-rank-filters .filter-dropdown-trigger')].map(node => {
+              const rect = node.getBoundingClientRect();
+              return {top: rect.top, width: rect.width, height: rect.height};
+            }) };
+        })()`);
+        assert.ok(ranks.row.left >= 0 && ranks.row.right <= width);
+        assert.equal(ranks.buttons.length, 3);
+        assert.ok(ranks.buttons.every(button => button.top === ranks.buttons[0].top
+          && Math.abs(button.width - ranks.buttons[0].width) < 1 && button.height >= 30),
+          `${path} mobile ranks must share one responsive row at ${width}px`);
+        for (let index = 0; index < 3; index++) {
+          await evaluate(`document.querySelectorAll('.toolbar-rank-filters .filter-dropdown-trigger')[${index}].click()`);
+          await until(() => evaluate("Boolean(document.querySelector('.filter-dropdown-panel'))"), 'rank options');
+          const menu = await evaluate(`(() => {
+            const rect = document.querySelector('.filter-dropdown-panel').getBoundingClientRect();
+            return {left: rect.left, right: rect.right};
+          })()`);
+          assert.ok(menu.left >= 0 && menu.right <= width,
+            `${path} rank ${index} options must stay on screen at ${width}px`);
+          await evaluate("document.querySelector('.filter-dropdown-backdrop').click()");
+        }
+      }
+      const screenshot = await command('Page.captureScreenshot', { format: 'png' });
+      const name = path.includes('venues') ? 'directory' : path.includes('view=table') ? 'tabular' : 'main';
+      writeFileSync(`/tmp/ccfddl-controls-${name}-${width}.png`, Buffer.from(screenshot.data, 'base64'));
+    }
+  }
+  // Hold the app bootstrap so the first paint is checked before Rust replaces it.
+  await command('Network.enable');
+  await command('Network.setCacheDisabled', { cacheDisabled: true });
+  const categoryPaint = async (mounted) => evaluate(`(() => {
+    const nodes = [...document.querySelectorAll(${JSON.stringify(mounted
+      ? '.conference-controls .category-filter-grid .thaw-checkbox'
+      : '.directory-categories .directory-category-link')})];
+    return {
+      labels: nodes.map(node => node.innerText.trim()),
+      selected: nodes.flatMap((node, index) => ${mounted
+        ? "node.closest('.filter-selected')"
+        : "node.getAttribute('aria-current') === 'page'"} ? [index] : []),
+      styles: nodes.map(node => {
+        const css = getComputedStyle(node);
+        return Object.fromEntries(['lineHeight',
+          'height', 'padding', 'borderRadius', 'borderWidth', 'borderStyle', 'borderColor',
+          'backgroundColor', 'color', 'boxSizing', 'textDecorationLine'].map(key => [key, css[key]]));
+      }),
+      typography: nodes.map(node => {
+        const visibleLabel = ${mounted
+          ? "node.querySelector('.thaw-checkbox__label')"
+          : "[...node.children].find(child => getComputedStyle(child).display !== 'none')"};
+        const css = getComputedStyle(visibleLabel);
+        return Object.fromEntries(['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'color'].map(key => [key, css[key]]));
+      }),
+    };
+  })()`);
+  const categoryCodes = ['DS', 'NW', 'SC', 'SE', 'DB', 'CT', 'CG', 'AI', 'HI', 'MX'];
+  const initialCases = [
+    { path: '/venues/?core=A%2CA*&tz=Asia%2FShanghai', width: 1280, stored: ['AI'], selected: [] },
+    { path: '/venues/?categories=AI,invalid&core=A%2CA*&tz=Asia%2FShanghai', width: 1280, stored: ['DB'], selected: ['AI'] },
+    { path: '/venues/?core=A%2CA*&tz=Asia%2FShanghai', width: 390, stored: ['AI'], selected: [] },
+    { path: '/venues/?categories=' + categoryCodes.join(','), width: 390, stored: [], selected: [] },
+    { path: '/venues/', width: 1280, stored: ['AI', 'invalid'], selected: ['AI'], legacyEnglish: true },
+  ];
+  for (const test of initialCases) {
+    const preferences = await command('Page.addScriptToEvaluateOnNewDocument', {
+      source: `localStorage.setItem('types', ${JSON.stringify(JSON.stringify(test.stored))});`
+        + (test.legacyEnglish ? `localStorage.removeItem('language_preference');
+          localStorage.setItem('use_english', 'true');
+          Object.defineProperty(navigator, 'language', {value: 'zh-CN', configurable: true});` : ''),
+    });
+    delayDirectoryBootstrap = true;
+    await command('Emulation.setDeviceMetricsOverride', { width: test.width, height: 900, deviceScaleFactor: 1, mobile: false });
+    console.log('Checking first paint', test.path, test.width);
+    await command('Page.navigate', { url: `http://127.0.0.1:${server.address().port}${test.path}` });
+    await until(() => evaluate("document.querySelectorAll('.directory-category-link').length === 10 && getComputedStyle(document.querySelector('.directory-category-link')).borderRadius === '7px'"), 'initial category chips');
+    assert.equal(await evaluate("Boolean(document.querySelector('.conference-controls'))"), false);
+    const initial = await categoryPaint(false);
+    assert.deepEqual(initial.selected, test.selected.map(code => categoryCodes.indexOf(code)), 'first paint must use the same category preferences');
+    assert.equal(initial.labels[0], test.width <= 768 ? 'DS' : 'Computer Architecture', 'first paint must use the same language and responsive labels');
+    if (test.path.includes('core=')) {
+      const links = await evaluate(`[...document.querySelectorAll('.directory-category-link')].map(node => {
+        const query = new URL(node.href).searchParams;
+        return {core: query.get('core'), tz: query.get('tz'), categories: query.get('categories')};
+      })`);
+      assert.ok(links.every(link => link.core === 'A,A*' && link.tz === 'Asia/Shanghai'), 'fallback links must preserve rank and timezone filters');
+      assert.equal(links[7].categories, test.selected.includes('AI') ? null : 'AI', 'fallback links must toggle categories');
+    }
+    if (test.path.includes('core=') && !test.path.includes('categories=')) {
+      const screenshot = await command('Page.captureScreenshot', { format: 'png' });
+      writeFileSync(`/tmp/ccfddl-directory-first-paint-${test.width}.png`, Buffer.from(screenshot.data, 'base64'));
+    }
+    releaseDirectoryBootstrap();
+    await until(() => evaluate("Boolean(document.querySelector('.conference-controls .filter-dropdown-trigger'))"), 'shared controls after first paint');
+    assert.deepEqual(await categoryPaint(true), initial, `category chips must keep their appearance after mounting at ${test.width}px`);
+    await command('Page.removeScriptToEvaluateOnNewDocument', { identifier: preferences.identifier });
+  }
+  // Long IANA names use a compact label without changing the stored timezone.
+  const longTimezone = 'America/Argentina/San_Juan';
+  // Chrome versions differ in whether this valid alias is listed as America/San_Juan.
+  const longTimezoneOptions = await command('Page.addScriptToEvaluateOnNewDocument', {
+    source: `localStorage.setItem('display_timezone', '${longTimezone}');
+      const supportedTimezones = Intl.supportedValuesOf.bind(Intl);
+      Intl.supportedValuesOf = key => key === 'timeZone'
+        ? [...new Set([...supportedTimezones(key), '${longTimezone}'])]
+        : supportedTimezones(key);`,
+  });
+  for (const width of [2516, 1280, 768, 390, 320]) {
+    for (const path of ['/?filters=all', '/?view=table&filters=all', '/venues/?filters=all']) {
+      await navigate(`${path}&tz=${encodeURIComponent(longTimezone)}`, width);
+      const timezone = await evaluate(`(() => {
+        const trigger = document.querySelector('.toolbar-timezone-trigger');
+        const rect = document.querySelector('.toolbar-timezone').getBoundingClientRect();
+        return {label: trigger.querySelector('.toolbar-timezone-label').textContent,
+          title: trigger.title, left: rect.left, right: rect.right,
+          overflow: document.documentElement.scrollWidth > innerWidth,
+          stored: localStorage.getItem('display_timezone')};
+      })()`);
+      assert.equal(timezone.label, 'San Juan');
+      assert.equal(timezone.title, `${longTimezone} (UTC-3)`);
+      assert.equal(timezone.stored, longTimezone);
+      assert.equal(timezone.overflow, false);
+      assert.ok(timezone.left >= 0 && timezone.right <= width);
+      await evaluate("document.querySelector('.toolbar-timezone-trigger').click()");
+      await until(() => evaluate("Boolean(document.querySelector('.toolbar-timezone-menu'))"), 'long timezone menu');
+      const timezoneOptions = await evaluate("[...document.querySelectorAll('.toolbar-timezone-option')].map(node => ({label: node.textContent.trim(), selected: node.getAttribute('aria-selected')}))");
+      assert.ok(timezoneOptions.some(option => option.label === `${longTimezone} (UTC-3)`),
+        `Expected ${longTimezone} (UTC-3) among timezone options: ${JSON.stringify(timezoneOptions)}`);
+      await evaluate("document.querySelector('.toolbar-timezone-backdrop').click()");
+      if (width === 2516 && path === '/?filters=all') {
+        const screenshot = await command('Page.captureScreenshot', { format: 'png' });
+        writeFileSync('/tmp/ccfddl-compact-timezone-desktop.png', Buffer.from(screenshot.data, 'base64'));
+      }
+    }
+  }
+  await command('Page.removeScriptToEvaluateOnNewDocument', { identifier: longTimezoneOptions.identifier });
+  await navigate('/venues/?categories=AI&ccf=A&q=ACL&tz=UTC', 1280);
+  const visible = () => evaluate("[...document.querySelectorAll('.directory-list li:not([hidden])')].map(row => row.textContent.trim())");
+  assert.ok((await visible()).length > 0);
+  assert.ok((await visible()).every(title => /^ACL \d{4} ↗$/.test(title)));
+  assert.equal(await evaluate("document.querySelector('.directory-list li:not([hidden]) .venue-series-link').getAttribute('href')"), '/venues/ai/acl/');
+  assert.equal(await evaluate("document.querySelector('.directory-section:not([hidden]) h2 a').getAttribute('href')"), '/venues/ai/');
+  // URL filters override the persisted preferences and survive reload.
+  await evaluate("document.querySelector('.toolbar-search input').value = 'no-such-conference'; document.querySelector('.toolbar-search input').dispatchEvent(new Event('input', {bubbles: true}))");
+  await until(() => evaluate("!document.querySelector('#directory-empty').hidden"), 'directory empty state');
+  assert.equal(await evaluate("new URLSearchParams(location.search).get('q')"), 'no-such-conference');
+  await command('Page.reload');
+  await until(() => evaluate("document.querySelector('.toolbar-search input')?.value === 'no-such-conference'"), 'persisted search');
+  await evaluate("document.querySelector('.toolbar-search input').value = ''; document.querySelector('.toolbar-search input').dispatchEvent(new Event('input', {bubbles: true}))");
+  await until(async () => (await visible()).length > 0, 'reset search');
+  await evaluate("document.querySelector('.clear-filter').click()");
+  await until(() => evaluate("!document.querySelector('.category-filter-grid .filter-selected')"), 'clear category');
+  // Rank selectors and timezone picker are the exact main-site components.
+  await evaluate("document.querySelector('.filter-dropdown-trigger').click()");
+  await until(() => evaluate("Boolean(document.querySelector('.filter-dropdown-panel'))"), 'rank menu');
+  await evaluate("document.querySelector('.filter-dropdown-panel .filter-dropdown-clear').click()");
+  await until(() => evaluate("!new URLSearchParams(location.search).has('ccf')"), 'clear rank');
+  await evaluate("document.querySelector('.toolbar-timezone-trigger').click()");
+  await until(() => evaluate("Boolean(document.querySelector('.toolbar-timezone-menu'))"), 'timezone menu');
+  await evaluate("[...document.querySelectorAll('.toolbar-timezone-option')].find(node => node.textContent === 'Asia/Shanghai (UTC+8)').click()");
+  await until(() => evaluate("new URLSearchParams(location.search).get('tz') === 'Asia/Shanghai'"), 'timezone change');
+  await evaluate("document.querySelector('.language-switches input').click()");
+  await until(() => evaluate("document.documentElement.lang === 'zh-CN'"), 'language change');
+  assert.equal(await evaluate("document.querySelector('#directory-empty').textContent"), '没有匹配的会议。');
+  await evaluate("[...document.querySelectorAll('.category-filter-grid .checkbox-item')].find(node => node.textContent.includes('人工智能')).querySelector('input').click()");
+  await until(() => evaluate("new URLSearchParams(location.search).get('categories') === 'AI'"), 'category selection');
+  await navigate('/?view=table', 390);
+  assert.equal(await evaluate("document.querySelector('.toolbar-timezone-trigger').title"), 'Asia/Shanghai (UTC+8)');
+  assert.equal(await evaluate("localStorage.getItem('display_timezone')"), 'Asia/Shanghai');
+  assert.equal(await evaluate("document.querySelectorAll('.category-filter-grid .filter-selected').length"), 1);
+  // Main-site history switch must toggle once when either the text or switch is clicked.
+  await navigate('/', 390);
+  const past = () => evaluate("document.querySelector('.past-switch input').checked");
+  const before = await past();
+  await evaluate("document.querySelector('.past-switch .past-label').click()");
+  await until(async () => await past() !== before, 'past label toggle');
+  await evaluate("document.querySelector('.past-switch input').click()");
+  await until(async () => await past() === before, 'past switch toggle');
+  assert.deepEqual(errors, []);
+  // A missing bootstrap or WASM must leave usable static links and a working retry.
+  for (const resource of ['bootstrap', 'wasm']) {
+    failingDirectoryResource = resource;
+    await command('Page.navigate', { url: `http://127.0.0.1:${server.address().port}/venues/` });
+    await until(() => evaluate("Boolean(document.querySelector('.directory-controls-loading button'))"), `${resource} failure feedback`);
+    assert.ok(await evaluate("document.querySelectorAll('.directory-list a').length > 0"));
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.directory-categories')).display"), 'flex');
+    assert.equal(await evaluate("document.querySelectorAll('.directory-category-link[href]').length"), 10);
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.directory-category-link')).borderRadius"), '7px');
+    assert.equal(await evaluate("document.querySelector('.directory-controls-loading').getAttribute('role')"), 'alert');
+    failingDirectoryResource = undefined;
+    await evaluate("document.querySelector('.directory-controls-loading button').click()");
+    await until(() => evaluate("Boolean(document.querySelector('.conference-controls .toolbar-search input'))"), `${resource} retry recovery`);
+    assert.equal(await evaluate("Boolean(document.querySelector('.directory-controls-loading'))"), false);
+  }
+  console.log('Shared conference controls passed at 1280, 768, 390 and 320px; directory first paint, filtering and cross-view preferences passed');
+} finally {
+  socket?.close();
+  browser.kill();
+  await new Promise(done => browser.once('exit', done));
+  server.closeAllConnections();
+  await new Promise(done => server.close(done));
+  rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+}

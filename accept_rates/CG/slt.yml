@@ -1,0 +1,20 @@
+- title: SLT
+  accept_rates:
+    - year: 2021
+      submitted: 322
+      accepted: 151
+      str: 46.9%(151/322 21')
+      rate: 0.468944099378882
+      source: https://signalprocessingsociety.org/community-involvement/speech-and-language-processing/newsletter/chairs-letter-january-2021
+    - year: 2022
+      submitted: 363
+      accepted: 153
+      str: 42.1%(153/363 22')
+      rate: 0.4214876033057851
+      source: https://slt2022.signalprocessingsociety.org/SLT%202022/slt2022.org/welcome-message.html
+    - year: 2024
+      submitted: 373
+      accepted: 170
+      str: 45.6%(170/373 24')
+      rate: 0.45576407506702415
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10832360

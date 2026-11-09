@@ -1,0 +1,38 @@
+- title: APSys
+  accept_rates:
+    - year: 2021
+      submitted: 43
+      accepted: 19
+      str: 44.2%(19/43 21')
+      rate: 0.4418604651162791
+      source: https://apsys21.hotcrp.com/
+    - year: 2022
+      submitted: 19
+      accepted: 10
+      str: 52.6%(10/19 22')
+      rate: 0.5263157894736842
+      source: https://apsys22.hotcrp.com/
+    - year: 2023
+      submitted: 32
+      accepted: 13
+      str: 40.6%(13/32 23')
+      rate: 0.40625
+      source: https://apsys23.hotcrp.com/
+    - year: 2024
+      submitted: 44
+      accepted: 20
+      str: 45.5%(20/44 24')
+      rate: 0.45454545454545453
+      source: https://apsys24.hotcrp.com/
+    - year: 2025
+      submitted: 59
+      accepted: 26
+      str: 44.1%(26/59 25')
+      rate: 0.4406779661016949
+      source: https://apsys25.hotcrp.com/
+    - year: 2026
+      submitted: 43
+      accepted: 19
+      str: 44.2%(19/43 26')
+      rate: 0.4418604651162791
+      source: https://apsys26.hotcrp.com/

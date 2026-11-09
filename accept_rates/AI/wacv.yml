@@ -1,0 +1,30 @@
+- title: WACV
+  accept_rates:
+    # Main conference papers across Applications and Algorithms; original multi-round submission aggregate.
+    - year: 2022
+      submitted: 1172
+      accepted: 406
+      str: 34.6%(406/1172 22')
+      rate: 0.3464163822525597
+      source: https://drive.google.com/file/d/1m9zdIM2B65w71dAPdp0QlrqZ-dNThBwj/view?usp=sharing
+    # Applications and Algorithms, unique valid submissions across both rounds; revised papers counted once.
+    - year: 2023
+      submitted: 1577
+      accepted: 641
+      str: 40.6%(641/1577 23')
+      rate: 0.4064679771718453
+      source: https://drive.google.com/file/d/12KiaWtyATjm0BlQlJTB0krQr62vAiZsb/view
+    # Applications and Algorithms, unique valid submissions across both rounds; revised papers counted once.
+    - year: 2025
+      submitted: 2458
+      accepted: 930
+      str: 37.8%(930/2458 25')
+      rate: 0.37835638730675347
+      source: https://doi.org/10.1109/WACV61041.2025.00005
+    # Applications and Algorithms, unique valid submissions across both rounds; revised papers counted once.
+    - year: 2026
+      submitted: 2550
+      accepted: 832
+      str: 32.6%(832/2550 26')
+      rate: 0.3262745098039216
+      source: https://media.eventhosts.cc/Conferences/WACV2026/wacv_2026_program_v18_Digital.pdf

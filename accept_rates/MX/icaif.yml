@@ -1,0 +1,11 @@
+- title: ICAIF
+  accept_rates:
+    # Main research papers, oral and poster acceptance decisions.
+    # Organizer report says about 32.3%; exact 113/349 rounds to 32.4%.
+    # Withdrawal/desk rejection treatment is not separately quantified.
+    - year: 2025
+      submitted: 349
+      accepted: 113
+      rate: 0.3237822349570201
+      str: "32.4%(113/349 25')"
+      source: https://www.linkedin.com/posts/6estates_icaif2025-aiinfinance-financialai-activity-7402715238133125120-fZu5

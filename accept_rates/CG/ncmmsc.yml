@@ -1,0 +1,17 @@
+- title: NCMMSC
+  accept_rates:
+    # Main-conference full-paper decisions, Chinese and English; not CCIS selection.
+    # Reported submissions across a two-round process; not a unique-manuscript claim.
+    - year: 2024
+      submitted: 205
+      accepted: 156
+      str: 76.1%(156/205 24')
+      rate: 0.760975609756098
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-1045-7/1
+    # Main-conference full-paper decisions, Chinese and English; not CCIS selection.
+    - year: 2025
+      submitted: 241
+      accepted: 157
+      str: 65.1%(157/241 25')
+      rate: 0.651452282157676
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-5382-2/1

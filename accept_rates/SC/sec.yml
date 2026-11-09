@@ -1,0 +1,36 @@
+# Main conference selected papers / received submissions.
+- title: SEC
+  accept_rates:
+    - year: 2021
+      submitted: 112
+      accepted: 28
+      str: 25.0%(28/112 21')
+      rate: 0.250000000000000
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-78120-0/1
+    - year: 2022
+      submitted: 127
+      accepted: 29
+      str: 22.8%(29/127 22')
+      rate: 0.228346456692913
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-06975-8/1
+    # 122 received; 10 desk rejections; 112 reviewed.
+    - year: 2024
+      submitted: 122
+      accepted: 34
+      str: 27.9%(34/122 24')
+      rate: 0.278688524590164
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-65175-5/1
+    # Main conference only: 2 desk rejections; 109 reviewed.
+    # Final 28 = 21 immediate + 7 successful shepherded papers. Excludes WNDSS 7/16.
+    - year: 2025
+      submitted: 111
+      accepted: 28
+      str: 25.2%(28/111 25')
+      rate: 0.252252252252252
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-92882-6/1
+    - year: 2026
+      submitted: 164
+      accepted: 39
+      str: 23.8%(39/164 26')
+      rate: 0.237804878048780
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-27993-4/1

@@ -1,8 +1,22 @@
 - title: ICMR
   accept_rates:
+    # Long technical-paper track; short papers and special sessions excluded.
+    - year: 2022
+      submitted: 157
+      accepted: 54
+      str: 34.4%(54/157 22')
+      rate: 0.343949044585987
+      source: https://www.cs.is.i.nagoya-u.ac.jp/users/ide/res/paper/E22-article-whcheng-1pub.pdf
     - year: 2024
       submitted: 281
       accepted: 117
       str: 41.6%(117/281 24')
       rate: 0.4163701
       source: https://csconfstats.xoveexu.com/
+    # Long regular research papers; short and specialized tracks excluded.
+    - year: 2026
+      submitted: 788
+      accepted: 277
+      str: 35.2%(277/788 26')
+      rate: 0.351522842639594
+      source: https://iris.cnr.it/retrieve/8dccbf71-e470-43fd-b45f-a1c5e1b08150/Vadicamo%20et%20al_IMCR%202026.pdf

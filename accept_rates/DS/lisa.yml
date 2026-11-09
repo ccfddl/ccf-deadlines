@@ -1,0 +1,9 @@
+- title: LISA
+  accept_rates:
+    # LISA21 reviewed talk proposals, not archival research-paper submissions.
+    - year: 2021
+      submitted: 57
+      accepted: 35
+      str: 61.4%(35/57 21')
+      rate: 0.614035087719298
+      source: https://lisa21.usenix.hotcrp.com/

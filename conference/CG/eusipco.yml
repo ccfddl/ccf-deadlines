@@ -1,0 +1,65 @@
+- title: EUSIPCO
+  description: European Signal Processing Conference
+  sub: CG
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: eusipco
+  confs:
+    - year: 2021
+      id: eusipco2021
+      link: https://web.archive.org/web/20210902042345/https://eusipco2021.org/
+      timeline:
+        - deadline: '2021-03-01 23:59:59'
+      timezone: AoE
+      date: August 23-27, 2021
+      place: Online
+    - year: 2022
+      id: eusipco2022
+      link: https://2022.eusipco.org/
+      timeline:
+        - deadline: '2022-03-07 23:59:59'
+      timezone: UTC-10
+      date: August 29 - September 2, 2022
+      place: Belgrade, Serbia (Hybrid)
+    - year: 2023
+      id: eusipco2023
+      link: https://eusipco2023.org/
+      timeline:
+        - deadline: '2023-03-10 23:59:59'
+      timezone: AoE
+      date: September 4-8, 2023
+      place: Helsinki, Finland
+    - year: 2024
+      id: eusipco2024
+      link: https://eusipcolyon.sciencesconf.org/
+      timeline:
+        - deadline: '2024-03-14 18:00:00'
+      timezone: UTC-8
+      date: August 26-30, 2024
+      place: LYON, FRANCE
+    - year: 2025
+      id: eusipco2025
+      link: https://eusipco2025.org/
+      timeline:
+        - deadline: '2025-03-13 23:59:59'
+      timezone: AoE
+      date: September 8-12, 2025
+      place: Isola delle Femmine, Palermo, Italy
+    - year: 2026
+      id: eusipco26
+      link: https://eusipco2026.org/
+      timeline:
+        - deadline: '2026-02-13 23:59:59'
+      timezone: AoE
+      date: August 31 - September 4, 2026
+      place: Bruges, Belgium
+    - year: 2027
+      id: eusipco27
+      link: https://eusipco2027.de/
+      timeline:
+        - deadline: '2027-02-06 23:59:59'
+      timezone: AoE
+      date: August 30 - September 3, 2027
+      place: Darmstadt, Germany

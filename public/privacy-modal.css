@@ -1,0 +1,57 @@
+.site-privacy-dialog {
+  width: min(820px, calc(100vw - 32px));
+  max-width: none;
+  max-height: 88vh;
+  max-height: 88dvh;
+  box-sizing: border-box;
+  padding: 0;
+  border: 1px solid #e5ded6;
+  border-radius: 8px;
+  background: #fffdfa;
+  color: #334155;
+  font: 14px/1.7 "Roboto Mono", "SF Mono", Monaco, monospace;
+  box-shadow: 0 18px 48px rgba(45, 38, 31, .2);
+}
+.site-privacy-dialog[open] { display: flex; flex-direction: column; }
+.site-privacy-dialog::backdrop { background: rgba(0, 0, 0, .32); }
+html:has(.site-privacy-dialog[open]) { overflow: hidden; }
+.site-privacy-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 24px 12px;
+  border-bottom: 1px solid #e8e3dc;
+}
+.site-privacy-header h2 { margin: 0; font: inherit; font-size: 24px; font-weight: 700; }
+.site-privacy-close {
+  flex: 0 0 auto;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: #858f99;
+  font: inherit;
+  font-size: 28px;
+  line-height: 1.2;
+  cursor: pointer;
+}
+.site-privacy-content {
+  min-height: 0;
+  padding: 12px 24px 24px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  overflow-wrap: anywhere;
+}
+.site-privacy-content h2 { margin: 24px 0 8px; font-size: 18px; line-height: 1.4; }
+.site-privacy-content p { margin: 10px 0 16px; }
+.site-privacy-content a { color: #496f92; text-underline-offset: 2px; }
+.site-privacy-content code { padding: 1px 3px; background: #f3f0ec; border-radius: 3px; font-size: .94em; }
+.site-privacy-content .page-meta { color: #66717c; font-size: 12px; }
+.site-privacy-content .notice { padding: 12px; border-left: 3px solid #b66a32; background: #f3f0ec; }
+.site-privacy-close:focus-visible, .site-privacy-content a:focus-visible { outline: 2px solid #6f9fca; outline-offset: 3px; }
+.site-privacy-content:focus-visible { outline: 2px solid #6f9fca; outline-offset: -3px; }
+@media (max-width: 600px) {
+  .site-privacy-header { padding: 14px 16px 10px; }
+  .site-privacy-header h2 { font-size: 20px; }
+  .site-privacy-content { padding: 8px 16px 18px; }
+}

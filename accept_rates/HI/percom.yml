@@ -1,0 +1,10 @@
+- title: PerCom
+  accept_rates:
+    # Full-paper acceptances from full submissions, reported by the publication chair.
+    # Excludes 8 submissions accepted as short papers; no withdrawal adjustment stated.
+    - year: 2024
+      submitted: 158
+      accepted: 15
+      rate: 0.0949367088607595
+      str: "9.5%(15/158 24')"
+      source: https://tluocs.github.io/publications.html

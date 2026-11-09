@@ -1,0 +1,10 @@
+- title: CogSci
+  accept_rates:
+    # Full-paper proceedings selection: 152 oral + 332 poster papers.
+    # Abstract-only posters and separate submission categories excluded.
+    - year: 2021
+      submitted: 710
+      accepted: 484
+      rate: 0.6816901408450704
+      str: "68.2%(484/710 21')"
+      source: https://cognitivesciencesociety.org/wp-content/uploads/2021/07/CogSci2021DetailedProgramJuly20.pdf

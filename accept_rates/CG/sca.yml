@@ -1,0 +1,9 @@
+- title: SCA
+  accept_rates:
+    # Main academic-paper program as reported by the chairs; separate posters excluded.
+    - year: 2022
+      submitted: 78
+      accepted: 30
+      str: 38.5%(30/78 22')
+      rate: 0.384615384615385
+      source: https://onlinelibrary.wiley.com/doi/full/10.1111/cgf.14648

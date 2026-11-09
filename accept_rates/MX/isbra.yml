@@ -1,0 +1,36 @@
+- title: ISBRA
+  accept_rates:
+    # Full/regular papers selected for the Springer proceedings.
+    # 2022 excludes four short papers from the same 72-submission pool.
+    # Journal-only, highlight, late-breaking, and poster outcomes not combined.
+    # Withdrawal/desk rejection treatment is not separately quantified.
+    - year: 2021
+      submitted: 135
+      accepted: 51
+      rate: 0.37777777777777777
+      str: "37.8%(51/135 21')"
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-91415-8%2F1
+    - year: 2022
+      submitted: 72
+      accepted: 30
+      rate: 0.4166666666666667
+      str: "41.7%(30/72 22')"
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-23198-8%2F1
+    - year: 2024
+      submitted: 236
+      accepted: 93
+      rate: 0.3940677966101695
+      str: "39.4%(93/236 24')"
+      source: https://link.springer.com/content/pdf/bfm:978-981-97-5128-0%2F1
+    - year: 2025
+      submitted: 167
+      accepted: 66
+      rate: 0.39520958083832336
+      str: "39.5%(66/167 25')"
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-0698-9%2F1
+    - year: 2026
+      submitted: 168
+      accepted: 61
+      rate: 0.3630952380952381
+      str: "36.3%(61/168 26')"
+      source: https://link.springer.com/content/pdf/bfm:978-981-92-3716-6%2F1

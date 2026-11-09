@@ -1,0 +1,31 @@
+# Final accepted papers across the main research categories; separate satellite tracks excluded.
+- title: REFSQ
+  accept_rates:
+    # 15 final accepted papers across research categories from 52 full submissions, including 2 desk rejects. The 54 abstracts are not the denominator. Separate CEUR satellite events and industry talks excluded.
+    - year: 2021
+      submitted: 52
+      accepted: 15
+      str: 28.8%(15/52 21')
+      rate: 0.28846153846153844
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-73128-1/1
+    # 19 final accepted papers (12 long and 7 short) from 45 reviewed submissions; 48 full papers were received and 3 withdrawn before review. Preserve the explicitly reported reviewed denominator.
+    - year: 2022
+      submitted: 45
+      accepted: 19
+      str: 42.2%(19/45 22')
+      rate: 0.4222222222222222
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-98464-9/1
+    # 22 final accepted papers across all research categories from 59 received submissions; 53 passed screening. All 7 initially conditional papers passed final checks. Separate satellite tracks excluded.
+    - year: 2024
+      submitted: 59
+      accepted: 22
+      str: 37.3%(22/59 24')
+      rate: 0.3728813559322034
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-57327-9/1
+    # 29 final accepted papers from 74 submissions; 24 unconditional plus 5 of 6 initially conditional papers after final checks. Includes all five main research categories; excludes separate satellite tracks.
+    - year: 2025
+      submitted: 74
+      accepted: 29
+      str: 39.2%(29/74 25')
+      rate: 0.3918918918918919
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-88531-0/1

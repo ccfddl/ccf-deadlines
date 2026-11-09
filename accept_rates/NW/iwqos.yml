@@ -1,0 +1,10 @@
+- title: IWQoS
+  accept_rates:
+    # Overall main-paper system decisions; full/short partition unreported.
+    # Separate poster system excluded; final/publication removals unquantified.
+    - year: 2025
+      submitted: 428
+      accepted: 124
+      str: 29.0%(124/428 25')
+      rate: 0.2897196261682243
+      source: https://iwqos2025.hotcrp.com/

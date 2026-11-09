@@ -1,8 +1,39 @@
 - title: OSDI
   accept_rates:
+    - year: 2021
+      submitted: 165
+      accepted: 31
+      str: 18.8%(31/165 21')
+      rate: 0.187878787878788
+      source: https://www.usenix.org/sites/default/files/osdi21-message.pdf
+    - year: 2022
+      submitted: 253
+      accepted: 49
+      str: 19.4%(49/253 22')
+      rate: 0.193675889328063
+      source: https://www.usenix.org/sites/default/files/osdi22_message.pdf
     - year: 2023
       submitted: 255
       accepted: 50
       str: 19.6%(50/255 23')
       rate: 0.196078431372549
-      source: https://github.com/emeryberger/csconferences
+      source: https://www.usenix.org/sites/default/files/osdi23_message.pdf
+    - year: 2024
+      submitted: 272
+      accepted: 49
+      str: 18.0%(49/272 24')
+      rate: 0.180147058823529
+      source: https://www.usenix.org/sites/default/files/osdi24_message.pdf
+    # The 2025 final total includes five revise-and-resubmit acceptances, per the chairs.
+    - year: 2025
+      submitted: 339
+      accepted: 53
+      str: 15.6%(53/339 25')
+      rate: 0.156342182890855
+      source: https://www.usenix.org/sites/default/files/osdi25-message.pdf
+    - year: 2026
+      submitted: 669
+      accepted: 134
+      str: 20.0%(134/669 26')
+      rate: 0.200298953662182
+      source: https://www.usenix.org/sites/default/files/osdi26-message.pdf

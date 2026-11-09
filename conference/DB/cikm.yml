@@ -13,16 +13,17 @@
       timeline:
         - deadline: '2020-05-01 23:59:59'
       timezone: UTC-12
-      date: October 19-23, 2021
-      place: Galway, Ireland
+      date: October 19-23, 2020
+      place: Virtual Event, Ireland
     - year: 2021
       id: cikm21
       link: https://www.cikm2021.org/
       timeline:
-        - deadline: '2021-05-26 23:59:59'
+        - abstract_deadline: '2021-05-19 23:59:59'
+          deadline: '2021-05-26 23:59:59'
       timezone: AoE
-      date: November 01-05, 2021
-      place: Queensland, Australia
+      date: November 2-4, 2021
+      place: Online
     - year: 2022
       id: cikm22
       link: https://www.cikm2022.org/
@@ -39,16 +40,16 @@
         - abstract_deadline: '2023-05-26 23:59:59'
           deadline: '2023-06-02 23:59:59'
       timezone: AoE
-      date: October 21-25, 2023
+      date: October 23-25, 2023
       place: Birmingham, UK
     - year: 2024
       id: cikm24
-      link: https://cikm2024.org/
+      link: https://web.archive.org/web/20241108001720/https://cikm2024.org/
       timeline:
         - abstract_deadline: '2024-05-13 23:59:59'
           deadline: '2024-05-20 23:59:59'
       timezone: AoE
-      date: October 21-25, 2024
+      date: October 22-24, 2024
       place: Boise, Idaho, USA
     - year: 2025
       id: cikm25
@@ -57,5 +58,15 @@
         - abstract_deadline: '2025-05-16 23:59:59'
           deadline: '2025-05-23 23:59:59'
       timezone: AoE
-      date: November 10-14, 2025
+      date: November 11-13, 2025
       place: Coex, Seoul, Korea
+    - year: 2026
+      id: cikm26
+      link: https://cikm2026.diag.uniroma1.it/
+      timeline:
+        - abstract_deadline: '2026-05-16 23:59:59'
+          deadline: '2026-05-23 23:59:59'
+          decision_deadline: '2026-08-07 23:59:59'
+      timezone: AoE
+      date: November 9-11, 2026
+      place: Rome, Italy

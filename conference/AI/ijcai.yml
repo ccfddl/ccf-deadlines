@@ -2,18 +2,29 @@
   description: International Joint Conference on Artificial Intelligence
   sub: AI
   rank:
-    ccf: A
+    ccf: B
     core: A*
     thcpl: B
   dblp: ijcai
   confs:
+    - year: 2021
+      id: ijcai21
+      link: https://ijcai-21.org/
+      timeline:
+        - abstract_deadline: '2021-01-13 23:59:59'
+          deadline: '2021-01-20 23:59:59'
+      timezone: UTC-12
+      date: August 23-26, 2021
+      place: Virtual conference
     - year: 2022
       id: ijcai22
       link: https://ijcai-22.org
       timeline:
-        - deadline: '2022-01-14 23:59:59'
+        - abstract_deadline: '2022-01-08 12:59:00'
+          deadline: '2022-01-14 23:59:59'
+          comment: 'Abstract: January 7, 23:59 AoE (UTC-12), converted to CET (UTC+1); full paper: January 14, 23:59 CET'
       timezone: UTC+1
-      date: July 23-29, 2022
+      date: July 25-29, 2022
       place: Vienna, Austria.
     - year: 2023
       id: ijcai23
@@ -22,8 +33,8 @@
         - abstract_deadline: '2023-01-11 23:59:59'
           deadline: '2023-01-18 23:59:59'
       timezone: UTC-12
-      date: August 19-25, 2023
-      place: Cape Town, South Africa.
+      date: August 22-25, 2023
+      place: Macao, China
     - year: 2024
       id: ijcai24
       link: https://ijcai24.org/
@@ -31,7 +42,7 @@
         - abstract_deadline: '2024-01-10 23:59:59'
           deadline: '2024-01-17 23:59:59'
       timezone: UTC-12
-      date: August 3-9, 2024
+      date: August 6-9, 2024
       place: Jeju Island, South Korea.
     - year: 2025
       id: ijcai25
@@ -39,8 +50,9 @@
       timeline:
         - abstract_deadline: '2025-01-16 23:59:59'
           deadline: '2025-01-23 23:59:59'
+          comment: 'Separate satellite event: August 29-31, 2025, Guangzhou, China'
       timezone: UTC-12
-      date: August 16-22, 2025
+      date: August 19-22, 2025
       place: Montreal, Canada.
     - year: 2026
       id: ijcai26
@@ -49,5 +61,19 @@
         - abstract_deadline: '2026-01-12 23:59:59'
           deadline: '2026-01-19 23:59:59'
       timezone: UTC-12
-      date: August 15-21, 2026
+      date: August 18-21, 2026
       place: Bremen, Germany
+    - year: 2027
+      id: ijcai27
+      link: https://2027.ijcai.org/
+      timeline:
+        # Source: https://2027.ijcai.org/
+        # Official 23:59 AoE is represented as 23:59:59 by repository convention.
+        - abstract_deadline: '2027-01-04 23:59:59'
+          deadline: '2027-01-11 23:59:59'
+          rebuttal_deadline: '2027-04-02 23:59:59'
+          decision_deadline: '2027-04-21 23:59:59'
+          comment: 'Separate satellite event: August 15-17, 2027, Hengqin, China'
+      timezone: AoE
+      date: August 7-13, 2027
+      place: Kyoto, Japan

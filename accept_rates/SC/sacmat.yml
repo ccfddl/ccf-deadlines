@@ -1,0 +1,12 @@
+# Overall 2026 paper cohort across five categories, including Work in Progress.
+# Organizer's retrospective program report, received submissions as reported.
+# Two cycles and major revisions; unique/resubmission accounting is unspecified.
+# Initial conditional decisions, desk rejects and withdrawals are not split.
+- title: SACMAT
+  accept_rates:
+    - year: 2026
+      submitted: 83
+      accepted: 26
+      str: 31.3%(26/83 26')
+      rate: 0.313253012048193
+      source: https://www.linkedin.com/in/souradip-nath

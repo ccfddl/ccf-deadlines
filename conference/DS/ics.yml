@@ -7,6 +7,33 @@
     thcpl: B
   dblp: ics
   confs:
+    - year: 2021
+      id: ics21
+      link: https://ics21.github.io/
+      timeline:
+        - abstract_deadline: '2021-01-28 23:59:59'
+          deadline: '2021-02-04 23:59:59'
+      timezone: AoE
+      date: June 15-17, 2021
+      place: Virtual
+    - year: 2022
+      id: ics22
+      link: https://ics2022.github.io/
+      timeline:
+        - abstract_deadline: '2022-01-28 23:59:59'
+          deadline: '2022-02-04 23:59:59'
+      timezone: AoE
+      date: June 28-30, 2022
+      place: Virtual
+    - year: 2023
+      id: ics23
+      link: https://nschiele.github.io/ICS2023/
+      timeline:
+        - abstract_deadline: '2023-01-27 23:59:59'
+          deadline: '2023-02-03 23:59:59'
+      timezone: AoE
+      date: June 21-23, 2023
+      place: Orlando, Florida, USA
     - year: 2024
       id: ics24
       link: https://ics2024.github.io/
@@ -14,7 +41,7 @@
         - abstract_deadline: '2024-01-11 23:59:59'
           deadline: '2024-01-18 23:59:59'
       timezone: AoE
-      date: June 4-7, 2024
+      date: June 5-7, 2024
       place: Kyoto University, Kyoto, Japan
     - year: 2025
       id: ics25
@@ -22,6 +49,10 @@
       timeline:
         - abstract_deadline: '2025-01-13 23:59:59'
           deadline: '2025-01-16 23:59:59'
+          comment: 'Cycle 1'
+        - abstract_deadline: '2025-02-24 23:59:59'
+          deadline: '2025-02-27 23:59:59'
+          comment: 'Cycle 2'
       timezone: AoE
       date: June 9-11, 2025
       place: Salt Lake City, U.S.A.
@@ -36,5 +67,15 @@
           deadline: '2026-02-09 23:59:59'
           comment: 'Cycle 2'
       timezone: AoE
-      date: July 6-9, 2026
+      date: July 7-9, 2026
       place: Belfast, Northern Ireland, United Kingdom
+    - year: 2027
+      id: ics27
+      link: https://ics-conference.org/index.html
+      timeline:
+        - abstract_deadline: '2026-12-01 23:59:59'
+          deadline: '2026-12-07 23:59:59'
+          decision_deadline: '2027-03-12 23:59:59'
+      timezone: AoE
+      date: TBD
+      place: Atlanta, Georgia, USA

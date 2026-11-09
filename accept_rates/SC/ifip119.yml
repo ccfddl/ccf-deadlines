@@ -1,0 +1,17 @@
+# Publisher-selected full papers for the post-conference edited volume / submissions.
+# These figures do not establish the initial conference-presentation acceptance count.
+- title: IFIP WG 11.9
+  accept_rates:
+    - year: 2025
+      submitted: 25
+      accepted: 10
+      str: 40.0%(10/25 25')
+      rate: 0.400000000000000
+      source: https://link.springer.com/book/10.1007/978-3-032-09802-3
+    # Publisher prerelease selection statement; volume not yet released at audit time.
+    - year: 2026
+      submitted: 39
+      accepted: 12
+      str: 30.8%(12/39 26')
+      rate: 0.307692307692308
+      source: https://link.springer.com/book/9783032366238

@@ -1,0 +1,56 @@
+- title: ASP-DAC
+  accept_rates:
+    # General chair: technical-paper acceptances / received papers; regular/short split unreported.
+    # Separate invited/design-contest/forum tracks excluded; regular/short assignment uses one submission pool.
+    # Withdrawal/desk handling and regular/short breakdown are not disclosed.
+    - year: 2021
+      submitted: 327
+      accepted: 111
+      str: 33.9%(111/327 21')
+      rate: 0.3394495412844037
+      source: https://www.aspdac.com/aspdac2021/welcome/
+    # General chair: technical-paper acceptances / received papers; regular/short split unreported.
+    # Separate invited/design-contest/forum tracks excluded; regular/short assignment uses one submission pool.
+    # Withdrawal/desk handling and regular/short breakdown are not disclosed.
+    - year: 2022
+      submitted: 310
+      accepted: 95
+      str: 30.6%(95/310 22')
+      rate: 0.3064516129032258
+      source: https://www.aspdac.com/aspdac2022/welcome/index.html
+    # TPC regular-paper selections / full manuscripts; PDF p. 5 (printed p. 7).
+    # Separate invited/design-contest/forum tracks excluded; regular/short assignment uses one submission pool.
+    # Withdrawal/desk handling and regular/short breakdown are not disclosed.
+    - year: 2023
+      submitted: 328
+      accepted: 102
+      str: 31.1%(102/328 23')
+      rate: 0.31097560975609756
+      source: https://www.aspdac.com/aspdac2023/pdf/final_v2.pdf
+    # General chair: technical-paper acceptances / received papers; regular/short split unreported.
+    # Separate invited/design-contest/forum tracks excluded; regular/short assignment uses one submission pool.
+    # Withdrawal/desk handling and regular/short breakdown are not disclosed.
+    - year: 2024
+      submitted: 482
+      accepted: 139
+      str: 28.8%(139/482 24')
+      rate: 0.2883817427385892
+      source: https://www.aspdac.com/aspdac2024/welcome/index.html
+    # TPC regular-paper selections / full manuscripts; PDF p. 4 (printed p. 4).
+    # Separate invited/design-contest/forum tracks excluded; regular/short assignment uses one submission pool.
+    # Withdrawal/desk handling and regular/short breakdown are not disclosed.
+    - year: 2025
+      submitted: 537
+      accepted: 168
+      str: 31.3%(168/537 25')
+      rate: 0.3128491620111732
+      source: https://www.aspdac.com/aspdac2025/pdf/final_program.pdf
+    # TPC regular-paper decisions / reviewed manuscripts; PDF p. 4 (printed p. 2).
+    # Separate invited/design-contest/forum tracks excluded; regular/short assignment uses one submission pool.
+    # 639 full manuscripts and 749 abstracts are separate; 27 not reviewed, reasons unspecified.
+    - year: 2026
+      submitted: 612
+      accepted: 176
+      str: 28.8%(176/612 26')
+      rate: 0.2875816993464052
+      source: https://www.aspdac.com/aspdac2026/pdf/ASP-DAC_2026_Full_Program.pdf

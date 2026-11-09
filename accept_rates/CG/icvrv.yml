@@ -1,0 +1,15 @@
+- title: ICVRV
+  accept_rates:
+    # Regular-paper track only.
+    - year: 2024
+      submitted: 197
+      accepted: 55
+      str: 27.9%(55/197 24')
+      rate: 0.279187817258883
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11028691
+    - year: 2025
+      submitted: 572
+      accepted: 178
+      str: 31.1%(178/572 25')
+      rate: 0.311188811188811
+      source: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11410313

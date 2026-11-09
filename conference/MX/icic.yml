@@ -19,7 +19,7 @@
       id: icic25
       link: http://www.ic-icc.cn/2025/index.php
       timeline:
-        - deadline: '2025-04-10 11:59:59'
+        - deadline: '2025-04-10 12:00:00'
       timezone: UTC+8
       date: July 26-29, 2025
       place: Ningbo, China
@@ -27,7 +27,20 @@
       id: icic26
       link: http://www.ic-icc.cn/2026/
       timeline:
-        - deadline: '2026-03-20 11:59:59'
+        - deadline: '2026-04-04 12:00:00'
       timezone: UTC+8
       date: July 22-26, 2026
-      place: Toronto, Canada
+      place: Toronto, Canada (Hybrid)
+    - year: 2027
+      id: icic27
+      link: http://ic-icc.cn/2027/index.php
+      timeline:
+        # Source: http://ic-icc.cn/2027/Important%20Dates.php
+        # Dates table: http://ic-icc.cn/2027/file/html/ICIC2027%20Important%20Dates.htm
+        # Official dates omit clock time and timezone; 23:59:59 and AoE follow README defaults.
+        - deadline: '2027-03-15 23:59:59'
+          decision_deadline: '2027-04-22 23:59:59'
+          comment: 'Regular papers; rebuttal notification April 15, 2027'
+      timezone: AoE
+      date: July 22-26, 2027
+      place: Jinan, China

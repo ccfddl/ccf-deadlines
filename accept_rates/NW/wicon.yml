@@ -1,0 +1,14 @@
+- title: WiCON
+  accept_rates:
+    - year: 2022
+      submitted: 45
+      accepted: 16
+      str: 35.6%(16/45 22')
+      rate: 0.35555555555555557
+      source: https://link.springer.com/book/10.1007/978-3-031-27041-3
+    - year: 2023
+      submitted: 35
+      accepted: 14
+      str: 40.0%(14/35 23')
+      rate: 0.4
+      source: https://link.springer.com/book/10.1007/978-3-031-58053-6

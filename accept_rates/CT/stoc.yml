@@ -1,8 +1,10 @@
 - title: STOC
   accept_rates:
+    # Original PC-chair welcome, PDF p3: 155 accepted papers / 480 received submissions.
+    # Seven pairs share talks: 148 talks are not the number of accepted papers.
     - year: 2023
       submitted: 480
       accepted: 155
       str: 32.3%(155/480 23')
       rate: 0.322916666666667
-      source: https://github.com/emeryberger/csconferences
+      source: https://pure.mpg.de/pubman/item/item_3490057_4/component/file_3561382/3564246.fm-1.pdf

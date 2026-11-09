@@ -1,0 +1,30 @@
+- title: NOMS
+  accept_rates:
+    # Main technical full papers; other program categories excluded.
+    - year: 2022
+      submitted: 173
+      accepted: 43
+      str: 24.9%(43/173 22')
+      rate: 0.24855491329479767
+      source: https://drive.google.com/file/d/1EHq0iVYR6eH2GWHXoJJbxywHuoJQ_5y7/view
+    # Main technical full papers; other program categories excluded.
+    - year: 2023
+      submitted: 197
+      accepted: 44
+      str: 22.3%(44/197 23')
+      rate: 0.2233502538071066
+      source: https://drive.google.com/file/d/1rkQ988Tn1wkSUg3CsK-1jmE5W04Z6_9d/view
+    # Main technical full papers; other program categories excluded.
+    - year: 2024
+      submitted: 170
+      accepted: 50
+      str: 29.4%(50/170 24')
+      rate: 0.29411764705882354
+      source: https://gcn.comsoc.org/highlights-ieeeifip-network-operations-and-management-symposium-noms-2024-seoul-korea
+    # Main technical full papers; other program categories excluded.
+    - year: 2025
+      submitted: 177
+      accepted: 48
+      str: 27.1%(48/177 25')
+      rate: 0.2711864406779661
+      source: https://drive.google.com/file/d/11IGgwJRxw__4N8_Vwg_HGCdl6ksD62HN/view

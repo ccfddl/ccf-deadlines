@@ -1,8 +1,29 @@
 - title: PLDI
   accept_rates:
+    # Main research papers; PC report slide 18 (11:54) reports submissions and accepted papers after shepherding.
+    - year: 2021
+      submitted: 320
+      accepted: 87
+      str: 27.2%(87/320 21')
+      rate: 0.271875
+      source: https://slideslive.com/38962620/pldi-business-meeting
+    # Official public HotCRP main research-track aggregate; desk/withdrawal exclusions and conditional/final stage not separately specified.
+    - year: 2022
+      submitted: 326
+      accepted: 68
+      str: 20.9%(68/326 22')
+      rate: 0.2085889570552147
+      source: https://pldi2022.hotcrp.com/
     - year: 2023
       submitted: 281
       accepted: 83
       str: 29.5%(83/281 23')
       rate: 0.295373665480427
       source: https://github.com/emeryberger/csconferences
+    # Official public HotCRP main research-track aggregate; desk/withdrawal exclusions and conditional/final stage not separately specified.
+    - year: 2025
+      submitted: 316
+      accepted: 90
+      str: 28.5%(90/316 25')
+      rate: 0.2848101265822785
+      source: https://pldi25.hotcrp.com/

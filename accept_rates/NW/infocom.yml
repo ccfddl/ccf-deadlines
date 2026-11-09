@@ -1,8 +1,41 @@
 - title: INFOCOM
   accept_rates:
+    # Main program selections / valid submissions; not all received papers.
+    # Report repeats final224; stage91+134=225 conflict remains unexplained.
+    - year: 2022
+      submitted: 1129
+      accepted: 224
+      str: 19.8%(224/1129 22')
+      rate: 0.19840566873339238
+      source: https://infocom2022.ieee-infocom.org/program/chairs-messages.html
+    # Main research-paper acceptances / received submissions.
+    # Workshop/demo/poster excluded; later publication removals unquantified.
+    - year: 2023
+      submitted: 1312
+      accepted: 252
+      str: 19.2%(252/1312 23')
+      rate: 0.19207317073170732
+      source: https://infocom2023.ieee-infocom.org/chairs-messages
     - year: 2024
       submitted: 1307
       accepted: 256
       str: 19.6%(256/1307 24')
-      rate: 0.1958684
+      rate: 0.19586840091813313
       source: https://csconfstats.xoveexu.com/
+    # Main research-paper final TPC selections / received submissions.
+    # Workshop/demo/poster pools excluded; not final Xplore publication counts.
+    # Desk rejection, withdrawal and no-show removals are not quantified.
+    - year: 2025
+      submitted: 1458
+      accepted: 272
+      str: 18.7%(272/1458 25')
+      rate: 0.18655692729766804
+      source: https://infocom2025.ieee-infocom.org/program/chairs-messages
+    # Original TPC report explicitly selects 327, not the secondary 329.
+    # Source says "over 1,740" then explicitly "Out of the 1,740 papers submitted".
+    - year: 2026
+      submitted: 1740
+      accepted: 327
+      str: 18.8%(327/1740 26')
+      rate: 0.1879310344827586
+      source: https://infocom2026.ieee-infocom.org/chairs-message

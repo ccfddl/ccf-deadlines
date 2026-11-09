@@ -1,0 +1,16 @@
+- title: EGSR
+  accept_rates:
+    # Final research-paper acceptances: 14 CGF + 19 symposium; excludes 2 major-revision referrals invited to present.
+    - year: 2021
+      submitted: 52
+      accepted: 33
+      str: 63.5%(33/52 21')
+      rate: 0.6346153846153846
+      source: https://diglib.eg.org/bitstream/handle/10.2312/sr20212014/000_rendering2021_dl_frontmatter.pdf?isAllowed=y&sequence=1
+    # Research track: 15 CGF + 12 symposium selections; excludes independent industry track and invited CGF papers.
+    - year: 2022
+      submitted: 47
+      accepted: 27
+      str: 57.4%(27/47 22')
+      rate: 0.574468085106383
+      source: https://diglib.eg.org/bitstream/handle/10.1111/cgf14597/000_rendering2022_frontmatter.pdf

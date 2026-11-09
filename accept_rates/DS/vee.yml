@@ -1,0 +1,8 @@
+- title: VEE
+  accept_rates:
+    - year: 2021
+      submitted: 27
+      accepted: 15
+      str: 55.6%(15/27 21')
+      rate: 0.5555555555555556
+      source: https://vee21.hotcrp.com/

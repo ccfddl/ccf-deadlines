@@ -1,0 +1,30 @@
+- title: ICDF2C
+  accept_rates:
+    # Main-track full papers; conference year, not the later publication/copyright year.
+    - year: 2021
+      submitted: 52
+      accepted: 22
+      str: 42.3%(22/52 21')
+      rate: 0.4230769230769231
+      source: https://link.springer.com/book/10.1007/978-3-031-06365-7
+    # Main-track full papers; conference year, not the later publication/copyright year.
+    - year: 2022
+      submitted: 80
+      accepted: 28
+      str: 35.0%(28/80 22')
+      rate: 0.35
+      source: https://link.springer.com/book/10.1007/978-3-031-36574-4
+    # Main-track full papers; conference year, not the later publication/copyright year.
+    - year: 2024
+      submitted: 90
+      accepted: 40
+      str: 44.4%(40/90 24')
+      rate: 0.4444444444444444
+      source: https://link.springer.com/book/10.1007/978-3-031-89363-6
+    # Main-track full papers; conference year, not the later publication/copyright year.
+    - year: 2026
+      submitted: 123
+      accepted: 30
+      str: 24.4%(30/123 26')
+      rate: 0.24390243902439024
+      source: https://link.springer.com/book/10.1007/978-3-032-37274-1

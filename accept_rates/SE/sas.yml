@@ -1,0 +1,45 @@
+# Peer-reviewed conference papers, including short papers; invited contributions excluded.
+- title: SAS
+  accept_rates:
+    # Existing publisher22/48 conflicts with original PC preface22/40 (33 regular+7 short submitted).
+    # No reconciliation found; preserve historical row, not independently certified. Preface: https://link.springer.com/content/pdf/bfm:978-3-030-88806-0/1
+    - year: 2021
+      submitted: 48
+      accepted: 22
+      str: 45.8%(22/48 21')
+      rate: 0.458333333333333
+      source: https://link.springer.com/book/10.1007/978-3-030-88806-0
+    # PC preface p.v/PDF5:48 received minus5 desk rejects =43 reviewed;18 accepted (16 regular+2 NEAT).
+    # Preserve reviewed-submission cohort; received-submission alternative18/48 is37.5%.
+    - year: 2022
+      submitted: 43
+      accepted: 18
+      str: 41.9%(18/43 22')
+      rate: 0.418604651162791
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-22308-2/1
+    - year: 2023
+      submitted: 40
+      accepted: 20
+      str: 50.0%(20/40 23')
+      rate: 0.500000000000000
+      source: https://link.springer.com/book/10.1007/978-3-031-44245-2
+    - year: 2024
+      submitted: 45
+      accepted: 18
+      str: 40.0%(18/45 24')
+      rate: 0.400000000000000
+      source: https://link.springer.com/book/10.1007/978-3-031-74776-2
+    - year: 2025
+      submitted: 32
+      accepted: 15
+      str: 46.9%(15/32 25')
+      rate: 0.468750000000000
+      source: https://link.springer.com/book/10.1007/978-3-032-07106-4
+    # Publisher-announced selected papers (regular+NEAT); forthcoming volume due2026-11-01, not final released proceedings.
+    # Organizer CFP confirms separate invited/artifact contributions; desk/withdrawal exclusions unspecified.
+    - year: 2026
+      submitted: 43
+      accepted: 20
+      str: 46.5%(20/43 26')
+      rate: 0.46511627906976744
+      source: https://link.springer.com/book/9783032403735

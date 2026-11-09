@@ -1,0 +1,44 @@
+- title: FMCAD
+  accept_rates:
+    # Original chairs preface. Main program, regular and tool/case-study long/short papers.
+    - year: 2021
+      submitted: 72
+      accepted: 30
+      str: 41.7%(30/72 21')
+      rate: 0.4166666666666667
+      source: https://repositum.tuwien.at/bitstream/20.500.12708/18607/2/front-matter-20027.pdf
+    # Original chairs preface. Main program, regular and tool/case-study long/short papers.
+    - year: 2022
+      submitted: 88
+      accepted: 40
+      str: 45.5%(40/88 22')
+      rate: 0.45454545454545453
+      source: https://repositum.tuwien.at/bitstream/20.500.12708/81308/3/front-matter-85754.pdf
+    # Original chairs preface. Main program, regular and tool/case-study long/short papers.
+    - year: 2023
+      submitted: 73
+      accepted: 31
+      str: 42.5%(31/73 23')
+      rate: 0.4246575342465753
+      source: https://repositum.tuwien.at/bitstream/20.500.12708/188648/2/front-matter-198428.pdf
+    # Original chairs preface. Main program, regular and tool/case-study long/short papers.
+    - year: 2024
+      submitted: 56
+      accepted: 29
+      str: 51.8%(29/56 24')
+      rate: 0.5178571428571429
+      source: https://repositum.tuwien.at/bitstream/20.500.12708/200767/2/front-matter-215178.pdf
+    # Original chairs preface. Main program, regular and tool/case-study long/short papers. Full submissions64, excluding abstract-only82.
+    - year: 2025
+      submitted: 64
+      accepted: 27
+      str: 42.2%(27/64 25')
+      rate: 0.421875
+      source: https://repositum.tuwien.at/bitstream/20.500.12708/219511/2/front-matter-236164.pdf
+    # Official conference news. All224received, not172remaining after rebuttal; excludes Student Forum and VSTTE.
+    - year: 2026
+      submitted: 224
+      accepted: 71
+      str: 31.7%(71/224 26')
+      rate: 0.3169642857142857
+      source: https://fmcad.org/FMCAD26/

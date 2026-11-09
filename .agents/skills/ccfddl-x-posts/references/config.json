@@ -1,0 +1,29 @@
+{
+  "account": "ccfddl",
+  "language": "en",
+  "editorial_confirmed": true,
+  "publication_timezone": "America/Los_Angeles",
+  "publication_daypart": "morning",
+  "suggested_local_time": "08:00",
+  "timing_mode": "flexible",
+  "ccf_ranks": [
+    "A",
+    "B"
+  ],
+  "include_paths": [
+    "conference/AI/iclr.yml",
+    "conference/MX/mlsys.yml"
+  ],
+  "include_titles": [],
+  "exclude_titles": [],
+  "horizon_days": 120,
+  "stage_selection": "nearest",
+  "card_limit": 3,
+  "media_mode": "link_preview",
+  "publishing_source_policy": "repository_exact",
+  "max_items_by_category": {
+    "AI": 6,
+    "Data Systems": 6
+  },
+  "detail_link_selection": "most_starred_selected"
+}

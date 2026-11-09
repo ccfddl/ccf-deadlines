@@ -1,0 +1,23 @@
+- title: BIS
+  accept_rates:
+    # Main proceedings selection; no full/short breakdown stated.
+    - year: 2021
+      submitted: 93
+      accepted: 32
+      rate: 0.34408602150537637
+      str: "34.4%(32/93 21')"
+      source: https://doi.org/10.52825/bis.v1i.70
+    # Main proceedings selection: 19 full + 4 short papers.
+    - year: 2025
+      submitted: 54
+      accepted: 23
+      rate: 0.42592592592592593
+      str: "42.6%(23/54 25')"
+      source: https://link.springer.com/book/10.1007/978-3-031-94193-1
+    # Main proceedings selection: 25 full + 6 short papers.
+    - year: 2026
+      submitted: 73
+      accepted: 31
+      rate: 0.4246575342465753
+      str: "42.5%(31/73 26')"
+      source: https://link.springer.com/book/10.1007/978-3-032-26363-6

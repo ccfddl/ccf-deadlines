@@ -23,9 +23,9 @@
         - deadline: '2021-01-01 17:00:00'
         - deadline: '2021-02-01 17:00:00'
         - deadline: '2021-03-01 17:00:00'
-      timezone: UTC-7
-      date: August 16-20, 2021
-      place: Copenhagen, Denmark
+      timezone: PT
+      date: August 16-19, 2021
+      place: Copenhagen, Denmark / Online
     - year: 2022
       id: vldb22
       link: http://www.vldb.org/2022/
@@ -42,9 +42,9 @@
         - deadline: '2022-01-01 17:00:00'
         - deadline: '2022-02-01 17:00:00'
         - deadline: '2022-03-01 17:00:00'
-      timezone: UTC-7
-      date: September 05-09, 2022
-      place: Sydney, Australia
+      timezone: PT
+      date: September 6-8, 2022
+      place: Sydney, Australia / Online
     - year: 2023
       id: vldb23
       link: http://www.vldb.org/2023/
@@ -61,9 +61,9 @@
         - deadline: '2023-01-01 17:00:00'
         - deadline: '2023-02-01 17:00:00'
         - deadline: '2023-03-01 17:00:00'
-      timezone: UTC-7
-      date: August 28 - September 01, 2023
-      place: Vancouver, Canada
+      timezone: PT
+      date: August 29-31 (In-person) and September 1 (Online), 2023
+      place: Vancouver, Canada / Online (September 1 presentations)
     - year: 2024
       id: vldb24
       link: http://www.vldb.org/2024/
@@ -80,8 +80,8 @@
         - deadline: '2024-01-01 17:00:00'
         - deadline: '2024-02-01 17:00:00'
         - deadline: '2024-03-01 17:00:00'
-      timezone: UTC-7
-      date: August 25-29, 2024
+      timezone: PT
+      date: August 27-29, 2024
       place: Guangzhou, China (and hybrid)
     - year: 2025
       id: vldb25
@@ -99,8 +99,8 @@
         - deadline: '2025-01-01 17:00:00'
         - deadline: '2025-02-01 17:00:00'
         - deadline: '2025-03-01 17:00:00'
-      timezone: UTC-7
-      date: September 1-5, 2025
+      timezone: PT
+      date: September 2-4, 2025
       place: London, United Kingdom
     - year: 2026
       id: vldb26
@@ -118,6 +118,37 @@
         - deadline: '2026-01-01 17:00:00'
         - deadline: '2026-02-01 17:00:00'
         - deadline: '2026-03-01 17:00:00'
-      timezone: UTC-7
-      date: August 31 - September 4, 2026
+      timezone: PT
+      date: September 1-3, 2026
       place: Boston, MA, USA
+    - year: 2027
+      id: vldb27
+      link: https://www.vldb.org/2027/
+      timeline:
+        - abstract_deadline: '2026-03-25 17:00:00'
+          deadline: '2026-04-01 17:00:00'
+        - abstract_deadline: '2026-04-25 17:00:00'
+          deadline: '2026-05-01 17:00:00'
+        - abstract_deadline: '2026-05-25 17:00:00'
+          deadline: '2026-06-01 17:00:00'
+        - abstract_deadline: '2026-06-25 17:00:00'
+          deadline: '2026-07-01 17:00:00'
+        - abstract_deadline: '2026-07-25 17:00:00'
+          deadline: '2026-08-01 17:00:00'
+        - abstract_deadline: '2026-08-25 17:00:00'
+          deadline: '2026-09-01 17:00:00'
+        - abstract_deadline: '2026-09-25 17:00:00'
+          deadline: '2026-10-01 17:00:00'
+        - abstract_deadline: '2026-10-25 17:00:00'
+          deadline: '2026-11-01 17:00:00'
+        - abstract_deadline: '2026-11-25 17:00:00'
+          deadline: '2026-12-01 17:00:00'
+        - abstract_deadline: '2026-12-25 17:00:00'
+          deadline: '2027-01-01 17:00:00'
+        - abstract_deadline: '2027-01-25 17:00:00'
+          deadline: '2027-02-01 17:00:00'
+        - abstract_deadline: '2027-02-25 17:00:00'
+          deadline: '2027-03-01 17:00:00'
+      timezone: PT
+      date: August 23 - August 27, 2027
+      place: Athens, Greece

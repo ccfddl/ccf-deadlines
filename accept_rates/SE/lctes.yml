@@ -1,0 +1,9 @@
+# Full and work-in-progress paper system aggregate; not full-paper-only or a publication census.
+- title: LCTES
+  accept_rates:
+    - year: 2023
+      submitted: 35
+      accepted: 14
+      str: 40.0%(14/35 23')
+      rate: 0.4
+      source: https://lctes23.hotcrp.com/

@@ -7,6 +7,42 @@
     thcpl: B
   dblp: vissym
   confs:
+    - year: 2021
+      id: eurovis2021
+      link: https://files.ifi.uzh.ch/webarchives/eurovis21.ifi.uzh.ch/index.html
+      timeline:
+        - abstract_deadline: '2020-11-25 23:59:59'
+          deadline: '2020-12-04 23:59:59'
+      timezone: UTC+0
+      date: June 15-18, 2021
+      place: Online
+    - year: 2022
+      id: eurovis2022
+      link: https://conferences.eg.org/eurovis2022/
+      timeline:
+        - abstract_deadline: '2021-11-24 23:59:59'
+          deadline: '2021-12-02 23:59:59'
+      timezone: UTC+0
+      date: June 14-17, 2022
+      place: Rome, Italy
+    - year: 2023
+      id: eurovis2023
+      link: https://conferences.eg.org/eurovis2023/
+      timeline:
+        - abstract_deadline: '2022-11-25 23:59:59'
+          deadline: '2022-12-02 23:59:59'
+      timezone: UTC+0
+      date: June 13-16, 2023
+      place: Leipzig, Germany
+    - year: 2024
+      id: eurovis2024
+      link: https://www.eg.org/wp/event/eurovis-2024/
+      timeline:
+        - abstract_deadline: '2023-11-23 23:59:59'
+          deadline: '2023-11-30 23:59:59'
+      timezone: UTC+0
+      date: May 27-31, 2024
+      place: Odense, Denmark
     - year: 2025
       id: eurovis2025
       link: https://www.eurovis2025.lu/
@@ -21,7 +57,20 @@
       link: https://www.eurovis.org.uk/
       timeline:
         - abstract_deadline: '2025-11-26 23:59:59'
-          deadline: '2024-12-03 23:59:59'
+          deadline: '2025-12-03 23:59:59'
       timezone: AoE
       date: June 8-12, 2026
       place: Nottingham, United Kingdom
+    - year: 2027
+      id: eurovis2027
+      link: https://eurovis27.github.io/web/
+      timeline:
+        # Source: https://eurovis27.github.io/web/submissions/full-papers/
+        - abstract_deadline: '2026-11-23 23:59:59'
+          deadline: '2026-12-02 23:59:59'
+          decision_deadline: '2027-03-17 23:59:59'
+          comment: 'Full papers'
+      # Full paper deadlines are explicitly 23:59 AoE on the official CFP.
+      timezone: AoE
+      date: May 31-June 4, 2027
+      place: Stuttgart, Germany

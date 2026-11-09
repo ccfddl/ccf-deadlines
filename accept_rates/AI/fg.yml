@@ -1,0 +1,9 @@
+- title: FG
+  accept_rates:
+    # Selected for publication / valid main-conference submissions; workshops excluded.
+    - year: 2023
+      submitted: 85
+      accepted: 51
+      str: 60.0%(51/85 23')
+      rate: 0.6
+      source: https://fg2023.ieee-biometrics.org/assets/FG2023-program.pdf

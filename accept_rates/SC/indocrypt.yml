@@ -1,0 +1,37 @@
+- title: INDOCRYPT
+  # Refereed main-conference papers over received submissions; excludes invited papers and workshops.
+  accept_rates:
+    - year: 2021
+      # All 66 received submissions, including one desk rejection; not the 65 reviewed subset.
+      submitted: 66
+      accepted: 27
+      str: 40.9%(27/66 21')
+      rate: 0.4090909090909091
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-92518-5/1
+    - year: 2022
+      # All 88 received submissions, not the 74 papers reviewed after withdrawals and desk rejections.
+      submitted: 88
+      accepted: 31
+      str: 35.2%(31/88 22')
+      rate: 0.3522727272727273
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-22912-1/1
+    - year: 2023
+      # Excludes two separately invited papers.
+      submitted: 86
+      accepted: 27
+      str: 31.4%(27/86 23')
+      rate: 0.313953488372093
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-56232-7/1
+    - year: 2024
+      # The preface gives 31/96 but prints an inconsistent 30.09%; calculate from the counts.
+      submitted: 96
+      accepted: 31
+      str: 32.3%(31/96 24')
+      rate: 0.3229166666666667
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-80308-6/1
+    - year: 2025
+      submitted: 83
+      accepted: 19
+      str: 22.9%(19/83 25')
+      rate: 0.2289156626506024
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-13301-4/1

@@ -1,3 +1,6 @@
+merge_queue:
+  # Automatic merging is handled by the rules below; omit manual queue controls.
+  queue_controls_comment: false
 pull_request_rules:
   - name: say hi on new contribution
     conditions:
@@ -24,6 +27,9 @@ pull_request_rules:
       - check-success=build
       - check-success=pre-commit
       - base=main
+      - or:
+          - '-files~=^(worker/|scripts/test_(worker_database|star_counts_migration)\.py$|\.github/workflows/mcp_check\.yml$)'
+          - check-success=test
     actions:
       merge:
         method: squash

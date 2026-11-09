@@ -1,0 +1,10 @@
+# Main conference proceedings, Parts I and II: 34 full + 20 short papers from 123 submissions.
+# Excludes the 2 invited papers, workshops, and co-located conferences.
+- title: DEXA
+  accept_rates:
+    - year: 2026
+      submitted: 123
+      accepted: 54
+      str: 43.9%(54/123 26')
+      rate: 0.439024390243902
+      source: https://link.springer.com/book/10.1007/978-3-032-34374-1

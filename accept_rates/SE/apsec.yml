@@ -1,0 +1,30 @@
+- title: APSEC
+  accept_rates:
+    # Technical Research + SEIP; received submissions 129 + 18.
+    - year: 2021
+      submitted: 147
+      accepted: 48
+      str: 32.7%(48/147 21')
+      rate: 0.326530612244898
+      source: https://doi.org/10.1109/APSEC53868.2021.00005
+    # Technical Research only; received submissions; acceptance recommendations.
+    - year: 2022
+      submitted: 127
+      accepted: 42
+      str: 33.1%(42/127 22')
+      rate: 0.330708661417323
+      source: https://doi.org/10.1109/APSEC57359.2022.00005
+    # Technical Research only; received submissions; acceptance recommendations.
+    - year: 2023
+      submitted: 128
+      accepted: 43
+      str: 33.6%(43/128 23')
+      rate: 0.335937500000000
+      source: https://doi.org/10.1109/APSEC60848.2023.00005
+    # Technical Research only; received submissions; acceptance recommendations.
+    - year: 2025
+      submitted: 241
+      accepted: 68
+      str: 28.2%(68/241 25')
+      rate: 0.282157676348548
+      source: https://doi.org/10.1109/APSEC66846.2025.00005

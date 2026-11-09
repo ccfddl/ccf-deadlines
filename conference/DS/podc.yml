@@ -7,6 +7,33 @@
     thcpl: B
   dblp: podc
   confs:
+    - year: 2021
+      id: podc21
+      link: https://www.podc.org/podc2021/
+      timeline:
+        - abstract_deadline: '2021-02-11 23:59:59'
+          deadline: '2021-02-15 23:59:59'
+      timezone: AoE
+      date: July 26-29, 2021
+      place: Virtual
+    - year: 2022
+      id: podc22
+      link: https://www.podc.org/podc2022/
+      timeline:
+        - abstract_deadline: '2022-02-10 23:59:59'
+          deadline: '2022-02-13 23:59:59'
+      timezone: AoE
+      date: July 26-28, 2022
+      place: Salerno, Italy
+    - year: 2023
+      id: podc23
+      link: https://www.podc.org/podc2023/
+      timeline:
+        - abstract_deadline: '2023-01-06 23:59:59'
+          deadline: '2023-01-10 23:59:59'
+      timezone: AoE
+      date: June 19-23, 2023
+      place: Orlando, Florida, USA
     - year: 2024
       id: podc24
       link: https://www.podc.org/podc2024
@@ -14,5 +41,23 @@
         - abstract_deadline: '2024-02-11 23:59:59'
           deadline: '2024-02-15 23:59:59'
       timezone: AoE
-      date: June 17-21, 2024
+      date: June 18-20, 2024
       place: Nantes, France
+    - year: 2025
+      id: podc25
+      link: https://www.podc.org/podc2025/
+      timeline:
+        - abstract_deadline: '2025-02-04 23:59:59'
+          deadline: '2025-02-08 23:59:59'
+      timezone: AoE
+      date: June 17-19, 2025
+      place: Santa María Huatulco, Mexico
+    - year: 2026
+      id: podc26
+      link: https://www.podc.org/podc2026/
+      timeline:
+        - abstract_deadline: '2026-02-11 23:59:59'
+          deadline: '2026-02-16 23:59:59'
+      timezone: AoE
+      date: July 7-9, 2026
+      place: Egham, England

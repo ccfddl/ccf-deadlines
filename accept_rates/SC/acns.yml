@@ -1,0 +1,39 @@
+# Full papers only; short papers, posters, and co-located workshops are excluded.
+- title: ACNS
+  accept_rates:
+    - year: 2021
+      submitted: 186
+      accepted: 37
+      str: 19.9%(37/186 21')
+      rate: 0.198924731182796
+      source: https://link.springer.com/book/10.1007/978-3-030-78372-3
+    - year: 2022
+      submitted: 185
+      accepted: 44
+      str: 23.8%(44/185 22')
+      rate: 0.237837837837838
+      source: https://link.springer.com/book/10.1007/978-3-031-09234-3
+    - year: 2023
+      submitted: 263
+      accepted: 53
+      str: 20.2%(53/263 23')
+      rate: 0.201520912547529
+      source: https://link.springer.com/book/10.1007/978-3-031-33488-7
+    - year: 2024
+      submitted: 230
+      accepted: 54
+      str: 23.5%(54/230 24')
+      rate: 0.234782608695652
+      source: https://link.springer.com/book/10.1007/978-3-031-54770-6
+    - year: 2025
+      submitted: 241
+      accepted: 55
+      str: 22.8%(55/241 25')
+      rate: 0.228215767634855
+      source: https://link.springer.com/book/10.1007/978-3-031-95761-1
+    - year: 2026
+      submitted: 282
+      accepted: 59
+      str: 20.9%(59/282 26')
+      rate: 0.209219858156028
+      source: https://link.springer.com/book/10.1007/978-3-032-32560-0

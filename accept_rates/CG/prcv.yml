@@ -1,0 +1,37 @@
+- title: PRCV
+  accept_rates:
+    # Main full-paper submissions and acceptances, including oral and poster papers.
+    - year: 2021
+      submitted: 513
+      accepted: 201
+      str: 39.2%(201/513 21')
+      rate: 0.391812865497076
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-88004-0/1
+    # Main full-paper submissions and acceptances, including oral and poster papers.
+    - year: 2022
+      submitted: 564
+      accepted: 233
+      str: 41.3%(233/564 22')
+      rate: 0.413120567375887
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-18907-4/1
+    # Main full-paper submissions and acceptances, including oral and poster papers.
+    - year: 2024
+      submitted: 1526
+      accepted: 579
+      str: 37.9%(579/1526 24')
+      rate: 0.379423328964613
+      source: https://link.springer.com/content/pdf/bfm:978-981-97-8487-5/1
+    # Main full-paper submissions and acceptances, including oral and poster papers.
+    - year: 2025
+      submitted: 2370
+      accepted: 692
+      str: 29.2%(692/2370 25')
+      rate: 0.291983122362869
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-4987-0/1
+    # Main full-paper submissions and acceptances, including oral and poster papers.
+    - year: 2026
+      submitted: 2809
+      accepted: 772
+      str: 27.5%(772/2809 26')
+      rate: 0.274830900676397
+      source: https://sj.cast.org.cn/xw/qgxh/XSJL/art/2026/art_1fc153c7804937e19501648482899f29.html

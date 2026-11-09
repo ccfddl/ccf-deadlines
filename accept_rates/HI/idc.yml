@@ -1,0 +1,16 @@
+- title: IDC
+  accept_rates:
+    # Full papers only; short papers, pictorials and adjunct tracks excluded.
+    - year: 2023
+      submitted: 87
+      accepted: 31
+      rate: 0.3563218390804598
+      str: "35.6%(31/87 23')"
+      source: https://idc.acm.org/2023/wp-content/uploads/2023/05/IDC-2023-Program-3-Compressed.pdf
+    # Full papers only; short papers, pictorials and adjunct tracks excluded.
+    - year: 2024
+      submitted: 101
+      accepted: 34
+      rate: 0.33663366336633666
+      str: "33.7%(34/101 24')"
+      source: https://pure.uva.nl/ws/files/244248452/IDC_2024_Chair_s_Welcome.pdf

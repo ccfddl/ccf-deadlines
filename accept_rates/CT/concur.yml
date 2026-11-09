@@ -1,0 +1,39 @@
+- title: CONCUR
+  # Main-conference contributed papers; excludes invited talks and co-located events.
+  accept_rates:
+    - year: 2021
+      submitted: 96
+      accepted: 35
+      str: 36.5%(35/96 21')
+      rate: 0.3645833333333333
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol203-concur2021/LIPIcs.CONCUR.2021.0/LIPIcs.CONCUR.2021.0.pdf
+    - year: 2022
+      submitted: 90
+      accepted: 32
+      str: 35.6%(32/90 22')
+      rate: 0.35555555555555557
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol243-concur2022/LIPIcs.CONCUR.2022.0/LIPIcs.CONCUR.2022.0.pdf
+    - year: 2023
+      submitted: 98
+      accepted: 37
+      str: 37.8%(37/98 23')
+      rate: 0.37755102040816324
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol279-concur2023/LIPIcs.CONCUR.2023.0/LIPIcs.CONCUR.2023.0.pdf
+    - year: 2024
+      submitted: 80
+      accepted: 37
+      str: 46.3%(37/80 24')
+      rate: 0.4625
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol311-concur2024/LIPIcs.CONCUR.2024.0/LIPIcs.CONCUR.2024.0.pdf
+    - year: 2025
+      submitted: 83
+      accepted: 36
+      str: 43.4%(36/83 25')
+      rate: 0.43373493975903615
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol348-concur2025/LIPIcs.CONCUR.2025.0/LIPIcs.CONCUR.2025.0.pdf
+    - year: 2026
+      submitted: 114
+      accepted: 43
+      str: 37.7%(43/114 26')
+      rate: 0.37719298245614036
+      source: https://drops.dagstuhl.de/storage/00lipics/lipics-vol391-concur2026/LIPIcs.CONCUR.2026.0/LIPIcs.CONCUR.2026.0.pdf

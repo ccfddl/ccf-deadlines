@@ -1,0 +1,20 @@
+- title: HPDC
+  accept_rates:
+    - year: 2022
+      submitted: 108
+      accepted: 21
+      str: 19.4%(21/108 22')
+      rate: 0.19444444444444445
+      source: https://hpdc22.hotcrp.com/
+    - year: 2024
+      submitted: 150
+      accepted: 26
+      str: 17.3%(26/150 24')
+      rate: 0.17333333333333334
+      source: https://hpdc24.hotcrp.com/
+    - year: 2026
+      submitted: 281
+      accepted: 35
+      str: 12.5%(35/281 26')
+      rate: 0.12455516014234876
+      source: https://hpdc26.hotcrp.com/

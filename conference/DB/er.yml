@@ -1,0 +1,23 @@
+# CCF 2026 directory, page 37: Database/Data Mining/Information Retrieval, category C.
+- title: ER
+  description: International Conference on Conceptual Modeling
+  sub: DB
+  rank:
+    ccf: C
+  dblp: er
+  confs:
+    - year: 2026
+      id: er26
+      link: https://www.er2026.org/
+      timeline:
+        # Source: https://www.er2026.org/cfp.html
+        # Official deadlines are 23:59 AoE; seconds normalized to 59 by repository convention.
+        - abstract_deadline: '2026-05-12 23:59:59'
+          deadline: '2026-05-19 23:59:59'
+          decision_deadline: '2026-07-14 23:59:59'
+          comment: 'Main conference full and short papers; extended deadlines; abstract mandatory'
+      timezone: AoE
+      # Main conference sessions: October 6-8; workshops and doctoral symposium: October 5.
+      # Source: https://www.er2026.org/schedule.html
+      date: October 6-8, 2026
+      place: St. John's, NL, Canada

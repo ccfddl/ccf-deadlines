@@ -1,0 +1,30 @@
+- title: FOCS
+  accept_rates:
+    # Original program chairs proceedings message, papers selected for the main program. Edition 2021 held February 2022.
+    - year: 2021
+      submitted: 340
+      accepted: 117
+      str: 34.4%(117/340 21')
+      rate: 0.34411764705882353
+      source: https://ieee-focs.org/FOCS-2021-Papers/pdfs/FOCS2021-5stbVHiOp5jRHWlSl41FkR/205500z017/205500z017.pdf
+    # Original program chairs proceedings message, papers selected for the main program.
+    - year: 2022
+      submitted: 296
+      accepted: 110
+      str: 37.2%(110/296 22')
+      rate: 0.3716216216216216
+      source: https://ieee-focs.org/FOCS-2022-Papers/pdfs/FOCS2022-4Bu7jGV9xIcveUWYj3oWoi/551900z017/551900z017.pdf
+    # Official submission system, accepted submissions; proceedings welcome reports 131 talks and only an approximate denominator.
+    - year: 2024
+      submitted: 463
+      accepted: 133
+      str: 28.7%(133/463 24')
+      rate: 0.28725701943844495
+      source: https://focs24.hotcrp.com/
+    # Original program chairs proceedings message, papers selected for the main program.
+    - year: 2025
+      submitted: 546
+      accepted: 137
+      str: 25.1%(137/546 25')
+      rate: 0.2509157509157509
+      source: https://ieee-focs.org/FOCS-2025-Papers/pdfs/FOCS2025-4pLZMZRP5BPG9n0GSua5T9/713200z017/713200z017.pdf

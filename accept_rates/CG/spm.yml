@@ -1,0 +1,14 @@
+- title: SPM
+  accept_rates:
+    - year: 2023
+      submitted: 54
+      accepted: 16
+      str: 29.6%(16/54 23')
+      rate: 0.2962962962962963
+      source: https://cris.unibo.it/bitstream/11585/939193/4/spm-2023-final%20%281%29.pdf
+    - year: 2024
+      submitted: 48
+      accepted: 13
+      str: 27.1%(13/48 24')
+      rate: 0.2708333333333333
+      source: https://cris.unibo.it/bitstream/11585/980481/1/spm-2024_editorial_july15.pdf

@@ -1,8 +1,37 @@
 - title: ECOOP
   accept_rates:
+    # All traditional competitive paper categories; excludes journal-first.
+    - year: 2021
+      submitted: 57
+      accepted: 22
+      str: 38.6%(22/57 21')
+      rate: 0.385964912280702
+      source: https://doi.org/10.4230/LIPIcs.ECOOP.2021.0
+    # Existing secondary-sourced row preserved; primary pair remains unverified.
     - year: 2023
       submitted: 97
       accepted: 44
       str: 45.4%(44/97 23')
       rate: 0.45360824742268
       source: https://github.com/emeryberger/csconferences
+    # All paper categories; 59 + 53 submissions over two rounds, including resubmissions.
+    - year: 2024
+      submitted: 112
+      accepted: 47
+      str: 42.0%(47/112 24')
+      rate: 0.419642857142857
+      source: https://doi.org/10.4230/LIPIcs.ECOOP.2024.0
+    # All paper categories; combined rounds as stated by chairs; unique status unspecified.
+    - year: 2025
+      submitted: 102
+      accepted: 42
+      str: 41.2%(42/102 25')
+      rate: 0.411764705882353
+      source: https://doi.org/10.4230/LIPIcs.ECOOP.2025.0
+    # All paper categories; 98 unique submissions across two rounds; final acceptances.
+    - year: 2026
+      submitted: 98
+      accepted: 30
+      str: 30.6%(30/98 26')
+      rate: 0.306122448979592
+      source: https://doi.org/10.4230/LIPIcs.ECOOP.2026.0

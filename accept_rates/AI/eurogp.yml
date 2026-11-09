@@ -1,0 +1,44 @@
+- title: EuroGP
+  accept_rates:
+    # Accepted long and short presentation papers (11 + 6) / received submissions.
+    - year: 2021
+      submitted: 27
+      accepted: 17
+      str: 63.0%(17/27 21')
+      rate: 0.6296296296296297
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-72812-0/1
+    # Accepted long and short presentation papers (12 + 7) / received submissions.
+    - year: 2022
+      submitted: 35
+      accepted: 19
+      str: 54.3%(19/35 22')
+      rate: 0.5428571428571428
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-02056-8/1
+    # Accepted long and short presentation papers (14 + 8) / received submissions.
+    - year: 2023
+      submitted: 38
+      accepted: 22
+      str: 57.9%(22/38 23')
+      rate: 0.5789473684210527
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-29573-7/1
+    # Accepted long and short presentation papers (9 + 4) / received submissions.
+    - year: 2024
+      submitted: 24
+      accepted: 13
+      str: 54.2%(13/24 24')
+      rate: 0.5416666666666666
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-56957-9/1
+    # Accepted long and short presentation papers (10 + 5) / received submissions.
+    - year: 2025
+      submitted: 27
+      accepted: 15
+      str: 55.6%(15/27 25')
+      rate: 0.5555555555555556
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-89991-1/1
+    # Accepted long and short presentation papers (12 + 7) / received submissions.
+    - year: 2026
+      submitted: 34
+      accepted: 19
+      str: 55.9%(19/34 26')
+      rate: 0.5588235294117647
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-23005-8/1

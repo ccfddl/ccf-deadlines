@@ -7,6 +7,57 @@
     thcpl: A
   dblp: huc
   confs:
+    - year: 2021
+      id: ubicomp21
+      link: https://www.ubicomp.org/ubicomp2021/
+      timeline:
+        - deadline: '2020-08-15 23:59:59'
+          comment: 'August 2020 cycle'
+        - deadline: '2020-11-15 23:59:59'
+          comment: 'November 2020 cycle'
+        - deadline: '2021-02-15 23:59:59'
+          comment: 'February 2021 cycle'
+        - deadline: '2021-05-15 23:59:59'
+          comment: 'May 2021 cycle'
+      timezone: AoE
+      date: September 21-24, 2021
+      place: Virtual
+    - year: 2022
+      id: ubicomp22
+      link: https://www.ubicomp.org/ubicomp2022/
+      timeline:
+        - deadline: TBD
+      timezone: AoE
+      date: September 12-14, 2022
+      place: Atlanta, USA and Cambridge, UK
+    - year: 2023
+      id: huc23
+      link: https://www.ubicomp.org/ubicomp-iswc-2023
+      timeline:
+        - deadline: '2022-08-16 06:59:00'
+          comment: 'August 2022 cycle'
+        - deadline: '2022-11-16 06:59:00'
+          comment: 'November 2022 cycle'
+        - deadline: '2023-02-15 23:59:59'
+          comment: 'February 2023 cycle'
+        - deadline: '2023-05-15 23:59:59'
+          comment: 'May 2023 cycle'
+      timezone: UTC-5
+      date: October 8-12, 2023
+      place: Cancún, Mexico
+    - year: 2024
+      id: huc24
+      link: https://www.ubicomp.org/ubicomp-iswc-2024
+      timeline:
+        - deadline: '2023-11-15 16:59:59'
+          comment: 'November 2023 cycle'
+        - deadline: '2024-02-01 23:59:59'
+          comment: 'February 2024 cycle'
+        - deadline: '2024-05-01 23:59:59'
+          comment: 'May 2024 cycle'
+      timezone: AoE
+      date: October 5-9, 2024
+      place: Melbourne, Australia
     - year: 2025
       id: ubicomp25
       link: https://www.ubicomp.org/ubicomp-iswc-2025
@@ -15,40 +66,27 @@
           comment: first round
         - deadline: '2025-05-01 23:59:59'
           comment: second round
-        - deadline: '2025-08-01 23:59:59'
-          comment: third round (only for resubmissions after major revisions)
-        - deadline: '2025-11-01 23:59:59'
-          comment: fourth round
       timezone: AoE
       date: October 12-16, 2025
       place: Espoo, Finland
-    - year: 2024
-      id: huc24
-      link: https://www.ubicomp.org/ubicomp-iswc-2024
+    - year: 2026
+      id: ubicomp26
+      link: https://www.ubicomp.org/ubicomp-iswc-2026
       timeline:
-        - deadline: '2024-02-01 23:59:59'
+        - deadline: '2026-02-01 23:59:59'
           comment: first round
-        - deadline: '2024-05-01 23:59:59'
+        - deadline: '2026-05-01 23:59:59'
           comment: second round
-        - deadline: '2024-08-01 23:59:59'
-          comment: third round (only for revised paper)
-        - deadline: '2024-11-01 23:59:59'
-          comment: fourth round
       timezone: AoE
-      date: October 5-9, 2024
-      place: Melbourne, Australia
-    - year: 2023
-      id: huc23
-      link: https://www.ubicomp.org/ubicomp-iswc-2023
+      date: October 11-15, 2026
+      place: Shanghai, China
+    - year: 2027
+      id: ubicomp27
+      link: https://sigchi.org/events/ubicomp-2027/
       timeline:
-        - deadline: '2023-02-15 23:59:59'
-          comment: first round
-        - deadline: '2023-05-15 23:59:59'
-          comment: second round
-        - deadline: '2023-08-15 23:59:59'
-          comment: third round
-        - deadline: '2023-11-15 23:59:59'
-          comment: fourth round
-      timezone: UTC-5
-      date: October 8-12, 2023
-      place: Cancún, Mexico
+        # SIGCHI confirms the dates and venue but does not publish submission deadlines.
+        - deadline: TBD
+      # No deadline timezone has been announced; AoE follows README defaults.
+      timezone: AoE
+      date: October 3-7, 2027
+      place: Seoul, Republic of Korea

@@ -1,0 +1,14 @@
+- title: 3DV
+  accept_rates:
+    - year: 2025
+      submitted: 353
+      accepted: 142
+      str: 40.2%(142/353 25')
+      rate: 0.402266288951841
+      source: https://drive.google.com/file/d/1w0PBhB04t7j_AY5epwQhKhatDq259gc-/view
+    - year: 2026
+      submitted: 404
+      accepted: 177
+      str: 43.8%(177/404 26')
+      rate: 0.438118811881188
+      source: https://drive.google.com/file/d/1z37ck0ZAmVwLq_UjKsci9spdEv_yJ6gp/view

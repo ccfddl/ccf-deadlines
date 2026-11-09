@@ -1,0 +1,40 @@
+- title: HotNets
+  accept_rates:
+    # Main workshop paper decisions counted by the official HotCRP sites.
+    # Counts are not reconstructed from programs or final publication lists.
+    # Desk/early rejects and withdrawals are not separately quantified.
+    # The annual accepted-list notice includes conditional decisions pending shepherd approval.
+    # This is the public accepted-decision count, not a certified unconditional/final census.
+    - year: 2021
+      submitted: 101
+      accepted: 31
+      str: 30.7%(31/101 21')
+      rate: 0.3069306930693069
+      source: https://hotnets21.hotcrp.com/
+    - year: 2022
+      submitted: 104
+      accepted: 32
+      str: 30.8%(32/104 22')
+      rate: 0.3076923076923077
+      source: https://hotnets22.hotcrp.com/
+    - year: 2023
+      submitted: 143
+      accepted: 40
+      str: 28.0%(40/143 23')
+      rate: 0.27972027972027974
+      source: https://hotnets23.hotcrp.com/
+    # Main position papers; CFP describes an initial fast review/rejection round.
+    - year: 2025
+      submitted: 178
+      accepted: 50
+      str: 28.1%(50/178 25')
+      rate: 0.2808988764044944
+      source: https://hotnets25.hotcrp.com/
+    # Overall technical and perspective paper pool; not separate track denominators.
+    # Notification September 24; later camera-ready/publication changes not certified.
+    - year: 2026
+      submitted: 188
+      accepted: 43
+      str: 22.9%(43/188 26')
+      rate: 0.22872340425531915
+      source: https://hotnets26.hotcrp.com/

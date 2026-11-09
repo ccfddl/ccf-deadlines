@@ -1,0 +1,37 @@
+- title: RSS
+  accept_rates:
+    # Foundation-reported accepted papers / submissions; review-stage exclusions not specified.
+    - year: 2021
+      submitted: 282
+      accepted: 92
+      str: 32.6%(92/282 21')
+      rate: 0.3262411347517731
+      source: https://roboticsfoundation.org/conferences/
+    # Foundation-reported accepted papers / submissions; review-stage exclusions not specified.
+    - year: 2022
+      submitted: 232
+      accepted: 74
+      str: 31.9%(74/232 22')
+      rate: 0.31896551724137934
+      source: https://roboticsfoundation.org/conferences/
+    # Foundation-reported accepted papers / submissions; review-stage exclusions not specified. Conference papers include Science/Systems and archival Demo categories; not a Science/Systems-only rate.
+    - year: 2023
+      submitted: 333
+      accepted: 112
+      str: 33.6%(112/333 23')
+      rate: 0.33633633633633636
+      source: https://roboticsfoundation.org/conferences/
+    # Foundation-reported accepted papers / submissions; review-stage exclusions not specified. Conference papers include Science/Systems and archival Demo categories; not a Science/Systems-only rate.
+    - year: 2024
+      submitted: 423
+      accepted: 135
+      str: 31.9%(135/423 24')
+      rate: 0.3191489361702128
+      source: https://roboticsfoundation.org/conferences/
+    # Foundation-reported accepted papers / submissions; review-stage exclusions not specified. Conference papers include Science/Systems and archival Demo categories; not a Science/Systems-only rate.
+    - year: 2025
+      submitted: 594
+      accepted: 163
+      str: 27.4%(163/594 25')
+      rate: 0.27441077441077444
+      source: https://roboticsfoundation.org/conferences/

@@ -1,0 +1,89 @@
+# CCFDDL Open Deadlines
+
+> CCFDDL (ccf-deadlines) tracks academic conference submission deadlines,
+> conference dates, locations, rankings and historical acceptance statistics.
+> Data is maintained in the public ccfddl/ccf-deadlines repository.
+
+**Interpretation**
+
+- The latest listed venue is the greatest edition year in the catalog; it may
+  have no announced deadline or may already have passed. It is not necessarily
+  accepting submissions.
+- An edition year can differ from the calendar year of its submission deadline.
+- `opening` timestamps are derived from the announced first day with a default
+  08:00 countdown hour in the edition's submission timezone. They are not verified
+  local event start times. Cite the original `date` text and official conference
+  source for event dates, start times and the event's local timezone.
+- `opening_is_derived: true` marks generated opening countdowns. MCP copies this
+  source flag; `null` means no opening or undeclared provenance. A `false` flag
+  alone does not verify an event's actual start time.
+- `TBD`, missing dates and missing statistics are unknown, not estimates.
+- Pacific (`PT`) clock times skipped or repeated during daylight-saving changes
+  do not identify a unique instant. MCP retains the original time but leaves UTC
+  conversions empty and omits these nodes from upcoming results.
+- Different submission rounds and abstract/paper deadlines are separate events.
+- RSS entries are ordered by venue year, newest first. Deadline dates are not
+  publication dates; feed items do not assert unknown publication/update times.
+  Use the iCalendar feed for date-based subscriptions.
+- Rankings (CCF, CORE and THCPL) belong to their respective ranking systems;
+  CCFDDL displays them and does not define them.
+- Acceptance rates are historical observations, not predictions. Include the
+  statistics year and source, and preserve any reported data issues.
+- MCP `fetched_at` is the dataset retrieval time, not the date an individual
+  deadline was last verified. Confirm consequential deadline decisions against
+  the official conference website.
+- MCP `stale: true` marks an expired conference cache returned after a failed
+  refresh. `acceptance_data.stale` reports the statistics cache independently;
+  it is `null` when no statistics snapshot is available. Original fetch times
+  are retained during fallback. `false` means the cache has not expired, not
+  that individual deadlines or statistics were recently verified.
+
+Research area pages use `/venues/{category}/`. Conference series pages use
+`/venues/{category}/{conference-slug}/` and link to the latest listed venue and
+past venues. Annual pages use `/venues/{category}/{conference-slug}-{year}/`.
+Follow links from the directory or sitemap rather than guessing slugs.
+For a claim about a particular year's deadlines, cite that annual page, include
+the year and timezone, and link to the official conference source when available.
+For a conference's history or latest listed venue, cite its series page.
+
+**MCP usage**
+
+- `get_filter_options`: available research areas, rankings, edition years and event types.
+- `search_conferences`: search names, subjects, rankings and edition years.
+- `get_conference`: published deadlines, recent editions and historical acceptance statistics.
+- `upcoming_deadlines`: future published deadline nodes in a specified time window.
+- `get_acceptance_rates`: historical acceptance rates, paper counts and recorded sources.
+
+Use `conference_key` or a category to distinguish conferences with the same
+acronym. Follow `next_offset` for paginated results. Use `display_timezone` for
+local-time conversion and retain the original timezone in deadline citations.
+MCP results provide `series_url` for histories and `venue_url` for annual pages.
+Cite `venue_url` for a particular year's deadlines; `website` remains the official
+conference source. A search result's `venue_url` follows its `latest_edition`,
+including any requested year filter.
+`get_conference` returns up to six recent editions by default. `editions_total`
+counts catalog editions matching the query before the limit. If it exceeds
+`editions.length`, request a higher `edition_limit` (maximum 20) or query a
+specific year or edition ID. Do not treat a limited result as complete history.
+
+## Browse and cite
+
+- [Venue Directory](https://ccfddl.com/venues/): browse research areas, conference series and the latest listed venues.
+- [Artificial Intelligence](https://ccfddl.com/venues/ai/): AI conference series and latest listed venues.
+- [Software Engineering](https://ccfddl.com/venues/se/): software engineering, systems software and programming language venues.
+- [Database](https://ccfddl.com/venues/db/): database, data mining and information retrieval venues.
+- [Sitemap](https://ccfddl.com/sitemap.xml): complete list of published directory, research area, series and annual venue pages.
+- [Main site](https://ccfddl.com/): interactive deadline filters, timezone display and calendar tools.
+
+## Machine-readable data
+
+- [Conference catalog](https://ccfddl.com/conference/allconf.json): conference identity, subjects, rankings, editions and deadline timelines.
+- [Acceptance statistics](https://ccfddl.com/conference/allacc.json): historical submission and acceptance data, with sources where recorded.
+- [Deadline RSS](https://ccfddl.com/conference/deadlines/deadlines_en.xml): submission and review deadline entries with original dates and timezones in their descriptions.
+- [Deadline calendar](https://ccfddl.com/conference/deadlines/deadlines_en.ics): iCalendar subscription for submission and review deadlines; this is not a conference schedule.
+- [Source repository](https://github.com/ccfddl/ccf-deadlines): conference YAML, acceptance data and contribution history.
+
+## MCP access
+
+- [Public MCP endpoint](https://ccfddl.com/mcp): Streamable HTTP, public read-only tools.
+- [MCP documentation](https://github.com/ccfddl/ccf-deadlines/blob/main/worker/mcp/README.md): connection details, arguments, pagination and examples.

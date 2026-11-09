@@ -1,5 +1,17 @@
 - title: ASPLOS
   accept_rates:
+    - year: 2021
+      submitted: 398
+      accepted: 75
+      str: 18.8%(75/398 21')
+      rate: 0.1884422110552764
+      source: https://www.sigarch.org/wp-content/uploads/2022/08/2022-sigarch-annual-report.pdf
+    - year: 2022
+      submitted: 397
+      accepted: 80
+      str: 20.2%(80/397 22')
+      rate: 0.20151133501259447
+      source: https://www.sigarch.org/wp-content/uploads/2023/08/2023-sigarch-annual-report.pdf
     - year: 2023
       submitted: 598
       accepted: 151

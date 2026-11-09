@@ -1,0 +1,16 @@
+- title: IEEE/ACM CGO
+  accept_rates:
+    # Main-conference pool includes standard and Tools & Practical Experience papers.
+    # Public portal decisions; published totals and withdrawals are not separately certified.
+    - year: 2021
+      submitted: 89
+      accepted: 31
+      str: 34.8%(31/89 21')
+      rate: 0.34831460674157305
+      source: https://cgo21.hotcrp.com/
+    - year: 2022
+      submitted: 99
+      accepted: 27
+      str: 27.3%(27/99 22')
+      rate: 0.2727272727272727
+      source: https://cgo22.hotcrp.com/

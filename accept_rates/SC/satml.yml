@@ -1,0 +1,29 @@
+# Main paper program: research, SoK and position papers combined; competitions excluded.
+- title: SATML
+  accept_rates:
+    - year: 2023
+      submitted: 152
+      accepted: 40
+      str: 26.3%(40/152 23')
+      rate: 0.263157894736842
+      source: https://satml.org/2023/accepted-papers/
+    - year: 2024
+      submitted: 158
+      accepted: 34
+      str: 21.5%(34/158 24')
+      rate: 0.215189873417722
+      source: https://satml.org/2024/accepted-papers/
+    - year: 2025
+      submitted: 180
+      accepted: 53
+      str: 29.4%(53/180 25')
+      rate: 0.294444444444444
+      source: https://satml.org/2025/accepted-papers/
+    # Accepted as of Dec 21, 2025; major revisions were still pending.
+    # This is an initial decision checkpoint, not the final post-revision total.
+    - year: 2026
+      submitted: 233
+      accepted: 55
+      str: 23.6%(55/233 26')
+      rate: 0.236051502145923
+      source: https://bsky.app/profile/satml.org/post/3maijhq5jcs2z

@@ -9,23 +9,40 @@
   confs:
     - year: 2021
       id: sac21
-      link: https://www.sac2021.ca/
+      link: https://www.sacworkshop.org/SAC21/call-for-papers.html
       timeline:
-        - deadline: '2021-07-07 23:59:59'
-          comment: Abstract submission
-        - deadline: '2021-07-12 23:59:59'
-          comment: final paper submission
-      timezone: UTC+1
+        - abstract_deadline: '2021-07-07 23:59:59'
+          deadline: '2021-07-12 23:59:59'
+      timezone: UTC
       date: September 29 - October 01, 2021
       place: Virtual
+    - year: 2022
+      id: sac22
+      link: https://sacworkshop.org/SAC22/home.html
+      timeline:
+        - abstract_deadline: '2022-06-01 23:59:59'
+          deadline: '2022-06-08 23:59:59'
+      timezone: UTC
+      date: August 24-26, 2022
+      place: Windsor, Ontario, Canada
+    - year: 2023
+      id: sac23
+      link: https://sacworkshop.org/SAC23/
+      timeline:
+        - abstract_deadline: '2023-05-16 23:59:59'
+          deadline: TBD
+          comment: Full-paper cutoff unconfirmed
+      timezone: AoE
+      date: August 16-18, 2023
+      place: Fredericton, New Brunswick, Canada
     - year: 2024
       id: sac24
       link: https://sacworkshop.org/SAC24/
       timeline:
         - deadline: '2024-02-07 23:59:59'
-          comment: 1st round Deadline
+          comment: Cycle 1
         - deadline: '2024-05-07 23:59:59'
-          comment: 2nd round Deadline
+          comment: Cycle 2
       timezone: AoE
       date: August 28 - 30, 2024
       place: Montreal, Canada
@@ -34,9 +51,9 @@
       link: https://sacworkshop.org/SAC25/
       timeline:
         - deadline: '2025-01-27 23:59:59'
-          comment: Paper submission deadline (cycle 1)
+          comment: Cycle 1
         - deadline: '2025-05-07 23:59:59'
-          comment: Paper submission deadline (cycle 2)
+          comment: Cycle 2
       timezone: AoE
       date: August 13-15, 2025
       place: Toronto, Ontario, Canada
@@ -45,9 +62,9 @@
       link: https://sacworkshop.org/SAC26/
       timeline:
         - deadline: '2026-02-02 23:59:59'
-          comment: Paper submission deadline (cycle 1)
-        - deadline: '2025-05-11 23:59:59'
-          comment: Paper submission deadline (cycle 2)
+          comment: Cycle 1
+        - deadline: '2026-05-11 23:59:59'
+          comment: Cycle 2
       timezone: AoE
-      date: August 24-28, 2026
+      date: August 26-28, 2026
       place: Ottawa, Ontario, Canada

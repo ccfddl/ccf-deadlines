@@ -1,8 +1,29 @@
+# LNCS + CCIS selections from the reported common conference pool.
 - title: ICONIP
   accept_rates:
+    - year: 2022
+      submitted: 1003
+      accepted: 359
+      str: 35.8%(359/1003 22')
+      rate: 0.357926221335992
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-30105-6/1
+    # 256 LNCS + 394 CCIS, from the two signed proceedings prefaces.
+    - year: 2023
+      submitted: 1274
+      accepted: 650
+      str: 51.0%(650/1274 23')
+      rate: 0.5102040816326531
+      source: https://link.springer.com/content/pdf/bfm:978-981-99-8141-0/1
+    # Proceedings preface: 318 LNCS + 472 CCIS. Contemporary welcome says 319 + 472.
     - year: 2024
       submitted: 1301
       accepted: 790
-      str: 60.72%(790/1301 24')
+      str: 60.7%(790/1301 24')
       rate: 0.6072252113758647
-      source: https://link.springer.com/book/9789819670079+https://link.springer.com/book/9789819666058
+      source: https://link.springer.com/content/pdf/bfm:978-981-96-6966-0/1
+    - year: 2025
+      submitted: 1092
+      accepted: 426
+      str: 39.0%(426/1092 25')
+      rate: 0.3901098901098901
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-4367-0/1

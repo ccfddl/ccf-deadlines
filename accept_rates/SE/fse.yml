@@ -1,0 +1,31 @@
+# ACM Foundations of Software Engineering research track, not IACR Fast Software Encryption.
+- title: FSE
+  accept_rates:
+    # Received research submissions; 396 reviewed.
+    - year: 2021
+      submitted: 407
+      accepted: 97
+      str: 23.8%(97/407 21')
+      rate: 0.238329238329238
+      source: https://2021.esec-fse.org/
+    # Current public research-system decision cohort; not certified as all received submissions.
+    - year: 2023
+      submitted: 470
+      accepted: 127
+      str: 27.0%(127/470 23')
+      rate: 0.270212765957447
+      source: https://esecfse2023.hotcrp.com/
+    # Current public research-system decision cohort; not certified as all received submissions.
+    - year: 2025
+      submitted: 515
+      accepted: 135
+      str: 26.2%(135/515 25')
+      rate: 0.262135922330097
+      source: https://fse2025.hotcrp.com/
+    # Current public research-system decision cohort; not certified as all received submissions.
+    - year: 2026
+      submitted: 799
+      accepted: 211
+      str: 26.4%(211/799 26')
+      rate: 0.264080100125156
+      source: https://fse2026.hotcrp.com/

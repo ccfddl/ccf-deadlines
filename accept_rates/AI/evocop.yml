@@ -1,0 +1,44 @@
+- title: EvoCOP
+  accept_rates:
+    # Accepted full papers / submissions, as reported in the original preface.
+    - year: 2021
+      submitted: 42
+      accepted: 14
+      str: 33.3%(14/42 21')
+      rate: 0.3333333333333333
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-72904-2/1
+    # Accepted full papers / submissions, as reported in the original preface.
+    - year: 2022
+      submitted: 28
+      accepted: 13
+      str: 46.4%(13/28 22')
+      rate: 0.4642857142857143
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-04148-8/1
+    # Accepted full papers / submissions, as reported in the original preface.
+    - year: 2023
+      submitted: 32
+      accepted: 15
+      str: 46.9%(15/32 23')
+      rate: 0.46875
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-30035-6/1
+    # Accepted full papers / submissions, as reported in the original preface.
+    - year: 2024
+      submitted: 28
+      accepted: 12
+      str: 42.9%(12/28 24')
+      rate: 0.42857142857142855
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-57712-3/1
+    # Accepted full papers / submissions, as reported in the original preface.
+    - year: 2025
+      submitted: 43
+      accepted: 16
+      str: 37.2%(16/43 25')
+      rate: 0.37209302325581395
+      source: https://link.springer.com/content/pdf/bfm:978-3-031-86849-8/1
+    # Accepted full papers / submissions, as reported in the original preface.
+    - year: 2026
+      submitted: 42
+      accepted: 10
+      str: 23.8%(10/42 26')
+      rate: 0.23809523809523808
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-20537-7/1

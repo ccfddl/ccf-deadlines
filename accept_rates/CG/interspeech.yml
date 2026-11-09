@@ -1,14 +1,42 @@
 - title: InterSpeech
   accept_rates:
+    # Main-paper reviewed cohorts; independent demo/BlueSky tracks excluded.
+    # Acceptance decisions before later unquantified ethics removals.
     - year: 2021
       submitted: 1990
       accepted: 963
       str: 48.4%(963/1990 21')
-      rate: 0.48391959798995
-      source: https://github.com/emeryberger/csconferences
+      rate: 0.483919597989950
+      source: https://www.interspeech2021.org/download/interspeech2021-abstract-book.pdf?v2=
+    # Final acceptances after ethics review; 19 initial acceptances rejected.
+    - year: 2022
+      submitted: 2140
+      accepted: 1102
+      str: 51.5%(1102/2140 22')
+      rate: 0.514953271028037
+      source: https://www.isca-archive.org/interspeech_2022/interspeech_2022.pdf
+    - year: 2023
+      submitted: 2207
+      accepted: 1097
+      str: 49.7%(1097/2207 23')
+      rate: 0.497054825555052
+      source: https://www.isca-archive.org/interspeech_2023/intro.pdf
     - year: 2024
       submitted: 2138
       accepted: 1029
       str: 48.1%(1029/2138 24')
-      rate: 0.4812909
-      source: https://csconfstats.xoveexu.com/
+      rate: 0.481290926099158
+      source: https://www.isca-archive.org/interspeech_2024/booklet.pdf
+    # TPC acceptance decisions; the later 1152-paper session count is a different stage.
+    - year: 2025
+      submitted: 2333
+      accepted: 1164
+      str: 49.9%(1164/2333 25')
+      rate: 0.498928418345478
+      source: https://www.isca-archive.org/interspeech_2025/booklet.pdf
+    - year: 2026
+      submitted: 3028
+      accepted: 1360
+      str: 44.9%(1360/3028 26')
+      rate: 0.449141347424042
+      source: https://www.isca-archive.org/interspeech_2026/booklet.pdf

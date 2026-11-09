@@ -1,0 +1,37 @@
+- title: APNet
+  accept_rates:
+    # Main six-page research papers / submissions; excludes the separate poster portal.
+    - year: 2021
+      submitted: 20
+      accepted: 9
+      str: "45.0%(9/20 21')"
+      rate: 0.45
+      source: https://apnet21.hotcrp.com/
+    # Main six-page research papers / submissions; excludes the separate poster portal.
+    - year: 2022
+      submitted: 25
+      accepted: 12
+      str: "48.0%(12/25 22')"
+      rate: 0.48
+      source: https://apnet22.hotcrp.com/
+    # Main six-page research papers / submissions; excludes the separate poster portal.
+    - year: 2023
+      submitted: 90
+      accepted: 24
+      str: "26.7%(24/90 23')"
+      rate: 0.26666666666666666
+      source: https://apnet23.hotcrp.com/
+    # Main six-page research papers / submissions; excludes the separate poster portal.
+    - year: 2024
+      submitted: 88
+      accepted: 24
+      str: "27.3%(24/88 24')"
+      rate: 0.2727272727272727
+      source: https://apnet24.hotcrp.com/
+    # Main six-page research papers / submissions; excludes the separate poster portal.
+    - year: 2025
+      submitted: 133
+      accepted: 34
+      str: "25.6%(34/133 25')"
+      rate: 0.2556390977443609
+      source: https://apnet25.hotcrp.com/

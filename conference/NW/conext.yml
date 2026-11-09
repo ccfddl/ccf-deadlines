@@ -7,6 +7,49 @@
     thcpl: A
   dblp: conext
   confs:
+    - year: 2021
+      id: conext21
+      link: https://conferences2.sigcomm.org/co-next/2021/#!/home
+      timeline:
+        - abstract_deadline: '2021-06-21 23:59:59'
+          deadline: '2021-06-28 23:59:59'
+      timezone: UTC+2
+      date: December 8-10, 2021
+      place: Virtual
+    - year: 2022
+      id: conext22
+      link: https://conferences2.sigcomm.org/co-next/2022/#!/home
+      timeline:
+        - abstract_deadline: TBD
+          deadline: TBD
+          comment: CFP CET vs system CEST
+      timezone: AoE
+      date: December 6-8, 2022
+      place: Rome, Italy
+    - year: 2023
+      id: conext23
+      link: https://conferences.sigcomm.org/co-next/2023/#!/home
+      timeline:
+        - deadline: '2022-11-30 23:59:59'
+          comment: November cycle
+        - deadline: '2023-06-28 00:00:00'
+          comment: June cycle
+      timezone: AoE
+      date: December 5-7, 2023
+      place: Paris, France
+    - year: 2024
+      id: conext24
+      link: https://conferences.sigcomm.org/co-next/2024/#!/home
+      timeline:
+        - abstract_deadline: '2023-11-28 00:00:00'
+          deadline: '2023-12-05 00:00:00'
+          comment: December cycle
+        - abstract_deadline: '2024-06-08 00:00:00'
+          deadline: '2024-06-15 00:00:00'
+          comment: June cycle
+      timezone: AoE
+      date: December 10-12, 2024
+      place: Los Angeles, California, USA
     - year: 2025
       id: conext25
       link: https://conferences.sigcomm.org/co-next/2025/#!/home
@@ -18,7 +61,7 @@
           deadline: '2025-06-05 23:59:59'
           comment: 'June submission'
       timezone: AoE
-      date: Dec 1-4, 2025
+      date: December 2-4, 2025
       place: HKUST, Hong Kong
     - year: 2026
       id: conext26
@@ -33,3 +76,16 @@
       timezone: AoE
       date: December 7-10, 2026
       place: Utrecht, The Netherlands
+    - year: 2027
+      id: conext27
+      link: https://conferences.sigcomm.org/co-next/2027/#!/home
+      timeline:
+        - abstract_deadline: '2026-11-27 23:59:59'
+          deadline: '2026-12-04 23:59:59'
+          comment: 'December Cycle'
+        - abstract_deadline: '2027-05-28 23:59:59'
+          deadline: '2027-06-04 23:59:59'
+          comment: 'June Cycle'
+      timezone: AoE
+      date: December 6-9, 2027 (To be confirmed)
+      place: Rio de Janeiro, Brazil

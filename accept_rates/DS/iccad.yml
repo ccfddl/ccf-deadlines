@@ -1,0 +1,37 @@
+- title: ICCAD
+  accept_rates:
+    # Welcome PDF3 / printed I: regular papers selected / complete peer-reviewed regular submissions.
+    - year: 2021
+      submitted: 514
+      accepted: 121
+      str: 23.5%(121/514 21')
+      rate: 0.235408560311284
+      source: https://events-siteplex.confcats.io/iccad2022/wp-content/uploads/sites/72/2021/12/iccad21-program-Final.pdf
+    # Welcome PDF7 / printed 7: regular papers selected / complete peer-reviewed regular submissions.
+    - year: 2022
+      submitted: 595
+      accepted: 132
+      str: 22.2%(132/595 22')
+      rate: 0.221848739495798
+      source: https://events-siteplex.confcats.io/iccad2022/wp-content/uploads/sites/72/2022/11/ICCAD_2022_Virtual-Program_V11.pdf
+    # Welcome PDF8 / printed 8: regular accepted / final reviewed submissions; 28 invited papers excluded.
+    - year: 2023
+      submitted: 750
+      accepted: 172
+      str: 22.9%(172/750 23')
+      rate: 0.229333333333333
+      source: https://confcats-siteplex.s3.us-east-1.amazonaws.com/iccad23/ICCAD_2023_Proceedings_v3_f24f2addb7.pdf
+    # Welcome PDF7 / printed 7: regular accepted / full papers reviewed, not 1508 abstract submissions.
+    - year: 2025
+      submitted: 1078
+      accepted: 266
+      str: 24.7%(266/1078 25')
+      rate: 0.246753246753247
+      source: https://confcats-event-sessions.s3.us-east-1.amazonaws.com/iccad25/uploads/ICCAD_2025_Program_v8.pdf
+    # Original regular-paper HotCRP public aggregate; submitted cohort as reported, withdrawal/desk treatment unspecified.
+    - year: 2026
+      submitted: 1465
+      accepted: 371
+      str: 25.3%(371/1465 26')
+      rate: 0.253242320819113
+      source: https://iccad2026.hotcrp.com/

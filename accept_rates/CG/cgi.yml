@@ -1,0 +1,9 @@
+- title: CGI
+  accept_rates:
+    # Direct LNCS full-paper track; excludes TVC-routed and workshop papers.
+    - year: 2021
+      submitted: 64
+      accepted: 35
+      str: 54.7%(35/64 21')
+      rate: 0.546875000000000
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-89029-2/1

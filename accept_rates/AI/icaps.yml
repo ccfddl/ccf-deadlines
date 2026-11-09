@@ -1,0 +1,37 @@
+- title: ICAPS
+  accept_rates:
+    # 71 long and 14 short archival papers selected for plenary presentation.
+    - year: 2022
+      submitted: 277
+      accepted: 85
+      str: 30.7%(85/277 22')
+      rate: 0.30685920577617326
+      source: https://cdn.aaai.org/ojs/19864/19864-40-23877-1-2-20220613.pdf
+    # 66 long and 13 short archival papers, including main and three special tracks.
+    - year: 2023
+      submitted: 258
+      accepted: 79
+      str: 30.6%(79/258 23')
+      rate: 0.3062015503875969
+      source: https://ojs.aaai.org/index.php/ICAPS/article/download/27251/27024
+    # Unified main-track papers; 20 desk rejections reported separately, without subtracting them from the stated denominator.
+    - year: 2024
+      submitted: 335
+      accepted: 82
+      str: 24.5%(82/335 24')
+      rate: 0.24477611940298508
+      source: https://www.icaps-conference.org/wp-content/uploads/2025/12/MinutesICAPS2024CouncilMeeting_v2.pdf
+    # 38 long and 13 short archival papers; overlapping topic tags are not separate cohorts.
+    - year: 2025
+      submitted: 228
+      accepted: 51
+      str: 22.4%(51/228 25')
+      rate: 0.2236842105263158
+      source: https://ojs.aaai.org/index.php/ICAPS/article/download/36956/40918/41043
+    # 70 long and 20 short archival papers, including main and four special tracks.
+    - year: 2026
+      submitted: 397
+      accepted: 90
+      str: 22.7%(90/397 26')
+      rate: 0.22670025188916876
+      source: https://ojs.aaai.org/index.php/ICAPS/article/download/42898/50458/47003

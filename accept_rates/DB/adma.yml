@@ -1,0 +1,34 @@
+# Selected main-proceedings papers, including short papers where reported; workshops excluded.
+- title: ADMA
+  accept_rates:
+    - year: 2021
+      submitted: 116
+      accepted: 61
+      str: 52.6%(61/116 21')
+      rate: 0.525862068965517
+      source: https://link.springer.com/book/10.1007/978-3-030-95405-5
+    - year: 2022
+      submitted: 198
+      accepted: 72
+      str: 36.4%(72/198 22')
+      rate: 0.363636363636364
+      source: https://link.springer.com/book/10.1007/978-3-031-22064-7
+    - year: 2023
+      submitted: 503
+      accepted: 216
+      str: 42.9%(216/503 23')
+      rate: 0.429423459244533
+      source: https://link.springer.com/book/10.1007/978-3-031-46661-8
+    - year: 2024
+      submitted: 422
+      accepted: 159
+      str: 37.7%(159/422 24')
+      rate: 0.376777251184834
+      source: https://link.springer.com/book/10.1007/978-981-96-0811-9
+    # 2025: original preface reports 147 regular papers; 3 posters excluded.
+    - year: 2025
+      submitted: 327
+      accepted: 147
+      str: 45.0%(147/327 25')
+      rate: 0.449541284403670
+      source: https://link.springer.com/content/pdf/bfm:978-981-95-3453-1/1

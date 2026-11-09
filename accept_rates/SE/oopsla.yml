@@ -1,8 +1,23 @@
 - title: OOPSLA
   accept_rates:
+    # Final accepted and published papers after revisions / submissions received by the April 2021 deadline.
+    - year: 2021
+      submitted: 205
+      accepted: 71
+      str: 34.6%(71/205 21')
+      rate: 0.346341463414634
+      source: https://2021.splashcon.org/track/splash-2021-oopsla
+    # Existing secondary-sourced row preserved; primary report not recovered.
     - year: 2023
       submitted: 304
       accepted: 110
       str: 36.2%(110/304 23')
       rate: 0.361842105263158
       source: https://github.com/emeryberger/csconferences
+    # Official OOPSLA research portal current-system decision cohort across two rounds; not certified all received/reviewed or unique manuscripts.
+    - year: 2024
+      submitted: 384
+      accepted: 148
+      str: 38.5%(148/384 24')
+      rate: 0.385416666666667
+      source: https://oopsla24.hotcrp.com/

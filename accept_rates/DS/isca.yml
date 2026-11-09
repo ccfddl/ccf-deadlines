@@ -1,8 +1,22 @@
 - title: ISCA
   accept_rates:
+    # Regular technical-paper program; industry track is reported separately.
+    - year: 2022
+      submitted: 400
+      accepted: 67
+      str: 16.8%(67/400 22')
+      rate: 0.1675
+      source: https://www.sigarch.org/wp-content/uploads/2023/08/2023-sigarch-annual-report.pdf
     - year: 2023
       submitted: 372
       accepted: 79
       str: 21.2%(79/372 23')
       rate: 0.212365591397849
-      source: https://github.com/emeryberger/csconferences
+      source: https://www.sigarch.org/wp-content/uploads/2023/08/2023-sigarch-annual-report.pdf
+    # Original annual report distinguishes 18 technical sessions from industry.
+    - year: 2024
+      submitted: 423
+      accepted: 83
+      str: 19.6%(83/423 24')
+      rate: 0.19621749408983452
+      source: https://www.sigarch.org/wp-content/uploads/2026/02/2024-sigarch-annual-report.pdf

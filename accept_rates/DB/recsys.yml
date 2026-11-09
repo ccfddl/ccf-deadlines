@@ -1,3 +1,4 @@
+# Long papers only; source: official RecSys historical statistics.
 - title: RecSys
   accept_rates:
     - year: 2020
@@ -6,3 +7,33 @@
       str: 17.9%(39/218 20')
       rate: 0.178899082568807
       source: https://github.com/lixin4ever/Conference-Acceptance-Rate
+    - year: 2021
+      submitted: 267
+      accepted: 49
+      str: 18.4%(49/267 21')
+      rate: 0.183520599250936
+      source: https://recsys.acm.org/statistics/
+    - year: 2022
+      submitted: 231
+      accepted: 39
+      str: 16.9%(39/231 22')
+      rate: 0.168831168831169
+      source: https://recsys.acm.org/statistics/
+    - year: 2023
+      submitted: 269
+      accepted: 47
+      str: 17.5%(47/269 23')
+      rate: 0.174721189591078
+      source: https://recsys.acm.org/statistics/
+    - year: 2024
+      submitted: 266
+      accepted: 58
+      str: 21.8%(58/266 24')
+      rate: 0.218045112781955
+      source: https://recsys.acm.org/statistics/
+    - year: 2025
+      submitted: 261
+      accepted: 49
+      str: 18.8%(49/261 25')
+      rate: 0.187739463601533
+      source: https://recsys.acm.org/statistics/

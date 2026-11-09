@@ -1,0 +1,25 @@
+# Full-paper selections from the intake explicitly reported in each original foreword.
+# Short papers and demos/posters are excluded from accepted. This is not overall acceptance.
+- title: SEKE
+  accept_rates:
+    # Original foreword PDF5, printed iii: 67 full papers selected from 196 submissions; 45 short papers and 84 rejects partition the same intake. Separate 5 demos from 7 demo submissions excluded from both figures.
+    - year: 2021
+      submitted: 196
+      accepted: 67
+      str: 34.2%(67/196 21')
+      rate: 0.34183673469387754
+      source: https://ksiresearchorg.ipage.com/seke/Proceedings/seke/SEKE2021_Proceedings.pdf
+    # Original foreword PDF1, printed viii: 67 full papers for general conference from 170 submissions. Separate outcomes of that intake: 50 short papers, 5 demos, 48 rejects. Numerator is full-paper selection only.
+    - year: 2022
+      submitted: 170
+      accepted: 67
+      str: 39.4%(67/170 22')
+      rate: 0.3941176470588235
+      source: https://ksiresearch.org/seke/seke22paper/seke22for.pdf
+    # Original foreword PDF11, printed ix: 84 full papers for general conference from 218 submissions; 61 short and 2 poster papers excluded from numerator.
+    - year: 2023
+      submitted: 218
+      accepted: 84
+      str: 38.5%(84/218 23')
+      rate: 0.3853211009174312
+      source: https://ksiresearchorg.ipage.com/seke/Proceedings/seke/SEKE2023_Proceedings.pdf

@@ -3,67 +3,93 @@
   sub: SC
   rank:
     ccf: B
-    core: N
+    core: B
     thcpl: B
   dblp: fse
   confs:
+    - year: 2022
+      id: iacr-fse22
+      link: https://fse.iacr.org/2022/
+      timeline:
+        - deadline: '2021-03-01 12:00:00'
+          comment: ToSC 2021/2
+        - deadline: '2021-06-01 12:00:00'
+          comment: ToSC 2021/3
+        - deadline: '2021-09-01 12:00:00'
+          comment: ToSC 2021/4
+        - deadline: '2021-11-23 12:00:00'
+          comment: ToSC 2022/1
+      timezone: UTC+0
+      date: March 21-25, 2022
+      place: Athens, Greece
     - year: 2023
-      id: fse23
+      id: iacr-fse23
       link: https://fse.iacr.org/2023/
       timeline:
-        - deadline: '2022-03-01 11:59:59'
-          comment: Submission deadline
-        - deadline: '2022-06-01 11:59:59'
-          comment: Submission deadline
-        - deadline: '2022-09-01 11:59:59'
-          comment: Submission deadline
-        - deadline: '2022-11-23 11:59:59'
-          comment: Submission deadline
+        - deadline: '2022-03-01 12:00:00'
+          comment: ToSC 2022/2
+        - deadline: '2022-06-01 12:00:00'
+          comment: ToSC 2022/3
+        - deadline: '2022-09-01 12:00:00'
+          comment: ToSC 2022/4
+        - deadline: '2022-11-23 12:00:00'
+          comment: ToSC 2023/1
       timezone: UTC+0
       date: March 20-24, 2023
       place: Beijing, China
     - year: 2024
-      id: fse24
+      id: iacr-fse24
       link: https://fse.iacr.org/2024/
       timeline:
-        - deadline: '2023-03-01 11:59:59'
-          comment: Submission deadline
-        - deadline: '2023-06-01 11:59:59'
-          comment: Submission deadline
-        - deadline: '2023-09-01 11:59:59'
-          comment: Submission deadline
-        - deadline: '2023-11-23 11:59:59'
-          comment: Submission deadline
+        - deadline: '2023-03-01 12:00:00'
+          comment: ToSC 2023/2
+        - deadline: '2023-06-01 12:00:00'
+          comment: ToSC 2023/3
+        - deadline: '2023-09-01 12:00:00'
+          comment: ToSC 2023/4
+        - deadline: '2023-11-23 12:00:00'
+          comment: ToSC 2024/1
       timezone: UTC+0
       date: March 25-29, 2024
       place: Leuven, Belgium
     - year: 2025
-      id: fse25
+      id: iacr-fse25
       link: https://fse.iacr.org/2025/
       timeline:
         - deadline: '2024-03-01 23:59:59'
-          comment: ToSC, Volume 2024, Issue 2 Submission deadline
+          comment: ToSC 2024/2
         - deadline: '2024-06-01 23:59:59'
-          comment: ToSC, Volume 2024, Issue 3 Submission deadline
+          comment: ToSC 2024/3
         - deadline: '2024-09-01 23:59:59'
-          comment: ToSC, Volume 2024, Issue 4 Submission deadline
+          comment: ToSC 2024/4
         - deadline: '2024-11-22 23:59:59'
-          comment: ToSC, Volume 2025, Issue 1 Submission deadline
+          comment: ToSC 2025/1
       timezone: UTC-12
       date: March 17-21, 2025
       place: Rome, Italy
     - year: 2026
-      id: fse26
+      id: iacr-fse26
       link: https://fse.iacr.org/2026/
       timeline:
         - deadline: '2025-03-01 23:59:59'
-          comment: ToSC, Volume 2025, Issue 2 Submission deadline
+          comment: ToSC 2025/2
         - deadline: '2025-06-01 23:59:59'
-          comment: ToSC, Volume 2025, Issue 3 Submission deadline
+          comment: ToSC 2025/3
         - deadline: '2025-09-01 23:59:59'
-          comment: ToSC, Volume 2025, Issue 4 Submission deadline
+          comment: ToSC 2025/4
         - deadline: '2025-11-23 23:59:59'
-          comment: ToSC, Volume 2026, Issue 1 Submission deadline
+          comment: ToSC 2026/1
       timezone: UTC-12
       date: March 23-27, 2026
       place: Singapore, Singapore
+    - year: 2027
+      id: iacr-fse27
+      link: https://fse.iacr.org/2027/
+      timeline:
+        - deadline: '2026-09-01 23:59:59'
+          comment: 'ToSC, Volume 2026, Issue 4 Submission deadline'
+        - deadline: '2026-12-01 23:59:59'
+          comment: 'ToSC, Volume 2027, Issue 1 Submission deadline'
+      timezone: UTC-12
+      date: May 24-28, 2027
+      place: Maastricht, Netherlands

@@ -1,5 +1,12 @@
 - title: ECAI
   accept_rates:
+    # Joint IJCAI-ECAI main track; accepted decisions / full submissions.
+    - year: 2022
+      submitted: 4537
+      accepted: 679
+      str: 15.0%(679/4537 22')
+      rate: 0.14965836455807802
+      source: https://www.ijcai.org/proceedings/2022/preface.pdf
     - year: 2023
       submitted: 1631
       accepted: 391

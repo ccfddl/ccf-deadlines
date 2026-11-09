@@ -1,0 +1,40 @@
+# Full research papers only; excludes short, industrial, demo, PhD, tutorial, and workshop papers.
+- title: DASFAA
+  accept_rates:
+    # 2021: original proceedings preface, PDF page 5; explicit full-research pair.
+    - year: 2021
+      submitted: 490
+      accepted: 98
+      str: 20.0%(98/490 21')
+      rate: 0.200000000000000
+      source: https://link.springer.com/content/pdf/bfm:978-3-030-73194-6/1
+    - year: 2022
+      submitted: 543
+      accepted: 72
+      str: 13.3%(72/543 22')
+      rate: 0.132596685082873
+      source: https://link.springer.com/book/10.1007/978-3-031-00129-1
+    - year: 2023
+      submitted: 652
+      accepted: 125
+      str: 19.2%(125/652 23')
+      rate: 0.191717791411043
+      source: https://link.springer.com/article/10.1007/s41019-023-00231-w
+    - year: 2024
+      submitted: 722
+      accepted: 147
+      str: 20.4%(147/722 24')
+      rate: 0.203601108033241
+      source: https://link.springer.com/book/10.1007/978-981-97-5552-3
+    - year: 2025
+      submitted: 731
+      accepted: 136
+      str: 18.6%(136/731 25')
+      rate: 0.186046511627907
+      source: https://link.springer.com/book/10.1007/978-981-95-4158-4
+    - year: 2026
+      submitted: 834
+      accepted: 228
+      str: 27.3%(228/834 26')
+      rate: 0.273381294964029
+      source: https://link.springer.com/book/10.1007/978-981-92-0363-5

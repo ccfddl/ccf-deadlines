@@ -1,8 +1,46 @@
+# Full research papers; invited contributions excluded. Annual cohorts follow cited sources.
+# 2021: publisher says 426 submissions; preface says 430 received; unresolved, retained.
+# 2022: 100 accepted decisions before one hard merge and three soft-merged presentation pairs.
+# Historical 2022 row was 99/455 (21.8%, rate 0.217582417582418), sourced to
+# https://github.com/emeryberger/csconferences; corrected to the explicit PC decision count.
+# 2024: annual preface says 526; 2025 preface retrospectively says 528; unresolved, retained.
+# 2026: 193 acceptances include 20 subject to mild editorial revisions, before two hard merges
+# and two post-acceptance withdrawals; the final proceedings contain 189 papers.
 - title: CRYPTO
   accept_rates:
+    - year: 2021
+      submitted: 426
+      accepted: 103
+      str: 24.2%(103/426 21')
+      rate: 0.241784037558685
+      source: https://link.springer.com/book/10.1007/978-3-030-84242-0
     - year: 2022
       submitted: 455
-      accepted: 99
-      str: 21.8%(99/455 22')
-      rate: 0.217582417582418
-      source: https://github.com/emeryberger/csconferences
+      accepted: 100
+      str: 22.0%(100/455 22')
+      rate: 0.219780219780220
+      source: https://crypto.iacr.org/2022/papers/538805_1_En_BookFrontmatter_OnlinePDF.pdf
+    - year: 2023
+      submitted: 479
+      accepted: 124
+      str: 25.9%(124/479 23')
+      rate: 0.258872651356994
+      source: https://link.springer.com/book/10.1007/978-3-031-38557-5
+    - year: 2024
+      submitted: 526
+      accepted: 143
+      str: 27.2%(143/526 24')
+      rate: 0.271863117870722
+      source: https://link.springer.com/book/10.1007/978-3-031-68376-3
+    - year: 2025
+      submitted: 643
+      accepted: 156
+      str: 24.3%(156/643 25')
+      rate: 0.242612752721617
+      source: https://link.springer.com/book/10.1007/978-3-032-01855-7
+    - year: 2026
+      submitted: 781
+      accepted: 193
+      str: 24.7%(193/781 26')
+      rate: 0.247119078104994
+      source: https://link.springer.com/content/pdf/bfm:978-3-032-35367-2/1

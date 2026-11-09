@@ -1,0 +1,9 @@
+- title: COLM
+  accept_rates:
+    # Chair opening remarks: accepted decisions / submissions; exclusions unspecified.
+    - year: 2025
+      submitted: 1305
+      accepted: 418
+      str: 32.0%(418/1305 25')
+      rate: 0.3203065134099617
+      source: https://docs.google.com/presentation/d/1p4sHxA6eHjnKluMzvPkmryVJ9whjSyXTUI4M1zOvTVQ/htmlpresent
