@@ -57,6 +57,7 @@
       link: https://www.icmla-conference.org/icmla27/
       timeline:
         - deadline: '2027-05-15 23:59:59'
+          decision_deadline: '2027-06-16 04:59:59'
           comment: Main Conference Papers DDL.
       timezone: PT
       date: December 14-16, 2027
