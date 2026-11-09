@@ -53,6 +53,8 @@
       timeline:
         - abstract_deadline: '2026-08-05 23:59:59'
           deadline: '2026-08-07 23:59:59'
+          rebuttal_deadline: '2026-09-01 23:59:59'
+          decision_deadline: '2026-09-13 23:59:59'
       timezone: AoE
       date: November 20-22, 2026
       place: Northeastern University, Boston, USA

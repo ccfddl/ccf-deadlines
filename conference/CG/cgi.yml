@@ -77,7 +77,8 @@
       id: cgi27
       link: https://cgs-network.org/cgi27/
       timeline:
-        - deadline: '2027-04-20 23:59:59'
+        - deadline: '2027-04-21 11:59:59'
+          decision_deadline: '2027-06-01 11:59:59'
           comment: 'Regular conference papers (LNCS proceedings track)'
       timezone: UTC
       date: July 5-9, 2027

@@ -64,3 +64,11 @@
       timezone: UTC+0
       date: July 6-11, 2026
       place: Seoul, Korea
+    - year: 2027
+      id: icml27
+      link: https://icml.cc/Conferences/2027
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: August 2-4, 2027
+      place: Riocentro, Rio de Janeiro, Brazil

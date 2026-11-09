@@ -35,7 +35,7 @@
       id: slt26
       link: https://attend.ieee.org/slt-2026/
       timeline:
-        - abstract_deadline: '2026-06-24 23:59:59'
+        - abstract_deadline: '2026-06-24 23:59:00'
           deadline: '2026-07-01 23:59:59'
           comment: Abstract registration / full paper
       timezone: AoE

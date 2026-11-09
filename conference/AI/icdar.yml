@@ -70,10 +70,14 @@
       id: icdar2027
       link: https://icdar2027.org/
       timeline:
-        - abstract_deadline: '2027-01-31 23:59:59'
-          deadline: '2027-02-20 23:59:59'
+        - deadline: '2026-11-15 23:59:59'
+          decision_deadline: '2027-05-15 23:59:59'
+          comment: 'Journal track; initial decision Jan 15, revised submission Apr 1'
+        - abstract_deadline: '2027-02-26 23:59:59'
+          deadline: '2027-03-05 23:59:59'
           rebuttal_deadline: '2027-04-27 23:59:59'
           decision_deadline: '2027-05-15 23:59:59'
+          comment: 'Conference track'
       timezone: AoE
       date: August 18 - 22, 2027
       place: Kuala Lumpur, Malaysia

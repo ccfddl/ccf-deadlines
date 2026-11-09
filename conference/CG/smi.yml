@@ -69,6 +69,6 @@
           deadline: '2027-03-08 23:59:59'
           decision_deadline: '2027-05-03 23:59:59'
           comment: 'Abstract submission is a soft deadline'
-      timezone: UTC
+      timezone: AoE
       date: June 21-25, 2027
       place: Singapore

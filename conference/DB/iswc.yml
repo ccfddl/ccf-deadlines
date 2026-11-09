@@ -58,7 +58,17 @@
       timeline:
         - abstract_deadline: '2026-05-02 23:59:59'
           deadline: '2026-05-07 23:59:59'
+          rebuttal_deadline: '2026-06-18 23:59:59'
+          decision_deadline: '2026-07-16 23:59:59'
           comment: ESWC resubmissions must be committed by April 11, 2026
       timezone: AoE
       date: October 27-29, 2026
       place: Bari, Italy
+    - year: 2027
+      id: iswc27
+      link: https://iswc2027.semanticweb.org/
+      timeline:
+        - deadline: 'TBD'
+      timezone: AoE
+      date: October 24-28, 2027
+      place: Montevideo, Uruguay

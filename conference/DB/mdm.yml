@@ -17,3 +17,12 @@
       timezone: AoE
       date: June 30 - July 2, 2026
       place: Athens, Greece
+    - year: 2027
+      id: mdm27
+      link: https://mdm2027.github.io/index.html
+      timeline:
+        - deadline: '2027-01-25 23:59:59'
+          decision_deadline: '2027-03-25 23:59:59'
+      timezone: AoE
+      date: June 28 - July 1, 2027
+      place: Hamilton, New Zealand

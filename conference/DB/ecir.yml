@@ -66,7 +66,7 @@
       timeline:
         - abstract_deadline: '2026-09-22 11:59:59'
           deadline: '2026-10-06 11:59:59'
-          decision_deadline: '2026-12-08 11:59:00'
+          decision_deadline: '2026-12-08 11:59:59'
       timezone: UTC+0
-      date: March 21-25, 2027
+      date: March 22-24, 2027
       place: Southampton, UK
