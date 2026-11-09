@@ -52,3 +52,12 @@
       timezone: PT
       date: October 5-7, 2026
       place: Oakland Center, Rochester, Michigan, USA
+    - year: 2027
+      id: icmla27
+      link: https://www.icmla-conference.org/icmla27/
+      timeline:
+        - deadline: '2027-05-15 23:59:59'
+          comment: Main Conference Papers DDL.
+      timezone: PT
+      date: December 14-16, 2027
+      place: University of Miami, Coral Gables Campus, Miami, Florida, USA
