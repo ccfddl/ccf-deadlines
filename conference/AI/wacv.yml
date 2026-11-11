@@ -90,7 +90,7 @@
           comment: First round
         - abstract_deadline: '2026-08-21 23:59:59'
           deadline: '2026-08-28 23:59:59'
-          decision_deadline: '2026-10-14 23:59:59'
+          decision_deadline: '2026-10-09 23:59:59'
           comment: Second round
       timezone: AoE
       date: Jan 6 - 8, 2027
