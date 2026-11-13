@@ -1,0 +1,18 @@
+- title: CC
+  description: International Conference on Compiler Construction
+  sub: SE
+  rank:
+    ccf: B
+    core: B
+  dblp: cc
+  confs:
+    - year: 2027
+      id: cc27
+      link: https://conf.researchr.org/home/CC-2027
+      timeline:
+        - abstract_deadline: '2026-12-01 23:59:59'
+          deadline: '2026-12-03 23:59:59'
+          decision_deadline: '2027-01-15 23:59:59'
+      timezone: AoE
+      date: March 20-21, 2027
+      place: Salt Lake City, Utah, USA
