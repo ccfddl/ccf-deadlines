@@ -46,7 +46,7 @@
           rebuttal_deadline: '2026-11-30 23:59:59'
           decision_deadline: '2027-02-10 23:59:59'
         - deadline: '2026-12-23 23:59:59'
-          comment: 'Commitment deadline for long and short research papers reviewed by ARR'
+          comment: 'Commitment deadline for long research papers reviewed by ARR'
       timezone: UTC-12
       date: May 9-14 (in-person) and 6-7 (virtual), 2027
       place: Macau SAR, China / Online
