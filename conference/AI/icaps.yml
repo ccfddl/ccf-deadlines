@@ -67,7 +67,7 @@
       timeline:
         - abstract_deadline: '2026-12-07 23:59:59'
           deadline: '2026-12-14 23:59:59'
-          rebuttal_deadline: '2027-02-04 23:59:59'
+          rebuttal_deadline: '2027-02-08 23:59:59'
           decision_deadline: '2027-02-26 23:59:59'
       timezone: UTC-12
       date: June 27 - July 2, 2027
