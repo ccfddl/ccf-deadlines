@@ -61,3 +61,12 @@
       timezone: AoE
       date: November 11-14, 2026
       place: Rio de Janeiro, Brazil
+    - year: 2027
+      id: mm27
+      link: https://2027.acmmm.org/
+      timeline:
+        - abstract_deadline: 'TBD'
+          deadline: 'TBD'
+      timezone: AoE
+      date: November 8-12, 2027
+      place: Hong Kong SAR, China
