@@ -13,7 +13,7 @@
       timeline:
         - deadline: '2027-03-25 23:59:59'
           decision_deadline: '2027-05-05 23:59:59'
-          comment: 'Full papers, extended abstracts, posters, and interactive session proposals'
+          comment: 'Regular full research papers. The 5 May 2027 notification publishes a date only; its clock time 23:59:59 and timezone AoE are repository defaults.'
       timezone: AoE
       date: August 25-27, 2027
       place: Vilnius, Lithuania
