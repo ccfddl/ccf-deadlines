@@ -77,3 +77,18 @@
       timezone: AoE
       date: December 14-18, 2026
       place: Universitat Rovira i Virgili, Tarragona, Spain
+    - year: 2027
+      id: middleware27
+      link: https://middleware-conf.github.io/2027/
+      timeline:
+        - abstract_deadline: '2026-11-27 00:00:00'
+          deadline: '2026-12-04 00:00:00'
+          rebuttal_deadline: '2027-03-07 23:59:59'
+          comment: Winter cycle
+        - abstract_deadline: '2027-05-28 23:59:59'
+          deadline: '2027-06-04 23:59:59'
+          rebuttal_deadline: '2027-08-22 23:59:59'
+          comment: Summer cycle
+      timezone: AoE
+      date: December 13-17, 2027
+      place: Kyoto, Japan
