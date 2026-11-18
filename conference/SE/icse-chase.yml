@@ -12,6 +12,7 @@
       link: https://conf.researchr.org/home/chase-2025
       timeline:
         - abstract_deadline: '2024-11-01 23:59:59'
+          comment: 'recommended, used for bidding'
           deadline: '2024-11-09 23:59:59'
           decision_deadline: '2025-01-12 23:59:59'
       timezone: AoE
@@ -21,7 +22,8 @@
       id: icse-chase26
       link: https://conf.researchr.org/home/chase-2026
       timeline:
-        - abstract_deadline: '2025-10-16 23:59:59'
+        - abstract_deadline: '2025-10-21 23:59:59'
+          comment: 'recommended, used for bidding'
           deadline: '2025-10-23 23:59:59'
           decision_deadline: '2026-01-05 23:59:59'
       timezone: AoE
