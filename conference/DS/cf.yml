@@ -62,3 +62,13 @@
       timezone: AoE
       date: May 19-21, 2026
       place: Catania, Sicily, Italy
+    - year: 2027
+      id: cf2027
+      link: https://www.computingfrontiers.org/2027/
+      timeline:
+        - abstract_deadline: '2027-01-18 23:59:59'
+          deadline: '2027-01-25 23:59:59'
+          decision_deadline: '2027-03-15 23:59:59'
+      timezone: AoE
+      date: May 25-27, 2027
+      place: Trento, Italy
