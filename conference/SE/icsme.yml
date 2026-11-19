@@ -66,9 +66,10 @@
       id: icsme27
       link: https://conf.researchr.org/home/icsme-2027
       timeline:
-        - deadline: '2027-03-05 23:59:59'
-          rebuttal_deadline: '2027-05-07 23:59:59'
-          decision_deadline: '2027-05-28 23:59:59'
+        - abstract_deadline: '2027-02-19 23:59:59'
+          deadline: '2027-02-26 23:59:59'
+          rebuttal_deadline: '2027-04-30 23:59:59'
+          decision_deadline: '2027-05-25 23:59:59'
           comment: 'Research Papers Track'
       timezone: AoE
       date: September 7-11, 2027
