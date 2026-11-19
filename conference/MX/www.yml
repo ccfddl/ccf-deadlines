@@ -67,6 +67,7 @@
       timeline:
         - abstract_deadline: '2026-10-18 23:59:59'
           deadline: '2026-10-25 23:59:59'
+          rebuttal_deadline: '2026-12-20 23:59:59'
           decision_deadline: '2027-01-04 23:59:59'
       timezone: AoE
       date: May 10 - 14, 2027
