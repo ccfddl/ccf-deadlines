@@ -61,3 +61,14 @@
       timezone: UTC-5
       date: April 27-28, 2026
       place: Seoul, South Korea
+    - year: 2027
+      id: ispass27
+      link: https://ispass.org/2027/
+      timeline:
+        - abstract_deadline: '2026-12-11 23:59:59'
+          deadline: '2026-12-18 23:59:59'
+          rebuttal_deadline: '2027-02-19 23:59:59'
+          decision_deadline: '2027-03-08 23:59:59'
+      timezone: AoE
+      date: May 9-11, 2027
+      place: New York City, USA
