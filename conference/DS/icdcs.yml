@@ -74,7 +74,10 @@
       id: icdcs27
       link: https://icdcs2027.icdcs.org/
       timeline:
-        - deadline: 'TBD'
+        - abstract_deadline: '2027-01-06 23:59:59'
+          deadline: '2027-01-13 23:59:59'
+          # The CFP lists March 11 for early rejection and April 18 for acceptance, both as dates only.
+          decision_deadline: '2027-04-18 23:59:59'
       timezone: AoE
       date: July 5-8, 2027
       place: Melbourne, Australia
