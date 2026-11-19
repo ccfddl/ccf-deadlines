@@ -64,6 +64,7 @@
       timeline:
         - abstract_deadline: '2027-02-12 23:59:59'
           deadline: '2027-02-19 23:59:59'
+          decision_deadline: '2027-04-16 23:59:59'
       timezone: AoE
       date: July 12-15, 2027
       place: Rome, Italy
