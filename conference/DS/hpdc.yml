@@ -60,3 +60,13 @@
       timezone: AoE
       date: July 14-16, 2026
       place: Cleveland, OH, USA
+    - year: 2027
+      id: hpdc2027
+      link: https://hpdc.sci.utah.edu/2027/
+      timeline:
+        - abstract_deadline: '2027-01-11 23:59:59'
+          deadline: '2027-01-18 23:59:59'
+          decision_deadline: '2027-03-30 23:59:59'
+      timezone: AoE
+      date: June 7-9, 2027
+      place: Atlanta, GA, USA
