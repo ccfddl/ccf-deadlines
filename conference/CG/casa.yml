@@ -55,3 +55,11 @@
       timezone: AoE
       date: June 1-3, 2026
       place: Geneva, Switzerland (Hybrid)
+    - year: 2027
+      id: casa2027
+      link: https://www.cgs-network.org/casaxr27/
+      timeline:
+        - deadline: '2027-02-04 23:59:59'
+      timezone: UTC+0
+      date: June 4-6, 2027
+      place: Xi'an, China

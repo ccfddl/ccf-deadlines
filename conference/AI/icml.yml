@@ -68,7 +68,9 @@
       id: icml27
       link: https://icml.cc/Conferences/2027
       timeline:
-        - deadline: 'TBD'
+        - abstract_deadline: '2027-01-14 23:59:59'
+          deadline: '2027-01-22 23:59:59'
+          decision_deadline: '2027-05-03 23:59:59'
       timezone: AoE
-      date: July 31 - August 6, 2027
+      date: August 2-4, 2027
       place: Riocentro, Rio de Janeiro, Brazil

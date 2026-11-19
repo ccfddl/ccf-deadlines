@@ -71,11 +71,11 @@
       place: Belfast, Northern Ireland, United Kingdom
     - year: 2027
       id: ics27
-      link: https://ics-conference.org/index.html
+      link: https://klab-ai3.github.io/ics2027/
       timeline:
         - abstract_deadline: '2026-12-01 23:59:59'
           deadline: '2026-12-07 23:59:59'
           decision_deadline: '2027-03-12 23:59:59'
       timezone: AoE
-      date: TBD
+      date: June 5-11, 2027
       place: Atlanta, Georgia, USA

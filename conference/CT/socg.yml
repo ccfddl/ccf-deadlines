@@ -65,7 +65,9 @@
       id: socg27
       link: https://cgweek27.computational-geometry.org/
       timeline:
-        - deadline: 'TBD'
+        - deadline: '2026-12-02 23:59:59'
+          decision_deadline: '2027-02-05 23:59:59'
+          comment: 'Submission registration: November 25, 2026, 23:59 AoE'
       timezone: AoE
       date: June 21-25, 2027
       place: Bengaluru, India

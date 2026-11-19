@@ -3,7 +3,9 @@ from datetime import datetime, timezone, timedelta
 from unittest.mock import patch, MagicMock
 
 from ccfddl.__main__ import parse_args, main
-from ccfddl.fetch import extract_alpha_id
+from ccfddl.fetch import extract_alpha_id, process_conference_deadlines
+from ccfddl.models import Conference
+from ccfddl.output import output_json, output_table
 from ccfddl.utils import format_duration, get_timezone
 
 
@@ -150,3 +152,229 @@ class TestMain:
 
         printed = [str(call) for call in mock_print.call_args_list]
         assert any("Available Categories" in str(p) for p in printed)
+
+
+class TestProcessConferenceDeadlines:
+    @pytest.fixture
+    def siggraph_conf(self):
+        return Conference.from_dict({
+            "title": "ACM SIGGRAPH",
+            "description": "ACM SIGGRAPH Annual Conference",
+            "sub": "CG",
+            "rank": {"ccf": "A", "core": "A*", "thcpl": "A"},
+            "dblp": "siggraph",
+            "confs": [
+                {
+                    "year": 2027,
+                    "id": "siggraph27",
+                    "link": "https://s2027.siggraph.org/",
+                    "timeline": [
+                        {
+                            "abstract_deadline": "2027-01-21 22:00:00",
+                            "deadline": "2027-01-28 22:00:00",
+                            "comment": "Submissions form & conflicts / paper deadline",
+                        }
+                    ],
+                    "timezone": "UTC+0",
+                    "date": "August 8 - 12, 2027",
+                    "place": "Anaheim, California",
+                }
+            ],
+        })
+
+    def test_both_abstract_and_paper_upcoming(self, siggraph_conf):
+        ref_date = datetime(2026, 11, 8, 0, 0, 0, tzinfo=timezone.utc)
+        results = process_conference_deadlines([siggraph_conf], ref_date)
+
+        assert len(results) == 1
+        res = results[0]
+        assert res["abstract_deadline_str"] == "2027-01-21 22:00:00 UTC"
+        assert res["deadline_str"] == "2027-01-28 22:00:00 UTC"
+        assert res["comment"] == "Submissions form & conflicts / paper deadline"
+        assert res["next_deadline"] == res["abstract_deadline"]
+
+    def test_abstract_expired_paper_upcoming(self, siggraph_conf):
+        ref_date = datetime(2027, 1, 23, 0, 0, 0, tzinfo=timezone.utc)
+        results = process_conference_deadlines([siggraph_conf], ref_date)
+
+        assert len(results) == 1
+        res = results[0]
+        assert res["abstract_deadline"] is None
+        assert res["abstract_deadline_str"] is None
+        assert res["deadline_str"] == "2027-01-28 22:00:00 UTC"
+        assert res["next_deadline"] == res["deadline"]
+
+    def test_sorting_uses_earliest_upcoming_deadline(self):
+        ref_date = datetime(2026, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+        conf_a = Conference.from_dict({
+            "title": "Conf A",
+            "sub": "AI",
+            "rank": {"ccf": "A"},
+            "dblp": "a",
+            "confs": [
+                {
+                    "year": 2026,
+                    "id": "a26",
+                    "link": "https://a.org",
+                    "timeline": [
+                        {
+                            "abstract_deadline": "2026-01-10 12:00:00",
+                            "deadline": "2026-01-30 12:00:00",
+                        }
+                    ],
+                    "timezone": "UTC+0",
+                    "date": "2026",
+                    "place": "City A",
+                }
+            ],
+        })
+        conf_b = Conference.from_dict({
+            "title": "Conf B",
+            "sub": "AI",
+            "rank": {"ccf": "A"},
+            "dblp": "b",
+            "confs": [
+                {
+                    "year": 2026,
+                    "id": "b26",
+                    "link": "https://b.org",
+                    "timeline": [{"deadline": "2026-01-20 12:00:00"}],
+                    "timezone": "UTC+0",
+                    "date": "2026",
+                    "place": "City B",
+                }
+            ],
+        })
+        results = process_conference_deadlines([conf_b, conf_a], ref_date)
+        assert [r["title"] for r in results] == ["Conf A", "Conf B"]
+
+    @patch("builtins.print")
+    def test_output_table_and_json(self, mock_print, siggraph_conf):
+        ref_date = datetime(2026, 11, 8, 0, 0, 0, tzinfo=timezone.utc)
+        results = process_conference_deadlines([siggraph_conf], ref_date)
+
+        output_table(results, ref_date)
+        table_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert "Abs DDL" in table_output
+        assert "DDL" in table_output
+        assert "74 days" in table_output
+        assert "81 days" in table_output
+
+        mock_print.reset_mock()
+        output_json(results)
+        json_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert '"abstract_deadline": "2027-01-21 22:00:00 UTC"' in json_output
+        assert '"deadline": "2027-01-28 22:00:00 UTC"' in json_output
+        assert '"comment": "Submissions form & conflicts / paper deadline"' in json_output
+
+    @patch("builtins.print")
+    def test_abstract_upcoming_paper_tbd(self, mock_print):
+        ref_date = datetime(2026, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+        conf = Conference.from_dict({
+            "title": "Conf TBD",
+            "sub": "AI",
+            "rank": {"ccf": "A"},
+            "dblp": "tbd",
+            "confs": [
+                {
+                    "year": 2026,
+                    "id": "tbd26",
+                    "link": "https://tbd.org",
+                    "timeline": [
+                        {
+                            "abstract_deadline": "2026-02-01 12:00:00",
+                            "deadline": "TBD",
+                            "comment": "Abstract first, full paper TBD",
+                        }
+                    ],
+                    "timezone": "UTC+0",
+                    "date": "2026",
+                    "place": "City",
+                }
+            ],
+        })
+        results = process_conference_deadlines([conf], ref_date)
+        assert len(results) == 1
+        res = results[0]
+        assert res["abstract_deadline_str"] == "2026-02-01 12:00:00 UTC"
+        assert res["deadline"] is None
+        assert res["deadline_str"] is None
+        assert res["comment"] == "Abstract first, full paper TBD"
+        assert res["next_deadline"] == res["abstract_deadline"]
+
+        output_table(results, ref_date)
+        table_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert "31 days" in table_output
+        assert "TBD" in table_output
+
+        mock_print.reset_mock()
+        output_json(results)
+        json_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert '"abstract_deadline": "2026-02-01 12:00:00 UTC"' in json_output
+        assert '"deadline": null' in json_output
+        assert '"comment": "Abstract first, full paper TBD"' in json_output
+
+    @patch("builtins.print")
+    def test_multiple_rounds_selected_round_consistency(self, mock_print):
+        conf = Conference.from_dict({
+            "title": "Conf Multi",
+            "sub": "AI",
+            "rank": {"ccf": "B"},
+            "dblp": "multi",
+            "confs": [
+                {
+                    "year": 2026,
+                    "id": "multi26",
+                    "link": "https://multi.org",
+                    "timeline": [
+                        {
+                            "abstract_deadline": "2026-01-10 12:00:00",
+                            "deadline": "2026-02-15 12:00:00",
+                            "comment": "Round 1",
+                        },
+                        {
+                            "abstract_deadline": "2026-04-01 12:00:00",
+                            "deadline": "2026-04-15 12:00:00",
+                            "comment": "Round 2",
+                        },
+                    ],
+                    "timezone": "UTC+0",
+                    "date": "2026",
+                    "place": "City",
+                }
+            ],
+        })
+
+        # Phase 1: In Round 1, abstract has passed but paper deadline is upcoming.
+        # Round 2 is further in the future.
+        ref_date_1 = datetime(2026, 2, 1, 0, 0, 0, tzinfo=timezone.utc)
+        results_1 = process_conference_deadlines([conf], ref_date_1)
+        assert len(results_1) == 1
+        res_1 = results_1[0]
+        # Must select Round 1: abstract_deadline is None (expired), paper deadline is Feb 15
+        assert res_1["abstract_deadline"] is None
+        assert res_1["abstract_deadline_str"] is None
+        assert res_1["deadline_str"] == "2026-02-15 12:00:00 UTC"
+        assert res_1["comment"] == "Round 1"
+        assert res_1["next_deadline"] == res_1["deadline"]
+
+        output_table(results_1, ref_date_1)
+        table_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert "14 days" in table_output
+
+        mock_print.reset_mock()
+        output_json(results_1)
+        json_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert '"abstract_deadline": null' in json_output
+        assert '"deadline": "2026-02-15 12:00:00 UTC"' in json_output
+        assert '"comment": "Round 1"' in json_output
+
+        # Phase 2: Round 1 fully passed, now active round is Round 2.
+        ref_date_2 = datetime(2026, 3, 1, 0, 0, 0, tzinfo=timezone.utc)
+        results_2 = process_conference_deadlines([conf], ref_date_2)
+        assert len(results_2) == 1
+        res_2 = results_2[0]
+        assert res_2["abstract_deadline_str"] == "2026-04-01 12:00:00 UTC"
+        assert res_2["deadline_str"] == "2026-04-15 12:00:00 UTC"
+        assert res_2["comment"] == "Round 2"
+        assert res_2["next_deadline"] == res_2["abstract_deadline"]

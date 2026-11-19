@@ -63,11 +63,11 @@
       place: Verona, Italy
     - year: 2027
       id: date2027
-      link: https://www.date-conference.com/date-2027-call-papers
+      link: https://www.date-conference.com/call-for-papers
       timeline:
-        - abstract_deadline: '2026-09-13 23:59:59'
-          deadline: '2026-09-20 23:59:59'
-          decision_deadline: '2026-11-23 23:59:59'
+        - abstract_deadline: '2026-09-13 23:59:00'
+          deadline: '2026-09-20 23:59:00'
+          decision_deadline: '2026-11-23 23:59:00'
       timezone: AoE
       date: March 22-24, 2027
       place: Dresden, Germany

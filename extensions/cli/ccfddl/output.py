@@ -35,14 +35,25 @@ def output_table(results: list[dict[str, any]], now: datetime) -> None:
         print("No upcoming deadlines found.")
         return
 
-    table = [["Title", "Sub", "Rank", "DDL", "Link"]]
+    table = [["Title", "Sub", "Rank", "Abs DDL", "DDL", "Link"]]
 
     for item in results:
+        abs_ddl = (
+            format_colored_duration(item["abstract_deadline"], now)
+            if item.get("abstract_deadline") is not None
+            else "-"
+        )
+        ddl = (
+            format_colored_duration(item["deadline"], now)
+            if item.get("deadline") is not None
+            else "TBD"
+        )
         table.append([
             f"{item['title']} {item['year']}",
             item["sub"],
             item["rank"],
-            format_colored_duration(item["deadline"], now),
+            abs_ddl,
+            ddl,
             item["link"],
         ])
 
@@ -61,7 +72,9 @@ def output_json(results: list[dict[str, any]]) -> None:
             "subname": item["subname"],
             "subname_en": item["subname_en"],
             "rank": item["rank"],
-            "deadline": item["deadline_str"],
+            "abstract_deadline": item.get("abstract_deadline_str"),
+            "deadline": item.get("deadline_str"),
+            "comment": item.get("comment"),
             "timezone": item["timezone"],
             "date": item["date"],
             "place": item["place"],

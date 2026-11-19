@@ -38,6 +38,19 @@ def fetch_conferences(url: str) -> list[Conference]:
         sys.exit(1)
 
 
+def _parse_upcoming(
+    raw_deadline: str | None, timezone_str: str, now: datetime
+) -> datetime | None:
+    """Parse a deadline string and return it only if it is in the future."""
+    if not raw_deadline or raw_deadline == "TBD":
+        return None
+    try:
+        dt = parse_datetime_with_tz(raw_deadline, timezone_str)
+        return dt if dt >= now else None
+    except ValueError:
+        return None
+
+
 def process_conference_deadlines(
     conferences: list[Conference], now: datetime
 ) -> list[dict[str, any]]:
@@ -54,31 +67,51 @@ def process_conference_deadlines(
         }
 
         for conf_year in conf.confs:
-            time_obj = None
+            best_next: datetime | None = None
+            best_abs: datetime | None = None
+            best_ddl: datetime | None = None
+            best_comment: str | None = None
 
             for timeline in conf_year.timeline:
-                deadline_str = timeline.deadline
-                if not deadline_str or deadline_str == "TBD":
+                cur_abs = _parse_upcoming(
+                    timeline.abstract_deadline, conf_year.timezone, now
+                )
+                cur_ddl = _parse_upcoming(
+                    timeline.deadline, conf_year.timezone, now
+                )
+
+                candidates = [d for d in (cur_abs, cur_ddl) if d is not None]
+                if not candidates:
                     continue
 
-                try:
-                    cur_d = parse_datetime_with_tz(deadline_str, conf_year.timezone)
-                    if cur_d < now:
-                        continue
-                    if time_obj is None or cur_d < time_obj:
-                        time_obj = cur_d
-                except ValueError:
-                    continue
+                round_next = min(candidates)
+                if best_next is None or round_next < best_next:
+                    best_next = round_next
+                    best_abs = cur_abs
+                    best_ddl = cur_ddl
+                    best_comment = timeline.comment
 
-            if time_obj is not None:
+            if best_next is not None:
                 category = get_category_by_sub(conf.sub)
                 result = {
                     **base_info,
                     "year": conf_year.year,
                     "id": conf_year.id,
                     "link": conf_year.link,
-                    "deadline": time_obj,
-                    "deadline_str": time_obj.strftime("%Y-%m-%d %H:%M:%S %Z"),
+                    "abstract_deadline": best_abs,
+                    "abstract_deadline_str": (
+                        best_abs.strftime("%Y-%m-%d %H:%M:%S %Z")
+                        if best_abs is not None
+                        else None
+                    ),
+                    "deadline": best_ddl,
+                    "deadline_str": (
+                        best_ddl.strftime("%Y-%m-%d %H:%M:%S %Z")
+                        if best_ddl is not None
+                        else None
+                    ),
+                    "next_deadline": best_next,
+                    "comment": best_comment,
                     "timezone": conf_year.timezone,
                     "date": conf_year.date,
                     "place": conf_year.place,
@@ -87,7 +120,7 @@ def process_conference_deadlines(
                 }
                 results.append(result)
 
-    results.sort(key=lambda x: x["deadline"])
+    results.sort(key=lambda x: x["next_deadline"])
     return results
 
 

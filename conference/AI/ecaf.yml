@@ -1,0 +1,19 @@
+- title: ECAF
+  description: European Conference on Algorithmic Fairness
+  sub: AI
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: ewaf
+  confs:
+    - year: 2027
+      id: ecaf27
+      link: https://2027.ecafconference.org/
+      timeline:
+        - deadline: '2027-03-25 23:59:59'
+          decision_deadline: '2027-05-05 23:59:59'
+          comment: 'Regular full research papers. The 5 May 2027 notification publishes a date only; its clock time 23:59:59 and timezone AoE are repository defaults.'
+      timezone: AoE
+      date: August 25-27, 2027
+      place: Vilnius, Lithuania

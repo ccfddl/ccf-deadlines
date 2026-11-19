@@ -1,0 +1,20 @@
+- title: IntelliSys
+  description: Intelligent Systems Conference
+  sub: AI
+  rank:
+    ccf: N
+  dblp: intellisys
+  confs:
+    - year: 2027
+      id: intellisys27
+      link: https://saiconference.com/IntelliSys
+      timeline:
+        - deadline: '2026-11-15 23:59:59'
+          decision_deadline: '2026-12-01 23:59:59'
+          comment: 'Round 1'
+        - deadline: '2026-12-01 23:59:59'
+          decision_deadline: '2027-01-01 23:59:59'
+          comment: 'Round 2'
+      timezone: AoE
+      date: September 2-3, 2027
+      place: Amsterdam, Netherlands

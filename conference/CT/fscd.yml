@@ -63,7 +63,10 @@
       id: fscd27
       link: https://fscd-cade.science.ru.nl/
       timeline:
-        - deadline: 'TBD'
+        - abstract_deadline: '2027-04-19 23:59:59'
+          deadline: '2027-04-26 23:59:59'
+          rebuttal_deadline: '2027-06-12 23:59:59'
+          decision_deadline: '2027-06-28 23:59:59'
       timezone: AoE
       date: August 23-26, 2027
       place: Nijmegen, Netherlands

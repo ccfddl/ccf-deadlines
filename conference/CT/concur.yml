@@ -60,3 +60,12 @@
       timezone: AoE
       date: Sep 1-4, 2026
       place: Liverpool, UK
+    - year: 2027
+      id: concur27
+      link: https://www.cs.vu.nl/~wanf/profactivities.html
+      timeline:
+        - deadline: TBD
+          comment: 'Part of CONQEST 2027'
+      timezone: AoE
+      date: September 6-10, 2027
+      place: Lucca, Italy

@@ -78,6 +78,10 @@
           deadline: '2026-10-08 23:59:59'
           rebuttal_deadline: '2026-11-24 23:59:59'
           decision_deadline: '2026-12-21 23:59:59'
+          comment: 'Main track'
+        - deadline: '2026-12-11 23:59:59'
+          decision_deadline: '2027-02-01 23:59:59'
+          comment: 'AAAI fast track; eligible AAAI-27 Main Technical Track resubmissions only'
       timezone: AoE
       date: May 3-7, 2027
       place: Hanoi, Vietnam
