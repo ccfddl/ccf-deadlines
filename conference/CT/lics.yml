@@ -65,7 +65,10 @@
       id: lics27
       link: https://lics.siglog.org/lics27/
       timeline:
-        - deadline: 'TBD'
+        - abstract_deadline: '2027-01-14 23:59:59'
+          deadline: '2027-01-21 23:59:59'
+          rebuttal_deadline: '2027-03-28 23:59:59'
+          decision_deadline: '2027-04-15 23:59:59'
       timezone: AoE
       date: June 21-24, 2027
       place: Montréal, Canada
