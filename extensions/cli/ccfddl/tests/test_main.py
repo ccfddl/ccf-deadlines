@@ -403,7 +403,16 @@ class TestFilterResults:
                         "timezone": "AoE",
                         "date": "August 2027",
                         "place": "City",
-                    }
+                    },
+                    {
+                        "year": 2028,
+                        "id": "uss28",
+                        "link": "https://www.usenix.org/conference/usenixsecurity28",
+                        "timeline": [{"deadline": "2028-02-01 23:59:59"}],
+                        "timezone": "AoE",
+                        "date": "August 2028",
+                        "place": "City",
+                    },
                 ],
             }),
             Conference.from_dict({
@@ -465,7 +474,7 @@ class TestFilterResults:
 
     def test_matches_titles_with_spaces_symbols_and_digits(self):
         results, _ = self._sample_results()
-        assert [r["title"] for r in filter_results(results, ["USENIX Security"], None, None)] == ["USENIX Security"]
+        assert [r["id"] for r in filter_results(results, ["USENIX Security"], None, None)] == ["uss27", "uss28"]
         assert [r["title"] for r in filter_results(results, ["EuroS&P"], None, None)] == ["EuroS&P"]
         assert [r["title"] for r in filter_results(results, ["ICDF2C"], None, None)] == ["ICDF2C"]
         assert [r["title"] for r in filter_results(results, ["3DV"], None, None)] == ["3DV"]
@@ -473,8 +482,10 @@ class TestFilterResults:
     def test_matches_exact_id_and_alpha_shorthand(self):
         results, _ = self._sample_results()
         assert [r["id"] for r in filter_results(results, ["uss27"], None, None)] == ["uss27"]
-        assert [r["id"] for r in filter_results(results, ["usenixsecurity"], None, None)] == ["uss27"]
+        assert [r["id"] for r in filter_results(results, ["uss"], None, None)] == ["uss27", "uss28"]
+        assert [r["id"] for r in filter_results(results, ["usenixsecurity"], None, None)] == ["uss27", "uss28"]
         assert [r["id"] for r in filter_results(results, ["eurosp"], None, None)] == ["eurosp27"]
+        assert [r["id"] for r in filter_results(results, ["uss27", "EuroS&P"], None, None)] == ["eurosp27", "uss27"]
 
     def test_digits_or_punctuation_only_filter_does_not_false_match(self):
         results, _ = self._sample_results()
