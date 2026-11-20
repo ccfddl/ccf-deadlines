@@ -133,15 +133,32 @@ def filter_results(
     """Apply filters to results."""
     filtered = []
 
-    conf_filter_lower = [f.lower() for f in conf_filter] if conf_filter else None
+    conf_filter_exact = (
+        {f.strip().lower() for f in conf_filter} if conf_filter else None
+    )
+    conf_filter_alpha = (
+        {alpha for f in conf_filter if (alpha := extract_alpha_id(f))}
+        if conf_filter
+        else None
+    )
     sub_filter_lower = [f.lower() for f in sub_filter] if sub_filter else None
     rank_filter_lower = [f.lower() for f in rank_filter] if rank_filter else None
 
     for item in results:
-        if conf_filter_lower:
+        if conf_filter_exact is not None:
+            id_lower = item["id"].strip().lower()
+            title_lower = item["title"].strip().lower()
             id_alpha = extract_alpha_id(item["id"])
             title_alpha = extract_alpha_id(item["title"])
-            if id_alpha not in conf_filter_lower and title_alpha not in conf_filter_lower:
+            exact_match = (
+                id_lower in conf_filter_exact
+                or title_lower in conf_filter_exact
+            )
+            alpha_match = bool(conf_filter_alpha) and (
+                id_alpha in conf_filter_alpha
+                or title_alpha in conf_filter_alpha
+            )
+            if not exact_match and not alpha_match:
                 continue
         if sub_filter_lower and extract_alpha_id(item["sub"]) not in sub_filter_lower:
             continue
