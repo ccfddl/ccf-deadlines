@@ -61,3 +61,12 @@
       timezone: AoE
       date: November 2 - 5, 2026
       place: GM Renaissance Center, Detroit, MI, USA
+    - year: 2027
+      id: uist2027
+      link: https://uist.acm.org/2027/
+      timeline:
+        - abstract_deadline: '2027-03-31 23:59:59'
+          deadline: '2027-04-07 23:59:59'
+      timezone: AoE
+      date: October 27-29, 2027
+      place: VIECON - Vienna Congress & Convention Center, Vienna, Austria
