@@ -62,3 +62,14 @@
       timezone: AoE
       date: October 7-9, 2026
       place: Málaga, Spain
+    - year: 2027
+      id: models27
+      link: https://conf.researchr.org/home/models-2027
+      timeline:
+        - abstract_deadline: '2027-03-12 23:59:59'
+          deadline: '2027-03-19 23:59:59'
+          rebuttal_deadline: '2027-05-21 23:59:59'
+          decision_deadline: '2027-06-11 23:59:59'
+      timezone: AoE
+      date: TBD
+      place: Budapest, Hungary
