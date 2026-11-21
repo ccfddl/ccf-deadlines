@@ -58,7 +58,7 @@
       place: Fuzhou, China
     - year: 2027
       id: cscwd27
-      link: http://2027.cscwd.org
+      link: https://cscwd2027.dailyeliteevents.com.au/
       timeline:
         - deadline: '2026-11-30 23:59:59'
           comment: 'Paper submission due (extended)'
