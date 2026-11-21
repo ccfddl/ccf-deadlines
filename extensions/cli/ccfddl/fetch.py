@@ -124,6 +124,47 @@ def process_conference_deadlines(
     return results
 
 
+def _partition_conf_filters(
+    conf_filter: list[str],
+    results: list[dict[str, any]],
+) -> tuple[set[str], set[str], set[str]]:
+    """Partition --conf tokens into exact IDs vs. title/alpha fallback sets."""
+    available_ids = {item["id"].strip().lower() for item in results}
+    exact_ids: set[str] = set()
+    titles: set[str] = set()
+    alphas: set[str] = set()
+    for token in conf_filter:
+        normalized = token.strip().lower()
+        if not normalized:
+            continue
+        if normalized in available_ids:
+            exact_ids.add(normalized)
+        else:
+            titles.add(normalized)
+            if alpha := extract_alpha_id(token):
+                alphas.add(alpha)
+    return exact_ids, titles, alphas
+
+
+def _matches_conf(
+    item: dict[str, any],
+    exact_ids: set[str],
+    titles: set[str],
+    alphas: set[str],
+) -> bool:
+    """Return whether a conference item matches any partitioned --conf filter."""
+    if item["id"].strip().lower() in exact_ids:
+        return True
+    if item["title"].strip().lower() in titles:
+        return True
+    if not alphas:
+        return False
+    return (
+        extract_alpha_id(item["id"]) in alphas
+        or extract_alpha_id(item["title"]) in alphas
+    )
+
+
 def filter_results(
     results: list[dict[str, any]],
     conf_filter: list[str] | None,
@@ -133,16 +174,17 @@ def filter_results(
     """Apply filters to results."""
     filtered = []
 
-    conf_filter_lower = [f.lower() for f in conf_filter] if conf_filter else None
+    exact_ids, titles, alphas = (
+        _partition_conf_filters(conf_filter, results)
+        if conf_filter
+        else (set(), set(), set())
+    )
     sub_filter_lower = [f.lower() for f in sub_filter] if sub_filter else None
     rank_filter_lower = [f.lower() for f in rank_filter] if rank_filter else None
 
     for item in results:
-        if conf_filter_lower:
-            id_alpha = extract_alpha_id(item["id"])
-            title_alpha = extract_alpha_id(item["title"])
-            if id_alpha not in conf_filter_lower and title_alpha not in conf_filter_lower:
-                continue
+        if conf_filter and not _matches_conf(item, exact_ids, titles, alphas):
+            continue
         if sub_filter_lower and extract_alpha_id(item["sub"]) not in sub_filter_lower:
             continue
         if rank_filter_lower and item["rank"].lower() not in rank_filter_lower:

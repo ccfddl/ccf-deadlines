@@ -3,7 +3,11 @@ from datetime import datetime, timezone, timedelta
 from unittest.mock import patch, MagicMock
 
 from ccfddl.__main__ import parse_args, main
-from ccfddl.fetch import extract_alpha_id, process_conference_deadlines
+from ccfddl.fetch import (
+    extract_alpha_id,
+    filter_results,
+    process_conference_deadlines,
+)
 from ccfddl.models import Conference
 from ccfddl.output import output_json, output_table
 from ccfddl.utils import format_duration, get_timezone
@@ -378,3 +382,128 @@ class TestProcessConferenceDeadlines:
         assert res_2["deadline_str"] == "2026-04-15 12:00:00 UTC"
         assert res_2["comment"] == "Round 2"
         assert res_2["next_deadline"] == res_2["abstract_deadline"]
+
+
+class TestFilterResults:
+    def _sample_results(self):
+        ref_date = datetime(2026, 1, 1, 0, 0, 0, tzinfo=timezone.utc)
+        confs = [
+            Conference.from_dict({
+                "title": "USENIX Security",
+                "description": "USENIX Security Symposium",
+                "sub": "SC",
+                "rank": {"ccf": "A"},
+                "dblp": "uss",
+                "confs": [
+                    {
+                        "year": 2027,
+                        "id": "uss27",
+                        "link": "https://www.usenix.org/conference/usenixsecurity27",
+                        "timeline": [{"deadline": "2027-02-01 23:59:59"}],
+                        "timezone": "AoE",
+                        "date": "August 2027",
+                        "place": "City",
+                    },
+                    {
+                        "year": 2028,
+                        "id": "uss28",
+                        "link": "https://www.usenix.org/conference/usenixsecurity28",
+                        "timeline": [{"deadline": "2028-02-01 23:59:59"}],
+                        "timezone": "AoE",
+                        "date": "August 2028",
+                        "place": "City",
+                    },
+                ],
+            }),
+            Conference.from_dict({
+                "title": "EuroS&P",
+                "description": "IEEE European Symposium on Security and Privacy",
+                "sub": "SC",
+                "rank": {"ccf": "C"},
+                "dblp": "eurosp",
+                "confs": [
+                    {
+                        "year": 2027,
+                        "id": "eurosp27",
+                        "link": "https://eurosp2027.ieee-security.org/",
+                        "timeline": [{"deadline": "2027-01-15 23:59:59"}],
+                        "timezone": "AoE",
+                        "date": "June 2027",
+                        "place": "City",
+                    }
+                ],
+            }),
+            Conference.from_dict({
+                "title": "ICDF2C",
+                "description": "Digital Forensics and Cyber Crime",
+                "sub": "SC",
+                "rank": {"ccf": "N"},
+                "dblp": "icdf2c",
+                "confs": [
+                    {
+                        "year": 2027,
+                        "id": "icdf2c27",
+                        "link": "https://icdf2c.org/",
+                        "timeline": [{"deadline": "2027-03-01 23:59:59"}],
+                        "timezone": "AoE",
+                        "date": "October 2027",
+                        "place": "City",
+                    }
+                ],
+            }),
+            Conference.from_dict({
+                "title": "3DV",
+                "description": "International Conference on 3D Vision",
+                "sub": "CG",
+                "rank": {"ccf": "C"},
+                "dblp": "3dv",
+                "confs": [
+                    {
+                        "year": 2027,
+                        "id": "3dv27",
+                        "link": "https://3dvconf.github.io/2027/",
+                        "timeline": [{"deadline": "2027-04-01 23:59:59"}],
+                        "timezone": "AoE",
+                        "date": "April 2027",
+                        "place": "City",
+                    }
+                ],
+            }),
+        ]
+        return process_conference_deadlines(confs, ref_date), ref_date
+
+    def test_matches_titles_with_spaces_symbols_and_digits(self):
+        results, _ = self._sample_results()
+        assert [r["id"] for r in filter_results(results, ["USENIX Security"], None, None)] == ["uss27", "uss28"]
+        assert [r["title"] for r in filter_results(results, ["EuroS&P"], None, None)] == ["EuroS&P"]
+        assert [r["title"] for r in filter_results(results, ["ICDF2C"], None, None)] == ["ICDF2C"]
+        assert [r["title"] for r in filter_results(results, ["3DV"], None, None)] == ["3DV"]
+
+    def test_matches_exact_id_and_alpha_shorthand(self):
+        results, _ = self._sample_results()
+        assert [r["id"] for r in filter_results(results, ["uss27"], None, None)] == ["uss27"]
+        assert [r["id"] for r in filter_results(results, ["uss"], None, None)] == ["uss27", "uss28"]
+        assert [r["id"] for r in filter_results(results, ["usenixsecurity"], None, None)] == ["uss27", "uss28"]
+        assert [r["id"] for r in filter_results(results, ["eurosp"], None, None)] == ["eurosp27"]
+        assert [r["id"] for r in filter_results(results, ["uss27", "EuroS&P"], None, None)] == ["eurosp27", "uss27"]
+
+    def test_digits_or_punctuation_only_filter_does_not_false_match(self):
+        results, _ = self._sample_results()
+        assert filter_results(results, ["2027"], None, None) == []
+        assert filter_results(results, ["---"], None, None) == []
+
+    @patch("builtins.print")
+    def test_filtered_table_and_json_output(self, mock_print):
+        results, ref_date = self._sample_results()
+        filtered = filter_results(results, ["USENIX Security", "EuroS&P"], None, None)
+
+        output_table(filtered, ref_date)
+        table_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert "USENIX Security 2027" in table_output
+        assert "EuroS&P 2027" in table_output
+
+        mock_print.reset_mock()
+        output_json(filtered)
+        json_output = "".join(str(call) for call in mock_print.call_args_list)
+        assert '"title": "USENIX Security"' in json_output
+        assert '"title": "EuroS&P"' in json_output
