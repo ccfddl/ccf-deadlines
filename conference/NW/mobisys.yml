@@ -67,6 +67,8 @@
         - abstract_deadline: '2026-11-27 23:59:59'
           deadline: '2026-12-04 23:59:59'
           rebuttal_deadline: '2027-02-12 23:59:59'
+          decision_deadline: '2027-03-06 23:59:59'
+          comment: 'Acceptance is conditional on shepherding. March 6 is date-only; clock and time zone are repository defaults.'
       timezone: AoE
       date: June 21-25, 2027
       place: Ho Chi Minh City, Vietnam
