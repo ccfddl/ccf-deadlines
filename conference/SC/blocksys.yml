@@ -63,8 +63,10 @@
       link: https://blocksys.info/2027/
       timeline:
         - deadline: '2026-11-30 23:59:59'
+          decision_deadline: '2026-12-31 23:59:59'
           comment: 'Round 1 Submission Deadline'
         - deadline: '2027-01-31 23:59:59'
+          decision_deadline: '2027-03-15 23:59:59'
           comment: 'Round 2 Submission Deadline'
       timezone: AoE
       date: April 9-11, 2027
