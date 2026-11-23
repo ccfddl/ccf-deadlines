@@ -67,6 +67,7 @@
       timeline:
         - abstract_deadline: '2026-12-08 23:59:59'
           deadline: '2026-12-15 23:59:59'
+          decision_deadline: '2027-02-19 23:59:59'
           comment: 'Regular papers; official CFP dates. Clock 23:59:59 and timezone AoE are repository defaults, not published cutoff precision.'
       timezone: AoE
       date: May 24-28, 2027
