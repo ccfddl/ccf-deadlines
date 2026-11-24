@@ -89,6 +89,8 @@
         - deadline: '2026-09-01 23:59:59'
           comment: 'ToSC, Volume 2026, Issue 4 Submission deadline'
         - deadline: '2026-12-01 23:59:59'
+          rebuttal_deadline: '2027-01-08 23:59:59'
+          decision_deadline: '2027-02-01 23:59:59'
           comment: 'ToSC, Volume 2027, Issue 1 Submission deadline'
       timezone: UTC-12
       date: May 24-28, 2027
