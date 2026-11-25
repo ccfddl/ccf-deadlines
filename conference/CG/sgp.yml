@@ -77,14 +77,7 @@
       id: sgp27
       link: https://sgp2027.github.io/
       timeline:
-        - abstract_deadline: '2027-02-02 23:59:59'
-          deadline: '2027-02-04 23:59:59'
-          decision_deadline: '2027-03-16 23:59:59'
-          comment: 'First round: recommended abstract / full paper (preliminary dates; deadline time and timezone TBA)'
-        - abstract_deadline: '2027-04-06 23:59:59'
-          deadline: '2027-04-08 23:59:59'
-          decision_deadline: '2027-05-18 23:59:59'
-          comment: 'Second round: recommended abstract / full paper (preliminary dates; deadline time and timezone TBA)'
+        - deadline: 'TBD'
       timezone: AoE
       date: June 21-25, 2027
       place: Singapore
