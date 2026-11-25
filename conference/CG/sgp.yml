@@ -75,7 +75,7 @@
       place: Bern, Switzerland
     - year: 2027
       id: sgp27
-      link: https://igs2027singapore.github.io/
+      link: https://sgp2027.github.io/
       timeline:
         - deadline: 'TBD'
       timezone: AoE
