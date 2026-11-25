@@ -81,8 +81,8 @@
       id: middleware27
       link: https://middleware-conf.github.io/2027/
       timeline:
-        - abstract_deadline: '2026-11-27 00:00:00'
-          deadline: '2026-12-04 00:00:00'
+        - abstract_deadline: '2026-11-27 23:59:00'
+          deadline: '2026-12-04 23:59:00'
           rebuttal_deadline: '2027-03-07 23:59:59'
           comment: Winter cycle
         - abstract_deadline: '2027-05-28 23:59:59'
