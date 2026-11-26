@@ -73,6 +73,7 @@
       timeline:
         - abstract_deadline: '2027-01-21 22:00:00'
           deadline: '2027-01-28 22:00:00'
+          rebuttal_deadline: '2027-03-15 22:00:00'
           comment: 'Submissions form & conflicts / paper deadline (upload deadline Jan 29)'
       timezone: UTC+0
       date: August 8 - 12, 2027
